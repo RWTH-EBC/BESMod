@@ -259,10 +259,15 @@ Utilities.KPIs.InternalKPICalculator KPIQHR(
         extent={{5,6},{-5,-6}},
         rotation=180,
         origin={71,80})));
-  Utilities.Electrical.RealToElecCon realToElecCon(nLoa=if use_pressure then 3 else 2)
+  Utilities.Electrical.RealToElecCon realToElecCon(use_souGen=false)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={100,-78})));
+  Modelica.Blocks.Math.MultiSum multiSum(nu=if use_pressure then 3 else 2) annotation (Placement(
+        transformation(
+        extent={{-6,-6},{6,6}},
+        rotation=180,
+        origin={130,-82})));
 protected
   parameter Modelica.SIunits.PressureDifference dpHeaRod_nominal = if use_heaRod then heatingRodParameters.dp_nominal else 0;
 
@@ -414,16 +419,18 @@ connect(KPIQHR.KPIBus, outBusGen.QHR_flow) annotation (Line(points={{-63.88,-131
       points={{89.8,-78.2},{72,-78.2},{72,-98}},
       color={0,0,0},
       thickness=1));
-  connect(realToElecCon.PEleLoa[1], hea.Pel) annotation (Line(points={{112,-82},
-          {118,-82},{118,114},{55.6,114},{55.6,89.6}},          color={0,0,127}));
-  connect(realToElecCon.PEleLoa[2], sigBusGen.hp_bus.PelMea) annotation (Line(
-        points={{112,-82},{118,-82},{118,-38},{116,-38},{116,100},{2,100},{2,98}},
-                                                         color={0,0,127}), Text(
+  connect(multiSum.y, realToElecCon.PEleLoa)
+    annotation (Line(points={{122.98,-82},{112,-82}}, color={0,0,127}));
+  connect(multiSum.u[1], hea.Pel) annotation (Line(points={{136,-82},{142,-82},
+          {142,89.6},{55.6,89.6}},color={0,0,127}));
+  connect(multiSum.u[2], sigBusGen.hp_bus.PelMea) annotation (Line(points={{136,
+          -82},{140,-82},{140,96},{72,96},{72,98},{2,98}}, color={0,0,127}),
+      Text(
       string="%second",
       index=1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
-  connect(realToElecCon.PEleLoa[3], pump.P) annotation (Line(points={{112,-82},
-          {116,-82},{116,94},{60,94},{60,60},{42,60},{42,44},{0,44},{0,-59},{5,
-          -59}}, color={0,0,127}));
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(multiSum.u[3], pump.P) annotation (Line(points={{136,-82},{140,-82},{
+          140,-86},{144,-86},{144,-59},{5,-59}},
+                                             color={0,0,127}));
 end HeatPumpAndHeatingRod;

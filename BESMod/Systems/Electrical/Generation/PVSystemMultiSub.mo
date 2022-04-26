@@ -29,9 +29,8 @@ model PVSystemMultiSub
   replaceable model CellTemperature =
       AixLib.Electrical.PVSystem.BaseClasses.PartialCellTemperature annotation (
      __Dymola_choicesAllMatching=true);
-  Utilities.Electrical.RealToElecCon realToElecCon(SouLoa=false, nGen=1)
-                                                   annotation (Placement(
-        transformation(
+  Utilities.Electrical.RealToElecCon realToElecCon(use_souLoa=false)
+    annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={50,58})));
@@ -56,7 +55,7 @@ equation
   for i in 1:numGenUnits loop
     connect(pVSystem[i].weaBus, weaBus);
   end for;
-  connect(sumOfPower.y, realToElecCon.PEleGen[1])
+  connect(sumOfPower.y, realToElecCon.PEleGen)
     annotation (Line(points={{50,31},{54,31},{54,46}}, color={0,0,127}));
   connect(realToElecCon.internalElectricalPin, internalElectricalPin)
     annotation (Line(
