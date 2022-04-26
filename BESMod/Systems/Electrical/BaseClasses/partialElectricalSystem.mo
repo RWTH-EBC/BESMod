@@ -1,0 +1,170 @@
+within BESMod.Systems.Electrical.BaseClasses;
+partial model PartialElectricalSystem "Partial model for electrical system"
+  parameter Integer nLoadsExtSubSys(min=1) = 4 "Number of subsystems which result in electrical load";
+  replaceable Distribution.BaseClasses.PartialDistribution distribution(final
+      nSubsysLoads=nLoadsExtSubSys + 1) constrainedby
+    BESMod.Systems.Electrical.Distribution.BaseClasses.PartialDistribution
+    annotation (choicesAllMatching=true, Placement(transformation(extent={{-40,
+            -102},{52,36}})));
+  replaceable Generation.BaseClasses.PartialGeneration generation
+    constrainedby
+    BESMod.Systems.Electrical.Generation.BaseClasses.PartialGeneration
+    annotation (choicesAllMatching=true, Placement(transformation(extent={{-148,
+            -102},{-62,36}})));
+  AixLib.BoundaryConditions.WeatherData.Bus weaBus annotation (Placement(
+        transformation(extent={{-200,24},{-160,66}}), iconTransformation(extent=
+           {{-200,24},{-160,66}})));
+  replaceable Transfer.BaseClasses.PartialTransfer transfer constrainedby
+    BESMod.Systems.Electrical.Transfer.BaseClasses.PartialTransfer
+    annotation (choicesAllMatching=true, Placement(transformation(extent={{68,-102},
+            {144,36}})));
+  replaceable Control.BaseClasses.PartialControl control constrainedby
+    BESMod.Systems.Electrical.Control.BaseClasses.PartialControl
+    annotation (choicesAllMatching=true, Placement(transformation(extent={{-146,
+            56},{142,106}})));
+  Interfaces.InternalElectricalPin internalElectricalPin[nLoadsExtSubSys]
+    annotation (Placement(transformation(extent={{-190,78},{-170,98}})));
+  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPortCon[size(transfer.heatPortCon,
+    1)] "Heat port for convective heat transfer with room air temperature"
+    annotation (Placement(transformation(extent={{152,4},{172,24}}),
+        iconTransformation(extent={{152,4},{172,24}})));
+  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPortRad[size(transfer.heatPortRad,
+    1)] "Heat port for radiative heat transfer with room air temperature"
+    annotation (Placement(transformation(extent={{152,-70},{172,-50}})));
+  BESMod.Systems.Interfaces.UseProBus useProBus annotation (
+      Placement(transformation(extent={{-120,120},{-74,156}}),
+        iconTransformation(extent={{-120,120},{-74,156}})));
+  BESMod.Systems.Interfaces.BuiMeaBus buiMeaBus annotation (
+      Placement(transformation(extent={{48,124},{92,156}}), iconTransformation(
+          extent={{48,124},{92,156}})));
+  BESMod.Systems.Interfaces.ElectricalOutputs outBusElect
+    annotation (Placement(transformation(extent={{-22,-160},{24,-120}}),
+        iconTransformation(extent={{-22,-160},{24,-120}})));
+  Interfaces.ExternalElectricalPin externalElectricalPin1
+    annotation (Placement(transformation(extent={{-182,-146},{-162,-126}})));
+  Interfaces.SystemControlBus systemControlBus annotation (Placement(
+        transformation(extent={{-26,122},{20,160}}), iconTransformation(extent={
+            {-26,122},{20,160}})));
+equation
+  connect(generation.weaBus, weaBus) annotation (Line(
+      points={{-148,19.44},{-180,19.44},{-180,45}},
+      color={255,204,51},
+      thickness=0.5));
+  connect(control.generationControlBus, generation.controlBusGen) annotation (
+      Line(
+      points={{-104,56.5},{-104.57,56.5},{-104.57,34.62}},
+      color={255,204,51},
+      thickness=0.5));
+  connect(control.distributionControlBus, distribution.sigBusDistr) annotation (
+     Line(
+      points={{4.6,56.25},{4.6,43.125},{6.46,43.125},{6.46,32.55}},
+      color={255,204,51},
+      thickness=0.5));
+  connect(control.transferControlBus, transfer.transferControlBus) annotation (
+      Line(
+      points={{104.2,56.25},{104.2,45.125},{106,45.125},{106,34.62}},
+      color={255,204,51},
+      thickness=0.5));
+
+  connect(transfer.heatPortCon, heatPortCon) annotation (Line(
+      points={{144,-5.4},{144,14},{162,14}},
+      color={191,0,0},
+      smooth=Smooth.Bezier));
+  connect(transfer.heatPortRad, heatPortRad) annotation (Line(
+      points={{144,-38.52},{150,-38.52},{150,-58},{162,-58},{162,-60}},
+      color={191,0,0},
+      smooth=Smooth.Bezier));
+  connect(weaBus, control.weaBus) annotation (Line(
+      points={{-180,45},{-180,65.5},{-146,65.5},{-146,85.5}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%first",
+      index=-1,
+      extent={{-3,-6},{-3,-6}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(control.useProBus, useProBus) annotation (Line(
+      points={{-69.8,106.5},{-69.8,123.25},{-97,123.25},{-97,138}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%second",
+      index=1,
+      extent={{-3,6},{-3,6}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(control.buiMeaBus, buiMeaBus) annotation (Line(
+      points={{37,106.75},{37,124.375},{70,124.375},{70,140}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%second",
+      index=1,
+      extent={{-3,6},{-3,6}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(distribution.OutputDistr, outBusElect.distribution) annotation (Line(
+      points={{6,-100.62},{4,-100.62},{4,-140},{1,-140}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(transfer.transferOutputs, outBusElect.transfer) annotation (Line(
+      points={{106,-101.31},{106,-140},{1,-140}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%second",
+      index=1,
+      extent={{-3,-6},{-3,-6}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(generation.outBusGen, outBusElect.generation) annotation (Line(
+      points={{-105,-101.31},{-105,-140},{1,-140}},
+      color={255,204,51},
+      thickness=0.5));
+  connect(distribution.externalElectricalPin, externalElectricalPin1)
+    annotation (Line(
+      points={{29,-100.62},{29,-123.31},{-172,-123.31},{-172,-136}},
+      color={0,0,0},
+      thickness=1));
+  connect(control.systemControlBus, systemControlBus) annotation (Line(
+      points={{-2,106},{-2,141},{-3,141}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%second",
+      index=1,
+      extent={{-3,6},{-3,6}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(transfer.internalElectricalPin, distribution.internalElectricalPinForLoad[
+    1]) annotation (Line(
+      points={{124.24,36},{124,36},{124,46},{29,46},{29,36}},
+      color={0,0,0},
+      thickness=1));
+  for i in 1:nLoadsExtSubSys loop
+    connect(internalElectricalPin[i], distribution.internalElectricalPinForLoad[
+      i + 1]);
+  end for;
+  connect(generation.internalElectricalPin, distribution.internalElectricalPinFromGeneration)
+    annotation (Line(
+      points={{-83.5,34.62},{-83.5,46},{-17,46},{-17,36}},
+      color={0,0,0},
+      thickness=1));
+  annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-180,-140},
+            {160,140}}), graphics={
+        Rectangle(
+          extent={{-180,140},{162,-140}},
+          lineColor={0,0,0},
+          lineThickness=0.5,
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
+        Line(
+          points={{-36,104}},
+          color={0,0,0},
+          thickness=1,
+          arrow={Arrow.None,Arrow.Filled}),
+        Line(
+          points={{-20,96},{-60,-20},{2,-20},{-16,-100},{80,14},{4,12},{30,96},
+              {-20,96}},
+          color={0,0,0},
+          thickness=1),       Text(
+          extent={{-98,-134},{106,-230}},
+          lineColor={0,0,0},
+          textString="%name%")}),                                Diagram(
+        coordinateSystem(preserveAspectRatio=false, extent={{-180,-140},{160,140}})));
+end PartialElectricalSystem;

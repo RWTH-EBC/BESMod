@@ -1,0 +1,40 @@
+within BESMod.Systems.Hydraulical.Distribution.Tests;
+model TestIndirectLoading
+  extends PartialTest(redeclare
+      BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedIndirectLoading
+      distribution(
+      QHRAftDHW_flow_nominal=0,
+      QHRAftBuf_flow_nominal=0,
+      use_heatingRodAfterDHW=false,
+      use_heatingRodAfterBuffer=false,
+      redeclare
+        BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
+        temperatureSensorData,
+      redeclare
+        BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
+        threeWayValveParameters,
+      redeclare
+        BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorage
+        bufParameters,
+      redeclare
+        BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorage
+        dhwParameters,
+      redeclare
+        BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
+        heatingRodAftBufParameters,
+      redeclare
+        BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
+        heatingRodAftDHWParameters));
+  Modelica.Blocks.Sources.BooleanPulse booleanPulse(period=100) annotation (
+      Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-68,88})));
+equation
+  connect(booleanPulse.y, sigBusDistr.dhw_on) annotation (Line(points={{-57,88},
+          {-42,88},{-42,81},{-14,81}}, color={255,0,255}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+end TestIndirectLoading;

@@ -1,0 +1,60 @@
+within BESMod.Systems.Demand.Building.BaseClasses;
+partial model PartialDemand "Partial demand model for HPS"
+  extends BESMod.Utilities.Icons.BuildingIcon;
+
+  parameter Integer nZones(min=1) "Number of zones /rooms";
+  parameter Modelica.SIunits.Temperature TSetZone_nominal[nZones]=fill(293.15,
+      nZones) "Nominal room set temerature"                                                 annotation(Dialog(group=
+          "Temperature demand"));
+  parameter Modelica.SIunits.Area AZone[nZones] "Area of zones/rooms"
+    annotation (Dialog(group="Geometry"));
+  parameter Modelica.SIunits.Height hZone[nZones] "Height of zones"
+    annotation (Dialog(group="Geometry"));
+  parameter Modelica.SIunits.Area ABui "Ground area of building"
+    annotation (Dialog(group="Geometry"));
+  parameter Modelica.SIunits.Height hBui "Height of building"
+    annotation (Dialog(group="Geometry"));
+  parameter Boolean use_hydraulic=true "=false to disable hydraulic supply";
+  parameter Boolean use_ventilation=true "=false to disable ventilation supply";
+
+  replaceable package MediumZone = Modelica.Media.Air.SimpleAir constrainedby
+    Modelica.Media.Interfaces.PartialMedium annotation (
+      __Dymola_choicesAllMatching=true);
+  BESMod.Systems.Interfaces.UseProBus useProBus annotation (
+      Placement(transformation(extent={{24,82},{78,120}}), iconTransformation(
+          extent={{44,88},{66,112}})));
+
+  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPortCon[nZones]
+ if use_hydraulic
+    "Heat port for convective heat transfer with room air temperature"
+    annotation (Placement(transformation(extent={{-110,50},{-90,70}})));
+  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPortRad[nZones]
+ if use_hydraulic
+    "Heat port for radiative heat transfer with room radiation temperature"
+    annotation (Placement(transformation(extent={{-110,-70},{-90,-50}})));
+  BESMod.Systems.Interfaces.DemandOutputs outBusDem
+    annotation (Placement(transformation(extent={{88,-12},{108,8}})));
+  Modelica.Fluid.Interfaces.FluidPort_a portVent_in[nZones](
+      redeclare final package Medium = MediumZone)
+                           if use_ventilation
+    "Inlet for the demand of ventilation"
+    annotation (Placement(transformation(extent={{90,28},{110,48}}),
+        iconTransformation(extent={{90,28},{110,48}})));
+  Modelica.Fluid.Interfaces.FluidPort_b portVent_out[nZones](
+      redeclare final package Medium = MediumZone)
+                           if use_ventilation
+    "Outlet of the demand of Ventilation"
+    annotation (Placement(transformation(extent={{90,-50},{110,-30}}),
+        iconTransformation(extent={{90,-50},{110,-30}})));
+
+  IBPSA.BoundaryConditions.WeatherData.Bus
+      weaBus "Weather data bus" annotation (Placement(transformation(extent={{-68,76},
+            {-26,120}}),         iconTransformation(extent={{-68,92},{-48,112}})));
+  BESMod.Systems.Interfaces.BuiMeaBus buiMeaBus annotation (
+      Placement(transformation(extent={{-20,78},{20,120}}), iconTransformation(
+          extent={{-20,78},{20,120}})));
+  Electrical.Interfaces.InternalElectricalPin internalElectricalPin
+    annotation (Placement(transformation(extent={{60,-106},{80,-86}})));
+  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+        coordinateSystem(preserveAspectRatio=false)));
+end PartialDemand;

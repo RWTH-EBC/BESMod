@@ -1,0 +1,63 @@
+within BESMod.Systems.Hydraulical.Distribution.RecordsCollection;
+partial record PartialStorageBaseDataDefinition
+  extends Modelica.Icons.Record;
+  // Global parameters
+  parameter Modelica.SIunits.Density rho(displayUnit="kg/m3")=1000 "Density of liquid water";
+  parameter Modelica.SIunits.SpecificHeatCapacityAtConstantPressure c_p=4184 "Heat capacity of water";
+  parameter Modelica.SIunits.HeatFlowRate Q_flow_nominal "Nominal heat flow rate";
+
+  // Design
+  parameter Real VPerQ_flow=23.5 "Litre per kW of nominal heat flow rate"  annotation (Dialog(group="Geometry"));
+  parameter Real storage_H_dia_ratio = 2 "Storage tank height-diameter ration. SOURCE: Working Assumption of all paper before"  annotation (Dialog(group="Geometry"));
+  parameter Integer nLayer = 4 "Number of layers in storage";
+  parameter Modelica.SIunits.Volume V=VPerQ_flow*Q_flow_nominal*1e-6 "Volume of storage"  annotation (Dialog(tab="Calculated", group="Geometry"));
+  parameter Modelica.SIunits.Diameter d=(V*4/(storage_H_dia_ratio*Modelica.Constants.pi))^(1/3) "Diameter of storage"  annotation (Dialog(tab="Calculated", group="Geometry"));
+  parameter Modelica.SIunits.Height h=d*storage_H_dia_ratio  annotation (Dialog(tab="Calculated", group="Geometry"));
+
+  // Heat transfer
+  parameter Modelica.SIunits.TemperatureDifference dTLoaMin=0.01 "Minimal temperature difference for loading"  annotation (Dialog(group="Loading"));
+  parameter Boolean use_HC1 "=false to disable heating coil 1"  annotation (Dialog(group="Loading"));
+  parameter Modelica.SIunits.TemperatureDifference dTLoadingHC1 "Temperature difference for loading of first heating coil" annotation (Dialog(group="Loading", enable=use_HC1));
+  parameter Real fHeiHC1=1 "Percentage of the storage height used for the heating coil" annotation (Dialog(group="Loading", enable=use_HC1));
+  parameter Real fDiaHC1=1 "Percentage of the storage diameter used for the heating coil" annotation (Dialog(group="Loading", enable=use_HC1));
+  parameter Modelica.SIunits.HeatFlowRate QHC1_flow_nominal=Q_flow_nominal "Nominal heat flow rate in first heating coil" annotation (Dialog(group="Loading", enable=use_HC1));
+  parameter Modelica.SIunits.Length lengthHC1=floor((h * fHeiHC1 / pipeHC1.d_o)) * pipeHC1.d_o / sin(atan(pipeHC1.d_o/(d*fDiaHC1))) "Lenght of first HC" annotation (Dialog(tab="Calculated", group="Loading", enable=use_HC1));
+  parameter Modelica.SIunits.MassFlowRate mHC1_flow_nominal "Nominal mass flow rate of HC fluid" annotation (Dialog(group="Loading", enable=use_HC1));
+  replaceable parameter AixLib.DataBase.Pipes.PipeBaseDataDefinition pipeHC1 constrainedby
+    AixLib.DataBase.Pipes.PipeBaseDataDefinition                                                                                         "Type of Pipe for HC1" annotation (choicesAllMatching=true, Dialog(group="Loading", enable=use_HC1));
+  parameter Modelica.SIunits.CoefficientOfHeatTransfer hConHC1=(2/pipeHC1.d_o)/(((max(dTLoadingHC1, dTLoaMin)*2*Modelica.Constants.pi*lengthHC1)/QHC1_flow_nominal)-(1/pipeHC1.lambda * log(pipeHC1.d_o/pipeHC1.d_i))) "Model assumptions Coefficient of Heat Transfer HC1 <-> Heating Water"
+                                                                                                                                                                                                        annotation (Dialog(tab="Calculated", group="Loading", enable=use_HC1));
+  parameter Modelica.SIunits.Velocity vHC1_nominal = mHC1_flow_nominal / (rho * (pipeHC1.d_i * Modelica.Constants.pi / 2) ^ 2) "Fluid velocity in pipe of HC 1 at nominal conditions"
+                                                                                                                                                                                     annotation (Dialog(tab="Calculated", group="Loading", enable=use_HC1));
+
+  // Heat losses
+  parameter Modelica.SIunits.Temperature T_m "Average storage temperature. Used to calculate default heat loss" annotation (Dialog(group="Insulation"));
+  parameter Modelica.SIunits.Temperature TAmb "Ambient temperature. Used to calculate default heat loss" annotation (Dialog(group="Insulation"));
+  parameter Boolean use_QLos=false   "=true to use QLosPerDay instead of TLosPerDay" annotation (Dialog(group="Insulation"));
+  parameter Real QLosPerDay=1 "Heat loss per day. MUST BE IN kWh/d" annotation (Dialog(enable=use_QLos, group="Insulation"));
+  parameter Real TLosPerDay=1 "Temperature decline per day in K/d" annotation (Dialog(enable=not use_QLos, group="Insulation"));
+  parameter Modelica.SIunits.CoefficientOfHeatTransfer hConIn=100 "Model assumptions heat transfer coefficient water <-> wall" annotation (Dialog(group="Insulation"));
+  parameter Modelica.SIunits.CoefficientOfHeatTransfer hConOut=10 "Model assumptions heat transfer coefficient insulation <-> air" annotation (Dialog(group="Insulation"));
+  parameter Modelica.SIunits.ThermalConductivity lambda_ins=0.045 "thermal conductivity of insulation"
+                                                                                                      annotation (tab="Calculated", Dialog(group="Insulation"));
+  parameter Modelica.SIunits.HeatFlowRate QLoss_flow=if use_QLos then  QLosPerDay/24*1000 else rho*c_p*V*TLosPerDay/(86400) "Actual heat flow rate loss" annotation (Dialog(tab="Calculated", group="Insulation"));
+  parameter Modelica.SIunits.Thickness sIns=
+      Modelica.Math.Nonlinear.solveOneNonlinearEquation(
+      function
+        BESMod.Systems.Hydraulical.Distribution.RecordsCollection.GetStorageInsulation(
+        QLoss_flow=QLoss_flow,
+        dT_loss=T_m - TAmb,
+        hConOut=hConOut,
+        hConIn=hConIn,
+        lambda_ins=lambda_ins,
+        d=d,
+        h=h),
+      1e-5,
+      10) "thickness of insulation" annotation (Dialog(group="Insulation"));
+
+ annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+        coordinateSystem(preserveAspectRatio=false)),
+    Documentation(info="<html>
+<p><img src=\"modelica://BESMod/Resources/img/equations/heatTraNLayerWall.png\"/></p>
+</html>"));
+end PartialStorageBaseDataDefinition;

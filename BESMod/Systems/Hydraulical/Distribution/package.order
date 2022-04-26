@@ -1,0 +1,10 @@
+BuildingOnly
+CombiStorage
+DistributionTwoStorageParallel
+DHWOnly
+TwoStoDetailedDirectLoading
+TwoStoDetailedIndirectLoading
+Components
+RecordsCollection
+Tests
+BaseClasses
