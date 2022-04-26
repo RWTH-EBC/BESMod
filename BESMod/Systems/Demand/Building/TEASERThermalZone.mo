@@ -309,13 +309,10 @@ model TEASERThermalZone
         rotation=180,
         origin={53,-81})));
 
-  Modelica.Blocks.Sources.RealExpression NoLoad(y=0)
-    "Simplified electrical load" annotation (Placement(transformation(
+  Utilities.Electrical.ZeroLoad zeroLoad annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={142,-78})));
-  Utilities.Electrical.RealToElecCon realToElecCon
-    annotation (Placement(transformation(extent={{114,-88},{94,-68}})));
+        origin={94,-96})));
 equation
 
   for i in 1:nZones loop
@@ -613,11 +610,9 @@ equation
   connect(multiSum.u, thermalZone.QIntGains_flow) annotation (Line(points={{58,-81},
           {64,-81},{64,-80},{68,-80},{68,-4},{-50,-4},{-50,33.6},{-42.7,33.6}},
         color={0,0,127}));
-  connect(NoLoad.y, realToElecCon.PEleLoa)
-    annotation (Line(points={{131,-78},{114.6,-78}}, color={0,0,127}));
-  connect(realToElecCon.internalElectricalPin, internalElectricalPin)
-    annotation (Line(
-      points={{93.8,-77.8},{70,-77.8},{70,-96}},
+  connect(zeroLoad.internalElectricalPin, internalElectricalPin) annotation (
+      Line(
+      points={{84,-96},{70,-96}},
       color={0,0,0},
       thickness=1));
     annotation (Diagram(coordinateSystem(extent={{-100,-100},{100,100}})), Icon(

@@ -55,7 +55,7 @@ equation
   connect(fixedTemperature.port, pVBatterySystemNoTransfer.heatPortRad)
     annotation (Line(points={{72,-12},{64,-12},{64,-12.2857},{54.5412,-12.2857}},
         color={191,0,0}));
-  connect(elecConToReal.PElec, PElecFromGrid)
+  connect(elecConToReal.PElecLoa, PElecFromGrid)
     annotation (Line(points={{-4.56,-67},{30,-67},{30,-66}}, color={0,0,127}));
   connect(realToElecCon.internalElectricalPin, pVBatterySystemNoTransfer.internalElectricalPin[
     1]) annotation (Line(

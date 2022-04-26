@@ -4,6 +4,7 @@ Generation
 Transfer
 Interfaces
 ElectricalSystem
+DirectGridConnectionSystem
 BaseClasses
 RecordsCollection
 Tests

@@ -56,8 +56,8 @@ equation
   for i in 1:numGenUnits loop
     connect(pVSystem[i].weaBus, weaBus);
   end for;
-  connect(sumOfPower.y, realToElecCon.PEleLoa)
-    annotation (Line(points={{50,31},{50,47.4}}, color={0,0,127}));
+  connect(sumOfPower.y, realToElecCon.PEleLoa) annotation (Line(points={{50,31},
+          {50,38},{50,46},{46,46}}, color={0,0,127}));
   connect(realToElecCon.internalElectricalPin, internalElectricalPin)
     annotation (Line(
       points={{49.8,68.2},{49.8,79.1},{50,79.1},{50,98}},

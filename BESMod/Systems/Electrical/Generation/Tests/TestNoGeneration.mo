@@ -1,15 +1,7 @@
 within BESMod.Systems.Electrical.Generation.Tests;
-model PVSystemMultiSub
+model TestNoGeneration
   extends PartialTest(redeclare
-      BESMod.Systems.Electrical.Generation.PVSystemMultiSub generation(
-      redeclare model CellTemperature =
-          AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureOpenRack,
-      redeclare AixLib.DataBase.SolarElectric.SchuecoSPV170SME1 pVParameters,
-      lat=weaDat.lat,
-      lon=weaDat.lon,
-      alt=1,
-      timZon=weaDat.timZon,
-      ARoof=50));
+      BESMod.Systems.Electrical.Generation.NoGeneration generation);
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
@@ -26,4 +18,4 @@ model PVSystemMultiSub
       Evaluate=true,
       OutputCPUtime=false,
       OutputFlatModelica=false));
-end PVSystemMultiSub;
+end TestNoGeneration;

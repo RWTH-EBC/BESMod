@@ -7,7 +7,10 @@ package BESMod
     uses(
     Modelica(version="3.2.3"),
     SDF(version="0.4.1"),
-    IBPSA(version="3.0.0")),
+    IBPSA(version="3.0.0"),
+    BuildingSystems(version="2.0.0-beta"),
+    AixLib(version="1.0.2"),
+    ModelicaServices(version="3.2.3")),
   conversion(from(
     version="0.1.1",
        script="modelica://BESMod/Resources/Scripts/ConvertBESMod_from_0.1.1_to_0.2.0.mos")),
