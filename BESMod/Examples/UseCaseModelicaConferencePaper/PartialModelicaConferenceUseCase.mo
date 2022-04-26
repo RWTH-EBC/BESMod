@@ -3,10 +3,19 @@ partial model PartialModelicaConferenceUseCase
   "Partial model to be extended to replace single subsystems"
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.Electrical.ElectricalSystem electrical(
-      redeclare BESMod.Systems.Electrical.Distribution.DirectlyToGrid
-        distribution,
+      redeclare Systems.Electrical.Distribution.DirectlyToGrid distribution,
       redeclare BESMod.Systems.Electrical.Generation.PVSystemMultiSub
-        generation,
+        generation(
+        redeclare model CellTemperature =
+            AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround,
+
+        redeclare AixLib.DataBase.SolarElectric.SchuecoSPV170SME1 pVParameters,
+
+        lat=weaDat.lat,
+        lon=weaDat.lon,
+        alt=weaDat.alt,
+        timZon=3600,
+        ARoof=100),
       redeclare BESMod.Systems.Electrical.Transfer.NoElectricalTransfer
         transfer,
       redeclare BESMod.Systems.Electrical.Control.NoControl control),
