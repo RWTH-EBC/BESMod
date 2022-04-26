@@ -76,7 +76,7 @@ def install_dependencies(
             package_mo = lib_installer.mo
         open_models.append(f'openModel("{str(lib_dir.joinpath(package_mo))}", changeDirectory=false);')
 
-    besmod_package_mo = besmod_directory.joinpath("BuildingEnergySystems", "package.mo")
+    besmod_package_mo = besmod_directory.joinpath("BESMod", "package.mo")
     open_models.append(f'openModel("{str(besmod_package_mo)}", changeDirectory=false);')
 
     open_libs_mos = "\n".join(open_models)

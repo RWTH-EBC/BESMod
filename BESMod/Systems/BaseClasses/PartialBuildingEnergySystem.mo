@@ -43,9 +43,9 @@ partial model PartialBuildingEnergySystem "Partial BES"
             178}})));
   replaceable BESMod.Systems.Demand.DHW.BaseClasses.PartialDHW
     DHW if systemParameters.use_hydraulic
-    constrainedby
-    BESMod.Systems.Demand.DHW.BaseClasses.PartialDHW(redeclare final package
-                    Medium = MediumDHW,
+    constrainedby BESMod.Systems.Demand.DHW.BaseClasses.PartialDHW(
+                                                     redeclare final package
+      Medium =               MediumDHW,
       final parameters(
        final mDHW_flow_nominal=systemParameters.DHWProfile.m_flow_nominal,
        final QDHW_flow_nominal=systemParameters.QDHW_flow_nomial,
@@ -54,8 +54,7 @@ partial model PartialBuildingEnergySystem "Partial BES"
        final VDHWDay=systemParameters.V_dhw_day)) annotation (choicesAllMatching=true, Placement(
         transformation(extent={{-8,-108},{74,-32}})));
   replaceable BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem hydraulic if systemParameters.use_hydraulic
-  constrainedby
-    BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem(
+  constrainedby BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem(
     redeclare package Medium = MediumHyd,
     redeclare final package MediumDHW = MediumDHW,
     redeclare final
@@ -210,7 +209,7 @@ equation
       thickness=0.5));
   connect(userProfiles.useProBus, ventilation.useProBus) annotation (Line(
       points={{-227.125,152.792},{-204,152.792},{-204,138},{-22,138},{-22,100},
-          {136,100},{136,94},{136.56,94},{136.56,86.45}},
+          {136.56,100},{136.56,86.45}},
       color={0,127,0},
       thickness=0.5));
 
