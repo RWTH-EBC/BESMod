@@ -5,8 +5,8 @@ model BatterySystemSimple "Simple Battery model"
 
   parameter Real SOC_start_bat = 0.2 "Initial SOC of battery" annotation(Dialog(tab="Initialization"));
 
-  BuildingSystems.Technologies.ElectricalStorages.BatterySimple batterySimple(final
-      batteryData=batteryParameters,
+  Components.FixedInitialBatterySimple batterySimple(
+    final batteryData=batteryParameters,
     nBat=nBat,
     final SOC_start=SOC_start_bat)
     annotation (Placement(transformation(extent={{-46,-42},{46,42}})));
@@ -22,7 +22,8 @@ model BatterySystemSimple "Simple Battery model"
         extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={50,-30})));
-  Utilities.Electrical.ElecConToReal elecConToReal2[nSubSys](reverse=true)
+  Utilities.Electrical.ElecConToReal elecConToReal2[nSubSys](each final reverse=
+       true)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=-90,
@@ -36,8 +37,8 @@ model BatterySystemSimple "Simple Battery model"
   Modelica.Blocks.Math.Sum sumOfLoads(nin=nSubSys)
     annotation (Placement(transformation(extent={{66,-8},{52,6}})));
 equation
-  connect(batterySimple.SOC, OutputDistr.SOCBat) annotation (Line(points={{0,22.68},
-          {0,40},{100,40},{100,-100},{0,-100},{0,-98}},        color={0,0,127}),
+  connect(batterySimple.SOC, OutputDistr.SOCBat) annotation (Line(points={{0,
+          22.68},{0,40},{100,40},{100,-100},{0,-100},{0,-98}}, color={0,0,127}),
       Text(
       string="%second",
       index=1,
@@ -48,8 +49,8 @@ equation
       points={{50.2,-40.2},{50.2,-65.1},{50,-65.1},{50,-98}},
       color={0,0,0},
       thickness=1));
-  connect(batterySimple.PGrid, realToElecCon.PEleLoa) annotation (Line(points={{
-          24.84,16.8},{54,16.8},{54,-18}}, color={0,0,127}));
+  connect(batterySimple.PGrid, realToElecCon.PEleLoa) annotation (Line(points={
+          {24.84,16.8},{54,16.8},{54,-18}}, color={0,0,127}));
   connect(internalElectricalPin, elecConToReal2.internalElectricalPin)
     annotation (Line(
       points={{50,100},{50,66},{72.2,66},{72.2,33.8}},

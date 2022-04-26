@@ -1,4 +1,4 @@
-within BESMod.Systems.Demand.Building;
+﻿within BESMod.Systems.Demand.Building;
 model BuildingsRoomCase600FF
   "Detailed room model from the buildings library according to BESTEST Case600FF"
   extends BaseClasses.PartialDemand(
@@ -7,8 +7,10 @@ model BuildingsRoomCase600FF
     ABui=roo.AFlo,
     AZone={roo.AFlo},
     nZones=1);
+  parameter Modelica.SIunits.TemperatureDifference dTComfort=2
+                                                       "Temperature difference to room set temperature at which the comfort is still acceptable. In DIN EN 15251, all temperatures below 22 °C - 2 K count as discomfort. Hence the default value. If your room set temperature is lower, consider using smaller values.";
+
   parameter Real natInf = 0.5 "Infiltration rate";
-  package MediumA = Buildings.Media.Air "Medium model";
   parameter Modelica.SIunits.Angle S_=
     Buildings.Types.Azimuth.S "Azimuth for south walls";
   parameter Modelica.SIunits.Angle E_=
@@ -173,16 +175,16 @@ model BuildingsRoomCase600FF
         meanT(Min=24.2+273.15,  Max=25.9+273.15,  Mean=25.1+273.15))
           constrainedby Modelica.Icons.Record
     "Reference results from ASHRAE/ANSI Standard 140"
-    annotation (Placement(transformation(extent={{66,-96},{80,-82}})));
+    annotation (Placement(transformation(extent={{-70,-96},{-56,-82}})));
 
   Modelica.Blocks.Math.Product product1
     "Product to compute infiltration mass flow rate"
     annotation (Placement(transformation(extent={{-42,-52},{-32,-42}})));
-  Buildings.Fluid.Sensors.Density density(redeclare package Medium = MediumA,
+  Buildings.Fluid.Sensors.Density density(redeclare package Medium = MediumZone,
       warnAboutOnePortConnection=false)
     "Air density inside the building"
     annotation (Placement(transformation(extent={{-24,-66},{-34,-56}})));
-  Buildings.Fluid.Sources.Outside souInf(redeclare package Medium = MediumA,
+  Buildings.Fluid.Sources.Outside souInf(redeclare package Medium = MediumZone,
       nPorts=1) "Source model for air infiltration"
            annotation (Placement(transformation(extent={{-70,-42},{-58,-30}})));
   Modelica.Blocks.Math.MultiSum multiSum(nu=1)
@@ -193,7 +195,7 @@ model BuildingsRoomCase600FF
     "0.41 ACH adjusted for the altitude (0.5 at sea level)"
     annotation (Placement(transformation(extent={{-80,-68},{-72,-60}})));
   Buildings.Fluid.Sources.MassFlowSource_T sinInf(
-    redeclare package Medium = MediumA,
+    redeclare package Medium = MediumZone,
     m_flow=1,
     use_m_flow_in=true,
     use_T_in=false,
@@ -201,6 +203,16 @@ model BuildingsRoomCase600FF
     use_C_in=false,
     nPorts=1) "Sink model for air infiltration"
     annotation (Placement(transformation(extent={{-22,-56},{-10,-44}})));
+  Utilities.Electrical.ZeroLoad zeroLoad annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={108,-92})));
+  Utilities.KPIs.ComfortCalculator comfortCalculatorHea[nZones](TComBou=
+        TSetZone_nominal .- dTComfort, each for_heating=true)
+    annotation (Placement(transformation(extent={{66,0},{80,14}})));
+  Utilities.KPIs.ComfortCalculator comfortCalculatorCool[nZones](TComBou=
+        TSetZone_nominal .+ dTComfort, each for_heating=false)
+    annotation (Placement(transformation(extent={{66,-18},{80,-4}})));
 equation
   connect(roo.uSha, replicator.y) annotation (Line(
       points={{32.8,32.7},{32.8,38},{48,38},{48,59.6}},
@@ -285,6 +297,30 @@ equation
   connect(sinInf.ports[1], roo.ports[3]) annotation (Line(points={{-10,-50},{-6,
           -50},{-6,-40},{32,-40},{32,-15.7},{21.25,-15.7},{21.25,-13.5}}, color=
          {0,127,255}));
+  connect(zeroLoad.internalElectricalPin, internalElectricalPin) annotation (
+      Line(
+      points={{98,-92},{88,-92},{88,-96},{70,-96}},
+      color={0,0,0},
+      thickness=1));
+  connect(comfortCalculatorHea.dTComSec, outBusDem.dTComHea) annotation (Line(
+        points={{80.7,7},{100,7},{100,-2},{98,-2}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(comfortCalculatorCool.dTComSec, outBusDem.dTComCoo) annotation (Line(
+        points={{80.7,-11},{100,-11},{100,-2},{98,-2}},
+                                                    color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(TRooAir.T, comfortCalculatorHea[1].TZone) annotation (Line(points={{-1,
+          68},{40,68},{40,7},{64.6,7}}, color={0,0,127}));
+  connect(TRooAir.T, comfortCalculatorCool[1].TZone) annotation (Line(points={{-1,
+          68},{-2,68},{-2,70},{0,70},{0,68},{40,68},{40,-11},{64.6,-11}}, color=
+         {0,0,127}));
+
   annotation (
 experiment(Tolerance=1e-06, StopTime=3.1536e+07),
 __Dymola_Commands(file="modelica://Buildings/Resources/Scripts/Dymola/ThermalZones/Detailed/Validation/BESTEST/Cases6xx/Case600FF.mos"

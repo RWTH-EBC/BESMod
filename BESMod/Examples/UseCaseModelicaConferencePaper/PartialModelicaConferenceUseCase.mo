@@ -11,9 +11,7 @@ partial model PartialModelicaConferenceUseCase
         generation(
         redeclare model CellTemperature =
             AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround,
-
         redeclare AixLib.DataBase.SolarElectric.SchuecoSPV170SME1 pVParameters,
-
         lat=weaDat.lat,
         lon=weaDat.lon,
         alt=weaDat.alt,
@@ -67,7 +65,7 @@ partial model PartialModelicaConferenceUseCase
           safetyControl,
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultBivHPControl
-          bivalentControlData,
+          bivalentControlData(dTOffSetHeatCurve=8),
         redeclare
           BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.ConstTSet_DHW
           TSet_DHW,
@@ -83,6 +81,7 @@ partial model PartialModelicaConferenceUseCase
         dTTra_nominal=fill(10,hydraulic.transfer.nParallelDem),
         m_flow_nominal=hydraulic.transfer.Q_flow_nominal ./ (hydraulic.transfer.dTTra_nominal
              .* 4184),
+        f_design=fill(1.2, hydraulic.transfer.nParallelDem),
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
           radParameters,
@@ -104,9 +103,9 @@ partial model PartialModelicaConferenceUseCase
     redeclare
       BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy
       parameterStudy,
-    redeclare final package MediumDHW = AixLib.Media.Water,
-    redeclare final package MediumZone = AixLib.Media.Air,
-    redeclare final package MediumHyd = AixLib.Media.Water,
+    redeclare final package MediumDHW = IBPSA.Media.Water,
+    redeclare final package MediumZone = IBPSA.Media.Air,
+    redeclare final package MediumHyd = IBPSA.Media.Water,
     redeclare BESMod.Systems.Ventilation.VentilationSystem
       ventilation(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
@@ -141,10 +140,9 @@ partial model PartialModelicaConferenceUseCase
  parameter Real scalingFactorHP=hydraulic.generation.heatPumpParameters.QPri_flow_nominal
       /13000                               "May be overwritten to avoid warnings and thus a fail in the CI";
 
-equation
 
   annotation (experiment(
-      StopTime=31536000,
+      StopTime=864000,
       Interval=600,
       __Dymola_Algorithm="Dassl"));
 end PartialModelicaConferenceUseCase;

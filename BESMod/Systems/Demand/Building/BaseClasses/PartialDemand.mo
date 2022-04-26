@@ -17,19 +17,23 @@ partial model PartialDemand "Partial demand model for HPS"
   parameter Boolean use_hydraulic=true "=false to disable hydraulic supply";
   parameter Boolean use_ventilation=true "=false to disable ventilation supply";
 
-  replaceable package MediumZone = Modelica.Media.Air.SimpleAir constrainedby
-    Modelica.Media.Interfaces.PartialMedium annotation (
-      __Dymola_choicesAllMatching=true);
+  replaceable package MediumZone = IBPSA.Media.Air constrainedby
+    Modelica.Media.Interfaces.PartialMedium annotation (choices(
+        choice(redeclare package Medium = IBPSA.Media.Air "Moist air"),
+        choice(redeclare package Medium = IBPSA.Media.Water "Water"),
+        choice(redeclare package Medium =
+            IBPSA.Media.Antifreeze.PropyleneGlycolWater (
+              property_T=293.15,
+              X_a=0.40)
+              "Propylene glycol water, 40% mass fraction")));
   BESMod.Systems.Interfaces.UseProBus useProBus annotation (
       Placement(transformation(extent={{24,82},{78,120}}), iconTransformation(
           extent={{44,88},{66,112}})));
 
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPortCon[nZones]
- if use_hydraulic
     "Heat port for convective heat transfer with room air temperature"
     annotation (Placement(transformation(extent={{-110,50},{-90,70}})));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPortRad[nZones]
- if use_hydraulic
     "Heat port for radiative heat transfer with room radiation temperature"
     annotation (Placement(transformation(extent={{-110,-70},{-90,-50}})));
   BESMod.Systems.Interfaces.DemandOutputs outBusDem

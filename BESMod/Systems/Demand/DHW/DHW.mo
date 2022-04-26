@@ -79,7 +79,7 @@ Modelica.Blocks.Math.UnitConversions.From_degC fromDegC
   IBPSA.Fluid.Sources.Boundary_ph bou_sink(
     redeclare package Medium = Medium,
     final p=p_start,
-    nPorts=1) if       use_pressure
+    nPorts=1)       if use_pressure
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=0,
         origin={-2,28})));

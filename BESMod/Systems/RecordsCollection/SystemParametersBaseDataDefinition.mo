@@ -19,6 +19,8 @@ record SystemParametersBaseDataDefinition
     annotation (Dialog(group="Temperature levels"));
   parameter Modelica.SIunits.Temperature TVenSup_nominal[nZones](each min=233.15, each max=373.15, each start=293.15) = TSetZone_nominal "Ventilation supply temperature at nominal condition"
     annotation (Dialog(group="Temperature levels"));
+  parameter Modelica.SIunits.Temperature TEleSup_nominal[nZones](each min=233.15, each max=373.15, each start=293.15) = TSetZone_nominal "Electrical supply temperature at nominal condition"
+    annotation (Dialog(group="Temperature levels"));
 
   parameter Modelica.SIunits.Temperature TSetDHW=323.15   "Constant DHW demand temperature for design" annotation(Dialog(group="Temperature levels"));
   parameter Modelica.SIunits.Temperature TDHWWaterCold=283.15 "Cold water temperature (new water)" annotation(Dialog(group="Temperature levels"));
@@ -27,7 +29,8 @@ record SystemParametersBaseDataDefinition
                                                                     "Ambient temperature of hydraulic system"  annotation(Dialog(group="Temperature levels"));
   parameter Modelica.SIunits.Temperature TAmbVen=min(TSetZone_nominal)
                                                                     "Ambient temperature of ventilation system"  annotation(Dialog(group="Temperature levels"));
-
+  parameter Modelica.SIunits.Temperature TAmbEle=min(TSetZone_nominal)
+                                                                    "Ambient temperature of electrical system"  annotation(Dialog(group="Temperature levels"));
   // Boundary conditions
   parameter String filNamWea=Modelica.Utilities.Files.loadResource("modelica://BESMod/Resources/TRY2015_522361130393_Jahr_City_Potsdam.mos")
     "Name of weather data file"
@@ -57,8 +60,7 @@ record SystemParametersBaseDataDefinition
   // HVAC-Subsystems
   parameter Boolean use_hydraulic=true "=false to disable hydraulic subsystem" annotation(Dialog(group="System layout"));
   parameter Boolean use_ventilation=true "=false to disable ventilation subsystem" annotation(Dialog(group="System layout"));
-  parameter Boolean use_dhw=true "=false to disable DHW subsystem" annotation(Dialog(group="System layout"));
-  parameter Boolean use_electrical=true "=false to disable electrical subsystem" annotation(Dialog(group="System layout"));
+  parameter Boolean use_dhw=use_hydraulic "=false to disable DHW subsystem" annotation(Dialog(group="System layout", enable=use_hydraulic));
 
   annotation (defaultComponentName = "baseParameterAssumptions", Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));

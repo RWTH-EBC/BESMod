@@ -13,12 +13,12 @@ model PVSystemMultiSub
     final n_mod=n_mod,
     final til=til,
     final azi=azi,
-    final lat=lat,
-    final lon=lon,
-    final alt=alt,
-    final timZon=timZon,
-    final groRef=0.2,
-    final use_ParametersGlaz=false)
+    each final lat=lat,
+    each final lon=lon,
+    each final alt=alt,
+    each final timZon=timZon,
+    each final groRef=0.2,
+    each final use_ParametersGlaz=false)
     annotation (Placement(transformation(extent={{-32,-30},{26,28}})));
   Modelica.Blocks.Math.Sum sumOfPower(nin=numGenUnits)
                                       "Sums up DC Output power" annotation (
@@ -36,7 +36,8 @@ model PVSystemMultiSub
         origin={50,58})));
   replaceable parameter AixLib.DataBase.SolarElectric.PVBaseDataDefinition pVParameters[numGenUnits]
   constrainedby AixLib.DataBase.SolarElectric.PVBaseDataDefinition
-    annotation(choicesAllMatching=true,Placement(transformation(extent={{-80,-40},{-60,-20}})));
+    annotation(choicesAllMatching=true,Placement(transformation(extent={{-82,-40},
+            {-62,-20}})));
   parameter Modelica.SIunits.Angle lat "Location's Latitude"
   annotation(Dialog(group="Design - Top Down: Parameters are given by the parent system"));
   parameter Modelica.SIunits.Angle lon "Location's Longitude"

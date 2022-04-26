@@ -155,10 +155,10 @@ model TEASERThermalZone
                                                                  if use_verboseEnergyBalance
     annotation (Placement(transformation(extent={{-30,-116},{-24,-110}})));
   Modelica.Thermal.HeatTransfer.Sensors.HeatFlowSensor heatFlowSensorRad[
-    nZones] if use_hydraulic
+    nZones]
     annotation (Placement(transformation(extent={{-82,-70},{-62,-50}})));
   Modelica.Thermal.HeatTransfer.Sensors.HeatFlowSensor heatFlowSensorConv[
-    nZones] if use_hydraulic
+    nZones]
     annotation (Placement(transformation(extent={{-86,50},{-66,70}})));
   Modelica.Blocks.Math.Add          addTra
                                          [nZones]
