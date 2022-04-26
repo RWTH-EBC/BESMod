@@ -1,6 +1,6 @@
 within BESMod.Systems.Electrical.Distribution.BaseClasses;
 partial model PartialDistribution
-  parameter Integer nSubSys
+  parameter Integer nSubSys(min=1)
     "Number of subsystems with electrical load / generation";
   Interfaces.DistributionOutputs OutputDistr annotation (Placement(
         transformation(extent={{-10,-108},{10,-88}}), iconTransformation(extent=

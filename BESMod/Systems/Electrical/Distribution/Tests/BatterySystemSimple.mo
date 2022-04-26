@@ -59,7 +59,7 @@ equation
       index=-1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(elecConToReal.PElec, PGrid)
+  connect(elecConToReal.PElecLoa, PGrid)
     annotation (Line(points={{75.8,-61},{98,-61},{98,-62}}, color={0,0,127}));
   connect(realToElecCon1.internalElectricalPin, batterySystemSimple.internalElectricalPin[
     1]) annotation (Line(

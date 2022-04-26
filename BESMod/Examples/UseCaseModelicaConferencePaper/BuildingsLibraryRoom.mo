@@ -6,5 +6,5 @@ model BuildingsLibraryRoom "System using the buildings libraries room model"
       building(energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial),
     redeclare BESMod.Systems.UserProfiles.Case600Profiles
       userProfiles,
-    systemParameters(QBui_flow_nominal={2504}));
+    systemParameters(QBui_flow_nominal={2504}, use_ventilation=false));
 end BuildingsLibraryRoom;

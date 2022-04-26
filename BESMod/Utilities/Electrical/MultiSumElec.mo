@@ -5,8 +5,13 @@ model MultiSumElec "Sum of all electrical inputs"
 
   Systems.Electrical.Interfaces.InternalElectricalPin internalElectricalPinOut
     annotation (Placement(transformation(extent={{90,-10},{110,10}})));
-  Systems.Electrical.Interfaces.InternalElectricalPin internalElectricalPinIn[
-    nPorts] annotation (Placement(transformation(extent={{-108,-8},{-88,12}})));
+  Systems.Electrical.Interfaces.InternalElectricalPin internalElectricalPinIn[nPorts] annotation (Placement(transformation(extent={{-108,-8},{-88,12}})));
+
+equation
+
+  internalElectricalPinOut.PElecGen = sum(internalElectricalPinIn.PElecGen);
+  internalElectricalPinOut.PElecLoa = sum(internalElectricalPinIn.PElecLoa);
+
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Rectangle(
           extent={{100,100},{-100,-100}},
@@ -18,6 +23,4 @@ model MultiSumElec "Sum of all electrical inputs"
           color={0,0,0},
           thickness=0.5)}),                                      Diagram(
         coordinateSystem(preserveAspectRatio=false)));
-
-
 end MultiSumElec;

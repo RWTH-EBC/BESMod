@@ -3,7 +3,8 @@ model ZeroLoad "Zero Load model to be used if system is disabled"
   Systems.Electrical.Interfaces.InternalElectricalPin internalElectricalPin
     annotation (Placement(transformation(extent={{90,-10},{110,10}})));
 equation
-  internalElectricalPin.PElec = 0;
+  internalElectricalPin.PElecLoa = 0;
+  internalElectricalPin.PElecGen = 0;
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Rectangle(
           extent={{100,100},{-100,-100}},
