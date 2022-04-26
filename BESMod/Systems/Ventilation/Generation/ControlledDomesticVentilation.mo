@@ -186,8 +186,10 @@ model ControlledDomesticVentilation
     tempSensorData
     annotation (Placement(transformation(extent={{76,78},{96,98}})),
       choicesAllMatching=true);
-  Utilities.Electrical.RealToElecCon realToElecCon(nLoa=2)
+  Utilities.Electrical.RealToElecCon realToElecCon(use_souGen=false)
     annotation (Placement(transformation(extent={{36,-118},{56,-98}})));
+  Modelica.Blocks.Math.Add add
+    annotation (Placement(transformation(extent={{2,-114},{22,-94}})));
 equation
   connect(bouSup.p_in, weaBus.pAtm) annotation (Line(points={{87.6,-28.4},{112,
           -28.4},{112,92},{41,92},{41,100}},           color={0,0,127}), Text(
@@ -273,8 +275,10 @@ equation
       color={0,0,0},
       thickness=1));
 
-  connect(fanRet.P, realToElecCon.PEleLoa[1]) annotation (Line(points={{-61,-49},
-          {-52,-49},{-52,-104.5},{34,-104.5}}, color={0,0,127}));
-  connect(fanFlow.P, realToElecCon.PEleLoa[2]) annotation (Line(points={{-87,51},
-          {-87,56},{-52,56},{-52,-103.5},{34,-103.5}}, color={0,0,127}));
+  connect(add.y, realToElecCon.PEleLoa)
+    annotation (Line(points={{23,-104},{34,-104}}, color={0,0,127}));
+  connect(fanRet.P, add.u2) annotation (Line(points={{-61,-49},{-58,-49},{-58,
+          -110},{0,-110}}, color={0,0,127}));
+  connect(add.u1, fanFlow.P) annotation (Line(points={{0,-98},{-20,-98},{-20,
+          -96},{-87,-96},{-87,51}}, color={0,0,127}));
 end ControlledDomesticVentilation;

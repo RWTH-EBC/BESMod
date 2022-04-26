@@ -1,6 +1,7 @@
 within BESMod.Examples.BAUSimStudy;
 model PartialCase
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
+    redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
     redeclare Systems.Demand.Building.TEASERThermalZone building(redeclare
         BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
         oneZoneParam),

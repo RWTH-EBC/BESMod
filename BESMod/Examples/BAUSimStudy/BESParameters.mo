@@ -2,7 +2,6 @@ within BESMod.Examples.BAUSimStudy;
 record BESParameters
   extends Systems.RecordsCollection.SystemParametersBaseDataDefinition(
     final use_dhw=true,
-    final use_demand=true,
     final use_hydraulic=true,
     final V_dhw_day=if use_dhwCalc then V_dhwCalc_day else DHWProfile.V_dhw_day,
     final use_dhwCalc=false,
