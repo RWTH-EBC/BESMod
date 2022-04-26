@@ -1,14 +1,14 @@
 within BESMod.Systems.Electrical.BaseClasses;
 partial model PartialElectricalSystem "Partial model for electrical system"
-  parameter Integer nLoadsExtSubSys(min=1) = 4 "Number of external subsystems which result in electrical load";
+  parameter Integer nLoadsExtSubSys(min=1) = 4 "Number of external subsystems which result in electrical load / generation";
   replaceable parameter RecordsCollection.ElectricalSystemBaseDataDefinition
     electricalSystemParameters constrainedby
     RecordsCollection.ElectricalSystemBaseDataDefinition annotation (Placement(
         transformation(extent={{-180,-100},{-160,-80}})), choicesAllMatching=true);
 
-  replaceable Distribution.BaseClasses.PartialDistribution distribution(final
-      nSubsysLoads=nLoadsExtSubSys + 1) constrainedby
-    BESMod.Systems.Electrical.Distribution.BaseClasses.PartialDistribution
+  replaceable Distribution.BaseClasses.PartialDistribution distribution
+    constrainedby Distribution.BaseClasses.PartialDistribution(nSubSys=
+        nLoadsExtSubSys + 2)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-40,
             -102},{52,36}})));
   replaceable Generation.BaseClasses.PartialGeneration generation
@@ -132,17 +132,24 @@ equation
       index=1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(transfer.internalElectricalPin, distribution.internalElectricalPinForLoad[
-    1]) annotation (Line(
+  connect(transfer.internalElectricalPin, distribution.internalElectricalPin[1])
+    annotation (Line(
       points={{124.24,36},{124,36},{124,46},{29,46},{29,36}},
       color={0,0,0},
       thickness=1));
-
-  connect(generation.internalElectricalPin, distribution.internalElectricalPinFromGeneration)
+  connect(generation.internalElectricalPin, distribution.internalElectricalPin[2])
     annotation (Line(
-      points={{-83.5,34.62},{-83.5,46},{-17,46},{-17,36}},
+      points={{-83.5,34.62},{-83.5,46},{29,46},{29,36}},
       color={0,0,0},
       thickness=1));
+  for i in 1:nLoadsExtSubSys loop
+   connect(internalElectricalPin[i], distribution.internalElectricalPin[2+i])
+    annotation (Line(
+      points={{-180,88},{-180,86},{-166,86},{-166,46},{30,46},{30,42},{29,42},{
+            29,36}},
+      color={0,0,0},
+      thickness=1));
+  end for;
   connect(heatPortCon, transfer.heatPortCon) annotation (Line(points={{162,14},{
           162,-6},{144,-6},{144,-5.4}}, color={191,0,0}));
   connect(heatPortRad, transfer.heatPortRad) annotation (Line(points={{162,-60},

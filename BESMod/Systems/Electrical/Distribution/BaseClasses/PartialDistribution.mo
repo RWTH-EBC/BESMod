@@ -1,18 +1,17 @@
 within BESMod.Systems.Electrical.Distribution.BaseClasses;
 partial model PartialDistribution
-  parameter Integer nSubsysLoads "Number of subsystems with electrical load";
+  parameter Integer nSubSys
+    "Number of subsystems with electrical load / generation";
   Interfaces.DistributionOutputs OutputDistr annotation (Placement(
         transformation(extent={{-10,-108},{10,-88}}), iconTransformation(extent=
            {{-10,-108},{10,-88}})));
   Interfaces.DistributionControlBus sigBusDistr annotation (Placement(
         transformation(extent={{-16,78},{18,112}}), iconTransformation(extent={{
             -16,78},{18,112}})));
-  Interfaces.InternalElectricalPin internalElectricalPinForLoad[nSubsysLoads]
+  Interfaces.InternalElectricalPin internalElectricalPin[nSubSys]
     annotation (Placement(transformation(extent={{40,90},{60,110}})));
   Interfaces.ExternalElectricalPin externalElectricalPin
     annotation (Placement(transformation(extent={{40,-108},{60,-88}})));
-  Interfaces.InternalElectricalPin internalElectricalPinFromGeneration
-    annotation (Placement(transformation(extent={{-60,90},{-40,110}})));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Rectangle(
           extent={{-100,100},{100,-100}},
