@@ -16,7 +16,8 @@ model BatterySystemSimple "Simple Battery model"
         extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={-70,34})));
-  Utilities.Electrical.RealToElecCon realToElecCon annotation (Placement(
+  Utilities.Electrical.RealToElecCon realToElecCon(use_souGen=false)
+                                                   annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=-90,
@@ -42,16 +43,9 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(elecConToReal.PElecLoa, batterySimple.PCharge)
-    annotation (Line(points={{-66,22},{-66,0},{-23,0}}, color={0,0,127}));
   connect(realToElecCon.internalElectricalPin, externalElectricalPin)
     annotation (Line(
       points={{50.2,-40.2},{50.2,-65.1},{50,-65.1},{50,-98}},
-      color={0,0,0},
-      thickness=1));
-  connect(internalElectricalPinFromGeneration, elecConToReal.internalElectricalPin)
-    annotation (Line(
-      points={{-50,100},{-50,62},{-69.8,62},{-69.8,43.8}},
       color={0,0,0},
       thickness=1));
   connect(batterySimple.PGrid, realToElecCon.PEleLoa) annotation (Line(points={{
@@ -65,6 +59,13 @@ equation
     annotation (Line(points={{76,12},{76,-1},{67.4,-1}}, color={0,0,127}));
   connect(sumOfLoads.y, batterySimple.PLoad) annotation (Line(points={{51.3,-1},
           {39.65,-1},{39.65,0},{23,0}}, color={0,0,127}));
+  connect(internalElectricalPin[2], elecConToReal.internalElectricalPin)
+    annotation (Line(
+      points={{50,100},{48,100},{48,66},{-69.8,66},{-69.8,43.8}},
+      color={0,0,0},
+      thickness=1));
+  connect(elecConToReal.PElecGen, batterySimple.PCharge)
+    annotation (Line(points={{-74,22},{-74,0},{-23,0}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end BatterySystemSimple;

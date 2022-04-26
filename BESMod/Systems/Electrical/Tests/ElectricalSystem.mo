@@ -41,7 +41,8 @@ model ElectricalSystem
     annotation (Placement(transformation(extent={{20,-76},{40,-56}})));
 equation
   connect(LoadFromResidualBES.y, realToElecCon.PEleLoa)
-    annotation (Line(points={{-77,34},{-70.6,34}}, color={0,0,127}));
+    annotation (Line(points={{-77,34},{-74,34},{-74,38},{-72,38}},
+                                                   color={0,0,127}));
   connect(weaDat.weaBus, pVBatterySystemNoTransfer.weaBus) annotation (Line(
       points={{-72,82},{-64,82},{-64,84},{-56,84},{-56,16.2143},{-38,16.2143}},
       color={255,204,51},
@@ -56,7 +57,8 @@ equation
     annotation (Line(points={{72,-12},{64,-12},{64,-12.2857},{54.5412,-12.2857}},
         color={191,0,0}));
   connect(elecConToReal.PElecLoa, PElecFromGrid)
-    annotation (Line(points={{-4.56,-67},{30,-67},{30,-66}}, color={0,0,127}));
+    annotation (Line(points={{-3.6,-61.8},{30,-61.8},{30,-66}},
+                                                             color={0,0,127}));
   connect(realToElecCon.internalElectricalPin, pVBatterySystemNoTransfer.internalElectricalPin[
     1]) annotation (Line(
       points={{-49.8,34.2},{-43.9,34.2},{-43.9,27.8857},{-38,27.8857}},

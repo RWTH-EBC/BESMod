@@ -2,8 +2,11 @@ within BESMod.Examples.UseCaseModelicaConferencePaper;
 partial model PartialModelicaConferenceUseCase
   "Partial model to be extended to replace single subsystems"
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
-s    redeclare BESMod.Systems.Electrical.ElectricalSystem electrical(
-      redeclare Systems.Electrical.Distribution.DirectlyToGrid distribution,
+    redeclare BESMod.Systems.Electrical.ElectricalSystem electrical(
+      redeclare Systems.Electrical.Distribution.BatterySystemSimple
+        distribution(redeclare
+          BuildingSystems.Technologies.ElectricalStorages.Data.LithiumIon.LithiumIonTeslaPowerwall1
+          batteryParameters),
       redeclare BESMod.Systems.Electrical.Generation.PVSystemMultiSub
         generation(
         redeclare model CellTemperature =
