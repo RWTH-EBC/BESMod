@@ -141,6 +141,8 @@ model DistributionTwoStorageParallel
     calc_intBelThres=false,
     y=fixedTemperatureDHW.port.Q_flow)
     annotation (Placement(transformation(extent={{-80,-110},{-60,-72}})));
+  Utilities.Electrical.ZeroLoad zeroLoad
+    annotation (Placement(transformation(extent={{34,-110},{54,-90}})));
 equation
   connect(fixedTemperatureBuf.port, storageBuf.heatPort) annotation (Line(
         points={{56,6},{80,6},{80,58},{62.6,58}}, color={191,0,0}));
@@ -220,4 +222,9 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
+  connect(zeroLoad.internalElectricalPin, internalElectricalPin) annotation (
+      Line(
+      points={{54,-100},{54,-98},{70,-98}},
+      color={0,0,0},
+      thickness=1));
 end DistributionTwoStorageParallel;

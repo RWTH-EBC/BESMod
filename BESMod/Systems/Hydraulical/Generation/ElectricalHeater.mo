@@ -97,6 +97,8 @@ Utilities.KPIs.InternalKPICalculator KPIQHR(
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
     pumpData annotation (choicesAllMatching=true, Placement(transformation(extent={{14,-64},
             {28,-52}})));
+  Utilities.Electrical.RealToElecCon realToElecCon(nLoa=1)
+    annotation (Placement(transformation(extent={{32,-108},{52,-88}})));
 equation
   connect(dummyZero.y,switch1. u3)
     annotation (Line(points={{29,4},{38,4},{38,-4}},    color={0,0,127}));
@@ -142,4 +144,12 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  connect(realToElecCon.internalElectricalPin, internalElectricalPin)
+    annotation (Line(
+      points={{52.2,-97.8},{52.2,-96},{58,-96},{58,-86},{72,-86},{72,-98}},
+      color={0,0,0},
+      thickness=1));
+  connect(hea.Pel, realToElecCon.PEleLoa[1]) annotation (Line(points={{-41.6,
+          27.6},{-41.6,50},{-72,50},{-72,-92},{-22,-92},{-22,-94},{30,-94}},
+        color={0,0,127}));
 end ElectricalHeater;

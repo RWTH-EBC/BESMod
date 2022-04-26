@@ -13,6 +13,8 @@ model BuildingOnly "Only loads building"
     redeclare package MediumGen = Medium,
     redeclare package MediumDHW = Medium,
     final dTTra_nominal=fill(0, nParallelDem));
+  Utilities.Electrical.ZeroLoad zeroLoad
+    annotation (Placement(transformation(extent={{30,-108},{50,-88}})));
 equation
   connect(portDHW_out, portDHW_in) annotation (Line(points={{100,-22},{88,-22},{
           88,-16},{76,-16},{76,-82},{100,-82}}, color={0,127,255}));
@@ -22,4 +24,9 @@ equation
   connect(portGen_out, portBui_in)
     annotation (Line(points={{-100,40},{0,40},{0,40},{100,40}},
                                                   color={0,127,255}));
+  connect(zeroLoad.internalElectricalPin, internalElectricalPin) annotation (
+      Line(
+      points={{50,-98},{70,-98}},
+      color={0,0,0},
+      thickness=1));
 end BuildingOnly;

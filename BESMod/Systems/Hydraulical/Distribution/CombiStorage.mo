@@ -116,6 +116,8 @@ model CombiStorage
     calc_intBelThres=false,
     y=fixedTemperatureBuf.port.Q_flow)
     annotation (Placement(transformation(extent={{-76,-124},{-56,-86}})));
+  Utilities.Electrical.ZeroLoad zeroLoad
+    annotation (Placement(transformation(extent={{30,-108},{50,-88}})));
 equation
   connect(fixedTemperatureBuf.port, bufferStorage.heatportOutside) annotation (
       Line(points={{50,-50},{34,-50},{34,10.28},{25.25,10.28}},
@@ -210,4 +212,9 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  connect(zeroLoad.internalElectricalPin, internalElectricalPin) annotation (
+      Line(
+      points={{50,-98},{70,-98}},
+      color={0,0,0},
+      thickness=1));
 end CombiStorage;

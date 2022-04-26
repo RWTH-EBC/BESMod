@@ -115,6 +115,8 @@ model RadiatorPressureBased "Pressure Based transfer system"
         rotation=180,
         origin={-48,68})));
 
+  Utilities.Electrical.RealToElecCon realToElecCon(nLoa=1)
+    annotation (Placement(transformation(extent={{34,-94},{54,-74}})));
 equation
   connect(rad.heatPortRad, heatPortRad) annotation (Line(points={{-5.08,-27.2},
           {40,-27.2},{40,-40},{100,-40}}, color={191,0,0}));
@@ -146,4 +148,11 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  connect(realToElecCon.internalElectricalPin, internalElectricalPin)
+    annotation (Line(
+      points={{54.2,-83.8},{54.2,-84},{72,-84},{72,-98}},
+      color={0,0,0},
+      thickness=1));
+  connect(realToElecCon.PEleLoa[1], pump.P) annotation (Line(points={{32,-80},{
+          22,-80},{22,47},{-63,47}}, color={0,0,127}));
 end RadiatorPressureBased;

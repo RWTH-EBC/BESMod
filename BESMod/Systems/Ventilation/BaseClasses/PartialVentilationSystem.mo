@@ -112,10 +112,11 @@ partial model PartialVentilationSystem
             114}})));
   Electrical.Interfaces.InternalElectricalPin internalElectricalPin
     annotation (Placement(transformation(extent={{60,-108},{80,-88}})));
-  Modelica.Blocks.Sources.RealExpression realExpression
-    annotation (Placement(transformation(extent={{12,-104},{32,-84}})));
-  Utilities.Electrical.RealToElecCon realToElecCon
-    annotation (Placement(transformation(extent={{38,-106},{58,-86}})));
+  Utilities.Electrical.MultiSumElec multiSumElec(nPorts=2) annotation (
+      Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={40,-98})));
 equation
   connect(weaBus, generation.weaBus) annotation (Line(
       points={{105,74},{53.54,74},{53.54,-2}},
@@ -149,7 +150,7 @@ equation
           {-82,-36.4},{-82,-60},{-100,-60}},
                                            color={0,127,255}));
   connect(distribution.outBusDist, outBusVen.distribution) annotation (Line(
-      points={{-38,-51.74},{-38,-86},{0,-86},{0,-100}},
+      points={{-38,-51.74},{-38,-84},{0,-84},{0,-100}},
       color={135,135,135},
       thickness=0.5), Text(
       string="%second",
@@ -204,11 +205,20 @@ equation
       index=-1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(realExpression.y, realToElecCon.PElec) annotation (Line(points={{33,
-          -94},{36,-94},{36,-96},{37.4,-96}}, color={0,0,127}));
-  connect(realToElecCon.internalElectricalPin, internalElectricalPin)
+  connect(multiSumElec.internalElectricalPinOut, internalElectricalPin)
     annotation (Line(
-      points={{58.2,-95.8},{58.2,-96},{70,-96},{70,-98}},
+      points={{50,-98},{70,-98}},
+      color={0,0,0},
+      thickness=1));
+  connect(generation.internalElectricalPin, multiSumElec.internalElectricalPinIn[
+    1]) annotation (Line(
+      points={{71.9,-55.46},{74,-55.46},{74,-78},{20,-78},{20,-98.05},{30.2,
+          -98.05}},
+      color={0,0,0},
+      thickness=1));
+  connect(distribution.internalElectricalPin, multiSumElec.internalElectricalPinIn[
+    2]) annotation (Line(
+      points={{-22.6,-51.48},{-22.6,-78},{20,-78},{20,-97.55},{30.2,-97.55}},
       color={0,0,0},
       thickness=1));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(

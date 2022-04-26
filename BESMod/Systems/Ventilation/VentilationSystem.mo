@@ -8,4 +8,6 @@ model VentilationSystem
       dTTra_nominal=fill(1, generation.nParallelDem),
       m_flow_nominal=fill(1, generation.nParallelDem),
       dp_nominal=fill(0, generation.nParallelDem)));
+  Utilities.Electrical.MultiSumElec multiSumElec
+    annotation (Placement(transformation(extent={{-204,-146},{-178,-120}})));
 end VentilationSystem;

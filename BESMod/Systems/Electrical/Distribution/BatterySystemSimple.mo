@@ -54,9 +54,9 @@ equation
       points={{-50,100},{-50,62},{-69.8,62},{-69.8,43.8}},
       color={0,0,0},
       thickness=1));
-  connect(batterySimple.PGrid, realToElecCon.PElec) annotation (Line(points={{
-          24.84,16.8},{50,16.8},{50,-19.4}}, color={0,0,127}));
-  connect(internalElectricalPinForLoad, elecConToReal2.internalElectricalPin)
+  connect(batterySimple.PGrid, realToElecCon.PEleLoa) annotation (Line(points={
+          {24.84,16.8},{50,16.8},{50,-19.4}}, color={0,0,127}));
+  connect(internalElectricalPin, elecConToReal2.internalElectricalPin)
     annotation (Line(
       points={{50,100},{50,66},{72.2,66},{72.2,33.8}},
       color={0,0,0},

@@ -104,6 +104,8 @@ model RadiatorTransferSystem
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-66,10})));
+  Utilities.Electrical.ZeroLoad zeroLoad
+    annotation (Placement(transformation(extent={{30,-106},{50,-86}})));
 equation
   connect(rad.heatPortRad, heatPortRad) annotation (Line(points={{-5.08,-31.2},
           {40,-31.2},{40,-40},{100,-40}}, color={191,0,0}));
@@ -155,4 +157,9 @@ equation
   connect(bouPumpHP.ports[1], pumpFix_m_flow.port_a) annotation (Line(points={{-66,20},
           {-66,30},{-16,30},{-16,26},{-15,26},{-15,20}},
                                            color={0,127,255}));
+  connect(zeroLoad.internalElectricalPin, internalElectricalPin) annotation (
+      Line(
+      points={{50,-96},{72,-96},{72,-98}},
+      color={0,0,0},
+      thickness=1));
 end RadiatorTransferSystem;

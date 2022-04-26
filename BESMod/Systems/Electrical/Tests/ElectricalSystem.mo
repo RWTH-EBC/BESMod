@@ -40,7 +40,7 @@ model ElectricalSystem
   Modelica.Blocks.Interfaces.RealOutput PElecFromGrid "Electrical power"
     annotation (Placement(transformation(extent={{20,-76},{40,-56}})));
 equation
-  connect(LoadFromResidualBES.y, realToElecCon.PElec)
+  connect(LoadFromResidualBES.y, realToElecCon.PEleLoa)
     annotation (Line(points={{-77,34},{-70.6,34}}, color={0,0,127}));
   connect(weaDat.weaBus, pVBatterySystemNoTransfer.weaBus) annotation (Line(
       points={{-72,82},{-64,82},{-64,84},{-56,84},{-56,16.2143},{-38,16.2143}},

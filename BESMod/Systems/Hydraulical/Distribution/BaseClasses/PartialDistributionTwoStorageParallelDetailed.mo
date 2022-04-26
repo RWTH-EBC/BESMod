@@ -369,6 +369,8 @@ partial model PartialDistributionTwoStorageParallelDetailed
         extent={{5,6},{-5,-6}},
         rotation=180,
         origin={81,-22})));
+  Utilities.Electrical.ZeroLoad zeroLoad
+    annotation (Placement(transformation(extent={{30,-108},{50,-88}})));
 equation
   connect(T_stoDHWBot.y, sigBusDistr.TStoDHWBotMea) annotation (Line(points={{-16.4,
           95},{2.5,95},{2.5,101},{0,101}},              color={0,0,127}), Text(
@@ -530,4 +532,9 @@ equation
       index=1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
+  connect(zeroLoad.internalElectricalPin, internalElectricalPin) annotation (
+      Line(
+      points={{50,-98},{70,-98}},
+      color={0,0,0},
+      thickness=1));
 end PartialDistributionTwoStorageParallelDetailed;

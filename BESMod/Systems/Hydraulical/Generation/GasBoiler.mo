@@ -78,6 +78,8 @@ Utilities.KPIs.InternalKPICalculator KPIQHR(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={66,-26})));
+  Utilities.Electrical.ZeroLoad zeroLoad
+    annotation (Placement(transformation(extent={{26,-108},{46,-88}})));
 equation
 
   connect(boilerNoControl.port_b, portGen_out[1]) annotation (Line(points={{-34,
@@ -120,4 +122,9 @@ equation
       horizontalAlignment=TextAlignment.Right));
   connect(bou1.ports[1], pump.port_a)
     annotation (Line(points={{66,-36},{66,-50},{56,-50}}, color={0,127,255}));
+  connect(zeroLoad.internalElectricalPin, internalElectricalPin) annotation (
+      Line(
+      points={{46,-98},{72,-98}},
+      color={0,0,0},
+      thickness=1));
 end GasBoiler;

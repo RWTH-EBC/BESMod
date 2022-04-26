@@ -31,7 +31,7 @@ model TEASERThermalZone
     final zoneParam=zoneParam,
     each final use_AirExchange=true,
     each final nPorts=if use_ventilation then 2 else 0) annotation (Placement(
-        transformation(extent={{37,12},{-37,84}}, rotation=0)));
+        transformation(extent={{35,12},{-39,84}}, rotation=0)));
 
   Modelica.Blocks.Sources.Constant constTSetRoom[nZones](final k=
         TSetZone_nominal) "Transform Volume l to massflowrate" annotation (
@@ -320,7 +320,7 @@ equation
 
   for i in 1:nZones loop
     connect(weaBus.TDryBul, thermalZone[i].ventTemp) annotation (Line(
-        points={{-47,98},{126,98},{126,42.24},{35.52,42.24}},
+        points={{-47,98},{126,98},{126,42.24},{33.52,42.24}},
         color={255,204,51},
         thickness=0.5), Text(
         string="%first",
@@ -328,7 +328,7 @@ equation
         extent={{6,3},{6,3}},
         horizontalAlignment=TextAlignment.Left));
     connect(useProBus.intGains, thermalZone[i].intGains) annotation (Line(
-        points={{51,101},{-62,101},{-62,8},{-29.6,8},{-29.6,17.76}},
+        points={{51,101},{-62,101},{-62,8},{-31.6,8},{-31.6,17.76}},
         color={255,204,51},
         thickness=0.5), Text(
         string="%first",
@@ -337,13 +337,13 @@ equation
         horizontalAlignment=TextAlignment.Right));
     if use_ventilation then
       connect(portVent_in[i], thermalZone[i].ports[1]) annotation (Line(points={{100,38},
-              {82,38},{82,10},{0,10},{0,22.08}},                   color={0,127,
+              {82,38},{82,10},{-2,10},{-2,22.08}},                 color={0,127,
             255}));
       connect(portVent_out[i], thermalZone[i].ports[2]) annotation (Line(points={{100,-40},
-              {82,-40},{82,2},{0,2},{0,22.08}},               color={0,127,255}));
+              {82,-40},{82,2},{-2,2},{-2,22.08}},             color={0,127,255}));
     end if;
     connect(weaBus, thermalZone[i].weaBus) annotation (Line(
-      points={{-47,98},{38,98},{38,69.6},{37,69.6}},
+      points={{-47,98},{38,98},{38,69.6},{35,69.6}},
       color={255,204,51},
       thickness=0.5), Text(
       string="%first",
@@ -352,12 +352,12 @@ equation
       horizontalAlignment=TextAlignment.Right));
   end for;
   connect(constTSetRoom.y, thermalZone.TSetCool) annotation (Line(points={{63,60},
-          {48,60},{48,62.4},{35.52,62.4}},color={0,0,127}));
+          {48,60},{48,62.4},{33.52,62.4}},color={0,0,127}));
   connect(constTSetRoom.y, thermalZone.TSetHeat) annotation (Line(points={{63,60},
-          {48,60},{48,52.32},{35.52,52.32}},color={0,0,127}));
+          {48,60},{48,52.32},{33.52,52.32}},color={0,0,127}));
 
   connect(constVentRate.y, thermalZone.ventRate) annotation (Line(points={{63,30},
-          {48,30},{48,32.88},{35.52,32.88}},color={0,0,127}));
+          {48,30},{48,32.88},{33.52,32.88}},color={0,0,127}));
 
   // KPIs
   if use_hydraulic then
@@ -455,14 +455,14 @@ equation
   end if;
 
   connect(thermalZone.intGainsConv, heatFlowSensorConv.port_b) annotation (Line(
-        points={{-37.74,49.44},{-37.74,48},{-52,48},{-52,60},{-66,60}}, color={
+        points={{-39.74,49.44},{-39.74,48},{-52,48},{-52,60},{-66,60}}, color={
           191,0,0}));
   connect(heatPortCon, heatFlowSensorConv.port_a)
     annotation (Line(points={{-100,60},{-86,60}}, color={191,0,0}));
   connect(heatPortRad, heatFlowSensorRad.port_a)
     annotation (Line(points={{-100,-60},{-82,-60}}, color={191,0,0}));
   connect(heatFlowSensorRad.port_b, thermalZone.intGainsRad) annotation (Line(
-        points={{-62,-60},{-48,-60},{-48,48},{-50,48},{-50,60.24},{-37.74,60.24}},
+        points={{-62,-60},{-48,-60},{-48,48},{-50,48},{-50,60.24},{-39.74,60.24}},
         color={191,0,0}));
   connect(addTra.y, limUp.u) annotation (Line(points={{-41.5,-75},{-32,-75},{
           -32,-63},{-28.6,-63}},
@@ -474,16 +474,16 @@ equation
     annotation (Line(points={{-72,-70},{-72,-78},{-53,-78}}, color={0,0,127}));
   connect(heatFlowSensorConv.Q_flow, addTra.u1) annotation (Line(points={{-76,50},
           {-76,-72},{-53,-72}},                                  color={0,0,127}));
-  connect(thermalZone.TAir, outBusDem.TZone) annotation (Line(points={{-40.7,
+  connect(thermalZone.TAir, outBusDem.TZone) annotation (Line(points={{-42.7,
           76.8},{-48,76.8},{-48,-2},{98,-2}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(thermalZone.TAir, comfortCalculatorHea.TZone) annotation (Line(points=
-         {{-40.7,76.8},{-48,76.8},{-48,-20},{-26,-20}}, color={0,0,127}));
+  connect(thermalZone.TAir, comfortCalculatorHea.TZone) annotation (Line(points={{-42.7,
+          76.8},{-48,76.8},{-48,-20},{-26,-20}},        color={0,0,127}));
   connect(thermalZone.TAir, comfortCalculatorCool.TZone) annotation (Line(
-        points={{-40.7,76.8},{-48,76.8},{-48,-42},{-26,-42}}, color={0,0,127}));
+        points={{-42.7,76.8},{-48,76.8},{-48,-42},{-26,-42}}, color={0,0,127}));
   connect(comfortCalculatorCool.dTComSec, outBusDem.dTComCoo) annotation (Line(
         points={{-3,-42},{10,-42},{10,-2},{98,-2}}, color={0,0,127}), Text(
       string="%second",
@@ -602,7 +602,7 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(thermalZone.TAir, buiMeaBus.TZoneMea) annotation (Line(points={{-40.7,
+  connect(thermalZone.TAir, buiMeaBus.TZoneMea) annotation (Line(points={{-42.7,
           76.8},{-48,76.8},{-48,92},{0,92},{0,99}}, color={0,0,127}), Text(
       string="%second",
       index=1,
@@ -611,9 +611,9 @@ equation
   connect(multiSum.y, inputKPICalculator.u)
     annotation (Line(points={{47.15,-81},{33.54,-81}}, color={0,0,127}));
   connect(multiSum.u, thermalZone.QIntGains_flow) annotation (Line(points={{58,-81},
-          {64,-81},{64,-80},{68,-80},{68,-4},{-50,-4},{-50,33.6},{-40.7,33.6}},
+          {64,-81},{64,-80},{68,-80},{68,-4},{-50,-4},{-50,33.6},{-42.7,33.6}},
         color={0,0,127}));
-  connect(NoLoad.y, realToElecCon.PElec)
+  connect(NoLoad.y, realToElecCon.PEleLoa)
     annotation (Line(points={{131,-78},{114.6,-78}}, color={0,0,127}));
   connect(realToElecCon.internalElectricalPin, internalElectricalPin)
     annotation (Line(

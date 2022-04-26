@@ -42,9 +42,9 @@ equation
       points={{22,-35.26},{22,-60.7},{44.3,-60.7}},
       color={0,0,0},
       thickness=1));
-  connect(ElectricalLoad.y, realToElecCon1.PElec)
+  connect(ElectricalLoad.y, realToElecCon1.PEleLoa)
     annotation (Line(points={{66.8,60},{58.6,60}}, color={0,0,127}));
-  connect(PGeneration.y, realToElecCon.PElec)
+  connect(PGeneration.y, realToElecCon.PEleLoa)
     annotation (Line(points={{-52.8,60},{-44.6,60}}, color={0,0,127}));
   connect(batterySystemSimple.OutputDistr, OutputDistr1.SOCBat) annotation (
       Line(
@@ -61,7 +61,7 @@ equation
       horizontalAlignment=TextAlignment.Right));
   connect(elecConToReal.PElec, PGrid)
     annotation (Line(points={{75.8,-61},{98,-61},{98,-62}}, color={0,0,127}));
-  connect(realToElecCon1.internalElectricalPin, batterySystemSimple.internalElectricalPinForLoad[
+  connect(realToElecCon1.internalElectricalPin, batterySystemSimple.internalElectricalPin[
     1]) annotation (Line(
       points={{37.8,60.2},{22,60.2},{22,38}},
       color={0,0,0},

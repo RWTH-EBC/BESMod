@@ -117,6 +117,8 @@ model UFHTransferSystem
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
     pumpData annotation (choicesAllMatching=true, Placement(transformation(extent={{-98,78},
             {-78,98}})));
+  Utilities.Electrical.ZeroLoad zeroLoad
+    annotation (Placement(transformation(extent={{32,-108},{52,-88}})));
 protected
   parameter BESMod.Components.UFH.ActiveWallBaseDataDefinition floorHeatingType[nParallelDem]={BESMod.Components.UFH.ActiveWallBaseDataDefinition(
         Temp_nom=Modelica.SIunits.Conversions.from_degC({TSup_nominal[i],
@@ -205,4 +207,9 @@ equation
           -12,37},{-6,37},{-6,38},{3.33333,38},{3.33333,19}}, color={0,127,255}));
   connect(gain.y, pumpFix_m_flow.m_flow_in) annotation (Line(points={{-28,61},{-28,
           56},{-23,56},{-23,50.2}}, color={0,0,127}));
+  connect(zeroLoad.internalElectricalPin, internalElectricalPin) annotation (
+      Line(
+      points={{52,-98},{72,-98}},
+      color={0,0,0},
+      thickness=1));
 end UFHTransferSystem;

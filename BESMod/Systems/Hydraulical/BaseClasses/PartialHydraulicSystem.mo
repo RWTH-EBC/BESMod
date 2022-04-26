@@ -176,6 +176,11 @@ partial model PartialHydraulicSystem
   Interfaces.SystemControlBus sigBusHyd annotation (Placement(transformation(
           extent={{12,120},{58,160}}), iconTransformation(extent={{12,120},{
             58,160}})));
+  Utilities.Electrical.MultiSumElec multiSumElec(nPorts=3) annotation (
+      Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={132,-124})));
 equation
   connect(generation.portGen_out,distribution. portGen_in) annotation (Line(
         points={{-24,14.8},{-16,14.8},{-16,14},{-10,14},{-10,14.8},{-12,14.8}},
@@ -220,7 +225,7 @@ equation
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
   connect(transfer.outBusTra, outBusHyd.transfer) annotation (Line(
-      points={{146,-45.44},{146,-142},{-1,-142}},
+      points={{146,-45.44},{146,-68},{214,-68},{214,-142},{-1,-142}},
       color={135,135,135},
       thickness=0.5), Text(
       string="%second",
@@ -247,7 +252,7 @@ equation
           {100,-60},{100,-52},{96,-52},{96,-51.2},{90,-51.2}},
                                              color={0,127,255}));
   connect(distribution.portDHW_in, portDHW_in) annotation (Line(points={{90,
-          -77.6},{96,-77.6},{96,-78},{100,-78},{100,-120},{200,-120}},
+          -77.6},{98,-77.6},{98,-78},{192,-78},{192,-120},{200,-120}},
                                               color={0,127,255}));
   connect(weaBus,generation. weaBus) annotation (Line(
       points={{-179,78},{-179,76},{-176,76},{-176,78},{-174,78},{-174,0},{
@@ -278,22 +283,7 @@ equation
       index=-1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(generation.internalElectricalPin, internalElectricalPin) annotation (
-      Line(
-      points={{-40.24,-102.68},{-40.24,-102},{-40,-102},{-40,-140},{170,-140}},
-      color={0,0,0},
-      thickness=1));
 
-  connect(distribution.internalElectricalPin, internalElectricalPin)
-    annotation (Line(
-      points={{74.7,-102.68},{74.7,-140},{170,-140}},
-      color={0,0,0},
-      thickness=1));
-  connect(transfer.internalElectricalPin, internalElectricalPin) annotation (
-      Line(
-      points={{170.48,-43.28},{170.48,-87.64},{170,-87.64},{170,-140}},
-      color={0,0,0},
-      thickness=1));
   connect(sigBusHyd,control. sigBusHyd) annotation (Line(
       points={{35,140},{-5.68333,140},{-5.68333,122.34}},
       color={215,215,215},
@@ -302,6 +292,27 @@ equation
       index=-1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
+  connect(multiSumElec.internalElectricalPinOut, internalElectricalPin)
+    annotation (Line(
+      points={{142,-124},{170,-124},{170,-140}},
+      color={0,0,0},
+      thickness=1));
+  connect(transfer.internalElectricalPin, multiSumElec.internalElectricalPinIn[
+    1]) annotation (Line(
+      points={{170.48,-43.28},{170.48,-106},{110,-106},{110,-124.133},{122.2,
+          -124.133}},
+      color={0,0,0},
+      thickness=1));
+  connect(distribution.internalElectricalPin, multiSumElec.internalElectricalPinIn[
+    2]) annotation (Line(
+      points={{74.7,-102.68},{74.7,-123.8},{122.2,-123.8}},
+      color={0,0,0},
+      thickness=1));
+  connect(generation.internalElectricalPin, multiSumElec.internalElectricalPinIn[
+    3]) annotation (Line(
+      points={{-40.24,-102.68},{-40.24,-123.467},{122.2,-123.467}},
+      color={0,0,0},
+      thickness=1));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-180,-140},
             {200,140}}), graphics={
         Rectangle(

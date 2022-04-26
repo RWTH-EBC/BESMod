@@ -1,7 +1,6 @@
 within BESMod.Systems.Hydraulical.Generation;
 model HeatPumpAndHeatingRod "Bivalent monoenergetic heat pump"
-  extends
-    BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration(
+  extends BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration(
     final QLoss_flow_nominal=f_design .* Q_flow_nominal .- Q_flow_nominal,
     final dTLoss_nominal=fill(0, nParallelDem),
     dTTra_nominal={if TDem_nominal[i] > 273.15 + 55 then 10 elseif TDem_nominal[
@@ -120,7 +119,7 @@ model HeatPumpAndHeatingRod "Bivalent monoenergetic heat pump"
         origin={-44,15})));
 
   IBPSA.Fluid.Sources.Boundary_ph bou_sinkAir(final nPorts=1, redeclare package
-              Medium = Medium_eva)                       annotation (Placement(
+      Medium =         Medium_eva)                       annotation (Placement(
         transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
@@ -260,10 +259,10 @@ Utilities.KPIs.InternalKPICalculator KPIQHR(
         extent={{5,6},{-5,-6}},
         rotation=180,
         origin={71,80})));
-  Modelica.Blocks.Math.Add addElectricalPower
-    annotation (Placement(transformation(extent={{18,-128},{30,-116}})));
-  Utilities.Electrical.RealToElecCon realToElecCon
-    annotation (Placement(transformation(extent={{40,-132},{60,-112}})));
+  Utilities.Electrical.RealToElecCon realToElecCon(nLoa=if use_pressure then 3 else 2)
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={100,-78})));
 protected
   parameter Modelica.SIunits.PressureDifference dpHeaRod_nominal = if use_heaRod then heatingRodParameters.dp_nominal else 0;
 
@@ -365,13 +364,12 @@ connect(KPIQHR.KPIBus, outBusGen.QHR_flow) annotation (Line(points={{-63.88,-131
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(isOnHR.y, or1.u[1]) annotation (Line(points={{40,29.4},{40,26},{48.8,
-          26},{48.8,20}},
-                      color={255,0,255}));
+  connect(isOnHR.y, or1.u[1]) annotation (Line(points={{40,29.4},{40,26},{44.6,26},
+          {44.6,20}}, color={255,0,255}));
   connect(isOnHP.y, or1.u[2]) annotation (Line(points={{16,31.4},{16,24},{46,24},
           {46,20}}, color={255,0,255}));
   connect(constRunPump247.y, or1.u[3]) annotation (Line(points={{73.5,27},{48.1,
-          27},{48.1,20},{43.2,20}}, color={255,0,255}));
+          27},{48.1,20},{47.4,20}}, color={255,0,255}));
   connect(pump.port_a, portGen_in[1]) annotation (Line(
       points={{26,-68},{100,-68},{100,-2}},
       color={0,127,255},
@@ -410,23 +408,22 @@ connect(KPIQHR.KPIBus, outBusGen.QHR_flow) annotation (Line(points={{-63.88,-131
     annotation (Line(points={{44,80},{66,80}}, color={0,127,255}));
   connect(hea.port_b, senTBuiSup.port_a)
     annotation (Line(points={{54,80},{66,80}}, color={0,127,255}));
-  connect(hea.Pel, addElectricalPower.u1) annotation (Line(points={{55.6,89.6},
-          {100,89.6},{100,-100},{10,-100},{10,-118.4},{16.8,-118.4}}, color={0,
-          0,127}));
-  connect(sigBusGen.hp_bus.PelMea, addElectricalPower.u2) annotation (Line(
-      points={{2,98},{-132,98},{-132,-138},{10,-138},{10,-125.6},{16.8,-125.6}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%first",
-      index=-1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
 
-  connect(addElectricalPower.y, realToElecCon.PElec)
-    annotation (Line(points={{30.6,-122},{39.4,-122}}, color={0,0,127}));
   connect(realToElecCon.internalElectricalPin, internalElectricalPin)
     annotation (Line(
-      points={{60.2,-121.8},{72,-121.8},{72,-98}},
+      points={{89.8,-78.2},{72,-78.2},{72,-98}},
       color={0,0,0},
       thickness=1));
+  connect(realToElecCon.PEleLoa[1], hea.Pel) annotation (Line(points={{112,-82},
+          {118,-82},{118,114},{55.6,114},{55.6,89.6}},          color={0,0,127}));
+  connect(realToElecCon.PEleLoa[2], sigBusGen.hp_bus.PelMea) annotation (Line(
+        points={{112,-82},{118,-82},{118,-38},{116,-38},{116,100},{2,100},{2,98}},
+                                                         color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(realToElecCon.PEleLoa[3], pump.P) annotation (Line(points={{112,-82},
+          {116,-82},{116,94},{60,94},{60,60},{42,60},{42,44},{0,44},{0,-59},{5,
+          -59}}, color={0,0,127}));
 end HeatPumpAndHeatingRod;

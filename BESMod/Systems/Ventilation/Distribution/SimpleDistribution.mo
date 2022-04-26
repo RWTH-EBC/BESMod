@@ -23,10 +23,8 @@ model SimpleDistribution "Most basic distribution model"
         extent={{-7.5,-10},{7.5,10}},
         rotation=0,
         origin={0.5,-60})));
-  Utilities.Electrical.RealToElecCon realToElecCon
-    annotation (Placement(transformation(extent={{50,-84},{70,-64}})));
-  Modelica.Blocks.Sources.RealExpression NoLoad
-    annotation (Placement(transformation(extent={{18,-84},{38,-64}})));
+  Utilities.Electrical.ZeroLoad zeroLoad
+    annotation (Placement(transformation(extent={{20,-100},{40,-80}})));
 equation
   connect(resExh.port_a, portExh_in)
     annotation (Line(points={{-7,-60},{-100,-60}}, color={0,127,255}));
@@ -38,11 +36,9 @@ equation
   end for;
   connect(resSup.port_b, portSupply_out)
     annotation (Line(points={{-7,60},{-100,60}}, color={0,127,255}));
-  connect(realToElecCon.internalElectricalPin, internalElectricalPin)
-    annotation (Line(
-      points={{70.2,-73.8},{70.2,-80.9},{70,-80.9},{70,-98}},
+  connect(zeroLoad.internalElectricalPin, internalElectricalPin) annotation (
+      Line(
+      points={{40,-90},{56,-90},{56,-84},{70,-84},{70,-98}},
       color={0,0,0},
       thickness=1));
-  connect(NoLoad.y, realToElecCon.PElec)
-    annotation (Line(points={{39,-74},{49.4,-74}}, color={0,0,127}));
 end SimpleDistribution;

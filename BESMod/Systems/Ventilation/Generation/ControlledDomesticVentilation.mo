@@ -1,7 +1,6 @@
 within BESMod.Systems.Ventilation.Generation;
 model ControlledDomesticVentilation
-  extends
-    BESMod.Systems.Ventilation.Generation.BaseClasses.PartialGeneration(
+  extends BESMod.Systems.Ventilation.Generation.BaseClasses.PartialGeneration(
     dp_nominal={hex.dp1_nominal},
     dTTra_nominal={0},
     nParallelSup=1,
@@ -187,9 +186,7 @@ model ControlledDomesticVentilation
     tempSensorData
     annotation (Placement(transformation(extent={{76,78},{96,98}})),
       choicesAllMatching=true);
-  Modelica.Blocks.Sources.RealExpression NoElectricalLoad
-    annotation (Placement(transformation(extent={{2,-116},{22,-96}})));
-  Utilities.Electrical.RealToElecCon realToElecCon
+  Utilities.Electrical.RealToElecCon realToElecCon(nLoa=2)
     annotation (Placement(transformation(extent={{36,-118},{56,-98}})));
 equation
   connect(bouSup.p_in, weaBus.pAtm) annotation (Line(points={{87.6,-28.4},{112,
@@ -270,11 +267,14 @@ equation
         points={{-4,-69},{14,-69},{14,-72},{22,-72}}, color={0,127,255}));
   connect(hex.port_a1, bouSup.ports[1]) annotation (Line(points={{32,-21.6},{51,
           -21.6},{51,-22},{70,-22}}, color={0,127,255}));
-  connect(NoElectricalLoad.y, realToElecCon.PElec) annotation (Line(points={{23,
-          -106},{28,-106},{28,-108},{35.4,-108}}, color={0,0,127}));
   connect(realToElecCon.internalElectricalPin, internalElectricalPin)
     annotation (Line(
       points={{56.2,-107.8},{61.1,-107.8},{61.1,-98},{70,-98}},
       color={0,0,0},
       thickness=1));
+
+  connect(fanRet.P, realToElecCon.PEleLoa[1]) annotation (Line(points={{-61,-49},
+          {-52,-49},{-52,-104.5},{34,-104.5}}, color={0,0,127}));
+  connect(fanFlow.P, realToElecCon.PEleLoa[2]) annotation (Line(points={{-87,51},
+          {-87,56},{-52,56},{-52,-103.5},{34,-103.5}}, color={0,0,127}));
 end ControlledDomesticVentilation;
