@@ -20,7 +20,8 @@ model PVSystemMultiSub
     final groRef=0.2,
     final use_ParametersGlaz=false)
     annotation (Placement(transformation(extent={{-32,-30},{26,28}})));
-  Modelica.Blocks.Math.Sum sumOfPower "Sums up DC Output power" annotation (
+  Modelica.Blocks.Math.Sum sumOfPower(nin=numGenUnits)
+                                      "Sums up DC Output power" annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
@@ -28,7 +29,8 @@ model PVSystemMultiSub
   replaceable model CellTemperature =
       AixLib.Electrical.PVSystem.BaseClasses.PartialCellTemperature annotation (
      __Dymola_choicesAllMatching=true);
-  Utilities.Electrical.RealToElecCon realToElecCon annotation (Placement(
+  Utilities.Electrical.RealToElecCon realToElecCon(SouLoa=false, nGen=1)
+                                                   annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
@@ -51,18 +53,18 @@ model PVSystemMultiSub
   parameter Modelica.SIunits.Area ARoof(min=0) "Roof area of building" annotation(Dialog(group="Design - Top Down: Parameters are given by the parent system"));
 
 equation
-  connect(pVSystem.DCOutputPower, sumOfPower.u) annotation (Line(points={{28.9,-1},
-          {50,-1},{50,8}},                       color={0,0,127}));
   for i in 1:numGenUnits loop
     connect(pVSystem[i].weaBus, weaBus);
   end for;
-  connect(sumOfPower.y, realToElecCon.PEleLoa) annotation (Line(points={{50,31},
-          {50,38},{50,46},{46,46}}, color={0,0,127}));
+  connect(sumOfPower.y, realToElecCon.PEleGen[1])
+    annotation (Line(points={{50,31},{54,31},{54,46}}, color={0,0,127}));
   connect(realToElecCon.internalElectricalPin, internalElectricalPin)
     annotation (Line(
-      points={{49.8,68.2},{49.8,79.1},{50,79.1},{50,98}},
+      points={{49.8,68.2},{49.8,82.1},{50,82.1},{50,98}},
       color={0,0,0},
       thickness=1));
+  connect(pVSystem.DCOutputPower, sumOfPower.u)
+    annotation (Line(points={{28.9,-1},{50,-1},{50,8}}, color={0,0,127}));
    annotation(Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"),
               Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
