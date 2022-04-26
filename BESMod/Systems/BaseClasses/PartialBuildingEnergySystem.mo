@@ -53,6 +53,23 @@ partial model PartialBuildingEnergySystem "Partial BES"
        final TDHWCold_nominal=systemParameters.TDHWWaterCold,
        final VDHWDay=systemParameters.V_dhw_day)) annotation (choicesAllMatching=true, Placement(
         transformation(extent={{-8,-108},{74,-32}})));
+  replaceable Electrical.BaseClasses.PartialElectricalSystem electrical
+    if systemParameters.use_electrical constrainedby
+    Electrical.BaseClasses.PartialElectricalSystem(final nLoadsExtSubSys=4,
+      redeclare final
+      BESMod.Systems.Electrical.RecordsCollection.ElectricalSystemBaseDataDefinition
+      electricalSystemParameters(
+      final nZones=systemParameters.nZones,
+      final Q_flow_nominal=systemParameters.QBui_flow_nominal,
+      final TOda_nominal=systemParameters.TOda_nominal,
+      final TSup_nominal=systemParameters.THydSup_nominal,
+      final TZone_nominal=systemParameters.TSetZone_nominal,
+      final TAmb=systemParameters.TAmbHyd,
+      final AZone=building.AZone,
+      final hZone=building.hZone,
+      final ABui=building.ABui,
+      final hBui=building.hBui))                                 annotation (Placement(
+        transformation(extent={{-192,40},{-40,128}})), choicesAllMatching=true);
   replaceable BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem hydraulic if systemParameters.use_hydraulic
   constrainedby BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem(
     redeclare package Medium = MediumHyd,
@@ -103,10 +120,12 @@ partial model PartialBuildingEnergySystem "Partial BES"
   replaceable Control.BaseClasses.PartialControl control constrainedby
     Control.BaseClasses.PartialControl annotation (Placement(transformation(
           extent={{-8,116},{76,182}})), choicesAllMatching=true);
-  replaceable Electrical.BaseClasses.PartialElectricalSystem electrical
-    if systemParameters.use_electrical constrainedby
-    Electrical.BaseClasses.PartialElectricalSystem annotation (Placement(
-        transformation(extent={{-192,40},{-40,128}})), choicesAllMatching=true);
+
+protected
+  BESMod.Utilities.Electrical.ZeroLoad hydraulicZeroElecLoad if systemParameters.use_electrical and not systemParameters.use_hydraulic "Internal helper";
+  BESMod.Utilities.Electrical.ZeroLoad ventilationZeroElecLoad if systemParameters.use_electrical and not systemParameters.use_ventilation "Internal helper";
+  BESMod.Utilities.Electrical.ZeroLoad dhwZeroElecLoad if systemParameters.use_electrical and not systemParameters.use_dhw "Internal helper";
+
 equation
   connect(building.weaBus, weaDat.weaBus) annotation (Line(
       points={{7.64,86.86},{6,86.86},{6,100},{-22,100},{-22,138},{-204,138},{
@@ -164,7 +183,7 @@ equation
           points={{-40,-45},{-18,-45},{-18,17.2},{-10,17.2}},        color={191,
             0,0}));
     connect(hydraulic.heatPortCon,building. heatPortCon) annotation (Line(
-          points={{-40,-19.9286},{-40,-14},{-20,-14},{-20,68.8},{-10,68.8}},
+          points={{-40,-19.9286},{-40,-14},{-22,-14},{-22,68.8},{-10,68.8}},
                                                                           color=
            {191,0,0}));
     if systemParameters.use_dhw then
@@ -197,6 +216,50 @@ equation
       color={255,204,51},
       thickness=0.5));
   end if;
+
+  if systemParameters.use_electrical then
+    if systemParameters.use_hydraulic then
+      connect(electrical.internalElectricalPin[1], hydraulic.internalElectricalPin)
+    annotation (Line(
+      points={{-192,111.657},{-204,111.657},{-204,-124},{-52,-124},{-52,-90}},
+      color={0,0,0},
+      thickness=1));    else
+      connect(hydraulicZeroElecLoad.internalElectricalPin, electrical.internalElectricalPin[1]);
+    end if;
+    if systemParameters.use_ventilation then
+      connect(ventilation.internalElectricalPin, electrical.internalElectricalPin[2])
+    annotation (Line(
+      points={{198.2,-3.1},{198.2,-24},{246,-24},{246,-124},{-204,-124},{-204,
+              111.657},{-192,111.657}},
+      color={0,0,0},
+      thickness=1));
+    else
+      connect(ventilationZeroElecLoad.internalElectricalPin, electrical.internalElectricalPin[2]);
+    end if;
+    if systemParameters.use_dhw then
+        connect(DHW.internalElectricalPin, electrical.internalElectricalPin[3])
+    annotation (Line(
+      points={{61.7,-107.24},{61.7,-124},{-204,-124},{-204,111.657},{-192,
+              111.657}},
+      color={0,0,0},
+      thickness=1));
+    else
+      connect(dhwZeroElecLoad.internalElectricalPin, electrical.internalElectricalPin[3]);
+    end if;
+  connect(building.internalElectricalPin, electrical.internalElectricalPin[4])
+    annotation (Line(
+      points={{61.4,1.72},{61.4,-24},{246,-24},{246,-124},{-204,-124},{-204,
+            111.657},{-192,111.657}},
+      color={0,0,0},
+      thickness=1));
+  connect(electrical.heatPortCon, building.heatPortCon) annotation (Line(points={{
+            -39.1059,88.4},{-22,88.4},{-22,68.8},{-10,68.8}},color={191,0,0}));
+  connect(electrical.heatPortRad, building.heatPortRad) annotation (Line(points={{
+            -39.1059,65.1429},{-18,65.1429},{-18,18},{-14,18},{-14,17.2},{-10,
+            17.2}},
+        color={191,0,0}));
+  end if;
+
   connect(userProfiles.useProBus, hydraulic.useProBus) annotation (Line(
       points={{-227.125,152.792},{-204,152.792},{-204,16},{-152.4,16},{-152.4,
           7.10543e-15}},
@@ -263,6 +326,7 @@ equation
           -112.871,128.314}},
       color={215,215,215},
       thickness=0.5));
+
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-280,-120},
             {280,180}})), Diagram(coordinateSystem(preserveAspectRatio=false,
           extent={{-280,-120},{280,180}})));

@@ -56,7 +56,6 @@ record SystemParametersBaseDataDefinition
 
   // HVAC-Subsystems
   parameter Boolean use_hydraulic=true "=false to disable hydraulic subsystem" annotation(Dialog(group="System layout"));
-  parameter Boolean use_demand=true "=false to disable demand subsystem" annotation(Dialog(group="System layout"));
   parameter Boolean use_ventilation=true "=false to disable ventilation subsystem" annotation(Dialog(group="System layout"));
   parameter Boolean use_dhw=true "=false to disable DHW subsystem" annotation(Dialog(group="System layout"));
   parameter Boolean use_electrical=true "=false to disable electrical subsystem" annotation(Dialog(group="System layout"));

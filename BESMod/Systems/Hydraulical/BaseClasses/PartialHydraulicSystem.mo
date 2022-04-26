@@ -6,6 +6,8 @@ partial model PartialHydraulicSystem
   replaceable package MediumDHW = IBPSA.Media.Water constrainedby
     Modelica.Media.Interfaces.PartialMedium
     annotation (__Dymola_choicesAllMatching=true);
+  Electrical.Interfaces.InternalElectricalPin internalElectricalPin
+    annotation (Placement(transformation(extent={{160,-150},{180,-130}})));
   replaceable parameter BESMod.Systems.Hydraulical.RecordsCollection.HydraulicSystemBaseDataDefinition
     hydraulicSystemParameters constrainedby
     BESMod.Systems.Hydraulical.RecordsCollection.HydraulicSystemBaseDataDefinition
@@ -276,7 +278,22 @@ equation
       index=-1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
+  connect(generation.internalElectricalPin, internalElectricalPin) annotation (
+      Line(
+      points={{-40.24,-102.68},{-40.24,-102},{-40,-102},{-40,-140},{170,-140}},
+      color={0,0,0},
+      thickness=1));
 
+  connect(distribution.internalElectricalPin, internalElectricalPin)
+    annotation (Line(
+      points={{74.7,-102.68},{74.7,-140},{170,-140}},
+      color={0,0,0},
+      thickness=1));
+  connect(transfer.internalElectricalPin, internalElectricalPin) annotation (
+      Line(
+      points={{170.48,-43.28},{170.48,-87.64},{170,-87.64},{170,-140}},
+      color={0,0,0},
+      thickness=1));
   connect(sigBusHyd,control. sigBusHyd) annotation (Line(
       points={{35,140},{-5.68333,140},{-5.68333,122.34}},
       color={215,215,215},
