@@ -41,6 +41,8 @@ Modelica.Blocks.Math.UnitConversions.From_degC fromDegC
         rotation=0,
         origin={41,63})));
   Utilities.KPIs.InternalKPICalculator internalKPICalculator(
+    unit="W",
+    integralUnit="J",
     final calc_singleOnTime=false,
     final calc_totalOnTime=false,
     final calc_numSwi=false,

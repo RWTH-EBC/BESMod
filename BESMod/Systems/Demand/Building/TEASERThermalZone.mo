@@ -47,6 +47,8 @@ model TEASERThermalZone
         origin={74,30})));
 
   Utilities.KPIs.InputKPICalculator inputKPICalculatorTraGain[nZones](
+    unit=fill("W", nZones),
+    integralUnit=fill("J", nZones),
     each calc_singleOnTime=false,
     each calc_totalOnTime=false,
     each calc_numSwi=false,
@@ -57,6 +59,8 @@ model TEASERThermalZone
         rotation=0,
         origin={-7,-63})));
   Utilities.KPIs.InputKPICalculator inputKPICalculatorTraLoss[nZones](
+    unit=fill("W", nZones),
+    integralUnit=fill("J", nZones),
     each calc_singleOnTime=false,
     each calc_totalOnTime=false,
     each calc_numSwi=false,
@@ -83,6 +87,8 @@ model TEASERThermalZone
         rotation=180,
         origin={25,-81})));
   Utilities.KPIs.InputKPICalculator inputKPICalculatorVentGain[nZones](
+    unit=fill("W", nZones),
+    integralUnit=fill("J", nZones),
     each calc_singleOnTime=false,
     each calc_totalOnTime=false,
     each calc_numSwi=false,
@@ -101,6 +107,8 @@ model TEASERThermalZone
         rotation=180,
         origin={62,-106})));
   Utilities.KPIs.InputKPICalculator inputKPICalculatorVentLoss[nZones](
+    unit=fill("W", nZones),
+    integralUnit=fill("J", nZones),
     each calc_singleOnTime=false,
     each calc_totalOnTime=false,
     each calc_numSwi=false,
@@ -123,6 +131,8 @@ model TEASERThermalZone
         rotation=180,
         origin={41,-115})));
   Utilities.KPIs.InputKPICalculator inputKPICalculatorTraGain2[nZones](
+    unit=fill("W", nZones),
+    integralUnit=fill("J", nZones),
     each calc_singleOnTime=false,
     each calc_totalOnTime=false,
     each calc_numSwi=false,
@@ -138,6 +148,8 @@ model TEASERThermalZone
         rotation=0,
         origin={-48,-106})));
   Utilities.KPIs.InputKPICalculator inputKPICalculatorTraLoss2[nZones](
+    unit=fill("W", nZones),
+    integralUnit=fill("J", nZones),
     each calc_singleOnTime=false,
     each calc_totalOnTime=false,
     each calc_numSwi=false,
@@ -171,6 +183,8 @@ model TEASERThermalZone
         TSetZone_nominal .- dTComfort, each for_heating=true)
     annotation (Placement(transformation(extent={{-24,-30},{-4,-10}})));
   Utilities.KPIs.InputKPICalculator inputKPICalculatorOwaGain[nZones](
+    unit=fill("W", nZones),
+    integralUnit=fill("J", nZones),
     each calc_singleOnTime=false,
     each calc_totalOnTime=false,
     each calc_numSwi=false,
@@ -186,6 +200,8 @@ model TEASERThermalZone
         rotation=0,
         origin={-48,-146})));
   Utilities.KPIs.InputKPICalculator inputKPICalculatorOwaLoss[nZones](
+    unit=fill("W", nZones),
+    integralUnit=fill("J", nZones),
     each calc_singleOnTime=false,
     each calc_totalOnTime=false,
     each calc_numSwi=false,
@@ -204,6 +220,8 @@ model TEASERThermalZone
     annotation (Placement(transformation(extent={{-30,-156},{-24,-150}})));
   Utilities.KPIs.InputKPICalculator inputKPICalculatorFloorGain[
     nZones](
+    unit=fill("W", nZones),
+    integralUnit=fill("J", nZones),
     each calc_singleOnTime=false,
     each calc_totalOnTime=false,
     each calc_numSwi=false,
@@ -222,6 +240,8 @@ model TEASERThermalZone
         origin={-48,-182})));
   Utilities.KPIs.InputKPICalculator inputKPICalculatorFloorLoss[
     nZones](
+    unit=fill("W", nZones),
+    integralUnit=fill("J", nZones),
     each calc_singleOnTime=false,
     each calc_totalOnTime=false,
     each calc_numSwi=false,
@@ -242,6 +262,8 @@ model TEASERThermalZone
     if oneZoneParam.AFloor > 0 and use_verboseEnergyBalance
     annotation (Placement(transformation(extent={{-30,-192},{-24,-186}})));
   Utilities.KPIs.InputKPICalculator inputKPICalculatorRoofGain[nZones](
+    unit=fill("W", nZones),
+    integralUnit=fill("J", nZones),
     each calc_singleOnTime=false,
     each calc_totalOnTime=false,
     each calc_numSwi=false,
@@ -257,6 +279,8 @@ model TEASERThermalZone
         rotation=0,
         origin={-116,-146})));
   Utilities.KPIs.InputKPICalculator inputKPICalculatorRoofLoss[nZones](
+    unit=fill("W", nZones),
+    integralUnit=fill("J", nZones),
     each calc_singleOnTime=false,
     each calc_totalOnTime=false,
     each calc_numSwi=false,
@@ -274,6 +298,8 @@ model TEASERThermalZone
       uMax=0, each final uMin=-Modelica.Constants.inf) if use_verboseEnergyBalance
     annotation (Placement(transformation(extent={{-98,-156},{-92,-150}})));
   Utilities.KPIs.InputKPICalculator inputKPICalculatorWinGain[nZones](
+    unit=fill("W", nZones),
+    integralUnit=fill("J", nZones),
     each calc_singleOnTime=false,
     each calc_totalOnTime=false,
     each calc_numSwi=false,
@@ -289,6 +315,8 @@ model TEASERThermalZone
         rotation=0,
         origin={-116,-182})));
   Utilities.KPIs.InputKPICalculator inputKPICalculatorWinLoss[nZones](
+    unit=fill("W", nZones),
+    integralUnit=fill("J", nZones),
     each calc_singleOnTime=false,
     each calc_totalOnTime=false,
     each calc_numSwi=false,

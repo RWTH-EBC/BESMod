@@ -1,7 +1,8 @@
 within BESMod.Utilities.KPIs;
 model InputKPICalculator "Calculate for given input"
   extends BaseClasses.PartialKPICalculator;
-  Modelica.Blocks.Interfaces.RealInput u "Connector of Real input signal"
+  Modelica.Blocks.Interfaces.RealInput u(unit=unit)
+                                         "Connector of Real input signal"
     annotation (Placement(transformation(extent={{-142,-20},{-102,20}})));
 equation
   connect(internalU.u, u)

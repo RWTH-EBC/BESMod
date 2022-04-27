@@ -85,6 +85,8 @@ model SolarThermalBivHP
 
   Utilities.KPIs.InternalKPICalculator
                                     KPIWel1(
+    unit="W",
+    integralUnit="J",
     calc_singleOnTime=true,
     calc_integral=true,
     calc_movAve=false,

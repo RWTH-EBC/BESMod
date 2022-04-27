@@ -122,6 +122,8 @@ model DistributionTwoStorageParallel
         origin={30,-90})));
 
   Utilities.KPIs.InternalKPICalculator internalKPICalculatorBufLoss(
+    unit="W",
+    integralUnit="J",
     thresholdOn=Modelica.Constants.eps,
     calc_singleOnTime=false,
     calc_integral=true,
@@ -132,6 +134,8 @@ model DistributionTwoStorageParallel
     y=fixedTemperatureBuf.port.Q_flow)
     annotation (Placement(transformation(extent={{-80,-90},{-60,-52}})));
   Utilities.KPIs.InternalKPICalculator internalKPICalculatorDHWLoss(
+    unit="W",
+    integralUnit="J",
     thresholdOn=Modelica.Constants.eps,
     calc_singleOnTime=false,
     calc_integral=true,

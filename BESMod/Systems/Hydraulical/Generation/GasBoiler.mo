@@ -26,6 +26,8 @@ model GasBoiler "Just a gas boiler"
   parameter Real etaTempBased[:,2]=[293.15,1.09; 303.15,1.08; 313.15,1.05;
       323.15,1.; 373.15,0.99] "Table matrix for temperature based efficiency";
 Utilities.KPIs.InternalKPICalculator KPIQHR(
+    unit="W",
+    integralUnit="J",
     calc_singleOnTime=false,
     calc_integral=true,
     calc_totalOnTime=false,

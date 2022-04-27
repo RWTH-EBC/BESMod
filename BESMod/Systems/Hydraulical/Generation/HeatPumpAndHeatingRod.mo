@@ -155,11 +155,15 @@ model HeatPumpAndHeatingRod "Bivalent monoenergetic heat pump"
         origin={40,36})));
 
   Utilities.KPIs.InputKPICalculator KPIWel(
+    integralUnit="J",
     calc_singleOnTime=true,
     calc_integral=true,
-    calc_movAve=false)
+    calc_movAve=false,
+    unit="W")
     annotation (Placement(transformation(extent={{-78,-106},{-66,-84}})));
   Utilities.KPIs.InputKPICalculator KPIWHRel(
+    unit="W",
+    integralUnit="J",
     calc_singleOnTime=true,
     calc_integral=true,
     calc_movAve=false) if use_heaRod
@@ -223,12 +227,16 @@ model HeatPumpAndHeatingRod "Bivalent monoenergetic heat pump"
         origin={-164,32})));
 
 Utilities.KPIs.InternalKPICalculator KPIQHP(
+    unit="W",
+    integralUnit="J",
     calc_singleOnTime=false,                                        calc_integral=true,
     calc_totalOnTime=false,
     calc_numSwi=false,                                                                  calc_movAve=false,
     calc_intBelThres=false,                                                                                y=heatPump.con.QFlow_in)
   annotation (Placement(transformation(extent={{-76,-124},{-64,-102}})));
 Utilities.KPIs.InternalKPICalculator KPIQHR(
+    unit="W",
+    integralUnit="J",
     calc_singleOnTime=false,                                        calc_integral=true,
     calc_totalOnTime=false,
     calc_numSwi=false,                                                                  calc_movAve=false,

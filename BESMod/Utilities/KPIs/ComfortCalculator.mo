@@ -18,9 +18,11 @@ model ComfortCalculator "Cacluate the discomort in K*s"
     annotation (Placement(transformation(extent={{-26,-16},{-6,4}})));
   Modelica.Blocks.Sources.Constant const(k=TComBou)
     annotation (Placement(transformation(extent={{-66,-30},{-46,-10}})));
-  Modelica.Blocks.Interfaces.RealOutput dTComSec "K*s discomfort"
+  Modelica.Blocks.Interfaces.RealOutput dTComSec(unit="K.s")
+                                                 "K*s discomfort"
     annotation (Placement(transformation(extent={{100,-10},{120,10}})));
-  Modelica.Blocks.Interfaces.RealInput TZone "Connector of Real input signal 1"
+  Modelica.Blocks.Interfaces.RealInput TZone(unit="K")
+                                             "Connector of Real input signal 1"
     annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));
 
 equation

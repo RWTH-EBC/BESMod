@@ -1,6 +1,9 @@
 within BESMod.Utilities.KPIs.BaseClasses;
 partial model PartialKPICalculator "Partial KPI Calculator"
 
+
+  parameter String unit "Unit of signal";
+  parameter String integralUnit "Unit of integral of signal";
   parameter Real thresholdOn=Modelica.Constants.eps * 100
     "If u is greater or equal to this treshhold the device is considered on.";
   parameter Real thresholdOff=0
@@ -17,14 +20,15 @@ partial model PartialKPICalculator "Partial KPI Calculator"
                                 "True to calc moving average";
   parameter Boolean calc_intBelThres=true
                                 "True to calc integral below threshold, e.g. for discomfort";
-
+  parameter Modelica.SIunits.Time aveTime=24*3600
+    "Time span for moving average" annotation (Dialog(enable=calc_movAve));
   Modelica.Blocks.Logical.Switch switch1 if calc_singleOnTime
     annotation (Placement(transformation(extent={{40,-10},{60,10}})));
   Modelica.Blocks.Sources.Constant const(k=1) if calc_singleOnTime
     annotation (Placement(transformation(extent={{6,14},{26,34}})));
   Modelica.Blocks.Sources.Constant const1(k=0) if calc_singleOnTime
     annotation (Placement(transformation(extent={{6,-28},{26,-8}})));
-  Modelica.Blocks.Continuous.Integrator integrator3(use_reset=true)
+  Modelica.Blocks.Continuous.Integrator integrator3(use_reset=true, y(unit="s"))
  if calc_singleOnTime
     annotation (Placement(transformation(extent={{76,-6},{88,6}})));
   Modelica.Blocks.Logical.Hysteresis isOn(
@@ -48,27 +52,32 @@ partial model PartialKPICalculator "Partial KPI Calculator"
     annotation (Placement(transformation(extent={{6,102},{26,122}})));
   Modelica.Blocks.Sources.Constant const3(k=0) if calc_totalOnTime
     annotation (Placement(transformation(extent={{6,60},{26,80}})));
-  Modelica.Blocks.Continuous.Integrator integrator1 if calc_totalOnTime
+  Modelica.Blocks.Continuous.Integrator integrator1(y(unit="s"))
+                                                    if calc_totalOnTime
     annotation (Placement(transformation(extent={{76,82},{88,94}})));
 
-  Modelica.Blocks.Continuous.Integrator integrator2(use_reset=false)
+  Modelica.Blocks.Continuous.Integrator integrator2(use_reset=false,
+    y_start=Modelica.Constants.eps,                                  y(unit=
+          integralUnit))
  if calc_integral
     annotation (Placement(transformation(extent={{72,-90},{84,-78}})));
   Icons.KPIBus KPIBus
     annotation (Placement(transformation(extent={{92,-10},{112,10}})));
 
-  Modelica.Blocks.Routing.RealPassThrough internalU annotation (Placement(
+  Modelica.Blocks.Routing.RealPassThrough internalU(y(unit=unit))
+                                                    annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-78,0})));
-  AixLib.Utilities.Math.MovingAverage movingAverage(aveTime=aveTime)
+  AixLib.Utilities.Math.MovingAverage movingAverage(aveTime=aveTime, y(unit=
+          unit))
  if calc_movAve
     annotation (Placement(transformation(extent={{-34,-168},{-14,-148}})));
-  parameter Modelica.SIunits.Time aveTime=24*3600
-    "Time span for moving average" annotation (Dialog(enable=calc_movAve));
+
   Modelica.Blocks.Continuous.Integrator integratorDiscomfort(final k=1,
-                                                             use_reset=false)
+                                                             use_reset=false,
+    y(unit=integralUnit))
  if calc_intBelThres
     annotation (Placement(transformation(extent={{70,-28},{82,-16}})));
   Modelica.Blocks.Sources.Constant const4(k=thresholdOn)

@@ -1,7 +1,7 @@
 within BESMod.Utilities.KPIs;
 model InternalKPICalculator
   "KPIs for internal variables. Add via Attributes -> y=someVar"
-  extends BaseClasses.PartialKPICalculator(integrator2(y_start=Modelica.Constants.eps));
+  extends BaseClasses.PartialKPICalculator;
 
   Modelica.Blocks.Interfaces.RealInput y "Value of Real input";
 

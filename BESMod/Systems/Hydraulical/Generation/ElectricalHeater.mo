@@ -85,6 +85,8 @@ model ElectricalHeater "Only heat using a heating rod"
         origin={62,-74})));
 
 Utilities.KPIs.InternalKPICalculator KPIQHR(
+    unit="W",
+    integralUnit="J",
     calc_singleOnTime=false,
     calc_integral=true,
     calc_totalOnTime=false,

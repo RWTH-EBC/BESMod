@@ -48,6 +48,8 @@ model RadiatorTransferSystem
   replaceable parameter BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData radParameters
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-100,-98},{-80,-78}})));
   Utilities.KPIs.InternalKPICalculator internalKPICalculator(
+    unit="W",
+    integralUnit="J",
     calc_singleOnTime=false,
     calc_totalOnTime=false,
     calc_numSwi=false,
@@ -55,6 +57,8 @@ model RadiatorTransferSystem
     y=sum(-heatPortRad.Q_flow) + sum(-heatPortCon.Q_flow))
     annotation (Placement(transformation(extent={{-32,-96},{-12,-60}})));
   Utilities.KPIs.InputKPICalculator inputKPICalculator[nParallelDem](
+    unit=fill("", nParallelDem),
+    integralUnit=fill("s", nParallelDem),
     each calc_singleOnTime=false,
     each calc_integral=false,
     each calc_totalOnTime=false,

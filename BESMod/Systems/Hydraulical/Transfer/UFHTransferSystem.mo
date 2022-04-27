@@ -60,6 +60,8 @@ model UFHTransferSystem
     annotation (choicesAllMatching=true, Placement(transformation(extent={{22,12},{42,32}})));
 
   Utilities.KPIs.InputKPICalculator inputKPICalculatorOpening[nParallelDem](
+    unit=fill("", nParallelDem),
+    integralUnit=fill("s", nParallelDem),
     calc_singleOnTime=false,
     calc_integral=false,
     calc_totalOnTime=false,
@@ -67,6 +69,8 @@ model UFHTransferSystem
     calc_movAve=false)
     annotation (Placement(transformation(extent={{-46,-94},{-26,-58}})));
   Utilities.KPIs.InputKPICalculator inputKPICalculatorLossUFH[nParallelDem](
+    unit=fill("W", nParallelDem),
+    integralUnit=fill("J", nParallelDem),
     calc_singleOnTime=false,
     calc_integral=false,
     calc_totalOnTime=false,

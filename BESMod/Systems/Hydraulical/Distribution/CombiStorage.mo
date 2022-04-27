@@ -107,6 +107,8 @@ model CombiStorage
       annotation (Placement(transformation(extent={{-42,-122},{-22,-102}})));
 
   Utilities.KPIs.InternalKPICalculator internalKPICalculatorBufLoss(
+    unit="W",
+    integralUnit="J",
     thresholdOn=Modelica.Constants.eps,
     calc_singleOnTime=false,
     calc_integral=true,

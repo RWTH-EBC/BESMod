@@ -321,6 +321,8 @@ partial model PartialDistributionTwoStorageParallelDetailed
     annotation (Placement(transformation(extent={{-84,54},{-64,74}})));
 
   Utilities.KPIs.InternalKPICalculator internalKPICalculatorBufLoss(
+    unit="W",
+    integralUnit="J",
     thresholdOn=Modelica.Constants.eps,
     calc_singleOnTime=false,
     calc_integral=true,
@@ -331,6 +333,8 @@ partial model PartialDistributionTwoStorageParallelDetailed
     y=fixedTemperatureBuf.port.Q_flow)
     annotation (Placement(transformation(extent={{-52,-134},{-32,-96}})));
   Utilities.KPIs.InternalKPICalculator internalKPICalculatorDHWLoss(
+    unit="W",
+    integralUnit="J",
     thresholdOn=Modelica.Constants.eps,
     calc_singleOnTime=false,
     calc_integral=true,

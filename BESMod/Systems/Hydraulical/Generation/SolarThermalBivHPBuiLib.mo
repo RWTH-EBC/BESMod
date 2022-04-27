@@ -93,6 +93,8 @@ model SolarThermalBivHPBuiLib
         origin={-56,-150})));
 
   Utilities.KPIs.InternalKPICalculator KPIWel1(
+    unit="W",
+    integralUnit="J",
     calc_singleOnTime=true,
     calc_integral=true,
     calc_movAve=false,
