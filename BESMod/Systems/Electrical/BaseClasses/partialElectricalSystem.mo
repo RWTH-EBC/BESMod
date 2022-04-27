@@ -31,12 +31,12 @@ partial model PartialElectricalSystem "Partial model for electrical system"
   Interfaces.InternalElectricalPin internalElectricalPin[nLoadsExtSubSys]
     annotation (Placement(transformation(extent={{-190,78},{-170,98}})));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPortCon[
-    electricalSystemParameters.nZones]
+    electricalSystemParameters.nZones] if transfer.use_elecHeating
     "Heat port for convective heat transfer with room air temperature"
     annotation (Placement(transformation(extent={{152,4},{172,24}}),
         iconTransformation(extent={{152,4},{172,24}})));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPortRad[
-    electricalSystemParameters.nZones]
+    electricalSystemParameters.nZones] if transfer.use_elecHeating
     "Heat port for radiative heat transfer with room air temperature"
     annotation (Placement(transformation(extent={{152,-70},{172,-50}})));
   BESMod.Systems.Interfaces.UseProBus useProBus annotation (
