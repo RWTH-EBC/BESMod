@@ -97,9 +97,9 @@ if __name__ == '__main__':
     INSTALL_FULL = False
     for _v in argv:
         if _v.startswith("--install_dir="):
-            INSTALL_DIR = _v.strip("--install_dir=")
+            INSTALL_DIR = _v.replace("--install_dir=", "")
         elif _v.startswith("--working_dir="):
-            WORKING_DIR = _v.strip("--working_dir=")
+            WORKING_DIR = _v.replace("--working_dir=", "")
         elif _v == "full":
             INSTALL_FULL = True
         else:
