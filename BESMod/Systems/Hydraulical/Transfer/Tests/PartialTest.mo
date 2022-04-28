@@ -28,7 +28,7 @@ partial model PartialTest
 
   Modelica.Blocks.Sources.Sine TRoom(
     amplitude=1,
-    freqHz=1/3600,
+    f=1/3600,
     offset=293.15 - 1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,

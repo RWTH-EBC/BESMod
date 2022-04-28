@@ -1,15 +1,15 @@
 within BESMod.Utilities.Electrical;
 model ConverterExample
   extends Modelica.Icons.Example;
-  RealToElecCon realToElecConGen(SouLoa=false)
+  RealToElecCon realToElecConGen(use_souLoa=false)
     annotation (Placement(transformation(extent={{-32,-84},{14,-40}})));
-  RealToElecCon realToElecConLoa(SouGen=false)
+  RealToElecCon realToElecConLoa(use_souGen=false)
     annotation (Placement(transformation(extent={{-34,-24},{12,20}})));
   RealToElecCon realToElecConBoth
     annotation (Placement(transformation(extent={{-34,30},{12,74}})));
-  Modelica.Blocks.Sources.Sine sine(freqHz=0.01)
+  Modelica.Blocks.Sources.Sine sine(f=0.01)
     annotation (Placement(transformation(extent={{-106,50},{-86,70}})));
-  Modelica.Blocks.Sources.Sine sine1(freqHz=0.01, startTime=10)
+  Modelica.Blocks.Sources.Sine sine1(f=0.01, startTime=10)
     annotation (Placement(transformation(extent={{-102,14},{-82,34}})));
 equation
   connect(sine.y, realToElecConBoth.PEleLoa) annotation (Line(points={{-85,60},

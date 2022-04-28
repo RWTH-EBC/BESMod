@@ -11,12 +11,11 @@ record ThermostaticValveDataDefinition
     "may be useful for simulation stability. Always check the influence it has on your results";
   parameter Real k=0.2
                      "Gain of controller";
-  parameter Modelica.SIunits.Time Ti=1800
-                                         "Time constant of Integrator block";
+  parameter Modelica.Units.SI.Time Ti=1800 "Time constant of Integrator block";
 
-    parameter Modelica.SIunits.PressureDifference dpFixed_nominal=1000
+  parameter Modelica.Units.SI.PressureDifference dpFixed_nominal=1000
     "Pressure drop of pipe and other resistances that are in series";
-  parameter Modelica.SIunits.PressureDifference dpValve_nominal=1000
+  parameter Modelica.Units.SI.PressureDifference dpValve_nominal=1000
     "Nominal pressure drop of fully open valve, used if CvData=IBPSA.Fluid.Types.CvTypes.OpPoint";
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));

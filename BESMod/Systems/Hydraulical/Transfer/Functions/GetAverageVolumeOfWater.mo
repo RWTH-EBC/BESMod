@@ -1,9 +1,9 @@
 within BESMod.Systems.Hydraulical.Transfer.Functions;
 function GetAverageVolumeOfWater
   "Calculate the average water volume for the whole heating unit based on the type of the unit and the installed heating load"
-  input Modelica.SIunits.HeatFlowRate Q_flow_nominal "Nominal heat flow rate";
+  input Modelica.Units.SI.HeatFlowRate Q_flow_nominal "Nominal heat flow rate";
   input BESMod.Systems.Hydraulical.Transfer.Types.HeatTransferSystemType traType "Heat transfer system type";
-  output Modelica.SIunits.Volume vol "Average water volume of heating system";
+  output Modelica.Units.SI.Volume vol "Average water volume of heating system";
 protected
   Real QFlow_nominal_internal=Q_flow_nominal/1000 "Used for conversion W to kW (unit of x-axis in diagram)";
   parameter Real slope=0.8613286803324769 "Constant for every number of registers.";

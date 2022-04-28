@@ -3,12 +3,13 @@ model ConstantHysteresis
   "On-Off controller with a constant hysteresis"
   extends BaseClasses.PartialOnOffController;
 
-  parameter Modelica.SIunits.TemperatureDifference Hysteresis = 10;
-  parameter Modelica.SIunits.Time dt_hr = 20 * 60 "Seconds for regulation when hr should be activated: If lower set temperature is hurt for more than this time period";
+  parameter Modelica.Units.SI.TemperatureDifference Hysteresis=10;
+  parameter Modelica.Units.SI.Time dt_hr=20*60
+    "Seconds for regulation when hr should be activated: If lower set temperature is hurt for more than this time period";
 
   /******************************* Variables *******************************/
 
-  Modelica.SIunits.Time t1(start=0) "Helper variable for hr algorithm";
+  Modelica.Units.SI.Time t1(start=0) "Helper variable for hr algorithm";
 
 algorithm
 

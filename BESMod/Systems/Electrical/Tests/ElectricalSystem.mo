@@ -23,7 +23,7 @@ model ElectricalSystem
 
   Modelica.Blocks.Sources.Sine LoadFromResidualBES(
     amplitude=3000,
-    freqHz=1/86400,
+    f=1/86400,
     offset=3000)
     annotation (Placement(transformation(extent={{-98,24},{-78,44}})));
   Utilities.Electrical.RealToElecCon realToElecCon(reverse=true)

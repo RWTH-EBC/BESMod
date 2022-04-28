@@ -12,7 +12,6 @@ model RadiatorTransferSystem
     final m_flow_nominal=m_flow_nominal,
     each final show_T=show_T,
     each final energyDynamics=energyDynamics,
-    each final massDynamics=massDynamics,
     each final p_start=p_start,
     each final nEle=radParameters.nEle,
     each final fraRad=radParameters.fraRad,
@@ -68,7 +67,6 @@ model RadiatorTransferSystem
   IBPSA.Fluid.Movers.FlowControlled_m_flow pumpFix_m_flow[nParallelDem](
     redeclare final package Medium = Medium,
     each final energyDynamics=energyDynamics,
-    each final massDynamics=massDynamics,
     each final p_start=p_start,
     each final T_start=T_start,
     each final X_start=X_start,

@@ -4,8 +4,10 @@ partial model PartialGeneration
   extends BESMod.Utilities.Icons.GenerationIcon;
   extends
     BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters;
-  parameter Modelica.SIunits.PressureDifference dpDem_nominal[nParallelDem]
-    "Nominal pressure loss of resistances in the demand system of the generation" annotation (Dialog(group="Design - Top Down: Parameters are given by the parent system"));
+  parameter Modelica.Units.SI.PressureDifference dpDem_nominal[nParallelDem]
+    "Nominal pressure loss of resistances in the demand system of the generation"
+    annotation (Dialog(group=
+          "Design - Top Down: Parameters are given by the parent system"));
 
   Interfaces.GenerationOutputs outBusGen
     annotation (Placement(transformation(extent={{88,-16},{116,14}})));

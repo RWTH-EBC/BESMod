@@ -4,13 +4,13 @@ model ParallelBivalentControl
   extends
     BESMod.Systems.Hydraulical.Control.Components.OnOffController.BaseClasses.PartialOnOffController;
 
-  parameter Modelica.SIunits.TemperatureDifference Hysteresis = 10;
-  parameter Modelica.SIunits.Temperature TCutOff "Cut-off temperature";
-  parameter Modelica.SIunits.Temperature TBiv "Bivalence temperature";
-  parameter Modelica.SIunits.Temperature TOda_nominal "Nominal temperature ";
-  parameter Modelica.SIunits.Temperature TRoom "Room set temperature";
-  parameter Modelica.SIunits.HeatFlowRate QDem_flow_nominal;
-  parameter Modelica.SIunits.HeatFlowRate QHP_flow_cutOff;
+  parameter Modelica.Units.SI.TemperatureDifference Hysteresis=10;
+  parameter Modelica.Units.SI.Temperature TCutOff "Cut-off temperature";
+  parameter Modelica.Units.SI.Temperature TBiv "Bivalence temperature";
+  parameter Modelica.Units.SI.Temperature TOda_nominal "Nominal temperature ";
+  parameter Modelica.Units.SI.Temperature TRoom "Room set temperature";
+  parameter Modelica.Units.SI.HeatFlowRate QDem_flow_nominal;
+  parameter Modelica.Units.SI.HeatFlowRate QHP_flow_cutOff;
 
   BESMod.Systems.Hydraulical.Control.Components.OnOffController.StorageHysteresis
     storageHysteresis(final bandwidth=Hysteresis, final pre_y_start=true)

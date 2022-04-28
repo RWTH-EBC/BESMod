@@ -9,7 +9,7 @@ model PartialInverterHeatPumpController
     final yMin=nMin,
     final wp=1,
     final wd=0,
-    final initType=Modelica.Blocks.Types.InitPID.DoNotUse_InitialIntegratorState,
+    final initType=Modelica.Blocks.Types.Init.InitialState,
     homotopyType=Modelica.Blocks.Types.LimiterHomotopy.NoHomotopy,
     final strict=false,
     final xi_start=0,

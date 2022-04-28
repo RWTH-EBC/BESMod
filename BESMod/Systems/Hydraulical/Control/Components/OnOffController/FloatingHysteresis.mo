@@ -3,15 +3,20 @@ model FloatingHysteresis
   "OnOff controller based on the theory of floating hysteresis"
   extends BaseClasses.PartialOnOffController;
 
-  parameter Modelica.SIunits.TemperatureDifference Hysteresis_max = 10 "Maximum hysteresis";
-  parameter Modelica.SIunits.TemperatureDifference Hysteresis_min = 10 "Minimum hysteresis";
-  parameter Modelica.SIunits.Time time_factor = 20 "The time which should be spent to have the floating hysteresis equal to the average of maximum and minimum hysteresis.";
-  parameter Modelica.SIunits.Time dt_hr = 20 * 60 "Seconds for regulation when hr should be activated: If lower set temperature is hurt for more than this time period";
+  parameter Modelica.Units.SI.TemperatureDifference Hysteresis_max=10
+    "Maximum hysteresis";
+  parameter Modelica.Units.SI.TemperatureDifference Hysteresis_min=10
+    "Minimum hysteresis";
+  parameter Modelica.Units.SI.Time time_factor=20
+    "The time which should be spent to have the floating hysteresis equal to the average of maximum and minimum hysteresis.";
+  parameter Modelica.Units.SI.Time dt_hr=20*60
+    "Seconds for regulation when hr should be activated: If lower set temperature is hurt for more than this time period";
 
   /******************************* Variables *******************************/
 
-  Modelica.SIunits.Time t1(start=0) "Helper variable for hr algorithm";
-  Modelica.SIunits.TemperatureDifference Hysteresis_floating = Hysteresis_min + (Hysteresis_max-Hysteresis_min)/(1+(t1/time_factor));
+  Modelica.Units.SI.Time t1(start=0) "Helper variable for hr algorithm";
+  Modelica.Units.SI.TemperatureDifference Hysteresis_floating=Hysteresis_min +
+      (Hysteresis_max - Hysteresis_min)/(1 + (t1/time_factor));
 
 algorithm
 

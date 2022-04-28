@@ -105,7 +105,6 @@ model HeatPumpAndHeatingRod "Bivalent monoenergetic heat pump"
     final TCon_start=T_start,
     final pEva_start=Medium_eva.p_default,
     final TEva_start=Medium_eva.T_default,
-    final massDynamics=massDynamics,
     final energyDynamics=energyDynamics,
     final show_TPort=show_T,
     redeclare model PerDataMainHP = PerDataMainHP,
@@ -178,7 +177,6 @@ model HeatPumpAndHeatingRod "Bivalent monoenergetic heat pump"
   IBPSA.Fluid.Movers.SpeedControlled_y pump(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
-    final massDynamics=massDynamics,
     final p_start=p_start,
     final T_start=T_start,
     final allowFlowReversal=allowFlowReversal,
@@ -211,7 +209,6 @@ model HeatPumpAndHeatingRod "Bivalent monoenergetic heat pump"
     final dp_nominal=heatingRodParameters.dp_nominal,
     final tau=30,
     final energyDynamics=energyDynamics,
-    final massDynamics=massDynamics,
     final p_start=p_start,
     final T_start=T_start,
     final Q_flow_nominal=heatPumpParameters.QSec_flow_nominal,
@@ -277,7 +274,8 @@ Utilities.KPIs.InternalKPICalculator KPIQHR(
         rotation=180,
         origin={130,-82})));
 protected
-  parameter Modelica.SIunits.PressureDifference dpHeaRod_nominal = if use_heaRod then heatingRodParameters.dp_nominal else 0;
+  parameter Modelica.Units.SI.PressureDifference dpHeaRod_nominal=if use_heaRod
+       then heatingRodParameters.dp_nominal else 0;
 
 equation
   connect(KPIQHP.KPIBus, outBusGen.QHP_flow) annotation (Line(points={{-63.88,-113},{0,-113},{0,-100}}, color={255,204,51}, thickness=0.5), Text(string="%second", index=1, extent={{6,3},{6,3}}, horizontalAlignment=TextAlignment.Left));

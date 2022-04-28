@@ -4,8 +4,9 @@ model ConstantHysteresisTimeBasedHR
   extends
     BESMod.Systems.Hydraulical.Control.Components.OnOffController.BaseClasses.PartialOnOffController;
 
-  parameter Modelica.SIunits.TemperatureDifference Hysteresis = 10;
-  parameter Modelica.SIunits.Time dt_hr  "Seconds for regulation when hr should be activated: If lower set temperature is hurt for more than this time period";
+  parameter Modelica.Units.SI.TemperatureDifference Hysteresis=10;
+  parameter Modelica.Units.SI.Time dt_hr
+    "Seconds for regulation when hr should be activated: If lower set temperature is hurt for more than this time period";
   parameter Real addSet_dt_hr=1 "Each time dt_hr passes, the output of the heating rod is increased by this amount in percentage. Maximum and default is 100 (on-off hr)%";
 
   BESMod.Systems.Hydraulical.Control.Components.OnOffController.StorageHysteresis

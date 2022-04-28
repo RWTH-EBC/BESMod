@@ -5,32 +5,59 @@ record SystemParametersBaseDataDefinition
 
   // Heat demand levels
   parameter Integer nZones=1 "Number of zones to transfer heat to"  annotation(Dialog(group="Heat demand"));
-  parameter Modelica.SIunits.HeatFlowRate QBui_flow_nominal[nZones]=fill(9710.1, nZones)
-    "Nominal heating load at outdoor air temperature of each zone" annotation(Dialog(group="Heat demand"));
-  parameter Modelica.SIunits.HeatFlowRate QDHW_flow_nomial=DHWProfile.m_flow_nominal * 4184 * (TSetDHW-TDHWWaterCold) "DHW heat demand" annotation(Dialog(group="Heat demand"));
+  parameter Modelica.Units.SI.HeatFlowRate QBui_flow_nominal[nZones]=fill(
+      9710.1, nZones)
+    "Nominal heating load at outdoor air temperature of each zone"
+    annotation (Dialog(group="Heat demand"));
+  parameter Modelica.Units.SI.HeatFlowRate QDHW_flow_nomial=DHWProfile.m_flow_nominal
+      *4184*(TSetDHW - TDHWWaterCold) "DHW heat demand"
+    annotation (Dialog(group="Heat demand"));
 
   // Temperature Levels
-  parameter Modelica.SIunits.Temperature TOda_nominal(min=233.15, max=373.15, start=273.15) "Nominal outdoor air temperature" annotation(Dialog(group="Temperature levels"));
-  parameter Modelica.SIunits.Temperature TSetZone_nominal[nZones]=fill(293.15,
+  parameter Modelica.Units.SI.Temperature TOda_nominal(
+    min=233.15,
+    max=373.15,
+    start=273.15) "Nominal outdoor air temperature"
+    annotation (Dialog(group="Temperature levels"));
+  parameter Modelica.Units.SI.Temperature TSetZone_nominal[nZones]=fill(293.15,
       nZones) "Nominal set temerature of zones"
-                          annotation(Dialog(group="Temperature levels"));
-
-  parameter Modelica.SIunits.Temperature THydSup_nominal[nZones](each min=233.15, each max=373.15, each start=313.15) "Hydraulic supply temperature at nominal condition in the transfer system"
-    annotation (Dialog(group="Temperature levels"));
-  parameter Modelica.SIunits.Temperature TVenSup_nominal[nZones](each min=233.15, each max=373.15, each start=293.15) = TSetZone_nominal "Ventilation supply temperature at nominal condition"
-    annotation (Dialog(group="Temperature levels"));
-  parameter Modelica.SIunits.Temperature TEleSup_nominal[nZones](each min=233.15, each max=373.15, each start=293.15) = TSetZone_nominal "Electrical supply temperature at nominal condition"
     annotation (Dialog(group="Temperature levels"));
 
-  parameter Modelica.SIunits.Temperature TSetDHW=323.15   "Constant DHW demand temperature for design" annotation(Dialog(group="Temperature levels"));
-  parameter Modelica.SIunits.Temperature TDHWWaterCold=283.15 "Cold water temperature (new water)" annotation(Dialog(group="Temperature levels"));
+  parameter Modelica.Units.SI.Temperature THydSup_nominal[nZones](
+    each min=233.15,
+    each max=373.15,
+    each start=313.15)
+    "Hydraulic supply temperature at nominal condition in the transfer system"
+    annotation (Dialog(group="Temperature levels"));
+  parameter Modelica.Units.SI.Temperature TVenSup_nominal[nZones](
+    each min=233.15,
+    each max=373.15,
+    each start=293.15) = TSetZone_nominal
+    "Ventilation supply temperature at nominal condition"
+    annotation (Dialog(group="Temperature levels"));
+  parameter Modelica.Units.SI.Temperature TEleSup_nominal[nZones](
+    each min=233.15,
+    each max=373.15,
+    each start=293.15) = TSetZone_nominal
+    "Electrical supply temperature at nominal condition"
+    annotation (Dialog(group="Temperature levels"));
 
-  parameter Modelica.SIunits.Temperature TAmbHyd=min(TSetZone_nominal)
-                                                                    "Ambient temperature of hydraulic system"  annotation(Dialog(group="Temperature levels"));
-  parameter Modelica.SIunits.Temperature TAmbVen=min(TSetZone_nominal)
-                                                                    "Ambient temperature of ventilation system"  annotation(Dialog(group="Temperature levels"));
-  parameter Modelica.SIunits.Temperature TAmbEle=min(TSetZone_nominal)
-                                                                    "Ambient temperature of electrical system"  annotation(Dialog(group="Temperature levels"));
+  parameter Modelica.Units.SI.Temperature TSetDHW=323.15
+    "Constant DHW demand temperature for design"
+    annotation (Dialog(group="Temperature levels"));
+  parameter Modelica.Units.SI.Temperature TDHWWaterCold=283.15
+    "Cold water temperature (new water)"
+    annotation (Dialog(group="Temperature levels"));
+
+  parameter Modelica.Units.SI.Temperature TAmbHyd=min(TSetZone_nominal)
+    "Ambient temperature of hydraulic system"
+    annotation (Dialog(group="Temperature levels"));
+  parameter Modelica.Units.SI.Temperature TAmbVen=min(TSetZone_nominal)
+    "Ambient temperature of ventilation system"
+    annotation (Dialog(group="Temperature levels"));
+  parameter Modelica.Units.SI.Temperature TAmbEle=min(TSetZone_nominal)
+    "Ambient temperature of electrical system"
+    annotation (Dialog(group="Temperature levels"));
   // Boundary conditions
   parameter String filNamWea=Modelica.Utilities.Files.loadResource("modelica://BESMod/Resources/TRY2015_522361130393_Jahr_City_Potsdam.mos")
     "Name of weather data file"
@@ -53,9 +80,17 @@ record SystemParametersBaseDataDefinition
       "modelica://BESMod/Resources/DHWCalc.txt")
     "File where matrix is stored for DHWCalc"
     annotation (Dialog(group="DHW", tab="Inputs", enable=use_dhwCalc and use_dhw));
-  parameter Modelica.SIunits.Volume V_dhwCalc_day=0 "Average daily tapping volume in DHWCalc table" annotation (Dialog(group="DHW", tab="Inputs", enable=use_dhwCalc));
-  parameter Modelica.SIunits.Volume V_dhw_day=if use_dhwCalc then V_dhwCalc_day else DHWProfile.V_dhw_day "Average daily tapping volume"
-      annotation (Dialog(group="DHW", tab="Inputs", enable=use_dhw));
+  parameter Modelica.Units.SI.Volume V_dhwCalc_day=0
+    "Average daily tapping volume in DHWCalc table" annotation (Dialog(
+      group="DHW",
+      tab="Inputs",
+      enable=use_dhwCalc));
+  parameter Modelica.Units.SI.Volume V_dhw_day=if use_dhwCalc then
+      V_dhwCalc_day else DHWProfile.V_dhw_day "Average daily tapping volume"
+    annotation (Dialog(
+      group="DHW",
+      tab="Inputs",
+      enable=use_dhw));
 
   // HVAC-Subsystems
   parameter Boolean use_hydraulic=true "=false to disable hydraulic subsystem" annotation(Dialog(group="System layout"));

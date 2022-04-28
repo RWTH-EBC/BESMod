@@ -29,8 +29,8 @@ model PartBiv_PI_ConOut_HPS
       QDem_flow_nominal=sum(transferParameters.Q_flow_nominal),
       QHP_flow_cutOff=QHP_flow_cutOff));
 
-    parameter Modelica.SIunits.Temperature TCutOff "Cut-off temperature";
-    parameter Modelica.SIunits.HeatFlowRate QHP_flow_cutOff;
+  parameter Modelica.Units.SI.Temperature TCutOff "Cut-off temperature";
+  parameter Modelica.Units.SI.HeatFlowRate QHP_flow_cutOff;
 
 equation
     connect(HP_nSet_Controller.T_Meas, sigBusGen.hp_bus.TConOutMea) annotation (

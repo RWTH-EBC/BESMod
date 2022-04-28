@@ -9,12 +9,13 @@ model PartialFluidSubsystem
   parameter Boolean show_T=false
     "= true, if actual temperature at port is computed"
     annotation (Dialog(tab="Advanced", group="Diagnostics"));
-  parameter Modelica.SIunits.Density rho = Medium.density(sta_nominal)
-      "Density of medium / fluid in heat distribution system"
-      annotation(Dialog(tab="Assumptions", group="General"));
-  parameter Modelica.SIunits.SpecificHeatCapacity cp = Medium.specificHeatCapacityCp(sta_nominal)
-      "Specific heat capacaity of medium / fluid in heat distribution system"
-      annotation(Dialog(tab="Assumptions", group="General"));
+  parameter Modelica.Units.SI.Density rho=Medium.density(sta_nominal)
+    "Density of medium / fluid in heat distribution system"
+    annotation (Dialog(tab="Assumptions", group="General"));
+  parameter Modelica.Units.SI.SpecificHeatCapacity cp=
+      Medium.specificHeatCapacityCp(sta_nominal)
+    "Specific heat capacaity of medium / fluid in heat distribution system"
+    annotation (Dialog(tab="Assumptions", group="General"));
 
 protected
   parameter Medium.ThermodynamicState sta_nominal=Medium.setState_pTX(

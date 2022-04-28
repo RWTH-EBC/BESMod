@@ -35,7 +35,6 @@ model CombiStorage
   AixLib.Fluid.Storage.BufferStorage bufferStorage(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
-    final massDynamics=massDynamics,
     final p_start=p_start,
     final mSenFac=1,
     redeclare final package MediumHC1 = MediumDHW,

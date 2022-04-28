@@ -14,15 +14,14 @@ model TEASERThermalZone
   parameter Real ventRate[nZones]=fill(0, nZones) "Constant mechanical ventilation rate";
 
   parameter Boolean use_verboseEnergyBalance = true "=false to disable the integration of the verbose energy balance";
-  parameter Modelica.SIunits.TemperatureDifference dTComfort=2
-                                                       "Temperature difference to room set temperature at which the comfort is still acceptable. In DIN EN 15251, all temperatures below 22 °C - 2 K count as discomfort. Hence the default value. If your room set temperature is lower, consider using smaller values.";
+  parameter Modelica.Units.SI.TemperatureDifference dTComfort=2
+    "Temperature difference to room set temperature at which the comfort is still acceptable. In DIN EN 15251, all temperatures below 22 °C - 2 K count as discomfort. Hence the default value. If your room set temperature is lower, consider using smaller values.";
 
   parameter Modelica.Fluid.Types.Dynamics energyDynamics=Modelica.Fluid.Types.Dynamics.DynamicFreeInitial
     "Type of energy balance: dynamic (3 initialization options) or steady state"
     annotation (Dialog(tab="Dynamics"));
-  parameter Modelica.SIunits.Temperature T_start=
-      293.15 "Start value of temperature"
-    annotation (Dialog(tab="Initialization"));
+  parameter Modelica.Units.SI.Temperature T_start=293.15
+    "Start value of temperature" annotation (Dialog(tab="Initialization"));
 
   AixLib.ThermalZones.ReducedOrder.ThermalZone.ThermalZone thermalZone[nZones](
     redeclare each final package Medium = MediumZone,
@@ -496,8 +495,8 @@ equation
           -36,-79},{-30.6,-79}},
                            color={0,0,127}));
   connect(heatFlowSensorRad.Q_flow, addTra.u2)
-    annotation (Line(points={{-72,-70},{-72,-78},{-53,-78}}, color={0,0,127}));
-  connect(heatFlowSensorConv.Q_flow, addTra.u1) annotation (Line(points={{-76,50},
+    annotation (Line(points={{-72,-71},{-72,-78},{-53,-78}}, color={0,0,127}));
+  connect(heatFlowSensorConv.Q_flow, addTra.u1) annotation (Line(points={{-76,49},
           {-76,-72},{-53,-72}},                                  color={0,0,127}));
   connect(thermalZone.TAir, outBusDem.TZone) annotation (Line(points={{-42.7,
           76.8},{-48,76.8},{-48,-2},{98,-2}}, color={0,0,127}), Text(

@@ -7,24 +7,24 @@ model BuildingsRoomCase600FF
     ABui=roo.AFlo,
     AZone={roo.AFlo},
     nZones=1);
-  parameter Modelica.SIunits.TemperatureDifference dTComfort=2
-                                                       "Temperature difference to room set temperature at which the comfort is still acceptable. In DIN EN 15251, all temperatures below 22 °C - 2 K count as discomfort. Hence the default value. If your room set temperature is lower, consider using smaller values.";
+  parameter Modelica.Units.SI.TemperatureDifference dTComfort=2
+    "Temperature difference to room set temperature at which the comfort is still acceptable. In DIN EN 15251, all temperatures below 22 °C - 2 K count as discomfort. Hence the default value. If your room set temperature is lower, consider using smaller values.";
 
   parameter Real natInf = 0.5 "Infiltration rate";
-  parameter Modelica.SIunits.Angle S_=
-    Buildings.Types.Azimuth.S "Azimuth for south walls";
-  parameter Modelica.SIunits.Angle E_=
-    Buildings.Types.Azimuth.E "Azimuth for east walls";
-  parameter Modelica.SIunits.Angle W_=
-    Buildings.Types.Azimuth.W "Azimuth for west walls";
-  parameter Modelica.SIunits.Angle N_=
-    Buildings.Types.Azimuth.N "Azimuth for north walls";
-  parameter Modelica.SIunits.Angle C_=
-    Buildings.Types.Tilt.Ceiling "Tilt for ceiling";
-  parameter Modelica.SIunits.Angle F_=
-    Buildings.Types.Tilt.Floor "Tilt for floor";
-  parameter Modelica.SIunits.Angle Z_=
-    Buildings.Types.Tilt.Wall "Tilt for wall";
+  parameter Modelica.Units.SI.Angle S_=Buildings.Types.Azimuth.S
+    "Azimuth for south walls";
+  parameter Modelica.Units.SI.Angle E_=Buildings.Types.Azimuth.E
+    "Azimuth for east walls";
+  parameter Modelica.Units.SI.Angle W_=Buildings.Types.Azimuth.W
+    "Azimuth for west walls";
+  parameter Modelica.Units.SI.Angle N_=Buildings.Types.Azimuth.N
+    "Azimuth for north walls";
+  parameter Modelica.Units.SI.Angle C_=Buildings.Types.Tilt.Ceiling
+    "Tilt for ceiling";
+  parameter Modelica.Units.SI.Angle F_=Buildings.Types.Tilt.Floor
+    "Tilt for floor";
+  parameter Modelica.Units.SI.Angle Z_=Buildings.Types.Tilt.Wall
+    "Tilt for wall";
   parameter Integer nConExtWin = 1 "Number of constructions with a window";
   parameter Integer nConBou = 1
     "Number of surface that are connected to constructions that are modeled inside the room";
@@ -108,9 +108,7 @@ model BuildingsRoomCase600FF
       fFra={0.001},
       til={Z_},
       azi={S_}),
-    lat=0.69394291059295,
     energyDynamics=energyDynamics,
-    massDynamics=massDynamics,
     nPorts=if use_ventilation then 5 else 3)                                                                              "Room model"
     annotation (Placement(transformation(extent={{30,-30},{-40,36}})));
   Modelica.Blocks.Routing.Replicator replicator(nout=max(1,nConExtWin))
@@ -243,8 +241,8 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(TRooAir.T, buiMeaBus.TZoneMea[1]) annotation (Line(points={{-1,68},{-1,
-          83.5},{0,83.5},{0,99}},                    color={0,0,127}), Text(
+  connect(TRooAir.T, buiMeaBus.TZoneMea[1]) annotation (Line(points={{-1,68.9},
+          {-1,83.5},{0,83.5},{0,99}},                color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
@@ -315,10 +313,10 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(TRooAir.T, comfortCalculatorHea[1].TZone) annotation (Line(points={{-1,
-          68},{40,68},{40,7},{64.6,7}}, color={0,0,127}));
-  connect(TRooAir.T, comfortCalculatorCool[1].TZone) annotation (Line(points={{-1,
-          68},{-2,68},{-2,70},{0,70},{0,68},{40,68},{40,-11},{64.6,-11}}, color=
+  connect(TRooAir.T, comfortCalculatorHea[1].TZone) annotation (Line(points={{-1,68.9},
+          {40,68.9},{40,7},{64.6,7}},   color={0,0,127}));
+  connect(TRooAir.T, comfortCalculatorCool[1].TZone) annotation (Line(points={{-1,68.9},
+          {-2,68.9},{-2,70},{0,70},{0,68},{40,68},{40,-11},{64.6,-11}},   color=
          {0,0,127}));
 
   annotation (

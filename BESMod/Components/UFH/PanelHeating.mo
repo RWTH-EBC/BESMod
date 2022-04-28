@@ -13,15 +13,18 @@ model PanelHeating
       choice = true "Floorheating",
       choice = false "Ceilingheating",
       radioButtons = true));
-  parameter Modelica.SIunits.Length Spacing=Modelica.Constants.pi * floorHeatingType.k_top *
-          floorHeatingType.diameter *
-          AixLib.Fluid.HeatExchangers.ActiveWalls.BaseClasses.logDT({floorHeatingType.Temp_nom[1],
-          floorHeatingType.Temp_nom[2],floorHeatingType.Temp_nom[3]}) / (floorHeatingType.q_dot_nom * 2) "Spacing of Pipe";
+  parameter Modelica.Units.SI.Length Spacing=Modelica.Constants.pi*
+      floorHeatingType.k_top*floorHeatingType.diameter*
+      AixLib.Fluid.HeatExchangers.ActiveWalls.BaseClasses.logDT({
+      floorHeatingType.Temp_nom[1],floorHeatingType.Temp_nom[2],
+      floorHeatingType.Temp_nom[3]})/(floorHeatingType.q_dot_nom*2)
+    "Spacing of Pipe";
   parameter Integer dis(min=1) = 5 "Number of Discreatisation Layers";
 
-  parameter Modelica.SIunits.Area A "Area of floor / heating panel part";
+  parameter Modelica.Units.SI.Area A "Area of floor / heating panel part";
 
-  parameter Modelica.SIunits.Temperature T0=Modelica.SIunits.Conversions.from_degC(20)
+  parameter Modelica.Units.SI.Temperature T0=
+      Modelica.Units.Conversions.from_degC(20)
     "Initial temperature, in degrees Celsius";
   parameter Integer calcMethod=2 "Calculation method for convective heat transfer coefficient at surface" annotation (Dialog(group="Heat convection",
         descriptionLabel=true), choices(
@@ -30,12 +33,13 @@ model PanelHeating
       choice=3 "Custom hCon (constant)",
       radioButtons=true));
 
-  parameter Modelica.SIunits.CoefficientOfHeatTransfer hCon_const=2.5 "Custom convective heat transfer coefficient"
-    annotation (Dialog(group="Heat convection",
-    descriptionLabel=true,
-        enable=if calcMethod == 3 then true else false));
+  parameter Modelica.Units.SI.CoefficientOfHeatTransfer hCon_const=2.5
+    "Custom convective heat transfer coefficient" annotation (Dialog(
+      group="Heat convection",
+      descriptionLabel=true,
+      enable=if calcMethod == 3 then true else false));
 
-  final parameter Modelica.SIunits.Emissivity eps=floorHeatingType.eps
+  final parameter Modelica.Units.SI.Emissivity eps=floorHeatingType.eps
     "Emissivity";
 
   final parameter Real cTopRatio(min=0,max=1)= floorHeatingType.c_top_ratio;
@@ -52,11 +56,11 @@ model PanelHeating
     AixLib.Fluid.HeatExchangers.ActiveWalls.BaseClasses.HeatCapacityPerArea cDown=
       cFloorHeating*(1 - cTopRatio);
 
-  final parameter Modelica.SIunits.Length tubeLength=A/Spacing;
+  final parameter Modelica.Units.SI.Length tubeLength=A/Spacing;
 
-  final parameter Modelica.SIunits.Volume VWater=
-    Modelica.SIunits.Conversions.from_litre(Modelica.Constants.pi * floorHeatingType.diameter ^ 2 * tubeLength / 4)
-      "Volume of Water";
+  final parameter Modelica.Units.SI.Volume VWater=
+      Modelica.Units.Conversions.from_litre(Modelica.Constants.pi*
+      floorHeatingType.diameter^2*tubeLength/4) "Volume of Water";
 
   // ACCORDING TO GLUECK, Bauteilaktivierung 1999
 
@@ -65,11 +69,11 @@ model PanelHeating
   //     (floorHeatingType.q_dot_nom/8.92)^(1/1.1) + floorHeatingType.Temp_nom[3]
   //     else floorHeatingType.q_dot_nom/6.7 + floorHeatingType.Temp_nom[3];
 
-  final parameter Modelica.SIunits.CoefficientOfHeatTransfer
-    kTop_nominal=floorHeatingType.k_top;
+  final parameter Modelica.Units.SI.CoefficientOfHeatTransfer kTop_nominal=
+      floorHeatingType.k_top;
 
-  final parameter Modelica.SIunits.CoefficientOfHeatTransfer
-    kDown_nominal = floorHeatingType.k_down;
+  final parameter Modelica.Units.SI.CoefficientOfHeatTransfer kDown_nominal=
+      floorHeatingType.k_down;
 
   Modelica.Fluid.Sensors.TemperatureTwoPort TFlow(redeclare package Medium =
         Medium)

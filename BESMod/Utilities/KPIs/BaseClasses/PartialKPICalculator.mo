@@ -20,7 +20,7 @@ partial model PartialKPICalculator "Partial KPI Calculator"
                                 "True to calc moving average";
   parameter Boolean calc_intBelThres=true
                                 "True to calc integral below threshold, e.g. for discomfort";
-  parameter Modelica.SIunits.Time aveTime=24*3600
+  parameter Modelica.Units.SI.Time aveTime=24*3600
     "Time span for moving average" annotation (Dialog(enable=calc_movAve));
   Modelica.Blocks.Logical.Switch switch1 if calc_singleOnTime
     annotation (Placement(transformation(extent={{40,-10},{60,10}})));

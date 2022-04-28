@@ -4,15 +4,15 @@ partial record HeatPumpSafetyControl
   parameter Boolean use_minRunTime=true
     "False if minimal runtime of HP is not considered"
   annotation (Dialog(group="HP-Security: OnOffControl"), choices(checkBox=true));
-  parameter Modelica.SIunits.Time minRunTime=600
-                                               "Mimimum runtime of heat pump"
-    annotation (Dialog(group="HP-Security: OnOffControl",enable=use_minRunTime));
+  parameter Modelica.Units.SI.Time minRunTime=600
+    "Mimimum runtime of heat pump" annotation (Dialog(group=
+          "HP-Security: OnOffControl", enable=use_minRunTime));
   parameter Boolean use_minLocTime=true
     "False if minimal locktime of HP is not considered"
     annotation (Dialog(group="HP-Security: OnOffControl"), choices(checkBox=true));
-  parameter Modelica.SIunits.Time minLocTime=1200
-                                               "Minimum lock time of heat pump"
-    annotation (Dialog(group="HP-Security: OnOffControl", enable=use_minLocTime));
+  parameter Modelica.Units.SI.Time minLocTime=1200
+    "Minimum lock time of heat pump" annotation (Dialog(group=
+          "HP-Security: OnOffControl", enable=use_minLocTime));
   parameter Boolean use_runPerHou=true
     "False if maximal runs per hour HP are not considered"
     annotation (Dialog(group="HP-Security: OnOffControl"), choices(checkBox=true));

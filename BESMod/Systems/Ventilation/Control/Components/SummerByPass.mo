@@ -5,14 +5,14 @@ model SummerByPass
   parameter Integer day_summer_end = day_summer_start + 31 + 30 + 31 + 31 + 30
                                                                               "Day the summertime ends. Default to 30th of September";
   parameter Real k=1 "Gain of controller";
-  parameter Modelica.SIunits.Time Ti=120 "Time constant of Integrator block";
+  parameter Modelica.Units.SI.Time Ti=120 "Time constant of Integrator block";
   IBPSA.Controls.Continuous.LimPID conPIDHeatingCooling(
     final controllerType=Modelica.Blocks.Types.SimpleController.PI,
     final k=k,
     final Ti=Ti,
     final yMax=1,
     final yMin=0,
-    final initType=Modelica.Blocks.Types.InitPID.InitialOutput,
+    final initType=Modelica.Blocks.Types.Init.InitialOutput,
     final y_start=0,
     final reverseActing=false)
     annotation (Placement(transformation(extent={{-2,-58},{18,-38}})));
