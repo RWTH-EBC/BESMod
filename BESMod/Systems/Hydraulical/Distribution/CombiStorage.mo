@@ -102,7 +102,7 @@ model CombiStorage
         extent={{-12,-12},{12,12}},
         rotation=0,
         origin={-62,-72})));
-    Modelica.Blocks.Sources.RealExpression realExpression[parameters.nLayer](y=
+    Modelica.Blocks.Sources.RealExpression realExpression[parameters.nLayer](y(unit="K", displayUnit="degC")=
           bufferStorage.layer.T)
       annotation (Placement(transformation(extent={{-42,-122},{-22,-102}})));
 

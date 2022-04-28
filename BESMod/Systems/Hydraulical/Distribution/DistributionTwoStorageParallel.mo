@@ -66,22 +66,22 @@ model DistributionTwoStorageParallel
   Components.Valves.ArtificialThreeWayValve artificialThreeWayValve(redeclare
       final package Medium = MediumGen, final p_hydr=p_start)
     annotation (Placement(transformation(extent={{-68,36},{-18,80}})));
-  Modelica.Blocks.Sources.RealExpression T_stoDHWTop(final y=storageDHW.layer[
+  Modelica.Blocks.Sources.RealExpression T_stoDHWTop(final y(unit="K", displayUnit="degC")=storageDHW.layer[
         dhwParameters.nLayer].T) annotation (Placement(transformation(
         extent={{-5,-3},{5,3}},
         rotation=180,
         origin={37,87})));
-  Modelica.Blocks.Sources.RealExpression T_stoBufTop(final y=storageBuf.layer[
+  Modelica.Blocks.Sources.RealExpression T_stoBufTop(final y(unit="K", displayUnit="degC")=storageBuf.layer[
         bufParameters.nLayer].T) annotation (Placement(transformation(
         extent={{-5,-2},{5,2}},
         rotation=180,
         origin={23,92})));
-  Modelica.Blocks.Sources.RealExpression T_stoBufBot(final y=storageBuf.layer[1].T)
+  Modelica.Blocks.Sources.RealExpression T_stoBufBot(final y(unit="K", displayUnit="degC")=storageBuf.layer[1].T)
     annotation (Placement(transformation(
         extent={{-5,-3},{5,3}},
         rotation=180,
         origin={23,87})));
-  Modelica.Blocks.Sources.RealExpression T_stoDHWBot(final y=storageDHW.layer[1].T)
+  Modelica.Blocks.Sources.RealExpression T_stoDHWBot(final y(unit="K", displayUnit="degC")=storageDHW.layer[1].T)
     annotation (Placement(transformation(
         extent={{-5,-3},{5,3}},
         rotation=180,

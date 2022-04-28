@@ -142,7 +142,7 @@ partial model PartialModelicaConferenceUseCase
 
 
   annotation (experiment(
-      StopTime=864000,
+      StopTime=31536000,
       Interval=600,
       __Dymola_Algorithm="Dassl"));
 end PartialModelicaConferenceUseCase;

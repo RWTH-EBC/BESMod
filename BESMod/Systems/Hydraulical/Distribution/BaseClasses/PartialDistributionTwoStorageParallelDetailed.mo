@@ -93,22 +93,22 @@ partial model PartialDistributionTwoStorageParallelDetailed
         extent={{-12,-12},{12,12}},
         rotation=0,
         origin={-82,2})));
-  Modelica.Blocks.Sources.RealExpression T_stoDHWTop(final y=storageDHW.layer[
+  Modelica.Blocks.Sources.RealExpression T_stoDHWTop(final y(unit="K", displayUnit="degC")=storageDHW.layer[
         dhwParameters.nLayer].T) annotation (Placement(transformation(
         extent={{-17,-6},{17,6}},
         rotation=0,
         origin={-33,70})));
-  Modelica.Blocks.Sources.RealExpression T_stoBufTop(final y=storageBuf.layer[
+  Modelica.Blocks.Sources.RealExpression T_stoBufTop(final y(unit="K", displayUnit="degC")=storageBuf.layer[
         bufParameters.nLayer].T) annotation (Placement(transformation(
         extent={{-16,-5},{16,5}},
         rotation=0,
         origin={-34,87})));
-  Modelica.Blocks.Sources.RealExpression T_stoBufBot(final y=storageBuf.layer[1].T)
+  Modelica.Blocks.Sources.RealExpression T_stoBufBot(final y(unit="K", displayUnit="degC")=storageBuf.layer[1].T)
     annotation (Placement(transformation(
         extent={{-16,-5},{16,5}},
         rotation=0,
         origin={-34,79})));
-  Modelica.Blocks.Sources.RealExpression T_stoDHWBot(final y=storageDHW.layer[1].T)
+  Modelica.Blocks.Sources.RealExpression T_stoDHWBot(final y(unit="K", displayUnit="degC")=storageDHW.layer[1].T)
     annotation (Placement(transformation(
         extent={{-16,-5},{16,5}},
         rotation=0,
