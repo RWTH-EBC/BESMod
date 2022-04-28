@@ -4,8 +4,8 @@ model ThermostaticValvePIControlled
 
   parameter Real k[nZones]=fill(0.2, nZones)
                      "Gain of controller";
-  parameter Modelica.SIunits.Time Ti[nZones]=fill(1800, nZones)
-                                         "Time constant of Integrator block";
+  parameter Modelica.Units.SI.Time Ti[nZones]=fill(1800, nZones)
+    "Time constant of Integrator block";
   Modelica.Blocks.Continuous.LimPID PI[nZones](
     each final controllerType=Modelica.Blocks.Types.SimpleController.PI,
     final k=k,

@@ -33,7 +33,6 @@ model ThreeWayValveWithFlowReturn
   IBPSA.Fluid.Actuators.Valves.ThreeWayEqualPercentageLinear threWayValRet(
       redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
-    final massDynamics=massDynamics,
     final p_start=p_start,
     final T_start=T_start,
     final tau=parameters.tau,
@@ -63,7 +62,6 @@ model ThreeWayValveWithFlowReturn
   IBPSA.Fluid.Actuators.Valves.ThreeWayEqualPercentageLinear threWayValFlow(
     redeclare package Medium = Medium,
     final energyDynamics=energyDynamics,
-    final massDynamics=massDynamics,
     final p_start=p_start,
     final T_start=T_start,
     final tau=parameters.tau,

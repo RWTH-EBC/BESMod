@@ -38,19 +38,22 @@ model PVSystemMultiSub
   constrainedby AixLib.DataBase.SolarElectric.PVBaseDataDefinition
     annotation(choicesAllMatching=true,Placement(transformation(extent={{-82,-40},
             {-62,-20}})));
-  parameter Modelica.SIunits.Angle lat "Location's Latitude"
-  annotation(Dialog(group="Design - Top Down: Parameters are given by the parent system"));
-  parameter Modelica.SIunits.Angle lon "Location's Longitude"
-  annotation(Dialog(group="Design - Top Down: Parameters are given by the parent system"));
+  parameter Modelica.Units.SI.Angle lat "Location's Latitude" annotation (
+      Dialog(group=
+          "Design - Top Down: Parameters are given by the parent system"));
+  parameter Modelica.Units.SI.Angle lon "Location's Longitude" annotation (
+      Dialog(group=
+          "Design - Top Down: Parameters are given by the parent system"));
   parameter Real alt "Site altitude in Meters, default= 1"
   annotation(Dialog(group="Design - Top Down: Parameters are given by the parent system"));
-  parameter Modelica.SIunits.Time timZon
+  parameter Modelica.Units.SI.Time timZon
     "Time zone. Should be equal with timZon in ReaderTMY3, if PVSystem and ReaderTMY3 are used together."
-    annotation(Dialog(group="Design - Top Down: Parameters are given by the parent system"));
+    annotation (Dialog(group=
+          "Design - Top Down: Parameters are given by the parent system"));
   parameter Real n_mod[numGenUnits]={f_design[i]*ARoof/pVParameters[i].A_mod for i in 1:numGenUnits} "Number of connected PV modules";
-  parameter Modelica.SIunits.Angle til[numGenUnits]=fill(20*Modelica.Constants.pi/180,numGenUnits) "Surface's tilt angle (0:flat)";
-  parameter Modelica.SIunits.Angle azi[numGenUnits]=fill(0*Modelica.Constants.pi/180,numGenUnits)  "Surface's azimut angle (0:South)";
-  parameter Modelica.SIunits.Area ARoof(min=0) "Roof area of building" annotation(Dialog(group="Design - Top Down: Parameters are given by the parent system"));
+  parameter Modelica.Units.SI.Angle til[numGenUnits]=fill(20*Modelica.Constants.pi/180,numGenUnits) "Surface's tilt angle (0:flat)";
+  parameter Modelica.Units.SI.Angle azi[numGenUnits]=fill(0*Modelica.Constants.pi/180,numGenUnits)  "Surface's azimut angle (0:South)";
+  parameter Modelica.Units.SI.Area ARoof(min=0) "Roof area of building" annotation(Dialog(group="Design - Top Down: Parameters are given by the parent system"));
 
 equation
   for i in 1:numGenUnits loop

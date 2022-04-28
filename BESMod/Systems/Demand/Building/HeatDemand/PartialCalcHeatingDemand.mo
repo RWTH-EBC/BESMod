@@ -4,7 +4,8 @@ partial model PartialCalcHeatingDemand
   extends Modelica.Icons.Example;
   parameter Real h_heater[building.nZones] "Upper limit controller output of the heater";
   parameter Real KR_heater=1000 "Gain of the heating controller";
-  parameter Modelica.SIunits.Time TN_heater=1 "Time constant of the heating controller";
+  parameter Modelica.Units.SI.Time TN_heater=1
+    "Time constant of the heating controller";
   replaceable parameter BESMod.Systems.RecordsCollection.SystemParametersBaseDataDefinition
     systemParameters constrainedby
     BESMod.Systems.RecordsCollection.SystemParametersBaseDataDefinition

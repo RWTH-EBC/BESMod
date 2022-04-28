@@ -7,13 +7,13 @@ model DHWSuperheating "Increase the DHW set temperature at 12 pm for 1 h"
     annotation (Placement(transformation(extent={{-58,-28},{-38,-8}})));
   Modelica.Blocks.Sources.Constant const(k=houOveHea)
     annotation (Placement(transformation(extent={{-92,-10},{-72,10}})));
-  parameter Modelica.SIunits.Time houOveHea(displayUnit="h")=43200
-                                               "Time of the day where overheating of DHW starts";
-  parameter Modelica.SIunits.Time dtOveHea(displayUnit="h")=3600
+  parameter Modelica.Units.SI.Time houOveHea(displayUnit="h") = 43200
+    "Time of the day where overheating of DHW starts";
+  parameter Modelica.Units.SI.Time dtOveHea(displayUnit="h") = 3600
     "Time prior and after houOveHea to activate overheating";
-  parameter Modelica.SIunits.Temperature TSetDHW "DHW set temperature";
-  parameter Modelica.SIunits.TemperatureDifference dTDHW=5
-                                                         "Temperature added to DHW setpoint on overheating";
+  parameter Modelica.Units.SI.Temperature TSetDHW "DHW set temperature";
+  parameter Modelica.Units.SI.TemperatureDifference dTDHW=5
+    "Temperature added to DHW setpoint on overheating";
 
   Modelica.Blocks.Sources.Constant const1(k=TSetDHW + dTDHW)
     annotation (Placement(transformation(extent={{-94,24},{-74,44}})));

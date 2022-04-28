@@ -6,7 +6,7 @@ model AlternativeBivalentOnOffController "Controlls an alternative bivalent heat
     annotation (Placement(transformation(extent={{-40,22},{0,62}})));
   Modelica.Blocks.Logical.GreaterEqualThreshold greaterEqualT_biv(threshold=
         T_biv) annotation (Placement(transformation(extent={{20,80},{40,100}})));
-  parameter Modelica.SIunits.Temperature T_biv=271.15 "Bivalent temperature";
+  parameter Modelica.Units.SI.Temperature T_biv=271.15 "Bivalent temperature";
   Modelica.Blocks.Logical.And greaterEqualT_biv1
     annotation (Placement(transformation(extent={{60,60},{80,80}})));
   Modelica.Blocks.Logical.And greaterEqualT_biv2

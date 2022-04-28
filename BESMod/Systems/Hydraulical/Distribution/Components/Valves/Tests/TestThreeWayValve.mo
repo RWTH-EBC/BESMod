@@ -66,11 +66,11 @@ model TestThreeWayValve
     m_flow_nominal=m_flow_nominal,
     dp_nominal(displayUnit="bar") = 2*dpRes)
     annotation (Placement(transformation(extent={{50,-26},{70,-6}})));
-  parameter Modelica.SIunits.PressureDifference dpValve_nominal=10000
+  parameter Modelica.Units.SI.PressureDifference dpValve_nominal=10000
     "Nominal pressure drop of fully open valve, used if CvData=IBPSA.Fluid.Types.CvTypes.OpPoint";
-  parameter Modelica.SIunits.PressureDifference dpRes=3000
+  parameter Modelica.Units.SI.PressureDifference dpRes=3000
     "Pressure drop at nominal mass flow rate";
-  parameter Modelica.SIunits.MassFlowRate m_flow_nominal=1
+  parameter Modelica.Units.SI.MassFlowRate m_flow_nominal=1
     "Nominal mass flow rate";
 equation
   connect(pulse.y, threeWayValveWithFlowReturn.uBuf)

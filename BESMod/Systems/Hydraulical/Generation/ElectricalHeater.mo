@@ -27,7 +27,6 @@ model ElectricalHeater "Only heat using a heating rod"
     final dp_nominal=heatingRodParameters.dp_nominal,
     final tau=30,
     final energyDynamics=energyDynamics,
-    final massDynamics=massDynamics,
     final p_start=p_start,
     final T_start=T_start,
     final Q_flow_nominal=Q_flow_nominal[1],
@@ -50,7 +49,6 @@ model ElectricalHeater "Only heat using a heating rod"
   IBPSA.Fluid.Movers.SpeedControlled_y pump(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
-    final massDynamics=massDynamics,
     final p_start=p_start,
     final T_start=T_start,
     final allowFlowReversal=allowFlowReversal,
@@ -99,7 +97,7 @@ Utilities.KPIs.InternalKPICalculator KPIQHR(
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
     pumpData annotation (choicesAllMatching=true, Placement(transformation(extent={{14,-64},
             {28,-52}})));
-  Utilities.Electrical.RealToElecCon realToElecCon(nLoa=1)
+  Utilities.Electrical.RealToElecCon realToElecCon(use_souGen=false)
     annotation (Placement(transformation(extent={{32,-108},{52,-88}})));
 equation
   connect(dummyZero.y,switch1. u3)
@@ -151,7 +149,6 @@ equation
       points={{52.2,-97.8},{52.2,-96},{58,-96},{58,-86},{72,-86},{72,-98}},
       color={0,0,0},
       thickness=1));
-  connect(hea.Pel, realToElecCon.PEleLoa[1]) annotation (Line(points={{-41.6,
-          27.6},{-41.6,50},{-72,50},{-72,-92},{-22,-92},{-22,-94},{30,-94}},
-        color={0,0,127}));
+  connect(realToElecCon.PEleLoa, hea.Pel) annotation (Line(points={{30,-94},{
+          -64,-94},{-64,27.6},{-41.6,27.6}}, color={0,0,127}));
 end ElectricalHeater;

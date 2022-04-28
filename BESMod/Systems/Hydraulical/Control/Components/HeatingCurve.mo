@@ -2,12 +2,13 @@
 model HeatingCurve
   "Defines T_supply of buffer storage tank (in dependency of ambient temperature)"
 
-  parameter Modelica.SIunits.Temperature TRoomSet=295.15
+  parameter Modelica.Units.SI.Temperature TRoomSet=295.15
     "Expected room temperature (22°C)";
   parameter Real GraHeaCurve=1 "Heat curve gradient";
-  parameter Modelica.SIunits.Temperature THeaThres=273.15 + 15
+  parameter Modelica.Units.SI.Temperature THeaThres=273.15 + 15
     "Constant heating threshold temperature";
-  parameter Modelica.SIunits.TemperatureDifference dTOffSet_HC = 2 "Additional Offset of heating curve";
+  parameter Modelica.Units.SI.TemperatureDifference dTOffSet_HC=2
+    "Additional Offset of heating curve";
 
   Modelica.Blocks.Interfaces.RealInput TOda
     annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));

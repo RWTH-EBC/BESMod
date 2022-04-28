@@ -7,8 +7,10 @@ record ParametersToChange "parameter study BA Andre Liang"
   // via the graphical interface, resulting in e.g.
   // Distribution.parameters.V = parameterStudy.V
 
-  parameter Modelica.SIunits.Time dt_hrDHW=60*30 annotation(Evaluate=false);
-  parameter Modelica.SIunits.Time dt_hrBuf=60*30 annotation(Evaluate=false);
-  parameter Modelica.SIunits.TemperatureDifference dTHysDHW=10 annotation(Evaluate=false);
-  parameter Modelica.SIunits.TemperatureDifference dTHysBuf=10 annotation(Evaluate=false);
+  parameter Modelica.Units.SI.Time dt_hrDHW=60*30 annotation (Evaluate=false);
+  parameter Modelica.Units.SI.Time dt_hrBuf=60*30 annotation (Evaluate=false);
+  parameter Modelica.Units.SI.TemperatureDifference dTHysDHW=10
+    annotation (Evaluate=false);
+  parameter Modelica.Units.SI.TemperatureDifference dTHysBuf=10
+    annotation (Evaluate=false);
 end ParametersToChange;

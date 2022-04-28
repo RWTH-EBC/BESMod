@@ -1,7 +1,7 @@
 within BESMod.Systems.Hydraulical.Distribution;
 model TwoStoDetailedIndirectLoading "Two detailed storages, indirect loading"
   extends BaseClasses.PartialDistributionTwoStorageParallelDetailed(final
-      dpBufHCSto_nominal=sum(storageBuf.heatingCoil1.pipe.cor.res.dp_nominal));
+      dpBufHCSto_nominal=sum(storageBuf.heatingCoil1.pipe.res.dp_nominal));
   IBPSA.Fluid.Sources.Boundary_pT bouPumpBuf(
     redeclare package Medium = Medium,
     final p=p_start,

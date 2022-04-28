@@ -1,7 +1,8 @@
 within BESMod.Utilities.KPIs;
 model ComfortCalculator "Cacluate the discomort in K*s"
 
-  parameter Modelica.SIunits.Temperature TComBou "Comfort boundary temperature";
+  parameter Modelica.Units.SI.Temperature TComBou
+    "Comfort boundary temperature";
   parameter Boolean for_heating = true "=false to calculate comfort during cooling period (summer). = true for heating";
 
   Modelica.Blocks.Nonlinear.Limiter lim(final uMax=Modelica.Constants.inf,

@@ -1,18 +1,20 @@
 ﻿within BESMod.Systems.Hydraulical.Control.Components.DHWSetControl;
 model AntiLegionellaControl "Control to avoid Legionella in the DHW"
   extends BaseClasses.PartialTSet_DHW_Control;
-  parameter Modelica.SIunits.ThermodynamicTemperature TLegMin=333.15
+  parameter Modelica.Units.SI.ThermodynamicTemperature TLegMin=333.15
     "Temperature at which the legionella in DWH dies";
   parameter Real percentageDeath=0.999 "Specify the percentage of legionella you want to kill. 100 Percent would be impossible, as the model is based on exponential growth/death";
-  parameter Modelica.SIunits.Time triggerEvery "Time passed before next disinfection. Each day would be 86400 s"
+  parameter Modelica.Units.SI.Time triggerEvery
+    "Time passed before next disinfection. Each day would be 86400 s"
     annotation (Dialog(enable=weekly));
   parameter Boolean aux_for_desinfection = true "Use aux heater for desinfection";
-  Modelica.SIunits.Time minTimeAntLeg(displayUnit="min")=get_minTimeAntLeg_for_TLegMin(fitMinLegTime.y[1], percentageDeath)
+  Modelica.Units.SI.Time minTimeAntLeg(displayUnit="min") =
+    get_minTimeAntLeg_for_TLegMin(fitMinLegTime.y[1], percentageDeath)
     "Minimal duration of antilegionella control to ensure correct disinfection";
   function get_minTimeAntLeg_for_TLegMin
-    input Modelica.SIunits.Temperature timeAtNinetyPercent;
+    input Modelica.Units.SI.Temperature timeAtNinetyPercent;
     input Real percentageDeath;
-    output Modelica.SIunits.Time minTimeAntLeg;
+    output Modelica.Units.SI.Time minTimeAntLeg;
   algorithm
     minTimeAntLeg := log(1-percentageDeath) / log(1-0.9) * timeAtNinetyPercent * 3600;
   end get_minTimeAntLeg_for_TLegMin;
@@ -67,16 +69,17 @@ model AntiLegionellaControl "Control to avoid Legionella in the DHW"
     "Temperature at which the legionella in DWH dies"
     annotation (Placement(transformation(extent={{54,-92},{72,-74}})));
 protected
-  Modelica.SIunits.Time t1 "Helper variable for control";
-  Modelica.SIunits.Temp_C TLegMinDegC = TLegMin - 273.15;
-  Modelica.Blocks.Tables.CombiTable1D fitMinLegTime(table=[45.5505451608561,62.916073325099134;
-        48.78942881500426,7.736506444512433; 51.23771705478529,1.7687971042538275;
-        53.542872526585,0.47986000155581393; 55.85049580472921,0.16470935490617822;
-        58.450217615650374,0.07001663558934895; 62.20891102436398,0.028517297027731203;
-        65.03006236819671,0.017814514615367875; 68.72055458338941,0.010893105323934898;
-        73.06411809575089,0.007255730019232521; 75.88841028402207,0.006114735966220416;
-        78.13366536545968,0.005494625286920662],
-        u={TLegMinDegC});
+  Modelica.Units.SI.Time t1 "Helper variable for control";
+  Modelica.Units.NonSI.Temperature_degC TLegMinDegC=TLegMin - 273.15;
+  Modelica.Blocks.Tables.CombiTable1Dv fitMinLegTime(table=[45.5505451608561,
+        62.916073325099134; 48.78942881500426,7.736506444512433;
+        51.23771705478529,1.7687971042538275; 53.542872526585,
+        0.47986000155581393; 55.85049580472921,0.16470935490617822;
+        58.450217615650374,0.07001663558934895; 62.20891102436398,
+        0.028517297027731203; 65.03006236819671,0.017814514615367875;
+        68.72055458338941,0.010893105323934898; 73.06411809575089,
+        0.007255730019232521; 75.88841028402207,0.006114735966220416;
+        78.13366536545968,0.005494625286920662], u={TLegMinDegC});
 
 algorithm
   when greaterThreshold.y then

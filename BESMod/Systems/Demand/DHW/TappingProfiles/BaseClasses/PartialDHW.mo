@@ -1,9 +1,10 @@
 within BESMod.Systems.Demand.DHW.TappingProfiles.BaseClasses;
 partial model PartialDHW
   extends BESMod.Utilities.Icons.DHWIcon;
-  parameter Modelica.SIunits.Temperature TCold=283.15 "Cold water temperature";
-  parameter Modelica.SIunits.Density dWater=1000 "Density of water";
-  parameter Modelica.SIunits.SpecificHeatCapacityAtConstantPressure c_p_water=4184 "Heat capacity of water";
+  parameter Modelica.Units.SI.Temperature TCold=283.15 "Cold water temperature";
+  parameter Modelica.Units.SI.Density dWater=1000 "Density of water";
+  parameter Modelica.Units.SI.SpecificHeatCapacityAtConstantPressure c_p_water=
+      4184 "Heat capacity of water";
   parameter Real TSetDHW "Set temperature of DHW";
 
   Modelica.Blocks.Interfaces.RealInput m_flow_in
