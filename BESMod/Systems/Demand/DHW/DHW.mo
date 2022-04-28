@@ -52,7 +52,6 @@ Modelica.Blocks.Math.UnitConversions.From_degC fromDegC
   IBPSA.Fluid.Movers.FlowControlled_m_flow pump(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
-    final massDynamics=massDynamics,
     final p_start=p_start,
     final T_start=parameters.TDHWCold_nominal,
     final allowFlowReversal=allowFlowReversal,

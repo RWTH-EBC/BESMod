@@ -7,7 +7,7 @@ extends BaseClasses.PartialArtificalPumpT(bou_source(use_T_in=true), final
     redeclare final package Medium = Medium,
     allowFlowReversal=false,                     m_flow_nominal=m_flow_nominal)
     annotation (Placement(transformation(extent={{-90,-10},{-70,10}})));
-  parameter Modelica.SIunits.MassFlowRate m_flow_nominal
+  parameter Modelica.Units.SI.MassFlowRate m_flow_nominal
     "Nominal mass flow rate, used for regularization near zero flow";
 equation
   connect(port_a, senTem.port_a)

@@ -26,22 +26,22 @@ class LibraryInstaller:
 required_dependencies_config: dict = {
     "IBPSA": LibraryInstaller(
         url="https://github.com/ibpsa/modelica-ibpsa",
-        commit="2200c0169f2468fbb42fa28c23ad06d3ddf5a8c3"
+        commit="d5b02ab5aac01c4d07583d73afff6b14c5f58bd2"
     )
 }
 
 optional_dependencies_config: dict = {
     "AixLib": LibraryInstaller(
         url="https://github.com/RWTH-EBC/AixLib",
-        commit="c33191e2dc862f9d652463527c810c1f143f92d3"
+        commit="0cef0cefc199dcb0d642d2b0c6eb0a3438d8a9a6"
     ),
     "Buildings": LibraryInstaller(
         url="https://github.com/lbl-srg/modelica-buildings",
-        commit="8a5db0ce3a7c54803e0abc2c01b28f7c18e81b09"
+        commit="fba63b60c75bb0285ede2081ae17dbdc9f38d9e7"
     ),
     "BuildingSystems": LibraryInstaller(
         url="https://github.com/UdK-VPT/BuildingSystems",
-        commit="d6020ce8006af7f1bcfa59e712efd8a2134e03b6"
+        commit="64adca47eae19d2744d86aa8d1624cbf7ad6326b"
     )
 }
 

@@ -10,7 +10,8 @@ model ArtificialThreeWayValve
   parameter Boolean allowFlowReversal = true
     "= false to simplify equations, assuming, but not enforcing, no flow reversal"
     annotation(Dialog(tab="Assumptions"), Evaluate=true);
-  parameter Modelica.SIunits.Pressure p_hydr = 2e5 "Hydraulic pressure in pipes" annotation(Dialog(group = "Demand"));
+  parameter Modelica.Units.SI.Pressure p_hydr=2e5 "Hydraulic pressure in pipes"
+    annotation (Dialog(group="Demand"));
 
   /******************************* Components *******************************/
 

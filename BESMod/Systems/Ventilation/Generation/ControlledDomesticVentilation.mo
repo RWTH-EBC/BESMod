@@ -29,7 +29,6 @@ model ControlledDomesticVentilation
   IBPSA.Fluid.Movers.SpeedControlled_y fanFlow(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
-    final massDynamics=massDynamics,
     final p_start=p_start,
     final T_start=T_start,
     final allowFlowReversal=allowFlowReversal,
@@ -83,7 +82,6 @@ model ControlledDomesticVentilation
   IBPSA.Fluid.Movers.SpeedControlled_y fanRet(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
-    final massDynamics=massDynamics,
     final p_start=p_start,
     final T_start=T_start,
     final allowFlowReversal=allowFlowReversal,
@@ -130,7 +128,6 @@ model ControlledDomesticVentilation
   replaceable IBPSA.Fluid.Actuators.BaseClasses.PartialThreeWayValve threeWayValve_b constrainedby
     IBPSA.Fluid.Actuators.BaseClasses.PartialThreeWayValve(
     final energyDynamics=energyDynamics,
-    final massDynamics=massDynamics,
     final p_start=p_start,
     final T_start=T_start,
     final tau=threeWayValveParas.tau,
@@ -150,7 +147,6 @@ model ControlledDomesticVentilation
   replaceable IBPSA.Fluid.Actuators.BaseClasses.PartialThreeWayValve threeWayValve_a constrainedby
     IBPSA.Fluid.Actuators.BaseClasses.PartialThreeWayValve(
     final energyDynamics=energyDynamics,
-    final massDynamics=massDynamics,
     final p_start=p_start,
     final T_start=T_start,
     final tau=threeWayValveParas.tau,

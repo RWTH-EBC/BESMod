@@ -6,7 +6,7 @@ model PI_InverterHeatPumpController
       controllerType=Modelica.Blocks.Types.SimpleController.PI,
       Ti=T_I,
       final Ni=Ni));
-  parameter Modelica.SIunits.Time T_I "Time constant of Integrator block";
+  parameter Modelica.Units.SI.Time T_I "Time constant of Integrator block";
   parameter Real Ni=0.9 "Ni*Ti is time constant of anti-windup compensation";
   annotation (Icon(graphics={
         Polygon(

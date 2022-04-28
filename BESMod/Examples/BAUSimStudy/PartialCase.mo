@@ -117,7 +117,7 @@ model PartialCase
     redeclare BESMod.Systems.Ventilation.NoVentilation
       ventilation);
 
-  parameter Modelica.SIunits.Temperature TBiv=271.15
+  parameter Modelica.Units.SI.Temperature TBiv=271.15
     "Nominal bivalence temperature. = TOda_nominal for monovalent systems.";
   annotation (experiment(
       StopTime=31536000,

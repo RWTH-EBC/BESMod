@@ -88,7 +88,6 @@ model UFHTransferSystem
   IBPSA.Fluid.Movers.FlowControlled_m_flow pumpFix_m_flow[nParallelDem](
     redeclare package Medium = Medium,
     each final energyDynamics=energyDynamics,
-    each final massDynamics=massDynamics,
     each final p_start=p_start,
     each final T_start=T_start,
     each final X_start=X_start,
@@ -125,7 +124,7 @@ model UFHTransferSystem
     annotation (Placement(transformation(extent={{32,-108},{52,-88}})));
 protected
   parameter BESMod.Components.UFH.ActiveWallBaseDataDefinition floorHeatingType[nParallelDem]={BESMod.Components.UFH.ActiveWallBaseDataDefinition(
-        Temp_nom=Modelica.SIunits.Conversions.from_degC({TSup_nominal[i],
+        Temp_nom=Modelica.Units.Conversions.from_degC(  {TSup_nominal[i],
           TSup_nominal[i]-dTTra_nominal[i],TDem_nominal[i]}),
         q_dot_nom=Q_flow_nominal[i] / UFHParameters.area[i],
         k_isolation=UFHParameters.k_top[i] + UFHParameters.k_down[i],
@@ -192,7 +191,7 @@ equation
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
   connect(heatFlowSensor.Q_flow, inputKPICalculatorLossUFH.u) annotation (Line(
-        points={{-46,-16},{-46,-22},{-62,-22},{-62,-102},{-48.2,-102}}, color={
+        points={{-46,-17},{-46,-22},{-62,-22},{-62,-102},{-48.2,-102}}, color={
           0,0,127}));
   connect(inputKPICalculatorLossUFH.KPIBus, outBusTra.QLossUFH) annotation (
       Line(

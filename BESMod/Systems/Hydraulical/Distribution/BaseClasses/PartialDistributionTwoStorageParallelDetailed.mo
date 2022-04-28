@@ -12,14 +12,15 @@ partial model PartialDistributionTwoStorageParallelDetailed
     final nParallelSup=1,
     final nParallelDem=1);
 
-  parameter Modelica.SIunits.PressureDifference dpBufHCSto_nominal
+  parameter Modelica.Units.SI.PressureDifference dpBufHCSto_nominal
     "Nominal pressure difference in buffer storage heating coil";
-  final parameter Modelica.SIunits.PressureDifference dpDHWHCSto_nominal=sum(storageDHW.heatingCoil1.pipe.cor.res.dp_nominal)
+  final parameter Modelica.Units.SI.PressureDifference dpDHWHCSto_nominal=sum(
+      storageDHW.heatingCoil1.pipe.res.dp_nominal)
     "Nominal pressure difference in DHW storage heating coil";
-  parameter Modelica.SIunits.HeatFlowRate QHRAftDHW_flow_nominal
+  parameter Modelica.Units.SI.HeatFlowRate QHRAftDHW_flow_nominal
     "Nominal heat flow rate of heating rod after Buffer storage"
     annotation (Dialog(enable=use_heatingRodAfterDHW));
-  parameter Modelica.SIunits.HeatFlowRate QHRAftBuf_flow_nominal
+  parameter Modelica.Units.SI.HeatFlowRate QHRAftBuf_flow_nominal
     "Nominal heat flow rate of heating rod after DHW storage"
     annotation (Dialog(enable=use_heatingRodAfterBuffer));
   parameter Boolean use_heatingRodAfterDHW "=false to disable the heating rod after the DHW storage";
@@ -122,7 +123,6 @@ partial model PartialDistributionTwoStorageParallelDetailed
   AixLib.Fluid.Storage.BufferStorage storageBuf(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
-    final massDynamics=massDynamics,
     final p_start=p_start,
     final mSenFac=1,
     redeclare package MediumHC1 = MediumGen,
@@ -168,7 +168,6 @@ partial model PartialDistributionTwoStorageParallelDetailed
   AixLib.Fluid.Storage.BufferStorage storageDHW(
     redeclare final package Medium = MediumDHW,
     final energyDynamics=energyDynamics,
-    final massDynamics=massDynamics,
     final p_start=p_start,
     final mSenFac=1,
     redeclare final package MediumHC1 = MediumGen,
@@ -222,7 +221,6 @@ partial model PartialDistributionTwoStorageParallelDetailed
     final dp_nominal=heatingRodAftBufParameters.dp_nominal,
     final tau=30,
     final energyDynamics=energyDynamics,
-    final massDynamics=massDynamics,
     final p_start=p_start,
     final T_start=T_start,
     final Q_flow_nominal=QHRAftBuf_flow_nominal,
@@ -262,7 +260,6 @@ partial model PartialDistributionTwoStorageParallelDetailed
     final dp_nominal=heatingRodAftDHWParameters.dp_nominal,
     final tau=30,
     final energyDynamics=energyDynamics,
-    final massDynamics=massDynamics,
     final p_start=p_start,
     final T_start=T_start,
     final Q_flow_nominal=QHRAftDHW_flow_nominal,
@@ -310,7 +307,6 @@ partial model PartialDistributionTwoStorageParallelDetailed
   Components.Valves.ThreeWayValveWithFlowReturn threeWayValveWithFlowReturn(
     redeclare package Medium = MediumGen,
     final energyDynamics=energyDynamics,
-    final massDynamics=massDynamics,
     final p_start=p_start,
     final T_start=T_start,
     final X_start=X_start,

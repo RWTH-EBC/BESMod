@@ -24,7 +24,6 @@ model RadiatorPressureBased "Pressure Based transfer system"
     final m_flow_nominal=m_flow_nominal,
     each final show_T=show_T,
     each final energyDynamics=energyDynamics,
-    each final massDynamics=massDynamics,
     each final p_start=p_start,
     each final nEle=radParameters.nEle,
     each final fraRad=radParameters.fraRad,
@@ -69,7 +68,6 @@ model RadiatorPressureBased "Pressure Based transfer system"
   IBPSA.Fluid.MixingVolumes.MixingVolume vol(
     redeclare package Medium = Medium,
     final energyDynamics=energyDynamics,
-    final massDynamics=massDynamics,
     final p_start=p_start,
     final T_start=T_start,
     final mSenFac=1,
@@ -85,7 +83,6 @@ model RadiatorPressureBased "Pressure Based transfer system"
   IBPSA.Fluid.Movers.SpeedControlled_y     pump(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
-    final massDynamics=massDynamics,
     final p_start=p_start,
     final T_start=T_start,
     final allowFlowReversal=allowFlowReversal,

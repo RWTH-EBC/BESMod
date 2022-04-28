@@ -14,15 +14,25 @@ partial model PartialDistribution
   replaceable package MediumGen =
       Modelica.Media.Interfaces.PartialMedium
     annotation (choicesAllMatching=true);
-  parameter Modelica.SIunits.MassFlowRate mSup_flow_nominal[nParallelSup]
-    "Nominal mass flow rate of system supplying the distribution" annotation (Dialog(group="Design - Top Down: Parameters are given by the parent system"));
-  parameter Modelica.SIunits.MassFlowRate mDem_flow_nominal[nParallelDem]
-    "Nominal mass flow rate of demand system of the distribution" annotation (Dialog(group="Design - Top Down: Parameters are given by the parent system"));
-  parameter Modelica.SIunits.TemperatureDifference dTTraDHW_nominal "Nominal temperature difference to transfer heat to the DHW storage"  annotation (Dialog(group="DHW Demand"));
-  parameter Modelica.SIunits.PressureDifference dpSup_nominal[nParallelSup]
-    "Nominal pressure loss of resistances connected to the supply system of the distribution" annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
-  parameter Modelica.SIunits.PressureDifference dpDem_nominal[nParallelDem]
-    "Nominal pressure loss of resistances connected to the demand system of the distribution" annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
+  parameter Modelica.Units.SI.MassFlowRate mSup_flow_nominal[nParallelSup]
+    "Nominal mass flow rate of system supplying the distribution" annotation (
+      Dialog(group=
+          "Design - Top Down: Parameters are given by the parent system"));
+  parameter Modelica.Units.SI.MassFlowRate mDem_flow_nominal[nParallelDem]
+    "Nominal mass flow rate of demand system of the distribution" annotation (
+      Dialog(group=
+          "Design - Top Down: Parameters are given by the parent system"));
+  parameter Modelica.Units.SI.TemperatureDifference dTTraDHW_nominal
+    "Nominal temperature difference to transfer heat to the DHW storage"
+    annotation (Dialog(group="DHW Demand"));
+  parameter Modelica.Units.SI.PressureDifference dpSup_nominal[nParallelSup]
+    "Nominal pressure loss of resistances connected to the supply system of the distribution"
+    annotation (Dialog(group=
+          "Design - Bottom Up: Parameters are defined by the subsystem"));
+  parameter Modelica.Units.SI.PressureDifference dpDem_nominal[nParallelDem]
+    "Nominal pressure loss of resistances connected to the demand system of the distribution"
+    annotation (Dialog(group=
+          "Design - Bottom Up: Parameters are defined by the subsystem"));
 
   Modelica.Fluid.Interfaces.FluidPort_a portGen_in[nParallelSup](redeclare
       final package Medium = MediumGen) "Inlet from the generation" annotation (

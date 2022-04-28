@@ -46,7 +46,6 @@ model SolarThermalBivHP
   IBPSA.Fluid.Movers.SpeedControlled_y pumpST(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
-    final massDynamics=massDynamics,
     final p_start=p_start,
     final T_start=T_start,
     final allowFlowReversal=allowFlowReversal,
@@ -99,7 +98,7 @@ model SolarThermalBivHP
       annotation (Placement(transformation(extent={{-102,-156},{-82,-136}})));
 
 protected
-  parameter Modelica.SIunits.PressureDifference dpST_nominal=solarThermalParas.m_flow_nominal
+  parameter Modelica.Units.SI.PressureDifference dpST_nominal=solarThermalParas.m_flow_nominal
       ^2*solarThermalParas.pressureDropCoeff/(rho^2)
     "Pressure drop at nominal mass flow rate";
 equation

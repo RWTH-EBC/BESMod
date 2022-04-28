@@ -18,7 +18,7 @@ model OnOffControllerTest
     annotation (Placement(transformation(extent={{-160,-20},{-124,16}})));
   Modelica.Blocks.Sources.Sine T_Top(
     amplitude=30,
-    freqHz=1/3600,
+    f=1/3600,
     offset=313.15)
     annotation (Placement(transformation(extent={{-160,44},{-122,82}})));
   Modelica.Blocks.Sources.Constant T_Set1(k=273.15)

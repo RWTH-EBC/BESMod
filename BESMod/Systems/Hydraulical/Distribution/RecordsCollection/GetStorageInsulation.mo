@@ -1,13 +1,17 @@
 within BESMod.Systems.Hydraulical.Distribution.RecordsCollection;
 function GetStorageInsulation
-  input Modelica.SIunits.Thickness u "Thickness";
-  input Modelica.SIunits.HeatFlowRate QLoss_flow "Loss per day in W";
-  input Modelica.SIunits.TemperatureDifference dT_loss "Temperature spread of loss according to DIN EN 15332";
-  input Modelica.SIunits.CoefficientOfHeatTransfer hConOut "Convective heat tranfer on the outside";
-  input Modelica.SIunits.CoefficientOfHeatTransfer hConIn "Convective heat tranfer on the inside";
-  input Modelica.SIunits.ThermalConductivity lambda_ins "Insulation conductivity";
-  input Modelica.SIunits.Diameter d "Storage diameter";
-  input Modelica.SIunits.Height h "Storage heigth";
+  input Modelica.Units.SI.Thickness u "Thickness";
+  input Modelica.Units.SI.HeatFlowRate QLoss_flow "Loss per day in W";
+  input Modelica.Units.SI.TemperatureDifference dT_loss
+    "Temperature spread of loss according to DIN EN 15332";
+  input Modelica.Units.SI.CoefficientOfHeatTransfer hConOut
+    "Convective heat tranfer on the outside";
+  input Modelica.Units.SI.CoefficientOfHeatTransfer hConIn
+    "Convective heat tranfer on the inside";
+  input Modelica.Units.SI.ThermalConductivity lambda_ins
+    "Insulation conductivity";
+  input Modelica.Units.SI.Diameter d "Storage diameter";
+  input Modelica.Units.SI.Height h "Storage heigth";
   output Real y "Percentage deviation";
 
 algorithm

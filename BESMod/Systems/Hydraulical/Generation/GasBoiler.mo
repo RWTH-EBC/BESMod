@@ -43,7 +43,6 @@ Utilities.KPIs.InternalKPICalculator KPIQHR(
   IBPSA.Fluid.Movers.SpeedControlled_y pump(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
-    final massDynamics=massDynamics,
     final p_start=p_start,
     final T_start=T_start,
     final allowFlowReversal=allowFlowReversal,

@@ -13,9 +13,11 @@ record AutomaticConfigurationData
     final use_powerCharacteristic=false,
     final pressure(V_flow={V_flowCurve[i] * m_flow_nominal / rho for i in 1:size(V_flowCurve, 1)},
                    dp={dpCurve[i] * dp_nominal for i in 1:size(dpCurve, 1)}));
-   parameter Modelica.SIunits.MassFlowRate m_flow_nominal "Nominal mass flow rate";
-   parameter Modelica.SIunits.PressureDifference dp_nominal "Nominal pressure difference";
-   parameter Modelica.SIunits.Density rho "Density of fluid in use";
+  parameter Modelica.Units.SI.MassFlowRate m_flow_nominal
+    "Nominal mass flow rate";
+  parameter Modelica.Units.SI.PressureDifference dp_nominal
+    "Nominal pressure difference";
+  parameter Modelica.Units.SI.Density rho "Density of fluid in use";
    parameter Real V_flowCurve[:]={0,0.99,1.1,1.01}   "Relative V_flow curve to be used";
    parameter Real dpCurve[:]={1.01,1,0.99,0}      "Relative dp curve to be used";
 end AutomaticConfigurationData;

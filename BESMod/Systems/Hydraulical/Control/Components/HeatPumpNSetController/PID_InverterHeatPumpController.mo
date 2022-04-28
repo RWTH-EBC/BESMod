@@ -8,8 +8,8 @@ model PID_InverterHeatPumpController
       final Td=T_D,
       final Ni=Ni,
       final Nd=Nd));
-  parameter Modelica.SIunits.Time T_I "Time constant of Integrator block";
-  parameter Modelica.SIunits.Time T_D "Time constant of Derivative block";
+  parameter Modelica.Units.SI.Time T_I "Time constant of Integrator block";
+  parameter Modelica.Units.SI.Time T_D "Time constant of Derivative block";
   parameter Real Ni=0.9 "Ni*Ti is time constant of anti-windup compensation";
   parameter Real Nd=10 "The higher Nd, the more ideal the derivative block";
   annotation (Icon(graphics={

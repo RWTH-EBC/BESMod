@@ -53,9 +53,8 @@ partial model PartialTest
 
   Modelica.Blocks.Sources.Sine m_flow[distribution.nParallelDem](
     each amplitude=0.1,
-    each freqHz=1/1800,
-    each offset=0.2)
-                annotation (Placement(transformation(
+    each f=1/1800,
+    each offset=0.2) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={144,-10})));

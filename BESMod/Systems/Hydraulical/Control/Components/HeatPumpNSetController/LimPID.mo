@@ -1,7 +1,8 @@
 within BESMod.Systems.Hydraulical.Control.Components.HeatPumpNSetController;
 block LimPID
   "P, PI, PD, and PID controller with limited output, anti-windup compensation, setpoint weighting and optional feed-forward"
-  import Modelica.Blocks.Types.InitPID;
+  import InitPID =
+         Modelica.Blocks.Types.Init;
   import Modelica.Blocks.Types.Init;
   import Modelica.Blocks.Types.SimpleController;
   extends Modelica.Blocks.Interfaces.SVcontrol;
@@ -10,11 +11,11 @@ block LimPID
   parameter .Modelica.Blocks.Types.SimpleController controllerType=
          .Modelica.Blocks.Types.SimpleController.PID "Type of controller";
   parameter Real k(min=0, unit="1") = 1 "Gain of controller";
-  parameter Modelica.SIunits.Time Ti(min=Modelica.Constants.small)=0.5
+  parameter Modelica.Units.SI.Time Ti(min=Modelica.Constants.small) = 0.5
     "Time constant of Integrator block" annotation (Dialog(enable=
           controllerType == .Modelica.Blocks.Types.SimpleController.PI or
           controllerType == .Modelica.Blocks.Types.SimpleController.PID));
-  parameter Modelica.SIunits.Time Td(min=0)=0.1
+  parameter Modelica.Units.SI.Time Td(min=0) = 0.1
     "Time constant of Derivative block" annotation (Dialog(enable=
           controllerType == .Modelica.Blocks.Types.SimpleController.PD or
           controllerType == .Modelica.Blocks.Types.SimpleController.PID));
@@ -37,9 +38,9 @@ block LimPID
     annotation(Evaluate=true, choices(checkBox=true));
   parameter Real kFF=1 "Gain of feed-forward input"
     annotation(Dialog(enable=withFeedForward));
-  parameter .Modelica.Blocks.Types.InitPID initType= .Modelica.Blocks.Types.InitPID.DoNotUse_InitialIntegratorState
+  parameter .Modelica.Blocks.Types.Init initType=.Modelica.Blocks.Types.Init.InitialState
     "Type of initialization (1: no init, 2: steady state, 3: initial state, 4: initial output)"
-    annotation(Evaluate=true, Dialog(group="Initialization"));
+    annotation (Evaluate=true, Dialog(group="Initialization"));
   parameter Real xi_start=0
     "Initial or guess value for integrator output (= integrator state)"
     annotation (Dialog(group="Initialization",
@@ -51,7 +52,7 @@ block LimPID
                          enable=controllerType==.Modelica.Blocks.Types.SimpleController.PD or
                                 controllerType==.Modelica.Blocks.Types.SimpleController.PID));
   parameter Real y_start=0 "Initial value of output"
-    annotation(Dialog(enable=initType == .Modelica.Blocks.Types.InitPID.InitialOutput, group=
+    annotation(Dialog(enable=initType == .Modelica.Blocks.Types.Init.InitialOutput,    group=
           "Initialization"));
   parameter Modelica.Blocks.Types.LimiterHomotopy homotopyType = Modelica.Blocks.Types.LimiterHomotopy.Linear
     "Simplified model for homotopy-based initialization"
@@ -61,7 +62,7 @@ block LimPID
   parameter Boolean limitsAtInit=true
     "Has no longer an effect and is only kept for backwards compatibility (the implementation uses now the homotopy operator)"
     annotation (Dialog(tab="Dummy"),Evaluate=true, choices(checkBox=true));
-  constant Modelica.SIunits.Time unitTime=1 annotation (HideResult=true);
+  constant Modelica.Units.SI.Time unitTime=1 annotation (HideResult=true);
   Modelica.Blocks.Interfaces.RealInput u_ff if withFeedForward
     "Optional connector of feed-forward input signal"
    annotation (Placement(
@@ -80,15 +81,15 @@ block LimPID
     use_reset=true,
     y_start=xi_start,
     initType=if initType == InitPID.SteadyState then Init.SteadyState else if
-        initType == InitPID.InitialState or initType == InitPID.DoNotUse_InitialIntegratorState
+        initType == InitPID.InitialState or initType == InitPID.InitialState
          then Init.InitialState else Init.NoInit) if with_I
     annotation (Placement(transformation(extent={{-50,-60},{-30,-40}})));
   Modelica.Blocks.Continuous.Derivative D(
     k=Td/unitTime,
     T=max([Td/Nd,1.e-14]),
     x_start=xd_start,
-    initType=if initType == InitPID.SteadyState or initType == InitPID.InitialOutput
-         then Init.SteadyState else if initType == InitPID.InitialState then
+    initType=if initType ==InitPID.SteadyState  or initType ==InitPID.InitialOutput
+         then Init.SteadyState else if initType ==InitPID.InitialState  then
         Init.InitialState else Init.NoInit) if with_D
     annotation (Placement(transformation(extent={{-50,-10},{-30,10}})));
   Modelica.Blocks.Math.Gain gainPID(k=k)
@@ -108,7 +109,6 @@ block LimPID
     uMax=yMax,
     uMin=yMin,
     strict=strict,
-    limitsAtInit=limitsAtInit,
     homotopyType=homotopyType)
     annotation (Placement(transformation(extent={{70,-10},{90,10}})));
 protected
@@ -135,7 +135,7 @@ initial equation
     gainPID.y = y_start;
   end if;
 equation
-  if initType == InitPID.InitialOutput and (y_start < yMin or y_start > yMax) then
+  if initType ==InitPID.InitialOutput  and (y_start < yMin or y_start > yMax) then
       Modelica.Utilities.Streams.error("LimPID: Start value y_start (=" + String(y_start) +
          ") is outside of the limits of yMin (=" + String(yMin) +") and yMax (=" + String(yMax) + ")");
   end if;

@@ -5,17 +5,23 @@ partial model PartialTransfer "Partial transfer model for BES"
     BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters(
       dTTra_nominal={if TSup_nominal[i] > 64.9 + 273.15 then 15 elseif
         TSup_nominal[i] > 44.9 + 273.15 then 10 else 7 for i in 1:nParallelDem}, m_flow_nominal=Q_flow_nominal ./ (dTTra_nominal .* cp));
-  parameter Modelica.SIunits.PressureDifference dpSup_nominal[nParallelSup]
-    "Nominal pressure loss of resistances in the supply system of the distribution" annotation (Dialog(group="Design - Top Down: Parameters are given by the parent system"));
+  parameter Modelica.Units.SI.PressureDifference dpSup_nominal[nParallelSup]
+    "Nominal pressure loss of resistances in the supply system of the distribution"
+    annotation (Dialog(group=
+          "Design - Top Down: Parameters are given by the parent system"));
 
-  parameter Modelica.SIunits.Area AZone[nParallelDem] "Area of zones/rooms"
-    annotation (Dialog(group="Design - Top Down: Parameters are given by the parent system"));
-  parameter Modelica.SIunits.Height hZone[nParallelDem] "Height of zones"
-    annotation (Dialog(group="Design - Top Down: Parameters are given by the parent system"));
-  parameter Modelica.SIunits.Area ABui "Ground area of building"
-    annotation (Dialog(group="Design - Top Down: Parameters are given by the parent system"));
-  parameter Modelica.SIunits.Height hBui "Height of building"
-    annotation (Dialog(group="Design - Top Down: Parameters are given by the parent system"));
+  parameter Modelica.Units.SI.Area AZone[nParallelDem] "Area of zones/rooms"
+    annotation (Dialog(group=
+          "Design - Top Down: Parameters are given by the parent system"));
+  parameter Modelica.Units.SI.Height hZone[nParallelDem] "Height of zones"
+    annotation (Dialog(group=
+          "Design - Top Down: Parameters are given by the parent system"));
+  parameter Modelica.Units.SI.Area ABui "Ground area of building" annotation (
+      Dialog(group=
+          "Design - Top Down: Parameters are given by the parent system"));
+  parameter Modelica.Units.SI.Height hBui "Height of building" annotation (
+      Dialog(group=
+          "Design - Top Down: Parameters are given by the parent system"));
 
   Modelica.Fluid.Interfaces.FluidPort_b portTra_out[nParallelSup](redeclare
       final package Medium = Medium) "Outlet of the transfer system"

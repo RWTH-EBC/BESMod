@@ -15,13 +15,13 @@ model BatterySystemSimple
     annotation (Placement(transformation(extent={{44,-76},{74,-46}})));
   Modelica.Blocks.Sources.Sine ElectricalLoad(
     amplitude=3000,
-    freqHz=1/86400,
+    f=1/86400,
     phase=1.5707963267949,
     offset=3000)
     annotation (Placement(transformation(extent={{98,48},{74,72}})));
   Modelica.Blocks.Sources.Sine PGeneration(
     amplitude=2000,
-    freqHz=1/86400,
+    f=1/86400,
     phase=4.7123889803847,
     offset=2000)
     annotation (Placement(transformation(extent={{-86,48},{-62,72}})));
