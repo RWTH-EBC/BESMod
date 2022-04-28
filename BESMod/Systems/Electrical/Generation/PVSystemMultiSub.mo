@@ -51,13 +51,9 @@ model PVSystemMultiSub
     annotation (Dialog(group=
           "Design - Top Down: Parameters are given by the parent system"));
   parameter Real n_mod[numGenUnits]={f_design[i]*ARoof/pVParameters[i].A_mod for i in 1:numGenUnits} "Number of connected PV modules";
-  parameter Modelica.Units.SI.Angle til[numGenUnits]=fill(20*180/Modelica.Constants.pi,
-      numGenUnits) "Surface's tilt angle (0:flat)";
-  parameter Modelica.Units.SI.Angle azi[numGenUnits]=fill(0, numGenUnits)
-    "Surface's azimut angle (0:South)";
-  parameter Modelica.Units.SI.Area ARoof(min=0) "Roof area of building"
-    annotation (Dialog(group=
-          "Design - Top Down: Parameters are given by the parent system"));
+  parameter Modelica.Units.SI.Angle til[numGenUnits]=fill(20*Modelica.Constants.pi/180,numGenUnits) "Surface's tilt angle (0:flat)";
+  parameter Modelica.Units.SI.Angle azi[numGenUnits]=fill(0*Modelica.Constants.pi/180,numGenUnits)  "Surface's azimut angle (0:South)";
+  parameter Modelica.Units.SI.Area ARoof(min=0) "Roof area of building" annotation(Dialog(group="Design - Top Down: Parameters are given by the parent system"));
 
 equation
   for i in 1:numGenUnits loop
