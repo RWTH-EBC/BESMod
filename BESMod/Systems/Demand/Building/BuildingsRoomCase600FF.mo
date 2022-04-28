@@ -2,6 +2,7 @@
 model BuildingsRoomCase600FF
   "Detailed room model from the buildings library according to BESTEST Case600FF"
   extends BaseClasses.PartialDemand(
+    ARoo=roo.AFlo*sqrt(2),
     hBui=roo.hRoo,
     hZone={roo.hRoo},
     ABui=roo.AFlo,

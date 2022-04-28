@@ -2,6 +2,7 @@
 model TEASERThermalZone
   "Reduced order building model, coupled with TEASER"
   extends BaseClasses.PartialDemand(
+    ARoo=sum(zoneParam.ARoof)/nZones,
     hBui=sum(zoneParam.VAir)^(1/3),
     ABui=2*sum(zoneParam.VAir)^(1/3),
     hZone=zoneParam.VAir ./ zoneParam.AZone,

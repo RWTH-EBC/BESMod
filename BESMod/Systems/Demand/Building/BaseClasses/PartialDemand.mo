@@ -14,6 +14,8 @@ partial model PartialDemand "Partial demand model for HPS"
     annotation (Dialog(group="Geometry"));
   parameter Modelica.Units.SI.Height hBui "Height of building"
     annotation (Dialog(group="Geometry"));
+  parameter Modelica.Units.SI.Area ARoo "Roof area of building"
+    annotation (Dialog(group="Geometry"));
   parameter Boolean use_hydraulic=true "=false to disable hydraulic supply";
   parameter Boolean use_ventilation=true "=false to disable ventilation supply";
 

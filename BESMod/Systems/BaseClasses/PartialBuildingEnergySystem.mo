@@ -74,6 +74,7 @@ partial model PartialBuildingEnergySystem "Partial BES"
       final AZone=building.AZone,
       final hZone=building.hZone,
       final ABui=building.ABui,
+      final ARoo=building.ARoo,
       final hBui=building.hBui))                                 annotation (Placement(
         transformation(extent={{-192,40},{-40,128}})), choicesAllMatching=true);
   replaceable BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem hydraulic if systemParameters.use_hydraulic
@@ -92,6 +93,7 @@ partial model PartialBuildingEnergySystem "Partial BES"
       final AZone=building.AZone,
       final hZone=building.hZone,
       final ABui=building.ABui,
+      final ARoo=building.ARoo,
       final hBui=building.hBui,
       final dhwParas=DHW.parameters))
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-192,
@@ -112,6 +114,7 @@ partial model PartialBuildingEnergySystem "Partial BES"
       final AZone=building.AZone,
       final hZone=building.hZone,
       final ABui=building.ABui,
+      final ARoo=building.ARoo,
       final hBui=building.hBui))         annotation (choicesAllMatching=true,
       Placement(transformation(extent={{120,-4},{212,86}})));
 

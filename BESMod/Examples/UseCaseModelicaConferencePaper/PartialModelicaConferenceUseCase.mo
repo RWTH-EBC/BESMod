@@ -11,12 +11,14 @@ partial model PartialModelicaConferenceUseCase
         generation(
         redeclare model CellTemperature =
             AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround,
+
         redeclare AixLib.DataBase.SolarElectric.SchuecoSPV170SME1 pVParameters,
+
         lat=weaDat.lat,
         lon=weaDat.lon,
         alt=weaDat.alt,
         timZon=3600,
-        ARoof=100),
+        ARoof=building.ARoo/2),
       redeclare BESMod.Systems.Electrical.Transfer.NoElectricalTransfer
         transfer,
       redeclare BESMod.Systems.Electrical.Control.NoControl control),
