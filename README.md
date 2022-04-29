@@ -2,9 +2,9 @@
 
 # BESMod
 
-This library contains models for building energy systems simulations using a modular subsystem approach.
+This library contains **Mod**ules for the domain-coupled simulation of **B**uilding **E**nergy **S**ystems .
 It is submitted to the American Modelica Conference 2022. 
-Currently, the review process is not finished.
+The review process is not yet finished.
 
 ## How to cite BESMod
 
@@ -48,7 +48,7 @@ After installing all libraries, a script `startup.mos` will be created in your B
 Execute this script to load all dependencies and start modelling.
 
 
-## How to contribute to the development of BESMod
+# How to contribute to the development of BESMod
 
 You are invited to contribute to the development of **BESMod**.
 Issues can be reported using this site's [Issues section](https://github.com/RWTH-EBC/BESMod/issues).
