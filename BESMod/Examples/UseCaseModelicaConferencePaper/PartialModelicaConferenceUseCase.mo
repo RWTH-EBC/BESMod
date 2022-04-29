@@ -11,9 +11,7 @@ partial model PartialModelicaConferenceUseCase
         generation(
         redeclare model CellTemperature =
             AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround,
-
         redeclare AixLib.DataBase.SolarElectric.SchuecoSPV170SME1 pVParameters,
-
         lat=weaDat.lat,
         lon=weaDat.lon,
         alt=weaDat.alt,

@@ -8,7 +8,7 @@ model AntiLegionellaControl "Control to avoid Legionella in the DHW"
     "Time passed before next disinfection. Each day would be 86400 s"
     annotation (Dialog(enable=weekly));
   parameter Boolean aux_for_desinfection = true "Use aux heater for desinfection";
-  Modelica.Units.SI.Time minTimeAntLeg(displayUnit="min") =
+  Modelica.Units.SI.Time minTimeAntLeg(displayUnit="min")=
     get_minTimeAntLeg_for_TLegMin(fitMinLegTime.y[1], percentageDeath)
     "Minimal duration of antilegionella control to ensure correct disinfection";
   function get_minTimeAntLeg_for_TLegMin

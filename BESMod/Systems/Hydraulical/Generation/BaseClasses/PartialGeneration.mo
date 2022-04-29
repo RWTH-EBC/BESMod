@@ -4,7 +4,7 @@ partial model PartialGeneration "Partial generation model for HPS"
   extends
     BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters(
     final TSup_nominal=TDem_nominal .+ dTLoss_nominal,
-    m_flow_nominal=Q_flow_nominal .* f_design ./ dTTra_nominal ./ cp,                  final
+    m_flow_nominal=Q_flow_nominal .* f_design ./ dTTra_nominal ./ 4184,                final
       nParallelSup=nParallelDem);
 
   parameter Modelica.Units.SI.PressureDifference dpDem_nominal[nParallelDem]

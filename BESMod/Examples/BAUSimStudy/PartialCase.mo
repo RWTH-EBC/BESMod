@@ -1,5 +1,5 @@
 within BESMod.Examples.BAUSimStudy;
-model PartialCase
+partial model PartialCase
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
     redeclare Systems.Demand.Building.TEASERThermalZone building(redeclare

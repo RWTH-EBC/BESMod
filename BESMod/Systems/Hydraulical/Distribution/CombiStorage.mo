@@ -2,7 +2,7 @@ within BESMod.Systems.Hydraulical.Distribution;
 model CombiStorage
   "Combi Storage for heating, dhw and solar assitance"
   extends BaseClasses.PartialDistribution(
-    dpSup_nominal={0,sum(bufferStorage.heatingCoil2.pipe.cor.res.dp_nominal)},
+    dpSup_nominal={0,sum(bufferStorage.heatingCoil2.pipe.res.dp_nominal)},
     final dpDem_nominal={0},
     dTTraDHW_nominal=parameters.dTLoadingHC1,
     final m_flow_nominal=mDem_flow_nominal,
@@ -101,7 +101,7 @@ model CombiStorage
         extent={{-12,-12},{12,12}},
         rotation=0,
         origin={-62,-72})));
-    Modelica.Blocks.Sources.RealExpression realExpression[parameters.nLayer](y(unit="K", displayUnit="degC")=
+    Modelica.Blocks.Sources.RealExpression realExpression[parameters.nLayer](y(each final unit="K", each final displayUnit="degC")=
           bufferStorage.layer.T)
       annotation (Placement(transformation(extent={{-42,-122},{-22,-102}})));
 

@@ -14,7 +14,7 @@ model ComfortCalculator "Cacluate the discomort in K*s"
     final initType=Modelica.Blocks.Types.Init.InitialOutput,
     final y_start=0)
     annotation (Placement(transformation(extent={{44,-14},{64,6}})));
-  Modelica.Blocks.Math.Add         add(final k1=if for_heating then -1 else 1,
+  Modelica.Blocks.Math.Add add(final k1=if for_heating then -1 else 1,
       final k2=if for_heating then 1 else -1)
     annotation (Placement(transformation(extent={{-26,-16},{-6,4}})));
   Modelica.Blocks.Sources.Constant const(k=TComBou)

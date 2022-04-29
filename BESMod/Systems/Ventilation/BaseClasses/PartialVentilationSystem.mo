@@ -8,7 +8,10 @@ partial model PartialVentilationSystem
     annotation (choicesAllMatching=true,
     Dialog(group="Design - Top Down: Parameters are given by the parent system"),
     Placement(transformation(extent={{-100,-98},{-80,-78}})));
-  replaceable Generation.BaseClasses.PartialGeneration generation
+  replaceable Generation.BaseClasses.PartialGeneration generation(
+      dTTra_nominal=fill(1, generation.nParallelDem),
+      m_flow_nominal=fill(1, generation.nParallelDem),
+      dp_nominal=fill(0, generation.nParallelDem))
     constrainedby Generation.BaseClasses.PartialGeneration(
     Q_flow_nominal={sum(distribution.Q_flow_nominal .* distribution.f_design)},
     redeclare final package Medium = Medium,
@@ -31,7 +34,10 @@ partial model PartialVentilationSystem
     annotation (choicesAllMatching=true, Placement(transformation(extent={{26,-56},
             {80,-2}})));
 
-  replaceable Distribution.BaseClasses.PartialDistribution distribution
+  replaceable Distribution.BaseClasses.PartialDistribution distribution(
+      dTTra_nominal=fill(1, distribution.nParallelDem),
+      m_flow_nominal=fill(1, distribution.nParallelDem),
+      dp_nominal=fill(0, distribution.nParallelDem))
     constrainedby Distribution.BaseClasses.PartialDistribution(
     redeclare package Medium = Medium,
     final nParallelDem=ventilationSystemParameters.nZones,

@@ -3,9 +3,8 @@ model ElectricalSystem
   extends Modelica.Icons.Example;
   BESMod.Systems.Electrical.ElectricalSystem
     pVBatterySystemNoTransfer(
-    redeclare Transfer.NoElectricalTransfer transfer(nParallelDem=1),
-    redeclare Distribution.BatterySystemSimple distribution(nSubsysLoads=2,
-        redeclare
+    redeclare Transfer.NoElectricalTransfer transfer,
+    redeclare Distribution.BatterySystemSimple distribution(redeclare
         BuildingSystems.Technologies.ElectricalStorages.Data.LithiumIon.LithiumIonTeslaPowerwall1
         batteryParameters),
     redeclare Generation.PVSystemMultiSub generation(
@@ -26,7 +25,7 @@ model ElectricalSystem
     f=1/86400,
     offset=3000)
     annotation (Placement(transformation(extent={{-98,24},{-78,44}})));
-  Utilities.Electrical.RealToElecCon realToElecCon(reverse=true)
+  Utilities.Electrical.RealToElecCon realToElecCon
     annotation (Placement(transformation(extent={{-70,24},{-50,44}})));
   IBPSA.BoundaryConditions.WeatherData.ReaderTMY3 weaDat(filNam=
         ModelicaServices.ExternalReferences.loadResource(
@@ -34,7 +33,7 @@ model ElectricalSystem
     annotation (Placement(transformation(extent={{-100,68},{-72,96}})));
   Utilities.Electrical.ElecConToReal elecConToReal(reverse=true)
     annotation (Placement(transformation(extent={{-30,-80},{-6,-54}})));
-  Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixedTemperature[1](T=
+  Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixedTemperature[1](each T=
         293.15)
     annotation (Placement(transformation(extent={{92,-22},{72,-2}})));
   Modelica.Blocks.Interfaces.RealOutput PElecFromGrid "Electrical power"

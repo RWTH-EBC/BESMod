@@ -2,8 +2,6 @@ within BESMod.Systems.UserProfiles;
 model NoUser "No user"
   extends BaseClasses.PartialUserProfiles;
 
-  parameter Real T_const "Constant outdoor air temperature";
-
   Modelica.Blocks.Sources.Constant constZero[3](each k=0)
     annotation (Placement(transformation(extent={{-14,-20},{24,18}})));
   Modelica.Blocks.Sources.Constant constTDHW(k=systemParameters.TDHWWaterCold)

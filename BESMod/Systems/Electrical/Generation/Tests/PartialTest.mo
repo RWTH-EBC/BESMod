@@ -1,5 +1,5 @@
 within BESMod.Systems.Electrical.Generation.Tests;
-model PartialTest
+partial model PartialTest
   extends Modelica.Icons.Example;
   replaceable
   BESMod.Systems.Electrical.Generation.BaseClasses.PartialGeneration

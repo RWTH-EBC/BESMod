@@ -13,7 +13,9 @@ partial model PartialHydraulicSystem
     BESMod.Systems.Hydraulical.RecordsCollection.HydraulicSystemBaseDataDefinition
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-178,-136},{-158,-116}})));
 
-  replaceable BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration generation constrainedby
+  replaceable BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration generation(
+      dTTra_nominal=fill(1, generation.nParallelDem), dp_nominal=fill(0,
+        generation.nParallelDem))                                                            constrainedby
     BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration(
     final TDem_nominal=distribution.TSup_nominal,
     final Q_flow_nominal={sum(distribution.Q_flow_nominal) *generation.f_design[
@@ -85,7 +87,12 @@ partial model PartialHydraulicSystem
         final QLoss_flow_nominal=transfer.QLoss_flow_nominal))
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-132,54},
             {154,122}})));
-  replaceable BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution distribution                                                                                                                                                                                                         constrainedby
+  replaceable BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution distribution(
+    dTTra_nominal=fill(1, distribution.nParallelDem),
+    m_flow_nominal=fill(0, distribution.nParallelDem),
+    dTTraDHW_nominal=1,
+    dpSup_nominal=fill(0, distribution.nParallelDem),
+    dpDem_nominal=fill(0, distribution.nParallelDem))                                                                                                                                                                                                         constrainedby
     BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution(
     redeclare package Medium = Medium,
     redeclare final package MediumDHW = MediumDHW,
@@ -115,7 +122,8 @@ partial model PartialHydraulicSystem
     final TDHW_nominal=hydraulicSystemParameters.dhwParas.TDHW_nominal) annotation (choicesAllMatching=true,
       Placement(transformation(extent={{-12,-104},{90,28}})));
 
-  replaceable BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialTransfer transfer                                                                                                                                                                           constrainedby
+  replaceable BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialTransfer transfer(
+      dp_nominal=fill(0, transfer.nParallelDem))                                                                                                                                                                                                         constrainedby
     BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialTransfer(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
