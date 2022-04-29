@@ -68,7 +68,8 @@ model BES
         BESMod.Systems.Demand.DHW.TappingProfiles.PassThrough
         calcmFlow),
     redeclare BESMod.Systems.UserProfiles.TEASERProfiles
-      userProfiles,
+      userProfiles(redeclare
+        BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile),
     redeclare
       BESMod.Examples.UseCaseAachenTimeBased.ParametersToChange
       parameterStudy,

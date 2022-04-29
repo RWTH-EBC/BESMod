@@ -84,7 +84,8 @@ model SolarThermalHPS "HPS which is supported by a solar thermal collector"
       eta_zero=0.72,
       c1=2.8312,
       c2=0.00119),
-    redeclare Systems.UserProfiles.TEASERProfiles userProfiles,
+    redeclare Systems.UserProfiles.TEASERProfiles userProfiles(redeclare
+        BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile),
     redeclare BESMod.Systems.Ventilation.NoVentilation
       ventilation);
 

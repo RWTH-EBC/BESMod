@@ -21,7 +21,11 @@ partial model PartialBuildingEnergySystem "Partial BES"
   // Parameters
   replaceable parameter
     BESMod.Systems.RecordsCollection.SystemParametersBaseDataDefinition
-    systemParameters "Parameters relevant for the whole energy system"
+    systemParameters constrainedby
+    RecordsCollection.SystemParametersBaseDataDefinition(QDHW_flow_nomial=
+        userProfiles.mDHW_flow_nominal*(systemParameters.TSetDHW -
+        systemParameters.TDHWWaterCold)*4184)
+                     "Parameters relevant for the whole energy system"
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-280,
             -24},{-228,40}})));
   replaceable parameter RecordsCollection.ParameterStudy.ParameterStudyBaseDefinition
@@ -40,11 +44,12 @@ partial model PartialBuildingEnergySystem "Partial BES"
       final use_hydraulic=systemParameters.use_hydraulic,
       final use_ventilation=systemParameters.use_ventilation) annotation (
       choicesAllMatching=true, Placement(transformation(extent={{-10,0},{74,86}})));
-  replaceable
-    BESMod.Systems.UserProfiles.BaseClasses.PartialUserProfiles
-    userProfiles constrainedby
-    BESMod.Systems.UserProfiles.BaseClasses.PartialUserProfiles(
-      final systemParameters=systemParameters)
+  replaceable BESMod.Systems.UserProfiles.BaseClasses.PartialUserProfiles
+    userProfiles constrainedby UserProfiles.BaseClasses.PartialUserProfiles(
+    final nZones=systemParameters.nZones,
+    final TSetZone_nominal=systemParameters.TSetZone_nominal,
+    final TSetDHW=systemParameters.TSetDHW,
+    final TDHWWaterCold=systemParameters.TDHWWaterCold)
     "Replacable model to specify your user profiles" annotation (
       choicesAllMatching=true, Placement(transformation(extent={{-280,128},{-226,
             178}})));
@@ -54,11 +59,11 @@ partial model PartialBuildingEnergySystem "Partial BES"
                                                      redeclare final package
       Medium =               MediumDHW,
       final parameters(
-       final mDHW_flow_nominal=systemParameters.DHWProfile.m_flow_nominal,
+       final mDHW_flow_nominal=userProfiles.mDHW_flow_nominal,
        final QDHW_flow_nominal=systemParameters.QDHW_flow_nomial,
        final TDHW_nominal=systemParameters.TSetDHW,
        final TDHWCold_nominal=systemParameters.TDHWWaterCold,
-       final VDHWDay=systemParameters.V_dhw_day)) annotation (choicesAllMatching=true, Placement(
+       final VDHWDay=userProfiles.VolDHWDay)) annotation (choicesAllMatching=true, Placement(
         transformation(extent={{-8,-108},{74,-32}})));
   replaceable Electrical.BaseClasses.PartialElectricalSystem electrical constrainedby
     Electrical.BaseClasses.PartialElectricalSystem(final nLoadsExtSubSys=4,

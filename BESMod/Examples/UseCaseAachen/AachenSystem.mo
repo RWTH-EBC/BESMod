@@ -2,7 +2,6 @@ within BESMod.Examples.UseCaseAachen;
 record AachenSystem
   extends Systems.RecordsCollection.SystemParametersBaseDataDefinition(
     nZones=1,
-    redeclare Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
     filNamWea=Modelica.Utilities.Files.loadResource(
         "modelica://BESMod/Resources/WeatherData/TRY2015_507931060546_Jahr_City_Aachen_Normal.mos"),
     QBui_flow_nominal={10632.414942943078},
