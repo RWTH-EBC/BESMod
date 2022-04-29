@@ -21,7 +21,7 @@ partial model PartialUserProfiles
           lineColor={0,0,0},
           textString="%name%
 "),     Polygon(points={{-118,-96},{-118,-96}}, lineColor={28,108,200}),
-        Bitmap(extent={{-96,-96},{90,92}}, fileName="modelica://BESMod/Resources/img/Users.png")}),
+        Bitmap(extent={{-96,-96},{90,92}}, fileName="modelica://BESMod/Resources/Images/Users.png")}),
       Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-120,-120},
             {120,120}})));
 end PartialUserProfiles;
