@@ -63,7 +63,7 @@ See [BESMod Library license](License).
 
 We gratefully acknowledge the financial support by the Federal Ministry for Economic Affairs and Climate Action (BMWK), promotional reference 03ET1495A.
 
-![BMWK](./BESMod/Resources/Images/BMWK_logo.png)
+<img src="./BESMod/Resources/Images/BMWK_logo.png" alt="BMWK" width="200"/>
 
 This work emerged from the IBPSA Project 1, an international project conducted under the umbrella of the International Building Performance Simulation Association (IBPSA). Project 1 will develop and demonstrate a BIM/GIS and Modelica Framework for building and community energy system design and operation.
 
