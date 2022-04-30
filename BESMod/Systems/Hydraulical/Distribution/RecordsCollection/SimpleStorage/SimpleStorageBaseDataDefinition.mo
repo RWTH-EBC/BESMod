@@ -1,5 +1,5 @@
 within BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage;
-record SimpleStorageBaseDataDefinition
+partial record SimpleStorageBaseDataDefinition
   extends
     Systems.Hydraulical.Distribution.RecordsCollection.PartialStorageBaseDataDefinition(final
       use_HC1=true);

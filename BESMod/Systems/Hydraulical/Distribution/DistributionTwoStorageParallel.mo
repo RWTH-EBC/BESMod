@@ -87,7 +87,7 @@ model DistributionTwoStorageParallel
         rotation=180,
         origin={37,99})));
 
-  replaceable
+  replaceable parameter
     BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.SimpleStorageBaseDataDefinition
     bufParameters constrainedby
     BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.SimpleStorageBaseDataDefinition(
@@ -100,7 +100,7 @@ model DistributionTwoStorageParallel
         final mHC1_flow_nominal=mSup_flow_nominal[1],
         redeclare final AixLib.DataBase.Pipes.Copper.Copper_12x1 pipeHC1)                    annotation (
       choicesAllMatching=true, Placement(transformation(extent={{84,56},{98,70}})));
-  replaceable
+  replaceable parameter
     BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.SimpleStorageBaseDataDefinition
     dhwParameters constrainedby
     BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.SimpleStorageBaseDataDefinition(
