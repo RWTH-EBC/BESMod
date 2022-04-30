@@ -20,6 +20,6 @@ equation
           fillPattern=FillPattern.Solid), Line(
           points={{52,82},{-76,82},{28,6},{-66,-76},{52,-76}},
           color={0,0,0},
-          thickness=0.5)}),                                      Diagram(
+          thickness=0.5)}),                                      Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end MultiSumElec;

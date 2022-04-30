@@ -123,6 +123,7 @@ equation
           127}));
   connect(realExpression.y, QCon_flow) annotation (Line(points={{51,82},{88,82},
           {88,60},{110,60}}, color={0,0,127}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end PartialGetHeatGenerationCurve;

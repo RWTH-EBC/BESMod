@@ -17,6 +17,7 @@ record ThermostaticValveDataDefinition
     "Pressure drop of pipe and other resistances that are in series";
   parameter Modelica.Units.SI.PressureDifference dpValve_nominal=1000
     "Nominal pressure drop of fully open valve, used if CvData=IBPSA.Fluid.Types.CvTypes.OpPoint";
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end ThermostaticValveDataDefinition;

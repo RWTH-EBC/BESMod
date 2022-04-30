@@ -48,7 +48,8 @@ equation
           lineColor={0,0,0},
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
-          textString="%name")}), Diagram(coordinateSystem(preserveAspectRatio=false)),
+          textString="%name")}), Diagram(graphics,
+                                         coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Calculate the time discomfort is present. Useful to check if discomfort values are high due to frequent small deviations or some long, possibly big deviations. The latter may indicate the system is undersized for the given demand.</p>
 </html>"));

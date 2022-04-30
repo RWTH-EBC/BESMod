@@ -62,11 +62,12 @@ record SystemParametersBaseDataDefinition
     "Name of weather data file"
     annotation (Dialog(group="Weather data"));
 
-  // HVAC-Subsystems
+  // Subsystems
   parameter Boolean use_hydraulic=true "=false to disable hydraulic subsystem" annotation(Dialog(group="System layout"));
   parameter Boolean use_ventilation=true "=false to disable ventilation subsystem" annotation(Dialog(group="System layout"));
   parameter Boolean use_dhw=use_hydraulic "=false to disable DHW subsystem" annotation(Dialog(group="System layout", enable=use_hydraulic));
-
-  annotation (defaultComponentName = "baseParameterAssumptions", Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  parameter Boolean use_elecHeating=true "= false to disable heating using the electric system" annotation(Dialog(group="System layout", enable=use_hydraulic));
+  annotation (defaultComponentName = "baseParameterAssumptions", Icon(graphics,
+                                                                      coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end SystemParametersBaseDataDefinition;

@@ -7,6 +7,7 @@ record PartialDHWTap
     "Nominal mass flow rate";
   parameter Modelica.Units.SI.Volume V_dhw_day "Average daily tapping volume";
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end PartialDHWTap;

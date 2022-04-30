@@ -46,6 +46,7 @@ partial model PartialTransfer "Partial transfer model for BES"
     annotation (Placement(transformation(extent={{-10,90},{10,110}})));
   Electrical.Interfaces.InternalElectricalPin internalElectricalPin
     annotation (Placement(transformation(extent={{62,-108},{82,-88}})));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end PartialTransfer;

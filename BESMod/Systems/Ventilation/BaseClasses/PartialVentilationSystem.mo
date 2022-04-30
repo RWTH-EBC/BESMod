@@ -2,6 +2,8 @@ within BESMod.Systems.Ventilation.BaseClasses;
 partial model PartialVentilationSystem
   extends BESMod.Utilities.Icons.VentilationIcon;
   extends BESMod.Systems.BaseClasses.PartialFluidSubsystem;
+  parameter Boolean subsystemDisabled "To enable the icon if the subsystem is disabled" annotation (Dialog(tab="Graphics"));
+
   replaceable parameter RecordsCollection.SupplySystemBaseDataDefinition
     ventilationSystemParameters constrainedby
     RecordsCollection.SupplySystemBaseDataDefinition
@@ -227,6 +229,26 @@ equation
       points={{-22.6,-51.48},{-22.6,-78},{20,-78},{20,-97.55},{30.2,-97.55}},
       color={0,0,0},
       thickness=1));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(
+      Ellipse(
+        visible=subsystemDisabled,
+        extent={{-80,80},{80,-80}},
+        lineColor={215,215,215},
+        fillColor={255,0,0},
+        fillPattern=FillPattern.Solid),
+      Ellipse(
+        visible=subsystemDisabled,
+        extent={{-55,55},{55,-55}},
+        lineColor={255,255,255},
+        fillColor={255,255,255},
+        fillPattern=FillPattern.Solid),
+      Rectangle(
+        visible=subsystemDisabled,
+        extent={{-60,14},{60,-14}},
+        lineColor={255,0,0},
+        fillColor={255,0,0},
+        fillPattern=FillPattern.Solid,
+        rotation=45,
+          origin={-2,-2}),   coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end PartialVentilationSystem;

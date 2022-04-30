@@ -89,7 +89,8 @@ model SolarThermalHPS "HPS which is supported by a solar thermal collector"
     redeclare BESMod.Systems.Ventilation.NoVentilation
       ventilation);
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)),
     experiment(
       StopTime=31536000,

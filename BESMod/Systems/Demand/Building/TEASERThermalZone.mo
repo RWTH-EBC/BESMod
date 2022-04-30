@@ -645,6 +645,7 @@ equation
       points={{84,-96},{70,-96}},
       color={0,0,0},
       thickness=1));
-    annotation (Diagram(coordinateSystem(extent={{-100,-100},{100,100}})), Icon(
+    annotation (Diagram(graphics,
+                        coordinateSystem(extent={{-100,-100},{100,100}})), Icon(graphics,
         coordinateSystem(extent={{-100,-120},{100,100}})));
 end TEASERThermalZone;

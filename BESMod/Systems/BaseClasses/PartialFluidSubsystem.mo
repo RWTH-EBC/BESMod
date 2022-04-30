@@ -20,6 +20,7 @@ model PartialFluidSubsystem
 protected
   parameter Medium.ThermodynamicState sta_nominal=Medium.setState_pTX(
       T=Medium.T_default, p=Medium.p_default, X=Medium.X_default) "Nominal / default state of medium";
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end PartialFluidSubsystem;

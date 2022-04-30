@@ -28,7 +28,8 @@ equation
           12},{-56,-2.5},{-20.8,-2.5}}, color={0,0,127}));
   connect(constTSet.y, onOffController.T_Set)
     annotation (Line(points={{-39,-50},{10,-50},{10,-18.7}}, color={0,0,127}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)),
     experiment(
       StopTime=3600,

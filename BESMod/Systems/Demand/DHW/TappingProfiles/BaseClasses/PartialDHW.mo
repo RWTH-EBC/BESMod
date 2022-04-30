@@ -20,6 +20,7 @@ equation
   assert(TSet>=TCold, "Set temperature has to be higher than cold water temperature", AssertionLevel.error);
   // assert(TIs>TCold, "Actual temperature has to be higher than cold water temperature", AssertionLevel.error);
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end PartialDHW;

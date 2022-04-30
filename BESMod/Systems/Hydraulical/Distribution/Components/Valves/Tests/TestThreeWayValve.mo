@@ -94,7 +94,8 @@ equation
         points={{70,-16},{82,-16},{82,-32.8},{24,-32.8}}, color={0,127,255}));
   connect(sawTooth.y, pumpHP.m_flow_in) annotation (Line(points={{-111,16},{-98,
           16},{-98,-12},{-92,-12}}, color={0,0,127}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)),
     experiment(StopTime=1000, __Dymola_Algorithm="Dassl"));
 end TestThreeWayValve;

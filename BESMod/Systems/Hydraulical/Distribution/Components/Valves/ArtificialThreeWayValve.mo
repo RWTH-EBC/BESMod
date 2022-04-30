@@ -205,5 +205,6 @@ equation
         Line(
           points={{-4,-2},{-4,-50},{20,-50}},
           color={0,0,0},
-          thickness=0.5)}),                                      Diagram(coordinateSystem(preserveAspectRatio=false)));
+          thickness=0.5)}),                                      Diagram(graphics,
+                                                                         coordinateSystem(preserveAspectRatio=false)));
 end ArtificialThreeWayValve;

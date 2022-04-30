@@ -36,6 +36,7 @@ record SubsystemControlBaseDataDefinition
       f_design .* Q_flow_nominal .- Q_flow_nominal
     "Nominal heat flow rate due to heat losses"
     annotation (Dialog(group="System Design"));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end SubsystemControlBaseDataDefinition;

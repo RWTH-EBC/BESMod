@@ -70,7 +70,9 @@ model BESModel
       parameterStudy,
     redeclare
       BESMod.Systems.RecordsCollection.ExampleSystemParameters
-      systemParameters(THydSup_nominal={328.15}, use_ventilation=false));
+      systemParameters(
+      THydSup_nominal={328.15},                  use_ventilation=false,
+      use_elecHeating=false));
 
   annotation (experiment(
       StopTime=86400,

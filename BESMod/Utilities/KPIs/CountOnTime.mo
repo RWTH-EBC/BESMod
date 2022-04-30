@@ -48,7 +48,8 @@ equation
           lineColor={0,0,0},
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
-          textString="%name")}), Diagram(coordinateSystem(preserveAspectRatio=false)),
+          textString="%name")}), Diagram(graphics,
+                                         coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 </html>"));
 end CountOnTime;

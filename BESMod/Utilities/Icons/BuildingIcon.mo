@@ -22,5 +22,6 @@ partial model BuildingIcon
           extent={{-102,-72},{102,-168}},
           lineColor={0,0,0},
           textString="%name%")}),
-                                Diagram(coordinateSystem(preserveAspectRatio=false)));
+                                Diagram(graphics,
+                                        coordinateSystem(preserveAspectRatio=false)));
 end BuildingIcon;

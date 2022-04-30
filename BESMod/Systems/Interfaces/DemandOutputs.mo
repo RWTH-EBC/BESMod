@@ -4,7 +4,9 @@ expandable connector DemandOutputs "Bus with ouputs of the demand system"
 
   annotation (
   defaultComponentName = "outBusDem",
-  Icon(coordinateSystem(preserveAspectRatio=false)),
-  Diagram(coordinateSystem(preserveAspectRatio=false)));
+  Icon(graphics,
+       coordinateSystem(preserveAspectRatio=false)),
+  Diagram(graphics,
+          coordinateSystem(preserveAspectRatio=false)));
 
 end DemandOutputs;

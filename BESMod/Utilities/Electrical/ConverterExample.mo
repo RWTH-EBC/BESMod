@@ -20,6 +20,7 @@ equation
           {-50,60},{-50,6.8},{-38.6,6.8}}, color={0,0,127}));
   connect(sine1.y, realToElecConGen.PEleGen) annotation (Line(points={{-81,24},
           {-52,24},{-52,-70.8},{-36.6,-70.8}}, color={0,0,127}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end ConverterExample;

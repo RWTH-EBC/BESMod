@@ -61,6 +61,7 @@ partial model PartialDemand "Partial demand model for HPS"
           extent={{-20,78},{20,120}})));
   Electrical.Interfaces.InternalElectricalPin internalElectricalPin
     annotation (Placement(transformation(extent={{60,-106},{80,-86}})));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end PartialDemand;

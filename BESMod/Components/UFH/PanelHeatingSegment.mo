@@ -140,7 +140,8 @@ equation
       points={{-11.1,-46.9},{-11.1,-31.45},{-14,-31.45},{-14,-15}},
       color={191,0,0},
       smooth=Smooth.None));
-  annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
+  annotation (Diagram(graphics,
+                      coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}})),  Icon(graphics={
         Rectangle(
           extent={{-100,20},{100,-22}},

@@ -22,7 +22,8 @@ equation
       points={{21,43.2},{21,76.44},{56.36,76.44}},
       color={0,0,0},
       thickness=1));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)),
     experiment(
       StopTime=86400,

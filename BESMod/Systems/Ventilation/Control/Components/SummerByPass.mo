@@ -67,6 +67,7 @@ equation
           -66,34}}, color={0,0,127}));
   connect(TMea, and2.u2) annotation (Line(points={{-120,0},{-88,0},{-88,26},{
           -66,26}}, color={0,0,127}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end SummerByPass;

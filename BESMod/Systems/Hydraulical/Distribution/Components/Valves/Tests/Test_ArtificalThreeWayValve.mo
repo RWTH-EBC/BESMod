@@ -54,7 +54,8 @@ equation
       Line(points={{44,9},{32,9},{32,5.2},{18,5.2}}, color={0,127,255}));
   connect(booleanPulse.y, artificialThreeWayValve.dhw_on)
     annotation (Line(points={{-23,50},{-2,50},{-2,22}}, color={255,0,255}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)),
     experiment(StopTime=1000, __Dymola_Algorithm="Dassl"));
 end Test_ArtificalThreeWayValve;

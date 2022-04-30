@@ -47,7 +47,7 @@ equation
           lineColor={0,0,0},
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
-          textString="%name")}),                                 Diagram(
+          textString="%name")}),                                 Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Calculate the comfort during either heating or cooling period. Based on EN 15251, which defines a 2 K bandwith around a set temperature of 22 &deg;C.</p>

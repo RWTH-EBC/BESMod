@@ -11,7 +11,8 @@ model PVSystemMultiSub
       timZon=weaDat.timZon,
       ARoof=50));
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)),
     experiment(
       StopTime=86400,

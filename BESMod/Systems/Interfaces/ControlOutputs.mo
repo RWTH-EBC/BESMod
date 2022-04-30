@@ -5,7 +5,9 @@ expandable connector ControlOutputs
 
   annotation (
   defaultComponentName = "outBusCtrl",
-  Icon(coordinateSystem(preserveAspectRatio=false)),
-  Diagram(coordinateSystem(preserveAspectRatio=false)));
+  Icon(graphics,
+       coordinateSystem(preserveAspectRatio=false)),
+  Diagram(graphics,
+          coordinateSystem(preserveAspectRatio=false)));
 
 end ControlOutputs;

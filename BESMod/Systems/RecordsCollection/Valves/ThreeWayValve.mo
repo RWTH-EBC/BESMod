@@ -37,6 +37,7 @@ partial record ThreeWayValve
 
   parameter Boolean from_dp
     "= true, use m_flow = f(dp) else dp = f(m_flow)";
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end ThreeWayValve;

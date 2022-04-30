@@ -5,6 +5,7 @@ partial connector ElectricalPin
   Modelica.Units.SI.Power PElecGen
     "Electrical power flow; positive = power generation; negative = power consumption";
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end ElectricalPin;

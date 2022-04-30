@@ -1,6 +1,7 @@
 within BESMod.Examples.UseCaseAachen;
 record AachenSystem
   extends Systems.RecordsCollection.SystemParametersBaseDataDefinition(
+    use_elecHeating=false,
     nZones=1,
     filNamWea=Modelica.Utilities.Files.loadResource(
         "modelica://BESMod/Resources/WeatherData/TRY2015_507931060546_Jahr_City_Aachen_Normal.mos"),

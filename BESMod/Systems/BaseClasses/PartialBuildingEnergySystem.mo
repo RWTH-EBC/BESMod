@@ -54,20 +54,23 @@ partial model PartialBuildingEnergySystem "Partial BES"
       choicesAllMatching=true, Placement(transformation(extent={{-280,128},{-226,
             178}})));
   replaceable BESMod.Systems.Demand.DHW.BaseClasses.PartialDHW
-    DHW if systemParameters.use_hydraulic
-    constrainedby BESMod.Systems.Demand.DHW.BaseClasses.PartialDHW(
-                                                     redeclare final package
-      Medium =               MediumDHW,
-      final parameters(
-       final mDHW_flow_nominal=userProfiles.mDHW_flow_nominal,
-       final QDHW_flow_nominal=systemParameters.QDHW_flow_nomial,
-       final TDHW_nominal=systemParameters.TSetDHW,
-       final TDHWCold_nominal=systemParameters.TDHWWaterCold,
-       final VDHWDay=userProfiles.VolDHWDay)) annotation (choicesAllMatching=true, Placement(
+    DHW if systemParameters.use_hydraulic constrainedby
+    Demand.DHW.BaseClasses.PartialDHW(
+    redeclare final package Medium = MediumDHW,
+    final parameters(
+      final mDHW_flow_nominal=userProfiles.mDHW_flow_nominal,
+      final QDHW_flow_nominal=systemParameters.QDHW_flow_nomial,
+      final TDHW_nominal=systemParameters.TSetDHW,
+      final TDHWCold_nominal=systemParameters.TDHWWaterCold,
+      final VDHWDay=userProfiles.VolDHWDay),
+    final subsystemDisabled=not systemParameters.use_dhw)
+                                              annotation (choicesAllMatching=true, Placement(
         transformation(extent={{-8,-108},{74,-32}})));
-  replaceable Electrical.BaseClasses.PartialElectricalSystem electrical constrainedby
-    Electrical.BaseClasses.PartialElectricalSystem(final nLoadsExtSubSys=4,
-      redeclare final
+  replaceable Electrical.BaseClasses.PartialElectricalSystem electrical
+    constrainedby Electrical.BaseClasses.PartialElectricalSystem(
+    final nLoadsExtSubSys=4,
+    final use_elecHeating=systemParameters.use_elecHeating,
+    redeclare final
       BESMod.Systems.Electrical.RecordsCollection.ElectricalSystemBaseDataDefinition
       electricalSystemParameters(
       final nZones=systemParameters.nZones,
@@ -82,9 +85,11 @@ partial model PartialBuildingEnergySystem "Partial BES"
       final ARoo=building.ARoo,
       final hBui=building.hBui))                                 annotation (Placement(
         transformation(extent={{-192,40},{-40,128}})), choicesAllMatching=true);
-  replaceable BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem hydraulic if systemParameters.use_hydraulic
-  constrainedby BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem(
+  replaceable BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem hydraulic
+    if systemParameters.use_hydraulic constrainedby
+    Hydraulical.BaseClasses.PartialHydraulicSystem(
     redeclare package Medium = MediumHyd,
+    final subsystemDisabled=not systemParameters.use_hydraulic,
     redeclare final package MediumDHW = MediumDHW,
     redeclare final
       BESMod.Systems.Hydraulical.RecordsCollection.HydraulicSystemBaseDataDefinition
@@ -106,9 +111,10 @@ partial model PartialBuildingEnergySystem "Partial BES"
   replaceable
     BESMod.Systems.Ventilation.BaseClasses.PartialVentilationSystem
     ventilation if systemParameters.use_ventilation constrainedby
-    Ventilation.BaseClasses.PartialVentilationSystem(redeclare final package
-      Medium = MediumZone, redeclare
-      BESMod.Systems.RecordsCollection.SupplySystemBaseDataDefinition
+    Ventilation.BaseClasses.PartialVentilationSystem(
+    redeclare final package Medium = MediumZone,
+    final subsystemDisabled=not systemParameters.use_ventilation,
+    redeclare BESMod.Systems.RecordsCollection.SupplySystemBaseDataDefinition
       ventilationSystemParameters(
       final nZones=systemParameters.nZones,
       final Q_flow_nominal=systemParameters.QBui_flow_nominal,
@@ -286,13 +292,14 @@ equation
           111.657},{-192,111.657}},
       color={0,0,0},
       thickness=1));
-  connect(electrical.heatPortCon, building.heatPortCon) annotation (Line(points={{
-          -39.1059,88.4},{-22,88.4},{-22,68.8},{-10,68.8}},  color={191,0,0}));
-  connect(electrical.heatPortRad, building.heatPortRad) annotation (Line(points={{
-          -39.1059,65.1429},{-18,65.1429},{-18,18},{-14,18},{-14,17.2},{-10,
-          17.2}},
+  if  systemParameters.use_elecHeating then
+    connect(electrical.heatPortCon, building.heatPortCon) annotation (Line(points={{
+            -39.1059,88.4},{-22,88.4},{-22,68.8},{-10,68.8}},color={191,0,0}));
+    connect(electrical.heatPortRad, building.heatPortRad) annotation (Line(points={{
+            -39.1059,65.1429},{-18,65.1429},{-18,18},{-14,18},{-14,17.2},{-10,
+            17.2}},
         color={191,0,0}));
-
+  end if;
   connect(control.outBusCtrl, outputs.control) annotation (Line(
       points={{76.42,149},{94,149},{94,-24},{246,-24},{246,0},{285,0}},
       color={175,175,175},
@@ -336,7 +343,9 @@ equation
           {-188.424,41.2571}},
       color={0,0,0},
       thickness=1));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-280,-120},
-            {280,180}})), Diagram(coordinateSystem(preserveAspectRatio=false,
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false, extent={{-280,-120},
+            {280,180}})), Diagram(graphics,
+                                  coordinateSystem(preserveAspectRatio=false,
           extent={{-280,-120},{280,180}})));
 end PartialBuildingEnergySystem;

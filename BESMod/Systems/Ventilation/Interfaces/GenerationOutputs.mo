@@ -5,7 +5,9 @@ expandable connector GenerationOutputs
 
   annotation (
   defaultComponentName = "outBusGen",
-  Icon(coordinateSystem(preserveAspectRatio=false)),
-  Diagram(coordinateSystem(preserveAspectRatio=false)));
+  Icon(graphics,
+       coordinateSystem(preserveAspectRatio=false)),
+  Diagram(graphics,
+          coordinateSystem(preserveAspectRatio=false)));
 
 end GenerationOutputs;

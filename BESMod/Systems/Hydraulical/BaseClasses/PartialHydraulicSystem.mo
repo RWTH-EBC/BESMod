@@ -2,6 +2,7 @@ within BESMod.Systems.Hydraulical.BaseClasses;
 partial model PartialHydraulicSystem
   "Complete hydraulic system model"
   extends BESMod.Systems.BaseClasses.PartialFluidSubsystem;
+  parameter Boolean subsystemDisabled "To enable the icon if the subsystem is disabled" annotation (Dialog(tab="Graphics"));
 
   replaceable package MediumDHW = IBPSA.Media.Water constrainedby
     Modelica.Media.Interfaces.PartialMedium
@@ -411,7 +412,28 @@ equation
           thickness=0.5),     Text(
           extent={{-96,-130},{108,-226}},
           lineColor={0,0,0},
-          textString="%name%")}),
-                          Diagram(coordinateSystem(preserveAspectRatio=false,
+          textString="%name%"),
+      Ellipse(
+        visible=subsystemDisabled,
+        extent={{-74,80},{86,-80}},
+        lineColor={215,215,215},
+        fillColor={255,0,0},
+        fillPattern=FillPattern.Solid),
+      Ellipse(
+        visible=subsystemDisabled,
+        extent={{-49,55},{61,-55}},
+        lineColor={255,255,255},
+        fillColor={255,255,255},
+        fillPattern=FillPattern.Solid),
+      Rectangle(
+        visible=subsystemDisabled,
+        extent={{-60,14},{60,-14}},
+        lineColor={255,0,0},
+        fillColor={255,0,0},
+        fillPattern=FillPattern.Solid,
+        rotation=45,
+          origin={4,-2})}),
+                          Diagram(graphics,
+                                  coordinateSystem(preserveAspectRatio=false,
           extent={{-180,-140},{200,140}})));
 end PartialHydraulicSystem;

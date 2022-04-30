@@ -3,6 +3,7 @@ model ElectricalSystem
   extends Modelica.Icons.Example;
   BESMod.Systems.Electrical.ElectricalSystem
     pVBatterySystemNoTransfer(
+    use_elecHeating=false,
     redeclare Transfer.NoElectricalTransfer transfer,
     redeclare Distribution.BatterySystemSimple distribution(redeclare
         BuildingSystems.Technologies.ElectricalStorages.Data.LithiumIon.LithiumIonTeslaPowerwall1
@@ -33,9 +34,6 @@ model ElectricalSystem
     annotation (Placement(transformation(extent={{-100,68},{-72,96}})));
   Utilities.Electrical.ElecConToReal elecConToReal(reverse=true)
     annotation (Placement(transformation(extent={{-30,-80},{-6,-54}})));
-  Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixedTemperature[1](each T=
-        293.15)
-    annotation (Placement(transformation(extent={{92,-22},{72,-2}})));
   Modelica.Blocks.Interfaces.RealOutput PElecFromGrid "Electrical power"
     annotation (Placement(transformation(extent={{20,-76},{40,-56}})));
 equation
@@ -52,9 +50,6 @@ equation
       points={{-35.8353,-32.9143},{-35.8353,-66.74},{-29.76,-66.74}},
       color={0,0,0},
       thickness=1));
-  connect(fixedTemperature.port, pVBatterySystemNoTransfer.heatPortRad)
-    annotation (Line(points={{72,-12},{64,-12},{64,-12.2857},{54.5412,-12.2857}},
-        color={191,0,0}));
   connect(elecConToReal.PElecLoa, PElecFromGrid)
     annotation (Line(points={{-3.6,-61.8},{30,-61.8},{30,-66}},
                                                              color={0,0,127}));
@@ -63,7 +58,8 @@ equation
       points={{-49.8,34.2},{-43.9,34.2},{-43.9,27.8857},{-38,27.8857}},
       color={0,0,0},
       thickness=1));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)),
     experiment(
       StopTime=86400,

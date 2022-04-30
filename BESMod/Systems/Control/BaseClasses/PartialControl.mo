@@ -13,6 +13,7 @@ partial model PartialControl "Model for a partial HEMS control"
   Electrical.Interfaces.SystemControlBus sigBusEle annotation (Placement(
         transformation(extent={{-116,-14},{-84,14}}), iconTransformation(extent=
            {{-116,-14},{-84,14}})));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end PartialControl;

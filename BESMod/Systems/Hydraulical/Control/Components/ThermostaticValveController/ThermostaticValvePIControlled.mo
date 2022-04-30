@@ -36,6 +36,6 @@ equation
           fillPattern=FillPattern.Solid),
         Line(points={{-80,-80},{-80,-20},{-80,-20},{52,80}},
                                                            color={0,0,127})}),
-                                                                 Diagram(
+                                                                 Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end ThermostaticValvePIControlled;

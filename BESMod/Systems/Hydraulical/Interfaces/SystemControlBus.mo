@@ -4,7 +4,9 @@ expandable connector SystemControlBus
   extends BESMod.Utilities.Icons.ControlBus;
   annotation (
   defaultComponentName = "sigBusHyd",
-  Icon(coordinateSystem(preserveAspectRatio=false)),
-  Diagram(coordinateSystem(preserveAspectRatio=false)));
+  Icon(graphics,
+       coordinateSystem(preserveAspectRatio=false)),
+  Diagram(graphics,
+          coordinateSystem(preserveAspectRatio=false)));
 
 end SystemControlBus;

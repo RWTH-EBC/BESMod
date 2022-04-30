@@ -88,6 +88,7 @@ equation
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
    annotation(Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"),
-              Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+              Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end PVSystemMultiSub;

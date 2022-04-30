@@ -28,7 +28,8 @@ equation
           {-52,10.8},{-21.2,10.8}}, color={0,0,127}));
   connect(activateSupCtrl.y, intCtrl.activateInt) annotation (Line(points={{-79,
           -20},{-52,-20},{-52,-2},{-21.2,-2}}, color={255,0,255}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)),
     experiment(StopTime=10, __Dymola_Algorithm="Dassl"));
 end SupervisoryControlExample;

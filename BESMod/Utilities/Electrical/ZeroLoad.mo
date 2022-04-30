@@ -14,6 +14,6 @@ equation
           fillPattern=FillPattern.Solid), Text(
           extent={{-92,-52},{92,60}},
           lineColor={0,0,0},
-          textString="0 W")}),                                   Diagram(
+          textString="0 W")}),                                   Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end ZeroLoad;

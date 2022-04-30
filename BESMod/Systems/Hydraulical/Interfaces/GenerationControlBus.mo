@@ -5,7 +5,9 @@ expandable connector GenerationControlBus
 
   annotation (
   defaultComponentName = "sigBusGen",
-  Icon(coordinateSystem(preserveAspectRatio=false)),
-  Diagram(coordinateSystem(preserveAspectRatio=false)));
+  Icon(graphics,
+       coordinateSystem(preserveAspectRatio=false)),
+  Diagram(graphics,
+          coordinateSystem(preserveAspectRatio=false)));
 
 end GenerationControlBus;

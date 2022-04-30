@@ -1,6 +1,7 @@
 within BESMod.Examples.BAUSimStudy;
 record BESParameters
   extends Systems.RecordsCollection.SystemParametersBaseDataDefinition(
+    use_elecHeating=false,
     final filNamWea=Modelica.Utilities.Files.loadResource("modelica://BESMod/Resources/TRY2015_522361130393_Jahr_City_Potsdam.mos"),
     final TAmbVen=min(TSetZone_nominal),
     final TAmbHyd=min(TSetZone_nominal),

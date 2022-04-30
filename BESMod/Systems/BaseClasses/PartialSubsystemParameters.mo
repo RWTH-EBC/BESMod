@@ -45,6 +45,7 @@ model PartialSubsystemParameters "Model for a partial subsystem"
     annotation (Dialog(group=
           "Design - Top Down: Parameters are given by the parent system"));
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end PartialSubsystemParameters;

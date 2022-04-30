@@ -184,7 +184,8 @@ equation
           lineColor={0,0,0},
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
-          textString="%name")}), Diagram(coordinateSystem(preserveAspectRatio=false, extent={
+          textString="%name")}), Diagram(graphics,
+                                         coordinateSystem(preserveAspectRatio=false, extent={
             {-100,-180},{100,180}})),
     Documentation(info="<html>
 <p>Calculates a list of KPIs. Each KPI may be turned on or off. As integrators and Integer conversions are used, disabling KPIs may improve simulation speed. Nevertheless, most KPIs will be handy to understand and explain the BES behaviour better.</p>

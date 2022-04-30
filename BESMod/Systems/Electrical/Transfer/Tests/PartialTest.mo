@@ -13,7 +13,8 @@ equation
       Line(points={{68,-8},{60,-8},{60,6.64},{48,6.64}}, color={191,0,0}));
   connect(fixedTemperature.port, transfer.heatPortCon) annotation (Line(points=
           {{68,-8},{60,-8},{60,26.8},{48,26.8}}, color={191,0,0}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)),
     experiment(StopTime=3600, __Dymola_Algorithm="Dassl"),
     __Dymola_experimentSetupOutput,

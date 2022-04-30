@@ -48,6 +48,7 @@ equation
           points={{14,-72},{16,-66},{18,-64},{20,-62},{26,-60},{32,-60},{36,-62},
               {40,-66},{42,-68},{44,-70},{48,-72},{58,-72},{64,-68},{66,-60}},
           color={0,0,0},
-          smooth=Smooth.Bezier)}), Diagram(coordinateSystem(preserveAspectRatio=
+          smooth=Smooth.Bezier)}), Diagram(graphics,
+                                           coordinateSystem(preserveAspectRatio=
            false)));
 end Inverter;

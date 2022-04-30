@@ -71,7 +71,7 @@ partial model PartialControl "Partial electrical control model"
           lineColor={0,0,0},
           lineThickness=0.5,
           fillColor={175,175,175},
-          fillPattern=FillPattern.Solid)}),                      Diagram(
+          fillPattern=FillPattern.Solid)}),                      Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false, extent={{-240,-100},{240,
             100}})));
 end PartialControl;

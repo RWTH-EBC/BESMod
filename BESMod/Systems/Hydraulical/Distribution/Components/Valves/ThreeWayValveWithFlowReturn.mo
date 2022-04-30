@@ -144,6 +144,6 @@ equation
           lineColor={0,0,0},
           lineThickness=0.5,
           fillColor={28,108,200},
-          fillPattern=FillPattern.Solid)}),                      Diagram(
+          fillPattern=FillPattern.Solid)}),                      Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end ThreeWayValveWithFlowReturn;

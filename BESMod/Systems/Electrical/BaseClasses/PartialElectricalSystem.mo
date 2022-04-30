@@ -1,6 +1,7 @@
 within BESMod.Systems.Electrical.BaseClasses;
 partial model PartialElectricalSystem "Partial model for electrical system"
   parameter Integer nLoadsExtSubSys(min=1) = 4 "Number of external subsystems which result in electrical load / generation";
+  parameter Boolean use_elecHeating=true "=false to disable electric heating";
   replaceable parameter RecordsCollection.ElectricalSystemBaseDataDefinition
     electricalSystemParameters constrainedby
     RecordsCollection.ElectricalSystemBaseDataDefinition annotation (Placement(
@@ -19,7 +20,7 @@ partial model PartialElectricalSystem "Partial model for electrical system"
   AixLib.BoundaryConditions.WeatherData.Bus weaBus annotation (Placement(
         transformation(extent={{-200,24},{-160,66}}), iconTransformation(extent=
            {{-200,24},{-160,66}})));
-  replaceable Transfer.BaseClasses.PartialTransfer transfer constrainedby
+  replaceable Transfer.BaseClasses.PartialTransfer transfer if use_elecHeating constrainedby
     Transfer.BaseClasses.PartialTransfer(final nParallelDem=
         electricalSystemParameters.nZones)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{68,-102},
@@ -31,12 +32,12 @@ partial model PartialElectricalSystem "Partial model for electrical system"
   Interfaces.InternalElectricalPin internalElectricalPin[nLoadsExtSubSys]
     annotation (Placement(transformation(extent={{-190,78},{-170,98}})));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPortCon[
-    electricalSystemParameters.nZones] if transfer.use_elecHeating
+    electricalSystemParameters.nZones] if use_elecHeating
     "Heat port for convective heat transfer with room air temperature"
     annotation (Placement(transformation(extent={{152,4},{172,24}}),
         iconTransformation(extent={{152,4},{172,24}})));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPortRad[
-    electricalSystemParameters.nZones] if transfer.use_elecHeating
+    electricalSystemParameters.nZones] if use_elecHeating
     "Heat port for radiative heat transfer with room air temperature"
     annotation (Placement(transformation(extent={{152,-70},{172,-50}})));
   BESMod.Systems.Interfaces.UseProBus useProBus annotation (
@@ -53,7 +54,8 @@ partial model PartialElectricalSystem "Partial model for electrical system"
   Interfaces.SystemControlBus systemControlBus annotation (Placement(
         transformation(extent={{-26,122},{20,160}}), iconTransformation(extent={
             {-26,122},{20,160}})));
-
+protected
+    BESMod.Utilities.Electrical.ZeroLoad zeroTraLoad if not use_elecHeating "Internal helper";
 equation
   connect(generation.weaBus, weaBus) annotation (Line(
       points={{-148,19.44},{-162,19.44},{-162,42},{-180,42},{-180,45}},
@@ -67,11 +69,6 @@ equation
   connect(control.distributionControlBus, distribution.sigBusDistr) annotation (
      Line(
       points={{4.6,56.25},{4.6,43.125},{6.46,43.125},{6.46,32.55}},
-      color={215,215,215},
-      thickness=0.5));
-  connect(control.transferControlBus, transfer.transferControlBus) annotation (
-      Line(
-      points={{104.2,56.25},{104.2,45.125},{106,45.125},{106,34.62}},
       color={215,215,215},
       thickness=0.5));
 
@@ -107,14 +104,7 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(transfer.transferOutputs, outBusElect.transfer) annotation (Line(
-      points={{106,-101.31},{106,-140},{1,-140}},
-      color={175,175,175},
-      thickness=0.5), Text(
-      string="%second",
-      index=1,
-      extent={{-3,-6},{-3,-6}},
-      horizontalAlignment=TextAlignment.Right));
+
   connect(generation.outBusGen, outBusElect.generation) annotation (Line(
       points={{-105,-101.31},{-105,-140},{1,-140}},
       color={175,175,175},
@@ -132,11 +122,6 @@ equation
       index=1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(transfer.internalElectricalPin, distribution.internalElectricalPin[1])
-    annotation (Line(
-      points={{124.24,36},{124,36},{124,46},{29,46},{29,36}},
-      color={0,0,0},
-      thickness=1));
   connect(generation.internalElectricalPin, distribution.internalElectricalPin[2])
     annotation (Line(
       points={{-83.5,34.62},{-83.5,46},{29,46},{29,36}},
@@ -150,10 +135,32 @@ equation
       color={0,0,0},
       thickness=1));
   end for;
-  connect(heatPortCon, transfer.heatPortCon) annotation (Line(points={{162,14},{
+  if use_elecHeating then
+    connect(heatPortCon, transfer.heatPortCon) annotation (Line(points={{162,14},{
           162,-6},{144,-6},{144,-5.4}}, color={191,0,0}));
-  connect(heatPortRad, transfer.heatPortRad) annotation (Line(points={{162,-60},
+    connect(heatPortRad, transfer.heatPortRad) annotation (Line(points={{162,-60},
           {164,-60},{164,-38.52},{144,-38.52}}, color={191,0,0}));
+    connect(control.transferControlBus, transfer.transferControlBus) annotation (
+      Line(
+      points={{104.2,56.25},{104.2,45.125},{106,45.125},{106,34.62}},
+      color={215,215,215},
+      thickness=0.5));
+    connect(transfer.transferOutputs, outBusElect.transfer) annotation (Line(
+        points={{106,-101.31},{106,-140},{1,-140}},
+        color={175,175,175},
+        thickness=0.5), Text(
+        string="%second",
+        index=1,
+        extent={{-3,-6},{-3,-6}},
+        horizontalAlignment=TextAlignment.Right));
+    connect(transfer.internalElectricalPin, distribution.internalElectricalPin[1])
+    annotation (Line(
+      points={{124.24,36},{124,36},{124,46},{29,46},{29,36}},
+      color={0,0,0},
+      thickness=1));
+  else
+    connect(zeroTraLoad.internalElectricalPin, distribution.internalElectricalPin[1]);
+  end if;
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-180,-140},
             {160,140}}), graphics={
         Rectangle(
@@ -174,6 +181,6 @@ equation
           thickness=1),       Text(
           extent={{-98,-134},{106,-230}},
           lineColor={0,0,0},
-          textString="%name%")}),                                Diagram(
+          textString="%name%")}),                                Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false, extent={{-180,-140},{160,140}})));
 end PartialElectricalSystem;

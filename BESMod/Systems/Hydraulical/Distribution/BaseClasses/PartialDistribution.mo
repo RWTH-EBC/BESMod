@@ -70,6 +70,7 @@ partial model PartialDistribution
     annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
   Electrical.Interfaces.InternalElectricalPin internalElectricalPin
     annotation (Placement(transformation(extent={{60,-108},{80,-88}})));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end PartialDistribution;

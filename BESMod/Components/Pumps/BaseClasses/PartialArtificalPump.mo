@@ -24,6 +24,6 @@ partial model PartialArtificalPump
             fillPattern=FillPattern.Solid),
             Polygon(points = {{-42, 70}, {78, -4}, {-42, -78}, {-42, 70}},
             lineColor = {0, 0, 0}, fillColor = {175, 175, 175},
-            fillPattern=FillPattern.Solid)}),                    Diagram(
+            fillPattern=FillPattern.Solid)}),                    Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end PartialArtificalPump;

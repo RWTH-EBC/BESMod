@@ -3,6 +3,7 @@ partial model PartialDHW "Partial model for domestic hot water (DHW)"
   extends BESMod.Systems.BaseClasses.PartialFluidSubsystem;
   extends BESMod.Utilities.Icons.DHWIcon;
   replaceable parameter RecordsCollection.DHWDesignParameters parameters;
+  parameter Boolean subsystemDisabled "To enable the icon if the subsystem is disabled" annotation (Dialog(tab="Graphics"));
 
   Modelica.Fluid.Interfaces.FluidPort_a port_a(redeclare final package Medium =
         Medium) "Inlet for the demand of DHW" annotation (Placement(
@@ -22,6 +23,26 @@ partial model PartialDHW "Partial model for domestic hot water (DHW)"
     annotation (Placement(transformation(extent={{60,-108},{80,-88}})));
 equation
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(
+      Ellipse(
+        visible=subsystemDisabled,
+        extent={{-82,82},{78,-78}},
+        lineColor={215,215,215},
+        fillColor={255,0,0},
+        fillPattern=FillPattern.Solid),
+      Ellipse(
+        visible=subsystemDisabled,
+        extent={{-57,57},{53,-53}},
+        lineColor={255,255,255},
+        fillColor={255,255,255},
+        fillPattern=FillPattern.Solid),
+      Rectangle(
+        visible=subsystemDisabled,
+        extent={{-60,14},{60,-14}},
+        lineColor={255,0,0},
+        fillColor={255,0,0},
+        fillPattern=FillPattern.Solid,
+        rotation=45,
+          origin={-4,0}),                       coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end PartialDHW;

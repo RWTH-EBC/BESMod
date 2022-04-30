@@ -28,6 +28,7 @@ partial record HeatPumpSafetyControl
   parameter Real dT_opeEnv=5
     "Delta value for operational envelope used for upper hysteresis. Used to avoid state-events and to model the real world high pressure pressostat." annotation (Dialog(group="HP-Security: Operational Envelope"));
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end HeatPumpSafetyControl;

@@ -55,6 +55,7 @@ partial record TransferDataBaseDefinition "Data record for hydraulic heat transf
   parameter Real leakageOpening = 0.0001
     "may be useful for simulation stability. Always check the influence it has on your results" annotation(Dialog(group="Thermostatic Valve"));
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end TransferDataBaseDefinition;

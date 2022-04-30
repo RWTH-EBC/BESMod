@@ -50,7 +50,8 @@ equation
           -114.2,-72},{-58,-72},{-58,24.4},{-5,24.4}}, color={0,0,127}));
   connect(T_Set1.y, constantHysteresis.T_oda) annotation (Line(points={{-114.2,
           -72},{-60,-72},{-60,84.4},{-6,84.4}}, color={0,0,127}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)),
     experiment(StopTime=86400, Interval=1));
 end OnOffControllerTest;

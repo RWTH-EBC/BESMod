@@ -189,7 +189,7 @@ Hour of Day: %trigHour",
           lineColor={28,108,200},
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
-          textString="%name")}),                                                           Diagram(
+          textString="%name")}),                                                           Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>This model represents the anti legionella control of a real heat pump. Based on a daily or weekly approach, the given supply temperature is raised above the minimal temperature required for the thermal desinfection (at least 60 &deg;C) for a given duration minTimeAntLeg.</p>

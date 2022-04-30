@@ -14,6 +14,7 @@ partial record TemperatureSensorBaseDefinition
   parameter Modelica.Units.SI.Temperature TAmb
     "Fixed ambient temperature for heat transfer";
 
-annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+annotation (Icon(graphics,
+                 coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
       coordinateSystem(preserveAspectRatio=false)));
 end TemperatureSensorBaseDefinition;

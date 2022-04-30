@@ -95,7 +95,7 @@ partial model PartialModelicaConferenceUseCase
         calcmFlow),
     redeclare
       BESMod.Examples.UseCaseModelicaConferencePaper.BESModSystemParas
-      systemParameters,
+      systemParameters(use_elecHeating=false),
     redeclare
       BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy
       parameterStudy,
