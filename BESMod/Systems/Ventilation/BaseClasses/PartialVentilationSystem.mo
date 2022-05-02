@@ -230,6 +230,10 @@ equation
       color={0,0,0},
       thickness=1));
   annotation (Icon(
+      graphics={
+        Ellipse,
+        Ellipse,
+        Rectangle},
       Ellipse(
         visible=subsystemDisabled,
         extent={{-80,80},{80,-80}},
@@ -249,6 +253,6 @@ equation
         fillColor={255,0,0},
         fillPattern=FillPattern.Solid,
         rotation=45,
-          origin={-2,-2}),   coordinateSystem(preserveAspectRatio=false)), Diagram(
+          origin={-2,-2}),   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end PartialVentilationSystem;

@@ -24,6 +24,10 @@ partial model PartialDHW "Partial model for domestic hot water (DHW)"
 equation
 
   annotation (Icon(
+      graphics={
+        Ellipse,
+        Ellipse,
+        Rectangle},
       Ellipse(
         visible=subsystemDisabled,
         extent={{-82,82},{78,-78}},
