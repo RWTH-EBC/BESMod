@@ -233,26 +233,6 @@ equation
       graphics={
         Ellipse,
         Ellipse,
-        Rectangle},
-      Ellipse(
-        visible=subsystemDisabled,
-        extent={{-80,80},{80,-80}},
-        lineColor={215,215,215},
-        fillColor={255,0,0},
-        fillPattern=FillPattern.Solid),
-      Ellipse(
-        visible=subsystemDisabled,
-        extent={{-55,55},{55,-55}},
-        lineColor={255,255,255},
-        fillColor={255,255,255},
-        fillPattern=FillPattern.Solid),
-      Rectangle(
-        visible=subsystemDisabled,
-        extent={{-60,14},{60,-14}},
-        lineColor={255,0,0},
-        fillColor={255,0,0},
-        fillPattern=FillPattern.Solid,
-        rotation=45,
-          origin={-2,-2}),   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
+        Rectangle},          coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end PartialVentilationSystem;
