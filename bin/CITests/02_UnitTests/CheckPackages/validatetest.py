@@ -156,7 +156,7 @@ class ValidateTest(object):
                 filepath = subdir + os.sep + file
                 if filepath.endswith(".mo") and file != "package.mo":
                     model = filepath.replace(os.sep, ".")
-                    model = model.split('.mo')[0]
+                    model = model[model.find(self.mo_library+'.'):model.rfind(".mo")]
                     model_list.append(model)
         return model_list
 
