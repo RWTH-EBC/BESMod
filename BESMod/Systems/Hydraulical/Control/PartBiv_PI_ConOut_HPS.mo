@@ -41,6 +41,7 @@ equation
         extent={{-3,-6},{-3,-6}},
         horizontalAlignment=TextAlignment.Right));
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end PartBiv_PI_ConOut_HPS;

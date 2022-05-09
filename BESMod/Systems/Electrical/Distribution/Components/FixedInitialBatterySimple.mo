@@ -1,8 +1,11 @@
 within BESMod.Systems.Electrical.Distribution.Components;
 model FixedInitialBatterySimple
   "Add fixed initial conditions to BuildingSystems"
-
-extends BuildingSystems.Technologies.ElectricalStorages.BatterySimple;
+  // Give some dummy to avoid errors in BuildingSystems
+  extends BuildingSystems.Technologies.ElectricalStorages.BatterySimple(
+      redeclare
+      BuildingSystems.Technologies.ElectricalStorages.Data.LithiumIon.LithiumIonAquion
+      batteryData);
 initial equation
 
   EAva = c*SOC_start*E_nominal;

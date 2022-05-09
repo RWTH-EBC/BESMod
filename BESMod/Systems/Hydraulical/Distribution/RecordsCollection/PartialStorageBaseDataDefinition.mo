@@ -97,7 +97,8 @@ partial record PartialStorageBaseDataDefinition
       1e-5,
       10) "thickness of insulation" annotation (Dialog(group="Insulation"));
 
- annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+ annotation (Icon(graphics,
+                  coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p><img src=\"modelica://BESMod/Resources/Images/equations/heatTraNLayerWall.png\"/></p>

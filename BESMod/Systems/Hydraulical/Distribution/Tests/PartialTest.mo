@@ -31,7 +31,6 @@ partial model PartialTest
   IBPSA.Fluid.Movers.FlowControlled_m_flow fanTra[distribution.nParallelDem](
     redeclare final package Medium = Medium,
     each final energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
-    each final massDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
     each final p_start=distribution.p_start,
     each final T_start=distribution.T_start,
     each final X_start=distribution.X_start,
@@ -69,7 +68,6 @@ partial model PartialTest
   IBPSA.Fluid.Movers.FlowControlled_m_flow fanDHW(
     redeclare final package Medium = Medium,
     final energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
-    final massDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
     final p_start=distribution.p_start,
     final T_start=distribution.T_start,
     final X_start=distribution.X_start,
@@ -100,7 +98,6 @@ partial model PartialTest
   IBPSA.Fluid.Movers.FlowControlled_m_flow fanGen[distribution.nParallelSup](
     redeclare final package Medium = Medium,
     each final energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
-    each final massDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
     each final p_start=distribution.p_start,
     each final T_start=distribution.T_start,
     each final X_start=distribution.X_start,

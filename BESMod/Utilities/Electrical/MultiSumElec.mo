@@ -1,14 +1,13 @@
 within BESMod.Utilities.Electrical;
 model MultiSumElec "Sum of all electrical inputs"
 
-  parameter Integer nPorts(min=1) "Number of ports to sum up" annotation(Dialog(connectorSizing=true));
+  parameter Integer nPorts "Number of ports to sum up" annotation(Dialog(connectorSizing=true));
 
   Systems.Electrical.Interfaces.InternalElectricalPin internalElectricalPinOut
     annotation (Placement(transformation(extent={{90,-10},{110,10}})));
   Systems.Electrical.Interfaces.InternalElectricalPin internalElectricalPinIn[nPorts] annotation (Placement(transformation(extent={{-108,-8},{-88,12}})));
 
 equation
-
   internalElectricalPinOut.PElecGen = sum(internalElectricalPinIn.PElecGen);
   internalElectricalPinOut.PElecLoa = sum(internalElectricalPinIn.PElecLoa);
 
@@ -21,6 +20,6 @@ equation
           fillPattern=FillPattern.Solid), Line(
           points={{52,82},{-76,82},{28,6},{-66,-76},{52,-76}},
           color={0,0,0},
-          thickness=0.5)}),                                      Diagram(
+          thickness=0.5)}),                                      Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end MultiSumElec;

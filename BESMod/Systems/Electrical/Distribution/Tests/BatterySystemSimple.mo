@@ -66,7 +66,8 @@ equation
           60},{-54,60},{-54,56},{-46,56}}, color={0,0,127}));
   connect(ElectricalLoad.y, realToElecCon1.PEleLoa) annotation (Line(points={{
           72.8,60},{68,60},{68,64},{60,64}}, color={0,0,127}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)),
     experiment(
       StopTime=86400,

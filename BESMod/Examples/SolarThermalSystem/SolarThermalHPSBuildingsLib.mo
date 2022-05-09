@@ -85,11 +85,13 @@ model SolarThermalHPSBuildingsLib
       eta_zero=0.72,
       c1=2.8312,
       c2=0.00119),
-    redeclare Systems.UserProfiles.TEASERProfiles userProfiles,
+    redeclare Systems.UserProfiles.TEASERProfiles userProfiles(redeclare
+        BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile),
     redeclare BESMod.Systems.Ventilation.NoVentilation
       ventilation);
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)),
     experiment(
       StopTime=31536000,

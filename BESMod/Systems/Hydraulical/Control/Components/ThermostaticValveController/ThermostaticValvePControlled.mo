@@ -26,6 +26,6 @@ equation
           points={{-82,88},{-90,66},{-74,66},{-82,88}},
           lineColor={192,192,192},
           fillColor={192,192,192},
-          fillPattern=FillPattern.Solid)}),                      Diagram(
+          fillPattern=FillPattern.Solid)}),                      Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end ThermostaticValvePControlled;

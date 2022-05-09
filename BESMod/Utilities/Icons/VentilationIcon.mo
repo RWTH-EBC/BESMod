@@ -37,5 +37,6 @@ partial model VentilationIcon
           rotation=-60),      Text(
           extent={{-100,-74},{104,-170}},
           lineColor={0,0,0},
-          textString="%name%")}),Diagram(coordinateSystem(preserveAspectRatio=false)));
+          textString="%name%")}),Diagram(graphics,
+                                         coordinateSystem(preserveAspectRatio=false)));
 end VentilationIcon;

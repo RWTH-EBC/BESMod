@@ -11,8 +11,7 @@ partial model PartialCalcHeatingDemand
     BESMod.Systems.RecordsCollection.SystemParametersBaseDataDefinition
     "Parameters relevant for the whole energy system" annotation (
       choicesAllMatching=true, Placement(transformation(extent={{76,-96},{96,-76}})));
-  Systems.UserProfiles.NoUser heatDemandScenario(final systemParameters=
-        systemParameters,                        final T_const=systemParameters.TOda_nominal)
+  Systems.UserProfiles.NoUser heatDemandScenario(final T_const=systemParameters.TOda_nominal)
     annotation (Placement(transformation(extent={{-100,18},{-50,80}})));
   replaceable BESMod.Systems.Demand.Building.BaseClasses.PartialDemand building
       constrainedby
@@ -127,7 +126,8 @@ equation
       index=-1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false), graphics={Text(
           extent={{-130,-24},{56,-118}},
           lineColor={28,108,200},

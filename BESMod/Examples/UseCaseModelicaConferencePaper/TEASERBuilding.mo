@@ -8,7 +8,8 @@ model TEASERBuilding
         oneZoneParam, use_verboseEnergyBalance=false,
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial),
     redeclare BESMod.Systems.UserProfiles.TEASERProfiles
-      userProfiles,
+      userProfiles(redeclare
+        BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile),
     systemParameters(use_hydraulic=true, use_ventilation=true));
 initial equation
   building.thermalZone[1].ROM.extWallRC.thermCapExt[1].T = 293.15;

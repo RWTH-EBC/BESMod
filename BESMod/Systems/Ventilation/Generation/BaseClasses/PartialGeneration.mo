@@ -29,6 +29,7 @@ partial model PartialGeneration
     annotation (Placement(transformation(extent={{-52,88},{-32,108}})));
   Electrical.Interfaces.InternalElectricalPin internalElectricalPin
     annotation (Placement(transformation(extent={{60,-108},{80,-88}})));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end PartialGeneration;

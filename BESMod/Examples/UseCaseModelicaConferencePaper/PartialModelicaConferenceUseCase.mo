@@ -11,9 +11,7 @@ partial model PartialModelicaConferenceUseCase
         generation(
         redeclare model CellTemperature =
             AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround,
-
         redeclare AixLib.DataBase.SolarElectric.SchuecoSPV170SME1 pVParameters,
-
         lat=weaDat.lat,
         lon=weaDat.lon,
         alt=weaDat.alt,
@@ -29,8 +27,6 @@ partial model PartialModelicaConferenceUseCase
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare Systems.Hydraulical.Generation.HeatPumpAndHeatingRod generation(
         dTTra_nominal={10},
-        m_flow_nominal=hydraulic.generation.Q_flow_nominal .*hydraulic.generation.f_design
-             ./hydraulic.generation.dTTra_nominal  ./ 4184,
         redeclare
           BESMod.Systems.RecordsCollection.Movers.DefaultMover
           pumpData,
@@ -81,8 +77,6 @@ partial model PartialModelicaConferenceUseCase
           dhwParameters(dTLoadingHC1=10)),
       redeclare Systems.Hydraulical.Transfer.RadiatorTransferSystem transfer(
         dTTra_nominal=fill(10,hydraulic.transfer.nParallelDem),
-        m_flow_nominal=hydraulic.transfer.Q_flow_nominal ./ (hydraulic.transfer.dTTra_nominal
-             .* 4184),
         f_design=fill(1.2, hydraulic.transfer.nParallelDem),
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
@@ -101,7 +95,7 @@ partial model PartialModelicaConferenceUseCase
         calcmFlow),
     redeclare
       BESMod.Examples.UseCaseModelicaConferencePaper.BESModSystemParas
-      systemParameters,
+      systemParameters(use_elecHeating=false),
     redeclare
       BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy
       parameterStudy,

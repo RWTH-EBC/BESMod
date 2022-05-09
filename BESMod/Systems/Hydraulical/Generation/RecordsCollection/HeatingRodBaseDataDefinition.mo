@@ -10,6 +10,7 @@ partial record HeatingRodBaseDataDefinition
 
   parameter Integer discretizationSteps(min=0) "Number of steps to dicretize. =0 modulating, =1 resembels an on-off controller. =2 would sample 0, 0.5 and 1";
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end HeatingRodBaseDataDefinition;

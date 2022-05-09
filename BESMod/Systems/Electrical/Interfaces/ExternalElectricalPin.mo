@@ -14,6 +14,7 @@ connector ExternalElectricalPin
           color={0,0,0},
           thickness=1,
           arrow={Arrow.None,Arrow.Filled})}),
-                                            Diagram(coordinateSystem(
+                                            Diagram(graphics,
+                                                    coordinateSystem(
           preserveAspectRatio=false)));
 end ExternalElectricalPin;

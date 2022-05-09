@@ -26,8 +26,8 @@ record SubsystemControlBaseDataDefinition
   parameter Modelica.Units.SI.PressureDifference dp_nominal[nParallelDem]
     "Nominal pressure difference at m_flow_nominal"
     annotation (Dialog(group="System Design"));
-  parameter Modelica.Units.SI.TemperatureDifference dTLoss_nominal[nParallelDem]
-    =fill(0, nParallelDem) "Nominal temperature difference due to heat losses"
+  parameter Modelica.Units.SI.TemperatureDifference dTLoss_nominal[nParallelDem]=
+     fill(0, nParallelDem) "Nominal temperature difference due to heat losses"
     annotation (Dialog(group="System Design"));
   parameter Real f_design[nParallelDem]=fill(1, nParallelDem)
     "Factor for oversizing due to heat losses"
@@ -36,6 +36,7 @@ record SubsystemControlBaseDataDefinition
       f_design .* Q_flow_nominal .- Q_flow_nominal
     "Nominal heat flow rate due to heat losses"
     annotation (Dialog(group="System Design"));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end SubsystemControlBaseDataDefinition;

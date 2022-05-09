@@ -5,7 +5,9 @@ expandable connector DistributionOutputs
 
   annotation (
   defaultComponentName = "outBusDist",
-  Icon(coordinateSystem(preserveAspectRatio=false)),
-  Diagram(coordinateSystem(preserveAspectRatio=false)));
+  Icon(graphics,
+       coordinateSystem(preserveAspectRatio=false)),
+  Diagram(graphics,
+          coordinateSystem(preserveAspectRatio=false)));
 
 end DistributionOutputs;

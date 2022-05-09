@@ -4,6 +4,8 @@ expandable connector SystemOutputs "Bus with ouputs of the overall system"
 
   annotation (
   defaultComponentName = "outBusGen",
-  Icon(coordinateSystem(preserveAspectRatio=false)),
-  Diagram(coordinateSystem(preserveAspectRatio=false)));
+  Icon(graphics,
+       coordinateSystem(preserveAspectRatio=false)),
+  Diagram(graphics,
+          coordinateSystem(preserveAspectRatio=false)));
 end SystemOutputs;

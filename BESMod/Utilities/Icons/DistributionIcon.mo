@@ -52,5 +52,6 @@ partial model DistributionIcon
           lineThickness=1,
           fillColor={238,46,47},
           fillPattern=FillPattern.Solid)}),
-                                 Diagram(coordinateSystem(preserveAspectRatio=false)));
+                                 Diagram(graphics,
+                                         coordinateSystem(preserveAspectRatio=false)));
 end DistributionIcon;

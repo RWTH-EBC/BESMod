@@ -2,7 +2,7 @@
 partial model PartialTransfer "Partial model for transfer subsystems"
    parameter Integer nParallelDem(min=1)
     "Number of parallel demand systems of this system";
-   parameter Boolean use_elecHeating "= false to disable heating using the electric system";
+
   Interfaces.TransferOutputs transferOutputs annotation (Placement(
         transformation(extent={{-16,-114},{16,-84}}), iconTransformation(extent=
            {{-16,-114},{16,-84}})));
@@ -10,12 +10,10 @@ partial model PartialTransfer "Partial model for transfer subsystems"
         transformation(extent={{-14,84},{14,112}}), iconTransformation(extent={
             {-14,84},{14,112}})));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPortCon[nParallelDem]
-    if use_elecHeating
     "Heat port for convective heat transfer with room air temperature"
     annotation (Placement(transformation(extent={{90,28},{110,48}}),
         iconTransformation(extent={{90,30},{110,50}})));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPortRad[nParallelDem]
-    if use_elecHeating
     "Heat port for radiative heat transfer with room air temperature"
     annotation (Placement(transformation(extent={{90,-48},{110,-28}}),
         iconTransformation(extent={{90,-18},{110,2}})));
@@ -63,6 +61,6 @@ partial model PartialTransfer "Partial model for transfer subsystems"
         Text(
           extent={{10,-32},{92,-80}},
           lineColor={238,46,47},
-          textString="Q̇")}),                                   Diagram(
+          textString="Q̇")}),                                   Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end PartialTransfer;

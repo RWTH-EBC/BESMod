@@ -25,6 +25,7 @@ partial record SolarThermalBaseDataDefinition
   parameter Modelica.Units.SI.Volume volPip=dPipe^2*Modelica.Constants.pi/4*A/
       spacing "Water volume of piping";
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end SolarThermalBaseDataDefinition;

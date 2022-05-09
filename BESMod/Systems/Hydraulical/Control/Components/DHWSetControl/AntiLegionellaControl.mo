@@ -8,7 +8,7 @@ model AntiLegionellaControl "Control to avoid Legionella in the DHW"
     "Time passed before next disinfection. Each day would be 86400 s"
     annotation (Dialog(enable=weekly));
   parameter Boolean aux_for_desinfection = true "Use aux heater for desinfection";
-  Modelica.Units.SI.Time minTimeAntLeg(displayUnit="min") =
+  Modelica.Units.SI.Time minTimeAntLeg(displayUnit="min")=
     get_minTimeAntLeg_for_TLegMin(fitMinLegTime.y[1], percentageDeath)
     "Minimal duration of antilegionella control to ensure correct disinfection";
   function get_minTimeAntLeg_for_TLegMin
@@ -189,7 +189,7 @@ Hour of Day: %trigHour",
           lineColor={28,108,200},
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
-          textString="%name")}),                                                           Diagram(
+          textString="%name")}),                                                           Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>This model represents the anti legionella control of a real heat pump. Based on a daily or weekly approach, the given supply temperature is raised above the minimal temperature required for the thermal desinfection (at least 60 &deg;C) for a given duration minTimeAntLeg.</p>

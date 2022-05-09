@@ -79,6 +79,6 @@ equation
           fillPattern=FillPattern.Solid,
           extent={{2,-8},{18,8}}),
         Line(points={{-100,-80},{-40,-80},{-40,-80}},
-          color={0,0,127})}),                                    Diagram(
+          color={0,0,127})}),                                    Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end SupervisoryControl;

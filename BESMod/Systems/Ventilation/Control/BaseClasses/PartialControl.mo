@@ -33,6 +33,7 @@ partial model PartialControl
           extent={{-124,-20},{-84,22}}), iconTransformation(extent={{-124,-20},
             {-84,22}})));
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end PartialControl;

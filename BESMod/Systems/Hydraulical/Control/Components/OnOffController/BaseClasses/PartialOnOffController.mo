@@ -41,6 +41,7 @@ partial model PartialOnOffController "Partial model for an on off controller"
           lineColor={0,0,0},
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
-          lineThickness=0.5)}), Diagram(coordinateSystem(preserveAspectRatio=
+          lineThickness=0.5)}), Diagram(graphics,
+                                        coordinateSystem(preserveAspectRatio=
             false)));
 end PartialOnOffController;

@@ -51,5 +51,6 @@ partial model GenerationIcon
         Text(
           extent={{-126,26},{-40,-24}},
           lineColor={0,0,0},
-          textString="P")}),     Diagram(coordinateSystem(preserveAspectRatio=false)));
+          textString="P")}),     Diagram(graphics,
+                                         coordinateSystem(preserveAspectRatio=false)));
 end GenerationIcon;

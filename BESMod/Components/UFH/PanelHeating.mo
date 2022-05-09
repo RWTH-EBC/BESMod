@@ -148,7 +148,8 @@ equation
       color={0,127,255},
       smooth=Smooth.None));
 
-annotation (Diagram(coordinateSystem(preserveAspectRatio=false,extent={{-100,
+annotation (Diagram(graphics,
+                    coordinateSystem(preserveAspectRatio=false,extent={{-100,
             -60},{100,60}})),  Icon(coordinateSystem(preserveAspectRatio=false,
           extent={{-100,-25},{100,35}}),
                                     graphics={

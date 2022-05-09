@@ -67,6 +67,7 @@ equation
       thickness=1));
   connect(elecConToReal.PElecGen, batterySimple.PCharge)
     annotation (Line(points={{-74,22},{-74,0},{-23,0}}, color={0,0,127}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end BatterySystemSimple;

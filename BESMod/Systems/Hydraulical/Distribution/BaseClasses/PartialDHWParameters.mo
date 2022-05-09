@@ -19,6 +19,7 @@ model PartialDHWParameters
     "DHW cold city water" annotation (Dialog(group=
           "Design - Top Down: Parameters are given by the parent system"));
 
- annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+ annotation (Icon(graphics,
+                  coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end PartialDHWParameters;

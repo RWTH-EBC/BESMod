@@ -20,6 +20,6 @@ partial model PartialTSet_DHW_Control "Model to output the dhw set temperature"
           extent={{-128,28},{124,-18}},
           lineColor={28,108,200},
           lineThickness=1,
-          textString="%name")}),                                 Diagram(
+          textString="%name")}),                                 Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end PartialTSet_DHW_Control;

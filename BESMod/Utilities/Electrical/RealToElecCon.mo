@@ -45,6 +45,6 @@ equation
           lineColor={0,0,0},
           lineThickness=1,
           fillColor={0,140,72},
-          fillPattern=FillPattern.Solid)}),                      Diagram(
+          fillPattern=FillPattern.Solid)}),                      Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end RealToElecCon;

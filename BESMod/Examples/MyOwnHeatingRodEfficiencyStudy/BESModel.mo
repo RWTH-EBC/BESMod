@@ -63,13 +63,16 @@ model BESModel
         BESMod.Systems.Demand.DHW.TappingProfiles.PassThrough
         calcmFlow),
     redeclare BESMod.Systems.UserProfiles.TEASERProfiles
-      userProfiles,
+      userProfiles(redeclare
+        BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile),
     redeclare
       BESMod.Examples.MyOwnHeatingRodEfficiencyStudy.SimpleStudyOfHeatingRodEfficiency
       parameterStudy,
     redeclare
       BESMod.Systems.RecordsCollection.ExampleSystemParameters
-      systemParameters(THydSup_nominal={328.15}, use_ventilation=false));
+      systemParameters(
+      THydSup_nominal={328.15},                  use_ventilation=false,
+      use_elecHeating=false));
 
   annotation (experiment(
       StopTime=86400,

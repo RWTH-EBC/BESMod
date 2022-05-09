@@ -9,6 +9,7 @@ algorithm
   when edge(u) then
     y:=time;
   end when;
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end CountTimeBelowThreshold;

@@ -38,5 +38,6 @@ partial model StorageIcon
                               Text(
           extent={{-100,-72},{104,-168}},
           lineColor={0,0,0},
-          textString="%name%")}),Diagram(coordinateSystem(preserveAspectRatio=false)));
+          textString="%name%")}),Diagram(graphics,
+                                         coordinateSystem(preserveAspectRatio=false)));
 end StorageIcon;

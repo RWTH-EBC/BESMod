@@ -77,6 +77,8 @@ model TEASERThermalZone
        0, each final uMin=-Modelica.Constants.inf) if use_hydraulic and use_verboseEnergyBalance
     annotation (Placement(transformation(extent={{-30,-82},{-24,-76}})));
   Utilities.KPIs.InputKPICalculator    inputKPICalculator   [nZones](
+    unit=fill("W", nZones),
+    integralUnit=fill("J", nZones),
     each calc_singleOnTime=false,
     each calc_totalOnTime=false,
     each calc_numSwi=false,
@@ -643,6 +645,7 @@ equation
       points={{84,-96},{70,-96}},
       color={0,0,0},
       thickness=1));
-    annotation (Diagram(coordinateSystem(extent={{-100,-100},{100,100}})), Icon(
+    annotation (Diagram(graphics,
+                        coordinateSystem(extent={{-100,-100},{100,100}})), Icon(graphics,
         coordinateSystem(extent={{-100,-120},{100,100}})));
 end TEASERThermalZone;

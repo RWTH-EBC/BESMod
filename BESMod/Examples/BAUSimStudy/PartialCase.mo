@@ -1,5 +1,5 @@
 within BESMod.Examples.BAUSimStudy;
-model PartialCase
+partial model PartialCase
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
     redeclare Systems.Demand.Building.TEASERThermalZone building(redeclare
@@ -106,7 +106,8 @@ model PartialCase
       redeclare
         BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
         calcmFlow),
-    redeclare Systems.UserProfiles.TEASERProfiles userProfiles,
+    redeclare Systems.UserProfiles.TEASERProfiles userProfiles(redeclare
+        BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile),
     redeclare BESParameters systemParameters,
     redeclare
       BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy

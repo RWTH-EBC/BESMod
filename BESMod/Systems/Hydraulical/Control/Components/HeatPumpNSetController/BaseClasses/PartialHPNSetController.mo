@@ -67,6 +67,6 @@ annotation (Line(points={{68,80},{59,80}}, color={0,0,127}));
           lineColor={0,0,0},
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
-          lineThickness=0.5)}), Diagram(
+          lineThickness=0.5)}), Diagram(graphics,
     coordinateSystem(preserveAspectRatio=false)));
 end PartialHPNSetController;

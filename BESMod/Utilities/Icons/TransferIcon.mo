@@ -51,5 +51,6 @@ partial model TransferIcon
           thickness=0.5),     Text(
           extent={{-100,-76},{104,-172}},
           lineColor={0,0,0},
-          textString="%name%")}),Diagram(coordinateSystem(preserveAspectRatio=false)));
+          textString="%name%")}),Diagram(graphics,
+                                         coordinateSystem(preserveAspectRatio=false)));
 end TransferIcon;

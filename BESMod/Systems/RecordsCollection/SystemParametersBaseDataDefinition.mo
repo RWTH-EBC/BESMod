@@ -9,8 +9,7 @@ record SystemParametersBaseDataDefinition
       9710.1, nZones)
     "Nominal heating load at outdoor air temperature of each zone"
     annotation (Dialog(group="Heat demand"));
-  parameter Modelica.Units.SI.HeatFlowRate QDHW_flow_nomial=DHWProfile.m_flow_nominal
-      *4184*(TSetDHW - TDHWWaterCold) "DHW heat demand"
+  parameter Modelica.Units.SI.HeatFlowRate QDHW_flow_nomial "DHW heat demand"
     annotation (Dialog(group="Heat demand"));
 
   // Temperature Levels
@@ -59,44 +58,16 @@ record SystemParametersBaseDataDefinition
     "Ambient temperature of electrical system"
     annotation (Dialog(group="Temperature levels"));
   // Boundary conditions
-  parameter String filNamWea=Modelica.Utilities.Files.loadResource("modelica://BESMod/Resources/TRY2015_522361130393_Jahr_City_Potsdam.mos")
+  parameter String filNamWea
     "Name of weather data file"
-    annotation (Dialog(tab="Inputs", group="Weather"));
-  parameter String fileNameIntGains=Modelica.Utilities.Files.loadResource("modelica://BESMod/Resources/InternalGains.txt")
-    "File where matrix is stored"
-    annotation (Dialog(tab="Inputs", group="Internal Gains"));
-  parameter Real intGains_gain=1 "Gain value multiplied with input signal" annotation (Dialog(group="Internal Gains", tab="Inputs"));
+    annotation (Dialog(group="Weather data"));
 
-  // DHW
-  replaceable parameter Systems.Demand.DHW.RecordsCollection.PartialDHWTap
-    DHWProfile annotation (choicesAllMatching=true, Dialog(
-      group="DHW",
-      tab="Inputs",
-      enable=not use_dhwCalc and use_dhw));
-  parameter Boolean use_dhwCalc=false "=true to use the tables in DHWCalc. Will slow down the simulation, but represents DHW tapping more in a more realistic way."     annotation (Dialog(group="DHW", tab="Inputs", enable=use_dhw));
-  parameter String tableName="DHWCalc" "Table name on file for DHWCalc"
-    annotation (Dialog(group="DHW", tab="Inputs", enable=use_dhwCalc and use_dhw));
-  parameter String fileName=Modelica.Utilities.Files.loadResource(
-      "modelica://BESMod/Resources/DHWCalc.txt")
-    "File where matrix is stored for DHWCalc"
-    annotation (Dialog(group="DHW", tab="Inputs", enable=use_dhwCalc and use_dhw));
-  parameter Modelica.Units.SI.Volume V_dhwCalc_day=0
-    "Average daily tapping volume in DHWCalc table" annotation (Dialog(
-      group="DHW",
-      tab="Inputs",
-      enable=use_dhwCalc));
-  parameter Modelica.Units.SI.Volume V_dhw_day=if use_dhwCalc then
-      V_dhwCalc_day else DHWProfile.V_dhw_day "Average daily tapping volume"
-    annotation (Dialog(
-      group="DHW",
-      tab="Inputs",
-      enable=use_dhw));
-
-  // HVAC-Subsystems
+  // Subsystems
   parameter Boolean use_hydraulic=true "=false to disable hydraulic subsystem" annotation(Dialog(group="System layout"));
   parameter Boolean use_ventilation=true "=false to disable ventilation subsystem" annotation(Dialog(group="System layout"));
   parameter Boolean use_dhw=use_hydraulic "=false to disable DHW subsystem" annotation(Dialog(group="System layout", enable=use_hydraulic));
-
-  annotation (defaultComponentName = "baseParameterAssumptions", Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  parameter Boolean use_elecHeating=true "= false to disable heating using the electric system" annotation(Dialog(group="System layout", enable=use_hydraulic));
+  annotation (defaultComponentName = "baseParameterAssumptions", Icon(graphics,
+                                                                      coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end SystemParametersBaseDataDefinition;

@@ -64,6 +64,6 @@ partial model PartialDistribution
           lineThickness=1,
           fillColor={0,0,0},
           fillPattern=FillPattern.Solid,
-          lineColor={0,0,0})}),                                  Diagram(
+          lineColor={0,0,0})}),                                  Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end PartialDistribution;

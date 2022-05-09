@@ -14,6 +14,7 @@ partial record MoverBaseDataDefinition
   parameter Modelica.Units.SI.Time tau
     "Time constant of fluid volume for nominal flow, used if energy or mass balance is dynamic";
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end MoverBaseDataDefinition;
