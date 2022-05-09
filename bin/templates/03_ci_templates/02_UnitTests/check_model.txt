@@ -7,7 +7,7 @@ stages:
     before_script:
         - Xvfb :77 -extension RANDR -extension GLX & export DISPLAY=:77.0 &&
         - export PIP_CACHE_DIR="/opt/cache/pip"
-        - source activate python36  
+        - source activate myenv  
         - export PYTHONIOENCODING=utf-8 # just in case
         - python install_dependencies.py full
     script:
@@ -42,7 +42,7 @@ Check_${library}_${package}:
     before_script:
         - Xvfb :77 -extension RANDR -extension GLX & export DISPLAY=:77.0 &&
         - export PIP_CACHE_DIR="/opt/cache/pip"
-        - source activate python36
+        - source activate myenv
         - export PYTHONIOENCODING=utf-8 # just in case
         - python install_dependencies.py full
     script:
@@ -82,7 +82,7 @@ Check_${library}_${package}_changed_models:
     before_script:
         - Xvfb :77 -extension RANDR -extension GLX & export DISPLAY=:77.0 &&
         - export PIP_CACHE_DIR="/opt/cache/pip"
-        - source activate python36  
+        - source activate myenv  
         - export PYTHONIOENCODING=utf-8 # just in case
         - python install_dependencies.py full
     script:
@@ -117,7 +117,7 @@ whitelist_job:
     before_script:
         - Xvfb :77 -extension RANDR -extension GLX & export DISPLAY=:77.0 &&
         - export PIP_CACHE_DIR="/opt/cache/pip"
-        - source activate python36  
+        - source activate myenv  
         - export PYTHONIOENCODING=utf-8 
         - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
         - eval $(ssh-agent -s)
@@ -136,7 +136,7 @@ whitelist_job:
         - python bin/CITests/02_UnitTests/CheckPackages/validatetest.py -DS ${dymolaversion} --repo-dir ${wh_library} ${git_url} ${wh_path} --library ${library} --wh-library ${wh_library} --whitelist
     after_script:
         - export PIP_CACHE_DIR="/opt/cache/pip"
-        - source activate python36
+        - source activate myenv
         - export PYTHONIOENCODING=utf-8 # just in case
         - cd whitelist && cd ${CI_PROJECT_NAME}
         - if cat ${exit_file} | grep "FAIL"; then
