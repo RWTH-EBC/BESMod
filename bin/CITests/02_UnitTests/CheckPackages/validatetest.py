@@ -77,7 +77,7 @@ class ValidateTest(object):
 
 
     def _checkmodel(self, model_list):  # Check models and return a Error Log, if the check failed
-        pack_check = self.dymola.ExecuteCommand(self.startup_script_path)
+        pack_check = self.dymola.RunScript(self.startup_script_path)
         if pack_check is True:
             print(f'Found {self.mo_library} Library and start Checkmodel Tests \n Check Package {self.package} \n')
         elif pack_check is False:
@@ -109,7 +109,7 @@ class ValidateTest(object):
 
 
     def _sim_examples(self, example_list):  # Simulate examples or validations
-        pack_check = self.dymola.ExecuteCommand(self.startup_script_path)
+        pack_check = self.dymola.RunScript(self.startup_script_path)
         if pack_check is True:
             print(f'Found {self.mo_library} Library and start check model test. \n Check Package {self.package} \n')
         elif pack_check is False:
