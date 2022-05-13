@@ -8,33 +8,16 @@ model BES
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem
       hydraulic(
-      redeclare Systems.Hydraulical.Generation.HeatPumpAndHeatingRod generation(
+      redeclare BESMod.Systems.Hydraulical.Generation.GasBoiler generation(
+        dTTra_nominal={10},
+        redeclare AixLib.DataBase.Boiler.General.Boiler_Vitogas200F_15kW
+          paramBoiler,
         redeclare
-          BESMod.Systems.RecordsCollection.Movers.DefaultMover
-          pumpData,
-        redeclare package Medium_eva = AixLib.Media.Air,
-        use_pressure=false,
-        redeclare
-          BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
-          heatPumpParameters(
-          genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
-          TBiv=parameterStudy.TBiv,
-          scalingFactor=hydraulic.generation.heatPumpParameters.QPri_flow_nominal
-              /parameterStudy.QHP_flow_biv,
-          useAirSource=true,
-          dpCon_nominal=0,
-          dpEva_nominal=0,
-          use_refIne=false,
-          refIneFre_constant=0),
-        redeclare
-          BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-          heatingRodParameters,
-        redeclare model PerDataMainHP =
-            AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
-            QCon_flow_nominal=hydraulic.generation.heatPumpParameters.QPri_flow_nominal,
-            refrigerant="Propane",
-            flowsheet="VIPhaseSeparatorFlowsheet")),
-      redeclare Systems.Hydraulical.Control.PartBiv_PI_ConOut_HPS control(
+          BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
+          temperatureSensorData,
+        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData),
+
+      redeclare BESMod.Systems.Hydraulical.Control.MonovalentGasBoiler control(
         redeclare
           BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
           thermostaticValveController,
@@ -42,16 +25,11 @@ model BES
           BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
           thermostaticValveParameters,
         redeclare
+          BESMod.Systems.Hydraulical.Control.Components.HeatPumpNSetController.PI_InverterHeatPumpController
+          HP_nSet_Controller,
+        redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultBivHPControl
-          bivalentControlData(TBiv=parameterStudy.TBiv),
-        redeclare
-          Systems.Hydraulical.Control.Components.DHWSetControl.ConstTSet_DHW
-          TSet_DHW,
-        redeclare
-          BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultSafetyControl
-          safetyControl,
-        TCutOff=parameterStudy.TCutOff,
-        QHP_flow_cutOff=parameterStudy.QHP_flow_cutOff*hydraulic.generation.heatPumpParameters.scalingFactor),
+          monovalentControlParas(TOda_nominal=261.15, TSup_nominal=328.15)),
       redeclare Systems.Hydraulical.Distribution.DistributionTwoStorageParallel
         distribution(redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
