@@ -173,22 +173,17 @@ equation
         Text(
           extent={{-14,0},{72,-36}},
           lineColor={238,46,47},
-          pattern=LinePattern.Dash,
           lineThickness=0.5,
           textString=DynamicSelect("%TLegMin K", String(TLegMin-273.15)+ "°C")),
         Text(
           extent={{-94,0},{56,-154}},
           lineColor={28,108,200},
-          fillColor={215,215,215},
-          fillPattern=FillPattern.Solid,
           textString="Day of week: %trigWeekDay
 Hour of Day: %trigHour",
           horizontalAlignment=TextAlignment.Left),
         Text(
           extent={{-104,146},{100,92}},
           lineColor={28,108,200},
-          fillColor={215,215,215},
-          fillPattern=FillPattern.Solid,
           textString="%name")}),                                                           Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
