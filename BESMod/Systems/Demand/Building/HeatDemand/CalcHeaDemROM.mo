@@ -6,12 +6,14 @@ model CalcHeaDemROM
     KR_heater=building.zoneParam[1].KRHeat,
     h_heater=building.zoneParam.hHeat*10,
     redeclare BESMod.Examples.BAUSimStudy.BESParameters
-      systemParameters(TOda_nominal=259.75, THydSup_nominal={328.15}),
+      systemParameters(
+      QDHW_flow_nomial=0,
+      TOda_nominal=261.05,
+      THydSup_nominal={328.15}),
     redeclare BESMod.Systems.Demand.Building.TEASERThermalZone
       building(
       nZones=1,
-      redeclare
-        BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
+      redeclare BESMod.Examples.BAUSimStudy.Buildings.Case_1_standard
         oneZoneParam,
       final ventRate=0.5 .- building.zoneParam.baseACH));
   annotation (Documentation(info="<html>

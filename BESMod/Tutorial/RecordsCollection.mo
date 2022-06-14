@@ -9,7 +9,8 @@ package RecordsCollection
     parameter Real offset "Offset of output signal y";
     parameter Modelica.Units.SI.Time startTime
       "Output y = offset for time < startTime";
-    annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+    annotation (Icon(graphics,
+                     coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
           coordinateSystem(preserveAspectRatio=false)));
   end MyComponentBaseDataDefinition;
 

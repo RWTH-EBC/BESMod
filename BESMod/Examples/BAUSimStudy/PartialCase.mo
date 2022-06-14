@@ -63,8 +63,7 @@ partial model PartialCase
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
           temperatureSensorData,
-        redeclare
-          BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
+        redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
           threeWayValveParameters,
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorage
@@ -109,8 +108,7 @@ partial model PartialCase
     redeclare Systems.UserProfiles.TEASERProfiles userProfiles(redeclare
         BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile),
     redeclare BESParameters systemParameters,
-    redeclare
-      BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy
+    redeclare BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy
       parameterStudy,
     redeclare final package MediumDHW = AixLib.Media.Water,
     redeclare final package MediumZone = AixLib.Media.Air,

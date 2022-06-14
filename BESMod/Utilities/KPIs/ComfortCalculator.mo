@@ -45,8 +45,6 @@ equation
           fillPattern=FillPattern.Solid), Text(
           extent={{-62,52},{66,-68}},
           lineColor={0,0,0},
-          fillColor={215,215,215},
-          fillPattern=FillPattern.Solid,
           textString="%name")}),                                 Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>

@@ -1,11 +1,11 @@
 within BESMod.Tutorial;
 model MyOwnModule "My module can do this and that"
-  extends BESMod.Tutorial.BaseClasses.PartialModule(time_period=1/myComponentParameters.f);
-  parameter Boolean use_lim "=false to disable the limiter to y_max"
+  extends BESMod.Tutorial.BaseClasses.PartialModule(timePeriod=1/myComponentParameters.f);
+  parameter Boolean use_lim "=false to disable the limiter to yMax"
     annotation (Dialog(group="Component Choices"));
   replaceable parameter BESMod.Tutorial.RecordsCollection.MyComponentBaseDataDefinition
     myComponentParameters constrainedby
-    BESMod.Tutorial.RecordsCollection.MyComponentBaseDataDefinition(final amplitude=y_max)
+    BESMod.Tutorial.RecordsCollection.MyComponentBaseDataDefinition(final amplitude=yMax)
                                                     annotation (
     choicesAllMatching=true,
     Dialog(group="Component Records"),
@@ -18,7 +18,7 @@ model MyOwnModule "My module can do this and that"
     startTime=myComponentParameters.startTime)
     annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));
   Modelica.Blocks.Nonlinear.Limiter
-                            limiter(final uMax=y_max, final uMin=-y_max)
+                            limiter(final uMax=yMax, final uMin=-yMax)
     if use_lim
     annotation (Placement(transformation(extent={{6,4},{26,24}})));
   Modelica.Blocks.Interfaces.RealOutput y "Output signal connector"

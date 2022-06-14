@@ -17,6 +17,6 @@ partial model PartialModule "The partial base-class"
           fillPattern=FillPattern.Solid), Text(
           extent={{-60,52},{64,-30}},
           textColor={28,108,200},
-          textString="%name%")}),                                Diagram(
+          textString="%name%")}),                                Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end PartialModule;

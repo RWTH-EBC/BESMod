@@ -5,18 +5,27 @@ model PartialSystem
   replaceable BESMod.Tutorial.BaseClasses.PartialModule module constrainedby
     BESMod.Tutorial.BaseClasses.PartialModule(final yMax=yMax)
     "Correct overwrite of top-down parameters" annotation (Placement(
-        transformation(extent={{-22,-24},{24,24}})), choicesAllMatching=true);
+        transformation(extent={{-18,-18},{20,18}})), choicesAllMatching=true);
   replaceable BESMod.Tutorial.BaseClasses.PartialModule moduleWrong(final yMax=
         yMax) constrainedby BESMod.Tutorial.BaseClasses.PartialModule
     "Wrong overwrite of top-down parameters" annotation (Placement(
-        transformation(extent={{-22,-90},{24,-42}})), choicesAllMatching=true);
+        transformation(extent={{-18,-78},{20,-42}})), choicesAllMatching=true);
 
   Modelica.Blocks.Interfaces.RealOutput y "Output signal connector" annotation (Placement(transformation(extent={{100,-10},{120,10}})));
-  Modelica.Blocks.Interfaces.RealOutput yWrong "Output signal connector" annotation (Placement(transformation(extent={{100,-76},{120,-56}})));
+  Modelica.Blocks.Interfaces.RealOutput yWrong "Output signal connector" annotation (Placement(transformation(extent={{100,-70},
+            {120,-50}})));
 
+  replaceable PartialModule                             module1
+                                                               constrainedby
+    PartialModule(                            final yMax=yMax)
+    "Correct overwrite of top-down parameters" annotation (Placement(
+        transformation(extent={{-18,42},{18,78}})),  choicesAllMatching=true);
+  Modelica.Blocks.Interfaces.RealOutput yPhase "Output signal connector"
+    annotation (Placement(transformation(extent={{100,50},{120,70}})));
 equation
-  connect(module.y, y) annotation (Line(points={{26.3,0},{110,0}}, color={0,0,127}));
-  connect(moduleWrong.y, yWrong) annotation (Line(points={{26.3,-66},{110,-66}}, color={0,0,127}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  connect(module.y, y) annotation (Line(points={{21.9,0},{110,0}}, color={0,0,127}));
+  connect(moduleWrong.y, yWrong) annotation (Line(points={{21.9,-60},{110,-60}}, color={0,0,127}));
+  annotation (Icon(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end PartialSystem;
