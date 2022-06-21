@@ -6,7 +6,7 @@ partial model PartialKPICalculator "Partial KPI Calculator"
   parameter String integralUnit "Unit of integral of signal";
   parameter Real thresholdOn=Modelica.Constants.eps * 100
     "If u is greater or equal to this treshhold the device is considered on.";
-  parameter Real thresholdOff=0
+  parameter Real thresholdOff=Modelica.Constants.eps
     "If u is lower or equal to this treshhold, the device is considered off.";
   parameter Boolean calc_singleOnTime=true
                                       "True to calc singleOnTime";
