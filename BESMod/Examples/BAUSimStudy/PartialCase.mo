@@ -54,9 +54,7 @@ partial model PartialCase
       redeclare
         BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedDirectLoading
         distribution(
-        QHRAftDHW_flow_nominal=0,
         QHRAftBuf_flow_nominal=0,
-        use_heatingRodAfterDHW=false,
         use_heatingRodAfterBuffer=false,
         discretizationStepsDWHStoHR=0,
         discretizationStepsBufStoHR=0,
@@ -81,10 +79,7 @@ partial model PartialCase
           T_m=65 + 273.15),
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-          heatingRodAftBufParameters,
-        redeclare
-          BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-          heatingRodAftDHWParameters),
+          heatingRodAftBufParameters),
       redeclare
         BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased
         transfer(
