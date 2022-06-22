@@ -328,7 +328,7 @@ partial model PartialDistributionTwoStorageParallelDetailed
     calc_singleOnTime=false,
     calc_integral=true,
     calc_totalOnTime=false,
-    calc_numSwi=false,
+    calc_numSwi=true,
     calc_movAve=false,
     calc_intBelThres=false,
     y=QHRStoDHWPre_flow.Q_flow) if dhwParameters.use_hr
@@ -340,7 +340,7 @@ partial model PartialDistributionTwoStorageParallelDetailed
     calc_singleOnTime=false,
     calc_integral=true,
     calc_totalOnTime=false,
-    calc_numSwi=false,
+    calc_numSwi=true,
     calc_movAve=false,
     calc_intBelThres=false) if use_heatingRodAfterBuffer
     annotation (Placement(transformation(extent={{-84,-156},{-64,-118}})));
@@ -351,7 +351,7 @@ partial model PartialDistributionTwoStorageParallelDetailed
     calc_singleOnTime=false,
     calc_integral=true,
     calc_totalOnTime=false,
-    calc_numSwi=false,
+    calc_numSwi=true,
     calc_movAve=false,
     calc_intBelThres=false,
     y=QHRStoBufPre_flow1.Q_flow) if bufParameters.use_hr
