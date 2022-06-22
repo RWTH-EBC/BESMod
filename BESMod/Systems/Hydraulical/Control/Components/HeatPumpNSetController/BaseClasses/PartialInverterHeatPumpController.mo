@@ -2,6 +2,11 @@ within BESMod.Systems.Hydraulical.Control.Components.HeatPumpNSetController.Base
 model PartialInverterHeatPumpController
   "Partial controller for inverter controlled heat pumps"
   extends BaseClasses.PartialHPNSetController(HP_On(start=true));
+  parameter Real P "Gain of PID-controller";
+  parameter Real yMax=1 "Upper limit of output";
+  parameter Real yOff=0 "Constant output value if device is turned off";
+  parameter Real y_start=0 "Initial value of output";
+  parameter Real nMin=0.5 "Lower limit of compressor frequency - default 0.5";
   BESMod.Systems.Hydraulical.Control.Components.HeatPumpNSetController.LimPID
     PID(
     final k=P,
@@ -18,19 +23,15 @@ model PartialInverterHeatPumpController
     final limitsAtInit=true)
     annotation (Placement(transformation(extent={{-30,22},{6,58}})));
 
-  parameter Real P "Gain of PID-controller";
+
 
   Modelica.Blocks.Logical.Switch onOffSwitch
     annotation (Placement(transformation(extent={{38,-14},{68,16}})));
-  Modelica.Blocks.Sources.Constant const(final k=yOff)
-                                                    "HP turned off"
+  Modelica.Blocks.Sources.Constant const(final k=yOff) "HP turned off"
     annotation (Placement(transformation(extent={{-6,-36},{10,-20}})));
-  parameter Real nMin=0.5 "Lower limit of compressor frequency - default 0.5";
   Modelica.Blocks.Logical.And and1
     annotation (Placement(transformation(extent={{-52,-64},{-32,-44}})));
-  parameter Real yMax=1 "Upper limit of output";
-  parameter Real yOff=0 "Constant output value if device is turned off";
-  parameter Real y_start=0 "Initial value of output";
+
 equation
   connect(HP_On, onOffSwitch.u2) annotation (Line(points={{-120,0},{34,0},{34,1},
           {35,1}},    color={255,0,255}));
