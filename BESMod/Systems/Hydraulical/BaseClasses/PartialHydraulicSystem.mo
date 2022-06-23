@@ -7,7 +7,7 @@ partial model PartialHydraulicSystem
   replaceable package MediumDHW = IBPSA.Media.Water constrainedby
     Modelica.Media.Interfaces.PartialMedium
     annotation (__Dymola_choicesAllMatching=true);
-  Electrical.Interfaces.InternalElectricalPin internalElectricalPin
+  Electrical.Interfaces.InternalElectricalPinOut internalElectricalPin
     annotation (Placement(transformation(extent={{160,-150},{180,-130}})));
   replaceable parameter BESMod.Systems.Hydraulical.RecordsCollection.HydraulicSystemBaseDataDefinition
     hydraulicSystemParameters constrainedby
@@ -319,7 +319,7 @@ equation
       thickness=1));
   connect(generation.internalElectricalPin, multiSumElec.internalElectricalPinIn[
     3]) annotation (Line(
-      points={{-40.24,-102.68},{-40.24,-123.467},{122.2,-123.467}},
+      points={{-40.24,-104},{-40.24,-123.467},{122.2,-123.467}},
       color={0,0,0},
       thickness=1));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-180,-140},

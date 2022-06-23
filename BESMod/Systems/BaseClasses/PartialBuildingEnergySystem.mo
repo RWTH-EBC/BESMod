@@ -26,12 +26,12 @@ partial model PartialBuildingEnergySystem "Partial BES"
         userProfiles.mDHW_flow_nominal*(systemParameters.TSetDHW -
         systemParameters.TDHWWaterCold)*4184)
                      "Parameters relevant for the whole energy system"
-    annotation (choicesAllMatching=true, Placement(transformation(extent={{-280,
-            -24},{-228,40}})));
+    annotation (choicesAllMatching=true, Placement(transformation(extent={{-278,
+            -38},{-224,18}})));
   replaceable parameter RecordsCollection.ParameterStudy.ParameterStudyBaseDefinition
     parameterStudy "Parameters changed in the study / analysis" annotation (
-      choicesAllMatching=true, Placement(transformation(extent={{-280,-108},{-228,
-            -42}})));
+      choicesAllMatching=true, Placement(transformation(extent={{-278,-118},{
+            -224,-62}})));
 
   // Subsystems
   replaceable
@@ -43,7 +43,7 @@ partial model PartialBuildingEnergySystem "Partial BES"
       final TSetZone_nominal=systemParameters.TSetZone_nominal,
       final use_hydraulic=systemParameters.use_hydraulic,
       final use_ventilation=systemParameters.use_ventilation) annotation (
-      choicesAllMatching=true, Placement(transformation(extent={{-10,0},{74,86}})));
+      choicesAllMatching=true, Placement(transformation(extent={{2,2},{76,78}})));
   replaceable BESMod.Systems.UserProfiles.BaseClasses.PartialUserProfiles
     userProfiles constrainedby UserProfiles.BaseClasses.PartialUserProfiles(
     final nZones=systemParameters.nZones,
@@ -51,8 +51,8 @@ partial model PartialBuildingEnergySystem "Partial BES"
     final TSetDHW=systemParameters.TSetDHW,
     final TDHWWaterCold=systemParameters.TDHWWaterCold)
     "Replacable model to specify your user profiles" annotation (
-      choicesAllMatching=true, Placement(transformation(extent={{-280,128},{-226,
-            178}})));
+      choicesAllMatching=true, Placement(transformation(extent={{-280,124},{
+            -224,178}})));
   replaceable BESMod.Systems.Demand.DHW.BaseClasses.PartialDHW
     DHW if systemParameters.use_hydraulic constrainedby
     Demand.DHW.BaseClasses.PartialDHW(
@@ -65,7 +65,7 @@ partial model PartialBuildingEnergySystem "Partial BES"
       final VDHWDay=userProfiles.VolDHWDay),
     final subsystemDisabled=not systemParameters.use_dhw)
                                               annotation (choicesAllMatching=true, Placement(
-        transformation(extent={{-8,-108},{74,-32}})));
+        transformation(extent={{2,-118},{78,-42}})));
   replaceable Electrical.BaseClasses.PartialElectricalSystem electrical
     constrainedby Electrical.BaseClasses.PartialElectricalSystem(
     final nLoadsExtSubSys=4,
@@ -84,7 +84,7 @@ partial model PartialBuildingEnergySystem "Partial BES"
       final ABui=building.ABui,
       final ARoo=building.ARoo,
       final hBui=building.hBui))                                 annotation (Placement(
-        transformation(extent={{-192,40},{-40,128}})), choicesAllMatching=true);
+        transformation(extent={{-198,40},{-42,136}})), choicesAllMatching=true);
   replaceable BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem hydraulic
     if systemParameters.use_hydraulic constrainedby
     Hydraulical.BaseClasses.PartialHydraulicSystem(
@@ -106,8 +106,8 @@ partial model PartialBuildingEnergySystem "Partial BES"
       final ARoo=building.ARoo,
       final hBui=building.hBui,
       final dhwParas=DHW.parameters))
-    annotation (choicesAllMatching=true, Placement(transformation(extent={{-192,
-            -90},{-40,0}})));
+    annotation (choicesAllMatching=true, Placement(transformation(extent={{-198,
+            -98},{-42,-2}})));
   replaceable
     BESMod.Systems.Ventilation.BaseClasses.PartialVentilationSystem
     ventilation if systemParameters.use_ventilation constrainedby
@@ -127,7 +127,7 @@ partial model PartialBuildingEnergySystem "Partial BES"
       final ABui=building.ABui,
       final ARoo=building.ARoo,
       final hBui=building.hBui))         annotation (choicesAllMatching=true,
-      Placement(transformation(extent={{120,-4},{212,86}})));
+      Placement(transformation(extent={{122,2},{196,78}})));
 
   // Outputs
   BESMod.Systems.Interfaces.SystemOutputs outputs
@@ -135,11 +135,11 @@ partial model PartialBuildingEnergySystem "Partial BES"
   IBPSA.BoundaryConditions.WeatherData.ReaderTMY3 weaDat(final filNam=
         systemParameters.filNamWea)
     "Weather data reader"
-    annotation (Placement(transformation(extent={{-282,52},{-224,118}})));
+    annotation (Placement(transformation(extent={{-280,40},{-220,100}})));
 
   replaceable Control.BaseClasses.PartialControl control constrainedby
     Control.BaseClasses.PartialControl annotation (Placement(transformation(
-          extent={{-8,116},{76,182}})), choicesAllMatching=true);
+          extent={{2,124},{78,198}})),  choicesAllMatching=true);
 
   Electrical.Interfaces.ExternalElectricalPin electricalGrid annotation (
       Placement(transformation(extent={{270,40},{300,76}}), iconTransformation(
@@ -151,12 +151,12 @@ protected
 
 equation
   connect(building.weaBus, weaDat.weaBus) annotation (Line(
-      points={{7.64,86.86},{6,86.86},{6,100},{-22,100},{-22,138},{-204,138},{
-          -204,84},{-216,84},{-216,85},{-224,85}},
+      points={{17.54,78.76},{24,78.76},{24,88},{-16,88},{-16,206},{-214,206},{
+          -214,70},{-220,70}},
       color={255,204,51},
       thickness=0.5));
   connect(building.outBusDem, outputs.building) annotation (Line(
-      points={{73.16,42.14},{94,42.14},{94,-24},{246,-24},{246,0},{285,0}},
+      points={{75.26,39.24},{75.26,38},{96,38},{96,0},{285,0}},
       color={175,175,175},
       thickness=0.5), Text(
       string="%second",
@@ -164,25 +164,23 @@ equation
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
   connect(userProfiles.useProBus,building. useProBus) annotation (Line(
-      points={{-227.125,152.792},{-204,152.792},{-204,138},{-22,138},{-22,100},
-          {55.1,100},{55.1,86}},
+      points={{-225.167,150.775},{-32,150.775},{-32,88},{59.35,88},{59.35,78}},
       color={0,127,0},
       thickness=0.5));
 
   if systemParameters.use_hydraulic then
     connect(building.buiMeaBus, hydraulic.buiMeaBus) annotation (Line(
-      points={{32,85.57},{32,100},{-28,100},{-28,16},{-83.6,16},{-83.6,
-          -0.321429}},
+      points={{39,77.62},{44,77.62},{44,88},{-26,88},{-26,10},{-86.7474,10},{
+            -86.7474,-2.34286}},
       color={255,128,0},
       thickness=0.5));
     connect(weaDat.weaBus, hydraulic.weaBus) annotation (Line(
-        points={{-224,85},{-224,84},{-204,84},{-204,-46},{-198,-46},{-198,-45},
-            {-191.2,-45}},
+        points={{-220,70},{-214,70},{-214,-50},{-197.179,-50}},
         color={255,204,51},
         thickness=0.5));
     connect(hydraulic.outBusHyd, outputs.hydraulic) annotation (Line(
-        points={{-120.4,-90.6429},{-120.4,-90},{-120,-90},{-120,-124},{246,-124},
-            {246,0},{285,0}},
+        points={{-124.516,-98.6857},{-124.516,-100},{-124,-100},{-124,-124},{
+            244,-124},{244,0},{285,0}},
         color={175,175,175},
         thickness=0.5), Text(
         string="%second",
@@ -190,25 +188,25 @@ equation
         extent={{-3,-6},{-3,-6}},
         horizontalAlignment=TextAlignment.Right));
     connect(hydraulic.heatPortRad,building.heatPortRad) annotation (Line(
-          points={{-40,-45},{-18,-45},{-18,17.2},{-10,17.2}},        color={191,
+          points={{-42,-50},{-42,-48},{-18,-48},{-18,18},{0,18},{0,17.2},{2,
+            17.2}},                                                  color={191,
             0,0}));
     connect(hydraulic.heatPortCon,building.heatPortCon) annotation (Line(
-          points={{-40,-19.9286},{-40,-14},{-22,-14},{-22,68.8},{-10,68.8}},
-                                                                          color=
+          points={{-42,-23.2571},{-42,-24},{-20,-24},{-20,62.8},{2,62.8}},color=
            {191,0,0}));
     connect(userProfiles.useProBus, hydraulic.useProBus) annotation (Line(
-      points={{-227.125,152.792},{-204,152.792},{-204,16},{-152.4,16},{-152.4,
-            7.10543e-15}},
+      points={{-225.167,150.775},{-214,150.775},{-214,16},{-157.358,16},{
+            -157.358,-2}},
       color={0,127,0},
       thickness=0.5));
     connect(control.sigBusHyd, hydraulic.sigBusHyd) annotation (Line(
-      points={{0.82,115.67},{0.82,100},{-28,100},{-28,16},{-106,16},{-106,
-          7.10543e-15}},
+      points={{9.98,123.63},{8,123.63},{8,88},{-28,88},{-28,14},{-109.737,14},{
+            -109.737,-2}},
       color={215,215,215},
       thickness=0.5));
     if systemParameters.use_dhw then
       connect(DHW.outBusDHW, outputs.DHW) annotation (Line(
-      points={{74,-70},{246,-70},{246,0},{285,0}},
+      points={{78,-80},{244,-80},{244,0},{285,0}},
       color={175,175,175},
       thickness=0.5), Text(
       string="%second",
@@ -216,19 +214,19 @@ equation
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
       connect(userProfiles.useProBus, DHW.useProBus) annotation (Line(
-      points={{-227.125,152.792},{-204,152.792},{-204,16},{-28,16},{-28,-24},{
-              55.55,-24},{55.55,-32}},
+      points={{-225.167,150.775},{-32,150.775},{-32,-36},{60.9,-36},{60.9,-42}},
       color={0,127,0},
       thickness=0.5));
-      connect(hydraulic.portDHW_out, DHW.port_a) annotation (Line(points={{-40.8,
-              -66.2143},{-18,-66.2143},{-18,-47.2},{-8,-47.2}},
+      connect(hydraulic.portDHW_out, DHW.port_a) annotation (Line(points={{
+              -42.8211,-72.6286},{-2,-72.6286},{-2,-57.2},{2,-57.2}},
                                                               color={0,127,255}));
-      connect(hydraulic.portDHW_in, DHW.port_b) annotation (Line(points={{-40.8,
-              -79.0714},{-40.8,-74},{-18,-74},{-18,-92.8},{-8,-92.8}},
+      connect(hydraulic.portDHW_in, DHW.port_b) annotation (Line(points={{
+              -42.8211,-86.3429},{-2,-86.3429},{-2,-102.8},{2,-102.8}},
                                                               color={0,127,255}));
       connect(DHW.internalElectricalPin, electrical.internalElectricalPin[3])
   annotation (Line(
-    points={{61.7,-107.24},{61.7,-124},{-204,-124},{-204,111.657},{-192,111.657}},
+    points={{66.6,-117.24},{66.6,-126},{72,-126},{72,-140},{-210,-140},{-210,
+              118},{-198,118},{-198,118.171}},
     color={0,0,0},
     thickness=1));
     else
@@ -236,7 +234,8 @@ equation
     end if;
     connect(electrical.internalElectricalPin[1], hydraulic.internalElectricalPin)
   annotation (Line(
-    points={{-192,111.657},{-204,111.657},{-204,-124},{-52,-124},{-52,-90}},
+    points={{-198,118.171},{-198,118},{-210,118},{-210,-140},{-56,-140},{-56,
+            -124},{-54.3158,-124},{-54.3158,-98}},
     color={0,0,0},
     thickness=1));
   else
@@ -246,12 +245,12 @@ equation
 
   if systemParameters.use_ventilation then
     connect(building.portVent_in, ventilation.portVent_in) annotation (Line(
-        points={{74,59.34},{74,58},{106,58},{106,59},{120,59}},color={0,127,255}));
+        points={{76,54.44},{84,54.44},{84,55.2},{122,55.2}},   color={0,127,255}));
     connect(building.portVent_out, ventilation.portVent_out) annotation (Line(
-        points={{74,25.8},{74,24},{106,24},{106,23.9},{120,23.9}},
+        points={{76,24.8},{84,24.8},{84,25.56},{122,25.56}},
                                                           color={0,127,255}));
     connect(ventilation.outBusVen, outputs.ventilation) annotation (Line(
-      points={{166,-4},{166,-24},{246,-24},{246,0},{285,0}},
+      points={{159,2},{158,2},{158,-26},{244,-26},{244,0},{285,0}},
       color={175,175,175},
       thickness=0.5), Text(
       string="%second",
@@ -259,27 +258,26 @@ equation
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
     connect(weaDat.weaBus, ventilation.weaBus) annotation (Line(
-      points={{-224,85},{-224,86},{-204,86},{-204,138},{-22,138},{-22,100},{220,
-            100},{220,41},{212,41}},
+      points={{-220,70},{-214,70},{-214,206},{206,206},{206,40},{196,40}},
       color={255,204,51},
       thickness=0.5));
     connect(userProfiles.useProBus, ventilation.useProBus) annotation (Line(
-      points={{-227.125,152.792},{-204,152.792},{-204,138},{-22,138},{-22,100},
-            {136.56,100},{136.56,86.45}},
+      points={{-225.167,150.775},{-214,150.775},{-214,206},{136,206},{136,88},{
+            135.32,88},{135.32,78.38}},
       color={0,127,0},
       thickness=0.5));
     connect(building.buiMeaBus, ventilation.buiMeaBus) annotation (Line(
-      points={{32,85.57},{32,100},{189.46,100},{189.46,86.45}},
+      points={{39,77.62},{44,77.62},{44,88},{177.87,88},{177.87,78.38}},
       color={255,128,0},
       thickness=0.5));
     connect(control.sigBusVen, ventilation.sigBusVen) annotation (Line(
-      points={{67.6,116},{67.6,100},{166,100},{166,86}},
+      points={{70.4,124},{70.4,88},{159,88},{159,78}},
       color={215,215,215},
       thickness=0.5));
     connect(ventilation.internalElectricalPin, electrical.internalElectricalPin[2])
   annotation (Line(
-    points={{198.2,-3.1},{198.2,-24},{246,-24},{246,-124},{-204,-124},{-204,
-            111.657},{-192,111.657}},
+    points={{184.9,2.76},{184.9,-26},{112,-26},{112,-140},{-210,-140},{-210,118},
+            {-198,118},{-198,118.171}},
     color={0,0,0},
     thickness=1));
   else
@@ -288,20 +286,19 @@ equation
 
   connect(building.internalElectricalPin, electrical.internalElectricalPin[4])
     annotation (Line(
-      points={{61.4,1.72},{61.4,-24},{246,-24},{246,-124},{-204,-124},{-204,
-          111.657},{-192,111.657}},
+      points={{64.9,3.52},{64.9,-26},{112,-26},{112,-140},{-210,-140},{-210,118},
+          {-198,118},{-198,118.171}},
       color={0,0,0},
       thickness=1));
   if  systemParameters.use_elecHeating then
     connect(electrical.heatPortCon, building.heatPortCon) annotation (Line(points={{
-            -39.1059,88.4},{-22,88.4},{-22,68.8},{-10,68.8}},color={191,0,0}));
+            -41.0824,92.8},{-30,92.8},{-30,62.8},{2,62.8}},  color={191,0,0}));
     connect(electrical.heatPortRad, building.heatPortRad) annotation (Line(points={{
-            -39.1059,65.1429},{-18,65.1429},{-18,18},{-14,18},{-14,17.2},{-10,
-            17.2}},
+            -41.0824,67.4286},{-24,67.4286},{-24,17.2},{2,17.2}},
         color={191,0,0}));
   end if;
   connect(control.outBusCtrl, outputs.control) annotation (Line(
-      points={{76.42,149},{94,149},{94,-24},{246,-24},{246,0},{285,0}},
+      points={{78.38,161},{78.38,160},{224,160},{224,0},{285,0}},
       color={175,175,175},
       thickness=0.5), Text(
       string="%second",
@@ -309,18 +306,17 @@ equation
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
   connect(userProfiles.useProBus, electrical.useProBus) annotation (Line(
-      points={{-227.125,152.792},{-204,152.792},{-204,138},{-154.894,138},{
-          -154.894,127.371}},
+      points={{-225.167,150.775},{-159.918,150.775},{-159.918,135.314}},
       color={0,127,0},
       thickness=0.5));
   connect(electrical.buiMeaBus, building.buiMeaBus) annotation (Line(
-      points={{-80.2353,128},{-82,128},{-82,138},{-22,138},{-22,100},{32,100},{
-          32,85.57}},
+      points={{-83.2941,136},{-82,136},{-82,146},{-16,146},{-16,88},{44,88},{44,
+          82},{39,82},{39,77.62}},
       color={255,128,0},
       thickness=0.5));
   connect(electrical.outBusElect, outputs.electrical) annotation (Line(
-      points={{-111.082,40},{-112,40},{-112,16},{-28,16},{-28,-24},{246,-24},{
-          246,0},{285,0}},
+      points={{-114.953,40},{-114.953,28},{-114,28},{-114,14},{-28,14},{-28,-26},
+          {244,-26},{244,0},{285,0}},
       color={175,175,175},
       thickness=0.5), Text(
       string="%second",
@@ -328,24 +324,22 @@ equation
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
   connect(electrical.weaBus, weaDat.weaBus) annotation (Line(
-      points={{-192,98.1429},{-198,98.1429},{-198,98},{-204,98},{-204,85},{-224,
-          85}},
+      points={{-198,103.429},{-198,102},{-214,102},{-214,70},{-220,70}},
       color={255,204,51},
       thickness=0.5));
   connect(control.sigBusEle, electrical.systemControlBus) annotation (Line(
-      points={{-8,149},{-8,150},{-22,150},{-22,138},{-114,138},{-114,128.314},{
-          -112.871,128.314}},
+      points={{2,161},{2,160},{-116.788,160},{-116.788,136.343}},
       color={215,215,215},
       thickness=0.5));
 
   connect(electricalGrid, electrical.externalElectricalPin1) annotation (Line(
-      points={{285,58},{246,58},{246,-124},{-204,-124},{-204,34},{-188.424,34},
-          {-188.424,41.2571}},
+      points={{285,58},{230,58},{230,212},{-28,212},{-28,120},{-41.0824,120},{
+          -41.0824,118.857}},
       color={0,0,0},
       thickness=1));
   annotation (Icon(graphics,
-                   coordinateSystem(preserveAspectRatio=false, extent={{-280,-120},
-            {280,180}})), Diagram(graphics,
-                                  coordinateSystem(preserveAspectRatio=false,
-          extent={{-280,-120},{280,180}})));
+                   coordinateSystem(preserveAspectRatio=false, extent={{-280,
+            -140},{280,200}})),
+                          Diagram(coordinateSystem(preserveAspectRatio=false,
+          extent={{-280,-140},{280,200}})));
 end PartialBuildingEnergySystem;

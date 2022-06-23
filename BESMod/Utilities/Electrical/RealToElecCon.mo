@@ -7,7 +7,7 @@ model RealToElecCon
   Modelica.Blocks.Interfaces.RealInput PEleLoa if use_souLoa
                                                          "Electrical power of load"
     annotation (Placement(transformation(extent={{-140,20},{-100,60}})));
-  Systems.Electrical.Interfaces.InternalElectricalPin internalElectricalPin
+  Systems.Electrical.Interfaces.InternalElectricalPinOut internalElectricalPin
     annotation (Placement(transformation(extent={{92,-8},{112,12}})));
   Modelica.Blocks.Interfaces.RealInput PEleGen if use_souGen
     "Electrical power of generation"

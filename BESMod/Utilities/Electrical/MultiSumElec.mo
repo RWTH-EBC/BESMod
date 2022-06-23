@@ -3,9 +3,11 @@ model MultiSumElec "Sum of all electrical inputs"
 
   parameter Integer nPorts "Number of ports to sum up" annotation(Dialog(connectorSizing=true));
 
-  Systems.Electrical.Interfaces.InternalElectricalPin internalElectricalPinOut
+  Systems.Electrical.Interfaces.InternalElectricalPinOut
+    internalElectricalPinOut
     annotation (Placement(transformation(extent={{90,-10},{110,10}})));
-  Systems.Electrical.Interfaces.InternalElectricalPin internalElectricalPinIn[nPorts] annotation (Placement(transformation(extent={{-108,-8},{-88,12}})));
+  Systems.Electrical.Interfaces.InternalElectricalPinIn internalElectricalPinIn[
+    nPorts] annotation (Placement(transformation(extent={{-108,-8},{-88,12}})));
 
 equation
   internalElectricalPinOut.PElecGen = sum(internalElectricalPinIn.PElecGen);

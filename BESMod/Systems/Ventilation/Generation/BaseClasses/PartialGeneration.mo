@@ -27,7 +27,7 @@ partial model PartialGeneration
 
   Interfaces.GenerationControlBus sigBusGen
     annotation (Placement(transformation(extent={{-52,88},{-32,108}})));
-  Electrical.Interfaces.InternalElectricalPin internalElectricalPin
+  Electrical.Interfaces.InternalElectricalPinOut internalElectricalPin
     annotation (Placement(transformation(extent={{60,-108},{80,-88}})));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,

@@ -19,7 +19,7 @@ partial model PartialDHW "Partial model for domestic hot water (DHW)"
   BESMod.Systems.Interfaces.UseProBus useProBus annotation (
       Placement(transformation(extent={{-22,82},{20,116}}), iconTransformation(
           extent={{44,88},{66,112}})));
-  Electrical.Interfaces.InternalElectricalPin internalElectricalPin
+  Electrical.Interfaces.InternalElectricalPinOut internalElectricalPin
     annotation (Placement(transformation(extent={{60,-108},{80,-88}})));
 equation
 

@@ -68,7 +68,7 @@ partial model PartialDistribution
   BESMod.Systems.Hydraulical.Interfaces.DistributionOutputs
     outBusDist
     annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
-  Electrical.Interfaces.InternalElectricalPin internalElectricalPin
+  Electrical.Interfaces.InternalElectricalPinOut internalElectricalPin
     annotation (Placement(transformation(extent={{60,-108},{80,-88}})));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,

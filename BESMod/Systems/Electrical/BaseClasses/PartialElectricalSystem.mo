@@ -29,7 +29,7 @@ partial model PartialElectricalSystem "Partial model for electrical system"
     BESMod.Systems.Electrical.Control.BaseClasses.PartialControl
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-146,
             56},{142,106}})));
-  Interfaces.InternalElectricalPin internalElectricalPin[nLoadsExtSubSys]
+  Interfaces.InternalElectricalPinIn internalElectricalPin[nLoadsExtSubSys]
     annotation (Placement(transformation(extent={{-190,78},{-170,98}})));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPortCon[
     electricalSystemParameters.nZones] if use_elecHeating
@@ -50,7 +50,7 @@ partial model PartialElectricalSystem "Partial model for electrical system"
     annotation (Placement(transformation(extent={{-22,-160},{24,-120}}),
         iconTransformation(extent={{-22,-160},{24,-120}})));
   Interfaces.ExternalElectricalPin externalElectricalPin1
-    annotation (Placement(transformation(extent={{-182,-146},{-162,-126}})));
+    annotation (Placement(transformation(extent={{152,80},{172,100}})));
   Interfaces.SystemControlBus systemControlBus annotation (Placement(
         transformation(extent={{-26,122},{20,160}}), iconTransformation(extent={
             {-26,122},{20,160}})));
@@ -111,7 +111,8 @@ equation
       thickness=0.5));
   connect(distribution.externalElectricalPin, externalElectricalPin1)
     annotation (Line(
-      points={{29,-100.62},{29,-123.31},{-172,-123.31},{-172,-136}},
+      points={{29,-100.62},{28,-100.62},{28,-110},{62,-110},{62,50},{152,50},{
+          152,78},{150,78},{150,90},{162,90}},
       color={0,0,0},
       thickness=1));
   connect(control.systemControlBus, systemControlBus) annotation (Line(
