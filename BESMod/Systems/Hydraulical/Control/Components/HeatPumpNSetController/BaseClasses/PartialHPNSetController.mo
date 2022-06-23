@@ -18,10 +18,10 @@ annotation (Placement(transformation(extent={{4,90},{24,110}})));
 annotation (Placement(transformation(extent={{70,104},{90,124}})));
   Modelica.Blocks.Interfaces.RealOutput IAE "Integral Absolute Error"
 annotation (Placement(transformation(extent={{100,90},{120,110}}),
-    iconTransformation(extent={{100,50},{120,70}})));
+    iconTransformation(extent={{100,80},{120,100}})));
   Modelica.Blocks.Interfaces.RealOutput ISE "Integral Square Error" annotation (
- Placement(transformation(extent={{100,70},{120,90}}), iconTransformation(
-      extent={{100,50},{120,70}})));
+ Placement(transformation(extent={{100,40},{120,60}}), iconTransformation(
+      extent={{100,40},{120,60}})));
   Modelica.Blocks.Math.Abs abs1
 annotation (Placement(transformation(extent={{36,104},{56,124}})));
   Modelica.Blocks.Continuous.Integrator integrator1
@@ -51,7 +51,8 @@ annotation (Line(points={{57,114},{68,114}}, color={0,0,127}));
       {110,98},{110,100}}, color={0,0,127}));
   connect(
       ISE, integrator1.y)
-annotation (Line(points={{110,80},{91,80}}, color={0,0,127}));
+annotation (Line(points={{110,50},{100,50},{100,80},{91,80}},
+                                            color={0,0,127}));
   connect(
       feedback.y, product.u1) annotation (Line(points={{23,100},{30,100},{
       30,86},{36,86}}, color={0,0,127}));
