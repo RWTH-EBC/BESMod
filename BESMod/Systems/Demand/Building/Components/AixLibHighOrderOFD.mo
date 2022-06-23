@@ -1,0 +1,162 @@
+within BESMod.Systems.Demand.Building.Components;
+model AixLibHighOrderOFD
+  extends Building.BaseClasses.PartialAixLibHighOrder(
+  final nZones=11);
+
+  // Dynamics
+  parameter Modelica.Fluid.Types.Dynamics energyDynamicsWalls=Modelica.Fluid.Types.Dynamics.DynamicFreeInitial
+    "Type of energy balance for wall capacities: dynamic (3 initialization options) or steady state" annotation (Dialog(tab="Dynamics"));
+  parameter Modelica.Fluid.Types.Dynamics energyDynamics=Modelica.Fluid.Types.Dynamics.DynamicFreeInitial
+    "Type of energy balance: dynamic (3 initialization options) or steady state" annotation (Dialog(tab="Dynamics"));
+
+  // Initialization
+  parameter Modelica.Units.SI.Temperature T0_air=273.15 + 22
+                                                           "Initial temperature of air" annotation (Dialog(tab="Initialization"));
+  parameter Modelica.Units.SI.Temperature TWalls_start=273.15 + 16
+                                                                  "Initial temperature of all walls" annotation (Dialog(tab="Initialization"));
+
+  //Outer walls
+  replaceable parameter AixLib.DataBase.Walls.Collections.OFD.EnEV2009Light
+    wallTypes constrainedby
+    AixLib.DataBase.Walls.Collections.BaseDataMultiWalls
+    "Types of walls (contains multiple records)"
+     annotation (Dialog(tab="Outer walls", group="Wall"), choicesAllMatching = true);
+  replaceable model WindowModel =
+      AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.PartialWindow
+    constrainedby
+    AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.PartialWindow  annotation (Dialog(tab="Outer walls", group="Windows"), choicesAllMatching = true);
+  replaceable parameter AixLib.DataBase.WindowsDoors.Simple.OWBaseDataDefinition_Simple Type_Win "Window parametrization" annotation (Dialog(tab="Outer walls", group="Windows"), choicesAllMatching = true);
+  replaceable model CorrSolarGainWin =
+      AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.CorrectionSolarGain.PartialCorG
+    constrainedby
+    AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.CorrectionSolarGain.PartialCorG                 "Correction model for solar irradiance as transmitted radiation" annotation (choicesAllMatching=true, Dialog(tab="Outer walls", group="Windows", enable = withWindow and outside));
+  parameter Boolean use_sunblind=false
+    "Will sunblind become active automatically?" annotation (Dialog(tab="Outer walls", group="Sunblind"));
+  parameter Modelica.Units.SI.CoefficientOfHeatTransfer UValOutDoors=2.5
+    "U-value (thermal transmittance) of doors in outer walls"  annotation (Dialog(tab="Outer walls", group="Doors"));
+
+  //Infiltration
+  parameter Boolean use_infiltEN12831=true
+    "Use model to exchange room air with outdoor air acc. to standard" annotation (Dialog(tab="Infiltration acc. to EN 12831", group="X"));
+  parameter Real n50=4 "Air exchange rate at 50 Pa pressure difference" annotation (Dialog(tab="Infiltration acc. to EN 12831", group="X"));
+  parameter Real e=0.03 "Coefficient of windshield" annotation (Dialog(tab="Infiltration acc. to EN 12831", group="X"));
+
+  // Rooms:
+  //Groundfloor -  1:LivingRoom_GF, 2:Hobby_GF, 3: Corridor_GF, 4: WC_Storage_GF, 5: Kitchen_GF,
+  //Upperfloor -  6: Bedroom_UF, 7: Child1_UF, 8: Corridor_UF, 9: Bath_UF, 10: Child2_UF, 11: Attic
+  final parameter Modelica.Units.SI.Area ABui = sum(AZone) "Total area of all zones";
+  final parameter Modelica.Units.SI.Length hBui = hZone[1] + hZone[6] + hZone[11] "Total hight of building";
+  final parameter Modelica.Units.SI.Area ARoof = sum(ARoofZone) "Total area of roof";
+  final parameter Modelica.Units.SI.Area AZone[nZones]=
+  {wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.room_length *
+   wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.room_width,
+   wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.room_length *
+   wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.room_width,
+   wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.room_length *
+   wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.room_width,
+   wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.room_length *
+   wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.room_width,
+   wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.room_length *
+   wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.room_width,
+   wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.room_length *
+   wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.room_width_long,
+   wholeHouseBuildingEnvelope.upperFloor_Building.Children1.room_length *
+   wholeHouseBuildingEnvelope.upperFloor_Building.Children1.room_width_long,
+   wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.room_length *
+   wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.room_width_long,
+   wholeHouseBuildingEnvelope.upperFloor_Building.Bath.room_length *
+   wholeHouseBuildingEnvelope.upperFloor_Building.Bath.room_width_long,
+   wholeHouseBuildingEnvelope.upperFloor_Building.Children2.room_length *
+   wholeHouseBuildingEnvelope.upperFloor_Building.Children2.room_width_long,
+   wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.length*
+   wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.width};
+  final parameter Modelica.Units.SI.Length hZone[nZones]=
+  {wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.room_height,
+   wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.room_height,
+   wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.room_height,
+   wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.room_height,
+   wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.room_height,
+   wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.room_height_long,
+   wholeHouseBuildingEnvelope.upperFloor_Building.Children1.room_height_long,
+   wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.room_height_long,
+   wholeHouseBuildingEnvelope.upperFloor_Building.Bath.room_height_long,
+   wholeHouseBuildingEnvelope.upperFloor_Building.Children2.room_height_long,
+   wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.room_V/AZone[11]};
+  final parameter Modelica.Units.SI.Area ARoofZone[nZones]=
+  {0,0,0,0,0,
+  wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.roof_width*
+  wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.room_length,
+  wholeHouseBuildingEnvelope.upperFloor_Building.Children1.roof_width*
+  wholeHouseBuildingEnvelope.upperFloor_Building.Children1.room_length,
+  wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.roof_width*
+  wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.room_length,
+  wholeHouseBuildingEnvelope.upperFloor_Building.Bath.roof_width*
+  wholeHouseBuildingEnvelope.upperFloor_Building.Bath.room_length,
+  wholeHouseBuildingEnvelope.upperFloor_Building.Children2.roof_width*
+  wholeHouseBuildingEnvelope.upperFloor_Building.Children2.room_length,
+  wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.roof_width1*
+  wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.length+
+  wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.roof_width2*
+  wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.length};
+
+  AixLib.ThermalZones.HighOrder.House.OFD_MiddleInnerLoadWall.BuildingEnvelope.WholeHouseBuildingEnvelope
+    wholeHouseBuildingEnvelope(
+    wallTypes=wallTypes,
+    energyDynamicsWalls=energyDynamicsWalls,
+    T0_air=T0_air,
+    TWalls_start=TWalls_start,
+    redeclare model WindowModel = WindowModel,
+    Type_Win = Type_Win,
+    redeclare model CorrSolarGainWin = CorrSolarGainWin,
+    use_sunblind=use_sunblind,
+    use_infiltEN12831=use_infiltEN12831,
+    n50=n50,
+    energyDynamics=energyDynamics,
+    redeclare package Medium = MediumZone,
+    UValOutDoors=UValOutDoors)
+    annotation (Placement(transformation(extent={{-46,-40},{48,72}})));
+
+equation
+  connect(wholeHouseBuildingEnvelope.groPlateUp, wholeHouseBuildingEnvelope.groFloDown)
+    annotation (Line(points={{-46,-28.8},{-54,-28.8},{-54,-15.36},{-46,-15.36}},
+        color={191,0,0}));
+  connect(wholeHouseBuildingEnvelope.groFloUp, wholeHouseBuildingEnvelope.uppFloDown)
+    annotation (Line(points={{-46,16},{-54,16},{-54,29.44},{-46,29.44}}, color={
+          191,0,0}));
+  connect(wholeHouseBuildingEnvelope.heatingToRooms, heatingToRooms1)
+    annotation (Line(points={{-46,0.32},{-98,0}}, color={191,0,0}));
+  connect(wholeHouseBuildingEnvelope.AirExchangePort, AirExchangePort)
+    annotation (Line(points={{-50.7,44},{-64,44},{-64,34},{-106,34}}, color={0,0,
+          127}));
+  connect(wholeHouseBuildingEnvelope.WindSpeedPort, WindSpeedPort) annotation (
+      Line(points={{-50.7,55.2},{-72,55.2},{-72,62},{-106,62}}, color={0,0,127}));
+  connect(wholeHouseBuildingEnvelope.thermOutside, thermOutside) annotation (
+      Line(points={{-46,70.88},{-60,70.88},{-60,90},{-98,90}}, color={191,0,0}));
+
+  connect(wholeHouseBuildingEnvelope.West, West) annotation (Line(points={{50.82,
+          -5.28},{76,-5.28},{76,-38},{108,-38}}, color={255,128,0}));
+  connect(wholeHouseBuildingEnvelope.South, South) annotation (Line(points={{50.82,
+          8.16},{86,8.16},{86,-12},{108,-12}}, color={255,128,0}));
+  connect(wholeHouseBuildingEnvelope.East, East) annotation (Line(points={{50.82,
+          22.72},{80,22.72},{80,14},{108,14}}, color={255,128,0}));
+  connect(wholeHouseBuildingEnvelope.North, North) annotation (Line(points={{50.82,
+          37.28},{78,37.28},{78,40},{108,40}}, color={255,128,0}));
+  connect(wholeHouseBuildingEnvelope.SolarRadiationPort_RoofS,
+    SolarRadiationPort_RoofS) annotation (Line(points={{50.82,51.84},{76,51.84},
+          {76,64},{108,64}}, color={255,128,0}));
+  connect(wholeHouseBuildingEnvelope.SolarRadiationPort_RoofN,
+    SolarRadiationPort_RoofN) annotation (Line(points={{50.82,66.4},{64,66.4},{64,
+          90},{108,90}}, color={255,128,0}));
+    connect(wholeHouseBuildingEnvelope.portVent_out, portVent_out) annotation (
+      Line(points={{49.41,-31.6},{56,-31.6},{56,-92},{100,-92}}, color={0,127,255}));
+  connect(wholeHouseBuildingEnvelope.portVent_in, portVent_in) annotation (Line(
+        points={{48.47,-19.28},{68,-19.28},{68,-66},{100,-66}}, color={0,127,255}));
+
+  for i in 1:size(wholeHouseBuildingEnvelope.groundTemp, 1) loop
+      connect(groundTemp, wholeHouseBuildingEnvelope.groundTemp[i]) annotation (
+      Line(points={{0,-100},{0,-44},{1,-44},{1,-40}},    color={191,0,0}));
+  end for;
+
+  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+        coordinateSystem(preserveAspectRatio=false)));
+end AixLibHighOrderOFD;
