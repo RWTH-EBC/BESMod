@@ -7,9 +7,8 @@ model NoUser "No user"
 
   Modelica.Blocks.Sources.Constant constZero[3](each k=0)
     annotation (Placement(transformation(extent={{-14,-20},{24,18}})));
-  Modelica.Blocks.Sources.Constant const[systemParameters.nZones](k=
-        systemParameters.TSetZone_nominal) "Profiles for internal gains"
-    annotation (Placement(transformation(
+  Modelica.Blocks.Sources.Constant const[nZones](k=TSetZone_nominal)
+    "Profiles for internal gains" annotation (Placement(transformation(
         extent={{23,23},{-23,-23}},
         rotation=180,
         origin={-93,-31})));
