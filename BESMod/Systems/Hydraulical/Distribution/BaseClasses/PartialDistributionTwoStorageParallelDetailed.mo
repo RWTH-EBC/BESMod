@@ -283,7 +283,6 @@ partial model PartialDistributionTwoStorageParallelDetailed
   Utilities.KPIs.InternalKPICalculator internalKPICalculatorBufLoss(
     unit="W",
     integralUnit="J",
-    thresholdOn=Modelica.Constants.eps,
     calc_singleOnTime=false,
     calc_integral=true,
     calc_totalOnTime=false,
@@ -295,7 +294,6 @@ partial model PartialDistributionTwoStorageParallelDetailed
   Utilities.KPIs.InternalKPICalculator internalKPICalculatorDHWLoss(
     unit="W",
     integralUnit="J",
-    thresholdOn=Modelica.Constants.eps,
     calc_singleOnTime=false,
     calc_integral=true,
     calc_totalOnTime=false,
@@ -324,7 +322,6 @@ partial model PartialDistributionTwoStorageParallelDetailed
   Utilities.KPIs.InternalKPICalculator internalKPICalculatorDHWHR(
     unit="W",
     integralUnit="J",
-    thresholdOn=Modelica.Constants.eps,
     calc_singleOnTime=false,
     calc_integral=true,
     calc_totalOnTime=false,
@@ -336,7 +333,6 @@ partial model PartialDistributionTwoStorageParallelDetailed
   Utilities.KPIs.InputKPICalculator inputKPICalculator(
     unit="W",
     integralUnit="J",
-    thresholdOn=Modelica.Constants.eps,
     calc_singleOnTime=false,
     calc_integral=true,
     calc_totalOnTime=false,
@@ -347,7 +343,6 @@ partial model PartialDistributionTwoStorageParallelDetailed
   Utilities.KPIs.InternalKPICalculator internalKPICalculatorDHWHR1(
     unit="W",
     integralUnit="J",
-    thresholdOn=Modelica.Constants.eps,
     calc_singleOnTime=false,
     calc_integral=true,
     calc_totalOnTime=false,
