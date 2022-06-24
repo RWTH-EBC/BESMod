@@ -2,8 +2,8 @@ within BESMod.Systems.UserProfiles;
 model Case600Profiles "Case600FF profiles"
   extends BaseClasses.RecordBasedDHWUser;
 
-  Modelica.Blocks.Sources.Constant const[systemParameters.nZones](final k=
-        systemParameters.TSetZone_nominal) "Profiles for internal gains"
+  Modelica.Blocks.Sources.Constant const[nZones](final k=
+        TSetZone_nominal)                  "Profiles for internal gains"
     annotation (Placement(transformation(
         extent={{23,23},{-23,-23}},
         rotation=180,

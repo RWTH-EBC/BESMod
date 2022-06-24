@@ -109,8 +109,6 @@ equation
           fillPattern=FillPattern.Solid), Text(
           extent={{20,-50},{94,-84}},
           lineColor={28,108,200},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid,
           textString="Internal
 (see equations)")}));
 end ParallelBivalentControl;

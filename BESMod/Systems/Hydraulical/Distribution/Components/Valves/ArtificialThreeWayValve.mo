@@ -175,8 +175,6 @@ equation
           extent={{-124,-106},{156,-154}},
           lineColor={0,0,0},
           lineThickness=1,
-          fillColor={255,255,255},
-          fillPattern=FillPattern.None,
           textString="%name"),
         Polygon(
           points={{72,82},{72,28},{18,56},{72,82}},

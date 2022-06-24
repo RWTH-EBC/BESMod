@@ -54,17 +54,14 @@ partial model PartialCase
       redeclare
         BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedDirectLoading
         distribution(
-        QHRAftDHW_flow_nominal=0,
         QHRAftBuf_flow_nominal=0,
-        use_heatingRodAfterDHW=false,
         use_heatingRodAfterBuffer=false,
         discretizationStepsDWHStoHR=0,
         discretizationStepsBufStoHR=0,
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
           temperatureSensorData,
-        redeclare
-          BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
+        redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
           threeWayValveParameters,
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorage
@@ -82,10 +79,7 @@ partial model PartialCase
           T_m=65 + 273.15),
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-          heatingRodAftBufParameters,
-        redeclare
-          BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-          heatingRodAftDHWParameters),
+          heatingRodAftBufParameters),
       redeclare
         BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased
         transfer(
@@ -109,8 +103,7 @@ partial model PartialCase
     redeclare Systems.UserProfiles.TEASERProfiles userProfiles(redeclare
         BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile),
     redeclare BESParameters systemParameters,
-    redeclare
-      BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy
+    redeclare BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy
       parameterStudy,
     redeclare final package MediumDHW = AixLib.Media.Water,
     redeclare final package MediumZone = AixLib.Media.Air,
