@@ -13,21 +13,25 @@ model CalcHeaDemHOM
       radioButtons=true));
 
   extends PartialCalcHeatingDemand(
-    TN_heater=building.zoneParam[1].TNHeat,
-    KR_heater=building.zoneParam[1].KRHeat,
-    h_heater=building.zoneParam.hHeat*10,
-    redeclare Examples.UseCaseHOM.HOMSystem systemParameters(TOda_nominal=259.75,
-        THydSup_nominal={328.15}),
+    TN_heater=1,
+    KR_heater=10000,
+    h_heater=fill(100000,building.nZones),
+    redeclare Examples.UseCaseHOM.HOMSystem systemParameters(
+      QDHW_flow_nomial=0,
+      TOda_nominal=261.15,
+      TSetZone_nominal(displayUnit="K") = {293.15,293.15,288.15,293.15,293.15,293.15,
+        293.15,288.15,297.15,293.15,250.15},
+      THydSup_nominal=fill(273.15 + 55, building.nZones)),
     redeclare AixLibHighOrder building(
-      nZones=1,
       useConstNatVentRate=true,
-      ventRate=fill(0.5, nZones),
-      TSoil=281.65,
-      Latitude=weaDat.lon,
-      Longitude=weaDat.lon,
-      DiffWeatherDataTime=weaDat.timZon,
+      ventRate={0.5,0.5,0,0.5,0.5,0.5,0.5,0,0.5,0.5,0},
+      Latitude=Modelica.Units.Conversions.to_deg(weaDat.lat),
+      Longitude=Modelica.Units.Conversions.to_deg(weaDat.lon),
+      DiffWeatherDataTime=Modelica.Units.Conversions.to_hour(weaDat.timZon),
       GroundReflection=0.2,
-      redeclare AixLib.DataBase.Walls.Collections.OFD.EnEV2009Light wallTypes,
+      T0_air=293.15,
+      TWalls_start=292.15,
+      redeclare AixLib.DataBase.Walls.Collections.OFD.EnEV2009Heavy wallTypes,
       redeclare model WindowModel =
           AixLib.ThermalZones.HighOrder.Components.WindowsDoors.WindowSimple,
       redeclare AixLib.DataBase.WindowsDoors.Simple.WindowSimple_EnEV2009
@@ -37,9 +41,15 @@ model CalcHeaDemHOM
       use_sunblind=false,
       UValOutDoors=if TIR == 1 then 1.8 else 2.9,
       use_infiltEN12831=true,
-      n50=if TIR == 1 or TIR == 2 then 3 else if TIR == 3 then 4 else 6));
+      n50=if TIR == 1 or TIR == 2 then 3 else if TIR == 3 then 4 else 6),
+    redeclare UserProfiles.NoUserHOM heatDemandScenario(nZones=building.nZones,
+        TSetZone_nominal=fill(273.15 + 21, building.nZones)),
+    heaterCooler(each Heater_on=true));
 
   annotation (Documentation(info="<html>
 <p>In order to use this model, choose a number of zones and pass a zoneParam from TEASER for every zone. Further specify the nominal heat outdoor air temperature in the system parameters or pass your custom systemParameters record.</p>
-</html>"));
+</html>"), experiment(
+      StopTime=25920000,
+      Interval=3600,
+      __Dymola_Algorithm="Dassl"));
 end CalcHeaDemHOM;

@@ -1,13 +1,13 @@
 within BESMod.Systems.UserProfiles;
 model AixLibHighOrderProfiles "Standard TEASER Profiles"
   extends BaseClasses.RecordBasedDHWUser;
-  parameter String fileNameIntGains=Modelica.Utilities.Files.loadResource("modelica://BESMod/Resources/InternalGains.txt")
+  parameter String fileNameIntGains=Modelica.Utilities.Files.loadResource("modelica://BESMod/Resources/InternalGainsHOM.txt")
     "File where matrix is stored"
     annotation (Dialog(tab="Inputs", group="Internal Gains"));
 
   parameter AixLib.DataBase.Profiles.ProfileBaseDataDefinition VentilationProfile = AixLib.DataBase.Profiles.Ventilation2perDayMean05perH();
   parameter AixLib.DataBase.Profiles.ProfileBaseDataDefinition TSetProfile = AixLib.DataBase.Profiles.SetTemperaturesVentilation2perDay();
-  parameter Real gain[3]=fill(1, 3) "Gain value multiplied with internal gains. Used to e.g. disable single gains."          annotation (Dialog(group=
+  parameter Real gain "Gain value multiplied with internal gains. Used to e.g. disable single gains."          annotation (Dialog(group=
           "Internal Gains",                                                                                                 tab="Inputs"));
 
   Modelica.Blocks.Sources.CombiTimeTable tableInternalGains(
@@ -15,12 +15,13 @@ model AixLibHighOrderProfiles "Standard TEASER Profiles"
     final extrapolation=Modelica.Blocks.Types.Extrapolation.Periodic,
     final tableName="Internals",
     final fileName=fileNameIntGains,
-    columns=2:4) "Profiles for internal gains"
+    columns=2:nZones + 1)
+                 "Profiles for internal gains"
     annotation (Placement(transformation(extent={{23,23},{-23,-23}},
         rotation=180,
         origin={-27,1})));
 
-  Modelica.Blocks.Math.Gain gainIntGains[3](k=gain)
+  Modelica.Blocks.Math.Gain gainIntGains[nZones](each k=gain)
     "Profiles for internal gains" annotation (Placement(transformation(
         extent={{23,23},{-23,-23}},
         rotation=180,
