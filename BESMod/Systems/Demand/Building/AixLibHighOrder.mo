@@ -129,8 +129,7 @@ equation
           {-80,-17},{-80,60},{-100,60}},        color={191,0,0}));
   connect(convRadToCombPort.portRad, heatPortRad) annotation (Line(points={{-66,-27},
           {-80,-27},{-80,-60},{-100,-60}},      color={0,0,0}));
-  connect(aixLiBHighOrderOFD.heatingToRooms1, convRadToCombPort.portConvRadComb)
-    annotation (Line(points={{-21.4,-1},{-36,-1},{-36,-22},{-46,-22}}, color={191,
+  connect(aixLiBHighOrderOFD.heatingToRooms1, convRadToCombPort.portConvRadComb)  annotation (Line(points={{-21.4,-1},{-36,-1},{-36,-22},{-46,-22}}, color={191,
           0,0}));
   connect(aixLiBHighOrderOFD.thermOutside, tempOutside.port) annotation (Line(
         points={{-21.4,30.5},{-18,30.5},{-18,44}},          color={191,0,0}));
@@ -141,45 +140,17 @@ equation
   connect(aixLiBHighOrderOFD.portVent_out, portVent_out) annotation (Line(
         points={{38,-31.8},{74,-31.8},{74,-40},{100,-40}},
         color={0,127,255}));
-
-        // Connecting n RadOnTiltedSurf
-  for i in 1:SOD.nSurfaces loop
-    connect(Sun.OutDayAngleSun, RadOnTiltedSurf[i].InDayAngleSun)       annotation (
-      Line(points={{7.3,57.42},{14,57.42},{14,55.9},{20.31,55.9}},color={0,0,127}));
-    connect(Sun.OutHourAngleSun, RadOnTiltedSurf[i].InHourAngleSun) annotation (
-      Line(points={{7.3,55.18},{14,55.18},{14,53.9},{20.31,53.9}},color={0,0,127}));
-    connect(Sun.OutDeclinationSun, RadOnTiltedSurf[i].InDeclinationSun) annotation (Line(points={{7.3,
-            53.08},{14,53.08},{14,51.9},{20.31,51.9}},
-        color={0,0,127}));
-    connect(add.y, RadOnTiltedSurf[i].solarInput1) annotation (Line(points={{14.5,
-          73},{22.29,73},{22.29,65.3}}, color={0,0,127}));
-    connect(weaBus.HDifHor, RadOnTiltedSurf[i].solarInput2) annotation (Line(
-      points={{-47,98},{-30,98},{-30,84},{33.07,84},{33.07,65.3}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%first",
-      index=-1,
-      extent={{-3,6},{-3,6}},
-      horizontalAlignment=TextAlignment.Right));
-  end for;
-
-  connect(aixLiBHighOrderOFD.SolarRadiationPort_RoofN, RadOnTiltedSurf[5].OutTotalRadTilted)
-    annotation (Line(points={{40.4,30.5},{52,30.5},{52,62},{38.9,62}}, color={255,
+  connect(aixLiBHighOrderOFD.SolarRadiationPort_RoofN, RadOnTiltedSurf[5].OutTotalRadTilted) annotation (Line(points={{40.4,30.5},{52,30.5},{52,62},{38.9,62}}, color={255,
           128,0}));
-  connect(aixLiBHighOrderOFD.SolarRadiationPort_RoofS, RadOnTiltedSurf[6].OutTotalRadTilted)
-    annotation (Line(points={{40.4,21.4},{52,21.4},{52,62},{38.9,62}}, color={255,
+  connect(aixLiBHighOrderOFD.SolarRadiationPort_RoofS, RadOnTiltedSurf[6].OutTotalRadTilted) annotation (Line(points={{40.4,21.4},{52,21.4},{52,62},{38.9,62}}, color={255,
           128,0}));
-  connect(aixLiBHighOrderOFD.North, RadOnTiltedSurf[1].OutTotalRadTilted)
-    annotation (Line(points={{40.4,13},{52,13},{52,62},{38.9,62}}, color={255,128,
+  connect(aixLiBHighOrderOFD.North, RadOnTiltedSurf[1].OutTotalRadTilted) annotation (Line(points={{40.4,13},{52,13},{52,62},{38.9,62}}, color={255,128,
           0}));
-  connect(aixLiBHighOrderOFD.East, RadOnTiltedSurf[2].OutTotalRadTilted)
-    annotation (Line(points={{40.4,3.9},{52,3.9},{52,62},{38.9,62}}, color={255,
+  connect(aixLiBHighOrderOFD.East, RadOnTiltedSurf[2].OutTotalRadTilted) annotation (Line(points={{40.4,3.9},{52,3.9},{52,62},{38.9,62}}, color={255,
           128,0}));
-  connect(aixLiBHighOrderOFD.South, RadOnTiltedSurf[3].OutTotalRadTilted)
-    annotation (Line(points={{40.4,-5.2},{52,-5.2},{52,62},{38.9,62}}, color={255,
+  connect(aixLiBHighOrderOFD.South, RadOnTiltedSurf[3].OutTotalRadTilted) annotation (Line(points={{40.4,-5.2},{52,-5.2},{52,62},{38.9,62}}, color={255,
           128,0}));
-  connect(aixLiBHighOrderOFD.West, RadOnTiltedSurf[4].OutTotalRadTilted)
-    annotation (Line(points={{40.4,-14.3},{52,-14.3},{52,62},{38.9,62}}, color={
+  connect(aixLiBHighOrderOFD.West, RadOnTiltedSurf[4].OutTotalRadTilted) annotation (Line(points={{40.4,-14.3},{52,-14.3},{52,62},{38.9,62}}, color={
           255,128,0}));
   connect(weaBus.HGloHor, add.u1) annotation (Line(
       points={{-47,98},{-47,76},{3,76}},
@@ -205,28 +176,48 @@ equation
       index=-1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(aixLiBHighOrderOFD.AirExchangePort, useProBus.NaturalVentilation)
-    annotation (Line(points={{-23.8,10.9},{-64,10.9},{-64,88},{51,88},{51,101}},
+  connect(InternalGains.port, convRadToCombPort.portConv) annotation (Line(
+        points={{-62,-60},{-72,-60},{-72,-17},{-66,-17}},
+                                                        color={191,0,0}));
+  connect(InternalGains.Q_flow, useProBus.intGains) annotation (Line(points={{-42,
+          -60},{60,-60},{60,70},{51,70},{51,101}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(constVentRate.y, aixLiBHighOrderOFD.AirExchangePort) annotation (Line(
+        points={{-53.5,-1},{-50,-1},{-50,10.9},{-23.8,10.9}}, color={0,0,127}));
+
+        // Connecting n RadOnTiltedSurf
+  for i in 1:SOD.nSurfaces loop
+    connect(Sun.OutDayAngleSun, RadOnTiltedSurf[i].InDayAngleSun)       annotation (
+      Line(points={{7.3,57.42},{14,57.42},{14,55.9},{20.31,55.9}},color={0,0,127}));
+    connect(Sun.OutHourAngleSun, RadOnTiltedSurf[i].InHourAngleSun) annotation (
+      Line(points={{7.3,55.18},{14,55.18},{14,53.9},{20.31,53.9}},color={0,0,127}));
+    connect(Sun.OutDeclinationSun, RadOnTiltedSurf[i].InDeclinationSun) annotation (Line(points={{7.3,
+            53.08},{14,53.08},{14,51.9},{20.31,51.9}},
+        color={0,0,127}));
+    connect(add.y, RadOnTiltedSurf[i].solarInput1) annotation (Line(points={{14.5,
+          73},{22.29,73},{22.29,65.3}}, color={0,0,127}));
+    connect(weaBus.HDifHor, RadOnTiltedSurf[i].solarInput2) annotation (Line(
+      points={{-47,98},{-30,98},{-30,84},{33.07,84},{33.07,65.3}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%first",
+      index=-1,
+      extent={{-3,6},{-3,6}},
+      horizontalAlignment=TextAlignment.Right));
+  end for;
+
+  if useConstNatVentRate == false then
+    connect(aixLiBHighOrderOFD.AirExchangePort, useProBus.NaturalVentilation)  annotation (Line(points={{-23.8,10.9},{-64,10.9},{-64,88},{51,88},{51,101}},
         color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  if useConstNatVentRate == false then
-      connect(constVentRate.y, aixLiBHighOrderOFD.AirExchangePort)  annotation (Line(
-        points={{-53.5,-1},{-44,-1},{-44,10.9},{-23.8,10.9}},
-                                                            color={0,0,127}));
   end if;
-  connect(InternalGains.port, convRadToCombPort.portConv) annotation (Line(
-        points={{-62,-60},{-72,-60},{-72,-17},{-66,-17}},
-                                                        color={191,0,0}));
-  connect(InternalGains.Q_flow, useProBus.intGains) annotation (Line(points={{-42,-60},
-          {-30,-60},{-30,-60},{66,-60},{66,78},{51,78},{51,101}},      color={0,
-          0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
+
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end AixLibHighOrder;
