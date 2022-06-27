@@ -74,6 +74,7 @@ partial model PartialCalcHeatingDemand
     relHumSou=IBPSA.BoundaryConditions.Types.DataSource.Parameter,
     relHum=0,
     winSpeSou=IBPSA.BoundaryConditions.Types.DataSource.Parameter,
+    winSpe=0,
     HInfHorSou=IBPSA.BoundaryConditions.Types.DataSource.Parameter,
     HInfHor=0,
     HSou=IBPSA.BoundaryConditions.Types.RadiationDataSource.Input_HGloHor_HDifHor)
