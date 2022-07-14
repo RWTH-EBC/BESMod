@@ -8,7 +8,7 @@ partial model PartialDistribution
   Interfaces.DistributionControlBus sigBusDistr annotation (Placement(
         transformation(extent={{-16,78},{18,112}}), iconTransformation(extent={{
             -16,78},{18,112}})));
-  Interfaces.InternalElectricalPin internalElectricalPin[nSubSys]
+  Interfaces.InternalElectricalPinIn internalElectricalPin[nSubSys]
     annotation (Placement(transformation(extent={{40,90},{60,110}})));
   Interfaces.ExternalElectricalPin externalElectricalPin
     annotation (Placement(transformation(extent={{40,-108},{60,-88}})));

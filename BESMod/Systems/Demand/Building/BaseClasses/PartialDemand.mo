@@ -59,7 +59,7 @@ partial model PartialDemand "Partial demand model for HPS"
   BESMod.Systems.Interfaces.BuiMeaBus buiMeaBus annotation (
       Placement(transformation(extent={{-20,78},{20,120}}), iconTransformation(
           extent={{-20,78},{20,120}})));
-  Electrical.Interfaces.InternalElectricalPin internalElectricalPin
+  Electrical.Interfaces.InternalElectricalPinOut internalElectricalPin
     annotation (Placement(transformation(extent={{60,-106},{80,-86}})));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
