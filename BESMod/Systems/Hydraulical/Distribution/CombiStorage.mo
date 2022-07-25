@@ -57,7 +57,7 @@ model CombiStorage
       final sIns=parameters.sIns/2,
       final lambdaWall=parameters.lambda_ins,
       final lambdaIns=parameters.lambda_ins,
-      final rhoIns=373000,
+      final rhoIns=373,
       final cIns=1000,
       pipeHC1=parameters.pipeHC1,
       pipeHC2=parameters.pipeHC2,
