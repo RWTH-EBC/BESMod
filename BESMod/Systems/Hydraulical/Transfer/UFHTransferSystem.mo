@@ -124,8 +124,8 @@ model UFHTransferSystem
     annotation (Placement(transformation(extent={{32,-108},{52,-88}})));
 protected
   parameter BESMod.Components.UFH.ActiveWallBaseDataDefinition floorHeatingType[nParallelDem]={BESMod.Components.UFH.ActiveWallBaseDataDefinition(
-        Temp_nom=Modelica.Units.Conversions.from_degC(  {TSup_nominal[i],
-          TSup_nominal[i]-dTTra_nominal[i],TDem_nominal[i]}),
+        Temp_nom=Modelica.Units.Conversions.from_degC(  {TTran_nominal[i],
+          TTran_nominal[i]-dTTra_nominal[i],TDem_nominal[i]}),
         q_dot_nom=Q_flow_nominal[i] / UFHParameters.area[i],
         k_isolation=UFHParameters.k_top[i] + UFHParameters.k_down[i],
         k_top=UFHParameters.k_top[i],

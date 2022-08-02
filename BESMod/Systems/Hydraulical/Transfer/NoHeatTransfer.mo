@@ -2,8 +2,7 @@ within BESMod.Systems.Hydraulical.Transfer;
 model NoHeatTransfer "No heat tranfser to building"
   extends BaseClasses.PartialTransfer(
     dp_nominal=fill(0, nParallelDem),
-    dTTra_nominal=fill(0, nParallelDem),
-    TSup_nominal=fill(TDem_nominal[1], nParallelDem));
+    dTTra_nominal=fill(0, nParallelDem));
   Modelica.Thermal.HeatTransfer.Sources.FixedHeatFlow fixedHeatFlow[
     nParallelDem](each final Q_flow=0)
     annotation (Placement(transformation(extent={{54,-10},{74,10}})));
