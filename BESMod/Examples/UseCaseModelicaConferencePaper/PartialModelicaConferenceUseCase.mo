@@ -129,12 +129,14 @@ partial model PartialModelicaConferenceUseCase
         BESMod.Systems.Ventilation.Distribution.SimpleDistribution
         distribution(m_flow_nominal=building.AZone .*building.hZone  .* 0.5 ./
             3600 .* 1.225),
-      redeclare
-        BESMod.Systems.Ventilation.Control.SummerPIDByPass
-        control(use_bypass=false)));
+      redeclare BESMod.Systems.Ventilation.Control.SummerPIDByPass control(
+          use_bypass=use_bypass, use_minMax=use_minMax, use_busForTSet=use_busForTSet)));
 
  parameter Real scalingFactorHP=hydraulic.generation.heatPumpParameters.QPri_flow_nominal
       /13000                               "May be overwritten to avoid warnings and thus a fail in the CI";
+ parameter Boolean use_bypass=false "=false to disable the bypass";
+ parameter Boolean use_minMax = true "=false to use min-max block";
+ parameter Boolean use_busForTSet = true "=false to use constant TSet";
 
 
   annotation (experiment(

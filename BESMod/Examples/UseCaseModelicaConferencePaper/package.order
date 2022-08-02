@@ -2,3 +2,7 @@ PartialModelicaConferenceUseCase
 BESModSystemParas
 BuildingsLibraryRoom
 TEASERBuilding
+ModelWithErrorTSet
+ModelWithErrorTMea
+ModelWithErrorBoth
+ModelNoErrorTMea
