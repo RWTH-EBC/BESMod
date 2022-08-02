@@ -23,7 +23,7 @@ model CalcHeaDemHOM
         293.15,288.15,297.15,293.15,250.15},
       THydSup_nominal=fill(273.15 + 55, building.nZones)),
     redeclare AixLibHighOrder building(
-      useConstNatVentRate=true,
+      useConstVentRate=true,
       ventRate={0.5,0.5,0,0.5,0.5,0.5,0.5,0,0.5,0.5,0},
       Latitude=Modelica.Units.Conversions.to_deg(weaDat.lat),
       Longitude=Modelica.Units.Conversions.to_deg(weaDat.lon),

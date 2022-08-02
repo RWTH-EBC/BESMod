@@ -1,5 +1,5 @@
 within BESMod.Systems.Demand.Building.Components;
-model AixLibHighOrderOFD
+model AixLibHighOrderOFD "High order OFD"
   extends Building.BaseClasses.PartialAixLibHighOrder(
   final nZones=11);
 
@@ -23,6 +23,7 @@ model AixLibHighOrderOFD
      annotation (Dialog(tab="Outer walls", group="Wall"), choicesAllMatching = true);
   replaceable model WindowModel =
       AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.PartialWindow
+      (windowarea=2)
     constrainedby
     AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.PartialWindow  annotation (Dialog(tab="Outer walls", group="Windows"), choicesAllMatching = true);
   replaceable parameter AixLib.DataBase.WindowsDoors.Simple.OWBaseDataDefinition_Simple Type_Win "Window parametrization" annotation (Dialog(tab="Outer walls", group="Windows"), choicesAllMatching = true);
@@ -105,7 +106,7 @@ model AixLibHighOrderOFD
     energyDynamicsWalls=energyDynamicsWalls,
     T0_air=T0_air,
     TWalls_start=TWalls_start,
-    redeclare model WindowModel = WindowModel,
+    redeclare model WindowModel = WindowModel (windowarea=2),
     Type_Win = Type_Win,
     redeclare model CorrSolarGainWin = CorrSolarGainWin,
     use_sunblind=use_sunblind,

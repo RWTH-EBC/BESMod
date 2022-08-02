@@ -15,14 +15,14 @@ model AixLibHighOrder "High order building model from AixLib library"
   AixLib.DataBase.Weather.SurfaceOrientation.SurfaceOrientationData_N_E_S_W_RoofN_Roof_S()
     "Surface orientation data"  annotation(Dialog(group = "Solar radiation on oriented surfaces", descriptionLabel = true), choicesAllMatching = true);
 
-  parameter Boolean useConstNatVentRate = false;
-  parameter Real ventRate[nZones]=fill(0, nZones) "Constant mechanical ventilation rate";
+  parameter Boolean useConstVentRate;
+  parameter Real ventRate[nZones]=fill(0, nZones) if useConstVentRate "Constant mechanical ventilation rate" annotation (Dialog(enable=useConstVentRate));
   parameter Modelica.Units.SI.Temperature TSoil=281.65     "Temperature of soil";
   parameter Modelica.Units.NonSI.Angle_deg Latitude "latitude of location";
   parameter Modelica.Units.NonSI.Angle_deg Longitude "longitude of location in";
   parameter Real TimeCorrection=0 "for TRY = 0.5, for TMY = 0";
   parameter Modelica.Units.NonSI.Time_hour DiffWeatherDataTime=1 "difference between local time and UTC, e.g. +1 for MET";
-  parameter Real GroundReflection "ground reflection coefficient";
+  parameter Real GroundReflection = 0.2 "ground reflection coefficient";
 
   // Dynamics
   parameter Modelica.Fluid.Types.Dynamics energyDynamicsWalls=Modelica.Fluid.Types.Dynamics.DynamicFreeInitial
@@ -44,11 +44,14 @@ model AixLibHighOrder "High order building model from AixLib library"
      annotation (Dialog(tab="Outer walls", group="Wall"), choicesAllMatching = true);
   replaceable model WindowModel =
       AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.PartialWindow
-    constrainedby AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.PartialWindow   annotation (Dialog(tab="Outer walls", group="Windows"), choicesAllMatching = true);
+      (windowarea=2)
+    constrainedby
+    AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.PartialWindow                 annotation (Dialog(tab="Outer walls", group="Windows"), choicesAllMatching = true);
   replaceable parameter AixLib.DataBase.WindowsDoors.Simple.OWBaseDataDefinition_Simple Type_Win "Window parametrization" annotation (Dialog(tab="Outer walls", group="Windows"), choicesAllMatching = true);
   replaceable model CorrSolarGainWin =
       AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.CorrectionSolarGain.PartialCorG
-    constrainedby AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.CorrectionSolarGain.PartialCorG   "Correction model for solar irradiance as transmitted radiation" annotation (choicesAllMatching=true, Dialog(tab="Outer walls", group="Windows", enable = withWindow and outside));
+    constrainedby
+    AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.CorrectionSolarGain.PartialCorG                 "Correction model for solar irradiance as transmitted radiation" annotation (choicesAllMatching=true, Dialog(tab="Outer walls", group="Windows", enable = withWindow and outside));
   parameter Boolean use_sunblind=false
     "Will sunblind become active automatically?" annotation (Dialog(tab="Outer walls", group="Sunblind"));
   parameter Modelica.Units.SI.CoefficientOfHeatTransfer UValOutDoors=2.5
@@ -76,7 +79,7 @@ model AixLibHighOrder "High order building model from AixLib library"
     energyDynamics=energyDynamics,
     T0_air=T0_air,
     TWalls_start=TWalls_start,
-    redeclare model WindowModel = WindowModel,
+    redeclare model WindowModel = WindowModel (windowarea=2),
     redeclare model CorrSolarGainWin = CorrSolarGainWin,
     use_sunblind=use_sunblind,
     UValOutDoors=UValOutDoors,
@@ -85,7 +88,9 @@ model AixLibHighOrder "High order building model from AixLib library"
     e=e,
     Type_Win= Type_Win,
     wallTypes=wallTypes)
-    annotation (Placement(transformation(extent={{-22,-36},{38,34}})));
+    annotation (choicesAllMatching=true, Placement(transformation(extent={{-22,-36},{38,34}})));
+
+
   AixLib.BoundaryConditions.WeatherData.Old.WeatherTRY.BaseClasses.Sun
                   Sun(
     TimeCorrection=TimeCorrection,
@@ -105,8 +110,7 @@ model AixLibHighOrder "High order building model from AixLib library"
   Modelica.Blocks.Math.Add add(k1=+1, k2=-1)
     annotation (Placement(transformation(extent={{4,68},{14,78}})));
   Modelica.Blocks.Sources.Constant constVentRate[nZones](final k=ventRate)
-    if useConstNatVentRate                                    "Transform Volume l to massflowrate"
-                                         annotation (Placement(transformation(
+    if useConstVentRate               annotation (Placement(transformation(
           extent={{5,-5},{-5,5}},     rotation=180,
         origin={-59,-1})));
   Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow InternalGains[nZones]
@@ -129,7 +133,8 @@ equation
           {-80,-17},{-80,60},{-100,60}},        color={191,0,0}));
   connect(convRadToCombPort.portRad, heatPortRad) annotation (Line(points={{-66,-27},
           {-80,-27},{-80,-60},{-100,-60}},      color={0,0,0}));
-  connect(aixLiBHighOrderOFD.heatingToRooms1, convRadToCombPort.portConvRadComb)  annotation (Line(points={{-21.4,-1},{-36,-1},{-36,-22},{-46,-22}}, color={191,
+  connect(aixLiBHighOrderOFD.heatingToRooms1, convRadToCombPort.portConvRadComb)
+    annotation (Line(points={{-21.4,-1},{-36,-1},{-36,-22},{-46,-22}}, color={191,
           0,0}));
   connect(aixLiBHighOrderOFD.thermOutside, tempOutside.port) annotation (Line(
         points={{-21.4,30.5},{-18,30.5},{-18,44}},          color={191,0,0}));
@@ -140,17 +145,45 @@ equation
   connect(aixLiBHighOrderOFD.portVent_out, portVent_out) annotation (Line(
         points={{38,-31.8},{74,-31.8},{74,-40},{100,-40}},
         color={0,127,255}));
-  connect(aixLiBHighOrderOFD.SolarRadiationPort_RoofN, RadOnTiltedSurf[5].OutTotalRadTilted) annotation (Line(points={{40.4,30.5},{52,30.5},{52,62},{38.9,62}}, color={255,
+
+        // Connecting n RadOnTiltedSurf
+  for i in 1:SOD.nSurfaces loop
+    connect(Sun.OutDayAngleSun, RadOnTiltedSurf[i].InDayAngleSun)       annotation (
+      Line(points={{7.3,57.42},{14,57.42},{14,55.9},{20.31,55.9}},color={0,0,127}));
+    connect(Sun.OutHourAngleSun, RadOnTiltedSurf[i].InHourAngleSun) annotation (
+      Line(points={{7.3,55.18},{14,55.18},{14,53.9},{20.31,53.9}},color={0,0,127}));
+    connect(Sun.OutDeclinationSun, RadOnTiltedSurf[i].InDeclinationSun) annotation (Line(points={{7.3,
+            53.08},{14,53.08},{14,51.9},{20.31,51.9}},
+        color={0,0,127}));
+    connect(add.y, RadOnTiltedSurf[i].solarInput1) annotation (Line(points={{14.5,
+          73},{22.29,73},{22.29,65.3}}, color={0,0,127}));
+    connect(weaBus.HDifHor, RadOnTiltedSurf[i].solarInput2) annotation (Line(
+      points={{-47,98},{-30,98},{-30,84},{33.07,84},{33.07,65.3}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%first",
+      index=-1,
+      extent={{-3,6},{-3,6}},
+      horizontalAlignment=TextAlignment.Right));
+  end for;
+
+  connect(aixLiBHighOrderOFD.SolarRadiationPort_RoofN, RadOnTiltedSurf[5].OutTotalRadTilted)
+    annotation (Line(points={{40.4,30.5},{52,30.5},{52,62},{38.9,62}}, color={255,
           128,0}));
-  connect(aixLiBHighOrderOFD.SolarRadiationPort_RoofS, RadOnTiltedSurf[6].OutTotalRadTilted) annotation (Line(points={{40.4,21.4},{52,21.4},{52,62},{38.9,62}}, color={255,
+  connect(aixLiBHighOrderOFD.SolarRadiationPort_RoofS, RadOnTiltedSurf[6].OutTotalRadTilted)
+    annotation (Line(points={{40.4,21.4},{52,21.4},{52,62},{38.9,62}}, color={255,
           128,0}));
-  connect(aixLiBHighOrderOFD.North, RadOnTiltedSurf[1].OutTotalRadTilted) annotation (Line(points={{40.4,13},{52,13},{52,62},{38.9,62}}, color={255,128,
+  connect(aixLiBHighOrderOFD.North, RadOnTiltedSurf[1].OutTotalRadTilted)
+    annotation (Line(points={{40.4,13},{52,13},{52,62},{38.9,62}}, color={255,128,
           0}));
-  connect(aixLiBHighOrderOFD.East, RadOnTiltedSurf[2].OutTotalRadTilted) annotation (Line(points={{40.4,3.9},{52,3.9},{52,62},{38.9,62}}, color={255,
+  connect(aixLiBHighOrderOFD.East, RadOnTiltedSurf[2].OutTotalRadTilted)
+    annotation (Line(points={{40.4,3.9},{52,3.9},{52,62},{38.9,62}}, color={255,
           128,0}));
-  connect(aixLiBHighOrderOFD.South, RadOnTiltedSurf[3].OutTotalRadTilted) annotation (Line(points={{40.4,-5.2},{52,-5.2},{52,62},{38.9,62}}, color={255,
+  connect(aixLiBHighOrderOFD.South, RadOnTiltedSurf[3].OutTotalRadTilted)
+    annotation (Line(points={{40.4,-5.2},{52,-5.2},{52,62},{38.9,62}}, color={255,
           128,0}));
-  connect(aixLiBHighOrderOFD.West, RadOnTiltedSurf[4].OutTotalRadTilted) annotation (Line(points={{40.4,-14.3},{52,-14.3},{52,62},{38.9,62}}, color={
+  connect(aixLiBHighOrderOFD.West, RadOnTiltedSurf[4].OutTotalRadTilted)
+    annotation (Line(points={{40.4,-14.3},{52,-14.3},{52,62},{38.9,62}}, color={
           255,128,0}));
   connect(weaBus.HGloHor, add.u1) annotation (Line(
       points={{-47,98},{-47,76},{3,76}},
@@ -176,6 +209,14 @@ equation
       index=-1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
+  connect(aixLiBHighOrderOFD.AirExchangePort, useProBus.NaturalVentilation)
+    annotation (Line(points={{-23.8,10.9},{-64,10.9},{-64,88},{51,88},{51,101}},
+        color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+
   connect(InternalGains.port, convRadToCombPort.portConv) annotation (Line(
         points={{-62,-60},{-72,-60},{-72,-17},{-66,-17}},
                                                         color={191,0,0}));
@@ -187,37 +228,6 @@ equation
       horizontalAlignment=TextAlignment.Left));
   connect(constVentRate.y, aixLiBHighOrderOFD.AirExchangePort) annotation (Line(
         points={{-53.5,-1},{-50,-1},{-50,10.9},{-23.8,10.9}}, color={0,0,127}));
-
-        // Connecting n RadOnTiltedSurf
-  for i in 1:SOD.nSurfaces loop
-    connect(Sun.OutDayAngleSun, RadOnTiltedSurf[i].InDayAngleSun)       annotation (
-      Line(points={{7.3,57.42},{14,57.42},{14,55.9},{20.31,55.9}},color={0,0,127}));
-    connect(Sun.OutHourAngleSun, RadOnTiltedSurf[i].InHourAngleSun) annotation (
-      Line(points={{7.3,55.18},{14,55.18},{14,53.9},{20.31,53.9}},color={0,0,127}));
-    connect(Sun.OutDeclinationSun, RadOnTiltedSurf[i].InDeclinationSun) annotation (Line(points={{7.3,
-            53.08},{14,53.08},{14,51.9},{20.31,51.9}},
-        color={0,0,127}));
-    connect(add.y, RadOnTiltedSurf[i].solarInput1) annotation (Line(points={{14.5,
-          73},{22.29,73},{22.29,65.3}}, color={0,0,127}));
-    connect(weaBus.HDifHor, RadOnTiltedSurf[i].solarInput2) annotation (Line(
-      points={{-47,98},{-30,98},{-30,84},{33.07,84},{33.07,65.3}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%first",
-      index=-1,
-      extent={{-3,6},{-3,6}},
-      horizontalAlignment=TextAlignment.Right));
-  end for;
-
-  if useConstNatVentRate == false then
-    connect(aixLiBHighOrderOFD.AirExchangePort, useProBus.NaturalVentilation)  annotation (Line(points={{-23.8,10.9},{-64,10.9},{-64,88},{51,88},{51,101}},
-        color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
-  end if;
-
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end AixLibHighOrder;

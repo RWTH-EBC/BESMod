@@ -34,14 +34,13 @@ model TEASERThermalZone
         transformation(extent={{35,12},{-39,84}}, rotation=0)));
 
   Modelica.Blocks.Sources.Constant constTSetRoom[nZones](final k=
-        TSetZone_nominal) "Transform Volume l to massflowrate" annotation (
+        TSetZone_nominal)                                      annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={74,60})));
 
   Modelica.Blocks.Sources.Constant constVentRate[nZones](final k=ventRate)
-                                                              "Transform Volume l to massflowrate"
                                          annotation (Placement(transformation(
           extent={{-10,-10},{10,10}}, rotation=180,
         origin={74,30})));
