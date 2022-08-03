@@ -3,7 +3,7 @@ partial model PartialTransfer "Partial transfer model for BES"
   extends BESMod.Utilities.Icons.TransferIcon;
   extends
     BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters(
-    TSup_nominal=fill(max(TTran_nominal),nParallelSup),
+    TSup_nominal=fill(max(TTra_nominal),nParallelSup),
       dTTra_nominal={if TSup_nominal[i] > 64.9 + 273.15 then 15 elseif
         TSup_nominal[i] > 44.9 + 273.15 then 10 else 7 for i in 1:nParallelDem},
       m_flow_nominal=Q_flow_nominal ./ (dTTra_nominal .* 4184));
