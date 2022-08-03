@@ -8,7 +8,7 @@ partial model PartialTransfer "Partial transfer model for BES"
         TSup_nominal[i] > 44.9 + 273.15 then 10 else 7 for i in 1:nParallelDem},
       m_flow_nominal=Q_flow_nominal ./ (dTTra_nominal .* 4184));
 
-  parameter Modelica.Units.SI.Temperature TTran_nominal[nParallelDem] "Nominal supply temperature to transfer systems"
+  parameter Modelica.Units.SI.Temperature TTra_nominal[nParallelDem] "Nominal supply temperature to transfer systems"
    annotation(Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
 
   parameter Modelica.Units.SI.PressureDifference dpSup_nominal[nParallelSup]
