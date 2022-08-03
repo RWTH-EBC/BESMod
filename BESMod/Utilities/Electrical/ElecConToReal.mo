@@ -3,7 +3,7 @@ model ElecConToReal "Transfer from electrical connector to Real interface"
   parameter Boolean reverse = false "Whether electrical flow is inversed or not";
   Modelica.Blocks.Interfaces.RealOutput PElecLoa "Electrical power"
     annotation (Placement(transformation(extent={{100,20},{140,60}})));
-  Systems.Electrical.Interfaces.InternalElectricalPin internalElectricalPin
+  Systems.Electrical.Interfaces.InternalElectricalPinIn internalElectricalPin
     annotation (Placement(transformation(extent={{-108,-8},{-88,12}})));
   Modelica.Blocks.Interfaces.RealOutput PElecGen "Electrical power"
     annotation (Placement(transformation(extent={{100,-60},{140,-20}})));

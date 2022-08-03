@@ -3,9 +3,14 @@ partial model PartialTransfer "Partial transfer model for BES"
   extends BESMod.Utilities.Icons.TransferIcon;
   extends
     BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters(
+    TSup_nominal=fill(max(TTra_nominal),nParallelSup),
       dTTra_nominal={if TSup_nominal[i] > 64.9 + 273.15 then 15 elseif
         TSup_nominal[i] > 44.9 + 273.15 then 10 else 7 for i in 1:nParallelDem},
       m_flow_nominal=Q_flow_nominal ./ (dTTra_nominal .* 4184));
+
+  parameter Modelica.Units.SI.Temperature TTra_nominal[nParallelDem] "Nominal supply temperature to transfer systems"
+   annotation(Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
+
   parameter Modelica.Units.SI.PressureDifference dpSup_nominal[nParallelSup]
     "Nominal pressure loss of resistances in the supply system of the distribution"
     annotation (Dialog(group=
@@ -44,7 +49,7 @@ partial model PartialTransfer "Partial transfer model for BES"
     annotation (Placement(transformation(extent={{-10,-114},{10,-94}})));
   Interfaces.TransferControlBus traControlBus
     annotation (Placement(transformation(extent={{-10,90},{10,110}})));
-  Electrical.Interfaces.InternalElectricalPin internalElectricalPin
+  Electrical.Interfaces.InternalElectricalPinOut internalElectricalPin
     annotation (Placement(transformation(extent={{62,-108},{82,-88}})));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,

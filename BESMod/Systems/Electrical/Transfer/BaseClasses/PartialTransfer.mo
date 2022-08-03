@@ -17,7 +17,7 @@ partial model PartialTransfer "Partial model for transfer subsystems"
     "Heat port for radiative heat transfer with room air temperature"
     annotation (Placement(transformation(extent={{90,-48},{110,-28}}),
         iconTransformation(extent={{90,-18},{110,2}})));
-  Interfaces.InternalElectricalPin internalElectricalPin
+  Interfaces.InternalElectricalPinOut internalElectricalPin
     annotation (Placement(transformation(extent={{38,90},{58,110}})));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Rectangle(

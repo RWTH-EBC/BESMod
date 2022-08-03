@@ -139,7 +139,7 @@ partial model PartialDistributionTwoStorageParallelDetailed
       final sIns=bufParameters.sIns/2,
       final lambdaWall=bufParameters.lambda_ins,
       final lambdaIns=bufParameters.lambda_ins,
-      final rhoIns=373000,
+      final rhoIns=373,
       final cIns=1000,
       pipeHC1=bufParameters.pipeHC1,
       pipeHC2=bufParameters.pipeHC2,
@@ -185,7 +185,7 @@ partial model PartialDistributionTwoStorageParallelDetailed
       final sIns=dhwParameters.sIns/2,
       final lambdaWall=dhwParameters.lambda_ins,
       final lambdaIns=dhwParameters.lambda_ins,
-      final rhoIns=373000,
+      final rhoIns=373,
       final cIns=1000,
       pipeHC1=dhwParameters.pipeHC1,
       pipeHC2=dhwParameters.pipeHC2,
@@ -283,7 +283,6 @@ partial model PartialDistributionTwoStorageParallelDetailed
   Utilities.KPIs.InternalKPICalculator internalKPICalculatorBufLoss(
     unit="W",
     integralUnit="J",
-    thresholdOn=Modelica.Constants.eps,
     calc_singleOnTime=false,
     calc_integral=true,
     calc_totalOnTime=false,
@@ -295,7 +294,6 @@ partial model PartialDistributionTwoStorageParallelDetailed
   Utilities.KPIs.InternalKPICalculator internalKPICalculatorDHWLoss(
     unit="W",
     integralUnit="J",
-    thresholdOn=Modelica.Constants.eps,
     calc_singleOnTime=false,
     calc_integral=true,
     calc_totalOnTime=false,
@@ -324,7 +322,6 @@ partial model PartialDistributionTwoStorageParallelDetailed
   Utilities.KPIs.InternalKPICalculator internalKPICalculatorDHWHR(
     unit="W",
     integralUnit="J",
-    thresholdOn=Modelica.Constants.eps,
     calc_singleOnTime=false,
     calc_integral=true,
     calc_totalOnTime=false,
@@ -336,7 +333,6 @@ partial model PartialDistributionTwoStorageParallelDetailed
   Utilities.KPIs.InputKPICalculator inputKPICalculator(
     unit="W",
     integralUnit="J",
-    thresholdOn=Modelica.Constants.eps,
     calc_singleOnTime=false,
     calc_integral=true,
     calc_totalOnTime=false,
@@ -347,7 +343,6 @@ partial model PartialDistributionTwoStorageParallelDetailed
   Utilities.KPIs.InternalKPICalculator internalKPICalculatorDHWHR1(
     unit="W",
     integralUnit="J",
-    thresholdOn=Modelica.Constants.eps,
     calc_singleOnTime=false,
     calc_integral=true,
     calc_totalOnTime=false,
