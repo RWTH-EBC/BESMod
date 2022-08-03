@@ -124,7 +124,8 @@ partial model PartialHydraulicSystem
       Placement(transformation(extent={{-12,-104},{90,28}})));
 
   replaceable BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialTransfer transfer(
-      dp_nominal=fill(0, transfer.nParallelDem))                                                                                                                                                                                                         constrainedby
+      dp_nominal=fill(0, transfer.nParallelDem), TTra_nominal=
+        hydraulicSystemParameters.TSup_nominal)                                                                                                                                                                                                         constrainedby
     BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialTransfer(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
@@ -308,8 +309,8 @@ equation
       thickness=1));
   connect(transfer.internalElectricalPin, multiSumElec.internalElectricalPinIn[
     1]) annotation (Line(
-      points={{170.48,-43.28},{170.48,-106},{110,-106},{110,-124.133},{122.2,
-          -124.133}},
+      points={{170.48,-43.28},{170.48,-106},{110,-106},{110,-124.467},{122.2,
+          -124.467}},
       color={0,0,0},
       thickness=1));
   connect(distribution.internalElectricalPin, multiSumElec.internalElectricalPinIn[
@@ -319,7 +320,7 @@ equation
       thickness=1));
   connect(generation.internalElectricalPin, multiSumElec.internalElectricalPinIn[
     3]) annotation (Line(
-      points={{-40.24,-104},{-40.24,-123.467},{122.2,-123.467}},
+      points={{-40.24,-104},{-40.24,-123.133},{122.2,-123.133}},
       color={0,0,0},
       thickness=1));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-180,-140},
