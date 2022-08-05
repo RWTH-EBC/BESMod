@@ -12,10 +12,8 @@ model SummerPIDByPass "Bypass the HEX in summer"
 
   Modelica.Blocks.Math.MinMax minMaxMea(final nu=distributionParameters.nParallelDem)
     annotation (Placement(transformation(extent={{-88,32},{-68,52}})));
-  Modelica.Blocks.Sources.Constant constZero1(k=distributionParameters.TDem_nominal[
-        1])
-    "Bypass is not used"
-    annotation (Placement(transformation(extent={{-82,-30},{-62,-10}})));
+  Modelica.Blocks.Math.MinMax minMaxSet(final nu=distributionParameters.nParallelDem)
+    annotation (Placement(transformation(extent={{-78,-50},{-58,-30}})));
 equation
   connect(summerByPass.TOda, weaBus.TDryBul) annotation (Line(points={{-35.2,26},
           {-44,26},{-44,68},{1,68},{1,98}}, color={0,0,127}), Text(
@@ -45,6 +43,12 @@ equation
       horizontalAlignment=TextAlignment.Right));
   connect(minMaxMea.yMax, summerByPass.TMea) annotation (Line(points={{-67,48},{
           -52,48},{-52,11},{-35.2,11}}, color={0,0,127}));
-  connect(summerByPass.TZoneSet, constZero1.y) annotation (Line(points={{-35.2,
-          -4},{-34,-4},{-34,-20},{-61,-20}}, color={0,0,127}));
+  connect(minMaxSet.u, useProBus.TZoneSet) annotation (Line(points={{-78,-40},{-78,
+          -38},{-82,-38},{-82,-60},{-103,-60}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(minMaxSet.yMin, summerByPass.TZoneSet) annotation (Line(points={{-57,-46},
+          {-35.2,-46},{-35.2,-4}}, color={0,0,127}));
 end SummerPIDByPass;
