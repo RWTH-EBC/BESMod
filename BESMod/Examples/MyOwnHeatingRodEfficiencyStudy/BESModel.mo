@@ -1,6 +1,5 @@
 within BESMod.Examples.MyOwnHeatingRodEfficiencyStudy;
 model BESModel
-  extends Modelica.Icons.Example;
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
     redeclare BESMod.Systems.Demand.Building.TEASERThermalZone
@@ -74,6 +73,7 @@ model BESModel
       systemParameters(
       THydSup_nominal={328.15},                  use_ventilation=false,
       use_elecHeating=false));
+  extends Modelica.Icons.Example;
 
   annotation (experiment(
       StopTime=86400,

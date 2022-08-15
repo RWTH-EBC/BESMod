@@ -1,6 +1,5 @@
 within BESMod.Examples.UseCaseModelicaConferencePaper;
 model TEASERBuilding
-  extends Modelica.Icons.Example;
   extends PartialModelicaConferenceUseCase(
     redeclare Systems.Demand.Building.TEASERThermalZone building(
       AZone={185.9548},
@@ -12,6 +11,7 @@ model TEASERBuilding
       userProfiles(redeclare
         BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile),
     systemParameters(use_hydraulic=true, use_ventilation=true));
+  extends Modelica.Icons.Example;
 initial equation
   building.thermalZone[1].ROM.extWallRC.thermCapExt[1].T = 293.15;
   building.thermalZone[1].ROM.floorRC.thermCapExt[1].T = 293.15;

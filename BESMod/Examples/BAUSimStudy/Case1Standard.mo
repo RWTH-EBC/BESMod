@@ -1,8 +1,9 @@
 within BESMod.Examples.BAUSimStudy;
 model Case1Standard
-  extends Modelica.Icons.Example;  
   extends PartialCase(building(redeclare Buildings.Case_1_standard oneZoneParam),
   systemParameters(QBui_flow_nominal={16308.1}, TOda_nominal=263.15, THydSup_nominal={328.15}));
+  extends Modelica.Icons.Example;
+
   annotation (experiment(
       StopTime=86400,
       Interval=600,
