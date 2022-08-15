@@ -32,12 +32,6 @@ partial model RecordBasedDHWUser "Model for DHW-records and nominal, constant se
         extent={{-14,-14},{14,14}},
         rotation=0,
         origin={46,86})));
-  Modelica.Blocks.Sources.Constant const[nZones](k=
-        TSetZone_nominal)                  "Profiles for internal gains"
-    annotation (Placement(transformation(
-        extent={{23,23},{-23,-23}},
-        rotation=180,
-        origin={-73,-57})));
 equation
   connect(combiTimeTableDHWInput.y[4], useProBus.TDHWDemand) annotation (Line(
         points={{61.4,86},{115,86},{115,-1}},  color={0,0,127}), Text(
@@ -48,12 +42,6 @@ equation
   connect(combiTimeTableDHWInput.y[2], useProBus.mDHWDemand_flow) annotation (
       Line(points={{61.4,86},{115,86},{115,-1}},                    color={0,0,
           127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(const.y, useProBus.TZoneSet) annotation (Line(points={{-47.7,-57},{115,
-          -57},{115,-1}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},

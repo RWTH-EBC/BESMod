@@ -11,7 +11,7 @@ partial model PartialCalcHeatingDemand
     BESMod.Systems.RecordsCollection.SystemParametersBaseDataDefinition
     "Parameters relevant for the whole energy system" annotation (
       choicesAllMatching=true, Placement(transformation(extent={{76,-96},{96,-76}})));
-  Systems.UserProfiles.NoUser heatDemandScenario(final T_const=systemParameters.TOda_nominal)
+  Systems.UserProfiles.NoUser heatDemandScenario
     annotation (Placement(transformation(extent={{-100,18},{-50,80}})));
   replaceable BESMod.Systems.Demand.Building.BaseClasses.PartialDemand building
       constrainedby
@@ -74,6 +74,7 @@ partial model PartialCalcHeatingDemand
     relHumSou=IBPSA.BoundaryConditions.Types.DataSource.Parameter,
     relHum=0,
     winSpeSou=IBPSA.BoundaryConditions.Types.DataSource.Parameter,
+    winSpe=0,
     HInfHorSou=IBPSA.BoundaryConditions.Types.DataSource.Parameter,
     HInfHor=0,
     HSou=IBPSA.BoundaryConditions.Types.RadiationDataSource.Input_HGloHor_HDifHor)

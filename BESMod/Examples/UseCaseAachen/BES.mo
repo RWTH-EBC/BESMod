@@ -76,7 +76,7 @@ model BES
         calcmFlow),
     redeclare Systems.UserProfiles.TEASERProfiles userProfiles(redeclare
         BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile),
-    redeclare AachenSystem systemParameters,
+    redeclare AachenSystem systemParameters(use_ventilation=true),
     redeclare ParametersToChange parameterStudy,
     redeclare final package MediumDHW = AixLib.Media.Water,
     redeclare final package MediumZone = AixLib.Media.Air,

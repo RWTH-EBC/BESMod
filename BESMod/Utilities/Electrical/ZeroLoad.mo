@@ -1,6 +1,6 @@
 within BESMod.Utilities.Electrical;
 model ZeroLoad "Zero Load model to be used if system is disabled"
-  Systems.Electrical.Interfaces.InternalElectricalPin internalElectricalPin
+  Systems.Electrical.Interfaces.InternalElectricalPinOut internalElectricalPin
     annotation (Placement(transformation(extent={{90,-10},{110,10}})));
 equation
   internalElectricalPin.PElecLoa = 0;

@@ -32,7 +32,7 @@ partial model PartialDistribution
     annotation (Placement(transformation(extent={{-14,-114},{14,-84}})));
   Interfaces.DistributionControlBus sigBusDistr
     annotation (Placement(transformation(extent={{-10,90},{10,110}})));
-  Electrical.Interfaces.InternalElectricalPin internalElectricalPin
+  Electrical.Interfaces.InternalElectricalPinOut internalElectricalPin
     annotation (Placement(transformation(extent={{60,-108},{80,-88}})));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,

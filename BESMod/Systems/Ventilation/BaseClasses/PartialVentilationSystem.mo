@@ -118,7 +118,7 @@ partial model PartialVentilationSystem
   Interfaces.SystemControlBus sigBusVen annotation (Placement(transformation(
           extent={{-18,86},{18,114}}), iconTransformation(extent={{-18,86},{18,
             114}})));
-  Electrical.Interfaces.InternalElectricalPin internalElectricalPin
+  Electrical.Interfaces.InternalElectricalPinOut internalElectricalPin
     annotation (Placement(transformation(extent={{60,-108},{80,-88}})));
   Utilities.Electrical.MultiSumElec multiSumElec(nPorts=2) annotation (
       Placement(transformation(
@@ -230,9 +230,6 @@ equation
       color={0,0,0},
       thickness=1));
   annotation (Icon(
-      graphics={
-        Ellipse,
-        Ellipse,
-        Rectangle},          coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
+      graphics,              coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end PartialVentilationSystem;

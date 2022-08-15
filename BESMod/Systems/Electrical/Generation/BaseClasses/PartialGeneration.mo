@@ -15,7 +15,7 @@ partial model PartialGeneration
   Interfaces.GenerationControlBus controlBusGen annotation (Placement(
         transformation(extent={{-12,86},{14,110}}), iconTransformation(extent={
             {-12,86},{14,110}})));
-  Interfaces.InternalElectricalPin internalElectricalPin
+  Interfaces.InternalElectricalPinOut internalElectricalPin
     annotation (Placement(transformation(extent={{40,88},{60,108}})));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Rectangle(

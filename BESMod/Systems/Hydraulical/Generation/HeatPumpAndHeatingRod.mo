@@ -238,7 +238,7 @@ Utilities.KPIs.InternalKPICalculator KPIQHR(
     calc_totalOnTime=false,
     calc_numSwi=false,                                                                  calc_movAve=false,
     calc_intBelThres=false,                                                                                y=hea.vol.heatPort.Q_flow)
- if use_heaRod
+    if use_heaRod
   annotation (Placement(transformation(extent={{-76,-142},{-64,-120}})));
 
   IBPSA.Fluid.Sources.Boundary_pT bouPumpHP(
@@ -268,7 +268,7 @@ Utilities.KPIs.InternalKPICalculator KPIQHR(
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={100,-78})));
-  Modelica.Blocks.Math.MultiSum multiSum(nu=if use_pressure then 3 else 2) annotation (Placement(
+  Modelica.Blocks.Math.MultiSum multiSum(nu=if (use_pressure and use_heaRod) then 3 elseif use_pressure and not use_heaRod then 2 elseif use_heaRod and not use_pressure then 2 else 1) annotation (Placement(
         transformation(
         extent={{-6,-6},{6,6}},
         rotation=180,
@@ -427,16 +427,47 @@ connect(KPIQHR.KPIBus, outBusGen.QHR_flow) annotation (Line(points={{-63.88,-131
       thickness=1));
   connect(multiSum.y, realToElecCon.PEleLoa)
     annotation (Line(points={{122.98,-82},{112,-82}}, color={0,0,127}));
-  connect(multiSum.u[1], hea.Pel) annotation (Line(points={{136,-82},{142,-82},
+  if use_heaRod and use_pressure then
+    connect(multiSum.u[2], hea.Pel) annotation (Line(points={{136,-82},{142,-82},
           {142,89.6},{55.6,89.6}},color={0,0,127}));
-  connect(multiSum.u[2], sigBusGen.hp_bus.PelMea) annotation (Line(points={{136,
+    connect(multiSum.u[1], sigBusGen.hp_bus.PelMea) annotation (Line(points={{136,
           -82},{140,-82},{140,96},{72,96},{72,98},{2,98}}, color={0,0,127}),
       Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(multiSum.u[3], pump.P) annotation (Line(points={{136,-82},{140,-82},{
+    connect(multiSum.u[3], pump.P) annotation (Line(points={{136,-82},{140,-82},{
           140,-86},{144,-86},{144,-59},{5,-59}},
                                              color={0,0,127}));
+  elseif use_heaRod then
+    connect(multiSum.u[2], hea.Pel) annotation (Line(points={{136,-82},{142,-82},
+          {142,89.6},{55.6,89.6}},color={0,0,127}));
+    connect(multiSum.u[1], sigBusGen.hp_bus.PelMea) annotation (Line(points={{136,
+          -82},{140,-82},{140,96},{72,96},{72,98},{2,98}}, color={0,0,127}),
+      Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  elseif use_pressure then
+    connect(multiSum.u[2], pump.P) annotation (Line(points={{136,-82},{140,-82},{
+          140,-86},{144,-86},{144,-59},{5,-59}},
+                                             color={0,0,127}));
+    connect(multiSum.u[1], sigBusGen.hp_bus.PelMea) annotation (Line(points={{136,
+          -82},{140,-82},{140,96},{72,96},{72,98},{2,98}}, color={0,0,127}),
+      Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  else
+    connect(multiSum.u[1], sigBusGen.hp_bus.PelMea) annotation (Line(points={{136,
+          -82},{140,-82},{140,96},{72,96},{72,98},{2,98}}, color={0,0,127}),
+      Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  end if;
 end HeatPumpAndHeatingRod;

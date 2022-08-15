@@ -1,7 +1,7 @@
 within BESMod.Systems.Electrical.Interfaces;
-connector InternalElectricalPin
+connector InternalElectricalPinIn
   "Simplified electrical pin for power flow only within the building energy system"
-  extends BESMod.Systems.Electrical.Interfaces.BaseClasses.ElectricalPin;
+  extends BESMod.Systems.Electrical.Interfaces.BaseClasses.ElectricalPinIn;
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Rectangle(
           extent={{-100,100},{100,-100}},
@@ -16,4 +16,4 @@ connector InternalElectricalPin
                                             Diagram(graphics,
                                                     coordinateSystem(
           preserveAspectRatio=false)));
-end InternalElectricalPin;
+end InternalElectricalPinIn;

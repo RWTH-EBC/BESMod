@@ -14,6 +14,6 @@ package BESMod
   conversion(from(
     version="0.1.1",
        script="modelica://BESMod/Resources/Scripts/ConvertBESMod_from_0.1.1_to_0.2.0.mos")),
-    Icon(graphics={Bitmap(extent={{-100,-106},{100,108}},
+    Icon(graphics={Bitmap(extent={{-100,-100},{100,100}},
                                                       fileName="modelica://BESMod/Resources/Images/BESMod_icon.png")}));
 end BESMod;

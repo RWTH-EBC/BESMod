@@ -3,9 +3,7 @@ model TestIndirectLoading
   extends PartialTest(redeclare
       BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedIndirectLoading
       distribution(
-      QHRAftDHW_flow_nominal=0,
       QHRAftBuf_flow_nominal=0,
-      use_heatingRodAfterDHW=false,
       use_heatingRodAfterBuffer=false,
       redeclare
         BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
@@ -21,10 +19,7 @@ model TestIndirectLoading
         dhwParameters,
       redeclare
         BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-        heatingRodAftBufParameters,
-      redeclare
-        BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-        heatingRodAftDHWParameters));
+        heatingRodAftBufParameters));
   Modelica.Blocks.Sources.BooleanPulse booleanPulse(period=100) annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},

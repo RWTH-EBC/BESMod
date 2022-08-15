@@ -6,6 +6,7 @@ DistributionOutputs
 TransferOutputs
 ControlOutputs
 SystemControlBus
-InternalElectricalPin
+InternalElectricalPinIn
+InternalElectricalPinOut
 ExternalElectricalPin
 BaseClasses
