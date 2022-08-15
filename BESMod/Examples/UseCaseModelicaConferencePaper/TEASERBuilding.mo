@@ -1,5 +1,6 @@
 within BESMod.Examples.UseCaseModelicaConferencePaper;
 model TEASERBuilding
+  extends Modelica.Icons.Example;
   extends PartialModelicaConferenceUseCase(
     redeclare Systems.Demand.Building.TEASERThermalZone building(
       AZone={185.9548},

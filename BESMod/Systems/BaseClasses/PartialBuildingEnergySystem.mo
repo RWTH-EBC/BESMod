@@ -1,7 +1,6 @@
 within BESMod.Systems.BaseClasses;
 partial model PartialBuildingEnergySystem "Partial BES"
 
-  extends Modelica.Icons.Example;
   // Replaceable packages
   replaceable package MediumHyd = IBPSA.Media.Water constrainedby
     Modelica.Media.Interfaces.PartialMedium annotation (

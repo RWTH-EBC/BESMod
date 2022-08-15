@@ -1,5 +1,6 @@
 within BESMod.Examples.UseCaseAachen;
 model BES
+  extends Modelica.Icons.Example;
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
     redeclare Systems.Demand.Building.TEASERThermalZone building(redeclare
