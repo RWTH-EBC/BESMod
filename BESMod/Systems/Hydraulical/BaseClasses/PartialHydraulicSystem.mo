@@ -107,14 +107,14 @@ partial model PartialHydraulicSystem
     final C_nominal=C_nominal,
     final mSenFac=mSenFac,
     final TAmb=hydraulicSystemParameters.TAmb,
-    final Q_flow_nominal=transfer.Q_flow_nominal .*transfer.f_design,
+    final Q_flow_nominal=transfer.QSup_flow_nominal,
     final TDem_nominal=transfer.TSup_nominal,
     final allowFlowReversal=allowFlowReversal,
     final show_T=show_T,
     final rho=rho,
     final cp=cp,
     final TOda_nominal=hydraulicSystemParameters.TOda_nominal,
-    final mDem_flow_nominal=transfer.m_flow_nominal,
+    final mDem_flow_nominal=transfer.mSup_flow_nominal,
     final mSup_flow_nominal=generation.m_flow_nominal,
     final mDHW_flow_nominal=hydraulicSystemParameters.dhwParas.mDHW_flow_nominal,
     final QDHW_flow_nominal=hydraulicSystemParameters.dhwParas.QDHW_flow_nominal,
@@ -124,9 +124,8 @@ partial model PartialHydraulicSystem
       Placement(transformation(extent={{-12,-104},{90,28}})));
 
   replaceable BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialTransfer transfer(
-      dp_nominal=fill(0, transfer.nParallelDem), TTra_nominal=
-        hydraulicSystemParameters.TSup_nominal)                                                                                                                                                                                                         constrainedby
-    BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialTransfer(
+      dp_nominal=fill(0, transfer.nParallelDem)) constrainedby
+    Transfer.BaseClasses.PartialTransfer(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
     final massDynamics=massDynamics,
@@ -134,6 +133,7 @@ partial model PartialHydraulicSystem
     final T_start=T_start,
     final X_start=X_start,
     final C_start=C_start,
+    TTra_nominal=hydraulicSystemParameters.TSup_nominal,
     final AZone=hydraulicSystemParameters.AZone,
     final hZone=hydraulicSystemParameters.hZone,
     final ABui=hydraulicSystemParameters.ABui,
@@ -146,7 +146,6 @@ partial model PartialHydraulicSystem
     final TAmb=hydraulicSystemParameters.TAmb,
     final Q_flow_nominal=hydraulicSystemParameters.Q_flow_nominal,
     final TDem_nominal=hydraulicSystemParameters.TZone_nominal,
-    final TSup_nominal=hydraulicSystemParameters.TSup_nominal,
     final allowFlowReversal=allowFlowReversal,
     final show_T=show_T,
     final rho=rho,
@@ -309,8 +308,8 @@ equation
       thickness=1));
   connect(transfer.internalElectricalPin, multiSumElec.internalElectricalPinIn[
     1]) annotation (Line(
-      points={{170.48,-43.28},{170.48,-106},{110,-106},{110,-124.467},{122.2,
-          -124.467}},
+      points={{170.48,-43.28},{170.48,-106},{110,-106},{110,-124.133},{122.2,
+          -124.133}},
       color={0,0,0},
       thickness=1));
   connect(distribution.internalElectricalPin, multiSumElec.internalElectricalPinIn[
@@ -320,7 +319,7 @@ equation
       thickness=1));
   connect(generation.internalElectricalPin, multiSumElec.internalElectricalPinIn[
     3]) annotation (Line(
-      points={{-40.24,-104},{-40.24,-123.133},{122.2,-123.133}},
+      points={{-40.24,-104},{-40.24,-123.467},{122.2,-123.467}},
       color={0,0,0},
       thickness=1));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-180,-140},
