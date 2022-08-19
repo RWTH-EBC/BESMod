@@ -1,6 +1,5 @@
 within BESMod.Systems.Ventilation.Generation;
 model NoVentilation "Model without any ventilation"
-  import BESMod;
   extends BaseClasses.PartialGeneration(
     final QLoss_flow_nominal={0},
     final f_design={1},

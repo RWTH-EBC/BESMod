@@ -1,7 +1,6 @@
 within BESMod.Systems.Hydraulical.BaseClasses;
 partial model PartialHydraulicSystem
   "Complete hydraulic system model"
-  import BESMod;
   extends BESMod.Systems.BaseClasses.PartialFluidSubsystem;
   parameter Boolean subsystemDisabled "To enable the icon if the subsystem is disabled" annotation (Dialog(tab="Graphics"));
 

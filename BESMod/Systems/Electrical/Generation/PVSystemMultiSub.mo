@@ -1,8 +1,6 @@
 within BESMod.Systems.Electrical.Generation;
 model PVSystemMultiSub
   "PV system with subsystems of different orientation and module type"
-  import BESMod;
-  import BESMod;
   extends BESMod.Systems.Electrical.Generation.BaseClasses.PartialGeneration(
       numGenUnits=1);
 

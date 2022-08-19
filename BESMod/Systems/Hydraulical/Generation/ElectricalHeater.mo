@@ -1,7 +1,5 @@
 within BESMod.Systems.Hydraulical.Generation;
 model ElectricalHeater "Only heat using a heating rod"
-  import BESMod;
-  import BESMod;
   extends BaseClasses.PartialGeneration(
     final dTLoss_nominal=fill(0, nParallelDem),
     dp_nominal={hea.dp_nominal}, final nParallelDem=1);

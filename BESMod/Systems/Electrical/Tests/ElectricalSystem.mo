@@ -1,7 +1,5 @@
 within BESMod.Systems.Electrical.Tests;
 model ElectricalSystem
-  import BESMod;
-  import BESMod;
   extends Modelica.Icons.Example;
   BESMod.Systems.Electrical.ElectricalSystem
     pVBatterySystemNoTransfer(

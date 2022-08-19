@@ -1,9 +1,6 @@
 ﻿within BESMod.Systems.Demand.Building;
 model BuildingsRoomCase600FF
   "Detailed room model from the buildings library according to BESTEST Case600FF"
-  import BESMod;
-  import BESMod;
-  import BESMod;
   extends BaseClasses.PartialDemand(
     ARoo=roo.AFlo*sqrt(2),
     hBui=roo.hRoo,

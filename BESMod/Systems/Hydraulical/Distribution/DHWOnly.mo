@@ -1,6 +1,5 @@
 within BESMod.Systems.Hydraulical.Distribution;
 model DHWOnly "only loads DHW"
-  import BESMod;
   extends BaseClasses.PartialDistribution(
     nParallelDem=1,
     final dpDem_nominal=fill(0, nParallelDem),

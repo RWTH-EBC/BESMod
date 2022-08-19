@@ -1,24 +1,6 @@
 ﻿within BESMod.Systems.Demand.Building;
 model TEASERThermalZone
   "Reduced order building model, coupled with TEASER"
-  import BESMod;
-  import BESMod;
-  import BESMod;
-  import BESMod;
-  import BESMod;
-  import BESMod;
-  import BESMod;
-  import BESMod;
-  import BESMod;
-  import BESMod;
-  import BESMod;
-  import BESMod;
-  import BESMod;
-  import BESMod;
-  import BESMod;
-  import BESMod;
-  import BESMod;
-  import BESMod;
   extends BaseClasses.PartialDemand(
     ARoo=sum(zoneParam.ARoof)/nZones,
     hBui=sum(zoneParam.VAir)^(1/3),

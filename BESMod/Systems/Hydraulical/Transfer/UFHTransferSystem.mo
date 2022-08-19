@@ -1,8 +1,5 @@
 within BESMod.Systems.Hydraulical.Transfer;
 model UFHTransferSystem
-  import BESMod;
-  import BESMod;
-  import BESMod;
   extends BaseClasses.PartialTransfer(final nParallelSup=1, final dp_nominal=fill(0, nParallelDem));
 
   IBPSA.Fluid.FixedResistances.PressureDrop res1[nParallelDem](

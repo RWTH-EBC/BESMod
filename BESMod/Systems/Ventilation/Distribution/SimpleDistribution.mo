@@ -1,6 +1,5 @@
 within BESMod.Systems.Ventilation.Distribution;
 model SimpleDistribution "Most basic distribution model"
-  import BESMod;
   extends BaseClasses.PartialDistribution(
     final dp_nominal=resSup.dp_nominal,
     final QLoss_flow_nominal=f_design .* Q_flow_nominal .- Q_flow_nominal,

@@ -1,9 +1,6 @@
 within BESMod.Systems.Hydraulical.Distribution;
 model DistributionTwoStorageParallel
   "Buffer storage and DHW storage"
-  import BESMod;
-  import BESMod;
-  import BESMod;
   extends BaseClasses.PartialDistribution(
     final dpDem_nominal={0},
     final dpSup_nominal={0},

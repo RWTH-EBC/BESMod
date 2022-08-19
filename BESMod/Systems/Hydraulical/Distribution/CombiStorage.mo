@@ -1,8 +1,6 @@
 within BESMod.Systems.Hydraulical.Distribution;
 model CombiStorage
   "Combi Storage for heating, dhw and solar assitance"
-  import BESMod;
-  import BESMod;
   extends BaseClasses.PartialDistribution(
     dpSup_nominal={0,sum(bufferStorage.heatingCoil2.pipe.res.dp_nominal)},
     final dpDem_nominal={0},

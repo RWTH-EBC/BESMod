@@ -1,6 +1,5 @@
 within BESMod.Systems.Ventilation.Generation;
 model ControlledDomesticVentilation
-  import BESMod;
   extends BESMod.Systems.Ventilation.Generation.BaseClasses.PartialGeneration(
     dp_nominal={hex.dp1_nominal},
     dTTra_nominal={0},

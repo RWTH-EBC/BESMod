@@ -1,8 +1,5 @@
 within BESMod.Systems.Electrical.Distribution.Tests;
 model BatterySystemSimple
-  import BESMod;
-  import BESMod;
-  import BESMod;
   extends Modelica.Icons.Example;
   BESMod.Systems.Electrical.Distribution.BatterySystemSimple
     batterySystemSimple(nSubSys=2,

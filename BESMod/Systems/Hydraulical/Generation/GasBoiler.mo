@@ -1,7 +1,5 @@
 within BESMod.Systems.Hydraulical.Generation;
 model GasBoiler "Just a gas boiler"
-  import BESMod;
-  import BESMod;
   extends BaseClasses.PartialGeneration(dp_nominal={boilerNoControl.dp_nominal},
                                         final nParallelDem=1);
 

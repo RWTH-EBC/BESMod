@@ -1,6 +1,5 @@
 within BESMod.Systems.Electrical.Distribution;
 model DirectlyToGrid "Direct grid connection"
-  import BESMod;
   extends
     BESMod.Systems.Electrical.Distribution.BaseClasses.PartialDistribution;
 

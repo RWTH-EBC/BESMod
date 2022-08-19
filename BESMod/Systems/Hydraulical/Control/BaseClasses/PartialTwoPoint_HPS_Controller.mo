@@ -1,9 +1,6 @@
 within BESMod.Systems.Hydraulical.Control.BaseClasses;
 partial model PartialTwoPoint_HPS_Controller
   "Partial model with replaceable blocks for rule based control of HPS using on off heating rods"
-  import BESMod;
-  import BESMod;
-  import BESMod;
   extends
     BESMod.Systems.Hydraulical.Control.BaseClasses.SystemWithThermostaticValveControl;
   replaceable

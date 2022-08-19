@@ -1,7 +1,5 @@
 within BESMod.Systems.Demand.DHW;
 model DHW "Standard DHW subsystem"
-  import BESMod;
-  import BESMod;
   extends BaseClasses.PartialDHW;
 
 

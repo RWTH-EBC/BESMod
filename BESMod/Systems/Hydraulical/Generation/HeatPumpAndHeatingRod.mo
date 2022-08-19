@@ -1,10 +1,5 @@
 within BESMod.Systems.Hydraulical.Generation;
 model HeatPumpAndHeatingRod "Bivalent monoenergetic heat pump"
-  import BESMod;
-  import BESMod;
-  import BESMod;
-  import BESMod;
-  import BESMod;
   extends BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration(
     final QLoss_flow_nominal=f_design .* Q_flow_nominal .- Q_flow_nominal,
     final dTLoss_nominal=fill(0, nParallelDem),

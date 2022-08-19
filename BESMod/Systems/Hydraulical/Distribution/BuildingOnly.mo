@@ -1,6 +1,5 @@
 within BESMod.Systems.Hydraulical.Distribution;
 model BuildingOnly "Only loads building"
-  import BESMod;
   extends BaseClasses.PartialDistribution(
     final dpDem_nominal=fill(0, nParallelDem),
     final dpSup_nominal=fill(0, nParallelSup),

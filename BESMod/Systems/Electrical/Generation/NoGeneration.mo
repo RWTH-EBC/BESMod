@@ -1,6 +1,5 @@
 within BESMod.Systems.Electrical.Generation;
 model NoGeneration "Don't generation electricity"
-  import BESMod;
   extends BaseClasses.PartialGeneration(final f_design=fill(0.8, numGenUnits),
                                         final numGenUnits=1);
   BESMod.Utilities.Electrical.ZeroLoad zeroLoad

@@ -1,6 +1,5 @@
 within BESMod.Systems.Hydraulical.Generation;
 model NoGeneration "No heat generation at all"
-  import BESMod;
   extends BaseClasses.PartialGeneration(
     dp_nominal={0},
     dTTra_nominal={10},

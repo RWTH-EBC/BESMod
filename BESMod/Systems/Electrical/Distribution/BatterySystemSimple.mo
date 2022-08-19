@@ -1,8 +1,5 @@
 within BESMod.Systems.Electrical.Distribution;
 model BatterySystemSimple "Simple Battery model"
-  import BESMod;
-  import BESMod;
-  import BESMod;
   extends
     BESMod.Systems.Electrical.Distribution.BaseClasses.PartialDistribution;
 

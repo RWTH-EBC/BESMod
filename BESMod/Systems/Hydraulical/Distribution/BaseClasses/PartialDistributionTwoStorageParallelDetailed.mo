@@ -1,12 +1,6 @@
 within BESMod.Systems.Hydraulical.Distribution.BaseClasses;
 partial model PartialDistributionTwoStorageParallelDetailed
   "Partial model to later extent"
-  import BESMod;
-  import BESMod;
-  import BESMod;
-  import BESMod;
-  import BESMod;
-  import BESMod;
   extends BaseClasses.PartialDistribution(
     final dpDem_nominal={0},
     final dpSup_nominal={2*(threeWayValveParameters.dpValve_nominal + max(

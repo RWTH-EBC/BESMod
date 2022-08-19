@@ -1,6 +1,5 @@
 within BESMod.Systems.Hydraulical.Transfer;
 model RadiatorPressureBased "Pressure Based transfer system"
-  import BESMod;
   extends BaseClasses.PartialTransfer(final dp_nominal=rad.dp_nominal .+ val.dpValve_nominal .+ res.dp_nominal .+ val.dpFixed_nominal,
                                       final nParallelSup=1);
 

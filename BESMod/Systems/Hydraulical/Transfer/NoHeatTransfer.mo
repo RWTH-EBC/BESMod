@@ -1,6 +1,5 @@
 within BESMod.Systems.Hydraulical.Transfer;
 model NoHeatTransfer "No heat tranfser to building"
-  import BESMod;
   extends BaseClasses.PartialTransfer(
     dp_nominal=fill(0, nParallelDem),
     dTTra_nominal=fill(0, nParallelDem));

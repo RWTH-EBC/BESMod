@@ -1,6 +1,5 @@
 within BESMod.Systems.Ventilation.BaseClasses;
 partial model PartialVentilationSystem
-  import BESMod;
   extends BESMod.Utilities.Icons.VentilationIcon;
   extends BESMod.Systems.BaseClasses.PartialFluidSubsystem;
   parameter Boolean subsystemDisabled "To enable the icon if the subsystem is disabled" annotation (Dialog(tab="Graphics"));
