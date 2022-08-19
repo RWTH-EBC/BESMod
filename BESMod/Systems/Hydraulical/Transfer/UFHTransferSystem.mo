@@ -30,8 +30,8 @@ model UFHTransferSystem
 
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature
                                                       fixedTemperature
-                                                                   [nParallelDem](final T=
-        UFHParameters.T_floor)
+                                                                   [nParallelDem](each final
+            T=UFHParameters.T_floor)
                annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -42,14 +42,15 @@ model UFHTransferSystem
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-46,-6})));
-  Modelica.Thermal.HeatTransfer.Sources.FixedHeatFlow fixedHeatFlow[nParallelDem](final
-      Q_flow=0)
+  Modelica.Thermal.HeatTransfer.Sources.FixedHeatFlow fixedHeatFlow[nParallelDem](each final
+            Q_flow=0)
                annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-92,-20})));
   Modelica.Thermal.HeatTransfer.Components.HeatCapacitor
-                                                      heatCapacitor[nParallelDem](C=100)
+                                                      heatCapacitor[nParallelDem](each final
+            C=100)
                annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -62,20 +63,20 @@ model UFHTransferSystem
   Utilities.KPIs.InputKPICalculator inputKPICalculatorOpening[nParallelDem](
     unit=fill("", nParallelDem),
     integralUnit=fill("s", nParallelDem),
-    calc_singleOnTime=false,
-    calc_integral=false,
-    calc_totalOnTime=false,
-    calc_numSwi=false,
-    calc_movAve=false)
+    each calc_singleOnTime=false,
+    each calc_integral=false,
+    each calc_totalOnTime=false,
+    each calc_numSwi=false,
+    each calc_movAve=false)
     annotation (Placement(transformation(extent={{-46,-94},{-26,-58}})));
   Utilities.KPIs.InputKPICalculator inputKPICalculatorLossUFH[nParallelDem](
     unit=fill("W", nParallelDem),
     integralUnit=fill("J", nParallelDem),
-    calc_singleOnTime=false,
-    calc_integral=false,
-    calc_totalOnTime=false,
-    calc_numSwi=false,
-    calc_movAve=false)
+    each calc_singleOnTime=false,
+    each calc_integral=false,
+    each calc_totalOnTime=false,
+    each calc_numSwi=false,
+    each calc_movAve=false)
     annotation (Placement(transformation(extent={{-46,-120},{-26,-84}})));
   IBPSA.Fluid.Sources.Boundary_pT bouPumpHP[nParallelDem](
     redeclare package Medium = Medium,

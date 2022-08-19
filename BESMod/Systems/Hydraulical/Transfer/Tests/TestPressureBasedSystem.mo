@@ -13,5 +13,6 @@ model TestPressureBasedSystem
       redeclare
         BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
         radParameters));
+  extends Modelica.Icons.Example;
 
 end TestPressureBasedSystem;

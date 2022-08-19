@@ -101,8 +101,8 @@ model TEASERThermalZone
         rotation=180,
         origin={25,-97})));
   Modelica.Blocks.Sources.RealExpression QVent[nZones](y=
-        portVent_in.m_flow*inStream(portVent_in.h_outflow) + portVent_out.m_flow
-        *portVent_out.h_outflow) if use_ventilation and use_verboseEnergyBalance
+        portVent_in.m_flow.*inStream(portVent_in.h_outflow) .+ portVent_out.m_flow
+        .*portVent_out.h_outflow) if use_ventilation and use_verboseEnergyBalance
     "Internal gains"                                               annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},

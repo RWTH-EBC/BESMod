@@ -33,6 +33,16 @@ CI_simulate_BESMod_Examples:
     extends: .CI_simulate_model_job
 
     
+CI_simulate_BESMod_Utitilies:
+    variables:
+        lib_package: Utitilies
+    extends: .CI_simulate_model_job
+
+CI_simulate_BESMod_Systems:
+    variables:
+        lib_package: Systems
+    extends: .CI_simulate_model_job
+
     
 .simulate_model_job:
     stage: simulate
@@ -76,6 +86,16 @@ CI_simulate_BESMod_Examples:
 simulate_BESMod_Examples:
     variables:
         lib_package: Examples
+    extends: .simulate_model_job
+
+simulate_BESMod_Utitilies:
+    variables:
+        lib_package: Utitilies
+    extends: .simulate_model_job
+
+simulate_BESMod_Systems:
+    variables:
+        lib_package: Systems
     extends: .simulate_model_job
 
     
@@ -127,3 +147,18 @@ simulate_BESMod_Examples_changed_models:
             - BESMod/Examples/**/*  
     extends: .simulate_changed_models_job
 
+simulate_BESMod_Examples_changed_models:
+    variables:
+        lib_package: Systems
+    only:
+        changes:
+            - BESMod/Systems/**/*  
+    extends: .simulate_changed_models_job
+
+simulate_BESMod_Examples_changed_models:
+    variables:
+        lib_package: Utilities
+    only:
+        changes:
+            - BESMod/Utilities/**/*  
+    extends: .simulate_changed_models_job

@@ -102,7 +102,7 @@ model PanelHeating
     each final isFloor=isFloor,
     each final calcMethod=calcMethod,
     each final hCon_const=hCon_const,
-    A_floor=A) annotation (Placement(transformation(extent={{-58,1},{-8,51}})));
+    each final A_floor=A) annotation (Placement(transformation(extent={{-58,1},{-8,51}})));
 
   AixLib.Fluid.HeatExchangers.ActiveWalls.BaseClasses.PressureDropPH pressureDrop(
     redeclare package Medium = Medium,
