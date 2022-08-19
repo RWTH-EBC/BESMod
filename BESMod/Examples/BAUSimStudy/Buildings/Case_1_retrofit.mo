@@ -87,5 +87,7 @@ record Case_1_retrofit "Case_1_retrofit_SingleDwelling"
     CoolerOn = false,
     withIdealThresholds = false,
     TThresholdHeater = 288.15,
-    TThresholdCooler = 295.15);
+    TThresholdCooler = 295.15,
+    heaLoadFacGrd=0,
+    heaLoadFacOut=0);
 end Case_1_retrofit;

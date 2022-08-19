@@ -1,12 +1,13 @@
 within BESMod.Systems.Hydraulical.Transfer;
 model NoHeatTransfer "No heat tranfser to building"
+  import BESMod;
   extends BaseClasses.PartialTransfer(
     dp_nominal=fill(0, nParallelDem),
     dTTra_nominal=fill(0, nParallelDem));
   Modelica.Thermal.HeatTransfer.Sources.FixedHeatFlow fixedHeatFlow[
     nParallelDem](each final Q_flow=0)
     annotation (Placement(transformation(extent={{54,-10},{74,10}})));
-  Utilities.Electrical.ZeroLoad zeroLoad
+  BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{40,-80},{60,-60}})));
 equation
   connect(portTra_in, portTra_out) annotation (Line(points={{-100,38},{-74,38},

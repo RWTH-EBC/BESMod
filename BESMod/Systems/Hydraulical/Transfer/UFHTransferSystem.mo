@@ -1,5 +1,8 @@
 within BESMod.Systems.Hydraulical.Transfer;
 model UFHTransferSystem
+  import BESMod;
+  import BESMod;
+  import BESMod;
   extends BaseClasses.PartialTransfer(final nParallelSup=1, final dp_nominal=fill(0, nParallelDem));
 
   IBPSA.Fluid.FixedResistances.PressureDrop res1[nParallelDem](
@@ -60,7 +63,8 @@ model UFHTransferSystem
     constrainedby RecordsCollection.UFHData(nZones=nParallelDem, area=AZone)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{22,12},{42,32}})));
 
-  Utilities.KPIs.InputKPICalculator inputKPICalculatorOpening[nParallelDem](
+  BESMod.Utilities.KPIs.InputKPICalculator inputKPICalculatorOpening[
+    nParallelDem](
     unit=fill("", nParallelDem),
     integralUnit=fill("s", nParallelDem),
     each calc_singleOnTime=false,
@@ -69,7 +73,8 @@ model UFHTransferSystem
     each calc_numSwi=false,
     each calc_movAve=false)
     annotation (Placement(transformation(extent={{-46,-94},{-26,-58}})));
-  Utilities.KPIs.InputKPICalculator inputKPICalculatorLossUFH[nParallelDem](
+  BESMod.Utilities.KPIs.InputKPICalculator inputKPICalculatorLossUFH[
+    nParallelDem](
     unit=fill("W", nParallelDem),
     integralUnit=fill("J", nParallelDem),
     each calc_singleOnTime=false,
@@ -121,7 +126,7 @@ model UFHTransferSystem
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
     pumpData annotation (choicesAllMatching=true, Placement(transformation(extent={{-98,78},
             {-78,98}})));
-  Utilities.Electrical.ZeroLoad zeroLoad
+  BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{32,-108},{52,-88}})));
 protected
   parameter BESMod.Components.UFH.ActiveWallBaseDataDefinition floorHeatingType[nParallelDem]={BESMod.Components.UFH.ActiveWallBaseDataDefinition(

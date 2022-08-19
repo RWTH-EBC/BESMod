@@ -1,5 +1,7 @@
 within BESMod.Systems.Electrical.Tests;
 model ElectricalSystem
+  import BESMod;
+  import BESMod;
   extends Modelica.Icons.Example;
   BESMod.Systems.Electrical.ElectricalSystem
     pVBatterySystemNoTransfer(
@@ -26,13 +28,13 @@ model ElectricalSystem
     f=1/86400,
     offset=3000)
     annotation (Placement(transformation(extent={{-98,24},{-78,44}})));
-  Utilities.Electrical.RealToElecCon realToElecCon
+  BESMod.Utilities.Electrical.RealToElecCon realToElecCon
     annotation (Placement(transformation(extent={{-70,24},{-50,44}})));
   IBPSA.BoundaryConditions.WeatherData.ReaderTMY3 weaDat(filNam=
         ModelicaServices.ExternalReferences.loadResource(
         "modelica://BESMod/Resources/TRY2015_522361130393_Jahr_City_Potsdam.mos"))
     annotation (Placement(transformation(extent={{-100,68},{-72,96}})));
-  Utilities.Electrical.ElecConToReal elecConToReal(reverse=true)
+  BESMod.Utilities.Electrical.ElecConToReal elecConToReal(reverse=true)
     annotation (Placement(transformation(extent={{-30,-80},{-6,-54}})));
   Modelica.Blocks.Interfaces.RealOutput PElecFromGrid "Electrical power"
     annotation (Placement(transformation(extent={{20,-76},{40,-56}})));
@@ -47,7 +49,7 @@ equation
 
   connect(pVBatterySystemNoTransfer.externalElectricalPin1, elecConToReal.internalElectricalPin)
     annotation (Line(
-      points={{-35.8353,-32.9143},{-35.8353,-66.74},{-29.76,-66.74}},
+      points={{54.5412,28.4286},{54.5412,-66.74},{-29.76,-66.74}},
       color={0,0,0},
       thickness=1));
   connect(elecConToReal.PElecLoa, PElecFromGrid)

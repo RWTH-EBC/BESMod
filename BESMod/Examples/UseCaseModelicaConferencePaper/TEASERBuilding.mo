@@ -5,7 +5,8 @@ model TEASERBuilding
       AZone={185.9548},
       hZone={483.48248/185.9548},                                                                       redeclare
         BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
-        oneZoneParam, use_verboseEnergyBalance=false,
+        oneZoneParam(heaLoadFacGrd=0, heaLoadFacOut=0),
+                      use_verboseEnergyBalance=false,
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial),
     redeclare BESMod.Systems.UserProfiles.TEASERProfiles
       userProfiles(redeclare

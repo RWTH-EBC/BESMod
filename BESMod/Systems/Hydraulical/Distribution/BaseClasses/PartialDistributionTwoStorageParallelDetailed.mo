@@ -1,6 +1,12 @@
 within BESMod.Systems.Hydraulical.Distribution.BaseClasses;
 partial model PartialDistributionTwoStorageParallelDetailed
   "Partial model to later extent"
+  import BESMod;
+  import BESMod;
+  import BESMod;
+  import BESMod;
+  import BESMod;
+  import BESMod;
   extends BaseClasses.PartialDistribution(
     final dpDem_nominal={0},
     final dpSup_nominal={2*(threeWayValveParameters.dpValve_nominal + max(
@@ -280,7 +286,7 @@ partial model PartialDistributionTwoStorageParallelDetailed
     redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve parameters=threeWayValveParameters)
     annotation (Placement(transformation(extent={{-84,54},{-64,74}})));
 
-  Utilities.KPIs.InternalKPICalculator internalKPICalculatorBufLoss(
+  BESMod.Utilities.KPIs.InternalKPICalculator internalKPICalculatorBufLoss(
     unit="W",
     integralUnit="J",
     calc_singleOnTime=false,
@@ -291,7 +297,7 @@ partial model PartialDistributionTwoStorageParallelDetailed
     calc_intBelThres=false,
     y=fixedTemperatureBuf.port.Q_flow)
     annotation (Placement(transformation(extent={{-52,-134},{-32,-96}})));
-  Utilities.KPIs.InternalKPICalculator internalKPICalculatorDHWLoss(
+  BESMod.Utilities.KPIs.InternalKPICalculator internalKPICalculatorDHWLoss(
     unit="W",
     integralUnit="J",
     calc_singleOnTime=false,
@@ -317,9 +323,9 @@ partial model PartialDistributionTwoStorageParallelDetailed
         rotation=180,
         origin={87,80})));
 
-  Utilities.Electrical.ZeroLoad zeroLoad
+  BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{30,-108},{50,-88}})));
-  Utilities.KPIs.InternalKPICalculator internalKPICalculatorDHWHR(
+  BESMod.Utilities.KPIs.InternalKPICalculator internalKPICalculatorDHWHR(
     unit="W",
     integralUnit="J",
     calc_singleOnTime=false,
@@ -330,7 +336,7 @@ partial model PartialDistributionTwoStorageParallelDetailed
     calc_intBelThres=false,
     y=QHRStoDHWPre_flow.Q_flow) if dhwParameters.use_hr
     annotation (Placement(transformation(extent={{-84,-134},{-64,-96}})));
-  Utilities.KPIs.InputKPICalculator inputKPICalculator(
+  BESMod.Utilities.KPIs.InputKPICalculator inputKPICalculator(
     unit="W",
     integralUnit="J",
     calc_singleOnTime=false,
@@ -340,7 +346,7 @@ partial model PartialDistributionTwoStorageParallelDetailed
     calc_movAve=false,
     calc_intBelThres=false) if use_heatingRodAfterBuffer
     annotation (Placement(transformation(extent={{-84,-156},{-64,-118}})));
-  Utilities.KPIs.InternalKPICalculator internalKPICalculatorDHWHR1(
+  BESMod.Utilities.KPIs.InternalKPICalculator internalKPICalculatorDHWHR1(
     unit="W",
     integralUnit="J",
     calc_singleOnTime=false,

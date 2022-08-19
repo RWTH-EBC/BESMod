@@ -1,6 +1,7 @@
 within BESMod.Systems.Hydraulical.Generation;
 model SolarThermalBivHPBuiLib
   "Solar thermal assistet monoenergetic heat pump with heating rod"
+  import BESMod;
   extends HeatPumpAndHeatingRod(dTTra_nominal={if TDem_nominal[1] > 273.15 + 55
          then 10 elseif TDem_nominal[1] > 44.9 then 8 else 5,solarThermalParas.dTMax},
          final nParallelDem=2,
@@ -90,7 +91,7 @@ model SolarThermalBivHPBuiLib
         rotation=0,
         origin={-56,-150})));
 
-  Utilities.KPIs.InternalKPICalculator KPIWel1(
+  BESMod.Utilities.KPIs.InternalKPICalculator KPIWel1(
     unit="W",
     integralUnit="J",
     calc_singleOnTime=true,

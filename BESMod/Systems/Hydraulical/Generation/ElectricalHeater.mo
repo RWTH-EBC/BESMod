@@ -1,5 +1,7 @@
 within BESMod.Systems.Hydraulical.Generation;
 model ElectricalHeater "Only heat using a heating rod"
+  import BESMod;
+  import BESMod;
   extends BaseClasses.PartialGeneration(
     final dTLoss_nominal=fill(0, nParallelDem),
     dp_nominal={hea.dp_nominal}, final nParallelDem=1);
@@ -82,7 +84,7 @@ model ElectricalHeater "Only heat using a heating rod"
         rotation=90,
         origin={62,-74})));
 
-Utilities.KPIs.InternalKPICalculator KPIQHR(
+  BESMod.Utilities.KPIs.InternalKPICalculator KPIQHR(
     unit="W",
     integralUnit="J",
     calc_singleOnTime=false,
@@ -92,12 +94,12 @@ Utilities.KPIs.InternalKPICalculator KPIQHR(
     calc_movAve=false,
     calc_intBelThres=false,
     y=hea.vol.heatPort.Q_flow)
-  annotation (Placement(transformation(extent={{-40,-128},{-28,-106}})));
+    annotation (Placement(transformation(extent={{-40,-128},{-28,-106}})));
   replaceable parameter
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
     pumpData annotation (choicesAllMatching=true, Placement(transformation(extent={{14,-64},
             {28,-52}})));
-  Utilities.Electrical.RealToElecCon realToElecCon(use_souGen=false)
+  BESMod.Utilities.Electrical.RealToElecCon realToElecCon(use_souGen=false)
     annotation (Placement(transformation(extent={{32,-108},{52,-88}})));
 equation
   connect(dummyZero.y,switch1. u3)

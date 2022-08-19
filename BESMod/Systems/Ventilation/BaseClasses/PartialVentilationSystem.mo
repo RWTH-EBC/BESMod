@@ -1,5 +1,6 @@
 within BESMod.Systems.Ventilation.BaseClasses;
 partial model PartialVentilationSystem
+  import BESMod;
   extends BESMod.Utilities.Icons.VentilationIcon;
   extends BESMod.Systems.BaseClasses.PartialFluidSubsystem;
   parameter Boolean subsystemDisabled "To enable the icon if the subsystem is disabled" annotation (Dialog(tab="Graphics"));
@@ -120,7 +121,7 @@ partial model PartialVentilationSystem
             114}})));
   Electrical.Interfaces.InternalElectricalPinOut internalElectricalPin
     annotation (Placement(transformation(extent={{60,-108},{80,-88}})));
-  Utilities.Electrical.MultiSumElec multiSumElec(nPorts=2) annotation (
+  BESMod.Utilities.Electrical.MultiSumElec multiSumElec(nPorts=2) annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,

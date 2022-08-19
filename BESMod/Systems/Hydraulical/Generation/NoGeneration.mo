@@ -1,10 +1,11 @@
 within BESMod.Systems.Hydraulical.Generation;
 model NoGeneration "No heat generation at all"
+  import BESMod;
   extends BaseClasses.PartialGeneration(
     dp_nominal={0},
     dTTra_nominal={10},
     final nParallelDem=1);
-  Utilities.Electrical.ZeroLoad zeroLoad
+  BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{32,-108},{52,-88}})));
 equation
   connect(portGen_out, portGen_in) annotation (Line(points={{100,80},{78,80},{

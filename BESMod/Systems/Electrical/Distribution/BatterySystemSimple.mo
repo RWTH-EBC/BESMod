@@ -1,5 +1,8 @@
 within BESMod.Systems.Electrical.Distribution;
 model BatterySystemSimple "Simple Battery model"
+  import BESMod;
+  import BESMod;
+  import BESMod;
   extends
     BESMod.Systems.Electrical.Distribution.BaseClasses.PartialDistribution;
 
@@ -10,22 +13,18 @@ model BatterySystemSimple "Simple Battery model"
     nBat=nBat,
     final SOC_start=SOC_start_bat)
     annotation (Placement(transformation(extent={{-46,-42},{46,42}})));
-  Utilities.Electrical.ElecConToReal elecConToReal(reverse=true)
-                                                   annotation (Placement(
-        transformation(
+  BESMod.Utilities.Electrical.ElecConToReal elecConToReal(reverse=true)
+    annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={-70,34})));
-  Utilities.Electrical.RealToElecConSplit
-                                     realToElecConSplit
-                                                   annotation (Placement(
-        transformation(
+  BESMod.Utilities.Electrical.RealToElecConSplit realToElecConSplit annotation
+    (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={50,-30})));
-  Utilities.Electrical.ElecConToReal elecConToReal2[nSubSys](each final reverse=
-       true)
-    annotation (Placement(transformation(
+  BESMod.Utilities.Electrical.ElecConToReal elecConToReal2[nSubSys](each final
+      reverse=true) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={72,24})));
@@ -66,8 +65,8 @@ equation
       thickness=1));
   connect(elecConToReal.PElecGen, batterySimple.PCharge)
     annotation (Line(points={{-74,22},{-74,0},{-23,0}}, color={0,0,127}));
-  connect(realToElecConSplit.PEle, batterySimple.PGrid) annotation (Line(points
-        ={{50,-18},{50,16.8},{24.84,16.8}}, color={0,0,127}));
+  connect(realToElecConSplit.PEle, batterySimple.PGrid) annotation (Line(points=
+         {{50,-18},{50,16.8},{24.84,16.8}}, color={0,0,127}));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));

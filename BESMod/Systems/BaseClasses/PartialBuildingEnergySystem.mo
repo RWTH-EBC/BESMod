@@ -144,9 +144,12 @@ partial model PartialBuildingEnergySystem "Partial BES"
       Placement(transformation(extent={{270,40},{300,76}}), iconTransformation(
           extent={{270,40},{300,76}})));
 protected
-  BESMod.Utilities.Electrical.ZeroLoad hydraulicZeroElecLoad if not systemParameters.use_hydraulic "Internal helper";
-  BESMod.Utilities.Electrical.ZeroLoad ventilationZeroElecLoad if not systemParameters.use_ventilation "Internal helper";
-  BESMod.Utilities.Electrical.ZeroLoad dhwZeroElecLoad if not systemParameters.use_dhw "Internal helper";
+  BESMod.Utilities.Electrical.ZeroLoad hydraulicZeroElecLoad
+    if not systemParameters.use_hydraulic "Internal helper";
+  BESMod.Utilities.Electrical.ZeroLoad ventilationZeroElecLoad
+    if not systemParameters.use_ventilation "Internal helper";
+  BESMod.Utilities.Electrical.ZeroLoad dhwZeroElecLoad
+    if not systemParameters.use_dhw "Internal helper";
 
 equation
   connect(building.weaBus, weaDat.weaBus) annotation (Line(

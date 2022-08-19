@@ -1,5 +1,7 @@
 within BESMod.Systems.Demand.DHW;
 model DHW "Standard DHW subsystem"
+  import BESMod;
+  import BESMod;
   extends BaseClasses.PartialDHW;
 
 
@@ -40,7 +42,7 @@ Modelica.Blocks.Math.UnitConversions.From_degC fromDegC
         extent={{7,-7},{-7,7}},
         rotation=0,
         origin={41,63})));
-  Utilities.KPIs.InternalKPICalculator internalKPICalculator(
+  BESMod.Utilities.KPIs.InternalKPICalculator internalKPICalculator(
     unit="W",
     integralUnit="J",
     final calc_singleOnTime=false,
@@ -90,7 +92,7 @@ Modelica.Blocks.Math.UnitConversions.From_degC fromDegC
     redeclare final package Medium = Medium,
     final p=p_start) if use_pressure
     annotation (Placement(transformation(extent={{-16,-86},{-36,-66}})));
-  Utilities.Electrical.ZeroLoad zeroLoad
+  BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{32,-94},{52,-74}})));
 equation
   connect(port_a, senT.port_a) annotation (Line(points={{-100,60},{-60,60},{-60,

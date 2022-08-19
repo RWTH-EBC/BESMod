@@ -1,5 +1,8 @@
 within BESMod.Systems.Electrical.Distribution.Tests;
 model BatterySystemSimple
+  import BESMod;
+  import BESMod;
+  import BESMod;
   extends Modelica.Icons.Example;
   BESMod.Systems.Electrical.Distribution.BatterySystemSimple
     batterySystemSimple(nSubSys=2,
@@ -7,11 +10,11 @@ model BatterySystemSimple
       BuildingSystems.Technologies.ElectricalStorages.Data.LithiumIon.LithiumIonTeslaPowerwall1
       batteryParameters)
     annotation (Placement(transformation(extent={{-32,-36},{40,38}})));
-  Utilities.Electrical.RealToElecCon realToElecCon(use_souLoa=false)
+  BESMod.Utilities.Electrical.RealToElecCon realToElecCon(use_souLoa=false)
     annotation (Placement(transformation(extent={{-44,50},{-24,70}})));
-  Utilities.Electrical.RealToElecCon realToElecCon1(use_souGen=false)
+  BESMod.Utilities.Electrical.RealToElecCon realToElecCon1(use_souGen=false)
     annotation (Placement(transformation(extent={{58,50},{38,70}})));
-  Utilities.Electrical.ElecConToReal elecConToReal
+  BESMod.Utilities.Electrical.ElecConToReal elecConToReal
     annotation (Placement(transformation(extent={{44,-76},{74,-46}})));
   Modelica.Blocks.Sources.Sine ElectricalLoad(
     amplitude=3000,
@@ -54,12 +57,12 @@ equation
     annotation (Line(points={{77,-55},{98,-55},{98,-62}},   color={0,0,127}));
   connect(realToElecCon1.internalElectricalPin, batterySystemSimple.internalElectricalPin[
     1]) annotation (Line(
-      points={{37.8,60.2},{22,60.2},{22,36.15}},
+      points={{37.8,60.2},{22,60.2},{22,37.075}},
       color={0,0,0},
       thickness=1));
   connect(realToElecCon.internalElectricalPin, batterySystemSimple.internalElectricalPin[
     2]) annotation (Line(
-      points={{-23.8,60.2},{22,60.2},{22,39.85}},
+      points={{-23.8,60.2},{22,60.2},{22,38.925}},
       color={0,0,0},
       thickness=1));
   connect(PGeneration.y, realToElecCon.PEleGen) annotation (Line(points={{-60.8,

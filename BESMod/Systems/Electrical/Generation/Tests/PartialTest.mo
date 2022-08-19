@@ -1,5 +1,6 @@
 within BESMod.Systems.Electrical.Generation.Tests;
 partial model PartialTest
+  import BESMod;
   replaceable
   BESMod.Systems.Electrical.Generation.BaseClasses.PartialGeneration
     generation constrainedby BaseClasses.PartialGeneration
@@ -9,7 +10,7 @@ partial model PartialTest
         ModelicaServices.ExternalReferences.loadResource(
         "modelica://BESMod/Resources/TRY2015_522361130393_Jahr_City_Potsdam.mos"))
     annotation (Placement(transformation(extent={{-100,58},{-62,100}})));
-  Utilities.Electrical.ElecConToReal elecConToReal
+  BESMod.Utilities.Electrical.ElecConToReal elecConToReal
     annotation (Placement(transformation(extent={{56,54},{92,98}})));
 equation
   connect(weaDat.weaBus, generation.weaBus) annotation (Line(

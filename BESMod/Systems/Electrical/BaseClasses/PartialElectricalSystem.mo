@@ -55,7 +55,8 @@ partial model PartialElectricalSystem "Partial model for electrical system"
         transformation(extent={{-26,122},{20,160}}), iconTransformation(extent={
             {-26,122},{20,160}})));
 protected
-    BESMod.Utilities.Electrical.ZeroLoad zeroTraLoad if not use_elecHeating "Internal helper";
+  BESMod.Utilities.Electrical.ZeroLoad zeroTraLoad if not use_elecHeating
+    "Internal helper";
 equation
   connect(generation.weaBus, weaBus) annotation (Line(
       points={{-148,19.44},{-162,19.44},{-162,42},{-180,42},{-180,45}},

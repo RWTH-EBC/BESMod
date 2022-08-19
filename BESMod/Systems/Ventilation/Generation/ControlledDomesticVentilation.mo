@@ -1,5 +1,6 @@
 within BESMod.Systems.Ventilation.Generation;
 model ControlledDomesticVentilation
+  import BESMod;
   extends BESMod.Systems.Ventilation.Generation.BaseClasses.PartialGeneration(
     dp_nominal={hex.dp1_nominal},
     dTTra_nominal={0},
@@ -182,7 +183,7 @@ model ControlledDomesticVentilation
     tempSensorData
     annotation (Placement(transformation(extent={{76,78},{96,98}})),
       choicesAllMatching=true);
-  Utilities.Electrical.RealToElecCon realToElecCon(use_souGen=false)
+  BESMod.Utilities.Electrical.RealToElecCon realToElecCon(use_souGen=false)
     annotation (Placement(transformation(extent={{36,-118},{56,-98}})));
   Modelica.Blocks.Math.Add add
     annotation (Placement(transformation(extent={{2,-114},{22,-94}})));

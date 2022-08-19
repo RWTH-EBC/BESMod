@@ -1,6 +1,8 @@
 within BESMod.Systems.Hydraulical.Distribution;
 model CombiStorage
   "Combi Storage for heating, dhw and solar assitance"
+  import BESMod;
+  import BESMod;
   extends BaseClasses.PartialDistribution(
     dpSup_nominal={0,sum(bufferStorage.heatingCoil2.pipe.res.dp_nominal)},
     final dpDem_nominal={0},
@@ -105,7 +107,7 @@ model CombiStorage
           bufferStorage.layer.T)
       annotation (Placement(transformation(extent={{-42,-122},{-22,-102}})));
 
-  Utilities.KPIs.InternalKPICalculator internalKPICalculatorBufLoss(
+  BESMod.Utilities.KPIs.InternalKPICalculator internalKPICalculatorBufLoss(
     unit="W",
     integralUnit="J",
     thresholdOn=Modelica.Constants.eps,
@@ -117,7 +119,7 @@ model CombiStorage
     calc_intBelThres=false,
     y=fixedTemperatureBuf.port.Q_flow)
     annotation (Placement(transformation(extent={{-76,-124},{-56,-86}})));
-  Utilities.Electrical.ZeroLoad zeroLoad
+  BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{30,-108},{50,-88}})));
 equation
   connect(fixedTemperatureBuf.port, bufferStorage.heatportOutside) annotation (

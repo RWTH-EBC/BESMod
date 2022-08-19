@@ -1,5 +1,6 @@
 within BESMod.Systems.Hydraulical.Distribution;
 model BuildingOnly "Only loads building"
+  import BESMod;
   extends BaseClasses.PartialDistribution(
     final dpDem_nominal=fill(0, nParallelDem),
     final dpSup_nominal=fill(0, nParallelSup),
@@ -13,7 +14,7 @@ model BuildingOnly "Only loads building"
     redeclare package MediumGen = Medium,
     redeclare package MediumDHW = Medium,
     final dTTra_nominal=fill(0, nParallelDem));
-  Utilities.Electrical.ZeroLoad zeroLoad
+  BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{30,-108},{50,-88}})));
 equation
   connect(portDHW_out, portDHW_in) annotation (Line(points={{100,-22},{88,-22},{

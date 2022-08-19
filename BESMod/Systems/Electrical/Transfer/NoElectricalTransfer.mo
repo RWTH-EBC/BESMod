@@ -1,7 +1,8 @@
 within BESMod.Systems.Electrical.Transfer;
 model NoElectricalTransfer "No transfer system"
+  import BESMod;
   extends BESMod.Systems.Electrical.Transfer.BaseClasses.PartialTransfer;
-  Utilities.Electrical.ZeroLoad zeroLoad
+  BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{16,64},{36,84}})));
   Modelica.Thermal.HeatTransfer.Sources.FixedHeatFlow fixedHeatFlow[
     nParallelDem](each final Q_flow=0)

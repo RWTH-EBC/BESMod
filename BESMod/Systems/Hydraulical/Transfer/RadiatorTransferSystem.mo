@@ -1,6 +1,9 @@
 within BESMod.Systems.Hydraulical.Transfer;
 model RadiatorTransferSystem
   "Subsystem using a radiator and ideal thermostatic valves"
+  import BESMod;
+  import BESMod;
+  import BESMod;
   extends BaseClasses.PartialTransfer(
     final QLoss_flow_nominal=f_design .* Q_flow_nominal .- Q_flow_nominal,
     final dTLoss_nominal=fill(0, nParallelDem),
@@ -46,7 +49,7 @@ model RadiatorTransferSystem
 
   replaceable parameter BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData radParameters
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-100,-98},{-80,-78}})));
-  Utilities.KPIs.InternalKPICalculator internalKPICalculator(
+  BESMod.Utilities.KPIs.InternalKPICalculator internalKPICalculator(
     unit="W",
     integralUnit="J",
     calc_singleOnTime=false,
@@ -55,7 +58,7 @@ model RadiatorTransferSystem
     calc_movAve=false,
     y=sum(-heatPortRad.Q_flow) + sum(-heatPortCon.Q_flow))
     annotation (Placement(transformation(extent={{-32,-96},{-12,-60}})));
-  Utilities.KPIs.InputKPICalculator inputKPICalculator[nParallelDem](
+  BESMod.Utilities.KPIs.InputKPICalculator inputKPICalculator[nParallelDem](
     unit=fill("", nParallelDem),
     integralUnit=fill("s", nParallelDem),
     each calc_singleOnTime=false,
@@ -106,7 +109,7 @@ model RadiatorTransferSystem
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-66,10})));
-  Utilities.Electrical.ZeroLoad zeroLoad
+  BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{30,-106},{50,-86}})));
 equation
   connect(rad.heatPortRad, heatPortRad) annotation (Line(points={{-5.08,-31.2},

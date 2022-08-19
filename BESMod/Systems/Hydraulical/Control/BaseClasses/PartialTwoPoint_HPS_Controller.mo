@@ -1,6 +1,9 @@
 within BESMod.Systems.Hydraulical.Control.BaseClasses;
 partial model PartialTwoPoint_HPS_Controller
   "Partial model with replaceable blocks for rule based control of HPS using on off heating rods"
+  import BESMod;
+  import BESMod;
+  import BESMod;
   extends
     BESMod.Systems.Hydraulical.Control.BaseClasses.SystemWithThermostaticValveControl;
   replaceable
@@ -139,11 +142,12 @@ partial model PartialTwoPoint_HPS_Controller
         extent={{-5,-5},{5,5}},
         rotation=270,
         origin={-37,-17})));
-  Utilities.SupervisoryControl.SupervisoryControl supervisoryControlDHW(ctrlType=
-        supCtrlTypeDHWSet)
+  BESMod.Utilities.SupervisoryControl.SupervisoryControl supervisoryControlDHW(
+      ctrlType=supCtrlTypeDHWSet)
     annotation (Placement(transformation(extent={{-182,72},{-170,84}})));
-  parameter Utilities.SupervisoryControl.Types.SupervisoryControlType
-    supCtrlTypeDHWSet = Utilities.SupervisoryControl.Types.SupervisoryControlType.Local "Type of supervisory control for DHW Setpoint";
+  parameter BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType
+    supCtrlTypeDHWSet=BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Local
+    "Type of supervisory control for DHW Setpoint";
 equation
   connect(BufferOnOffController.T_Top, sigBusDistr.TStoBufTopMea) annotation (
       Line(points={{-128.8,45.9},{-316,45.9},{-316,-166},{4,-166},{4,-100},{1,-100}},

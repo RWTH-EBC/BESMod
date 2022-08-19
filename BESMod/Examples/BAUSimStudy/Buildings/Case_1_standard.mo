@@ -87,5 +87,7 @@ record Case_1_standard "Case_1_standard_SingleDwelling"
     CoolerOn = false,
     withIdealThresholds = false,
     TThresholdHeater = 288.15,
-    TThresholdCooler = 295.15);
+    TThresholdCooler = 295.15,
+    heaLoadFacGrd=0,
+    heaLoadFacOut=0);
 end Case_1_standard;

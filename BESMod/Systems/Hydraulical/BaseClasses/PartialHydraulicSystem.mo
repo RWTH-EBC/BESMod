@@ -1,6 +1,7 @@
 within BESMod.Systems.Hydraulical.BaseClasses;
 partial model PartialHydraulicSystem
   "Complete hydraulic system model"
+  import BESMod;
   extends BESMod.Systems.BaseClasses.PartialFluidSubsystem;
   parameter Boolean subsystemDisabled "To enable the icon if the subsystem is disabled" annotation (Dialog(tab="Graphics"));
 
@@ -185,7 +186,7 @@ partial model PartialHydraulicSystem
   Interfaces.SystemControlBus sigBusHyd annotation (Placement(transformation(
           extent={{12,120},{58,160}}), iconTransformation(extent={{12,120},{
             58,160}})));
-  Utilities.Electrical.MultiSumElec multiSumElec(nPorts=3) annotation (
+  BESMod.Utilities.Electrical.MultiSumElec multiSumElec(nPorts=3) annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,

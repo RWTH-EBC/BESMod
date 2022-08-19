@@ -1,16 +1,38 @@
 ﻿within BESMod.Systems.Demand.Building;
 model TEASERThermalZone
   "Reduced order building model, coupled with TEASER"
+  import BESMod;
+  import BESMod;
+  import BESMod;
+  import BESMod;
+  import BESMod;
+  import BESMod;
+  import BESMod;
+  import BESMod;
+  import BESMod;
+  import BESMod;
+  import BESMod;
+  import BESMod;
+  import BESMod;
+  import BESMod;
+  import BESMod;
+  import BESMod;
+  import BESMod;
+  import BESMod;
   extends BaseClasses.PartialDemand(
     ARoo=sum(zoneParam.ARoof)/nZones,
     hBui=sum(zoneParam.VAir)^(1/3),
     ABui=2*sum(zoneParam.VAir)^(1/3),
     hZone=zoneParam.VAir ./ zoneParam.AZone,
     AZone=zoneParam.AZone);
-  replaceable parameter AixLib.DataBase.ThermalZones.ZoneBaseRecord oneZoneParam constrainedby
-    AixLib.DataBase.ThermalZones.ZoneBaseRecord
+  replaceable parameter AixLib.DataBase.ThermalZones.ZoneBaseRecord oneZoneParam(
+      heaLoadFacGrd=0, heaLoadFacOut=0)                                          constrainedby
+    AixLib.DataBase.ThermalZones.ZoneBaseRecord(heaLoadFacGrd=0, heaLoadFacOut=
+        0)
     "Default zone if only one is chosen" annotation(choicesAllMatching=true);
-  parameter AixLib.DataBase.ThermalZones.ZoneBaseRecord zoneParam[nZones]=fill(oneZoneParam, nZones)
+  parameter AixLib.DataBase.ThermalZones.ZoneBaseRecord zoneParam[nZones](
+    heaLoadFacGrd=0,
+    heaLoadFacOut=0) =                                                    fill(oneZoneParam, nZones)
     "Choose an array of multiple zones" annotation(choicesAllMatching=true);
   parameter Real ventRate[nZones]=fill(0, nZones) "Constant mechanical ventilation rate";
 
@@ -46,7 +68,7 @@ model TEASERThermalZone
           extent={{-10,-10},{10,10}}, rotation=180,
         origin={74,30})));
 
-  Utilities.KPIs.InputKPICalculator inputKPICalculatorTraGain[nZones](
+  BESMod.Utilities.KPIs.InputKPICalculator inputKPICalculatorTraGain[nZones](
     unit=fill("W", nZones),
     integralUnit=fill("J", nZones),
     each calc_singleOnTime=false,
@@ -54,11 +76,11 @@ model TEASERThermalZone
     each calc_numSwi=false,
     each calc_movAve=false,
     each calc_intBelThres=false) if use_hydraulic and use_verboseEnergyBalance
-                            annotation (Placement(transformation(
+    annotation (Placement(transformation(
         extent={{-7,-11},{7,11}},
         rotation=0,
         origin={-7,-63})));
-  Utilities.KPIs.InputKPICalculator inputKPICalculatorTraLoss[nZones](
+  BESMod.Utilities.KPIs.InputKPICalculator inputKPICalculatorTraLoss[nZones](
     unit=fill("W", nZones),
     integralUnit=fill("J", nZones),
     each calc_singleOnTime=false,
@@ -66,7 +88,7 @@ model TEASERThermalZone
     each calc_numSwi=false,
     each calc_movAve=false,
     each calc_intBelThres=false) if use_hydraulic and use_verboseEnergyBalance
-                            annotation (Placement(transformation(
+    annotation (Placement(transformation(
         extent={{-7,-12},{7,12}},
         rotation=0,
         origin={-7,-80})));
@@ -76,27 +98,27 @@ model TEASERThermalZone
   Modelica.Blocks.Nonlinear.Limiter limDown[nZones](each final uMax=
        0, each final uMin=-Modelica.Constants.inf) if use_hydraulic and use_verboseEnergyBalance
     annotation (Placement(transformation(extent={{-30,-82},{-24,-76}})));
-  Utilities.KPIs.InputKPICalculator    inputKPICalculator   [nZones](
+  BESMod.Utilities.KPIs.InputKPICalculator inputKPICalculator[nZones](
     unit=fill("W", nZones),
     integralUnit=fill("J", nZones),
     each calc_singleOnTime=false,
     each calc_totalOnTime=false,
     each calc_numSwi=false,
     each calc_movAve=false,
-    each calc_intBelThres=false) if use_verboseEnergyBalance
-    annotation (Placement(transformation(
+    each calc_intBelThres=false) if use_verboseEnergyBalance annotation (
+      Placement(transformation(
         extent={{-7,-13},{7,13}},
         rotation=180,
         origin={25,-81})));
-  Utilities.KPIs.InputKPICalculator inputKPICalculatorVentGain[nZones](
+  BESMod.Utilities.KPIs.InputKPICalculator inputKPICalculatorVentGain[nZones](
     unit=fill("W", nZones),
     integralUnit=fill("J", nZones),
     each calc_singleOnTime=false,
     each calc_totalOnTime=false,
     each calc_numSwi=false,
     each calc_movAve=false,
-    each calc_intBelThres=false) if use_ventilation and use_verboseEnergyBalance
-                            annotation (Placement(transformation(
+    each calc_intBelThres=false) if use_ventilation and
+    use_verboseEnergyBalance annotation (Placement(transformation(
         extent={{-7,-11},{7,11}},
         rotation=180,
         origin={25,-97})));
@@ -108,15 +130,15 @@ model TEASERThermalZone
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={62,-106})));
-  Utilities.KPIs.InputKPICalculator inputKPICalculatorVentLoss[nZones](
+  BESMod.Utilities.KPIs.InputKPICalculator inputKPICalculatorVentLoss[nZones](
     unit=fill("W", nZones),
     integralUnit=fill("J", nZones),
     each calc_singleOnTime=false,
     each calc_totalOnTime=false,
     each calc_numSwi=false,
     each calc_movAve=false,
-    each calc_intBelThres=false) if use_ventilation and use_verboseEnergyBalance
-                            annotation (Placement(transformation(
+    each calc_intBelThres=false) if use_ventilation and
+    use_verboseEnergyBalance annotation (Placement(transformation(
         extent={{-7,-12},{7,12}},
         rotation=180,
         origin={25,-114})));
@@ -132,14 +154,15 @@ model TEASERThermalZone
     annotation (Placement(transformation(extent={{-3,-3},{3,3}},
         rotation=180,
         origin={41,-115})));
-  Utilities.KPIs.InputKPICalculator inputKPICalculatorTraGain2[nZones](
+  BESMod.Utilities.KPIs.InputKPICalculator inputKPICalculatorTraGain2[nZones](
     unit=fill("W", nZones),
     integralUnit=fill("J", nZones),
     each calc_singleOnTime=false,
     each calc_totalOnTime=false,
     each calc_numSwi=false,
     each calc_movAve=false,
-    each calc_intBelThres=false) if use_verboseEnergyBalance annotation (Placement(transformation(
+    each calc_intBelThres=false) if use_verboseEnergyBalance annotation (
+      Placement(transformation(
         extent={{-7,-11},{7,11}},
         rotation=0,
         origin={-7,-97})));
@@ -149,14 +172,15 @@ model TEASERThermalZone
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-48,-106})));
-  Utilities.KPIs.InputKPICalculator inputKPICalculatorTraLoss2[nZones](
+  BESMod.Utilities.KPIs.InputKPICalculator inputKPICalculatorTraLoss2[nZones](
     unit=fill("W", nZones),
     integralUnit=fill("J", nZones),
     each calc_singleOnTime=false,
     each calc_totalOnTime=false,
     each calc_numSwi=false,
     each calc_movAve=false,
-    each calc_intBelThres=false) if use_verboseEnergyBalance annotation (Placement(transformation(
+    each calc_intBelThres=false) if use_verboseEnergyBalance annotation (
+      Placement(transformation(
         extent={{-7,-12},{7,12}},
         rotation=0,
         origin={-7,-114})));
@@ -178,20 +202,21 @@ model TEASERThermalZone
                                          [nZones]
     if use_hydraulic and use_verboseEnergyBalance
     annotation (Placement(transformation(extent={{-52,-80},{-42,-70}})));
-  Utilities.KPIs.ComfortCalculator comfortCalculatorCool[nZones](TComBou=
-        TSetZone_nominal .+ dTComfort, each for_heating=false)
+  BESMod.Utilities.KPIs.ComfortCalculator comfortCalculatorCool[nZones](TComBou
+      =TSetZone_nominal .+ dTComfort, each for_heating=false)
     annotation (Placement(transformation(extent={{-24,-52},{-4,-32}})));
-  Utilities.KPIs.ComfortCalculator comfortCalculatorHea[nZones](TComBou=
+  BESMod.Utilities.KPIs.ComfortCalculator comfortCalculatorHea[nZones](TComBou=
         TSetZone_nominal .- dTComfort, each for_heating=true)
     annotation (Placement(transformation(extent={{-24,-30},{-4,-10}})));
-  Utilities.KPIs.InputKPICalculator inputKPICalculatorOwaGain[nZones](
+  BESMod.Utilities.KPIs.InputKPICalculator inputKPICalculatorOwaGain[nZones](
     unit=fill("W", nZones),
     integralUnit=fill("J", nZones),
     each calc_singleOnTime=false,
     each calc_totalOnTime=false,
     each calc_numSwi=false,
     each calc_movAve=false,
-    each calc_intBelThres=false) if use_verboseEnergyBalance annotation (Placement(transformation(
+    each calc_intBelThres=false) if use_verboseEnergyBalance annotation (
+      Placement(transformation(
         extent={{-7,-11},{7,11}},
         rotation=0,
         origin={-7,-137})));
@@ -201,14 +226,15 @@ model TEASERThermalZone
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-48,-146})));
-  Utilities.KPIs.InputKPICalculator inputKPICalculatorOwaLoss[nZones](
+  BESMod.Utilities.KPIs.InputKPICalculator inputKPICalculatorOwaLoss[nZones](
     unit=fill("W", nZones),
     integralUnit=fill("J", nZones),
     each calc_singleOnTime=false,
     each calc_totalOnTime=false,
     each calc_numSwi=false,
     each calc_movAve=false,
-    each calc_intBelThres=false) if use_verboseEnergyBalance annotation (Placement(transformation(
+    each calc_intBelThres=false) if use_verboseEnergyBalance annotation (
+      Placement(transformation(
         extent={{-7,-12},{7,12}},
         rotation=0,
         origin={-7,-154})));
@@ -220,16 +246,16 @@ model TEASERThermalZone
                                                 [nZones](each final
       uMax=0, each final uMin=-Modelica.Constants.inf) if use_verboseEnergyBalance
     annotation (Placement(transformation(extent={{-30,-156},{-24,-150}})));
-  Utilities.KPIs.InputKPICalculator inputKPICalculatorFloorGain[
-    nZones](
+  BESMod.Utilities.KPIs.InputKPICalculator inputKPICalculatorFloorGain[nZones](
     unit=fill("W", nZones),
     integralUnit=fill("J", nZones),
     each calc_singleOnTime=false,
     each calc_totalOnTime=false,
     each calc_numSwi=false,
     each calc_movAve=false,
-    each calc_intBelThres=false) if oneZoneParam.AFloor > 0  and use_verboseEnergyBalance
-    annotation (Placement(transformation(
+    each calc_intBelThres=false)
+    if oneZoneParam.AFloor > 0 and use_verboseEnergyBalance annotation (
+      Placement(transformation(
         extent={{-7,-11},{7,11}},
         rotation=0,
         origin={-7,-173})));
@@ -240,16 +266,16 @@ model TEASERThermalZone
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-48,-182})));
-  Utilities.KPIs.InputKPICalculator inputKPICalculatorFloorLoss[
-    nZones](
+  BESMod.Utilities.KPIs.InputKPICalculator inputKPICalculatorFloorLoss[nZones](
     unit=fill("W", nZones),
     integralUnit=fill("J", nZones),
     each calc_singleOnTime=false,
     each calc_totalOnTime=false,
     each calc_numSwi=false,
     each calc_movAve=false,
-    each calc_intBelThres=false) if oneZoneParam.AFloor > 0 and use_verboseEnergyBalance
-    annotation (Placement(transformation(
+    each calc_intBelThres=false)
+    if oneZoneParam.AFloor > 0 and use_verboseEnergyBalance annotation (
+      Placement(transformation(
         extent={{-7,-12},{7,12}},
         rotation=0,
         origin={-7,-190})));
@@ -263,14 +289,15 @@ model TEASERThermalZone
       uMax=0, each final uMin=-Modelica.Constants.inf)
     if oneZoneParam.AFloor > 0 and use_verboseEnergyBalance
     annotation (Placement(transformation(extent={{-30,-192},{-24,-186}})));
-  Utilities.KPIs.InputKPICalculator inputKPICalculatorRoofGain[nZones](
+  BESMod.Utilities.KPIs.InputKPICalculator inputKPICalculatorRoofGain[nZones](
     unit=fill("W", nZones),
     integralUnit=fill("J", nZones),
     each calc_singleOnTime=false,
     each calc_totalOnTime=false,
     each calc_numSwi=false,
     each calc_movAve=false,
-    each calc_intBelThres=false) if use_verboseEnergyBalance annotation (Placement(transformation(
+    each calc_intBelThres=false) if use_verboseEnergyBalance annotation (
+      Placement(transformation(
         extent={{-7,-11},{7,11}},
         rotation=0,
         origin={-75,-137})));
@@ -280,14 +307,15 @@ model TEASERThermalZone
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-116,-146})));
-  Utilities.KPIs.InputKPICalculator inputKPICalculatorRoofLoss[nZones](
+  BESMod.Utilities.KPIs.InputKPICalculator inputKPICalculatorRoofLoss[nZones](
     unit=fill("W", nZones),
     integralUnit=fill("J", nZones),
     each calc_singleOnTime=false,
     each calc_totalOnTime=false,
     each calc_numSwi=false,
     each calc_movAve=false,
-    each calc_intBelThres=false) if use_verboseEnergyBalance annotation (Placement(transformation(
+    each calc_intBelThres=false) if use_verboseEnergyBalance annotation (
+      Placement(transformation(
         extent={{-7,-12},{7,12}},
         rotation=0,
         origin={-75,-154})));
@@ -299,14 +327,15 @@ model TEASERThermalZone
                                                 [nZones](each final
       uMax=0, each final uMin=-Modelica.Constants.inf) if use_verboseEnergyBalance
     annotation (Placement(transformation(extent={{-98,-156},{-92,-150}})));
-  Utilities.KPIs.InputKPICalculator inputKPICalculatorWinGain[nZones](
+  BESMod.Utilities.KPIs.InputKPICalculator inputKPICalculatorWinGain[nZones](
     unit=fill("W", nZones),
     integralUnit=fill("J", nZones),
     each calc_singleOnTime=false,
     each calc_totalOnTime=false,
     each calc_numSwi=false,
     each calc_movAve=false,
-    each calc_intBelThres=false) if use_verboseEnergyBalance annotation (Placement(transformation(
+    each calc_intBelThres=false) if use_verboseEnergyBalance annotation (
+      Placement(transformation(
         extent={{-7,-11},{7,11}},
         rotation=0,
         origin={-75,-173})));
@@ -316,14 +345,15 @@ model TEASERThermalZone
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-116,-182})));
-  Utilities.KPIs.InputKPICalculator inputKPICalculatorWinLoss[nZones](
+  BESMod.Utilities.KPIs.InputKPICalculator inputKPICalculatorWinLoss[nZones](
     unit=fill("W", nZones),
     integralUnit=fill("J", nZones),
     each calc_singleOnTime=false,
     each calc_totalOnTime=false,
     each calc_numSwi=false,
     each calc_movAve=false,
-    each calc_intBelThres=false) if use_verboseEnergyBalance annotation (Placement(transformation(
+    each calc_intBelThres=false) if use_verboseEnergyBalance annotation (
+      Placement(transformation(
         extent={{-7,-12},{7,12}},
         rotation=0,
         origin={-75,-190})));
@@ -339,7 +369,8 @@ model TEASERThermalZone
         rotation=180,
         origin={53,-81})));
 
-  Utilities.Electrical.ZeroLoad zeroLoad annotation (Placement(transformation(
+  BESMod.Utilities.Electrical.ZeroLoad zeroLoad annotation (Placement(
+        transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={94,-96})));
