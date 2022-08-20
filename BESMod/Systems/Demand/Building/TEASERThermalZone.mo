@@ -7,14 +7,10 @@ model TEASERThermalZone
     ABui=2*sum(zoneParam.VAir)^(1/3),
     hZone=zoneParam.VAir ./ zoneParam.AZone,
     AZone=zoneParam.AZone);
-  replaceable parameter AixLib.DataBase.ThermalZones.ZoneBaseRecord oneZoneParam(
-      heaLoadFacGrd=0, heaLoadFacOut=0)                                          constrainedby
-    AixLib.DataBase.ThermalZones.ZoneBaseRecord(heaLoadFacGrd=0, heaLoadFacOut=
-        0)
+  replaceable parameter AixLib.DataBase.ThermalZones.ZoneBaseRecord oneZoneParam constrainedby
+    AixLib.DataBase.ThermalZones.ZoneBaseRecord
     "Default zone if only one is chosen" annotation(choicesAllMatching=true);
-  parameter AixLib.DataBase.ThermalZones.ZoneBaseRecord zoneParam[nZones](
-    heaLoadFacGrd=0,
-    heaLoadFacOut=0) =                                                    fill(oneZoneParam, nZones)
+  parameter AixLib.DataBase.ThermalZones.ZoneBaseRecord zoneParam[nZones] = fill(oneZoneParam, nZones)
     "Choose an array of multiple zones" annotation(choicesAllMatching=true);
   parameter Real ventRate[nZones]=fill(0, nZones) "Constant mechanical ventilation rate";
 
@@ -33,7 +29,8 @@ model TEASERThermalZone
     each final energyDynamics=energyDynamics,
     each final T_start=T_start,
     final zoneParam=zoneParam,
-    each final use_AirExchange=true,
+    each final use_MechanicalAirExchange=true,
+    each final use_NaturalAirExchange=true,
     each final nPorts=if use_ventilation then 2 else 0) annotation (Placement(
         transformation(extent={{35,12},{-39,84}}, rotation=0)));
 
@@ -184,8 +181,8 @@ model TEASERThermalZone
                                          [nZones]
     if use_hydraulic and use_verboseEnergyBalance
     annotation (Placement(transformation(extent={{-52,-80},{-42,-70}})));
-  BESMod.Utilities.KPIs.ComfortCalculator comfortCalculatorCool[nZones](TComBou
-      =TSetZone_nominal .+ dTComfort, each for_heating=false)
+  BESMod.Utilities.KPIs.ComfortCalculator comfortCalculatorCool[nZones](TComBou=
+       TSetZone_nominal .+ dTComfort, each for_heating=false)
     annotation (Placement(transformation(extent={{-24,-52},{-4,-32}})));
   BESMod.Utilities.KPIs.ComfortCalculator comfortCalculatorHea[nZones](TComBou=
         TSetZone_nominal .- dTComfort, each for_heating=true)
@@ -356,19 +353,26 @@ model TEASERThermalZone
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={94,-96})));
+  Modelica.Blocks.Routing.RealPassThrough realPassThroughIntGains[nZones,3]
+    annotation (Placement(transformation(extent={{-100,0},{-80,20}})));
+  Modelica.Blocks.Routing.RealPassThrough realPassThroughTDry[nZones]
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={114,62})));
 equation
 
   for i in 1:nZones loop
-    connect(weaBus.TDryBul, thermalZone[i].ventTemp) annotation (Line(
-        points={{-47,98},{126,98},{126,42.24},{33.52,42.24}},
+    connect(weaBus.TDryBul, realPassThroughTDry[i].u) annotation (Line(
+        points={{-47,98},{-47,96},{134,96},{134,62},{126,62}},
         color={255,204,51},
         thickness=0.5), Text(
         string="%first",
         index=-1,
         extent={{6,3},{6,3}},
         horizontalAlignment=TextAlignment.Left));
-    connect(useProBus.intGains, thermalZone[i].intGains) annotation (Line(
-        points={{51,101},{-62,101},{-62,8},{-31.6,8},{-31.6,17.76}},
+    connect(useProBus.intGains, realPassThroughIntGains[i, :].u) annotation (Line(
+        points={{51,101},{-120,101},{-120,10},{-102,10}},
         color={255,204,51},
         thickness=0.5), Text(
         string="%first",
@@ -658,7 +662,12 @@ equation
       points={{84,-96},{70,-96}},
       color={0,0,0},
       thickness=1));
-    annotation (Diagram(graphics,
-                        coordinateSystem(extent={{-100,-100},{100,100}})), Icon(graphics,
+  connect(realPassThroughIntGains.y, thermalZone.intGains) annotation (Line(
+        points={{-79,10},{-50,10},{-50,4},{-31.6,4},{-31.6,17.76}}, color={0,0,
+          127}));
+  connect(realPassThroughTDry.y, thermalZone.ventTemp) annotation (Line(points=
+          {{103,62},{102,62},{102,74},{52,74},{52,42.24},{33.52,42.24}}, color=
+          {0,0,127}));
+    annotation (Diagram(coordinateSystem(extent={{-100,-100},{100,100}})), Icon(graphics,
         coordinateSystem(extent={{-100,-120},{100,100}})));
 end TEASERThermalZone;
