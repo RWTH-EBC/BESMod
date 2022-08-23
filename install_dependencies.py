@@ -1,6 +1,7 @@
 import os
 import sys
 import pathlib
+import json
 
 
 class LibraryInstaller:
@@ -23,27 +24,15 @@ class LibraryInstaller:
         self.mo: str = mo
 
 
-required_dependencies_config: dict = {
-    "IBPSA": LibraryInstaller(
-        url="https://github.com/ibpsa/modelica-ibpsa",
-        commit="d5b02ab5aac01c4d07583d73afff6b14c5f58bd2"
-    )
-}
+required_dependencies_config: dict = {}
+optional_dependencies_config: dict = {}
 
-optional_dependencies_config: dict = {
-    "AixLib": LibraryInstaller(
-        url="https://github.com/RWTH-EBC/AixLib",
-        commit="0cef0cefc199dcb0d642d2b0c6eb0a3438d8a9a6"
-    ),
-    "Buildings": LibraryInstaller(
-        url="https://github.com/lbl-srg/modelica-buildings",
-        commit="fba63b60c75bb0285ede2081ae17dbdc9f38d9e7"
-    ),
-    "BuildingSystems": LibraryInstaller(
-        url="https://github.com/UdK-VPT/BuildingSystems",
-        commit="64adca47eae19d2744d86aa8d1624cbf7ad6326b"
-    )
-}
+with open("dependencies.json", "r") as file:
+    data = json.load(file)
+    for key, value in data["required"].items():
+        required_dependencies_config[key] = LibraryInstaller(**value)
+    for key, value in data["optional"].items():
+        optional_dependencies_config[key] = LibraryInstaller(**value)
 
 
 def install_dependencies(
