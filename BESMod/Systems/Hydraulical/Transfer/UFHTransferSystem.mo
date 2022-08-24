@@ -119,7 +119,7 @@ model UFHTransferSystem
         extent={{-11,-11},{11,11}},
         rotation=0,
         origin={-23,37})));
-  replaceable
+  replaceable parameter
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
     pumpData annotation (choicesAllMatching=true, Placement(transformation(extent={{-98,78},
             {-78,98}})));

@@ -35,7 +35,7 @@ model ElectricalHeater "Only heat using a heating rod"
     annotation (Placement(transformation(extent={{-16,-16},{16,16}},
         rotation=90,
         origin={-32,10})));
-  replaceable BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatingRodBaseDataDefinition
+  replaceable parameter BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatingRodBaseDataDefinition
     heatingRodParameters
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-62,-42},
             {-50,-30}})));
@@ -146,7 +146,7 @@ equation
       horizontalAlignment=TextAlignment.Left));
   connect(realToElecCon.internalElectricalPin, internalElectricalPin)
     annotation (Line(
-      points={{52.2,-97.8},{52.2,-96},{58,-96},{58,-86},{72,-86},{72,-98}},
+      points={{52.2,-97.8},{52.2,-96},{58,-96},{58,-86},{72,-86},{72,-100}},
       color={0,0,0},
       thickness=1));
   connect(realToElecCon.PEleLoa, hea.Pel) annotation (Line(points={{30,-94},{

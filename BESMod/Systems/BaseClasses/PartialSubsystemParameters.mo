@@ -31,7 +31,7 @@ model PartialSubsystemParameters "Model for a partial subsystem"
     "Nominal heat flow rate due to heat losses" annotation (Dialog(group=
           "Design - Bottom Up: Parameters are defined by the subsystem"));
 
-  parameter Modelica.Units.SI.HeatFlowRate Q_flow_nominal[nParallelDem]
+  parameter Modelica.Units.SI.HeatFlowRate Q_flow_nominal[nParallelDem](each min=Modelica.Constants.eps)
     "Nominal heat flow rate" annotation (Dialog(group=
           "Design - Top Down: Parameters are given by the parent system"));
   parameter Modelica.Units.SI.Temperature TOda_nominal

@@ -95,7 +95,7 @@ model RadiatorTransferSystem
         extent={{-11,-11},{11,11}},
         rotation=270,
         origin={-15,9})));
-  replaceable
+  replaceable parameter
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
     pumpData annotation (choicesAllMatching=true, Placement(transformation(extent={{-98,78},{-78,98}})));
   IBPSA.Fluid.Sources.Boundary_pT bouPumpHP[nParallelDem](
