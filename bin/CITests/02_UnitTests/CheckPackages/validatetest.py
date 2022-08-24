@@ -443,6 +443,11 @@ def check_model_workflow():
         model_list = CheckModelTest._filter_wh_models(models, wh_list)
     else:  # Check all models in package
         model_list = CheckModelTest._get_model()
+        with open("bin/ci_whitelist/html_whitelist.txt", "r") as file:
+            whitelists = file.readlines()
+            for white_model in whitelists:
+                if white_model in model_list:
+                    model_list.remove(white_model)
         if len(model_list) == 0:
             print(f'No models in package {args.single_package}')
             exit(1)
