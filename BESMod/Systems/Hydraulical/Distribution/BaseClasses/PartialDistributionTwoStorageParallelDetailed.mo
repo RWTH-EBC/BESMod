@@ -62,14 +62,6 @@ partial model PartialDistributionTwoStorageParallelDetailed
           annotation (
       choicesAllMatching=true, Placement(transformation(extent={{18,26},{32,40}})));
 
-      /*
-      (
-        final V=VDHWDay,
-        final Q_flow_nominal=QDHW_flow_nominal,
-        final VPerQ_flow=0,
-        T_m=TDHW_nominal)
-      */
-
   replaceable parameter
     RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition dhwParameters
     constrainedby
