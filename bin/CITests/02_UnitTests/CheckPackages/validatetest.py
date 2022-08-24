@@ -192,7 +192,7 @@ class ValidateTest(object):
                             example = filepath.replace(os.sep, ".")
                             example = example[example.rfind(self.mo_library):example.rfind(".mo")]
                             example_list.append(example)
-                        break
+                            break
                     ex_file.close()
         return example_list
 
