@@ -39,7 +39,7 @@ partial model PartialDistributionTwoStorageParallelDetailed
     use_inputFilter=false) annotation (choicesAllMatching=
        true, Placement(transformation(extent={{-84,84},{-64,104}})));
 
- replaceable
+ replaceable parameter
     RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition bufParameters
     constrainedby
     RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition(
@@ -62,7 +62,7 @@ partial model PartialDistributionTwoStorageParallelDetailed
           annotation (
       choicesAllMatching=true, Placement(transformation(extent={{18,26},{32,40}})));
 
-  replaceable
+  replaceable parameter
     RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition dhwParameters
     constrainedby
     RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition(

@@ -1,6 +1,9 @@
 within BESMod.Systems.Hydraulical.Transfer;
 model RadiatorPressureBased "Pressure Based transfer system"
-  extends BaseClasses.PartialTransfer(final dp_nominal=rad.dp_nominal .+ val.dpValve_nominal .+ res.dp_nominal .+ val.dpFixed_nominal,
+  // Abui =1 and hBui =1 to avaoid warnings, will be overwritten anyway
+  extends BaseClasses.PartialTransfer(
+    ABui=1,
+    hBui=1,                           final dp_nominal=rad.dp_nominal .+ val.dpValve_nominal .+ res.dp_nominal .+ val.dpFixed_nominal,
                                       final nParallelSup=1);
 
   replaceable parameter RecordsCollection.TransferDataBaseDefinition

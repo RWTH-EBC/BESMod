@@ -7,14 +7,14 @@ model TEASERThermalZone
     ABui=2*sum(zoneParam.VAir)^(1/3),
     hZone=zoneParam.VAir ./ zoneParam.AZone,
     AZone=zoneParam.AZone);
-  replaceable parameter AixLib.DataBase.ThermalZones.ZoneBaseRecord oneZoneParam constrainedby
+  replaceable parameter AixLib.DataBase.ThermalZones.ZoneRecordDummy oneZoneParam constrainedby
     AixLib.DataBase.ThermalZones.ZoneBaseRecord
     "Default zone if only one is chosen" annotation(choicesAllMatching=true);
   parameter AixLib.DataBase.ThermalZones.ZoneBaseRecord zoneParam[nZones] = fill(oneZoneParam, nZones)
     "Choose an array of multiple zones" annotation(choicesAllMatching=true);
   parameter Real ventRate[nZones]=fill(0, nZones) "Constant mechanical ventilation rate";
 
-  parameter Boolean use_verboseEnergyBalance = true "=false to disable the integration of the verbose energy balance";
+  parameter Boolean use_verboseEnergyBalance=true   "=false to disable the integration of the verbose energy balance";
   parameter Modelica.Units.SI.TemperatureDifference dTComfort=2
     "Temperature difference to room set temperature at which the comfort is still acceptable. In DIN EN 15251, all temperatures below 22 °C - 2 K count as discomfort. Hence the default value. If your room set temperature is lower, consider using smaller values.";
 

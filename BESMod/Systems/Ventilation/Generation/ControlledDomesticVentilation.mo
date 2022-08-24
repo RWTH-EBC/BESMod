@@ -125,7 +125,7 @@ model ControlledDomesticVentilation
         rotation=180,
         origin={-53,42})));
 
-  replaceable IBPSA.Fluid.Actuators.BaseClasses.PartialThreeWayValve threeWayValve_b constrainedby
+  replaceable IBPSA.Fluid.Actuators.Valves.ThreeWayLinear threeWayValve_b constrainedby
     IBPSA.Fluid.Actuators.BaseClasses.PartialThreeWayValve(
     final energyDynamics=energyDynamics,
     final p_start=p_start,
@@ -144,7 +144,7 @@ model ControlledDomesticVentilation
     final CvData=IBPSA.Fluid.Types.CvTypes.OpPoint,
     final m_flow_nominal=m_flow_nominal[1]) annotation (choicesAllMatching=true,
       Placement(transformation(extent={{22,-64},{38,-80}})));
-  replaceable IBPSA.Fluid.Actuators.BaseClasses.PartialThreeWayValve threeWayValve_a constrainedby
+  replaceable IBPSA.Fluid.Actuators.Valves.ThreeWayLinear threeWayValve_a constrainedby
     IBPSA.Fluid.Actuators.BaseClasses.PartialThreeWayValve(
     final energyDynamics=energyDynamics,
     final p_start=p_start,
@@ -173,11 +173,11 @@ model ControlledDomesticVentilation
     dp_nominal={dpDem_nominal[1], dpDem_nominal[1] + parameters.dpHex_nominal})
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-98,-98},
             {-76,-74}})));
-  replaceable
+  replaceable parameter
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
     fanData annotation (Placement(transformation(extent={{-82,-8},{-62,12}})),
       choicesAllMatching=true);
-  replaceable
+  replaceable parameter
     BESMod.Systems.RecordsCollection.TemperatureSensors.TemperatureSensorBaseDefinition
     tempSensorData
     annotation (Placement(transformation(extent={{76,78},{96,98}})),
