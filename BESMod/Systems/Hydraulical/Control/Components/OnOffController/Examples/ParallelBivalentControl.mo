@@ -12,4 +12,6 @@ model ParallelBivalentControl
       TRoom=293.15,
       QDem_flow_nominal=12000,
       QHP_flow_cutOff=3000));
+
+  extends Modelica.Icons.Example;
 end ParallelBivalentControl;

@@ -33,9 +33,9 @@ CI_simulate_BESMod_Examples:
     extends: .CI_simulate_model_job
 
     
-CI_simulate_BESMod_Utitilies:
+CI_simulate_BESMod_Utilities:
     variables:
-        lib_package: Utitilies
+        lib_package: Utilities
     extends: .CI_simulate_model_job
 
 CI_simulate_BESMod_Systems:
@@ -88,9 +88,9 @@ simulate_BESMod_Examples:
         lib_package: Examples
     extends: .simulate_model_job
 
-simulate_BESMod_Utitilies:
+simulate_BESMod_Utilities:
     variables:
-        lib_package: Utitilies
+        lib_package: Utilities
     extends: .simulate_model_job
 
 simulate_BESMod_Systems:

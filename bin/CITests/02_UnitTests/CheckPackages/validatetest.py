@@ -194,7 +194,6 @@ class ValidateTest(object):
                             example_list.append(example)
                             break
                     ex_file.close()
-        print(example_list)
         return example_list
 
     def _get_ch_examples(self):  # list all changed examples in package
@@ -481,7 +480,6 @@ def sim_example_workflow():
         example_list = CheckModelTest._filter_wh_models(models, wh_list)
     else:
         example_list = CheckModelTest._get_examples()
-        print(example_list)
         if len(example_list) == 0:
             print(f'No models in package {args.single_package}')
             exit(1)
