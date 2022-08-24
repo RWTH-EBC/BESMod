@@ -14,11 +14,11 @@ partial model PartialDistribution
   replaceable package MediumGen =
       Modelica.Media.Interfaces.PartialMedium
     annotation (choicesAllMatching=true);
-  parameter Modelica.Units.SI.MassFlowRate mSup_flow_nominal[nParallelSup]
+  parameter Modelica.Units.SI.MassFlowRate mSup_flow_nominal[nParallelSup](each min=Modelica.Constants.eps)
     "Nominal mass flow rate of system supplying the distribution" annotation (
       Dialog(group=
           "Design - Top Down: Parameters are given by the parent system"));
-  parameter Modelica.Units.SI.MassFlowRate mDem_flow_nominal[nParallelDem]
+  parameter Modelica.Units.SI.MassFlowRate mDem_flow_nominal[nParallelDem](each min=Modelica.Constants.eps)
     "Nominal mass flow rate of demand system of the distribution" annotation (
       Dialog(group=
           "Design - Top Down: Parameters are given by the parent system"));

@@ -43,7 +43,7 @@ partial record PartialStorageBaseDataDefinition
   parameter Modelica.Units.SI.MassFlowRate mHC1_flow_nominal
     "Nominal mass flow rate of HC fluid"
     annotation (Dialog(group="Loading", enable=use_HC1));
-  replaceable parameter AixLib.DataBase.Pipes.PipeBaseDataDefinition pipeHC1 constrainedby
+  replaceable parameter AixLib.DataBase.Pipes.Copper.Copper_12x0_6 pipeHC1 constrainedby
     AixLib.DataBase.Pipes.PipeBaseDataDefinition                                                                                         "Type of Pipe for HC1" annotation (choicesAllMatching=true, Dialog(group="Loading", enable=use_HC1));
   parameter Modelica.Units.SI.CoefficientOfHeatTransfer hConHC1=(2/pipeHC1.d_o)
       /(((max(dTLoadingHC1, dTLoaMin)*2*Modelica.Constants.pi*lengthHC1)/

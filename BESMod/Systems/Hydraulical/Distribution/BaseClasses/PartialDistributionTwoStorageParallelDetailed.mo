@@ -62,22 +62,30 @@ partial model PartialDistributionTwoStorageParallelDetailed
           annotation (
       choicesAllMatching=true, Placement(transformation(extent={{18,26},{32,40}})));
 
+      /*
+      (
+        final V=VDHWDay,
+        final Q_flow_nominal=QDHW_flow_nominal,
+        final VPerQ_flow=0,
+        T_m=TDHW_nominal)
+      */
+
   replaceable parameter
     RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition dhwParameters
     constrainedby
     RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition(
-        final rho=rho,
-        final c_p=cp,
-        final TAmb=TAmb,
-        final use_HC1=storageDHW.useHeatingCoil1,
-        final QHC1_flow_nominal=Q_flow_nominal[1]*f_design[1],
-        final V=VDHWDay,
         final Q_flow_nominal=QDHW_flow_nominal,
         final VPerQ_flow=0,
+        final rho=rho,
+        final c_p=cp,
+        final V=VDHWDay,
+        final TAmb=TAmb,
         T_m=TDHW_nominal,
+        final QHC1_flow_nominal=Q_flow_nominal[1]*f_design[1],
         final mHC1_flow_nominal=mSup_flow_nominal[1],
         redeclare final AixLib.DataBase.Pipes.Copper.Copper_12x1 pipeHC1,
-        final use_HC2=storageDHW.useHeatingCoil2,
+        final use_HC2=storageBuf.useHeatingCoil2,
+        final use_HC1=storageBuf.useHeatingCoil1,
         final dTLoadingHC2=9999999,
         final fHeiHC2=1,
         final fDiaHC2=1,
