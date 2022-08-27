@@ -1,5 +1,5 @@
 within BESMod.Examples.MyOwnHeatingRodEfficiencyStudy;
-model BESModel
+model BES
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
     redeclare BESMod.Systems.Demand.Building.TEASERThermalZone
@@ -79,4 +79,4 @@ model BESModel
       StopTime=86400,
       Interval=600,
       __Dymola_Algorithm="Dassl"));
-end BESModel;
+end BES;
