@@ -190,7 +190,9 @@ class ValidateTest(object):
                     for line in lines:
                         if line.find("extends") > -1 and line.find("Modelica.Icons.Example") > -1:
                             example = filepath.replace(os.sep, ".")
+                            print(example)
                             example = example[example.rfind(self.mo_library):example.rfind(".mo")]
+                            print(example, self.mo_library)
                             example_list.append(example)
                             break
                     ex_file.close()
