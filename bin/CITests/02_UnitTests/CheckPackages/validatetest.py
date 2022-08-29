@@ -483,7 +483,6 @@ def sim_example_workflow():
         if len(example_list) == 0:
             print(f'No models in package {args.single_package}')
             exit(1)
-    print(example_list)
     result = CheckModelTest._sim_examples(example_list)
     error_model = result[0]
     error_message = result[1]
