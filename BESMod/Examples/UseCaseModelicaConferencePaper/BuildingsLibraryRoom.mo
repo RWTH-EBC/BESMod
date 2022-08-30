@@ -1,5 +1,6 @@
 within BESMod.Examples.UseCaseModelicaConferencePaper;
 model BuildingsLibraryRoom "System using the buildings libraries room model"
+  extends Modelica.Icons.Example;
   extends PartialModelicaConferenceUseCase(
     redeclare
       BESMod.Systems.Demand.Building.BuildingsRoomCase600FF

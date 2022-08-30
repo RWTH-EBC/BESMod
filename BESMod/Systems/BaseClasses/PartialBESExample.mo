@@ -1,6 +1,5 @@
 within BESMod.Systems.BaseClasses;
 partial model PartialBESExample "Partial example model"
-  extends Modelica.Icons.Example;
 
   BESMod.Systems.RecordsCollection.ExampleSystemParameters systemParameters "Parameters relevant for the whole energy system" annotation (Placement(transformation(extent={{76,-96},{96,-76}})));
   annotation (Icon(graphics,
