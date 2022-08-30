@@ -23,7 +23,7 @@ model SimpleDistribution "Most basic distribution model"
         extent={{-7.5,-10},{7.5,10}},
         rotation=0,
         origin={0.5,-60})));
-  Utilities.Electrical.ZeroLoad zeroLoad
+  BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{20,-100},{40,-80}})));
 equation
   connect(resExh.port_a, portExh_in)

@@ -9,6 +9,8 @@ model TestCombiStorage
         dTLoadingHC1=5,
         use_HC2=true,
         dTLoadingHC2=5)));
+  extends Modelica.Icons.Example;
+
   Modelica.Blocks.Sources.BooleanPulse booleanPulse(period=100) annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},

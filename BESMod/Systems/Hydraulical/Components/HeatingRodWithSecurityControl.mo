@@ -1,4 +1,4 @@
-within BESMod.Components;
+within BESMod.Systems.Hydraulical.Components;
 model HeatingRodWithSecurityControl
   "Heating rod which converts electrical energy into heat with a given efficiency"
   extends IBPSA.Fluid.Interfaces.TwoPortHeatMassExchanger(

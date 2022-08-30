@@ -1,4 +1,4 @@
-within BESMod.Components.UFH;
+within BESMod.Systems.Hydraulical.Components.UFH;
 record ActiveWallBaseDataDefinition "Base data definition for active walls"
 extends Modelica.Icons.Record;
   parameter Modelica.Units.SI.Temperature Temp_nom[3]

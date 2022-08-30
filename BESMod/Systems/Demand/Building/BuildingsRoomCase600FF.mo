@@ -202,15 +202,16 @@ model BuildingsRoomCase600FF
     use_C_in=false,
     nPorts=1) "Sink model for air infiltration"
     annotation (Placement(transformation(extent={{-22,-56},{-10,-44}})));
-  Utilities.Electrical.ZeroLoad zeroLoad annotation (Placement(transformation(
+  BESMod.Utilities.Electrical.ZeroLoad zeroLoad annotation (Placement(
+        transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={108,-92})));
-  Utilities.KPIs.ComfortCalculator comfortCalculatorHea[nZones](TComBou=
+  BESMod.Utilities.KPIs.ComfortCalculator comfortCalculatorHea[nZones](TComBou=
         TSetZone_nominal .- dTComfort, each for_heating=true)
     annotation (Placement(transformation(extent={{66,0},{80,14}})));
-  Utilities.KPIs.ComfortCalculator comfortCalculatorCool[nZones](TComBou=
-        TSetZone_nominal .+ dTComfort, each for_heating=false)
+  BESMod.Utilities.KPIs.ComfortCalculator comfortCalculatorCool[nZones](TComBou=
+       TSetZone_nominal .+ dTComfort, each for_heating=false)
     annotation (Placement(transformation(extent={{66,-18},{80,-4}})));
 equation
   connect(roo.uSha, replicator.y) annotation (Line(

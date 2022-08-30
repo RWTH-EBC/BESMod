@@ -20,6 +20,8 @@ model TestDirectLoading
       redeclare
         BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
         heatingRodAftBufParameters));
+  extends Modelica.Icons.Example;
+
   Modelica.Blocks.Sources.BooleanPulse booleanPulse(period=100) annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},

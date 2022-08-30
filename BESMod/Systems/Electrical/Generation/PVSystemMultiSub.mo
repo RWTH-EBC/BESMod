@@ -28,7 +28,7 @@ model PVSystemMultiSub
   replaceable model CellTemperature =
       AixLib.Electrical.PVSystem.BaseClasses.PartialCellTemperature annotation (
      __Dymola_choicesAllMatching=true);
-  Utilities.Electrical.RealToElecCon realToElecCon(use_souLoa=false)
+  BESMod.Utilities.Electrical.RealToElecCon realToElecCon(use_souLoa=false)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
@@ -54,7 +54,7 @@ model PVSystemMultiSub
   parameter Modelica.Units.SI.Angle azi[numGenUnits]=fill(0*Modelica.Constants.pi/180,numGenUnits)  "Surface's azimut angle (0:South)";
   parameter Modelica.Units.SI.Area ARoof(min=0) "Roof area of building" annotation(Dialog(group="Design - Top Down: Parameters are given by the parent system"));
 
-  Utilities.KPIs.InputKPICalculator inputKPICalculator(
+  BESMod.Utilities.KPIs.InputKPICalculator inputKPICalculator(
     unit="W",
     integralUnit="J",
     calc_singleOnTime=false,

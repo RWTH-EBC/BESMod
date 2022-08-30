@@ -7,6 +7,8 @@ model TestSimpleStorages
         bufParameters(dTLoadingHC1=5), redeclare
         BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
         dhwParameters(dTLoadingHC1=5)));
+  extends Modelica.Icons.Example;
+
   Modelica.Blocks.Sources.BooleanPulse booleanPulse(period=100) annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},

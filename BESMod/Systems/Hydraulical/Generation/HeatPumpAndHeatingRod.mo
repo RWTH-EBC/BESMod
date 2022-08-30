@@ -41,11 +41,12 @@ model HeatPumpAndHeatingRod "Bivalent monoenergetic heat pump"
     if not use_heaRod
     annotation (Placement(transformation(extent={{32,74},{44,86}})));
 
-  BESMod.Components.Pumps.ArtificalPumpIsotermhal artificalPumpIsotermhal(
+  BESMod.Systems.Hydraulical.Components.Pumps.ArtificalPumpIsotermhal
+    artificalPumpIsotermhal(
     redeclare package Medium = Medium,
     final p=p_start,
-    final m_flow_nominal=m_flow_nominal[1]) if not
-    use_pressure                         annotation (Placement(transformation(
+    final m_flow_nominal=m_flow_nominal[1]) if not use_pressure annotation (
+      Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=180,
         origin={70,-50})));
@@ -153,14 +154,14 @@ model HeatPumpAndHeatingRod "Bivalent monoenergetic heat pump"
         rotation=270,
         origin={40,36})));
 
-  Utilities.KPIs.InputKPICalculator KPIWel(
+  BESMod.Utilities.KPIs.InputKPICalculator KPIWel(
     integralUnit="J",
     calc_singleOnTime=true,
     calc_integral=true,
     calc_movAve=false,
     unit="W")
     annotation (Placement(transformation(extent={{-78,-106},{-66,-84}})));
-  Utilities.KPIs.InputKPICalculator KPIWHRel(
+  BESMod.Utilities.KPIs.InputKPICalculator KPIWHRel(
     unit="W",
     integralUnit="J",
     calc_singleOnTime=true,
@@ -223,23 +224,28 @@ model HeatPumpAndHeatingRod "Bivalent monoenergetic heat pump"
         rotation=0,
         origin={-164,32})));
 
-Utilities.KPIs.InternalKPICalculator KPIQHP(
+  BESMod.Utilities.KPIs.InternalKPICalculator KPIQHP(
     unit="W",
     integralUnit="J",
-    calc_singleOnTime=false,                                        calc_integral=true,
+    calc_singleOnTime=false,
+    calc_integral=true,
     calc_totalOnTime=false,
-    calc_numSwi=false,                                                                  calc_movAve=false,
-    calc_intBelThres=false,                                                                                y=heatPump.con.QFlow_in)
-  annotation (Placement(transformation(extent={{-76,-124},{-64,-102}})));
-Utilities.KPIs.InternalKPICalculator KPIQHR(
+    calc_numSwi=false,
+    calc_movAve=false,
+    calc_intBelThres=false,
+    y=heatPump.con.QFlow_in)
+    annotation (Placement(transformation(extent={{-76,-124},{-64,-102}})));
+  BESMod.Utilities.KPIs.InternalKPICalculator KPIQHR(
     unit="W",
     integralUnit="J",
-    calc_singleOnTime=false,                                        calc_integral=true,
+    calc_singleOnTime=false,
+    calc_integral=true,
     calc_totalOnTime=false,
-    calc_numSwi=false,                                                                  calc_movAve=false,
-    calc_intBelThres=false,                                                                                y=hea.vol.heatPort.Q_flow)
-    if use_heaRod
-  annotation (Placement(transformation(extent={{-76,-142},{-64,-120}})));
+    calc_numSwi=false,
+    calc_movAve=false,
+    calc_intBelThres=false,
+    y=hea.vol.heatPort.Q_flow) if use_heaRod
+    annotation (Placement(transformation(extent={{-76,-142},{-64,-120}})));
 
   IBPSA.Fluid.Sources.Boundary_pT bouPumpHP(
     redeclare package Medium = Medium,
@@ -264,8 +270,9 @@ Utilities.KPIs.InternalKPICalculator KPIQHR(
         extent={{5,6},{-5,-6}},
         rotation=180,
         origin={71,80})));
-  Utilities.Electrical.RealToElecCon realToElecCon(use_souGen=false)
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+  BESMod.Utilities.Electrical.RealToElecCon realToElecCon(use_souGen=false)
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
         rotation=180,
         origin={100,-78})));
   Modelica.Blocks.Math.MultiSum multiSum(nu=if (use_pressure and use_heaRod) then 3 elseif use_pressure and not use_heaRod then 2 elseif use_heaRod and not use_pressure then 2 else 1) annotation (Placement(

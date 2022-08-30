@@ -21,35 +21,35 @@ partial record TransferDataBaseDefinition "Data record for hydraulic heat transf
     "Volume of water in whole heat distribution and transfer system"
     annotation (Dialog(group="Volume"));
   // Pressure
-  parameter BESMod.Systems.Hydraulical.Transfer.Types.PressureDropPerLength pressureDropPerLen
+  parameter BESMod.Systems.Hydraulical.Transfer.Types.PressureDropPerLength pressureDropPerLen(min=Modelica.Constants.eps)
       "Pressure drop per m that is allowed maximal within whole heat distribution system (typical value: 100 Pa/m). TODO: Calculate based on Figure 2.6.3-12 in Taschenbuch für HEIZUNG + KLIMATECHNIK 2019"
       annotation(Dialog(group="Pressure"));
   parameter BESMod.Systems.Hydraulical.Transfer.Types.HydraulicResistanceType typeOfHydRes "Type of the hydraulic restistances to be considered for parameter zf" annotation(Dialog(group="Pressure"), choicesAllMatching=true, Dialog(descriptionLabel=true));
   parameter Real zf(min=1.0, max=10.0, unit="1") = BESMod.Systems.Hydraulical.Transfer.Functions.GetSurchargeFactorForHydraulicResistances(typeOfHydRes)
       "Factor for additional pressure resistances in piping network such as bows. Acc. to [Babusch, 2009]"
       annotation(Dialog(group="Pressure"));
-  parameter Modelica.Units.SI.PressureDifference dpHeaDistr_nominal=
+  parameter Modelica.Units.SI.PressureDifference dpHeaDistr_nominal(min=Modelica.Constants.eps)=
       pressureDropPerLen*zf*2*(2*sqrt(AFloor) + heiBui)
     "Pressure difference of heat distribuition system including piping plus pressure resistances but excluding UFH piping / heating circuit distributor. Actually L * W * H (factor 2 for flow and return)."
     annotation (Dialog(group="Pressure"));
 
   // Radiator
-  parameter Real perPreLosRad "Percentage of pressure loss in radiator relative to overall pressure loss" annotation(Dialog(group="Radiator"));
-  parameter Modelica.Units.SI.PressureDifference dpRad_nominal[nZones]=fill(
+  parameter Real perPreLosRad(min=Modelica.Constants.eps) "Percentage of pressure loss in radiator relative to overall pressure loss" annotation(Dialog(group="Radiator"));
+  parameter Modelica.Units.SI.PressureDifference dpRad_nominal[nZones](each min=Modelica.Constants.eps)=fill(
       perPreLosRad*dpHeaDistr_nominal, nZones)
     "Pressure drop at nominal mass flow rate in radiator"
     annotation (Dialog(group="Radiator"));
   // Valves
   parameter Real valveAutho[nZones](each min=0.2, each max=0.8, each unit="1") "Assumed valve authority (typical value: 0.5)" annotation(Dialog(group="Thermostatic Valve"));
-  parameter Modelica.Units.SI.PressureDifference dpHeaSysValve_nominal[nZones]=
+  parameter Modelica.Units.SI.PressureDifference dpHeaSysValve_nominal[nZones](each min=Modelica.Constants.eps)=
       (dpRad_nominal .+ dpHeaSysPreValve_nominal) ./ (1 .- valveAutho)
     "Nominal pressure drop over valve when fully opened at m_flowValve_nominal"
     annotation (Dialog(group="Thermostatic Valve"));
 
   parameter Boolean use_hydrBalAutom = true "Use automatic hydraluic balancing to set dpHeaSysPreValve_nominal" annotation(Dialog(group="Thermostatic Valve"));
   parameter Modelica.Units.SI.PressureDifference dpHeaSysPreValve_nominal[
-    nZones]=if use_hydrBalAutom then max(dpRad_nominal) .- (dpRad_nominal)
-       else fill(0, nZones)
+    nZones](each min=Modelica.Constants.eps)=if use_hydrBalAutom then max(dpRad_nominal) .- (dpRad_nominal)
+       else fill(Modelica.Constants.eps, nZones)
     "Pressure difference of each branch in heat distribution system as pre set value for valves (hydraulic balance)"
     annotation (Dialog(group="Thermostatic Valve", enable=use_hydrBalAutom));
   parameter Real leakageOpening = 0.0001

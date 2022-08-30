@@ -82,8 +82,7 @@ model SolarThermalBivHP
         rotation=0,
         origin={14,-126})));
 
-  Utilities.KPIs.InternalKPICalculator
-                                    KPIWel1(
+  BESMod.Utilities.KPIs.InternalKPICalculator KPIWel1(
     unit="W",
     integralUnit="J",
     calc_singleOnTime=true,

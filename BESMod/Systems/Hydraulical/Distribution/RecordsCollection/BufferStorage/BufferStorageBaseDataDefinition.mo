@@ -28,7 +28,7 @@ record BufferStorageBaseDataDefinition
   parameter Modelica.Units.SI.MassFlowRate mHC2_flow_nominal
     "Nominal mass flow rate of HC fluid"
     annotation (Dialog(group="Loading", enable=use_HC2));
-  replaceable parameter AixLib.DataBase.Pipes.PipeBaseDataDefinition pipeHC2   constrainedby
+  replaceable parameter AixLib.DataBase.Pipes.Copper.Copper_12x0_6 pipeHC2   constrainedby
     AixLib.DataBase.Pipes.PipeBaseDataDefinition                                                                                           "Type of Pipe for HC2" annotation (choicesAllMatching=true, Dialog(group="Loading", enable=use_HC2));
   parameter Modelica.Units.SI.CoefficientOfHeatTransfer hConHC2=(2/pipeHC2.d_i
        + 2/pipeHC2.d_o)/(((max(dTLoadingHC2, dTLoaMin)*2*Modelica.Constants.pi*

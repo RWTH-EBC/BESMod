@@ -1,11 +1,10 @@
 within BESMod.Examples.SolarThermalSystem;
 model SolarThermalHPS "HPS which is supported by a solar thermal collector"
-  extends Modelica.Icons.Example;
   extends BESMod.Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
     redeclare Systems.Demand.Building.TEASERThermalZone building(redeclare
         BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
-        oneZoneParam),
+        oneZoneParam(heaLoadFacGrd=0, heaLoadFacOut=0)),
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem
       hydraulic(
@@ -89,6 +88,7 @@ model SolarThermalHPS "HPS which is supported by a solar thermal collector"
         BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile),
     redeclare BESMod.Systems.Ventilation.NoVentilation
       ventilation);
+  extends Modelica.Icons.Example;
 
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,

@@ -1,11 +1,10 @@
 within BESMod.Examples.UseCaseAachen;
 model BES
-  extends Modelica.Icons.Example;
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
     redeclare Systems.Demand.Building.TEASERThermalZone building(redeclare
         BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
-        oneZoneParam),
+        oneZoneParam(heaLoadFacGrd=0, heaLoadFacOut=0)),
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem
       hydraulic(
@@ -83,6 +82,7 @@ model BES
     redeclare final package MediumHyd = AixLib.Media.Water,
     redeclare BESMod.Systems.Ventilation.NoVentilation
       ventilation);
+  extends Modelica.Icons.Example;
 
   annotation (experiment(
       StopTime=31536000,

@@ -1,7 +1,5 @@
 within BESMod.Utilities.KPIs.BaseClasses;
 partial model PartialKPICalculator "Partial KPI Calculator"
-
-
   parameter String unit "Unit of signal";
   parameter String integralUnit "Unit of integral of signal";
   parameter Real thresholdOn=Modelica.Constants.eps * 100

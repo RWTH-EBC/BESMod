@@ -47,6 +47,14 @@ python install_dependencies.py AixLib Buildings --install_dir=D:\BESMod_install 
 After installing all libraries, a script `startup.mos` will be created in your BESMod repo.
 Execute this script to load all dependencies and start modelling.
 
+### Updating dependencies
+
+If you have BESMod already installed, run  
+
+```
+python install_dependencies.py full --update
+```
+to update the existing repos and avoid a second download.
 
 # How to contribute to the development of BESMod
 

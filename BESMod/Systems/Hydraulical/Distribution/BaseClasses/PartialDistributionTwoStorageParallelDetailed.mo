@@ -39,7 +39,7 @@ partial model PartialDistributionTwoStorageParallelDetailed
     use_inputFilter=false) annotation (choicesAllMatching=
        true, Placement(transformation(extent={{-84,84},{-64,104}})));
 
- replaceable
+ replaceable parameter
     RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition bufParameters
     constrainedby
     RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition(
@@ -62,22 +62,22 @@ partial model PartialDistributionTwoStorageParallelDetailed
           annotation (
       choicesAllMatching=true, Placement(transformation(extent={{18,26},{32,40}})));
 
-  replaceable
+  replaceable parameter
     RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition dhwParameters
     constrainedby
     RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition(
-        final rho=rho,
-        final c_p=cp,
-        final TAmb=TAmb,
-        final use_HC1=storageDHW.useHeatingCoil1,
-        final QHC1_flow_nominal=Q_flow_nominal[1]*f_design[1],
-        final V=VDHWDay,
         final Q_flow_nominal=QDHW_flow_nominal,
         final VPerQ_flow=0,
+        final rho=rho,
+        final c_p=cp,
+        final V=VDHWDay,
+        final TAmb=TAmb,
         T_m=TDHW_nominal,
+        final QHC1_flow_nominal=Q_flow_nominal[1]*f_design[1],
         final mHC1_flow_nominal=mSup_flow_nominal[1],
         redeclare final AixLib.DataBase.Pipes.Copper.Copper_12x1 pipeHC1,
-        final use_HC2=storageDHW.useHeatingCoil2,
+        final use_HC2=storageBuf.useHeatingCoil2,
+        final use_HC1=storageBuf.useHeatingCoil1,
         final dTLoadingHC2=9999999,
         final fHeiHC2=1,
         final fDiaHC2=1,
@@ -207,8 +207,7 @@ partial model PartialDistributionTwoStorageParallelDetailed
     final allowFlowReversal_HC2=allowFlowReversal)
     annotation (Placement(transformation(extent={{-36,-74},{0,-28}})));
 
-  BESMod.Components.HeatingRodWithSecurityControl
-                                         hea(
+  BESMod.Systems.Hydraulical.Components.HeatingRodWithSecurityControl hea(
     redeclare package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=m_flow_nominal[1],
@@ -255,16 +254,16 @@ partial model PartialDistributionTwoStorageParallelDetailed
   Modelica.Blocks.Math.Gain gainHRBuf(k=bufParameters.QHR_flow_nominal)
  if bufParameters.use_hr
     annotation (Placement(transformation(extent={{-80,18},{-64,36}})));
-  BESMod.Components.DiscretizeContSignal  discretizeHRAftBufSto(final
-      discretizationSteps=heatingRodAftBufParameters.discretizationSteps)
- if use_heatingRodAfterBuffer
+  BESMod.Systems.Hydraulical.Distribution.Components.DiscretizeContSignal
+    discretizeHRAftBufSto(final discretizationSteps=heatingRodAftBufParameters.discretizationSteps)
+    if use_heatingRodAfterBuffer
     annotation (Placement(transformation(extent={{36,88},{44,96}})));
-  BESMod.Components.DiscretizeContSignal  discretizeHRInDHWSto(final
-      discretizationSteps=dhwParameters.discretizationStepsHR)
+  BESMod.Systems.Hydraulical.Distribution.Components.DiscretizeContSignal
+    discretizeHRInDHWSto(final discretizationSteps=dhwParameters.discretizationStepsHR)
     if dhwParameters.use_hr
     annotation (Placement(transformation(extent={{-120,-54},{-112,-46}})));
-  BESMod.Components.DiscretizeContSignal  discretizeHRInBufSto(final
-      discretizationSteps=bufParameters.discretizationStepsHR)
+  BESMod.Systems.Hydraulical.Distribution.Components.DiscretizeContSignal
+    discretizeHRInBufSto(final discretizationSteps=bufParameters.discretizationStepsHR)
     if bufParameters.use_hr
     annotation (Placement(transformation(extent={{-100,24},{-92,32}})));
 
@@ -280,7 +279,7 @@ partial model PartialDistributionTwoStorageParallelDetailed
     redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve parameters=threeWayValveParameters)
     annotation (Placement(transformation(extent={{-84,54},{-64,74}})));
 
-  Utilities.KPIs.InternalKPICalculator internalKPICalculatorBufLoss(
+  BESMod.Utilities.KPIs.InternalKPICalculator internalKPICalculatorBufLoss(
     unit="W",
     integralUnit="J",
     calc_singleOnTime=false,
@@ -291,7 +290,7 @@ partial model PartialDistributionTwoStorageParallelDetailed
     calc_intBelThres=false,
     y=fixedTemperatureBuf.port.Q_flow)
     annotation (Placement(transformation(extent={{-52,-134},{-32,-96}})));
-  Utilities.KPIs.InternalKPICalculator internalKPICalculatorDHWLoss(
+  BESMod.Utilities.KPIs.InternalKPICalculator internalKPICalculatorDHWLoss(
     unit="W",
     integralUnit="J",
     calc_singleOnTime=false,
@@ -317,9 +316,9 @@ partial model PartialDistributionTwoStorageParallelDetailed
         rotation=180,
         origin={87,80})));
 
-  Utilities.Electrical.ZeroLoad zeroLoad
+  BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{30,-108},{50,-88}})));
-  Utilities.KPIs.InternalKPICalculator internalKPICalculatorDHWHR(
+  BESMod.Utilities.KPIs.InternalKPICalculator internalKPICalculatorDHWHR(
     unit="W",
     integralUnit="J",
     calc_singleOnTime=false,
@@ -330,7 +329,7 @@ partial model PartialDistributionTwoStorageParallelDetailed
     calc_intBelThres=false,
     y=QHRStoDHWPre_flow.Q_flow) if dhwParameters.use_hr
     annotation (Placement(transformation(extent={{-84,-134},{-64,-96}})));
-  Utilities.KPIs.InputKPICalculator inputKPICalculator(
+  BESMod.Utilities.KPIs.InputKPICalculator inputKPICalculator(
     unit="W",
     integralUnit="J",
     calc_singleOnTime=false,
@@ -340,7 +339,7 @@ partial model PartialDistributionTwoStorageParallelDetailed
     calc_movAve=false,
     calc_intBelThres=false) if use_heatingRodAfterBuffer
     annotation (Placement(transformation(extent={{-84,-156},{-64,-118}})));
-  Utilities.KPIs.InternalKPICalculator internalKPICalculatorDHWHR1(
+  BESMod.Utilities.KPIs.InternalKPICalculator internalKPICalculatorDHWHR1(
     unit="W",
     integralUnit="J",
     calc_singleOnTime=false,

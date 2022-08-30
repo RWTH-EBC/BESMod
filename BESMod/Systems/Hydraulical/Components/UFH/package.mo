@@ -1,4 +1,4 @@
-within BESMod.Components;
+within BESMod.Systems.Hydraulical.Components;
 package UFH
   extends Modelica.Icons.InternalPackage;
 

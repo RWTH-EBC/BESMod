@@ -1,11 +1,13 @@
-within BESMod.Components.UFH;
+within BESMod.Systems.Hydraulical.Components.UFH;
 model PanelHeating
   "A panel heating for e.g. floor heating with discretization"
 
   extends Modelica.Fluid.Interfaces.PartialTwoPort;
 
-  replaceable parameter BESMod.Components.UFH.ActiveWallBaseDataDefinition floorHeatingType constrainedby
-    BESMod.Components.UFH.ActiveWallBaseDataDefinition
+  replaceable parameter
+    BESMod.Systems.Hydraulical.Components.UFH.ActiveWallBaseDataDefinition floorHeatingType
+    constrainedby
+    BESMod.Systems.Hydraulical.Components.UFH.ActiveWallBaseDataDefinition
     annotation (Dialog(group="Type"), choicesAllMatching=true);
 
   parameter Boolean isFloor =  true "Floor or Ceiling heating"
@@ -102,7 +104,7 @@ model PanelHeating
     each final isFloor=isFloor,
     each final calcMethod=calcMethod,
     each final hCon_const=hCon_const,
-    A_floor=A) annotation (Placement(transformation(extent={{-58,1},{-8,51}})));
+    each final A_floor=A) annotation (Placement(transformation(extent={{-58,1},{-8,51}})));
 
   AixLib.Fluid.HeatExchangers.ActiveWalls.BaseClasses.PressureDropPH pressureDrop(
     redeclare package Medium = Medium,
