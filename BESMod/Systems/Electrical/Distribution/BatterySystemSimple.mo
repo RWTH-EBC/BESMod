@@ -15,8 +15,8 @@ model BatterySystemSimple "Simple Battery model"
         extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={-70,34})));
-  BESMod.Utilities.Electrical.RealToElecConSplit realToElecConSplit annotation
-    (Placement(transformation(
+  BESMod.Utilities.Electrical.RealToElecConSplit realToElecConSplit annotation (
+     Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={50,-30})));

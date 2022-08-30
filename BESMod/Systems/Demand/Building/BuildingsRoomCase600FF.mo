@@ -210,8 +210,8 @@ model BuildingsRoomCase600FF
   BESMod.Utilities.KPIs.ComfortCalculator comfortCalculatorHea[nZones](TComBou=
         TSetZone_nominal .- dTComfort, each for_heating=true)
     annotation (Placement(transformation(extent={{66,0},{80,14}})));
-  BESMod.Utilities.KPIs.ComfortCalculator comfortCalculatorCool[nZones](TComBou
-      =TSetZone_nominal .+ dTComfort, each for_heating=false)
+  BESMod.Utilities.KPIs.ComfortCalculator comfortCalculatorCool[nZones](TComBou=
+       TSetZone_nominal .+ dTComfort, each for_heating=false)
     annotation (Placement(transformation(extent={{66,-18},{80,-4}})));
 equation
   connect(roo.uSha, replicator.y) annotation (Line(

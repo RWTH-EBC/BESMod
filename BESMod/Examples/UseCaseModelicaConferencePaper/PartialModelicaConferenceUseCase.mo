@@ -106,7 +106,6 @@ partial model PartialModelicaConferenceUseCase
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
           threeWayValveParas,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover fanData,
-
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
           tempSensorData),

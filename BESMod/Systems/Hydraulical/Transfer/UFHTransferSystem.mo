@@ -16,7 +16,7 @@ model UFHTransferSystem
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-28,72})));
-  BESMod.Components.UFH.PanelHeating panelHeating[
+  BESMod.Systems.Hydraulical.Components.UFH.PanelHeating panelHeating[
     nParallelDem](
     redeclare package Medium = Medium,
     final floorHeatingType=floorHeatingType,
@@ -126,20 +126,23 @@ model UFHTransferSystem
   BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{32,-108},{52,-88}})));
 protected
-  parameter BESMod.Components.UFH.ActiveWallBaseDataDefinition floorHeatingType[nParallelDem]={BESMod.Components.UFH.ActiveWallBaseDataDefinition(
-        Temp_nom=Modelica.Units.Conversions.from_degC(  {TTra_nominal[i],
-          TTra_nominal[i]-dTTra_nominal[i],TDem_nominal[i]}),
-        q_dot_nom=Q_flow_nominal[i] / UFHParameters.area[i],
-        k_isolation=UFHParameters.k_top[i] + UFHParameters.k_down[i],
-        k_top=UFHParameters.k_top[i],
-        k_down=UFHParameters.k_down[i],
-        VolumeWaterPerMeter=0,
-        eps=0.9,
-        C_ActivatedElement=UFHParameters.C_ActivatedElement[i],
-        c_top_ratio=UFHParameters.c_top_ratio[i],
-        PressureDropExponent=0,
-        PressureDropCoefficient=0,
-        diameter=UFHParameters.diameter) for i in 1:nParallelDem};
+  parameter
+    BESMod.Systems.Hydraulical.Components.UFH.ActiveWallBaseDataDefinition
+    floorHeatingType[nParallelDem]={
+      BESMod.Systems.Hydraulical.Components.UFH.ActiveWallBaseDataDefinition(
+      Temp_nom=Modelica.Units.Conversions.from_degC({TTra_nominal[i],
+        TTra_nominal[i] - dTTra_nominal[i],TDem_nominal[i]}),
+      q_dot_nom=Q_flow_nominal[i]/UFHParameters.area[i],
+      k_isolation=UFHParameters.k_top[i] + UFHParameters.k_down[i],
+      k_top=UFHParameters.k_top[i],
+      k_down=UFHParameters.k_down[i],
+      VolumeWaterPerMeter=0,
+      eps=0.9,
+      C_ActivatedElement=UFHParameters.C_ActivatedElement[i],
+      c_top_ratio=UFHParameters.c_top_ratio[i],
+      PressureDropExponent=0,
+      PressureDropCoefficient=0,
+      diameter=UFHParameters.diameter) for i in 1:nParallelDem};
 
 equation
 

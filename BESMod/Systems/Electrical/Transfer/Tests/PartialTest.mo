@@ -5,11 +5,11 @@ partial model PartialTest
     transfer constrainedby BaseClasses.PartialTransfer
     annotation (Placement(transformation(extent={{-44,-32},{48,52}})),
       choicesAllMatching=true);
-  Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixedTemperatureRad[transfer.nParallelDem]
-    (each T=293.15)
+  Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixedTemperatureRad[transfer.nParallelDem](
+     each T=293.15)
     annotation (Placement(transformation(extent={{100,-20},{80,0}})));
-  Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixedTemperatureCon[transfer.nParallelDem]
-    (each T=293.15)
+  Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixedTemperatureCon[transfer.nParallelDem](
+     each T=293.15)
     annotation (Placement(transformation(extent={{100,20},{80,40}})));
 equation
   connect(fixedTemperatureRad.port, transfer.heatPortRad) annotation (Line(
