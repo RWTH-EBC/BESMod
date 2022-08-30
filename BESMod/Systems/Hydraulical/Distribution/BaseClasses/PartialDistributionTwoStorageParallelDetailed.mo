@@ -8,6 +8,9 @@ partial model PartialDistributionTwoStorageParallelDetailed
     final dTTraDHW_nominal=dhwParameters.dTLoadingHC1,
     final dTTra_nominal={bufParameters.dTLoadingHC1},
     final m_flow_nominal=mDem_flow_nominal,
+    final VStoDHW=dhwParameters.V,
+    final QDHWStoLoss_flow=dhwParameters.QLoss_flow,
+    designType=BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage,
     final TSup_nominal=TDem_nominal .+ dTLoss_nominal .+ dTTra_nominal,
     final nParallelSup=1,
     final nParallelDem=1);

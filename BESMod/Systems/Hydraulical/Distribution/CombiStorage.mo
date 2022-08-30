@@ -4,6 +4,9 @@ model CombiStorage
   extends BaseClasses.PartialDistribution(
     dpSup_nominal={0,sum(bufferStorage.heatingCoil2.pipe.res.dp_nominal)},
     final dpDem_nominal={0},
+    final VStoDHW=parameters.V,
+    final QDHWStoLoss_flow=parameters.QLoss_flow,
+    designType=BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage,
     dTTraDHW_nominal=parameters.dTLoadingHC1,
     final m_flow_nominal=mDem_flow_nominal,
     dTTra_nominal={0},

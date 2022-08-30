@@ -2,7 +2,7 @@ within BESMod.Systems.Demand.DHW.BaseClasses;
 partial model PartialDHW "Partial model for domestic hot water (DHW)"
   extends BESMod.Systems.BaseClasses.PartialFluidSubsystem;
   extends BESMod.Utilities.Icons.DHWIcon;
-  replaceable parameter RecordsCollection.DHWDesignParameters parameters;
+  replaceable parameter RecordsCollection.DHWDesignParameters parameters  annotation(choicesAllMatching=true);
   parameter Boolean subsystemDisabled "To enable the icon if the subsystem is disabled" annotation (Dialog(tab="Graphics"));
 
   Modelica.Fluid.Interfaces.FluidPort_a port_a(redeclare final package Medium =
