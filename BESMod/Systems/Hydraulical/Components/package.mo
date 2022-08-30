@@ -1,4 +1,4 @@
-within BESMod;
+within BESMod.Systems.Hydraulical;
 package Components "Package for all additional compontents developted for this project"
   extends Modelica.Icons.Package;
 

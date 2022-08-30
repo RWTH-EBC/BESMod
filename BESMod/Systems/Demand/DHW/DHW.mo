@@ -9,11 +9,11 @@ model DHW "Standard DHW subsystem"
     pumpData
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-96,-96},{-84,-84}})));
 
-  Components.Pumps.ArtificalPumpFixedT artificalPumpFixedT(
+  Hydraulical.Components.Pumps.ArtificalPumpFixedT artificalPumpFixedT(
     redeclare package Medium = Medium,
     p=p_start,
-    T_fixed=parameters.TDHWCold_nominal) if not use_pressure
-                                         annotation (Placement(transformation(
+    T_fixed=parameters.TDHWCold_nominal) if not use_pressure annotation (
+      Placement(transformation(
         extent={{-14,-14},{14,14}},
         rotation=270,
         origin={-60,-8})));

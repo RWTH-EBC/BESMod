@@ -1,4 +1,4 @@
-within BESMod.Components.Pumps.BaseClasses;
+within BESMod.Systems.Hydraulical.Components.Pumps.BaseClasses;
 partial model PartialArtificalPumpT "Setting m_flow and temperature possible"
   extends PartialArtificalPump;
   IBPSA.Fluid.Sources.MassFlowSource_T bou_source(

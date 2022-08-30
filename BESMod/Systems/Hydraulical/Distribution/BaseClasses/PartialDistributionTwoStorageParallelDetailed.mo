@@ -210,8 +210,7 @@ partial model PartialDistributionTwoStorageParallelDetailed
     final allowFlowReversal_HC2=allowFlowReversal)
     annotation (Placement(transformation(extent={{-36,-74},{0,-28}})));
 
-  BESMod.Components.HeatingRodWithSecurityControl
-                                         hea(
+  BESMod.Systems.Hydraulical.Components.HeatingRodWithSecurityControl hea(
     redeclare package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=m_flow_nominal[1],
@@ -258,16 +257,16 @@ partial model PartialDistributionTwoStorageParallelDetailed
   Modelica.Blocks.Math.Gain gainHRBuf(k=bufParameters.QHR_flow_nominal)
  if bufParameters.use_hr
     annotation (Placement(transformation(extent={{-80,18},{-64,36}})));
-  BESMod.Components.DiscretizeContSignal  discretizeHRAftBufSto(final
-      discretizationSteps=heatingRodAftBufParameters.discretizationSteps)
- if use_heatingRodAfterBuffer
+  BESMod.Systems.Hydraulical.Distribution.Components.DiscretizeContSignal
+    discretizeHRAftBufSto(final discretizationSteps=heatingRodAftBufParameters.discretizationSteps)
+    if use_heatingRodAfterBuffer
     annotation (Placement(transformation(extent={{36,88},{44,96}})));
-  BESMod.Components.DiscretizeContSignal  discretizeHRInDHWSto(final
-      discretizationSteps=dhwParameters.discretizationStepsHR)
+  BESMod.Systems.Hydraulical.Distribution.Components.DiscretizeContSignal
+    discretizeHRInDHWSto(final discretizationSteps=dhwParameters.discretizationStepsHR)
     if dhwParameters.use_hr
     annotation (Placement(transformation(extent={{-120,-54},{-112,-46}})));
-  BESMod.Components.DiscretizeContSignal  discretizeHRInBufSto(final
-      discretizationSteps=bufParameters.discretizationStepsHR)
+  BESMod.Systems.Hydraulical.Distribution.Components.DiscretizeContSignal
+    discretizeHRInBufSto(final discretizationSteps=bufParameters.discretizationStepsHR)
     if bufParameters.use_hr
     annotation (Placement(transformation(extent={{-100,24},{-92,32}})));
 

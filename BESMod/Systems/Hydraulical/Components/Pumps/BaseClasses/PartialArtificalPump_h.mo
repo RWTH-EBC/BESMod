@@ -1,4 +1,4 @@
-within BESMod.Components.Pumps.BaseClasses;
+within BESMod.Systems.Hydraulical.Components.Pumps.BaseClasses;
 partial model PartialArtificalPump_h
   extends PartialArtificalPump;
   IBPSA.Fluid.Sources.MassFlowSource_h bou_source(

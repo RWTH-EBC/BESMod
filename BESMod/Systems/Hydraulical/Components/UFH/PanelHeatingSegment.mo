@@ -1,4 +1,4 @@
-within BESMod.Components.UFH;
+within BESMod.Systems.Hydraulical.Components.UFH;
 model PanelHeatingSegment "One segment of the discretized panel heating"
 
 extends Modelica.Fluid.Interfaces.PartialTwoPort;

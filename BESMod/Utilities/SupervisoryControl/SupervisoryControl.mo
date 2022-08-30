@@ -25,8 +25,8 @@ model SupervisoryControl
   Modelica.Blocks.Sources.RealExpression uExt if ctrlType == BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.External
     "External input signal"
     annotation (Placement(transformation(extent={{-60,10},{-40,30}})));
-  Modelica.Blocks.Sources.BooleanConstant deactivateAlways(final k=false) if
-    ctrlType == BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Local
+  Modelica.Blocks.Sources.BooleanConstant deactivateAlways(final k=false)
+ if ctrlType == BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Local
     "Block to activate use of external signal"
     annotation (Placement(transformation(extent={{-60,-40},{-40,-20}})));
   Modelica.Blocks.Sources.Constant uSupDeacticate(final k=0) if ctrlType ==

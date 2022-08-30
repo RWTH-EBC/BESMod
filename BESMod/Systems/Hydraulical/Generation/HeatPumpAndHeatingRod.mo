@@ -41,11 +41,12 @@ model HeatPumpAndHeatingRod "Bivalent monoenergetic heat pump"
     if not use_heaRod
     annotation (Placement(transformation(extent={{32,74},{44,86}})));
 
-  BESMod.Components.Pumps.ArtificalPumpIsotermhal artificalPumpIsotermhal(
+  BESMod.Systems.Hydraulical.Components.Pumps.ArtificalPumpIsotermhal
+    artificalPumpIsotermhal(
     redeclare package Medium = Medium,
     final p=p_start,
-    final m_flow_nominal=m_flow_nominal[1]) if not
-    use_pressure                         annotation (Placement(transformation(
+    final m_flow_nominal=m_flow_nominal[1]) if not use_pressure annotation (
+      Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=180,
         origin={70,-50})));

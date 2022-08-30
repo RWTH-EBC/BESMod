@@ -1,4 +1,4 @@
-within BESMod.Components;
+within BESMod.Systems.Hydraulical.Components;
 package Pumps "Package for pumps"
   extends Modelica.Icons.InternalPackage;
 

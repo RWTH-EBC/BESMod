@@ -1,11 +1,13 @@
-within BESMod.Components.UFH;
+within BESMod.Systems.Hydraulical.Components.UFH;
 model PanelHeating
   "A panel heating for e.g. floor heating with discretization"
 
   extends Modelica.Fluid.Interfaces.PartialTwoPort;
 
-  replaceable parameter BESMod.Components.UFH.ActiveWallBaseDataDefinition floorHeatingType constrainedby
-    BESMod.Components.UFH.ActiveWallBaseDataDefinition
+  replaceable parameter
+    BESMod.Systems.Hydraulical.Components.UFH.ActiveWallBaseDataDefinition floorHeatingType
+    constrainedby
+    BESMod.Systems.Hydraulical.Components.UFH.ActiveWallBaseDataDefinition
     annotation (Dialog(group="Type"), choicesAllMatching=true);
 
   parameter Boolean isFloor =  true "Floor or Ceiling heating"
