@@ -1,4 +1,4 @@
-within BESMod.Components.Pumps.BaseClasses;
+within BESMod.Systems.Hydraulical.Components.Pumps.BaseClasses;
 partial model PartialArtificalPump
   "Partial model a sink combined with a source to avoid calculation of pump characteristics (time-consuming)"
   extends IBPSA.Fluid.Interfaces.PartialTwoPort;

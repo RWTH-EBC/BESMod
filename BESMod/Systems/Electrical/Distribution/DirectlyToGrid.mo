@@ -3,8 +3,8 @@ model DirectlyToGrid "Direct grid connection"
   extends
     BESMod.Systems.Electrical.Distribution.BaseClasses.PartialDistribution;
 
-  Utilities.Electrical.MultiSumElec multiSumElec(nPorts=nSubSys) annotation (
-      Placement(transformation(
+  BESMod.Utilities.Electrical.MultiSumElec multiSumElec(nPorts=nSubSys)
+    annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={50,-2})));

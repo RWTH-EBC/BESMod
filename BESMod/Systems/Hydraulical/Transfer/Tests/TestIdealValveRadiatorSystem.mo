@@ -8,5 +8,6 @@ model TestIdealValveRadiatorSystem
         radParameters, redeclare
         BESMod.Systems.RecordsCollection.Movers.DefaultMover
         pumpData));
+  extends Modelica.Icons.Example;
 
 end TestIdealValveRadiatorSystem;

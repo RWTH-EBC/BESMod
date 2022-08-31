@@ -1,4 +1,4 @@
-within BESMod.Components.Pumps;
+within BESMod.Systems.Hydraulical.Components.Pumps;
 model ArtificalPumpFixedT
   "Temperature of source is a given fixed value"
   extends BaseClasses.PartialArtificalPumpT(final bou_sink(nPorts=1),

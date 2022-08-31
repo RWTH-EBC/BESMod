@@ -46,7 +46,7 @@ model RadiatorTransferSystem
 
   replaceable parameter BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData radParameters
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-100,-98},{-80,-78}})));
-  Utilities.KPIs.InternalKPICalculator internalKPICalculator(
+  BESMod.Utilities.KPIs.InternalKPICalculator internalKPICalculator(
     unit="W",
     integralUnit="J",
     calc_singleOnTime=false,
@@ -55,7 +55,7 @@ model RadiatorTransferSystem
     calc_movAve=false,
     y=sum(-heatPortRad.Q_flow) + sum(-heatPortCon.Q_flow))
     annotation (Placement(transformation(extent={{-32,-96},{-12,-60}})));
-  Utilities.KPIs.InputKPICalculator inputKPICalculator[nParallelDem](
+  BESMod.Utilities.KPIs.InputKPICalculator inputKPICalculator[nParallelDem](
     unit=fill("", nParallelDem),
     integralUnit=fill("s", nParallelDem),
     each calc_singleOnTime=false,
@@ -95,7 +95,7 @@ model RadiatorTransferSystem
         extent={{-11,-11},{11,11}},
         rotation=270,
         origin={-15,9})));
-  replaceable
+  replaceable parameter
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
     pumpData annotation (choicesAllMatching=true, Placement(transformation(extent={{-98,78},{-78,98}})));
   IBPSA.Fluid.Sources.Boundary_pT bouPumpHP[nParallelDem](
@@ -106,7 +106,7 @@ model RadiatorTransferSystem
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-66,10})));
-  Utilities.Electrical.ZeroLoad zeroLoad
+  BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{30,-106},{50,-86}})));
 equation
   connect(rad.heatPortRad, heatPortRad) annotation (Line(points={{-5.08,-31.2},

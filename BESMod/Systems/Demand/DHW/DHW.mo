@@ -9,11 +9,11 @@ model DHW "Standard DHW subsystem"
     pumpData
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-96,-96},{-84,-84}})));
 
-  Components.Pumps.ArtificalPumpFixedT artificalPumpFixedT(
+  Hydraulical.Components.Pumps.ArtificalPumpFixedT artificalPumpFixedT(
     redeclare package Medium = Medium,
     p=p_start,
-    T_fixed=parameters.TDHWCold_nominal) if not use_pressure
-                                         annotation (Placement(transformation(
+    T_fixed=parameters.TDHWCold_nominal) if not use_pressure annotation (
+      Placement(transformation(
         extent={{-14,-14},{14,14}},
         rotation=270,
         origin={-60,-8})));
@@ -40,7 +40,7 @@ Modelica.Blocks.Math.UnitConversions.From_degC fromDegC
         extent={{7,-7},{-7,7}},
         rotation=0,
         origin={41,63})));
-  Utilities.KPIs.InternalKPICalculator internalKPICalculator(
+  BESMod.Utilities.KPIs.InternalKPICalculator internalKPICalculator(
     unit="W",
     integralUnit="J",
     final calc_singleOnTime=false,
@@ -90,7 +90,7 @@ Modelica.Blocks.Math.UnitConversions.From_degC fromDegC
     redeclare final package Medium = Medium,
     final p=p_start) if use_pressure
     annotation (Placement(transformation(extent={{-16,-86},{-36,-66}})));
-  Utilities.Electrical.ZeroLoad zeroLoad
+  BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{32,-94},{52,-74}})));
 equation
   connect(port_a, senT.port_a) annotation (Line(points={{-100,60},{-60,60},{-60,

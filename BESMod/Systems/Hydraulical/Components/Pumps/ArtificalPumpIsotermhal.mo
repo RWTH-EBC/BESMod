@@ -1,4 +1,4 @@
-within BESMod.Components.Pumps;
+within BESMod.Systems.Hydraulical.Components.Pumps;
 model ArtificalPumpIsotermhal
   "Pump without temperature losses"
 extends BaseClasses.PartialArtificalPumpT(bou_source(use_T_in=true), final

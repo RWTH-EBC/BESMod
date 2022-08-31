@@ -8,6 +8,8 @@ model ElectricalHeater
         heatingRodParameters, redeclare
         BESMod.Systems.RecordsCollection.Movers.DefaultMover
         pumpData));
+  extends Modelica.Icons.Example;
+
   Modelica.Blocks.Sources.Constant     const1(k=1)
     annotation (Placement(transformation(extent={{-52,64},{-32,84}})));
 equation

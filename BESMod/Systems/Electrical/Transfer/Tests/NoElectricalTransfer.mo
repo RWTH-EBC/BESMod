@@ -1,9 +1,9 @@
 within BESMod.Systems.Electrical.Transfer.Tests;
 model NoElectricalTransfer
+  extends PartialTest(redeclare
+      BESMod.Systems.Electrical.Transfer.NoElectricalTransfer transfer(
+        nParallelDem=1));
   extends Modelica.Icons.Example;
-  BESMod.Systems.Electrical.Transfer.NoElectricalTransfer
-    noElectricalTransfer(nParallelDem=1)
-    annotation (Placement(transformation(extent={{-44,-32},{48,52}})));
 
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,

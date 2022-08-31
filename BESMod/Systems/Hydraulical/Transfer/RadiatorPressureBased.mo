@@ -1,6 +1,9 @@
 within BESMod.Systems.Hydraulical.Transfer;
 model RadiatorPressureBased "Pressure Based transfer system"
-  extends BaseClasses.PartialTransfer(final dp_nominal=rad.dp_nominal .+ val.dpValve_nominal .+ res.dp_nominal .+ val.dpFixed_nominal,
+  // Abui =1 and hBui =1 to avaoid warnings, will be overwritten anyway
+  extends BaseClasses.PartialTransfer(
+    ABui=1,
+    hBui=1,                           final dp_nominal=rad.dp_nominal .+ val.dpValve_nominal .+ res.dp_nominal .+ val.dpFixed_nominal,
                                       final nParallelSup=1);
 
   replaceable parameter RecordsCollection.TransferDataBaseDefinition
@@ -112,7 +115,7 @@ model RadiatorPressureBased "Pressure Based transfer system"
         rotation=180,
         origin={-48,68})));
 
-  Utilities.Electrical.RealToElecCon realToElecCon(use_souGen=false)
+  BESMod.Utilities.Electrical.RealToElecCon realToElecCon(use_souGen=false)
     annotation (Placement(transformation(extent={{34,-94},{54,-74}})));
 equation
   connect(rad.heatPortRad, heatPortRad) annotation (Line(points={{-5.08,-27.2},

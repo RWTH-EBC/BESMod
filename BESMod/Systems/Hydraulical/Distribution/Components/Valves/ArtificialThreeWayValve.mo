@@ -70,20 +70,21 @@ model ArtificialThreeWayValve
     annotation (Placement(transformation(extent={{-8,-80},{-28,-60}})));
   Modelica.Blocks.Sources.RealExpression dummyEnthalpyBuf(y=inStream(port_dhw_a.h_outflow))
     annotation (Placement(transformation(extent={{-8,-56},{-28,-36}})));
-  BESMod.Components.Pumps.ArtificalPump_h_in artificalPump_h_in_gen(
-      redeclare package Medium = Medium) annotation (Placement(transformation(
+  BESMod.Systems.Hydraulical.Components.Pumps.ArtificalPump_h_in
+    artificalPump_h_in_gen(redeclare package Medium = Medium) annotation (
+      Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-78,0})));
-  BESMod.Components.Pumps.ArtificalPump_h_in artificalPump_h_in_buf(
-      redeclare package Medium = Medium, p=p_hydr) annotation (Placement(
-        transformation(
+  BESMod.Systems.Hydraulical.Components.Pumps.ArtificalPump_h_in
+    artificalPump_h_in_buf(redeclare package Medium = Medium, p=p_hydr)
+    annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={68,-60})));
-  BESMod.Components.Pumps.ArtificalPump_h_in artificalPump_h_in_dhw(
-      redeclare final package Medium = Medium, final p=p_hydr) annotation (
-      Placement(transformation(
+  BESMod.Systems.Hydraulical.Components.Pumps.ArtificalPump_h_in
+    artificalPump_h_in_dhw(redeclare final package Medium = Medium, final p=
+        p_hydr) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={66,60})));

@@ -19,6 +19,9 @@ model ControlledDomesticVentilation
       redeclare
         BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
         tempSensorData));
+  extends Modelica.Icons.Example;
+
+
   Interfaces.GenerationControlBus sigBusGen
     annotation (Placement(transformation(extent={{-4,54},{16,74}})));
 equation

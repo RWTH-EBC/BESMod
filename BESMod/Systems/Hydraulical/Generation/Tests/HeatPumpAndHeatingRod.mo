@@ -18,6 +18,8 @@ model HeatPumpAndHeatingRod
         BESMod.Systems.RecordsCollection.Movers.DefaultMover
         pumpData,
       redeclare package Medium_eva = IBPSA.Media.Air));
+   extends Modelica.Icons.Example;
+
   Modelica.Blocks.Sources.Constant     const1(k=0)
     annotation (Placement(transformation(extent={{-140,40},{-120,60}})));
   Modelica.Blocks.Sources.BooleanConstant

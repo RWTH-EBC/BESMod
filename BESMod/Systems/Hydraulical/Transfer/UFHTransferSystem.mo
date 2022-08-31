@@ -16,7 +16,7 @@ model UFHTransferSystem
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-28,72})));
-  BESMod.Components.UFH.PanelHeating panelHeating[
+  BESMod.Systems.Hydraulical.Components.UFH.PanelHeating panelHeating[
     nParallelDem](
     redeclare package Medium = Medium,
     final floorHeatingType=floorHeatingType,
@@ -30,8 +30,8 @@ model UFHTransferSystem
 
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature
                                                       fixedTemperature
-                                                                   [nParallelDem](final T=
-        UFHParameters.T_floor)
+                                                                   [nParallelDem](each final
+            T=UFHParameters.T_floor)
                annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -42,14 +42,15 @@ model UFHTransferSystem
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-46,-6})));
-  Modelica.Thermal.HeatTransfer.Sources.FixedHeatFlow fixedHeatFlow[nParallelDem](final
-      Q_flow=0)
+  Modelica.Thermal.HeatTransfer.Sources.FixedHeatFlow fixedHeatFlow[nParallelDem](each final
+            Q_flow=0)
                annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-92,-20})));
   Modelica.Thermal.HeatTransfer.Components.HeatCapacitor
-                                                      heatCapacitor[nParallelDem](C=100)
+                                                      heatCapacitor[nParallelDem](each final
+            C=100)
                annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -59,23 +60,25 @@ model UFHTransferSystem
     constrainedby RecordsCollection.UFHData(nZones=nParallelDem, area=AZone)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{22,12},{42,32}})));
 
-  Utilities.KPIs.InputKPICalculator inputKPICalculatorOpening[nParallelDem](
+  BESMod.Utilities.KPIs.InputKPICalculator inputKPICalculatorOpening[
+    nParallelDem](
     unit=fill("", nParallelDem),
     integralUnit=fill("s", nParallelDem),
-    calc_singleOnTime=false,
-    calc_integral=false,
-    calc_totalOnTime=false,
-    calc_numSwi=false,
-    calc_movAve=false)
+    each calc_singleOnTime=false,
+    each calc_integral=false,
+    each calc_totalOnTime=false,
+    each calc_numSwi=false,
+    each calc_movAve=false)
     annotation (Placement(transformation(extent={{-46,-94},{-26,-58}})));
-  Utilities.KPIs.InputKPICalculator inputKPICalculatorLossUFH[nParallelDem](
+  BESMod.Utilities.KPIs.InputKPICalculator inputKPICalculatorLossUFH[
+    nParallelDem](
     unit=fill("W", nParallelDem),
     integralUnit=fill("J", nParallelDem),
-    calc_singleOnTime=false,
-    calc_integral=false,
-    calc_totalOnTime=false,
-    calc_numSwi=false,
-    calc_movAve=false)
+    each calc_singleOnTime=false,
+    each calc_integral=false,
+    each calc_totalOnTime=false,
+    each calc_numSwi=false,
+    each calc_movAve=false)
     annotation (Placement(transformation(extent={{-46,-120},{-26,-84}})));
   IBPSA.Fluid.Sources.Boundary_pT bouPumpHP[nParallelDem](
     redeclare package Medium = Medium,
@@ -116,27 +119,30 @@ model UFHTransferSystem
         extent={{-11,-11},{11,11}},
         rotation=0,
         origin={-23,37})));
-  replaceable
+  replaceable parameter
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
     pumpData annotation (choicesAllMatching=true, Placement(transformation(extent={{-98,78},
             {-78,98}})));
-  Utilities.Electrical.ZeroLoad zeroLoad
+  BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{32,-108},{52,-88}})));
 protected
-  parameter BESMod.Components.UFH.ActiveWallBaseDataDefinition floorHeatingType[nParallelDem]={BESMod.Components.UFH.ActiveWallBaseDataDefinition(
-        Temp_nom=Modelica.Units.Conversions.from_degC(  {TTra_nominal[i],
-          TTra_nominal[i]-dTTra_nominal[i],TDem_nominal[i]}),
-        q_dot_nom=Q_flow_nominal[i] / UFHParameters.area[i],
-        k_isolation=UFHParameters.k_top[i] + UFHParameters.k_down[i],
-        k_top=UFHParameters.k_top[i],
-        k_down=UFHParameters.k_down[i],
-        VolumeWaterPerMeter=0,
-        eps=0.9,
-        C_ActivatedElement=UFHParameters.C_ActivatedElement[i],
-        c_top_ratio=UFHParameters.c_top_ratio[i],
-        PressureDropExponent=0,
-        PressureDropCoefficient=0,
-        diameter=UFHParameters.diameter) for i in 1:nParallelDem};
+  parameter
+    BESMod.Systems.Hydraulical.Components.UFH.ActiveWallBaseDataDefinition
+    floorHeatingType[nParallelDem]={
+      BESMod.Systems.Hydraulical.Components.UFH.ActiveWallBaseDataDefinition(
+      Temp_nom=Modelica.Units.Conversions.from_degC({TTra_nominal[i],
+        TTra_nominal[i] - dTTra_nominal[i],TDem_nominal[i]}),
+      q_dot_nom=Q_flow_nominal[i]/UFHParameters.area[i],
+      k_isolation=UFHParameters.k_top[i] + UFHParameters.k_down[i],
+      k_top=UFHParameters.k_top[i],
+      k_down=UFHParameters.k_down[i],
+      VolumeWaterPerMeter=0,
+      eps=0.9,
+      C_ActivatedElement=UFHParameters.C_ActivatedElement[i],
+      c_top_ratio=UFHParameters.c_top_ratio[i],
+      PressureDropExponent=0,
+      PressureDropCoefficient=0,
+      diameter=UFHParameters.diameter) for i in 1:nParallelDem};
 
 equation
 

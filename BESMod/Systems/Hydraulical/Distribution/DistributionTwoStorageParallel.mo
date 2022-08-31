@@ -121,7 +121,7 @@ model DistributionTwoStorageParallel
         rotation=0,
         origin={30,-90})));
 
-  Utilities.KPIs.InternalKPICalculator internalKPICalculatorBufLoss(
+  BESMod.Utilities.KPIs.InternalKPICalculator internalKPICalculatorBufLoss(
     unit="W",
     integralUnit="J",
     thresholdOn=Modelica.Constants.eps,
@@ -133,7 +133,7 @@ model DistributionTwoStorageParallel
     calc_intBelThres=false,
     y=fixedTemperatureBuf.port.Q_flow)
     annotation (Placement(transformation(extent={{-80,-90},{-60,-52}})));
-  Utilities.KPIs.InternalKPICalculator internalKPICalculatorDHWLoss(
+  BESMod.Utilities.KPIs.InternalKPICalculator internalKPICalculatorDHWLoss(
     unit="W",
     integralUnit="J",
     thresholdOn=Modelica.Constants.eps,
@@ -145,7 +145,7 @@ model DistributionTwoStorageParallel
     calc_intBelThres=false,
     y=fixedTemperatureDHW.port.Q_flow)
     annotation (Placement(transformation(extent={{-80,-110},{-60,-72}})));
-  Utilities.Electrical.ZeroLoad zeroLoad
+  BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{34,-110},{54,-90}})));
 equation
   connect(fixedTemperatureBuf.port, storageBuf.heatPort) annotation (Line(

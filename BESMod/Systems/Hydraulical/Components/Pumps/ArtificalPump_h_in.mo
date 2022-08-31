@@ -1,4 +1,4 @@
-within BESMod.Components.Pumps;
+within BESMod.Systems.Hydraulical.Components.Pumps;
 model ArtificalPump_h_in "Artifical pump with enthalpy as input"
   extends BaseClasses.PartialArtificalPump_h(bou_sink(nPorts=1), bou_source(
         use_h_in=true));

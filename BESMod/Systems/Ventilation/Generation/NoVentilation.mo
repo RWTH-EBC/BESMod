@@ -10,7 +10,7 @@ model NoVentilation "Model without any ventilation"
     final dTTra_nominal={0},
     final nParallelSup=1,
     final nParallelDem=1);
-  Utilities.Electrical.ZeroLoad zeroLoad
+  BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{20,-100},{40,-80}})));
 equation
   connect(portVent_in, portVent_out) annotation (Line(points={{-100,42},{-80,42},

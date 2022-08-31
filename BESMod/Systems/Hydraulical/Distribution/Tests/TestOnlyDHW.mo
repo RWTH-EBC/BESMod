@@ -3,6 +3,8 @@ model TestOnlyDHW
   extends PartialTest(redeclare
       BESMod.Systems.Hydraulical.Distribution.DHWOnly
       distribution(nParallelDem=1));
+  extends Modelica.Icons.Example;
+
   Modelica.Blocks.Sources.BooleanPulse booleanPulse(period=100) annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},

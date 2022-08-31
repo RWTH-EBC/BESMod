@@ -10,6 +10,7 @@ model PVSystemMultiSub
       alt=1,
       timZon=weaDat.timZon,
       ARoof=50));
+  extends Modelica.Icons.Example;
 
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,

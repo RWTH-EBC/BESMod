@@ -120,7 +120,7 @@ partial model PartialVentilationSystem
             114}})));
   Electrical.Interfaces.InternalElectricalPinOut internalElectricalPin
     annotation (Placement(transformation(extent={{60,-108},{80,-88}})));
-  Utilities.Electrical.MultiSumElec multiSumElec(nPorts=2) annotation (
+  BESMod.Utilities.Electrical.MultiSumElec multiSumElec(nPorts=2) annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
