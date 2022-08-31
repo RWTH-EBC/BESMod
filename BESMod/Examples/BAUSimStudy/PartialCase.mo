@@ -93,15 +93,15 @@ partial model PartialCase
           BESMod.Systems.RecordsCollection.Movers.DefaultMover
           pumpData)),
     redeclare Systems.Demand.DHW.DHW DHW(
-      use_pressure=false,
+      redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
+      use_pressure=true,
       redeclare
         BESMod.Systems.RecordsCollection.Movers.DefaultMover
         pumpData,
       redeclare
         BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
         calcmFlow),
-    redeclare Systems.UserProfiles.TEASERProfiles userProfiles(redeclare
-        BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile),
+    redeclare Systems.UserProfiles.TEASERProfiles userProfiles,
     redeclare BESParameters systemParameters,
     redeclare BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy
       parameterStudy,

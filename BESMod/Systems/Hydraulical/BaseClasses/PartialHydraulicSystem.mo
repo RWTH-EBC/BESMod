@@ -16,11 +16,11 @@ partial model PartialHydraulicSystem
 
   replaceable BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration generation(
       dTTra_nominal=fill(1, generation.nParallelDem), dp_nominal=fill(0,
-        generation.nParallelDem))                                                            constrainedby
+        generation.nParallelDem))       constrainedby
     BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration(
     final TDem_nominal=distribution.TSup_nominal,
-    final Q_flow_nominal={sum(distribution.Q_flow_nominal) *generation.f_design[
-        i]                                                                          for i in 1:generation.nParallelDem},
+    final Q_flow_nominal={sum(distribution.Q_flow_nominal)*generation.f_design[
+        i] + distribution.QDHWBefSto_flow_nominal for i in 1:generation.nParallelDem},
     redeclare package Medium = Medium,
     final dpDem_nominal=distribution.dpSup_nominal,
     final energyDynamics=energyDynamics,
@@ -68,11 +68,13 @@ partial model PartialHydraulicSystem
       final TOda_nominal=hydraulicSystemParameters.TOda_nominal,
       final QLoss_flow_nominal=distribution.QLoss_flow_nominal,
       final mDHW_flow_nominal=distribution.mDHW_flow_nominal,
-      final QDHW_flow_nominal=distribution.QDHW_flow_nominal,
       final TDHW_nominal=distribution.TDHW_nominal,
       final VDHWDay=distribution.VDHWDay,
+      final QDHW_flow_nominal=distribution.QDHW_flow_nominal,
       final TDHWCold_nominal=distribution.TDHWCold_nominal,
-      final dTTraDHW_nominal=distribution.dTTraDHW_nominal),
+      final dTTraDHW_nominal=distribution.dTTraDHW_nominal,
+      final tCrit=hydraulicSystemParameters.tCrit,
+      final QCrit=hydraulicSystemParameters.QCrit),
       final transferParameters(
         final nParallelDem=transfer.nParallelDem,
         final nParallelSup=transfer.nParallelSup,
@@ -116,11 +118,13 @@ partial model PartialHydraulicSystem
     final TOda_nominal=hydraulicSystemParameters.TOda_nominal,
     final mDem_flow_nominal=transfer.mSup_flow_nominal,
     final mSup_flow_nominal=generation.m_flow_nominal,
-    final mDHW_flow_nominal=hydraulicSystemParameters.dhwParas.mDHW_flow_nominal,
-    final QDHW_flow_nominal=hydraulicSystemParameters.dhwParas.QDHW_flow_nominal,
-    final VDHWDay=hydraulicSystemParameters.dhwParas.VDHWDay,
-    final TDHWCold_nominal=hydraulicSystemParameters.dhwParas.TDHWCold_nominal,
-    final TDHW_nominal=hydraulicSystemParameters.dhwParas.TDHW_nominal) annotation (choicesAllMatching=true,
+    final mDHW_flow_nominal=hydraulicSystemParameters.mDHW_flow_nominal,
+    final VDHWDay=hydraulicSystemParameters.VDHWDay,
+    final QDHW_flow_nominal=hydraulicSystemParameters.QDHW_flow_nominal,
+    final TDHWCold_nominal=hydraulicSystemParameters.TDHWCold_nominal,
+    final TDHW_nominal=hydraulicSystemParameters.TDHW_nominal,
+    tCrit=hydraulicSystemParameters.tCrit,
+    QCrit=hydraulicSystemParameters.QCrit) annotation (choicesAllMatching=true,
       Placement(transformation(extent={{-12,-104},{90,28}})));
 
   replaceable BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialTransfer transfer(

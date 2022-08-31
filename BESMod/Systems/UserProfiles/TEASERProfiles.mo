@@ -1,11 +1,10 @@
 within BESMod.Systems.UserProfiles;
 model TEASERProfiles "Standard TEASER Profiles"
-  extends BaseClasses.RecordBasedDHWUser;
+  extends BaseClasses.PartialUserProfiles;
   parameter String fileNameIntGains=Modelica.Utilities.Files.loadResource("modelica://BESMod/Resources/InternalGains.txt")
-    "File where matrix is stored"
-    annotation (Dialog(tab="Inputs", group="Internal Gains"));
-  parameter Real gain[3]=fill(1, 3) "Gain value multiplied with internal gains. Used to e.g. disable single gains."          annotation (Dialog(group=
-          "Internal Gains",                                                                                                 tab="Inputs"));
+    "File where matrix is stored";
+  parameter Real gain[3]=fill(1, 3) "Gain value multiplied with internal gains. Used to e.g. disable single gains.";
+
 
   Modelica.Blocks.Sources.CombiTimeTable tableInternalGains(
     final tableOnFile=true,

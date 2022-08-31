@@ -21,9 +21,7 @@ partial model PartialBuildingEnergySystem "Partial BES"
   replaceable parameter
     BESMod.Systems.RecordsCollection.SystemParametersBaseDataDefinition
     systemParameters constrainedby
-    RecordsCollection.SystemParametersBaseDataDefinition(QDHW_flow_nomial=
-        userProfiles.mDHW_flow_nominal*(systemParameters.TSetDHW -
-        systemParameters.TDHWWaterCold)*4184)
+    RecordsCollection.SystemParametersBaseDataDefinition
                      "Parameters relevant for the whole energy system"
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-278,
             -38},{-224,18}})));
@@ -46,9 +44,7 @@ partial model PartialBuildingEnergySystem "Partial BES"
   replaceable BESMod.Systems.UserProfiles.BaseClasses.PartialUserProfiles
     userProfiles constrainedby UserProfiles.BaseClasses.PartialUserProfiles(
     final nZones=systemParameters.nZones,
-    final TSetZone_nominal=systemParameters.TSetZone_nominal,
-    final TSetDHW=systemParameters.TSetDHW,
-    final TDHWWaterCold=systemParameters.TDHWWaterCold)
+    final TSetZone_nominal=systemParameters.TSetZone_nominal)
     "Replacable model to specify your user profiles" annotation (
       choicesAllMatching=true, Placement(transformation(extent={{-280,124},{
             -224,178}})));
@@ -56,12 +52,8 @@ partial model PartialBuildingEnergySystem "Partial BES"
     DHW if systemParameters.use_hydraulic constrainedby
     Demand.DHW.BaseClasses.PartialDHW(
     redeclare final package Medium = MediumDHW,
-    final parameters(
-      final mDHW_flow_nominal=userProfiles.mDHW_flow_nominal,
-      final QDHW_flow_nominal=systemParameters.QDHW_flow_nomial,
-      final TDHW_nominal=systemParameters.TSetDHW,
-      final TDHWCold_nominal=systemParameters.TDHWWaterCold,
-      final VDHWDay=userProfiles.VolDHWDay),
+    final TDHW_nominal=systemParameters.TSetDHW,
+    final TDHWCold_nominal=systemParameters.TDHWWaterCold,
     final subsystemDisabled=not systemParameters.use_dhw)
                                               annotation (choicesAllMatching=true, Placement(
         transformation(extent={{2,-118},{78,-42}})));
@@ -104,7 +96,13 @@ partial model PartialBuildingEnergySystem "Partial BES"
       final ABui=building.ABui,
       final ARoo=building.ARoo,
       final hBui=building.hBui,
-      final dhwParas=DHW.parameters))
+      final mDHW_flow_nominal=DHW.mDHW_flow_nominal,
+      final TDHW_nominal=DHW.TDHW_nominal,
+      final tCrit=DHW.tCrit,
+      final QCrit=DHW.QCrit,
+      final TDHWCold_nominal=DHW.TDHWCold_nominal,
+      final QDHW_flow_nominal=DHW.QDHW_flow_nominal,
+      final VDHWDay=DHW.VDHWDay))
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-198,
             -98},{-42,-2}})));
   replaceable

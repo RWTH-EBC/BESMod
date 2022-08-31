@@ -76,7 +76,7 @@ partial model PartialDistributionTwoStorageParallelDetailed
         final V=VDHWDay,
         final TAmb=TAmb,
         T_m=TDHW_nominal,
-        final QHC1_flow_nominal=Q_flow_nominal[1]*f_design[1],
+        final QHC1_flow_nominal=QDHW_flow_nominal,
         final mHC1_flow_nominal=mSup_flow_nominal[1],
         redeclare final AixLib.DataBase.Pipes.Copper.Copper_12x1 pipeHC1,
         final use_HC2=storageBuf.useHeatingCoil2,

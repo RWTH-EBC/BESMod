@@ -57,14 +57,16 @@ model BES
           radParameters, redeclare
           BESMod.Systems.RecordsCollection.Movers.DefaultMover
           pumpData)),
-    redeclare BESMod.Systems.Demand.DHW.DHW DHW(redeclare
+    redeclare BESMod.Systems.Demand.DHW.DHW DHW(
+      use_pressure=true,                        redeclare
         BESMod.Systems.RecordsCollection.Movers.DefaultMover
         pumpData, redeclare
+        BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
+        redeclare
         BESMod.Systems.Demand.DHW.TappingProfiles.PassThrough
         calcmFlow),
     redeclare BESMod.Systems.UserProfiles.TEASERProfiles
-      userProfiles(redeclare
-        BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile),
+      userProfiles,
     redeclare
       BESMod.Examples.MyOwnHeatingRodEfficiencyStudy.SimpleStudyOfHeatingRodEfficiency
       parameterStudy,

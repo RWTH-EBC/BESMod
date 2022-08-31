@@ -1,6 +1,13 @@
 within BESMod.Systems.Hydraulical.Distribution;
 model BuildingOnly "Only loads building"
   extends BaseClasses.PartialDistribution(
+    VStoDHW=0,
+    QCrit=0,
+    tCrit=0,
+    QDHWStoLoss_flow=0,
+    designType=BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.NoStorage,
+
+    QDHW_flow_nominal=0,
     final dpDem_nominal=fill(0, nParallelDem),
     final dpSup_nominal=fill(0, nParallelSup),
     final nParallelSup=nParallelDem,

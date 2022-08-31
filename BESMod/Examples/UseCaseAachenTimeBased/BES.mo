@@ -1,6 +1,5 @@
 within BESMod.Examples.UseCaseAachenTimeBased;
 model BES
-  extends Modelica.Icons.Example;
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
     redeclare BESMod.Systems.Demand.Building.TEASERThermalZone
@@ -63,14 +62,16 @@ model BES
           radParameters, redeclare
           BESMod.Systems.RecordsCollection.Movers.DefaultMover
           pumpData)),
-    redeclare BESMod.Systems.Demand.DHW.DHW DHW(redeclare
+    redeclare BESMod.Systems.Demand.DHW.DHW DHW(
+      use_pressure=true,                        redeclare
         BESMod.Systems.RecordsCollection.Movers.DefaultMover
         pumpData, redeclare
+        BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
+        redeclare
         BESMod.Systems.Demand.DHW.TappingProfiles.PassThrough
         calcmFlow),
     redeclare BESMod.Systems.UserProfiles.TEASERProfiles
-      userProfiles(redeclare
-        BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile),
+      userProfiles,
     redeclare
       BESMod.Examples.UseCaseAachenTimeBased.ParametersToChange
       parameterStudy,
@@ -79,6 +80,7 @@ model BES
       StopTime=31536000,
       Interval=600,
       __Dymola_Algorithm="Dassl"));
+  extends Modelica.Icons.Example;
 
   annotation (experiment(
       StopTime=31536000,

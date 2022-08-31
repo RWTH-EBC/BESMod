@@ -66,9 +66,11 @@ partial model PartialModelicaConferenceUseCase
           TSet_DHW,
         supCtrlTypeDHWSet=BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Internal),
       redeclare Systems.Hydraulical.Distribution.DistributionTwoStorageParallel
-        distribution(redeclare
+        distribution(
+        redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
-          bufParameters(dTLoadingHC1=0), redeclare
+          bufParameters(dTLoadingHC1=0),
+        redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
           dhwParameters(dTLoadingHC1=10)),
       redeclare Systems.Hydraulical.Transfer.RadiatorTransferSystem transfer(
@@ -80,7 +82,10 @@ partial model PartialModelicaConferenceUseCase
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData)),
     redeclare Systems.Demand.DHW.DHW DHW(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
-      use_pressure=false,
+      redeclare final BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM
+        DHWProfile,
+      final use_dhwCalc=false,
+      use_pressure=true,
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
         calcmFlow),

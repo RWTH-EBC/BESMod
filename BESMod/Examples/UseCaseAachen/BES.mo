@@ -53,10 +53,11 @@ model BES
         TCutOff=parameterStudy.TCutOff,
         QHP_flow_cutOff=parameterStudy.QHP_flow_cutOff*hydraulic.generation.heatPumpParameters.scalingFactor),
       redeclare Systems.Hydraulical.Distribution.DistributionTwoStorageParallel
-        distribution(redeclare
+        distribution(
+        redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
           bufParameters(VPerQ_flow=parameterStudy.VPerQFlow, dTLoadingHC1=0),
-          redeclare
+        redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
           dhwParameters(dTLoadingHC1=10)),
       redeclare Systems.Hydraulical.Transfer.RadiatorTransferSystem transfer(
@@ -66,15 +67,15 @@ model BES
           BESMod.Systems.RecordsCollection.Movers.DefaultMover
           pumpData)),
     redeclare Systems.Demand.DHW.DHW DHW(
-      use_pressure=false,
+      redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
+      use_pressure=true,
       redeclare
         BESMod.Systems.RecordsCollection.Movers.DefaultMover
         pumpData,
       redeclare
         BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
         calcmFlow),
-    redeclare Systems.UserProfiles.TEASERProfiles userProfiles(redeclare
-        BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile),
+    redeclare Systems.UserProfiles.TEASERProfiles userProfiles,
     redeclare AachenSystem systemParameters(use_ventilation=true),
     redeclare ParametersToChange parameterStudy,
     redeclare final package MediumDHW = AixLib.Media.Water,

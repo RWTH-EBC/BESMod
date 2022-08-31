@@ -8,31 +8,29 @@ model SolarThermalHPS "HPS which is supported by a solar thermal collector"
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem
       hydraulic(
-      redeclare
-        BESMod.Systems.Hydraulical.Generation.SolarThermalBivHP
+      redeclare BESMod.Systems.Hydraulical.Generation.SolarThermalBivHP
         generation(
+        use_pressure=true,
         redeclare model PerDataMainHP =
             AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (refrigerant=
                 "Propane", flowsheet="VIPhaseSeparatorFlowsheet"),
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           heatPumpParameters(genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentParallel),
+
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
           heatingRodParameters,
-        redeclare
-          BESMod.Systems.RecordsCollection.Movers.DefaultMover
-          pumpData,
+        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
+
         redeclare package Medium_eva = AixLib.Media.Air,
-        redeclare
-          BESMod.Examples.SolarThermalSystem.SolarCollector
+        redeclare BESMod.Examples.SolarThermalSystem.SolarCollector
           solarThermalParas(
           final A=parameterStudy.A,
           final eta_zero=parameterStudy.eta_zero,
           final c1=parameterStudy.c1,
           final c2=parameterStudy.c2),
-        redeclare
-          BESMod.Systems.RecordsCollection.Movers.DefaultMover
+        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover
           pumpSTData),
       redeclare
         BESMod.Systems.Hydraulical.Control.Biv_PI_ConFlow_HPSController
@@ -72,7 +70,9 @@ model SolarThermalHPS "HPS which is supported by a solar thermal collector"
           BESMod.Systems.RecordsCollection.Movers.DefaultMover
           pumpData)),
     redeclare Systems.Demand.DHW.DHW DHW(
-      final use_pressure=false,
+      final use_pressure=true,
+      redeclare
+        BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
       redeclare
         BESMod.Systems.RecordsCollection.Movers.DefaultMover
         pumpData,
@@ -84,8 +84,7 @@ model SolarThermalHPS "HPS which is supported by a solar thermal collector"
       eta_zero=0.72,
       c1=2.8312,
       c2=0.00119),
-    redeclare Systems.UserProfiles.TEASERProfiles userProfiles(redeclare
-        BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile),
+    redeclare Systems.UserProfiles.TEASERProfiles userProfiles,
     redeclare BESMod.Systems.Ventilation.NoVentilation
       ventilation);
   extends Modelica.Icons.Example;
