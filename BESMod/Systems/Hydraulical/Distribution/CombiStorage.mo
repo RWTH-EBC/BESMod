@@ -22,17 +22,16 @@ model CombiStorage
 
   replaceable parameter
     BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition
-    parameters(final QHC1_flow_nominal=QDHW_flow_nominal, QHC2_flow_nominal=
-        Q_flow_nominal[1]*f_design[1])
-               constrainedby
+    parameters constrainedby
     BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition(
-    final QHC1_flow_nominal=Q_flow_nominal[1]*f_design[1],
+    final QHC1_flow_nominal=QDHW_flow_nominal,
     final rho=rho,
     final TAmb=TAmb,
     final c_p=cp,
     final mHC2_flow_nominal=mSup_flow_nominal[2],
     final mHC1_flow_nominal=mDHW_flow_nominal,
     final Q_flow_nominal=Q_flow_nominal[1]*f_design[1],
+    final QHC2_flow_nominal=Q_flow_nominal[1]*f_design[1],
     final T_m=TSup_nominal[1])
     annotation (choicesAllMatching=true, Placement(transformation(extent={{82,56},
             {96,70}})));

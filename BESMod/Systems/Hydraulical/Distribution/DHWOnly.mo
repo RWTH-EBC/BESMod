@@ -15,8 +15,6 @@ model DHWOnly "only loads DHW"
     final dTTra_nominal=fill(0, nParallelDem),
     final nParallelSup=1,
     final VStoDHW=0,
-    final QCrit=0,
-    tCrit=0,
     final QDHWStoLoss_flow=0,
     final designType=BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.NoStorage);
   BESMod.Utilities.Electrical.ZeroLoad zeroLoad

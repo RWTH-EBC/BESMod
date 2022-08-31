@@ -23,8 +23,8 @@ model BuildingOnly "Only loads building"
   BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{30,-108},{50,-88}})));
 equation
-  connect(portDHW_out, portDHW_in) annotation (Line(points={{100,-22},{88,-22},{
-          88,-16},{76,-16},{76,-82},{100,-82}}, color={0,127,255}));
+  connect(portDHW_out, portDHW_in) annotation (Line(points={{100,-22},{74,-22},
+          {74,-82},{100,-82}},                  color={0,127,255}));
   connect(portGen_in, portBui_out)
     annotation (Line(points={{-100,80},{0,80},{0,80},{100,80}},
                                                   color={0,127,255}));

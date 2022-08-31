@@ -69,11 +69,11 @@ partial model PartialDistributionTwoStorageParallelDetailed
     RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition dhwParameters
     constrainedby
     RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition(
-        final Q_flow_nominal=QDHW_flow_nominal,
+        final Q_flow_nominal=0,
         final VPerQ_flow=0,
         final rho=rho,
         final c_p=cp,
-        final V=VDHWDay,
+        final V=if designType == Types.DHWDesignType.FullStorage then VDHWDay * fFullSto else VDHWDay,
         final TAmb=TAmb,
         T_m=TDHW_nominal,
         final QHC1_flow_nominal=QDHW_flow_nominal,
