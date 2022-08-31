@@ -2,8 +2,7 @@ within BESMod.Systems.Hydraulical.Distribution.BaseClasses;
 partial model PartialDistribution
   "Partial distribution model for HPS"
   extends BESMod.Utilities.Icons.StorageIcon;
-  extends
-    BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters(      final
+  extends BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters(final
       dp_nominal=dpDem_nominal,
       TSup_nominal=TDem_nominal .+ dTLoss_nominal .+ dTTra_nominal);
   extends PartialDHWParameters;
@@ -14,6 +13,7 @@ partial model PartialDistribution
   replaceable package MediumGen =
       Modelica.Media.Interfaces.PartialMedium
     annotation (choicesAllMatching=true);
+  parameter Boolean use_dhw=true "=false to disable DHW";
   parameter Modelica.Units.SI.MassFlowRate mSup_flow_nominal[nParallelSup](each min=Modelica.Constants.eps)
     "Nominal mass flow rate of system supplying the distribution" annotation (
       Dialog(group=
@@ -70,7 +70,14 @@ partial model PartialDistribution
     annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
   Electrical.Interfaces.InternalElectricalPinOut internalElectricalPin
     annotation (Placement(transformation(extent={{60,-108},{80,-88}})));
+equation
+  if not use_dhw then
+  connect(portDHW_out, portDHW_in) annotation (Line(
+      points={{100,-22},{100,-82}},
+      color={0,127,255},
+      pattern=LinePattern.Dash));
+  end if;
   annotation (Icon(graphics,
-                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end PartialDistribution;

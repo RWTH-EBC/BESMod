@@ -3,7 +3,7 @@ partial model PartialHydraulicSystem
   "Complete hydraulic system model"
   extends BESMod.Systems.BaseClasses.PartialFluidSubsystem;
   parameter Boolean subsystemDisabled "To enable the icon if the subsystem is disabled" annotation (Dialog(tab="Graphics"));
-
+  parameter Boolean use_dhw=true "=false to disable DHW";
   replaceable package MediumDHW = IBPSA.Media.Water constrainedby
     Modelica.Media.Interfaces.PartialMedium
     annotation (__Dymola_choicesAllMatching=true);
@@ -40,20 +40,21 @@ partial model PartialHydraulicSystem
       choicesAllMatching=true, Placement(transformation(extent={{-140,-104},{-24,
             28}})));
   replaceable BESMod.Systems.Hydraulical.Control.BaseClasses.PartialControl control
-          constrainedby
-    BESMod.Systems.Hydraulical.Control.BaseClasses.PartialControl(final generationParameters(
-        final nParallelDem=generation.nParallelDem,
-        final nParallelSup=generation.nParallelSup,
-        final Q_flow_nominal=generation.Q_flow_nominal,
-        final TOda_nominal=hydraulicSystemParameters.TOda_nominal,
-        final TDem_nominal=generation.TDem_nominal,
-        final TSup_nominal=generation.TSup_nominal,
-        final dTTra_nominal=generation.dTTra_nominal,
-        final m_flow_nominal=generation.m_flow_nominal,
-        final dp_nominal=generation.dp_nominal,
-        final dTLoss_nominal=generation.dTLoss_nominal,
-        final f_design=generation.f_design,
-        final QLoss_flow_nominal=generation.QLoss_flow_nominal),
+    constrainedby Control.BaseClasses.PartialControl(
+    final use_dhw=use_dhw,
+    final generationParameters(
+      final nParallelDem=generation.nParallelDem,
+      final nParallelSup=generation.nParallelSup,
+      final Q_flow_nominal=generation.Q_flow_nominal,
+      final TOda_nominal=hydraulicSystemParameters.TOda_nominal,
+      final TDem_nominal=generation.TDem_nominal,
+      final TSup_nominal=generation.TSup_nominal,
+      final dTTra_nominal=generation.dTTra_nominal,
+      final m_flow_nominal=generation.m_flow_nominal,
+      final dp_nominal=generation.dp_nominal,
+      final dTLoss_nominal=generation.dTLoss_nominal,
+      final f_design=generation.f_design,
+      final QLoss_flow_nominal=generation.QLoss_flow_nominal),
     final distributionParameters(
       final nParallelDem=distribution.nParallelDem,
       final nParallelSup=distribution.nParallelSup,
@@ -75,19 +76,19 @@ partial model PartialHydraulicSystem
       final dTTraDHW_nominal=distribution.dTTraDHW_nominal,
       final tCrit=hydraulicSystemParameters.tCrit,
       final QCrit=hydraulicSystemParameters.QCrit),
-      final transferParameters(
-        final nParallelDem=transfer.nParallelDem,
-        final nParallelSup=transfer.nParallelSup,
-        final Q_flow_nominal=transfer.Q_flow_nominal,
-        final TOda_nominal=hydraulicSystemParameters.TOda_nominal,
-        final TDem_nominal=transfer.TDem_nominal,
-        final TSup_nominal=transfer.TSup_nominal,
-        final dTTra_nominal=transfer.dTTra_nominal,
-        final m_flow_nominal=transfer.m_flow_nominal,
-        final dp_nominal=transfer.dp_nominal,
-        final dTLoss_nominal=transfer.dTLoss_nominal,
-        final f_design=transfer.f_design,
-        final QLoss_flow_nominal=transfer.QLoss_flow_nominal))
+    final transferParameters(
+      final nParallelDem=transfer.nParallelDem,
+      final nParallelSup=transfer.nParallelSup,
+      final Q_flow_nominal=transfer.Q_flow_nominal,
+      final TOda_nominal=hydraulicSystemParameters.TOda_nominal,
+      final TDem_nominal=transfer.TDem_nominal,
+      final TSup_nominal=transfer.TSup_nominal,
+      final dTTra_nominal=transfer.dTTra_nominal,
+      final m_flow_nominal=transfer.m_flow_nominal,
+      final dp_nominal=transfer.dp_nominal,
+      final dTLoss_nominal=transfer.dTLoss_nominal,
+      final f_design=transfer.f_design,
+      final QLoss_flow_nominal=transfer.QLoss_flow_nominal))
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-132,54},
             {154,122}})));
   replaceable BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution distribution(
@@ -95,8 +96,8 @@ partial model PartialHydraulicSystem
     m_flow_nominal=fill(0, distribution.nParallelDem),
     dTTraDHW_nominal=1,
     dpSup_nominal=fill(0, distribution.nParallelDem),
-    dpDem_nominal=fill(0, distribution.nParallelDem))                                                                                                                                                                                                         constrainedby
-    BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution(
+    dpDem_nominal=fill(0, distribution.nParallelDem)) constrainedby
+    Distribution.BaseClasses.PartialDistribution(
     redeclare package Medium = Medium,
     redeclare final package MediumDHW = MediumDHW,
     redeclare final package MediumGen = Medium,
@@ -116,6 +117,7 @@ partial model PartialHydraulicSystem
     final rho=rho,
     final cp=cp,
     final TOda_nominal=hydraulicSystemParameters.TOda_nominal,
+    final use_dhw=use_dhw,
     final mDem_flow_nominal=transfer.mSup_flow_nominal,
     final mSup_flow_nominal=generation.m_flow_nominal,
     final mDHW_flow_nominal=hydraulicSystemParameters.mDHW_flow_nominal,

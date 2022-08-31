@@ -5,7 +5,7 @@ model RadiatorPressureBased "Pressure Based transfer system"
     ABui=1,
     hBui=1,                           final dp_nominal=rad.dp_nominal .+ val.dpValve_nominal .+ res.dp_nominal .+ val.dpFixed_nominal,
                                       final nParallelSup=1);
-
+  parameter Boolean use_preRelVal=true "=false to disable the pressure relief valve";
   replaceable parameter RecordsCollection.TransferDataBaseDefinition
     transferDataBaseDefinition constrainedby
     RecordsCollection.TransferDataBaseDefinition(
@@ -117,6 +117,15 @@ model RadiatorPressureBased "Pressure Based transfer system"
 
   BESMod.Utilities.Electrical.RealToElecCon realToElecCon(use_souGen=false)
     annotation (Placement(transformation(extent={{34,-94},{54,-74}})));
+  Distribution.Components.Valves.PressureReliefValve pressureReliefValve(
+    redeclare package Medium = Medium,
+    dpFullOpen_nominal=dp_nominal[1],
+    dpThreshold_nominal=0.99*dp_nominal[1],
+    m_flowMin=mSup_flow_nominal[1],
+    use_opeConst=false) if use_preRelVal annotation (Placement(transformation(
+        extent={{10,-10},{-10,10}},
+        rotation=90,
+        origin={-68,-10})));
 equation
   connect(rad.heatPortRad, heatPortRad) annotation (Line(points={{-5.08,-27.2},
           {40,-27.2},{40,-40},{100,-40}}, color={191,0,0}));
@@ -155,4 +164,8 @@ equation
       thickness=1));
   connect(realToElecCon.PEleLoa, pump.P) annotation (Line(points={{32,-80},{
           22,-80},{22,47},{-63,47}}, color={0,0,127}));
+  connect(pressureReliefValve.port_b, portTra_out[1]) annotation (Line(points={{
+          -68,-20},{-68,-42},{-100,-42}}, color={0,127,255}));
+  connect(pump.port_b, pressureReliefValve.port_a) annotation (Line(points={{-64,
+          38},{-62,38},{-62,32},{-68,32},{-68,0}}, color={0,127,255}));
 end RadiatorPressureBased;
