@@ -6,7 +6,10 @@ model CalcHeaDemROM
     KR_heater=building.zoneParam[1].KRHeat,
     h_heater=building.zoneParam.hHeat*10,
     redeclare BESMod.Examples.BAUSimStudy.BESParameters
-      systemParameters(TOda_nominal=261.05, THydSup_nominal={328.15}),
+      systemParameters(
+      QDHW_flow_nomial=0,
+      TOda_nominal=261.05,
+      THydSup_nominal={328.15}),
     redeclare BESMod.Systems.Demand.Building.TEASERThermalZone
       building(
       nZones=1,
