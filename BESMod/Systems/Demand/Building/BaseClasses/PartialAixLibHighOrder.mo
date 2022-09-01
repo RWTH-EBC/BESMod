@@ -49,6 +49,9 @@ partial model PartialAixLibHighOrder
     annotation (Placement(transformation(extent={{-126,42},{-86,82}})));
   Modelica.Blocks.Interfaces.RealInput AirExchangePort[nZones]
     annotation (Placement(transformation(extent={{-126,14},{-86,54}})));
+  Modelica.Blocks.Interfaces.RealOutput TZoneMea[nZones] annotation (Placement(
+        transformation(extent={{-86,-76},{-132,-30}}), iconTransformation(
+          extent={{-84,-70},{-124,-30}})));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end PartialAixLibHighOrder;

@@ -46,12 +46,14 @@ model AixLibHighOrder "High order building model from AixLib library"
       AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.PartialWindow
       (windowarea=2)
     constrainedby
-    AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.PartialWindow                 annotation (Dialog(tab="Outer walls", group="Windows"), choicesAllMatching = true);
+    AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.PartialWindow
+                                                                                                    annotation (Dialog(tab="Outer walls", group="Windows"), choicesAllMatching = true);
   replaceable parameter AixLib.DataBase.WindowsDoors.Simple.OWBaseDataDefinition_Simple Type_Win "Window parametrization" annotation (Dialog(tab="Outer walls", group="Windows"), choicesAllMatching = true);
   replaceable model CorrSolarGainWin =
       AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.CorrectionSolarGain.PartialCorG
     constrainedby
-    AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.CorrectionSolarGain.PartialCorG                 "Correction model for solar irradiance as transmitted radiation" annotation (choicesAllMatching=true, Dialog(tab="Outer walls", group="Windows", enable = withWindow and outside));
+    AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.CorrectionSolarGain.PartialCorG
+                                                                                                                      "Correction model for solar irradiance as transmitted radiation" annotation (choicesAllMatching=true, Dialog(tab="Outer walls", group="Windows", enable = withWindow and outside));
   parameter Boolean use_sunblind=false
     "Will sunblind become active automatically?" annotation (Dialog(tab="Outer walls", group="Sunblind"));
   parameter Modelica.Units.SI.CoefficientOfHeatTransfer UValOutDoors=2.5
@@ -120,6 +122,8 @@ model AixLibHighOrder "High order building model from AixLib library"
         origin={-52,-60})));
 
 
+  Utilities.Electrical.ZeroLoad zeroLoad
+    annotation (Placement(transformation(extent={{24,-108},{44,-88}})));
 equation
   connect(weaBus.TDryBul, tempOutside.T) annotation (Line(
       points={{-47,98},{-47,58},{-18,58},{-18,52.8}},
@@ -228,6 +232,18 @@ equation
       horizontalAlignment=TextAlignment.Left));
   connect(constVentRate.y, aixLiBHighOrderOFD.AirExchangePort) annotation (Line(
         points={{-53.5,-1},{-50,-1},{-50,10.9},{-23.8,10.9}}, color={0,0,127}));
+  connect(aixLiBHighOrderOFD.TZoneMea, buiMeaBus.TZoneMea) annotation (Line(
+        points={{-23.2,-18.5},{-44,-18.5},{-44,-10},{-72,-10},{-72,90},{0,90},{
+          0,99}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(zeroLoad.internalElectricalPin, internalElectricalPin) annotation (
+      Line(
+      points={{44,-98},{56,-98},{56,-82},{70,-82},{70,-96}},
+      color={0,0,0},
+      thickness=1));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end AixLibHighOrder;

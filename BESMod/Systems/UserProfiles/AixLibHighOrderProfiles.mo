@@ -7,7 +7,7 @@ model AixLibHighOrderProfiles "Standard TEASER Profiles"
 
   parameter AixLib.DataBase.Profiles.ProfileBaseDataDefinition VentilationProfile = AixLib.DataBase.Profiles.Ventilation2perDayMean05perH();
   parameter AixLib.DataBase.Profiles.ProfileBaseDataDefinition TSetProfile = AixLib.DataBase.Profiles.SetTemperaturesVentilation2perDay();
-  parameter Real gain "Gain value multiplied with internal gains. Used to e.g. disable single gains."          annotation (Dialog(group=
+  parameter Real gain=1 "Gain value multiplied with internal gains. Used to e.g. disable single gains."          annotation (Dialog(group=
           "Internal Gains",                                                                                                 tab="Inputs"));
 
   Modelica.Blocks.Sources.CombiTimeTable tableInternalGains(
@@ -39,7 +39,19 @@ model AixLibHighOrderProfiles "Standard TEASER Profiles"
     tableOnFile=false,
     table=TSetProfile.Profile)                                                                                                                                                              annotation(Placement(transformation(extent={{-92,
             -118},{-72,-98}})));
+  Modelica.Blocks.Sources.Constant const1[nZones](k=293.15)
+    annotation (Placement(transformation(extent={{-94,-70},{-74,-50}})));
+  Modelica.Blocks.Sources.Constant const2[nZones](k=0.1)
+    annotation (Placement(transformation(extent={{-102,84},{-82,104}})));
+  Modelica.Blocks.Interfaces.RealOutput y1[size(TSet.y, 1)]
+                     "Connector of Real output signals"
+    annotation (Placement(transformation(extent={{-22,-116},{-2,-96}})));
+  Modelica.Blocks.Interfaces.RealOutput y2[size(NaturalVentilation.y, 1)]
+                     "Connector of Real output signals"
+    annotation (Placement(transformation(extent={{-58,48},{-38,68}})));
 equation
+  //for i in nZones loop
+  //end for;
   connect(tableInternalGains.y, gainIntGains.u) annotation (Line(points={{-1.7,1},
           {-1.7,0.5},{17.4,0.5},{17.4,1}},    color={0,0,127}));
   connect(gainIntGains.y, useProBus.intGains) annotation (Line(points={{70.3,1},
@@ -48,17 +60,23 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(NaturalVentilation.y, useProBus.NaturalVentilation) annotation (Line(
-        points={{-80,59},{-18,59},{-18,50},{110,50},{110,-1},{115,-1}}, color={0,
-          0,127}), Text(
+
+
+  connect(const1.y, useProBus.TZoneSet) annotation (Line(points={{-73,-60},{115,
+          -60},{115,-1}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(TSet.y, useProBus.TZoneSet) annotation (Line(points={{-71,-108},{114,
-          -108},{114,-1},{115,-1}}, color={0,0,127}), Text(
+  connect(const2.y, useProBus.NaturalVentilation) annotation (Line(points={{-81,
+          94},{-56,94},{-56,92},{-36,92},{-36,44},{115,44},{115,-1}}, color={0,0,
+          127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  connect(TSet.y, y1) annotation (Line(points={{-71,-108},{-44,-108},{-44,-112},
+          {-12,-112},{-12,-106}}, color={0,0,127}));
+  connect(NaturalVentilation.y, y2) annotation (Line(points={{-80,59},{-64,59},
+          {-64,58},{-48,58}}, color={0,0,127}));
 end AixLibHighOrderProfiles;

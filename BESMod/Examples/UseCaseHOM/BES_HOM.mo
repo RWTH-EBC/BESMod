@@ -4,10 +4,18 @@ model BES_HOM
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
     redeclare BESMod.Systems.Demand.Building.AixLibHighOrder building(
       useConstVentRate=false,
-      Latitude=weaDat.lat,
-      Longitude=weaDat.lon,
+      Latitude=Modelica.Units.Conversions.to_deg(weaDat.lat),
+      Longitude=Modelica.Units.Conversions.to_deg(weaDat.lon),
       TimeCorrection=0,
-      DiffWeatherDataTime=weaDat.timZon,
+      DiffWeatherDataTime=Modelica.Units.Conversions.to_hour(weaDat.timZon),
+      redeclare PCMgoesHIL.DataBase.WallsAndWindows.EnEV2009Heavy_AddIsulation
+        wallTypes,
+      redeclare model WindowModel =
+          AixLib.ThermalZones.HighOrder.Components.WindowsDoors.WindowSimple,
+      redeclare AixLib.DataBase.WindowsDoors.Simple.WindowSimple_EnEV2009
+        Type_Win,
+      redeclare model CorrSolarGainWin =
+          AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.CorrectionSolarGain.CorGSimple,
       redeclare BESMod.Systems.Demand.Building.Components.AixLibHighOrderOFD
         aixLiBHighOrderOFD),
     redeclare BESMod.Systems.Control.NoControl control,
