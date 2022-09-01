@@ -3,6 +3,7 @@ model SolarThermalAndHeatPumpAndHeatingRod
   extends PartialTest(   redeclare
       BESMod.Systems.Hydraulical.Generation.SolarThermalBivHP
       generation(
+      use_pressure=true,
       redeclare model PerDataMainHP =
           AixLib.DataBase.HeatPump.PerformanceData.VCLibMap,
       redeclare

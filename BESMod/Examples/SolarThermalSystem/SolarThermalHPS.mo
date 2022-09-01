@@ -70,9 +70,9 @@ model SolarThermalHPS "HPS which is supported by a solar thermal collector"
           BESMod.Systems.RecordsCollection.Movers.DefaultMover
           pumpData)),
     redeclare Systems.Demand.DHW.DHW DHW(
-      final use_pressure=true,
       redeclare
         BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
+      use_pressure=true,
       redeclare
         BESMod.Systems.RecordsCollection.Movers.DefaultMover
         pumpData,
@@ -87,6 +87,7 @@ model SolarThermalHPS "HPS which is supported by a solar thermal collector"
     redeclare Systems.UserProfiles.TEASERProfiles userProfiles,
     redeclare BESMod.Systems.Ventilation.NoVentilation
       ventilation);
+
   extends Modelica.Icons.Example;
 
   annotation (Icon(graphics,

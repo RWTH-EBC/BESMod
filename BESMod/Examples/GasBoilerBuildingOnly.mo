@@ -19,7 +19,6 @@ model GasBoilerBuildingOnly
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
           temperatureSensorData,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData),
-
       redeclare BESMod.Systems.Hydraulical.Control.MonovalentGasBoiler control(
         redeclare
           BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
@@ -41,7 +40,6 @@ model GasBoilerBuildingOnly
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
           transferDataBaseDefinition,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
-
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
           radParameters)),
@@ -64,6 +62,7 @@ model GasBoilerBuildingOnly
       THydSup_nominal={328.15},                  use_ventilation=false,
       use_dhw=false,
       use_elecHeating=false));
+
   extends Modelica.Icons.Example;
 
   annotation (experiment(
