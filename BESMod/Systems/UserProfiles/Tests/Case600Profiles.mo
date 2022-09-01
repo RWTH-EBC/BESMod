@@ -4,5 +4,4 @@ model Case600Profiles
       userProfiles(redeclare
         BESMod.Systems.Demand.DHW.RecordsCollection.ProfileS DHWProfile));
   extends Modelica.Icons.Example;
-
 end Case600Profiles;

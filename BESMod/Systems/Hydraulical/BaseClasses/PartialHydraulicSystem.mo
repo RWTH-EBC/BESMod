@@ -95,6 +95,9 @@ partial model PartialHydraulicSystem
     dTTra_nominal=fill(1, distribution.nParallelDem),
     m_flow_nominal=fill(0, distribution.nParallelDem),
     dTTraDHW_nominal=1,
+    designType=BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.NoStorage,
+    QDHWStoLoss_flow=0,
+    VStoDHW=0,
     dpSup_nominal=fill(0, distribution.nParallelDem),
     dpDem_nominal=fill(0, distribution.nParallelDem)) constrainedby
     Distribution.BaseClasses.PartialDistribution(
