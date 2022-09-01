@@ -1,6 +1,7 @@
 within BESMod.Systems.Hydraulical.Distribution;
 model BuildingOnly "Only loads building"
   extends BaseClasses.PartialDistribution(
+    use_dhw=false,
     final fFullSto=0,
     final QDHWBefSto_flow_nominal=Modelica.Constants.eps,
     final VStoDHW=0,
@@ -30,16 +31,7 @@ model BuildingOnly "Only loads building"
         inStream(portGen_in[1].h_outflow),
         inStream(portGen_in[1].Xi_outflow))))
     annotation (Placement(transformation(extent={{-80,0},{-60,20}})));
-  Modelica.Blocks.Sources.RealExpression realExpression1(y=Medium.temperature(
-        Medium.setState_phX(
-        portGen_in[1].p,
-        inStream(portGen_in[1].h_outflow),
-        inStream(portGen_in[1].Xi_outflow))))
-    annotation (Placement(transformation(extent={{-80,-20},{-60,0}})));
 equation
-  connect(portGen_out, portBui_in)
-    annotation (Line(points={{-100,40},{0,40},{0,40},{100,40}},
-                                                  color={0,127,255}));
   connect(zeroLoad.internalElectricalPin, internalElectricalPin) annotation (
       Line(
       points={{50,-98},{70,-98}},
@@ -51,12 +43,8 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(realExpression1.y, sigBusDistr.TStoBufBotMea) annotation (Line(points=
-         {{-59,-10},{0,-10},{0,101}}, color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(portGen_in, portBui_out)
+  connect(portGen_out[1], portBui_in[1])
+    annotation (Line(points={{-100,40},{100,40}}, color={0,127,255}));
+  connect(portGen_in[1], portBui_out[1])
     annotation (Line(points={{-100,80},{100,80}}, color={0,127,255}));
 end BuildingOnly;
