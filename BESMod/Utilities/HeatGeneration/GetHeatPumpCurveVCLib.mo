@@ -4,8 +4,8 @@ model GetHeatPumpCurveVCLib
     redeclare
       BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultBivHPControl
       bivalentHeatPumpControlDataDefinition,
-    redeclare Examples.UseCaseAachen.AachenSystem systemParameters(
-        QDHW_flow_nomial=0),            redeclare
+    redeclare Examples.UseCaseAachen.AachenSystem systemParameters,
+                                        redeclare
       Systems.Hydraulical.Generation.HeatPumpAndHeatingRod generation(
       redeclare
         BESMod.Systems.RecordsCollection.Movers.DefaultMover
