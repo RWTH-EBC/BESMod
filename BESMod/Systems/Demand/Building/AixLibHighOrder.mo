@@ -3,8 +3,8 @@ model AixLibHighOrder "High order building model from AixLib library"
 
   extends BaseClasses.PartialDemand(
   nZones = aixLiBHighOrderOFD.nZones,
-  final AZone=aixLiBHighOrderOFD.AZone,
-  final hZone=aixLiBHighOrderOFD.hZone,
+  final AZone=aixLiBHighOrderOFD.AZone[1:nZones],
+  final hZone=aixLiBHighOrderOFD.hZone[1:nZones],
   final ABui=aixLiBHighOrderOFD.ABui,
   final hBui=aixLiBHighOrderOFD.hBui,
   final ARoo=aixLiBHighOrderOFD.ARoof);
@@ -46,14 +46,12 @@ model AixLibHighOrder "High order building model from AixLib library"
       AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.PartialWindow
       (windowarea=2)
     constrainedby
-    AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.PartialWindow
-                                                                                                    annotation (Dialog(tab="Outer walls", group="Windows"), choicesAllMatching = true);
+    AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.PartialWindow                 annotation (Dialog(tab="Outer walls", group="Windows"), choicesAllMatching = true);
   replaceable parameter AixLib.DataBase.WindowsDoors.Simple.OWBaseDataDefinition_Simple Type_Win "Window parametrization" annotation (Dialog(tab="Outer walls", group="Windows"), choicesAllMatching = true);
   replaceable model CorrSolarGainWin =
       AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.CorrectionSolarGain.PartialCorG
     constrainedby
-    AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.CorrectionSolarGain.PartialCorG
-                                                                                                                      "Correction model for solar irradiance as transmitted radiation" annotation (choicesAllMatching=true, Dialog(tab="Outer walls", group="Windows", enable = withWindow and outside));
+    AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.CorrectionSolarGain.PartialCorG                 "Correction model for solar irradiance as transmitted radiation" annotation (choicesAllMatching=true, Dialog(tab="Outer walls", group="Windows", enable = withWindow and outside));
   parameter Boolean use_sunblind=false
     "Will sunblind become active automatically?" annotation (Dialog(tab="Outer walls", group="Sunblind"));
   parameter Modelica.Units.SI.CoefficientOfHeatTransfer UValOutDoors=2.5
