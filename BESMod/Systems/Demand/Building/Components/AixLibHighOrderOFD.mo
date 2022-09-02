@@ -1,9 +1,8 @@
 within BESMod.Systems.Demand.Building.Components;
 model AixLibHighOrderOFD "High order OFD"
   extends Building.BaseClasses.PartialAixLibHighOrder(
-  final nZones=nZonesHeated);
+  final nZones=10);
 
-  parameter Integer nZonesHeated = 10 "Heated rooms of the building";
   parameter Integer nZonesNonHeated = 1 "Non heated rooms of the building";
 
   // Dynamics
@@ -51,7 +50,7 @@ model AixLibHighOrderOFD "High order OFD"
   final parameter Modelica.Units.SI.Area ABui = sum(AZone) "Total area of all zones";
   final parameter Modelica.Units.SI.Length hBui = hZone[1] + hZone[6] + hZone[11] "Total hight of building";
   final parameter Modelica.Units.SI.Area ARoof = sum(ARoofZone) "Total area of roof";
-  final parameter Modelica.Units.SI.Area AZone[nZonesHeated+nZonesNonHeated]=
+  final parameter Modelica.Units.SI.Area AZone[nZones+nZonesNonHeated]=
   {wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.room_length *
    wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.room_width,
    wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.room_length *
@@ -74,7 +73,7 @@ model AixLibHighOrderOFD "High order OFD"
    wholeHouseBuildingEnvelope.upperFloor_Building.Children2.room_width_long,
    wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.length*
    wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.width};
-  final parameter Modelica.Units.SI.Length hZone[nZonesHeated+nZonesNonHeated]=
+  final parameter Modelica.Units.SI.Length hZone[nZones+nZonesNonHeated]=
   {wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.room_height,
    wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.room_height,
    wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.room_height,
@@ -86,7 +85,7 @@ model AixLibHighOrderOFD "High order OFD"
    wholeHouseBuildingEnvelope.upperFloor_Building.Bath.room_height_long,
    wholeHouseBuildingEnvelope.upperFloor_Building.Children2.room_height_long,
    wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.room_V/AZone[11]};
-  final parameter Modelica.Units.SI.Area ARoofZone[nZonesHeated+nZonesNonHeated]=
+  final parameter Modelica.Units.SI.Area ARoofZone[nZones+nZonesNonHeated]=
   {0,0,0,0,0,
   wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.roof_width*
   wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.room_length,
@@ -133,8 +132,8 @@ model AixLibHighOrderOFD "High order OFD"
         extent={{7,-7},{-7,7}},
         rotation=0,
         origin={-9,-61})));
-  AixLib.Fluid.Sources.Boundary_pT bou(redeclare package Medium = MediumZone, nPorts=2)
-                                       annotation (Placement(transformation(extent={{28,-64},{40,-52}})));
+  Modelica.Blocks.Sources.Constant const1
+    annotation (Placement(transformation(extent={{-86,14},{-74,26}})));
 equation
     // Romm Temperatures
 
@@ -182,7 +181,7 @@ equation
       Line(points={{0,-100},{0,-44},{3,-44},{3,-40}},    color={191,0,0}));
   end for;
 
-  for i in 1:nZonesHeated loop
+  for i in 1:nZones loop
     connect(heatingToRooms1[i], wholeHouseBuildingEnvelope.heatingToRooms[i]) annotation (Line(points={{-98,0},{-52,0},{-52,0.32},{-44,0.32}}, color={191,0,0}));
     connect(wholeHouseBuildingEnvelope.portVent_out[i], portVent_out[i]) annotation (
       Line(points={{51.41,-31.6},{56,-31.6},{56,-92},{100,-92}}, color={0,127,255}));
@@ -193,17 +192,14 @@ equation
           127}));
   end for;
 
-  connect(wholeHouseBuildingEnvelope.portVent_out[11], bou.ports[1]) annotation (
-      Line(points={{51.41,-28.0364},{56,-28.0364},{56,-56.8},{40,-56.8}},
-                                                                 color={0,127,255}));
-  connect(wholeHouseBuildingEnvelope.portVent_in[11], bou.ports[2]) annotation (Line(
-        points={{50.47,-15.7164},{68,-15.7164},{68,-59.2},{40,-59.2}},
-                                                                color={0,127,255}));
   connect(convRadToCombPort.portConvRadComb, wholeHouseBuildingEnvelope.heatingToRooms[11]) annotation (Line(points={{-46,-56},{-72,-56},{-72,5.41091},{-44,5.41091}},
         color={191,0,0}));
   connect(InternalGains1.port, convRadToCombPort.portRad) annotation (Line(points={{-16,-61},{-26,-61}}, color={191,0,0}));
   connect(InternalGains.port, convRadToCombPort.portConv) annotation (Line(points={{-16,-51},{-26,-51}}, color={191,0,0}));
 
+  connect(const1.y, wholeHouseBuildingEnvelope.AirExchangePort[11]) annotation (
+     Line(points={{-73.4,20},{-68,20},{-68,49.0909},{-48.7,49.0909}}, color={0,0,
+          127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end AixLibHighOrderOFD;
