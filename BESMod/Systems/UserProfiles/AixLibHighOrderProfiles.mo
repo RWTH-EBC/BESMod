@@ -1,10 +1,8 @@
 within BESMod.Systems.UserProfiles;
 model AixLibHighOrderProfiles "Standard TEASER Profiles"
-  extends BaseClasses.RecordBasedDHWUser;
+  extends BaseClasses.RecordBasedDHWUser(nZones=10);
   parameter String fileNameIntGains=Modelica.Utilities.Files.loadResource("modelica://BESMod/Resources/InternalGainsHOM.txt")
-    "File where matrix is stored"
-    annotation (Dialog(tab="Inputs", group="Internal Gains"));
-
+    "File where matrix is stored" annotation (Dialog(tab="Inputs", group="Internal Gains"));
   parameter AixLib.DataBase.Profiles.ProfileBaseDataDefinition VentilationProfile = AixLib.DataBase.Profiles.Ventilation2perDayMean05perH();
   parameter AixLib.DataBase.Profiles.ProfileBaseDataDefinition TSetProfile = AixLib.DataBase.Profiles.SetTemperaturesVentilation2perDay();
   parameter Real gain=1 "Gain value multiplied with internal gains. Used to e.g. disable single gains."          annotation (Dialog(group=
@@ -31,27 +29,77 @@ model AixLibHighOrderProfiles "Standard TEASER Profiles"
     columns={2,3,4,5,7},
     extrapolation=Modelica.Blocks.Types.Extrapolation.Periodic,
     tableOnFile=false,
-    table=VentilationProfile.Profile)                                                                                                                                                                         annotation(Placement(transformation(extent={{-101,49},
-            {-81,69}})));
+    table=VentilationProfile.Profile)                                                                                                                                                                         annotation(Placement(transformation(extent={{-88,50},
+            {-68,70}})));
   Modelica.Blocks.Sources.CombiTimeTable TSet(
     columns={2,3,4,5,6,7},
     extrapolation=Modelica.Blocks.Types.Extrapolation.Periodic,
     tableOnFile=false,
-    table=TSetProfile.Profile)                                                                                                                                                              annotation(Placement(transformation(extent={{-92,
-            -118},{-72,-98}})));
-  Modelica.Blocks.Sources.Constant const1[nZones](k=293.15)
-    annotation (Placement(transformation(extent={{-94,-70},{-74,-50}})));
-  Modelica.Blocks.Sources.Constant const2[nZones](k=0.1)
-    annotation (Placement(transformation(extent={{-102,84},{-82,104}})));
-  Modelica.Blocks.Interfaces.RealOutput y1[size(TSet.y, 1)]
-                     "Connector of Real output signals"
-    annotation (Placement(transformation(extent={{-22,-116},{-2,-96}})));
-  Modelica.Blocks.Interfaces.RealOutput y2[size(NaturalVentilation.y, 1)]
-                     "Connector of Real output signals"
-    annotation (Placement(transformation(extent={{-58,48},{-38,68}})));
+    table=TSetProfile.Profile)                                                                                                                                                              annotation(Placement(transformation(extent={{-88,
+            -104},{-68,-84}})));
+  Modelica.Blocks.Routing.RealPassThrough realPassThrough[10]
+    annotation (Placement(transformation(extent={{-48,52},{-32,68}})));
+  Modelica.Blocks.Routing.RealPassThrough realPassThrough1
+                                                         [10]
+    annotation (Placement(transformation(extent={{-32,-102},{-16,-86}})));
 equation
-  //for i in nZones loop
-  //end for;
+  connect(TSet.y[1], realPassThrough1[6].u) annotation (Line(points={{-67,-94},{
+          -33.6,-94}},                                                 color={0,
+          0,127}));
+  connect(TSet.y[1], realPassThrough1[1].u) annotation (Line(points={{-67,-94},{
+          -33.6,-94}},                                                   color={
+          0,0,127}));
+
+  connect(TSet.y[2], realPassThrough1[7].u) annotation (Line(points={{-67,-94},{
+          -33.6,-94}},                                                 color={0,
+          0,127}));
+  connect(TSet.y[2], realPassThrough1[2].u) annotation (Line(points={{-67,-94},{
+          -33.6,-94}},                                                   color={
+          0,0,127}));
+
+  connect(TSet.y[6], realPassThrough1[3].u) annotation (Line(points={{-67,-94},{
+          -33.6,-94}},                                                            color={
+          0,0,127}));
+  connect(TSet.y[6], realPassThrough1[8].u)  annotation (Line(points={{-67,-94},{
+          -33.6,-94}},                                                   color={
+          0,0,127}));
+
+  connect(TSet.y[4], realPassThrough1[9].u) annotation (Line(points={{-67,-94},{
+          -33.6,-94}},                                                 color={0,
+          0,127}));
+  connect(TSet.y[5], realPassThrough1[4].u) annotation (Line(points={{-67,-94},{
+          -33.6,-94}},                                                    color=
+         {0,0,127}));
+
+  connect(TSet.y[3], realPassThrough1[10].u) annotation (Line(points={{-67,-94},
+          {-33.6,-94}},
+        color={0,0,127}));
+  connect(TSet.y[3], realPassThrough1[5].u) annotation (Line(points={{-67,-94},{
+          -33.6,-94}},                                                    color=
+         {0,0,127}));
+
+
+  connect(NaturalVentilation.y[1], realPassThrough[1].u) annotation (Line(
+        points={{-67,60},{-49.6,60}},                                color={0,0,
+          127}));
+  connect(NaturalVentilation.y[1], realPassThrough[6].u) annotation (Line(
+        points={{-67,60},{-49.6,60}},                              color={0,0,127}));
+  connect(NaturalVentilation.y[2], realPassThrough[2].u) annotation (Line(
+        points={{-67,60},{-49.6,60}},                              color={0,0,127}));
+  connect(NaturalVentilation.y[2], realPassThrough[7].u) annotation (Line(  points={{-67,60},{-49.6,60}},                              color={0,0,127}));
+  connect(NaturalVentilation.y[3], realPassThrough[4].u) annotation (Line(
+        points={{-67,60},{-49.6,60}},                              color={0,0,127}));
+  connect(NaturalVentilation.y[3], realPassThrough[9].u) annotation (Line(
+        points={{-67,60},{-49.6,60}},                              color={0,0,127}));
+  connect(NaturalVentilation.y[4], realPassThrough[5].u) annotation (Line(
+        points={{-67,60},{-49.6,60}},                              color={0,0,127}));
+  connect(NaturalVentilation.y[4], realPassThrough[10].u) annotation (Line(
+        points={{-67,60},{-49.6,60}},                              color={0,0,127}));
+  connect(NaturalVentilation.y[5], realPassThrough[3].u) annotation (Line(
+        points={{-67,60},{-49.6,60}},                              color={0,0,127}));
+  connect(NaturalVentilation.y[5], realPassThrough[8].u) annotation (Line(
+        points={{-67,60},{-49.6,60}},                              color={0,0,127}));
+
   connect(tableInternalGains.y, gainIntGains.u) annotation (Line(points={{-1.7,1},
           {-1.7,0.5},{17.4,0.5},{17.4,1}},    color={0,0,127}));
   connect(gainIntGains.y, useProBus.intGains) annotation (Line(points={{70.3,1},
@@ -60,23 +108,17 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-
-
-  connect(const1.y, useProBus.TZoneSet) annotation (Line(points={{-73,-60},{115,
-          -60},{115,-1}}, color={0,0,127}), Text(
+  connect(realPassThrough.y, useProBus.NaturalVentilation) annotation (Line(
+        points={{-31.2,60},{114,60},{114,4},{115,4},{115,-1}}, color={0,0,127}),
+      Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(const2.y, useProBus.NaturalVentilation) annotation (Line(points={{-81,
-          94},{-56,94},{-56,92},{-36,92},{-36,44},{115,44},{115,-1}}, color={0,0,
-          127}), Text(
+  connect(realPassThrough1.y, useProBus.TZoneSet) annotation (Line(points={{-15.2,
+          -94},{115,-94},{115,-1}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(TSet.y, y1) annotation (Line(points={{-71,-108},{-44,-108},{-44,-112},
-          {-12,-112},{-12,-106}}, color={0,0,127}));
-  connect(NaturalVentilation.y, y2) annotation (Line(points={{-80,59},{-64,59},
-          {-64,58},{-48,58}}, color={0,0,127}));
 end AixLibHighOrderProfiles;
