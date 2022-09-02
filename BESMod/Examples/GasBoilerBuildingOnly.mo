@@ -2,15 +2,12 @@ within BESMod.Examples;
 model GasBoilerBuildingOnly
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
-    redeclare BESMod.Systems.Demand.Building.TEASERThermalZone
-      building(redeclare
-        BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
+    redeclare BESMod.Systems.Demand.Building.TEASERThermalZone building(
+        redeclare BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
         oneZoneParam(heaLoadFacGrd=0, heaLoadFacOut=0)),
     redeclare BESMod.Systems.Control.NoControl control,
-    redeclare BESMod.Systems.Ventilation.NoVentilation
-      ventilation,
-    redeclare BESMod.Systems.Hydraulical.HydraulicSystem
-      hydraulic(
+    redeclare BESMod.Systems.Ventilation.NoVentilation ventilation,
+    redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
       redeclare BESMod.Systems.Hydraulical.Generation.GasBoiler generation(
         dTTra_nominal={10},
         redeclare AixLib.DataBase.Boiler.General.Boiler_Vitogas200F_11kW
@@ -19,6 +16,7 @@ model GasBoilerBuildingOnly
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
           temperatureSensorData,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData),
+
       redeclare BESMod.Systems.Hydraulical.Control.MonovalentGasBoiler control(
         redeclare
           BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
@@ -40,26 +38,24 @@ model GasBoilerBuildingOnly
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
           transferDataBaseDefinition,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
+
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
           radParameters)),
     redeclare BESMod.Systems.Demand.DHW.DHW DHW(
-      use_pressure=true,                        redeclare
-        BESMod.Systems.RecordsCollection.Movers.DefaultMover
-        pumpData, redeclare
-        BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
-        redeclare
-        BESMod.Systems.Demand.DHW.TappingProfiles.PassThrough
-        calcmFlow),
-    redeclare BESMod.Systems.UserProfiles.TEASERProfiles
-      userProfiles,
+      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
+      redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
+
+      redeclare BESMod.Systems.Demand.DHW.TappingProfiles.PassThrough calcmFlow),
+
+    redeclare BESMod.Systems.UserProfiles.TEASERProfiles userProfiles,
     redeclare
       BESMod.Examples.MyOwnHeatingRodEfficiencyStudy.SimpleStudyOfHeatingRodEfficiency
       parameterStudy,
-    redeclare
-      BESMod.Systems.RecordsCollection.ExampleSystemParameters
+    redeclare BESMod.Systems.RecordsCollection.ExampleSystemParameters
       systemParameters(
-      THydSup_nominal={328.15},                  use_ventilation=false,
+      THydSup_nominal={328.15},
+      use_ventilation=false,
       use_dhw=false,
       use_elecHeating=false));
 

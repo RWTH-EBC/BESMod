@@ -3,21 +3,20 @@ model BES
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
     redeclare Systems.Demand.Building.TEASERThermalZone building(redeclare
-        BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
-        oneZoneParam(heaLoadFacGrd=0, heaLoadFacOut=0)),
+        BESMod.Systems.Demand.Building.RecordsCollection.RefAachen oneZoneParam(
+          heaLoadFacGrd=0, heaLoadFacOut=0)),
     redeclare BESMod.Systems.Control.NoControl control,
-    redeclare BESMod.Systems.Hydraulical.HydraulicSystem
-      hydraulic(
+    redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
       redeclare Systems.Hydraulical.Generation.HeatPumpAndHeatingRod generation(
-        redeclare
-          BESMod.Systems.RecordsCollection.Movers.DefaultMover
-          pumpData,
+        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
+
         redeclare package Medium_eva = AixLib.Media.Air,
         use_pressure=false,
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           heatPumpParameters(
           genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
+
           TBiv=parameterStudy.TBiv,
           scalingFactor=hydraulic.generation.heatPumpParameters.QPri_flow_nominal
               /parameterStudy.QHP_flow_biv,
@@ -32,6 +31,7 @@ model BES
         redeclare model PerDataMainHP =
             AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
             QCon_flow_nominal=hydraulic.generation.heatPumpParameters.QPri_flow_nominal,
+
             refrigerant="Propane",
             flowsheet="VIPhaseSeparatorFlowsheet")),
       redeclare Systems.Hydraulical.Control.PartBiv_PI_ConOut_HPS control(
@@ -52,28 +52,24 @@ model BES
           safetyControl,
         TCutOff=parameterStudy.TCutOff,
         QHP_flow_cutOff=parameterStudy.QHP_flow_cutOff*hydraulic.generation.heatPumpParameters.scalingFactor),
+
       redeclare Systems.Hydraulical.Distribution.DistributionTwoStorageParallel
-        distribution(
-        redeclare
+        distribution(redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
           bufParameters(VPerQ_flow=parameterStudy.VPerQFlow, dTLoadingHC1=0),
-        redeclare
+          redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
           dhwParameters(dTLoadingHC1=10)),
       redeclare Systems.Hydraulical.Transfer.RadiatorTransferSystem transfer(
           redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
           radParameters, redeclare
-          BESMod.Systems.RecordsCollection.Movers.DefaultMover
-          pumpData)),
+          BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData)),
     redeclare Systems.Demand.DHW.DHW DHW(
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
-      use_pressure=true,
-      redeclare
-        BESMod.Systems.RecordsCollection.Movers.DefaultMover
-        pumpData,
-      redeclare
-        BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
+
+      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
+      redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
         calcmFlow),
     redeclare Systems.UserProfiles.TEASERProfiles userProfiles,
     redeclare AachenSystem systemParameters(use_ventilation=true),
@@ -81,8 +77,7 @@ model BES
     redeclare final package MediumDHW = AixLib.Media.Water,
     redeclare final package MediumZone = AixLib.Media.Air,
     redeclare final package MediumHyd = AixLib.Media.Water,
-    redeclare BESMod.Systems.Ventilation.NoVentilation
-      ventilation);
+    redeclare BESMod.Systems.Ventilation.NoVentilation ventilation);
   extends Modelica.Icons.Example;
 
   annotation (experiment(
