@@ -67,7 +67,6 @@ model SolarThermalHPSBuildingsLib
     redeclare Systems.Demand.DHW.DHW DHW(
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
 
-      final use_pressure=true,
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
       redeclare Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic calcmFlow),
 
