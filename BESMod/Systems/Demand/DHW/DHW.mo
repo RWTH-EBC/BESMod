@@ -7,8 +7,8 @@ model DHW "Standard DHW subsystem"
     TDHW_nominal=323.15,
     VDHWDay=if use_dhwCalc then V_dhwCalc_day else DHWProfile.VDHWDay,
     mDHW_flow_nominal=DHWProfile.m_flow_nominal);
-  replaceable parameter Systems.Demand.DHW.RecordsCollection.PartialDHWTap
-    DHWProfile annotation (choicesAllMatching=true, Dialog(
+  replaceable parameter Systems.Demand.DHW.RecordsCollection.ProfileM
+    DHWProfile constrainedby Systems.Demand.DHW.RecordsCollection.PartialDHWTap annotation (choicesAllMatching=true, Dialog(
       enable=not use_dhwCalc and use_dhw));
 
   parameter Boolean use_dhwCalc=false "=true to use the tables in DHWCalc. Will slow down the simulation, but represents DHW tapping more in a more realistic way."     annotation (Dialog(enable=use_dhw));
