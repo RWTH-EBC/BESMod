@@ -7,10 +7,8 @@ partial model PartialTest
     redeclare package Medium = Medium,
     energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
     Q_flow_nominal=fill(sum(systemParameters.QBui_flow_nominal), distribution.nParallelDem),
-
     TOda_nominal=systemParameters.TOda_nominal,
     TDem_nominal=fill(systemParameters.THydSup_nominal[1], distribution.nParallelDem),
-
     TAmb=systemParameters.TAmbHyd,
     mDHW_flow_nominal=0.1,
     QDHW_flow_nominal=2000,
