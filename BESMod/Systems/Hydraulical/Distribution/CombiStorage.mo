@@ -4,6 +4,9 @@ model CombiStorage
   extends BaseClasses.PartialDistribution(
     dpSup_nominal={0,sum(bufferStorage.heatingCoil2.pipe.res.dp_nominal)},
     final dpDem_nominal={0},
+    final VStoDHW=parameters.V,
+    final QDHWStoLoss_flow=parameters.QLoss_flow,
+    designType=BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage,
     dTTraDHW_nominal=parameters.dTLoadingHC1,
     final m_flow_nominal=mDem_flow_nominal,
     dTTra_nominal={0},
@@ -21,13 +24,14 @@ model CombiStorage
     BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition
     parameters constrainedby
     BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition(
-    final QHC1_flow_nominal=Q_flow_nominal[1]*f_design[1],
+    final QHC1_flow_nominal=QDHW_flow_nominal,
     final rho=rho,
     final TAmb=TAmb,
     final c_p=cp,
     final mHC2_flow_nominal=mSup_flow_nominal[2],
     final mHC1_flow_nominal=mDHW_flow_nominal,
     final Q_flow_nominal=Q_flow_nominal[1]*f_design[1],
+    final QHC2_flow_nominal=Q_flow_nominal[1]*f_design[1],
     final T_m=TSup_nominal[1])
     annotation (choicesAllMatching=true, Placement(transformation(extent={{82,56},
             {96,70}})));

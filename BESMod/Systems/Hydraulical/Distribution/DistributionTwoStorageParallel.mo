@@ -2,6 +2,9 @@ within BESMod.Systems.Hydraulical.Distribution;
 model DistributionTwoStorageParallel
   "Buffer storage and DHW storage"
   extends BaseClasses.PartialDistribution(
+    final VStoDHW=dhwParameters.V,
+    final QDHWStoLoss_flow=dhwParameters.QLoss_flow,
+    designType=BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage,
     final dpDem_nominal={0},
     final dpSup_nominal={0},
     final dTTraDHW_nominal=dhwParameters.dTLoadingHC1,
@@ -108,8 +111,8 @@ model DistributionTwoStorageParallel
         final c_p=cp,
         final TAmb=TAmb,
         final QHC1_flow_nominal=QDHW_flow_nominal,
-        final V=VDHWDay,
-        final Q_flow_nominal=QDHW_flow_nominal,
+        final V=if designType == Types.DHWDesignType.FullStorage then VDHWDay * fFullSto else VDHWDay,
+        final Q_flow_nominal=0,
         final VPerQ_flow=0,
         final T_m=TDHW_nominal,
         final mHC1_flow_nominal=mSup_flow_nominal[1],

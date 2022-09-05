@@ -7,17 +7,6 @@ partial model PartialUserProfiles
   parameter Modelica.Units.SI.Temperature TSetZone_nominal[nZones]=fill(293.15,
       nZones) "Nominal set temerature of zones"
     annotation (Dialog(group="Top-Down"));
-  parameter Boolean use_dhw = true "= false to disable DHW" annotation(Dialog(group="Top-Down"));
-  parameter Modelica.Units.SI.Temperature TSetDHW=323.15
-    "Constant DHW demand temperature for design"
-    annotation (Dialog(group="Top-Down", enable=use_dhw));
-  parameter Modelica.Units.SI.Temperature TDHWWaterCold=283.15
-    "Cold water temperature (new water)"
-    annotation (Dialog(group="Top-Down", enable=use_dhw));
-  parameter Modelica.Units.SI.MassFlowRate mDHW_flow_nominal
-    "Nominal mass flow rate" annotation (Dialog(group="Bottom-Up", enable=use_dhw));
-  parameter Modelica.Units.SI.Volume VolDHWDay "Average daily tapping volume"
-    annotation (Dialog(group="Bottom-Up", enable=use_dhw));
 
   BESMod.Systems.Interfaces.UseProBus useProBus annotation (
       Placement(transformation(extent={{80,-34},{150,32}}), iconTransformation(

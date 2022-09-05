@@ -30,7 +30,8 @@ partial model PartialGeneration "Partial generation model for HPS"
       weaBus "Weather data bus" annotation (Placement(transformation(extent={{-122,58},
             {-80,102}}),         iconTransformation(extent={{-108,50},{-88,
             70}})));
-  Electrical.Interfaces.InternalElectricalPinOut internalElectricalPin
+  BESMod.Systems.Electrical.Interfaces.InternalElectricalPinOut
+    internalElectricalPin
     annotation (Placement(transformation(extent={{62,-110},{82,-90}})));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,

@@ -1,7 +1,6 @@
 within BESMod.Examples.UseCaseAachen;
 record AachenSystem
   extends Systems.RecordsCollection.SystemParametersBaseDataDefinition(
-    QDHW_flow_nomial=1000,
     use_elecHeating=false,
     nZones=1,
     filNamWea=Modelica.Utilities.Files.loadResource(

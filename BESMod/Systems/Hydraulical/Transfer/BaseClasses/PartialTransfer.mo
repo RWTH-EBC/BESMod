@@ -57,7 +57,8 @@ partial model PartialTransfer "Partial transfer model for BES"
     annotation (Placement(transformation(extent={{-10,-114},{10,-94}})));
   Interfaces.TransferControlBus traControlBus
     annotation (Placement(transformation(extent={{-10,90},{10,110}})));
-  Electrical.Interfaces.InternalElectricalPinOut internalElectricalPin
+  BESMod.Systems.Electrical.Interfaces.InternalElectricalPinOut
+    internalElectricalPin
     annotation (Placement(transformation(extent={{62,-108},{82,-88}})));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
