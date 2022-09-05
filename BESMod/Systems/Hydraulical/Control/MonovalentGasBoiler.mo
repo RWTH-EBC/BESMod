@@ -66,6 +66,8 @@ model MonovalentGasBoiler "PI Control of gas boiler"
         origin={-30,-10})));
   Modelica.Blocks.Routing.RealPassThrough realPassThrough if not use_dhw
     annotation (Placement(transformation(extent={{46,48},{66,68}})));
+  Modelica.Blocks.Math.BooleanToReal booleanToReal
+    annotation (Placement(transformation(extent={{40,0},{60,20}})));
 equation
   connect(sigBusDistr,TSet_DHW. sigBusDistr) annotation (Line(
       points={{1,-100},{10,-100},{10,-146},{-280,-146},{-280,89.9},{-220,89.9}},
@@ -165,4 +167,12 @@ equation
   connect(realPassThrough.u, add_dT_LoadingBuf.y) annotation (Line(points={{44,
           58},{26,58},{26,52},{-26,52},{-26,54},{-44,54},{-44,10},{-59,10}},
         color={0,0,127}));
+  connect(BoiOn.y, booleanToReal.u) annotation (Line(points={{1,30},{12,30},{12,
+          10},{38,10}}, color={255,0,255}));
+  connect(booleanToReal.y, sigBusGen.uPump) annotation (Line(points={{61,10},{
+          80,10},{80,-32},{-152,-32},{-152,-99}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
 end MonovalentGasBoiler;

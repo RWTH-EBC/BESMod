@@ -16,7 +16,6 @@ model GasBoilerBuildingOnly
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
           temperatureSensorData,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData),
-
       redeclare BESMod.Systems.Hydraulical.Control.MonovalentGasBoiler control(
         redeclare
           BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
@@ -38,23 +37,21 @@ model GasBoilerBuildingOnly
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
           transferDataBaseDefinition,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
-
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
           radParameters)),
     redeclare BESMod.Systems.Demand.DHW.DHW DHW(
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
-
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.PassThrough calcmFlow),
-
     redeclare BESMod.Systems.UserProfiles.TEASERProfiles userProfiles,
     redeclare
       BESMod.Examples.MyOwnHeatingRodEfficiencyStudy.SimpleStudyOfHeatingRodEfficiency
       parameterStudy,
     redeclare BESMod.Systems.RecordsCollection.ExampleSystemParameters
       systemParameters(
-      THydSup_nominal={328.15},
+      QBui_flow_nominal={12820},
+      THydSup_nominal={338.15},
       use_ventilation=false,
       use_dhw=false,
       use_elecHeating=false));
@@ -62,7 +59,7 @@ model GasBoilerBuildingOnly
   extends Modelica.Icons.Example;
 
   annotation (experiment(
-      StopTime=86400,
-      Interval=600,
+      StopTime=31536000,
+      Interval=900.00288,
       __Dymola_Algorithm="Dassl"));
 end GasBoilerBuildingOnly;
