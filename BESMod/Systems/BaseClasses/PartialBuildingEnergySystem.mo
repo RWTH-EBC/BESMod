@@ -21,9 +21,7 @@ partial model PartialBuildingEnergySystem "Partial BES"
   replaceable parameter
     BESMod.Systems.RecordsCollection.SystemParametersBaseDataDefinition
     systemParameters constrainedby
-    RecordsCollection.SystemParametersBaseDataDefinition(QDHW_flow_nomial=
-        userProfiles.mDHW_flow_nominal*(systemParameters.TSetDHW -
-        systemParameters.TDHWWaterCold)*4184)
+    RecordsCollection.SystemParametersBaseDataDefinition
                      "Parameters relevant for the whole energy system"
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-278,
             -38},{-224,18}})));
@@ -46,9 +44,7 @@ partial model PartialBuildingEnergySystem "Partial BES"
   replaceable BESMod.Systems.UserProfiles.BaseClasses.PartialUserProfiles
     userProfiles constrainedby UserProfiles.BaseClasses.PartialUserProfiles(
     final nZones=systemParameters.nZones,
-    final TSetZone_nominal=systemParameters.TSetZone_nominal,
-    final TSetDHW=systemParameters.TSetDHW,
-    final TDHWWaterCold=systemParameters.TDHWWaterCold)
+    final TSetZone_nominal=systemParameters.TSetZone_nominal)
     "Replacable model to specify your user profiles" annotation (
       choicesAllMatching=true, Placement(transformation(extent={{-280,124},{
             -224,178}})));
@@ -56,12 +52,8 @@ partial model PartialBuildingEnergySystem "Partial BES"
     DHW if systemParameters.use_hydraulic constrainedby
     Demand.DHW.BaseClasses.PartialDHW(
     redeclare final package Medium = MediumDHW,
-    final parameters(
-      final mDHW_flow_nominal=userProfiles.mDHW_flow_nominal,
-      final QDHW_flow_nominal=systemParameters.QDHW_flow_nomial,
-      final TDHW_nominal=systemParameters.TSetDHW,
-      final TDHWCold_nominal=systemParameters.TDHWWaterCold,
-      final VDHWDay=userProfiles.VolDHWDay),
+    final TDHW_nominal=systemParameters.TSetDHW,
+    final TDHWCold_nominal=systemParameters.TDHWWaterCold,
     final subsystemDisabled=not systemParameters.use_dhw)
                                               annotation (choicesAllMatching=true, Placement(
         transformation(extent={{2,-118},{78,-42}})));
@@ -89,6 +81,7 @@ partial model PartialBuildingEnergySystem "Partial BES"
     Hydraulical.BaseClasses.PartialHydraulicSystem(
     redeclare package Medium = MediumHyd,
     final subsystemDisabled=not systemParameters.use_hydraulic,
+    final use_dhw=systemParameters.use_dhw,
     redeclare final package MediumDHW = MediumDHW,
     redeclare final
       BESMod.Systems.Hydraulical.RecordsCollection.HydraulicSystemBaseDataDefinition
@@ -104,9 +97,16 @@ partial model PartialBuildingEnergySystem "Partial BES"
       final ABui=building.ABui,
       final ARoo=building.ARoo,
       final hBui=building.hBui,
-      final dhwParas=DHW.parameters))
+      final mDHW_flow_nominal=DHW.mDHW_flow_nominal,
+      final TDHW_nominal=DHW.TDHW_nominal,
+      final tCrit=DHW.tCrit,
+      final QCrit=DHW.QCrit,
+      final TDHWCold_nominal=DHW.TDHWCold_nominal,
+      final QDHW_flow_nominal=DHW.QDHW_flow_nominal,
+      final VDHWDay=DHW.VDHWDay))
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-198,
             -98},{-42,-2}})));
+
   replaceable
     BESMod.Systems.Ventilation.BaseClasses.PartialVentilationSystem
     ventilation if systemParameters.use_ventilation constrainedby
@@ -206,8 +206,22 @@ equation
             -109.737,-2}},
       color={215,215,215},
       thickness=0.5));
-    if systemParameters.use_dhw then
-      connect(DHW.outBusDHW, outputs.DHW) annotation (Line(
+    connect(userProfiles.useProBus, DHW.useProBus) annotation (Line(
+      points={{-225.167,150.775},{-32,150.775},{-32,-36},{60.9,-36},{60.9,-42}},
+      color={0,127,0},
+      thickness=0.5));
+    connect(hydraulic.portDHW_out, DHW.port_a) annotation (Line(points={{
+            -42.8211,-72.6286},{-2,-72.6286},{-2,-57.2},{2,-57.2}},
+                                                              color={0,127,255}));
+    connect(hydraulic.portDHW_in, DHW.port_b) annotation (Line(points={{
+            -42.8211,-86.3429},{-2,-86.3429},{-2,-102.8},{2,-102.8}},
+                                                              color={0,127,255}));
+    connect(DHW.internalElectricalPin, electrical.internalElectricalPin[3])   annotation (Line(
+    points={{66.6,-117.24},{66.6,-126},{72,-126},{72,-140},{-210,-140},{-210,
+            118},{-198,118},{-198,118.171}},
+    color={0,0,0},
+    thickness=1));
+    connect(DHW.outBusDHW, outputs.DHW) annotation (Line(
       points={{78,-80},{244,-80},{244,0},{285,0}},
       color={175,175,175},
       thickness=0.5), Text(
@@ -215,25 +229,7 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-      connect(userProfiles.useProBus, DHW.useProBus) annotation (Line(
-      points={{-225.167,150.775},{-32,150.775},{-32,-36},{60.9,-36},{60.9,-42}},
-      color={0,127,0},
-      thickness=0.5));
-      connect(hydraulic.portDHW_out, DHW.port_a) annotation (Line(points={{
-              -42.8211,-72.6286},{-2,-72.6286},{-2,-57.2},{2,-57.2}},
-                                                              color={0,127,255}));
-      connect(hydraulic.portDHW_in, DHW.port_b) annotation (Line(points={{
-              -42.8211,-86.3429},{-2,-86.3429},{-2,-102.8},{2,-102.8}},
-                                                              color={0,127,255}));
-      connect(DHW.internalElectricalPin, electrical.internalElectricalPin[3])
-  annotation (Line(
-    points={{66.6,-117.24},{66.6,-126},{72,-126},{72,-140},{-210,-140},{-210,
-              118},{-198,118},{-198,118.171}},
-    color={0,0,0},
-    thickness=1));
-    else
-      connect(hydraulicZeroElecLoad.internalElectricalPin, electrical.internalElectricalPin[1]);
-    end if;
+
     connect(electrical.internalElectricalPin[1], hydraulic.internalElectricalPin)
   annotation (Line(
     points={{-198,118.171},{-198,118},{-210,118},{-210,-140},{-56,-140},{-56,

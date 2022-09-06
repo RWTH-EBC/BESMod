@@ -9,8 +9,6 @@ record SystemParametersBaseDataDefinition
       9710.1, nZones)
     "Nominal heating load at outdoor air temperature of each zone"
     annotation (Dialog(group="Heat demand"));
-  parameter Modelica.Units.SI.HeatFlowRate QDHW_flow_nomial "DHW heat demand"
-    annotation (Dialog(group="Heat demand"));
 
   // Temperature Levels
   parameter Modelica.Units.SI.Temperature TOda_nominal(

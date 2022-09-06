@@ -1,6 +1,9 @@
 within BESMod.Systems.Hydraulical.Control.BaseClasses;
 partial model PartialControl "Partial controller for HPS"
  extends BESMod.Utilities.Icons.ControlIcon;
+ parameter Boolean use_dhw "=false to disable DHW";
+
+
   BESMod.Systems.Hydraulical.Interfaces.GenerationControlBus
     sigBusGen
     annotation (Placement(transformation(extent={{-178,-124},{-126,-74}})));

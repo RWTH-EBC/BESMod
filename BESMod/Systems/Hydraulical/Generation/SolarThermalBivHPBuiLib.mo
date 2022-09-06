@@ -2,6 +2,8 @@ within BESMod.Systems.Hydraulical.Generation;
 model SolarThermalBivHPBuiLib
   "Solar thermal assistet monoenergetic heat pump with heating rod"
   extends HeatPumpAndHeatingRod(
+    m_flow_nominal={Q_flow_nominal[1]*f_design[1]/dTTra_nominal[1]/4184,
+        solarThermalParas.m_flow_nominal},
     redeclare package Medium = IBPSA.Media.Water,
                                 dTTra_nominal={if TDem_nominal[1] > 273.15 + 55
          then 10 elseif TDem_nominal[1] > 44.9 then 8 else 5,solarThermalParas.dTMax},
@@ -15,7 +17,8 @@ model SolarThermalBivHPBuiLib
   replaceable parameter
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
     pumpSTData
-    annotation (choicesAllMatching=true, Placement(transformation(extent={{4,-152},{18,-138}})));
+    annotation (choicesAllMatching=true, Placement(transformation(extent={{-80,
+            -158},{-66,-144}})));
   Buildings.Fluid.SolarCollectors.EN12975 solCol(
     redeclare final package Medium = Medium,
     final allowFlowReversal=true,
@@ -50,8 +53,8 @@ model SolarThermalBivHPBuiLib
         dT_nominal=solarThermalParas.dTMax))                 annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
-        rotation=90,
-        origin={-32,-84})));
+        rotation=180,
+        origin={-30,-170})));
 
   IBPSA.Fluid.Movers.SpeedControlled_y pumpST(
     redeclare final package Medium = Medium,
@@ -76,7 +79,7 @@ model SolarThermalBivHPBuiLib
     final y_start=1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={28,-104})));
+        origin={30,-170})));
 
   IBPSA.Fluid.Sources.Boundary_pT bou(
     redeclare package Medium = Medium,
@@ -84,13 +87,13 @@ model SolarThermalBivHPBuiLib
     final T=T_start,              nPorts=1) annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
-        rotation=90,
-        origin={54,-128})));
+        rotation=180,
+        origin={70,-170})));
   Modelica.Blocks.Sources.Constant AirOrSoil1(k=1)
     annotation (Placement(transformation(
         extent={{-6,-6},{6,6}},
         rotation=0,
-        origin={-56,-150})));
+        origin={-188,-160})));
 
   BESMod.Utilities.KPIs.InternalKPICalculator KPIWel1(
     unit="W",
@@ -99,45 +102,46 @@ model SolarThermalBivHPBuiLib
     calc_integral=true,
     calc_movAve=false,
     y=sum(solCol.vol.heatPort.Q_flow))
-    annotation (Placement(transformation(extent={{-104,-134},{-92,-112}})));
+    annotation (Placement(transformation(extent={{-52,-118},{-40,-96}})));
 
   Modelica.Blocks.Logical.Switch switch3 annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={-26,-162})));
+        origin={-158,-172})));
   Modelica.Blocks.Sources.Constant AirOrSoil2(k=0)
     annotation (Placement(transformation(
         extent={{-6,-6},{6,6}},
         rotation=0,
-        origin={-58,-178})));
+        origin={-190,-188})));
   Modelica.Blocks.Logical.Hysteresis       isOnHR1(uLow=10, uHigh=100)
     annotation (Placement(transformation(
         extent={{-5,-5},{5,5}},
         rotation=0,
-        origin={-111,-151})));
+        origin={-205,-173})));
 protected
   parameter Modelica.Units.SI.PressureDifference dpST_nominal=solarThermalParas.m_flow_nominal
       ^2*solarThermalParas.pressureDropCoeff/(rho^2)
     "Pressure drop at nominal mass flow rate";
 equation
 
-  connect(pumpST.port_a, bou.ports[1]) annotation (Line(points={{38,-104},{54,-104},
-          {54,-118}}, color={0,127,255}));
-  connect(pumpST.port_b, solCol.port_a) annotation (Line(points={{18,-104},{-32,
-          -104},{-32,-94}}, color={0,127,255}));
-  connect(solCol.port_b, portGen_out[2]) annotation (Line(points={{-32,-74},{-32,
-          -62},{132,-62},{132,82.5},{100,82.5}}, color={0,127,255}));
+  connect(pumpST.port_a, bou.ports[1]) annotation (Line(points={{40,-170},{60,
+          -170}},     color={0,127,255}));
+  connect(pumpST.port_b, solCol.port_a) annotation (Line(points={{20,-170},{-20,
+          -170}},           color={0,127,255}));
+  connect(solCol.port_b, portGen_out[2]) annotation (Line(points={{-40,-170},{
+          -40,-124},{-232,-124},{-232,126},{116,126},{116,78},{106,78},{106,
+          82.5},{100,82.5}},                     color={0,127,255}));
   connect(portGen_in[2], pumpST.port_a) annotation (Line(points={{100,0.5},{102,
-          0.5},{102,-104},{38,-104}},
+          0.5},{102,-156},{44,-156},{44,-170},{40,-170}},
                                  color={0,127,255}));
-  connect(pumpST.P, outBusGen.PelPumpST) annotation (Line(points={{17,-113},{0,
-          -113},{0,-100}}, color={0,0,127}), Text(
+  connect(pumpST.P, outBusGen.PelPumpST) annotation (Line(points={{19,-179},{0,
+          -179},{0,-100}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(KPIWel1.KPIBus, outBusGen.QST_flow) annotation (Line(
-      points={{-91.88,-123},{-91.88,-120},{-88,-120},{-88,-70},{0,-70},{0,-100}},
+      points={{-39.88,-107},{-16,-107},{-16,-100},{0,-100}},
       color={255,204,51},
       thickness=0.5), Text(
       string="%second",
@@ -146,26 +150,39 @@ equation
       horizontalAlignment=TextAlignment.Left));
 
   connect(weaBus, solCol.weaBus) annotation (Line(
-      points={{-101,80},{-106,80},{-106,-94},{-41.6,-94}},
+      points={{-101,80},{-101,-6},{-104,-6},{-104,-108},{-108,-108},{-108,-184},
+          {-20,-184},{-20,-179.6}},
       color={255,204,51},
       thickness=0.5), Text(
       string="%first",
       index=-1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(switch3.y, pumpST.y) annotation (Line(points={{-15,-162},{6,-162},{6,
-          -160},{28,-160},{28,-116}}, color={0,0,127}));
-  connect(switch3.u1, AirOrSoil1.y) annotation (Line(points={{-38,-154},{-44,
-          -154},{-44,-150},{-49.4,-150}}, color={0,0,127}));
-  connect(AirOrSoil2.y, switch3.u3) annotation (Line(points={{-51.4,-178},{-46,
-          -178},{-46,-170},{-38,-170}}, color={0,0,127}));
-  connect(switch3.u2, isOnHR1.y) annotation (Line(points={{-38,-162},{-38,-176},
-          {-34,-176},{-34,-158},{-105.5,-158},{-105.5,-151}}, color={255,0,255}));
-  connect(isOnHR1.u, weaBus.HDirNor) annotation (Line(points={{-117,-151},{-117,
-          -6},{-94,-6},{-94,38},{-76,38},{-76,44},{-74,44},{-74,80},{-101,80}},
+  connect(switch3.y, pumpST.y) annotation (Line(points={{-147,-172},{-138,-172},
+          {-138,-170},{-130,-170},{-130,-186},{30,-186},{30,-182}},
+                                      color={0,0,127}));
+  connect(switch3.u1, AirOrSoil1.y) annotation (Line(points={{-170,-164},{-178,
+          -164},{-178,-160},{-181.4,-160}},
+                                          color={0,0,127}));
+  connect(AirOrSoil2.y, switch3.u3) annotation (Line(points={{-183.4,-188},{
+          -176,-188},{-176,-180},{-170,-180}},
+                                        color={0,0,127}));
+  connect(switch3.u2, isOnHR1.y) annotation (Line(points={{-170,-172},{-187.75,
+          -172},{-187.75,-173},{-199.5,-173}},                color={255,0,255}));
+  connect(isOnHR1.u, weaBus.HDirNor) annotation (Line(points={{-211,-173},{-222,
+          -173},{-222,108},{-101,108},{-101,80}},
         color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
+  annotation (Diagram(coordinateSystem(extent={{-220,-200},{100,100}}),
+        graphics={Text(
+          extent={{-198,-136},{-134,-154}},
+          textColor={0,0,0},
+          textString="Solar Thermal"), Rectangle(
+          extent={{94,-198},{-218,-136}},
+          lineColor={0,0,0},
+          lineThickness=1)}), Icon(coordinateSystem(extent={{-220,-200},{100,
+            100}})));
 end SolarThermalBivHPBuiLib;

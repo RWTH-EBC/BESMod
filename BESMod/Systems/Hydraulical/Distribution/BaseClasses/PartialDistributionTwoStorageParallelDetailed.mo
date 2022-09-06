@@ -8,6 +8,9 @@ partial model PartialDistributionTwoStorageParallelDetailed
     final dTTraDHW_nominal=dhwParameters.dTLoadingHC1,
     final dTTra_nominal={bufParameters.dTLoadingHC1},
     final m_flow_nominal=mDem_flow_nominal,
+    final VStoDHW=dhwParameters.V,
+    final QDHWStoLoss_flow=dhwParameters.QLoss_flow,
+    designType=BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage,
     final TSup_nominal=TDem_nominal .+ dTLoss_nominal .+ dTTra_nominal,
     final nParallelSup=1,
     final nParallelDem=1);
@@ -66,14 +69,14 @@ partial model PartialDistributionTwoStorageParallelDetailed
     RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition dhwParameters
     constrainedby
     RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition(
-        final Q_flow_nominal=QDHW_flow_nominal,
+        final Q_flow_nominal=0,
         final VPerQ_flow=0,
         final rho=rho,
         final c_p=cp,
-        final V=VDHWDay,
+        final V=if designType == Types.DHWDesignType.FullStorage then VDHWDay * fFullSto else VDHWDay,
         final TAmb=TAmb,
         T_m=TDHW_nominal,
-        final QHC1_flow_nominal=Q_flow_nominal[1]*f_design[1],
+        final QHC1_flow_nominal=QDHW_flow_nominal,
         final mHC1_flow_nominal=mSup_flow_nominal[1],
         redeclare final AixLib.DataBase.Pipes.Copper.Copper_12x1 pipeHC1,
         final use_HC2=storageBuf.useHeatingCoil2,

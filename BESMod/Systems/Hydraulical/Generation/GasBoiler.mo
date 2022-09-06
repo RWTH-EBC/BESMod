@@ -115,17 +115,17 @@ equation
           {94,-6},{86,-6},{86,-50},{56,-50}}, color={0,127,255}));
   connect(boilerNoControl.port_a, pump.port_b) annotation (Line(points={{-66,10},
           {-68,10},{-68,-50},{36,-50},{36,-50}}, color={0,127,255}));
-  connect(pump.y, sigBusGen.uBoiSet) annotation (Line(points={{46,-38},{46,14},
-          {2,14},{2,98}}, color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{-3,6},{-3,6}},
-      horizontalAlignment=TextAlignment.Right));
   connect(bou1.ports[1], pump.port_a)
     annotation (Line(points={{66,-36},{66,-50},{56,-50}}, color={0,127,255}));
   connect(zeroLoad.internalElectricalPin, internalElectricalPin) annotation (
       Line(
-      points={{46,-98},{72,-98}},
+      points={{46,-98},{60,-98},{60,-100},{72,-100}},
       color={0,0,0},
       thickness=1));
+  connect(pump.y, sigBusGen.uPump) annotation (Line(points={{46,-38},{48,-38},{
+          48,14},{2,14},{2,98}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
 end GasBoiler;
