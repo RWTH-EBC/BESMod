@@ -145,5 +145,9 @@ equation
           extent={{20,94},{24,20}},
           lineColor={0,0,0},
           fillColor={215,215,215},
-          fillPattern=FillPattern.CrossDiag)}),                  Diagram(coordinateSystem(preserveAspectRatio=false)));
+          fillPattern=FillPattern.CrossDiag)}),                  Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Documentation(info="<html>
+<p>Model for a pressure relief valve. If the pressure difference between supply and return passes dpThreshold_nominal, the valve starts to open. At dpFullOpen_nominal, the valve is fully opened. </p>
+<p>Using this valve ensure a minimal mass flow rate in a transfer system.</p>
+</html>"));
 end PressureReliefValve;
