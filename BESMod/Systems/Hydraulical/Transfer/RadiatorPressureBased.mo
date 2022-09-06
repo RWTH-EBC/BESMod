@@ -5,7 +5,7 @@ model RadiatorPressureBased "Pressure Based transfer system"
     ABui=1,
     hBui=1,                           final dp_nominal=rad.dp_nominal .+ val.dpValve_nominal .+ res.dp_nominal .+ val.dpFixed_nominal,
                                       final nParallelSup=1);
-  parameter Boolean use_preRelVal=true "=false to disable pressure relief valve";
+  parameter Boolean use_preRelVal=false "=false to disable pressure relief valve";
   parameter Real perPreRelValOpens=0.99 "Percentage of nominal pressure difference at which the pressure relief valve starts to open" annotation(Dialog(enable=use_preRelVal));
   replaceable parameter RecordsCollection.TransferDataBaseDefinition
     transferDataBaseDefinition constrainedby
