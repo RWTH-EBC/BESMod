@@ -120,9 +120,9 @@ model RadiatorPressureBased "Pressure Based transfer system"
     annotation (Placement(transformation(extent={{34,-94},{54,-74}})));
   Distribution.Components.Valves.PressureReliefValve pressureReliefValve(
     redeclare final package Medium = Medium,
+    m_flow_nominal=mSup_flow_nominal[1],
     final dpFullOpen_nominal=dp_nominal[1],
     final dpThreshold_nominal=perPreRelValOpens*dp_nominal[1],
-    final m_flowMin=mSup_flow_nominal[1],
     final facDpValve_nominal=transferDataBaseDefinition.valveAutho[1],
     final l=transferDataBaseDefinition.leakageOpening) if use_preRelVal
                         annotation (Placement(transformation(

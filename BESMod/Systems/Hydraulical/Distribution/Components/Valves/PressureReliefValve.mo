@@ -1,6 +1,6 @@
 within BESMod.Systems.Hydraulical.Distribution.Components.Valves;
 model PressureReliefValve
-  extends AixLib.Fluid.Interfaces.PartialTwoPortInterface(final m_flow_nominal=m_flowMin);
+  extends AixLib.Fluid.Interfaces.PartialTwoPortInterface;
   parameter Modelica.Units.SI.PressureDifference dpFullOpen_nominal "Pressure difference at which valve is fully open";
   parameter Modelica.Units.SI.PressureDifference dpThreshold_nominal = 0.95*dpFullOpen_nominal "Threshold at which valve starts to open";
   AixLib.Fluid.Actuators.Valves.TwoWayEqualPercentage val(
@@ -14,12 +14,8 @@ model PressureReliefValve
     y_start=y_start,
     final dpFixed_nominal=0,
     final l=l)                                            annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
-  ReliefValveHead         reliefValveHead(final dpThreshold=dpThreshold_nominal, final dpFullOpen=dpFullOpen_nominal)
-                                          annotation (Placement(transformation(extent={{-60,20},
-            {-40,40}})));
   AixLib.Fluid.Sensors.RelativePressure senRelPre(redeclare package Medium = Medium)
                                                   annotation (Placement(transformation(extent={{-10,50},{10,30}})));
-  parameter Modelica.Units.SI.MassFlowRate m_flowMin "Minimal mass flow rate that needs to be ensured by valve";
   parameter Real facDpValve_nominal(min=0, max=1) = 0.5 "Factor to design dpValve_nominal";
   parameter Real l=0.001 "Valve leakage, l=Kv(y=0)/Kv(y=1)";
 
@@ -37,6 +33,26 @@ model PressureReliefValve
       tab="Dynamics",
       group="Filtered opening",
       enable=use_inputFilter));
+  Modelica.Blocks.Nonlinear.Limiter limiter(final uMax=1, final uMin=0)
+                                                            annotation (Placement(transformation(extent={{-10,-10},
+            {10,10}},
+        rotation=0,
+        origin={-50,30})));
+  Modelica.Blocks.Math.Add add(final k1=+1, final k2=-1) annotation (Placement(
+        transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={-10,70})));
+  Modelica.Blocks.Math.Gain gain(k=1/(dpFullOpen_nominal - dpThreshold_nominal))
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={-50,70})));
+  Modelica.Blocks.Sources.Constant const(final k=dpThreshold_nominal)
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={30,90})));
 protected
   parameter Modelica.Units.SI.PressureDifference dpValve_nominal = facDpValve_nominal*(dpFullOpen_nominal - dpThreshold_nominal) + dpThreshold_nominal;
 
@@ -45,10 +61,16 @@ equation
   connect(val.port_b, senRelPre.port_b) annotation (Line(points={{10,0},{20,0},{20,40},{10,40}}, color={0,127,255}));
   connect(port_a, val.port_a) annotation (Line(points={{-100,0},{-10,0}}, color={0,127,255}));
   connect(val.port_b, port_b) annotation (Line(points={{10,0},{100,0}}, color={0,127,255}));
-  connect(senRelPre.p_rel, reliefValveHead.pressureSignal) annotation (Line(points={{0,49},{
-          0,54},{-34,54},{-34,37},{-39,37}},                                                                                   color={0,0,127}));
-  connect(reliefValveHead.y, val.y) annotation (Line(points={{-39,30},{0,30},{0,
-          12}},                                                                       color={0,0,127}));
+  connect(senRelPre.p_rel, add.u1) annotation (Line(points={{0,49},{0,56},{20,56},
+          {20,64},{2,64}}, color={0,0,127}));
+  connect(const.y, add.u2) annotation (Line(points={{19,90},{18,90},{18,76},{2,76}},
+        color={0,0,127}));
+  connect(limiter.y, val.y) annotation (Line(points={{-39,30},{-26,30},{-26,20},
+          {0,20},{0,12}}, color={0,0,127}));
+  connect(gain.u, add.y)
+    annotation (Line(points={{-38,70},{-21,70}}, color={0,0,127}));
+  connect(gain.y, limiter.u) annotation (Line(points={{-61,70},{-68,70},{-68,30},
+          {-62,30}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
                                          Rectangle(
       extent={{-24,92},{22,20}},
