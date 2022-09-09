@@ -142,6 +142,17 @@ partial model PartialTwoPoint_HPS_Controller
     "Type of supervisory control for DHW Setpoint";
   Modelica.Blocks.Math.MinMax minMax(nu=transferParameters.nParallelDem)
     annotation (Placement(transformation(extent={{-202,32},{-182,52}})));
+  Modelica.Blocks.Math.BooleanToReal booleanToReal1 "Turn Pump in heat pump on"
+                                                   annotation (Placement(
+        transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=270,
+        origin={-170,-54})));
+  Modelica.Blocks.Logical.Or HP_or_HR_active annotation (Placement(
+        transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=270,
+        origin={-170,-24})));
 equation
   connect(BufferOnOffController.T_Top, sigBusDistr.TStoBufTopMea) annotation (
       Line(points={{-126.8,47.9},{-128,47.9},{-128,48},{-130,48},{-130,-86},{4,-86},
@@ -228,13 +239,6 @@ equation
                                                  color={255,0,255}));
   connect(DHWOnOffContoller.HP_On, HP_active.u1) annotation (Line(points={{-110.88,
           83.6},{-32,83.6},{-32,91},{21,91}},    color={255,0,255}));
-  connect(DHWHysOrLegionella.y, sigBusDistr.dhw_on) annotation (Line(
-        points={{-71.25,69},{-26,69},{-26,-100},{1,-100}},
-        color={255,0,255}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
   connect(DHWHysOrLegionella.y, switch1.u2) annotation (Line(points={{-71.25,69},
           {-20,69},{-20,73},{57,73}},             color={255,0,255}));
 
@@ -357,6 +361,19 @@ equation
       horizontalAlignment=TextAlignment.Right));
   connect(minMax.yMax, heatingCurve.TSetRoom)
     annotation (Line(points={{-181,48},{-150,48},{-150,42}}, color={0,0,127}));
+  connect(booleanToReal1.u, HP_or_HR_active.y)
+    annotation (Line(points={{-170,-42},{-170,-35}}, color={255,0,255}));
+  connect(booleanToReal1.y, sigBusGen.uPump) annotation (Line(points={{-170,-65},
+          {-172,-65},{-172,-72},{-152,-72},{-152,-99}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(HP_or_HR_active.u1, HRactive.y) annotation (Line(points={{-170,-12},{
+          -134,-12},{-134,-6},{-6,-6},{-6,18},{20.75,18},{20.75,25}}, color={
+          255,0,255}));
+  connect(HP_or_HR_active.u2, HP_active.y) annotation (Line(points={{-178,-12},
+          {-178,2},{-10,2},{-10,91},{32.5,91}}, color={255,0,255}));
   annotation (Diagram(graphics={
         Rectangle(
           extent={{-240,100},{-50,60}},

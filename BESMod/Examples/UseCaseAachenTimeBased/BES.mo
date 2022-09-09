@@ -15,12 +15,10 @@ model BES
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           heatPumpParameters(genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel),
-
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
           heatingRodParameters,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
-
         redeclare package Medium_eva = AixLib.Media.Air),
       redeclare
         BESMod.Systems.Hydraulical.Control.ConstHys_PI_ConOut_HPSController
@@ -46,11 +44,15 @@ model BES
           TSet_DHW),
       redeclare
         BESMod.Systems.Hydraulical.Distribution.DistributionTwoStorageParallel
-        distribution(redeclare
+        distribution(
+        redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
-          bufParameters(dTLoadingHC1=0), redeclare
+          bufParameters(dTLoadingHC1=0),
+        redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
-          dhwParameters(dTLoadingHC1=10)),
+          dhwParameters(dTLoadingHC1=10),
+        redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
+          threeWayValveParameters),
       redeclare BESMod.Systems.Hydraulical.Transfer.RadiatorTransferSystem
         transfer(redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
@@ -59,9 +61,7 @@ model BES
     redeclare BESMod.Systems.Demand.DHW.DHW DHW(
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
-
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.PassThrough calcmFlow),
-
     redeclare BESMod.Systems.UserProfiles.TEASERProfiles userProfiles,
     redeclare BESMod.Examples.UseCaseAachenTimeBased.ParametersToChange
       parameterStudy,
@@ -70,6 +70,7 @@ model BES
       StopTime=31536000,
       Interval=600,
       __Dymola_Algorithm="Dassl"));
+
   extends Modelica.Icons.Example;
 
   annotation (experiment(

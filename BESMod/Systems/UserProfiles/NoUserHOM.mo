@@ -1,5 +1,5 @@
 within BESMod.Systems.UserProfiles;
-model NoUserHOM "No user"
+model NoUserHOM "No user in high order model"
   extends BaseClasses.PartialUserProfiles;
 
   Modelica.Blocks.Sources.Constant constZero[nZones](each k=0)

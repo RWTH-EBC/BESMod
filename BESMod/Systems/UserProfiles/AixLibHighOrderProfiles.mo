@@ -1,5 +1,5 @@
 within BESMod.Systems.UserProfiles;
-model AixLibHighOrderProfiles "Standard TEASER Profiles"
+model AixLibHighOrderProfiles "Profiles for high order model in the AixLib"
   extends BaseClasses.PartialUserProfiles(nZones=10);
   parameter String fileNameIntGains=Modelica.Utilities.Files.loadResource("modelica://BESMod/Resources/InternalGainsHOM.txt")
     "File where matrix is stored" annotation (Dialog(tab="Inputs", group="Internal Gains"));
