@@ -15,6 +15,8 @@ partial model PartialTest
     TDHW_nominal=systemParameters.TSetDHW,
     VDHWDay=0.125,
     TDHWCold_nominal=systemParameters.TDHWWaterCold,
+    tCrit=3600,
+    QCrit=2,
     redeclare package MediumDHW = Medium,
     redeclare package MediumGen = Medium,
     mSup_flow_nominal=fill(0.317, distribution.nParallelSup),

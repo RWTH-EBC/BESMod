@@ -1,6 +1,6 @@
 within BESMod.Systems.UserProfiles;
 model Case600Profiles "Case600FF profiles"
-  extends BaseClasses.RecordBasedDHWUser;
+  extends BaseClasses.PartialUserProfiles;
 
   Modelica.Blocks.Sources.Constant const[nZones](final k=
         TSetZone_nominal)                  "Profiles for internal gains"

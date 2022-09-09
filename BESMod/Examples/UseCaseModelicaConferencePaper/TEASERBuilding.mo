@@ -9,8 +9,7 @@ model TEASERBuilding
                       use_verboseEnergyBalance=false,
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial),
     redeclare BESMod.Systems.UserProfiles.TEASERProfiles
-      userProfiles(redeclare
-        BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile),
+      userProfiles,
     systemParameters(use_hydraulic=true, use_ventilation=true));
   extends Modelica.Icons.Example;
 initial equation

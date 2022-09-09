@@ -11,7 +11,9 @@ partial model PartialModelicaConferenceUseCase
         generation(
         redeclare model CellTemperature =
             AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround,
+
         redeclare AixLib.DataBase.SolarElectric.SchuecoSPV170SME1 pVParameters,
+
         lat=weaDat.lat,
         lon=weaDat.lon,
         alt=weaDat.alt,
@@ -27,12 +29,14 @@ partial model PartialModelicaConferenceUseCase
       redeclare Systems.Hydraulical.Generation.HeatPumpAndHeatingRod generation(
         dTTra_nominal={10},
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
+
         redeclare package Medium_eva = AixLib.Media.Air,
         use_pressure=false,
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           heatPumpParameters(
           genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
+
           TBiv=271.15,
           scalingFactor=scalingFactorHP,
           useAirSource=true,
@@ -65,6 +69,7 @@ partial model PartialModelicaConferenceUseCase
           BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.ConstTSet_DHW
           TSet_DHW,
         supCtrlTypeDHWSet=BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Internal),
+
       redeclare Systems.Hydraulical.Distribution.DistributionTwoStorageParallel
         distribution(redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
@@ -78,9 +83,12 @@ partial model PartialModelicaConferenceUseCase
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
           radParameters,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData)),
+
     redeclare Systems.Demand.DHW.DHW DHW(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
-      use_pressure=false,
+      redeclare final BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM
+        DHWProfile,
+      final use_dhwCalc=false,
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
         calcmFlow),
@@ -106,6 +114,7 @@ partial model PartialModelicaConferenceUseCase
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
           threeWayValveParas,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover fanData,
+
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
           tempSensorData),
