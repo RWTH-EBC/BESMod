@@ -1,7 +1,7 @@
 within BESMod.Systems.Demand.Building.Components;
 model AixLibHighOrderOFD "High order OFD"
   extends Building.BaseClasses.PartialAixLibHighOrder(
-  final nZones=10);
+  final nZones=10, TZoneMea(each final unit="K", each final displayUnit="degC"));
 
   parameter Integer nZonesNonHeated = 1 "Non heated rooms of the building";
 
@@ -27,12 +27,14 @@ model AixLibHighOrderOFD "High order OFD"
       AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.PartialWindow
       (windowarea=2)
     constrainedby
-    AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.PartialWindow  annotation (Dialog(tab="Outer walls", group="Windows"), choicesAllMatching = true);
+    AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.PartialWindow
+                                                                                     annotation (Dialog(tab="Outer walls", group="Windows"), choicesAllMatching = true);
   replaceable parameter AixLib.DataBase.WindowsDoors.Simple.OWBaseDataDefinition_Simple Type_Win "Window parametrization" annotation (Dialog(tab="Outer walls", group="Windows"), choicesAllMatching = true);
   replaceable model CorrSolarGainWin =
       AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.CorrectionSolarGain.PartialCorG
     constrainedby
-    AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.CorrectionSolarGain.PartialCorG                 "Correction model for solar irradiance as transmitted radiation" annotation (choicesAllMatching=true, Dialog(tab="Outer walls", group="Windows", enable = withWindow and outside));
+    AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.CorrectionSolarGain.PartialCorG
+                                                                                                                      "Correction model for solar irradiance as transmitted radiation" annotation (choicesAllMatching=true, Dialog(tab="Outer walls", group="Windows", enable = withWindow and outside));
   parameter Boolean use_sunblind=false
     "Will sunblind become active automatically?" annotation (Dialog(tab="Outer walls", group="Sunblind"));
   parameter Modelica.Units.SI.CoefficientOfHeatTransfer UValOutDoors=2.5
@@ -137,16 +139,16 @@ model AixLibHighOrderOFD "High order OFD"
 equation
     // Romm Temperatures
 
-  TZoneMea[1]=Modelica.Units.Conversions.to_degC(wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.airload.heatPort.T);
-  TZoneMea[2]=Modelica.Units.Conversions.to_degC(wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.airload.heatPort.T);
-  TZoneMea[3]=Modelica.Units.Conversions.to_degC(wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.airload.heatPort.T);
-  TZoneMea[4]=Modelica.Units.Conversions.to_degC(wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.airload.heatPort.T);
-  TZoneMea[5]=Modelica.Units.Conversions.to_degC(wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.airload.heatPort.T);
-  TZoneMea[6]=Modelica.Units.Conversions.to_degC(wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.airload.heatPort.T);
-  TZoneMea[7]=Modelica.Units.Conversions.to_degC(wholeHouseBuildingEnvelope.upperFloor_Building.Children1.airload.heatPort.T);
-  TZoneMea[8]=Modelica.Units.Conversions.to_degC(wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.airload.heatPort.T);
-  TZoneMea[9]=Modelica.Units.Conversions.to_degC(wholeHouseBuildingEnvelope.upperFloor_Building.Bath.airload.heatPort.T);
-  TZoneMea[10]=Modelica.Units.Conversions.to_degC(wholeHouseBuildingEnvelope.upperFloor_Building.Children2.airload.heatPort.T);
+  TZoneMea[1]=wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.airload.heatPort.T;
+  TZoneMea[2]=wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.airload.heatPort.T;
+  TZoneMea[3]=wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.airload.heatPort.T;
+  TZoneMea[4]=wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.airload.heatPort.T;
+  TZoneMea[5]=wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.airload.heatPort.T;
+  TZoneMea[6]=wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.airload.heatPort.T;
+  TZoneMea[7]=wholeHouseBuildingEnvelope.upperFloor_Building.Children1.airload.heatPort.T;
+  TZoneMea[8]=wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.airload.heatPort.T;
+  TZoneMea[9]=wholeHouseBuildingEnvelope.upperFloor_Building.Bath.airload.heatPort.T;
+  TZoneMea[10]=wholeHouseBuildingEnvelope.upperFloor_Building.Children2.airload.heatPort.T;
 
 
   connect(wholeHouseBuildingEnvelope.groPlateUp, wholeHouseBuildingEnvelope.groFloDown)
@@ -192,13 +194,14 @@ equation
           127}));
   end for;
 
-  connect(convRadToCombPort.portConvRadComb, wholeHouseBuildingEnvelope.heatingToRooms[11]) annotation (Line(points={{-46,-56},{-72,-56},{-72,5.41091},{-44,5.41091}},
+  connect(convRadToCombPort.portConvRadComb, wholeHouseBuildingEnvelope.heatingToRooms[11]) annotation (Line(points={{-46,-56},
+          {-72,-56},{-72,2.86545},{-44,2.86545}},
         color={191,0,0}));
   connect(InternalGains1.port, convRadToCombPort.portRad) annotation (Line(points={{-16,-61},{-26,-61}}, color={191,0,0}));
   connect(InternalGains.port, convRadToCombPort.portConv) annotation (Line(points={{-16,-51},{-26,-51}}, color={191,0,0}));
 
   connect(const1.y, wholeHouseBuildingEnvelope.AirExchangePort[11]) annotation (
-     Line(points={{-73.4,20},{-68,20},{-68,49.0909},{-48.7,49.0909}}, color={0,0,
+     Line(points={{-73.4,20},{-68,20},{-68,46.5455},{-48.7,46.5455}}, color={0,0,
           127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
