@@ -48,8 +48,8 @@ partial record TransferDataBaseDefinition "Data record for hydraulic heat transf
 
   parameter Boolean use_hydrBalAutom = true "Use automatic hydraluic balancing to set dpHeaSysPreValve_nominal" annotation(Dialog(group="Thermostatic Valve"));
   parameter Modelica.Units.SI.PressureDifference dpHeaSysPreValve_nominal[
-    nZones](each min=Modelica.Constants.eps)=if use_hydrBalAutom then max(dpRad_nominal) .- (dpRad_nominal)
-       else fill(Modelica.Constants.eps, nZones)
+    nZones]=if use_hydrBalAutom then max(dpRad_nominal) .- (dpRad_nominal)
+       else fill(0, nZones)
     "Pressure difference of each branch in heat distribution system as pre set value for valves (hydraulic balance)"
     annotation (Dialog(group="Thermostatic Valve", enable=use_hydrBalAutom));
   parameter Real leakageOpening = 0.0001
