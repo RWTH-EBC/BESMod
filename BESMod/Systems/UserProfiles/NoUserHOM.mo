@@ -1,9 +1,6 @@
 within BESMod.Systems.UserProfiles;
 model NoUserHOM "No user"
-  extends BaseClasses.RecordBasedDHWUser(
-    final use_dhwCalc=false,
-    redeclare final BESMod.Systems.Demand.DHW.RecordsCollection.NoDHW
-      DHWProfile);
+  extends BaseClasses.PartialUserProfiles;
 
   Modelica.Blocks.Sources.Constant constZero[nZones](each k=0)
     annotation (Placement(transformation(extent={{-20,-20},{18,18}})));

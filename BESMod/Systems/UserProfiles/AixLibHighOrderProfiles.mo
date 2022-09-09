@@ -1,6 +1,6 @@
 within BESMod.Systems.UserProfiles;
 model AixLibHighOrderProfiles "Standard TEASER Profiles"
-  extends BaseClasses.RecordBasedDHWUser(nZones=10);
+  extends BaseClasses.PartialUserProfiles(nZones=10);
   parameter String fileNameIntGains=Modelica.Utilities.Files.loadResource("modelica://BESMod/Resources/InternalGainsHOM.txt")
     "File where matrix is stored" annotation (Dialog(tab="Inputs", group="Internal Gains"));
   parameter AixLib.DataBase.Profiles.ProfileBaseDataDefinition VentilationProfile = AixLib.DataBase.Profiles.Ventilation2perDayMean05perH();
