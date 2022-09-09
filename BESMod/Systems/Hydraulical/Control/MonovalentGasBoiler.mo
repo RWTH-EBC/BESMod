@@ -3,7 +3,6 @@ model MonovalentGasBoiler "PI Control of gas boiler"
   extends BaseClasses.SystemWithThermostaticValveControl;
   BESMod.Systems.Hydraulical.Control.Components.HeatingCurve
     heatingCurve(
-    TRoomSet=monovalentControlParas.TSetRoomConst,
     GraHeaCurve=monovalentControlParas.gradientHeatCurve,
     THeaThres=monovalentControlParas.TSetRoomConst,
     dTOffSet_HC=monovalentControlParas.dTOffSetHeatCurve)
@@ -68,6 +67,8 @@ model MonovalentGasBoiler "PI Control of gas boiler"
     annotation (Placement(transformation(extent={{46,48},{66,68}})));
   Modelica.Blocks.Math.BooleanToReal booleanToReal
     annotation (Placement(transformation(extent={{40,0},{60,20}})));
+  Modelica.Blocks.Math.MinMax minMax(nu=transferParameters.nParallelDem)
+    annotation (Placement(transformation(extent={{-240,50},{-220,70}})));
 equation
   connect(sigBusDistr,TSet_DHW. sigBusDistr) annotation (Line(
       points={{1,-100},{10,-100},{10,-146},{-280,-146},{-280,89.9},{-220,89.9}},
@@ -175,4 +176,12 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  connect(minMax.yMax, heatingCurve.TSetRoom)
+    annotation (Line(points={{-219,66},{-210,66},{-210,42}}, color={0,0,127}));
+  connect(minMax.u, useProBus.TZoneSet) annotation (Line(points={{-240,60},{-244,
+          60},{-244,103},{-119,103}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
 end MonovalentGasBoiler;

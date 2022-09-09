@@ -39,7 +39,6 @@ partial model PartialGetHeatGenerationCurve
         rotation=180,
         origin={82,54})));
   Systems.Hydraulical.Control.Components.HeatingCurve heatingCurve(
-    TRoomSet=systemParameters.TSetZone_nominal[1],
     GraHeaCurve=bivalentHeatPumpControlDataDefinition.gradientHeatCurve,
     THeaThres=systemParameters.TSetZone_nominal[1],
     dTOffSet_HC=bivalentHeatPumpControlDataDefinition.dTOffSetHeatCurve -
@@ -63,6 +62,8 @@ partial model PartialGetHeatGenerationCurve
     TSup_nominal=systemParameters.THydSup_nominal[1],
     TSetRoomConst=systemParameters.TSetZone_nominal[1])
     annotation (choicesAllMatching=true,Placement(transformation(extent={{-100,82},{-80,102}})));
+  Modelica.Blocks.Sources.Constant const3(k=max(systemParameters.TSetZone_nominal))
+    annotation (Placement(transformation(extent={{-150,-114},{-130,-94}})));
 equation
   connect(sigBusGen, generation.sigBusGen) annotation (Line(
       points={{-62,64},{-0.3,64},{-0.3,35.28}},
@@ -123,7 +124,10 @@ equation
           127}));
   connect(realExpression.y, QCon_flow) annotation (Line(points={{51,82},{88,82},
           {88,60},{110,60}}, color={0,0,127}));
+  connect(const3.y, heatingCurve.TSetRoom) annotation (Line(points={{-129,-104},
+          {-96,-104},{-96,-106},{-30,-106},{-30,-57.8},{-7,-57.8}}, color={0,0,
+          127}));
   annotation (Icon(graphics,
-                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end PartialGetHeatGenerationCurve;

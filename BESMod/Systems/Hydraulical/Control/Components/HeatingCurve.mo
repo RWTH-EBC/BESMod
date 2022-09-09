@@ -1,9 +1,6 @@
-﻿within BESMod.Systems.Hydraulical.Control.Components;
+within BESMod.Systems.Hydraulical.Control.Components;
 model HeatingCurve
   "Defines T_supply of buffer storage tank (in dependency of ambient temperature)"
-
-  parameter Modelica.Units.SI.Temperature TRoomSet=295.15
-    "Expected room temperature (22°C)";
   parameter Real GraHeaCurve=1 "Heat curve gradient";
   parameter Modelica.Units.SI.Temperature THeaThres=273.15 + 15
     "Constant heating threshold temperature";
@@ -15,12 +12,17 @@ model HeatingCurve
   Modelica.Blocks.Interfaces.RealOutput TSet
     annotation (Placement(transformation(extent={{100,-10},{120,10}})));
 
+  Modelica.Blocks.Interfaces.RealInput TSetRoom annotation (Placement(
+        transformation(
+        extent={{-20,-20},{20,20}},
+        rotation=270,
+        origin={0,120})));
 equation
   if TOda < THeaThres then
-    TSet = GraHeaCurve*(TRoomSet - TOda) + TRoomSet + dTOffSet_HC;
+    TSet = GraHeaCurve*(TSetRoom - TOda) + TSetRoom + dTOffSet_HC;
   else
     // No heating required.
-    TSet = TRoomSet + dTOffSet_HC;
+    TSet = TSetRoom + dTOffSet_HC;
   end if;
   annotation (Icon(graphics={Rectangle(
           extent={{-100,100},{100,-100}},

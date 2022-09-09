@@ -332,14 +332,6 @@ equation
       horizontalAlignment=TextAlignment.Right));
   connect(bou_air.T_in, switch2.y)
     annotation (Line(points={{-102,56},{-113,56}}, color={0,0,127}));
-  connect(sigBusGen.hp_bus.TOdaMea, switch2.u1) annotation (Line(
-      points={{2,98},{-150,98},{-150,64},{-136,64}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%first",
-      index=-1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
   connect(switch2.u2, AirOrSoil.y)
     annotation (Line(points={{-136,56},{-157.4,56}}, color={255,0,255}));
   connect(hea.u, sigBusGen.hr_on) annotation (Line(points={{18.8,89.6},{18.8,74},
@@ -480,6 +472,16 @@ equation
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
   end if;
-  annotation (Diagram(coordinateSystem(extent={{-180,-140},{100,100}})), Icon(
+  connect(switch2.u1, weaBus.TDryBul) annotation (Line(points={{-136,64},{-144,64},
+          {-144,80},{-101,80}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  annotation (Line(
+      points={{-52.775,-6.78},{-52.775,33.61},{-56,33.61},{-56,74}},
+      color={255,204,51},
+      thickness=0.5),
+              Diagram(coordinateSystem(extent={{-180,-140},{100,100}})), Icon(
         coordinateSystem(extent={{-180,-140},{100,100}})));
 end HeatPumpAndHeatingRod;

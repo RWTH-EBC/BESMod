@@ -229,7 +229,8 @@ partial model PartialDistributionTwoStorageParallelDetailed
         rotation=0,
         origin={62,87})));
   replaceable Generation.RecordsCollection.HeatingRodBaseDataDefinition heatingRodAftBufParameters
- if use_heatingRodAfterBuffer "Parameters for heating rod after buffer storage"
+    if use_heatingRodAfterBuffer
+    "Parameters for heating rod after buffer storage"
     annotation (choicesAllMatching=true, Placement(transformation(
         extent={{-6,-6},{6,6}},
         rotation=0,
