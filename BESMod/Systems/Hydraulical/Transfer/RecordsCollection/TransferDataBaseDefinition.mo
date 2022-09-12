@@ -42,10 +42,9 @@ partial record TransferDataBaseDefinition "Data record for hydraulic heat transf
   // Valves
   parameter Real valveAutho[nZones](each min=0.2, each max=0.8, each unit="1") "Assumed valve authority (typical value: 0.5)" annotation(Dialog(group="Thermostatic Valve"));
   parameter Modelica.Units.SI.PressureDifference dpHeaSysValve_nominal[nZones](each min=Modelica.Constants.eps)=
-      (dpRad_nominal .+ dpHeaSysPreValve_nominal) ./ (1 .- valveAutho)
+      valveAutho .* (dpRad_nominal .+ dpHeaSysPreValve_nominal) ./ (1 .- valveAutho)
     "Nominal pressure drop over valve when fully opened at m_flowValve_nominal"
     annotation (Dialog(group="Thermostatic Valve"));
-
   parameter Boolean use_hydrBalAutom = true "Use automatic hydraluic balancing to set dpHeaSysPreValve_nominal" annotation(Dialog(group="Thermostatic Valve"));
   parameter Modelica.Units.SI.PressureDifference dpHeaSysPreValve_nominal[
     nZones]=if use_hydrBalAutom then max(dpRad_nominal) .- (dpRad_nominal)
@@ -54,6 +53,12 @@ partial record TransferDataBaseDefinition "Data record for hydraulic heat transf
     annotation (Dialog(group="Thermostatic Valve", enable=use_hydrBalAutom));
   parameter Real leakageOpening = 0.0001
     "may be useful for simulation stability. Always check the influence it has on your results" annotation(Dialog(group="Thermostatic Valve"));
+  // Pump
+  parameter Modelica.Units.SI.MassFlowRate mRad_flow_nominal[nZones] "Nominal mass flow rate in each radiator";
+  parameter Modelica.Units.SI.MassFlowRate mHeaCir_flow_nominal=sum(mRad_flow_nominal) "Total mass flow rate of heating ciruit";
+  final parameter Modelica.Units.SI.Pressure dp_nominal[nZones]=dpRad_nominal .+ dpHeaSysValve_nominal .+ dpHeaDistr_nominal .+ dpHeaSysPreValve_nominal "Pressure difference array of all parallel radiators";
+  final parameter Modelica.Units.SI.Pressure dpPumpHeaCir_nominal = (mHeaCir_flow_nominal / sum({sqrt(mRad_flow_nominal[i]^2/dp_nominal[i])  for i in 1:nZones}))^2
+    "Nominal pressure difference the pump has to achieve for the single heating circuit with multiple parallel radiators";
 
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,

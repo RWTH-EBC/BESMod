@@ -8,7 +8,7 @@ partial record ThreeWayValve
   parameter Modelica.Units.SI.PressureDifference dp_nominal[2](displayUnit="Pa")
     "Nominal pressure drop of connected resistances without the valve";
 
-  parameter Modelica.Units.SI.PressureDifference dpValve_nominal=max(dp_nominal)
+  parameter Modelica.Units.SI.PressureDifference dpValve_nominal=valveAutho*max(dp_nominal)
       /(1 - valveAutho)
     "Nominal pressure drop of fully open valve, used if CvData=IBPSA.Fluid.Types.CvTypes.OpPoint";
   parameter Modelica.Units.SI.PressureDifference dpFixed_nominal[2]=max(

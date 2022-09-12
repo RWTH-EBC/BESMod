@@ -17,14 +17,13 @@ model CalcHeaDemHOM
     KR_heater=10000,
     h_heater=fill(100000,building.nZones),
     redeclare Examples.UseCaseHOM.HOMSystem systemParameters(
-      QDHW_flow_nomial=0,
       TOda_nominal=261.15,
       TSetZone_nominal(displayUnit="K") = {293.15,293.15,288.15,293.15,293.15,293.15,
-        293.15,288.15,297.15,293.15,250.15},
+        293.15,288.15,297.15,293.15},
       THydSup_nominal=fill(273.15 + 55, building.nZones)),
     redeclare AixLibHighOrder building(
       useConstVentRate=true,
-      ventRate={0.5,0.5,0,0.5,0.5,0.5,0.5,0,0.5,0.5,0},
+      ventRate={0.5,0.5,0,0.5,0.5,0.5,0.5,0,0.5,0.5},
       Latitude=Modelica.Units.Conversions.to_deg(weaDat.lat),
       Longitude=Modelica.Units.Conversions.to_deg(weaDat.lon),
       DiffWeatherDataTime=Modelica.Units.Conversions.to_hour(weaDat.timZon),

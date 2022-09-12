@@ -1,0 +1,6 @@
+within BESMod.Systems.RecordsCollection.Movers;
+record EcodanWaterPump
+  extends DefaultMover(V_flowCurve={0.000422526,0.28816252,0.580972823,0.868712818,0.94983775,
+        1.086736074,1.190677393,1.396024878,1.499966198}, dpCurve={1.587002096,1.526205451,
+        1.375262055,1.161425577,1.07966457,0.857442348,0.645702306,0.224318658,0});
+end EcodanWaterPump;
