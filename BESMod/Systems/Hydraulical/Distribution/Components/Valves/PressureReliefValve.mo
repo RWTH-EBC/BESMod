@@ -58,7 +58,12 @@ model PressureReliefValve
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={50,50})));
+        origin={70,50})));
+  Modelica.Blocks.Continuous.FirstOrder firstOrder(k=1, T=360) annotation (
+      Placement(transformation(
+        extent={{-10,10},{10,-10}},
+        rotation=180,
+        origin={30,52})));
 equation
   connect(port_a, val.port_a) annotation (Line(points={{-100,0},{-10,0}}, color={0,127,255}));
   connect(val.port_b, port_b) annotation (Line(points={{10,0},{100,0}}, color={0,127,255}));
@@ -70,8 +75,10 @@ equation
     annotation (Line(points={{-38,70},{-21,70}}, color={0,0,127}));
   connect(gain.y, limiter.u) annotation (Line(points={{-61,70},{-68,70},{-68,30},
           {-62,30}}, color={0,0,127}));
-  connect(realExpression.y, add.u1) annotation (Line(points={{39,50},{26,50},{26,
-          64},{2,64}}, color={0,0,127}));
+  connect(realExpression.y, firstOrder.u)
+    annotation (Line(points={{59,50},{59,52},{42,52}}, color={0,0,127}));
+  connect(firstOrder.y, add.u1) annotation (Line(points={{19,52},{10,52},{10,64},
+          {2,64}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
                                          Rectangle(
       extent={{-24,92},{22,20}},
