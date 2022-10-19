@@ -7,7 +7,6 @@ model HeatPumpAndHeatingRod "Bivalent monoenergetic heat pump"
         i] > 44.9 + 273.15 then 8 else 5 for i in 1:nParallelDem},
     dp_nominal={heatPump.dpCon_nominal + dpHeaRod_nominal},
       nParallelDem=1);
-     parameter Boolean use_pressure=false "=true to use a pump which works on pressure difference";
    parameter Boolean use_heaRod=true "=false to disable the heating rod";
     replaceable model PerDataMainHP =
       AixLib.DataBase.HeatPump.PerformanceData.LookUpTable2D

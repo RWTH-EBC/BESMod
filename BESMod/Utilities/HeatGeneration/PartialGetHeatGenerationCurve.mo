@@ -4,48 +4,42 @@ partial model PartialGetHeatGenerationCurve
   replaceable Systems.Hydraulical.Generation.BaseClasses.PartialGeneration
     generation constrainedby
     Systems.Hydraulical.Generation.BaseClasses.PartialGeneration(
-      redeclare final package Medium = IBPSA.Media.Water,
-      final Q_flow_nominal={sum(systemParameters.QBui_flow_nominal)},
-      final TDem_nominal=systemParameters.THydSup_nominal,
-      final dp_nominal=fill(0, generation.nParallelDem),
-      final TOda_nominal=systemParameters.TOda_nominal,
-      final TAmb= systemParameters.TAmbHyd,
-      final dpDem_nominal={0})  annotation (choicesAllMatching=true, Placement(
+    redeclare final package Medium = IBPSA.Media.Water,
+    final Q_flow_nominal={sum(systemParameters.QBui_flow_nominal)},
+    final TDem_nominal=systemParameters.THydSup_nominal,
+    final TOda_nominal=systemParameters.TOda_nominal,
+    final TAmb=systemParameters.TAmbHyd,
+    final dpDem_nominal={0})    annotation (choicesAllMatching=true, Placement(
         transformation(extent={{-36,-36},{34,36}})));
   Systems.Hydraulical.Interfaces.GenerationControlBus sigBusGen
     annotation (Placement(transformation(extent={{-72,54},{-52,74}})));
   Modelica.Blocks.Sources.Constant const(k=1)
-    annotation (Placement(transformation(extent={{-150,54},{-130,74}})));
+    annotation (Placement(transformation(extent={{-100,50},{-80,70}})));
   Modelica.Blocks.Sources.Constant const1(k=0)
-    annotation (Placement(transformation(extent={{-150,22},{-130,42}})));
+    annotation (Placement(transformation(extent={{-100,20},{-80,40}})));
   Modelica.Blocks.Sources.BooleanConstant booleanConstant(k=true)
-    annotation (Placement(transformation(extent={{-148,-8},{-128,12}})));
+    annotation (Placement(transformation(extent={{-100,-10},{-80,10}})));
   Modelica.Blocks.Sources.Constant const2(k=1)
-    annotation (Placement(transformation(extent={{-148,-44},{-128,-24}})));
+    annotation (Placement(transformation(extent={{-100,-40},{-80,-20}})));
   Modelica.Blocks.Sources.Ramp ramp
-    annotation (Placement(transformation(extent={{-150,-80},{-130,-60}})));
-  IBPSA.Fluid.Sources.MassFlowSource_T boundary(
+    annotation (Placement(transformation(extent={{-100,-70},{-80,-50}})));
+  IBPSA.Fluid.MixingVolumes.MixingVolume
+                                       vol(
     redeclare package Medium = IBPSA.Media.Water,
-    m_flow=generation.m_flow_nominal[1],
-    use_T_in=true,
-    T=313.15,
-    nPorts=1) annotation (Placement(transformation(
+    m_flow_nominal=generation.m_flow_nominal[1],
+    V=0.01,
+    nPorts=2) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={82,10})));
-  IBPSA.Fluid.Sources.Boundary_pT bou1(redeclare package Medium =
-        IBPSA.Media.Water, nPorts=1) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=180,
-        origin={82,54})));
   Systems.Hydraulical.Control.Components.HeatingCurve heatingCurve(
     GraHeaCurve=bivalentHeatPumpControlDataDefinition.gradientHeatCurve,
     THeaThres=systemParameters.TSetZone_nominal[1],
     dTOffSet_HC=bivalentHeatPumpControlDataDefinition.dTOffSetHeatCurve -
         generation.dTTra_nominal[1]) annotation (Placement(transformation(
-        extent={{-11,-11},{11,11}},
+        extent={{-11,11},{11,-11}},
         rotation=0,
-        origin={-7,-71})));
+        origin={-9,-71})));
   Modelica.Blocks.Interfaces.RealOutput TOda(unit="K", displayUnit="degC")
     "Connector of Real output signal"
     annotation (Placement(transformation(extent={{100,-50},{120,-30}})));
@@ -63,7 +57,12 @@ partial model PartialGetHeatGenerationCurve
     TSetRoomConst=systemParameters.TSetZone_nominal[1])
     annotation (choicesAllMatching=true,Placement(transformation(extent={{-100,82},{-80,102}})));
   Modelica.Blocks.Sources.Constant const3(k=max(systemParameters.TSetZone_nominal))
-    annotation (Placement(transformation(extent={{-150,-114},{-130,-94}})));
+    annotation (Placement(transformation(extent={{-100,-100},{-80,-80}})));
+  IBPSA.BoundaryConditions.WeatherData.Bus weaBus "Weather data bus"
+    annotation (Placement(transformation(extent={{-46,66},{-26,86}})));
+  Modelica.Thermal.HeatTransfer.Sources.PrescribedTemperature
+    prescribedTemperature
+    annotation (Placement(transformation(extent={{40,-80},{60,-60}})));
 equation
   connect(sigBusGen, generation.sigBusGen) annotation (Line(
       points={{-62,64},{-0.3,64},{-0.3,35.28}},
@@ -73,60 +72,59 @@ equation
       index=-1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(const.y, sigBusGen.hp_bus.iceFacMea) annotation (Line(points={{-129,64},
-          {-94,64},{-94,64},{-62,64}}, color={0,0,127}), Text(
+  connect(const.y, sigBusGen.hp_bus.iceFacMea) annotation (Line(points={{-79,60},
+          {-79,64},{-62,64}},          color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(const1.y, sigBusGen.hr_on) annotation (Line(points={{-129,32},{-96,32},
-          {-96,64},{-62,64}}, color={0,0,127}), Text(
+  connect(const1.y, sigBusGen.hr_on) annotation (Line(points={{-79,30},{-62,30},
+          {-62,64}},          color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(booleanConstant.y, sigBusGen.hp_bus.modeSet) annotation (Line(points={
-          {-127,2},{-98,2},{-98,0},{-62,0},{-62,64}}, color={255,0,255}), Text(
+  connect(booleanConstant.y, sigBusGen.hp_bus.modeSet) annotation (Line(points={{-79,0},
+          {-62,0},{-62,64}},                          color={255,0,255}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(const2.y, sigBusGen.hp_bus.nSet) annotation (Line(points={{-127,-34},{
-          -62,-34},{-62,64}}, color={0,0,127}), Text(
+  connect(const2.y, sigBusGen.hp_bus.nSet) annotation (Line(points={{-79,-30},{
+          -62,-30},{-62,64}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(ramp.y, sigBusGen.weaBus.TDryBul) annotation (Line(points={{-129,-70},
-          {-62,-70},{-62,64}}, color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(ramp.y, sigBusGen.hp_bus.TOdaMea) annotation (Line(points={{-129,-70},
-          {-62,-70},{-62,64}}, color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(generation.portGen_in, boundary.ports[1:1]) annotation (Line(points={{
-          34,14.4},{62,14.4},{62,10},{72,10}}, color={0,127,255}));
-  connect(generation.portGen_out, bou1.ports[1:1]) annotation (Line(points={{34,
-          28.8},{62,28.8},{62,54},{72,54}}, color={0,127,255}));
-  connect(boundary.T_in, heatingCurve.TSet) annotation (Line(points={{94,6},{
-          100,6},{100,-71},{5.1,-71}},
+  connect(generation.portGen_in, vol.ports[1:1]) annotation (Line(points={{34,14.4},
+          {62,14.4},{62,20},{83,20}},       color={0,127,255}));
+  connect(heatingCurve.TOda, ramp.y) annotation (Line(points={{-22.2,-71},{-26,
+          -71},{-26,-92},{-79,-92},{-79,-60}},
                                  color={0,0,127}));
-  connect(heatingCurve.TOda, ramp.y) annotation (Line(points={{-20.2,-71},{-36,
-          -71},{-36,-70},{-129,-70}},
-                                 color={0,0,127}));
-  connect(ramp.y, TOda) annotation (Line(points={{-129,-70},{-116,-70},{-116,
-          -72},{-102,-72},{-102,-90},{62,-90},{62,-40},{110,-40}}, color={0,0,
+  connect(ramp.y, TOda) annotation (Line(points={{-79,-60},{-79,-92},{-26,-92},
+          {-26,-44},{94,-44},{94,-40},{110,-40}},                  color={0,0,
           127}));
   connect(realExpression.y, QCon_flow) annotation (Line(points={{51,82},{88,82},
           {88,60},{110,60}}, color={0,0,127}));
-  connect(const3.y, heatingCurve.TSetRoom) annotation (Line(points={{-129,-104},
-          {-96,-104},{-96,-106},{-30,-106},{-30,-57.8},{-7,-57.8}}, color={0,0,
+  connect(const3.y, heatingCurve.TSetRoom) annotation (Line(points={{-79,-90},{
+          -78,-90},{-78,-92},{-9,-92},{-9,-84.2}},                  color={0,0,
           127}));
+  connect(generation.weaBus, weaBus) annotation (Line(
+      points={{-35.3,21.6},{-35.3,76},{-36,76}},
+      color={255,204,51},
+      thickness=0.5));
+  connect(ramp.y, weaBus.TDryBul) annotation (Line(points={{-79,-60},{-44,-60},
+          {-44,62},{-36,62},{-36,76}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(prescribedTemperature.port, vol.heatPort) annotation (Line(points={{
+          60,-70},{66,-70},{66,-4},{96,-4},{96,10},{92,10}}, color={191,0,0}));
+  connect(generation.portGen_out[1], vol.ports[2])
+    annotation (Line(points={{34,28.8},{81,28.8},{81,20}}, color={0,127,255}));
+  connect(heatingCurve.TSet, prescribedTemperature.T) annotation (Line(points={
+          {3.1,-71},{20.55,-71},{20.55,-70},{38,-70}}, color={0,0,127}));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));

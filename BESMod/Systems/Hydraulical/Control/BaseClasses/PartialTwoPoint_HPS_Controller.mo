@@ -372,8 +372,13 @@ equation
   connect(HP_or_HR_active.u1, HRactive.y) annotation (Line(points={{-170,-12},{
           -134,-12},{-134,-6},{-6,-6},{-6,18},{20.75,18},{20.75,25}}, color={
           255,0,255}));
-  connect(HP_or_HR_active.u2, HP_active.y) annotation (Line(points={{-178,-12},
-          {-178,2},{-10,2},{-10,91},{32.5,91}}, color={255,0,255}));
+  connect(HP_or_HR_active.u2, sigBusGen.hp_bus.onOffMea) annotation (Line(
+        points={{-178,-12},{-194,-12},{-194,-99},{-152,-99}}, color={255,0,255}),
+      Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
   annotation (Diagram(graphics={
         Rectangle(
           extent={{-240,100},{-50,60}},
