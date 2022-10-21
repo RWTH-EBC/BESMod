@@ -1,7 +1,7 @@
 within BESMod.Systems.Ventilation.Interfaces;
 expandable connector GenerationOutputs
   "Bus with ouputs of the generation system"
-  extends BESMod.Utilities.Icons.KPIBus;
+  extends BESMod.Systems.Interfaces.KPIBus;
 
   annotation (
   defaultComponentName = "outBusGen",

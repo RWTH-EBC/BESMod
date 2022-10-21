@@ -1,7 +1,7 @@
 within BESMod.Systems.Interfaces;
 expandable connector ControlOutputs
   "Bus with ouputs of the control system"
-  extends BESMod.Utilities.Icons.KPIBus;
+  extends BESMod.Systems.Interfaces.KPIBus;
 
   annotation (
   defaultComponentName = "outBusCtrl",

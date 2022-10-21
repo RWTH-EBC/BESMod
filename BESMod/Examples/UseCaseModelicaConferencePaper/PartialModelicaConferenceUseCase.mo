@@ -27,13 +27,11 @@ partial model PartialModelicaConferenceUseCase
       redeclare Systems.Hydraulical.Generation.HeatPumpAndHeatingRod generation(
         dTTra_nominal={10},
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
-
         redeclare package Medium_eva = AixLib.Media.Air,
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           heatPumpParameters(
           genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
-
           TBiv=271.15,
           scalingFactor=scalingFactorHP,
           useAirSource=true,

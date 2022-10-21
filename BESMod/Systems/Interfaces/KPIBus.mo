@@ -1,4 +1,4 @@
-within BESMod.Utilities.Icons;
+within BESMod.Systems.Interfaces;
 expandable connector KPIBus "Icon for KPI bus"
 
   annotation (

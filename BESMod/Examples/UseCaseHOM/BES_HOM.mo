@@ -46,8 +46,11 @@ model BES_HOM
       redeclare BESMod.Systems.Hydraulical.Control.ConstHys_OnOff_HPSControll
         control(
         redeclare
-          PCMgoesHIL.Systems.Hydraulic.Control.Components.ThermostaticValveControlHIL
+          BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
           thermostaticValveController,
+        redeclare
+          BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
+          thermostaticValveParameters,
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultSafetyControl
           safetyControl,
@@ -85,7 +88,7 @@ model BES_HOM
     redeclare final package MediumZone = AixLib.Media.Air,
     redeclare final package MediumHyd = AixLib.Media.Water,
     redeclare BESMod.Systems.Ventilation.NoVentilation ventilation);
-
+  extends Modelica.Icons.Example;
   annotation (experiment(
       StopTime=31536000,
       Interval=600,

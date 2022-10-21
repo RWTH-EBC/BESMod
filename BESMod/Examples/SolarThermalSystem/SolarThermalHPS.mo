@@ -15,12 +15,10 @@ model SolarThermalHPS "HPS which is supported by a solar thermal collector"
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           heatPumpParameters(genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentParallel),
-
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
           heatingRodParameters,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
-
         redeclare package Medium_eva = AixLib.Media.Air,
         redeclare BESMod.Examples.SolarThermalSystem.SolarCollector
           solarThermalParas(

@@ -58,7 +58,7 @@ partial model PartialKPICalculator "Partial KPI Calculator"
     y_start=Modelica.Constants.eps, y(unit=integralUnit))
  if calc_integral
     annotation (Placement(transformation(extent={{72,-90},{84,-78}})));
-  Icons.KPIBus KPIBus
+  Systems.Interfaces.KPIBus KPIBus
     annotation (Placement(transformation(extent={{92,-10},{112,10}})));
 
   Modelica.Blocks.Routing.RealPassThrough internalU(y(unit=unit))

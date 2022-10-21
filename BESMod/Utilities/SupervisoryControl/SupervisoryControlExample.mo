@@ -6,8 +6,9 @@ model SupervisoryControlExample
   SupervisoryControl intCtrl(ctrlType=BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Internal)
     annotation (Placement(transformation(extent={{-18,-18},{14,14}})));
   SupervisoryControl extCtrl(
+    actExt(y=activateSupCtrl.y),
     ctrlType=BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.External,
-    activateExt(y=activateSupCtrl.y),
+
     uExt(y=pulseSup.y))
     annotation (Placement(transformation(extent={{-20,38},{12,70}})));
 
@@ -26,8 +27,8 @@ equation
           {-76,41.2},{-23.2,41.2}}, color={0,0,127}));
   connect(pulseSup.y, intCtrl.uSup) annotation (Line(points={{-79,20},{-52,20},
           {-52,10.8},{-21.2,10.8}}, color={0,0,127}));
-  connect(activateSupCtrl.y, intCtrl.activateInt) annotation (Line(points={{-79,
-          -20},{-52,-20},{-52,-2},{-21.2,-2}}, color={255,0,255}));
+  connect(activateSupCtrl.y, intCtrl.actInt) annotation (Line(points={{-79,-20},
+          {-52,-20},{-52,-2},{-21.2,-2}}, color={255,0,255}));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)),

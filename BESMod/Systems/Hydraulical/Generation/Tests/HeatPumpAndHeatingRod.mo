@@ -3,7 +3,6 @@ model HeatPumpAndHeatingRod
   extends PartialTest(   redeclare
       BESMod.Systems.Hydraulical.Generation.HeatPumpAndHeatingRod
       generation(
-      use_pressure=true,
       use_heaRod=true,
       redeclare model PerDataMainHP =
           AixLib.DataBase.HeatPump.PerformanceData.LookUpTable2D (dataTable=
