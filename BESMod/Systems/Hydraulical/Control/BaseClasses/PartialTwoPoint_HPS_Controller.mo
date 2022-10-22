@@ -318,8 +318,8 @@ equation
   connect(supervisoryControlDHW.y, add_dT_LoadingDHW.u1) annotation (Line(
         points={{-168.8,78},{-150,78},{-150,76},{-10,76},{-10,86},{35,86}},
         color={0,0,127}));
-  connect(supervisoryControlDHW.actInt, sigBusHyd.overwriteTSetDHW) annotation
-    (Line(points={{-183.2,78},{-186,78},{-186,94},{-28,94},{-28,101}}, color={
+  connect(supervisoryControlDHW.actInt, sigBusHyd.overwriteTSetDHW) annotation (
+     Line(points={{-183.2,78},{-186,78},{-186,94},{-28,94},{-28,101}}, color={
           255,0,255}), Text(
       string="%second",
       index=1,

@@ -54,15 +54,11 @@ model PVSystemMultiSub
   parameter Modelica.Units.SI.Angle azi[numGenUnits]=fill(0*Modelica.Constants.pi/180,numGenUnits)  "Surface's azimut angle (0:South)";
   parameter Modelica.Units.SI.Area ARoof(min=0) "Roof area of building" annotation(Dialog(group="Design - Top Down: Parameters are given by the parent system"));
 
-  BESMod.Utilities.KPIs.InputKPICalculator inputKPICalculator(
+  Utilities.KPIs.IntegralKPICalculator intKPICalPElePV(
+    use_inpCon=true,
     unit="W",
-    integralUnit="J",
-    calc_singleOnTime=false,
-    calc_totalOnTime=false,
-    calc_numSwi=false,
-    calc_movAve=false,
-    calc_intBelThres=false)
-    annotation (Placement(transformation(extent={{56,-78},{76,-42}})));
+    intUnit="J")
+    annotation (Placement(transformation(extent={{60,-60},{80,-40}})));
 equation
   for i in 1:numGenUnits loop
     connect(pVSystem[i].weaBus, weaBus);
@@ -76,19 +72,16 @@ equation
       thickness=1));
   connect(pVSystem.DCOutputPower, sumOfPower.u)
     annotation (Line(points={{28.9,-1},{50,-1},{50,8}}, color={0,0,127}));
-  connect(sumOfPower.y, inputKPICalculator.u) annotation (Line(points={{50,31},
-          {50,38},{68,38},{68,-34},{46,-34},{46,-60},{53.8,-60}}, color={0,0,
-          127}));
-  connect(inputKPICalculator.KPIBus, outBusGen.WelPV) annotation (Line(
-      points={{76.2,-60},{86,-60},{86,-99},{1.77636e-15,-99}},
-      color={255,204,51},
-      thickness=0.5), Text(
+  connect(sumOfPower.y, intKPICalPElePV.u) annotation (Line(points={{50,31},{50,
+          38},{68,38},{68,-34},{46,-34},{46,-50},{58.2,-50}}, color={0,0,127}));
+  connect(intKPICalPElePV.KPI, outBusGen.PElePV) annotation (Line(points={{82.2,
+          -50},{96,-50},{96,-99},{1.77636e-15,-99}}, color={135,135,135}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
    annotation(Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"),
               Icon(graphics,
-                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end PVSystemMultiSub;

@@ -1,7 +1,7 @@
 within BESMod.Systems.Interfaces;
 expandable connector VentilationOutputs
   "Bus with ouputs of the ventilation system"
-  extends BESMod.Systems.Interfaces.KPIBus;
+  extends BESMod.Utilities.Icons.OutputsBus;
 
   annotation (
   defaultComponentName = "outBusVen",

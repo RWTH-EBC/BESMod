@@ -95,14 +95,12 @@ model SolarThermalBivHPBuiLib
         rotation=0,
         origin={-188,-160})));
 
-  BESMod.Utilities.KPIs.InternalKPICalculator KPIWel1(
+  Utilities.KPIs.IntegralKPICalculator        KPIWel1(
+    use_inpCon=false,
     unit="W",
-    integralUnit="J",
-    calc_singleOnTime=true,
-    calc_integral=true,
-    calc_movAve=false,
+    intUnit="J",
     y=sum(solCol.vol.heatPort.Q_flow))
-    annotation (Placement(transformation(extent={{-52,-118},{-40,-96}})));
+    annotation (Placement(transformation(extent={{-60,-120},{-40,-100}})));
 
   Modelica.Blocks.Logical.Switch switch3 annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -140,14 +138,6 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(KPIWel1.KPIBus, outBusGen.QST_flow) annotation (Line(
-      points={{-39.88,-107},{-16,-107},{-16,-100},{0,-100}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
 
   connect(weaBus, solCol.weaBus) annotation (Line(
       points={{-101,80},{-101,-6},{-104,-6},{-104,-108},{-108,-108},{-108,-184},
@@ -183,6 +173,5 @@ equation
           textString="Solar Thermal"), Rectangle(
           extent={{94,-198},{-218,-136}},
           lineColor={0,0,0},
-          lineThickness=1)}), Icon(coordinateSystem(extent={{-220,-200},{100,
-            100}})));
+          lineThickness=1)}));
 end SolarThermalBivHPBuiLib;

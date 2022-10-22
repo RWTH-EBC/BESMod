@@ -109,18 +109,12 @@ model CombiStorage
           bufferStorage.layer.T)
       annotation (Placement(transformation(extent={{-42,-122},{-22,-102}})));
 
-  BESMod.Utilities.KPIs.InternalKPICalculator internalKPICalculatorBufLoss(
+  Utilities.KPIs.IntegralKPICalculator integralKPICalculator(
+    use_inpCon=false,
     unit="W",
-    integralUnit="J",
-    thresholdOn=Modelica.Constants.eps,
-    calc_singleOnTime=false,
-    calc_integral=true,
-    calc_totalOnTime=false,
-    calc_numSwi=false,
-    calc_movAve=false,
-    calc_intBelThres=false,
+    intUnit="J",
     y=fixedTemperatureBuf.port.Q_flow)
-    annotation (Placement(transformation(extent={{-76,-124},{-56,-86}})));
+    annotation (Placement(transformation(extent={{-80,-120},{-60,-100}})));
   BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{30,-108},{50,-88}})));
 equation
@@ -207,19 +201,16 @@ equation
         extent={{6,3},{6,3}},
         horizontalAlignment=TextAlignment.Left));
 
-  connect(internalKPICalculatorBufLoss.KPIBus, outBusDist.QStoLoss) annotation (
-     Line(
-      points={{-55.8,-105},{-48,-105},{-48,-90},{-14,-90},{-14,-86},{0,-86},{0,
-          -100}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
   connect(zeroLoad.internalElectricalPin, internalElectricalPin) annotation (
       Line(
       points={{50,-98},{70,-98}},
       color={0,0,0},
       thickness=1));
+  connect(integralKPICalculator.KPI, outBusDist.QStoLos_flow) annotation (Line(
+        points={{-57.8,-110},{-54,-110},{-54,-100},{0,-100},{0,-100}}, color={
+          135,135,135}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
 end CombiStorage;

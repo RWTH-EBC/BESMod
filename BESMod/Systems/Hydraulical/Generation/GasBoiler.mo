@@ -25,17 +25,12 @@ model GasBoiler "Just a gas boiler"
     paramBoiler "Parameters for Boiler" annotation(choicesAllMatching=true);
   parameter Real etaTempBased[:,2]=[293.15,1.09; 303.15,1.08; 313.15,1.05;
       323.15,1.; 373.15,0.99] "Table matrix for temperature based efficiency";
-  BESMod.Utilities.KPIs.InternalKPICalculator KPIQHR(
+  Utilities.KPIs.IntegralKPICalculator KPIQHR(
+    use_inpCon=false,
     unit="W",
-    integralUnit="J",
-    calc_singleOnTime=false,
-    calc_integral=true,
-    calc_totalOnTime=false,
-    calc_numSwi=false,
-    calc_movAve=false,
-    calc_intBelThres=false,
+    intUnit="J",
     y=boilerNoControl.QflowCalculation.y)
-    annotation (Placement(transformation(extent={{-46,-106},{-24,-70}})));
+    annotation (Placement(transformation(extent={{-40,-100},{-20,-80}})));
   replaceable parameter
     BESMod.Systems.RecordsCollection.TemperatureSensors.TemperatureSensorBaseDefinition
     temperatureSensorData
@@ -81,6 +76,12 @@ model GasBoiler "Just a gas boiler"
         origin={66,-26})));
   BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{26,-108},{46,-88}})));
+  Utilities.KPIs.DeviceKPICalculator KPIHeaRod1(
+    use_reaInp=true,
+    calc_singleOnTime=true,
+    calc_totalOnTime=true,
+    calc_numSwi=true)
+    annotation (Placement(transformation(extent={{-60,-80},{-40,-60}})));
 equation
 
   connect(boilerNoControl.port_b, portGen_out[1]) annotation (Line(points={{-34,
@@ -103,14 +104,6 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(KPIQHR.KPIBus, outBusGen.QBoi) annotation (Line(
-      points={{-23.78,-88},{0,-88},{0,-100}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
   connect(portGen_in[1], pump.port_a) annotation (Line(points={{100,-2},{94,-2},
           {94,-6},{86,-6},{86,-50},{56,-50}}, color={0,127,255}));
   connect(boilerNoControl.port_a, pump.port_b) annotation (Line(points={{-66,10},
@@ -128,4 +121,22 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  connect(KPIQHR.KPI, outBusGen.QBoi_flow) annotation (Line(points={{-17.8,-90},
+          {-10,-90},{-10,-88},{0,-88},{0,-100}}, color={135,135,135}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(KPIHeaRod1.KPI, outBusGen.boi) annotation (Line(points={{-37.8,-70},{
+          0,-70},{0,-100}}, color={135,135,135}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(KPIHeaRod1.uRea, sigBusGen.uBoiSet) annotation (Line(points={{-62.2,
+          -70},{-74,-70},{-74,98},{2,98}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
 end GasBoiler;

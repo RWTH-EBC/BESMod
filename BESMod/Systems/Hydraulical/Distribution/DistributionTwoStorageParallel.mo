@@ -134,30 +134,18 @@ model DistributionTwoStorageParallel
         rotation=0,
         origin={30,-90})));
 
-  BESMod.Utilities.KPIs.InternalKPICalculator internalKPICalculatorBufLoss(
+  Utilities.KPIs.IntegralKPICalculator integralKPICalculator1(
+    use_inpCon=false,
     unit="W",
-    integralUnit="J",
-    thresholdOn=Modelica.Constants.eps,
-    calc_singleOnTime=false,
-    calc_integral=true,
-    calc_totalOnTime=false,
-    calc_numSwi=false,
-    calc_movAve=false,
-    calc_intBelThres=false,
+    intUnit="J",
     y=fixedTemperatureBuf.port.Q_flow)
-    annotation (Placement(transformation(extent={{-80,-90},{-60,-52}})));
-  BESMod.Utilities.KPIs.InternalKPICalculator internalKPICalculatorDHWLoss(
+    annotation (Placement(transformation(extent={{-80,-60},{-60,-40}})));
+  Utilities.KPIs.IntegralKPICalculator integralKPICalculator(
+    use_inpCon=false,
     unit="W",
-    integralUnit="J",
-    thresholdOn=Modelica.Constants.eps,
-    calc_singleOnTime=false,
-    calc_integral=true,
-    calc_totalOnTime=false,
-    calc_numSwi=false,
-    calc_movAve=false,
-    calc_intBelThres=false,
+    intUnit="J",
     y=fixedTemperatureDHW.port.Q_flow)
-    annotation (Placement(transformation(extent={{-80,-110},{-60,-72}})));
+    annotation (Placement(transformation(extent={{-80,-100},{-60,-80}})));
   BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{34,-110},{54,-90}})));
   replaceable parameter BESMod.Systems.RecordsCollection.Valves.ThreeWayValve
@@ -203,24 +191,6 @@ equation
           {48,-82},{48,-70},{49,-70}},      color={0,127,255}));
   connect(fixedTemperatureDHW.port, storageDHW.heatPort) annotation (Line(
         points={{40,-90},{70,-90},{70,-51},{62.6,-51}}, color={191,0,0}));
-  connect(internalKPICalculatorDHWLoss.KPIBus, outBusDist.QDHWLoss) annotation (
-     Line(
-      points={{-59.8,-91},{-14,-91},{-14,-86},{0,-86},{0,-100}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(internalKPICalculatorBufLoss.KPIBus, outBusDist.QBufLoss) annotation (
-     Line(
-      points={{-59.8,-71},{0,-71},{0,-100}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
   connect(T_stoDHWBot.y, sigBusDistr.TStoDHWBotMea) annotation (Line(points={{31.5,
           99},{0,99},{0,101}}, color={0,0,127}), Text(
       string="%second",
@@ -275,4 +245,16 @@ equation
       Line(points={{-20,52.8},{-14,52.8},{-14,-28},{2,-28}}, color={0,127,255}));
   connect(storageDHW.port_a_heatGenerator, resDHW.port_b) annotation (Line(
         points={{34.72,-34.28},{22,-34.28},{22,-28}}, color={0,127,255}));
+  connect(integralKPICalculator.KPI, outBusDist.QDHWLos_flow) annotation (Line(
+        points={{-57.8,-90},{0,-90},{0,-100}}, color={135,135,135}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(integralKPICalculator1.KPI, outBusDist.QBufLos_flow) annotation (Line(
+        points={{-57.8,-50},{0,-50},{0,-100}}, color={135,135,135}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
 end DistributionTwoStorageParallel;

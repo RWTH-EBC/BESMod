@@ -1,7 +1,7 @@
 within BESMod.Systems.Interfaces;
 expandable connector HydraulicOutputs
   "Bus with ouputs of the hydraulic system"
-  extends BESMod.Systems.Interfaces.KPIBus;
+  extends BESMod.Utilities.Icons.OutputsBus;
 
   annotation (
   defaultComponentName = "outBusHyd",

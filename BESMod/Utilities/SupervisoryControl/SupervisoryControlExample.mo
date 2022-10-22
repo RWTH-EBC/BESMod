@@ -8,7 +8,6 @@ model SupervisoryControlExample
   SupervisoryControl extCtrl(
     actExt(y=activateSupCtrl.y),
     ctrlType=BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.External,
-
     uExt(y=pulseSup.y))
     annotation (Placement(transformation(extent={{-20,38},{12,70}})));
 

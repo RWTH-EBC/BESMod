@@ -1,6 +1,6 @@
 within BESMod.Systems.Hydraulical.Interfaces;
 expandable connector TransferOutputs "Bus with ouputs of the tramsfer system"
-  extends BESMod.Systems.Interfaces.KPIBus;
+  extends BESMod.Utilities.Icons.OutputsBus;
 
   annotation (
   defaultComponentName = "outBusTra",

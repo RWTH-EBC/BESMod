@@ -1,6 +1,6 @@
 within BESMod.Systems.Hydraulical.Interfaces;
 expandable connector ControlOutputs "Bus with ouputs of the control system"
-  extends BESMod.Systems.Interfaces.KPIBus;
+  extends BESMod.Utilities.Icons.OutputsBus;
 
   annotation (
   defaultComponentName = "outBusCtrl",

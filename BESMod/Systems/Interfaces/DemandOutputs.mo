@@ -1,6 +1,6 @@
 within BESMod.Systems.Interfaces;
 expandable connector DemandOutputs "Bus with ouputs of the demand system"
-  extends BESMod.Systems.Interfaces.KPIBus;
+  extends BESMod.Utilities.Icons.OutputsBus;
 
   annotation (
   defaultComponentName = "outBusDem",
