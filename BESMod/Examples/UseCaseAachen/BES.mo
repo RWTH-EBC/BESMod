@@ -1,6 +1,7 @@
 within BESMod.Examples.UseCaseAachen;
 model BES
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
+    use_openModelica=true,
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
     redeclare Systems.Demand.Building.TEASERThermalZone building(redeclare
         BESMod.Systems.Demand.Building.RecordsCollection.RefAachen oneZoneParam(
@@ -58,7 +59,7 @@ model BES
           dhwParameters(dTLoadingHC1=10),
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
           threeWayValveParameters),
-      redeclare Systems.Hydraulical.Transfer.RadiatorTransferSystem transfer(
+      redeclare Systems.Hydraulical.Transfer.IdealValveRadiator transfer(
           redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
           radParameters, redeclare

@@ -90,7 +90,8 @@ partial model PartialVentilationSystem
       final TOda_nominal=ventilationSystemParameters.TOda_nominal,
       final QLoss_flow_nominal=distribution.QLoss_flow_nominal))
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-26,22},{28,68}})));
-  BESMod.Systems.Interfaces.VentilationOutputs outBusVen
+  BESMod.Systems.Interfaces.VentilationOutputs outBusVen if not
+    use_openModelica
     annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
   IBPSA.BoundaryConditions.WeatherData.Bus
       weaBus "Weather data bus" annotation (Placement(transformation(extent={{88,60},

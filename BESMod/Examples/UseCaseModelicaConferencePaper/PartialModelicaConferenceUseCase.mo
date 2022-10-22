@@ -74,7 +74,7 @@ partial model PartialModelicaConferenceUseCase
           dhwParameters(dTLoadingHC1=10),
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
           threeWayValveParameters),
-      redeclare Systems.Hydraulical.Transfer.RadiatorTransferSystem transfer(
+      redeclare Systems.Hydraulical.Transfer.IdealValveRadiator transfer(
         dTTra_nominal=fill(10, hydraulic.transfer.nParallelDem),
         f_design=fill(1.2, hydraulic.transfer.nParallelDem),
         redeclare

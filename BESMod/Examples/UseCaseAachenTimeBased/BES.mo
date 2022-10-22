@@ -53,7 +53,7 @@ model BES
           dhwParameters(dTLoadingHC1=10),
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
           threeWayValveParameters),
-      redeclare BESMod.Systems.Hydraulical.Transfer.RadiatorTransferSystem
+      redeclare BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator
         transfer(redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
           radParameters, redeclare

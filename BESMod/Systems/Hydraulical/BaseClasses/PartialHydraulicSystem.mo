@@ -165,7 +165,7 @@ partial model PartialHydraulicSystem
   IBPSA.BoundaryConditions.WeatherData.Bus
       weaBus "Weather data bus" annotation (Placement(transformation(extent={{-200,56},
             {-158,100}}),        iconTransformation(extent={{-188,-10},{-168,10}})));
-  BESMod.Systems.Interfaces.HydraulicOutputs outBusHyd
+  BESMod.Systems.Interfaces.HydraulicOutputs outBusHyd if not use_openModelica
     annotation (Placement(transformation(extent={{-30,-166},{28,-118}})));
 
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPortCon[hydraulicSystemParameters.nZones]
@@ -228,7 +228,7 @@ equation
           -22.4},{200,-22.4},{200,0}},
                                 color={191,0,0}));
   connect(distribution.outBusDist, outBusHyd.dis) annotation (Line(
-      points={{39,-104},{39,-141.88},{-0.855,-141.88}},
+      points={{39,-104},{39,-142},{-1,-142}},
       color={135,135,135},
       thickness=0.5), Text(
       string="%second",
@@ -236,7 +236,7 @@ equation
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
   connect(generation.outBusGen, outBusHyd.gen) annotation (Line(
-      points={{-82,-104},{-82,-141.88},{-0.855,-141.88}},
+      points={{-82,-104},{-82,-142},{-1,-142}},
       color={135,135,135},
       thickness=0.5), Text(
       string="%second",
@@ -244,7 +244,7 @@ equation
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
   connect(transfer.outBusTra, outBusHyd.tra) annotation (Line(
-      points={{146,-45.44},{146,-68},{214,-68},{214,-141.88},{-0.855,-141.88}},
+      points={{146,-45.44},{146,-68},{214,-68},{214,-142},{-1,-142}},
       color={135,135,135},
       thickness=0.5), Text(
       string="%second",
@@ -252,7 +252,7 @@ equation
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
   connect(control.outBusCtrl, outBusHyd.ctrl) annotation (Line(
-      points={{154,88},{214,88},{214,-141.88},{-0.855,-141.88}},
+      points={{154,88},{214,88},{214,-142},{-1,-142}},
       color={135,135,135},
       thickness=0.5), Text(
       string="%second",

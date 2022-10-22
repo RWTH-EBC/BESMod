@@ -1,5 +1,8 @@
 within BESMod.Systems.Electrical.BaseClasses;
 partial model PartialElectricalSystem "Partial model for electrical system"
+  parameter Boolean use_openModelica=false
+    "=true to disable features which 
+    are not available in open modelica" annotation(Dialog(tab="Advanced"));
   parameter Integer nLoadsExtSubSys(min=1) = 4 "Number of external subsystems which result in electrical load / generation";
   parameter Boolean use_elecHeating=true "=false to disable electric heating";
   replaceable parameter RecordsCollection.ElectricalSystemBaseDataDefinition
@@ -47,6 +50,7 @@ partial model PartialElectricalSystem "Partial model for electrical system"
       Placement(transformation(extent={{48,124},{92,156}}), iconTransformation(
           extent={{48,124},{92,156}})));
   BESMod.Systems.Interfaces.ElectricalOutputs outBusElect
+    if not use_openModelica
     annotation (Placement(transformation(extent={{-22,-160},{24,-120}}),
         iconTransformation(extent={{-22,-160},{24,-120}})));
   Interfaces.ExternalElectricalPin externalElectricalPin1
@@ -98,7 +102,7 @@ equation
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
   connect(distribution.OutputDistr, outBusElect.dis) annotation (Line(
-      points={{6,-100.62},{4,-100.62},{4,-139.9},{1.115,-139.9}},
+      points={{6,-100.62},{4,-100.62},{4,-140},{1,-140}},
       color={175,175,175},
       thickness=0.5), Text(
       string="%second",
@@ -107,7 +111,7 @@ equation
       horizontalAlignment=TextAlignment.Right));
 
   connect(generation.outBusGen, outBusElect.gen) annotation (Line(
-      points={{-105,-101.31},{-105,-139.9},{1.115,-139.9}},
+      points={{-105,-101.31},{-105,-140},{1,-140}},
       color={175,175,175},
       thickness=0.5));
   connect(distribution.externalElectricalPin, externalElectricalPin1)
@@ -148,7 +152,7 @@ equation
       color={215,215,215},
       thickness=0.5));
     connect(transfer.transferOutputs, outBusElect.tra) annotation (Line(
-        points={{106,-101.31},{106,-139.9},{1.115,-139.9}},
+        points={{106,-101.31},{106,-140},{1,-140}},
         color={175,175,175},
         thickness=0.5), Text(
         string="%second",
@@ -164,8 +168,7 @@ equation
     connect(zeroTraLoad.internalElectricalPin, distribution.internalElectricalPin[1]);
   end if;
   connect(control.controlOutputs, outBusElect.ctrl) annotation (Line(
-      points={{141.4,81.25},{141.4,-24},{142,-24},{142,-130},{1.115,-130},{1.115,
-          -139.9}},
+      points={{141.4,81.25},{141.4,-24},{142,-24},{142,-130},{1,-130},{1,-140}},
       color={175,175,175},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-180,-140},
