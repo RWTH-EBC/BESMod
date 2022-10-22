@@ -5,7 +5,7 @@ partial record ThreeWayValve
   parameter Modelica.Units.SI.MassFlowRate m_flow_nominal
     "Nominal mass flow rate";
 
-  parameter Modelica.Units.SI.PressureDifference dp_nominal[2](displayUnit="Pa")
+  parameter Modelica.Units.SI.PressureDifference dp_nominal[2](each displayUnit="Pa")
     "Nominal pressure drop of connected resistances without the valve";
 
   parameter Modelica.Units.SI.PressureDifference dpValve_nominal=valveAutho*max(dp_nominal)

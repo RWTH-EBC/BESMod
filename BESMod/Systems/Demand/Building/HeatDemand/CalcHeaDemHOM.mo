@@ -18,7 +18,7 @@ model CalcHeaDemHOM
     h_heater=fill(100000,building.nZones),
     redeclare Examples.UseCaseHOM.HOMSystem systemParameters(
       TOda_nominal=261.15,
-      TSetZone_nominal(displayUnit="K") = {293.15,293.15,288.15,293.15,293.15,293.15,
+      TSetZone_nominal(each displayUnit="K") = {293.15,293.15,288.15,293.15,293.15,293.15,
         293.15,288.15,297.15,293.15},
       THydSup_nominal=fill(273.15 + 55, building.nZones)),
     redeclare AixLibHighOrder building(

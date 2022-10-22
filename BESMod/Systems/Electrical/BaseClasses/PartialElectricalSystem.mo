@@ -97,8 +97,8 @@ equation
       index=1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(distribution.OutputDistr, outBusElect.distribution) annotation (Line(
-      points={{6,-100.62},{4,-100.62},{4,-140},{1,-140}},
+  connect(distribution.OutputDistr, outBusElect.dis) annotation (Line(
+      points={{6,-100.62},{4,-100.62},{4,-139.9},{1.115,-139.9}},
       color={175,175,175},
       thickness=0.5), Text(
       string="%second",
@@ -106,8 +106,8 @@ equation
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
 
-  connect(generation.outBusGen, outBusElect.generation) annotation (Line(
-      points={{-105,-101.31},{-105,-140},{1,-140}},
+  connect(generation.outBusGen, outBusElect.gen) annotation (Line(
+      points={{-105,-101.31},{-105,-139.9},{1.115,-139.9}},
       color={175,175,175},
       thickness=0.5));
   connect(distribution.externalElectricalPin, externalElectricalPin1)
@@ -147,8 +147,8 @@ equation
       points={{104.2,56.25},{104.2,45.125},{106,45.125},{106,34.62}},
       color={215,215,215},
       thickness=0.5));
-    connect(transfer.transferOutputs, outBusElect.transfer) annotation (Line(
-        points={{106,-101.31},{106,-140},{1,-140}},
+    connect(transfer.transferOutputs, outBusElect.tra) annotation (Line(
+        points={{106,-101.31},{106,-139.9},{1.115,-139.9}},
         color={175,175,175},
         thickness=0.5), Text(
         string="%second",
@@ -163,6 +163,11 @@ equation
   else
     connect(zeroTraLoad.internalElectricalPin, distribution.internalElectricalPin[1]);
   end if;
+  connect(control.controlOutputs, outBusElect.ctrl) annotation (Line(
+      points={{141.4,81.25},{141.4,-24},{142,-24},{142,-130},{1.115,-130},{1.115,
+          -139.9}},
+      color={175,175,175},
+      thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-180,-140},
             {160,140}}), graphics={
         Rectangle(
@@ -183,6 +188,6 @@ equation
           thickness=1),       Text(
           extent={{-98,-134},{106,-230}},
           lineColor={0,0,0},
-          textString="%name%")}),                                Diagram(graphics,
+          textString="%name%")}),                                Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-180,-140},{160,140}})));
 end PartialElectricalSystem;

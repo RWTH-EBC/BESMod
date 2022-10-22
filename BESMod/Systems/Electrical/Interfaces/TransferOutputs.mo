@@ -1,6 +1,6 @@
 within BESMod.Systems.Electrical.Interfaces;
 expandable connector TransferOutputs
+  extends BESMod.Utilities.Icons.OutputsBus;
 
-  Modelica.Blocks.Interfaces.RealOutput val(unit="W");
 
 end TransferOutputs;

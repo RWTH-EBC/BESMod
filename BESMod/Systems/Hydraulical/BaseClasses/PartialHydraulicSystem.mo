@@ -227,32 +227,32 @@ equation
   connect(transfer.heatPortRad, heatPortRad) annotation (Line(points={{180,
           -22.4},{200,-22.4},{200,0}},
                                 color={191,0,0}));
-  connect(distribution.outBusDist, outBusHyd.storage) annotation (Line(
-      points={{39,-104},{39,-142},{-1,-142}},
+  connect(distribution.outBusDist, outBusHyd.dis) annotation (Line(
+      points={{39,-104},{39,-141.88},{-0.855,-141.88}},
       color={135,135,135},
       thickness=0.5), Text(
       string="%second",
       index=1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(generation.outBusGen, outBusHyd.generation) annotation (Line(
-      points={{-82,-104},{-82,-142},{-1,-142}},
+  connect(generation.outBusGen, outBusHyd.gen) annotation (Line(
+      points={{-82,-104},{-82,-141.88},{-0.855,-141.88}},
       color={135,135,135},
       thickness=0.5), Text(
       string="%second",
       index=1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(transfer.outBusTra, outBusHyd.transfer) annotation (Line(
-      points={{146,-45.44},{146,-68},{214,-68},{214,-142},{-1,-142}},
+  connect(transfer.outBusTra, outBusHyd.tra) annotation (Line(
+      points={{146,-45.44},{146,-68},{214,-68},{214,-141.88},{-0.855,-141.88}},
       color={135,135,135},
       thickness=0.5), Text(
       string="%second",
       index=1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(control.outBusCtrl, outBusHyd.control) annotation (Line(
-      points={{154,88},{214,88},{214,-142},{-1,-142}},
+  connect(control.outBusCtrl, outBusHyd.ctrl) annotation (Line(
+      points={{154,88},{214,88},{214,-141.88},{-0.855,-141.88}},
       color={135,135,135},
       thickness=0.5), Text(
       string="%second",
