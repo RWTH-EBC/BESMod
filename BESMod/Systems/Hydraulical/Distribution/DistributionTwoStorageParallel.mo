@@ -134,17 +134,11 @@ model DistributionTwoStorageParallel
         rotation=0,
         origin={30,-90})));
 
-  Utilities.KPIs.IntegralKPICalculator integralKPICalculator1(
-    use_inpCon=false,
-    unit="W",
-    intUnit="J",
-    y=fixedTemperatureBuf.port.Q_flow)
+  Utilities.KPIs.EnergyKPICalculator integralKPICalculator1(use_inpCon=false, y
+      =fixedTemperatureBuf.port.Q_flow)
     annotation (Placement(transformation(extent={{-80,-60},{-60,-40}})));
-  Utilities.KPIs.IntegralKPICalculator integralKPICalculator(
-    use_inpCon=false,
-    unit="W",
-    intUnit="J",
-    y=fixedTemperatureDHW.port.Q_flow)
+  Utilities.KPIs.EnergyKPICalculator integralKPICalculator(use_inpCon=false, y=
+        fixedTemperatureDHW.port.Q_flow)
     annotation (Placement(transformation(extent={{-80,-100},{-60,-80}})));
   BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{34,-110},{54,-90}})));

@@ -37,7 +37,8 @@ partial model PartialHydraulicSystem
     final allowFlowReversal=allowFlowReversal,
     final show_T=show_T,
     final rho=rho,
-    final cp=cp) annotation (
+    final cp=cp,
+    final use_openModelica=use_openModelica) annotation (
       choicesAllMatching=true, Placement(transformation(extent={{-140,-104},{-24,
             28}})));
   replaceable BESMod.Systems.Hydraulical.Control.BaseClasses.PartialControl control
@@ -89,7 +90,8 @@ partial model PartialHydraulicSystem
       final dp_nominal=transfer.dp_nominal,
       final dTLoss_nominal=transfer.dTLoss_nominal,
       final f_design=transfer.f_design,
-      final QLoss_flow_nominal=transfer.QLoss_flow_nominal))
+      final QLoss_flow_nominal=transfer.QLoss_flow_nominal),
+    final use_openModelica=use_openModelica)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-132,54},
             {154,122}})));
   replaceable BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution distribution(
@@ -130,11 +132,12 @@ partial model PartialHydraulicSystem
     final TDHWCold_nominal=hydraulicSystemParameters.TDHWCold_nominal,
     final TDHW_nominal=hydraulicSystemParameters.TDHW_nominal,
     tCrit=hydraulicSystemParameters.tCrit,
-    QCrit=hydraulicSystemParameters.QCrit) annotation (choicesAllMatching=true,
+    QCrit=hydraulicSystemParameters.QCrit,
+    final use_openModelica=use_openModelica) annotation (choicesAllMatching=true,
       Placement(transformation(extent={{-12,-104},{90,28}})));
 
-  replaceable BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialTransfer transfer(
-      dp_nominal=fill(0, transfer.nParallelDem)) constrainedby
+  replaceable BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialTransfer
+    transfer(dp_nominal=fill(0, transfer.nParallelDem)) constrainedby
     Transfer.BaseClasses.PartialTransfer(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
@@ -159,9 +162,9 @@ partial model PartialHydraulicSystem
     final allowFlowReversal=allowFlowReversal,
     final show_T=show_T,
     final rho=rho,
-    final cp=cp) annotation (
-      choicesAllMatching=true, Placement(transformation(extent={{112,-44},{180,
-            28}})));
+    final cp=cp,
+    final use_openModelica=use_openModelica) annotation (choicesAllMatching=true, Placement(transformation(
+          extent={{112,-44},{180,28}})));
   IBPSA.BoundaryConditions.WeatherData.Bus
       weaBus "Weather data bus" annotation (Placement(transformation(extent={{-200,56},
             {-158,100}}),        iconTransformation(extent={{-188,-10},{-168,10}})));

@@ -1,6 +1,6 @@
 within BESMod.Systems.Electrical.BaseClasses;
 partial model PartialElectricalSystem "Partial model for electrical system"
-  parameter Boolean use_openModelica=false
+  parameter Boolean use_openModelica=true
     "=true to disable features which 
     are not available in open modelica" annotation(Dialog(tab="Advanced"));
   parameter Integer nLoadsExtSubSys(min=1) = 4 "Number of external subsystems which result in electrical load / generation";
@@ -12,12 +12,14 @@ partial model PartialElectricalSystem "Partial model for electrical system"
 
   replaceable Distribution.BaseClasses.PartialDistribution distribution
     constrainedby Distribution.BaseClasses.PartialDistribution(nSubSys=
-        nLoadsExtSubSys + 2)
+        nLoadsExtSubSys + 2,
+    final use_openModelica=use_openModelica)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-40,
             -102},{52,36}})));
   replaceable Generation.BaseClasses.PartialGeneration generation
     constrainedby
-    BESMod.Systems.Electrical.Generation.BaseClasses.PartialGeneration
+    BESMod.Systems.Electrical.Generation.BaseClasses.PartialGeneration(
+    final use_openModelica=use_openModelica)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-148,
             -102},{-62,36}})));
   AixLib.BoundaryConditions.WeatherData.Bus weaBus annotation (Placement(
@@ -25,11 +27,13 @@ partial model PartialElectricalSystem "Partial model for electrical system"
            {{-200,24},{-160,66}})));
   replaceable Transfer.BaseClasses.PartialTransfer transfer if use_elecHeating constrainedby
     Transfer.BaseClasses.PartialTransfer(final nParallelDem=
-        electricalSystemParameters.nZones)
+        electricalSystemParameters.nZones,
+    final use_openModelica=use_openModelica)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{68,-102},
             {144,36}})));
   replaceable Control.BaseClasses.PartialControl control constrainedby
-    BESMod.Systems.Electrical.Control.BaseClasses.PartialControl
+    BESMod.Systems.Electrical.Control.BaseClasses.PartialControl(
+    final use_openModelica=use_openModelica)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-146,
             56},{142,106}})));
   Interfaces.InternalElectricalPinIn internalElectricalPin[nLoadsExtSubSys]

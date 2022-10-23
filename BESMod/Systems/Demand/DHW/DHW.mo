@@ -41,11 +41,8 @@ Modelica.Blocks.Math.UnitConversions.From_degC fromDegC
         extent={{10,-10},{-10,10}},
         rotation=0,
         origin={30,-10})));
-  Utilities.KPIs.IntegralKPICalculator integralKPICalculator(
-    use_inpCon=false,
-    unit="W",
-    intUnit="J",
-    y=-port_b.m_flow*cp*(TIs.y - TDHWCold_nominal))
+  Utilities.KPIs.EnergyKPICalculator integralKPICalculator(use_inpCon=false, y=
+        -port_b.m_flow*cp*(TIs.y - TDHWCold_nominal))
     annotation (Placement(transformation(extent={{60,-60},{80,-40}})));
   IBPSA.Fluid.Movers.FlowControlled_m_flow pump(
     redeclare final package Medium = Medium,

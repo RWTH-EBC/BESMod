@@ -1,7 +1,7 @@
 within BESMod.Systems.Demand.Building.HeatDemand;
 model CalcHeaDemHOM
   "Calculate the heat demand for a high order model from AixLib library"
-
+  extends Modelica.Icons.Example;
   parameter Integer TIR=1 "Thermal Insulation Regulation" annotation (Dialog(
       group="Construction parameters",
       compact=true,

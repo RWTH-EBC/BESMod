@@ -19,12 +19,12 @@ partial model PartialDHW "Partial model for domestic hot water (DHW)"
   parameter Modelica.Units.SI.Time tCrit(displayUnit="h") "Time for critical period. Based on EN 15450" annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem", enable=designType <> BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.NoStorage));
   parameter Real QCrit "Energy demand in kWh during critical period. Based on EN 15450" annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem", enable=designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage));
 
-  Modelica.Fluid.Interfaces.FluidPort_a port_a(redeclare final package Medium
-      = Medium) "Inlet for the demand of DHW" annotation (Placement(
+  Modelica.Fluid.Interfaces.FluidPort_a port_a(redeclare final package Medium =
+        Medium) "Inlet for the demand of DHW" annotation (Placement(
         transformation(extent={{-110,50},{-90,70}}),  iconTransformation(extent={{-110,50},
             {-90,70}})));
-  Modelica.Fluid.Interfaces.FluidPort_b port_b(redeclare final package Medium
-      = Medium) "Outlet of the demand of DHW" annotation (Placement(
+  Modelica.Fluid.Interfaces.FluidPort_b port_b(redeclare final package Medium =
+        Medium) "Outlet of the demand of DHW" annotation (Placement(
         transformation(extent={{-110,-70},{-90,-50}}), iconTransformation(
           extent={{-110,-70},{-90,-50}})));
   BESMod.Systems.Interfaces.DHWOutputs outBusDHW if not use_openModelica

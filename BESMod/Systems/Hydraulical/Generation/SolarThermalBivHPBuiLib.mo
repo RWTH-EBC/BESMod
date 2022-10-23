@@ -95,11 +95,7 @@ model SolarThermalBivHPBuiLib
         rotation=0,
         origin={-188,-160})));
 
-  Utilities.KPIs.IntegralKPICalculator        KPIWel1(
-    use_inpCon=false,
-    unit="W",
-    intUnit="J",
-    y=sum(solCol.vol.heatPort.Q_flow))
+  Utilities.KPIs.EnergyKPICalculator KPIWel1(use_inpCon=false, y=sum(solCol.vol.heatPort.Q_flow))
     annotation (Placement(transformation(extent={{-60,-120},{-40,-100}})));
 
   Modelica.Blocks.Logical.Switch switch3 annotation (Placement(transformation(
@@ -151,9 +147,8 @@ equation
   connect(switch3.y, pumpST.y) annotation (Line(points={{-147,-172},{-138,-172},
           {-138,-170},{-130,-170},{-130,-186},{30,-186},{30,-182}},
                                       color={0,0,127}));
-  connect(switch3.u1, AirOrSoil1.y) annotation (Line(points={{-170,-164},{-178,
-          -164},{-178,-160},{-181.4,-160}},
-                                          color={0,0,127}));
+  connect(switch3.u1, conNotRev.y) annotation (Line(points={{-170,-164},{-178,
+          -164},{-178,-38},{-159,-38}}, color={0,0,127}));
   connect(AirOrSoil2.y, switch3.u3) annotation (Line(points={{-183.4,-188},{
           -176,-188},{-176,-180},{-170,-180}},
                                         color={0,0,127}));

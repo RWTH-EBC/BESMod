@@ -80,17 +80,13 @@ model SolarThermalBivHP
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={70,-150})));
-  Modelica.Blocks.Sources.Constant AirOrSoil1(k=1)
-    annotation (Placement(transformation(
+  Modelica.Blocks.Sources.Constant uPumSolTheAlwOn(k=1) annotation (Placement(
+        transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={50,-170})));
 
-  Utilities.KPIs.IntegralKPICalculator        KPIWel1(
-    use_inpCon=false,
-    unit="W",
-    intUnit="J",
-    y=-solarThermal.heater.port.Q_flow)
+  Utilities.KPIs.EnergyKPICalculator KPIWel1(use_inpCon=false, y=-solarThermal.heater.port.Q_flow)
     annotation (Placement(transformation(extent={{-60,-100},{-40,-80}})));
 
     Modelica.Blocks.Sources.RealExpression reaExpSolTheTCol(y=solarThermal.senTCold.T)
@@ -123,8 +119,6 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(AirOrSoil1.y, pumpST.y) annotation (Line(points={{39,-170},{10,-170},
-          {10,-162}}, color={0,0,127}));
   connect(reaExpSolTheTCol.y, outBusGen.TSolCol_in) annotation (Line(points={{
           -79,-110},{-62,-110},{-62,-126},{0,-126},{0,-100}}, color={0,0,127}),
       Text(
@@ -161,6 +155,8 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  connect(uPumSolTheAlwOn.y, pumpST.y)
+    annotation (Line(points={{39,-170},{10,-170},{10,-162}}, color={0,0,127}));
   annotation (Diagram(coordinateSystem(extent={{-200,-180},{100,100}}),
         graphics={Rectangle(
           extent={{100,-180},{-200,-118}},

@@ -66,7 +66,7 @@ partial model PartialDistribution
     sigBusDistr
     annotation (Placement(transformation(extent={{-24,80},{24,122}})));
   BESMod.Systems.Hydraulical.Interfaces.DistributionOutputs
-    outBusDist
+    outBusDist if not use_openModelica
     annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
   BESMod.Systems.Electrical.Interfaces.InternalElectricalPinOut
     internalElectricalPin

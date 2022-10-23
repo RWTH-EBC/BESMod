@@ -26,8 +26,10 @@ model BatterySystemSimple
     offset=2000)
     annotation (Placement(transformation(extent={{-86,48},{-62,72}})));
   Modelica.Blocks.Interfaces.RealOutput SOC
+    if not batterySystemSimple.use_openModelica
     annotation (Placement(transformation(extent={{54,-98},{74,-78}})));
   Interfaces.DistributionOutputs OutputDistr1
+    if not batterySystemSimple.use_openModelica
     annotation (Placement(transformation(extent={{-6,-70},{14,-50}})));
   Modelica.Blocks.Interfaces.RealOutput PGrid "Electrical power"
     annotation (Placement(transformation(extent={{88,-72},{108,-52}})));
@@ -37,7 +39,7 @@ equation
       points={{22,-35.26},{22,-60.7},{44.3,-60.7}},
       color={0,0,0},
       thickness=1));
-  connect(batterySystemSimple.OutputDistr, OutputDistr1.SOCBat) annotation (
+  connect(batterySystemSimple.OutputDistr, OutputDistr1) annotation (
       Line(
       points={{4,-35.26},{4,-60}},
       color={255,204,51},

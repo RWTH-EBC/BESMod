@@ -44,19 +44,13 @@ model IdealValveRadiator
         rotation=270,
         origin={8,34})));
 
-  replaceable parameter BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData radParameters
-    annotation (choicesAllMatching=true, Placement(transformation(extent={{-100,-98},{-80,-78}})));
-  Utilities.KPIs.IntegralKPICalculator intKPICalHeaFlo(
-    use_inpCon=false,
-    unit="W",
-    intUnit="J",
-    y=sum(-heatPortRad.Q_flow) + sum(-heatPortCon.Q_flow))
+  replaceable parameter BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
+    radParameters annotation (
+      choicesAllMatching=true,
+      Placement(transformation(extent={{-100,-98},{-80,-78}})));
+  Utilities.KPIs.EnergyKPICalculator intKPICalHeaFlo(final use_inpCon=false,
+      final y=sum(-heatPortRad.Q_flow) + sum(-heatPortCon.Q_flow))
     annotation (Placement(transformation(extent={{-40,-80},{-20,-60}})));
-  Utilities.KPIs.IntegralKPICalculator intKPICal[nParallelDem](
-    use_inpCon=true,
-    unit=fill("", nParallelDem),
-    intUnit=fill("s", nParallelDem))
-    annotation (Placement(transformation(extent={{-40,-110},{-20,-90}})));
   IBPSA.Fluid.Movers.FlowControlled_m_flow pumpFix_m_flow[nParallelDem](
     redeclare final package Medium = Medium,
     each final energyDynamics=energyDynamics,
@@ -114,13 +108,6 @@ equation
           {-76,39.5},{-51,39.5}}, color={0,127,255}));
   end for;
 
-  connect(intKPICal.u, traControlBus.opening) annotation (Line(points={{-41.8,
-          -100},{-48,-100},{-48,-14},{-12,-14},{-12,-8},{24,-8},{24,86},{8,86},
-          {8,90},{0,90},{0,100}}, color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
   connect(gain.u, traControlBus.opening) annotation (Line(points={{8,46},{8,90},
           {0,90},{0,100}}, color={0,0,127}), Text(
       string="%second",
@@ -147,10 +134,10 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(intKPICal.KPI, outBusTra.opening) annotation (Line(points={{-17.8,
-          -100},{-8,-100},{-8,-104},{0,-104}}, color={135,135,135}), Text(
+  connect(gain.u, outBusTra.opening) annotation (Line(points={{8,46},{8,52},{22,
+          52},{22,-88},{0,-88},{0,-104}}, color={0,0,127}), Text(
       string="%second",
       index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
 end IdealValveRadiator;

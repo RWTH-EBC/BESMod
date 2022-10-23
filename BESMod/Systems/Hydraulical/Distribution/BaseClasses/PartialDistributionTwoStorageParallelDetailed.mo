@@ -283,17 +283,11 @@ partial model PartialDistributionTwoStorageParallelDetailed
     redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve parameters=threeWayValveParameters)
     annotation (Placement(transformation(extent={{-84,54},{-64,74}})));
 
-  Utilities.KPIs.IntegralKPICalculator integralKPICalculator3(
-    use_inpCon=false,
-    unit="W",
-    intUnit="J",
-    y=fixedTemperatureBuf.port.Q_flow)
+  Utilities.KPIs.EnergyKPICalculator integralKPICalculator3(use_inpCon=false, y
+      =fixedTemperatureBuf.port.Q_flow)
     annotation (Placement(transformation(extent={{-40,-108},{-22,-90}})));
-  Utilities.KPIs.IntegralKPICalculator integralKPICalculator1(
-    final use_inpCon=false,
-    final unit="W",
-    final intUnit="J",
-    y=fixedTemperatureDHW.port.Q_flow)
+  Utilities.KPIs.EnergyKPICalculator integralKPICalculator1(final use_inpCon=
+        false, y=fixedTemperatureDHW.port.Q_flow)
     annotation (Placement(transformation(extent={{-40,-140},{-20,-120}})));
   IBPSA.Fluid.Sensors.TemperatureTwoPort senTBuiSup(
     redeclare final package Medium = Medium,
@@ -312,28 +306,19 @@ partial model PartialDistributionTwoStorageParallelDetailed
 
   BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{30,-108},{50,-88}})));
-  Utilities.KPIs.IntegralKPICalculator integralKPICalculator4(
-    use_inpCon=false,
-    unit="W",
-    intUnit="J",
-    y=QHRStoDHWPre_flow.Q_flow) if dhwParameters.use_hr annotation (Placement(
+  Utilities.KPIs.EnergyKPICalculator integralKPICalculator4(use_inpCon=false, y
+      =QHRStoDHWPre_flow.Q_flow) if dhwParameters.use_hr annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={30,-168})));
-  Utilities.KPIs.IntegralKPICalculator integralKPICalculator(
-    use_inpCon=true,
-    unit="W",
-    intUnit="J") if use_heatingRodAfterBuffer annotation (Placement(
-        transformation(
+  Utilities.KPIs.EnergyKPICalculator integralKPICalculator(use_inpCon=true)
+    if use_heatingRodAfterBuffer annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={30,-130})));
-  Utilities.KPIs.IntegralKPICalculator integralKPICalculator2(
-    use_inpCon=false,
-    unit="W",
-    intUnit="J",
-    y=QHRStoBufPre_flow1.Q_flow) if bufParameters.use_hr
+  Utilities.KPIs.EnergyKPICalculator integralKPICalculator2(use_inpCon=false, y
+      =QHRStoBufPre_flow1.Q_flow) if bufParameters.use_hr
     annotation (Placement(transformation(extent={{-40,-170},{-20,-150}})));
 equation
   connect(T_stoDHWBot.y, sigBusDistr.TStoDHWBotMea) annotation (Line(points={{-16.4,

@@ -1,7 +1,6 @@
 within BESMod.Examples.UseCaseAachen;
 model BES
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
-    use_openModelica=true,
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
     redeclare Systems.Demand.Building.TEASERThermalZone building(redeclare
         BESMod.Systems.Demand.Building.RecordsCollection.RefAachen oneZoneParam(

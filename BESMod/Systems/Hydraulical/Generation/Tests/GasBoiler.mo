@@ -21,4 +21,10 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  connect(pulse.y, genControlBus.uPump) annotation (Line(points={{-21,78},{-18,
+          78},{-18,74},{10,74}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
 end GasBoiler;

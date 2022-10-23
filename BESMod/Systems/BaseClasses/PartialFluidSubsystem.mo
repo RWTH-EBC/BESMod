@@ -2,7 +2,7 @@ within BESMod.Systems.BaseClasses;
 model PartialFluidSubsystem
   "Model for a partial subsystem based on the IBPSA fluid core"
   extends IBPSA.Fluid.Interfaces.LumpedVolumeDeclarations;
-  parameter Boolean use_openModelica=false
+  parameter Boolean use_openModelica=true
     "=true to disable features which 
     are not available in open modelica" annotation(Dialog(tab="Advanced"));
 

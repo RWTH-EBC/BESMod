@@ -94,11 +94,6 @@ partial model PartialTwoPoint_HPS_Controller
         extent={{-7,-7},{7,7}},
         rotation=0,
         origin={155,69})));
-  Modelica.Blocks.Sources.Constant hp_iceFac(final k=1) annotation (Placement(
-        transformation(
-        extent={{-7,-7},{7,7}},
-        rotation=0,
-        origin={-181,-85})));
 
   Modelica.Blocks.Logical.Switch switchHR annotation (Placement(transformation(
         extent={{-5,-5},{5,5}},
@@ -153,6 +148,11 @@ partial model PartialTwoPoint_HPS_Controller
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-170,-24})));
+  Components.HeatPumpBusPassThrough heatPumpBusPassThrough annotation (
+      Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={-230,-90})));
 equation
   connect(BufferOnOffController.T_Top, sigBusDistr.TStoBufTopMea) annotation (
       Line(points={{-126.8,47.9},{-128,47.9},{-128,48},{-130,48},{-130,-86},{4,-86},
@@ -200,34 +200,12 @@ equation
   connect(TSet_DHW.y, HRactive.u[3]) annotation (Line(points={{-190.8,71.04},{
           -96,71.04},{-96,26.1667},{10,26.1667}},                         color=
          {255,0,255}));
-  connect(securityControl.sigBusHP, sigBusGen.hp_bus) annotation (Line(
-      points={{192,69.27},{180,69.27},{180,70},{184,70},{184,-54},{-152,-54},{-152,
-          -99}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%second",
-      index=1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
-  connect(securityControl.modeOut, sigBusGen.hp_bus.modeSet)
-    annotation (Line(points={{227.333,77.6},{268,77.6},{268,-136},{-152,-136},{
-          -152,-99}},                        color={255,0,255}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
+
   connect(securityControl.modeSet, hp_mode.y) annotation (Line(points={{191.867,
           77.6},{168,77.6},{168,69},{162.7,69}}, color={255,0,255}));
-  connect(securityControl.nOut, sigBusGen.hp_bus.nSet) annotation (Line(
+  connect(securityControl.nOut, sigBusGen.yHeaPumSet) annotation (Line(
         points={{227.333,84.4},{264,84.4},{264,-132},{-42,-132},{-42,-99},{-152,
           -99}},                         color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(hp_iceFac.y, sigBusGen.hp_bus.iceFacMea) annotation (Line(
-        points={{-173.3,-85},{-156.65,-85},{-156.65,-99},{-152,-99}},
-                      color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
@@ -279,7 +257,7 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(HP_nSet_Controller.IsOn, sigBusGen.hp_bus.onOffMea) annotation (Line(
+  connect(HP_nSet_Controller.IsOn, sigBusGen.heaPumIsOn) annotation (Line(
         points={{88,61.2},{88,-58},{-152,-58},{-152,-99}}, color={255,0,255}),
       Text(
       string="%second",
@@ -372,13 +350,28 @@ equation
   connect(HP_or_HR_active.u1, HRactive.y) annotation (Line(points={{-170,-12},{
           -134,-12},{-134,-6},{-6,-6},{-6,18},{20.75,18},{20.75,25}}, color={
           255,0,255}));
-  connect(HP_or_HR_active.u2, sigBusGen.hp_bus.onOffMea) annotation (Line(
+  connect(HP_or_HR_active.u2, sigBusGen.heaPumIsOn) annotation (Line(
         points={{-178,-12},{-194,-12},{-194,-99},{-152,-99}}, color={255,0,255}),
       Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
+  connect(heatPumpBusPassThrough.sigBusGen, sigBusGen) annotation (Line(
+      points={{-220,-90},{-200,-90},{-200,-80},{-180,-80},{-180,-72},{-152,-72},
+          {-152,-99}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(heatPumpBusPassThrough.vapourCompressionMachineControlBus,
+    securityControl.sigBusHP) annotation (Line(
+      points={{-240.2,-89.8},{-252,-89.8},{-252,-80},{72,-80},{72,-38},{192,-38},
+          {192,69.27},{192,69.27}},
+      color={255,204,51},
+      thickness=0.5));
   annotation (Diagram(graphics={
         Rectangle(
           extent={{-240,100},{-50,60}},

@@ -43,14 +43,14 @@ model HeatPumpAndHeatingRod "Bivalent monoenergetic heat pump"
   AixLib.Fluid.HeatPumps.HeatPump heatPump(
     redeclare package Medium_con = Medium,
     redeclare package Medium_eva = Medium_eva,
-    final use_rev=false,
+    final use_rev=true,
     final use_autoCalc=false,
     final Q_useNominal=0,
     final scalingFactor=heatPumpParameters.scalingFactor,
     final use_refIne=heatPumpParameters.use_refIne,
     final refIneFre_constant=heatPumpParameters.refIneFre_constant,
     final nthOrder=1,
-    final useBusConnectorOnly=true,
+    final useBusConnectorOnly=false,
     final mFlow_conNominal=m_flow_nominal[1],
     final VCon=heatPumpParameters.VCon,
     final dpCon_nominal=heatPumpParameters.dpCon_nominal,
@@ -81,7 +81,7 @@ model HeatPumpAndHeatingRod "Bivalent monoenergetic heat pump"
     final show_TPort=show_T,
     redeclare model PerDataMainHP = PerDataMainHP,
     redeclare model PerDataRevHP =
-        AixLib.DataBase.Chiller.PerformanceData.LookUpTable2D (final dataTable=
+        AixLib.DataBase.Chiller.PerformanceData.LookUpTable2D (dataTable=
             AixLib.DataBase.Chiller.EN14511.Vitocal200AWO201()))
                                                  annotation (Placement(
         transformation(
@@ -110,20 +110,14 @@ model HeatPumpAndHeatingRod "Bivalent monoenergetic heat pump"
   Modelica.Blocks.Sources.BooleanConstant
                                    AirOrSoil(k=heatPumpParameters.useAirSource)
     annotation (Placement(transformation(
-        extent={{-6,-6},{6,6}},
+        extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={-164,56})));
+        origin={-170,90})));
 
-  Utilities.KPIs.IntegralKPICalculator     KPIWel(
-    use_inpCon=true,
-    intUnit="J",
-    unit="W")
-    annotation (Placement(transformation(extent={{-180,-80},{-160,-60}})));
-  Utilities.KPIs.IntegralKPICalculator     KPIWHRel(
-    use_inpCon=true,
-    unit="W",
-    intUnit="J")       if use_heaRod
-    annotation (Placement(transformation(extent={{-180,-48},{-160,-28}})));
+  Utilities.KPIs.EnergyKPICalculator KPIWel(use_inpCon=true)
+    annotation (Placement(transformation(extent={{-140,-80},{-120,-60}})));
+  Utilities.KPIs.EnergyKPICalculator KPIWHRel(use_inpCon=true) if use_heaRod
+    annotation (Placement(transformation(extent={{-140,-48},{-120,-28}})));
 
   IBPSA.Fluid.Movers.SpeedControlled_y pump(
     redeclare final package Medium = Medium,
@@ -170,22 +164,15 @@ model HeatPumpAndHeatingRod "Bivalent monoenergetic heat pump"
 
   Modelica.Blocks.Sources.Constant TSoil(k=TSoilConst)
     annotation (Placement(transformation(
-        extent={{-6,-6},{6,6}},
+        extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={-164,32})));
+        origin={-170,50})));
 
-  Utilities.KPIs.IntegralKPICalculator        KPIQHP(
-    use_inpCon=false,
-    unit="W",
-    intUnit="J",
-    y=heatPump.con.QFlow_in)
-    annotation (Placement(transformation(extent={{-180,-112},{-160,-92}})));
-  Utilities.KPIs.IntegralKPICalculator        KPIQHR(
-    use_inpCon=false,
-    unit="W",
-    intUnit="J",
-    y=hea.vol.heatPort.Q_flow) if use_heaRod
-    annotation (Placement(transformation(extent={{-180,-140},{-160,-120}})));
+  Utilities.KPIs.EnergyKPICalculator KPIQHP(use_inpCon=false, y=heatPump.con.QFlow_in)
+    annotation (Placement(transformation(extent={{-140,-112},{-120,-92}})));
+  Utilities.KPIs.EnergyKPICalculator KPIQHR(use_inpCon=false, y=hea.vol.heatPort.Q_flow)
+    if use_heaRod
+    annotation (Placement(transformation(extent={{-140,-140},{-120,-120}})));
 
   IBPSA.Fluid.Sources.Boundary_pT bouPumpHP(
     redeclare package Medium = Medium,
@@ -225,13 +212,33 @@ model HeatPumpAndHeatingRod "Bivalent monoenergetic heat pump"
     calc_singleOnTime=true,
     calc_totalOnTime=true,
     calc_numSwi=true)
-    annotation (Placement(transformation(extent={{-180,-20},{-160,0}})));
+    annotation (Placement(transformation(extent={{-140,-20},{-120,0}})));
   Utilities.KPIs.DeviceKPICalculator KPIHeaRod1(
     use_reaInp=true,
     calc_singleOnTime=true,
     calc_totalOnTime=true,
     calc_numSwi=true)
-    annotation (Placement(transformation(extent={{-140,-120},{-120,-100}})));
+    annotation (Placement(transformation(extent={{-100,-120},{-80,-100}})));
+  Modelica.Blocks.Sources.BooleanExpression booExpHeaPumIsOn(y=heatPump.greaterThreshold.y)
+    annotation (Placement(transformation(extent={{-180,-20},{-160,0}})));
+  Modelica.Blocks.Sources.RealExpression reaExpPEleHeaPum(y=heatPump.innerCycle.Pel)
+    annotation (Placement(transformation(extent={{-180,-80},{-160,-60}})));
+  Modelica.Blocks.Sources.Constant conIceFac(final k=1) annotation (Placement(
+        transformation(
+        extent={{-11,-11},{11,11}},
+        rotation=0,
+        origin={-169,11})));
+  Modelica.Blocks.Sources.RealExpression reaExpTHeaPumOut(y=heatPump.innerCycle.Pel)
+    annotation (Placement(transformation(extent={{-60,80},{-40,100}})));
+  Modelica.Blocks.Sources.RealExpression reaExpTHeaPumIn(y=heatPump.innerCycle.Pel)
+    annotation (Placement(transformation(extent={{-60,60},{-40,80}})));
+  Modelica.Blocks.Sources.BooleanConstant conNotRev(final k=true) annotation (
+      Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-170,-38})));
+  Modelica.Blocks.Sources.RealExpression reaExpTHeaPumIn1(y=heatPump.senT_a2.T)
+    annotation (Placement(transformation(extent={{-60,40},{-40,60}})));
 protected
   parameter Modelica.Units.SI.PressureDifference dpHeaRod_nominal=if use_heaRod
        then heatingRodParameters.dp_nominal else 0;
@@ -246,34 +253,19 @@ equation
       points={{-57.5,-7},{-58,-7},{-58,-22},{-80,-22}},
       color={0,127,255},
       pattern=LinePattern.Dash));
-  connect(sigBusGen.hp_bus, heatPump.sigBus) annotation (Line(
-      points={{2,98},{-150,98},{-150,-40},{-52.775,-40},{-52.775,-6.78}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%first",
-      index=-1,
-      extent={{-3,-6},{-3,-6}},
-      horizontalAlignment=TextAlignment.Right));
-
   connect(bou_air.T_in, switch2.y)
     annotation (Line(points={{-102,56},{-113,56}}, color={0,0,127}));
   connect(switch2.u2, AirOrSoil.y)
-    annotation (Line(points={{-136,56},{-157.4,56}}, color={255,0,255}));
+    annotation (Line(points={{-136,56},{-152,56},{-152,90},{-159,90}},
+                                                     color={255,0,255}));
   connect(hea.u, sigBusGen.hr_on) annotation (Line(points={{18.8,89.6},{18.8,74},
           {2,74},{2,98}},        color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(KPIWel.u, sigBusGen.hp_bus.PelMea) annotation (Line(points={{-181.8,
-          -70},{-196,-70},{-196,120},{-22,120},{-22,122},{26,122},{26,98},{2,98}},
-                                             color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
-  connect(hea.Pel, KPIWHRel.u) annotation (Line(points={{55.6,89.6},{58,89.6},{
-          58,114},{-184,114},{-184,-38},{-181.8,-38}},
+  connect(hea.Pel, KPIWHRel.u) annotation (Line(points={{55.6,89.6},{98,89.6},{98,
+          114},{-144,114},{-144,-38},{-141.8,-38}},
                                     color={0,0,127}));
   connect(pump.port_a, portGen_in[1]) annotation (Line(
       points={{26,-68},{100,-68},{100,-2}},
@@ -285,8 +277,8 @@ equation
   connect(pump.port_b, heatPump.port_a1) annotation (Line(
       points={{6,-68},{-30.5,-68},{-30.5,-7}},
       color={0,127,255}));
-  connect(TSoil.y, switch2.u3) annotation (Line(points={{-157.4,32},{-146,32},
-          {-146,48},{-136,48}}, color={0,0,127}));
+  connect(TSoil.y, switch2.u3) annotation (Line(points={{-159,50},{-156,50},{-156,
+          48},{-136,48}},       color={0,0,127}));
   connect(heatPump.port_b1, hea.port_a) annotation (Line(points={{-30.5,37},{
           -30.5,80},{22,80}}, color={0,127,255}));
   connect(bouPumpHP.ports[1], pump.port_a) annotation (Line(
@@ -317,24 +309,26 @@ equation
   connect(multiSum.y, realToElecCon.PEleLoa)
     annotation (Line(points={{122.98,-82},{112,-82}}, color={0,0,127}));
   if use_heaRod then
-    connect(multiSum.u[2], hea.Pel) annotation (Line(points={{136,-82},{142,-82},
+    connect(multiSum.u[3], hea.Pel) annotation (Line(points={{136,-82},{142,-82},
           {142,89.6},{55.6,89.6}},color={0,0,127}));
-    connect(multiSum.u[1], sigBusGen.hp_bus.PelMea) annotation (Line(points={{136,
-          -82},{140,-82},{140,96},{72,96},{72,98},{2,98}}, color={0,0,127}),
+    connect(multiSum.u[1], reaExpPEleHeaPum.y) annotation (Line(points={{136,-82},
+            {144,-82},{144,-150},{-154,-150},{-154,-70},{-159,-70}},
+                                                           color={0,0,127}),
       Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-    connect(multiSum.u[3], pump.P) annotation (Line(points={{136,-82},{140,-82},{
-          140,-86},{144,-86},{144,-59},{5,-59}},
+    connect(multiSum.u[2], pump.P) annotation (Line(points={{136,-82},{144,-82},
+            {144,-114},{-14,-114},{-14,-58},{0,-58},{0,-59},{5,-59}},
                                              color={0,0,127}));
   else
     connect(multiSum.u[2], pump.P) annotation (Line(points={{136,-82},{144,-82},
             {144,-114},{-14,-114},{-14,-58},{0,-58},{0,-59},{5,-59}},
                                              color={0,0,127}));
-    connect(multiSum.u[1], sigBusGen.hp_bus.PelMea) annotation (Line(points={{136,
-          -82},{140,-82},{140,96},{72,96},{72,98},{2,98}}, color={0,0,127}),
+    connect(multiSum.u[1], reaExpPEleHeaPum.y) annotation (Line(points={{136,-82},
+            {144,-82},{144,-150},{-154,-150},{-154,-70},{-159,-70}},
+                                                           color={0,0,127}),
       Text(
       string="%second",
       index=1,
@@ -353,58 +347,90 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(KPIQHR.KPI, outBusGen.QHR_flow) annotation (Line(points={{-157.8,-130},
-          {-146,-130},{-146,-102},{0,-102},{0,-100}}, color={135,135,135}),
+  connect(KPIQHR.KPI, outBusGen.QHR_flow) annotation (Line(points={{-117.8,-130},
+          {-106,-130},{-106,-102},{0,-102},{0,-100}}, color={135,135,135}),
       Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(KPIQHP.KPI, outBusGen.QHP_flow) annotation (Line(points={{-157.8,-102},
-          {-16,-102},{-16,-100},{0,-100}}, color={135,135,135}), Text(
+  connect(KPIQHP.KPI, outBusGen.QHP_flow) annotation (Line(points={{-117.8,-102},
+          {0,-102},{0,-100}},              color={135,135,135}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(KPIWel.KPI, outBusGen.PEleHP) annotation (Line(points={{-157.8,-70},{
-          -144,-70},{-144,-102},{-14,-102},{-14,-100},{0,-100}}, color={135,135,
+  connect(KPIWel.KPI, outBusGen.PEleHP) annotation (Line(points={{-117.8,-70},{-104,
+          -70},{-104,-102},{0,-102},{0,-100}},                   color={135,135,
           135}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(KPIWHRel.KPI, outBusGen.PEleHR) annotation (Line(points={{-157.8,-38},
-          {-146,-38},{-146,-102},{0,-102},{0,-100}}, color={135,135,135}), Text(
+  connect(KPIWHRel.KPI, outBusGen.PEleHR) annotation (Line(points={{-117.8,-38},
+          {-106,-38},{-106,-102},{0,-102},{0,-100}}, color={135,135,135}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(KPIHeaRod.KPI, outBusGen.heaPum) annotation (Line(points={{-157.8,-10},
-          {-146,-10},{-146,-12},{-138,-12},{-138,-100},{0,-100}}, color={135,
+  connect(KPIHeaRod.KPI, outBusGen.heaPum) annotation (Line(points={{-117.8,-10},
+          {-106,-10},{-106,-12},{-98,-12},{-98,-100},{0,-100}},   color={135,
           135,135}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(KPIHeaRod.u, sigBusGen.hp_bus.onOffMea) annotation (Line(points={{
-          -182.2,-10},{-198,-10},{-198,98},{2,98}}, color={255,0,255}), Text(
+  connect(KPIHeaRod1.KPI, outBusGen.heaRod) annotation (Line(points={{-77.8,-110},
+          {0,-110},{0,-100}},       color={135,135,135}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(KPIHeaRod1.KPI, outBusGen.heaRod) annotation (Line(points={{-117.8,
-          -110},{0,-110},{0,-100}}, color={135,135,135}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(KPIHeaRod1.uRea, sigBusGen.hr_on) annotation (Line(points={{-142.2,
-          -110},{-168,-110},{-168,-112},{-190,-112},{-190,98},{2,98}}, color={0,
+  connect(KPIHeaRod1.uRea, sigBusGen.hr_on) annotation (Line(points={{-102.2,-110},
+          {-128,-110},{-128,-112},{-150,-112},{-150,98},{2,98}},       color={0,
           0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
+  connect(booExpHeaPumIsOn.y, KPIHeaRod.u)
+    annotation (Line(points={{-159,-10},{-142.2,-10}}, color={255,0,255}));
+  connect(reaExpPEleHeaPum.y, KPIWel.u)
+    annotation (Line(points={{-159,-70},{-141.8,-70}}, color={0,0,127}));
+  connect(conIceFac.y, heatPump.iceFac_in) annotation (Line(points={{-156.9,11},
+          {-106,11},{-106,-1.72},{-74.6,-1.72}}, color={0,0,127}));
+  connect(heatPump.nSet, sigBusGen.yHeaPumSet) annotation (Line(points={{-39.5,-10.52},
+          {-39.5,-26},{2,-26},{2,98}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-3,-6},{-3,-6}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(booExpHeaPumIsOn.y, sigBusGen.heaPumIsOn) annotation (Line(points={{-159,
+          -10},{-142,-10},{-142,98},{2,98}}, color={255,0,255}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(reaExpTHeaPumIn.y, sigBusGen.THeaPumIn) annotation (Line(points={{-39,
+          70},{2,70},{2,98}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(reaExpTHeaPumOut.y, sigBusGen.THeaPumOut) annotation (Line(points={{-39,
+          90},{-28,90},{-28,74},{2,74},{2,98}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(heatPump.modeSet, conNotRev.y) annotation (Line(points={{-48.5,-10.52},
+          {-48.5,-38},{-159,-38}}, color={255,0,255}));
+  connect(reaExpTHeaPumIn1.y, sigBusGen.THeaPumEvaIn) annotation (Line(points={
+          {-39,50},{2,50},{2,98}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
   annotation (Line(
       points={{-52.775,-6.78},{-52.775,33.61},{-56,33.61},{-56,74}},
       color={255,204,51},

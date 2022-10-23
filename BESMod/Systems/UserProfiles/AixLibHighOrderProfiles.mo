@@ -15,108 +15,110 @@ model AixLibHighOrderProfiles "Profiles for high order model in the AixLib"
     final fileName=fileNameIntGains,
     columns=2:nZones + 1)
                  "Profiles for internal gains"
-    annotation (Placement(transformation(extent={{23,23},{-23,-23}},
+    annotation (Placement(transformation(extent={{10,10},{-10,-10}},
         rotation=180,
-        origin={-27,1})));
+        origin={-30,10})));
 
   Modelica.Blocks.Math.Gain gainIntGains[nZones](each k=gain)
     "Profiles for internal gains" annotation (Placement(transformation(
-        extent={{23,23},{-23,-23}},
+        extent={{10,10},{-10,-10}},
         rotation=180,
-        origin={45,1})));
+        origin={50,10})));
 
   Modelica.Blocks.Sources.CombiTimeTable NaturalVentilation(
     columns={2,3,4,5,7},
     extrapolation=Modelica.Blocks.Types.Extrapolation.Periodic,
     tableOnFile=false,
-    table=VentilationProfile.Profile)                                                                                                                                                                         annotation(Placement(transformation(extent={{-88,50},
-            {-68,70}})));
+    table=VentilationProfile.Profile)                                                                                                                                                                         annotation(Placement(transformation(extent={{-80,60},
+            {-60,80}})));
   Modelica.Blocks.Sources.CombiTimeTable TSet(
     columns={2,3,4,5,6,7},
     extrapolation=Modelica.Blocks.Types.Extrapolation.Periodic,
     tableOnFile=false,
-    table=TSetProfile.Profile)                                                                                                                                                              annotation(Placement(transformation(extent={{-88,
-            -104},{-68,-84}})));
+    table=TSetProfile.Profile)                                                                                                                                                              annotation(Placement(transformation(extent={{-102,
+            -100},{-82,-80}})));
   Modelica.Blocks.Routing.RealPassThrough realPassThrough[10]
-    annotation (Placement(transformation(extent={{-48,52},{-32,68}})));
+    annotation (Placement(transformation(extent={{-40,60},{-20,80}})));
   Modelica.Blocks.Routing.RealPassThrough realPassThrough1
                                                          [10]
-    annotation (Placement(transformation(extent={{-32,-102},{-16,-86}})));
+    annotation (Placement(transformation(extent={{-40,-100},{-20,-80}})));
 equation
-  connect(TSet.y[1], realPassThrough1[6].u) annotation (Line(points={{-67,-94},{
-          -33.6,-94}},                                                 color={0,
+  connect(TSet.y[1], realPassThrough1[6].u) annotation (Line(points={{-81,-90},
+          {-42,-90}},                                                  color={0,
           0,127}));
-  connect(TSet.y[1], realPassThrough1[1].u) annotation (Line(points={{-67,-94},{
-          -33.6,-94}},                                                   color={
+  connect(TSet.y[1], realPassThrough1[1].u) annotation (Line(points={{-81,-90},
+          {-42,-90}},                                                    color={
           0,0,127}));
 
-  connect(TSet.y[2], realPassThrough1[7].u) annotation (Line(points={{-67,-94},{
-          -33.6,-94}},                                                 color={0,
+  connect(TSet.y[2], realPassThrough1[7].u) annotation (Line(points={{-81,-90},
+          {-42,-90}},                                                  color={0,
           0,127}));
-  connect(TSet.y[2], realPassThrough1[2].u) annotation (Line(points={{-67,-94},{
-          -33.6,-94}},                                                   color={
+  connect(TSet.y[2], realPassThrough1[2].u) annotation (Line(points={{-81,-90},
+          {-42,-90}},                                                    color={
           0,0,127}));
 
-  connect(TSet.y[6], realPassThrough1[3].u) annotation (Line(points={{-67,-94},{
-          -33.6,-94}},                                                            color={
+  connect(TSet.y[6], realPassThrough1[3].u) annotation (Line(points={{-81,-90},
+          {-42,-90}},                                                             color={
           0,0,127}));
-  connect(TSet.y[6], realPassThrough1[8].u)  annotation (Line(points={{-67,-94},{
-          -33.6,-94}},                                                   color={
+  connect(TSet.y[6], realPassThrough1[8].u)  annotation (Line(points={{-81,-90},
+          {-42,-90}},                                                    color={
           0,0,127}));
 
-  connect(TSet.y[4], realPassThrough1[9].u) annotation (Line(points={{-67,-94},{
-          -33.6,-94}},                                                 color={0,
+  connect(TSet.y[4], realPassThrough1[9].u) annotation (Line(points={{-81,-90},
+          {-42,-90}},                                                  color={0,
           0,127}));
-  connect(TSet.y[5], realPassThrough1[4].u) annotation (Line(points={{-67,-94},{
-          -33.6,-94}},                                                    color=
+  connect(TSet.y[5], realPassThrough1[4].u) annotation (Line(points={{-81,-90},
+          {-42,-90}},                                                     color=
          {0,0,127}));
 
-  connect(TSet.y[3], realPassThrough1[10].u) annotation (Line(points={{-67,-94},
-          {-33.6,-94}},
+  connect(TSet.y[3], realPassThrough1[10].u) annotation (Line(points={{-81,-90},
+          {-42,-90}},
         color={0,0,127}));
-  connect(TSet.y[3], realPassThrough1[5].u) annotation (Line(points={{-67,-94},{
-          -33.6,-94}},                                                    color=
+  connect(TSet.y[3], realPassThrough1[5].u) annotation (Line(points={{-81,-90},
+          {-42,-90}},                                                     color=
          {0,0,127}));
 
 
   connect(NaturalVentilation.y[1], realPassThrough[1].u) annotation (Line(
-        points={{-67,60},{-49.6,60}},                                color={0,0,
+        points={{-59,70},{-42,70}},                                  color={0,0,
           127}));
   connect(NaturalVentilation.y[1], realPassThrough[6].u) annotation (Line(
-        points={{-67,60},{-49.6,60}},                              color={0,0,127}));
+        points={{-59,70},{-42,70}},                                color={0,0,127}));
   connect(NaturalVentilation.y[2], realPassThrough[2].u) annotation (Line(
-        points={{-67,60},{-49.6,60}},                              color={0,0,127}));
-  connect(NaturalVentilation.y[2], realPassThrough[7].u) annotation (Line(  points={{-67,60},{-49.6,60}},                              color={0,0,127}));
+        points={{-59,70},{-42,70}},                                color={0,0,127}));
+  connect(NaturalVentilation.y[2], realPassThrough[7].u) annotation (Line(  points={{-59,70},
+          {-42,70}},                                                                                                                   color={0,0,127}));
   connect(NaturalVentilation.y[3], realPassThrough[4].u) annotation (Line(
-        points={{-67,60},{-49.6,60}},                              color={0,0,127}));
+        points={{-59,70},{-42,70}},                                color={0,0,127}));
   connect(NaturalVentilation.y[3], realPassThrough[9].u) annotation (Line(
-        points={{-67,60},{-49.6,60}},                              color={0,0,127}));
+        points={{-59,70},{-42,70}},                                color={0,0,127}));
   connect(NaturalVentilation.y[4], realPassThrough[5].u) annotation (Line(
-        points={{-67,60},{-49.6,60}},                              color={0,0,127}));
+        points={{-59,70},{-42,70}},                                color={0,0,127}));
   connect(NaturalVentilation.y[4], realPassThrough[10].u) annotation (Line(
-        points={{-67,60},{-49.6,60}},                              color={0,0,127}));
+        points={{-59,70},{-42,70}},                                color={0,0,127}));
   connect(NaturalVentilation.y[5], realPassThrough[3].u) annotation (Line(
-        points={{-67,60},{-49.6,60}},                              color={0,0,127}));
+        points={{-59,70},{-42,70}},                                color={0,0,127}));
   connect(NaturalVentilation.y[5], realPassThrough[8].u) annotation (Line(
-        points={{-67,60},{-49.6,60}},                              color={0,0,127}));
+        points={{-59,70},{-42,70}},                                color={0,0,127}));
 
-  connect(tableInternalGains.y, gainIntGains.u) annotation (Line(points={{-1.7,1},
-          {-1.7,0.5},{17.4,0.5},{17.4,1}},    color={0,0,127}));
-  connect(gainIntGains.y, useProBus.intGains) annotation (Line(points={{70.3,1},
-          {79.15,1},{79.15,-1},{115,-1}},             color={0,0,127}), Text(
+  connect(tableInternalGains.y, gainIntGains.u) annotation (Line(points={{-19,10},
+          {38,10}},                           color={0,0,127}));
+  connect(gainIntGains.y, useProBus.intGains) annotation (Line(points={{61,10},
+          {61,12},{60,12},{60,10},{88,10},{88,-0.835},{115.175,-0.835}},
+                                                      color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
   connect(realPassThrough.y, useProBus.NaturalVentilation) annotation (Line(
-        points={{-31.2,60},{114,60},{114,4},{115,4},{115,-1}}, color={0,0,127}),
+        points={{-19,70},{115,70},{115,-1}},                   color={0,0,127}),
       Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(realPassThrough1.y, useProBus.TZoneSet) annotation (Line(points={{-15.2,
-          -94},{115,-94},{115,-1}}, color={0,0,127}), Text(
+  connect(realPassThrough1.y, useProBus.TZoneSet) annotation (Line(points={{-19,-90},
+          {115,-90},{115,-1}},      color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},

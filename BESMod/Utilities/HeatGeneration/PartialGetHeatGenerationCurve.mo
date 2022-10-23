@@ -13,12 +13,8 @@ partial model PartialGetHeatGenerationCurve
         transformation(extent={{-36,-36},{34,36}})));
   Systems.Hydraulical.Interfaces.GenerationControlBus sigBusGen
     annotation (Placement(transformation(extent={{-72,54},{-52,74}})));
-  Modelica.Blocks.Sources.Constant const(k=1)
-    annotation (Placement(transformation(extent={{-100,50},{-80,70}})));
   Modelica.Blocks.Sources.Constant const1(k=0)
     annotation (Placement(transformation(extent={{-100,20},{-80,40}})));
-  Modelica.Blocks.Sources.BooleanConstant booleanConstant(k=true)
-    annotation (Placement(transformation(extent={{-100,-10},{-80,10}})));
   Modelica.Blocks.Sources.Constant const2(k=1)
     annotation (Placement(transformation(extent={{-100,-40},{-80,-20}})));
   Modelica.Blocks.Sources.Ramp ramp
@@ -72,26 +68,8 @@ equation
       index=-1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(const.y, sigBusGen.hp_bus.iceFacMea) annotation (Line(points={{-79,60},
-          {-79,64},{-62,64}},          color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
   connect(const1.y, sigBusGen.hr_on) annotation (Line(points={{-79,30},{-62,30},
           {-62,64}},          color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(booleanConstant.y, sigBusGen.hp_bus.modeSet) annotation (Line(points={{-79,0},
-          {-62,0},{-62,64}},                          color={255,0,255}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(const2.y, sigBusGen.hp_bus.nSet) annotation (Line(points={{-79,-30},{
-          -62,-30},{-62,64}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
@@ -125,6 +103,12 @@ equation
     annotation (Line(points={{34,28.8},{81,28.8},{81,20}}, color={0,127,255}));
   connect(heatingCurve.TSet, prescribedTemperature.T) annotation (Line(points={
           {3.1,-71},{20.55,-71},{20.55,-70},{38,-70}}, color={0,0,127}));
+  connect(const2.y, sigBusGen.yHeaPumSet) annotation (Line(points={{-79,-30},{
+          -72,-30},{-72,64},{-62,64}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));

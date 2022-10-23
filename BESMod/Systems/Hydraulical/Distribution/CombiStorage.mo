@@ -109,11 +109,8 @@ model CombiStorage
           bufferStorage.layer.T)
       annotation (Placement(transformation(extent={{-42,-122},{-22,-102}})));
 
-  Utilities.KPIs.IntegralKPICalculator integralKPICalculator(
-    use_inpCon=false,
-    unit="W",
-    intUnit="J",
-    y=fixedTemperatureBuf.port.Q_flow)
+  Utilities.KPIs.EnergyKPICalculator integralKPICalculator(use_inpCon=false, y=
+        fixedTemperatureBuf.port.Q_flow)
     annotation (Placement(transformation(extent={{-80,-120},{-60,-100}})));
   BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{30,-108},{50,-88}})));

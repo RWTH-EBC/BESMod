@@ -25,11 +25,7 @@ model GasBoiler "Just a gas boiler"
     paramBoiler "Parameters for Boiler" annotation(choicesAllMatching=true);
   parameter Real etaTempBased[:,2]=[293.15,1.09; 303.15,1.08; 313.15,1.05;
       323.15,1.; 373.15,0.99] "Table matrix for temperature based efficiency";
-  Utilities.KPIs.IntegralKPICalculator KPIQHR(
-    use_inpCon=false,
-    unit="W",
-    intUnit="J",
-    y=boilerNoControl.QflowCalculation.y)
+  Utilities.KPIs.EnergyKPICalculator KPIQHR(use_inpCon=false, y=boilerNoControl.QflowCalculation.y)
     annotation (Placement(transformation(extent={{-40,-100},{-20,-80}})));
   replaceable parameter
     BESMod.Systems.RecordsCollection.TemperatureSensors.TemperatureSensorBaseDefinition

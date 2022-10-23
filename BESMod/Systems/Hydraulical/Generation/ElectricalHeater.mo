@@ -82,11 +82,7 @@ model ElectricalHeater "Only heat using a heating rod"
         rotation=90,
         origin={62,-74})));
 
-  Utilities.KPIs.IntegralKPICalculator KPIQHR(
-    use_inpCon=false,
-    unit="W",
-    intUnit="J",
-    y=hea.vol.heatPort.Q_flow)
+  Utilities.KPIs.EnergyKPICalculator KPIQHR(use_inpCon=false, y=hea.vol.heatPort.Q_flow)
     annotation (Placement(transformation(extent={{-40,-80},{-20,-60}})));
   replaceable parameter
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition

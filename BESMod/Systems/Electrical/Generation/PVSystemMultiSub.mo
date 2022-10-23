@@ -19,8 +19,9 @@ model PVSystemMultiSub
     each final groRef=0.2,
     each final use_ParametersGlaz=false)
     annotation (Placement(transformation(extent={{-32,-30},{26,28}})));
-  Modelica.Blocks.Math.Sum sumOfPower(nin=numGenUnits)
-                                      "Sums up DC Output power" annotation (
+  Modelica.Blocks.Math.Sum sumOfPower(nin=numGenUnits,
+    y(unit="W"),
+    u(each unit="W"))                 "Sums up DC Output power" annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
@@ -54,10 +55,7 @@ model PVSystemMultiSub
   parameter Modelica.Units.SI.Angle azi[numGenUnits]=fill(0*Modelica.Constants.pi/180,numGenUnits)  "Surface's azimut angle (0:South)";
   parameter Modelica.Units.SI.Area ARoof(min=0) "Roof area of building" annotation(Dialog(group="Design - Top Down: Parameters are given by the parent system"));
 
-  Utilities.KPIs.IntegralKPICalculator intKPICalPElePV(
-    use_inpCon=true,
-    unit="W",
-    intUnit="J")
+  Utilities.KPIs.EnergyKPICalculator intKPICalPElePV(use_inpCon=true)
     annotation (Placement(transformation(extent={{60,-60},{80,-40}})));
 equation
   for i in 1:numGenUnits loop

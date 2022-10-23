@@ -46,18 +46,14 @@ model TEASERThermalZone
           extent={{-10,-10},{10,10}}, rotation=180,
         origin={74,30})));
 
-  BESMod.Utilities.KPIs.IntegralKPICalculator intKPICalTraGain[nZones](
-    final unit=fill("W", nZones),
-    final intUnit=fill("J", nZones),
-    each final use_inpCon=true) if use_hydraulic and use_verboseEnergyBalance
+  BESMod.Utilities.KPIs.EnergyKPICalculator intKPICalTraGain[nZones](each
+      final use_inpCon=true) if use_hydraulic and use_verboseEnergyBalance
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-30,-102})));
-  BESMod.Utilities.KPIs.IntegralKPICalculator intKPICalTraLoss[nZones](
-    final unit=fill("W", nZones),
-    final intUnit=fill("J", nZones),
-    each final use_inpCon=true) if use_hydraulic and use_verboseEnergyBalance
+  BESMod.Utilities.KPIs.EnergyKPICalculator intKPICalTraLoss[nZones](each
+      final use_inpCon=true) if use_hydraulic and use_verboseEnergyBalance
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -68,19 +64,15 @@ model TEASERThermalZone
   Modelica.Blocks.Nonlinear.Limiter limDown[nZones](each final uMax=
        0, each final uMin=-Modelica.Constants.inf) if use_hydraulic and use_verboseEnergyBalance
     annotation (Placement(transformation(extent={{-80,-140},{-60,-120}})));
-  BESMod.Utilities.KPIs.IntegralKPICalculator intKPICal[nZones](
-    final unit=fill("W", nZones),
-    final intUnit=fill("J", nZones),
-    each final use_inpCon=true) if use_verboseEnergyBalance annotation (
-      Placement(transformation(
+  BESMod.Utilities.KPIs.EnergyKPICalculator intKPICal[nZones](each final
+      use_inpCon=true) if use_verboseEnergyBalance annotation (Placement(
+        transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={30,-110})));
-  BESMod.Utilities.KPIs.IntegralKPICalculator intKPICalVentGain[nZones](
-    final unit=fill("W", nZones),
-    final intUnit=fill("J", nZones),
-    each final use_inpCon=true) if use_ventilation and
-    use_verboseEnergyBalance annotation (Placement(transformation(
+  BESMod.Utilities.KPIs.EnergyKPICalculator intKPICalVentGain[nZones](each
+      final use_inpCon=true) if use_ventilation and use_verboseEnergyBalance
+    annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={30,-182})));
@@ -92,11 +84,9 @@ model TEASERThermalZone
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={90,-196})));
-  BESMod.Utilities.KPIs.IntegralKPICalculator intKPICalVentLoss[nZones](
-    final unit=fill("W", nZones),
-    final intUnit=fill("J", nZones),
-    each final use_inpCon=true) if use_ventilation and
-    use_verboseEnergyBalance annotation (Placement(transformation(
+  BESMod.Utilities.KPIs.EnergyKPICalculator intKPICalVentLoss[nZones](each
+      final use_inpCon=true) if use_ventilation and use_verboseEnergyBalance
+    annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={30,-206})));
@@ -112,11 +102,9 @@ model TEASERThermalZone
     annotation (Placement(transformation(extent={{-9,-9},{9,9}},
         rotation=180,
         origin={63,-205})));
-  BESMod.Utilities.KPIs.IntegralKPICalculator intKPICalTraGain2[nZones](
-    final unit=fill("W", nZones),
-    final intUnit=fill("J", nZones),
-    each final use_inpCon=true) if use_verboseEnergyBalance annotation (
-      Placement(transformation(
+  BESMod.Utilities.KPIs.EnergyKPICalculator intKPICalTraGain2[nZones](each
+      final use_inpCon=true) if use_verboseEnergyBalance annotation (Placement(
+        transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-30,-156})));
@@ -126,11 +114,9 @@ model TEASERThermalZone
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-90,-166})));
-  BESMod.Utilities.KPIs.IntegralKPICalculator intKPICalTraLoss2[nZones](
-    final unit=fill("W", nZones),
-    final intUnit=fill("J", nZones),
-    each final use_inpCon=true) if use_verboseEnergyBalance annotation (
-      Placement(transformation(
+  BESMod.Utilities.KPIs.EnergyKPICalculator intKPICalTraLoss2[nZones](each
+      final use_inpCon=true) if use_verboseEnergyBalance annotation (Placement(
+        transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-30,-186})));

@@ -1,7 +1,7 @@
 within BESMod.Systems.Demand.Building.BaseClasses;
 partial model PartialDemand "Partial demand model for HPS"
   extends BESMod.Utilities.Icons.BuildingIcon;
-  parameter Boolean use_openModelica=false
+  parameter Boolean use_openModelica=true
     "=true to disable features which 
     are not available in open modelica" annotation(Dialog(tab="Advanced"));
   parameter Integer nZones(min=1) "Number of zones /rooms";

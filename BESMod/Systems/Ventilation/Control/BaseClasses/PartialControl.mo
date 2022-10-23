@@ -1,6 +1,9 @@
 within BESMod.Systems.Ventilation.Control.BaseClasses;
 partial model PartialControl
   extends BESMod.Utilities.Icons.ControlIcon;
+  parameter Boolean use_openModelica=true
+    "=true to disable features which 
+    are not available in open modelica" annotation(Dialog(tab="Advanced"));
   replaceable parameter
     BESMod.Systems.RecordsCollection.SubsystemControlBaseDataDefinition
     distributionParameters constrainedby
@@ -13,7 +16,7 @@ partial model PartialControl
     BESMod.Systems.RecordsCollection.SubsystemControlBaseDataDefinition
     annotation (Placement(transformation(extent={{30,-100},{50,-80}})),
       choicesAllMatching=true);
-  Interfaces.ControlOutputs outBusCtrl
+  Interfaces.ControlOutputs outBusCtrl if not use_openModelica
     annotation (Placement(transformation(extent={{90,-10},{110,10}})));
   Interfaces.GenerationControlBus sigBusGen
     annotation (Placement(transformation(extent={{50,-110},{70,-90}})));

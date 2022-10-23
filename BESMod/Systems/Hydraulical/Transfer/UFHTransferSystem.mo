@@ -60,11 +60,7 @@ model UFHTransferSystem
     constrainedby RecordsCollection.UFHData(nZones=nParallelDem, area=AZone)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{22,12},{42,32}})));
 
-  Utilities.KPIs.IntegralKPICalculator integralKPICalculator1[nParallelDem](
-      unit=fill("", nParallelDem), intUnit=fill("s", nParallelDem))
-    annotation (Placement(transformation(extent={{-40,-80},{-20,-60}})));
-  Utilities.KPIs.IntegralKPICalculator integralKPICalculator[nParallelDem](unit
-      =fill("W", nParallelDem), intUnit=fill("J", nParallelDem))
+  Utilities.KPIs.EnergyKPICalculator integralKPICalculator[nParallelDem]
     annotation (Placement(transformation(extent={{-40,-120},{-20,-100}})));
   IBPSA.Fluid.Sources.Boundary_pT bouPumpHP[nParallelDem](
     redeclare package Medium = Medium,
@@ -171,9 +167,6 @@ equation
       index=1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(gain.y, integralKPICalculator1.u) annotation (Line(points={{-28,61},{
-          -28,54},{-46,54},{-46,8},{-60,8},{-60,-70},{-41.8,-70}}, color={0,0,
-          127}));
   connect(heatFlowSensor.Q_flow, integralKPICalculator.u) annotation (Line(
         points={{-46,-17},{-46,-54},{-54,-54},{-54,-110},{-41.8,-110}}, color={
           0,0,127}));
@@ -196,8 +189,9 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(integralKPICalculator1.KPI, outBusTra.opening) annotation (Line(
-        points={{-17.8,-70},{0,-70},{0,-104}}, color={135,135,135}), Text(
+  connect(gain.u, outBusTra.opening) annotation (Line(points={{-28,84},{-28,100},
+          {-14,100},{-14,54},{-4,54},{-4,22},{-12,22},{-12,-90},{0,-90},{0,-104}},
+        color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},

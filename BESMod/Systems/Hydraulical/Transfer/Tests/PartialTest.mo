@@ -1,8 +1,7 @@
 within BESMod.Systems.Hydraulical.Transfer.Tests;
 partial model PartialTest
   extends BESMod.Systems.BaseClasses.PartialBESExample;
-  replaceable
-    BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialTransfer
+  replaceable BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialTransfer
     transfer constrainedby BaseClasses.PartialTransfer(
     redeclare package Medium = IBPSA.Media.Water,
     energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
@@ -18,7 +17,8 @@ partial model PartialTest
     AZone={100},
     hZone={2.6},
     ABui=100,
-    hBui=2.6) annotation (choicesAllMatching=true, Placement(transformation(extent={{-32,-26},{36,44}})));
+    hBui=2.6) annotation (choicesAllMatching=true, Placement(transformation(
+          extent={{-32,-26},{36,44}})));
   Modelica.Thermal.HeatTransfer.Sources.PrescribedTemperature
                                                          prescribedTemperature(T(
         displayUnit="K"))

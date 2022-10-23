@@ -23,7 +23,7 @@ partial model PartialGeneration "Partial generation model for HPS"
       Placement(transformation(extent={{90,-12},{110,8}}), iconTransformation(
           extent={{90,30},{110,50}})));
   BESMod.Systems.Hydraulical.Interfaces.GenerationOutputs
-    outBusGen
+    outBusGen if not use_openModelica
     annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
 
   IBPSA.BoundaryConditions.WeatherData.Bus
