@@ -2,7 +2,7 @@ within BESMod.Systems.Hydraulical.Control.BaseClasses;
 partial model PartialControl "Partial controller for HPS"
  extends BESMod.Utilities.Icons.ControlIcon;
  parameter Boolean use_dhw "=false to disable DHW";
-  parameter Boolean use_openModelica=true
+  parameter Boolean use_openModelica=false
     "=true to disable features which 
     are not available in open modelica" annotation(Dialog(tab="Advanced"));
 

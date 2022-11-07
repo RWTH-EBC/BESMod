@@ -1,6 +1,6 @@
 within BESMod.Systems.Electrical.Control.BaseClasses;
 partial model PartialControl "Partial electrical control model"
-  parameter Boolean use_openModelica=true
+  parameter Boolean use_openModelica=false
     "=true to disable features which 
     are not available in open modelica" annotation(Dialog(tab="Advanced"));
   Interfaces.GenerationControlBus generationControlBus annotation (Placement(
