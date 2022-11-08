@@ -1,5 +1,6 @@
 within BESMod.Examples.SolarThermalSystem;
-model SolarThermalHPS "HPS which is supported by a solar thermal collector"
+partial model PartialSolarThermalHPS
+  "HPS which is supported by a solar thermal collector"
   extends BESMod.Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
     redeclare Systems.Demand.Building.TEASERThermalZone building(redeclare
@@ -7,27 +8,6 @@ model SolarThermalHPS "HPS which is supported by a solar thermal collector"
           heaLoadFacGrd=0, heaLoadFacOut=0)),
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
-      redeclare BESMod.Systems.Hydraulical.Generation.SolarThermalBivHP
-        generation(
-        redeclare model PerDataMainHP =
-            AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (refrigerant=
-                "Propane", flowsheet="VIPhaseSeparatorFlowsheet"),
-        redeclare
-          BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
-          heatPumpParameters(genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentParallel),
-        redeclare
-          BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-          heatingRodParameters,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
-        redeclare package Medium_eva = AixLib.Media.Air,
-        redeclare BESMod.Examples.SolarThermalSystem.SolarCollector
-          solarThermalParas(
-          final A=parameterStudy.A,
-          final eta_zero=parameterStudy.eta_zero,
-          final c1=parameterStudy.c1,
-          final c2=parameterStudy.c2),
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover
-          pumpSTData),
       redeclare BESMod.Systems.Hydraulical.Control.Biv_PI_ConFlow_HPSController
         control(
         redeclare
@@ -73,8 +53,6 @@ model SolarThermalHPS "HPS which is supported by a solar thermal collector"
     redeclare Systems.UserProfiles.TEASERProfiles userProfiles,
     redeclare BESMod.Systems.Ventilation.NoVentilation ventilation);
 
-  extends Modelica.Icons.Example;
-
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)),
@@ -82,4 +60,4 @@ model SolarThermalHPS "HPS which is supported by a solar thermal collector"
       StopTime=31536000,
       Interval=600,
       __Dymola_Algorithm="Dassl"));
-end SolarThermalHPS;
+end PartialSolarThermalHPS;
