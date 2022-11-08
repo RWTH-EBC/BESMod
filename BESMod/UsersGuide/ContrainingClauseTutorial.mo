@@ -16,7 +16,6 @@ package ContrainingClauseTutorial
 
 
   end MyOwnModule;
-
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));

@@ -35,7 +35,6 @@ model PressureReliefExample
         origin={50,30})));
   IBPSA.Fluid.Movers.SpeedControlled_y     pump(
     redeclare package Medium = Medium,
-    m_flow_nominal=m_flow_nominal,
     redeclare
       BESMod.Systems.RecordsCollection.Movers.AutomaticConfigurationData per(
       final speed_rpm_nominal=pumpData.speed_rpm_nominal,
