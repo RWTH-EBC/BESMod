@@ -1,6 +1,7 @@
 within BESMod.Utilities.KPIs;
 model ComfortCalculator "Cacluate the discomort in K*s"
 
+  extends BaseClasses.KPIIcon;
   parameter Modelica.Units.SI.Temperature TComBou
     "Comfort boundary temperature";
   parameter Boolean for_heating = true "=false to calculate comfort during cooling period (summer). = true for heating";
@@ -37,16 +38,7 @@ equation
     annotation (Line(points={{-28,0},{-120,0}}, color={0,0,127}));
   connect(add.y, lim.u)
     annotation (Line(points={{-5,-6},{0,-6},{0,-4},{6,-4}}, color={0,0,127}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
-          Rectangle(
-          extent={{-100,100},{100,-100}},
-          lineColor={0,0,0},
-          fillColor={215,215,215},
-          fillPattern=FillPattern.Solid), Text(
-          extent={{-62,52},{66,-68}},
-          lineColor={0,0,0},
-          textString="%name")}),                                 Diagram(graphics,
-        coordinateSystem(preserveAspectRatio=false)),
+  annotation (
     Documentation(info="<html>
 <p>Calculate the comfort during either heating or cooling period. Based on EN 15251, which defines a 2 K bandwith around a set temperature of 22 &deg;C.</p>
 </html>"));

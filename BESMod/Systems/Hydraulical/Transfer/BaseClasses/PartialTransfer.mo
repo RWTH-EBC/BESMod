@@ -1,8 +1,7 @@
 within BESMod.Systems.Hydraulical.Transfer.BaseClasses;
 partial model PartialTransfer "Partial transfer model for BES"
   extends BESMod.Utilities.Icons.TransferIcon;
-  extends
-    BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters(
+  extends BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters(
     TSup_nominal=fill(max(TTra_nominal),nParallelSup),
       dTTra_nominal={if TTra_nominal[i] > 64.9 + 273.15 then 15 elseif
         TTra_nominal[i] > 44.9 + 273.15 then 10 else 7 for i in 1:nParallelDem},
@@ -53,7 +52,7 @@ partial model PartialTransfer "Partial transfer model for BES"
     annotation (Placement(transformation(extent={{90,30},{110,50}}),
         iconTransformation(extent={{90,30},{110,50}})));
   BESMod.Systems.Hydraulical.Interfaces.TransferOutputs
-    outBusTra
+    outBusTra if not use_openModelica
     annotation (Placement(transformation(extent={{-10,-114},{10,-94}})));
   Interfaces.TransferControlBus traControlBus
     annotation (Placement(transformation(extent={{-10,90},{10,110}})));

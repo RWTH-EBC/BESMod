@@ -3,16 +3,20 @@ model RadiatorPressureBased "Pressure Based transfer system"
   // Abui =1 and hBui =1 to avaoid warnings, will be overwritten anyway
   extends BaseClasses.PartialTransfer(
     ABui=1,
-    hBui=1,                           final dp_nominal=rad.dp_nominal .+ val.dpValve_nominal .+ res.dp_nominal .+ val.dpFixed_nominal,
-                                      final nParallelSup=1);
-
+    hBui=1,
+    final dp_nominal=transferDataBaseDefinition.dp_nominal,
+    final nParallelSup=1);
+  parameter Boolean use_preRelVal=false "=false to disable pressure relief valve";
+  parameter Real perPreRelValOpens=0.99 "Percentage of nominal pressure difference at which the pressure relief valve starts to open" annotation(Dialog(enable=use_preRelVal));
   replaceable parameter RecordsCollection.TransferDataBaseDefinition
     transferDataBaseDefinition constrainedby
     RecordsCollection.TransferDataBaseDefinition(
-    final Q_flow_nominal=Q_flow_nominal.*f_design,
+    final Q_flow_nominal=Q_flow_nominal .* f_design,
     final nZones=nParallelDem,
     final AFloor=ABui,
-    final heiBui=hBui)
+    final heiBui=hBui,
+    mRad_flow_nominal=m_flow_nominal,
+    mHeaCir_flow_nominal=mSup_flow_nominal[1])
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-62,-98},{-42,-78}})));
 
   replaceable parameter
@@ -93,7 +97,7 @@ model RadiatorPressureBased "Pressure Based transfer system"
     redeclare BESMod.Systems.RecordsCollection.Movers.AutomaticConfigurationData per(
       final speed_rpm_nominal=pumpData.speed_rpm_nominal,
       final m_flow_nominal=sum(m_flow_nominal),
-      final dp_nominal=1/sum({1/dp_nominal[i] for i in 1:nParallelDem}),
+      final dp_nominal=transferDataBaseDefinition.dpPumpHeaCir_nominal + dpSup_nominal[1],
       final rho=rho,
       final V_flowCurve=pumpData.V_flowCurve,
       final dpCurve=pumpData.dpCurve),
@@ -117,6 +121,17 @@ model RadiatorPressureBased "Pressure Based transfer system"
 
   BESMod.Utilities.Electrical.RealToElecCon realToElecCon(use_souGen=false)
     annotation (Placement(transformation(extent={{34,-94},{54,-74}})));
+  Distribution.Components.Valves.PressureReliefValve pressureReliefValve(
+    redeclare final package Medium = Medium,
+    m_flow_nominal=mSup_flow_nominal[1],
+    final dpFullOpen_nominal=dp_nominal[1],
+    final dpThreshold_nominal=perPreRelValOpens*dp_nominal[1],
+    final facDpValve_nominal=transferDataBaseDefinition.valveAutho[1],
+    final l=transferDataBaseDefinition.leakageOpening) if use_preRelVal
+                        annotation (Placement(transformation(
+        extent={{10,-10},{-10,10}},
+        rotation=90,
+        origin={-90,-10})));
 equation
   connect(rad.heatPortRad, heatPortRad) annotation (Line(points={{-5.08,-27.2},
           {40,-27.2},{40,-40},{100,-40}}, color={191,0,0}));
@@ -155,4 +170,8 @@ equation
       thickness=1));
   connect(realToElecCon.PEleLoa, pump.P) annotation (Line(points={{32,-80},{
           22,-80},{22,47},{-63,47}}, color={0,0,127}));
+  connect(pressureReliefValve.port_b, portTra_out[1]) annotation (Line(points={{-90,-20},
+          {-90,-42},{-100,-42}},           color={0,127,255}));
+  connect(pump.port_b, pressureReliefValve.port_a) annotation (Line(points={{-64,38},
+          {-60,38},{-60,30},{-90,30},{-90,0}},         color={0,127,255}));
 end RadiatorPressureBased;

@@ -229,7 +229,8 @@ partial model PartialDistributionTwoStorageParallelDetailed
         rotation=0,
         origin={62,87})));
   replaceable Generation.RecordsCollection.HeatingRodBaseDataDefinition heatingRodAftBufParameters
- if use_heatingRodAfterBuffer "Parameters for heating rod after buffer storage"
+    if use_heatingRodAfterBuffer
+    "Parameters for heating rod after buffer storage"
     annotation (choicesAllMatching=true, Placement(transformation(
         extent={{-6,-6},{6,6}},
         rotation=0,
@@ -282,28 +283,12 @@ partial model PartialDistributionTwoStorageParallelDetailed
     redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve parameters=threeWayValveParameters)
     annotation (Placement(transformation(extent={{-84,54},{-64,74}})));
 
-  BESMod.Utilities.KPIs.InternalKPICalculator internalKPICalculatorBufLoss(
-    unit="W",
-    integralUnit="J",
-    calc_singleOnTime=false,
-    calc_integral=true,
-    calc_totalOnTime=false,
-    calc_numSwi=false,
-    calc_movAve=false,
-    calc_intBelThres=false,
-    y=fixedTemperatureBuf.port.Q_flow)
-    annotation (Placement(transformation(extent={{-52,-134},{-32,-96}})));
-  BESMod.Utilities.KPIs.InternalKPICalculator internalKPICalculatorDHWLoss(
-    unit="W",
-    integralUnit="J",
-    calc_singleOnTime=false,
-    calc_integral=true,
-    calc_totalOnTime=false,
-    calc_numSwi=false,
-    calc_movAve=false,
-    calc_intBelThres=false,
-    y=fixedTemperatureDHW.port.Q_flow)
-    annotation (Placement(transformation(extent={{-52,-154},{-32,-116}})));
+  Utilities.KPIs.EnergyKPICalculator integralKPICalculator3(use_inpCon=false, y
+      =fixedTemperatureBuf.port.Q_flow)
+    annotation (Placement(transformation(extent={{-40,-108},{-22,-90}})));
+  Utilities.KPIs.EnergyKPICalculator integralKPICalculator1(final use_inpCon=
+        false, y=fixedTemperatureDHW.port.Q_flow)
+    annotation (Placement(transformation(extent={{-40,-140},{-20,-120}})));
   IBPSA.Fluid.Sensors.TemperatureTwoPort senTBuiSup(
     redeclare final package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
@@ -321,38 +306,20 @@ partial model PartialDistributionTwoStorageParallelDetailed
 
   BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{30,-108},{50,-88}})));
-  BESMod.Utilities.KPIs.InternalKPICalculator internalKPICalculatorDHWHR(
-    unit="W",
-    integralUnit="J",
-    calc_singleOnTime=false,
-    calc_integral=true,
-    calc_totalOnTime=false,
-    calc_numSwi=true,
-    calc_movAve=false,
-    calc_intBelThres=false,
-    y=QHRStoDHWPre_flow.Q_flow) if dhwParameters.use_hr
-    annotation (Placement(transformation(extent={{-84,-134},{-64,-96}})));
-  BESMod.Utilities.KPIs.InputKPICalculator inputKPICalculator(
-    unit="W",
-    integralUnit="J",
-    calc_singleOnTime=false,
-    calc_integral=true,
-    calc_totalOnTime=false,
-    calc_numSwi=true,
-    calc_movAve=false,
-    calc_intBelThres=false) if use_heatingRodAfterBuffer
-    annotation (Placement(transformation(extent={{-84,-156},{-64,-118}})));
-  BESMod.Utilities.KPIs.InternalKPICalculator internalKPICalculatorDHWHR1(
-    unit="W",
-    integralUnit="J",
-    calc_singleOnTime=false,
-    calc_integral=true,
-    calc_totalOnTime=false,
-    calc_numSwi=true,
-    calc_movAve=false,
-    calc_intBelThres=false,
-    y=QHRStoBufPre_flow1.Q_flow) if bufParameters.use_hr
-    annotation (Placement(transformation(extent={{-108,-134},{-88,-96}})));
+  Utilities.KPIs.EnergyKPICalculator integralKPICalculator4(use_inpCon=false, y
+      =QHRStoDHWPre_flow.Q_flow) if dhwParameters.use_hr annotation (Placement(
+        transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={30,-168})));
+  Utilities.KPIs.EnergyKPICalculator integralKPICalculator(use_inpCon=true)
+    if use_heatingRodAfterBuffer annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={30,-130})));
+  Utilities.KPIs.EnergyKPICalculator integralKPICalculator2(use_inpCon=false, y
+      =QHRStoBufPre_flow1.Q_flow) if bufParameters.use_hr
+    annotation (Placement(transformation(extent={{-40,-170},{-20,-150}})));
 equation
   connect(T_stoDHWBot.y, sigBusDistr.TStoDHWBotMea) annotation (Line(points={{-16.4,
           95},{2.5,95},{2.5,101},{0,101}},              color={0,0,127}), Text(
@@ -455,24 +422,6 @@ equation
       index=1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(internalKPICalculatorBufLoss.KPIBus, outBusDist.QBufLoss) annotation (
-     Line(
-      points={{-31.8,-115},{0,-115},{0,-100}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(internalKPICalculatorDHWLoss.KPIBus, outBusDist.QDHWLoss) annotation (
-     Line(
-      points={{-31.8,-135},{-16,-135},{-16,-136},{0,-136},{0,-100}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
   connect(senTBuiSup.port_a, hea.port_b)
     annotation (Line(points={{82,80},{74,80},{74,87}}, color={0,127,255}));
   connect(senTBuiSup.port_b, portBui_out[1]) annotation (Line(points={{92,80},{
@@ -493,33 +442,43 @@ equation
       thickness=1));
   connect(storageDHW.fluidportTop2, portDHW_out) annotation (Line(points={{-12.375,
           -27.77},{-12.375,-20},{100,-20},{100,-22}}, color={0,127,255}));
-  connect(internalKPICalculatorDHWHR.KPIBus, outBusDist.WelHRDHW) annotation (
-      Line(
-      points={{-63.8,-115},{0,-115},{0,-100}},
-      color={255,204,51},
-      thickness=0.5), Text(
+  connect(hea.Pel, integralKPICalculator.u) annotation (Line(points={{75.2,93.6},
+          {75.2,88},{78,88},{78,-84},{84,-84},{84,-116},{41.8,-116},{41.8,-130}},
+        color={0,0,127}));
+  connect(integralKPICalculator3.KPI, outBusDist.QBufLos_flow) annotation (Line(
+        points={{-20.02,-99},{-20.02,-86},{0,-86},{0,-100}}, color={135,135,135}),
+      Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(inputKPICalculator.KPIBus, outBusDist.WelHRAftBuf) annotation (Line(
-      points={{-63.8,-137},{0,-137},{0,-100}},
-      color={255,204,51},
-      thickness=0.5), Text(
+  connect(integralKPICalculator1.KPI, outBusDist.QDHWLos_flow) annotation (Line(
+        points={{-17.8,-130},{-17.8,-84},{0,-84},{0,-100}}, color={135,135,135}),
+      Text(
+      string="%second",
+      index=1,
+      extent={{-3,6},{-3,6}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(integralKPICalculator2.KPI, outBusDist.PEleHRPreBuf) annotation (Line(
+        points={{-17.8,-160},{-17.8,-120},{-14,-120},{-14,-88},{0,-88},{0,-100}},
+        color={135,135,135}), Text(
+      string="%second",
+      index=1,
+      extent={{-3,6},{-3,6}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(integralKPICalculator4.KPI, outBusDist.PEleHRPreDHW) annotation (Line(
+        points={{17.8,-168},{17.8,-86},{12,-86},{12,-84},{0,-84},{0,-100}},
+        color={135,135,135}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(hea.Pel, inputKPICalculator.u) annotation (Line(points={{75.2,93.6},{
-          132,93.6},{132,-150},{-92,-150},{-92,-137},{-86.2,-137}}, color={0,0,
-          127}));
-  connect(internalKPICalculatorDHWHR1.KPIBus, outBusDist.WelHRBufSto)
-    annotation (Line(
-      points={{-87.8,-115},{-43.9,-115},{-43.9,-100},{0,-100}},
-      color={255,204,51},
-      thickness=0.5), Text(
+  connect(integralKPICalculator.KPI, outBusDist.PEleHRAftBuf) annotation (Line(
+        points={{17.8,-130},{17.8,-86},{0,-86},{0,-100}}, color={135,135,135}),
+      Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  annotation (Diagram(coordinateSystem(extent={{-100,-180},{100,100}})));
 end PartialDistributionTwoStorageParallelDetailed;

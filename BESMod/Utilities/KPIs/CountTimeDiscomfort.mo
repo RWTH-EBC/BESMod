@@ -1,5 +1,8 @@
 within BESMod.Utilities.KPIs;
-model CountTimeDiscomfort
+model CountTimeDiscomfort "Count the time of discomfort"
+  extends BaseClasses.KPIIcon;
+  parameter Modelica.Media.Interfaces.Types.Temperature TRoomSet=293.15
+    "Room set temperature";
   Modelica.Blocks.Logical.Switch switch1
     annotation (Placement(transformation(extent={{40,-10},{60,10}})));
   Modelica.Blocks.Sources.Constant const(k=1)
@@ -16,8 +19,7 @@ model CountTimeDiscomfort
   Modelica.Blocks.Logical.LessThreshold
                                  switch2(threshold=TRoomSet)
     annotation (Placement(transformation(extent={{-50,-10},{-30,10}})));
-  parameter Modelica.Media.Interfaces.Types.Temperature TRoomSet=293.15
-    "Room set temperature";
+
   Modelica.Blocks.Logical.Not not1
     annotation (Placement(transformation(extent={{8,-70},{28,-50}})));
 equation
@@ -38,16 +40,7 @@ equation
           {90,-7.2},{85.6,-7.2}}, color={255,0,255}));
   connect(switch2.y, not1.u) annotation (Line(points={{-29,0},{-22,0},{-22,-60},
           {6,-60}}, color={255,0,255}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
-          Rectangle(
-          extent={{-100,100},{100,-100}},
-          lineColor={0,0,0},
-          fillColor={215,215,215},
-          fillPattern=FillPattern.Solid), Text(
-          extent={{-62,52},{66,-68}},
-          lineColor={0,0,0},
-          textString="%name")}), Diagram(graphics,
-                                         coordinateSystem(preserveAspectRatio=false)),
+  annotation (
     Documentation(info="<html>
 <p>Calculate the time discomfort is present. Useful to check if discomfort values are high due to frequent small deviations or some long, possibly big deviations. The latter may indicate the system is undersized for the given demand.</p>
 </html>"));

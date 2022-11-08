@@ -11,9 +11,7 @@ partial model PartialModelicaConferenceUseCase
         generation(
         redeclare model CellTemperature =
             AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround,
-
         redeclare AixLib.DataBase.SolarElectric.SchuecoSPV170SME1 pVParameters,
-
         lat=weaDat.lat,
         lon=weaDat.lon,
         alt=weaDat.alt,
@@ -29,14 +27,11 @@ partial model PartialModelicaConferenceUseCase
       redeclare Systems.Hydraulical.Generation.HeatPumpAndHeatingRod generation(
         dTTra_nominal={10},
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
-
         redeclare package Medium_eva = AixLib.Media.Air,
-        use_pressure=false,
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           heatPumpParameters(
           genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
-
           TBiv=271.15,
           scalingFactor=scalingFactorHP,
           useAirSource=true,
@@ -69,21 +64,23 @@ partial model PartialModelicaConferenceUseCase
           BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.ConstTSet_DHW
           TSet_DHW,
         supCtrlTypeDHWSet=BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Internal),
-
       redeclare Systems.Hydraulical.Distribution.DistributionTwoStorageParallel
-        distribution(redeclare
+        distribution(
+        redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
-          bufParameters(dTLoadingHC1=0), redeclare
+          bufParameters(dTLoadingHC1=0),
+        redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
-          dhwParameters(dTLoadingHC1=10)),
-      redeclare Systems.Hydraulical.Transfer.RadiatorTransferSystem transfer(
+          dhwParameters(dTLoadingHC1=10),
+        redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
+          threeWayValveParameters),
+      redeclare Systems.Hydraulical.Transfer.IdealValveRadiator transfer(
         dTTra_nominal=fill(10, hydraulic.transfer.nParallelDem),
         f_design=fill(1.2, hydraulic.transfer.nParallelDem),
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
           radParameters,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData)),
-
     redeclare Systems.Demand.DHW.DHW DHW(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare final BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM
@@ -114,7 +111,6 @@ partial model PartialModelicaConferenceUseCase
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
           threeWayValveParas,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover fanData,
-
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
           tempSensorData),

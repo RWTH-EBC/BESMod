@@ -3,8 +3,7 @@ partial model PartialDistribution
   "Base distribution model for ventilation systems"
     extends BESMod.Utilities.Icons.DistributionIcon;
 
-    extends
-    BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters;
+    extends BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters;
 
   Modelica.Fluid.Interfaces.FluidPort_a portExh_in[nParallelDem](
       redeclare final package Medium = Medium)
@@ -28,7 +27,7 @@ partial model PartialDistribution
           extent={{90,-70},{110,-50}}), iconTransformation(extent={{90,-50},{110,
             -30}})));
   Interfaces.DistributionOutputs
-                               outBusDist
+                               outBusDist if not use_openModelica
     annotation (Placement(transformation(extent={{-14,-114},{14,-84}})));
   Interfaces.DistributionControlBus sigBusDistr
     annotation (Placement(transformation(extent={{-10,90},{10,110}})));

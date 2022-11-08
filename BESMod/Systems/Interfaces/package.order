@@ -2,9 +2,9 @@ BuiMeaBus
 ControlOutputs
 DemandOutputs
 DHWOutputs
+ElectricalOutputs
 HEMSBus
 HydraulicOutputs
 SystemOutputs
 UseProBus
 VentilationOutputs
-ElectricalOutputs

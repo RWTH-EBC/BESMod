@@ -1,9 +1,13 @@
 ﻿within BESMod.Systems.Electrical.Transfer.BaseClasses;
 partial model PartialTransfer "Partial model for transfer subsystems"
-   parameter Integer nParallelDem(min=1)
+  parameter Boolean use_openModelica=false
+    "=true to disable features which 
+    are not available in open modelica" annotation(Dialog(tab="Advanced"));
+  parameter Integer nParallelDem(min=1)
     "Number of parallel demand systems of this system";
 
-  Interfaces.TransferOutputs transferOutputs annotation (Placement(
+  Interfaces.TransferOutputs transferOutputs if not use_openModelica
+                                             annotation (Placement(
         transformation(extent={{-16,-114},{16,-84}}), iconTransformation(extent=
            {{-16,-114},{16,-84}})));
   Interfaces.TransferControlBus transferControlBus annotation (Placement(

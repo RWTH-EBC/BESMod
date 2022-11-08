@@ -6,12 +6,12 @@ model CalcHeaDemROM
     KR_heater=building.zoneParam[1].KRHeat,
     h_heater=building.zoneParam.hHeat*10,
     redeclare BESMod.Examples.BAUSimStudy.BESParameters
-      systemParameters(TOda_nominal=261.05, THydSup_nominal={328.15}),
+      systemParameters(TOda_nominal=259.15, THydSup_nominal={328.15}),
     redeclare BESMod.Systems.Demand.Building.TEASERThermalZone
       building(
       nZones=1,
-      redeclare BESMod.Examples.BAUSimStudy.Buildings.Case_1_standard
-        oneZoneParam(heaLoadFacGrd=0, heaLoadFacOut=0),
+      redeclare BESMod.Examples.BAUSimStudy.Buildings.Case_1_retrofit
+        oneZoneParam,
       final ventRate=0.5 .- building.zoneParam.baseACH));
   extends Modelica.Icons.Example;
 

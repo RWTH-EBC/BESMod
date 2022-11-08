@@ -80,25 +80,19 @@ model SolarThermalBivHP
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={70,-150})));
-  Modelica.Blocks.Sources.Constant AirOrSoil1(k=1)
-    annotation (Placement(transformation(
+  Modelica.Blocks.Sources.Constant uPumSolTheAlwOn(k=1) annotation (Placement(
+        transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={50,-170})));
 
-  BESMod.Utilities.KPIs.InternalKPICalculator KPIWel1(
-    unit="W",
-    integralUnit="J",
-    calc_singleOnTime=true,
-    calc_integral=true,
-    calc_movAve=false,
-    y=-solarThermal.heater.port.Q_flow)
-    annotation (Placement(transformation(extent={{-52,-118},{-40,-96}})));
+  Utilities.KPIs.EnergyKPICalculator KPIWel1(use_inpCon=false, y=-solarThermal.heater.port.Q_flow)
+    annotation (Placement(transformation(extent={{-60,-100},{-40,-80}})));
 
-    Modelica.Blocks.Sources.RealExpression realExpression(y=solarThermal.senTCold.T)
-      annotation (Placement(transformation(extent={{-90,-114},{-70,-94}})));
-    Modelica.Blocks.Sources.RealExpression realExpression1(y=solarThermal.senTHot.T)
-      annotation (Placement(transformation(extent={{-90,-104},{-70,-84}})));
+    Modelica.Blocks.Sources.RealExpression reaExpSolTheTCol(y=solarThermal.senTCold.T)
+    annotation (Placement(transformation(extent={{-100,-120},{-80,-100}})));
+    Modelica.Blocks.Sources.RealExpression reaExpSolTheTHot(y=solarThermal.senTHot.T)
+    annotation (Placement(transformation(extent={{-100,-100},{-80,-80}})));
 
 protected
   parameter Modelica.Units.SI.PressureDifference dpST_nominal=solarThermalParas.m_flow_nominal
@@ -125,30 +119,20 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(AirOrSoil1.y, pumpST.y) annotation (Line(points={{39,-170},{10,-170},
-          {10,-162}}, color={0,0,127}));
-  connect(KPIWel1.KPIBus, outBusGen.QST_flow) annotation (Line(
-      points={{-39.88,-107},{-16,-107},{-16,-100},{0,-100}},
-      color={255,204,51},
-      thickness=0.5), Text(
+  connect(reaExpSolTheTCol.y, outBusGen.TSolCol_in) annotation (Line(points={{
+          -79,-110},{-62,-110},{-62,-126},{0,-126},{0,-100}}, color={0,0,127}),
+      Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(realExpression.y, outBusGen.TSolCol_in) annotation (Line(points={{-69,
-          -104},{-56,-104},{-56,-122},{0,-122},{0,-100}},
-                                          color={0,0,127}), Text(
-        string="%second",
-        index=1,
-        extent={{6,3},{6,3}},
-        horizontalAlignment=TextAlignment.Left));
-  connect(realExpression1.y, outBusGen.TSolCol_out) annotation (Line(points={{-69,-94},
-          {-60,-94},{-60,-124},{0,-124},{0,-100}},               color={0,0,127}),
-        Text(
-        string="%second",
-        index=1,
-        extent={{6,3},{6,3}},
-        horizontalAlignment=TextAlignment.Left));
+  connect(reaExpSolTheTHot.y, outBusGen.TSolCol_out) annotation (Line(points={{
+          -79,-90},{-66,-90},{-66,-108},{-16,-108},{-16,-116},{0,-116},{0,-100}},
+        color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
 
   connect(solarThermal.T_air, weaBus.TDryBul) annotation (Line(points={{-24,
           -158},{-24,-178},{-194,-178},{-194,80},{-101,80}},
@@ -164,6 +148,15 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
+  connect(KPIWel1.KPI, outBusGen.QSolThe_flow) annotation (Line(points={{-37.8,
+          -90},{-24,-90},{-24,-88},{0,-88},{0,-100}}, color={135,135,135}),
+      Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(uPumSolTheAlwOn.y, pumpST.y)
+    annotation (Line(points={{39,-170},{10,-170},{10,-162}}, color={0,0,127}));
   annotation (Diagram(coordinateSystem(extent={{-200,-180},{100,100}}),
         graphics={Rectangle(
           extent={{100,-180},{-200,-118}},
@@ -171,6 +164,5 @@ equation
           lineThickness=1), Text(
           extent={{-188,-122},{-124,-140}},
           textColor={0,0,0},
-          textString="Solar Thermal")}), Icon(coordinateSystem(extent={{-200,
-            -180},{100,100}})));
+          textString="Solar Thermal")}));
 end SolarThermalBivHP;

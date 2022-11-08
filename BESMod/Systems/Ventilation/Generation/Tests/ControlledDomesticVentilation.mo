@@ -24,6 +24,8 @@ model ControlledDomesticVentilation
 
   Interfaces.GenerationControlBus sigBusGen
     annotation (Placement(transformation(extent={{-4,54},{16,74}})));
+  Modelica.Blocks.Sources.Step step(height=1, startTime=1800)
+    annotation (Placement(transformation(extent={{-100,0},{-80,20}})));
 equation
   connect(sigBusGen, generation.sigBusGen) annotation (Line(
       points={{6,64},{6,46.51},{5.52,46.51},{5.52,29.02}},
@@ -33,4 +35,10 @@ equation
       index=-1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
+  connect(step.y, sigBusGen.uByPass) annotation (Line(points={{-79,10},{-26,10},
+          {-26,64},{6,64}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
 end ControlledDomesticVentilation;

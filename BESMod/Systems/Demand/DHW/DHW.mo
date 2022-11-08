@@ -41,15 +41,9 @@ Modelica.Blocks.Math.UnitConversions.From_degC fromDegC
         extent={{10,-10},{-10,10}},
         rotation=0,
         origin={30,-10})));
-  BESMod.Utilities.KPIs.InternalKPICalculator internalKPICalculator(
-    unit="W",
-    integralUnit="J",
-    final calc_singleOnTime=false,
-    final calc_totalOnTime=false,
-    final calc_numSwi=false,
-    final calc_movAve=false,
-    final y=-port_b.m_flow*cp*(TIs.y - TDHWCold_nominal))
-    annotation (Placement(transformation(extent={{60,-68},{80,-32}})));
+  Utilities.KPIs.EnergyKPICalculator integralKPICalculator(use_inpCon=false, y=
+        -port_b.m_flow*cp*(TIs.y - TDHWCold_nominal))
+    annotation (Placement(transformation(extent={{60,-60},{80,-40}})));
   IBPSA.Fluid.Movers.FlowControlled_m_flow pump(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
@@ -117,14 +111,6 @@ Modelica.Blocks.Math.UnitConversions.From_degC fromDegC
 equation
   connect(fromDegC.y, calcmFlow.TSet) annotation (Line(points={{19,-10},{8,-10},
           {8,9.2},{-0.6,9.2}}, color={0,0,127}));
-  connect(internalKPICalculator.KPIBus, outBusDHW.Q_flow) annotation (Line(
-      points={{80.2,-50},{104,-50},{104,0},{100,0}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
   connect(pump.port_a, bouSou.ports[1]) annotation (Line(
       points={{-60,-50.5},{-50,-50.5},{-50,-50},{-40,-50}},
       color={0,127,255}));
@@ -149,4 +135,10 @@ equation
           {-0.6,20}}, color={0,0,127}));
   connect(port_a, bou_sink.ports[1])
     annotation (Line(points={{-100,60},{-60,60}}, color={0,127,255}));
+  connect(integralKPICalculator.KPI, outBusDHW.Q_flow) annotation (Line(points={
+          {82.2,-50},{100,-50},{100,0}}, color={135,135,135}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
 end DHW;

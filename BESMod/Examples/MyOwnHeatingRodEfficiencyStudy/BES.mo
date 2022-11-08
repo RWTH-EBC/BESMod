@@ -21,7 +21,6 @@ model BES
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
           heatingRodParameters(eta_hr=parameterStudy.efficiceny_heating_rod),
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
-
         redeclare package Medium_eva = AixLib.Media.Air),
       redeclare BESMod.Systems.Hydraulical.Control.Biv_PI_ConFlow_HPSController
         control(
@@ -39,12 +38,16 @@ model BES
           bivalentControlData),
       redeclare
         BESMod.Systems.Hydraulical.Distribution.DistributionTwoStorageParallel
-        distribution(redeclare
+        distribution(
+        redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
-          bufParameters(dTLoadingHC1=10), redeclare
+          bufParameters(dTLoadingHC1=10),
+        redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
-          dhwParameters(dTLoadingHC1=10)),
-      redeclare BESMod.Systems.Hydraulical.Transfer.RadiatorTransferSystem
+          dhwParameters(dTLoadingHC1=10),
+        redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
+          threeWayValveParameters),
+      redeclare BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator
         transfer(redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
           radParameters, redeclare
@@ -52,9 +55,7 @@ model BES
     redeclare BESMod.Systems.Demand.DHW.DHW DHW(
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
-
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.PassThrough calcmFlow),
-
     redeclare BESMod.Systems.UserProfiles.TEASERProfiles userProfiles,
     redeclare
       BESMod.Examples.MyOwnHeatingRodEfficiencyStudy.SimpleStudyOfHeatingRodEfficiency
@@ -64,6 +65,7 @@ model BES
       THydSup_nominal={328.15},
       use_ventilation=false,
       use_elecHeating=false));
+
   extends Modelica.Icons.Example;
 
   annotation (experiment(

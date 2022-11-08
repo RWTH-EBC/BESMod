@@ -9,14 +9,11 @@ partial model PartialCase
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
       redeclare Systems.Hydraulical.Generation.HeatPumpAndHeatingRod generation(
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
-
         redeclare package Medium_eva = AixLib.Media.Air,
-        use_pressure=true,
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           heatPumpParameters(
           genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
-
           TBiv=TBiv,
           scalingFactor=hydraulic.generation.heatPumpParameters.QPri_flow_nominal
               /5000,
@@ -31,7 +28,6 @@ partial model PartialCase
         redeclare model PerDataMainHP =
             AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
             QCon_flow_nominal=hydraulic.generation.heatPumpParameters.QPri_flow_nominal,
-
             refrigerant="Propane",
             flowsheet="VIPhaseSeparatorFlowsheet")),
       redeclare Systems.Hydraulical.Control.ConstHys_PI_ConOut_HPSController
@@ -89,10 +85,8 @@ partial model PartialCase
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
           transferDataBaseDefinition,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData)),
-
     redeclare Systems.Demand.DHW.DHW DHW(
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
-
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
         calcmFlow),

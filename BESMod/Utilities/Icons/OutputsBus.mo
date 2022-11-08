@@ -1,5 +1,5 @@
 within BESMod.Utilities.Icons;
-expandable connector KPIBus "Icon for KPI bus"
+expandable connector OutputsBus "Icon for outputs bus"
 
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}}, initialScale=0.2), graphics={
@@ -59,4 +59,4 @@ expandable connector KPIBus "Icon for KPI bus"
     Documentation(info="<html>
 This icon is designed for a <strong>control bus</strong> connector.
 </html>"));
-end KPIBus;
+end OutputsBus;

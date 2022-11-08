@@ -32,7 +32,8 @@ partial model PartialVentilationSystem
     final show_T=show_T,
     final rho=rho,
     final cp=cp,
-    dpDem_nominal=distribution.dp_nominal)
+    dpDem_nominal=distribution.dp_nominal,
+    final use_openModelica=use_openModelica)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{26,-56},
             {80,-2}})));
 
@@ -59,23 +60,25 @@ partial model PartialVentilationSystem
     final allowFlowReversal=allowFlowReversal,
     final show_T=show_T,
     final rho=rho,
-    final cp=cp)
+    final cp=cp,
+    final use_openModelica=use_openModelica)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-60,-52},{-16,0}})));
 
   replaceable Control.BaseClasses.PartialControl control constrainedby
-    Control.BaseClasses.PartialControl(final generationParameters(
-        final nParallelDem=generation.nParallelDem,
-        final nParallelSup=generation.nParallelSup,
-        final Q_flow_nominal=generation.Q_flow_nominal,
-        final TOda_nominal=ventilationSystemParameters.TOda_nominal,
-        final TDem_nominal=generation.TDem_nominal,
-        final TSup_nominal=generation.TSup_nominal,
-        final dTTra_nominal=generation.dTTra_nominal,
-        final m_flow_nominal=generation.m_flow_nominal,
-        final dp_nominal=generation.dp_nominal,
-        final dTLoss_nominal=generation.dTLoss_nominal,
-        final f_design=generation.f_design,
-        final QLoss_flow_nominal=generation.QLoss_flow_nominal),
+    Control.BaseClasses.PartialControl(
+    final generationParameters(
+      final nParallelDem=generation.nParallelDem,
+      final nParallelSup=generation.nParallelSup,
+      final Q_flow_nominal=generation.Q_flow_nominal,
+      final TOda_nominal=ventilationSystemParameters.TOda_nominal,
+      final TDem_nominal=generation.TDem_nominal,
+      final TSup_nominal=generation.TSup_nominal,
+      final dTTra_nominal=generation.dTTra_nominal,
+      final m_flow_nominal=generation.m_flow_nominal,
+      final dp_nominal=generation.dp_nominal,
+      final dTLoss_nominal=generation.dTLoss_nominal,
+      final f_design=generation.f_design,
+      final QLoss_flow_nominal=generation.QLoss_flow_nominal),
     final distributionParameters(
       final nParallelDem=distribution.nParallelDem,
       final nParallelSup=distribution.nParallelSup,
@@ -88,9 +91,11 @@ partial model PartialVentilationSystem
       final dTLoss_nominal=distribution.dTLoss_nominal,
       final f_design=distribution.f_design,
       final TOda_nominal=ventilationSystemParameters.TOda_nominal,
-      final QLoss_flow_nominal=distribution.QLoss_flow_nominal))
-    annotation (choicesAllMatching=true, Placement(transformation(extent={{-26,22},{28,68}})));
-  BESMod.Systems.Interfaces.VentilationOutputs outBusVen
+      final QLoss_flow_nominal=distribution.QLoss_flow_nominal),
+    final use_openModelica=use_openModelica) annotation (choicesAllMatching=
+        true, Placement(transformation(extent={{-26,22},{28,68}})));
+  BESMod.Systems.Interfaces.VentilationOutputs outBusVen if not
+    use_openModelica
     annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
   IBPSA.BoundaryConditions.WeatherData.Bus
       weaBus "Weather data bus" annotation (Placement(transformation(extent={{88,60},

@@ -37,7 +37,8 @@ partial model PartialHydraulicSystem
     final allowFlowReversal=allowFlowReversal,
     final show_T=show_T,
     final rho=rho,
-    final cp=cp) annotation (
+    final cp=cp,
+    final use_openModelica=use_openModelica) annotation (
       choicesAllMatching=true, Placement(transformation(extent={{-140,-104},{-24,
             28}})));
   replaceable BESMod.Systems.Hydraulical.Control.BaseClasses.PartialControl control
@@ -89,7 +90,8 @@ partial model PartialHydraulicSystem
       final dp_nominal=transfer.dp_nominal,
       final dTLoss_nominal=transfer.dTLoss_nominal,
       final f_design=transfer.f_design,
-      final QLoss_flow_nominal=transfer.QLoss_flow_nominal))
+      final QLoss_flow_nominal=transfer.QLoss_flow_nominal),
+    final use_openModelica=use_openModelica)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-132,54},
             {154,122}})));
   replaceable BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution distribution(
@@ -130,11 +132,12 @@ partial model PartialHydraulicSystem
     final TDHWCold_nominal=hydraulicSystemParameters.TDHWCold_nominal,
     final TDHW_nominal=hydraulicSystemParameters.TDHW_nominal,
     tCrit=hydraulicSystemParameters.tCrit,
-    QCrit=hydraulicSystemParameters.QCrit) annotation (choicesAllMatching=true,
+    QCrit=hydraulicSystemParameters.QCrit,
+    final use_openModelica=use_openModelica) annotation (choicesAllMatching=true,
       Placement(transformation(extent={{-12,-104},{90,28}})));
 
-  replaceable BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialTransfer transfer(
-      dp_nominal=fill(0, transfer.nParallelDem)) constrainedby
+  replaceable BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialTransfer
+    transfer(dp_nominal=fill(0, transfer.nParallelDem)) constrainedby
     Transfer.BaseClasses.PartialTransfer(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
@@ -159,13 +162,13 @@ partial model PartialHydraulicSystem
     final allowFlowReversal=allowFlowReversal,
     final show_T=show_T,
     final rho=rho,
-    final cp=cp) annotation (
-      choicesAllMatching=true, Placement(transformation(extent={{112,-44},{180,
-            28}})));
+    final cp=cp,
+    final use_openModelica=use_openModelica) annotation (choicesAllMatching=true, Placement(transformation(
+          extent={{112,-44},{180,28}})));
   IBPSA.BoundaryConditions.WeatherData.Bus
       weaBus "Weather data bus" annotation (Placement(transformation(extent={{-200,56},
             {-158,100}}),        iconTransformation(extent={{-188,-10},{-168,10}})));
-  BESMod.Systems.Interfaces.HydraulicOutputs outBusHyd
+  BESMod.Systems.Interfaces.HydraulicOutputs outBusHyd if not use_openModelica
     annotation (Placement(transformation(extent={{-30,-166},{28,-118}})));
 
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPortCon[hydraulicSystemParameters.nZones]
@@ -227,7 +230,7 @@ equation
   connect(transfer.heatPortRad, heatPortRad) annotation (Line(points={{180,
           -22.4},{200,-22.4},{200,0}},
                                 color={191,0,0}));
-  connect(distribution.outBusDist, outBusHyd.storage) annotation (Line(
+  connect(distribution.outBusDist, outBusHyd.dis) annotation (Line(
       points={{39,-104},{39,-142},{-1,-142}},
       color={135,135,135},
       thickness=0.5), Text(
@@ -235,7 +238,7 @@ equation
       index=1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(generation.outBusGen, outBusHyd.generation) annotation (Line(
+  connect(generation.outBusGen, outBusHyd.gen) annotation (Line(
       points={{-82,-104},{-82,-142},{-1,-142}},
       color={135,135,135},
       thickness=0.5), Text(
@@ -243,7 +246,7 @@ equation
       index=1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(transfer.outBusTra, outBusHyd.transfer) annotation (Line(
+  connect(transfer.outBusTra, outBusHyd.tra) annotation (Line(
       points={{146,-45.44},{146,-68},{214,-68},{214,-142},{-1,-142}},
       color={135,135,135},
       thickness=0.5), Text(
@@ -251,7 +254,7 @@ equation
       index=1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(control.outBusCtrl, outBusHyd.control) annotation (Line(
+  connect(control.outBusCtrl, outBusHyd.ctrl) annotation (Line(
       points={{154,88},{214,88},{214,-142},{-1,-142}},
       color={135,135,135},
       thickness=0.5), Text(

@@ -6,11 +6,11 @@ partial model PartialTwoPoint_HPS_Controller
   replaceable
     BESMod.Systems.Hydraulical.Control.Components.OnOffController.BaseClasses.PartialOnOffController
     DHWOnOffContoller annotation (choicesAllMatching=true, Placement(
-        transformation(extent={{-128,78},{-112,94}})));
+        transformation(extent={{-128,70},{-112,86}})));
   replaceable
     BESMod.Systems.Hydraulical.Control.Components.OnOffController.BaseClasses.PartialOnOffController
     BufferOnOffController annotation (choicesAllMatching=true, Placement(
-        transformation(extent={{-128,34},{-112,48}})));
+        transformation(extent={{-126,36},{-110,50}})));
   replaceable BESMod.Systems.Hydraulical.Control.RecordsCollection.HeatPumpSafetyControl
     safetyControl
     annotation (choicesAllMatching=true,Placement(transformation(extent={{200,30},{220,50}})));
@@ -30,11 +30,10 @@ partial model PartialTwoPoint_HPS_Controller
             90}})));
   BESMod.Systems.Hydraulical.Control.Components.HeatingCurve
     heatingCurve(
-    TRoomSet=bivalentControlData.TSetRoomConst,
     GraHeaCurve=bivalentControlData.gradientHeatCurve,
     THeaThres=bivalentControlData.TSetRoomConst,
     dTOffSet_HC=bivalentControlData.dTOffSetHeatCurve)
-    annotation (Placement(transformation(extent={{-212,18},{-190,40}})));
+    annotation (Placement(transformation(extent={{-160,20},{-140,40}})));
   Modelica.Blocks.MathBoolean.Or
                              HRactive(nu=3)
                                       annotation (Placement(transformation(
@@ -95,15 +94,6 @@ partial model PartialTwoPoint_HPS_Controller
         extent={{-7,-7},{7,7}},
         rotation=0,
         origin={155,69})));
-  Modelica.Blocks.Sources.Constant hp_iceFac(final k=1) annotation (Placement(
-        transformation(
-        extent={{-7,-7},{7,7}},
-        rotation=0,
-        origin={-181,-85})));
-
-  Modelica.Blocks.Routing.RealPassThrough realPassThrough_T_Amb1
-    "Only used to make warning disappear, has no effect on model veloccity"
-    annotation (Placement(transformation(extent={{-242,-102},{-220,-80}})));
 
   Modelica.Blocks.Logical.Switch switchHR annotation (Placement(transformation(
         extent={{-5,-5},{5,5}},
@@ -145,26 +135,46 @@ partial model PartialTwoPoint_HPS_Controller
   parameter BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType
     supCtrlTypeDHWSet=BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Local
     "Type of supervisory control for DHW Setpoint";
+  Modelica.Blocks.Math.MinMax minMax(nu=transferParameters.nParallelDem)
+    annotation (Placement(transformation(extent={{-202,32},{-182,52}})));
+  Modelica.Blocks.Math.BooleanToReal booleanToReal1 "Turn Pump in heat pump on"
+                                                   annotation (Placement(
+        transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=270,
+        origin={-170,-54})));
+  Modelica.Blocks.Logical.Or HP_or_HR_active annotation (Placement(
+        transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=270,
+        origin={-170,-24})));
+  Components.HeatPumpBusPassThrough heatPumpBusPassThrough annotation (
+      Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={-230,-90})));
 equation
   connect(BufferOnOffController.T_Top, sigBusDistr.TStoBufTopMea) annotation (
-      Line(points={{-128.8,45.9},{-316,45.9},{-316,-166},{4,-166},{4,-100},{1,-100}},
+      Line(points={{-126.8,47.9},{-128,47.9},{-128,48},{-130,48},{-130,-86},{4,-86},
+          {4,-100},{1,-100}},
         color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(DHWOnOffContoller.T_Top, sigBusDistr.TStoDHWTopMea) annotation (Line(
-        points={{-128.8,91.6},{-316,91.6},{-316,-166},{1,-166},{1,-100}},
+        points={{-128.8,83.6},{-316,83.6},{-316,-166},{1,-166},{1,-100}},
         color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(heatingCurve.TSet, BufferOnOffController.T_Set) annotation (Line(
-        points={{-188.9,29},{-120,29},{-120,33.3}}, color={0,0,127}));
+        points={{-139,30},{-139,28},{-118,28},{-118,35.3}},
+                                                    color={0,0,127}));
 
   connect(DHWOnOffContoller.T_bot, sigBusDistr.TStoDHWTopMea) annotation (Line(
-        points={{-128.8,82},{-318,82},{-318,-166},{1,-166},{1,-100}},
+        points={{-128.8,74},{-318,74},{-318,-166},{1,-166},{1,-100}},
         color={0,0,127}), Text(
       string="%second",
       index=1,
@@ -182,97 +192,48 @@ equation
       horizontalAlignment=TextAlignment.Right));
 
   connect(DHWOnOffContoller.Auxilliar_Heater_On, HRactive.u[1]) annotation (
-      Line(points={{-110.88,82},{-22,82},{-22,23.8333},{10,23.8333}}, color={
+      Line(points={{-110.88,74},{-22,74},{-22,23.8333},{10,23.8333}}, color={
           255,0,255}));
   connect(BufferOnOffController.Auxilliar_Heater_On, HRactive.u[2]) annotation (
-     Line(points={{-110.88,37.5},{-94,37.5},{-94,25},{10,25}},           color=
+     Line(points={{-108.88,39.5},{-94,39.5},{-94,25},{10,25}},           color=
           {255,0,255}));
   connect(TSet_DHW.y, HRactive.u[3]) annotation (Line(points={{-190.8,71.04},{
           -96,71.04},{-96,26.1667},{10,26.1667}},                         color=
          {255,0,255}));
-  connect(securityControl.sigBusHP, sigBusGen.hp_bus) annotation (Line(
-      points={{192,69.27},{180,69.27},{180,70},{184,70},{184,-54},{-152,-54},{-152,
-          -99}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%second",
-      index=1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
-  connect(securityControl.modeOut, sigBusGen.hp_bus.modeSet)
-    annotation (Line(points={{227.333,77.6},{268,77.6},{268,-136},{-152,-136},{
-          -152,-99}},                        color={255,0,255}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
+
   connect(securityControl.modeSet, hp_mode.y) annotation (Line(points={{191.867,
           77.6},{168,77.6},{168,69},{162.7,69}}, color={255,0,255}));
-  connect(securityControl.nOut, sigBusGen.hp_bus.nSet) annotation (Line(
+  connect(securityControl.nOut, sigBusGen.yHeaPumSet) annotation (Line(
         points={{227.333,84.4},{264,84.4},{264,-132},{-42,-132},{-42,-99},{-152,
           -99}},                         color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(hp_iceFac.y, sigBusGen.hp_bus.iceFacMea) annotation (Line(
-        points={{-173.3,-85},{-156.65,-85},{-156.65,-99},{-152,-99}},
-                      color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
   connect(HP_nSet_Controller.n_Set, securityControl.nSet) annotation (Line(
         points={{113.5,78},{144,78},{144,84.4},{191.867,84.4}}, color={0,0,127}));
-  connect(BufferOnOffController.HP_On, HP_active.u2) annotation (Line(points={{-110.88,
-          45.9},{-78,45.9},{-78,54},{-38,54},{-38,87},{21,87}},
+  connect(BufferOnOffController.HP_On, HP_active.u2) annotation (Line(points={{-108.88,
+          47.9},{-78,47.9},{-78,54},{-38,54},{-38,87},{21,87}},
                                                  color={255,0,255}));
   connect(DHWOnOffContoller.HP_On, HP_active.u1) annotation (Line(points={{-110.88,
-          91.6},{-32,91.6},{-32,91},{21,91}},    color={255,0,255}));
-  connect(DHWHysOrLegionella.y, sigBusDistr.dhw_on) annotation (Line(
-        points={{-71.25,69},{-26,69},{-26,-100},{1,-100}},
-        color={255,0,255}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
+          83.6},{-32,83.6},{-32,91},{21,91}},    color={255,0,255}));
   connect(DHWHysOrLegionella.y, switch1.u2) annotation (Line(points={{-71.25,69},
           {-20,69},{-20,73},{57,73}},             color={255,0,255}));
 
-  connect(realPassThrough_T_Amb1.y, sigBusGen.hp_bus.TOdaMea) annotation (Line(
-        points={{-218.9,-91},{-200,-91},{-200,-99},{-152,-99}},
-        color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(realPassThrough_T_Amb1.u, weaBus.TDryBul) annotation (
-      Line(points={{-244.2,-91},{-256,-91},{-256,2},{-237,2}},            color=
-         {0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
   connect(TSet_DHW.y, DHWHysOrLegionella.u[1]) annotation (Line(points={{-190.8,
           71.04},{-96,71.04},{-96,67.6875},{-82,67.6875}},    color={255,0,255}));
   connect(DHWOnOffContoller.Auxilliar_Heater_On, DHWHysOrLegionella.u[2])
-    annotation (Line(points={{-110.88,82},{-92,82},{-92,68.5625},{-82,68.5625}},
+    annotation (Line(points={{-110.88,74},{-92,74},{-92,68.5625},{-82,68.5625}},
                                                                         color={
           255,0,255}));
   connect(DHWOnOffContoller.HP_On, DHWHysOrLegionella.u[3]) annotation (Line(
-        points={{-110.88,91.6},{-90,91.6},{-90,69.4375},{-82,69.4375}},
+        points={{-110.88,83.6},{-90,83.6},{-90,69.4375},{-82,69.4375}},
         color={255,0,255}));
   connect(TSet_DHW.y, DHWHysOrLegionella.u[4]) annotation (Line(points={{-190.8,
           71.04},{-136.4,71.04},{-136.4,70.3125},{-82,70.3125}},
                                                                color={255,0,255}));
-  connect(realPassThrough_T_Amb1.y, DHWOnOffContoller.T_oda) annotation (Line(
-        points={{-218.9,-91},{-218.9,-62},{-250,-62},{-250,92},{-120,92},{-120,
-          94.96}}, color={0,0,127}));
-  connect(realPassThrough_T_Amb1.y, BufferOnOffController.T_oda) annotation (
-      Line(points={{-218.9,-91},{-218.9,-64},{-252,-64},{-252,48.84},{-120,
-          48.84}}, color={0,0,127}));
   connect(BufferOnOffController.T_bot, sigBusDistr.TStoBufTopMea) annotation (
-      Line(points={{-128.8,37.5},{-130,37.5},{-130,-86},{134,-86},{134,-100},{1,
+      Line(points={{-126.8,39.5},{-130,39.5},{-130,-86},{134,-86},{134,-100},{1,
           -100}},              color={0,0,127}), Text(
       string="%second",
       index=1,
@@ -285,10 +246,10 @@ equation
   connect(max.y, switchHR.u1)
     annotation (Line(points={{28.4,38},{37,38},{37,29}}, color={0,0,127}));
   connect(BufferOnOffController.Auxilliar_Heater_set, max.u1) annotation (Line(
-        points={{-110.88,34.98},{-84,34.98},{-84,35.6},{19.2,35.6}}, color={0,0,
+        points={{-108.88,36.98},{-84,36.98},{-84,35.6},{19.2,35.6}}, color={0,0,
           127}));
   connect(DHWOnOffContoller.Auxilliar_Heater_set, max.u2) annotation (Line(
-        points={{-110.88,79.12},{-104,79.12},{-104,64},{-10,64},{-10,40.4},{19.2,
+        points={{-110.88,71.12},{-104,71.12},{-104,64},{-10,64},{-10,40.4},{19.2,
           40.4}}, color={0,0,127}));
   connect(switchHR.y, sigBusGen.hr_on) annotation (Line(points={{48.5,25},{62,25},
           {62,-48},{-152,-48},{-152,-99}},  color={0,0,127}), Text(
@@ -296,10 +257,7 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(realPassThrough_T_Amb1.y, heatingCurve.TOda) annotation (Line(
-        points={{-218.9,-91},{-208,-91},{-208,-28},{-226,-28},{-226,29},{
-          -214.2,29}}, color={0,0,127}));
-  connect(HP_nSet_Controller.IsOn, sigBusGen.hp_bus.onOffMea) annotation (Line(
+  connect(HP_nSet_Controller.IsOn, sigBusGen.heaPumIsOn) annotation (Line(
         points={{88,61.2},{88,-58},{-152,-58},{-152,-99}}, color={255,0,255}),
       Text(
       string="%second",
@@ -310,8 +268,9 @@ equation
           {24,74},{24,80},{35,80}},                  color={0,0,127}));
   connect(switch1.y, HP_nSet_Controller.T_Set) annotation (Line(points={{68.5,
           73},{70,73},{70,86.4},{79,86.4}}, color={0,0,127}));
-  connect(heatingCurve.TSet, add_dT_LoadingBuf.u1) annotation (Line(points={{
-          -188.9,29},{4,29},{4,62},{37,62}}, color={0,0,127}));
+  connect(heatingCurve.TSet, add_dT_LoadingBuf.u1) annotation (Line(points={{-139,30},
+          {-139,28},{4,28},{4,66},{32,66},{32,62},{37,62}},
+                                             color={0,0,127}));
   connect(add_dT_LoadingBuf.y, switch1.u3) annotation (Line(points={{48.5,59},{
           54,59},{54,69},{57,69}}, color={0,0,127}));
   connect(add_dT_LoadingDHW.y, switch1.u1) annotation (Line(points={{46.5,83},{
@@ -332,14 +291,14 @@ equation
         points={{-190.8,78},{-188,78},{-188,73.2},{-183.2,73.2}}, color={0,0,
           127}));
   connect(supervisoryControlDHW.y, DHWOnOffContoller.T_Set) annotation (Line(
-        points={{-168.8,78},{-150,78},{-150,74},{-122,74},{-122,77.2},{-120,
-          77.2}}, color={0,0,127}));
+        points={{-168.8,78},{-150,78},{-150,74},{-122,74},{-122,69.2},{-120,69.2}},
+                  color={0,0,127}));
   connect(supervisoryControlDHW.y, add_dT_LoadingDHW.u1) annotation (Line(
         points={{-168.8,78},{-150,78},{-150,76},{-10,76},{-10,86},{35,86}},
         color={0,0,127}));
-  connect(supervisoryControlDHW.activateInt, sigBusHyd.overwriteTSetDHW)
-    annotation (Line(points={{-183.2,78},{-186,78},{-186,94},{-28,94},{-28,101}},
-        color={255,0,255}), Text(
+  connect(supervisoryControlDHW.actInt, sigBusHyd.overwriteTSetDHW) annotation (
+     Line(points={{-183.2,78},{-186,78},{-186,94},{-28,94},{-28,101}}, color={
+          255,0,255}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
@@ -351,6 +310,68 @@ equation
       index=1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
+  connect(heatingCurve.TOda, weaBus.TDryBul) annotation (Line(points={{-162,30},
+          {-236,30},{-236,2},{-237,2}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(BufferOnOffController.T_oda, weaBus.TDryBul) annotation (Line(points={
+          {-118,50.84},{-118,58},{-236,58},{-236,30},{-237,30},{-237,2}}, color=
+         {0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-3,-6},{-3,-6}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(DHWOnOffContoller.T_oda, weaBus.TDryBul) annotation (Line(points={{-120,
+          86.96},{-192,86.96},{-192,94},{-248,94},{-248,2},{-237,2}}, color={0,0,
+          127}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(minMax.u, useProBus.TZoneSet) annotation (Line(points={{-202,42},{-206,
+          42},{-206,52},{-208,52},{-208,60},{-119,60},{-119,103}}, color={0,0,127}),
+      Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(minMax.yMax, heatingCurve.TSetRoom)
+    annotation (Line(points={{-181,48},{-150,48},{-150,42}}, color={0,0,127}));
+  connect(booleanToReal1.u, HP_or_HR_active.y)
+    annotation (Line(points={{-170,-42},{-170,-35}}, color={255,0,255}));
+  connect(booleanToReal1.y, sigBusGen.uPump) annotation (Line(points={{-170,-65},
+          {-172,-65},{-172,-72},{-152,-72},{-152,-99}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(HP_or_HR_active.u1, HRactive.y) annotation (Line(points={{-170,-12},{
+          -134,-12},{-134,-6},{-6,-6},{-6,18},{20.75,18},{20.75,25}}, color={
+          255,0,255}));
+  connect(HP_or_HR_active.u2, sigBusGen.heaPumIsOn) annotation (Line(
+        points={{-178,-12},{-194,-12},{-194,-99},{-152,-99}}, color={255,0,255}),
+      Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(heatPumpBusPassThrough.sigBusGen, sigBusGen) annotation (Line(
+      points={{-220,-90},{-200,-90},{-200,-80},{-180,-80},{-180,-72},{-152,-72},
+          {-152,-99}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(heatPumpBusPassThrough.vapourCompressionMachineControlBus,
+    securityControl.sigBusHP) annotation (Line(
+      points={{-240.2,-89.8},{-252,-89.8},{-252,-80},{72,-80},{72,-38},{192,-38},
+          {192,69.27},{192,69.27}},
+      color={255,204,51},
+      thickness=0.5));
   annotation (Diagram(graphics={
         Rectangle(
           extent={{-240,100},{-50,60}},
@@ -366,7 +387,7 @@ equation
           lineColor={0,140,72},
           lineThickness=1),
         Text(
-          extent={{-216,-16},{-122,18}},
+          extent={{-216,-14},{-122,20}},
           lineColor={0,140,72},
           lineThickness=1,
           textString="Buffer Control"),

@@ -2,7 +2,9 @@ within BESMod.Systems.Hydraulical.Control.BaseClasses;
 partial model PartialControl "Partial controller for HPS"
  extends BESMod.Utilities.Icons.ControlIcon;
  parameter Boolean use_dhw "=false to disable DHW";
-
+  parameter Boolean use_openModelica=false
+    "=true to disable features which 
+    are not available in open modelica" annotation(Dialog(tab="Advanced"));
 
   BESMod.Systems.Hydraulical.Interfaces.GenerationControlBus
     sigBusGen
@@ -11,7 +13,7 @@ partial model PartialControl "Partial controller for HPS"
     sigBusDistr
     annotation (Placement(transformation(extent={{-22,-128},{24,-72}})));
   BESMod.Systems.Hydraulical.Interfaces.ControlOutputs
-    outBusCtrl
+    outBusCtrl if not use_openModelica
     annotation (Placement(transformation(extent={{230,-10},{250,10}})));
   IBPSA.BoundaryConditions.WeatherData.Bus
       weaBus "Weather data bus" annotation (Placement(transformation(extent={{-258,

@@ -1,8 +1,6 @@
 within BESMod.Systems.RecordsCollection.Valves;
 record DefaultThreeWayValve
   extends ThreeWayValve(
-    dpFixed_nominal(displayUnit="Pa"),
-    dpValve_nominal(displayUnit="Pa"),
     from_dp=true,
     y_start=1,
     valveAutho=0.5,

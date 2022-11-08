@@ -27,7 +27,7 @@ partial model PartialDHW "Partial model for domestic hot water (DHW)"
         Medium) "Outlet of the demand of DHW" annotation (Placement(
         transformation(extent={{-110,-70},{-90,-50}}), iconTransformation(
           extent={{-110,-70},{-90,-50}})));
-  BESMod.Systems.Interfaces.DHWOutputs outBusDHW
+  BESMod.Systems.Interfaces.DHWOutputs outBusDHW if not use_openModelica
     annotation (Placement(transformation(extent={{90,-10},{110,10}})));
 
   BESMod.Systems.Interfaces.UseProBus useProBus annotation (

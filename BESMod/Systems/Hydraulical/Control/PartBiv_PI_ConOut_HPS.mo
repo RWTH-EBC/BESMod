@@ -33,7 +33,7 @@ model PartBiv_PI_ConOut_HPS
   parameter Modelica.Units.SI.HeatFlowRate QHP_flow_cutOff;
 
 equation
-    connect(HP_nSet_Controller.T_Meas, sigBusGen.hp_bus.TConOutMea) annotation (
+    connect(HP_nSet_Controller.T_Meas, sigBusGen.THeaPumOut) annotation (
        Line(points={{97,61.2},{97,-56},{-152,-56},{-152,-99}},  color={0,0,127}),
         Text(
         string="%second",
