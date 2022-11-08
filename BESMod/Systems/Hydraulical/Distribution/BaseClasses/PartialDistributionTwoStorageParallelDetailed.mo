@@ -31,7 +31,8 @@ partial model PartialDistributionTwoStorageParallelDetailed
   replaceable parameter
     BESMod.Systems.RecordsCollection.TemperatureSensors.TemperatureSensorBaseDefinition
     temperatureSensorData
-    annotation (choicesAllMatching=true, Placement(transformation(extent={{62,28},{68,34}})));
+    annotation (choicesAllMatching=true, Placement(transformation(extent={{42,-12},
+            {58,4}})));
   replaceable parameter
     BESMod.Systems.RecordsCollection.Valves.ThreeWayValve
     threeWayValveParameters constrainedby
@@ -89,35 +90,47 @@ partial model PartialDistributionTwoStorageParallelDetailed
         redeclare final AixLib.DataBase.Pipes.Copper.Copper_10x0_6 pipeHC2) annotation (
       choicesAllMatching=true, Placement(transformation(extent={{20,-62},{34,-48}})));
 
-  Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixedTemperatureBuf(final T=bufParameters.TAmb)           annotation (Placement(transformation(
-        extent={{-12,-12},{12,12}},
-        rotation=0,
-        origin={-82,2})));
-  Modelica.Blocks.Sources.RealExpression T_stoDHWTop(final y(unit="K", displayUnit="degC")=storageDHW.layer[
-        dhwParameters.nLayer].T) annotation (Placement(transformation(
-        extent={{-17,-6},{17,6}},
-        rotation=0,
-        origin={-33,70})));
-  Modelica.Blocks.Sources.RealExpression T_stoBufTop(final y(unit="K", displayUnit="degC")=storageBuf.layer[
-        bufParameters.nLayer].T) annotation (Placement(transformation(
-        extent={{-16,-5},{16,5}},
-        rotation=0,
-        origin={-34,87})));
-  Modelica.Blocks.Sources.RealExpression T_stoBufBot(final y(unit="K", displayUnit="degC")=storageBuf.layer[1].T)
+  Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixTemBuf(final T=
+        bufParameters.TAmb) "Constant ambient temperature of storage"
     annotation (Placement(transformation(
-        extent={{-16,-5},{16,5}},
-        rotation=0,
-        origin={-34,79})));
-  Modelica.Blocks.Sources.RealExpression T_stoDHWBot(final y(unit="K", displayUnit="degC")=storageDHW.layer[1].T)
-    annotation (Placement(transformation(
-        extent={{-16,-5},{16,5}},
-        rotation=0,
-        origin={-34,95})));
-
-  Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixedTemperatureDHW(final T=dhwParameters.TAmb)           annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={-72,-88})));
+        origin={-70,-10})));
+  Modelica.Blocks.Sources.RealExpression reaExpTStoDHWTop(final y(
+      unit="K",
+      displayUnit="degC") = storageDHW.layer[dhwParameters.nLayer].T)
+    annotation (Placement(transformation(
+        extent={{-10,-6},{10,6}},
+        rotation=0,
+        origin={-30,70})));
+  Modelica.Blocks.Sources.RealExpression reaExpTStoBufTop(final y(
+      unit="K",
+      displayUnit="degC") = storageBuf.layer[bufParameters.nLayer].T)
+    annotation (Placement(transformation(
+        extent={{-10,-5},{10,5}},
+        rotation=0,
+        origin={-30,87})));
+  Modelica.Blocks.Sources.RealExpression reaExpTStoBufBot(final y(
+      unit="K",
+      displayUnit="degC") = storageBuf.layer[1].T) annotation (Placement(
+        transformation(
+        extent={{-10,-5},{10,5}},
+        rotation=0,
+        origin={-30,79})));
+  Modelica.Blocks.Sources.RealExpression reaExpTStoDHWBot(final y(
+      unit="K",
+      displayUnit="degC") = storageDHW.layer[1].T) annotation (Placement(
+        transformation(
+        extent={{-10,-5},{10,5}},
+        rotation=0,
+        origin={-30,95})));
+
+  Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixTemDHW(final T=
+        dhwParameters.TAmb) "Constant ambient temperature of storage"
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-70,-88})));
 
   AixLib.Fluid.Storage.BufferStorage storageBuf(
     redeclare final package Medium = Medium,
@@ -225,51 +238,39 @@ partial model PartialDistributionTwoStorageParallelDetailed
     final V=heatingRodAftBufParameters.V_hr,
     final eta=heatingRodAftBufParameters.eta_hr) if use_heatingRodAfterBuffer
     annotation (Placement(transformation(
-        extent={{-12,-11},{12,11}},
+        extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={62,87})));
+        origin={50,90})));
   replaceable Generation.RecordsCollection.HeatingRodBaseDataDefinition heatingRodAftBufParameters
     if use_heatingRodAfterBuffer
     "Parameters for heating rod after buffer storage"
     annotation (choicesAllMatching=true, Placement(transformation(
         extent={{-6,-6},{6,6}},
         rotation=0,
-        origin={68,50})));
+        origin={66,40})));
   AixLib.Fluid.Interfaces.PassThroughMedium passThroughMediumHRBuf(redeclare
       package Medium = Medium, allowFlowReversal=allowFlowReversal)
     if not use_heatingRodAfterBuffer
-    annotation (Placement(transformation(extent={{62,62},{74,74}})));
+    annotation (Placement(transformation(extent={{40,54},{60,74}})));
 
   Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow QHRStoDHWPre_flow(final
       T_ref=293.15, final alpha=0) if dhwParameters.use_hr annotation (
       Placement(transformation(
-        extent={{-7,-7},{7,7}},
+        extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={-69,-51})));
+        origin={-70,-50})));
   Modelica.Blocks.Math.Gain gain(k=dhwParameters.QHR_flow_nominal)
  if dhwParameters.use_hr
-    annotation (Placement(transformation(extent={{-102,-60},{-86,-42}})));
-  Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow QHRStoBufPre_flow1(final
+    annotation (Placement(transformation(extent={{-112,-60},{-92,-40}})));
+  Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow QHRStoBufPre_flow(final
       T_ref=293.15, final alpha=0) if bufParameters.use_hr annotation (
       Placement(transformation(
-        extent={{-7,-7},{7,7}},
+        extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={-47,35})));
+        origin={-70,30})));
   Modelica.Blocks.Math.Gain gainHRBuf(k=bufParameters.QHR_flow_nominal)
  if bufParameters.use_hr
-    annotation (Placement(transformation(extent={{-80,18},{-64,36}})));
-  BESMod.Systems.Hydraulical.Distribution.Components.DiscretizeContSignal
-    discretizeHRAftBufSto(final discretizationSteps=heatingRodAftBufParameters.discretizationSteps)
-    if use_heatingRodAfterBuffer
-    annotation (Placement(transformation(extent={{36,88},{44,96}})));
-  BESMod.Systems.Hydraulical.Distribution.Components.DiscretizeContSignal
-    discretizeHRInDHWSto(final discretizationSteps=dhwParameters.discretizationStepsHR)
-    if dhwParameters.use_hr
-    annotation (Placement(transformation(extent={{-120,-54},{-112,-46}})));
-  BESMod.Systems.Hydraulical.Distribution.Components.DiscretizeContSignal
-    discretizeHRInBufSto(final discretizationSteps=bufParameters.discretizationStepsHR)
-    if bufParameters.use_hr
-    annotation (Placement(transformation(extent={{-100,24},{-92,32}})));
+    annotation (Placement(transformation(extent={{-100,0},{-80,20}})));
 
   Components.Valves.ThreeWayValveWithFlowReturn threeWayValveWithFlowReturn(
     redeclare package Medium = MediumGen,
@@ -283,12 +284,11 @@ partial model PartialDistributionTwoStorageParallelDetailed
     redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve parameters=threeWayValveParameters)
     annotation (Placement(transformation(extent={{-84,54},{-64,74}})));
 
-  Utilities.KPIs.EnergyKPICalculator integralKPICalculator3(use_inpCon=false, y
-      =fixedTemperatureBuf.port.Q_flow)
-    annotation (Placement(transformation(extent={{-40,-108},{-22,-90}})));
-  Utilities.KPIs.EnergyKPICalculator integralKPICalculator1(final use_inpCon=
-        false, y=fixedTemperatureDHW.port.Q_flow)
-    annotation (Placement(transformation(extent={{-40,-140},{-20,-120}})));
+  Utilities.KPIs.EnergyKPICalculator eneKPICalBuf(use_inpCon=false, y=fixTemBuf.port.Q_flow)
+    annotation (Placement(transformation(extent={{-60,-160},{-40,-140}})));
+  Utilities.KPIs.EnergyKPICalculator eneKPICalDHW(final use_inpCon=false, y=
+        fixTemDHW.port.Q_flow)
+    annotation (Placement(transformation(extent={{-100,-140},{-80,-120}})));
   IBPSA.Fluid.Sensors.TemperatureTwoPort senTBuiSup(
     redeclare final package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
@@ -300,111 +300,83 @@ partial model PartialDistributionTwoStorageParallelDetailed
     TAmb=temperatureSensorData.TAmb,
     tauHeaTra=temperatureSensorData.tauHeaTra)
     "Temperature at supply for building" annotation (Placement(transformation(
-        extent={{5,6},{-5,-6}},
+        extent={{10,10},{-10,-10}},
         rotation=180,
-        origin={87,80})));
+        origin={76,80})));
 
   BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{30,-108},{50,-88}})));
-  Utilities.KPIs.EnergyKPICalculator integralKPICalculator4(use_inpCon=false, y
-      =QHRStoDHWPre_flow.Q_flow) if dhwParameters.use_hr annotation (Placement(
+  Utilities.KPIs.EnergyKPICalculator eneKPICalDHWHeaRod(use_inpCon=false, y=
+        QHRStoDHWPre_flow.Q_flow) if dhwParameters.use_hr annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={30,-168})));
-  Utilities.KPIs.EnergyKPICalculator integralKPICalculator(use_inpCon=true)
+        origin={30,-170})));
+  Utilities.KPIs.EnergyKPICalculator eneKPICalAftBufHeaRod(use_inpCon=true)
     if use_heatingRodAfterBuffer annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={30,-130})));
-  Utilities.KPIs.EnergyKPICalculator integralKPICalculator2(use_inpCon=false, y
-      =QHRStoBufPre_flow1.Q_flow) if bufParameters.use_hr
-    annotation (Placement(transformation(extent={{-40,-170},{-20,-150}})));
+  Utilities.KPIs.EnergyKPICalculator eneKPICalBufHeaRod(use_inpCon=false, y=
+        QHRStoBufPre_flow.Q_flow) if bufParameters.use_hr
+    annotation (Placement(transformation(extent={{-100,-180},{-80,-160}})));
 equation
-  connect(T_stoDHWBot.y, sigBusDistr.TStoDHWBotMea) annotation (Line(points={{-16.4,
-          95},{2.5,95},{2.5,101},{0,101}},              color={0,0,127}), Text(
+  connect(reaExpTStoDHWBot.y, sigBusDistr.TStoDHWBotMea) annotation (Line(
+        points={{-19,95},{2.5,95},{2.5,101},{0,101}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(T_stoDHWTop.y, sigBusDistr.TStoDHWTopMea) annotation (Line(points={{-14.3,
-          70},{-2,70},{-2,101},{0,101}},              color={0,0,127}), Text(
+  connect(reaExpTStoDHWTop.y, sigBusDistr.TStoDHWTopMea) annotation (Line(
+        points={{-19,70},{0,70},{0,101}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(T_stoBufBot.y, sigBusDistr.TStoBufBotMea) annotation (Line(points={{-16.4,
-          79},{0,79},{0,101}},                      color={0,0,127}), Text(
+  connect(reaExpTStoBufBot.y, sigBusDistr.TStoBufBotMea) annotation (Line(
+        points={{-19,79},{0,79},{0,101}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(T_stoBufTop.y, sigBusDistr.TStoBufTopMea) annotation (Line(points={{-16.4,
-          87},{0,87},{0,101}},                                  color={0,0,127}),
-      Text(
+  connect(reaExpTStoBufTop.y, sigBusDistr.TStoBufTopMea) annotation (Line(
+        points={{-19,87},{0,87},{0,101}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(fixedTemperatureDHW.port, storageDHW.heatportOutside) annotation (
-      Line(points={{-62,-88},{14,-88},{14,-49.62},{-0.45,-49.62}},color={191,0,0}));
-  connect(storageBuf.heatportOutside, fixedTemperatureBuf.port) annotation (
-      Line(points={{-0.45,37.32},{12,37.32},{12,2},{-70,2}},color={191,0,0}));
+  connect(fixTemDHW.port, storageDHW.heatportOutside) annotation (Line(points={
+          {-60,-88},{14,-88},{14,-49.62},{-0.45,-49.62}}, color={191,0,0}));
+  connect(storageBuf.heatportOutside, fixTemBuf.port) annotation (Line(points={
+          {-0.45,37.32},{-0.45,36},{4,36},{4,-12},{2,-12},{2,-10},{-60,-10}},
+        color={191,0,0}));
   connect(portDHW_in, storageDHW.fluidportBottom2) annotation (Line(points={{100,
           -82},{-12,-82},{-12,-74.23},{-12.825,-74.23}}, color={0,127,255}));
-  connect(hea.port_a, storageBuf.fluidportTop2) annotation (Line(points={{50,87},
-          {48,87},{48,68},{-12.375,68},{-12.375,58.22}}, color={0,127,255},
+  connect(hea.port_a, storageBuf.fluidportTop2) annotation (Line(points={{40,90},
+          {28,90},{28,64},{-12.375,64},{-12.375,58.22}}, color={0,127,255},
       pattern=LinePattern.Dash));
   connect(passThroughMediumHRBuf.port_a, storageBuf.fluidportTop2) annotation (
-      Line(points={{62,68},{-12.375,68},{-12.375,58.22}}, color={0,127,255},
+      Line(points={{40,64},{-12.375,64},{-12.375,58.22}}, color={0,127,255},
       pattern=LinePattern.Dash));
   connect(portBui_in[1], storageBuf.fluidportBottom2) annotation (Line(points={{100,
           40},{102,40},{102,22},{26,22},{26,4},{-12.825,4},{-12.825,13.78}},
         color={0,127,255}));
   connect(storageDHW.heatingRod, QHRStoDHWPre_flow.port) annotation (Line(
-      points={{-36,-51},{-62,-51}},
+      points={{-36,-51},{-48,-51},{-48,-50},{-60,-50}},
       color={191,0,0},
       pattern=LinePattern.Dash));
   connect(QHRStoDHWPre_flow.Q_flow, gain.y) annotation (Line(
-      points={{-76,-51},{-85.2,-51}},
+      points={{-80,-50},{-91,-50}},
       color={0,0,127},
       pattern=LinePattern.Dash));
-  connect(QHRStoBufPre_flow1.Q_flow, gainHRBuf.y) annotation (Line(
-      points={{-54,35},{-58,35},{-58,27},{-63.2,27}},
+  connect(QHRStoBufPre_flow.Q_flow, gainHRBuf.y) annotation (Line(
+      points={{-80,30},{-79,30},{-79,10}},
       color={0,0,127},
       pattern=LinePattern.Dash));
-  connect(QHRStoBufPre_flow1.port, storageBuf.heatingRod) annotation (Line(
-      points={{-40,35},{-40,36},{-36,36}},
+  connect(QHRStoBufPre_flow.port, storageBuf.heatingRod) annotation (Line(
+      points={{-60,30},{-40,30},{-40,36},{-36,36}},
       color={191,0,0},
       pattern=LinePattern.Dash));
-  connect(discretizeHRAftBufSto.u, sigBusDistr.uHRAftBuf) annotation (Line(
-        points={{35.2,92},{0,92},{0,101}}, color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
-  connect(discretizeHRAftBufSto.y, hea.u) annotation (Line(points={{44.4,92},{
-          47.6,92},{47.6,93.6}},
-                            color={0,0,127}));
-  connect(discretizeHRInBufSto.u, sigBusDistr.uHRStoBuf) annotation (Line(
-        points={{-100.8,28},{-116,28},{-116,101},{0,101}}, color={0,0,127}),
-      Text(
-      string="%second",
-      index=1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
-  connect(discretizeHRInBufSto.y, gainHRBuf.u) annotation (Line(points={{-91.6,
-          28},{-88,28},{-88,27},{-81.6,27}},
-                                         color={0,0,127}));
-  connect(discretizeHRInDHWSto.u, sigBusDistr.uHRStoDHW) annotation (Line(
-        points={{-120.8,-50},{-126,-50},{-126,101},{0,101}}, color={0,0,127}),
-      Text(
-      string="%second",
-      index=1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
-  connect(gain.u, discretizeHRInDHWSto.y) annotation (Line(points={{-103.6,-51},
-          {-108,-51},{-108,-50},{-111.6,-50}}, color={0,0,127}));
   connect(portGen_in[1], threeWayValveWithFlowReturn.portGen_a) annotation (
       Line(points={{-100,80},{-92,80},{-92,68.4},{-84,68.4}}, color={0,127,255}));
   connect(portGen_out[1], threeWayValveWithFlowReturn.portGen_b) annotation (
@@ -423,18 +395,21 @@ equation
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
   connect(senTBuiSup.port_a, hea.port_b)
-    annotation (Line(points={{82,80},{74,80},{74,87}}, color={0,127,255}));
-  connect(senTBuiSup.port_b, portBui_out[1]) annotation (Line(points={{92,80},{
+    annotation (Line(points={{66,80},{64,80},{64,90},{60,90}},
+                                                       color={0,127,255}));
+  connect(senTBuiSup.port_b, portBui_out[1]) annotation (Line(points={{86,80},{
           100,80}},               color={0,127,255}));
-  connect(senTBuiSup.T, sigBusDistr.TBuiSupMea) annotation (Line(points={{87,
-          86.6},{86,86.6},{86,102},{28,102},{28,76},{0,76},{0,101}}, color={0,0,
+  connect(senTBuiSup.T, sigBusDistr.TBuiSupMea) annotation (Line(points={{76,91},
+          {76,100},{64,100},{64,104},{4,104},{4,102},{0,102},{0,101}},
+                                                                     color={0,0,
           127}), Text(
       string="%second",
       index=1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
   connect(passThroughMediumHRBuf.port_b, senTBuiSup.port_a)
-    annotation (Line(points={{74,68},{82,68},{82,80}}, color={0,127,255}));
+    annotation (Line(points={{60,64},{64,64},{64,80},{66,80}},
+                                                       color={0,127,255}));
   connect(zeroLoad.internalElectricalPin, internalElectricalPin) annotation (
       Line(
       points={{50,-98},{70,-98}},
@@ -442,43 +417,56 @@ equation
       thickness=1));
   connect(storageDHW.fluidportTop2, portDHW_out) annotation (Line(points={{-12.375,
           -27.77},{-12.375,-20},{100,-20},{100,-22}}, color={0,127,255}));
-  connect(hea.Pel, integralKPICalculator.u) annotation (Line(points={{75.2,93.6},
-          {75.2,88},{78,88},{78,-84},{84,-84},{84,-116},{41.8,-116},{41.8,-130}},
-        color={0,0,127}));
-  connect(integralKPICalculator3.KPI, outBusDist.QBufLos_flow) annotation (Line(
-        points={{-20.02,-99},{-20.02,-86},{0,-86},{0,-100}}, color={135,135,135}),
-      Text(
+  connect(hea.Pel, eneKPICalAftBufHeaRod.u) annotation (Line(points={{61,96},{
+          61,94},{66,94},{66,104},{114,104},{114,-130},{41.8,-130}}, color={0,0,
+          127}));
+  connect(eneKPICalBuf.KPI, outBusDist.QBufLos_flow) annotation (Line(points={{
+          -37.8,-150},{0,-150},{0,-100}}, color={135,135,135}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(integralKPICalculator1.KPI, outBusDist.QDHWLos_flow) annotation (Line(
-        points={{-17.8,-130},{-17.8,-84},{0,-84},{0,-100}}, color={135,135,135}),
-      Text(
+  connect(eneKPICalDHW.KPI, outBusDist.QDHWLos_flow) annotation (Line(points={{
+          -77.8,-130},{0,-130},{0,-100}}, color={135,135,135}), Text(
       string="%second",
       index=1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(integralKPICalculator2.KPI, outBusDist.PEleHRPreBuf) annotation (Line(
-        points={{-17.8,-160},{-17.8,-120},{-14,-120},{-14,-88},{0,-88},{0,-100}},
-        color={135,135,135}), Text(
+  connect(eneKPICalBufHeaRod.KPI, outBusDist.PEleHRPreBuf) annotation (Line(
+        points={{-77.8,-170},{0,-170},{0,-100}}, color={135,135,135}), Text(
       string="%second",
       index=1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(integralKPICalculator4.KPI, outBusDist.PEleHRPreDHW) annotation (Line(
-        points={{17.8,-168},{17.8,-86},{12,-86},{12,-84},{0,-84},{0,-100}},
-        color={135,135,135}), Text(
+  connect(eneKPICalDHWHeaRod.KPI, outBusDist.PEleHRPreDHW) annotation (Line(
+        points={{17.8,-170},{0,-170},{0,-100}}, color={135,135,135}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(integralKPICalculator.KPI, outBusDist.PEleHRAftBuf) annotation (Line(
-        points={{17.8,-130},{17.8,-86},{0,-86},{0,-100}}, color={135,135,135}),
-      Text(
+  connect(eneKPICalAftBufHeaRod.KPI, outBusDist.PEleHRAftBuf) annotation (Line(
+        points={{17.8,-130},{0,-130},{0,-100}}, color={135,135,135}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  connect(gain.u, sigBusDistr.uHRStoDHW) annotation (Line(points={{-114,-50},{
+          -120,-50},{-120,102},{0,102},{0,101}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(gainHRBuf.u, sigBusDistr.uHRStoBuf) annotation (Line(points={{-102,10},
+          {-120,10},{-120,102},{0,102},{0,101}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(hea.u, sigBusDistr.uHRAftBuf) annotation (Line(points={{38,96},{32,96},
+          {32,100},{0,100},{0,101}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
   annotation (Diagram(coordinateSystem(extent={{-100,-180},{100,100}})));
 end PartialDistributionTwoStorageParallelDetailed;
