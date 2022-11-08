@@ -228,9 +228,9 @@ model HeatPumpAndHeatingRod "Bivalent monoenergetic heat pump"
         extent={{-11,-11},{11,11}},
         rotation=0,
         origin={-169,11})));
-  Modelica.Blocks.Sources.RealExpression reaExpTHeaPumOut(y=heatPump.innerCycle.Pel)
+  Modelica.Blocks.Sources.RealExpression reaExpTHeaPumOut(y=heatPump.senT_b1.T)
     annotation (Placement(transformation(extent={{-60,80},{-40,100}})));
-  Modelica.Blocks.Sources.RealExpression reaExpTHeaPumIn(y=heatPump.innerCycle.Pel)
+  Modelica.Blocks.Sources.RealExpression reaExpTHeaPumIn(y=heatPump.senT_a1.T)
     annotation (Placement(transformation(extent={{-60,60},{-40,80}})));
   Modelica.Blocks.Sources.BooleanConstant conNotRev(final k=true) annotation (
       Placement(transformation(

@@ -95,6 +95,10 @@ model IdealValveRadiator
         origin={-66,10})));
   BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{30,-106},{50,-86}})));
+  Modelica.Blocks.Routing.RealPassThrough reaPasThrOpe[nParallelDem] annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=270,
+        origin={10,70})));
 equation
   connect(rad.heatPortRad, heatPortRad) annotation (Line(points={{-5.08,-31.2},
           {40,-31.2},{40,-40},{100,-40}}, color={191,0,0}));
@@ -108,12 +112,6 @@ equation
           {-76,39.5},{-51,39.5}}, color={0,127,255}));
   end for;
 
-  connect(gain.u, traControlBus.opening) annotation (Line(points={{8,46},{8,90},
-          {0,90},{0,100}}, color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{-3,6},{-3,6}},
-      horizontalAlignment=TextAlignment.Right));
   connect(res1.port_b, pumpFix_m_flow.port_a) annotation (Line(points={{-26,39.5},
           {-26,38},{-15,38},{-15,20}}, color={0,127,255}));
   connect(pumpFix_m_flow.port_b, rad.port_a) annotation (Line(points={{-15,-2},{
@@ -134,10 +132,18 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(gain.u, outBusTra.opening) annotation (Line(points={{8,46},{8,52},{22,
-          52},{22,-88},{0,-88},{0,-104}}, color={0,0,127}), Text(
+  connect(reaPasThrOpe.y, outBusTra.opening) annotation (Line(points={{10,59},{
+          10,54},{26,54},{26,-70},{0,-70},{0,-104}}, color={0,0,127}), Text(
       string="%second",
       index=1,
-      extent={{-6,3},{-6,3}},
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(reaPasThrOpe.u, traControlBus.opening) annotation (Line(points={{10,
+          82},{10,86},{0,86},{0,100}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
+  connect(reaPasThrOpe.y, gain.u)
+    annotation (Line(points={{10,59},{10,52},{8,52},{8,46}}, color={0,0,127}));
 end IdealValveRadiator;

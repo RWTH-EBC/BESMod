@@ -4,21 +4,21 @@ model EnergyKPICalculator "Give integral and value as KPI"
   parameter Boolean use_inpCon=true
     "= false to use an internal variable as input";
 
-  Modelica.Blocks.Interfaces.RealInput y(unit="W") if not use_inpCon
+  Modelica.Blocks.Interfaces.RealInput y(final unit="W") if not use_inpCon
     "Value of Real input";
 
   Modelica.Blocks.Continuous.Integrator integrator2(
     use_reset=false,
     y_start=Modelica.Constants.eps,
-    y(unit="J"))
+    y(final unit="J"))
     annotation (Placement(transformation(extent={{20,-40},{40,-20}})));
-  Modelica.Blocks.Routing.RealPassThrough internalU(y(unit="W"))
+  Modelica.Blocks.Routing.RealPassThrough internalU(y(final unit="W"))
                                                     annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-30,0})));
-  Modelica.Blocks.Interfaces.RealInput u(unit="W") if use_inpCon
+  Modelica.Blocks.Interfaces.RealInput u(final unit="W") if use_inpCon
     "Connector of Real input signal"
     annotation (Placement(transformation(extent={{-138,-20},{-98,20}})));
   BaseClasses.KPIIntegral KPI(value(unit="W"), integral(unit="J"))
