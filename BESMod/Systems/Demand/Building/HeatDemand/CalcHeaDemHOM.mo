@@ -13,13 +13,17 @@ model CalcHeaDemHOM
       radioButtons=true));
 
   extends PartialCalcHeatingDemand(
+    redeclare BESMod.Systems.UserProfiles.AixLibHighOrderProfiles heaDemSce(
+        redeclare AixLib.DataBase.Profiles.Ventilation2perDayMean05perH venPro,
+        redeclare AixLib.DataBase.Profiles.SetTemperaturesVentilation2perDay
+        TSetProfile),
     TN_heater=1,
     KR_heater=10000,
-    h_heater=fill(100000,building.nZones),
+    h_heater=fill(100000, building.nZones),
     redeclare Examples.UseCaseHOM.HOMSystem systemParameters(
       TOda_nominal=261.15,
-      TSetZone_nominal(each displayUnit="K") = {293.15,293.15,288.15,293.15,293.15,293.15,
-        293.15,288.15,297.15,293.15},
+      TSetZone_nominal(each displayUnit="K") = {293.15,293.15,288.15,293.15,
+        293.15,293.15,293.15,288.15,297.15,293.15},
       THydSup_nominal=fill(273.15 + 55, building.nZones)),
     redeclare AixLibHighOrder building(
       useConstVentRate=true,
@@ -37,12 +41,11 @@ model CalcHeaDemHOM
         Type_Win,
       redeclare model CorrSolarGainWin =
           AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.CorrectionSolarGain.CorGSimple,
+
       use_sunblind=false,
       UValOutDoors=if TIR == 1 then 1.8 else 2.9,
       use_infiltEN12831=true,
       n50=if TIR == 1 or TIR == 2 then 3 else if TIR == 3 then 4 else 6),
-    redeclare UserProfiles.NoUserHOM heatDemandScenario(nZones=building.nZones,
-        TSetZone_nominal=fill(273.15 + 21, building.nZones)),
     heaterCooler(each Heater_on=true));
 
   annotation (Documentation(info="<html>

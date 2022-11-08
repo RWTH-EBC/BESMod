@@ -91,9 +91,9 @@ model SolarThermalBivHPBuiLib
         origin={70,-170})));
   Modelica.Blocks.Sources.Constant AirOrSoil1(k=1)
     annotation (Placement(transformation(
-        extent={{-6,-6},{6,6}},
+        extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={-188,-160})));
+        origin={-190,-150})));
 
   Utilities.KPIs.EnergyKPICalculator KPIWel1(use_inpCon=false, y=sum(solCol.vol.heatPort.Q_flow))
     annotation (Placement(transformation(extent={{-60,-120},{-40,-100}})));
@@ -101,17 +101,17 @@ model SolarThermalBivHPBuiLib
   Modelica.Blocks.Logical.Switch switch3 annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={-158,-172})));
+        origin={-158,-170})));
   Modelica.Blocks.Sources.Constant AirOrSoil2(k=0)
     annotation (Placement(transformation(
-        extent={{-6,-6},{6,6}},
+        extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={-190,-188})));
+        origin={-190,-190})));
   Modelica.Blocks.Logical.Hysteresis       isOnHR1(uLow=10, uHigh=100)
     annotation (Placement(transformation(
-        extent={{-5,-5},{5,5}},
+        extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={-205,-173})));
+        origin={-210,-170})));
 protected
   parameter Modelica.Units.SI.PressureDifference dpST_nominal=solarThermalParas.m_flow_nominal
       ^2*solarThermalParas.pressureDropCoeff/(rho^2)
@@ -144,26 +144,26 @@ equation
       index=-1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(switch3.y, pumpST.y) annotation (Line(points={{-147,-172},{-138,-172},
-          {-138,-170},{-130,-170},{-130,-186},{30,-186},{30,-182}},
+  connect(switch3.y, pumpST.y) annotation (Line(points={{-147,-170},{-130,-170},
+          {-130,-186},{30,-186},{30,-182}},
                                       color={0,0,127}));
-  connect(switch3.u1, conNotRev.y) annotation (Line(points={{-170,-164},{-178,
-          -164},{-178,-38},{-159,-38}}, color={0,0,127}));
-  connect(AirOrSoil2.y, switch3.u3) annotation (Line(points={{-183.4,-188},{
-          -176,-188},{-176,-180},{-170,-180}},
+  connect(AirOrSoil2.y, switch3.u3) annotation (Line(points={{-179,-190},{-179,
+          -186},{-170,-186},{-170,-178}},
                                         color={0,0,127}));
-  connect(switch3.u2, isOnHR1.y) annotation (Line(points={{-170,-172},{-187.75,
-          -172},{-187.75,-173},{-199.5,-173}},                color={255,0,255}));
-  connect(isOnHR1.u, weaBus.HDirNor) annotation (Line(points={{-211,-173},{-222,
-          -173},{-222,108},{-101,108},{-101,80}},
+  connect(switch3.u2, isOnHR1.y) annotation (Line(points={{-170,-170},{-199,
+          -170}},                                             color={255,0,255}));
+  connect(isOnHR1.u, weaBus.HDirNor) annotation (Line(points={{-222,-170},{-228,
+          -170},{-228,28},{-101,28},{-101,80}},
         color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
+  connect(AirOrSoil1.y, switch3.u1) annotation (Line(points={{-179,-150},{-170,
+          -150},{-170,-162}}, color={0,0,127}));
   annotation (Diagram(coordinateSystem(extent={{-220,-200},{100,100}}),
         graphics={Text(
-          extent={{-198,-136},{-134,-154}},
+          extent={{-216,-122},{-152,-140}},
           textColor={0,0,0},
           textString="Solar Thermal"), Rectangle(
           extent={{94,-198},{-218,-136}},

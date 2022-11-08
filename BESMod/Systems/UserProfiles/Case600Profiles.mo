@@ -40,7 +40,7 @@ equation
       color={0,0,127},
       smooth=Smooth.None));
   connect(multiplex3_1.y, useProBus.intGains) annotation (Line(points={{1,30},{
-          74,30},{74,-0.835},{115.175,-0.835}},
+          74,30},{74,-1},{115,-1}},
                               color={0,0,127}), Text(
       string="%second",
       index=1,

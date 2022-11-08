@@ -2,6 +2,7 @@ within BESMod.Systems.Demand.Building.HeatDemand;
 model CalcHeaBuiRoomCase600FF
   "Calculate the heat demand for a given reduced order model from TEASER"
   extends PartialCalcHeatingDemand(
+    redeclare BESMod.Systems.UserProfiles.Case600Profiles heaDemSce,
     h_heater={10000},
     redeclare
       BESMod.Systems.RecordsCollection.ExampleSystemParameters
