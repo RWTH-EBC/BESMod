@@ -1,21 +1,19 @@
 within BESMod.Examples.SolarThermalSystem;
 model SolarThermalBuildings
   "HPS which is supported by a solar thermal collector"
-  extends BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS(hydraulic(
-        redeclare BESMod.Systems.Hydraulical.Generation.SolarThermalBivHPBuiLib
-        generation(
+  extends BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS(
+    redeclare model hydGeneration =
+        BESMod.Systems.Hydraulical.Generation.SolarThermalBivHPBuiLib (
         redeclare model PerDataMainHP =
-            AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (refrigerant=
-                "Propane", flowsheet="VIPhaseSeparatorFlowsheet"),
+            AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (refrigerant="Propane",
+              flowsheet="VIPhaseSeparatorFlowsheet"),
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           heatPumpParameters(genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentParallel),
-
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
           heatingRodParameters,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
-
         redeclare package Medium_eva = AixLib.Media.Air,
         redeclare BESMod.Examples.SolarThermalSystem.SolarCollector
           solarThermalParas(
@@ -24,7 +22,8 @@ model SolarThermalBuildings
           final c1=parameterStudy.c1,
           final c2=parameterStudy.c2),
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover
-          pumpSTData)));
+          pumpSTData));
+
   extends Modelica.Icons.Example;
 
   annotation (Icon(graphics,

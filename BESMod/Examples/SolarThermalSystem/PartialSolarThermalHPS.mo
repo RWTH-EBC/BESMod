@@ -8,6 +8,7 @@ partial model PartialSolarThermalHPS
           heaLoadFacGrd=0, heaLoadFacOut=0)),
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
+      redeclare hydGeneration generation,
       redeclare BESMod.Systems.Hydraulical.Control.Biv_PI_ConFlow_HPSController
         control(
         redeclare
@@ -53,6 +54,10 @@ partial model PartialSolarThermalHPS
     redeclare Systems.UserProfiles.TEASERProfiles userProfiles,
     redeclare BESMod.Systems.Ventilation.NoVentilation ventilation);
 
+  replaceable model hydGeneration =
+      BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration(nParallelDem=2)
+     constrainedby BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration
+     annotation (choicesAllMatching=true);
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)),

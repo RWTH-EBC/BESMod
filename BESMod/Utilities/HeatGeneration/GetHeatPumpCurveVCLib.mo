@@ -4,12 +4,10 @@ model GetHeatPumpCurveVCLib
     redeclare
       BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultBivHPControl
       bivalentHeatPumpControlDataDefinition,
-    redeclare Examples.UseCaseAachen.AachenSystem systemParameters,
-                                        redeclare
-      Systems.Hydraulical.Generation.HeatPumpAndHeatingRod generation(
-      redeclare
-        BESMod.Systems.RecordsCollection.Movers.DefaultMover
-        pumpData,
+    redeclare Examples.UseCaseDesignOptimization.AachenSystem systemParameters,
+
+    redeclare Systems.Hydraulical.Generation.HeatPumpAndHeatingRod generation(
+      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
       redeclare package Medium_eva = IBPSA.Media.Air,
       redeclare
         BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
@@ -19,7 +17,8 @@ model GetHeatPumpCurveVCLib
         heatingRodParameters,
       redeclare model PerDataMainHP =
           AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (refrigerant=
-              "Propane", flowsheet="VIPhaseSeparatorFlowsheet")),  ramp(
+              "Propane", flowsheet="VIPhaseSeparatorFlowsheet")),
+    ramp(
       height=35,
       duration=84400,
       offset=273.15 - 15,

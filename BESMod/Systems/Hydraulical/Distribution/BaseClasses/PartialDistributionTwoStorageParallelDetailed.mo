@@ -24,10 +24,7 @@ partial model PartialDistributionTwoStorageParallelDetailed
     "Nominal heat flow rate of heating rod after DHW storage"
     annotation (Dialog(enable=use_heatingRodAfterBuffer));
   parameter Boolean use_heatingRodAfterBuffer "=false to disable the heating rod after the buffer storage";
-  parameter Integer discretizationStepsDWHStoHR=0
-    "Number of steps to dicretize. =0 modulating, =1 resembels an on-off controller. =2 would sample 0, 0.5 and 1";
-  parameter Integer discretizationStepsBufStoHR=0
-    "Number of steps to dicretize. =0 modulating, =1 resembels an on-off controller. =2 would sample 0, 0.5 and 1";
+
   replaceable parameter
     BESMod.Systems.RecordsCollection.TemperatureSensors.TemperatureSensorBaseDefinition
     temperatureSensorData
@@ -345,10 +342,10 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(fixTemDHW.port, storageDHW.heatportOutside) annotation (Line(points={
-          {-60,-88},{14,-88},{14,-49.62},{-0.45,-49.62}}, color={191,0,0}));
-  connect(storageBuf.heatportOutside, fixTemBuf.port) annotation (Line(points={
-          {-0.45,37.32},{-0.45,36},{4,36},{4,-12},{2,-12},{2,-10},{-60,-10}},
+  connect(fixTemDHW.port, storageDHW.heatportOutside) annotation (Line(points={{
+          -60,-88},{14,-88},{14,-49.62},{-0.45,-49.62}}, color={191,0,0}));
+  connect(storageBuf.heatportOutside, fixTemBuf.port) annotation (Line(points={{
+          -0.45,37.32},{-0.45,36},{4,36},{4,-12},{2,-12},{2,-10},{-60,-10}},
         color={191,0,0}));
   connect(portDHW_in, storageDHW.fluidportBottom2) annotation (Line(points={{100,
           -82},{-12,-82},{-12,-74.23},{-12.825,-74.23}}, color={0,127,255}));
@@ -397,8 +394,8 @@ equation
   connect(senTBuiSup.port_a, hea.port_b)
     annotation (Line(points={{66,80},{64,80},{64,90},{60,90}},
                                                        color={0,127,255}));
-  connect(senTBuiSup.port_b, portBui_out[1]) annotation (Line(points={{86,80},{
-          100,80}},               color={0,127,255}));
+  connect(senTBuiSup.port_b, portBui_out[1]) annotation (Line(points={{86,80},{100,
+          80}},                   color={0,127,255}));
   connect(senTBuiSup.T, sigBusDistr.TBuiSupMea) annotation (Line(points={{76,91},
           {76,100},{64,100},{64,104},{4,104},{4,102},{0,102},{0,101}},
                                                                      color={0,0,
@@ -417,17 +414,16 @@ equation
       thickness=1));
   connect(storageDHW.fluidportTop2, portDHW_out) annotation (Line(points={{-12.375,
           -27.77},{-12.375,-20},{100,-20},{100,-22}}, color={0,127,255}));
-  connect(hea.Pel, eneKPICalAftBufHeaRod.u) annotation (Line(points={{61,96},{
-          61,94},{66,94},{66,104},{114,104},{114,-130},{41.8,-130}}, color={0,0,
-          127}));
-  connect(eneKPICalBuf.KPI, outBusDist.QBufLos_flow) annotation (Line(points={{
-          -37.8,-150},{0,-150},{0,-100}}, color={135,135,135}), Text(
+  connect(hea.Pel, eneKPICalAftBufHeaRod.u) annotation (Line(points={{61,96},{61,
+          94},{66,94},{66,104},{114,104},{114,-130},{41.8,-130}}, color={0,0,127}));
+  connect(eneKPICalBuf.KPI, outBusDist.QBufLos_flow) annotation (Line(points={{-37.8,
+          -150},{0,-150},{0,-100}}, color={135,135,135}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(eneKPICalDHW.KPI, outBusDist.QDHWLos_flow) annotation (Line(points={{
-          -77.8,-130},{0,-130},{0,-100}}, color={135,135,135}), Text(
+  connect(eneKPICalDHW.KPI, outBusDist.QDHWLos_flow) annotation (Line(points={{-77.8,
+          -130},{0,-130},{0,-100}}, color={135,135,135}), Text(
       string="%second",
       index=1,
       extent={{-3,6},{-3,6}},
@@ -450,8 +446,8 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(gain.u, sigBusDistr.uHRStoDHW) annotation (Line(points={{-114,-50},{
-          -120,-50},{-120,102},{0,102},{0,101}}, color={0,0,127}), Text(
+  connect(gain.u, sigBusDistr.uHRStoDHW) annotation (Line(points={{-114,-50},{-120,
+          -50},{-120,102},{0,102},{0,101}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
