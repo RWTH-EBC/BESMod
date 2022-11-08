@@ -52,8 +52,6 @@ partial model PartialCase
         distribution(
         QHRAftBuf_flow_nominal=0,
         use_heatingRodAfterBuffer=false,
-        discretizationStepsDWHStoHR=0,
-        discretizationStepsBufStoHR=0,
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
           temperatureSensorData,

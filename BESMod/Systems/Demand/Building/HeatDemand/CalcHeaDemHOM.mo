@@ -20,7 +20,7 @@ model CalcHeaDemHOM
     TN_heater=1,
     KR_heater=10000,
     h_heater=fill(100000, building.nZones),
-    redeclare Examples.UseCaseHOM.HOMSystem systemParameters(
+    redeclare Examples.UseCaseHighOrderModel.HOMSystem systemParameters(
       TOda_nominal=261.15,
       TSetZone_nominal(each displayUnit="K") = {293.15,293.15,288.15,293.15,
         293.15,293.15,293.15,288.15,297.15,293.15},
