@@ -237,7 +237,7 @@ model HeatPumpAndHeatingRod "Bivalent monoenergetic heat pump"
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-170,-38})));
-  Modelica.Blocks.Sources.RealExpression reaExpTHeaPumIn1(y=heatPump.senT_a2.T)
+  Modelica.Blocks.Sources.RealExpression reaExpTEvaIn(y=heatPump.senT_a2.T)
     annotation (Placement(transformation(extent={{-60,40},{-40,60}})));
 protected
   parameter Modelica.Units.SI.PressureDifference dpHeaRod_nominal=if use_heaRod
@@ -425,8 +425,8 @@ equation
       horizontalAlignment=TextAlignment.Left));
   connect(heatPump.modeSet, conNotRev.y) annotation (Line(points={{-48.5,-10.52},
           {-48.5,-38},{-159,-38}}, color={255,0,255}));
-  connect(reaExpTHeaPumIn1.y, sigBusGen.THeaPumEvaIn) annotation (Line(points={
-          {-39,50},{2,50},{2,98}}, color={0,0,127}), Text(
+  connect(reaExpTEvaIn.y, sigBusGen.THeaPumEvaIn) annotation (Line(points={{-39,
+          50},{2,50},{2,98}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},

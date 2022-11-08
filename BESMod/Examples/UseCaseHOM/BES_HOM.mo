@@ -16,7 +16,7 @@ model BES_HOM
       redeclare model CorrSolarGainWin =
           AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.CorrectionSolarGain.CorGSimple,
       redeclare BESMod.Systems.Demand.Building.Components.AixLibHighOrderOFD
-        aixLiBHighOrderOFD),
+        HOMBuiEnv),
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
       redeclare BESMod.Systems.Hydraulical.Generation.HeatPumpAndHeatingRod
@@ -81,7 +81,10 @@ model BES_HOM
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
         calcmFlow),
-    redeclare BESMod.Systems.UserProfiles.AixLibHighOrderProfiles userProfiles,
+    redeclare BESMod.Systems.UserProfiles.AixLibHighOrderProfiles userProfiles(
+        redeclare AixLib.DataBase.Profiles.Ventilation2perDayMean05perH venPro,
+        redeclare AixLib.DataBase.Profiles.SetTemperaturesVentilation2perDay
+        TSetProfile),
     redeclare HOMSystem systemParameters,
     redeclare UseCaseAachen.ParametersToChange         parameterStudy,
     redeclare final package MediumDHW = AixLib.Media.Water,
@@ -90,7 +93,7 @@ model BES_HOM
     redeclare BESMod.Systems.Ventilation.NoVentilation ventilation);
   extends Modelica.Icons.Example;
   annotation (experiment(
-      StopTime=31536000,
-      Interval=600,
+      StopTime=172800,
+      Interval=599.999616,
       __Dymola_Algorithm="Dassl"));
 end BES_HOM;
