@@ -82,23 +82,20 @@ model ElectricalHeater "Only heat using a heating rod"
         rotation=90,
         origin={62,-74})));
 
-  BESMod.Utilities.KPIs.InternalKPICalculator KPIQHR(
-    unit="W",
-    integralUnit="J",
-    calc_singleOnTime=false,
-    calc_integral=true,
-    calc_totalOnTime=false,
-    calc_numSwi=false,
-    calc_movAve=false,
-    calc_intBelThres=false,
-    y=hea.vol.heatPort.Q_flow)
-    annotation (Placement(transformation(extent={{-40,-128},{-28,-106}})));
+  Utilities.KPIs.EnergyKPICalculator KPIQHR(use_inpCon=false, y=hea.vol.heatPort.Q_flow)
+    annotation (Placement(transformation(extent={{-40,-80},{-20,-60}})));
   replaceable parameter
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
     pumpData annotation (choicesAllMatching=true, Placement(transformation(extent={{14,-64},
             {28,-52}})));
   BESMod.Utilities.Electrical.RealToElecCon realToElecCon(use_souGen=false)
     annotation (Placement(transformation(extent={{32,-108},{52,-88}})));
+  Utilities.KPIs.DeviceKPICalculator KPIHeaRod1(
+    use_reaInp=true,
+    calc_singleOnTime=true,
+    calc_totalOnTime=true,
+    calc_numSwi=true)
+    annotation (Placement(transformation(extent={{-60,-100},{-40,-80}})));
 equation
   connect(dummyZero.y,switch1. u3)
     annotation (Line(points={{29,4},{38,4},{38,-4}},    color={0,0,127}));
@@ -124,20 +121,6 @@ equation
     annotation (Line(points={{46,7.4},{46,-4}}, color={255,0,255}));
   connect(hea.port_a, pump.port_b) annotation (Line(points={{-32,-6},{-34,-6},{
           -34,-48},{38,-48}}, color={0,127,255}));
-  connect(KPIQHR.KPIBus, outBusGen.QHR) annotation (Line(
-      points={{-27.88,-117},{0,-117},{0,-100}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(hea.u, sigBusGen.uHR) annotation (Line(points={{-41.6,-9.2},{-41.6,
-          -24},{-56,-24},{-56,98},{2,98}}, color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{-3,-6},{-3,-6}},
-      horizontalAlignment=TextAlignment.Right));
   connect(isOnHR.u, sigBusGen.uHR) annotation (Line(points={{46,21.2},{48,21.2},
           {48,46},{2,46},{2,98}}, color={0,0,127}), Text(
       string="%second",
@@ -150,5 +133,30 @@ equation
       color={0,0,0},
       thickness=1));
   connect(realToElecCon.PEleLoa, hea.Pel) annotation (Line(points={{30,-94},{
-          -64,-94},{-64,27.6},{-41.6,27.6}}, color={0,0,127}));
+          -80,-94},{-80,28},{-60,28},{-60,27.6},{-41.6,27.6}},
+                                             color={0,0,127}));
+  connect(KPIQHR.KPI, outBusGen.QHR_flow) annotation (Line(points={{-17.8,-70},
+          {0,-70},{0,-100}}, color={135,135,135}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(KPIHeaRod1.KPI, outBusGen.heaRod) annotation (Line(points={{-37.8,-90},
+          {-14,-90},{-14,-86},{0,-86},{0,-100}}, color={135,135,135}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(KPIHeaRod1.uRea, sigBusGen.uHR) annotation (Line(points={{-62.2,-90},
+          {-76,-90},{-76,98},{2,98}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(hea.u, sigBusGen.uHeaRod) annotation (Line(points={{-41.6,-9.2},{
+          -41.6,-14},{-54,-14},{-54,98},{2,98}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-3,-6},{-3,-6}},
+      horizontalAlignment=TextAlignment.Right));
 end ElectricalHeater;

@@ -1,6 +1,10 @@
 within BESMod.Systems.BaseClasses;
 partial model PartialBuildingEnergySystem "Partial BES"
 
+  parameter Boolean use_openModelica=false
+    "=true to disable features which 
+    are not available in open modelica" annotation(Dialog(tab="Advanced"));
+
   // Replaceable packages
   replaceable package MediumHyd = IBPSA.Media.Water constrainedby
     Modelica.Media.Interfaces.PartialMedium annotation (
@@ -39,7 +43,8 @@ partial model PartialBuildingEnergySystem "Partial BES"
       final nZones=systemParameters.nZones,
       final TSetZone_nominal=systemParameters.TSetZone_nominal,
       final use_hydraulic=systemParameters.use_hydraulic,
-      final use_ventilation=systemParameters.use_ventilation) annotation (
+      final use_ventilation=systemParameters.use_ventilation,
+      final use_openModelica=use_openModelica) annotation (
       choicesAllMatching=true, Placement(transformation(extent={{2,2},{76,78}})));
   replaceable BESMod.Systems.UserProfiles.BaseClasses.PartialUserProfiles
     userProfiles constrainedby UserProfiles.BaseClasses.PartialUserProfiles(
@@ -74,7 +79,8 @@ partial model PartialBuildingEnergySystem "Partial BES"
       final hZone=building.hZone,
       final ABui=building.ABui,
       final ARoo=building.ARoo,
-      final hBui=building.hBui))                                 annotation (Placement(
+      final hBui=building.hBui),
+      final use_openModelica=use_openModelica)                                 annotation (Placement(
         transformation(extent={{-198,40},{-42,136}})), choicesAllMatching=true);
   replaceable BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem hydraulic
     if systemParameters.use_hydraulic constrainedby
@@ -103,7 +109,8 @@ partial model PartialBuildingEnergySystem "Partial BES"
       final QCrit=DHW.QCrit,
       final TDHWCold_nominal=DHW.TDHWCold_nominal,
       final QDHW_flow_nominal=DHW.QDHW_flow_nominal,
-      final VDHWDay=DHW.VDHWDay))
+      final VDHWDay=DHW.VDHWDay),
+      final use_openModelica=use_openModelica)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-198,
             -98},{-42,-2}})));
 
@@ -125,11 +132,12 @@ partial model PartialBuildingEnergySystem "Partial BES"
       final hZone=building.hZone,
       final ABui=building.ABui,
       final ARoo=building.ARoo,
-      final hBui=building.hBui))         annotation (choicesAllMatching=true,
+      final hBui=building.hBui),
+      final use_openModelica=use_openModelica)         annotation (choicesAllMatching=true,
       Placement(transformation(extent={{122,2},{196,78}})));
 
   // Outputs
-  BESMod.Systems.Interfaces.SystemOutputs outputs
+  BESMod.Systems.Interfaces.SystemOutputs outputs if not use_openModelica
     annotation (Placement(transformation(extent={{252,-30},{318,30}})));
   IBPSA.BoundaryConditions.WeatherData.ReaderTMY3 weaDat(final filNam=
         systemParameters.filNamWea)
@@ -137,7 +145,8 @@ partial model PartialBuildingEnergySystem "Partial BES"
     annotation (Placement(transformation(extent={{-280,40},{-220,100}})));
 
   replaceable Control.BaseClasses.PartialControl control constrainedby
-    Control.BaseClasses.PartialControl annotation (Placement(transformation(
+    Control.BaseClasses.PartialControl(
+      final use_openModelica=use_openModelica) annotation (Placement(transformation(
           extent={{2,124},{78,198}})),  choicesAllMatching=true);
 
   Electrical.Interfaces.ExternalElectricalPin electricalGrid annotation (

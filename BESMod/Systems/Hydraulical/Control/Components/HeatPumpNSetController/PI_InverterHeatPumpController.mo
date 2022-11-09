@@ -1,8 +1,8 @@
 within BESMod.Systems.Hydraulical.Control.Components.HeatPumpNSetController;
 model PI_InverterHeatPumpController
   "PI-Controller for inverter controlled heat pumps"
-  extends
-    HeatPumpNSetController.BaseClasses.PartialInverterHeatPumpController(PID(
+  extends HeatPumpNSetController.BaseClasses.PartialInverterHeatPumpController(
+                                                                         PID(
       controllerType=Modelica.Blocks.Types.SimpleController.PI,
       Ti=T_I,
       final Ni=Ni));

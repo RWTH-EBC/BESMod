@@ -3,7 +3,6 @@ model MonovalentGasBoiler "PI Control of gas boiler"
   extends BaseClasses.SystemWithThermostaticValveControl;
   BESMod.Systems.Hydraulical.Control.Components.HeatingCurve
     heatingCurve(
-    TRoomSet=monovalentControlParas.TSetRoomConst,
     GraHeaCurve=monovalentControlParas.gradientHeatCurve,
     THeaThres=monovalentControlParas.TSetRoomConst,
     dTOffSet_HC=monovalentControlParas.dTOffSetHeatCurve)
@@ -68,6 +67,20 @@ model MonovalentGasBoiler "PI Control of gas boiler"
     annotation (Placement(transformation(extent={{46,48},{66,68}})));
   Modelica.Blocks.Math.BooleanToReal booleanToReal
     annotation (Placement(transformation(extent={{40,0},{60,20}})));
+  Modelica.Blocks.Math.MinMax minMax(nu=transferParameters.nParallelDem)
+    annotation (Placement(transformation(extent={{-240,50},{-220,70}})));
+  Modelica.Blocks.Logical.Not bufOn if use_dhw
+                                    "buffer is charged" annotation (Placement(
+        transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-70,-50})));
+  Modelica.Blocks.Math.BooleanToReal booToRea(final realTrue=1, final realFalse
+      =0) if use_dhw "Convert boolean signal to real for valve" annotation (
+      Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-30,-50})));
 equation
   connect(sigBusDistr,TSet_DHW. sigBusDistr) annotation (Line(
       points={{1,-100},{10,-100},{10,-146},{-280,-146},{-280,89.9},{-220,89.9}},
@@ -110,14 +123,6 @@ equation
   connect(boilerOnOffDHW.y, switch1.u2) annotation (Line(points={{-139,50},{-134,
           50},{-134,46},{-28,46},{-28,66},{-8,66},{-8,70},{-2,70}},
                                        color={255,0,255}));
-  connect(boilerOnOffDHW.y, sigBusDistr.dhw_on) annotation (Line(points={{-139,50},
-          {-134,50},{-134,46},{-30,46},{-30,36},{-28,36},{-28,28},{-26,28},{-26,
-          2},{-12,2},{-12,-62},{1,-62},{1,-100}},
-        color={255,0,255}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
   connect(HP_nSet_Controller.T_Meas, sigBusGen.TBoiOut) annotation (Line(
         points={{120,38.4},{116,38.4},{116,30},{28,30},{28,-26},{-152,-26},{-152,
           -99}},                                            color={0,0,127}),
@@ -175,4 +180,22 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  connect(minMax.yMax, heatingCurve.TSetRoom)
+    annotation (Line(points={{-219,66},{-210,66},{-210,42}}, color={0,0,127}));
+  connect(minMax.u, useProBus.TZoneSet) annotation (Line(points={{-240,60},{-244,
+          60},{-244,103},{-119,103}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(bufOn.y, booToRea.u)
+    annotation (Line(points={{-59,-50},{-42,-50}}, color={255,0,255}));
+  connect(booToRea.y, sigBusDistr.uThrWayVal) annotation (Line(points={{-19,-50},
+          {1,-50},{1,-100}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(bufOn.u, boilerOnOffDHW.y) annotation (Line(points={{-82,-50},{-122,
+          -50},{-122,50},{-139,50}}, color={255,0,255}));
 end MonovalentGasBoiler;

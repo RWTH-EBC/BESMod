@@ -10,15 +10,18 @@ partial model PartialCalcHeatingDemand
     BESMod.Systems.RecordsCollection.SystemParametersBaseDataDefinition
     "Parameters relevant for the whole energy system" annotation (
       choicesAllMatching=true, Placement(transformation(extent={{76,-96},{96,-76}})));
-  Systems.UserProfiles.NoUser heatDemandScenario
-    annotation (Placement(transformation(extent={{-100,18},{-50,80}})));
+  replaceable Systems.UserProfiles.BaseClasses.PartialUserProfiles heaDemSce constrainedby
+    UserProfiles.BaseClasses.PartialUserProfiles(final nZones=systemParameters.nZones,
+      final TSetZone_nominal=systemParameters.TSetZone_nominal)
+    "Heat demand scenario"
+    annotation (choicesAllMatching=true, Placement(transformation(extent={{-98,2},{-62,38}})));
   replaceable BESMod.Systems.Demand.Building.BaseClasses.PartialDemand building
-      constrainedby
-    BESMod.Systems.Demand.Building.BaseClasses.PartialDemand(                final TSetZone_nominal=systemParameters.TSetZone_nominal,
+      constrainedby BESMod.Systems.Demand.Building.BaseClasses.PartialDemand(final TSetZone_nominal=systemParameters.TSetZone_nominal,
     final use_hydraulic=true,
     final use_ventilation=false,
     redeclare package MediumZone = IBPSA.Media.Air)
-    annotation (choicesAllMatching=true, Placement(transformation(extent={{24,-34},{72,24}})));
+    annotation (choicesAllMatching=true, Placement(transformation(extent={{2,-16},
+            {58,38}})));
   Modelica.Blocks.Interfaces.RealOutput QDemBuiSum_flow(final unit="W")
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -27,9 +30,8 @@ partial model PartialCalcHeatingDemand
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={110,-80})));
-  Modelica.Blocks.Sources.RealExpression
-                                   realExpression(y=sum(heaterCooler.heatingPower))
-    annotation (Placement(transformation(extent={{10,52},{32,74}})));
+  Modelica.Blocks.Sources.RealExpression reaExpQSum_flow(y=sum(heaterCooler.heatingPower))
+    annotation (Placement(transformation(extent={{58,-42},{80,-20}})));
   Modelica.Blocks.Interfaces.RealOutput QBui_flow_nominal[building.nZones](
      each final unit="W") "Indoor air temperature" annotation (Placement(
         transformation(
@@ -50,18 +52,18 @@ partial model PartialCalcHeatingDemand
     each Heater_on=true,
     each Cooler_on=false,
     each final staOrDyn=false)                                        "Heater Cooler with PI control"
-    annotation (Placement(transformation(extent={{-38,0},{-4,38}})));
+    annotation (Placement(transformation(extent={{-80,-40},{-40,0}})));
   Modelica.Blocks.Sources.Constant const[building.nZones](final k=
         systemParameters.TSetZone_nominal)
-    annotation (Placement(transformation(extent={{-74,-28},{-52,-6}})));
+    annotation (Placement(transformation(extent={{-80,-80},{-60,-60}})));
   Modelica.Blocks.Sources.BooleanConstant
                                    booleanConstant
                                         [building.nZones](each final k=true)
-    annotation (Placement(transformation(extent={{-112,-46},{-90,-24}})));
+    annotation (Placement(transformation(extent={{-100,-100},{-80,-80}})));
   Modelica.Blocks.Sources.BooleanConstant
                                    booleanConstant1
                                         [building.nZones](each final k=false)
-    annotation (Placement(transformation(extent={{-112,-12},{-90,10}})));
+    annotation (Placement(transformation(extent={{-100,-60},{-80,-40}})));
   IBPSA.BoundaryConditions.WeatherData.ReaderTMY3 weaDat(
     final filNam=systemParameters.filNamWea,
     TDryBulSou=IBPSA.BoundaryConditions.Types.DataSource.Parameter,
@@ -78,58 +80,46 @@ partial model PartialCalcHeatingDemand
     HInfHor=0,
     HSou=IBPSA.BoundaryConditions.Types.RadiationDataSource.Input_HGloHor_HDifHor)
     "Weather data reader"
-    annotation (Placement(transformation(extent={{-100,86},{-42,152}})));
-  Modelica.Blocks.Sources.Constant constIrr(each final k=0)
-    annotation (Placement(transformation(extent={{-162,66},{-140,88}})));
+    annotation (Placement(transformation(extent={{-60,60},{-20,100}})));
+  Modelica.Blocks.Sources.Constant consNultIrr(each final k=0) "No irradiation"
+    annotation (Placement(transformation(extent={{-100,58},{-78,80}})));
 
-  Interfaces.UseProBus                               useProBus annotation (
-      Placement(transformation(extent={{16,72},{68,108}}),  iconTransformation(
-          extent={{80,-34},{150,32}})));
 equation
 
-  connect(QDemBuiSum_flow, realExpression.y) annotation (Line(points={{110,0},
-          {80,0},{80,63},{33.1,63}}, color={0,0,127}));
+  connect(QDemBuiSum_flow, reaExpQSum_flow.y) annotation (Line(points={{110,0},{
+          86,0},{86,-31},{81.1,-31}}, color={0,0,127}));
   connect(building.heatPortCon, heaterCooler.heatCoolRoom) annotation (Line(
-        points={{24,12.4},{16,12.4},{16,12},{6,12},{6,11.4},{-5.7,11.4}}, color=
+        points={{2,27.2},{2,26},{-8,26},{-8,-28},{-42,-28}},              color=
          {191,0,0}));
-  connect(const.y, heaterCooler.setPointHeat) annotation (Line(points={{-50.9,
-          -17},{-17.26,-17},{-17.26,5.32}},
-                                       color={0,0,127}));
-  connect(heaterCooler.heatingPower, QBui_flow_nominal) annotation (Line(points=
-         {{-4,26.6},{14,26.6},{14,40},{110,40}}, color={0,0,127}));
-  connect(heaterCooler.heaterActive, booleanConstant.y) annotation (Line(points={{-9.44,
-          5.32},{-9.44,-35},{-88.9,-35}},        color={255,0,255}));
+  connect(const.y, heaterCooler.setPointHeat) annotation (Line(points={{-59,-70},
+          {-55.6,-70},{-55.6,-34.4}},  color={0,0,127}));
+  connect(heaterCooler.heatingPower, QBui_flow_nominal) annotation (Line(points={{-40,-12},
+          {-26,-12},{-26,-48},{84,-48},{84,40},{110,40}},
+                                                 color={0,0,127}));
+  connect(heaterCooler.heaterActive, booleanConstant.y) annotation (Line(points={{-46.4,
+          -34.4},{-46,-34.4},{-46,-90},{-79,-90}},
+                                                 color={255,0,255}));
   connect(booleanConstant1.y, heaterCooler.coolerActive) annotation (Line(
-        points={{-88.9,-1},{-59.45,-1},{-59.45,5.32},{-32.9,5.32}}, color={255,0,
+        points={{-79,-50},{-79,-44},{-74,-44},{-74,-34.4}},         color={255,0,
           255}));
   connect(weaDat.weaBus, building.weaBus) annotation (Line(
-      points={{-42,119},{-8,119},{-8,50},{34.08,50},{34.08,24.58}},
+      points={{-20,80},{14,80},{14,38},{13.76,38},{13.76,38.54}},
       color={255,204,51},
       thickness=0.5));
-  connect(constIrr.y, weaDat.HDifHor_in) annotation (Line(points={{-138.9,77},{
-          -122.45,77},{-122.45,87.65},{-102.9,87.65}}, color={0,0,127}));
-  connect(constIrr.y, weaDat.HGloHor_in) annotation (Line(points={{-138.9,77},{
-          -122.45,77},{-122.45,76.1},{-102.9,76.1}}, color={0,0,127}));
-  connect(heatDemandScenario.useProBus, useProBus) annotation (Line(
-      points={{-51.0417,48.7417},{42,48.7417},{42,90}},
+  connect(consNultIrr.y, weaDat.HDifHor_in) annotation (Line(points={{-76.9,69},
+          {-76.9,68},{-68,68},{-68,61},{-62,61}}, color={0,0,127}));
+  connect(consNultIrr.y, weaDat.HGloHor_in) annotation (Line(points={{-76.9,69},
+          {-76.9,68},{-68,68},{-68,48},{-62,48},{-62,54}}, color={0,0,127}));
+  connect(weaDat.HDifHor_in, weaDat.HGloHor_in)
+    annotation (Line(points={{-62,61},{-62,54}}, color={0,0,127}));
+  connect(heaDemSce.useProBus, building.useProBus) annotation (Line(
+      points={{-62.75,19.85},{-36,19.85},{-36,50},{45.4,50},{45.4,38}},
       color={255,204,51},
-      thickness=0.5), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(useProBus, building.useProBus) annotation (Line(
-      points={{42,90},{40,90},{40,24},{61.2,24}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%first",
-      index=-1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
+      thickness=0.5));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false), graphics={Text(
-          extent={{-130,-24},{56,-118}},
+          extent={{18,126},{204,32}},
           lineColor={28,108,200},
           textString="Right click -> Parameters -> 
 Select your system parameters -> 

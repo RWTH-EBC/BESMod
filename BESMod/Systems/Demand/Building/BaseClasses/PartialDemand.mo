@@ -1,7 +1,9 @@
 within BESMod.Systems.Demand.Building.BaseClasses;
 partial model PartialDemand "Partial demand model for HPS"
   extends BESMod.Utilities.Icons.BuildingIcon;
-
+  parameter Boolean use_openModelica=false
+    "=true to disable features which 
+    are not available in open modelica" annotation(Dialog(tab="Advanced"));
   parameter Integer nZones(min=1) "Number of zones /rooms";
   parameter Modelica.Units.SI.Temperature TSetZone_nominal[nZones]=fill(293.15,
       nZones) "Nominal room set temerature"
@@ -38,7 +40,7 @@ partial model PartialDemand "Partial demand model for HPS"
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPortRad[nZones]
     "Heat port for radiative heat transfer with room radiation temperature"
     annotation (Placement(transformation(extent={{-110,-70},{-90,-50}})));
-  BESMod.Systems.Interfaces.DemandOutputs outBusDem
+  BESMod.Systems.Interfaces.DemandOutputs outBusDem if not use_openModelica
     annotation (Placement(transformation(extent={{88,-12},{108,8}})));
   Modelica.Fluid.Interfaces.FluidPort_a portVent_in[nZones](
       redeclare final package Medium = MediumZone)

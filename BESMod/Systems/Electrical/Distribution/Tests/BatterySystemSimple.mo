@@ -18,40 +18,35 @@ model BatterySystemSimple
     f=1/86400,
     phase=1.5707963267949,
     offset=3000)
-    annotation (Placement(transformation(extent={{98,48},{74,72}})));
+    annotation (Placement(transformation(extent={{100,60},{80,80}})));
   Modelica.Blocks.Sources.Sine PGeneration(
     amplitude=2000,
     f=1/86400,
     phase=4.7123889803847,
     offset=2000)
-    annotation (Placement(transformation(extent={{-86,48},{-62,72}})));
+    annotation (Placement(transformation(extent={{-80,60},{-60,80}})));
   Modelica.Blocks.Interfaces.RealOutput SOC
-    annotation (Placement(transformation(extent={{54,-98},{74,-78}})));
+    if not batterySystemSimple.use_openModelica
+    annotation (Placement(transformation(extent={{100,-100},{120,-80}})));
   Interfaces.DistributionOutputs OutputDistr1
+    if not batterySystemSimple.use_openModelica
     annotation (Placement(transformation(extent={{-6,-70},{14,-50}})));
   Modelica.Blocks.Interfaces.RealOutput PGrid "Electrical power"
-    annotation (Placement(transformation(extent={{88,-72},{108,-52}})));
+    annotation (Placement(transformation(extent={{100,-70},{120,-50}})));
 equation
   connect(batterySystemSimple.externalElectricalPin, elecConToReal.internalElectricalPin)
     annotation (Line(
       points={{22,-35.26},{22,-60.7},{44.3,-60.7}},
       color={0,0,0},
       thickness=1));
-  connect(batterySystemSimple.OutputDistr, OutputDistr1.SOCBat) annotation (
+  connect(batterySystemSimple.OutputDistr, OutputDistr1) annotation (
       Line(
       points={{4,-35.26},{4,-60}},
       color={255,204,51},
       thickness=0.5));
-  connect(OutputDistr1.SOCBat.SOCBat, SOC) annotation (Line(
-      points={{4,-60},{4,-88},{64,-88}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%first",
-      index=-1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
   connect(elecConToReal.PElecLoa, PGrid)
-    annotation (Line(points={{77,-55},{98,-55},{98,-62}},   color={0,0,127}));
+    annotation (Line(points={{77,-55},{94,-55},{94,-60},{110,-60}},
+                                                            color={0,0,127}));
   connect(realToElecCon1.internalElectricalPin, batterySystemSimple.internalElectricalPin[
     1]) annotation (Line(
       points={{37.8,60.2},{22,60.2},{22,37.075}},
@@ -62,12 +57,18 @@ equation
       points={{-23.8,60.2},{22,60.2},{22,38.925}},
       color={0,0,0},
       thickness=1));
-  connect(PGeneration.y, realToElecCon.PEleGen) annotation (Line(points={{-60.8,
-          60},{-54,60},{-54,56},{-46,56}}, color={0,0,127}));
-  connect(ElectricalLoad.y, realToElecCon1.PEleLoa) annotation (Line(points={{
-          72.8,60},{68,60},{68,64},{60,64}}, color={0,0,127}));
+  connect(PGeneration.y, realToElecCon.PEleGen) annotation (Line(points={{-59,70},
+          {-54,70},{-54,56},{-46,56}},     color={0,0,127}));
+  connect(ElectricalLoad.y, realToElecCon1.PEleLoa) annotation (Line(points={{79,70},
+          {68,70},{68,64},{60,64}},          color={0,0,127}));
+  connect(SOC, OutputDistr1.SOCBat) annotation (Line(points={{110,-90},{4,-90},
+          {4,-60}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
   annotation (Icon(graphics,
-                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     experiment(
       StopTime=86400,

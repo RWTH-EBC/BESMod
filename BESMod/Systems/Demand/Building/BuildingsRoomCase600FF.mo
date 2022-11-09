@@ -230,8 +230,8 @@ equation
       points={{-3.25,3},{-3.25,2},{-2,2},{-2,44},{-1,44},{-1,50}},
       color={191,0,0},
       smooth=Smooth.None));
-  connect(roo.qGai_flow, useProBus.intGains) annotation (Line(points={{32.8,16.2},
-          {50,16.2},{50,84},{51,84},{51,101}},
+  connect(roo.qGai_flow, useProBus.intGains) annotation (Line(points={{32.8,
+          16.2},{50,16.2},{50,84},{51,84},{51,101}},
         color={0,0,127}), Text(
       string="%second",
       index=1,

@@ -45,8 +45,7 @@ model GasBoilerBuildingOnly
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.PassThrough calcmFlow),
     redeclare BESMod.Systems.UserProfiles.TEASERProfiles userProfiles,
-    redeclare
-      BESMod.Examples.MyOwnHeatingRodEfficiencyStudy.SimpleStudyOfHeatingRodEfficiency
+    redeclare BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy
       parameterStudy,
     redeclare BESMod.Systems.RecordsCollection.ExampleSystemParameters
       systemParameters(

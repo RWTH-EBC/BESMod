@@ -1,7 +1,7 @@
 within BESMod.Systems.Hydraulical.Interfaces;
 expandable connector GenerationOutputs
   "Bus with ouputs of the generation system"
-  extends BESMod.Utilities.Icons.KPIBus;
+  extends BESMod.Utilities.Icons.OutputsBus;
 
   annotation (
   defaultComponentName = "outBusGen",

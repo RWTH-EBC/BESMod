@@ -2,7 +2,7 @@
   "required": {
     "IBPSA": {
       "url": "https://github.com/ibpsa/modelica-ibpsa",
-      "commit": "4466fbb309e7ffb3a7763e2872ac43f80522e84e",
+      "commit": "3eb103a9fafb0ee718661ce6a97ae4f6fc8a99c0",
 	  "default_branch": "master",
       "mo": "IBPSA//package.mo"
     }
@@ -10,7 +10,7 @@
   "optional": {
     "AixLib": {
       "url": "https://github.com/RWTH-EBC/AixLib",
-      "commit": "b341e6903b36fe032e0aff256496cef456c8ceca",
+      "commit": "3bc1bcd9b33c8991eb50aa8fb3913b6dac6a1a1e",
 	  "default_branch": "development",
       "mo": "AixLib//package.mo"
     },
