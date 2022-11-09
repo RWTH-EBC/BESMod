@@ -11,7 +11,7 @@ equation
           78,-2},{100,-2}}, color={0,127,255}));
   connect(zeroLoad.internalElectricalPin, internalElectricalPin) annotation (
       Line(
-      points={{52,-98},{72,-98}},
+      points={{52,-98},{62,-98},{62,-100},{72,-100}},
       color={0,0,0},
       thickness=1));
 end NoGeneration;

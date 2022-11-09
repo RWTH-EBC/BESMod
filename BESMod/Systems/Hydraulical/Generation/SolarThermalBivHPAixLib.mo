@@ -1,6 +1,6 @@
 within BESMod.Systems.Hydraulical.Generation;
-model SolarThermalBivHP
-  "Solar thermal assistet monoenergetic heat pump with heating rod"
+model SolarThermalBivHPAixLib
+  "Solar thermal assistet monoenergetic heat pump with heating rod using AixLibs ST model"
   extends HeatPumpAndHeatingRod(
     m_flow_nominal={Q_flow_nominal[1]*f_design[1]/dTTra_nominal[1]/4184,
         solarThermalParas.m_flow_nominal},
@@ -165,4 +165,4 @@ equation
           extent={{-188,-122},{-124,-140}},
           textColor={0,0,0},
           textString="Solar Thermal")}));
-end SolarThermalBivHP;
+end SolarThermalBivHPAixLib;

@@ -245,8 +245,8 @@ partial model PartialDistributionTwoStorageParallelDetailed
         extent={{-6,-6},{6,6}},
         rotation=0,
         origin={66,40})));
-  AixLib.Fluid.Interfaces.PassThroughMedium passThroughMediumHRBuf(redeclare
-      package Medium = Medium, allowFlowReversal=allowFlowReversal)
+  AixLib.Fluid.Interfaces.PassThroughMedium pasThrHeaRodBuf(redeclare package
+      Medium = Medium, allowFlowReversal=allowFlowReversal)
     if not use_heatingRodAfterBuffer
     annotation (Placement(transformation(extent={{40,54},{60,74}})));
 
@@ -279,7 +279,7 @@ partial model PartialDistributionTwoStorageParallelDetailed
     final C_nominal=C_nominal,
     final mSenFac=mSenFac,
     redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve parameters=threeWayValveParameters)
-    annotation (Placement(transformation(extent={{-84,54},{-64,74}})));
+    annotation (Placement(transformation(extent={{-80,54},{-60,74}})));
 
   Utilities.KPIs.EnergyKPICalculator eneKPICalBuf(use_inpCon=false, y=fixTemBuf.port.Q_flow)
     annotation (Placement(transformation(extent={{-60,-160},{-40,-140}})));
@@ -352,8 +352,9 @@ equation
   connect(hea.port_a, storageBuf.fluidportTop2) annotation (Line(points={{40,90},
           {28,90},{28,64},{-12.375,64},{-12.375,58.22}}, color={0,127,255},
       pattern=LinePattern.Dash));
-  connect(passThroughMediumHRBuf.port_a, storageBuf.fluidportTop2) annotation (
-      Line(points={{40,64},{-12.375,64},{-12.375,58.22}}, color={0,127,255},
+  connect(pasThrHeaRodBuf.port_a, storageBuf.fluidportTop2) annotation (Line(
+      points={{40,64},{-12.375,64},{-12.375,58.22}},
+      color={0,127,255},
       pattern=LinePattern.Dash));
   connect(portBui_in[1], storageBuf.fluidportBottom2) annotation (Line(points={{100,
           40},{102,40},{102,22},{26,22},{26,4},{-12.825,4},{-12.825,13.78}},
@@ -375,18 +376,19 @@ equation
       color={191,0,0},
       pattern=LinePattern.Dash));
   connect(portGen_in[1], threeWayValveWithFlowReturn.portGen_a) annotation (
-      Line(points={{-100,80},{-92,80},{-92,68.4},{-84,68.4}}, color={0,127,255}));
+      Line(points={{-100,80},{-92,80},{-92,68.4},{-80,68.4}}, color={0,127,255}));
   connect(portGen_out[1], threeWayValveWithFlowReturn.portGen_b) annotation (
-      Line(points={{-100,40},{-96,40},{-96,38},{-92,38},{-92,60},{-84,60},{-84,60.4}},
+      Line(points={{-100,40},{-96,40},{-96,38},{-92,38},{-92,60},{-80,60},{-80,
+          60.4}},
         color={0,127,255}));
   connect(threeWayValveWithFlowReturn.portDHW_b, storageDHW.portHC1In)
-    annotation (Line(points={{-64,60.4},{-60,60.4},{-60,60},{-46,60},{-46,-37.89},
-          {-36.45,-37.89}}, color={0,127,255}));
+    annotation (Line(points={{-60,60.4},{-60,60},{-46,60},{-46,-37.89},{-36.45,
+          -37.89}},         color={0,127,255}));
   connect(storageDHW.portHC1Out, threeWayValveWithFlowReturn.portDHW_a)
-    annotation (Line(points={{-36.225,-45.02},{-52,-45.02},{-52,56.4},{-64,56.4}},
+    annotation (Line(points={{-36.225,-45.02},{-52,-45.02},{-52,56.4},{-60,56.4}},
         color={0,127,255}));
   connect(threeWayValveWithFlowReturn.uBuf, sigBusDistr.uThrWayVal) annotation (
-     Line(points={{-74,76},{-74,101},{0,101}}, color={0,0,127}), Text(
+     Line(points={{-70,76},{-70,101},{0,101}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-3,6},{-3,6}},
@@ -404,9 +406,8 @@ equation
       index=1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(passThroughMediumHRBuf.port_b, senTBuiSup.port_a)
-    annotation (Line(points={{60,64},{64,64},{64,80},{66,80}},
-                                                       color={0,127,255}));
+  connect(pasThrHeaRodBuf.port_b, senTBuiSup.port_a) annotation (Line(points={{
+          60,64},{64,64},{64,80},{66,80}}, color={0,127,255}));
   connect(zeroLoad.internalElectricalPin, internalElectricalPin) annotation (
       Line(
       points={{50,-98},{70,-98}},

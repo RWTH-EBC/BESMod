@@ -15,7 +15,6 @@ model BES_HOM
         Type_Win,
       redeclare model CorrSolarGainWin =
           AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.CorrectionSolarGain.CorGSimple,
-
       redeclare BESMod.Systems.Demand.Building.Components.AixLibHighOrderOFD
         HOMBuiEnv),
     redeclare BESMod.Systems.Control.NoControl control,
@@ -23,13 +22,11 @@ model BES_HOM
       redeclare BESMod.Systems.Hydraulical.Generation.HeatPumpAndHeatingRod
         generation(
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
-
         redeclare package Medium_eva = AixLib.Media.Air,
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           heatPumpParameters(
           genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
-
           TBiv=parameterStudy.TBiv,
           scalingFactor=hydraulic.generation.heatPumpParameters.QPri_flow_nominal
               /parameterStudy.QHP_flow_biv,
@@ -44,7 +41,6 @@ model BES_HOM
         redeclare model PerDataMainHP =
             AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
             QCon_flow_nominal=hydraulic.generation.heatPumpParameters.QPri_flow_nominal,
-
             refrigerant="Propane",
             flowsheet="VIPhaseSeparatorFlowsheet")),
       redeclare BESMod.Systems.Hydraulical.Control.ConstHys_OnOff_HPSControll
@@ -82,7 +78,6 @@ model BES_HOM
           BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData)),
     redeclare BESMod.Systems.Demand.DHW.DHW DHW(
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
-
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
         calcmFlow),
@@ -96,9 +91,10 @@ model BES_HOM
     redeclare final package MediumZone = AixLib.Media.Air,
     redeclare final package MediumHyd = AixLib.Media.Water,
     redeclare BESMod.Systems.Ventilation.NoVentilation ventilation);
+
   extends Modelica.Icons.Example;
   annotation (experiment(
       StopTime=172800,
-      Interval=599.999616,
+      Interval=600,
       __Dymola_Algorithm="Dassl"));
 end BES_HOM;

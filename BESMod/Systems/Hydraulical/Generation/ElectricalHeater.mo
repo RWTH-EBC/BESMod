@@ -121,12 +121,6 @@ equation
     annotation (Line(points={{46,7.4},{46,-4}}, color={255,0,255}));
   connect(hea.port_a, pump.port_b) annotation (Line(points={{-32,-6},{-34,-6},{
           -34,-48},{38,-48}}, color={0,127,255}));
-  connect(hea.u, sigBusGen.uHR) annotation (Line(points={{-41.6,-9.2},{-41.6,
-          -24},{-56,-24},{-56,98},{2,98}}, color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{-3,-6},{-3,-6}},
-      horizontalAlignment=TextAlignment.Right));
   connect(isOnHR.u, sigBusGen.uHR) annotation (Line(points={{46,21.2},{48,21.2},
           {48,46},{2,46},{2,98}}, color={0,0,127}), Text(
       string="%second",
@@ -158,5 +152,11 @@ equation
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(hea.u, sigBusGen.uHeaRod) annotation (Line(points={{-41.6,-9.2},{
+          -41.6,-14},{-54,-14},{-54,98},{2,98}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
 end ElectricalHeater;

@@ -26,11 +26,4 @@ model SolarThermalBuildings
 
   extends Modelica.Icons.Example;
 
-  annotation (Icon(graphics,
-                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
-        coordinateSystem(preserveAspectRatio=false)),
-    experiment(
-      StopTime=31536000,
-      Interval=600,
-      __Dymola_Algorithm="Dassl"));
 end SolarThermalBuildings;

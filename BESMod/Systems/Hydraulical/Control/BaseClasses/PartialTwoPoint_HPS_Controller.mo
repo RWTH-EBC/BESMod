@@ -251,7 +251,7 @@ equation
   connect(DHWOnOffContoller.Auxilliar_Heater_set, max.u2) annotation (Line(
         points={{-110.88,71.12},{-104,71.12},{-104,64},{-10,64},{-10,40.4},{19.2,
           40.4}}, color={0,0,127}));
-  connect(switchHR.y, sigBusGen.hr_on) annotation (Line(points={{48.5,25},{62,25},
+  connect(switchHR.y, sigBusGen.uHeaRod) annotation (Line(points={{48.5,25},{62,25},
           {62,-48},{-152,-48},{-152,-99}},  color={0,0,127}), Text(
       string="%second",
       index=1,

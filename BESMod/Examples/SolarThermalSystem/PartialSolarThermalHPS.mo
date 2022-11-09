@@ -62,7 +62,7 @@ partial model PartialSolarThermalHPS
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)),
     experiment(
-      StopTime=31536000,
+      StopTime=864000,
       Interval=600,
       __Dymola_Algorithm="Dassl"));
 end PartialSolarThermalHPS;
