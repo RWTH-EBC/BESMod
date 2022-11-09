@@ -5,7 +5,6 @@ model GetHeatPumpCurveVCLib
       BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultBivHPControl
       bivalentHeatPumpControlDataDefinition,
     redeclare Examples.UseCaseDesignOptimization.AachenSystem systemParameters,
-
     redeclare Systems.Hydraulical.Generation.HeatPumpAndHeatingRod generation(
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
       redeclare package Medium_eva = IBPSA.Media.Air,
@@ -24,5 +23,6 @@ model GetHeatPumpCurveVCLib
       offset=273.15 - 15,
       startTime=1000),
     realExpression(y=generation.heatPump.con.QFlow_in));
+
   annotation (experiment(StopTime=86400, __Dymola_Algorithm="Dassl"));
 end GetHeatPumpCurveVCLib;
