@@ -123,19 +123,25 @@ model AixLibHighOrderOFD "High order OFD"
     annotation (Placement(transformation(extent={{-44,-40},{50,72}})));
 
   AixLib.Utilities.Interfaces.Adaptors.ConvRadToCombPort convRadToCombPort
+    "For attic"
     annotation (Placement(transformation(extent={{-46,-48},{-26,-64}})));
-  Modelica.Thermal.HeatTransfer.Sources.FixedHeatFlow InternalGains(Q_flow=0)
-    annotation (Placement(transformation(
-        extent={{7,-7},{-7,7}},
+  Modelica.Thermal.HeatTransfer.Sources.FixedHeatFlow intGaiAttCon(
+    final Q_flow=0,
+    final T_ref=293.15,
+    final alpha=0) "No gains in attic" annotation (Placement(transformation(
+        extent={{11,-11},{-11,11}},
         rotation=0,
-        origin={-9,-51})));
-  Modelica.Thermal.HeatTransfer.Sources.FixedHeatFlow InternalGains1(Q_flow=0)
-    annotation (Placement(transformation(
-        extent={{7,-7},{-7,7}},
+        origin={19,-57})));
+  Modelica.Thermal.HeatTransfer.Sources.FixedHeatFlow intGaiAttRad(
+    final Q_flow=0,
+    final T_ref=293.15,
+    final alpha=0) "No gains in attic" annotation (Placement(transformation(
+        extent={{10,-10},{-10,10}},
         rotation=0,
-        origin={-9,-61})));
-  Modelica.Blocks.Sources.Constant const1
-    annotation (Placement(transformation(extent={{-86,14},{-74,26}})));
+        origin={20,-78})));
+  Modelica.Blocks.Sources.Constant constVenRatAtt(final k=1)
+    "Constant ventilation rate of attic"
+    annotation (Placement(transformation(extent={{-80,8},{-60,28}})));
 equation
     // Romm Temperatures
 
@@ -197,12 +203,14 @@ equation
   connect(convRadToCombPort.portConvRadComb, wholeHouseBuildingEnvelope.heatingToRooms[11]) annotation (Line(points={{-46,-56},
           {-72,-56},{-72,2.86545},{-44,2.86545}},
         color={191,0,0}));
-  connect(InternalGains1.port, convRadToCombPort.portRad) annotation (Line(points={{-16,-61},{-26,-61}}, color={191,0,0}));
-  connect(InternalGains.port, convRadToCombPort.portConv) annotation (Line(points={{-16,-51},{-26,-51}}, color={191,0,0}));
+  connect(intGaiAttRad.port, convRadToCombPort.portRad) annotation (Line(points
+        ={{10,-78},{-20,-78},{-20,-61},{-26,-61}}, color={191,0,0}));
+  connect(intGaiAttCon.port, convRadToCombPort.portConv) annotation (Line(
+        points={{8,-57},{-20,-57},{-20,-51},{-26,-51}}, color={191,0,0}));
 
-  connect(const1.y, wholeHouseBuildingEnvelope.AirExchangePort[11]) annotation (
-     Line(points={{-73.4,20},{-68,20},{-68,46.5455},{-48.7,46.5455}}, color={0,0,
-          127}));
+  connect(constVenRatAtt.y, wholeHouseBuildingEnvelope.AirExchangePort[11])
+    annotation (Line(points={{-59,18},{-56,18},{-56,46.5455},{-48.7,46.5455}},
+        color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end AixLibHighOrderOFD;
