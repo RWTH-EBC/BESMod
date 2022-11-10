@@ -13,7 +13,7 @@ package BESMod
 	  conversion(from(
 		version="0.2.2",
 		script="modelica://BESMod/Resources/Scripts/ConvertBESMod_from_0.2.2_to_0.3.0.mos"
-	  )
+	  )),
     Icon(graphics={Bitmap(extent={{-100,-100},{100,100}},
    fileName="modelica://BESMod/Resources/Images/BESMod_icon.png")}));
 end BESMod;
