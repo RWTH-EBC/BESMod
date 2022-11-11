@@ -8,6 +8,7 @@ model AixLibHighOrder "High order building model from AixLib library"
     final ABui=HOMBuiEnv.ABui,
     final hBui=HOMBuiEnv.hBui,
     final ARoo=HOMBuiEnv.ARoof);
+  extends Components.BaseClasses.HighOrderModelParameters;
 
   final parameter AixLib.DataBase.Weather.SurfaceOrientation.SurfaceOrientationBaseDataDefinition  SOD=
   AixLib.DataBase.Weather.SurfaceOrientation.SurfaceOrientationData_N_E_S_W_RoofN_Roof_S()
@@ -21,54 +22,6 @@ model AixLibHighOrder "High order building model from AixLib library"
   parameter Real TimeCorrection=0 "for TRY = 0.5, for TMY = 0";
   parameter Modelica.Units.NonSI.Time_hour DiffWeatherDataTime=1 "difference between local time and UTC, e.g. +1 for MET";
   parameter Real GroundReflection = 0.2 "ground reflection coefficient";
-
-  // Dynamics
-  parameter Modelica.Fluid.Types.Dynamics energyDynamicsWalls=Modelica.Fluid.Types.Dynamics.DynamicFreeInitial
-    "Type of energy balance for wall capacities: dynamic (3 initialization options) or steady state" annotation (Dialog(tab="Dynamics"));
-  parameter Modelica.Fluid.Types.Dynamics energyDynamics=Modelica.Fluid.Types.Dynamics.DynamicFreeInitial
-    "Type of energy balance: dynamic (3 initialization options) or steady state" annotation (Dialog(tab="Dynamics"));
-
-  // Initialization
-  parameter Modelica.Units.SI.Temperature T0_air=273.15 + 22
-    "Initial temperature of air" annotation (Dialog(tab="Initialization"));
-  parameter Modelica.Units.SI.Temperature TWalls_start=273.15 + 16
-    "Initial temperature of all walls" annotation (Dialog(tab="Initialization"));
-
-  //Outer walls
-  replaceable parameter AixLib.DataBase.Walls.Collections.OFD.EnEV2009Light
-    wallTypes constrainedby
-    AixLib.DataBase.Walls.Collections.BaseDataMultiWalls
-    "Types of walls (contains multiple records)"
-     annotation (Dialog(tab="Outer walls", group="Wall"), choicesAllMatching = true);
-  replaceable model WindowModel =
-      AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.PartialWindow
-      (windowarea=2)
-    constrainedby
-    AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.PartialWindow
-    annotation (Dialog(tab="Outer walls", group="Windows"), choicesAllMatching = true);
-  replaceable parameter AixLib.DataBase.WindowsDoors.Simple.OWBaseDataDefinition_Simple
-    Type_Win "Window parametrization"
-    annotation (Dialog(tab="Outer walls", group="Windows"), choicesAllMatching = true);
-  replaceable model CorrSolarGainWin =
-      AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.CorrectionSolarGain.PartialCorG
-    constrainedby
-    AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.CorrectionSolarGain.PartialCorG
-      "Correction model for solar irradiance as transmitted radiation"
-      annotation (choicesAllMatching=true, Dialog(tab="Outer walls", group="Windows", enable = withWindow and outside));
-  parameter Boolean use_sunblind=false
-    "Will sunblind become active automatically?" annotation (Dialog(tab="Outer walls", group="Sunblind"));
-  parameter Modelica.Units.SI.CoefficientOfHeatTransfer UValOutDoors=2.5
-    "U-value (thermal transmittance) of doors in outer walls"  annotation (Dialog(tab="Outer walls", group="Doors"));
-
-  //Infiltration
-  parameter Boolean use_infiltEN12831=true
-    "Use model to exchange room air with outdoor air acc. to standard"
-    annotation (Dialog(tab="Infiltration acc. to EN 12831", group="X"));
-  parameter Real n50=4 "Air exchange rate at 50 Pa pressure difference"
-    annotation (Dialog(tab="Infiltration acc. to EN 12831", group="X"));
-  parameter Real e=0.03 "Coefficient of windshield"
-    annotation (Dialog(tab="Infiltration acc. to EN 12831", group="X"));
-
 
   Modelica.Thermal.HeatTransfer.Sources.PrescribedTemperature tempOutside
     annotation (Placement(transformation(extent={{10,10},{-10,-10}},
@@ -139,8 +92,8 @@ equation
   connect(HOMBuiEnv.heatingToRooms1, convRadToCombPort.portConvRadComb)
     annotation (Line(points={{-21.4,-1},{-32,-1},{-32,-12},{-40,-12}}, color={191,
           0,0}));
-  connect(HOMBuiEnv.thermOutside, tempOutside.port) annotation (Line(points={{-21.4,
-          30.5},{-20,30.5},{-20,30},{-50,30},{-50,40}}, color={191,0,0}));
+  connect(HOMBuiEnv.thermOutside, tempOutside.port) annotation (Line(points={{-22,
+          33.3},{-20,33.3},{-20,30},{-50,30},{-50,40}}, color={191,0,0}));
   connect(HOMBuiEnv.groundTemp, preTSoi.port)
     annotation (Line(points={{8,-36},{8,-90},{0,-90}}, color={191,0,0}));
   connect(HOMBuiEnv.portVent_in, portVent_in) annotation (Line(points={{38,-23.4},
