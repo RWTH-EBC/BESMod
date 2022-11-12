@@ -13,7 +13,8 @@ partial record TransferDataBaseDefinition "Data record for hydraulic heat transf
     annotation (Dialog(group="Building"));
 
   // Volume
-  parameter BESMod.Systems.Hydraulical.Transfer.Types.HeatTransferSystemType traType "Heat transfer system type"  annotation(Dialog(group=
+  parameter BESMod.Systems.Hydraulical.Transfer.Types.HeatTransferSystemType traType
+    "Heat transfer system type"                                                                                   annotation(Dialog(group=
           "Volume"));
   parameter Modelica.Units.SI.Volume vol=
       BESMod.Systems.Hydraulical.Transfer.Functions.GetAverageVolumeOfWater(sum(
@@ -22,9 +23,10 @@ partial record TransferDataBaseDefinition "Data record for hydraulic heat transf
     annotation (Dialog(group="Volume"));
   // Pressure
   parameter BESMod.Systems.Hydraulical.Transfer.Types.PressureDropPerLength pressureDropPerLen
-      "Pressure drop per m that is allowed maximal within whole heat distribution system (typical value: 100 Pa/m). TODO: Calculate based on Figure 2.6.3-12 in Taschenbuch für HEIZUNG + KLIMATECHNIK 2019"
+    "Pressure drop per m that is allowed maximal within whole heat distribution system (typical value: 100 Pa/m). TODO: Calculate based on Figure 2.6.3-12 in Taschenbuch für HEIZUNG + KLIMATECHNIK 2019"
       annotation(Dialog(group="Pressure"));
-  parameter BESMod.Systems.Hydraulical.Transfer.Types.HydraulicResistanceType typeOfHydRes "Type of the hydraulic restistances to be considered for parameter zf" annotation(Dialog(group="Pressure"), choicesAllMatching=true, Dialog(descriptionLabel=true));
+  parameter BESMod.Systems.Hydraulical.Transfer.Types.HydraulicResistanceType typeOfHydRes
+    "Type of the hydraulic restistances to be considered for parameter zf"                                                                                        annotation(Dialog(group="Pressure"), choicesAllMatching=true, Dialog(descriptionLabel=true));
   parameter Real zf(min=1.0, max=10.0, unit="1") = BESMod.Systems.Hydraulical.Transfer.Functions.GetSurchargeFactorForHydraulicResistances(typeOfHydRes)
       "Factor for additional pressure resistances in piping network such as bows. Acc. to [Babusch, 2009]"
       annotation(Dialog(group="Pressure"));

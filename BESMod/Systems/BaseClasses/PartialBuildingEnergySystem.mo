@@ -25,7 +25,7 @@ partial model PartialBuildingEnergySystem "Partial BES"
     RecordsCollection.SystemParametersBaseDataDefinition(QDHW_flow_nomial=
         userProfiles.mDHW_flow_nominal*(systemParameters.TSetDHW -
         systemParameters.TDHWWaterCold)*4184)
-                     "Parameters relevant for the whole energy system"
+    "Parameters relevant for the whole energy system"
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-280,
             -24},{-228,40}})));
   replaceable parameter RecordsCollection.ParameterStudy.ParameterStudyBaseDefinition

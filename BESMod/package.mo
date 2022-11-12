@@ -10,7 +10,8 @@ package BESMod
     Modelica(version="4.0.0"),
     IBPSA(version="3.0.0"),
     AixLib(version="1.2.0"),
-    ModelicaServices(version="4.0.0")),
+    ModelicaServices(version="4.0.0"),
+    Buildings(version="9.0.0")),
   conversion(from(
     version="0.1.1",
        script="modelica://BESMod/Resources/Scripts/ConvertBESMod_from_0.1.1_to_0.2.0.mos")),

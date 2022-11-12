@@ -55,7 +55,8 @@ partial record HeatPumpBaseDataDefinition
   parameter Modelica.Units.SI.Frequency refIneFre_constant=0
     "Cut off frequency for inertia of refrigerant cycle";
 
-  replaceable parameter BESMod.Systems.RecordsCollection.TemperatureSensors.TemperatureSensorBaseDefinition TempSensorData "Temperature Sensor Data" annotation(choicesAllMatching=true);
+  replaceable parameter BESMod.Systems.RecordsCollection.TemperatureSensors.TemperatureSensorBaseDefinition TempSensorData
+    "Temperature Sensor Data"                                                                                                                        annotation(choicesAllMatching=true);
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
