@@ -77,11 +77,11 @@ equation
   term = cos(from_deg(InDeclinationSun))*sin(from_deg(Tilt))*sin(from_deg(
     Azimut))*sin(from_deg(InHourAngleSun));
   cos_theta_help =sin(from_deg(InDeclinationSun))*sin(reaPasThrLat.y)*
-    cos(from_deg(Tilt)) - sin(from_deg(InDeclinationSun))*cos(from_deg(
-    reaPasThrLat.y))*sin(from_deg(Tilt))*cos(from_deg(Azimut)) + cos(from_deg(
+    cos(from_deg(Tilt)) - sin(from_deg(InDeclinationSun))*cos(reaPasThrLat.y)*
+    sin(from_deg(Tilt))*cos(from_deg(Azimut)) + cos(from_deg(
     InDeclinationSun))*cos(reaPasThrLat.y)*cos(from_deg(Tilt))*cos(
-    from_deg(InHourAngleSun)) + cos(from_deg(InDeclinationSun))*sin(from_deg(
-    reaPasThrLat.y))*sin(from_deg(Tilt))*cos(from_deg(Azimut))*cos(from_deg(
+    from_deg(InHourAngleSun)) + cos(from_deg(InDeclinationSun))*sin(
+    reaPasThrLat.y)*sin(from_deg(Tilt))*cos(from_deg(Azimut))*cos(from_deg(
     InHourAngleSun)) + term;
   cos_theta = (cos_theta_help + abs(cos_theta_help))/2;
 
