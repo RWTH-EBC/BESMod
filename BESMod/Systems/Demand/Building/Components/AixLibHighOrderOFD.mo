@@ -1,50 +1,9 @@
 within BESMod.Systems.Demand.Building.Components;
 model AixLibHighOrderOFD "High order OFD"
-  extends Building.BaseClasses.PartialAixLibHighOrder(
-  final nZones=10, TZoneMea(each final unit="K", each final displayUnit="degC"));
+  extends BaseClasses.PartialAixLibHighOrder(
+    final nZones=10);
 
   parameter Integer nZonesNonHeated = 1 "Non heated rooms of the building";
-
-  // Dynamics
-  parameter Modelica.Fluid.Types.Dynamics energyDynamicsWalls=Modelica.Fluid.Types.Dynamics.DynamicFreeInitial
-    "Type of energy balance for wall capacities: dynamic (3 initialization options) or steady state" annotation (Dialog(tab="Dynamics"));
-  parameter Modelica.Fluid.Types.Dynamics energyDynamics=Modelica.Fluid.Types.Dynamics.DynamicFreeInitial
-    "Type of energy balance: dynamic (3 initialization options) or steady state" annotation (Dialog(tab="Dynamics"));
-
-  // Initialization
-  parameter Modelica.Units.SI.Temperature T0_air=273.15 + 22
-                                                           "Initial temperature of air" annotation (Dialog(tab="Initialization"));
-  parameter Modelica.Units.SI.Temperature TWalls_start=273.15 + 16
-                                                                  "Initial temperature of all walls" annotation (Dialog(tab="Initialization"));
-
-  //Outer walls
-  replaceable parameter AixLib.DataBase.Walls.Collections.OFD.EnEV2009Light
-    wallTypes constrainedby
-    AixLib.DataBase.Walls.Collections.BaseDataMultiWalls
-    "Types of walls (contains multiple records)"
-     annotation (Dialog(tab="Outer walls", group="Wall"), choicesAllMatching = true);
-  replaceable model WindowModel =
-      AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.PartialWindow
-      (windowarea=2)
-    constrainedby
-    AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.PartialWindow
-                                                                                     annotation (Dialog(tab="Outer walls", group="Windows"), choicesAllMatching = true);
-  replaceable parameter AixLib.DataBase.WindowsDoors.Simple.OWBaseDataDefinition_Simple Type_Win "Window parametrization" annotation (Dialog(tab="Outer walls", group="Windows"), choicesAllMatching = true);
-  replaceable model CorrSolarGainWin =
-      AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.CorrectionSolarGain.PartialCorG
-    constrainedby
-    AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.CorrectionSolarGain.PartialCorG
-                                                                                                                      "Correction model for solar irradiance as transmitted radiation" annotation (choicesAllMatching=true, Dialog(tab="Outer walls", group="Windows", enable = withWindow and outside));
-  parameter Boolean use_sunblind=false
-    "Will sunblind become active automatically?" annotation (Dialog(tab="Outer walls", group="Sunblind"));
-  parameter Modelica.Units.SI.CoefficientOfHeatTransfer UValOutDoors=2.5
-    "U-value (thermal transmittance) of doors in outer walls"  annotation (Dialog(tab="Outer walls", group="Doors"));
-
-  //Infiltration
-  parameter Boolean use_infiltEN12831=true
-    "Use model to exchange room air with outdoor air acc. to standard" annotation (Dialog(tab="Infiltration acc. to EN 12831", group="X"));
-  parameter Real n50=4 "Air exchange rate at 50 Pa pressure difference" annotation (Dialog(tab="Infiltration acc. to EN 12831", group="X"));
-  parameter Real e=0.03 "Coefficient of windshield" annotation (Dialog(tab="Infiltration acc. to EN 12831", group="X"));
 
   // Rooms:
   //Groundfloor -  1:LivingRoom_GF, 2:Hobby_GF, 3: Corridor_GF, 4: WC_Storage_GF, 5: Kitchen_GF,
@@ -123,19 +82,25 @@ model AixLibHighOrderOFD "High order OFD"
     annotation (Placement(transformation(extent={{-44,-40},{50,72}})));
 
   AixLib.Utilities.Interfaces.Adaptors.ConvRadToCombPort convRadToCombPort
+    "For attic"
     annotation (Placement(transformation(extent={{-46,-48},{-26,-64}})));
-  Modelica.Thermal.HeatTransfer.Sources.FixedHeatFlow InternalGains(Q_flow=0)
-    annotation (Placement(transformation(
-        extent={{7,-7},{-7,7}},
+  Modelica.Thermal.HeatTransfer.Sources.FixedHeatFlow intGaiAttCon(
+    final Q_flow=0,
+    final T_ref=293.15,
+    final alpha=0) "No gains in attic" annotation (Placement(transformation(
+        extent={{11,-11},{-11,11}},
         rotation=0,
-        origin={-9,-51})));
-  Modelica.Thermal.HeatTransfer.Sources.FixedHeatFlow InternalGains1(Q_flow=0)
-    annotation (Placement(transformation(
-        extent={{7,-7},{-7,7}},
+        origin={19,-57})));
+  Modelica.Thermal.HeatTransfer.Sources.FixedHeatFlow intGaiAttRad(
+    final Q_flow=0,
+    final T_ref=293.15,
+    final alpha=0) "No gains in attic" annotation (Placement(transformation(
+        extent={{10,-10},{-10,10}},
         rotation=0,
-        origin={-9,-61})));
-  Modelica.Blocks.Sources.Constant const1
-    annotation (Placement(transformation(extent={{-86,14},{-74,26}})));
+        origin={20,-78})));
+  Modelica.Blocks.Sources.Constant constVenRatAtt(final k=1)
+    "Constant ventilation rate of attic"
+    annotation (Placement(transformation(extent={{-80,8},{-60,28}})));
 equation
     // Romm Temperatures
 
@@ -160,7 +125,8 @@ equation
   connect(wholeHouseBuildingEnvelope.WindSpeedPort, WindSpeedPort) annotation (
       Line(points={{-48.7,55.2},{-72,55.2},{-72,62},{-106,62}}, color={0,0,127}));
   connect(wholeHouseBuildingEnvelope.thermOutside, thermOutside) annotation (
-      Line(points={{-44,70.88},{-60,70.88},{-60,90},{-98,90}}, color={191,0,0}));
+      Line(points={{-44,70.88},{-60,70.88},{-60,100},{-100,100}},
+                                                               color={191,0,0}));
 
   connect(wholeHouseBuildingEnvelope.West, West) annotation (Line(points={{52.82,
           -5.28},{76,-5.28},{76,-38},{108,-38}}, color={255,128,0}));
@@ -197,12 +163,14 @@ equation
   connect(convRadToCombPort.portConvRadComb, wholeHouseBuildingEnvelope.heatingToRooms[11]) annotation (Line(points={{-46,-56},
           {-72,-56},{-72,2.86545},{-44,2.86545}},
         color={191,0,0}));
-  connect(InternalGains1.port, convRadToCombPort.portRad) annotation (Line(points={{-16,-61},{-26,-61}}, color={191,0,0}));
-  connect(InternalGains.port, convRadToCombPort.portConv) annotation (Line(points={{-16,-51},{-26,-51}}, color={191,0,0}));
+  connect(intGaiAttRad.port, convRadToCombPort.portRad) annotation (Line(points=
+         {{10,-78},{-20,-78},{-20,-61},{-26,-61}}, color={191,0,0}));
+  connect(intGaiAttCon.port, convRadToCombPort.portConv) annotation (Line(
+        points={{8,-57},{-20,-57},{-20,-51},{-26,-51}}, color={191,0,0}));
 
-  connect(const1.y, wholeHouseBuildingEnvelope.AirExchangePort[11]) annotation (
-     Line(points={{-73.4,20},{-68,20},{-68,46.5455},{-48.7,46.5455}}, color={0,0,
-          127}));
+  connect(constVenRatAtt.y, wholeHouseBuildingEnvelope.AirExchangePort[11])
+    annotation (Line(points={{-59,18},{-56,18},{-56,46.5455},{-48.7,46.5455}},
+        color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end AixLibHighOrderOFD;

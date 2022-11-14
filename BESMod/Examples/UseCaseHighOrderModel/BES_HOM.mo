@@ -4,8 +4,6 @@ model BES_HOM
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
     redeclare BESMod.Systems.Demand.Building.AixLibHighOrder building(
       useConstVentRate=false,
-      Latitude=Modelica.Units.Conversions.to_deg(weaDat.lat),
-      Longitude=Modelica.Units.Conversions.to_deg(weaDat.lon),
       TimeCorrection=0,
       DiffWeatherDataTime=Modelica.Units.Conversions.to_hour(weaDat.timZon),
       redeclare AixLib.DataBase.Walls.Collections.OFD.EnEV2009Heavy wallTypes,
