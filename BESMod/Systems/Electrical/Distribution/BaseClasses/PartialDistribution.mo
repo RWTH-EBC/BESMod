@@ -17,42 +17,53 @@ partial model PartialDistribution
   Interfaces.ExternalElectricalPin externalElectricalPin
     annotation (Placement(transformation(extent={{40,-108},{60,-88}})));
   Utilities.KPIs.EnergyKPICalculator eneKPILoa(final use_inpCon=true)
-    "Load on grid" annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=180,
-        origin={-30,-60})));
-  Utilities.Electrical.ElecConToReal elecConToReal annotation (Placement(
+                                        "Load on grid" annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
-        rotation=180,
-        origin={10,-70})));
-  Utilities.KPIs.EnergyKPICalculator eneKPIGen "Load on grid" annotation (
-      Placement(transformation(
+        rotation=0,
+        origin={-30,-50})));
+  Utilities.KPIs.EnergyKPICalculator eneKPIGen(final use_inpCon=true)
+                                        "Load on grid" annotation (Placement(
+        transformation(
         extent={{-10,-10},{10,10}},
-        rotation=180,
-        origin={-30,-80})));
+        rotation=0,
+        origin={-30,-70})));
+  Modelica.Blocks.Sources.RealExpression reaExpLoa(final y=
+        externalElectricalPin.PElecLoa) "Load on grid"
+    annotation (Placement(transformation(extent={{-80,-60},{-60,-40}})));
+  Modelica.Blocks.Sources.RealExpression reaExpGen(final y=
+        externalElectricalPin.PElecGen) "Generation to grid"
+    annotation (Placement(transformation(extent={{-80,-80},{-60,-60}})));
 equation
-  connect(elecConToReal.internalElectricalPin, externalElectricalPin)
-    annotation (Line(
-      points={{19.8,-70.2},{50,-70.2},{50,-98}},
-      color={0,0,0},
-      thickness=1));
-  connect(eneKPILoa.u, elecConToReal.PElecGen) annotation (Line(points={{-18.2,
-          -60},{-10,-60},{-10,-66},{-2,-66}}, color={0,0,127}));
-  connect(elecConToReal.PElecLoa, eneKPIGen.u) annotation (Line(points={{-2,-74},
-          {-4,-74},{-4,-72},{-8,-72},{-8,-80},{-18.2,-80}}, color={0,0,127}));
-  connect(eneKPIGen.KPI, OutputDistr.PEleGen) annotation (Line(points={{-42.2,
-          -80},{-64,-80},{-64,-98},{0,-98}}, color={135,135,135}), Text(
+  connect(reaExpLoa.y, sigBusDistr.PEleLoa) annotation (Line(points={{-59,-50},
+          {-12,-50},{-12,74},{1,74},{1,95}},          color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-3,6},{-3,6}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(reaExpGen.y, sigBusDistr.PEleGen) annotation (Line(points={{-59,-70},
+          {-10,-70},{-10,74},{1,74},{1,95}},          color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(eneKPILoa.KPI, OutputDistr.PEleLoa) annotation (Line(points={{-42.2,
-          -60},{-64,-60},{-64,-98},{0,-98}}, color={135,135,135}), Text(
+  connect(eneKPIGen.KPI, OutputDistr.PEleGen) annotation (Line(points={{-17.8,-70},
+          {-10,-70},{-10,-98},{0,-98}}, color={135,135,135}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
+  connect(eneKPILoa.KPI, OutputDistr.PEleLoa) annotation (Line(points={{-17.8,-50},
+          {-16,-50},{-16,-62},{0,-62},{0,-98}},
+                                        color={135,135,135}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(reaExpLoa.y, eneKPILoa.u)
+    annotation (Line(points={{-59,-50},{-41.8,-50}}, color={0,0,127}));
+  connect(reaExpGen.y, eneKPIGen.u)
+    annotation (Line(points={{-59,-70},{-41.8,-70}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Rectangle(
           extent={{-100,100},{100,-100}},

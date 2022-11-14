@@ -23,15 +23,18 @@ partial model PartialElectricalSystem "Partial model for electrical system"
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-40,
             -102},{52,36}})));
 
-  replaceable Transfer.BaseClasses.PartialTransfer transfer if use_elecHeating constrainedby
-    Transfer.BaseClasses.PartialTransfer(final nParallelDem=
-        electricalSystemParameters.nZones,
-    final use_openModelica=use_openModelica)
+  replaceable Transfer.BaseClasses.PartialTransfer transfer if use_elecHeating
+    constrainedby Transfer.BaseClasses.PartialTransfer(
+    final nParallelDem=electricalSystemParameters.nZones,
+    final use_openModelica=use_openModelica,
+    final Q_flow_nominal=electricalSystemParameters.Q_flow_nominal)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{68,-102},
             {144,36}})));
   replaceable Control.BaseClasses.PartialControl control constrainedby
     BESMod.Systems.Electrical.Control.BaseClasses.PartialControl(
-    final use_openModelica=use_openModelica)
+    final nParallelDem=electricalSystemParameters.nZones,
+    final use_openModelica=use_openModelica,
+    final Q_flow_nominal=electricalSystemParameters.Q_flow_nominal)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-146,
             56},{142,106}})));
   AixLib.BoundaryConditions.WeatherData.Bus weaBus annotation (Placement(
