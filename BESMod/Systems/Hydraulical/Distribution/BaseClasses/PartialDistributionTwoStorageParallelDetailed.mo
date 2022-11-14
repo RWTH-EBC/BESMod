@@ -14,7 +14,9 @@ partial model PartialDistributionTwoStorageParallelDetailed
     final TSup_nominal=TDem_nominal .+ dTLoss_nominal .+ dTTra_nominal,
     final nParallelSup=1,
     final nParallelDem=1);
-
+  parameter Modelica.Units.SI.TemperatureDifference dTLoaHCBuf
+    "Temperature difference for loading of heating coil in buffer storage"
+      annotation(Dialog(group="Component data"));
   parameter Modelica.Units.SI.PressureDifference dpBufHCSto_nominal
     "Nominal pressure difference in buffer storage heating coil";
   final parameter Modelica.Units.SI.PressureDifference dpDHWHCSto_nominal=sum(
@@ -323,8 +325,7 @@ partial model PartialDistributionTwoStorageParallelDetailed
   Utilities.KPIs.EnergyKPICalculator eneKPICalBufHeaRod(use_inpCon=false, y=
         QHRStoBufPre_flow.Q_flow) if bufParameters.use_hr
     annotation (Placement(transformation(extent={{-100,-180},{-80,-160}})));
-  parameter Modelica.Units.SI.TemperatureDifference dTLoaHCBuf
-    "Temperature difference for loading of heating coil in buffer storage";
+
 equation
   connect(reaExpTStoDHWBot.y, sigBusDistr.TStoDHWBotMea) annotation (Line(
         points={{-19,95},{2.5,95},{2.5,101},{0,101}}, color={0,0,127}), Text(

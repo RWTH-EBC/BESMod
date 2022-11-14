@@ -16,7 +16,10 @@ model HeatPumpAndHeatingRod
       redeclare
         BESMod.Systems.RecordsCollection.Movers.DefaultMover
         pumpData,
-      redeclare package Medium_eva = IBPSA.Media.Air));
+      redeclare package Medium_eva = IBPSA.Media.Air,
+      redeclare
+        BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
+        temperatureSensorData));
    extends Modelica.Icons.Example;
 
   Modelica.Blocks.Sources.Constant     const1(k=0)
