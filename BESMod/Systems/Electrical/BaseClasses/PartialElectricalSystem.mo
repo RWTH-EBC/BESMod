@@ -9,22 +9,20 @@ partial model PartialElectricalSystem "Partial model for electrical system"
     electricalSystemParameters constrainedby
     RecordsCollection.ElectricalSystemBaseDataDefinition annotation (Placement(
         transformation(extent={{-180,-100},{-160,-80}})), choicesAllMatching=true);
-
-  replaceable Distribution.BaseClasses.PartialDistribution distribution
-    constrainedby Distribution.BaseClasses.PartialDistribution(nSubSys=
-        nLoadsExtSubSys + 2,
-    final use_openModelica=use_openModelica)
-    annotation (choicesAllMatching=true, Placement(transformation(extent={{-40,
-            -102},{52,36}})));
   replaceable Generation.BaseClasses.PartialGeneration generation
     constrainedby
     BESMod.Systems.Electrical.Generation.BaseClasses.PartialGeneration(
-    final use_openModelica=use_openModelica)
+      ARoo=electricalSystemParameters.ARoo,
+      final use_openModelica=use_openModelica)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-148,
             -102},{-62,36}})));
-  AixLib.BoundaryConditions.WeatherData.Bus weaBus annotation (Placement(
-        transformation(extent={{-200,24},{-160,66}}), iconTransformation(extent=
-           {{-200,24},{-160,66}})));
+  replaceable Distribution.BaseClasses.PartialDistribution distribution
+    constrainedby Distribution.BaseClasses.PartialDistribution(
+      final nSubSys=nLoadsExtSubSys + 2,
+    final use_openModelica=use_openModelica)
+    annotation (choicesAllMatching=true, Placement(transformation(extent={{-40,
+            -102},{52,36}})));
+
   replaceable Transfer.BaseClasses.PartialTransfer transfer if use_elecHeating constrainedby
     Transfer.BaseClasses.PartialTransfer(final nParallelDem=
         electricalSystemParameters.nZones,
@@ -36,6 +34,9 @@ partial model PartialElectricalSystem "Partial model for electrical system"
     final use_openModelica=use_openModelica)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-146,
             56},{142,106}})));
+  AixLib.BoundaryConditions.WeatherData.Bus weaBus annotation (Placement(
+        transformation(extent={{-200,24},{-160,66}}), iconTransformation(extent=
+           {{-200,24},{-160,66}})));
   Interfaces.InternalElectricalPinIn internalElectricalPin[nLoadsExtSubSys]
     annotation (Placement(transformation(extent={{-190,78},{-170,98}})));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPortCon[

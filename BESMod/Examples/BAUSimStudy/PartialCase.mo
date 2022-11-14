@@ -9,11 +9,13 @@ partial model PartialCase
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
       redeclare Systems.Hydraulical.Generation.HeatPumpAndHeatingRod generation(
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
+
         redeclare package Medium_eva = AixLib.Media.Air,
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           heatPumpParameters(
           genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
+
           TBiv=TBiv,
           scalingFactor=hydraulic.generation.heatPumpParameters.QPri_flow_nominal
               /5000,
@@ -28,8 +30,12 @@ partial model PartialCase
         redeclare model PerDataMainHP =
             AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
             QCon_flow_nominal=hydraulic.generation.heatPumpParameters.QPri_flow_nominal,
+
             refrigerant="Propane",
-            flowsheet="VIPhaseSeparatorFlowsheet")),
+            flowsheet="VIPhaseSeparatorFlowsheet"),
+        redeclare
+          BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
+          temperatureSensorData),
       redeclare Systems.Hydraulical.Control.ConstHys_PI_ConOut_HPSController
         control(
         redeclare

@@ -16,6 +16,43 @@ partial model PartialDistribution
     annotation (Placement(transformation(extent={{40,90},{60,110}})));
   Interfaces.ExternalElectricalPin externalElectricalPin
     annotation (Placement(transformation(extent={{40,-108},{60,-88}})));
+  Utilities.KPIs.EnergyKPICalculator eneKPILoa(final use_inpCon=true)
+    "Load on grid" annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={-30,-60})));
+  Utilities.Electrical.ElecConToReal elecConToReal annotation (Placement(
+        transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={10,-70})));
+  Utilities.KPIs.EnergyKPICalculator eneKPIGen "Load on grid" annotation (
+      Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={-30,-80})));
+equation
+  connect(elecConToReal.internalElectricalPin, externalElectricalPin)
+    annotation (Line(
+      points={{19.8,-70.2},{50,-70.2},{50,-98}},
+      color={0,0,0},
+      thickness=1));
+  connect(eneKPILoa.u, elecConToReal.PElecGen) annotation (Line(points={{-18.2,
+          -60},{-10,-60},{-10,-66},{-2,-66}}, color={0,0,127}));
+  connect(elecConToReal.PElecLoa, eneKPIGen.u) annotation (Line(points={{-2,-74},
+          {-4,-74},{-4,-72},{-8,-72},{-8,-80},{-18.2,-80}}, color={0,0,127}));
+  connect(eneKPIGen.KPI, OutputDistr.PEleGen) annotation (Line(points={{-42.2,
+          -80},{-64,-80},{-64,-98},{0,-98}}, color={135,135,135}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(eneKPILoa.KPI, OutputDistr.PEleLoa) annotation (Line(points={{-42.2,
+          -60},{-64,-60},{-64,-98},{0,-98}}, color={135,135,135}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Rectangle(
           extent={{-100,100},{100,-100}},
@@ -68,6 +105,6 @@ partial model PartialDistribution
           lineThickness=1,
           fillColor={0,0,0},
           fillPattern=FillPattern.Solid,
-          lineColor={0,0,0})}),                                  Diagram(graphics,
+          lineColor={0,0,0})}),                                  Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end PartialDistribution;

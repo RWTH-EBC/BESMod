@@ -28,7 +28,6 @@ model BES_HOM
           TBiv=parameterStudy.TBiv,
           scalingFactor=hydraulic.generation.heatPumpParameters.QPri_flow_nominal
               /parameterStudy.QHP_flow_biv,
-          useAirSource=true,
           dpCon_nominal=0,
           dpEva_nominal=0,
           use_refIne=false,
@@ -40,7 +39,10 @@ model BES_HOM
             AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
             QCon_flow_nominal=hydraulic.generation.heatPumpParameters.QPri_flow_nominal,
             refrigerant="Propane",
-            flowsheet="VIPhaseSeparatorFlowsheet")),
+            flowsheet="VIPhaseSeparatorFlowsheet"),
+        redeclare
+          BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
+          temperatureSensorData),
       redeclare BESMod.Systems.Hydraulical.Control.ConstHys_OnOff_HPSControll
         control(
         redeclare
