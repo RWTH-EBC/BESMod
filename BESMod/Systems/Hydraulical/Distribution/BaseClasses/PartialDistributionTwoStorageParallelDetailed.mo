@@ -14,7 +14,9 @@ partial model PartialDistributionTwoStorageParallelDetailed
     final TSup_nominal=TDem_nominal .+ dTLoss_nominal .+ dTTra_nominal,
     final nParallelSup=1,
     final nParallelDem=1);
-
+  parameter Modelica.Units.SI.TemperatureDifference dTLoaHCBuf
+    "Temperature difference for loading of heating coil in buffer storage"
+      annotation(Dialog(group="Component data"));
   parameter Modelica.Units.SI.PressureDifference dpBufHCSto_nominal
     "Nominal pressure difference in buffer storage heating coil";
   final parameter Modelica.Units.SI.PressureDifference dpDHWHCSto_nominal=sum(
@@ -22,13 +24,16 @@ partial model PartialDistributionTwoStorageParallelDetailed
     "Nominal pressure difference in DHW storage heating coil";
   parameter Modelica.Units.SI.HeatFlowRate QHRAftBuf_flow_nominal
     "Nominal heat flow rate of heating rod after DHW storage"
-    annotation (Dialog(enable=use_heatingRodAfterBuffer));
-  parameter Boolean use_heatingRodAfterBuffer "=false to disable the heating rod after the buffer storage";
+    annotation (Dialog(group="Component data", enable=use_heatingRodAfterBuffer));
+  parameter Boolean use_heatingRodAfterBuffer
+    "=false to disable the heating rod after the buffer storage"
+    annotation(Dialog(group="Component choices"));
 
   replaceable parameter
     BESMod.Systems.RecordsCollection.TemperatureSensors.TemperatureSensorBaseDefinition
     temperatureSensorData
-    annotation (choicesAllMatching=true, Placement(transformation(extent={{42,-12},
+    annotation (Dialog(group="Component data"), choicesAllMatching=true,
+    Placement(transformation(extent={{42,-12},
             {58,4}})));
   replaceable parameter
     BESMod.Systems.RecordsCollection.Valves.ThreeWayValve
@@ -37,30 +42,31 @@ partial model PartialDistributionTwoStorageParallelDetailed
     final dp_nominal={dpBufHCSto_nominal, dpDHWHCSto_nominal},
     final m_flow_nominal=mSup_flow_nominal[1],
     final fraK=1,
-    use_inputFilter=false) annotation (choicesAllMatching=
-       true, Placement(transformation(extent={{-84,84},{-64,104}})));
+    use_inputFilter=false) annotation (Dialog(group="Component data"),
+    choicesAllMatching=true, Placement(transformation(extent={{-84,84},{-64,104}})));
 
  replaceable parameter
     RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition bufParameters
     constrainedby
     RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition(
-        final Q_flow_nominal=Q_flow_nominal[1]*f_design[1],
-        final rho=rho,
-        final c_p=cp,
-        final TAmb=TAmb,
-        T_m=TSup_nominal[1],
-        final QHC1_flow_nominal=Q_flow_nominal[1]*f_design[1],
-        final mHC1_flow_nominal=mSup_flow_nominal[1],
-        redeclare final AixLib.DataBase.Pipes.Copper.Copper_12x1 pipeHC1,
-        final use_HC2=storageBuf.useHeatingCoil2,
-        final use_HC1=storageBuf.useHeatingCoil1,
-        final dTLoadingHC2=9999999,
-        final fHeiHC2=1,
-        final fDiaHC2=1,
-        final QHC2_flow_nominal=9999999,
-        final mHC2_flow_nominal=9999999,
-        redeclare final AixLib.DataBase.Pipes.Copper.Copper_10x0_6 pipeHC2)
-          annotation (
+    final Q_flow_nominal=Q_flow_nominal[1]*f_design[1],
+    final rho=rho,
+    final c_p=cp,
+    final dTLoadingHC1=dTLoaHCBuf,
+    final TAmb=TAmb,
+    T_m=TSup_nominal[1],
+    final QHC1_flow_nominal=Q_flow_nominal[1]*f_design[1],
+    final mHC1_flow_nominal=mSup_flow_nominal[1],
+    redeclare final AixLib.DataBase.Pipes.Copper.Copper_12x1 pipeHC1,
+    final use_HC2=storageBuf.useHeatingCoil2,
+    final use_HC1=storageBuf.useHeatingCoil1,
+    final dTLoadingHC2=9999999,
+    final fHeiHC2=1,
+    final fDiaHC2=1,
+    final QHC2_flow_nominal=9999999,
+    final mHC2_flow_nominal=9999999,
+    redeclare final AixLib.DataBase.Pipes.Copper.Copper_10x0_6 pipeHC2)
+          annotation (Dialog(group="Component data"),
       choicesAllMatching=true, Placement(transformation(extent={{18,26},{32,40}})));
 
   replaceable parameter
@@ -84,9 +90,17 @@ partial model PartialDistributionTwoStorageParallelDetailed
         final fDiaHC2=1,
         final QHC2_flow_nominal=9999999,
         final mHC2_flow_nominal=9999999,
-        redeclare final AixLib.DataBase.Pipes.Copper.Copper_10x0_6 pipeHC2) annotation (
+        redeclare final AixLib.DataBase.Pipes.Copper.Copper_10x0_6 pipeHC2)
+        annotation(Dialog(group="Component data"),
       choicesAllMatching=true, Placement(transformation(extent={{20,-62},{34,-48}})));
-
+  replaceable parameter Generation.RecordsCollection.HeatingRodBaseDataDefinition heatingRodAftBufParameters
+    if use_heatingRodAfterBuffer
+    "Parameters for heating rod after buffer storage"
+    annotation (Dialog(group="Component data", enable=use_heatingRodAfterBuffer),
+    choicesAllMatching=true, Placement(transformation(
+        extent={{-6,-6},{6,6}},
+        rotation=0,
+        origin={66,40})));
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixTemBuf(final T=
         bufParameters.TAmb) "Constant ambient temperature of storage"
     annotation (Placement(transformation(
@@ -238,13 +252,7 @@ partial model PartialDistributionTwoStorageParallelDetailed
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={50,90})));
-  replaceable Generation.RecordsCollection.HeatingRodBaseDataDefinition heatingRodAftBufParameters
-    if use_heatingRodAfterBuffer
-    "Parameters for heating rod after buffer storage"
-    annotation (choicesAllMatching=true, Placement(transformation(
-        extent={{-6,-6},{6,6}},
-        rotation=0,
-        origin={66,40})));
+
   AixLib.Fluid.Interfaces.PassThroughMedium pasThrHeaRodBuf(redeclare package
       Medium = Medium, allowFlowReversal=allowFlowReversal)
     if not use_heatingRodAfterBuffer
@@ -317,6 +325,7 @@ partial model PartialDistributionTwoStorageParallelDetailed
   Utilities.KPIs.EnergyKPICalculator eneKPICalBufHeaRod(use_inpCon=false, y=
         QHRStoBufPre_flow.Q_flow) if bufParameters.use_hr
     annotation (Placement(transformation(extent={{-100,-180},{-80,-160}})));
+
 equation
   connect(reaExpTStoDHWBot.y, sigBusDistr.TStoDHWBotMea) annotation (Line(
         points={{-19,95},{2.5,95},{2.5,101},{0,101}}, color={0,0,127}), Text(
