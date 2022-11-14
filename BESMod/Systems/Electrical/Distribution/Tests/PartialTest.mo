@@ -1,5 +1,5 @@
 within BESMod.Systems.Electrical.Distribution.Tests;
-model PartialTest
+partial model PartialTest
 
   replaceable BaseClasses.PartialDistribution dis constrainedby
     BaseClasses.PartialDistribution(final nSubSys=2)
