@@ -1,11 +1,12 @@
-within BESMod.Systems.Demand.Building.BaseClasses;
+within BESMod.Systems.Demand.Building.Components.BaseClasses;
 partial model PartialAixLibHighOrder
     extends BESMod.Utilities.Icons.BuildingIcon;
+    extends BESMod.Systems.Demand.Building.Components.BaseClasses.HighOrderModelParameters;
 
-    parameter Integer nZones(min=1) "Number of zones /rooms";
-    parameter Boolean use_ventilation=true "=false to disable ventilation supply";
+  parameter Integer nZones(min=1) "Number of zones /rooms";
+  parameter Boolean use_ventilation=true "=false to disable ventilation supply";
 
-    replaceable package MediumZone = IBPSA.Media.Air constrainedby
+  replaceable package MediumZone = IBPSA.Media.Air constrainedby
     Modelica.Media.Interfaces.PartialMedium annotation (choices(
         choice(redeclare package Medium = IBPSA.Media.Air "Moist air"),
         choice(redeclare package Medium = IBPSA.Media.Water "Water"),
@@ -43,13 +44,11 @@ partial model PartialAixLibHighOrder
     annotation (Placement(transformation(extent={{118,54},{98,74}})));
   AixLib.Utilities.Interfaces.SolarRad_in SolarRadiationPort_RoofN
     annotation (Placement(transformation(extent={{118,80},{98,100}})));
-  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a thermOutside
-    annotation (Placement(transformation(extent={{-108,80},{-88,100}})));
   Modelica.Blocks.Interfaces.RealInput WindSpeedPort
     annotation (Placement(transformation(extent={{-126,42},{-86,82}})));
   Modelica.Blocks.Interfaces.RealInput AirExchangePort[nZones]
     annotation (Placement(transformation(extent={{-126,14},{-86,54}})));
-  Modelica.Blocks.Interfaces.RealOutput TZoneMea[nZones] annotation (Placement(
+  Modelica.Blocks.Interfaces.RealOutput TZoneMea[nZones](each final unit="K", each final displayUnit="degC") annotation (Placement(
         transformation(extent={{-86,-76},{-132,-30}}), iconTransformation(
           extent={{-84,-70},{-124,-30}})));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(

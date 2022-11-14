@@ -16,7 +16,8 @@ model CalcHeaDemHOM
     redeclare BESMod.Systems.UserProfiles.AixLibHighOrderProfiles heaDemSce(
         redeclare AixLib.DataBase.Profiles.Ventilation2perDayMean05perH venPro,
         redeclare AixLib.DataBase.Profiles.SetTemperaturesVentilation2perDay
-        TSetProfile),
+        TSetProfile,
+      gain=0),
     TN_heater=1,
     KR_heater=10000,
     h_heater=fill(100000, building.nZones),
@@ -28,8 +29,6 @@ model CalcHeaDemHOM
     redeclare AixLibHighOrder building(
       useConstVentRate=true,
       ventRate={0.5,0.5,0,0.5,0.5,0.5,0.5,0,0.5,0.5},
-      Latitude=Modelica.Units.Conversions.to_deg(weaDat.lat),
-      Longitude=Modelica.Units.Conversions.to_deg(weaDat.lon),
       DiffWeatherDataTime=Modelica.Units.Conversions.to_hour(weaDat.timZon),
       GroundReflection=0.2,
       T0_air=293.15,
@@ -41,7 +40,6 @@ model CalcHeaDemHOM
         Type_Win,
       redeclare model CorrSolarGainWin =
           AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.CorrectionSolarGain.CorGSimple,
-
       use_sunblind=false,
       UValOutDoors=if TIR == 1 then 1.8 else 2.9,
       use_infiltEN12831=true,
