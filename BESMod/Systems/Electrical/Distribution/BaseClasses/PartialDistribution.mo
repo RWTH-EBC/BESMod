@@ -1,14 +1,18 @@
 within BESMod.Systems.Electrical.Distribution.BaseClasses;
 partial model PartialDistribution
+  parameter Boolean use_openModelica=false
+    "=true to disable features which 
+    are not available in open modelica" annotation(Dialog(tab="Advanced"));
   parameter Integer nSubSys(min=2)
     "Number of subsystems with electrical load / generation";
-  Interfaces.DistributionOutputs OutputDistr annotation (Placement(
+  Interfaces.DistributionOutputs OutputDistr if not use_openModelica
+                                             annotation (Placement(
         transformation(extent={{-10,-108},{10,-88}}), iconTransformation(extent=
            {{-10,-108},{10,-88}})));
   Interfaces.DistributionControlBus sigBusDistr annotation (Placement(
         transformation(extent={{-16,78},{18,112}}), iconTransformation(extent={{
             -16,78},{18,112}})));
-  Interfaces.InternalElectricalPin internalElectricalPin[nSubSys]
+  Interfaces.InternalElectricalPinIn internalElectricalPin[nSubSys]
     annotation (Placement(transformation(extent={{40,90},{60,110}})));
   Interfaces.ExternalElectricalPin externalElectricalPin
     annotation (Placement(transformation(extent={{40,-108},{60,-88}})));

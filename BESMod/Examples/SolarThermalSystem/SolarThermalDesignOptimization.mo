@@ -9,5 +9,5 @@ record SolarThermalDesignOptimization
     "Conversion factor/Efficiency at Q = 0";
   parameter Real c1=2                   "Loss coefficient c1";
   parameter Real c2=0.005                 "Loss coefficient c2";
-annotation(Evaluate=false);
+  annotation(Evaluate=false);
 end SolarThermalDesignOptimization;

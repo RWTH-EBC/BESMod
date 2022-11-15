@@ -26,7 +26,7 @@ algorithm
   vol := vol_internal/1000;
   annotation (Documentation(info="<html>
 <p>Calculate the average volume of water in the heating system for a given type of heating system. Based on tables in [1, p. 3].</p>
-<p><img src=\"modelica://HVACAndBuidlingCoupling/Resources/Images/Library/DesignParameters/AverageVolumeOfWater.png\"/></p>
-<p>[1] MHG HEIZTECHNIK GMBH: Auslegung von Druckausgleichsgef&auml;&szlig;en: MHG-Information. 2006; <a href=\"https://mhg.de/fileadmin/redaktion_upload/geschuetzter_Download/MHG_Info_Ausleg-Druckausgl_dt_2006-07.pdf\">Link to pdf</a></p>
+<p><img src=\"modelica://BESMod/Resources/Images/DesignParameters/AverageVolumeOfWater.png\"/></p>
+<p>[1] MHG HEIZTECHNIK GMBH: Auslegung von Druckausgleichsgef&auml;&szlig;en: MHG-Information. 2006; <a href=\"https://mhg.de/index.php?eID=dumpFile&t=f&f=429&token=c46b1c9a43bfb2bf6342613fb2dc5cedad595d00\">Link to pdf</a></p>
 </html>"));
 end GetAverageVolumeOfWater;

@@ -18,6 +18,6 @@ record AutomaticConfigurationData
   parameter Modelica.Units.SI.PressureDifference dp_nominal
     "Nominal pressure difference";
   parameter Modelica.Units.SI.Density rho "Density of fluid in use";
-   parameter Real V_flowCurve[:]={0,0.99,1.1,1.01}   "Relative V_flow curve to be used";
-   parameter Real dpCurve[:]={1.01,1,0.99,0}      "Relative dp curve to be used";
+   parameter Real V_flowCurve[:]={0,0.99,1,1.01,1.02}   "Relative V_flow curve to be used";
+   parameter Real dpCurve[:]={1.02,1.01,1,0.99,0}     "Relative dp curve to be used";
 end AutomaticConfigurationData;

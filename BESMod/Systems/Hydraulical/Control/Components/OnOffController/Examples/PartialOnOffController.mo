@@ -1,6 +1,5 @@
 within BESMod.Systems.Hydraulical.Control.Components.OnOffController.Examples;
 partial model PartialOnOffController
-  extends Modelica.Icons.Example;
   parameter Real TSetDef=273.15 + 50 "Constant output value";
   parameter Real dTHys "Hysterisis value";
   replaceable BaseClasses.PartialOnOffController onOffController annotation (

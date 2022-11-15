@@ -1,6 +1,5 @@
-CountOnTime
 CountTimeDiscomfort
 ComfortCalculator
-InternalKPICalculator
-InputKPICalculator
+DeviceKPICalculator
+EnergyKPICalculator
 BaseClasses

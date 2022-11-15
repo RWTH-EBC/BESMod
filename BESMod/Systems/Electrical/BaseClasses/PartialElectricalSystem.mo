@@ -1,5 +1,8 @@
 within BESMod.Systems.Electrical.BaseClasses;
 partial model PartialElectricalSystem "Partial model for electrical system"
+  parameter Boolean use_openModelica=false
+    "=true to disable features which 
+    are not available in open modelica" annotation(Dialog(tab="Advanced"));
   parameter Integer nLoadsExtSubSys(min=1) = 4 "Number of external subsystems which result in electrical load / generation";
   parameter Boolean use_elecHeating=true "=false to disable electric heating";
   replaceable parameter RecordsCollection.ElectricalSystemBaseDataDefinition
@@ -9,12 +12,14 @@ partial model PartialElectricalSystem "Partial model for electrical system"
 
   replaceable Distribution.BaseClasses.PartialDistribution distribution
     constrainedby Distribution.BaseClasses.PartialDistribution(nSubSys=
-        nLoadsExtSubSys + 2)
+        nLoadsExtSubSys + 2,
+    final use_openModelica=use_openModelica)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-40,
             -102},{52,36}})));
   replaceable Generation.BaseClasses.PartialGeneration generation
     constrainedby
-    BESMod.Systems.Electrical.Generation.BaseClasses.PartialGeneration
+    BESMod.Systems.Electrical.Generation.BaseClasses.PartialGeneration(
+    final use_openModelica=use_openModelica)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-148,
             -102},{-62,36}})));
   AixLib.BoundaryConditions.WeatherData.Bus weaBus annotation (Placement(
@@ -22,14 +27,16 @@ partial model PartialElectricalSystem "Partial model for electrical system"
            {{-200,24},{-160,66}})));
   replaceable Transfer.BaseClasses.PartialTransfer transfer if use_elecHeating constrainedby
     Transfer.BaseClasses.PartialTransfer(final nParallelDem=
-        electricalSystemParameters.nZones)
+        electricalSystemParameters.nZones,
+    final use_openModelica=use_openModelica)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{68,-102},
             {144,36}})));
   replaceable Control.BaseClasses.PartialControl control constrainedby
-    BESMod.Systems.Electrical.Control.BaseClasses.PartialControl
+    BESMod.Systems.Electrical.Control.BaseClasses.PartialControl(
+    final use_openModelica=use_openModelica)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-146,
             56},{142,106}})));
-  Interfaces.InternalElectricalPin internalElectricalPin[nLoadsExtSubSys]
+  Interfaces.InternalElectricalPinIn internalElectricalPin[nLoadsExtSubSys]
     annotation (Placement(transformation(extent={{-190,78},{-170,98}})));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPortCon[
     electricalSystemParameters.nZones] if use_elecHeating
@@ -47,15 +54,17 @@ partial model PartialElectricalSystem "Partial model for electrical system"
       Placement(transformation(extent={{48,124},{92,156}}), iconTransformation(
           extent={{48,124},{92,156}})));
   BESMod.Systems.Interfaces.ElectricalOutputs outBusElect
+    if not use_openModelica
     annotation (Placement(transformation(extent={{-22,-160},{24,-120}}),
         iconTransformation(extent={{-22,-160},{24,-120}})));
   Interfaces.ExternalElectricalPin externalElectricalPin1
-    annotation (Placement(transformation(extent={{-182,-146},{-162,-126}})));
+    annotation (Placement(transformation(extent={{152,80},{172,100}})));
   Interfaces.SystemControlBus systemControlBus annotation (Placement(
         transformation(extent={{-26,122},{20,160}}), iconTransformation(extent={
             {-26,122},{20,160}})));
 protected
-    BESMod.Utilities.Electrical.ZeroLoad zeroTraLoad if not use_elecHeating "Internal helper";
+  BESMod.Utilities.Electrical.ZeroLoad zeroTraLoad if not use_elecHeating
+    "Internal helper";
 equation
   connect(generation.weaBus, weaBus) annotation (Line(
       points={{-148,19.44},{-162,19.44},{-162,42},{-180,42},{-180,45}},
@@ -96,7 +105,7 @@ equation
       index=1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(distribution.OutputDistr, outBusElect.distribution) annotation (Line(
+  connect(distribution.OutputDistr, outBusElect.dis) annotation (Line(
       points={{6,-100.62},{4,-100.62},{4,-140},{1,-140}},
       color={175,175,175},
       thickness=0.5), Text(
@@ -105,13 +114,14 @@ equation
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
 
-  connect(generation.outBusGen, outBusElect.generation) annotation (Line(
+  connect(generation.outBusGen, outBusElect.gen) annotation (Line(
       points={{-105,-101.31},{-105,-140},{1,-140}},
       color={175,175,175},
       thickness=0.5));
   connect(distribution.externalElectricalPin, externalElectricalPin1)
     annotation (Line(
-      points={{29,-100.62},{29,-123.31},{-172,-123.31},{-172,-136}},
+      points={{29,-100.62},{28,-100.62},{28,-110},{62,-110},{62,50},{152,50},{
+          152,78},{150,78},{150,90},{162,90}},
       color={0,0,0},
       thickness=1));
   connect(control.systemControlBus, systemControlBus) annotation (Line(
@@ -145,7 +155,7 @@ equation
       points={{104.2,56.25},{104.2,45.125},{106,45.125},{106,34.62}},
       color={215,215,215},
       thickness=0.5));
-    connect(transfer.transferOutputs, outBusElect.transfer) annotation (Line(
+    connect(transfer.transferOutputs, outBusElect.tra) annotation (Line(
         points={{106,-101.31},{106,-140},{1,-140}},
         color={175,175,175},
         thickness=0.5), Text(
@@ -161,6 +171,10 @@ equation
   else
     connect(zeroTraLoad.internalElectricalPin, distribution.internalElectricalPin[1]);
   end if;
+  connect(control.controlOutputs, outBusElect.ctrl) annotation (Line(
+      points={{141.4,81.25},{141.4,-24},{142,-24},{142,-130},{1,-130},{1,-140}},
+      color={175,175,175},
+      thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-180,-140},
             {160,140}}), graphics={
         Rectangle(
@@ -181,6 +195,6 @@ equation
           thickness=1),       Text(
           extent={{-98,-134},{106,-230}},
           lineColor={0,0,0},
-          textString="%name%")}),                                Diagram(graphics,
+          textString="%name%")}),                                Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-180,-140},{160,140}})));
 end PartialElectricalSystem;

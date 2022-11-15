@@ -3,11 +3,12 @@ partial model PartialHydraulicSystem
   "Complete hydraulic system model"
   extends BESMod.Systems.BaseClasses.PartialFluidSubsystem;
   parameter Boolean subsystemDisabled "To enable the icon if the subsystem is disabled" annotation (Dialog(tab="Graphics"));
-
+  parameter Boolean use_dhw=true "=false to disable DHW";
   replaceable package MediumDHW = IBPSA.Media.Water constrainedby
     Modelica.Media.Interfaces.PartialMedium
     annotation (__Dymola_choicesAllMatching=true);
-  Electrical.Interfaces.InternalElectricalPin internalElectricalPin
+  BESMod.Systems.Electrical.Interfaces.InternalElectricalPinOut
+    internalElectricalPin
     annotation (Placement(transformation(extent={{160,-150},{180,-130}})));
   replaceable parameter BESMod.Systems.Hydraulical.RecordsCollection.HydraulicSystemBaseDataDefinition
     hydraulicSystemParameters constrainedby
@@ -16,11 +17,11 @@ partial model PartialHydraulicSystem
 
   replaceable BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration generation(
       dTTra_nominal=fill(1, generation.nParallelDem), dp_nominal=fill(0,
-        generation.nParallelDem))                                                            constrainedby
+        generation.nParallelDem))       constrainedby
     BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration(
     final TDem_nominal=distribution.TSup_nominal,
-    final Q_flow_nominal={sum(distribution.Q_flow_nominal) *generation.f_design[
-        i]                                                                          for i in 1:generation.nParallelDem},
+    final Q_flow_nominal={sum(distribution.Q_flow_nominal)*generation.f_design[
+        i] + distribution.QDHWBefSto_flow_nominal for i in 1:generation.nParallelDem},
     redeclare package Medium = Medium,
     final dpDem_nominal=distribution.dpSup_nominal,
     final energyDynamics=energyDynamics,
@@ -36,24 +37,26 @@ partial model PartialHydraulicSystem
     final allowFlowReversal=allowFlowReversal,
     final show_T=show_T,
     final rho=rho,
-    final cp=cp) annotation (
+    final cp=cp,
+    final use_openModelica=use_openModelica) annotation (
       choicesAllMatching=true, Placement(transformation(extent={{-140,-104},{-24,
             28}})));
   replaceable BESMod.Systems.Hydraulical.Control.BaseClasses.PartialControl control
-          constrainedby
-    BESMod.Systems.Hydraulical.Control.BaseClasses.PartialControl(final generationParameters(
-        final nParallelDem=generation.nParallelDem,
-        final nParallelSup=generation.nParallelSup,
-        final Q_flow_nominal=generation.Q_flow_nominal,
-        final TOda_nominal=hydraulicSystemParameters.TOda_nominal,
-        final TDem_nominal=generation.TDem_nominal,
-        final TSup_nominal=generation.TSup_nominal,
-        final dTTra_nominal=generation.dTTra_nominal,
-        final m_flow_nominal=generation.m_flow_nominal,
-        final dp_nominal=generation.dp_nominal,
-        final dTLoss_nominal=generation.dTLoss_nominal,
-        final f_design=generation.f_design,
-        final QLoss_flow_nominal=generation.QLoss_flow_nominal),
+    constrainedby Control.BaseClasses.PartialControl(
+    final use_dhw=use_dhw,
+    final generationParameters(
+      final nParallelDem=generation.nParallelDem,
+      final nParallelSup=generation.nParallelSup,
+      final Q_flow_nominal=generation.Q_flow_nominal,
+      final TOda_nominal=hydraulicSystemParameters.TOda_nominal,
+      final TDem_nominal=generation.TDem_nominal,
+      final TSup_nominal=generation.TSup_nominal,
+      final dTTra_nominal=generation.dTTra_nominal,
+      final m_flow_nominal=generation.m_flow_nominal,
+      final dp_nominal=generation.dp_nominal,
+      final dTLoss_nominal=generation.dTLoss_nominal,
+      final f_design=generation.f_design,
+      final QLoss_flow_nominal=generation.QLoss_flow_nominal),
     final distributionParameters(
       final nParallelDem=distribution.nParallelDem,
       final nParallelSup=distribution.nParallelSup,
@@ -68,33 +71,39 @@ partial model PartialHydraulicSystem
       final TOda_nominal=hydraulicSystemParameters.TOda_nominal,
       final QLoss_flow_nominal=distribution.QLoss_flow_nominal,
       final mDHW_flow_nominal=distribution.mDHW_flow_nominal,
-      final QDHW_flow_nominal=distribution.QDHW_flow_nominal,
       final TDHW_nominal=distribution.TDHW_nominal,
       final VDHWDay=distribution.VDHWDay,
+      final QDHW_flow_nominal=distribution.QDHW_flow_nominal,
       final TDHWCold_nominal=distribution.TDHWCold_nominal,
-      final dTTraDHW_nominal=distribution.dTTraDHW_nominal),
-      final transferParameters(
-        final nParallelDem=transfer.nParallelDem,
-        final nParallelSup=transfer.nParallelSup,
-        final Q_flow_nominal=transfer.Q_flow_nominal,
-        final TOda_nominal=hydraulicSystemParameters.TOda_nominal,
-        final TDem_nominal=transfer.TDem_nominal,
-        final TSup_nominal=transfer.TSup_nominal,
-        final dTTra_nominal=transfer.dTTra_nominal,
-        final m_flow_nominal=transfer.m_flow_nominal,
-        final dp_nominal=transfer.dp_nominal,
-        final dTLoss_nominal=transfer.dTLoss_nominal,
-        final f_design=transfer.f_design,
-        final QLoss_flow_nominal=transfer.QLoss_flow_nominal))
+      final dTTraDHW_nominal=distribution.dTTraDHW_nominal,
+      final tCrit=hydraulicSystemParameters.tCrit,
+      final QCrit=hydraulicSystemParameters.QCrit),
+    final transferParameters(
+      final nParallelDem=transfer.nParallelDem,
+      final nParallelSup=transfer.nParallelSup,
+      final Q_flow_nominal=transfer.Q_flow_nominal,
+      final TOda_nominal=hydraulicSystemParameters.TOda_nominal,
+      final TDem_nominal=transfer.TDem_nominal,
+      final TSup_nominal=transfer.TSup_nominal,
+      final dTTra_nominal=transfer.dTTra_nominal,
+      final m_flow_nominal=transfer.m_flow_nominal,
+      final dp_nominal=transfer.dp_nominal,
+      final dTLoss_nominal=transfer.dTLoss_nominal,
+      final f_design=transfer.f_design,
+      final QLoss_flow_nominal=transfer.QLoss_flow_nominal),
+    final use_openModelica=use_openModelica)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-132,54},
             {154,122}})));
   replaceable BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution distribution(
     dTTra_nominal=fill(1, distribution.nParallelDem),
     m_flow_nominal=fill(0, distribution.nParallelDem),
     dTTraDHW_nominal=1,
+    designType=BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.NoStorage,
+    QDHWStoLoss_flow=0,
+    VStoDHW=0,
     dpSup_nominal=fill(0, distribution.nParallelDem),
-    dpDem_nominal=fill(0, distribution.nParallelDem))                                                                                                                                                                                                         constrainedby
-    BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution(
+    dpDem_nominal=fill(0, distribution.nParallelDem)) constrainedby
+    Distribution.BaseClasses.PartialDistribution(
     redeclare package Medium = Medium,
     redeclare final package MediumDHW = MediumDHW,
     redeclare final package MediumGen = Medium,
@@ -107,25 +116,29 @@ partial model PartialHydraulicSystem
     final C_nominal=C_nominal,
     final mSenFac=mSenFac,
     final TAmb=hydraulicSystemParameters.TAmb,
-    final Q_flow_nominal=transfer.Q_flow_nominal .*transfer.f_design,
+    final Q_flow_nominal=transfer.QSup_flow_nominal,
     final TDem_nominal=transfer.TSup_nominal,
     final allowFlowReversal=allowFlowReversal,
     final show_T=show_T,
     final rho=rho,
     final cp=cp,
     final TOda_nominal=hydraulicSystemParameters.TOda_nominal,
-    final mDem_flow_nominal=transfer.m_flow_nominal,
+    final use_dhw=use_dhw,
+    final mDem_flow_nominal=transfer.mSup_flow_nominal,
     final mSup_flow_nominal=generation.m_flow_nominal,
-    final mDHW_flow_nominal=hydraulicSystemParameters.dhwParas.mDHW_flow_nominal,
-    final QDHW_flow_nominal=hydraulicSystemParameters.dhwParas.QDHW_flow_nominal,
-    final VDHWDay=hydraulicSystemParameters.dhwParas.VDHWDay,
-    final TDHWCold_nominal=hydraulicSystemParameters.dhwParas.TDHWCold_nominal,
-    final TDHW_nominal=hydraulicSystemParameters.dhwParas.TDHW_nominal) annotation (choicesAllMatching=true,
+    final mDHW_flow_nominal=hydraulicSystemParameters.mDHW_flow_nominal,
+    final VDHWDay=hydraulicSystemParameters.VDHWDay,
+    final QDHW_flow_nominal=hydraulicSystemParameters.QDHW_flow_nominal,
+    final TDHWCold_nominal=hydraulicSystemParameters.TDHWCold_nominal,
+    final TDHW_nominal=hydraulicSystemParameters.TDHW_nominal,
+    tCrit=hydraulicSystemParameters.tCrit,
+    QCrit=hydraulicSystemParameters.QCrit,
+    final use_openModelica=use_openModelica) annotation (choicesAllMatching=true,
       Placement(transformation(extent={{-12,-104},{90,28}})));
 
-  replaceable BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialTransfer transfer(
-      dp_nominal=fill(0, transfer.nParallelDem))                                                                                                                                                                                                         constrainedby
-    BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialTransfer(
+  replaceable BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialTransfer
+    transfer(dp_nominal=fill(0, transfer.nParallelDem)) constrainedby
+    Transfer.BaseClasses.PartialTransfer(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
     final massDynamics=massDynamics,
@@ -133,6 +146,7 @@ partial model PartialHydraulicSystem
     final T_start=T_start,
     final X_start=X_start,
     final C_start=C_start,
+    TTra_nominal=hydraulicSystemParameters.TSup_nominal,
     final AZone=hydraulicSystemParameters.AZone,
     final hZone=hydraulicSystemParameters.hZone,
     final ABui=hydraulicSystemParameters.ABui,
@@ -145,17 +159,16 @@ partial model PartialHydraulicSystem
     final TAmb=hydraulicSystemParameters.TAmb,
     final Q_flow_nominal=hydraulicSystemParameters.Q_flow_nominal,
     final TDem_nominal=hydraulicSystemParameters.TZone_nominal,
-    final TSup_nominal=hydraulicSystemParameters.TSup_nominal,
     final allowFlowReversal=allowFlowReversal,
     final show_T=show_T,
     final rho=rho,
-    final cp=cp) annotation (
-      choicesAllMatching=true, Placement(transformation(extent={{112,-44},{180,
-            28}})));
+    final cp=cp,
+    final use_openModelica=use_openModelica) annotation (choicesAllMatching=true, Placement(transformation(
+          extent={{112,-44},{180,28}})));
   IBPSA.BoundaryConditions.WeatherData.Bus
       weaBus "Weather data bus" annotation (Placement(transformation(extent={{-200,56},
             {-158,100}}),        iconTransformation(extent={{-188,-10},{-168,10}})));
-  BESMod.Systems.Interfaces.HydraulicOutputs outBusHyd
+  BESMod.Systems.Interfaces.HydraulicOutputs outBusHyd if not use_openModelica
     annotation (Placement(transformation(extent={{-30,-166},{28,-118}})));
 
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPortCon[hydraulicSystemParameters.nZones]
@@ -185,7 +198,7 @@ partial model PartialHydraulicSystem
   Interfaces.SystemControlBus sigBusHyd annotation (Placement(transformation(
           extent={{12,120},{58,160}}), iconTransformation(extent={{12,120},{
             58,160}})));
-  Utilities.Electrical.MultiSumElec multiSumElec(nPorts=3) annotation (
+  BESMod.Utilities.Electrical.MultiSumElec multiSumElec(nPorts=3) annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -217,7 +230,7 @@ equation
   connect(transfer.heatPortRad, heatPortRad) annotation (Line(points={{180,
           -22.4},{200,-22.4},{200,0}},
                                 color={191,0,0}));
-  connect(distribution.outBusDist, outBusHyd.storage) annotation (Line(
+  connect(distribution.outBusDist, outBusHyd.dis) annotation (Line(
       points={{39,-104},{39,-142},{-1,-142}},
       color={135,135,135},
       thickness=0.5), Text(
@@ -225,7 +238,7 @@ equation
       index=1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(generation.outBusGen, outBusHyd.generation) annotation (Line(
+  connect(generation.outBusGen, outBusHyd.gen) annotation (Line(
       points={{-82,-104},{-82,-142},{-1,-142}},
       color={135,135,135},
       thickness=0.5), Text(
@@ -233,7 +246,7 @@ equation
       index=1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(transfer.outBusTra, outBusHyd.transfer) annotation (Line(
+  connect(transfer.outBusTra, outBusHyd.tra) annotation (Line(
       points={{146,-45.44},{146,-68},{214,-68},{214,-142},{-1,-142}},
       color={135,135,135},
       thickness=0.5), Text(
@@ -241,7 +254,7 @@ equation
       index=1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(control.outBusCtrl, outBusHyd.control) annotation (Line(
+  connect(control.outBusCtrl, outBusHyd.ctrl) annotation (Line(
       points={{154,88},{214,88},{214,-142},{-1,-142}},
       color={135,135,135},
       thickness=0.5), Text(
@@ -319,7 +332,7 @@ equation
       thickness=1));
   connect(generation.internalElectricalPin, multiSumElec.internalElectricalPinIn[
     3]) annotation (Line(
-      points={{-40.24,-102.68},{-40.24,-123.467},{122.2,-123.467}},
+      points={{-40.24,-104},{-40.24,-123.467},{122.2,-123.467}},
       color={0,0,0},
       thickness=1));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-180,-140},

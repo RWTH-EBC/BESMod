@@ -1,6 +1,6 @@
 within BESMod.Systems.Interfaces;
 expandable connector SystemOutputs "Bus with ouputs of the overall system"
-  extends BESMod.Utilities.Icons.KPIBus;
+  extends BESMod.Utilities.Icons.OutputsBus;
 
   annotation (
   defaultComponentName = "outBusGen",

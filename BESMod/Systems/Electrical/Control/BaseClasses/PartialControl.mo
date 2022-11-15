@@ -1,5 +1,8 @@
 within BESMod.Systems.Electrical.Control.BaseClasses;
 partial model PartialControl "Partial electrical control model"
+  parameter Boolean use_openModelica=false
+    "=true to disable features which 
+    are not available in open modelica" annotation(Dialog(tab="Advanced"));
   Interfaces.GenerationControlBus generationControlBus annotation (Placement(
         transformation(extent={{-182,-118},{-158,-78}}),
                                                        iconTransformation(
@@ -7,7 +10,8 @@ partial model PartialControl "Partial electrical control model"
   Interfaces.DistributionControlBus distributionControlBus annotation (
       Placement(transformation(extent={{0,-118},{22,-80}}),
         iconTransformation(extent={{0,-118},{22,-80}})));
-  Interfaces.ControlOutputs controlOutputs annotation (Placement(transformation(
+  Interfaces.ControlOutputs controlOutputs if not use_openModelica
+                                           annotation (Placement(transformation(
           extent={{228,-18},{250,20}}), iconTransformation(extent={{228,-18},{
             250,20}})));
   Interfaces.TransferControlBus transferControlBus annotation (Placement(

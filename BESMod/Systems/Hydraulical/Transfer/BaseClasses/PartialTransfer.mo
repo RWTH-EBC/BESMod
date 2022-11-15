@@ -1,11 +1,23 @@
 within BESMod.Systems.Hydraulical.Transfer.BaseClasses;
 partial model PartialTransfer "Partial transfer model for BES"
   extends BESMod.Utilities.Icons.TransferIcon;
-  extends
-    BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters(
-      dTTra_nominal={if TSup_nominal[i] > 64.9 + 273.15 then 15 elseif
-        TSup_nominal[i] > 44.9 + 273.15 then 10 else 7 for i in 1:nParallelDem},
+  extends BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters(
+    TSup_nominal=fill(max(TTra_nominal),nParallelSup),
+      dTTra_nominal={if TTra_nominal[i] > 64.9 + 273.15 then 15 elseif
+        TTra_nominal[i] > 44.9 + 273.15 then 10 else 7 for i in 1:nParallelDem},
       m_flow_nominal=Q_flow_nominal ./ (dTTra_nominal .* 4184));
+
+  parameter Modelica.Units.SI.HeatFlowRate QSup_flow_nominal[nParallelSup]=fill(sum(
+      Q_flow_nominal .* f_design), nParallelSup)
+    "Nominal heat flow rate at supply ports to transfer system" annotation (Dialog(group=
+          "Design - Bottom Up: Parameters are defined by the subsystem"));
+  parameter Modelica.Units.SI.Temperature TTra_nominal[nParallelDem] "Nominal supply temperature to transfer systems"
+   annotation(Dialog(group="Design - Top Down: Parameters are given by the parent system"));
+  parameter Modelica.Units.SI.MassFlowRate mSup_flow_nominal[nParallelSup]=fill(sum(
+      m_flow_nominal), nParallelSup)
+                                  "Nominal mass flow rate of the supply ports to the transfer system" annotation (Dialog(
+        group="Design - Bottom Up: Parameters are defined by the subsystem"));
+
   parameter Modelica.Units.SI.PressureDifference dpSup_nominal[nParallelSup]
     "Nominal pressure loss of resistances in the supply system of the distribution"
     annotation (Dialog(group=
@@ -40,11 +52,12 @@ partial model PartialTransfer "Partial transfer model for BES"
     annotation (Placement(transformation(extent={{90,30},{110,50}}),
         iconTransformation(extent={{90,30},{110,50}})));
   BESMod.Systems.Hydraulical.Interfaces.TransferOutputs
-    outBusTra
+    outBusTra if not use_openModelica
     annotation (Placement(transformation(extent={{-10,-114},{10,-94}})));
   Interfaces.TransferControlBus traControlBus
     annotation (Placement(transformation(extent={{-10,90},{10,110}})));
-  Electrical.Interfaces.InternalElectricalPin internalElectricalPin
+  BESMod.Systems.Electrical.Interfaces.InternalElectricalPinOut
+    internalElectricalPin
     annotation (Placement(transformation(extent={{62,-108},{82,-88}})));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,

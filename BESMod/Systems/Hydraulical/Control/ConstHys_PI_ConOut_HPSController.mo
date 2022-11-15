@@ -22,7 +22,7 @@ model ConstHys_PI_ConOut_HPSController
       addSet_dt_hr=bivalentControlData.addSet_dtHeaRodDHW));
 
 equation
-  connect(HP_nSet_Controller.T_Meas, sigBusGen.hp_bus.TConOutMea) annotation (
+  connect(HP_nSet_Controller.T_Meas, sigBusGen.THeaPumOut) annotation (
       Line(points={{97,61.2},{97,-64},{-152,-64},{-152,-99}},  color={0,0,127}),
       Text(
       string="%second",

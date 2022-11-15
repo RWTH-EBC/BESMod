@@ -5,12 +5,13 @@ model TEASERBuilding
       AZone={185.9548},
       hZone={483.48248/185.9548},                                                                       redeclare
         BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
-        oneZoneParam, use_verboseEnergyBalance=false,
+        oneZoneParam(heaLoadFacGrd=0, heaLoadFacOut=0),
+                      use_verboseEnergyBalance=false,
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial),
     redeclare BESMod.Systems.UserProfiles.TEASERProfiles
-      userProfiles(redeclare
-        BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile),
+      userProfiles,
     systemParameters(use_hydraulic=true, use_ventilation=true));
+  extends Modelica.Icons.Example;
 initial equation
   building.thermalZone[1].ROM.extWallRC.thermCapExt[1].T = 293.15;
   building.thermalZone[1].ROM.floorRC.thermCapExt[1].T = 293.15;

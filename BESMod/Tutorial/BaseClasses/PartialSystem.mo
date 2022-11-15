@@ -2,10 +2,12 @@ within BESMod.Tutorial.BaseClasses;
 partial model PartialSystem
   parameter Real yMax "A top-down parameter. Example: Maximum value for y";
 
-  replaceable BESMod.Tutorial.BaseClasses.PartialModule module constrainedby
-    BESMod.Tutorial.BaseClasses.PartialModule(final yMax=yMax)
+  replaceable BESMod.Tutorial.BaseClasses.PartialModule module
+    constrainedby BESMod.Tutorial.BaseClasses.PartialModule(
+      final yMax=yMax)
     "Correct overwrite of top-down parameters" annotation (Placement(
         transformation(extent={{-18,-18},{20,18}})), choicesAllMatching=true);
+
   replaceable BESMod.Tutorial.BaseClasses.PartialModule moduleWrong(final yMax=
         yMax) constrainedby BESMod.Tutorial.BaseClasses.PartialModule
     "Wrong overwrite of top-down parameters" annotation (Placement(

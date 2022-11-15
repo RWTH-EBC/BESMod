@@ -2,7 +2,7 @@ within BESMod.Systems.Electrical.Generation;
 model NoGeneration "Don't generation electricity"
   extends BaseClasses.PartialGeneration(final f_design=fill(0.8, numGenUnits),
                                         final numGenUnits=1);
-  Utilities.Electrical.ZeroLoad zeroLoad
+  BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{10,60},{30,80}})));
 equation
   connect(zeroLoad.internalElectricalPin, internalElectricalPin) annotation (

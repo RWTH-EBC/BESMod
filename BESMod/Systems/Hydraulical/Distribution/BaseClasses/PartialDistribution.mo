@@ -2,8 +2,7 @@ within BESMod.Systems.Hydraulical.Distribution.BaseClasses;
 partial model PartialDistribution
   "Partial distribution model for HPS"
   extends BESMod.Utilities.Icons.StorageIcon;
-  extends
-    BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters(      final
+  extends BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters(final
       dp_nominal=dpDem_nominal,
       TSup_nominal=TDem_nominal .+ dTLoss_nominal .+ dTTra_nominal);
   extends PartialDHWParameters;
@@ -14,11 +13,12 @@ partial model PartialDistribution
   replaceable package MediumGen =
       Modelica.Media.Interfaces.PartialMedium
     annotation (choicesAllMatching=true);
-  parameter Modelica.Units.SI.MassFlowRate mSup_flow_nominal[nParallelSup]
+  parameter Boolean use_dhw=true "=false to disable DHW";
+  parameter Modelica.Units.SI.MassFlowRate mSup_flow_nominal[nParallelSup](each min=Modelica.Constants.eps)
     "Nominal mass flow rate of system supplying the distribution" annotation (
       Dialog(group=
           "Design - Top Down: Parameters are given by the parent system"));
-  parameter Modelica.Units.SI.MassFlowRate mDem_flow_nominal[nParallelDem]
+  parameter Modelica.Units.SI.MassFlowRate mDem_flow_nominal[nParallelDem](each min=Modelica.Constants.eps)
     "Nominal mass flow rate of demand system of the distribution" annotation (
       Dialog(group=
           "Design - Top Down: Parameters are given by the parent system"));
@@ -66,11 +66,19 @@ partial model PartialDistribution
     sigBusDistr
     annotation (Placement(transformation(extent={{-24,80},{24,122}})));
   BESMod.Systems.Hydraulical.Interfaces.DistributionOutputs
-    outBusDist
+    outBusDist if not use_openModelica
     annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
-  Electrical.Interfaces.InternalElectricalPin internalElectricalPin
+  BESMod.Systems.Electrical.Interfaces.InternalElectricalPinOut
+    internalElectricalPin
     annotation (Placement(transformation(extent={{60,-108},{80,-88}})));
+equation
+  if not use_dhw then
+  connect(portDHW_out, portDHW_in) annotation (Line(
+      points={{100,-22},{100,-82}},
+      color={0,127,255},
+      pattern=LinePattern.Dash));
+  end if;
   annotation (Icon(graphics,
-                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end PartialDistribution;

@@ -21,7 +21,7 @@ model Biv_PI_ConFlow_HPSController
           bivalentControlData.dTHysDHW));
 
 equation
-  connect(HP_nSet_Controller.T_Meas, sigBusGen.hp_bus.TConInMea)
+  connect(HP_nSet_Controller.T_Meas, sigBusGen.THeaPumOut)
     annotation (Line(points={{97,61.2},{97,-66},{-118,-66},{-118,-99},{-152,-99}},
                                color={0,0,127}), Text(
       string="%second",

@@ -19,8 +19,9 @@ model PVSystemMultiSub
     each final groRef=0.2,
     each final use_ParametersGlaz=false)
     annotation (Placement(transformation(extent={{-32,-30},{26,28}})));
-  Modelica.Blocks.Math.Sum sumOfPower(nin=numGenUnits)
-                                      "Sums up DC Output power" annotation (
+  Modelica.Blocks.Math.Sum sumOfPower(nin=numGenUnits,
+    y(unit="W"),
+    u(each unit="W"))                 "Sums up DC Output power" annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
@@ -28,7 +29,7 @@ model PVSystemMultiSub
   replaceable model CellTemperature =
       AixLib.Electrical.PVSystem.BaseClasses.PartialCellTemperature annotation (
      __Dymola_choicesAllMatching=true);
-  Utilities.Electrical.RealToElecCon realToElecCon(use_souLoa=false)
+  BESMod.Utilities.Electrical.RealToElecCon realToElecCon(use_souLoa=false)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
@@ -54,15 +55,8 @@ model PVSystemMultiSub
   parameter Modelica.Units.SI.Angle azi[numGenUnits]=fill(0*Modelica.Constants.pi/180,numGenUnits)  "Surface's azimut angle (0:South)";
   parameter Modelica.Units.SI.Area ARoof(min=0) "Roof area of building" annotation(Dialog(group="Design - Top Down: Parameters are given by the parent system"));
 
-  Utilities.KPIs.InputKPICalculator inputKPICalculator(
-    unit="W",
-    integralUnit="J",
-    calc_singleOnTime=false,
-    calc_totalOnTime=false,
-    calc_numSwi=false,
-    calc_movAve=false,
-    calc_intBelThres=false)
-    annotation (Placement(transformation(extent={{56,-78},{76,-42}})));
+  Utilities.KPIs.EnergyKPICalculator intKPICalPElePV(use_inpCon=true)
+    annotation (Placement(transformation(extent={{60,-60},{80,-40}})));
 equation
   for i in 1:numGenUnits loop
     connect(pVSystem[i].weaBus, weaBus);
@@ -76,19 +70,16 @@ equation
       thickness=1));
   connect(pVSystem.DCOutputPower, sumOfPower.u)
     annotation (Line(points={{28.9,-1},{50,-1},{50,8}}, color={0,0,127}));
-  connect(sumOfPower.y, inputKPICalculator.u) annotation (Line(points={{50,31},
-          {50,38},{68,38},{68,-34},{46,-34},{46,-60},{53.8,-60}}, color={0,0,
-          127}));
-  connect(inputKPICalculator.KPIBus, outBusGen.WelPV) annotation (Line(
-      points={{76.2,-60},{86,-60},{86,-99},{1.77636e-15,-99}},
-      color={255,204,51},
-      thickness=0.5), Text(
+  connect(sumOfPower.y, intKPICalPElePV.u) annotation (Line(points={{50,31},{50,
+          38},{68,38},{68,-34},{46,-34},{46,-50},{58.2,-50}}, color={0,0,127}));
+  connect(intKPICalPElePV.KPI, outBusGen.PElePV) annotation (Line(points={{82.2,
+          -50},{96,-50},{96,-99},{1.77636e-15,-99}}, color={135,135,135}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
    annotation(Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"),
               Icon(graphics,
-                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end PVSystemMultiSub;

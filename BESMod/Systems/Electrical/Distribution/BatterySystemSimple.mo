@@ -10,21 +10,18 @@ model BatterySystemSimple "Simple Battery model"
     nBat=nBat,
     final SOC_start=SOC_start_bat)
     annotation (Placement(transformation(extent={{-46,-42},{46,42}})));
-  Utilities.Electrical.ElecConToReal elecConToReal(reverse=true)
-                                                   annotation (Placement(
-        transformation(
+  BESMod.Utilities.Electrical.ElecConToReal elecConToReal(reverse=true)
+    annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={-70,34})));
-  Utilities.Electrical.RealToElecCon realToElecCon(use_souGen=false)
-                                                   annotation (Placement(
-        transformation(
+  BESMod.Utilities.Electrical.RealToElecConSplit realToElecConSplit annotation (
+     Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={50,-30})));
-  Utilities.Electrical.ElecConToReal elecConToReal2[nSubSys](each final reverse=
-       true)
-    annotation (Placement(transformation(
+  BESMod.Utilities.Electrical.ElecConToReal elecConToReal2[nSubSys](each final
+      reverse=true) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={72,24})));
@@ -44,13 +41,11 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(realToElecCon.internalElectricalPin, externalElectricalPin)
+  connect(realToElecConSplit.internalElectricalPin, externalElectricalPin)
     annotation (Line(
       points={{50.2,-40.2},{50.2,-65.1},{50,-65.1},{50,-98}},
       color={0,0,0},
       thickness=1));
-  connect(batterySimple.PGrid, realToElecCon.PEleLoa) annotation (Line(points={
-          {24.84,16.8},{54,16.8},{54,-18}}, color={0,0,127}));
   connect(internalElectricalPin, elecConToReal2.internalElectricalPin)
     annotation (Line(
       points={{50,100},{50,66},{72.2,66},{72.2,33.8}},
@@ -67,7 +62,9 @@ equation
       thickness=1));
   connect(elecConToReal.PElecGen, batterySimple.PCharge)
     annotation (Line(points={{-74,22},{-74,0},{-23,0}}, color={0,0,127}));
+  connect(realToElecConSplit.PEle, batterySimple.PGrid) annotation (Line(points=
+         {{50,-18},{50,16.8},{24.84,16.8}}, color={0,0,127}));
   annotation (Icon(graphics,
-                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
+                   coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end BatterySystemSimple;

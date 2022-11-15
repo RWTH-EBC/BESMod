@@ -2,9 +2,9 @@ ElectricalHeater
 GasBoiler
 HeatPumpAndHeatingRod
 NoGeneration
-SolarThermalBivHP
+SolarThermalBivHPAixLib
 SolarThermalBivHPBuiLib
 Tests
-BaseClasses
 RecordsCollection
 Types
+BaseClasses

@@ -3,12 +3,9 @@
 # BESMod
 
 This library contains **Mod**ules for the domain-coupled simulation of **B**uilding **E**nergy **S**ystems .
-It is submitted to the American Modelica Conference 2022. 
-The review process is not yet finished.
+It was presented at the American Modelica Conference 2022. Check out the proceedings here: https://2022.american.conference.modelica.org/documents/NA_Modelica_2022_Proceedings.pdf
 
-## How to cite BESMod
-
-BESMod is currently under review. Please contact fabian.wuellhorst@eonerc.rwth-aachen.de if you want to use BESMod already in your research.
+Moreover, `BESMod` won the best paper award.
 
 # Installation
 
@@ -47,12 +44,25 @@ python install_dependencies.py AixLib Buildings --install_dir=D:\BESMod_install 
 After installing all libraries, a script `startup.mos` will be created in your BESMod repo.
 Execute this script to load all dependencies and start modelling.
 
+### Updating dependencies
+
+If you have BESMod already installed, run  
+
+```
+python install_dependencies.py full --update
+```
+to update the existing repos and avoid a second download.
 
 # How to contribute to the development of BESMod
 
 You are invited to contribute to the development of **BESMod**.
 Issues can be reported using this site's [Issues section](https://github.com/RWTH-EBC/BESMod/issues).
 Furthermore, you are welcome to contribute via [Pull Requests](https://github.com/RWTH-EBC/BESMod/pulls).
+
+# How to cite BESMod
+
+URL to proceedings: https://2022.american.conference.modelica.org/documents/NA_Modelica_2022_Proceedings.pdf
+DOI:  10.3384/ECP211869
 
 # License
 

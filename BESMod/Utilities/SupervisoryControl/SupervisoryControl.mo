@@ -4,15 +4,23 @@ model SupervisoryControl
   parameter BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType ctrlType
     "Type of supervisory control";
 
+<<<<<<< HEAD
   Modelica.Blocks.Interfaces.RealInput uSup if ctrlType == BESMod.HugosProject.Utilities.SupervisoryControl.Types.SupervisoryControlType.Internal
+=======
+  Modelica.Blocks.Interfaces.RealInput uSup if ctrlType == BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Internal
+>>>>>>> main
                                             "Input from supervisory control"
     annotation (Placement(transformation(extent={{-140,60},{-100,100}}),
         iconTransformation(extent={{-140,60},{-100,100}})));
   Modelica.Blocks.Interfaces.RealInput uLoc "Local control input"
     annotation (Placement(transformation(extent={{-140,-100},{-100,-60}}),
         iconTransformation(extent={{-140,-100},{-100,-60}})));
+<<<<<<< HEAD
   Modelica.Blocks.Interfaces.BooleanInput activateInt if ctrlType == BESMod.HugosProject.Utilities.SupervisoryControl.Types.SupervisoryControlType
     .Internal
+=======
+  Modelica.Blocks.Interfaces.BooleanInput actInt if ctrlType == BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Internal
+>>>>>>> main
     annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));
   Modelica.Blocks.Interfaces.RealOutput y
                                          "Control output"
@@ -20,6 +28,7 @@ model SupervisoryControl
   Modelica.Blocks.Logical.Switch swi
     "Switch between external signal and direct feedthrough signal"
     annotation (Placement(transformation(extent={{0,-16},{32,16}})));
+<<<<<<< HEAD
   Modelica.Blocks.Sources.BooleanExpression activateExt if ctrlType == BESMod.HugosProject.Utilities.SupervisoryControl.Types.SupervisoryControlType
     .External
     "Block to activate use of external signal"
@@ -33,8 +42,21 @@ model SupervisoryControl
     annotation (Placement(transformation(extent={{-60,-40},{-40,-20}})));
   Modelica.Blocks.Sources.Constant uSupDeacticate(final k=0) if ctrlType ==
     BESMod.HugosProject.Utilities.SupervisoryControl.Types.SupervisoryControlType.Local
+=======
+  Modelica.Blocks.Sources.BooleanExpression actExt if ctrlType == BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.External
+    "Block to activate use of external signal"
+    annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));
+  Modelica.Blocks.Sources.RealExpression uExt if ctrlType == BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.External
+    "External input signal"
+    annotation (Placement(transformation(extent={{-60,10},{-40,30}})));
+  Modelica.Blocks.Sources.BooleanConstant deActAlw(final k=false) if ctrlType
+     == BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Local
+    "Block to activate use of external signal"
+    annotation (Placement(transformation(extent={{-60,-40},{-40,-20}})));
+  Modelica.Blocks.Sources.Constant uSupDeAct(final k=0) if ctrlType == BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Local
+>>>>>>> main
     "Constant zero for deactivated sup control"
-    annotation (Placement(transformation(extent={{-56,32},{-40,48}})));
+    annotation (Placement(transformation(extent={{-60,40},{-40,60}})));
 equation
   connect(uLoc, swi.u3) annotation (Line(points={{-120,-80},{-12,-80},{-12,-12.8},
           {-3.2,-12.8}}, color={0,0,127}));
@@ -42,16 +64,16 @@ equation
     annotation (Line(points={{33.6,0},{120,0}}, color={0,0,127}));
   connect(uExt.y, swi.u1) annotation (Line(points={{-39,20},{-20,20},{-20,12.8},
           {-3.2,12.8}}, color={0,0,127}));
-  connect(activateExt.y, swi.u2)
+  connect(actExt.y, swi.u2)
     annotation (Line(points={{-39,0},{-3.2,0}}, color={255,0,255}));
-  connect(activateInt, swi.u2) annotation (Line(points={{-120,0},{-64,0},{-64,-12},
-          {-30,-12},{-30,0},{-3.2,0}},color={255,0,255}));
-  connect(deactivateAlways.y, swi.u2) annotation (Line(points={{-39,-30},{-24,-30},
-          {-24,0},{-3.2,0}}, color={255,0,255}));
+  connect(actInt, swi.u2) annotation (Line(points={{-120,0},{-64,0},{-64,-12},{
+          -30,-12},{-30,0},{-3.2,0}}, color={255,0,255}));
+  connect(deActAlw.y, swi.u2) annotation (Line(points={{-39,-30},{-24,-30},{-24,
+          0},{-3.2,0}}, color={255,0,255}));
   connect(uSup, swi.u1) annotation (Line(points={{-120,80},{-12,80},{-12,12.8},{
           -3.2,12.8}}, color={0,0,127}));
-  connect(uSupDeacticate.y, swi.u1) annotation (Line(points={{-39.2,40},{-20,40},
-          {-20,12.8},{-3.2,12.8}}, color={0,0,127}));
+  connect(uSupDeAct.y, swi.u1) annotation (Line(points={{-39,50},{-12,50},{-12,
+          12.8},{-3.2,12.8}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
                               Text(
           extent={{-102,-88},{102,-184}},

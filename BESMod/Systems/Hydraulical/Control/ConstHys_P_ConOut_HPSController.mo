@@ -15,7 +15,7 @@ model ConstHys_P_ConOut_HPSController
           bivalentControlData.dtHeaRodDHW));
 
 equation
-  connect(HP_nSet_Controller.T_Meas, sigBusGen.hp_bus.TConInMea)
+  connect(HP_nSet_Controller.T_Meas, sigBusGen.THeaPumOut)
     annotation (Line(points={{97,61.2},{97,-99},{-152,-99}},
         color={0,0,127}), Text(
       string="%second",

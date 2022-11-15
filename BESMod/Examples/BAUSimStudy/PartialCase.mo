@@ -3,17 +3,13 @@ partial model PartialCase
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
     redeclare Systems.Demand.Building.TEASERThermalZone building(redeclare
-        BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
-        oneZoneParam),
+        BESMod.Systems.Demand.Building.RecordsCollection.RefAachen oneZoneParam(
+          heaLoadFacGrd=0, heaLoadFacOut=0)),
     redeclare BESMod.Systems.Control.NoControl control,
-    redeclare BESMod.Systems.Hydraulical.HydraulicSystem
-      hydraulic(
+    redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
       redeclare Systems.Hydraulical.Generation.HeatPumpAndHeatingRod generation(
-        redeclare
-          BESMod.Systems.RecordsCollection.Movers.DefaultMover
-          pumpData,
+        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
         redeclare package Medium_eva = AixLib.Media.Air,
-        use_pressure=true,
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           heatPumpParameters(
@@ -56,8 +52,6 @@ partial model PartialCase
         distribution(
         QHRAftBuf_flow_nominal=0,
         use_heatingRodAfterBuffer=false,
-        discretizationStepsDWHStoHR=0,
-        discretizationStepsBufStoHR=0,
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
           temperatureSensorData,
@@ -80,8 +74,7 @@ partial model PartialCase
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
           heatingRodAftBufParameters),
-      redeclare
-        BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased
+      redeclare BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased
         transfer(
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
@@ -89,27 +82,20 @@ partial model PartialCase
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
           transferDataBaseDefinition,
-        redeclare
-          BESMod.Systems.RecordsCollection.Movers.DefaultMover
-          pumpData)),
+        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData)),
     redeclare Systems.Demand.DHW.DHW DHW(
-      use_pressure=false,
-      redeclare
-        BESMod.Systems.RecordsCollection.Movers.DefaultMover
-        pumpData,
-      redeclare
-        BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
+      redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
+      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
+      redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
         calcmFlow),
-    redeclare Systems.UserProfiles.TEASERProfiles userProfiles(redeclare
-        BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile),
+    redeclare Systems.UserProfiles.TEASERProfiles userProfiles,
     redeclare BESParameters systemParameters,
     redeclare BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy
       parameterStudy,
     redeclare final package MediumDHW = AixLib.Media.Water,
     redeclare final package MediumZone = AixLib.Media.Air,
     redeclare final package MediumHyd = AixLib.Media.Water,
-    redeclare BESMod.Systems.Ventilation.NoVentilation
-      ventilation);
+    redeclare BESMod.Systems.Ventilation.NoVentilation ventilation);
 
   parameter Modelica.Units.SI.Temperature TBiv=271.15
     "Nominal bivalence temperature. = TOda_nominal for monovalent systems.";

@@ -17872,6 +17872,546 @@ The parameter <strong>limitAtInit</strong> is obsolete since MSL 3.2.2 and only 
               horizontalAlignment=TextAlignment.Left));
 
         end RadiatorPressureBased_PICV_hydraulicSeparator;
+
+        model UFHPressureBased
+          extends BaseClasses.PartialTransfer(final nParallelSup=1, final dp_nominal= val.dpValve_nominal
+          .+ res.dp_nominal .+ val.dpFixed_nominal);
+
+          IBPSA.Fluid.FixedResistances.PressureDrop res[nParallelDem](
+            redeclare package Medium = Medium,
+            each final dp_nominal=1,
+            final m_flow_nominal=m_flow_nominal) "Hydraulic resistance of supply"
+            annotation (Placement(transformation(
+                extent={{-10.5,-12},{10.5,12}},
+                rotation=0,
+                origin={25.5,42})));
+
+          BESMod.Components.UFH.PanelHeating panelHeating[
+            nParallelDem](
+            redeclare package Medium = Medium,
+            final floorHeatingType=floorHeatingType,
+            each final dis=5,
+            final A=UFHParameters.area,
+            final T0=TDem_nominal,
+            each calcMethod=1) annotation (Placement(transformation(
+                extent={{-23,-10},{23,10}},
+                rotation=270,
+                origin={57,-14})));
+
+          Modelica.Thermal.HeatTransfer.Sources.FixedTemperature
+                                                              fixedTemperature
+                                                                           [nParallelDem](final T=
+                UFHParameters.T_floor)
+                       annotation (Placement(transformation(
+                extent={{-10,-10},{10,10}},
+                rotation=0,
+                origin={-90,10})));
+          Modelica.Thermal.HeatTransfer.Sensors.HeatFlowSensor heatFlowSensor
+                                                                           [nParallelDem]
+                       annotation (Placement(transformation(
+                extent={{-10,-10},{10,10}},
+                rotation=0,
+                origin={-46,-6})));
+          Modelica.Thermal.HeatTransfer.Sources.FixedHeatFlow fixedHeatFlow[nParallelDem](final
+              Q_flow=0)
+                       annotation (Placement(transformation(
+                extent={{-10,-10},{10,10}},
+                rotation=0,
+                origin={-92,-20})));
+          Modelica.Thermal.HeatTransfer.Components.HeatCapacitor
+                                                              heatCapacitor[nParallelDem](C=100)
+                       annotation (Placement(transformation(
+                extent={{-10,-10},{10,10}},
+                rotation=0,
+                origin={-114,2})));
+
+          replaceable parameter
+            BESMod.HugosProject.Systems.Hydraulical.Transfer.RecordsCollection.UFHData
+            UFHParameters constrainedby RecordsCollection.UFHData(nZones=
+                nParallelDem, area=AZone) annotation (choicesAllMatching=true,
+              Placement(transformation(extent={{70,72},{90,92}})));
+
+          Utilities.KPIs.InputKPICalculator inputKPICalculatorOpening[nParallelDem](
+            unit=fill("", nParallelDem),
+            integralUnit=fill("s", nParallelDem),
+            calc_singleOnTime=false,
+            calc_integral=false,
+            calc_totalOnTime=false,
+            calc_numSwi=false,
+            calc_movAve=false)
+            annotation (Placement(transformation(extent={{-46,-94},{-26,-58}})));
+          Utilities.KPIs.InputKPICalculator inputKPICalculatorLossUFH[nParallelDem](
+            unit=fill("W", nParallelDem),
+            integralUnit=fill("J", nParallelDem),
+            calc_singleOnTime=false,
+            calc_integral=false,
+            calc_totalOnTime=false,
+            calc_numSwi=false,
+            calc_movAve=false)
+            annotation (Placement(transformation(extent={{-46,-120},{-26,-84}})));
+          replaceable
+            BESMod.HugosProject.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
+            pumpData annotation (choicesAllMatching=true, Placement(
+                transformation(extent={{-98,78},{-78,98}})));
+          IBPSA.Fluid.Movers.SpeedControlled_y     pump(
+            redeclare final package Medium = Medium,
+            final energyDynamics=energyDynamics,
+            final p_start=p_start,
+            final T_start=T_start,
+            final allowFlowReversal=allowFlowReversal,
+            final show_T=show_T,
+            redeclare
+              BESMod.HugosProject.Systems.RecordsCollection.Movers.AutomaticConfigurationData
+              per(
+              final speed_rpm_nominal=pumpData.speed_rpm_nominal,
+              final m_flow_nominal=sum(m_flow_nominal),
+              final dp_nominal=1/sum({1/dp_nominal[i] for i in 1:nParallelDem}),
+              final rho=rho,
+              final V_flowCurve=pumpData.V_flowCurve,
+              final dpCurve=pumpData.dpCurve),
+            final inputType=IBPSA.Fluid.Types.InputType.Continuous,
+            final addPowerToMedium=pumpData.addPowerToMedium,
+            final tau=pumpData.tau,
+            final use_inputFilter=pumpData.use_inputFilter,
+            final riseTime=pumpData.riseTimeInpFilter,
+            final init=Modelica.Blocks.Types.Init.InitialOutput,
+            final y_start=1)                                    annotation (Placement(
+                transformation(
+                extent={{-10,-10},{10,10}},
+                rotation=0,
+                origin={-74,38})));
+          Modelica.Blocks.Sources.Constant m_flow1(k=1)   annotation (Placement(
+                transformation(
+                extent={{-10,-10},{10,10}},
+                rotation=180,
+                origin={-50,88})));
+          IBPSA.Fluid.MixingVolumes.MixingVolume vol(
+            redeclare package Medium = Medium,
+            final energyDynamics=energyDynamics,
+            final p_start=p_start,
+            final T_start=T_start,
+            final mSenFac=1,
+            final m_flow_nominal=sum(val.m_flow_nominal),
+            final m_flow_small=1E-4*abs(sum(val.m_flow_nominal)),
+            final allowFlowReversal=allowFlowReversal,
+            final V(displayUnit="l") = transferDataBaseDefinition.vol,
+            final use_C_flow=false,
+            nPorts=1+nParallelDem)                annotation (Placement(transformation(
+                extent={{-10,-10},{10,10}},
+                rotation=180,
+                origin={-40,26})));
+          IBPSA.Fluid.Actuators.Valves.TwoWayLinear val[nParallelDem](
+            redeclare package Medium = Medium,
+            each final allowFlowReversal=allowFlowReversal,
+            final m_flow_nominal=m_flow_nominal,
+            each final show_T=show_T,
+            each final CvData=IBPSA.Fluid.Types.CvTypes.OpPoint,
+            final dpValve_nominal=transferDataBaseDefinition.dpHeaSysValve_nominal,
+            each final use_inputFilter=false,
+            final dpFixed_nominal=transferDataBaseDefinition.dpHeaSysPreValve_nominal,
+            each final l=transferDataBaseDefinition.leakageOpening)
+                                                    annotation (Placement(transformation(
+                extent={{-10,-11},{10,11}},
+                rotation=270,
+                origin={42,27})));
+          replaceable parameter RecordsCollection.TransferDataBaseDefinition
+            transferDataBaseDefinition constrainedby
+            RecordsCollection.TransferDataBaseDefinition(
+            final Q_flow_nominal=Q_flow_nominal.*f_design,
+            final nZones=nParallelDem,
+            final AFloor=ABui,
+            final heiBui=hBui)
+            annotation (choicesAllMatching=true, Placement(transformation(extent={{-96,-98},
+                    {-76,-78}})));
+          Utilities.Electrical.RealToElecCon realToElecCon(use_souGen=false)
+            annotation (Placement(transformation(extent={{34,-100},{54,-80}})));
+        protected
+          parameter BESMod.Components.UFH.ActiveWallBaseDataDefinition floorHeatingType[nParallelDem]={BESMod.Components.UFH.ActiveWallBaseDataDefinition(
+                Temp_nom=Modelica.Units.Conversions.from_degC(  {TSup_nominal[i],
+                  TSup_nominal[i]-dTTra_nominal[i],TDem_nominal[i]}),
+                q_dot_nom=Q_flow_nominal[i] / UFHParameters.area[i],
+                k_isolation=UFHParameters.k_top[i] + UFHParameters.k_down[i],
+                k_top=UFHParameters.k_top[i],
+                k_down=UFHParameters.k_down[i],
+                VolumeWaterPerMeter=0,
+                eps=0.9,
+                C_ActivatedElement=UFHParameters.C_ActivatedElement[i],
+                c_top_ratio=UFHParameters.c_top_ratio[i],
+                PressureDropExponent=0,
+                PressureDropCoefficient=0,
+                diameter=UFHParameters.diameter) for i in 1:nParallelDem};
+
+        equation
+
+          for i in 1:nParallelDem loop
+            connect(panelHeating[i].port_b, portTra_out[1]) annotation (Line(points={{55.3333,
+                    -37},{54,-37},{54,-42},{-100,-42}},
+                                                  color={0,127,255}));
+            connect(vol.ports[i + 1], res[i].port_a) annotation (Line(points={{-40,36},
+                    {-40,38},{6,38},{6,42},{15,42}},
+                                       color={0,127,255}));
+          if UFHParameters.is_groundFloor[i] then
+           connect(fixedHeatFlow[i].port, heatCapacitor[i].port) annotation (Line(points=
+                 {{-82,-20},{-76,-20},{-76,-8},{-114,-8}}, color={191,0,0}));
+           connect(fixedTemperature[i].port, heatFlowSensor[i].port_a) annotation (Line(
+              points={{-80,10},{-64,10},{-64,-6},{-56,-6}},
+              color={191,0,0},
+              pattern=LinePattern.Dash));
+          else
+           connect(fixedHeatFlow[i].port, heatFlowSensor[i].port_a) annotation (Line(
+              points={{-82,-20},{-66,-20},{-66,-6},{-56,-6}},
+              color={191,0,0},
+              pattern=LinePattern.Dash));
+           connect(fixedTemperature[i].port, heatCapacitor[i].port) annotation (Line(
+              points={{-80,10},{-80,-8},{-114,-8}},
+              color={191,0,0},
+              pattern=LinePattern.Dash));
+          end if;
+          end for;
+
+          connect(panelHeating.thermConv, heatPortCon) annotation (Line(points={{68.6667,
+                  -17.22},{68.6667,-16},{100,-16},{100,26},{86,26},{86,40},{100,
+                  40}},                                         color={191,0,0}));
+          connect(panelHeating.starRad, heatPortRad) annotation (Line(points={{68,-11.24},
+                  {68,-10},{102,-10},{102,-26},{86,-26},{86,-40},{100,-40}},
+                                                  color={0,0,0}));
+
+          connect(heatFlowSensor.port_b, panelHeating.ThermDown) annotation (Line(
+                points={{-36,-6},{36,-6},{36,-15.84},{46,-15.84}}, color={191,0,0}));
+
+          connect(inputKPICalculatorOpening.KPIBus, outBusTra.opening) annotation (Line(
+              points={{-25.8,-76},{0,-76},{0,-104}},
+              color={255,204,51},
+              thickness=0.5), Text(
+              string="%second",
+              index=1,
+              extent={{6,3},{6,3}},
+              horizontalAlignment=TextAlignment.Left));
+          connect(heatFlowSensor.Q_flow, inputKPICalculatorLossUFH.u) annotation (Line(
+                points={{-46,-17},{-46,-22},{-62,-22},{-62,-102},{-48.2,-102}}, color={
+                  0,0,127}));
+          connect(inputKPICalculatorLossUFH.KPIBus, outBusTra.QLossUFH) annotation (
+              Line(
+              points={{-25.8,-102},{-14,-102},{-14,-100},{0,-100},{0,-104}},
+              color={255,204,51},
+              thickness=0.5), Text(
+              string="%second",
+              index=1,
+              extent={{6,3},{6,3}},
+              horizontalAlignment=TextAlignment.Left));
+          connect(portTra_in[1], pump.port_a)
+            annotation (Line(points={{-100,38},{-84,38}}, color={0,127,255}));
+          connect(m_flow1.y, pump.y)
+            annotation (Line(points={{-61,88},{-74,88},{-74,50}}, color={0,0,127}));
+
+          connect(pump.port_b, vol.ports[1]) annotation (Line(points={{-64,38},{-54,38},
+                  {-54,36},{-40,36}}, color={0,127,255}));
+          connect(val.port_b, panelHeating.port_a)
+            annotation (Line(points={{42,17},{42,9},{55.3333,9}}, color={0,127,255}));
+          connect(res.port_b, val.port_a)
+            annotation (Line(points={{36,42},{38,42},{38,37},{42,37}},
+                                                               color={0,127,255}));
+          connect(val.y, traControlBus.opening) annotation (Line(points={{55.2,27},{55.2,
+                  26},{60,26},{60,86},{0,86},{0,100}}, color={0,0,127}), Text(
+              string="%second",
+              index=1,
+              extent={{-3,6},{-3,6}},
+              horizontalAlignment=TextAlignment.Right));
+          connect(realToElecCon.internalElectricalPin, internalElectricalPin)
+            annotation (Line(
+              points={{54.2,-89.8},{54.2,-88},{58,-88},{58,-84},{72,-84},{72,
+                  -98}},
+              color={0,0,0},
+              thickness=1));
+          connect(pump.P, realToElecCon.PEleLoa) annotation (Line(points={{-63,
+                  47},{-38,47},{-38,40},{-24,40},{-24,-54},{26,-54},{26,-86},{
+                  32,-86}}, color={0,0,127}));
+          connect(inputKPICalculatorOpening.u, traControlBus.opening)
+            annotation (Line(points={{-48.2,-76},{-54,-76},{-54,-40},{-20,-40},
+                  {-20,84},{0,84},{0,100}}, color={0,0,127}), Text(
+              string="%second",
+              index=1,
+              extent={{6,3},{6,3}},
+              horizontalAlignment=TextAlignment.Left));
+        end UFHPressureBased;
+
+        model UFHPressureBased_PICV_hydraulicSeparator
+          extends BaseClasses.PartialTransfer(final nParallelSup=1, final dp_nominal= val.dpValve_nominal
+          .+ res.dp_nominal .+ val.dpFixed_nominal);
+
+          IBPSA.Fluid.FixedResistances.PressureDrop res[nParallelDem](
+            redeclare package Medium = Medium,
+            each final dp_nominal=1,
+            final m_flow_nominal=m_flow_nominal) "Hydraulic resistance of supply"
+            annotation (Placement(transformation(
+                extent={{-10.5,-12},{10.5,12}},
+                rotation=0,
+                origin={-0.5,42})));
+
+          BESMod.Components.UFH.PanelHeating panelHeating[
+            nParallelDem](
+            redeclare package Medium = Medium,
+            final floorHeatingType=floorHeatingType,
+            each final dis=5,
+            final A=UFHParameters.area,
+            final T0=TDem_nominal,
+            each calcMethod=1) annotation (Placement(transformation(
+                extent={{-23,-10},{23,10}},
+                rotation=270,
+                origin={57,-14})));
+
+          Modelica.Thermal.HeatTransfer.Sources.FixedTemperature
+                                                              fixedTemperature
+                                                                           [nParallelDem](final T=
+                UFHParameters.T_floor)
+                       annotation (Placement(transformation(
+                extent={{-10,-10},{10,10}},
+                rotation=0,
+                origin={-90,10})));
+          Modelica.Thermal.HeatTransfer.Sensors.HeatFlowSensor heatFlowSensor
+                                                                           [nParallelDem]
+                       annotation (Placement(transformation(
+                extent={{-10,-10},{10,10}},
+                rotation=0,
+                origin={-46,-6})));
+          Modelica.Thermal.HeatTransfer.Sources.FixedHeatFlow fixedHeatFlow[nParallelDem](final
+              Q_flow=0)
+                       annotation (Placement(transformation(
+                extent={{-10,-10},{10,10}},
+                rotation=0,
+                origin={-92,-20})));
+          Modelica.Thermal.HeatTransfer.Components.HeatCapacitor
+                                                              heatCapacitor[nParallelDem](C=100)
+                       annotation (Placement(transformation(
+                extent={{-10,-10},{10,10}},
+                rotation=0,
+                origin={-114,2})));
+
+          replaceable parameter
+            BESMod.HugosProject.Systems.Hydraulical.Transfer.RecordsCollection.UFHData
+            UFHParameters constrainedby RecordsCollection.UFHData(nZones=
+                nParallelDem, area=AZone) annotation (choicesAllMatching=true,
+              Placement(transformation(extent={{70,72},{90,92}})));
+
+          Utilities.KPIs.InputKPICalculator inputKPICalculatorOpening[nParallelDem](
+            unit=fill("", nParallelDem),
+            integralUnit=fill("s", nParallelDem),
+            calc_singleOnTime=false,
+            calc_integral=false,
+            calc_totalOnTime=false,
+            calc_numSwi=false,
+            calc_movAve=false)
+            annotation (Placement(transformation(extent={{-46,-94},{-26,-58}})));
+          Utilities.KPIs.InputKPICalculator inputKPICalculatorLossUFH[nParallelDem](
+            unit=fill("W", nParallelDem),
+            integralUnit=fill("J", nParallelDem),
+            calc_singleOnTime=false,
+            calc_integral=false,
+            calc_totalOnTime=false,
+            calc_numSwi=false,
+            calc_movAve=false)
+            annotation (Placement(transformation(extent={{-46,-120},{-26,-84}})));
+          replaceable
+            BESMod.HugosProject.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
+            pumpData annotation (choicesAllMatching=true, Placement(
+                transformation(extent={{-98,78},{-78,98}})));
+          IBPSA.Fluid.Movers.SpeedControlled_y     pump(
+            redeclare final package Medium = Medium,
+            final energyDynamics=energyDynamics,
+            final p_start=p_start,
+            final T_start=T_start,
+            final allowFlowReversal=allowFlowReversal,
+            final show_T=show_T,
+            redeclare
+              BESMod.HugosProject.Systems.RecordsCollection.Movers.AutomaticConfigurationData
+              per(
+              final speed_rpm_nominal=pumpData.speed_rpm_nominal,
+              final m_flow_nominal=sum(m_flow_nominal),
+              final dp_nominal=1/sum({1/dp_nominal[i] for i in 1:nParallelDem}),
+              final rho=rho,
+              final V_flowCurve=pumpData.V_flowCurve,
+              final dpCurve=pumpData.dpCurve),
+            final inputType=IBPSA.Fluid.Types.InputType.Continuous,
+            final addPowerToMedium=pumpData.addPowerToMedium,
+            final tau=pumpData.tau,
+            final use_inputFilter=pumpData.use_inputFilter,
+            final riseTime=pumpData.riseTimeInpFilter,
+            final init=Modelica.Blocks.Types.Init.InitialOutput,
+            final y_start=1)                                    annotation (Placement(
+                transformation(
+                extent={{-10,-10},{10,10}},
+                rotation=0,
+                origin={-74,38})));
+          Modelica.Blocks.Sources.Constant m_flow1(k=1)   annotation (Placement(
+                transformation(
+                extent={{-10,-10},{10,10}},
+                rotation=180,
+                origin={-50,88})));
+          IBPSA.Fluid.MixingVolumes.MixingVolume vol(
+            redeclare package Medium = Medium,
+            final energyDynamics=energyDynamics,
+            final p_start=p_start,
+            final T_start=T_start,
+            final mSenFac=1,
+            final m_flow_nominal=sum(val.m_flow_nominal),
+            final m_flow_small=1E-4*abs(sum(val.m_flow_nominal)),
+            final allowFlowReversal=allowFlowReversal,
+            final V(displayUnit="l") = transferDataBaseDefinition.vol,
+            final use_C_flow=false,
+            nPorts=1+nParallelDem)                annotation (Placement(transformation(
+                extent={{-10,-10},{10,10}},
+                rotation=180,
+                origin={-40,26})));
+          replaceable parameter RecordsCollection.TransferDataBaseDefinition
+            transferDataBaseDefinition constrainedby
+            RecordsCollection.TransferDataBaseDefinition(
+            final Q_flow_nominal=Q_flow_nominal.*f_design,
+            final nZones=nParallelDem,
+            final AFloor=ABui,
+            final heiBui=hBui)
+            annotation (choicesAllMatching=true, Placement(transformation(extent={{-96,-98},
+                    {-76,-78}})));
+          Utilities.Electrical.RealToElecCon realToElecCon(use_souGen=false)
+            annotation (Placement(transformation(extent={{34,-100},{54,-80}})));
+          IBPSA.Fluid.Actuators.Valves.TwoWayPressureIndependent val1[nParallelDem](
+              m_flow_nominal=m_flow_nominal)
+            annotation (Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,
+                origin={54,28})));
+          IBPSA.Fluid.Actuators.Valves.TwoWayPressureIndependent val2[nParallelDem](
+              m_flow_nominal=m_flow_nominal)
+            annotation (Placement(transformation(extent={{-10,-10},{10,10}},rotation=270,
+                origin={20,14})));
+        protected
+          parameter BESMod.Components.UFH.ActiveWallBaseDataDefinition floorHeatingType[nParallelDem]={BESMod.Components.UFH.ActiveWallBaseDataDefinition(
+                Temp_nom=Modelica.Units.Conversions.from_degC(  {TSup_nominal[i],
+                  TSup_nominal[i]-dTTra_nominal[i],TDem_nominal[i]}),
+                q_dot_nom=Q_flow_nominal[i] / UFHParameters.area[i],
+                k_isolation=UFHParameters.k_top[i] + UFHParameters.k_down[i],
+                k_top=UFHParameters.k_top[i],
+                k_down=UFHParameters.k_down[i],
+                VolumeWaterPerMeter=0,
+                eps=0.9,
+                C_ActivatedElement=UFHParameters.C_ActivatedElement[i],
+                c_top_ratio=UFHParameters.c_top_ratio[i],
+                PressureDropExponent=0,
+                PressureDropCoefficient=0,
+                diameter=UFHParameters.diameter) for i in 1:nParallelDem};
+
+          Modelica.Blocks.Sources.Constant uni[nParallelDem](final k=1)
+            "Outputs one for bypass valve" annotation (Placement(transformation(
+                  extent={{136,6},{148,18}})));
+        protected
+          Modelica.Blocks.Math.Feedback inv[nParallelDem]
+            "Inversion of control signal" annotation (Placement(transformation(
+                  extent={{124,10},{136,22}},rotation=180,
+                origin={244,28})));
+        equation
+
+          for i in 1:nParallelDem loop
+            connect(panelHeating[i].port_b, portTra_out[1]) annotation (Line(points={{55.3333,
+                    -37},{54,-37},{54,-42},{-100,-42}},
+                                                  color={0,127,255}));
+            connect(vol.ports[i + 1], res[i].port_a) annotation (Line(points={{-40,36},{
+                    -40,42},{-11,42}}, color={0,127,255}));
+            connect(val2[i].port_b, portTra_out[1])
+            annotation (Line(points={{20,4},{20,-42},{-100,-42}}, color={0,127,255}));
+          if UFHParameters.is_groundFloor[i] then
+           connect(fixedHeatFlow[i].port, heatCapacitor[i].port) annotation (Line(points=
+                 {{-82,-20},{-76,-20},{-76,-8},{-114,-8}}, color={191,0,0}));
+           connect(fixedTemperature[i].port, heatFlowSensor[i].port_a) annotation (Line(
+              points={{-80,10},{-64,10},{-64,-6},{-56,-6}},
+              color={191,0,0},
+              pattern=LinePattern.Dash));
+          else
+           connect(fixedHeatFlow[i].port, heatFlowSensor[i].port_a) annotation (Line(
+              points={{-82,-20},{-66,-20},{-66,-6},{-56,-6}},
+              color={191,0,0},
+              pattern=LinePattern.Dash));
+           connect(fixedTemperature[i].port, heatCapacitor[i].port) annotation (Line(
+              points={{-80,10},{-80,-8},{-114,-8}},
+              color={191,0,0},
+              pattern=LinePattern.Dash));
+          end if;
+          end for;
+
+          connect(panelHeating.thermConv, heatPortCon) annotation (Line(points={{68.6667,
+                  -17.22},{68.6667,-16},{100,-16},{100,26},{86,26},{86,40},{100,
+                  40}},                                         color={191,0,0}));
+          connect(panelHeating.starRad, heatPortRad) annotation (Line(points={{68,-11.24},
+                  {68,-10},{102,-10},{102,-26},{86,-26},{86,-40},{100,-40}},
+                                                  color={0,0,0}));
+
+          connect(heatFlowSensor.port_b, panelHeating.ThermDown) annotation (Line(
+                points={{-36,-6},{36,-6},{36,-15.84},{46,-15.84}}, color={191,0,0}));
+
+          connect(inputKPICalculatorOpening.KPIBus, outBusTra.opening) annotation (Line(
+              points={{-25.8,-76},{0,-76},{0,-104}},
+              color={255,204,51},
+              thickness=0.5), Text(
+              string="%second",
+              index=1,
+              extent={{6,3},{6,3}},
+              horizontalAlignment=TextAlignment.Left));
+          connect(heatFlowSensor.Q_flow, inputKPICalculatorLossUFH.u) annotation (Line(
+                points={{-46,-17},{-46,-22},{-62,-22},{-62,-102},{-48.2,-102}}, color={
+                  0,0,127}));
+          connect(inputKPICalculatorLossUFH.KPIBus, outBusTra.QLossUFH) annotation (
+              Line(
+              points={{-25.8,-102},{-14,-102},{-14,-100},{0,-100},{0,-104}},
+              color={255,204,51},
+              thickness=0.5), Text(
+              string="%second",
+              index=1,
+              extent={{6,3},{6,3}},
+              horizontalAlignment=TextAlignment.Left));
+          connect(portTra_in[1], pump.port_a)
+            annotation (Line(points={{-100,38},{-84,38}}, color={0,127,255}));
+          connect(m_flow1.y, pump.y)
+            annotation (Line(points={{-61,88},{-74,88},{-74,50}}, color={0,0,127}));
+
+          connect(pump.port_b, vol.ports[1]) annotation (Line(points={{-64,38},{-54,38},
+                  {-54,36},{-40,36}}, color={0,127,255}));
+          connect(realToElecCon.internalElectricalPin, internalElectricalPin)
+            annotation (Line(
+              points={{54.2,-89.8},{54.2,-88},{58,-88},{58,-84},{72,-84},{72,-98}},
+              color={0,0,0},
+              thickness=1));
+          connect(pump.P, realToElecCon.PEleLoa) annotation (Line(points={{-63,47},{-38,
+                  47},{-38,40},{-24,40},{-24,-54},{26,-54},{26,-86},{32,-86}}, color={0,
+                  0,127}));
+          connect(inputKPICalculatorOpening.u, traControlBus.opening) annotation (Line(
+                points={{-48.2,-76},{-54,-76},{-54,-40},{-20,-40},{-20,84},{0,84},{0,100}},
+                color={0,0,127}), Text(
+              string="%second",
+              index=1,
+              extent={{6,3},{6,3}},
+              horizontalAlignment=TextAlignment.Left));
+          connect(val1.port_b, panelHeating.port_a)
+            annotation (Line(points={{54,18},{54,9},{55.3333,9}}, color={0,127,255}));
+          connect(res.port_b, val1.port_a) annotation (Line(points={{10,42},{40,42},{40,
+                  38},{54,38}}, color={0,127,255}));
+          connect(val1.y, traControlBus.opening) annotation (Line(points={{66,28},{72,28},
+                  {72,68},{0,68},{0,100}}, color={0,0,127}), Text(
+              string="%second",
+              index=1,
+              extent={{-6,3},{-6,3}},
+              horizontalAlignment=TextAlignment.Right));
+          connect(res.port_b, val2.port_a)
+            annotation (Line(points={{10,42},{20,42},{20,24}}, color={0,127,255}));
+          connect(inv.u1, uni.y) annotation (Line(points={{118.8,12},{133.7,12},
+                  {133.7,12},{148.6,12}},
+                                color={0,0,127}));
+          connect(inv.u2, traControlBus.opening) annotation (Line(points={{114,
+                  16.8},{114,66},{72,66},{72,68},{0,68},{0,100}}, color={0,0,127}),
+              Text(
+              string="%second",
+              index=1,
+              extent={{-6,3},{-6,3}},
+              horizontalAlignment=TextAlignment.Right));
+          connect(inv.y, val2.y) annotation (Line(points={{108.6,12},{62,12},{
+                  62,14},{32,14}},
+                        color={0,0,127}));
+        end UFHPressureBased_PICV_hydraulicSeparator;
       end Transfer;
 
       package Interfaces
@@ -27533,11 +28073,18 @@ This icon is designed for a <strong>control bus</strong> connector.
               redeclare
                 BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
                 heatingRodAftBufParameters),
-            redeclare BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem
-              transfer(redeclare
-                BESMod.Systems.Hydraulical.Transfer.RecordsCollection.DefaultUFHData
-                UFHParameters, redeclare
-                BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData)),
+            redeclare
+              BESMod.HugosProject.Systems.Hydraulical.Transfer.UFHPressureBased
+              transfer(
+              redeclare
+                BESMod.HugosProject.Systems.Hydraulical.Transfer.RecordsCollection.DefaultUFHData
+                UFHParameters,
+              redeclare
+                BESMod.HugosProject.Systems.RecordsCollection.Movers.DefaultMover
+                pumpData,
+              redeclare
+                BESMod.HugosProject.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
+                transferDataBaseDefinition)),
           redeclare BESMod.Systems.Demand.DHW.DHW DHW(
             use_pressure=true,
             redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover
@@ -27599,5 +28146,141 @@ This icon is designed for a <strong>control bus</strong> connector.
 
       end AachenSystem_nightLowering_ramp;
     end Ref_withUFHTransferSystem;
+
+    package DirectHeating_UFH "No storage for the heating, UFH transfer system"
+      extends Modelica.Icons.ExamplesPackage;
+      model BES
+        extends BESMod.Systems.BaseClasses.PartialBuildingEnergySystem(
+          redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem
+            electrical,
+          redeclare BESMod.HugosProject.Systems.Demand.Building.TEASERThermalZone_nightLowering_ramp building(
+              redeclare
+              BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
+              oneZoneParam),
+          redeclare BESMod.Systems.Control.NoControl control,
+          redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
+            redeclare
+              BESMod.Systems.Hydraulical.Generation.HeatPumpAndHeatingRod
+              generation(
+              use_pressure=true,
+              redeclare package Medium_eva = AixLib.Media.Air,
+              redeclare
+                BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
+                heatPumpParameters(useAirSource=true),
+              redeclare
+                BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
+                heatingRodParameters,
+              redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover
+                pumpData),
+            redeclare BESMod.Systems.Hydraulical.Control.PartBiv_PI_ConOut_HPS
+              control(
+              redeclare
+                BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
+                thermostaticValveController,
+              redeclare
+                BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
+                thermostaticValveParameters,
+              redeclare
+                BESMod.HugosProject.Systems.Hydraulical.Control.RecordsCollection.DefaultBivHPControl_Modifications
+                bivalentControlData(TBiv=parameterStudy.TBiv),
+              redeclare
+                BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.ConstTSet_DHW
+                TSet_DHW,
+              redeclare
+                BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultSafetyControl
+                safetyControl,
+              TCutOff=parameterStudy.TCutOff,
+              QHP_flow_cutOff=parameterStudy.QHP_flow_cutOff*hydraulic.generation.heatPumpParameters.scalingFactor),
+            redeclare
+              BESMod.HugosProject.Systems.Hydraulical.Distribution.DirectHeating
+              distribution(
+              dpBufHCSto_nominal=0,
+              QHRAftBuf_flow_nominal=0,
+              use_heatingRodAfterBuffer=false,
+              redeclare
+                BESMod.HugosProject.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
+                temperatureSensorData,
+              redeclare
+                BESMod.HugosProject.Systems.RecordsCollection.Valves.DefaultThreeWayValve
+                threeWayValveParameters,
+              redeclare
+                BESMod.HugosProject.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorage
+                dhwParameters,
+              redeclare
+                BESMod.HugosProject.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorageDirect
+                bufParameters),
+            redeclare
+              BESMod.HugosProject.Systems.Hydraulical.Transfer.UFHPressureBased
+              transfer(
+              redeclare
+                BESMod.HugosProject.Systems.Hydraulical.Transfer.RecordsCollection.DefaultUFHData
+                UFHParameters,
+              redeclare
+                BESMod.HugosProject.Systems.RecordsCollection.Movers.DefaultMover
+                pumpData,
+              redeclare
+                BESMod.HugosProject.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
+                transferDataBaseDefinition)),
+          redeclare BESMod.Systems.Demand.DHW.DHW DHW(
+            use_pressure=true,
+            redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover
+              pumpData,
+            redeclare
+              BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
+              calcmFlow),
+          redeclare
+            BESMod.HugosProject.Systems.UserProfiles.TEASERProfiles_nightLowering_ramp
+            userProfiles(redeclare
+              BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile),
+          redeclare AachenSystem_nightLowering_ramp systemParameters(
+              THydSup_nominal={308.15},                              use_ventilation=
+               true),
+          redeclare ParametersToChange parameterStudy,
+          redeclare final package MediumDHW = AixLib.Media.Water,
+          redeclare final package MediumZone = AixLib.Media.Air,
+          redeclare final package MediumHyd = AixLib.Media.Water,
+          redeclare BESMod.Systems.Ventilation.NoVentilation ventilation);
+
+        annotation (experiment(
+            StopTime=31536000,
+            Interval=600,
+            __Dymola_Algorithm="Dassl"));
+      end BES;
+
+      record ParametersToChange
+        extends
+          BESMod.Systems.RecordsCollection.ParameterStudy.ParameterStudyBaseDefinition;
+        // 1. Add parameters like this (WITH Evaluate=false)!
+        // parameter Modelica.SIunits.Volume V=0.5 annotation(Evaluate=false);
+        // 2. Overwrite the default parameter in the system simulation
+        // via the graphical interface, resulting in e.g.
+        // Distribution.parameters.V = parameterStudy.V
+
+        parameter Modelica.Units.SI.Temperature TCutOff=263.15 "Cut off temperature"
+          annotation (Evaluate=false);
+        parameter Modelica.Units.SI.Temperature TBiv=268.15 "Bivalence temperature"
+          annotation (Evaluate=false);
+        parameter Real VPerQFlow=23.5 "Litre of storage volume per kilowatt thermal power demand" annotation(Evaluate=false);
+        parameter Modelica.Units.SI.HeatFlowRate QHP_flow_cutOff=3000
+          annotation (Evaluate=false);
+        parameter Modelica.Units.SI.HeatFlowRate QHP_flow_biv=4000
+          annotation (Evaluate=false);
+      end ParametersToChange;
+
+      record AachenSystem_nightLowering_ramp
+        extends
+          BESMod.HugosProject.Systems.RecordsCollection.SystemParametersBaseDataDefinition_nightLowering_ramp(
+          QDHW_flow_nomial=1000,
+          use_elecHeating=false,
+          nZones=1,
+          filNamWea=Modelica.Utilities.Files.loadResource(
+              "modelica://BESMod/Resources/WeatherData/TRY2015_507931060546_Jahr_City_Aachen_Normal.mos"),
+          QBui_flow_nominal={10632.414942943078},
+          use_ventilation=false,
+          THydSup_nominal={328.15},
+          TOda_nominal=265.35);
+
+      end AachenSystem_nightLowering_ramp;
+    end DirectHeating_UFH;
   end Examples;
 end HugosProject;

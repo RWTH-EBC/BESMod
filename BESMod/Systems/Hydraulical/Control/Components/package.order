@@ -4,3 +4,4 @@ ThermostaticValveController
 Tests
 OnOffController
 HeatPumpNSetController
+HeatPumpBusPassThrough

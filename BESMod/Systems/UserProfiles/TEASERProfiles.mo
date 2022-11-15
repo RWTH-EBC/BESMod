@@ -1,45 +1,44 @@
 within BESMod.Systems.UserProfiles;
 model TEASERProfiles "Standard TEASER Profiles"
-  extends BaseClasses.RecordBasedDHWUser;
+  extends BaseClasses.PartialUserProfiles;
   parameter String fileNameIntGains=Modelica.Utilities.Files.loadResource("modelica://BESMod/Resources/InternalGains.txt")
-    "File where matrix is stored"
-    annotation (Dialog(tab="Inputs", group="Internal Gains"));
-  parameter Real gain[3]=fill(1, 3) "Gain value multiplied with internal gains. Used to e.g. disable single gains."          annotation (Dialog(group=
-          "Internal Gains",                                                                                                 tab="Inputs"));
+    "File where matrix is stored";
+  parameter Real gain[3]=fill(1, 3) "Gain value multiplied with internal gains. Used to e.g. disable single gains.";
 
-  Modelica.Blocks.Sources.CombiTimeTable tableInternalGains(
+
+  Modelica.Blocks.Sources.CombiTimeTable tabIntGai(
     final tableOnFile=true,
     final extrapolation=Modelica.Blocks.Types.Extrapolation.Periodic,
     final tableName="Internals",
     final fileName=fileNameIntGains,
-    columns=2:4) "Profiles for internal gains"
-    annotation (Placement(transformation(extent={{23,23},{-23,-23}},
+    columns=2:4) "Profiles for internal gains" annotation (Placement(
+        transformation(
+        extent={{10,10},{-10,-10}},
         rotation=180,
-        origin={-27,1})));
+        origin={-10,30})));
 
-  Modelica.Blocks.Math.Gain gainIntGains[3](k=gain)
-    "Profiles for internal gains" annotation (Placement(transformation(
-        extent={{23,23},{-23,-23}},
-        rotation=180,
-        origin={45,1})));
-
-  Modelica.Blocks.Sources.Constant const[nZones](k=
-        TSetZone_nominal) "Profiles for internal gains"
+  Modelica.Blocks.Math.Gain gainIntGai[3](k=gain) "Gain for internal gains"
     annotation (Placement(transformation(
-        extent={{23,23},{-23,-23}},
+        extent={{10,10},{-10,-10}},
         rotation=180,
-        origin={-87,-45})));
+        origin={30,30})));
+
+  Modelica.Blocks.Sources.Constant conTSetZone[nZones](k=TSetZone_nominal)
+    "Constant room set temperature" annotation (Placement(transformation(
+        extent={{10,10},{-10,-10}},
+        rotation=180,
+        origin={-10,-50})));
 equation
-  connect(tableInternalGains.y, gainIntGains.u) annotation (Line(points={{-1.7,1},
-          {-1.7,0.5},{17.4,0.5},{17.4,1}},    color={0,0,127}));
-  connect(gainIntGains.y, useProBus.intGains) annotation (Line(points={{70.3,1},
-          {79.15,1},{79.15,-1},{115,-1}},             color={0,0,127}), Text(
+  connect(tabIntGai.y, gainIntGai.u)
+    annotation (Line(points={{1,30},{18,30}}, color={0,0,127}));
+  connect(gainIntGai.y, useProBus.intGains) annotation (Line(points={{41,30},{
+          74,30},{74,-1},{115,-1}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(const.y, useProBus.TZoneSet) annotation (Line(points={{-61.7,-45},{
-          115,-45},{115,-1}}, color={0,0,127}), Text(
+  connect(conTSetZone.y, useProBus.TZoneSet) annotation (Line(points={{1,-50},{
+          115,-50},{115,-1}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},

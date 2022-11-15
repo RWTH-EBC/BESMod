@@ -1,6 +1,10 @@
 within BESMod.Systems.Hydraulical.Distribution;
 model DHWOnly "only loads DHW"
   extends BaseClasses.PartialDistribution(
+    final VStoDHW=0,
+    final fFullSto=0,
+    final QDHWStoLoss_flow=0,
+    final designType=BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.NoStorage,
     nParallelDem=1,
     final dpDem_nominal=fill(0, nParallelDem),
     final dpSup_nominal=fill(0, nParallelSup),
@@ -14,7 +18,7 @@ model DHWOnly "only loads DHW"
     redeclare package MediumDHW = Medium,
     final dTTra_nominal=fill(0, nParallelDem),
     final nParallelSup=1);
-  Utilities.Electrical.ZeroLoad zeroLoad
+  BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{24,-108},{44,-88}})));
 equation
   connect(portDHW_out, portGen_in[1]) annotation (Line(points={{100,-22},{2,-22},
