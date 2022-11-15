@@ -9,13 +9,11 @@ model BES
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
       redeclare Systems.Hydraulical.Generation.HeatPumpAndHeatingRod generation(
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
-
         redeclare package Medium_eva = AixLib.Media.Air,
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           heatPumpParameters(
           genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
-
           TBiv=parameterStudy.TBiv,
           scalingFactor=hydraulic.generation.heatPumpParameters.QPri_flow_nominal
               /parameterStudy.QHP_flow_biv,
@@ -29,13 +27,13 @@ model BES
         redeclare model PerDataMainHP =
             AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
             QCon_flow_nominal=hydraulic.generation.heatPumpParameters.QPri_flow_nominal,
-
             refrigerant="Propane",
             flowsheet="VIPhaseSeparatorFlowsheet"),
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
           temperatureSensorData),
-      redeclare Systems.Hydraulical.Control.PartBiv_PI_ConOut_HPS control(
+      redeclare Systems.Hydraulical.Control.ConstHys_PI_ConOut_HPSController
+        control(
         redeclare
           BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
           thermostaticValveController,
@@ -51,8 +49,7 @@ model BES
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultSafetyControl
           safetyControl,
-        TCutOff=parameterStudy.TCutOff,
-        QHP_flow_cutOff=parameterStudy.QHP_flow_cutOff*hydraulic.generation.heatPumpParameters.scalingFactor),
+        supCtrlTypeDHWSet=BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Local),
       redeclare Systems.Hydraulical.Distribution.DistributionTwoStorageParallel
         distribution(
         redeclare
@@ -74,7 +71,8 @@ model BES
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
         calcmFlow),
     redeclare Systems.UserProfiles.TEASERProfiles userProfiles,
-    redeclare AachenSystem systemParameters(use_ventilation=true),
+    redeclare AachenSystem systemParameters(use_ventilation=false,
+        use_elecHeating=false),
     redeclare ParametersToChange parameterStudy,
     redeclare final package MediumDHW = AixLib.Media.Water,
     redeclare final package MediumZone = AixLib.Media.Air,
@@ -84,7 +82,8 @@ model BES
   extends Modelica.Icons.Example;
 
   annotation (experiment(
-      StopTime=31536000,
-      Interval=600,
+      StartTime=5184000,
+      StopTime=10368000,
+      Interval=599.999616,
       __Dymola_Algorithm="Dassl"));
 end BES;

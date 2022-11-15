@@ -1,7 +1,9 @@
 within BESMod.Systems.Hydraulical.Generation;
 model GasBoiler "Just a gas boiler"
-  extends BaseClasses.PartialGeneration(dp_nominal={boilerNoControl.dp_nominal},
-                                        final nParallelDem=1);
+  extends BaseClasses.PartialGeneration(
+    dTTra_nominal=fill(20, nParallelDem),
+    dp_nominal={boilerNoControl.dp_nominal},
+    final nParallelDem=1);
   replaceable parameter AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition
     paramBoiler "Parameters for Boiler" annotation(Dialog(group="Component data"),
     choicesAllMatching=true);
@@ -146,4 +148,9 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
+  annotation (Documentation(info="<html>
+<h4>Bottom-up parameters</h4>
+<p><br>The value for dTTra_nominal is based on EN 303-1:2017, which requires a temperature spread between 10 and 20 K. </p>
+<p>20 K is used for most applications, as for example stated in the datasheet of the Vitocrossal Typ CU3A.</p>
+</html>"));
 end GasBoiler;
