@@ -45,7 +45,6 @@ partial record HeatPumpBaseDataDefinition
     "Manual input of the evaporator volume (if not automatically calculated)";
   parameter Modelica.Units.SI.Volume VCon=0.001
     "Manual input of the condenser volume";
-  parameter Boolean useAirSource=true "Turn false to use water as temperature source.";
   parameter Modelica.Units.SI.PressureDifference dpCon_nominal=1000
     "Pressure difference";
   parameter Modelica.Units.SI.PressureDifference dpEva_nominal=1000
