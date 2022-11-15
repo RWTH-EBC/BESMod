@@ -16,7 +16,7 @@ partial model PartialModelicaConferenceUseCase
         lon=weaDat.lon,
         alt=weaDat.alt,
         timZon=3600,
-        ARoof=building.ARoo/2),
+        ARoo=building.ARoo/2),
       redeclare BESMod.Systems.Electrical.Transfer.NoElectricalTransfer
         transfer,
       redeclare BESMod.Systems.Electrical.Control.NoControl control),
@@ -34,7 +34,6 @@ partial model PartialModelicaConferenceUseCase
           genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
           TBiv=271.15,
           scalingFactor=scalingFactorHP,
-          useAirSource=true,
           dpCon_nominal=0,
           dpEva_nominal=0,
           use_refIne=false,
@@ -44,7 +43,10 @@ partial model PartialModelicaConferenceUseCase
           heatingRodParameters,
         redeclare model PerDataMainHP =
             AixLib.DataBase.HeatPump.PerformanceData.LookUpTable2D (dataTable=
-                AixLib.DataBase.HeatPump.EN255.Vitocal350AWI114())),
+                AixLib.DataBase.HeatPump.EN255.Vitocal350AWI114()),
+        redeclare
+          BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
+          temperatureSensorData),
       redeclare
         BESMod.Systems.Hydraulical.Control.ConstHys_PI_ConOut_HPSController
         control(
@@ -121,7 +123,7 @@ partial model PartialModelicaConferenceUseCase
           use_bypass=false)));
 
  parameter Real scalingFactorHP=hydraulic.generation.heatPumpParameters.QPri_flow_nominal
-      /13000                               "May be overwritten to avoid warnings and thus a fail in the CI";
+      /13000 "May be overwritten to avoid warnings and thus a fail in the CI";
 
 
   annotation (experiment(

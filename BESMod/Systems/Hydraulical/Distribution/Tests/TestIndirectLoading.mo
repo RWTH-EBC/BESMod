@@ -19,7 +19,8 @@ model TestIndirectLoading
         dhwParameters,
       redeclare
         BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-        heatingRodAftBufParameters));
+        heatingRodAftBufParameters,
+      dTLoaHCBuf=10));
   extends Modelica.Icons.Example;
 
   Modelica.Blocks.Sources.Pulse        pulse(       period=100) annotation (

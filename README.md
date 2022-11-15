@@ -64,6 +64,18 @@ Furthermore, you are welcome to contribute via [Pull Requests](https://github.co
 URL to proceedings: https://2022.american.conference.modelica.org/documents/NA_Modelica_2022_Proceedings.pdf
 DOI:  10.3384/ECP211869
 
+```
+@inproceedings{wuellhorst2022besmod,
+  title = {{BESMod} - {A} {Modelica} {Library} providing {Building} {Energy} {System} {Modules}},
+  author = {W{\"u}llhorst, Fabian and Maier, Laura and Jansen, David and K{\"u}hn, Larissa and Hering, Dominik and M{\"u}ller, Dirk}},
+  year = {2022},
+  booktitle={Proceedings of the American Modelica Conference 2022, Dallas, Texas, USA, October 26-28},
+  pages={9--18},
+  year={2022},
+  doi={10.3384/ecp21186}
+}
+```
+
 # License
 
 The **BESMod** Library is released by RWTH Aachen University, E.ON Energy Research Center, Institute for Energy Efficient Buildings and Indoor Climate and is available under a 3-clause BSD-license.

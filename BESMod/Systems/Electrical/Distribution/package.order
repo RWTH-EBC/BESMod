@@ -1,6 +1,7 @@
 BatterySystemSimple
 DirectlyToGrid
-BaseClasses
+OwnConsumption
 RecordsCollection
 Tests
 Components
+BaseClasses

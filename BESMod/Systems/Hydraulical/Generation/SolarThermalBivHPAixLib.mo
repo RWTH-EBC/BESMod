@@ -11,12 +11,12 @@ model SolarThermalBivHPAixLib
   replaceable parameter BESMod.Systems.Hydraulical.Generation.RecordsCollection.SolarThermalBaseDataDefinition
     solarThermalParas constrainedby
     BESMod.Systems.Hydraulical.Generation.RecordsCollection.SolarThermalBaseDataDefinition(final c_p=cp)
-    annotation (choicesAllMatching=true, Placement(transformation(extent={{-86,-62},
+    annotation (Dialog(group="Component data"), choicesAllMatching=true, Placement(transformation(extent={{-86,-62},
             {-66,-42}})));
   replaceable parameter
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
     pumpSTData
-    annotation (choicesAllMatching=true, Placement(transformation(extent={{-98,
+    annotation (Dialog(group="Component data"), choicesAllMatching=true, Placement(transformation(extent={{-98,
             -176},{-84,-162}})));
   AixLib.Fluid.Solar.Thermal.SolarThermal solarThermal(
     redeclare final package Medium = Medium,

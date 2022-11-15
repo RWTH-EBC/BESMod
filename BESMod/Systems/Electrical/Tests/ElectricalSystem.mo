@@ -25,12 +25,12 @@ model ElectricalSystem
     redeclare Generation.PVSystemMultiSub generation(
       redeclare model CellTemperature =
           AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround,
+
       redeclare AixLib.DataBase.SolarElectric.SchuecoSPV170SME1 pVParameters,
       lat=weaDat.lat,
       lon=weaDat.lon,
       alt=weaDat.alt,
-      timZon=3600,
-      ARoof=50),
+      timZon=3600),
     nLoadsExtSubSys=1,
     redeclare Control.NoControl control)
     annotation (Placement(transformation(extent={{-40,-34},{52,42}})));

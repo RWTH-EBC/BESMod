@@ -131,8 +131,8 @@ partial model PartialHydraulicSystem
     final QDHW_flow_nominal=hydraulicSystemParameters.QDHW_flow_nominal,
     final TDHWCold_nominal=hydraulicSystemParameters.TDHWCold_nominal,
     final TDHW_nominal=hydraulicSystemParameters.TDHW_nominal,
-    tCrit=hydraulicSystemParameters.tCrit,
-    QCrit=hydraulicSystemParameters.QCrit,
+    final tCrit=hydraulicSystemParameters.tCrit,
+    final QCrit=hydraulicSystemParameters.QCrit,
     final use_openModelica=use_openModelica) annotation (choicesAllMatching=true,
       Placement(transformation(extent={{-12,-104},{90,28}})));
 
@@ -146,7 +146,7 @@ partial model PartialHydraulicSystem
     final T_start=T_start,
     final X_start=X_start,
     final C_start=C_start,
-    TTra_nominal=hydraulicSystemParameters.TSup_nominal,
+    final TTra_nominal=hydraulicSystemParameters.TSup_nominal,
     final AZone=hydraulicSystemParameters.AZone,
     final hZone=hydraulicSystemParameters.hZone,
     final ABui=hydraulicSystemParameters.ABui,

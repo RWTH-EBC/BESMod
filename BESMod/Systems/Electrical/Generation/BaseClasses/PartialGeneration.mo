@@ -6,8 +6,12 @@ partial model PartialGeneration
     are not available in open modelica" annotation(Dialog(tab="Advanced"));
   parameter Integer numGenUnits(min=1) "Number of generation (e.g. PV module) units"
   annotation(Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
-  parameter Real f_design[numGenUnits]=fill(0.8, numGenUnits) "Over-/undersizing factor relative to maximum capacity, e.g., roof area"
-                                                                                                                                      annotation(Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
+  parameter Real f_design[numGenUnits]=
+    fill(0.8, numGenUnits)
+    "Over-/undersizing factor relative to maximum capacity, e.g., roof area"
+    annotation(Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
+  parameter Modelica.Units.SI.Area ARoo(min=0) "Roof area of building"
+    annotation(Dialog(group="Design - Top Down: Parameters are given by the parent system"));
   IBPSA.BoundaryConditions.WeatherData.Bus weaBus annotation (Placement(
         transformation(extent={{-120,44},{-80,84}}), iconTransformation(extent={{-110,66},
             {-90,86}})));
