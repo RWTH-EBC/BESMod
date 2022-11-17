@@ -4,23 +4,16 @@ model SupervisoryControl
   parameter BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType ctrlType
     "Type of supervisory control";
 
-<<<<<<< HEAD
-  Modelica.Blocks.Interfaces.RealInput uSup if ctrlType == BESMod.HugosProject.Utilities.SupervisoryControl.Types.SupervisoryControlType.Internal
-=======
   Modelica.Blocks.Interfaces.RealInput uSup if ctrlType == BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Internal
->>>>>>> main
                                             "Input from supervisory control"
     annotation (Placement(transformation(extent={{-140,60},{-100,100}}),
         iconTransformation(extent={{-140,60},{-100,100}})));
   Modelica.Blocks.Interfaces.RealInput uLoc "Local control input"
     annotation (Placement(transformation(extent={{-140,-100},{-100,-60}}),
         iconTransformation(extent={{-140,-100},{-100,-60}})));
-<<<<<<< HEAD
-  Modelica.Blocks.Interfaces.BooleanInput activateInt if ctrlType == BESMod.HugosProject.Utilities.SupervisoryControl.Types.SupervisoryControlType
-    .Internal
-=======
+
   Modelica.Blocks.Interfaces.BooleanInput actInt if ctrlType == BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Internal
->>>>>>> main
+
     annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));
   Modelica.Blocks.Interfaces.RealOutput y
                                          "Control output"
@@ -28,21 +21,7 @@ model SupervisoryControl
   Modelica.Blocks.Logical.Switch swi
     "Switch between external signal and direct feedthrough signal"
     annotation (Placement(transformation(extent={{0,-16},{32,16}})));
-<<<<<<< HEAD
-  Modelica.Blocks.Sources.BooleanExpression activateExt if ctrlType == BESMod.HugosProject.Utilities.SupervisoryControl.Types.SupervisoryControlType
-    .External
-    "Block to activate use of external signal"
-    annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));
-  Modelica.Blocks.Sources.RealExpression uExt if ctrlType == BESMod.HugosProject.Utilities.SupervisoryControl.Types.SupervisoryControlType.External
-    "External input signal"
-    annotation (Placement(transformation(extent={{-60,10},{-40,30}})));
-  Modelica.Blocks.Sources.BooleanConstant deactivateAlways(final k=false) if
-    ctrlType == BESMod.HugosProject.Utilities.SupervisoryControl.Types.SupervisoryControlType.Local
-    "Block to activate use of external signal"
-    annotation (Placement(transformation(extent={{-60,-40},{-40,-20}})));
-  Modelica.Blocks.Sources.Constant uSupDeacticate(final k=0) if ctrlType ==
-    BESMod.HugosProject.Utilities.SupervisoryControl.Types.SupervisoryControlType.Local
-=======
+
   Modelica.Blocks.Sources.BooleanExpression actExt if ctrlType == BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.External
     "Block to activate use of external signal"
     annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));
@@ -54,7 +33,7 @@ model SupervisoryControl
     "Block to activate use of external signal"
     annotation (Placement(transformation(extent={{-60,-40},{-40,-20}})));
   Modelica.Blocks.Sources.Constant uSupDeAct(final k=0) if ctrlType == BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Local
->>>>>>> main
+
     "Constant zero for deactivated sup control"
     annotation (Placement(transformation(extent={{-60,40},{-40,60}})));
 equation

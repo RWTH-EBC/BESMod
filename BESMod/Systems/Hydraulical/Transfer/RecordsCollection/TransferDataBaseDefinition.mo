@@ -22,13 +22,8 @@ partial record TransferDataBaseDefinition "Data record for hydraulic heat transf
     "Volume of water in whole heat distribution and transfer system"
     annotation (Dialog(group="Volume"));
   // Pressure
-<<<<<<< HEAD
-  parameter BESMod.Systems.Hydraulical.Transfer.Types.PressureDropPerLength pressureDropPerLen
-    "Pressure drop per m that is allowed maximal within whole heat distribution system (typical value: 100 Pa/m). TODO: Calculate based on Figure 2.6.3-12 in Taschenbuch für HEIZUNG + KLIMATECHNIK 2019"
-=======
   parameter BESMod.Systems.Hydraulical.Transfer.Types.PressureDropPerLength pressureDropPerLen(min=Modelica.Constants.eps)
       "Pressure drop per m that is allowed maximal within whole heat distribution system (typical value: 100 Pa/m). TODO: Calculate based on Figure 2.6.3-12 in Taschenbuch für HEIZUNG + KLIMATECHNIK 2019"
->>>>>>> main
       annotation(Dialog(group="Pressure"));
   parameter BESMod.Systems.Hydraulical.Transfer.Types.HydraulicResistanceType typeOfHydRes
     "Type of the hydraulic restistances to be considered for parameter zf"                                                                                        annotation(Dialog(group="Pressure"), choicesAllMatching=true, Dialog(descriptionLabel=true));

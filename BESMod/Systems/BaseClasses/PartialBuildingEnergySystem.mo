@@ -25,19 +25,12 @@ partial model PartialBuildingEnergySystem "Partial BES"
   replaceable parameter
     BESMod.Systems.RecordsCollection.SystemParametersBaseDataDefinition
     systemParameters constrainedby
-<<<<<<< HEAD
-    RecordsCollection.SystemParametersBaseDataDefinition(QDHW_flow_nomial=
-        userProfiles.mDHW_flow_nominal*(systemParameters.TSetDHW -
-        systemParameters.TDHWWaterCold)*4184)
-    "Parameters relevant for the whole energy system"
-    annotation (choicesAllMatching=true, Placement(transformation(extent={{-280,
-            -24},{-228,40}})));
-=======
+
     RecordsCollection.SystemParametersBaseDataDefinition
                      "Parameters relevant for the whole energy system"
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-278,
             -38},{-224,18}})));
->>>>>>> main
+
   replaceable parameter RecordsCollection.ParameterStudy.ParameterStudyBaseDefinition
     parameterStudy "Parameters changed in the study / analysis" annotation (
       choicesAllMatching=true, Placement(transformation(extent={{-278,-118},{

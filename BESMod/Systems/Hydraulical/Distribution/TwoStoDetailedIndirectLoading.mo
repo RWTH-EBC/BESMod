@@ -17,20 +17,8 @@ equation
     annotation (Line(points={{-60,72},{-58,72},{-58,48.54},{-36.45,48.54}},
         color={0,127,255}));
   connect(threeWayValveWithFlowReturn.portBui_a, storageBuf.portHC1Out)
-<<<<<<< HEAD
-<<<<<<< HEAD
-    annotation (Line(points={{-64,68},{-58,68},{-58,66},{-50,66},{-50,41.72},{
-          -36.225,41.72}},
-                   color={0,127,255}));
-  connect(bouPumpBuf.ports[1], storageBuf.fluidportBottom2) annotation (Line(
-        points={{-13,-2},{-13,13.78},{-12.825,13.78}}, color={0,127,255}));
-=======
-    annotation (Line(points={{-64,68},{-58,68},{-58,66},{-50,66},{-50,41.72},{-36.225,
-=======
     annotation (Line(points={{-60,68},{-58,68},{-58,66},{-50,66},{-50,41.72},{-36.225,
->>>>>>> main
           41.72}}, color={0,127,255}));
   connect(bouPumBuf.ports[1], storageBuf.fluidportBottom2) annotation (Line(
         points={{-10,0},{-10,13.78},{-12.825,13.78}}, color={0,127,255}));
->>>>>>> main
 end TwoStoDetailedIndirectLoading;

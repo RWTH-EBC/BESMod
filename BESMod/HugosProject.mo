@@ -3073,7 +3073,7 @@ array based demand for your systemParameters")}),                experiment(Stop
 
         model TEASERThermalZone_nightLowering_ramp
           "Reduced order building model, coupled with TEASER, comfort based on night lowering of the temperature"
-          extends BaseClasses.PartialDemand(
+          extends BESMod.Systems.Demand.Building.BaseClasses.PartialDemand(
             ARoo=sum(zoneParam.ARoof)/nZones,
             hBui=sum(zoneParam.VAir)^(1/3),
             ABui=2*sum(zoneParam.VAir)^(1/3),
@@ -17109,10 +17109,10 @@ The parameter <strong>limitAtInit</strong> is obsolete since MSL 3.2.2 and only 
             dpValve_nominal=transferDataBaseDefinition.dpHeaSysValve_nominal,
             use_inputFilter=false,
             dpFixed_nominal=transferDataBaseDefinition.dpHeaSysPreValve_nominal,
-
             l=transferDataBaseDefinition.leakageOpening)
             annotation (Placement(transformation(extent={{-30,-10},{-10,10}},rotation=270,
                 origin={-44,-58})));
+
         protected
           Modelica.Blocks.Math.Feedback inv[nParallelDem]
             "Inversion of control signal" annotation (Placement(transformation(
@@ -17630,11 +17630,11 @@ The parameter <strong>limitAtInit</strong> is obsolete since MSL 3.2.2 and only 
             dpValve_nominal=transferDataBaseDefinition.dpHeaSysValve_nominal,
             use_inputFilter=false,
             dpFixed_nominal=transferDataBaseDefinition.dpHeaSysPreValve_nominal,
-
             l=transferDataBaseDefinition.leakageOpening,
             l2=0.0001)
             annotation (Placement(transformation(extent={{-30,-10},{-10,10}},rotation=270,
                 origin={2,-12})));
+
         equation
           connect(rad.heatPortRad, heatPortRad) annotation (Line(points={{6.92,
                   -51.2},{6.92,-50},{84,-50},{84,-40},{100,-40}},
