@@ -4,3 +4,8 @@ BAUSimStudy
 UseCaseHighOrderModel
 SolarThermalSystem
 GasBoilerBuildingOnly
+ReferenceSystem
+DirectHeating
+DirectHeating_UFH
+IndirectStorage_UFH
+IndirectStorage_UFH_TSet_const

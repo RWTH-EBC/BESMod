@@ -3,3 +3,4 @@ DefaultSafetyControl
 BivalentHeatPumpControlDataDefinition
 DefaultBivHPControl
 ThermostaticValveDataDefinition
+DefaultBivHPControl_toOptimize

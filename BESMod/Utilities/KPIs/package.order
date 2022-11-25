@@ -3,3 +3,5 @@ ComfortCalculator
 DeviceKPICalculator
 EnergyKPICalculator
 BaseClasses
+ComfortCalculator_TSet_notConstant
+DeviceKPICalculator_numSwiEachDay

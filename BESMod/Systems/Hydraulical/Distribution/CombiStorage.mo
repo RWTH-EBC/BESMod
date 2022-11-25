@@ -7,7 +7,6 @@ model CombiStorage
     final VStoDHW=parameters.V,
     final QDHWStoLoss_flow=parameters.QLoss_flow,
     designType=BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage,
-
     dTTraDHW_nominal=parameters.dTLoadingHC1,
     final m_flow_nominal=mDem_flow_nominal,
     dTTra_nominal={0},
@@ -128,12 +127,11 @@ equation
       horizontalAlignment=TextAlignment.Right));
   connect(portGen_in[2], bufSto.portHC2In) annotation (Line(
       points={{-100,82.5},{-66,82.5},{-66,22},{-46,22},{-46,22.5},{-26.3,22.5}},
-
       color={255,255,0},
       thickness=0.5));
+
   connect(portGen_out[2], bufSto.portHC2Out) annotation (Line(
       points={{-100,42.5},{-78,42.5},{-78,14},{-52,14},{-52,12.9},{-26.3,12.9}},
-
       color={255,255,0},
       thickness=0.5));
 

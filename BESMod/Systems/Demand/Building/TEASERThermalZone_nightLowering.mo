@@ -1,5 +1,5 @@
 ﻿within BESMod.Systems.Demand.Building;
-model TEASERThermalZone
+model TEASERThermalZone_nightLowering
   "Reduced order building model, coupled with TEASER"
   extends BaseClasses.PartialDemand(
     ARoo=sum(zoneParam.ARoof)/nZones,
@@ -17,6 +17,9 @@ model TEASERThermalZone
   parameter Boolean use_verboseEnergyBalance=true   "=false to disable the integration of the verbose energy balance";
   parameter Modelica.Units.SI.TemperatureDifference dTComfort=2
     "Temperature difference to room set temperature at which the comfort is still acceptable. In DIN EN 15251, all temperatures below 22 °C - 2 K count as discomfort. Hence the default value. If your room set temperature is lower, consider using smaller values.";
+  parameter Modelica.Units.SI.TemperatureDifference dT_night=2 "temperature lowering at night";
+  parameter Modelica.Units.NonSI.Time_hour hMorning=7 "hour when the day begins";
+  parameter Modelica.Units.NonSI.Time_hour timeRamp=1 "duration of the ramp";
 
   parameter Modelica.Fluid.Types.Dynamics energyDynamics=Modelica.Fluid.Types.Dynamics.DynamicFreeInitial
     "Type of energy balance: dynamic (3 initialization options) or steady state"
@@ -138,11 +141,19 @@ model TEASERThermalZone
                                          [nZones]
     if use_hydraulic and use_verboseEnergyBalance
     annotation (Placement(transformation(extent={{-60,-80},{-40,-60}})));
-  BESMod.Utilities.KPIs.ComfortCalculator comfortCalculatorCool[nZones](TComBou=
-       TSetZone_nominal .+ dTComfort, each for_heating=false)
+  BESMod.Utilities.KPIs.ComfortCalculator_TSet_notConstant comfortCalculatorCool[nZones](TComBou=
+       TSetZone_nominal .+ dTComfort,
+       hMorning=hMorning,
+       dT_night=dT_night,
+       timeRamp=timeRamp,
+       each for_heating=false)
     annotation (Placement(transformation(extent={{-20,-60},{0,-40}})));
-  BESMod.Utilities.KPIs.ComfortCalculator comfortCalculatorHea[nZones](TComBou=
-        TSetZone_nominal .- dTComfort, each for_heating=true)
+  BESMod.Utilities.KPIs.ComfortCalculator_TSet_notConstant comfortCalculatorHea[nZones](TComBou=
+        TSetZone_nominal .- dTComfort,
+        hMorning=hMorning,
+        dT_night=dT_night,
+        timeRamp=timeRamp,
+        each for_heating=true)
     annotation (Placement(transformation(extent={{-20,-20},{0,0}})));
   Modelica.Blocks.Math.MultiSum multiSum[nZones](each final nu=3) if use_verboseEnergyBalance annotation (Placement(transformation(extent={{-9,-9},
             {9,9}},
@@ -366,4 +377,4 @@ equation
           {{103,62},{102,62},{102,74},{52,74},{52,42.24},{33.52,42.24}}, color=
           {0,0,127}));
     annotation (Diagram(coordinateSystem(extent={{-100,-220},{100,100}})));
-end TEASERThermalZone;
+end TEASERThermalZone_nightLowering;

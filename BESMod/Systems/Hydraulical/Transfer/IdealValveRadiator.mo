@@ -88,7 +88,7 @@ model IdealValveRadiator
   Modelica.Blocks.Routing.RealPassThrough reaPasThrOpe[nParallelDem] annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
-        origin={0,70})));
+        origin={0,68})));
 equation
   connect(rad.heatPortRad, heatPortRad) annotation (Line(points={{-2.8,-32},{40,
           -32},{40,-40},{100,-40}},       color={191,0,0}));
@@ -121,20 +121,20 @@ equation
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
   connect(reaPasThrOpe.y, outBusTra.opening) annotation (Line(points={{
-          -1.9984e-15,59},{-1.9984e-15,50},{24,50},{24,-90},{0,-90},{0,-104}},
+          -1.9984e-15,57},{-1.9984e-15,50},{24,50},{24,-90},{0,-90},{0,-104}},
                                                      color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
   connect(reaPasThrOpe.u, traControlBus.opening) annotation (Line(points={{
-          2.22045e-15,82},{2.22045e-15,91},{0,91},{0,100}},
+          2.22045e-15,80},{2.22045e-15,91},{0,91},{0,100}},
                                        color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
   connect(reaPasThrOpe.y, gain.u)
-    annotation (Line(points={{-1.9984e-15,59},{-1.9984e-15,50},{10,50},{10,42}},
+    annotation (Line(points={{-1.9984e-15,57},{-1.9984e-15,50},{10,50},{10,42}},
                                                              color={0,0,127}));
 end IdealValveRadiator;
