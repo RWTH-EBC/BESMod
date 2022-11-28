@@ -16,7 +16,7 @@ model TEASERThermalZone
 
   parameter Boolean use_verboseEnergyBalance=true   "=false to disable the integration of the verbose energy balance";
   parameter Modelica.Units.SI.TemperatureDifference dTComfort=2
-    "Temperature difference to room set temperature at which the comfort is still acceptable. In DIN EN 16798-1, all temperatures below 22 °C - 2 K count as discomfort. Hence the default value. If your room set temperature is lower, consider using smaller values.";
+    "Temperature difference to room set temperature at which the comfort is still acceptable. In EN 16798-1, all temperatures below 22 °C - 2 K count as discomfort. Hence the default value. If your room set temperature is lower, consider using smaller values.";
 
   parameter Modelica.Fluid.Types.Dynamics energyDynamics=Modelica.Fluid.Types.Dynamics.DynamicFreeInitial
     "Type of energy balance: dynamic (3 initialization options) or steady state"
