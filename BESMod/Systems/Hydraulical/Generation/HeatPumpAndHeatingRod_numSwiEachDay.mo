@@ -1,5 +1,5 @@
 within BESMod.Systems.Hydraulical.Generation;
-model HeatPumpAndHeatingRod_numSwiEachDay "Bivalent monoenergetic heat pump"
+model HeatPumpAndHeatingRod_numSwiEachDay "Bivalent monoenergetic heat pump, HP switching are counted every day"
   extends BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration(
     final QLoss_flow_nominal=f_design .* Q_flow_nominal .- Q_flow_nominal,
     final dTLoss_nominal=fill(0, nParallelDem),
@@ -263,9 +263,12 @@ model HeatPumpAndHeatingRod_numSwiEachDay "Bivalent monoenergetic heat pump"
         origin={-170,-38})));
   Modelica.Blocks.Sources.RealExpression reaExpTEvaIn(y=heatPump.senT_a2.T)
     annotation (Placement(transformation(extent={{-60,40},{-40,60}})));
-  Utilities.KPIs.DeviceKPICalculator_numSwiEachDay
-    deviceKPICalculator_numSwiEachDay
-    annotation (Placement(transformation(extent={{-80,-68},{-60,-48}})));
+  Modelica.Blocks.Sources.SampleTrigger sampleTrigger(period=86400)
+    annotation (Placement(transformation(extent={{-66,-80},{-56,-70}})));
+  Modelica.Blocks.Sources.IntegerConstant integerConstant(k=1)
+    annotation (Placement(transformation(extent={{-96,-64},{-82,-50}})));
+  Modelica.Blocks.MathInteger.TriggeredAdd numSwiHP_EachDay(use_reset=true)
+    annotation (Placement(transformation(extent={{-68,-56},{-56,-44}})));
 protected
   parameter Modelica.Units.SI.PressureDifference dpHeaRod_nominal=if use_heaRod
        then heatingRodParameters.dp_nominal else 0;
@@ -455,9 +458,13 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(deviceKPICalculator_numSwiEachDay.u, booExpHeaPumIsOn.y) annotation (
-      Line(points={{-82.2,-58},{-116,-58},{-116,-56},{-184,-56},{-184,-24},{
-          -159,-24},{-159,-10}}, color={255,0,255}));
+  connect(integerConstant.y, numSwiHP_EachDay.u) annotation (Line(points={{
+          -81.3,-57},{-76,-57},{-76,-50},{-70.4,-50}}, color={255,127,0}));
+  connect(numSwiHP_EachDay.reset, sampleTrigger.y) annotation (Line(points={{
+          -58.4,-57.2},{-58.4,-68},{-55.5,-68},{-55.5,-75}}, color={255,0,255}));
+  connect(booExpHeaPumIsOn.y, numSwiHP_EachDay.trigger) annotation (Line(points=
+         {{-159,-10},{-148,-10},{-148,-54},{-100,-54},{-100,-66},{-96,-66},{-96,
+          -68},{-70,-68},{-70,-62},{-65.6,-62},{-65.6,-57.2}}, color={255,0,255}));
   annotation (Line(
       points={{-52.775,-6.78},{-52.775,33.61},{-56,33.61},{-56,74}},
       color={255,204,51},

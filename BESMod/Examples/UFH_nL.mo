@@ -1,6 +1,6 @@
 within BESMod.Examples;
-package IndirectStorage_UFH
-  "HP & HR, indirect heating storage, UFH pressure based"
+package UFH_nL
+  "HP & HR, indirect heating storage, UFH pressure based system"
   extends Modelica.Icons.ExamplesPackage;
   model BES
     extends Systems.BaseClasses.PartialBuildingEnergySystem(
@@ -10,8 +10,14 @@ package IndirectStorage_UFH
             heaLoadFacGrd=0, heaLoadFacOut=0)),
       redeclare BESMod.Systems.Control.NoControl control,
       redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
-        redeclare Systems.Hydraulical.Generation.HeatPumpAndHeatingRod generation(
-          redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
+        redeclare
+          BESMod.Systems.Hydraulical.Generation.HeatPumpAndHeatingRod_numSwiEachDay
+          generation(
+          redeclare model PerDataMainHP =
+              AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
+              QCon_flow_nominal=hydraulic.generation.heatPumpParameters.QPri_flow_nominal,
+              refrigerant="Propane",
+              flowsheet="VIPhaseSeparatorFlowsheet"),
           redeclare package Medium_eva = AixLib.Media.Air,
           redeclare
             BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
@@ -27,11 +33,8 @@ package IndirectStorage_UFH
           redeclare
             BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
             heatingRodParameters,
-          redeclare model PerDataMainHP =
-              AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
-              QCon_flow_nominal=hydraulic.generation.heatPumpParameters.QPri_flow_nominal,
-              refrigerant="Propane",
-              flowsheet="VIPhaseSeparatorFlowsheet"),
+          redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover
+            pumpData,
           redeclare
             BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
             temperatureSensorData),
@@ -43,11 +46,11 @@ package IndirectStorage_UFH
             BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
             thermostaticValveParameters,
           redeclare
-            BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultBivHPControl
+            BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultBivHPControl_toOptimize
             bivalentControlData(TBiv=parameterStudy.TBiv),
           redeclare
-            Systems.Hydraulical.Control.Components.DHWSetControl.ConstTSet_DHW
-            TSet_DHW,
+            BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.AntiLegionellaControl
+            TSet_DHW(triggerEvery=604800),
           redeclare
             BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultSafetyControl
             safetyControl,
@@ -56,7 +59,7 @@ package IndirectStorage_UFH
         redeclare
           BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedIndirectLoading
           distribution(
-          dTLoaHCBuf=0,
+          dTLoaHCBuf=5,
           QHRAftBuf_flow_nominal=0,
           use_heatingRodAfterBuffer=false,
           redeclare
@@ -75,7 +78,6 @@ package IndirectStorage_UFH
             BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
             heatingRodAftBufParameters),
         redeclare BESMod.Systems.Hydraulical.Transfer.UFHPressureBased transfer(
-          use_preRelVal=false,
           redeclare
             BESMod.Systems.Hydraulical.Transfer.RecordsCollection.DefaultUFHData
             UFHParameters,
@@ -90,8 +92,7 @@ package IndirectStorage_UFH
         redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
           calcmFlow),
       redeclare Systems.UserProfiles.TEASERProfiles_nightLowering userProfiles,
-      redeclare AachenSystem systemParameters(THydSup_nominal={328.15},
-                                              use_ventilation=true),
+      redeclare AachenSystem systemParameters(use_ventilation=true),
       redeclare ParametersToChange parameterStudy,
       redeclare final package MediumDHW = AixLib.Media.Water,
       redeclare final package MediumZone = AixLib.Media.Air,
@@ -138,4 +139,4 @@ package IndirectStorage_UFH
       TOda_nominal=265.35);
 
   end AachenSystem;
-end IndirectStorage_UFH;
+end UFH_nL;

@@ -13,8 +13,8 @@ model SupervisoryControl
         iconTransformation(extent={{-140,-100},{-100,-60}})));
 
   Modelica.Blocks.Interfaces.BooleanInput actInt if ctrlType == BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Internal
-
     annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));
+
   Modelica.Blocks.Interfaces.RealOutput y
                                          "Control output"
     annotation (Placement(transformation(extent={{100,-20},{140,20}})));
@@ -33,9 +33,9 @@ model SupervisoryControl
     "Block to activate use of external signal"
     annotation (Placement(transformation(extent={{-60,-40},{-40,-20}})));
   Modelica.Blocks.Sources.Constant uSupDeAct(final k=0) if ctrlType == BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Local
-
     "Constant zero for deactivated sup control"
     annotation (Placement(transformation(extent={{-60,40},{-40,60}})));
+
 equation
   connect(uLoc, swi.u3) annotation (Line(points={{-120,-80},{-12,-80},{-12,-12.8},
           {-3.2,-12.8}}, color={0,0,127}));

@@ -1,6 +1,6 @@
 within BESMod.Examples;
-package DirectHeating
-  "Just to test the distribution system, should not be used with RadiatorPressureBased but only with UFH"
+package NoStorage_UFH_nL
+  "HP & HR, no heating storage, UFH pressure based system"
   extends Modelica.Icons.ExamplesPackage;
   model BES
     extends Systems.BaseClasses.PartialBuildingEnergySystem(
@@ -10,8 +10,14 @@ package DirectHeating
             heaLoadFacGrd=0, heaLoadFacOut=0)),
       redeclare BESMod.Systems.Control.NoControl control,
       redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
-        redeclare Systems.Hydraulical.Generation.HeatPumpAndHeatingRod generation(
-          redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
+        redeclare
+          BESMod.Systems.Hydraulical.Generation.HeatPumpAndHeatingRod_numSwiEachDay
+          generation(
+          redeclare model PerDataMainHP =
+              AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
+              QCon_flow_nominal=hydraulic.generation.heatPumpParameters.QPri_flow_nominal,
+              refrigerant="Propane",
+              flowsheet="VIPhaseSeparatorFlowsheet"),
           redeclare package Medium_eva = AixLib.Media.Air,
           redeclare
             BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
@@ -22,16 +28,11 @@ package DirectHeating
                 /parameterStudy.QHP_flow_biv,
             dpCon_nominal=0,
             dpEva_nominal=0,
-            use_refIne=false,
-            refIneFre_constant=0),
+            use_refIne=false),
           redeclare
             BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
             heatingRodParameters,
-          redeclare model PerDataMainHP =
-              AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
-              QCon_flow_nominal=hydraulic.generation.heatPumpParameters.QPri_flow_nominal,
-              refrigerant="Propane",
-              flowsheet="VIPhaseSeparatorFlowsheet"),
+          redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
           redeclare
             BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
             temperatureSensorData),
@@ -43,11 +44,11 @@ package DirectHeating
             BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
             thermostaticValveParameters,
           redeclare
-            BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultBivHPControl
+            BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultBivHPControl_toOptimize
             bivalentControlData(TBiv=parameterStudy.TBiv),
           redeclare
-            Systems.Hydraulical.Control.Components.DHWSetControl.ConstTSet_DHW
-            TSet_DHW,
+            BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.AntiLegionellaControl
+            TSet_DHW(triggerEvery=604800),
           redeclare
             BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultSafetyControl
             safetyControl,
@@ -74,24 +75,24 @@ package DirectHeating
           redeclare
             BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
             heatingRodAftBufParameters),
-        redeclare BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased
-          transfer(
+        redeclare BESMod.Systems.Hydraulical.Transfer.UFHPressureBased transfer(
           use_preRelVal=true,
           redeclare
-            BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
-            transferDataBaseDefinition,
+            BESMod.Systems.Hydraulical.Transfer.RecordsCollection.DefaultUFHData
+            UFHParameters,
           redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover
             pumpData,
           redeclare
-            BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
-            radParameters)),
+            BESMod.Systems.Hydraulical.Transfer.RecordsCollection.UFHSystemPressureLossData
+            transferDataBaseDefinition_forUFH)),
       redeclare Systems.Demand.DHW.DHW DHW(
         redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
         redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
           calcmFlow),
       redeclare Systems.UserProfiles.TEASERProfiles_nightLowering userProfiles,
-      redeclare AachenSystem systemParameters(use_ventilation=true),
+      redeclare AachenSystem systemParameters(THydSup_nominal={313.15},
+                                              use_ventilation=true),
       redeclare ParametersToChange parameterStudy,
       redeclare final package MediumDHW = AixLib.Media.Water,
       redeclare final package MediumZone = AixLib.Media.Air,
@@ -138,4 +139,4 @@ package DirectHeating
       TOda_nominal=265.35);
 
   end AachenSystem;
-end DirectHeating;
+end NoStorage_UFH_nL;

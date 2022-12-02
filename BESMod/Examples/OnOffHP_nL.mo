@@ -1,17 +1,23 @@
 within BESMod.Examples;
-package IndirectStorage_UFH_TSet_const
-  "HP & HR, indirect heating storage, UFH pressure based"
+package OnOffHP_nL
+  "On/Off HP & HR, indirect heating storage, radiator pressure based system"
   extends Modelica.Icons.ExamplesPackage;
   model BES
     extends Systems.BaseClasses.PartialBuildingEnergySystem(
       redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
-      redeclare Systems.Demand.Building.TEASERThermalZone building(redeclare
+      redeclare Systems.Demand.Building.TEASERThermalZone_nightLowering building(redeclare
           BESMod.Systems.Demand.Building.RecordsCollection.RefAachen oneZoneParam(
             heaLoadFacGrd=0, heaLoadFacOut=0)),
       redeclare BESMod.Systems.Control.NoControl control,
       redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
-        redeclare Systems.Hydraulical.Generation.HeatPumpAndHeatingRod generation(
-          redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
+        redeclare
+          BESMod.Systems.Hydraulical.Generation.HeatPumpAndHeatingRod_numSwiEachDay
+          generation(
+          redeclare model PerDataMainHP =
+              AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
+              QCon_flow_nominal=hydraulic.generation.heatPumpParameters.QPri_flow_nominal,
+              refrigerant="Propane",
+              flowsheet="VIPhaseSeparatorFlowsheet"),
           redeclare package Medium_eva = AixLib.Media.Air,
           redeclare
             BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
@@ -27,15 +33,13 @@ package IndirectStorage_UFH_TSet_const
           redeclare
             BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
             heatingRodParameters,
-          redeclare model PerDataMainHP =
-              AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
-              QCon_flow_nominal=hydraulic.generation.heatPumpParameters.QPri_flow_nominal,
-              refrigerant="Propane",
-              flowsheet="VIPhaseSeparatorFlowsheet"),
+          redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover
+            pumpData,
           redeclare
             BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
             temperatureSensorData),
-        redeclare Systems.Hydraulical.Control.PartBiv_PI_ConOut_HPS control(
+        redeclare BESMod.Systems.Hydraulical.Control.ConstHys_OnOff_HPSControll
+          control(
           redeclare
             BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
             thermostaticValveController,
@@ -43,16 +47,14 @@ package IndirectStorage_UFH_TSet_const
             BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
             thermostaticValveParameters,
           redeclare
-            BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultBivHPControl
-            bivalentControlData(TBiv=parameterStudy.TBiv),
-          redeclare
-            Systems.Hydraulical.Control.Components.DHWSetControl.ConstTSet_DHW
-            TSet_DHW,
-          redeclare
             BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultSafetyControl
             safetyControl,
-          TCutOff=parameterStudy.TCutOff,
-          QHP_flow_cutOff=parameterStudy.QHP_flow_cutOff*hydraulic.generation.heatPumpParameters.scalingFactor),
+          redeclare
+            BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultBivHPControl_toOptimize
+            bivalentControlData(TBiv=parameterStudy.TBiv),
+          redeclare
+            BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.AntiLegionellaControl
+            TSet_DHW(triggerEvery=604800)),
         redeclare
           BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedIndirectLoading
           distribution(
@@ -74,23 +76,23 @@ package IndirectStorage_UFH_TSet_const
           redeclare
             BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
             heatingRodAftBufParameters),
-        redeclare BESMod.Systems.Hydraulical.Transfer.UFHPressureBased transfer(
-          use_preRelVal=false,
+        redeclare BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased
+          transfer(
           redeclare
-            BESMod.Systems.Hydraulical.Transfer.RecordsCollection.DefaultUFHData
-            UFHParameters,
-          redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
+            BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
+            transferDataBaseDefinition,
+          redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover
+            pumpData,
           redeclare
-            BESMod.Systems.Hydraulical.Transfer.RecordsCollection.UFHSystemPressureLossData
-            transferDataBaseDefinition_forUFH)),
+            BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
+            radParameters)),
       redeclare Systems.Demand.DHW.DHW DHW(
         redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
         redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
           calcmFlow),
-      redeclare Systems.UserProfiles.TEASERProfiles userProfiles,
-      redeclare AachenSystem systemParameters(THydSup_nominal={328.15},
-                                              use_ventilation=true),
+      redeclare Systems.UserProfiles.TEASERProfiles_nightLowering userProfiles,
+      redeclare AachenSystem systemParameters(use_ventilation=true),
       redeclare ParametersToChange parameterStudy,
       redeclare final package MediumDHW = AixLib.Media.Water,
       redeclare final package MediumZone = AixLib.Media.Air,
@@ -137,4 +139,4 @@ package IndirectStorage_UFH_TSet_const
       TOda_nominal=265.35);
 
   end AachenSystem;
-end IndirectStorage_UFH_TSet_const;
+end OnOffHP_nL;

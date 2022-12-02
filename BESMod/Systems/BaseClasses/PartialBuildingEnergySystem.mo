@@ -25,7 +25,6 @@ partial model PartialBuildingEnergySystem "Partial BES"
   replaceable parameter
     BESMod.Systems.RecordsCollection.SystemParametersBaseDataDefinition
     systemParameters constrainedby
-
     RecordsCollection.SystemParametersBaseDataDefinition
                      "Parameters relevant for the whole energy system"
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-278,

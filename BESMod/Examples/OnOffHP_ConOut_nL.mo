@@ -1,6 +1,6 @@
 within BESMod.Examples;
-package DirectHeating
-  "Just to test the distribution system, should not be used with RadiatorPressureBased but only with UFH"
+package OnOffHP_ConOut_nL
+  "On/Off HP & HR, indirect heating storage, radiator pressure based system (Condenser outlet as control variable)"
   extends Modelica.Icons.ExamplesPackage;
   model BES
     extends Systems.BaseClasses.PartialBuildingEnergySystem(
@@ -10,8 +10,14 @@ package DirectHeating
             heaLoadFacGrd=0, heaLoadFacOut=0)),
       redeclare BESMod.Systems.Control.NoControl control,
       redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
-        redeclare Systems.Hydraulical.Generation.HeatPumpAndHeatingRod generation(
-          redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
+        redeclare
+          BESMod.Systems.Hydraulical.Generation.HeatPumpAndHeatingRod_numSwiEachDay
+          generation(
+          redeclare model PerDataMainHP =
+              AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
+              QCon_flow_nominal=hydraulic.generation.heatPumpParameters.QPri_flow_nominal,
+              refrigerant="Propane",
+              flowsheet="VIPhaseSeparatorFlowsheet"),
           redeclare package Medium_eva = AixLib.Media.Air,
           redeclare
             BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
@@ -27,15 +33,14 @@ package DirectHeating
           redeclare
             BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
             heatingRodParameters,
-          redeclare model PerDataMainHP =
-              AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
-              QCon_flow_nominal=hydraulic.generation.heatPumpParameters.QPri_flow_nominal,
-              refrigerant="Propane",
-              flowsheet="VIPhaseSeparatorFlowsheet"),
+          redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover
+            pumpData,
           redeclare
             BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
             temperatureSensorData),
-        redeclare Systems.Hydraulical.Control.PartBiv_PI_ConOut_HPS control(
+        redeclare
+          BESMod.Systems.Hydraulical.Control.ConstHys_ConOut_OnOff_HPSControll
+          control(
           redeclare
             BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
             thermostaticValveController,
@@ -43,20 +48,18 @@ package DirectHeating
             BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
             thermostaticValveParameters,
           redeclare
-            BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultBivHPControl
-            bivalentControlData(TBiv=parameterStudy.TBiv),
-          redeclare
-            Systems.Hydraulical.Control.Components.DHWSetControl.ConstTSet_DHW
-            TSet_DHW,
-          redeclare
             BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultSafetyControl
             safetyControl,
-          TCutOff=parameterStudy.TCutOff,
-          QHP_flow_cutOff=parameterStudy.QHP_flow_cutOff*hydraulic.generation.heatPumpParameters.scalingFactor),
-        redeclare BESMod.Systems.Hydraulical.Distribution.NoStorageForHeating
+          redeclare
+            BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultBivHPControl_toOptimize
+            bivalentControlData(TBiv=parameterStudy.TBiv),
+          redeclare
+            BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.AntiLegionellaControl
+            TSet_DHW(triggerEvery=604800)),
+        redeclare
+          BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedIndirectLoading
           distribution(
-          dTLoaHCBuf=0,
-          dpBufHCSto_nominal=0,
+          dTLoaHCBuf=5,
           QHRAftBuf_flow_nominal=0,
           use_heatingRodAfterBuffer=false,
           redeclare
@@ -66,8 +69,8 @@ package DirectHeating
             BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
             threeWayValveParameters,
           redeclare
-            BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorage_Direct
-            bufParameters(use_HC1=false, use_HC2=false),
+            BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorage
+            bufParameters,
           redeclare
             BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorage
             dhwParameters,
@@ -76,7 +79,6 @@ package DirectHeating
             heatingRodAftBufParameters),
         redeclare BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased
           transfer(
-          use_preRelVal=true,
           redeclare
             BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
             transferDataBaseDefinition,
@@ -138,4 +140,4 @@ package DirectHeating
       TOda_nominal=265.35);
 
   end AachenSystem;
-end DirectHeating;
+end OnOffHP_ConOut_nL;

@@ -1,6 +1,6 @@
 within BESMod.Examples;
-package ReferenceSystem
-  "HP & HR, 2 indirect storages, pressure based radiator system"
+package ReferenceSystem_nL
+  "HP & HR, indirect heating storage, radiator pressure based system"
   extends Modelica.Icons.ExamplesPackage;
   model BES
     extends Systems.BaseClasses.PartialBuildingEnergySystem(
@@ -16,7 +16,6 @@ package ReferenceSystem
           redeclare model PerDataMainHP =
               AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
               QCon_flow_nominal=hydraulic.generation.heatPumpParameters.QPri_flow_nominal,
-
               refrigerant="Propane",
               flowsheet="VIPhaseSeparatorFlowsheet"),
           redeclare package Medium_eva = AixLib.Media.Air,
@@ -24,7 +23,6 @@ package ReferenceSystem
             BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
             heatPumpParameters(
             genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
-
             TBiv=parameterStudy.TBiv,
             scalingFactor=hydraulic.generation.heatPumpParameters.QPri_flow_nominal
                 /parameterStudy.QHP_flow_biv,
@@ -48,11 +46,11 @@ package ReferenceSystem
             BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
             thermostaticValveParameters,
           redeclare
-            BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultBivHPControl
+            BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultBivHPControl_toOptimize
             bivalentControlData(TBiv=parameterStudy.TBiv),
           redeclare
-            Systems.Hydraulical.Control.Components.DHWSetControl.ConstTSet_DHW
-            TSet_DHW,
+            BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.AntiLegionellaControl
+            TSet_DHW(triggerEvery=604800),
           redeclare
             BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultSafetyControl
             safetyControl,
@@ -84,7 +82,8 @@ package ReferenceSystem
           redeclare
             BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
             transferDataBaseDefinition,
-          redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
+          redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover
+            pumpData,
           redeclare
             BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
             radParameters)),
@@ -141,4 +140,4 @@ package ReferenceSystem
       TOda_nominal=265.35);
 
   end AachenSystem;
-end ReferenceSystem;
+end ReferenceSystem_nL;
