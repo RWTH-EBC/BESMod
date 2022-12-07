@@ -1,5 +1,5 @@
 within BESMod.Examples.SolarThermalSystem;
 record SolarThermalSystemParameters
-  extends BESMod.Examples.UseCaseAachen.AachenSystem;
+  extends BESMod.Examples.UseCaseDesignOptimization.AachenSystem;
 
 end SolarThermalSystemParameters;

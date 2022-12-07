@@ -1,0 +1,7 @@
+within BESMod.Utilities.OpenModelicaErrors.ArrayInExpandable;
+expandable connector BusWithArr
+
+  Real arr[3];
+  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+        coordinateSystem(preserveAspectRatio=false)));
+end BusWithArr;

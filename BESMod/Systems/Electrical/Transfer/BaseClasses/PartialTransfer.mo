@@ -4,7 +4,11 @@ partial model PartialTransfer "Partial model for transfer subsystems"
     "=true to disable features which 
     are not available in open modelica" annotation(Dialog(tab="Advanced"));
   parameter Integer nParallelDem(min=1)
-    "Number of parallel demand systems of this system";
+    "Number of parallel demand systems of this system" annotation (Dialog(group=
+          "Design - Top Down: Parameters are given by the parent system"));
+  parameter Modelica.Units.SI.HeatFlowRate Q_flow_nominal[nParallelDem](each min=Modelica.Constants.eps)
+    "Nominal heat flow rate" annotation (Dialog(group=
+          "Design - Top Down: Parameters are given by the parent system"));
 
   Interfaces.TransferOutputs transferOutputs if not use_openModelica
                                              annotation (Placement(

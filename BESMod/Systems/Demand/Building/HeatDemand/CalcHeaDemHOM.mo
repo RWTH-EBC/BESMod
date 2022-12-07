@@ -13,19 +13,22 @@ model CalcHeaDemHOM
       radioButtons=true));
 
   extends PartialCalcHeatingDemand(
+    redeclare BESMod.Systems.UserProfiles.AixLibHighOrderProfiles heaDemSce(
+        redeclare AixLib.DataBase.Profiles.Ventilation2perDayMean05perH venPro,
+        redeclare AixLib.DataBase.Profiles.SetTemperaturesVentilation2perDay
+        TSetProfile,
+      gain=0),
     TN_heater=1,
     KR_heater=10000,
-    h_heater=fill(100000,building.nZones),
-    redeclare Examples.UseCaseHOM.HOMSystem systemParameters(
+    h_heater=fill(100000, building.nZones),
+    redeclare Examples.UseCaseHighOrderModel.HOMSystem systemParameters(
       TOda_nominal=261.15,
-      TSetZone_nominal(each displayUnit="K") = {293.15,293.15,288.15,293.15,293.15,293.15,
-        293.15,288.15,297.15,293.15},
+      TSetZone_nominal(each displayUnit="K") = {293.15,293.15,288.15,293.15,
+        293.15,293.15,293.15,288.15,297.15,293.15},
       THydSup_nominal=fill(273.15 + 55, building.nZones)),
     redeclare AixLibHighOrder building(
       useConstVentRate=true,
       ventRate={0.5,0.5,0,0.5,0.5,0.5,0.5,0,0.5,0.5},
-      Latitude=Modelica.Units.Conversions.to_deg(weaDat.lat),
-      Longitude=Modelica.Units.Conversions.to_deg(weaDat.lon),
       DiffWeatherDataTime=Modelica.Units.Conversions.to_hour(weaDat.timZon),
       GroundReflection=0.2,
       T0_air=293.15,
@@ -41,8 +44,6 @@ model CalcHeaDemHOM
       UValOutDoors=if TIR == 1 then 1.8 else 2.9,
       use_infiltEN12831=true,
       n50=if TIR == 1 or TIR == 2 then 3 else if TIR == 3 then 4 else 6),
-    redeclare UserProfiles.NoUserHOM heatDemandScenario(nZones=building.nZones,
-        TSetZone_nominal=fill(273.15 + 21, building.nZones)),
     heaterCooler(each Heater_on=true));
 
   annotation (Documentation(info="<html>

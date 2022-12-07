@@ -4,7 +4,7 @@ record DefaultUFHData "For a well insulated retrofit building"
     T_floor=281.65,
     final diameter=18e-3,
     c_top_ratio=fill(0.19, nZones),
-    C_ActivatedElement=fill(380, nZones),
+    C_ActivatedElement=fill(380000, nZones),
     k_down=fill(0.37, nZones),
     k_top=fill(4.47, nZones),
     is_groundFloor=fill(true, nZones),

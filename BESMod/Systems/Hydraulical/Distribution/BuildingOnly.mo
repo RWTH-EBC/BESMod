@@ -25,11 +25,12 @@ model BuildingOnly "Only loads building"
 
   BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{30,-108},{50,-88}})));
-  Modelica.Blocks.Sources.RealExpression realExpression(y=Medium.temperature(
-        Medium.setState_phX(
+  Modelica.Blocks.Sources.RealExpression reaExpTStoBufTopMea(y=
+        Medium.temperature(Medium.setState_phX(
         portGen_in[1].p,
         inStream(portGen_in[1].h_outflow),
         inStream(portGen_in[1].Xi_outflow))))
+    "Use storage name as all controls use this variable"
     annotation (Placement(transformation(extent={{-80,0},{-60,20}})));
 equation
   connect(zeroLoad.internalElectricalPin, internalElectricalPin) annotation (
@@ -37,8 +38,8 @@ equation
       points={{50,-98},{70,-98}},
       color={0,0,0},
       thickness=1));
-  connect(realExpression.y, sigBusDistr.TStoBufTopMea) annotation (Line(points={
-          {-59,10},{0,10},{0,101}}, color={0,0,127}), Text(
+  connect(reaExpTStoBufTopMea.y, sigBusDistr.TStoBufTopMea) annotation (Line(
+        points={{-59,10},{0,10},{0,101}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},

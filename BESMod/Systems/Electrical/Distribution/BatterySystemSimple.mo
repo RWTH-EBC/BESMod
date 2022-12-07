@@ -4,7 +4,7 @@ model BatterySystemSimple "Simple Battery model"
     BESMod.Systems.Electrical.Distribution.BaseClasses.PartialDistribution;
 
   parameter Real SOC_start_bat = 0.2 "Initial SOC of battery" annotation(Dialog(tab="Initialization"));
-
+  parameter Integer nBat=1 "Number of batteries";
   Components.FixedInitialBatterySimple batterySimple(
     final batteryData=batteryParameters,
     nBat=nBat,
@@ -30,7 +30,7 @@ model BatterySystemSimple "Simple Battery model"
     batteryParameters constrainedby
     BuildingSystems.Technologies.ElectricalStorages.Data.BaseClasses.ElectricBatteryGeneral
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-68,-42},{-48,-22}})));
-  parameter Integer nBat=1 "Number of batteries";
+
   Modelica.Blocks.Math.Sum sumOfLoads(nin=nSubSys)
     annotation (Placement(transformation(extent={{66,-8},{52,6}})));
 equation

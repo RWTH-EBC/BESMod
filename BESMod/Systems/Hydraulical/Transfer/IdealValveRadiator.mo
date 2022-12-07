@@ -26,23 +26,23 @@ model IdealValveRadiator
     redeclare package Medium = Medium,
     each final T_start=T_start) "Radiator" annotation (
       Placement(transformation(
-        extent={{11,11},{-11,-11}},
+        extent={{10,10},{-10,-10}},
         rotation=90,
-        origin={-13,-29})));
+        origin={-10,-30})));
 
-  IBPSA.Fluid.FixedResistances.PressureDrop res1[nParallelDem](
+  IBPSA.Fluid.FixedResistances.PressureDrop res[nParallelDem](
     redeclare package Medium = Medium,
     each final dp_nominal=1,
     final m_flow_nominal=m_flow_nominal) "Hydraulic resistance of supply"
     annotation (Placement(transformation(
-        extent={{-12.5,-13.5},{12.5,13.5}},
+        extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={-38.5,39.5})));
+        origin={-48,38})));
   Modelica.Blocks.Math.Gain gain[nParallelDem](final k=rad.m_flow_nominal)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
-        origin={8,34})));
+        origin={10,30})));
 
   replaceable parameter BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
     radParameters annotation (
@@ -51,7 +51,7 @@ model IdealValveRadiator
   Utilities.KPIs.EnergyKPICalculator intKPICalHeaFlo(final use_inpCon=false,
       final y=sum(-heatPortRad.Q_flow) + sum(-heatPortCon.Q_flow))
     annotation (Placement(transformation(extent={{-40,-80},{-20,-60}})));
-  IBPSA.Fluid.Movers.FlowControlled_m_flow pumpFix_m_flow[nParallelDem](
+  IBPSA.Fluid.Movers.FlowControlled_m_flow pumFixMFlo[nParallelDem](
     redeclare final package Medium = Medium,
     each final energyDynamics=energyDynamics,
     each final p_start=p_start,
@@ -64,8 +64,7 @@ model IdealValveRadiator
     final m_flow_small=1E-4*abs(m_flow_nominal),
     each final show_T=show_T,
     redeclare
-      BESMod.Systems.RecordsCollection.Movers.AutomaticConfigurationData
-      per(
+      BESMod.Systems.RecordsCollection.Movers.AutomaticConfigurationData per(
       each final speed_rpm_nominal=pumpData.speed_rpm_nominal,
       final m_flow_nominal=m_flow_nominal,
       final dp_nominal=dp_nominal,
@@ -77,50 +76,39 @@ model IdealValveRadiator
     each final nominalValuesDefineDefaultPressureCurve=true,
     each final tau=pumpData.tau,
     each final use_inputFilter=false,
-    final m_flow_start=m_flow_nominal)             annotation (Placement(
-        transformation(
-        extent={{-11,-11},{11,11}},
+    final m_flow_start=m_flow_nominal) annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
         rotation=270,
-        origin={-15,9})));
+        origin={-10,10})));
   replaceable parameter
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
     pumpData annotation (choicesAllMatching=true, Placement(transformation(extent={{-98,78},{-78,98}})));
-  IBPSA.Fluid.Sources.Boundary_pT bouPumpHP[nParallelDem](
-    redeclare package Medium = Medium,
-    each final p=p_start,
-    each final T=T_start,
-    each final nPorts=1) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=90,
-        origin={-66,10})));
   BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{30,-106},{50,-86}})));
   Modelica.Blocks.Routing.RealPassThrough reaPasThrOpe[nParallelDem] annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
-        origin={10,70})));
+        origin={0,70})));
 equation
-  connect(rad.heatPortRad, heatPortRad) annotation (Line(points={{-5.08,-31.2},
-          {40,-31.2},{40,-40},{100,-40}}, color={191,0,0}));
-  connect(rad.heatPortCon, heatPortCon) annotation (Line(points={{-5.08,-26.8},
-          {-5.08,-26},{40,-26},{40,40},{100,40}},  color={191,0,0}));
+  connect(rad.heatPortRad, heatPortRad) annotation (Line(points={{-2.8,-32},{40,
+          -32},{40,-40},{100,-40}},       color={191,0,0}));
+  connect(rad.heatPortCon, heatPortCon) annotation (Line(points={{-2.8,-28},{
+          -2.8,-26},{40,-26},{40,40},{100,40}},    color={191,0,0}));
 
   for i in 1:nParallelDem loop
-    connect(rad[i].port_b, portTra_out[1]) annotation (Line(points={{-13,-40},{-13,-42},
-          {-100,-42}}, color={0,127,255}));
-   connect(portTra_in[1], res1[i].port_a) annotation (Line(points={{-100,38},{-76,38},
-          {-76,39.5},{-51,39.5}}, color={0,127,255}));
+    connect(rad[i].port_b, portTra_out[1]) annotation (Line(points={{-10,-40},{
+            -10,-42},{-100,-42}},
+                       color={0,127,255}));
+    connect(portTra_in[1], res[i].port_a)
+      annotation (Line(points={{-100,38},{-58,38}}, color={0,127,255}));
   end for;
 
-  connect(res1.port_b, pumpFix_m_flow.port_a) annotation (Line(points={{-26,39.5},
-          {-26,38},{-15,38},{-15,20}}, color={0,127,255}));
-  connect(pumpFix_m_flow.port_b, rad.port_a) annotation (Line(points={{-15,-2},{
-          -15,-18},{-13,-18}}, color={0,127,255}));
-  connect(gain.y, pumpFix_m_flow.m_flow_in) annotation (Line(points={{8,23},{6,23},
-          {6,8},{-1.8,8},{-1.8,9}}, color={0,0,127}));
-  connect(bouPumpHP.ports[1], pumpFix_m_flow.port_a) annotation (Line(points={{-66,20},
-          {-66,30},{-16,30},{-16,26},{-15,26},{-15,20}},
-                                           color={0,127,255}));
+  connect(res.port_b, pumFixMFlo.port_a)
+    annotation (Line(points={{-38,38},{-10,38},{-10,20}}, color={0,127,255}));
+  connect(pumFixMFlo.port_b, rad.port_a) annotation (Line(points={{-10,
+          -3.55271e-15},{-10,-20}}, color={0,127,255}));
+  connect(gain.y, pumFixMFlo.m_flow_in)
+    annotation (Line(points={{10,19},{10,10},{2,10}}, color={0,0,127}));
   connect(zeroLoad.internalElectricalPin, internalElectricalPin) annotation (
       Line(
       points={{50,-96},{72,-96},{72,-98}},
@@ -132,18 +120,21 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(reaPasThrOpe.y, outBusTra.opening) annotation (Line(points={{10,59},{
-          10,54},{26,54},{26,-70},{0,-70},{0,-104}}, color={0,0,127}), Text(
+  connect(reaPasThrOpe.y, outBusTra.opening) annotation (Line(points={{
+          -1.9984e-15,59},{-1.9984e-15,50},{24,50},{24,-90},{0,-90},{0,-104}},
+                                                     color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(reaPasThrOpe.u, traControlBus.opening) annotation (Line(points={{10,
-          82},{10,86},{0,86},{0,100}}, color={0,0,127}), Text(
+  connect(reaPasThrOpe.u, traControlBus.opening) annotation (Line(points={{
+          2.22045e-15,82},{2.22045e-15,91},{0,91},{0,100}},
+                                       color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
   connect(reaPasThrOpe.y, gain.u)
-    annotation (Line(points={{10,59},{10,52},{8,52},{8,46}}, color={0,0,127}));
+    annotation (Line(points={{-1.9984e-15,59},{-1.9984e-15,50},{10,50},{10,42}},
+                                                             color={0,0,127}));
 end IdealValveRadiator;

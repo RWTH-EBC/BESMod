@@ -35,7 +35,6 @@ model PressureReliefExample
         origin={50,30})));
   IBPSA.Fluid.Movers.SpeedControlled_y     pump(
     redeclare package Medium = Medium,
-    m_flow_nominal=m_flow_nominal,
     redeclare
       BESMod.Systems.RecordsCollection.Movers.AutomaticConfigurationData per(
       final speed_rpm_nominal=pumpData.speed_rpm_nominal,
@@ -57,8 +56,8 @@ model PressureReliefExample
         0.94983775,1.086736074,1.190677393,1.396024878,1.499966198}, dpCurve={
         1.587002096,1.526205451,1.375262055,1.161425577,1.07966457,0.857442348,
         0.645702306,0.224318658,0})
-             annotation (choicesAllMatching=true, Placement(transformation(extent={{-98,76},
-            {-72,98}})));
+             annotation (choicesAllMatching=true, Placement(transformation(extent={{-98,82},
+            {-80,98}})));
   Modelica.Blocks.Sources.Constant const(final k=1)
     annotation (Placement(transformation(extent={{-100,40},{-80,60}})));
   Modelica.Blocks.Sources.Ramp ramp(

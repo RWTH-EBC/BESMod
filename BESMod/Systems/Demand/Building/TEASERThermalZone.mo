@@ -46,14 +46,14 @@ model TEASERThermalZone
           extent={{-10,-10},{10,10}}, rotation=180,
         origin={74,30})));
 
-  BESMod.Utilities.KPIs.EnergyKPICalculator intKPICalTraGain[nZones](each
-      final use_inpCon=true) if use_hydraulic and use_verboseEnergyBalance
+  BESMod.Utilities.KPIs.EnergyKPICalculator intKPICalTraGain[nZones](each final
+            use_inpCon=true) if use_hydraulic and use_verboseEnergyBalance
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-30,-102})));
-  BESMod.Utilities.KPIs.EnergyKPICalculator intKPICalTraLoss[nZones](each
-      final use_inpCon=true) if use_hydraulic and use_verboseEnergyBalance
+  BESMod.Utilities.KPIs.EnergyKPICalculator intKPICalTraLoss[nZones](each final
+            use_inpCon=true) if use_hydraulic and use_verboseEnergyBalance
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -70,8 +70,8 @@ model TEASERThermalZone
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={30,-110})));
-  BESMod.Utilities.KPIs.EnergyKPICalculator intKPICalVentGain[nZones](each
-      final use_inpCon=true) if use_ventilation and use_verboseEnergyBalance
+  BESMod.Utilities.KPIs.EnergyKPICalculator intKPICalVentGain[nZones](each final
+            use_inpCon=true) if use_ventilation and use_verboseEnergyBalance
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
@@ -84,8 +84,8 @@ model TEASERThermalZone
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={90,-196})));
-  BESMod.Utilities.KPIs.EnergyKPICalculator intKPICalVentLoss[nZones](each
-      final use_inpCon=true) if use_ventilation and use_verboseEnergyBalance
+  BESMod.Utilities.KPIs.EnergyKPICalculator intKPICalVentLoss[nZones](each final
+            use_inpCon=true) if use_ventilation and use_verboseEnergyBalance
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
@@ -102,8 +102,8 @@ model TEASERThermalZone
     annotation (Placement(transformation(extent={{-9,-9},{9,9}},
         rotation=180,
         origin={63,-205})));
-  BESMod.Utilities.KPIs.EnergyKPICalculator intKPICalTraGain2[nZones](each
-      final use_inpCon=true) if use_verboseEnergyBalance annotation (Placement(
+  BESMod.Utilities.KPIs.EnergyKPICalculator intKPICalTraGain2[nZones](each final
+            use_inpCon=true) if use_verboseEnergyBalance annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -114,8 +114,8 @@ model TEASERThermalZone
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-90,-166})));
-  BESMod.Utilities.KPIs.EnergyKPICalculator intKPICalTraLoss2[nZones](each
-      final use_inpCon=true) if use_verboseEnergyBalance annotation (Placement(
+  BESMod.Utilities.KPIs.EnergyKPICalculator intKPICalTraLoss2[nZones](each final
+            use_inpCon=true) if use_verboseEnergyBalance annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -365,6 +365,5 @@ equation
   connect(realPassThroughTDry.y, thermalZone.ventTemp) annotation (Line(points=
           {{103,62},{102,62},{102,74},{52,74},{52,42.24},{33.52,42.24}}, color=
           {0,0,127}));
-    annotation (Diagram(coordinateSystem(extent={{-100,-220},{100,100}})), Icon(graphics,
-        coordinateSystem(extent={{-100,-220},{100,100}})));
+    annotation (Diagram(coordinateSystem(extent={{-100,-220},{100,100}})));
 end TEASERThermalZone;

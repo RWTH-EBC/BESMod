@@ -40,10 +40,12 @@ model DistributionTwoStorageParallel
     final m_flow_small_layer_HE=1E-4*abs(storageDHW.m_flow_nominal_HE))
     "The DHW storage (TWWS) for domestic hot water demand"
     annotation (Placement(transformation(extent={{66,-70},{32,-32}})));
-  Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixedTemperatureBuf(final T=bufParameters.TAmb)           annotation (Placement(transformation(
-        extent={{-12,-12},{12,12}},
+  Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixTemBuf(final T=
+        bufParameters.TAmb) "Constant ambient temperature of storage"
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={44,6})));
+        origin={50,10})));
   AixLib.Fluid.Storage.Storage storageBuf(
     redeclare package Medium = Medium,
     final n=bufParameters.nLayer,
@@ -128,17 +130,16 @@ model DistributionTwoStorageParallel
         final mHC1_flow_nominal=mSup_flow_nominal[1],
         redeclare final AixLib.DataBase.Pipes.Copper.Copper_12x1 pipeHC1)                                          annotation (
       choicesAllMatching=true, Placement(transformation(extent={{82,-58},{98,-42}})));
-  Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixedTemperatureDHW(final T=
-        dhwParameters.TAmb)           annotation (Placement(transformation(
+  Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixTemDHW(final T=
+        dhwParameters.TAmb) "Constant ambient temperature of storage"
+    annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={30,-90})));
 
-  Utilities.KPIs.EnergyKPICalculator integralKPICalculator1(use_inpCon=false, y
-      =fixedTemperatureBuf.port.Q_flow)
+  Utilities.KPIs.EnergyKPICalculator eneKPICalBuf(use_inpCon=false, y=fixTemBuf.port.Q_flow)
     annotation (Placement(transformation(extent={{-80,-60},{-60,-40}})));
-  Utilities.KPIs.EnergyKPICalculator integralKPICalculator(use_inpCon=false, y=
-        fixedTemperatureDHW.port.Q_flow)
+  Utilities.KPIs.EnergyKPICalculator eneKPICalDHW(use_inpCon=false, y=fixTemDHW.port.Q_flow)
     annotation (Placement(transformation(extent={{-80,-100},{-60,-80}})));
   BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{34,-110},{54,-90}})));
@@ -160,7 +161,7 @@ model DistributionTwoStorageParallel
     final linearized=false,
     final deltaM=0.3)
     "Assume some pressure loss to avoid division by zero error."
-    annotation (Placement(transformation(extent={{0,66},{20,86}})));
+    annotation (Placement(transformation(extent={{0,60},{20,80}})));
   IBPSA.Fluid.FixedResistances.PressureDrop resDHW(
     redeclare final package Medium = MediumGen,
     final allowFlowReversal=allowFlowReversal,
@@ -171,10 +172,20 @@ model DistributionTwoStorageParallel
     final linearized=false,
     final deltaM=0.3)
     "Assume some pressure loss to avoid division by zero error."
-    annotation (Placement(transformation(extent={{2,-38},{22,-18}})));
+    annotation (Placement(transformation(extent={{0,-40},{20,-20}})));
+  IBPSA.Fluid.Sources.Boundary_pT bouPumBuf(
+    redeclare package Medium = Medium,
+    final p=p_start,
+    final T=T_start,
+    final nPorts=1)
+    "Pressure reference for transfer circuit as generation circuit reference is not connected (indirect loading)"
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=90,
+        origin={10,10})));
 equation
-  connect(fixedTemperatureBuf.port, storageBuf.heatPort) annotation (Line(
-        points={{56,6},{80,6},{80,58},{62.6,58}}, color={191,0,0}));
+  connect(fixTemBuf.port, storageBuf.heatPort) annotation (Line(points={{60,10},
+          {80,10},{80,58},{62.6,58}}, color={191,0,0}));
   connect(storageBuf.port_b_consumer, portBui_out[1]) annotation (Line(points={{49,76},
           {50,76},{50,80},{100,80}},     color={0,127,255}));
   connect(storageBuf.port_a_consumer, portBui_in[1]) annotation (Line(points={{49,40},
@@ -183,8 +194,8 @@ equation
           {48,-32},{48,-22},{100,-22}},      color={0,127,255}));
   connect(portDHW_in, storageDHW.port_a_consumer) annotation (Line(points={{100,-82},
           {48,-82},{48,-70},{49,-70}},      color={0,127,255}));
-  connect(fixedTemperatureDHW.port, storageDHW.heatPort) annotation (Line(
-        points={{40,-90},{70,-90},{70,-51},{62.6,-51}}, color={191,0,0}));
+  connect(fixTemDHW.port, storageDHW.heatPort) annotation (Line(points={{40,-90},
+          {70,-90},{70,-51},{62.6,-51}}, color={191,0,0}));
   connect(T_stoDHWBot.y, sigBusDistr.TStoDHWBotMea) annotation (Line(points={{31.5,
           99},{0,99},{0,101}}, color={0,0,127}), Text(
       string="%second",
@@ -232,23 +243,27 @@ equation
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
   connect(threeWayValveWithFlowReturn.portBui_b, resBui.port_a)
-    annotation (Line(points={{-20,76},{0,76}}, color={0,127,255}));
+    annotation (Line(points={{-20,76},{-10,76},{-10,70},{0,70}},
+                                               color={0,127,255}));
   connect(storageBuf.port_a_heatGenerator, resBui.port_b) annotation (Line(
-        points={{34.72,73.84},{34.72,76},{20,76}}, color={0,127,255}));
+        points={{34.72,73.84},{34.72,70},{20,70}}, color={0,127,255}));
   connect(threeWayValveWithFlowReturn.portDHW_b, resDHW.port_a) annotation (
-      Line(points={{-20,52.8},{-14,52.8},{-14,-28},{2,-28}}, color={0,127,255}));
+      Line(points={{-20,52.8},{-14,52.8},{-14,-30},{0,-30}}, color={0,127,255}));
   connect(storageDHW.port_a_heatGenerator, resDHW.port_b) annotation (Line(
-        points={{34.72,-34.28},{22,-34.28},{22,-28}}, color={0,127,255}));
-  connect(integralKPICalculator.KPI, outBusDist.QDHWLos_flow) annotation (Line(
-        points={{-57.8,-90},{0,-90},{0,-100}}, color={135,135,135}), Text(
+        points={{34.72,-34.28},{34,-34.28},{34,-30},{20,-30}},
+                                                      color={0,127,255}));
+  connect(eneKPICalDHW.KPI, outBusDist.QDHWLos_flow) annotation (Line(points={{
+          -57.8,-90},{0,-90},{0,-100}}, color={135,135,135}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(integralKPICalculator1.KPI, outBusDist.QBufLos_flow) annotation (Line(
-        points={{-57.8,-50},{0,-50},{0,-100}}, color={135,135,135}), Text(
+  connect(eneKPICalBuf.KPI, outBusDist.QBufLos_flow) annotation (Line(points={{
+          -57.8,-50},{0,-50},{0,-100}}, color={135,135,135}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  connect(bouPumBuf.ports[1], storageBuf.port_a_consumer) annotation (Line(
+        points={{10,20},{10,32},{49,32},{49,40}}, color={0,127,255}));
 end DistributionTwoStorageParallel;

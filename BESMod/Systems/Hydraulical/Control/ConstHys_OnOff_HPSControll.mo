@@ -18,7 +18,7 @@ model ConstHys_OnOff_HPSControll
     annotation (Dialog(group="Heat Pumps"));
 equation
 
-  connect(sigBusGen.THeaPumpIn, HP_nSet_Controller.T_Meas) annotation (
+  connect(sigBusGen.THeaPumIn, HP_nSet_Controller.T_Meas) annotation (
       Line(
       points={{-152,-99},{-114,-99},{-114,0},{97,0},{97,61.2}},
       color={255,204,51},

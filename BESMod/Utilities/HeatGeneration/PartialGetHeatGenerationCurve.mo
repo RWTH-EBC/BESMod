@@ -68,12 +68,6 @@ equation
       index=-1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(const1.y, sigBusGen.hr_on) annotation (Line(points={{-79,30},{-62,30},
-          {-62,64}},          color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
   connect(generation.portGen_in, vol.ports[1:1]) annotation (Line(points={{34,14.4},
           {62,14.4},{62,20},{83,20}},       color={0,127,255}));
   connect(heatingCurve.TOda, ramp.y) annotation (Line(points={{-22.2,-71},{-26,
@@ -105,6 +99,12 @@ equation
           {3.1,-71},{20.55,-71},{20.55,-70},{38,-70}}, color={0,0,127}));
   connect(const2.y, sigBusGen.yHeaPumSet) annotation (Line(points={{-79,-30},{
           -72,-30},{-72,64},{-62,64}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(const1.y, sigBusGen.uHeaRod) annotation (Line(points={{-79,30},{-62,
+          30},{-62,64}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
