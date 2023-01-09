@@ -3,7 +3,24 @@ model PVSystemMultiSub
   "PV system with subsystems of different orientation and module type"
   extends BESMod.Systems.Electrical.Generation.BaseClasses.PartialGeneration(
       numGenUnits=1);
-
+  replaceable model CellTemperature =
+      AixLib.Electrical.PVSystem.BaseClasses.PartialCellTemperature annotation (
+     __Dymola_choicesAllMatching=true);
+  replaceable parameter AixLib.DataBase.SolarElectric.PVBaseDataDefinition pVParameters[numGenUnits]
+  constrainedby AixLib.DataBase.SolarElectric.PVBaseDataDefinition
+    annotation(choicesAllMatching=true,Placement(transformation(extent={{-82,-40},
+            {-62,-20}})));
+  parameter Modelica.Units.SI.Angle lat "Location's Latitude";
+  parameter Modelica.Units.SI.Angle lon "Location's Longitude";
+  parameter Real alt "Site altitude in Meters, default= 1";
+  parameter Modelica.Units.SI.Time timZon
+    "Time zone. Should be equal with timZon in ReaderTMY3, if PVSystem and ReaderTMY3 are used together.";
+  parameter Real n_mod[numGenUnits]={f_design[i]*ARoo/pVParameters[i].A_mod for i in 1:numGenUnits}
+    "Number of connected PV modules";
+  parameter Modelica.Units.SI.Angle til[numGenUnits]=fill(20*Modelica.Constants.pi/180,numGenUnits)
+    "Surface's tilt angle (0:flat)";
+  parameter Modelica.Units.SI.Angle azi[numGenUnits]=fill(0*Modelica.Constants.pi/180,numGenUnits)
+    "Surface's azimut angle (0:South)";
   AixLib.Electrical.PVSystem.PVSystem pVSystem[numGenUnits](
     final data=pVParameters,
     redeclare final model IVCharacteristics =
@@ -26,34 +43,14 @@ model PVSystemMultiSub
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={50,20})));
-  replaceable model CellTemperature =
-      AixLib.Electrical.PVSystem.BaseClasses.PartialCellTemperature annotation (
-     __Dymola_choicesAllMatching=true);
+
   BESMod.Utilities.Electrical.RealToElecCon realToElecCon(use_souLoa=false)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={50,58})));
-  replaceable parameter AixLib.DataBase.SolarElectric.PVBaseDataDefinition pVParameters[numGenUnits]
-  constrainedby AixLib.DataBase.SolarElectric.PVBaseDataDefinition
-    annotation(choicesAllMatching=true,Placement(transformation(extent={{-82,-40},
-            {-62,-20}})));
-  parameter Modelica.Units.SI.Angle lat "Location's Latitude" annotation (
-      Dialog(group=
-          "Design - Top Down: Parameters are given by the parent system"));
-  parameter Modelica.Units.SI.Angle lon "Location's Longitude" annotation (
-      Dialog(group=
-          "Design - Top Down: Parameters are given by the parent system"));
-  parameter Real alt "Site altitude in Meters, default= 1"
-  annotation(Dialog(group="Design - Top Down: Parameters are given by the parent system"));
-  parameter Modelica.Units.SI.Time timZon
-    "Time zone. Should be equal with timZon in ReaderTMY3, if PVSystem and ReaderTMY3 are used together."
-    annotation (Dialog(group=
-          "Design - Top Down: Parameters are given by the parent system"));
-  parameter Real n_mod[numGenUnits]={f_design[i]*ARoof/pVParameters[i].A_mod for i in 1:numGenUnits} "Number of connected PV modules";
-  parameter Modelica.Units.SI.Angle til[numGenUnits]=fill(20*Modelica.Constants.pi/180,numGenUnits) "Surface's tilt angle (0:flat)";
-  parameter Modelica.Units.SI.Angle azi[numGenUnits]=fill(0*Modelica.Constants.pi/180,numGenUnits)  "Surface's azimut angle (0:South)";
-  parameter Modelica.Units.SI.Area ARoof(min=0) "Roof area of building" annotation(Dialog(group="Design - Top Down: Parameters are given by the parent system"));
+
+
 
   Utilities.KPIs.EnergyKPICalculator intKPICalPElePV(use_inpCon=true)
     annotation (Placement(transformation(extent={{60,-60},{80,-40}})));

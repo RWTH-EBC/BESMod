@@ -2,7 +2,7 @@ within BESMod.Systems.Electrical.Generation.Tests;
 partial model PartialTest
   replaceable
   BESMod.Systems.Electrical.Generation.BaseClasses.PartialGeneration
-    generation constrainedby BaseClasses.PartialGeneration
+    generation constrainedby BaseClasses.PartialGeneration(ARoo=50)
               annotation (Placement(transformation(extent={{-42,-36},{42,44}})),
       choicesAllMatching=true);
   IBPSA.BoundaryConditions.WeatherData.ReaderTMY3 weaDat(filNam=

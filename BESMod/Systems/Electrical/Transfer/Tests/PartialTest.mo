@@ -2,7 +2,8 @@ within BESMod.Systems.Electrical.Transfer.Tests;
 partial model PartialTest
   replaceable
   BESMod.Systems.Electrical.Transfer.BaseClasses.PartialTransfer
-    transfer constrainedby BaseClasses.PartialTransfer
+    transfer constrainedby BaseClasses.PartialTransfer(nParallelDem=1,
+      Q_flow_nominal={1000})
     annotation (Placement(transformation(extent={{-44,-32},{48,52}})),
       choicesAllMatching=true);
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixedTemperatureRad[transfer.nParallelDem](

@@ -1,11 +1,11 @@
 within BESMod.Utilities.KPIs.BaseClasses;
-connector KPIIntegral "Connector for KPIs"
+expandable connector KPIIntegral "Connector for KPIs"
 
   extends PartialKPIConnector;
 
-  Modelica.Blocks.Interfaces.RealOutput value
-      "Current value";
-  Modelica.Blocks.Interfaces.RealOutput integral
+  Real value
+   "Current value";
+  Real integral
    "Integral of value";
 
 end KPIIntegral;

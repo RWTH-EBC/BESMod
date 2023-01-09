@@ -2,7 +2,22 @@ within BESMod.Systems.Hydraulical.Generation;
 model GasBoiler "Just a gas boiler"
   extends BaseClasses.PartialGeneration(dp_nominal={boilerNoControl.dp_nominal},
                                         final nParallelDem=1);
-
+  replaceable parameter AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition
+    paramBoiler "Parameters for Boiler" annotation(Dialog(group="Component data"),
+    choicesAllMatching=true);
+  parameter Real etaTempBased[:,2]=[293.15,1.09; 303.15,1.08; 313.15,1.05;
+      323.15,1.; 373.15,0.99] "Table matrix for temperature based efficiency"
+        annotation(Dialog(group="Component data"));
+  replaceable parameter
+    BESMod.Systems.RecordsCollection.TemperatureSensors.TemperatureSensorBaseDefinition
+    temperatureSensorData
+    annotation (Dialog(group="Component data"), choicesAllMatching=true,
+    Placement(transformation(extent={{-98,-16},{-78,4}})));
+  replaceable parameter
+    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
+    pumpData annotation (Dialog(group="Component data"),
+      choicesAllMatching=true, Placement(transformation(extent={{54,-80},
+            {68,-68}})));
   AixLib.Fluid.BoilerCHP.BoilerNoControl boilerNoControl(
     redeclare package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
@@ -21,16 +36,10 @@ model GasBoiler "Just a gas boiler"
     etaTempBased=etaTempBased)
     annotation (Placement(transformation(extent={{-66,-6},{-34,26}})));
 
-  replaceable parameter AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition
-    paramBoiler "Parameters for Boiler" annotation(choicesAllMatching=true);
-  parameter Real etaTempBased[:,2]=[293.15,1.09; 303.15,1.08; 313.15,1.05;
-      323.15,1.; 373.15,0.99] "Table matrix for temperature based efficiency";
+
   Utilities.KPIs.EnergyKPICalculator KPIQHR(use_inpCon=false, y=boilerNoControl.QflowCalculation.y)
     annotation (Placement(transformation(extent={{-40,-100},{-20,-80}})));
-  replaceable parameter
-    BESMod.Systems.RecordsCollection.TemperatureSensors.TemperatureSensorBaseDefinition
-    temperatureSensorData
-    annotation (choicesAllMatching=true, Placement(transformation(extent={{-98,-16},{-78,4}})));
+
   IBPSA.Fluid.Movers.SpeedControlled_y pump(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
@@ -57,10 +66,7 @@ model GasBoiler "Just a gas boiler"
         extent={{-10,10},{10,-10}},
         rotation=180,
         origin={46,-50})));
-  replaceable parameter
-    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
-    pumpData annotation (choicesAllMatching=true, Placement(transformation(extent={{54,-80},
-            {68,-68}})));
+
   IBPSA.Fluid.Sources.Boundary_pT bou1(
     redeclare package Medium = Medium,
     p=p_start,
@@ -78,6 +84,11 @@ model GasBoiler "Just a gas boiler"
     calc_totalOnTime=true,
     calc_numSwi=true)
     annotation (Placement(transformation(extent={{-60,-80},{-40,-60}})));
+
+initial equation
+  assert(paramBoiler.Q_nom >= Q_flow_nominal[1], "Nominal heat flow rate
+  of boiler is smaller than nominal heat demand", AssertionLevel.warning);
+
 equation
 
   connect(boilerNoControl.port_b, portGen_out[1]) annotation (Line(points={{-34,

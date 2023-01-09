@@ -120,7 +120,7 @@ partial model PartialBuildingEnergySystem "Partial BES"
     Ventilation.BaseClasses.PartialVentilationSystem(
     redeclare final package Medium = MediumZone,
     final subsystemDisabled=not systemParameters.use_ventilation,
-    redeclare BESMod.Systems.RecordsCollection.SupplySystemBaseDataDefinition
+    redeclare final BESMod.Systems.RecordsCollection.SupplySystemBaseDataDefinition
       ventilationSystemParameters(
       final nZones=systemParameters.nZones,
       final Q_flow_nominal=systemParameters.QBui_flow_nominal,

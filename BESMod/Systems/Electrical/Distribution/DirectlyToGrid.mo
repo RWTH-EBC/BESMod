@@ -1,5 +1,5 @@
 within BESMod.Systems.Electrical.Distribution;
-model DirectlyToGrid "Direct grid connection"
+model DirectlyToGrid "Direct grid connection, no own consumption"
   extends
     BESMod.Systems.Electrical.Distribution.BaseClasses.PartialDistribution;
 

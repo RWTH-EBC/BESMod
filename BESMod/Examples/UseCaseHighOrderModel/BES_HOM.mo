@@ -4,8 +4,6 @@ model BES_HOM
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
     redeclare BESMod.Systems.Demand.Building.AixLibHighOrder building(
       useConstVentRate=false,
-      Latitude=Modelica.Units.Conversions.to_deg(weaDat.lat),
-      Longitude=Modelica.Units.Conversions.to_deg(weaDat.lon),
       TimeCorrection=0,
       DiffWeatherDataTime=Modelica.Units.Conversions.to_hour(weaDat.timZon),
       redeclare AixLib.DataBase.Walls.Collections.OFD.EnEV2009Heavy wallTypes,
@@ -30,7 +28,6 @@ model BES_HOM
           TBiv=parameterStudy.TBiv,
           scalingFactor=hydraulic.generation.heatPumpParameters.QPri_flow_nominal
               /parameterStudy.QHP_flow_biv,
-          useAirSource=true,
           dpCon_nominal=0,
           dpEva_nominal=0,
           use_refIne=false,
@@ -42,7 +39,10 @@ model BES_HOM
             AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
             QCon_flow_nominal=hydraulic.generation.heatPumpParameters.QPri_flow_nominal,
             refrigerant="Propane",
-            flowsheet="VIPhaseSeparatorFlowsheet")),
+            flowsheet="VIPhaseSeparatorFlowsheet"),
+        redeclare
+          BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
+          temperatureSensorData),
       redeclare BESMod.Systems.Hydraulical.Control.ConstHys_OnOff_HPSControll
         control(
         redeclare

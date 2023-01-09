@@ -3,6 +3,12 @@ partial model PartialControl "Partial electrical control model"
   parameter Boolean use_openModelica=false
     "=true to disable features which 
     are not available in open modelica" annotation(Dialog(tab="Advanced"));
+  parameter Integer nParallelDem(min=1)
+    "Number of parallel demand systems of this system" annotation (Dialog(group=
+          "Design - Top Down: Parameters are given by the parent system"));
+  parameter Modelica.Units.SI.HeatFlowRate Q_flow_nominal[nParallelDem](each min=Modelica.Constants.eps)
+    "Nominal heat flow rate" annotation (Dialog(group=
+          "Design - Top Down: Parameters are given by the parent system"));
   Interfaces.GenerationControlBus generationControlBus annotation (Placement(
         transformation(extent={{-182,-118},{-158,-78}}),
                                                        iconTransformation(

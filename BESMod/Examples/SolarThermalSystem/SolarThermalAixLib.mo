@@ -14,6 +14,9 @@ model SolarThermalAixLib "Solar thermal collector from AixLib"
           heatingRodParameters,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
         redeclare package Medium_eva = AixLib.Media.Air,
+        redeclare
+          BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
+          temperatureSensorData,
         redeclare BESMod.Examples.SolarThermalSystem.SolarCollector
           solarThermalParas(
           final A=parameterStudy.A,

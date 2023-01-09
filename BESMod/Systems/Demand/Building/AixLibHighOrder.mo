@@ -8,8 +8,7 @@ model AixLibHighOrder "High order building model from AixLib library"
     final ABui=HOMBuiEnv.ABui,
     final hBui=HOMBuiEnv.hBui,
     final ARoo=HOMBuiEnv.ARoof);
-
-
+  extends Components.BaseClasses.HighOrderModelParameters;
 
   final parameter AixLib.DataBase.Weather.SurfaceOrientation.SurfaceOrientationBaseDataDefinition  SOD=
   AixLib.DataBase.Weather.SurfaceOrientation.SurfaceOrientationData_N_E_S_W_RoofN_Roof_S()
@@ -20,59 +19,9 @@ model AixLibHighOrder "High order building model from AixLib library"
   parameter Boolean useConstVentRate;
   parameter Real ventRate[nZones]=fill(0, nZones) if useConstVentRate "Constant mechanical ventilation rate" annotation (Dialog(enable=useConstVentRate));
   parameter Modelica.Units.SI.Temperature TSoil=281.65     "Temperature of soil";
-  parameter Modelica.Units.NonSI.Angle_deg Latitude "latitude of location";
-  parameter Modelica.Units.NonSI.Angle_deg Longitude "longitude of location in";
   parameter Real TimeCorrection=0 "for TRY = 0.5, for TMY = 0";
   parameter Modelica.Units.NonSI.Time_hour DiffWeatherDataTime=1 "difference between local time and UTC, e.g. +1 for MET";
   parameter Real GroundReflection = 0.2 "ground reflection coefficient";
-
-  // Dynamics
-  parameter Modelica.Fluid.Types.Dynamics energyDynamicsWalls=Modelica.Fluid.Types.Dynamics.DynamicFreeInitial
-    "Type of energy balance for wall capacities: dynamic (3 initialization options) or steady state" annotation (Dialog(tab="Dynamics"));
-  parameter Modelica.Fluid.Types.Dynamics energyDynamics=Modelica.Fluid.Types.Dynamics.DynamicFreeInitial
-    "Type of energy balance: dynamic (3 initialization options) or steady state" annotation (Dialog(tab="Dynamics"));
-
-  // Initialization
-  parameter Modelica.Units.SI.Temperature T0_air=273.15 + 22
-    "Initial temperature of air" annotation (Dialog(tab="Initialization"));
-  parameter Modelica.Units.SI.Temperature TWalls_start=273.15 + 16
-    "Initial temperature of all walls" annotation (Dialog(tab="Initialization"));
-
-  //Outer walls
-  replaceable parameter AixLib.DataBase.Walls.Collections.OFD.EnEV2009Light
-    wallTypes constrainedby
-    AixLib.DataBase.Walls.Collections.BaseDataMultiWalls
-    "Types of walls (contains multiple records)"
-     annotation (Dialog(tab="Outer walls", group="Wall"), choicesAllMatching = true);
-  replaceable model WindowModel =
-      AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.PartialWindow
-      (windowarea=2)
-    constrainedby
-    AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.PartialWindow
-    annotation (Dialog(tab="Outer walls", group="Windows"), choicesAllMatching = true);
-  replaceable parameter AixLib.DataBase.WindowsDoors.Simple.OWBaseDataDefinition_Simple
-    Type_Win "Window parametrization"
-    annotation (Dialog(tab="Outer walls", group="Windows"), choicesAllMatching = true);
-  replaceable model CorrSolarGainWin =
-      AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.CorrectionSolarGain.PartialCorG
-    constrainedby
-    AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.CorrectionSolarGain.PartialCorG
-      "Correction model for solar irradiance as transmitted radiation"
-      annotation (choicesAllMatching=true, Dialog(tab="Outer walls", group="Windows", enable = withWindow and outside));
-  parameter Boolean use_sunblind=false
-    "Will sunblind become active automatically?" annotation (Dialog(tab="Outer walls", group="Sunblind"));
-  parameter Modelica.Units.SI.CoefficientOfHeatTransfer UValOutDoors=2.5
-    "U-value (thermal transmittance) of doors in outer walls"  annotation (Dialog(tab="Outer walls", group="Doors"));
-
-  //Infiltration
-  parameter Boolean use_infiltEN12831=true
-    "Use model to exchange room air with outdoor air acc. to standard"
-    annotation (Dialog(tab="Infiltration acc. to EN 12831", group="X"));
-  parameter Real n50=4 "Air exchange rate at 50 Pa pressure difference"
-    annotation (Dialog(tab="Infiltration acc. to EN 12831", group="X"));
-  parameter Real e=0.03 "Coefficient of windshield"
-    annotation (Dialog(tab="Infiltration acc. to EN 12831", group="X"));
-
 
   Modelica.Thermal.HeatTransfer.Sources.PrescribedTemperature tempOutside
     annotation (Placement(transformation(extent={{10,10},{-10,-10}},
@@ -102,24 +51,19 @@ model AixLibHighOrder "High order building model from AixLib library"
       choicesAllMatching=true, Placement(transformation(extent={{-22,-36},{38,34}})));
 
 
-  AixLib.BoundaryConditions.WeatherData.Old.WeatherTRY.BaseClasses.Sun
+  Components.SunWithWeaBus
                   Sun(
     TimeCorrection=TimeCorrection,
-    Longitude=Longitude,
-    Latitude=Latitude,
     DiffWeatherDataTime=DiffWeatherDataTime) annotation (Placement(
-        transformation(extent={{-6,50},{8,64}})));
-  AixLib.BoundaryConditions.WeatherData.Old.WeatherTRY.RadiationOnTiltedSurface.RadOnTiltedSurf_Liu
+        transformation(extent={{-22,42},{2,64}})));
+  Components.RadOnTiltedSurf_LiuWeaBus
                      RadOnTiltedSurf[SOD.nSurfaces](
-    each Latitude=Latitude,
     each GroundReflection=GroundReflection,
     Azimut=SOD.Azimut,
     Tilt=SOD.Tilt,
-    each WeatherFormat=1) annotation(Placement(transformation(extent={{18,48},
-            {40,68}})));
+    each WeatherFormat=1) annotation(Placement(transformation(extent={{18,42},{42,
+            64}})));
 
-  Modelica.Blocks.Math.Add add(k1=+1, k2=-1)
-    annotation (Placement(transformation(extent={{4,68},{14,78}})));
   Modelica.Blocks.Sources.Constant constVentRate[nZones](final k=ventRate)
     if useConstVentRate               annotation (Placement(transformation(
           extent={{10,-10},{-10,10}}, rotation=180,
@@ -148,8 +92,8 @@ equation
   connect(HOMBuiEnv.heatingToRooms1, convRadToCombPort.portConvRadComb)
     annotation (Line(points={{-21.4,-1},{-32,-1},{-32,-12},{-40,-12}}, color={191,
           0,0}));
-  connect(HOMBuiEnv.thermOutside, tempOutside.port) annotation (Line(points={{-21.4,
-          30.5},{-20,30.5},{-20,30},{-50,30},{-50,40}}, color={191,0,0}));
+  connect(HOMBuiEnv.thermOutside, tempOutside.port) annotation (Line(points={{-22,
+          33.3},{-20,33.3},{-20,30},{-50,30},{-50,40}}, color={191,0,0}));
   connect(HOMBuiEnv.groundTemp, preTSoi.port)
     annotation (Line(points={{8,-36},{8,-90},{0,-90}}, color={191,0,0}));
   connect(HOMBuiEnv.portVent_in, portVent_in) annotation (Line(points={{38,-23.4},
@@ -160,54 +104,43 @@ equation
         // Connecting n RadOnTiltedSurf
   for i in 1:SOD.nSurfaces loop
     connect(Sun.OutDayAngleSun, RadOnTiltedSurf[i].InDayAngleSun)       annotation (
-      Line(points={{7.3,57.42},{14,57.42},{14,55.9},{20.31,55.9}},color={0,0,127}));
+      Line(points={{0.8,53.66},{0.8,50.69},{20.52,50.69}},        color={0,0,127}));
     connect(Sun.OutHourAngleSun, RadOnTiltedSurf[i].InHourAngleSun) annotation (
-      Line(points={{7.3,55.18},{14,55.18},{14,53.9},{20.31,53.9}},color={0,0,127}));
-    connect(Sun.OutDeclinationSun, RadOnTiltedSurf[i].InDeclinationSun) annotation (Line(points={{7.3,
-            53.08},{14,53.08},{14,51.9},{20.31,51.9}},
+      Line(points={{0.8,50.14},{10.66,50.14},{10.66,48.49},{20.52,48.49}},
+                                                                  color={0,0,127}));
+    connect(Sun.OutDeclinationSun, RadOnTiltedSurf[i].InDeclinationSun) annotation (Line(points={{0.8,
+            46.84},{2,46.84},{2,46.29},{20.52,46.29}},
         color={0,0,127}));
-    connect(add.y, RadOnTiltedSurf[i].solarInput1) annotation (Line(points={{14.5,
-          73},{22.29,73},{22.29,65.3}}, color={0,0,127}));
-    connect(weaBus.HDifHor, RadOnTiltedSurf[i].solarInput2) annotation (Line(
-      points={{-47,98},{-50,98},{-50,84},{33.07,84},{33.07,65.3}},
+    connect(RadOnTiltedSurf[i].weaBus, weaBus) annotation (Line(
+      points={{23.04,64.22},{23.04,76},{-47,76},{-47,98}},
       color={255,204,51},
       thickness=0.5), Text(
-      string="%first",
-      index=-1,
+      string="%second",
+      index=1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
   end for;
 
   connect(HOMBuiEnv.SolarRadiationPort_RoofN, RadOnTiltedSurf[5].OutTotalRadTilted)
-    annotation (Line(points={{40.4,30.5},{52,30.5},{52,62},{38.9,62}}, color={255,
+    annotation (Line(points={{40.4,30.5},{52,30.5},{52,57.4},{40.8,57.4}},
+                                                                       color={255,
           128,0}));
   connect(HOMBuiEnv.SolarRadiationPort_RoofS, RadOnTiltedSurf[6].OutTotalRadTilted)
-    annotation (Line(points={{40.4,21.4},{52,21.4},{52,62},{38.9,62}}, color={255,
+    annotation (Line(points={{40.4,21.4},{52,21.4},{52,57.4},{40.8,57.4}},
+                                                                       color={255,
           128,0}));
   connect(HOMBuiEnv.North, RadOnTiltedSurf[1].OutTotalRadTilted) annotation (
-      Line(points={{40.4,13},{52,13},{52,62},{38.9,62}}, color={255,128,0}));
+      Line(points={{40.4,13},{52,13},{52,57.4},{40.8,57.4}},
+                                                         color={255,128,0}));
   connect(HOMBuiEnv.East, RadOnTiltedSurf[2].OutTotalRadTilted) annotation (
-      Line(points={{40.4,3.9},{52,3.9},{52,62},{38.9,62}}, color={255,128,0}));
+      Line(points={{40.4,3.9},{52,3.9},{52,57.4},{40.8,57.4}},
+                                                           color={255,128,0}));
   connect(HOMBuiEnv.South, RadOnTiltedSurf[3].OutTotalRadTilted) annotation (
-      Line(points={{40.4,-5.2},{52,-5.2},{52,62},{38.9,62}}, color={255,128,0}));
+      Line(points={{40.4,-5.2},{52,-5.2},{52,57.4},{40.8,57.4}},
+                                                             color={255,128,0}));
   connect(HOMBuiEnv.West, RadOnTiltedSurf[4].OutTotalRadTilted) annotation (
-      Line(points={{40.4,-14.3},{52,-14.3},{52,62},{38.9,62}}, color={255,128,0}));
-  connect(weaBus.HGloHor, add.u1) annotation (Line(
-      points={{-47,98},{-48,98},{-48,96},{-50,96},{-50,76},{3,76}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%first",
-      index=-1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
-  connect(weaBus.HDifHor, add.u2) annotation (Line(
-      points={{-47,98},{-48,98},{-48,96},{-50,96},{-50,70},{3,70}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%first",
-      index=-1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
+      Line(points={{40.4,-14.3},{52,-14.3},{52,57.4},{40.8,57.4}},
+                                                               color={255,128,0}));
   connect(weaBus.winSpe, HOMBuiEnv.WindSpeedPort) annotation (Line(
       points={{-47,98},{-50,98},{-50,76},{-64,76},{-64,22},{-36,22},{-36,20.7},{
           -23.8,20.7}},
@@ -248,6 +181,15 @@ equation
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   end if;
+  connect(Sun.weaBus, weaBus) annotation (Line(
+      points={{-16.96,64.22},{-16.96,76},{-47,76},{-47,98}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end AixLibHighOrder;

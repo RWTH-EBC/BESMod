@@ -8,8 +8,7 @@ model PVSystemMultiSub
       lat=weaDat.lat,
       lon=weaDat.lon,
       alt=1,
-      timZon=weaDat.timZon,
-      ARoof=50));
+      timZon=weaDat.timZon));
   extends Modelica.Icons.Example;
 
   annotation (Icon(graphics,

@@ -1,10 +1,7 @@
 within BESMod.Systems.Electrical.Distribution.Tests;
-model BatterySystemSimple
+model OwnConsumptionTest
   extends PartialTest(redeclare
-      BESMod.Systems.Electrical.Distribution.BatterySystemSimple dis(nBat=1,
-        redeclare
-        BuildingSystems.Technologies.ElectricalStorages.Data.LithiumIon.LithiumIonTeslaPowerwall1
-        batteryParameters));
+      BESMod.Systems.Electrical.Distribution.OwnConsumption dis);
 
   extends Modelica.Icons.Example;
   Modelica.Blocks.Interfaces.RealOutput SOC if not dis.use_openModelica
@@ -33,4 +30,4 @@ equation
       Evaluate=true,
       OutputCPUtime=false,
       OutputFlatModelica=false));
-end BatterySystemSimple;
+end OwnConsumptionTest;

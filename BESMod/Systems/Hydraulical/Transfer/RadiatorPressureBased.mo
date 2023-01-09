@@ -6,8 +6,11 @@ model RadiatorPressureBased "Pressure Based transfer system"
     hBui=1,
     final dp_nominal=transferDataBaseDefinition.dp_nominal,
     final nParallelSup=1);
-  parameter Boolean use_preRelVal=false "=false to disable pressure relief valve";
-  parameter Real perPreRelValOpens=0.99 "Percentage of nominal pressure difference at which the pressure relief valve starts to open" annotation(Dialog(enable=use_preRelVal));
+  parameter Boolean use_preRelVal=false "=false to disable pressure relief valve"
+    annotation(Dialog(group="Component choices"));
+  parameter Real perPreRelValOpens=0.99
+    "Percentage of nominal pressure difference at which the pressure relief valve starts to open"
+      annotation(Dialog(group="Component choices", enable=use_preRelVal));
   replaceable parameter RecordsCollection.TransferDataBaseDefinition
     transferDataBaseDefinition constrainedby
     RecordsCollection.TransferDataBaseDefinition(
@@ -17,15 +20,20 @@ model RadiatorPressureBased "Pressure Based transfer system"
     final heiBui=hBui,
     mRad_flow_nominal=m_flow_nominal,
     mHeaCir_flow_nominal=mSup_flow_nominal[1])
-    annotation (choicesAllMatching=true, Placement(transformation(extent={{-62,-98},{-42,-78}})));
+    annotation (Dialog(group="Component data"),
+      choicesAllMatching=true,
+       Placement(transformation(extent={{-62,-98},{-42,-78}})));
 
   replaceable parameter
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
-    pumpData annotation (choicesAllMatching=true, Placement(transformation(extent={{-98,78},
+    pumpData annotation (Dialog(group="Component data"),
+      choicesAllMatching=true, Placement(transformation(extent={{-98,78},
             {-72,100}})));
 
-  replaceable parameter BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData radParameters
-    annotation (choicesAllMatching=true, Placement(transformation(extent={{-100,-98},{-80,-78}})));
+  replaceable parameter BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
+    radParameters
+    annotation (Dialog(group="Component data"), choicesAllMatching=true,
+    Placement(transformation(extent={{-100,-98},{-80,-78}})));
   IBPSA.Fluid.HeatExchangers.Radiators.RadiatorEN442_2 rad[nParallelDem](
     each final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=m_flow_nominal,

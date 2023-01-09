@@ -1,5 +1,5 @@
 within BESMod.Utilities.KPIs.BaseClasses;
-partial connector PartialKPIConnector "Partial emtpy KPI connector for icon"
+partial expandable connector PartialKPIConnector "Partial emtpy KPI connector for icon"
 
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,100}}, initialScale=0.2),

@@ -13,6 +13,9 @@ model SolarThermalAndHeatPumpAndHeatingRod
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
       redeclare package Medium_eva = IBPSA.Media.Air,
       redeclare
+        BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
+        temperatureSensorData,
+      redeclare
         BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultSolarThermal
         solarThermalParas,
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpSTData));

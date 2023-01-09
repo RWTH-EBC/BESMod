@@ -16,7 +16,10 @@ model GetHeatPumpCurveVCLib
         heatingRodParameters,
       redeclare model PerDataMainHP =
           AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (refrigerant=
-              "Propane", flowsheet="VIPhaseSeparatorFlowsheet")),
+              "Propane", flowsheet="VIPhaseSeparatorFlowsheet"),
+      redeclare
+        BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
+        temperatureSensorData),
     ramp(
       height=35,
       duration=84400,

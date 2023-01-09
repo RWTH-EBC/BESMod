@@ -7,34 +7,56 @@ model HeatPumpAndHeatingRod "Bivalent monoenergetic heat pump"
         i] > 44.9 + 273.15 then 8 else 5 for i in 1:nParallelDem},
     dp_nominal={heatPump.dpCon_nominal + dpHeaRod_nominal},
       nParallelDem=1);
-   parameter Boolean use_heaRod=true "=false to disable the heating rod";
+
+  parameter Boolean use_airSource=true
+    "Turn false to use water as temperature source."
+     annotation(Dialog(group="Component choices"));
+
+   parameter Boolean use_heaRod=true "=false to disable the heating rod"
+     annotation(Dialog(group="Component choices"));
     replaceable model PerDataMainHP =
       AixLib.DataBase.HeatPump.PerformanceData.LookUpTable2D
     constrainedby
     AixLib.DataBase.HeatPump.PerformanceData.BaseClasses.PartialPerformanceData
-    annotation (__Dymola_choicesAllMatching=true);
+    annotation (Dialog(group="Component data"), __Dymola_choicesAllMatching=true);
   parameter Modelica.Media.Interfaces.Types.Temperature TSoilConst=273.15 + 10
-    "Constant soil temperature for ground source heat pumps";
+    "Constant soil temperature for ground source heat pumps"
+    annotation(Dialog(group="Component choices", enable=use_airSource));
+
   replaceable package Medium_eva = Modelica.Media.Interfaces.PartialMedium constrainedby
-    Modelica.Media.Interfaces.PartialMedium annotation (
-      __Dymola_choicesAllMatching=true);
+    Modelica.Media.Interfaces.PartialMedium annotation (Dialog(group="Component choices"),
+      choices(
+        choice(redeclare package Medium = IBPSA.Media.Air "Moist air"),
+        choice(redeclare package Medium = IBPSA.Media.Water "Water"),
+        choice(redeclare package Medium =
+            IBPSA.Media.Antifreeze.PropyleneGlycolWater (
+              property_T=293.15,
+              X_a=0.40)
+              "Propylene glycol water, 40% mass fraction")));
   replaceable parameter
     BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumpBaseDataDefinition
     heatPumpParameters constrainedby
     BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumpBaseDataDefinition(
         final QGen_flow_nominal=Q_flow_nominal[1],
         final TOda_nominal=TOda_nominal)
-                       annotation (choicesAllMatching=true, Placement(
+     annotation (Dialog(group="Component data"), choicesAllMatching=true, Placement(
         transformation(extent={{-98,14},{-82,28}})));
   replaceable parameter
     BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatingRodBaseDataDefinition
-    heatingRodParameters annotation (choicesAllMatching=true, Placement(
+    heatingRodParameters annotation (Dialog(group="Component data"),
+      choicesAllMatching=true, Placement(
         transformation(extent={{64,44},{76,56}})));
 
   replaceable parameter
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
-    pumpData annotation (choicesAllMatching=true, Placement(transformation(extent={{42,-56},
+    pumpData annotation (Dialog(group="Component data"),
+    choicesAllMatching=true, Placement(transformation(extent={{42,-56},
             {56,-44}})));
+  replaceable parameter
+    BESMod.Systems.RecordsCollection.TemperatureSensors.TemperatureSensorBaseDefinition
+    temperatureSensorData
+    annotation (Dialog(group="Component data"), choicesAllMatching=true,
+    Placement(transformation(extent={{60,10},{80,30}})));
 
   AixLib.Fluid.Interfaces.PassThroughMedium pasThrMedHeaRod(redeclare package
       Medium = Medium, allowFlowReversal=allowFlowReversal) if not use_heaRod
@@ -66,14 +88,14 @@ model HeatPumpAndHeatingRod "Bivalent monoenergetic heat pump"
     final CEva=0,
     final GEvaOut=0,
     final GEvaIns=0,
-    final tauSenT=heatPumpParameters.TempSensorData.tau,
+    final tauSenT=temperatureSensorData.tau,
     final transferHeat=true,
     final allowFlowReversalEva=allowFlowReversal,
     final allowFlowReversalCon=allowFlowReversal,
-    final tauHeaTraEva=heatPumpParameters.TempSensorData.tauHeaTra,
-    final TAmbEva_nominal=heatPumpParameters.TempSensorData.TAmb,
-    final tauHeaTraCon=heatPumpParameters.TempSensorData.tauHeaTra,
-    final TAmbCon_nominal=heatPumpParameters.TempSensorData.TAmb,
+    final tauHeaTraEva=temperatureSensorData.tauHeaTra,
+    final TAmbEva_nominal=temperatureSensorData.TAmb,
+    final tauHeaTraCon=temperatureSensorData.tauHeaTra,
+    final TAmbCon_nominal=temperatureSensorData.TAmb,
     final pCon_start=p_start,
     final TCon_start=T_start,
     final pEva_start=Medium_eva.p_default,
@@ -108,8 +130,7 @@ model HeatPumpAndHeatingRod "Bivalent monoenergetic heat pump"
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-130,50})));
-  Modelica.Blocks.Sources.BooleanConstant
-                                   AirOrSoil(k=heatPumpParameters.useAirSource)
+  Modelica.Blocks.Sources.BooleanConstant AirOrSoil(final k=use_airSource)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -189,12 +210,12 @@ model HeatPumpAndHeatingRod "Bivalent monoenergetic heat pump"
     redeclare final package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
     m_flow_nominal=m_flow_nominal[1],
-    tau=heatPumpParameters.TempSensorData.tau,
-    initType=heatPumpParameters.TempSensorData.initType,
+    tau=temperatureSensorData.tau,
+    initType=temperatureSensorData.initType,
     T_start=T_start,
-    final transferHeat=heatPumpParameters.TempSensorData.transferHeat,
-    TAmb=heatPumpParameters.TempSensorData.TAmb,
-    tauHeaTra=heatPumpParameters.TempSensorData.tauHeaTra)
+    final transferHeat=temperatureSensorData.transferHeat,
+    TAmb=temperatureSensorData.TAmb,
+    tauHeaTra=temperatureSensorData.tauHeaTra)
     "Temperature at supply (generation outlet)"
                                          annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},

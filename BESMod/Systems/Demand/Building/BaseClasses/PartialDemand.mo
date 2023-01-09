@@ -63,6 +63,17 @@ partial model PartialDemand "Partial demand model for HPS"
           extent={{-20,78},{20,120}})));
   Electrical.Interfaces.InternalElectricalPinOut internalElectricalPin
     annotation (Placement(transformation(extent={{60,-106},{80,-86}})));
+  parameter Modelica.Units.SI.Density rho=MediumZone.density(sta_nominal)
+    "Density of medium / fluid in heat distribution system"
+    annotation (Dialog(tab="Assumptions", group="General"));
+  parameter Modelica.Units.SI.SpecificHeatCapacity cp=
+      MediumZone.specificHeatCapacityCp(sta_nominal)
+    "Specific heat capacaity of medium / fluid in heat distribution system"
+    annotation (Dialog(tab="Assumptions", group="General"));
+
+protected
+  parameter MediumZone.ThermodynamicState sta_nominal=MediumZone.setState_pTX(
+      T=MediumZone.T_default, p=MediumZone.p_default, X=MediumZone.X_default) "Nominal / default state of medium";
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
