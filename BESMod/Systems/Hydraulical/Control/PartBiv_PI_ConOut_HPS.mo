@@ -1,7 +1,8 @@
 within BESMod.Systems.Hydraulical.Control;
 model PartBiv_PI_ConOut_HPS
   "Part-parallel PI controlled HPS according to condenser outflow"
-  extends BaseClasses.PartialTwoPoint_HPS_Controller(
+  extends
+    Systems.Hydraulical.Control.BaseClasses.PartialTwoPoint_HPS_Controller(
     redeclare
       BESMod.Systems.Hydraulical.Control.Components.HeatPumpNSetController.PI_InverterHeatPumpController
       HP_nSet_Controller(

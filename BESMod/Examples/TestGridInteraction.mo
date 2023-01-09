@@ -1,0 +1,819 @@
+within BESMod.Examples;
+package TestGridInteraction
+  model BES
+    extends Systems.BaseClasses.PartialBuildingEnergySystem(
+      redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
+      redeclare Systems.Demand.Building.TEASERThermalZone building(redeclare
+          BESMod.Systems.Demand.Building.RecordsCollection.RefAachen oneZoneParam(
+            heaLoadFacGrd=0, heaLoadFacOut=0)),
+      redeclare BESMod.Examples.TestGridInteraction.GridInteractionControl control,
+      redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
+        redeclare Systems.Hydraulical.Generation.HeatPumpAndHeatingRod generation(
+          redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
+          redeclare package Medium_eva = AixLib.Media.Air,
+          redeclare
+            BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
+            heatPumpParameters(
+            genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
+            TBiv=parameterStudy.TBiv,
+            scalingFactor=hydraulic.generation.heatPumpParameters.QPri_flow_nominal
+                /parameterStudy.QHP_flow_biv,
+            useAirSource=true,
+            dpCon_nominal=0,
+            dpEva_nominal=0,
+            use_refIne=false,
+            refIneFre_constant=0),
+          redeclare
+            BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
+            heatingRodParameters,
+          redeclare model PerDataMainHP =
+              AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
+              QCon_flow_nominal=hydraulic.generation.heatPumpParameters.QPri_flow_nominal,
+              refrigerant="Propane",
+              flowsheet="VIPhaseSeparatorFlowsheet")),
+        redeclare BESMod.Examples.TestGridInteraction.PartBiv_PI_ConOut_HPS_Grid_Interaction control(
+          redeclare
+            BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
+            thermostaticValveController,
+          redeclare
+            BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
+            thermostaticValveParameters,
+          redeclare
+            BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultBivHPControl
+            bivalentControlData(TBiv=parameterStudy.TBiv),
+          redeclare
+            Systems.Hydraulical.Control.Components.DHWSetControl.ConstTSet_DHW
+            TSet_DHW,
+          redeclare
+            BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultSafetyControl
+            safetyControl,
+          TCutOff=parameterStudy.TCutOff,
+          QHP_flow_cutOff=parameterStudy.QHP_flow_cutOff*hydraulic.generation.heatPumpParameters.scalingFactor),
+        redeclare Systems.Hydraulical.Distribution.DistributionTwoStorageParallel
+          distribution(
+          redeclare
+            BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
+            bufParameters(VPerQ_flow=parameterStudy.VPerQFlow, dTLoadingHC1=0),
+          redeclare
+            BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
+            dhwParameters(dTLoadingHC1=10),
+          redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
+            threeWayValveParameters),
+        redeclare Systems.Hydraulical.Transfer.IdealValveRadiator transfer(
+            redeclare
+            BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
+            radParameters, redeclare
+            BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData)),
+      redeclare Systems.Demand.DHW.DHW DHW(
+        redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
+        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
+        redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
+          calcmFlow),
+      redeclare Systems.UserProfiles.TEASERProfiles userProfiles,
+      redeclare UseCaseDesignOptimization.AachenSystem systemParameters(
+          use_ventilation=true),
+      redeclare UseCaseDesignOptimization.ParametersToChange parameterStudy,
+      redeclare final package MediumDHW = AixLib.Media.Water,
+      redeclare final package MediumZone = AixLib.Media.Air,
+      redeclare final package MediumHyd = AixLib.Media.Water,
+      redeclare BESMod.Systems.Ventilation.NoVentilation ventilation);
+
+    extends Modelica.Icons.Example;
+
+    annotation (experiment(
+        StopTime=31536000,
+        Interval=599.999616,
+        __Dymola_Algorithm="Dassl"));
+  end BES;
+
+  model GridInteractionControl
+    "Basic gird interaction control (implementing of EVU-Sperre)"
+    extends Systems.Control.BaseClasses.PartialControl;
+
+   // parameter Real HP_EVU_blocking "Variable to store if the HP is allowed to operate or not (depending on the hour of the day, the EVU-Sperre intervents)";
+
+  parameter String filNam="D:/fwu-nmu/BESMod/table_EVU_Sperre_1.txt" "Name of weather data file" annotation (
+      Dialog(loadSelector(filter="Weather files (*.mos)",
+                          caption="Select weather file")));
+  protected
+    final parameter Modelica.Units.SI.Time[2] timeSpan=
+        IBPSA.BoundaryConditions.WeatherData.BaseClasses.getTimeSpanTMY3(filNam,
+        "tab1") "Start time, end time of weather data";
+    Modelica.Blocks.Tables.CombiTable1Ds datRea(
+      final tableOnFile=true,
+      table=[1,1; 1,2; 1,3; 1,4; 1,5; 1,6; 1,7; 1,8; 0,9; 0,10; 0,11; 1,12; 1,13;
+          1,14; 1,15; 1,16; 0,17; 0,18; 0,19; 1,20; 1,21; 1,22; 1,23; 1,24],
+      final tableName="tab1",
+      final fileName="D:/fwu-nmu/BESMod/table_EVU_Sperre_test.txt",
+      verboseRead=false,
+      final smoothness=Modelica.Blocks.Types.Smoothness.ConstantSegments)
+      "Data reader"
+      annotation (Placement(transformation(extent={{16,22},{36,42}})));
+    IBPSA.BoundaryConditions.WeatherData.BaseClasses.ConvertTime conTim(final
+        weaDatStaTim=timeSpan[1], final weaDatEndTim=timeSpan[2])
+      "Convert simulation time to calendar time"
+      annotation (Placement(transformation(extent={{-30,22},{-10,42}})));
+    IBPSA.Utilities.Time.ModelTime modTim "Model time"
+      annotation (Placement(transformation(extent={{-80,22},{-60,42}})));
+  equation
+    connect(conTim.modTim, modTim.y)
+      annotation (Line(points={{-32,32},{-59,32}}, color={0,0,127}));
+    connect(conTim.calTim, datRea.u)
+      annotation (Line(points={{-9,32},{14,32}},             color={0,0,127}));
+    connect(datRea.y[1], sigBusHyd.HP_mode_EVU_Sperre) annotation (Line(points=
+            {{37,32},{70,32},{70,-82},{-79,-82},{-79,-101}}, color={0,0,127}),
+        Text(
+        string="%second",
+        index=1,
+        extent={{-6,3},{-6,3}},
+        horizontalAlignment=TextAlignment.Right));
+  end GridInteractionControl;
+
+  partial model PartialTwoPoint_HPS_Controller_Grid_Interaction
+    "Partial model with replaceable blocks for rule based control of HPS using on off heating rods"
+    extends
+      BESMod.Examples.TestGridInteraction.SystemWithGridInteractionControl;
+    replaceable
+      BESMod.Systems.Hydraulical.Control.Components.OnOffController.BaseClasses.PartialOnOffController
+      DHWOnOffContoller annotation (choicesAllMatching=true, Placement(
+          transformation(extent={{-128,70},{-112,86}})));
+    replaceable
+      BESMod.Systems.Hydraulical.Control.Components.OnOffController.BaseClasses.PartialOnOffController
+      BufferOnOffController annotation (choicesAllMatching=true, Placement(
+          transformation(extent={{-126,36},{-110,50}})));
+    replaceable BESMod.Systems.Hydraulical.Control.RecordsCollection.HeatPumpSafetyControl
+      safetyControl
+      annotation (choicesAllMatching=true,Placement(transformation(extent={{200,30},{220,50}})));
+    replaceable parameter
+      Systems.Hydraulical.Control.RecordsCollection.BivalentHeatPumpControlDataDefinition
+      bivalentControlData constrainedby
+      Systems.Hydraulical.Control.RecordsCollection.BivalentHeatPumpControlDataDefinition(
+      final TOda_nominal=generationParameters.TOda_nominal,
+      TSup_nominal=generationParameters.TSup_nominal[1],
+      TSetRoomConst=sum(transferParameters.TDem_nominal)/transferParameters.nParallelDem)
+      annotation (choicesAllMatching=true, Placement(transformation(extent={{-92,-32},
+              {-70,-10}})));
+    replaceable
+      BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.BaseClasses.PartialTSet_DHW_Control
+      TSet_DHW constrainedby
+      BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.BaseClasses.PartialTSet_DHW_Control(
+        final T_DHW=distributionParameters.TDHW_nominal) annotation (
+        choicesAllMatching=true, Placement(transformation(extent={{-216,66},{-192,
+              90}})));
+    BESMod.Systems.Hydraulical.Control.Components.HeatingCurve
+      heatingCurve(
+      GraHeaCurve=bivalentControlData.gradientHeatCurve,
+      THeaThres=bivalentControlData.TSetRoomConst,
+      dTOffSet_HC=bivalentControlData.dTOffSetHeatCurve)
+      annotation (Placement(transformation(extent={{-160,20},{-140,40}})));
+    Modelica.Blocks.MathBoolean.Or
+                               HRactive(nu=3)
+                                        annotation (Placement(transformation(
+          extent={{-5,-5},{5,5}},
+          rotation=0,
+          origin={15,25})));
+    Modelica.Blocks.Logical.Or HP_active
+                                        annotation (Placement(transformation(
+          extent={{-5,-5},{5,5}},
+          rotation=0,
+          origin={27,91})));
+    replaceable
+      BESMod.Systems.Hydraulical.Control.Components.HeatPumpNSetController.BaseClasses.PartialHPNSetController
+      HP_nSet_Controller annotation (choicesAllMatching=true, Placement(
+          transformation(extent={{96,76},{112,92}})));
+    Modelica.Blocks.Logical.Switch switchHP_Winter annotation (Placement(
+          transformation(
+          extent={{-5,-5},{5,5}},
+          rotation=0,
+          origin={63,73})));
+    Modelica.Blocks.Sources.Constant const_dT_loading1(k=distributionParameters.dTTra_nominal[1])
+                                                            annotation (Placement(
+          transformation(
+          extent={{4,-4},{-4,4}},
+          rotation=180,
+          origin={14,58})));
+
+    Modelica.Blocks.MathBoolean.Or
+                               DHWHysOrLegionella(nu=4)
+      "Use the HR if the HP reached its limit" annotation (Placement(
+          transformation(
+          extent={{-5,-5},{5,5}},
+          rotation=0,
+          origin={-77,69})));
+    AixLib.Controls.HeatPump.SafetyControls.SafetyControl securityControl(
+      final minRunTime=safetyControl.minRunTime,
+      final minLocTime=safetyControl.minLocTime,
+      final maxRunPerHou=safetyControl.maxRunPerHou,
+      final use_opeEnv=safetyControl.use_opeEnv,
+      final use_opeEnvFroRec=false,
+      final dataTable=AixLib.DataBase.HeatPump.EN14511.Vitocal200AWO201(
+          tableUppBou=[-20,50; -10,60; 30,60; 35,55]),
+      final tableUpp=safetyControl.tableUpp,
+      final use_minRunTime=safetyControl.use_minRunTime,
+      final use_minLocTime=safetyControl.use_minLocTime,
+      final use_runPerHou=safetyControl.use_runPerHou,
+      final dTHystOperEnv=safetyControl.dT_opeEnv,
+      final use_deFro=false,
+      final minIceFac=0,
+      final use_chiller=false,
+      final calcPel_deFro=0,
+      final pre_n_start=safetyControl.pre_n_start_hp,
+      use_antFre=false) annotation (Placement(transformation(
+          extent={{-16,-17},{16,17}},
+          rotation=0,
+          origin={210,81})));
+    Modelica.Blocks.Sources.BooleanConstant hp_mode(final k=true) annotation (
+        Placement(transformation(
+          extent={{-7,-7},{7,7}},
+          rotation=0,
+          origin={155,69})));
+
+    Modelica.Blocks.Logical.Switch switchHR_Winter annotation (Placement(
+          transformation(
+          extent={{-5,-5},{5,5}},
+          rotation=0,
+          origin={43,25})));
+    Modelica.Blocks.Sources.Constant constZero(final k=0) annotation (Placement(
+          transformation(
+          extent={{2,-2},{-2,2}},
+          rotation=180,
+          origin={24,10})));
+    Modelica.Blocks.Math.Max max annotation (Placement(transformation(
+          extent={{4,-4},{-4,4}},
+          rotation=180,
+          origin={24,38})));
+
+    Modelica.Blocks.Math.Add add_dT_LoadingBuf
+      annotation (Placement(transformation(extent={{38,54},{48,64}})));
+    Modelica.Blocks.Sources.Constant const_dT_loading2(k=distributionParameters.dTTraDHW_nominal
+           + bivalentControlData.dTHysDHW/2) annotation (Placement(transformation(
+          extent={{4,-4},{-4,4}},
+          rotation=180,
+          origin={14,74})));
+    Modelica.Blocks.Math.Add add_dT_LoadingDHW
+      annotation (Placement(transformation(extent={{36,78},{46,88}})));
+
+    Modelica.Blocks.Math.BooleanToReal booleanToReal annotation (Placement(
+          transformation(
+          extent={{-6,-6},{6,6}},
+          rotation=270,
+          origin={0,-36})));
+    Modelica.Blocks.Logical.Not bufOn "buffer is charged" annotation (Placement(
+          transformation(
+          extent={{-5,-5},{5,5}},
+          rotation=270,
+          origin={-1,-17})));
+    BESMod.Utilities.SupervisoryControl.SupervisoryControl supervisoryControlDHW(
+        ctrlType=supCtrlTypeDHWSet)
+      annotation (Placement(transformation(extent={{-182,72},{-170,84}})));
+    parameter BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType
+      supCtrlTypeDHWSet=BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Local
+      "Type of supervisory control for DHW Setpoint";
+    Modelica.Blocks.Math.MinMax minMax(nu=transferParameters.nParallelDem)
+      annotation (Placement(transformation(extent={{-202,32},{-182,52}})));
+    Modelica.Blocks.Math.BooleanToReal booleanToReal1 "Turn Pump in heat pump on"
+                                                     annotation (Placement(
+          transformation(
+          extent={{-10,-10},{10,10}},
+          rotation=270,
+          origin={-170,-54})));
+    Modelica.Blocks.Logical.Or HP_or_HR_active annotation (Placement(
+          transformation(
+          extent={{-10,-10},{10,10}},
+          rotation=270,
+          origin={-170,-24})));
+    Systems.Hydraulical.Control.Components.HeatPumpBusPassThrough heatPumpBusPassThrough
+      annotation (Placement(transformation(
+          extent={{-10,-10},{10,10}},
+          rotation=180,
+          origin={-230,-90})));
+    Modelica.Blocks.Sources.BooleanConstant DHW_loading(final k=true)
+      annotation (Placement(transformation(
+          extent={{-3,-3},{3,3}},
+          rotation=0,
+          origin={-65,-69})));
+    Modelica.Blocks.Logical.Switch switchHP_SummerOrWinter annotation (
+        Placement(transformation(
+          extent={{-5,-5},{5,5}},
+          rotation=0,
+          origin={85,63})));
+    Modelica.Blocks.Logical.Switch switch_HR annotation (Placement(
+          transformation(
+          extent={{-5,-5},{5,5}},
+          rotation=0,
+          origin={83,25})));
+    Modelica.Blocks.Logical.Switch switchHR_Summer annotation (Placement(
+          transformation(
+          extent={{-5,-5},{5,5}},
+          rotation=0,
+          origin={51,9})));
+    Modelica.Blocks.Sources.Constant constZero1(final k=0)
+                                                          annotation (Placement(
+          transformation(
+          extent={{2,-2},{-2,2}},
+          rotation=180,
+          origin={28,6})));
+    Modelica.Blocks.Logical.LogicalSwitch WinterSummerSwitch_HP
+      annotation (Placement(transformation(extent={{94,-36},{110,-20}})));
+  equation
+    connect(BufferOnOffController.T_Top, sigBusDistr.TStoBufTopMea) annotation (
+        Line(points={{-126.8,47.9},{-128,47.9},{-128,48},{-130,48},{-130,-86},{4,-86},
+            {4,-100},{1,-100}},
+          color={0,0,127}), Text(
+        string="%second",
+        index=1,
+        extent={{-6,3},{-6,3}},
+        horizontalAlignment=TextAlignment.Right));
+    connect(DHWOnOffContoller.T_Top, sigBusDistr.TStoDHWTopMea) annotation (Line(
+          points={{-128.8,83.6},{-316,83.6},{-316,-166},{1,-166},{1,-100}},
+          color={0,0,127}), Text(
+        string="%second",
+        index=1,
+        extent={{-6,3},{-6,3}},
+        horizontalAlignment=TextAlignment.Right));
+    connect(heatingCurve.TSet, BufferOnOffController.T_Set) annotation (Line(
+          points={{-139,30},{-139,28},{-118,28},{-118,35.3}},
+                                                      color={0,0,127}));
+
+    connect(DHWOnOffContoller.T_bot, sigBusDistr.TStoDHWTopMea) annotation (Line(
+          points={{-128.8,74},{-318,74},{-318,-166},{1,-166},{1,-100}},
+          color={0,0,127}), Text(
+        string="%second",
+        index=1,
+        extent={{-6,3},{-6,3}},
+        horizontalAlignment=TextAlignment.Right));
+    connect(sigBusDistr, TSet_DHW.sigBusDistr) annotation (Line(
+        points={{1,-100},{-2,-100},{-2,-152},{-292,-152},{-292,77.88},{-216,77.88}},
+        color={255,204,51},
+        thickness=0.5), Text(
+        string="%first",
+        index=-1,
+        extent={{-6,3},{-6,3}},
+        horizontalAlignment=TextAlignment.Right));
+
+    connect(DHWOnOffContoller.Auxilliar_Heater_On, HRactive.u[1]) annotation (
+        Line(points={{-110.88,74},{-22,74},{-22,23.8333},{10,23.8333}}, color={
+            255,0,255}));
+    connect(BufferOnOffController.Auxilliar_Heater_On, HRactive.u[2]) annotation (
+       Line(points={{-108.88,39.5},{-94,39.5},{-94,25},{10,25}},           color=
+            {255,0,255}));
+    connect(TSet_DHW.y, HRactive.u[3]) annotation (Line(points={{-190.8,71.04},
+            {-96,71.04},{-96,26.1667},{10,26.1667}},                        color=
+           {255,0,255}));
+
+    connect(securityControl.modeSet, hp_mode.y) annotation (Line(points={{191.867,
+            77.6},{168,77.6},{168,69},{162.7,69}}, color={255,0,255}));
+    connect(securityControl.nOut, sigBusGen.yHeaPumSet) annotation (Line(
+          points={{227.333,84.4},{264,84.4},{264,-132},{-42,-132},{-42,-99},{
+            -152,-99}},                    color={0,0,127}), Text(
+        string="%second",
+        index=1,
+        extent={{6,3},{6,3}},
+        horizontalAlignment=TextAlignment.Left));
+    connect(HP_nSet_Controller.n_Set, securityControl.nSet) annotation (Line(
+          points={{112.8,84},{152.333,84},{152.333,84.4},{191.867,84.4}},
+                                                                  color={0,0,127}));
+    connect(BufferOnOffController.HP_On, HP_active.u2) annotation (Line(points={{-108.88,
+            47.9},{-78,47.9},{-78,54},{-38,54},{-38,87},{21,87}},
+                                                   color={255,0,255}));
+    connect(DHWOnOffContoller.HP_On, HP_active.u1) annotation (Line(points={{-110.88,
+            83.6},{-32,83.6},{-32,91},{21,91}},    color={255,0,255}));
+    connect(DHWHysOrLegionella.y, switchHP_Winter.u2) annotation (Line(points={
+            {-71.25,69},{-20,69},{-20,73},{57,73}}, color={255,0,255}));
+
+    connect(TSet_DHW.y, DHWHysOrLegionella.u[1]) annotation (Line(points={{-190.8,
+            71.04},{-96,71.04},{-96,67.6875},{-82,67.6875}},    color={255,0,255}));
+    connect(DHWOnOffContoller.Auxilliar_Heater_On, DHWHysOrLegionella.u[2])
+      annotation (Line(points={{-110.88,74},{-92,74},{-92,68.5625},{-82,68.5625}},
+                                                                          color={
+            255,0,255}));
+    connect(DHWOnOffContoller.HP_On, DHWHysOrLegionella.u[3]) annotation (Line(
+          points={{-110.88,83.6},{-90,83.6},{-90,69.4375},{-82,69.4375}},
+          color={255,0,255}));
+    connect(TSet_DHW.y, DHWHysOrLegionella.u[4]) annotation (Line(points={{-190.8,
+            71.04},{-136.4,71.04},{-136.4,70.3125},{-82,70.3125}},
+                                                                 color={255,0,255}));
+    connect(BufferOnOffController.T_bot, sigBusDistr.TStoBufTopMea) annotation (
+        Line(points={{-126.8,39.5},{-130,39.5},{-130,-86},{134,-86},{134,-100},{1,
+            -100}},              color={0,0,127}), Text(
+        string="%second",
+        index=1,
+        extent={{-6,3},{-6,3}},
+        horizontalAlignment=TextAlignment.Right));
+    connect(HRactive.y, switchHR_Winter.u2)
+      annotation (Line(points={{20.75,25},{37,25}}, color={255,0,255}));
+    connect(constZero.y, switchHR_Winter.u3) annotation (Line(points={{26.2,10},
+            {28,10},{28,21},{37,21}}, color={0,0,127}));
+    connect(max.y, switchHR_Winter.u1)
+      annotation (Line(points={{28.4,38},{37,38},{37,29}}, color={0,0,127}));
+    connect(BufferOnOffController.Auxilliar_Heater_set, max.u1) annotation (Line(
+          points={{-108.88,36.98},{-84,36.98},{-84,35.6},{19.2,35.6}}, color={0,0,
+            127}));
+    connect(DHWOnOffContoller.Auxilliar_Heater_set, max.u2) annotation (Line(
+          points={{-110.88,71.12},{-104,71.12},{-104,64},{-10,64},{-10,40.4},{19.2,
+            40.4}}, color={0,0,127}));
+    connect(HP_nSet_Controller.IsOn, sigBusGen.heaPumIsOn) annotation (Line(
+          points={{99.2,74.4},{98,74.4},{98,44},{62,44},{62,4},{-152,4},{-152,
+            -99}},                                           color={255,0,255}),
+        Text(
+        string="%second",
+        index=1,
+        extent={{-3,-6},{-3,-6}},
+        horizontalAlignment=TextAlignment.Right));
+    connect(const_dT_loading2.y,add_dT_LoadingDHW. u2) annotation (Line(points={{18.4,74},
+            {24,74},{24,80},{35,80}},                  color={0,0,127}));
+    connect(heatingCurve.TSet, add_dT_LoadingBuf.u1) annotation (Line(points={{-139,30},
+            {-139,28},{4,28},{4,66},{32,66},{32,62},{37,62}},
+                                               color={0,0,127}));
+    connect(add_dT_LoadingBuf.y, switchHP_Winter.u3) annotation (Line(points={{
+            48.5,59},{54,59},{54,69},{57,69}}, color={0,0,127}));
+    connect(add_dT_LoadingDHW.y, switchHP_Winter.u1) annotation (Line(points={{
+            46.5,83},{51.25,83},{51.25,77},{57,77}}, color={0,0,127}));
+    connect(const_dT_loading1.y, add_dT_LoadingBuf.u2) annotation (Line(points={{
+            18.4,58},{26,58},{26,56},{37,56}}, color={0,0,127}));
+    connect(booleanToReal.y, sigBusDistr.uThrWayVal) annotation (Line(points={{
+            -1.11022e-15,-42.6},{-1.11022e-15,-62},{1,-62},{1,-100}},
+                                                    color={0,0,127}), Text(
+        string="%second",
+        index=1,
+        extent={{-3,-6},{-3,-6}},
+        horizontalAlignment=TextAlignment.Right));
+    connect(booleanToReal.u, bufOn.y) annotation (Line(points={{1.33227e-15,
+            -28.8},{1.33227e-15,-26},{-1,-26},{-1,-22.5}},
+                                         color={255,0,255}));
+    connect(TSet_DHW.TSet_DHW, supervisoryControlDHW.uLoc) annotation (Line(
+          points={{-190.8,78},{-188,78},{-188,73.2},{-183.2,73.2}}, color={0,0,
+            127}));
+    connect(supervisoryControlDHW.y, DHWOnOffContoller.T_Set) annotation (Line(
+          points={{-168.8,78},{-150,78},{-150,74},{-122,74},{-122,69.2},{-120,69.2}},
+                    color={0,0,127}));
+    connect(supervisoryControlDHW.y, add_dT_LoadingDHW.u1) annotation (Line(
+          points={{-168.8,78},{-150,78},{-150,76},{-10,76},{-10,86},{35,86}},
+          color={0,0,127}));
+    connect(supervisoryControlDHW.actInt, sigBusHyd.overwriteTSetDHW) annotation (
+       Line(points={{-183.2,78},{-186,78},{-186,94},{-28,94},{-28,101}}, color={
+            255,0,255}), Text(
+        string="%second",
+        index=1,
+        extent={{-6,3},{-6,3}},
+        horizontalAlignment=TextAlignment.Right));
+    connect(supervisoryControlDHW.uSup, sigBusHyd.TSetDHW) annotation (Line(
+          points={{-183.2,82.8},{-183.2,92},{-28,92},{-28,101}}, color={0,0,127}),
+        Text(
+        string="%second",
+        index=1,
+        extent={{-3,6},{-3,6}},
+        horizontalAlignment=TextAlignment.Right));
+    connect(heatingCurve.TOda, weaBus.TDryBul) annotation (Line(points={{-162,30},
+            {-236,30},{-236,2},{-237,2}}, color={0,0,127}), Text(
+        string="%second",
+        index=1,
+        extent={{-6,3},{-6,3}},
+        horizontalAlignment=TextAlignment.Right));
+    connect(BufferOnOffController.T_oda, weaBus.TDryBul) annotation (Line(points={
+            {-118,50.84},{-118,58},{-236,58},{-236,30},{-237,30},{-237,2}}, color=
+           {0,0,127}), Text(
+        string="%second",
+        index=1,
+        extent={{-3,-6},{-3,-6}},
+        horizontalAlignment=TextAlignment.Right));
+    connect(DHWOnOffContoller.T_oda, weaBus.TDryBul) annotation (Line(points={{-120,
+            86.96},{-192,86.96},{-192,94},{-248,94},{-248,2},{-237,2}}, color={0,0,
+            127}), Text(
+        string="%second",
+        index=1,
+        extent={{-6,3},{-6,3}},
+        horizontalAlignment=TextAlignment.Right));
+    connect(minMax.u, useProBus.TZoneSet) annotation (Line(points={{-202,42},{-206,
+            42},{-206,52},{-208,52},{-208,60},{-119,60},{-119,103}}, color={0,0,127}),
+        Text(
+        string="%second",
+        index=1,
+        extent={{-6,3},{-6,3}},
+        horizontalAlignment=TextAlignment.Right));
+    connect(minMax.yMax, heatingCurve.TSetRoom)
+      annotation (Line(points={{-181,48},{-150,48},{-150,42}}, color={0,0,127}));
+    connect(booleanToReal1.u, HP_or_HR_active.y)
+      annotation (Line(points={{-170,-42},{-170,-35}}, color={255,0,255}));
+    connect(booleanToReal1.y, sigBusGen.uPump) annotation (Line(points={{-170,-65},
+            {-172,-65},{-172,-72},{-152,-72},{-152,-99}}, color={0,0,127}), Text(
+        string="%second",
+        index=1,
+        extent={{6,3},{6,3}},
+        horizontalAlignment=TextAlignment.Left));
+    connect(HP_or_HR_active.u1, HRactive.y) annotation (Line(points={{-170,-12},{
+            -134,-12},{-134,-6},{-6,-6},{-6,18},{20.75,18},{20.75,25}}, color={
+            255,0,255}));
+    connect(HP_or_HR_active.u2, sigBusGen.heaPumIsOn) annotation (Line(
+          points={{-178,-12},{-194,-12},{-194,-99},{-152,-99}}, color={255,0,255}),
+        Text(
+        string="%second",
+        index=1,
+        extent={{-6,3},{-6,3}},
+        horizontalAlignment=TextAlignment.Right));
+    connect(heatPumpBusPassThrough.sigBusGen, sigBusGen) annotation (Line(
+        points={{-220,-90},{-200,-90},{-200,-80},{-180,-80},{-180,-72},{-152,-72},
+            {-152,-99}},
+        color={255,204,51},
+        thickness=0.5), Text(
+        string="%second",
+        index=1,
+        extent={{6,3},{6,3}},
+        horizontalAlignment=TextAlignment.Left));
+    connect(heatPumpBusPassThrough.vapourCompressionMachineControlBus,
+      securityControl.sigBusHP) annotation (Line(
+        points={{-240.2,-89.8},{-252,-89.8},{-252,-80},{72,-80},{72,-38},{192,-38},
+            {192,69.27},{192,69.27}},
+        color={255,204,51},
+        thickness=0.5));
+    connect(HP_EVU_Sperre.y, HP_nSet_Controller.HP_On) annotation (Line(points=
+            {{180.8,-18},{186,-18},{186,54},{140,54},{140,98},{94.4,98},{94.4,
+            84}}, color={255,0,255}));
+    connect(switchHP_Winter.y, switchHP_SummerOrWinter.u1) annotation (Line(
+          points={{68.5,73},{72,73},{72,67},{79,67}}, color={0,0,127}));
+    connect(add_dT_LoadingDHW.y, switchHP_SummerOrWinter.u3) annotation (Line(
+          points={{46.5,83},{46.5,82},{50,82},{50,68},{52,68},{52,66},{58,66},{
+            58,59},{79,59}}, color={0,0,127}));
+    connect(switchHP_SummerOrWinter.y, HP_nSet_Controller.T_Set) annotation (
+        Line(points={{90.5,63},{90.5,62},{94,62},{94,80},{90,80},{90,88.8},{
+            94.4,88.8}}, color={0,0,127}));
+    connect(switchHR_Winter.y, switch_HR.u1) annotation (Line(points={{48.5,25},
+            {48.5,24},{72,24},{72,29},{77,29}}, color={0,0,127}));
+    connect(switch_HR.y, sigBusGen.uHeaRod) annotation (Line(points={{88.5,25},
+            {88.5,24},{92,24},{92,16},{-134,16},{-134,6},{-152,6},{-152,-99}},
+          color={0,0,127}), Text(
+        string="%second",
+        index=1,
+        extent={{-6,3},{-6,3}},
+        horizontalAlignment=TextAlignment.Right));
+    connect(switchHR_Summer.u3, constZero1.y) annotation (Line(points={{45,5},{
+            37.6,5},{37.6,6},{30.2,6}}, color={0,0,127}));
+    connect(DHWOnOffContoller.Auxilliar_Heater_On, switchHR_Summer.u2)
+      annotation (Line(points={{-110.88,74},{-92,74},{-92,12},{18,12},{18,14},{
+            40,14},{40,9},{45,9}}, color={255,0,255}));
+    connect(DHWOnOffContoller.Auxilliar_Heater_set, switchHR_Summer.u1)
+      annotation (Line(points={{-110.88,71.12},{-110.88,60},{6,60},{6,13},{45,
+            13}}, color={0,0,127}));
+    connect(switchHR_Summer.y, switch_HR.u3) annotation (Line(points={{56.5,9},
+            {56.5,8},{77,8},{77,21}}, color={0,0,127}));
+    connect(HP_active.y, WinterSummerSwitch_HP.u1) annotation (Line(points={{
+            32.5,91},{32.5,100},{14,100},{14,82},{26,82},{26,44},{64,44},{64,36},
+            {96,36},{96,-14},{92.4,-14},{92.4,-21.6}}, color={255,0,255}));
+    connect(DHWOnOffContoller.HP_On, WinterSummerSwitch_HP.u3) annotation (Line(
+          points={{-110.88,83.6},{-110.88,82},{-90,82},{-90,0},{14,0},{14,-22},
+            {84,-22},{84,-34.4},{92.4,-34.4}}, color={255,0,255}));
+    connect(WinterSummerSwitch_HP.y, HP_EVU_Sperre.u1) annotation (Line(points=
+            {{110.8,-28},{112,-28},{112,-11.6},{162.4,-11.6}}, color={255,0,255}));
+    connect(logicalSwitch.u1, DHWHysOrLegionella.y) annotation (Line(points={{
+            -42,-50},{-42,69},{-71.25,69}}, color={255,0,255}));
+    connect(logicalSwitch.u3, DHW_loading.y) annotation (Line(points={{-42,-66},
+            {-42,-74},{-61.7,-74},{-61.7,-69}}, color={255,0,255}));
+    connect(WinterSummerSwitch_HP.u2, greaterThresholdInit.y) annotation (Line(
+          points={{92.4,-28},{10,-28},{10,-46},{-51,-46},{-51,-58}}, color={255,
+            0,255}));
+    connect(switchHP_SummerOrWinter.u2, greaterThresholdInit.y) annotation (
+        Line(points={{79,63},{56,63},{56,50},{-46,50},{-46,-46},{-51,-46},{-51,
+            -58}}, color={255,0,255}));
+    connect(switch_HR.u2, greaterThresholdInit.y) annotation (Line(points={{77,
+            25},{76,25},{76,50},{-46,50},{-46,-46},{-51,-46},{-51,-58}}, color=
+            {255,0,255}));
+    connect(logicalSwitch.y, bufOn.u) annotation (Line(points={{-19,-58},{-14,
+            -58},{-14,-11},{-1,-11}}, color={255,0,255}));
+    annotation (Diagram(graphics={
+          Rectangle(
+            extent={{-240,100},{-50,60}},
+            lineColor={238,46,47},
+            lineThickness=1),
+          Text(
+            extent={{-234,94},{-140,128}},
+            lineColor={238,46,47},
+            lineThickness=1,
+            textString="DHW Control"),
+          Rectangle(
+            extent={{-240,58},{-50,14}},
+            lineColor={0,140,72},
+            lineThickness=1),
+          Text(
+            extent={{-216,-14},{-122,20}},
+            lineColor={0,140,72},
+            lineThickness=1,
+            textString="Buffer Control"),
+          Rectangle(
+            extent={{0,100},{132,52}},
+            lineColor={28,108,200},
+            lineThickness=1),
+          Text(
+            extent={{4,122},{108,102}},
+            lineColor={28,108,200},
+            lineThickness=1,
+            textString="Heat Pump Control"),
+          Rectangle(
+            extent={{0,46},{132,4}},
+            lineColor={162,29,33},
+            lineThickness=1),
+          Text(
+            extent={{2,4},{106,-16}},
+            lineColor={162,29,33},
+            lineThickness=1,
+            textString="Heating Rod Control"),
+          Rectangle(
+            extent={{138,100},{240,52}},
+            lineColor={28,108,200},
+            lineThickness=1),
+          Text(
+            extent={{138,122},{242,102}},
+            lineColor={28,108,200},
+            lineThickness=1,
+            textString="Heat Pump Safety")}));
+  end PartialTwoPoint_HPS_Controller_Grid_Interaction;
+
+  model PartBiv_PI_ConOut_HPS_Grid_Interaction
+    "Part-parallel PI controlled HPS according to condenser outflow"
+    extends
+      BESMod.Examples.TestGridInteraction.PartialTwoPoint_HPS_Controller_Grid_Interaction(
+      redeclare
+        BESMod.Systems.Hydraulical.Control.Components.HeatPumpNSetController.PI_InverterHeatPumpController
+        HP_nSet_Controller(
+        P=bivalentControlData.k,
+        nMin=bivalentControlData.nMin,
+        T_I=bivalentControlData.T_I),
+      redeclare
+        BESMod.Systems.Hydraulical.Control.Components.OnOffController.ParallelBivalentControl
+        BufferOnOffController(
+        Hysteresis=bivalentControlData.dTHysBui,
+        TCutOff=TCutOff,
+        TBiv=bivalentControlData.TBiv,
+        TOda_nominal=bivalentControlData.TOda_nominal,
+        TRoom=bivalentControlData.TSetRoomConst,
+        QDem_flow_nominal=sum(transferParameters.Q_flow_nominal),
+        QHP_flow_cutOff=QHP_flow_cutOff),
+      redeclare
+        BESMod.Systems.Hydraulical.Control.Components.OnOffController.ParallelBivalentControl
+        DHWOnOffContoller(
+        Hysteresis=bivalentControlData.dTHysDHW,
+        TCutOff=TCutOff,
+        TBiv=bivalentControlData.TBiv,
+        TOda_nominal=bivalentControlData.TOda_nominal,
+        TRoom=bivalentControlData.TSetRoomConst,
+        QDem_flow_nominal=sum(transferParameters.Q_flow_nominal),
+        QHP_flow_cutOff=QHP_flow_cutOff));
+
+    parameter Modelica.Units.SI.Temperature TCutOff "Cut-off temperature";
+    parameter Modelica.Units.SI.HeatFlowRate QHP_flow_cutOff;
+
+  equation
+      connect(HP_nSet_Controller.T_Meas, sigBusGen.THeaPumOut) annotation (
+         Line(points={{104,74.4},{104,10},{98,10},{98,-40},{-152,-40},{-152,-99}},
+                                                                  color={0,0,127}),
+          Text(
+          string="%second",
+          index=1,
+          extent={{-3,-6},{-3,-6}},
+          horizontalAlignment=TextAlignment.Right));
+
+    annotation (Icon(graphics,
+                     coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
+          coordinateSystem(preserveAspectRatio=false)));
+  end PartBiv_PI_ConOut_HPS_Grid_Interaction;
+
+  partial model SystemWithGridInteractionControl
+    extends Systems.Hydraulical.Control.BaseClasses.PartialControl;
+    parameter Modelica.Units.SI.Temperature T_lim(displayUnit="K")=288.15;
+    replaceable
+      BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.BaseClasses.PartialThermostaticValveController
+      thermostaticValveController constrainedby
+      BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.BaseClasses.PartialThermostaticValveController(
+        final nZones=transferParameters.nParallelDem, final leakageOpening=
+          thermostaticValveParameters.leakageOpening) annotation (
+        choicesAllMatching=true, Placement(transformation(extent={{112,-94},{138,
+              -64}})));
+    replaceable parameter
+      BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
+      thermostaticValveParameters annotation (choicesAllMatching=true, Placement(
+          transformation(extent={{178,-80},{198,-60}})));
+    Modelica.Blocks.Logical.LogicalSwitch HP_EVU_Sperre
+      annotation (Placement(transformation(extent={{164,-26},{180,-10}})));
+    Modelica.Blocks.Math.RealToBoolean realToBoolean(threshold=1)
+      annotation (Placement(transformation(extent={{124,-22},{132,-14}})));
+    Modelica.Blocks.Sources.BooleanConstant hp_Off(final k=false) annotation (
+        Placement(transformation(
+          extent={{-3,-3},{3,3}},
+          rotation=0,
+          origin={145,-29})));
+    Modelica.Blocks.Logical.LessThreshold minT(threshold=T_lim)
+      annotation (Placement(transformation(extent={{-124,-64},{-112,-52}})));
+    Modelica.Blocks.Logical.Timer timer
+      annotation (Placement(transformation(extent={{-102,-68},{-82,-48}})));
+    GreaterThresholdInit greaterThresholdInit(threshold=259200)
+      annotation (Placement(transformation(extent={{-72,-68},{-52,-48}})));
+    Modelica.Blocks.Logical.LogicalSwitch logicalSwitch
+      annotation (Placement(transformation(extent={{-40,-68},{-20,-48}})));
+  equation
+    connect(thermostaticValveController.opening, sigBusTra.opening) annotation (
+        Line(points={{140.6,-79},{174,-79},{174,-100}}, color={0,0,127}), Text(
+        string="%second",
+        index=1,
+        extent={{6,3},{6,3}},
+        horizontalAlignment=TextAlignment.Left));
+    connect(thermostaticValveController.TZoneMea, buiMeaBus.TZoneMea) annotation (
+       Line(points={{109.4,-70},{104,-70},{104,-42},{238,-42},{238,103},{65,103}},
+          color={0,0,127}), Text(
+        string="%second",
+        index=1,
+        extent={{-6,3},{-6,3}},
+        horizontalAlignment=TextAlignment.Right));
+    connect(thermostaticValveController.TZoneSet, useProBus.TZoneSet) annotation (
+       Line(points={{109.4,-88},{102,-88},{102,-40},{236,-40},{236,103},{-119,103}},
+          color={0,0,127}), Text(
+        string="%second",
+        index=1,
+        extent={{-6,3},{-6,3}},
+        horizontalAlignment=TextAlignment.Right));
+    connect(realToBoolean.y,HP_EVU_Sperre. u2) annotation (Line(points={{132.4,-18},
+            {162.4,-18}},                      color={255,0,255}));
+    connect(hp_Off.y, HP_EVU_Sperre.u3) annotation (Line(points={{148.3,-29},{156,
+            -29},{156,-24.4},{162.4,-24.4}}, color={255,0,255}));
+    connect(realToBoolean.u, sigBusHyd.HP_mode_EVU_Sperre) annotation (Line(
+          points={{123.2,-18},{-28,-18},{-28,101}}, color={0,0,127}), Text(
+        string="%second",
+        index=1,
+        extent={{-6,3},{-6,3}},
+        horizontalAlignment=TextAlignment.Right));
+    connect(weaBus.TDryBul, minT.u) annotation (Line(
+        points={{-237,2},{-142,2},{-142,-58},{-125.2,-58}},
+        color={255,204,51},
+        thickness=0.5), Text(
+        string="%first",
+        index=-1,
+        extent={{-6,3},{-6,3}},
+        horizontalAlignment=TextAlignment.Right));
+    connect(minT.y, timer.u)
+      annotation (Line(points={{-111.4,-58},{-104,-58}}, color={255,0,255}));
+    connect(timer.y, greaterThresholdInit.u)
+      annotation (Line(points={{-81,-58},{-74,-58}}, color={0,0,127}));
+    connect(greaterThresholdInit.y, logicalSwitch.u2)
+      annotation (Line(points={{-51,-58},{-42,-58}}, color={255,0,255}));
+    annotation (Diagram(graphics={
+          Rectangle(
+            extent={{74,-58},{206,-100}},
+            lineColor={162,29,33},
+            lineThickness=1),
+          Text(
+            extent={{76,-100},{180,-120}},
+            lineColor={162,29,33},
+            lineThickness=1,
+            textString="Thermostatic Valve"),
+          Rectangle(
+            extent={{72,0},{204,-42}},
+            lineColor={162,29,33},
+            lineThickness=1),
+          Text(
+            extent={{48,-44},{152,-64}},
+            lineColor={162,29,33},
+            lineThickness=1,
+            textString="EVU Sperre
+"),       Rectangle(
+            extent={{-148,-40},{-10,-80}},
+            lineColor={162,29,33},
+            lineThickness=1),
+          Text(
+            extent={{-126,-82},{-22,-102}},
+            lineColor={162,29,33},
+            lineThickness=1,
+            textString="Summer switch
+
+",          fontSize=12)}));
+  end SystemWithGridInteractionControl;
+
+  block WinterSummerValveInitialisation
+      extends Modelica.Blocks.Interfaces.partialBooleanSI3SO;
+      parameter Real delay_time = 259200; // delay time of 3 days to start with winter mode
+  equation
+    if (time <= delay_time) then
+      y = u1; //start the first 3 days with winter mode
+    else
+      y = if u2 then u1 else u3;
+    end if;
+    annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+          coordinateSystem(preserveAspectRatio=false)));
+  end WinterSummerValveInitialisation;
+
+  block GreaterThresholdInit
+      "Output y is true, if input u is greater than threshold (for the first three days output is also true)"
+    extends Modelica.Blocks.Interfaces.partialBooleanThresholdComparison;
+    parameter Real delay_time = 259200; // delay time of 3 days to start with winter mode
+
+  equation
+    if (time < 10368000 or time >= 23587200) then // winter mode constraint (between 1.05 (10368000 s) and 01.10 (23587200 s) is summer mode)
+     y = true; //winter mode
+    else //summer mode constraint
+       if (time <= delay_time) then
+       y = true; //start the first 3 days with winter mode
+       else
+       y = u > threshold;
+       end if;
+    end if;
+    annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+          coordinateSystem(preserveAspectRatio=false)));
+  end GreaterThresholdInit;
+end TestGridInteraction;

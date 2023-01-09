@@ -80,6 +80,6 @@ model BES
 
   annotation (experiment(
       StopTime=31536000,
-      Interval=600,
+      Interval=599.999616,
       __Dymola_Algorithm="Dassl"));
 end BES;

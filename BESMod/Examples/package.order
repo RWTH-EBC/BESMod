@@ -4,3 +4,6 @@ BAUSimStudy
 UseCaseHighOrderModel
 SolarThermalSystem
 GasBoilerBuildingOnly
+TestControlStrategiesGridConnection
+TestModelingGridInteraction
+TestGridInteraction
