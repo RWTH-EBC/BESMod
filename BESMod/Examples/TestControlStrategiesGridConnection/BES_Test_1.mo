@@ -1,5 +1,5 @@
-within BESMod.Examples.UseCaseDesignOptimization;
-model BES
+within BESMod.Examples.TestControlStrategiesGridConnection;
+model BES_Test_1
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
     redeclare Systems.Demand.Building.TEASERThermalZone building(redeclare
@@ -30,20 +30,20 @@ model BES
             QCon_flow_nominal=hydraulic.generation.heatPumpParameters.QPri_flow_nominal,
             refrigerant="Propane",
             flowsheet="VIPhaseSeparatorFlowsheet")),
-      redeclare Systems.Hydraulical.Control.PartBiv_PI_ConOut_HPS control(
-        redeclare
+      redeclare BESMod.Examples.TestControlStrategiesGridConnection.Parameter_fit_control_Thermostatic_9 control(
+      redeclare
           BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
           thermostaticValveController,
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
           thermostaticValveParameters,
-        redeclare
-          BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultBivHPControl
-          bivalentControlData(TBiv=parameterStudy.TBiv),
-        redeclare
+      redeclare
           Systems.Hydraulical.Control.Components.DHWSetControl.ConstTSet_DHW
           TSet_DHW,
-        redeclare
+       redeclare
+          BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultBivHPControl
+          bivalentControlData(TBiv=parameterStudy.TBiv),
+       redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultSafetyControl
           safetyControl,
         TCutOff=parameterStudy.TCutOff,
@@ -69,8 +69,9 @@ model BES
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
         calcmFlow),
     redeclare Systems.UserProfiles.TEASERProfiles userProfiles,
-    redeclare AachenSystem systemParameters(use_ventilation=true),
-    redeclare ParametersToChange parameterStudy,
+    redeclare UseCaseDesignOptimization.AachenSystem systemParameters(
+        use_ventilation=true),
+    redeclare UseCaseDesignOptimization.ParametersToChange parameterStudy,
     redeclare final package MediumDHW = AixLib.Media.Water,
     redeclare final package MediumZone = AixLib.Media.Air,
     redeclare final package MediumHyd = AixLib.Media.Water,
@@ -79,7 +80,8 @@ model BES
   extends Modelica.Icons.Example;
 
   annotation (experiment(
-      StopTime=31536000,
+      StartTime=15552000,
+      StopTime=16416000,
       Interval=599.999616,
       __Dymola_Algorithm="Dassl"));
-end BES;
+end BES_Test_1;

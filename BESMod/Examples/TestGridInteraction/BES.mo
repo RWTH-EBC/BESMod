@@ -1,11 +1,11 @@
-within BESMod.Examples.UseCaseDesignOptimization;
+within BESMod.Examples.TestGridInteraction;
 model BES
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
     redeclare Systems.Demand.Building.TEASERThermalZone building(redeclare
         BESMod.Systems.Demand.Building.RecordsCollection.RefAachen oneZoneParam(
           heaLoadFacGrd=0, heaLoadFacOut=0)),
-    redeclare BESMod.Systems.Control.NoControl control,
+    redeclare BESMod.Examples.TestGridInteraction.GridInteractionControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
       redeclare Systems.Hydraulical.Generation.HeatPumpAndHeatingRod generation(
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
@@ -30,7 +30,7 @@ model BES
             QCon_flow_nominal=hydraulic.generation.heatPumpParameters.QPri_flow_nominal,
             refrigerant="Propane",
             flowsheet="VIPhaseSeparatorFlowsheet")),
-      redeclare Systems.Hydraulical.Control.PartBiv_PI_ConOut_HPS control(
+      redeclare BESMod.Examples.TestGridInteraction.PartBiv_PI_ConOut_HPS_Grid_Interaction control(
         redeclare
           BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
           thermostaticValveController,
@@ -69,8 +69,9 @@ model BES
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
         calcmFlow),
     redeclare Systems.UserProfiles.TEASERProfiles userProfiles,
-    redeclare AachenSystem systemParameters(use_ventilation=true),
-    redeclare ParametersToChange parameterStudy,
+    redeclare UseCaseDesignOptimization.AachenSystem systemParameters(
+        use_ventilation=true),
+    redeclare UseCaseDesignOptimization.ParametersToChange parameterStudy,
     redeclare final package MediumDHW = AixLib.Media.Water,
     redeclare final package MediumZone = AixLib.Media.Air,
     redeclare final package MediumHyd = AixLib.Media.Water,
