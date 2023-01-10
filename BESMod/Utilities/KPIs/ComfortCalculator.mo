@@ -40,6 +40,6 @@ equation
     annotation (Line(points={{-5,-6},{0,-6},{0,-4},{6,-4}}, color={0,0,127}));
   annotation (
     Documentation(info="<html>
-<p>Calculate the comfort during either heating or cooling period. Based on EN 15251, which defines a 2 K bandwith around a set temperature of 22 &deg;C.</p>
+<p>Calculate the comfort during either heating or cooling period. Based on EN 16798-1, which defines a 2 K bandwith around a set temperature of 22 &deg;C.</p>
 </html>"));
 end ComfortCalculator;
