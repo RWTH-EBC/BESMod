@@ -2,6 +2,7 @@ within BESMod.Examples.TestGridInteraction;
 partial model SystemWithGridInteractionControl
   extends Systems.Hydraulical.Control.BaseClasses.PartialControl;
   parameter Modelica.Units.SI.Temperature T_lim(displayUnit="K")=288.15;
+  parameter Modelica.Units.SI.Temperature delta_T_lim(displayUnit="K")=0.1; //Temperature difference allowed in Hysteresis implementation
   replaceable
     BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.BaseClasses.PartialThermostaticValveController
     thermostaticValveController constrainedby
@@ -23,14 +24,17 @@ partial model SystemWithGridInteractionControl
         extent={{-3,-3},{3,3}},
         rotation=0,
         origin={145,-29})));
-  Modelica.Blocks.Logical.LessThreshold minT(threshold=T_lim)
-    annotation (Placement(transformation(extent={{-124,-64},{-112,-52}})));
   Modelica.Blocks.Logical.Timer timer
     annotation (Placement(transformation(extent={{-102,-68},{-82,-48}})));
   GreaterThresholdInit greaterThresholdInit(threshold=259200)
     annotation (Placement(transformation(extent={{-72,-68},{-52,-48}})));
   Modelica.Blocks.Logical.LogicalSwitch logicalSwitch
     annotation (Placement(transformation(extent={{-40,-68},{-20,-48}})));
+  Modelica.Blocks.Logical.Hysteresis hysteresis(uLow=T_lim - delta_T_lim, uHigh=
+        T_lim + delta_T_lim)
+    annotation (Placement(transformation(extent={{-144,-66},{-128,-50}})));
+  Modelica.Blocks.Logical.Not reverse
+    annotation (Placement(transformation(extent={{-120,-62},{-110,-52}})));
 equation
   connect(thermostaticValveController.opening, sigBusTra.opening) annotation (
       Line(points={{140.6,-79},{174,-79},{174,-100}}, color={0,0,127}), Text(
@@ -62,20 +66,20 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(weaBus.TDryBul, minT.u) annotation (Line(
-      points={{-237,2},{-142,2},{-142,-58},{-125.2,-58}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%first",
-      index=-1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
-  connect(minT.y, timer.u)
-    annotation (Line(points={{-111.4,-58},{-104,-58}}, color={255,0,255}));
   connect(timer.y, greaterThresholdInit.u)
     annotation (Line(points={{-81,-58},{-74,-58}}, color={0,0,127}));
   connect(greaterThresholdInit.y, logicalSwitch.u2)
     annotation (Line(points={{-51,-58},{-42,-58}}, color={255,0,255}));
+  connect(timer.u, reverse.y) annotation (Line(points={{-104,-58},{-106,-58},{
+          -106,-57},{-109.5,-57}}, color={255,0,255}));
+  connect(hysteresis.y, reverse.u) annotation (Line(points={{-127.2,-58},{
+          -127.2,-57},{-121,-57}}, color={255,0,255}));
+  connect(hysteresis.u, weaBus.TDryBul) annotation (Line(points={{-145.6,-58},{
+          -210,-58},{-210,2},{-237,2}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
   annotation (Diagram(graphics={
         Rectangle(
           extent={{74,-58},{206,-100}},
