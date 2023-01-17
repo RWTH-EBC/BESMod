@@ -1,5 +1,0 @@
-simulateModel("DesOptExample.Case_2.Case_2", method="Dassl", tolerance=0.0001, stopTime=31536000, resultFile="Case_2");
-createPlot(id=1, y={"multizone.PHeater[1]"});
-createPlot(id=2, y={"multizone.PCooler[1]"});
-createPlot(id=3, y={"multizone.TAir[1]"});
-
