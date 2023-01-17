@@ -46,7 +46,8 @@ partial model PartialDistributionTwoStorageParallelDetailed
     choicesAllMatching=true, Placement(transformation(extent={{-84,84},{-64,104}})));
 
  replaceable parameter
-    RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition bufParameters
+    RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition bufParameters(
+      redeclare final AixLib.DataBase.Pipes.Copper.Copper_12x1 pipeHC1)
     constrainedby
     RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition(
     final Q_flow_nominal=Q_flow_nominal[1]*f_design[1],
@@ -57,7 +58,6 @@ partial model PartialDistributionTwoStorageParallelDetailed
     T_m=TSup_nominal[1],
     final QHC1_flow_nominal=Q_flow_nominal[1]*f_design[1],
     final mHC1_flow_nominal=mSup_flow_nominal[1],
-    redeclare final AixLib.DataBase.Pipes.Copper.Copper_12x1 pipeHC1,
     final use_HC2=storageBuf.useHeatingCoil2,
     final use_HC1=storageBuf.useHeatingCoil1,
     final dTLoadingHC2=9999999,
@@ -70,7 +70,8 @@ partial model PartialDistributionTwoStorageParallelDetailed
       choicesAllMatching=true, Placement(transformation(extent={{18,26},{32,40}})));
 
   replaceable parameter
-    RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition dhwParameters
+    RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition dhwParameters(
+      redeclare final AixLib.DataBase.Pipes.Copper.Copper_12x1 pipeHC1)
     constrainedby
     RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition(
         final Q_flow_nominal=0,
@@ -82,7 +83,6 @@ partial model PartialDistributionTwoStorageParallelDetailed
         T_m=TDHW_nominal,
         final QHC1_flow_nominal=QDHW_flow_nominal,
         final mHC1_flow_nominal=mSup_flow_nominal[1],
-        redeclare final AixLib.DataBase.Pipes.Copper.Copper_12x1 pipeHC1,
         final use_HC2=storageBuf.useHeatingCoil2,
         final use_HC1=storageBuf.useHeatingCoil1,
         final dTLoadingHC2=9999999,

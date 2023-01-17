@@ -4,3 +4,4 @@ BivalentHeatPumpControlDataDefinition
 DefaultBivHPControl
 ThermostaticValveDataDefinition
 DefaultBivHPControl_toOptimize
+BivalentHeatPumpControlDataDefinition_toOptimize

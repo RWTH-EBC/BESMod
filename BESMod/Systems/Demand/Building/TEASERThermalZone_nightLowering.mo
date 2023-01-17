@@ -26,6 +26,7 @@ model TEASERThermalZone_nightLowering
     annotation (Dialog(tab="Dynamics"));
   parameter Modelica.Units.SI.Temperature T_start=293.15
     "Start value of temperature" annotation (Dialog(tab="Initialization"));
+  parameter Modelica.Units.SI.Temperature TOda_nominal "Nominal outdoor air temperature";
 
   AixLib.ThermalZones.ReducedOrder.ThermalZone.ThermalZone thermalZone[nZones](
     redeclare each final package Medium = MediumZone,

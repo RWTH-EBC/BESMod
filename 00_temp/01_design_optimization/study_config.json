@@ -1,0 +1,47 @@
+{
+  "base_path": "D:\\00_temp\\01_design_optimization",
+  "n_cpu": 11,
+  "name": "ReferenceSystem",
+  "simulation": "D:\\00_temp\\01_design_optimization\\simulation_config.json",
+  "optimization": "D:\\00_temp\\01_design_optimization\\optimization_config.json",
+  "inputs": "D:\\00_temp\\01_design_optimization\\inputs_config.json",
+  "objective_mapping": {
+    "electric_energy_demand": "outputs.electrical.dis.PEleLoa.integral",
+    "heat_pump_size": "hydraulic.generation.heatPumpParameters.QGen_flow_nominal",
+    "heating_rod_size": "hydraulic.generation.hea.Q_flow_nominal",
+    "buffer_storage_size": "hydraulic.distribution.bufParameters.V",
+    "dhw_storage_size": "hydraulic.distribution.dhwParameters.V"
+  },
+  "cost_scenario": {
+    "n_years": 18.0,
+    "int_rate": 0.07,
+    "k_el": 0.3048,
+    "k_op_hp": 0.025,
+    "k_op_hr": 0.01,
+    "k_op_the": 0.02,
+    "k_op_dhw": 0.02,
+    "i_hp_0": 6815.675,
+    "i_hp_a": 28.304,
+    "i_hp_exp": 0.557,
+    "i_hr_0": -0.037,
+    "i_hr_a": 5.73,
+    "i_hr_exp": 0.494,
+    "i_the_0": 346.064,
+    "i_the_a": 1066.3263488881796,
+    "i_the_exp": 0.767,
+    "i_dhw_0": 7.19,
+    "i_dhw_a": 4481.943755499102,
+    "i_dhw_exp": 0.81
+  },
+  "emission_scenario": {
+    "n_years": 18.0,
+    "e_power": 474.0,
+    "ref_amount_0": 0.0,
+    "ref_amount_a": 0.0059,
+    "ref_amount_exp": 0.7851,
+    "e_ng": 205.0,
+    "e_trans": 104.0,
+    "ref_leak_ann": 0.02,
+    "ref_leak_ad": 0.23
+  }
+}

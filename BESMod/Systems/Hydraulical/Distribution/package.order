@@ -10,3 +10,5 @@ Tests
 BaseClasses
 Types
 NoStorageForHeating
+TwoStoDetailedDirectLoading_forUFH
+TwoStoDetailedIndirectLoading_forUFH

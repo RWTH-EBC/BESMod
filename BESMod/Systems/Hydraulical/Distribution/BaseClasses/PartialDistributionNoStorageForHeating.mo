@@ -46,8 +46,10 @@ partial model PartialDistributionNoStorageForHeating
     choicesAllMatching=true, Placement(transformation(extent={{-84,84},{-64,104}})));
 
  replaceable parameter
-    RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition bufParameters(final
-      use_HC1=false, final use_HC2=false)
+    RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition bufParameters(
+    final use_HC1=false,
+    redeclare final AixLib.DataBase.Pipes.Copper.Copper_18x1 pipeHC1,
+                     final use_HC2=false)
     constrainedby
     RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition(
     final Q_flow_nominal=Q_flow_nominal[1]*f_design[1],
@@ -69,7 +71,8 @@ partial model PartialDistributionNoStorageForHeating
       choicesAllMatching=true, Placement(transformation(extent={{22,14},{36,28}})));
 
   replaceable parameter
-    RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition dhwParameters
+    RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition dhwParameters(
+      redeclare final AixLib.DataBase.Pipes.Copper.Copper_18x1 pipeHC1)
     constrainedby
     RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition(
         final Q_flow_nominal=0,
