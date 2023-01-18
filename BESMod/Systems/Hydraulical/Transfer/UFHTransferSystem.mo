@@ -2,6 +2,16 @@ within BESMod.Systems.Hydraulical.Transfer;
 model UFHTransferSystem
   extends BaseClasses.PartialTransfer(final nParallelSup=1, final dp_nominal=fill(0, nParallelDem));
 
+  replaceable parameter BESMod.Systems.Hydraulical.Transfer.RecordsCollection.UFHData UFHParameters
+    constrainedby RecordsCollection.UFHData(nZones=nParallelDem, area=AZone)
+    annotation (Dialog(group="Component data"),
+    choicesAllMatching=true, Placement(transformation(extent={{78,78},
+            {98,98}})));
+  replaceable parameter
+    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
+    pumpData annotation (choicesAllMatching=true,
+    Dialog(group="Component data"), Placement(transformation(extent={{-98,78},
+            {-78,98}})));
   IBPSA.Fluid.FixedResistances.PressureDrop res[nParallelDem](
     redeclare package Medium = Medium,
     each final dp_nominal=1,
@@ -29,8 +39,8 @@ model UFHTransferSystem
         origin={9.5,9.5})));
 
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixTemp[nParallelDem](
-      each final T=UFHParameters.T_floor) "Fixed floor temperature" annotation
-    (Placement(transformation(
+      each final T=UFHParameters.T_floor) "Fixed floor temperature" annotation (
+     Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-90,10})));
@@ -50,12 +60,6 @@ model UFHTransferSystem
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-64,4})));
-
-  replaceable parameter BESMod.Systems.Hydraulical.Transfer.RecordsCollection.UFHData UFHParameters
-    constrainedby RecordsCollection.UFHData(nZones=nParallelDem, area=AZone)
-    annotation (choicesAllMatching=true, Placement(transformation(extent={{78,78},
-            {98,98}})));
-
   Utilities.KPIs.EnergyKPICalculator integralKPICalculator[nParallelDem]
     annotation (Placement(transformation(extent={{-40,-80},{-20,-60}})));
   IBPSA.Fluid.Movers.FlowControlled_m_flow pumpFix_m_flow[nParallelDem](
@@ -89,12 +93,12 @@ model UFHTransferSystem
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-30,50})));
-  replaceable parameter
-    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
-    pumpData annotation (choicesAllMatching=true, Placement(transformation(extent={{-98,78},
-            {-78,98}})));
+
   BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{32,-108},{52,-88}})));
+  Modelica.Blocks.Routing.RealPassThrough reaPasThrOpe[nParallelDem]
+    "Opening KPI"
+    annotation (Placement(transformation(extent={{20,80},{40,100}})));
 protected
   parameter
     BESMod.Systems.Hydraulical.Components.UFH.ActiveWallBaseDataDefinition
@@ -174,9 +178,14 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(gain.u, outBusTra.opening) annotation (Line(points={{-30,92},{-30,100},
-          {-14,100},{-14,-2},{-12,-2},{-12,-90},{0,-90},{0,-104}},
-        color={0,0,127}), Text(
+  connect(reaPasThrOpe.u, traControlBus.opening) annotation (Line(points={{18,
+          90},{18,86},{0,86},{0,100}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-3,6},{-3,6}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(reaPasThrOpe.y, outBusTra.opening) annotation (Line(points={{41,90},{
+          46,90},{46,-84},{0,-84},{0,-104}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
