@@ -10,8 +10,7 @@ model ThermostaticValvePControlled
 equation
   for i in 1:nZones loop
     //Calculating the valve opening depending on the temperature deviation
-    opening[i] =min(1, max(leakageOpening, (P[i] -TZoneMea [i] -TZoneSet
-              [i])*(Kv_setT[i]/Kvs[i])/P[i]));
+    opening[i] =min(1, max(leakageOpening, (P[i] - (TZoneMea [i] - TZoneSet[i]))*(Kv_setT[i]/Kvs[i])/P[i]));
   end for;
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Line(points={{-82,-82},{-82,-22},{-82,0},{74,0}},  color={0,0,127}),
