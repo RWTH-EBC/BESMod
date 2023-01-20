@@ -3,7 +3,7 @@
 # BESMod
 
 This library contains **Mod**ules for the domain-coupled simulation of **B**uilding **E**nergy **S**ystems .
-It was presented at the American Modelica Conference 2022. Check out the proceedings here: https://2022.american.conference.modelica.org/documents/NA_Modelica_2022_Proceedings.pdf
+It was presented at the American Modelica Conference 2022. Check out the proceedings here: https://2022.american.conference.modelica.org/documents/01_papers/02_full/1_Wullhorst.pdf
 
 Moreover, `BESMod` won the best paper award.
 
@@ -82,7 +82,7 @@ DOI:  10.3384/ECP211869
   booktitle={Proceedings of the American Modelica Conference 2022, Dallas, Texas, USA, October 26-28},
   pages={9--18},
   year={2022},
-  doi={10.3384/ecp21186}
+  doi={10.3384/ecp211869}
 }
 ```
 
