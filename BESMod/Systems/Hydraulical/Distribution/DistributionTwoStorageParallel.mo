@@ -6,7 +6,7 @@ model DistributionTwoStorageParallel
     final QDHWStoLoss_flow=dhwParameters.QLoss_flow,
     designType=BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage,
     final dpDem_nominal={0},
-    final dpSup_nominal={2*(threeWayValveParameters.dpValve_nominal + max(
+    dpSup_nominal={2*(threeWayValveParameters.dpValve_nominal + max(
         threeWayValveParameters.dp_nominal))},
     final dTTraDHW_nominal=dhwParameters.dTLoadingHC1,
     final dTTra_nominal={bufParameters.dTLoadingHC1},
@@ -14,7 +14,7 @@ model DistributionTwoStorageParallel
     final TSup_nominal=TDem_nominal .+ dTLoss_nominal .+ dTTra_nominal,
     dTLoss_nominal=fill(0, nParallelDem),
     final m_flow_nominal=mDem_flow_nominal,
-    final nParallelSup=1,
+      nParallelSup=1,
     final nParallelDem=1);
 
   AixLib.Fluid.Storage.Storage storageDHW(

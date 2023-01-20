@@ -4,3 +4,4 @@ SolarThermalBaseDataDefinition
 DefaultSolarThermal
 HeatPumpBaseDataDefinition
 DefaultHP
+BivalentHeatPumpBaseDataDefinition

@@ -75,8 +75,8 @@ model MonovalentGasBoiler "PI Control of gas boiler"
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-70,-50})));
-  Modelica.Blocks.Math.BooleanToReal booToRea(final realTrue=1, final realFalse
-      =0) if use_dhw "Convert boolean signal to real for valve" annotation (
+  Modelica.Blocks.Math.BooleanToReal booToRea(final realTrue=1, final realFalse=
+       0) if use_dhw "Convert boolean signal to real for valve" annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,

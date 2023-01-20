@@ -1,3 +1,4 @@
 PartialControl
 SystemWithThermostaticValveControl
 PartialTwoPoint_HPS_Controller
+PartialTwoPoint_HPS_Controller_BivalentBoiler

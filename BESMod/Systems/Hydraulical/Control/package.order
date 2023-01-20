@@ -10,3 +10,6 @@ PartBiv_PI_ConOut_HPS
 Components
 BaseClasses
 RecordsCollection
+NewControlBivalentSeries
+NewControlBivalentSystem3_and_4
+NewControlBivalentParallel

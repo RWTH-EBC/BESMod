@@ -29,8 +29,8 @@ model UFHTransferSystem
         origin={9.5,9.5})));
 
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixTemp[nParallelDem](
-      each final T=UFHParameters.T_floor) "Fixed floor temperature" annotation
-    (Placement(transformation(
+      each final T=UFHParameters.T_floor) "Fixed floor temperature" annotation (
+     Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-90,10})));
