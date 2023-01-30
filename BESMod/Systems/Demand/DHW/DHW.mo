@@ -8,7 +8,8 @@ model DHW "Standard DHW subsystem"
     VDHWDay=if use_dhwCalc then V_dhwCalc_day else DHWProfile.VDHWDay,
     mDHW_flow_nominal=DHWProfile.m_flow_nominal);
   replaceable parameter Systems.Demand.DHW.RecordsCollection.ProfileM
-    DHWProfile constrainedby Systems.Demand.DHW.RecordsCollection.PartialDHWTap annotation (choicesAllMatching=true, Dialog(
+    DHWProfile constrainedby Systems.Demand.DHW.RecordsCollection.PartialDHWTap
+      "Profile according to EU 812/2013" annotation (choicesAllMatching=true, Dialog(
       enable=not use_dhwCalc and use_dhw));
 
   parameter Boolean use_dhwCalc=false "=true to use the tables in DHWCalc. Will slow down the simulation, but represents DHW tapping more in a more realistic way."     annotation (Dialog(enable=use_dhw));
@@ -23,7 +24,7 @@ model DHW "Standard DHW subsystem"
 
   replaceable parameter
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
-    pumpData
+    pumpData "Data record for the ideal pump"
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-96,-96},{-84,-84}})));
 
   replaceable TappingProfiles.BaseClasses.PartialDHW calcmFlow constrainedby
@@ -31,7 +32,8 @@ model DHW "Standard DHW subsystem"
     final TCold=TDHWCold_nominal,
     final dWater=rho,
     final c_p_water=cp,
-    final TSetDHW=TDHW_nominal) annotation (choicesAllMatching=true,
+    final TSetDHW=TDHW_nominal) "Model to simulate how much water is extracted"
+     annotation (choicesAllMatching=true,
       Placement(transformation(
         extent={{-17,18},{17,-18}},
         rotation=180,
