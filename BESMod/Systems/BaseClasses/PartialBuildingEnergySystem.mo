@@ -162,12 +162,12 @@ protected
 
 equation
   connect(building.weaBus, weaDat.weaBus) annotation (Line(
-      points={{17.54,78.475},{24,78.475},{24,88},{-16,88},{-16,206},{-214,206},
-          {-214,70},{-220,70}},
+      points={{17.54,78.76},{24,78.76},{24,88},{-16,88},{-16,206},{-214,206},{
+          -214,70},{-220,70}},
       color={255,204,51},
       thickness=0.5));
   connect(building.outBusDem, outputs.building) annotation (Line(
-      points={{75.26,53.775},{75.26,38},{96,38},{96,0},{285,0}},
+      points={{75.26,39.24},{75.26,38},{96,38},{96,0},{285,0}},
       color={175,175,175},
       thickness=0.5), Text(
       string="%second",
@@ -181,8 +181,8 @@ equation
 
   if systemParameters.use_hydraulic then
     connect(building.buiMeaBus, hydraulic.buiMeaBus) annotation (Line(
-      points={{39,77.7625},{44,77.7625},{44,88},{-26,88},{-26,10},{-86.7474,10},
-            {-86.7474,-2.34286}},
+      points={{39,77.62},{44,77.62},{44,88},{-26,88},{-26,10},{-86.7474,10},{
+            -86.7474,-2.34286}},
       color={255,128,0},
       thickness=0.5));
     connect(weaDat.weaBus, hydraulic.weaBus) annotation (Line(
@@ -199,11 +199,11 @@ equation
         extent={{-3,-6},{-3,-6}},
         horizontalAlignment=TextAlignment.Right));
     connect(hydraulic.heatPortRad,building.heatPortRad) annotation (Line(
-          points={{-42,-50},{-42,-48},{-18,-48},{-18,18},{0,18},{0,40},{2,40}},
-                                                                     color={191,
+          points={{-42,-50},{-42,-48},{-18,-48},{-18,18},{0,18},{0,17.2},{2,
+            17.2}},                                                  color={191,
             0,0}));
     connect(hydraulic.heatPortCon,building.heatPortCon) annotation (Line(
-          points={{-42,-23.2571},{-42,-24},{-20,-24},{-20,68.5},{2,68.5}},color=
+          points={{-42,-23.2571},{-42,-24},{-20,-24},{-20,62.8},{2,62.8}},color=
            {191,0,0}));
     connect(userProfiles.useProBus, hydraulic.useProBus) annotation (Line(
       points={{-225.167,150.775},{-214,150.775},{-214,16},{-157.358,16},{
@@ -252,9 +252,9 @@ equation
 
   if systemParameters.use_ventilation then
     connect(building.portVent_in, ventilation.portVent_in) annotation (Line(
-        points={{76,63.275},{84,63.275},{84,55.2},{122,55.2}}, color={0,127,255}));
+        points={{76,54.44},{84,54.44},{84,55.2},{122,55.2}},   color={0,127,255}));
     connect(building.portVent_out, ventilation.portVent_out) annotation (Line(
-        points={{76,44.75},{84,44.75},{84,25.56},{122,25.56}},
+        points={{76,24.8},{84,24.8},{84,25.56},{122,25.56}},
                                                           color={0,127,255}));
     connect(ventilation.outBusVen, outputs.ventilation) annotation (Line(
       points={{159,2},{158,2},{158,-26},{244,-26},{244,0},{285,0}},
@@ -274,7 +274,7 @@ equation
       color={0,127,0},
       thickness=0.5));
     connect(building.buiMeaBus, ventilation.buiMeaBus) annotation (Line(
-      points={{39,77.7625},{44,77.7625},{44,88},{177.87,88},{177.87,78.38}},
+      points={{39,77.62},{44,77.62},{44,88},{177.87,88},{177.87,78.38}},
       color={255,128,0},
       thickness=0.5));
     connect(control.sigBusVen, ventilation.sigBusVen) annotation (Line(
@@ -293,15 +293,15 @@ equation
 
   connect(building.internalElectricalPin, electrical.internalElectricalPin[4])
     annotation (Line(
-      points={{64.9,31.45},{64.9,-26},{112,-26},{112,-140},{-210,-140},{-210,
-          118},{-198,118},{-198,118.171}},
+      points={{64.9,3.52},{64.9,-26},{112,-26},{112,-140},{-210,-140},{-210,118},
+          {-198,118},{-198,118.171}},
       color={0,0,0},
       thickness=1));
   if  systemParameters.use_elecHeating then
     connect(electrical.heatPortCon, building.heatPortCon) annotation (Line(points={{
-            -41.0824,92.8},{-30,92.8},{-30,68.5},{2,68.5}},  color={191,0,0}));
+            -41.0824,92.8},{-30,92.8},{-30,62.8},{2,62.8}},  color={191,0,0}));
     connect(electrical.heatPortRad, building.heatPortRad) annotation (Line(points={{
-            -41.0824,67.4286},{-24,67.4286},{-24,40},{2,40}},
+            -41.0824,67.4286},{-24,67.4286},{-24,17.2},{2,17.2}},
         color={191,0,0}));
   end if;
   connect(control.outBusCtrl, outputs.control) annotation (Line(
@@ -318,7 +318,7 @@ equation
       thickness=0.5));
   connect(electrical.buiMeaBus, building.buiMeaBus) annotation (Line(
       points={{-83.2941,136},{-82,136},{-82,146},{-16,146},{-16,88},{44,88},{44,
-          82},{39,82},{39,77.7625}},
+          82},{39,82},{39,77.62}},
       color={255,128,0},
       thickness=0.5));
   connect(electrical.outBusElect, outputs.electrical) annotation (Line(
