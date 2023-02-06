@@ -482,13 +482,14 @@ equation
   connect(senT_heatingFlow.port_b, pasThrHeaRodBuf.port_a) annotation (Line(
         points={{28,76},{34,76},{34,64},{40,64}}, color={0,127,255}));
   connect(threeWayValveWithFlowReturn.portBui_b, senT_heatingFlow.port_a)
-    annotation (Line(points={{-60,72},{-44,72},{-44,62},{-28,62},{-28,64},{-16,
-          64},{-16,66},{0,66},{0,70},{2,70},{2,76},{8,76}}, color={0,127,255}));
+    annotation (Line(points={{-60,72},{-44,72},{-44,64},{-28,64},{-28,66},{-16,
+          66},{-16,68},{0,68},{0,72},{2,72},{2,76},{8,76}}, color={0,127,255}));
   connect(storageBuf.fluidportBottom1, threeWayValveWithFlowReturn.portBui_a)
     annotation (Line(points={{-24.075,13.56},{-24.075,6},{-50,6},{-50,68},{-60,
           68}}, color={0,127,255}));
-  connect(portBui_in[1], storageBuf.fluidportTop1) annotation (Line(points={{
-          100,40},{76,40},{76,50},{6,50},{6,62},{-24.3,62},{-24.3,58.22}},
-        color={0,127,255}));
+  connect(storageBuf.fluidportTop1, portBui_in[1]) annotation (Line(points={{
+          -24.3,58.22},{-28,58.22},{-28,62},{-14,62},{-14,64},{2,64},{2,62},{34,
+          62},{34,48},{56,48},{56,50},{84,50},{84,40},{100,40}}, color={0,127,
+          255}));
   annotation (Diagram(coordinateSystem(extent={{-100,-180},{100,100}})));
 end PartialDistributionStorageSerie;

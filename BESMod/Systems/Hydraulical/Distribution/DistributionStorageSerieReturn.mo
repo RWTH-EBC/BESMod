@@ -1,0 +1,4 @@
+within BESMod.Systems.Hydraulical.Distribution;
+model DistributionStorageSerieReturn
+  extends BaseClasses.PartialDistributionStorageSerie;
+end DistributionStorageSerieReturn;
