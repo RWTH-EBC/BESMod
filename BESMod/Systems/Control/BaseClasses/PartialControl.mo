@@ -14,7 +14,7 @@ partial model PartialControl "Model for a partial HEMS control"
                                        annotation (Placement(transformation(
           extent={{84,-16},{118,16}}), iconTransformation(extent={{84,-16},{118,
             16}})));
-  Electrical.Interfaces.SystemControlBus sigBusEle annotation (Placement(
+  Demand.DHW.Interfaces.SystemControlBus sigBusEle annotation (Placement(
         transformation(extent={{-116,-14},{-84,14}}), iconTransformation(extent=
            {{-116,-14},{-84,14}})));
   annotation (Icon(graphics,
