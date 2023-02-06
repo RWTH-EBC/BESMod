@@ -4,7 +4,9 @@ partial model PartialCase
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
     redeclare Systems.Demand.Building.TEASERThermalZone building(redeclare
         BESMod.Systems.Demand.Building.RecordsCollection.RefAachen oneZoneParam(
-          heaLoadFacGrd=0, heaLoadFacOut=0)),
+          heaLoadFacGrd=0, heaLoadFacOut=0),
+    hBui=sum(building.zoneParam.VAir)^(1/3),
+    ABui=sum(building.zoneParam.VAir)^(2/3)),
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
       redeclare Systems.Hydraulical.Generation.HeatPumpAndHeatingRod generation(
