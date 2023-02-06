@@ -58,8 +58,8 @@ model MonovalentGasBoiler "PI Control of gas boiler"
     final TBiv=monovalentControlParas.TOda_nominal)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-218,
             -36},{-204,-22}})));
-  Modelica.Blocks.Sources.BooleanConstant booleanConstant(k=false)
-    if not use_dhw annotation (Placement(transformation(
+  Modelica.Blocks.Sources.BooleanConstant booleanConstant(k=false) if
+       not use_dhw annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,
         origin={-30,-10})));

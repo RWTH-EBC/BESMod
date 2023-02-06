@@ -43,14 +43,14 @@ partial model PartialDemand "Partial demand model for HPS"
   BESMod.Systems.Interfaces.DemandOutputs outBusDem if not use_openModelica
     annotation (Placement(transformation(extent={{88,-12},{108,8}})));
   Modelica.Fluid.Interfaces.FluidPort_a portVent_in[nZones](
-      redeclare final package Medium = MediumZone)
-                           if use_ventilation
+      redeclare final package Medium = MediumZone) if
+                              use_ventilation
     "Inlet for the demand of ventilation"
     annotation (Placement(transformation(extent={{90,28},{110,48}}),
         iconTransformation(extent={{90,28},{110,48}})));
   Modelica.Fluid.Interfaces.FluidPort_b portVent_out[nZones](
-      redeclare final package Medium = MediumZone)
-                           if use_ventilation
+      redeclare final package Medium = MediumZone) if
+                              use_ventilation
     "Outlet of the demand of Ventilation"
     annotation (Placement(transformation(extent={{90,-50},{110,-30}}),
         iconTransformation(extent={{90,-50},{110,-30}})));

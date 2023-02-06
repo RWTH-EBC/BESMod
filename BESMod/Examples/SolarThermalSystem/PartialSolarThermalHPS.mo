@@ -56,7 +56,8 @@ partial model PartialSolarThermalHPS
 
   replaceable model hydGeneration =
       BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration(nParallelDem=2)
-     constrainedby BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration
+     constrainedby
+    BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration
      annotation (choicesAllMatching=true);
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,

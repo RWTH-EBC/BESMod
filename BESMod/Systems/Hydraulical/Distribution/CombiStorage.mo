@@ -84,13 +84,13 @@ model CombiStorage
     final allowFlowReversal_HC1=allowFlowReversal,
     final allowFlowReversal_HC2=allowFlowReversal)
     annotation (Placement(transformation(extent={{-26,0},{22,60}})));
-  Modelica.Blocks.Sources.Constant conDHWHeaRodOn(k=parameters.QHR_flow_nominal)
-    if parameters.use_hr annotation (Placement(transformation(
+  Modelica.Blocks.Sources.Constant conDHWHeaRodOn(k=parameters.QHR_flow_nominal) if
+       parameters.use_hr annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-54,-82})));
-  Modelica.Blocks.Sources.Constant conDHWHeaRodOff(final k=0)
-    if parameters.use_hr annotation (Placement(transformation(
+  Modelica.Blocks.Sources.Constant conDHWHeaRodOff(final k=0) if
+       parameters.use_hr annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-90,-82})));
@@ -100,8 +100,8 @@ model CombiStorage
         rotation=90,
         origin={-70,-48})));
   Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow
-                                                         prescribedHeatFlow
- if parameters.use_hr              annotation (Placement(transformation(
+                                                         prescribedHeatFlow if
+    parameters.use_hr              annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-70,-18})));
@@ -129,7 +129,6 @@ equation
       points={{-100,82.5},{-66,82.5},{-66,22},{-46,22},{-46,22.5},{-26.3,22.5}},
       color={255,255,0},
       thickness=0.5));
-
   connect(portGen_out[2], bufSto.portHC2Out) annotation (Line(
       points={{-100,42.5},{-78,42.5},{-78,14},{-52,14},{-52,12.9},{-26.3,12.9}},
       color={255,255,0},
