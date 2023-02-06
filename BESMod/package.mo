@@ -3,7 +3,7 @@ package BESMod
   extends Modelica.Icons.Package;
 
   annotation (
-    version="0.3.0",
+    version="0.3.1",
     uses(
     BuildingSystems(version="2.0.0-beta"),
     Modelica(version="4.0.0"),
