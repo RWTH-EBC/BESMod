@@ -1,4 +1,4 @@
-within BESMod.Systems.Hydraulical.Control.Components.Tests;
+within BESMod.Systems.Hydraulical.Control.Components.OnOffController.Examples;
 model OnOffControllerTest
   extends Modelica.Icons.Example;
 

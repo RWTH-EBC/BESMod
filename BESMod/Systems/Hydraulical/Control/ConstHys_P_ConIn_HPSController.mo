@@ -6,10 +6,10 @@ model ConstHys_P_ConIn_HPSController
       BESMod.Systems.Hydraulical.Control.Components.HeatPumpNSetController.P_InverterHeatPumpController
       HP_nSet_Controller(P=bivalentControlData.k, nMin=bivalentControlData.nMin),
     redeclare
-      BESMod.Systems.Hydraulical.Control.Components.OnOffController.ConstantHysteresis
+      Components.OnOffController.ConstantHysteresisTimeBasedHR
       BufferOnOffController,
     redeclare
-      BESMod.Systems.Hydraulical.Control.Components.OnOffController.ConstantHysteresis
+      Components.OnOffController.ConstantHysteresisTimeBasedHR
       DHWOnOffContoller(Hysteresis=bivalentControlData.dTHysDHW, dt_hr=
           bivalentControlData.dtHeaRodDHW));
 
