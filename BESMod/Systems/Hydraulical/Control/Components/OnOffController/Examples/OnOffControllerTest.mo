@@ -3,7 +3,7 @@ model OnOffControllerTest
   extends Modelica.Icons.Example;
 
   OnOffController.ConstantHysteresisTimeBasedHR
-    constantHysteresisTimeBasedHR
+    constantHysteresisTimeBasedHR(dt_hr=1800)
     annotation (Placement(transformation(extent={{-28,42},{16,82}})));
   BESMod.Systems.Hydraulical.Control.Components.OnOffController.DegreeMinuteController
     degreeMinuteController(DegreeMinuteReset=100) annotation (Placement(
@@ -29,13 +29,13 @@ equation
                  color={0,0,127}));
   connect(T_Set.y, floatingHysteresis.T_Set) annotation (Line(points={{-122.2,
           -2},{-86,-2},{-86,-94},{-5,-94},{-5,-77.9}},       color={0,0,127}));
-  connect(T_Set.y, constantHysteresisTimeBasedHR.T_Set) annotation (Line(points
-        ={{-122.2,-2},{-112,-2},{-112,-4},{-80,-4},{-80,32},{-6,32},{-6,40}},
+  connect(T_Set.y, constantHysteresisTimeBasedHR.T_Set) annotation (Line(points=
+         {{-122.2,-2},{-112,-2},{-112,-4},{-80,-4},{-80,32},{-6,32},{-6,40}},
         color={0,0,127}));
-  connect(T_Top.y, constantHysteresisTimeBasedHR.T_Top) annotation (Line(points
-        ={{-120.1,63},{-44,63},{-44,76},{-30.2,76}}, color={0,0,127}));
-  connect(T_Top.y, constantHysteresisTimeBasedHR.T_bot) annotation (Line(points
-        ={{-120.1,63},{-72,63},{-72,40},{-44,40},{-44,52},{-30.2,52}}, color={0,
+  connect(T_Top.y, constantHysteresisTimeBasedHR.T_Top) annotation (Line(points=
+         {{-120.1,63},{-44,63},{-44,76},{-30.2,76}}, color={0,0,127}));
+  connect(T_Top.y, constantHysteresisTimeBasedHR.T_bot) annotation (Line(points=
+         {{-120.1,63},{-72,63},{-72,40},{-44,40},{-44,52},{-30.2,52}}, color={0,
           0,127}));
   connect(T_Top.y, degreeMinuteController.T_Top) annotation (Line(points={{-120.1,
           63},{-96,63},{-96,16},{-28.1,16}},        color={0,0,127}));

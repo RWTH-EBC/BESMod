@@ -7,7 +7,8 @@ model ConstHys_P_ConIn_HPSController
       HP_nSet_Controller(P=bivalentControlData.k, nMin=bivalentControlData.nMin),
     redeclare
       Components.OnOffController.ConstantHysteresisTimeBasedHR
-      BufferOnOffController,
+      BufferOnOffController(Hysteresis=bivalentControlData.dTHysBui, dt_hr=
+          bivalentControlData.dtHeaRodBui),
     redeclare
       Components.OnOffController.ConstantHysteresisTimeBasedHR
       DHWOnOffContoller(Hysteresis=bivalentControlData.dTHysDHW, dt_hr=
