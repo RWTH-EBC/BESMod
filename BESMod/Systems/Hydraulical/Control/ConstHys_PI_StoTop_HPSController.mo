@@ -9,11 +9,11 @@ model ConstHys_PI_StoTop_HPSController
       nMin=bivalentControlData.nMin,
       T_I=bivalentControlData.T_I),
     redeclare
-      BESMod.Systems.Hydraulical.Control.Components.OnOffController.ConstantHysteresis
+      Components.OnOffController.ConstantHysteresisTimeBasedHR
       BufferOnOffController(Hysteresis=bivalentControlData.dTHysBui, dt_hr=
           bivalentControlData.dtHeaRodBui),
     redeclare
-      BESMod.Systems.Hydraulical.Control.Components.OnOffController.ConstantHysteresis
+      Components.OnOffController.ConstantHysteresisTimeBasedHR
       DHWOnOffContoller(Hysteresis=bivalentControlData.dTHysDHW, dt_hr=
           bivalentControlData.dtHeaRodDHW));
 

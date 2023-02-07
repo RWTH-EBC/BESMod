@@ -1,7 +1,6 @@
 HeatingCurve
 DHWSetControl
 ThermostaticValveController
-Tests
 OnOffController
 HeatPumpNSetController
 HeatPumpBusPassThrough
