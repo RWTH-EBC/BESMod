@@ -23,6 +23,14 @@ model TEASERThermalZone
     annotation (Dialog(tab="Dynamics"));
   parameter Modelica.Units.SI.Temperature T_start=293.15
     "Start value of temperature" annotation (Dialog(tab="Initialization"));
+  final parameter Modelica.Units.SI.HeatFlowRate QRec_flow_nominal[nZones]= {
+        (zoneParam[i].heaLoadFacOut +
+          zoneParam[i].VAir * (0.5 - zoneParam[i].baseACH) / 3600 * cp * rho) *
+          (TSetZone_nominal[i] - TOda_nominal) +
+        zoneParam[i].heaLoadFacGrd*(TSetZone_nominal[i] - zoneParam[i].TSoil)
+        for i in 1:nZones}
+    "Nominal heat flow rate according to record at TOda_nominal";
+  parameter Modelica.Units.SI.Temperature TOda_nominal "Nominal outdoor air temperature";
 
   AixLib.ThermalZones.ReducedOrder.ThermalZone.ThermalZone thermalZone[nZones](
     redeclare each final package Medium = MediumZone,
