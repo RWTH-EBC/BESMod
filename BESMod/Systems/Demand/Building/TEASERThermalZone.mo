@@ -4,7 +4,7 @@ model TEASERThermalZone
   extends BaseClasses.PartialDemand(
     hBui=0,
     ABui=0,
-    ARoo=sum(zoneParam.ARoof)/nZones,
+    ARoo=0,
     hZone=zoneParam.VAir ./ zoneParam.AZone,
     AZone=zoneParam.AZone);
   replaceable parameter AixLib.DataBase.ThermalZones.ZoneRecordDummy oneZoneParam constrainedby
