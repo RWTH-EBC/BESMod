@@ -2,9 +2,9 @@
 model TEASERThermalZone
   "Reduced order building model, coupled with TEASER"
   extends BaseClasses.PartialDemand(
-    ARoo=sum(zoneParam.ARoof)/nZones,
-    hBui=sum(zoneParam.VAir)^(1/3),
-    ABui=2*sum(zoneParam.VAir)^(1/3),
+    hBui=0,
+    ABui=0,
+    ARoo=0,
     hZone=zoneParam.VAir ./ zoneParam.AZone,
     AZone=zoneParam.AZone);
   replaceable parameter AixLib.DataBase.ThermalZones.ZoneRecordDummy oneZoneParam constrainedby
@@ -373,5 +373,10 @@ equation
   connect(realPassThroughTDry.y, thermalZone.ventTemp) annotation (Line(points=
           {{103,62},{102,62},{102,74},{52,74},{52,42.24},{33.52,42.24}}, color=
           {0,0,127}));
-    annotation (Diagram(coordinateSystem(extent={{-100,-220},{100,100}})));
+    annotation (Diagram(coordinateSystem(extent={{-100,-220},{100,100}})),
+      Documentation(info="<html>
+<p>This model uses the reduced-order approach with the common TEASER output to model the building envelope. Relevant KPIs are calculated.</p>
+<p>You can model multiple thermal zones. We refer to the documentation of TEASER and the ThermalZone model for more information on usage.</p>
+<p>Assumptions</p>
+</html>"));
 end TEASERThermalZone;

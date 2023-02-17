@@ -3,7 +3,10 @@ partial model PartialSolarThermalHPS
   "HPS which is supported by a solar thermal collector"
   extends BESMod.Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
-    redeclare Systems.Demand.Building.TEASERThermalZone building(redeclare
+    redeclare Systems.Demand.Building.TEASERThermalZone building(
+        hBui=sum(building.zoneParam.VAir)^(1/3),
+        ABui=sum(building.zoneParam.VAir)^(2/3),
+        redeclare
         BESMod.Systems.Demand.Building.RecordsCollection.RefAachen oneZoneParam(
           heaLoadFacGrd=0, heaLoadFacOut=0)),
     redeclare BESMod.Systems.Control.NoControl control,
