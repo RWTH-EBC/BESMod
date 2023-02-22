@@ -57,9 +57,8 @@ package UFH_nL
           TCutOff=parameterStudy.TCutOff,
           QHP_flow_cutOff=parameterStudy.QHP_flow_cutOff*hydraulic.generation.heatPumpParameters.scalingFactor),
         redeclare
-          BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedIndirectLoading
+          BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedDirectLoading_forUFH
           distribution(
-          dTLoaHCBuf=5,
           QHRAftBuf_flow_nominal=0,
           use_heatingRodAfterBuffer=false,
           redeclare
@@ -69,7 +68,7 @@ package UFH_nL
             BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
             threeWayValveParameters,
           redeclare
-            BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorage
+            BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorage_Direct
             bufParameters,
           redeclare
             BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorage
@@ -92,7 +91,8 @@ package UFH_nL
         redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
           calcmFlow),
       redeclare Systems.UserProfiles.TEASERProfiles_nightLowering userProfiles,
-      redeclare AachenSystem systemParameters(use_ventilation=true),
+      redeclare AachenSystem systemParameters(THydSup_nominal={308.15},
+                                              use_ventilation=true),
       redeclare ParametersToChange parameterStudy,
       redeclare final package MediumDHW = AixLib.Media.Water,
       redeclare final package MediumZone = AixLib.Media.Air,

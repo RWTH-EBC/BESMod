@@ -153,7 +153,7 @@ protected
       C_ActivatedElement=UFHParameters.C_ActivatedElement[i],
       c_top_ratio=UFHParameters.c_top_ratio[i],
       PressureDropExponent=1.7,
-      PressureDropCoefficient=213,
+      PressureDropCoefficient=50.47,
       diameter=UFHParameters.diameter) for i in 1:nParallelDem};
 
 equation
@@ -168,8 +168,8 @@ equation
       connect(fixHeaFlo[i].port, heaCap[i].port) annotation (Line(points={{-82,
               -20},{-64,-20},{-64,-6}}, color={191,0,0}));
       connect(fixTemp[i].port, heaFloSen[i].port_a) annotation (Line(
-          points={{-80,10},{-84,10},{-84,-20},{-78,-20},{-78,-38},{12,-38},{12,-30},
-              {24,-30}},
+          points={{-80,10},{-76,10},{-76,-18},{-70,-18},{-70,-36},{20,-36},{20,
+              -30},{24,-30}},
           color={191,0,0},
           pattern=LinePattern.Dash));
   else

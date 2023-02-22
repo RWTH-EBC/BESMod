@@ -4,9 +4,12 @@ package TestUFH "test"
   model BES
     extends Systems.BaseClasses.PartialBuildingEnergySystem(
       redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
-      redeclare Systems.Demand.Building.TEASERThermalZone_nightLowering building(redeclare
-          BESMod.Systems.Demand.Building.RecordsCollection.RefAachen oneZoneParam(
-            heaLoadFacGrd=0, heaLoadFacOut=0)),
+      redeclare Systems.Demand.Building.TEASERThermalZone_nightLowering building(
+          redeclare BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
+          oneZoneParam(
+          AFloor=0,
+          heaLoadFacGrd=0,
+          heaLoadFacOut=0)),
       redeclare BESMod.Systems.Control.NoControl control,
       redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
         redeclare
@@ -87,7 +90,8 @@ package TestUFH "test"
         redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
           calcmFlow),
       redeclare Systems.UserProfiles.TEASERProfiles_nightLowering userProfiles,
-      redeclare AachenSystem systemParameters(use_ventilation=true),
+      redeclare AachenSystem systemParameters(THydSup_nominal={308.15},
+                                              use_ventilation=true),
       redeclare ParametersToChange parameterStudy,
       redeclare final package MediumDHW = AixLib.Media.Water,
       redeclare final package MediumZone = AixLib.Media.Air,
