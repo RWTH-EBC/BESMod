@@ -58,8 +58,8 @@ model MonovalentGasBoiler "PI Control of gas boiler"
     final TBiv=monovalentControlParas.TOda_nominal)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-218,
             -36},{-204,-22}})));
-  Modelica.Blocks.Sources.BooleanConstant booleanConstant(k=false)
-    if not use_dhw annotation (Placement(transformation(
+  Modelica.Blocks.Sources.BooleanConstant booleanConstant(k=false) if
+       not use_dhw annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,
         origin={-30,-10})));
@@ -75,8 +75,8 @@ model MonovalentGasBoiler "PI Control of gas boiler"
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-70,-50})));
-  Modelica.Blocks.Math.BooleanToReal booToRea(final realTrue=1, final realFalse
-      =0) if use_dhw "Convert boolean signal to real for valve" annotation (
+  Modelica.Blocks.Math.BooleanToReal booToRea(final realTrue=1, final realFalse=
+       0) if use_dhw "Convert boolean signal to real for valve" annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -198,4 +198,8 @@ equation
       horizontalAlignment=TextAlignment.Left));
   connect(bufOn.u, boilerOnOffDHW.y) annotation (Line(points={{-82,-50},{-122,
           -50},{-122,50},{-139,50}}, color={255,0,255}));
+  annotation (Documentation(info="<html>
+<p>This controll class creates an input signal for the gas boiler by using a PI controller and passes it to the generation interface. The PI controller takes into account the current set temperature, a measured temperature and the heat demand of the system. </p>
+<p>The heat demand is derived from a drop in temperature in the storage tanks. </p>
+</html>"));
 end MonovalentGasBoiler;

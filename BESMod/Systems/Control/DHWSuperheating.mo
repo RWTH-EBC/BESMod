@@ -38,4 +38,7 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  annotation (Documentation(info="<html>
+<p>This supervisory control increases the DHW set temperature by 5 K at 12pm for 1h.</p>
+</html>"));
 end DHWSuperheating;

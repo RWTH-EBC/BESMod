@@ -80,5 +80,7 @@ algorithm
             extent={{-63,-88},{-38,-71}},
             lineColor={0,0,0},
             textString="uLow"),Line(points={{-69,10},{-60,10}}, color={160,
-          160,164})}));
+          160,164})}), Documentation(info="<html>
+<p>constant hystersis with a temperature difference of 10K </p>
+</html>"));
 end ConstantHysteresis;

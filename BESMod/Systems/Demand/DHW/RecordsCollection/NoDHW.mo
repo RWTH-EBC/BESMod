@@ -6,4 +6,7 @@ record NoDHW
     final m_flow_nominal=0,
     final table=[0,0,0,10,10; 86400,0,0,10,10],
     final VDHWDay=0);
+  annotation (Documentation(info="<html>
+<p>This record is meant to be selected, when no DHW is being used.</p>
+</html>"));
 end NoDHW;

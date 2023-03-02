@@ -159,4 +159,7 @@ equation
       index=1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
+  annotation (Documentation(info="<html>
+<p>Uses only a heating rod to generate heat. </p>
+</html>"));
 end ElectricalHeater;

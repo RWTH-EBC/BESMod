@@ -14,4 +14,7 @@ equation
       points={{52,-98},{62,-98},{62,-100},{72,-100}},
       color={0,0,0},
       thickness=1));
+  annotation (Documentation(info="<html>
+<p>This class is meant to be selected, when no heat generation is needed. </p>
+</html>"));
 end NoGeneration;

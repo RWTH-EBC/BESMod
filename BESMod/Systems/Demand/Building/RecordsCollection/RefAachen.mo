@@ -91,4 +91,7 @@ record RefAachen "Reference Building for Aachen"
     TThresholdCooler=295.15,
     heaLoadFacGrd=0,
     heaLoadFacOut=0);
+  annotation (Documentation(info="<html>
+<p>Reference Building for Aachen, which sets the building paramters to the values shown in the table below.</p>
+</html>"));
 end RefAachen;

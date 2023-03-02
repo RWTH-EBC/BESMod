@@ -5,7 +5,9 @@ model PVSystemMultiSub
       numGenUnits=1);
   replaceable model CellTemperature =
       AixLib.Electrical.PVSystem.BaseClasses.PartialCellTemperature annotation (
-     __Dymola_choicesAllMatching=true);
+     __Dymola_choicesAllMatching=true, Documentation(info="<html>
+<p>Calculates the cell temperature of the PV module based on winVel, T_a, eta and radTil.</p>
+</html>"));
   replaceable parameter AixLib.DataBase.SolarElectric.PVBaseDataDefinition pVParameters[numGenUnits]
   constrainedby AixLib.DataBase.SolarElectric.PVBaseDataDefinition
     annotation(choicesAllMatching=true,Placement(transformation(extent={{-82,-40},

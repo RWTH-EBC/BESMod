@@ -20,4 +20,7 @@ equation
       points={{60,-70},{72,-70},{72,-98}},
       color={0,0,0},
       thickness=1));
+  annotation (Documentation(info="<html>
+<p>This class is meant to be used, when the building should not be supplied with heat.</p>
+</html>"));
 end NoHeatTransfer;

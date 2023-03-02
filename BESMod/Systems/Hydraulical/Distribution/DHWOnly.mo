@@ -32,4 +32,7 @@ equation
       points={{44,-98},{56,-98},{56,-96},{70,-96},{70,-98}},
       color={0,0,0},
       thickness=1));
+  annotation (Documentation(info="<html>
+<p>Generation system directly supplys the production of DHW without the use of storage tanks.</p>
+</html>"));
 end DHWOnly;

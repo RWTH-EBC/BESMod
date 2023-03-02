@@ -32,5 +32,8 @@ equation
         Text(
           extent={{70,-80},{94,-100}},
           textString="time"),
-        Line(points={{-90,-70},{82,-70}}, color={95,95,95})}));
+        Line(points={{-90,-70},{82,-70}}, color={95,95,95})}), Documentation(
+        info="<html>
+<p>This class creates a constant DHW set temperature.</p>
+</html>"));
 end ConstTSet_DHW;
