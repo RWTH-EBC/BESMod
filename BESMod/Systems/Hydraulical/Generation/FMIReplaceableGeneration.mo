@@ -43,7 +43,7 @@ equation
           fillColor={175,175,175},
           fillPattern=FillPattern.Solid),
           Rectangle(
-          extent={{-78,90},{82,-30}},
+          extent={{-86,90},{86,-30}},
           lineColor={0,0,0},
           lineThickness=0.5,
           fillColor={255,255,255},
