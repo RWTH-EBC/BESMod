@@ -1,6 +1,8 @@
-within BESMod;
+within BESMod.Utilities;
 package FMI "Contains FMI export containers for the modules, so they can be exported as an FMU"
   extends Modelica.Icons.Package;
+
+
 
   annotation (Icon(graphics={
         Rectangle(

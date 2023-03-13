@@ -8,3 +8,5 @@ Tests
 RecordsCollection
 Types
 BaseClasses
+FMIReplaceableGeneration
+FMIHeatPumpAndHeatingRod
