@@ -2,3 +2,4 @@ SimpleDistribution
 BaseClasses
 RecordsCollection
 FMIReplaceableDistribution
+FMISimpleDistribution

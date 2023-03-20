@@ -5,7 +5,7 @@ model FMIReplaceableGeneration
     allowFlowReversal=generation.allowFlowReversal,
     use_p_in=true,
     final n=generation.nParallelDem,
-    dpCom(y=generation.portGen_in.p - generation.portGen_out.p));
+    dpCom(y=generation.portVent_in.p - generation.portVent_out.p));
 
 public
   replaceable BESMod.Systems.Ventilation.Generation.BaseClasses.PartialGeneration generation
@@ -20,8 +20,8 @@ equation
           0},{-26,0},{-26,9.82},{-20,9.82}}, color={0,127,255}));
   connect(bouOut.port_a, generation.portVent_out) annotation (Line(points={{50,
           0},{28,0},{28,-32},{-28,-32},{-28,-7.4},{-20,-7.4}}, color={0,127,255}));
-  connect(generation.internalElectricalPin, internalElectricalPin1) annotation
-    (Line(
+  connect(generation.internalElectricalPin, internalElectricalPin1) annotation (
+     Line(
       points={{14,-19.58},{14,-20},{88,-20},{88,-30},{104,-30}},
       color={0,0,0},
       thickness=1));
