@@ -10,3 +10,4 @@ Tests
 BaseClasses
 Types
 FMIReplaceableDistribution
+FMIDistributionTwoStorageParallel
