@@ -54,6 +54,12 @@ model FMIReplaceableTransfer
     "Pressure drop of the component"
     annotation (Placement(transformation(extent={{-96,-10},{-76,10}})));
 
+  Interfaces.TransferControlBus traControlBus
+    annotation (Placement(transformation(extent={{-10,90},{10,110}})));
+  Interfaces.TransferOutputs outBusTra
+    annotation (Placement(transformation(extent={{-40,-114},{-20,-94}})));
+  Electrical.Interfaces.InternalElectricalPinOut internalElectricalPin1
+    annotation (Placement(transformation(extent={{26,-112},{46,-92}})));
 equation
   connect(portTra_in, bouInlTra.inlet)
     annotation (Line(points={{-110,30},{-71,30}}, color={0,0,255}));
@@ -79,6 +85,19 @@ equation
         points={{30,13.4},{30,12},{44,12},{44,30},{58,30}}, color={191,0,0}));
   connect(transfer.heatPortCon, heatPortCon_QtoT.heatPort) annotation (Line(
         points={{30,13.4},{30,12},{44,12},{44,30},{58,30}}, color={191,0,0}));
+  connect(transfer.traControlBus, traControlBus) annotation (Line(
+      points={{0,32},{0,100}},
+      color={255,204,51},
+      thickness=0.5));
+  connect(transfer.outBusTra, outBusTra) annotation (Line(
+      points={{0,-31.24},{-30,-31.24},{-30,-104}},
+      color={255,204,51},
+      thickness=0.5));
+  connect(transfer.internalElectricalPin, internalElectricalPin1) annotation (
+      Line(
+      points={{21.6,-29.38},{36,-29.38},{36,-102}},
+      color={0,0,0},
+      thickness=1));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Rectangle(
           extent={{-100,100},{100,-100}},
