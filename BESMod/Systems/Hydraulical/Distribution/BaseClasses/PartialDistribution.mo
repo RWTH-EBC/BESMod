@@ -9,7 +9,7 @@ partial model PartialDistribution
   replaceable package MediumDHW =
       Modelica.Media.Interfaces.PartialMedium
     annotation (choicesAllMatching=true);
-
+  parameter Boolean use_inFMU = false "=true to use module as FMU" annotation(Dialog(tab="Advanced"));
   replaceable package MediumGen =
       Modelica.Media.Interfaces.PartialMedium
     annotation (choicesAllMatching=true);

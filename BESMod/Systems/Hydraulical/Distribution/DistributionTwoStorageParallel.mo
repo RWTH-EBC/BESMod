@@ -177,7 +177,7 @@ model DistributionTwoStorageParallel
     redeclare package Medium = Medium,
     final p=p_start,
     final T=T_start,
-    final nPorts=1)
+    final nPorts=1) if not use_inFMU
     "Pressure reference for transfer circuit as generation circuit reference is not connected (indirect loading)"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
