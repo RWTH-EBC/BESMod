@@ -4,7 +4,6 @@ model FMIDistributionTwoStorageParallel
     use_p_in_Gen=true,
     use_p_in_Bui=true,
     use_p_in_DHW=true,
-    use_p_in=false,
     allowFlowReversal=false,
     redeclare replaceable package MediumGen = IBPSA.Media.Water,
     redeclare replaceable package MediumDHW = IBPSA.Media.Water,
