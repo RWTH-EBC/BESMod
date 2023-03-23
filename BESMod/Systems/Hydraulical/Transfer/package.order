@@ -8,3 +8,6 @@ RecordsCollection
 Types
 Functions
 FMIReplaceableTransfer
+FMIIdealValveRadiator
+PressurLoss
+FMIPressurLoss
