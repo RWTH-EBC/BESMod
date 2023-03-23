@@ -47,7 +47,7 @@ model FMIReplaceableTransfer
     each final use_p_in=use_p_in)
     annotation (Placement(transformation(extent={{-100,-40},{-120,-20}})));
 
-  Modelica.Blocks.Math.Feedback pOutTra[transfer.nParallelSup] if use_p_in
+  Modelica.Blocks.Math.Feedback pOutTra[transfer.nParallelSup] if use_p_in and not use_p_ref
     "Pressure at component outlet" annotation (Placement(transformation(
         extent={{-6,-6},{6,6}},
         rotation=270,
@@ -107,8 +107,6 @@ equation
   connect(transfer.portTra_in, bou.ports[1]);
   connect(bouInlTra.p, pOutTra.u1)
     annotation (Line(points={{-60,19},{-60,4.8}}, color={0,127,127}));
-  connect(dpTra.y, pOutTra.u2) annotation (Line(points={{-75,-8},{-69.9,-8},{-69.9,
-          0},{-64.8,0}},                     color={0,0,127}));
   connect(dpTra2.y, pOutTra.u2) annotation (Line(points={{-75,14},{-64.8,14},{-64.8,
           8.88178e-16}},                     color={0,0,127}));
   connect(pOutTra.y, bouOutTra.p)
@@ -119,6 +117,8 @@ equation
       points={{0,32},{2,32},{2,102}},
       color={255,204,51},
       thickness=0.5));
+  connect(dpTra.y, bouOutTra.p)
+    annotation (Line(points={{-75,-8},{-60,-8},{-60,-18}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Rectangle(
           extent={{-100,100},{100,-100}},
