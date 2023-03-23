@@ -19,7 +19,7 @@ model FMIReplaceableTransfer
     "= true to use a pressure from connector, false to output Medium.p_default"
     annotation(Evaluate=true);
 
-  parameter Boolean use_p_ref=true
+  parameter Boolean use_p_ref=false
     "= true to set a reference pressure at transfer.portTra_in.";
 
   replaceable BaseClasses.PartialTransfer transfer
@@ -66,6 +66,8 @@ model FMIReplaceableTransfer
     annotation (Placement(transformation(extent={{26,-112},{46,-92}})));
   IBPSA.Fluid.Sources.Boundary_pT bou_ref[transfer.nParallelSup](
     each final use_p_in=use_p_in,
+    each p=transfer.p_start,
+    each T=transfer.T_start,
     each final nPorts=1,
     redeclare final package Medium = Medium) if use_p_ref annotation (Placement(
         transformation(
@@ -81,9 +83,10 @@ model FMIReplaceableTransfer
     Modelica.Blocks.Sources.RealExpression portTra_out_p[transfer.nParallelSup](
      y=transfer.portTra_out.p) if use_p_ref and use_p_in
     "Output pressure component"
-    annotation (Placement(transformation(extent={{-58,-70},{-78,-50}}), visible
-        =use_p_in and use_p_ref));
+    annotation (Placement(transformation(extent={{-58,-70},{-78,-50}}), visible=
+         use_p_in and use_p_ref));
   Modelica.Blocks.Interfaces.RealOutput p_out[size(portTra_out_p, 1)]
+    if use_p_in and use_p_ref
     "Pressure output of the System" annotation (Placement(
       transformation(extent={{-100,-76},{-132,-44}}),
       iconTransformation(extent={{-100,-76},{-132,-44}}),
