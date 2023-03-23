@@ -19,7 +19,8 @@ model FMIReplaceableTransfer
     "= true to use a pressure from connector, false to output Medium.p_default"
     annotation(Evaluate=true);
 
-  parameter Boolean use_p_ref=true;
+  parameter Boolean use_p_ref=true
+    "= true to set a reference pressure at transfer.portTra_in.";
 
   replaceable BaseClasses.PartialTransfer transfer
     constrainedby
@@ -29,53 +30,64 @@ model FMIReplaceableTransfer
   IBPSA.Fluid.FMI.Adaptors.Inlet bouInlTra[transfer.nParallelSup](
     redeclare each final package Medium = Medium,
     each final allowFlowReversal=allowFlowReversal,
-    each final use_p_in=use_p_in)
+    each final use_p_in=use_p_in and not use_p_ref)
     annotation (Placement(transformation(extent={{-70,20},{-50,40}})));
   IBPSA.Fluid.FMI.Adaptors.Outlet bouOutTra[transfer.nParallelSup](
     redeclare each final package Medium = Medium,
     each final allowFlowReversal=allowFlowReversal,
-    each final use_p_in=use_p_in)
+    each final use_p_in=use_p_in and not use_p_ref)
     annotation (Placement(transformation(extent={{-50,-20},{-70,-40}})));
   IBPSA.Fluid.FMI.Interfaces.Inlet portTra_in[transfer.nParallelSup](
     redeclare each final package Medium = Medium,
     each final allowFlowReversal=allowFlowReversal,
-    each final use_p_in=use_p_in)
+    each final use_p_in=use_p_in and not use_p_ref)
     annotation (Placement(transformation(extent={{-120,20},{-100,40}})));
   IBPSA.Fluid.FMI.Interfaces.Outlet portTra_out[transfer.nParallelSup](
     redeclare each final package Medium = Medium,
     each final allowFlowReversal=allowFlowReversal,
-    each final use_p_in=use_p_in)
+    each final use_p_in=use_p_in and not use_p_ref)
     annotation (Placement(transformation(extent={{-100,-40},{-120,-20}})));
 
-  Modelica.Blocks.Math.Feedback pOutTra[transfer.nParallelSup] if use_p_in
+  Modelica.Blocks.Math.Feedback pOutTra[transfer.nParallelSup] if use_p_in  and not use_p_ref
     "Pressure at component outlet" annotation (Placement(transformation(
         extent={{-6,-6},{6,6}},
         rotation=270,
         origin={-60,0})));
 
-  Modelica.Blocks.Sources.RealExpression dpTra[transfer.nParallelSup](y=
-        transfer.portTra_out.p)                         if use_p_in and use_p_ref
+    Modelica.Blocks.Sources.RealExpression dpTra[transfer.nParallelSup](y=
+        transfer.portTra_in.p-transfer.portTra_out.p) if use_p_in  and not use_p_ref
     "Pressure drop of the component"
-    annotation (Placement(transformation(extent={{-96,-18},{-76,2}})));
-
-    Modelica.Blocks.Sources.RealExpression dpTra2[transfer.nParallelSup](y=
-        transfer.portTra_in.p-transfer.portTra_out.p) if use_p_in and not use_p_ref
-    "Pressure drop of the component"
-    annotation (Placement(transformation(extent={{-96,4},{-76,24}})));
+    annotation (Placement(transformation(extent={{-96,-10},{-76,10}})));
 
 
   Interfaces.TransferOutputs outBusTra
     annotation (Placement(transformation(extent={{-40,-114},{-20,-94}})));
   Electrical.Interfaces.InternalElectricalPinOut internalElectricalPin1
     annotation (Placement(transformation(extent={{26,-112},{46,-92}})));
-  IBPSA.Fluid.Sources.Boundary_pT bou[transfer.nParallelSup](
+  IBPSA.Fluid.Sources.Boundary_pT bou_ref[transfer.nParallelSup](
     each final use_p_in=use_p_in,
-    use_T_in=false,
-      each final nPorts=1,
-      redeclare final package Medium=Medium) if use_p_ref
-    annotation (Placement(transformation(extent={{-64,68},{-44,88}})));
+    each final nPorts=1,
+    redeclare final package Medium = Medium) if use_p_ref annotation (Placement(
+        transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=270,
+        origin={-30,68}), visible=use_p_ref));
   input Interfaces.TransferControlBus traControlBus
     annotation (Placement(transformation(extent={{-8,92},{12,112}})));
+  Modelica.Blocks.Interfaces.RealInput p_ref_in[size(bou_ref, 1)]
+    if use_p_ref and use_p_in "Prescribed boundary pressure" annotation (
+      Placement(transformation(extent={{-136,66},{-96,106}}), visible=use_p_in
+           and use_p_ref));
+    Modelica.Blocks.Sources.RealExpression portTra_out_p[transfer.nParallelSup](
+     y=transfer.portTra_out.p) if use_p_ref and use_p_in
+    "Output pressure component"
+    annotation (Placement(transformation(extent={{-58,-70},{-78,-50}}), visible
+        =use_p_in and use_p_ref));
+  Modelica.Blocks.Interfaces.RealOutput p_out[size(portTra_out_p, 1)]
+    "Pressure output of the System" annotation (Placement(
+      transformation(extent={{-100,-76},{-132,-44}}),
+      iconTransformation(extent={{-100,-76},{-132,-44}}),
+      visible=use_p_in and use_p_ref));
 equation
   connect(portTra_in, bouInlTra.inlet)
     annotation (Line(points={{-110,30},{-71,30}}, color={0,0,255}));
@@ -102,23 +114,28 @@ equation
       points={{21.6,-29.38},{36,-29.38},{36,-102}},
       color={0,0,0},
       thickness=1));
-  connect(bouInlTra.port_b, transfer.portTra_in) annotation (Line(points={{-50,30},
-          {-38,30},{-38,13.4},{-30,13.4}}, color={0,127,255}));
-  connect(transfer.portTra_in, bou.ports[1]);
+  connect(bouInlTra.port_b, transfer.portTra_in) annotation (Line(points={{-50,
+          30},{-38,30},{-38,13.4},{-30,13.4}}, color={0,127,255}));
+  connect(transfer.portTra_in, bou_ref.ports[1]);
   connect(bouInlTra.p, pOutTra.u1)
     annotation (Line(points={{-60,19},{-60,4.8}}, color={0,127,127}));
-  connect(dpTra.y, pOutTra.u2) annotation (Line(points={{-75,-8},{-69.9,-8},{-69.9,
-          0},{-64.8,0}},                     color={0,0,127}));
-  connect(dpTra2.y, pOutTra.u2) annotation (Line(points={{-75,14},{-64.8,14},{-64.8,
-          8.88178e-16}},                     color={0,0,127}));
+  connect(dpTra.y, pOutTra.u2) annotation (Line(points={{-75,0},{-69.9,0},{-69.9,
+          8.88178e-16},{-64.8,8.88178e-16}}, color={0,0,127}));
   connect(pOutTra.y, bouOutTra.p)
     annotation (Line(points={{-60,-5.4},{-60,-18}}, color={0,0,127}));
-  connect(portTra_in.p, bou.p_in) annotation (Line(points={{-109.95,30.05},{-76,
-          30.05},{-76,86},{-66,86}}, color={0,0,255}));
   connect(transfer.traControlBus, traControlBus) annotation (Line(
       points={{0,32},{2,32},{2,102}},
       color={255,204,51},
       thickness=0.5));
+  connect(bou_ref.p_in, p_ref_in) annotation (Line(
+      points={{-22,80},{-22,86},{-116,86}},
+      color={0,0,127},
+      visible=use_p_in and use_p_ref));
+  connect(portTra_out_p.y, p_out)
+    annotation (Line(
+      points={{-79,-60},{-116,-60}},
+      color={0,0,127},
+      visible=use_p_in and use_p_ref));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Rectangle(
           extent={{-100,100},{100,-100}},
@@ -169,5 +186,8 @@ equation
           lineThickness=0.5,
           fillColor={0,0,0},
           fillPattern=FillPattern.Solid)}),                      Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false), graphics={Line(
+          points={{-30,58},{-30,14}},
+          color={0,127,255},
+          visible=use_p_ref)}));
 end FMIReplaceableTransfer;
