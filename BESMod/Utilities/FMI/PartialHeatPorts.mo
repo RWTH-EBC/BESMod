@@ -10,22 +10,22 @@ partial model PartialHeatPorts
 
   Modelica.Thermal.HeatTransfer.Components.GeneralTemperatureToHeatFlowAdaptor
     heatPortRad_TtoQ[nHeatPorts](each final use_pder=false) if not use_QtoT
-    annotation (Placement(transformation(extent={{70,-40},{50,-20}}), visible=
+    annotation (Placement(transformation(extent={{88,0},{68,20}}),    visible=
           not use_QtoT));
   Modelica.Thermal.HeatTransfer.Components.GeneralTemperatureToHeatFlowAdaptor heatPortCon_TtoQ[nHeatPorts](
      each final use_pder=false) if not use_QtoT
-    annotation (Placement(transformation(extent={{70,20},{50,40}}), visible=
+    annotation (Placement(transformation(extent={{88,60},{68,80}}), visible=
           not use_QtoT));
   Modelica.Blocks.Interfaces.RealInput TConIn[size(heatPortCon_TtoQ, 1)]
     if not use_QtoT
     "Input for Temperatur potential of the heat port for convection"
     annotation (Placement(
-      transformation(extent={{120,30},{100,50}}),
-      iconTransformation(extent={{120,30},{100,50}}),
+      transformation(extent={{120,70},{100,90}}),
+      iconTransformation(extent={{120,70},{100,90}}),
       visible=not use_QtoT));
   Modelica.Blocks.Interfaces.RealOutput QflowConOut[size(heatPortCon_TtoQ, 1)]
     if not use_QtoT "Output for flow"
-    annotation (Placement(transformation(extent={{100,10},{120,30}}), visible=
+    annotation (Placement(transformation(extent={{100,50},{120,70}}), visible=
           not use_QtoT));
   Modelica.Thermal.HeatTransfer.Components.GeneralHeatFlowToTemperatureAdaptor
     heatPortCon_QtoT[nHeatPorts](each final use_pder=false) if use_QtoT
@@ -52,13 +52,13 @@ partial model PartialHeatPorts
   Modelica.Blocks.Interfaces.RealInput TRadIn[size(heatPortRad_TtoQ, 1)]
     if not use_QtoT
     "Input for potential" annotation (Placement(
-      transformation(extent={{120,-30},{100,-10}}),
-      iconTransformation(extent={{120,-30},{100,-10}}),
+      transformation(extent={{120,10},{100,30}}),
+      iconTransformation(extent={{120,10},{100,30}}),
       visible=not use_QtoT));
   Modelica.Blocks.Interfaces.RealOutput OflowRadOut[size(heatPortRad_TtoQ, 1)]
     if not use_QtoT
     "Output for flow"
-    annotation (Placement(transformation(extent={{100,-50},{120,-30}}), visible=
+    annotation (Placement(transformation(extent={{100,-10},{120,10}}),  visible=
          not use_QtoT));
   Modelica.Blocks.Interfaces.RealOutput TRadOut[size(heatPortRad_QtoT, 1)]
     if use_QtoT
@@ -73,11 +73,11 @@ partial model PartialHeatPorts
       visible=use_QtoT));
 equation
   connect(heatPortCon_TtoQ.p, TConIn) annotation (Line(
-      points={{63,38},{62,38},{62,40},{110,40}},
+      points={{81,78},{80,78},{80,80},{110,80}},
       color={0,0,127},
       visible=not use_QtoT));
   connect(heatPortCon_TtoQ.f, QflowConOut) annotation (Line(
-      points={{63,22},{62,22},{62,20},{110,20}},
+      points={{81,62},{80,62},{80,60},{110,60}},
       color={0,0,127},
       visible=not use_QtoT));
   connect(heatPortCon_QtoT.p, TConOut)
@@ -90,11 +90,11 @@ equation
       color={0,0,127},
       visible=use_QtoT));
   connect(heatPortRad_TtoQ.p, TRadIn) annotation (Line(
-      points={{63,-22},{62,-22},{62,-20},{110,-20}},
+      points={{81,18},{80,18},{80,20},{110,20}},
       color={0,0,127},
       visible=not use_QtoT));
   connect(heatPortRad_TtoQ.f, OflowRadOut) annotation (Line(
-      points={{63,-38},{62,-38},{62,-40},{110,-40}},
+      points={{81,2},{80,2},{80,0},{110,0}},
       color={0,0,127},
       visible=not use_QtoT));
   connect(heatPortRad_QtoT.p, TRadOut) annotation (Line(

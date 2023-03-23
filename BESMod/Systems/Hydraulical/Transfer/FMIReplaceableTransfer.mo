@@ -98,16 +98,12 @@ equation
     annotation (Line(points={{-71,-30},{-110,-30}}, color={0,0,255}));
   connect(bouOutTra.port_a, transfer.portTra_out) annotation (Line(points={{-50,
           -30},{-38,-30},{-38,-12.02},{-30,-12.02}}, color={0,127,255}));
-  connect(heatPortRad_QtoT.heatPort, transfer.heatPortRad) annotation (Line(
-        points={{58,-30},{44,-30},{44,-10},{30,-10},{30,-11.4}}, color={191,0,0}));
 
   connect(heatPortRad_TtoQ.heatPort, transfer.heatPortRad) annotation (Line(
-        points={{58,-30},{44,-30},{44,-10},{32,-10},{32,-11.4},{30,-11.4}},
+        points={{76,10},{44,10},{44,-10},{32,-10},{32,-11.4},{30,-11.4}},
         color={191,0,0}));
   connect(transfer.heatPortCon, heatPortCon_TtoQ.heatPort) annotation (Line(
-        points={{30,13.4},{30,12},{44,12},{44,30},{58,30}}, color={191,0,0}));
-  connect(transfer.heatPortCon, heatPortCon_QtoT.heatPort) annotation (Line(
-        points={{30,13.4},{30,12},{44,12},{44,30},{58,30}}, color={191,0,0}));
+        points={{30,13.4},{30,12},{44,12},{44,70},{76,70}}, color={191,0,0}));
   connect(transfer.outBusTra, outBusTra) annotation (Line(
       points={{0,-31.24},{-30,-31.24},{-30,-104}},
       color={255,204,51},
