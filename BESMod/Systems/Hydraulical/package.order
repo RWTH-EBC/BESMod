@@ -8,3 +8,4 @@ Components
 RecordsCollection
 BaseClasses
 FMIReplaceableHydraulicSystem
+FMIHydraulicSystemModelicaConferenceUseCase

@@ -21,6 +21,7 @@ model FMIReplaceableHydraulicSystem
   parameter Boolean use_dhw=hydraulic.use_dhw;
 
   replaceable BaseClasses.PartialHydraulicSystem hydraulic
+    constrainedby BaseClasses.PartialHydraulicSystem(final subsystemDisabled=false)
     annotation (Placement(transformation(extent={{-82,-16},{40,76}})));
   IBPSA.Fluid.FMI.Adaptors.Inlet bouInlDHW(
     redeclare each final package Medium = MediumDHW,
