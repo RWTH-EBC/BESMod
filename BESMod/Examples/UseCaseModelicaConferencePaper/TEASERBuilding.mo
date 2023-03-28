@@ -1,7 +1,6 @@
 within BESMod.Examples.UseCaseModelicaConferencePaper;
 model TEASERBuilding
   extends PartialModelicaConferenceUseCase(
-    use_for_fmu_inputs=true,
     redeclare Systems.Demand.Building.TEASERThermalZone building(
       AZone={185.9548},
       hZone={483.48248/185.9548},
