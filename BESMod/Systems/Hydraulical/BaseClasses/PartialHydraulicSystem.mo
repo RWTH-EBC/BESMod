@@ -4,6 +4,7 @@ partial model PartialHydraulicSystem
   extends BESMod.Systems.BaseClasses.PartialFluidSubsystem;
   parameter Boolean subsystemDisabled "To enable the icon if the subsystem is disabled" annotation (Dialog(tab="Graphics"));
   parameter Boolean use_dhw=true "=false to disable DHW";
+  parameter Boolean use_for_fmu_inputs=false "=true to enable temperature sensors at fluid ports of subsystems";
   replaceable package MediumDHW = IBPSA.Media.Water constrainedby
     Modelica.Media.Interfaces.PartialMedium
     annotation (__Dymola_choicesAllMatching=true);
@@ -203,6 +204,28 @@ partial model PartialHydraulicSystem
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={132,-124})));
+  Modelica.Fluid.Sensors.Temperature T_GenToDis[generation.nParallelDem](
+      redeclare package Medium = Medium) if use_for_fmu_inputs annotation (
+      Placement(transformation(extent={{-24,24},{-14,32}}), visible=
+          use_for_fmu_inputs));
+  Modelica.Fluid.Sensors.Temperature T_DisToGen[generation.nParallelDem](
+      redeclare package Medium = Medium) if use_for_fmu_inputs annotation (
+      Placement(transformation(extent={{-24,-4},{-14,4}}), visible=
+          use_for_fmu_inputs));
+  Modelica.Fluid.Sensors.Temperature T_DisToTra[transfer.nParallelSup](
+      redeclare package Medium = Medium) if use_for_fmu_inputs annotation (
+      Placement(transformation(extent={{96,20},{108,30}}), visible=
+          use_for_fmu_inputs));
+  Modelica.Fluid.Sensors.Temperature T_TraToDis[transfer.nParallelSup](
+      redeclare package Medium = Medium) if use_for_fmu_inputs annotation (
+      Placement(transformation(extent={{96,-4},{108,6}}), visible=
+          use_for_fmu_inputs));
+  Modelica.Fluid.Sensors.Temperature T_DisToDHW(redeclare package Medium =
+        MediumDHW) if use_for_fmu_inputs annotation (Placement(transformation(
+          extent={{94,-48},{106,-36}}), visible=use_for_fmu_inputs));
+  Modelica.Fluid.Sensors.Temperature T_DHWToDis(redeclare package Medium =
+        MediumDHW) if use_for_fmu_inputs annotation (Placement(transformation(
+          extent={{94,-76},{106,-64}}), visible=use_for_fmu_inputs));
 equation
   connect(generation.portGen_out,distribution. portGen_in) annotation (Line(
         points={{-24,14.8},{-16,14.8},{-16,14},{-10,14},{-10,14.8},{-12,14.8}},
@@ -335,6 +358,30 @@ equation
       points={{-40.24,-104},{-40.24,-123.467},{122.2,-123.467}},
       color={0,0,0},
       thickness=1));
+  connect(T_GenToDis.port, generation.portGen_out) annotation (Line(
+      points={{-19,24},{-20,24},{-20,16},{-24,16},{-24,14.8}},
+      color={0,127,255},
+      visible=use_for_fmu_inputs));
+  connect(T_DisToGen.port, generation.portGen_in) annotation (Line(
+      points={{-19,-4},{-18,-4},{-18,-11.6},{-24,-11.6}},
+      color={0,127,255},
+      visible=use_for_fmu_inputs));
+  connect(T_DisToTra.port, distribution.portBui_out) annotation (Line(
+      points={{102,20},{96,20},{96,14.8},{90,14.8}},
+      color={0,127,255},
+      visible=use_for_fmu_inputs));
+  connect(T_TraToDis.port, distribution.portBui_in) annotation (Line(
+      points={{102,-4},{96,-4},{96,-11.6},{90,-11.6}},
+      color={0,127,255},
+      visible=use_for_fmu_inputs));
+  connect(T_DisToDHW.port, distribution.portDHW_out) annotation (Line(
+      points={{100,-48},{96,-48},{96,-51.2},{90,-51.2}},
+      color={0,127,255},
+      visible=use_for_fmu_inputs));
+  connect(T_DHWToDis.port, distribution.portDHW_in) annotation (Line(
+      points={{100,-76},{96,-76},{96,-77.6},{90,-77.6}},
+      color={0,127,255},
+      visible=use_for_fmu_inputs));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-180,-140},
             {200,140}}), graphics={
         Rectangle(
@@ -446,7 +493,6 @@ equation
         fillPattern=FillPattern.Solid,
         rotation=45,
           origin={4,-2})}),
-                          Diagram(graphics,
-                                  coordinateSystem(preserveAspectRatio=false,
+                          Diagram(coordinateSystem(preserveAspectRatio=false,
           extent={{-180,-140},{200,140}})));
 end PartialHydraulicSystem;

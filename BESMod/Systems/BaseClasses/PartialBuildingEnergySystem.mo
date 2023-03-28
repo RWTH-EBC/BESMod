@@ -4,6 +4,8 @@ partial model PartialBuildingEnergySystem "Partial BES"
   parameter Boolean use_openModelica=false
     "=true to disable features which 
     are not available in open modelica" annotation(Dialog(tab="Advanced"));
+  parameter Boolean use_for_fmu_inputs=false
+  "=true to enable temperature sensors at fluid ports of subsystems" annotation(Dialog(tab="Advanced"));
 
   // Replaceable packages
   replaceable package MediumHyd = IBPSA.Media.Water constrainedby
@@ -85,6 +87,7 @@ partial model PartialBuildingEnergySystem "Partial BES"
   replaceable BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem hydraulic
     if systemParameters.use_hydraulic constrainedby
     Hydraulical.BaseClasses.PartialHydraulicSystem(
+    final use_for_fmu_inputs = use_for_fmu_inputs,
     redeclare package Medium = MediumHyd,
     final subsystemDisabled=not systemParameters.use_hydraulic,
     final use_dhw=systemParameters.use_dhw,
