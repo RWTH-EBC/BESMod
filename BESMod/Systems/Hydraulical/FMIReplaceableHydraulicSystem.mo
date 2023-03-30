@@ -1,7 +1,7 @@
 within BESMod.Systems.Hydraulical;
 model FMIReplaceableHydraulicSystem
   "FMI export container for a hydraulic system"
-  extends Utilities.FMI.PartialHeatPorts(final nHeatPorts=hydraulic.hydraulicSystemParameters.nZone);
+  extends Utilities.FMI.PartialHeatPorts(final nHeatPorts=hydraulic.hydraulicSystemParameters.nZones);
 
     replaceable package MediumDHW = IBPSA.Media.Water
       constrainedby Modelica.Media.Interfaces.PartialMedium
