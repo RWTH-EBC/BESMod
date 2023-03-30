@@ -1,6 +1,7 @@
 within BESMod.Systems.Hydraulical.Transfer;
 model FMIIdealValveRadiator
   extends FMIReplaceableTransfer(
+    use_QtoT=false,
     use_p_ref=true,
     use_p_in=true,
     redeclare replaceable package Medium = IBPSA.Media.Water,

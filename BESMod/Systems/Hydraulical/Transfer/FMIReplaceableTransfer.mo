@@ -73,24 +73,21 @@ model FMIReplaceableTransfer
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
-        origin={-30,68}), visible=use_p_ref));
+        origin={-30,68})));
   input Interfaces.TransferControlBus traControlBus
     annotation (Placement(transformation(extent={{-8,92},{12,112}})));
   Modelica.Blocks.Interfaces.RealInput p_ref_in[size(bou_ref, 1)]
     if use_p_ref and use_p_in "Prescribed boundary pressure" annotation (
-      Placement(transformation(extent={{-136,66},{-96,106}}), visible=use_p_in
-           and use_p_ref));
+      Placement(transformation(extent={{-136,66},{-96,106}})));
     Modelica.Blocks.Sources.RealExpression portTra_out_p[transfer.nParallelSup](
      y=transfer.portTra_out.p) if use_p_ref and use_p_in
     "Output pressure component"
-    annotation (Placement(transformation(extent={{-58,-70},{-78,-50}}), visible=
-         use_p_in and use_p_ref));
+    annotation (Placement(transformation(extent={{-58,-70},{-78,-50}})));
   Modelica.Blocks.Interfaces.RealOutput p_out[size(portTra_out_p, 1)]
     if use_p_in and use_p_ref
     "Pressure output of the System" annotation (Placement(
       transformation(extent={{-100,-76},{-132,-44}}),
-      iconTransformation(extent={{-100,-76},{-132,-44}}),
-      visible=use_p_in and use_p_ref));
+      iconTransformation(extent={{-100,-76},{-132,-44}})));
 equation
   connect(portTra_in, bouInlTra.inlet)
     annotation (Line(points={{-110,30},{-71,30}}, color={0,0,255}));
@@ -100,10 +97,10 @@ equation
           -30},{-38,-30},{-38,-12.02},{-30,-12.02}}, color={0,127,255}));
 
   connect(heatPortRad_TtoQ.heatPort, transfer.heatPortRad) annotation (Line(
-        points={{76,10},{44,10},{44,-10},{32,-10},{32,-11.4},{30,-11.4}},
+        points={{76,22},{54,22},{54,-12},{32,-12},{32,-11.4},{30,-11.4}},
         color={191,0,0}));
   connect(transfer.heatPortCon, heatPortCon_TtoQ.heatPort) annotation (Line(
-        points={{30,13.4},{30,12},{44,12},{44,70},{76,70}}, color={191,0,0}));
+        points={{30,13.4},{30,12},{44,12},{44,90},{76,90}}, color={191,0,0}));
   connect(transfer.outBusTra, outBusTra) annotation (Line(
       points={{0,-31.24},{-30,-31.24},{-30,-104}},
       color={255,204,51},
@@ -128,13 +125,15 @@ equation
       thickness=0.5));
   connect(bou_ref.p_in, p_ref_in) annotation (Line(
       points={{-22,80},{-22,86},{-116,86}},
-      color={0,0,127},
-      visible=use_p_in and use_p_ref));
+      color={0,0,127}));
   connect(portTra_out_p.y, p_out)
     annotation (Line(
       points={{-79,-60},{-116,-60}},
-      color={0,0,127},
-      visible=use_p_in and use_p_ref));
+      color={0,0,127}));
+  connect(transfer.heatPortRad, heatPortRad_QtoT.heatPort)
+    annotation (Line(points={{30,-11.4},{30,-12},{76,-12}}, color={191,0,0}));
+  connect(transfer.heatPortCon, heatPortCon_QtoT.heatPort) annotation (Line(
+        points={{30,13.4},{30,12},{44,12},{44,56},{76,56}}, color={191,0,0}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Rectangle(
           extent={{-100,100},{100,-100}},
@@ -187,6 +186,5 @@ equation
           fillPattern=FillPattern.Solid)}),                      Diagram(
         coordinateSystem(preserveAspectRatio=false), graphics={Line(
           points={{-30,58},{-30,14}},
-          color={0,127,255},
-          visible=use_p_ref)}));
+          color={0,127,255})}));
 end FMIReplaceableTransfer;

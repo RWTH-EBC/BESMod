@@ -1,7 +1,7 @@
 within BESMod.Systems.Hydraulical;
 model FMIReplaceableHydraulicSystem
   "FMI export container for a hydraulic system"
-  extends Utilities.FMI.PartialHeatPorts;
+  extends Utilities.FMI.PartialHeatPorts(final nHeatPorts=hydraulic.hydraulicSystemParameters.nZone);
 
     replaceable package MediumDHW = IBPSA.Media.Water
       constrainedby Modelica.Media.Interfaces.PartialMedium
@@ -27,35 +27,35 @@ model FMIReplaceableHydraulicSystem
     redeclare each final package Medium = MediumDHW,
     each final allowFlowReversal=allowFlowReversal,
     each final use_p_in=use_p_in_DHW) if use_dhw
-    annotation (Placement(transformation(extent={{80,-74},{60,-94}})));
+    annotation (Placement(transformation(extent={{80,-80},{60,-100}})));
   IBPSA.Fluid.FMI.Adaptors.Outlet bouOutDHW(
     redeclare each final package Medium = MediumDHW,
     each final allowFlowReversal=allowFlowReversal,
     each final use_p_in=use_p_in_DHW) if use_dhw
-    annotation (Placement(transformation(extent={{60,-40},{80,-20}})));
+    annotation (Placement(transformation(extent={{60,-50},{80,-30}})));
   Modelica.Blocks.Sources.RealExpression dpDisDHW(y=hydraulic.portDHW_in.p -
         hydraulic.portDHW_out.p)                            if use_p_in_DHW and use_dhw
     "Pressure drop of the component"
-    annotation (Placement(transformation(extent={{-14,-68},{6,-48}})));
+    annotation (Placement(transformation(extent={{-14,-76},{6,-56}})));
   Modelica.Blocks.Math.Feedback pOutDHW if use_p_in_DHW and use_dhw
     "Pressure at component outlet" annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=270,
-        origin={70,-58})));
+        origin={70,-66})));
   IBPSA.Fluid.FMI.Interfaces.Inlet portDHW_in(
     redeclare each final package Medium = MediumDHW,
     each final allowFlowReversal=allowFlowReversal,
     each final use_p_in=use_p_in_DHW) if use_dhw
     "Inet for the hydraulic from the DHW"
-    annotation (Placement(transformation(extent={{120,-94},{100,-74}}),
-        iconTransformation(extent={{120,-94},{100,-74}})));
+    annotation (Placement(transformation(extent={{120,-90},{100,-70}}),
+        iconTransformation(extent={{120,-90},{100,-70}})));
   IBPSA.Fluid.FMI.Interfaces.Outlet portDHW_out(
     redeclare each final package Medium = MediumDHW,
     each final allowFlowReversal=allowFlowReversal,
     each final use_p_in=use_p_in_DHW) if use_dhw
     "Outlet for the hydraulic to the DHW"
-    annotation (Placement(transformation(extent={{100,-40},{120,-20}}),
-        iconTransformation(extent={{100,-40},{120,-20}})));
+    annotation (Placement(transformation(extent={{100,-50},{120,-30}}),
+        iconTransformation(extent={{100,-50},{120,-30}})));
   BESMod.Systems.Interfaces.UseProBus useProBus annotation (Placement(
         transformation(extent={{-60,92},{-40,112}}), iconTransformation(extent=
             {{-60,92},{-40,112}})));
@@ -76,24 +76,25 @@ model FMIReplaceableHydraulicSystem
         iconTransformation(extent={{20,-112},{40,-92}})));
 equation
   connect(hydraulic.heatPortCon, heatPortCon_TtoQ.heatPort) annotation (Line(
-        points={{40,55.6286},{40,56},{62,56},{62,70},{76,70}}, color={191,0,0}));
+        points={{40,55.6286},{40,56},{62,56},{62,90},{76,90}}, color={191,0,0}));
   connect(hydraulic.heatPortRad, heatPortRad_TtoQ.heatPort) annotation (Line(
-        points={{40,30},{62,30},{62,10},{76,10}}, color={191,0,0}));
+        points={{40,30},{62,30},{62,22},{76,22}}, color={191,0,0}));
   connect(bouOutDHW.outlet,portDHW_out)
-    annotation (Line(points={{81,-30},{110,-30}}, color={0,0,255}));
+    annotation (Line(points={{81,-40},{110,-40}}, color={0,0,255}));
   connect(bouInlDHW.inlet,portDHW_in)
-    annotation (Line(points={{81,-84},{110,-84}}, color={0,0,255}));
+    annotation (Line(points={{81,-90},{96,-90},{96,-80},{110,-80}},
+                                                  color={0,0,255}));
   connect(bouInlDHW.p,pOutDHW. u1)
-    annotation (Line(points={{70,-73},{70,-66}}, color={0,127,127}));
+    annotation (Line(points={{70,-79},{70,-74}}, color={0,127,127}));
   connect(pOutDHW.y,bouOutDHW. p)
-    annotation (Line(points={{70,-49},{70,-42}}, color={0,0,127}));
-  connect(bouOutDHW.port_a, hydraulic.portDHW_out) annotation (Line(points={{60,
-          -30},{54,-30},{54,8},{40,8},{40,8.31429},{39.3579,8.31429}}, color={0,
+    annotation (Line(points={{70,-57},{70,-52}}, color={0,0,127}));
+  connect(bouOutDHW.port_a, hydraulic.portDHW_out) annotation (Line(points={{60,-40},
+          {54,-40},{54,8},{40,8},{40,8.31429},{39.3579,8.31429}},      color={0,
           127,255}));
-  connect(bouInlDHW.port_b, hydraulic.portDHW_in) annotation (Line(points={{60,-84},
-          {46,-84},{46,-4.82857},{39.3579,-4.82857}}, color={0,127,255}));
+  connect(bouInlDHW.port_b, hydraulic.portDHW_in) annotation (Line(points={{60,-90},
+          {46,-90},{46,-4.82857},{39.3579,-4.82857}}, color={0,127,255}));
   connect(dpDisDHW.y, pOutDHW.u2)
-    annotation (Line(points={{7,-58},{62,-58}}, color={0,0,127}));
+    annotation (Line(points={{7,-66},{62,-66}}, color={0,0,127}));
   connect(hydraulic.useProBus, useProBus) annotation (Line(
       points={{-50.2158,76},{-50,76},{-50,102}},
       color={255,204,51},
@@ -119,6 +120,10 @@ equation
       points={{30.3684,-16},{30,-16},{30,-102}},
       color={0,0,0},
       thickness=1));
+  connect(hydraulic.heatPortRad, heatPortRad_QtoT.heatPort) annotation (Line(
+        points={{40,30},{62,30},{62,-12},{76,-12}}, color={191,0,0}));
+  connect(hydraulic.heatPortCon, heatPortCon_QtoT.heatPort) annotation (Line(
+        points={{40,55.6286},{58,55.6286},{58,56},{76,56}}, color={191,0,0}));
   annotation (Icon(graphics={
         Rectangle(
           extent={{-100,100},{100,-100}},

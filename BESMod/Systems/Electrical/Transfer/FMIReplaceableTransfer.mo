@@ -1,7 +1,7 @@
 ﻿within BESMod.Systems.Electrical.Transfer;
 model FMIReplaceableTransfer
   "FMI export container for electric transfer models"
-  extends Utilities.FMI.PartialHeatPorts;
+  extends Utilities.FMI.PartialHeatPorts(final nHeatPorts=transfer.nParallelDem);
   replaceable BaseClasses.PartialTransfer transfer
     annotation (Placement(transformation(extent={{-36,-38},{38,38}})));
   Interfaces.TransferOutputs transferOutputs
@@ -12,9 +12,9 @@ model FMIReplaceableTransfer
     annotation (Placement(transformation(extent={{-42,92},{-22,112}})));
 equation
   connect(transfer.heatPortCon, heatPortCon_TtoQ.heatPort) annotation (Line(
-        points={{38,15.2},{38,14},{50,14},{50,30},{58,30}}, color={191,0,0}));
+        points={{38,15.2},{38,14},{56,14},{56,90},{76,90}}, color={191,0,0}));
   connect(transfer.heatPortRad, heatPortRad_TtoQ.heatPort) annotation (Line(
-        points={{38,-3.04},{38,-2},{44,-2},{44,-30},{58,-30}}, color={191,0,0}));
+        points={{38,-3.04},{38,-2},{62,-2},{62,22},{76,22}},   color={191,0,0}));
   connect(transfer.transferOutputs, transferOutputs) annotation (Line(
       points={{1,-37.62},{0,-37.62},{0,-40},{48,-40},{48,-104}},
       color={255,204,51},
@@ -28,6 +28,10 @@ equation
       points={{1,37.24},{1,40},{-32,40},{-32,102}},
       color={255,204,51},
       thickness=0.5));
+  connect(transfer.heatPortRad, heatPortRad_QtoT.heatPort) annotation (Line(
+        points={{38,-3.04},{38,-2},{62,-2},{62,-12},{76,-12}}, color={191,0,0}));
+  connect(transfer.heatPortCon, heatPortCon_QtoT.heatPort) annotation (Line(
+        points={{38,15.2},{38,14},{56,14},{56,56},{76,56}}, color={191,0,0}));
   annotation (Icon(graphics={
         Rectangle(
           extent={{-100,100},{100,-100}},

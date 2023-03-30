@@ -4,6 +4,8 @@ model FMIHydraulicSystemModelicaConferenceUseCase
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
       redeclare package Medium = IBPSA.Media.Water,
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
+      allowFlowReversal=false,
+      use_for_fmu_inputs=true,
       redeclare Systems.Hydraulical.Generation.HeatPumpAndHeatingRod generation(
         dTTra_nominal={10},
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
