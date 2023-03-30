@@ -20,12 +20,12 @@ equation
           0},{-26,0},{-26,9.82},{-20,9.82}}, color={0,127,255}));
   connect(bouOut.port_a, generation.portVent_out) annotation (Line(points={{50,
           0},{28,0},{28,-32},{-28,-32},{-28,-7.4},{-20,-7.4}}, color={0,127,255}));
-  connect(generation.internalElectricalPin, internalElectricalPin1) annotation (
-     Line(
+  connect(generation.internalElectricalPin, internalElectricalPin) annotation (
+      Line(
       points={{14,-19.58},{14,-20},{88,-20},{88,-30},{104,-30}},
       color={0,0,0},
       thickness=1));
-  connect(generation.outBusGen, outBus) annotation (Line(
+  connect(generation.outBusGen, outBusGen) annotation (Line(
       points={{20.4,0.79},{22,0.79},{22,-60},{104,-60}},
       color={255,204,51},
       thickness=0.5), Text(
@@ -33,7 +33,7 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(generation.sigBusGen, sigBus) annotation (Line(
+  connect(generation.sigBusGen, sigBusGen) annotation (Line(
       points={{-8.4,21.58},{-8.4,98},{1,98},{1,99}},
       color={255,204,51},
       thickness=0.5), Text(

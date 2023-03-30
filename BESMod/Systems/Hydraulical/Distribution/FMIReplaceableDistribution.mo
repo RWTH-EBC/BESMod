@@ -114,13 +114,11 @@ model FMIReplaceableDistribution
     each final use_p_in=use_p_in_DHW) if use_dhw
     "Outlet for the distribution to the DHW"
     annotation (Placement(transformation(extent={{100,-36},{120,-16}})));
-  BESMod.Systems.Hydraulical.Interfaces.DistributionControlBus sigBus
+  BESMod.Systems.Hydraulical.Interfaces.DistributionControlBus sigBusDistr
     annotation (Placement(transformation(extent={{-10,92},{10,112}})));
-  BESMod.Systems.Hydraulical.Interfaces.DistributionOutputs outBus
+  BESMod.Systems.Hydraulical.Interfaces.DistributionOutputs outBusDistr
     annotation (Placement(transformation(extent={{-30,-112},{-10,-92}})));
-  output
-  BESMod.Systems.Electrical.Interfaces.InternalElectricalPinOut
-    internalElectricalPin1
+  output BESMod.Systems.Electrical.Interfaces.InternalElectricalPinOut internalElectricalPin
     annotation (Placement(transformation(extent={{2,-110},{22,-90}})));
   Modelica.Blocks.Math.Feedback pOutGen[distribution.nParallelSup] if use_p_in_Gen
     "Pressure at component outlet"
@@ -147,16 +145,16 @@ public
     "Component that holds the actual model"
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-18,-18},{18,18}})));
 equation
-  connect(distribution.outBusDist, outBus) annotation (Line(
+  connect(distribution.outBusDist, outBusDistr) annotation (Line(
       points={{0,-18},{0,-80},{-20,-80},{-20,-102}},
       color={255,204,51},
       thickness=0.5));
-  connect(distribution.internalElectricalPin, internalElectricalPin1)
+  connect(distribution.internalElectricalPin, internalElectricalPin)
     annotation (Line(
       points={{12.6,-17.64},{12.6,-100},{12,-100}},
       color={0,0,0},
       thickness=1));
-  connect(distribution.sigBusDistr, sigBus) annotation (Line(
+  connect(distribution.sigBusDistr, sigBusDistr) annotation (Line(
       points={{0,18.18},{0,102}},
       color={255,204,51},
       thickness=0.5));

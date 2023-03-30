@@ -17,7 +17,7 @@ equation
 
   connect(bouInl.port_b, generation.portGen_in) annotation (Line(points={{-50,0},
           {-32,0},{-32,-40},{30,-40},{30,9.4},{20,9.4}}, color={0,127,255}));
-  connect(generation.sigBusGen, sigBus) annotation (Line(
+  connect(generation.sigBusGen, sigBusGen) annotation (Line(
       points={{0.4,21.58},{1,21.58},{1,99}},
       color={255,204,51},
       thickness=0.5));
@@ -25,12 +25,12 @@ equation
       points={{-19.6,13.6},{-19.6,12},{-46,12},{-46,76},{-102,76}},
       color={255,204,51},
       thickness=0.5));
-  connect(generation.internalElectricalPin, internalElectricalPin1) annotation (
-     Line(
+  connect(generation.internalElectricalPin, internalElectricalPin) annotation (
+      Line(
       points={{14.4,-20},{88,-20},{88,-30},{104,-30}},
       color={0,0,0},
       thickness=1));
-  connect(generation.outBusGen, outBus) annotation (Line(
+  connect(generation.outBusGen, outBusGen) annotation (Line(
       points={{0,-20},{0,-22},{84,-22},{84,-60},{104,-60}},
       color={255,204,51},
       thickness=0.5));

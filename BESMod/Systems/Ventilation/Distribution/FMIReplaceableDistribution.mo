@@ -25,13 +25,11 @@ model FMIReplaceableDistribution
     "= true to use a pressure from connector, false to output Medium.p_default"
     annotation(Evaluate=true);
 
-  BESMod.Systems.Hydraulical.Interfaces.DistributionControlBus sigBus
+  BESMod.Systems.Hydraulical.Interfaces.DistributionControlBus sigBusDistr
     annotation (Placement(transformation(extent={{-10,92},{10,112}})));
-  BESMod.Systems.Hydraulical.Interfaces.DistributionOutputs outBus
+  BESMod.Systems.Hydraulical.Interfaces.DistributionOutputs outBusDistr
     annotation (Placement(transformation(extent={{-60,-112},{-40,-92}})));
-  output
-  BESMod.Systems.Electrical.Interfaces.InternalElectricalPinOut
-    internalElectricalPin1
+  output BESMod.Systems.Electrical.Interfaces.InternalElectricalPinOut internalElectricalPin
     annotation (Placement(transformation(extent={{40,-110},{60,-90}})));
   replaceable BaseClasses.PartialDistribution distribution
     constrainedby
@@ -103,16 +101,16 @@ model FMIReplaceableDistribution
     annotation (Placement(transformation(extent={{30,-90},{10,-70}})));
 equation
 
-  connect(distribution.internalElectricalPin, internalElectricalPin1)
+  connect(distribution.internalElectricalPin, internalElectricalPin)
     annotation (Line(
       points={{26.6,-37.24},{50,-37.24},{50,-100}},
       color={0,0,0},
       thickness=1));
-  connect(distribution.outBusDist, outBus) annotation (Line(
+  connect(distribution.outBusDist, outBusDistr) annotation (Line(
       points={{6.66134e-16,-37.62},{-50,-37.62},{-50,-102}},
       color={255,204,51},
       thickness=0.5));
-  connect(distribution.sigBusDistr, sigBus) annotation (Line(
+  connect(distribution.sigBusDistr, sigBusDistr) annotation (Line(
       points={{0,38},{0,102}},
       color={255,204,51},
       thickness=0.5));

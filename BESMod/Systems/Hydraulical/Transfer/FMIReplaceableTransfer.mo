@@ -62,7 +62,7 @@ model FMIReplaceableTransfer
 
   Interfaces.TransferOutputs outBusTra
     annotation (Placement(transformation(extent={{-40,-114},{-20,-94}})));
-  Electrical.Interfaces.InternalElectricalPinOut internalElectricalPin1
+  Electrical.Interfaces.InternalElectricalPinOut internalElectricalPin
     annotation (Placement(transformation(extent={{26,-112},{46,-92}})));
   IBPSA.Fluid.Sources.Boundary_pT bou_ref[transfer.nParallelSup](
     each final use_p_in=use_p_in,
@@ -105,7 +105,7 @@ equation
       points={{0,-31.24},{-30,-31.24},{-30,-104}},
       color={255,204,51},
       thickness=0.5));
-  connect(transfer.internalElectricalPin, internalElectricalPin1) annotation (
+  connect(transfer.internalElectricalPin, internalElectricalPin) annotation (
       Line(
       points={{21.6,-29.38},{36,-29.38},{36,-102}},
       color={0,0,0},

@@ -47,17 +47,16 @@ partial model PartialNPort
   Modelica.Blocks.Sources.RealExpression dpCom[n]
     if use_p_in "Pressure drop of the component"
     annotation (Placement(transformation(extent={{-40,-86},{-20,-66}})));
-  BESMod.Systems.Hydraulical.Interfaces.GenerationControlBus sigBus
+  BESMod.Systems.Hydraulical.Interfaces.GenerationControlBus sigBusGen
     annotation (Placement(transformation(extent={{-12,88},{14,110}}),
         iconTransformation(extent={{-12,88},{14,110}})));
   IBPSA.BoundaryConditions.WeatherData.Bus weaBus "Weather data bus"
     annotation (Placement(transformation(extent={{-112,66},{-92,86}}),
         iconTransformation(extent={{-112,66},{-92,86}})));
-  BESMod.Systems.Hydraulical.Interfaces.GenerationOutputs outBus
-    annotation (Placement(transformation(extent={{94,-70},{114,-50}}),
-        iconTransformation(extent={{94,-70},{114,-50}})));
-  BESMod.Systems.Electrical.Interfaces.InternalElectricalPinOut
-    internalElectricalPin1
+  BESMod.Systems.Hydraulical.Interfaces.GenerationOutputs outBusGen annotation
+    (Placement(transformation(extent={{94,-70},{114,-50}}), iconTransformation(
+          extent={{94,-70},{114,-50}})));
+  BESMod.Systems.Electrical.Interfaces.InternalElectricalPinOut internalElectricalPin
     annotation (Placement(transformation(extent={{94,-40},{114,-20}}),
         iconTransformation(extent={{94,-40},{114,-20}})));
 protected
