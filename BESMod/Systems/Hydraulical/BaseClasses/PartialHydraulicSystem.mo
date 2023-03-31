@@ -4,6 +4,8 @@ partial model PartialHydraulicSystem
   extends BESMod.Systems.BaseClasses.PartialFluidSubsystem;
   parameter Boolean subsystemDisabled "To enable the icon if the subsystem is disabled" annotation (Dialog(tab="Graphics"));
   parameter Boolean use_dhw=true "=false to disable DHW";
+  parameter Boolean use_for_fmu_inputs=false
+  "=true to enable temperature sensors at fluid ports of subsystems" annotation(Dialog(tab="Advanced"));
   replaceable package MediumDHW = IBPSA.Media.Water constrainedby
     Modelica.Media.Interfaces.PartialMedium
     annotation (__Dymola_choicesAllMatching=true);
@@ -203,18 +205,25 @@ partial model PartialHydraulicSystem
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={132,-124})));
+  Modelica.Fluid.Sensors.TemperatureTwoPort T_GenToDis[generation.nParallelDem](
+     redeclare package Medium = Medium) if use_for_fmu_inputs
+    annotation (Placement(transformation(extent={{-20,24},{-16,28}})));
+  Modelica.Fluid.Sensors.TemperatureTwoPort T_DisToGen[generation.nParallelDem](
+     redeclare package Medium = Medium) if use_for_fmu_inputs
+    annotation (Placement(transformation(extent={{-16,-4},{-20,0}})));
+  Modelica.Fluid.Sensors.TemperatureTwoPort T_DisToTra[distribution.nParallelDem](
+     redeclare package Medium = Medium) if use_for_fmu_inputs
+    annotation (Placement(transformation(extent={{102,18},{106,22}})));
+  Modelica.Fluid.Sensors.TemperatureTwoPort T_TraToDis[distribution.nParallelDem](
+     redeclare package Medium = Medium) if use_for_fmu_inputs
+    annotation (Placement(transformation(extent={{106,-10},{102,-6}})));
+  Modelica.Fluid.Sensors.TemperatureTwoPort T_DisToDHW(redeclare package Medium =
+        Medium) if use_for_fmu_inputs
+    annotation (Placement(transformation(extent={{106,-58},{110,-54}})));
+  Modelica.Fluid.Sensors.TemperatureTwoPort T_DHWToDis(redeclare package Medium =
+        Medium) if use_for_fmu_inputs
+    annotation (Placement(transformation(extent={{112,-72},{108,-68}})));
 equation
-  connect(generation.portGen_out,distribution. portGen_in) annotation (Line(
-        points={{-24,14.8},{-16,14.8},{-16,14},{-10,14},{-10,14.8},{-12,14.8}},
-                                                              color={0,127,255}));
-  connect(generation.portGen_in,distribution. portGen_out) annotation (Line(
-        points={{-24,-11.6},{-12,-11.6}},                           color={0,127,
-          255}));
-  connect(transfer.portTra_out,distribution. portBui_in) annotation (Line(
-        points={{112,-23.12},{112,-11.6},{90,-11.6}},
-                                                 color={0,127,255}));
-  connect(distribution.portBui_out,transfer. portTra_in) annotation (Line(
-        points={{90,14.8},{112,14.8},{112,6.4}},color={0,127,255}));
   connect(control.sigBusGen,generation. sigBusGen) annotation (
       Line(
       points={{-79.5667,54.34},{-80,54.34},{-80,26.68},{-80.84,26.68}},
@@ -270,12 +279,6 @@ equation
       index=-1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(portDHW_out,distribution. portDHW_out) annotation (Line(points={{200,-60},
-          {100,-60},{100,-52},{96,-52},{96,-51.2},{90,-51.2}},
-                                             color={0,127,255}));
-  connect(distribution.portDHW_in, portDHW_in) annotation (Line(points={{90,
-          -77.6},{98,-77.6},{98,-78},{192,-78},{192,-120},{200,-120}},
-                                              color={0,127,255}));
   connect(weaBus,generation. weaBus) annotation (Line(
       points={{-179,78},{-179,76},{-176,76},{-176,78},{-174,78},{-174,0},{
           -138.84,0},{-138.84,1.6}},
@@ -335,6 +338,46 @@ equation
       points={{-40.24,-104},{-40.24,-123.467},{122.2,-123.467}},
       color={0,0,0},
       thickness=1));
+  connect(generation.portGen_out, T_GenToDis.port_a) annotation (Line(points={{-24,
+          14.8},{-24,18},{-20,18},{-20,26}}, color={0,127,255}));
+  connect(T_GenToDis.port_b, distribution.portGen_in) annotation (Line(points={{
+          -16,26},{-16,20},{-12,20},{-12,14.8}}, color={0,127,255}));
+  connect(distribution.portGen_out, T_DisToGen.port_a) annotation (Line(points={
+          {-12,-11.6},{-12,-8},{-16,-8},{-16,-2}}, color={0,127,255}));
+  connect(generation.portGen_in, T_DisToGen.port_b) annotation (Line(points={{-24,
+          -11.6},{-24,-8},{-20,-8},{-20,-2}}, color={0,127,255}));
+  connect(distribution.portBui_out, T_DisToTra.port_a) annotation (Line(points={
+          {90,14.8},{96,14.8},{96,20},{102,20}}, color={0,127,255}));
+  connect(T_DisToTra.port_b, transfer.portTra_in) annotation (Line(points={{106,
+          20},{112,20},{112,6},{110,6},{110,6.4},{112,6.4}}, color={0,127,255}));
+  connect(T_TraToDis.port_a, transfer.portTra_out) annotation (Line(points={{106,
+          -8},{106,-14},{104,-14},{104,-23.12},{112,-23.12}}, color={0,127,255}));
+  connect(T_TraToDis.port_b, distribution.portBui_in) annotation (Line(points={{
+          102,-8},{96,-8},{96,-11.6},{90,-11.6}}, color={0,127,255}));
+  connect(distribution.portDHW_out, T_DisToDHW.port_a) annotation (Line(points={
+          {90,-51.2},{96,-51.2},{96,-56},{106,-56}}, color={0,127,255}));
+  connect(T_DisToDHW.port_b, portDHW_out) annotation (Line(points={{110,-56},{144,
+          -56},{144,-60},{200,-60}}, color={0,127,255}));
+  connect(distribution.portDHW_in, T_DHWToDis.port_b) annotation (Line(points={{
+          90,-77.6},{90,-70},{108,-70}}, color={0,127,255}));
+  connect(T_DHWToDis.port_a, portDHW_in) annotation (Line(points={{112,-70},{168,
+          -70},{168,-78},{192,-78},{192,-120},{200,-120}}, color={0,127,255}));
+  if not use_for_fmu_inputs then
+  connect(generation.portGen_out, distribution.portGen_in)
+    annotation (Line(points={{-24,14.8},{-12,14.8}}, color={0,127,255}));
+  connect(generation.portGen_in, distribution.portGen_out)
+    annotation (Line(points={{-24,-11.6},{-12,-11.6}}, color={0,127,255}));
+  connect(distribution.portBui_out, transfer.portTra_in) annotation (Line(
+        points={{90,14.8},{102,14.8},{102,6.4},{112,6.4}}, color={0,127,255}));
+  connect(distribution.portBui_in, transfer.portTra_out) annotation (Line(
+        points={{90,-11.6},{90,-10},{98,-10},{98,-23.12},{112,-23.12}}, color={0,
+          127,255}));
+  connect(distribution.portDHW_out, portDHW_out) annotation (Line(points={{90,-51.2},
+          {90,-50},{96,-50},{96,-56},{100,-56},{100,-62},{144,-62},{144,-60},{200,
+          -60}}, color={0,127,255}));
+  connect(distribution.portDHW_in, portDHW_in) annotation (Line(points={{90,-77.6},
+          {144,-77.6},{144,-120},{200,-120}}, color={0,127,255}));
+  end if;
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-180,-140},
             {200,140}}), graphics={
         Rectangle(
@@ -446,7 +489,6 @@ equation
         fillPattern=FillPattern.Solid,
         rotation=45,
           origin={4,-2})}),
-                          Diagram(graphics,
-                                  coordinateSystem(preserveAspectRatio=false,
+                          Diagram(coordinateSystem(preserveAspectRatio=false,
           extent={{-180,-140},{200,140}})));
 end PartialHydraulicSystem;
