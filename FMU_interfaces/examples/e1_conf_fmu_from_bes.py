@@ -61,7 +61,7 @@ if __name__ == "__main__":
     bes_fmu_api = FMU_API(cd=working_dir.parent.joinpath("results"),
                           model_name=models_path.joinpath("TEASERBuilding_noVen_Tsen.fmu"))
 
-    subsystem = "hydraulic.distribution"  # choose one of the predefined fmu models of the subsystems
+    subsystem = "hydraulic.transfer"  # choose one of the predefined fmu models of the subsystems
     module_fmu = None
     variables = None
     prefixes = None
@@ -111,6 +111,20 @@ if __name__ == "__main__":
                      "hydraulic.distribution.portDHW_in.p",
                      "hydraulic.T_DHWToDis.T",
                      "hydraulic.T_DisToDHW.T"]
+    elif subsystem == "hydraulic.transfer":
+        module_fmu = models_path.joinpath(
+            "BESMod_Systems_Hydraulical_Transfer_FMIIdealValveRadiator_xml.fmu"
+        )
+        variables = ["hydraulic.transfer.heatPortCon[1].T",
+                     "hydraulic.transfer.heatPortCon[1].Q_flow",
+                     "hydraulic.transfer.heatPortRad[1].T",
+                     "hydraulic.transfer.heatPortRad[1].Q_flow",
+                     "hydraulic.transfer.portTra_in[1].m_flow",
+                     "hydraulic.transfer.portTra_in[1].p",
+                     "hydraulic.T_DisToTra[1].T",
+                     "hydraulic.transfer.portTra_out[1].p",
+                     "hydraulic.T_TraToDis[1].T",
+                     "hydraulic.transfer.traControlBus.opening[1]"]
     else:
         raise ValueError("No example fmu interface model for the subsystem defined.")
 

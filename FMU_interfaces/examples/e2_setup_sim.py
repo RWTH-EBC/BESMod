@@ -42,7 +42,8 @@ def main(model_name,
 
 if __name__ == "__main__":
 
-    subsystem = "hydraulic.distribution"
+    # Choose a subsystem to set up and simulate
+    subsystem = "hydraulic.transfer"
 
     input_pairs = None
     goals = None
@@ -100,6 +101,22 @@ if __name__ == "__main__":
         goals = {"T_out_gen": {"bes": 'hydraulic.T_DisToGen[1].T', "subsystem": 'portGen_out[1].forward.T'},
                  "T_out_bui": {"bes": 'hydraulic.T_DisToTra[1].T', "subsystem": 'portBui_out[1].forward.T'},
                  "T_out_dhw": {"bes": 'hydraulic.T_DisToDHW.T', "subsystem": 'portDHW_out.forward.T'}}
+    elif subsystem == "hydraulic.transfer":
+        model_name = models_dir.joinpath(
+            "BESMod_Systems_Hydraulical_Transfer_FMIIdealValveRadiator_xml.fmu")
+        data_path = data_dir.joinpath("inputs_hydraulic_transfer.csv")
+        input_pairs = {
+            'hydraulic.transfer.heatPortCon[1].T': "TConIn[1]",
+            'hydraulic.transfer.heatPortRad[1].T': "TRadIn[1]",
+            'hydraulic.transfer.portTra_in[1].m_flow': "portTra_in[1].m_flow",
+            'hydraulic.T_DisToTra[1].T': "portTra_in[1].forward.T",
+            'hydraulic.T_TraToDis[1].T': "portTra_out[1].backward.T",
+            'hydraulic.transfer.traControlBus.opening[1]': "traControlBus.opening[1]",
+            'hydraulic.transfer.portTra_in[1].p': "p_ref_in[1]",
+        }
+        goals = {"Q_con": {"bes": 'hydraulic.transfer.heatPortCon[1].Q_flow', "subsystem": 'QflowConOut[1]'},
+                 "Q_rad": {"bes": 'hydraulic.transfer.heatPortRad[1].Q_flow', "subsystem": 'QflowRadOut[1]'},
+                 "T_out": {"bes": 'hydraulic.T_TraToDis[1].T', "subsystem": 'portTra_out[1].forward.T'}}
     else:
         raise ValueError("input pairs for the model not predefined")
 
