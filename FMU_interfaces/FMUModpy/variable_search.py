@@ -1,3 +1,9 @@
+"""
+Some functions to search for names in sim_api.states, sim_api.parameters, sim_api.inputs and sim_api.outputs
+with the functions for dicts. sim_api.variables has their own functions because they are stored in a list.
+"""
+
+
 def get_key_names_form_dict_by_prefix(mydict, prefix, use_upper_lower=True, n_results=False):
     if not use_upper_lower:
         prefix = prefix.lower()

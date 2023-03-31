@@ -1,3 +1,11 @@
+###
+# Example of how to get the top-down parameters of a Subsystem
+# from as bes and use them in the modeling of the FMU-Interfaces.
+# Secondly inputs for the subsystems in the FMU-interfaces are created.
+# Uses the examples of the FMU-interfaces only for the hydraulic system.
+# These models must be exported new and copied into the models_path
+###
+
 import pathlib
 from typing import Union
 from FMUModpy.bes_to_fmu import get_top_down_parameters, generate_inputs
@@ -31,9 +39,10 @@ def main(bes_sim_api: Union[FMU_API, DymolaAPI],
         # functions to easily use the models
         fmu = FMU_API(model_name=module_fmu, cd=data_path)
 
-        # Get the info of the needed data
+        # Get the info of the needed inputs
         get_info(fmu)
 
+    # Specified the names of the variables needed for the inputs of the fmu-interface
     if bes_inputs_names:
         name_for_save_str = subsystem.replace(".", "_")
         sim_setup = {"start_time": 0,
@@ -43,8 +52,8 @@ def main(bes_sim_api: Union[FMU_API, DymolaAPI],
             sim_api=bes_sim_api,
             save_path=data_path.joinpath(f"inputs_{name_for_save_str}.csv"),
             sim_setup=sim_setup,
-            variables=bes_inputs_names,
-            variables_prefix=bes_inputs_prefixes)
+            variables=bes_inputs_names,  # Name specific variables names
+            variables_prefix=bes_inputs_prefixes)  # option to get all variables with have the same prefix only working for fmu's
 
 
 if __name__ == "__main__":
@@ -58,6 +67,11 @@ if __name__ == "__main__":
     #               r"D:\sbg-hst\Repos\BESMod\BESMod\package.mo"],
     #     show_window=True
     # )
+
+    # Using the BESMod example UseCaseModelicaConference with the TEASERBuilding where the ventilation is
+    # disabled because the standard fmu solver Cvode can't solve the model with the ventilation system.
+    # Also there a temperature sensors added in the hydraulic system between the subsystems to
+    # get the temperature input of the fluid ports
     bes_fmu_api = FMU_API(cd=working_dir.parent.joinpath("results"),
                           model_name=models_path.joinpath("TEASERBuilding_noVen_Tsen.fmu"))
 
@@ -70,6 +84,8 @@ if __name__ == "__main__":
     # Also defining the names in the bes simulation for the input generation of each model, where the
     # described workflow in the main function was used.
     if subsystem == "hydraulic":
+        # This model has problem with export, where fmpy requires a start value for an input in a bus
+        # which is added after the export by editing directly the xml file of the fmu.
         module_fmu = models_path.joinpath(
             "BESMod_Systems_Hydraulical_FMIHydraulicSystemModelicaConferenceUseCase_xml.fmu")
         variables = ["hydraulic.portDHW_out.m_flow",
@@ -112,6 +128,8 @@ if __name__ == "__main__":
                      "hydraulic.T_DHWToDis.T",
                      "hydraulic.T_DisToDHW.T"]
     elif subsystem == "hydraulic.transfer":
+        # This model has problem with export, where fmpy requires a start value for an input in a bus
+        # which is added after the export by editing directly the xml file of the fmu.
         module_fmu = models_path.joinpath(
             "BESMod_Systems_Hydraulical_Transfer_FMIIdealValveRadiator_xml.fmu"
         )

@@ -1,3 +1,9 @@
+###
+# Example of how to specify the inputs for the FMU-interfaces from data with not matching variable names.
+# Test simulation of the models in the FMU-interfaces and comparison of some outputs
+# with the data from the bes.
+###
+
 import pathlib
 from ebcpy import FMU_API, TimeSeriesData
 from FMUModpy.fmu_subsystems import get_info, define_input_data
@@ -13,11 +19,16 @@ def main(model_name,
          data_path,
          input_pairs=None,
          goals=None):
+
     fmu = FMU_API(model_name=model_name, cd=result_dir)
     data = TimeSeriesData(data_path)
 
+    # use the get_info function with loaded data to assist with the defining of the input data.
+    # You can copy the half finished dictonary input_pairs which is printed by the function
+    # and copy past the variable names of the data as a key to their matching input of the fmu-interface.
     get_info(fmu_api=fmu, data=data)
 
+    # simulate the FMU-interface and compare some outputs with the results of the bes data
     if input_pairs:
         input_data = define_input_data(input_pairs=input_pairs, data=data)
         simulation_setup = {"start_time": input_data.index[0],
@@ -43,12 +54,13 @@ def main(model_name,
 if __name__ == "__main__":
 
     # Choose a subsystem to set up and simulate
-    subsystem = "hydraulic.transfer"
+    subsystem = "hydraulic.distribution"
 
     input_pairs = None
     goals = None
 
     if subsystem == "hydraulic":
+        # TODO: There is a bug in this system. The temperature output of the fluid to the dhw does not match.
         model_name = models_dir.joinpath(
             "BESMod_Systems_Hydraulical_FMIHydraulicSystemModelicaConferenceUseCase_xml.fmu")
         data_path = data_dir.joinpath("inputs_hydraulic.csv")
@@ -58,7 +70,6 @@ if __name__ == "__main__":
             'hydraulic.portDHW_in.m_flow': "portDHW_in.m_flow",
             'hydraulic.portDHW_in.p': "portDHW_in.p",
             'hydraulic.T_DHWToDis.T': "portDHW_in.forward.T",
-            # 'hydraulic.T_DisToDHW.T': "portDHW_out.backward.T",
             'hydraulic.useProBus.TZoneSet[1]': "useProBus.TZoneSet[1]",
             'hydraulic.sigBusHyd.TSetDHW': "sigBusHyd.TSetDHW",
             'hydraulic.sigBusHyd.overwriteTSetDHW': "sigBusHyd.overwriteTSetDHW",
@@ -83,6 +94,7 @@ if __name__ == "__main__":
         goals = {"T_out": {"bes": 'hydraulic.generation.sigBusGen.THeaRodMea', "subsystem": 'sigBus.THeaRodMea'},
                  "PelHP": {"bes": 'hydraulic.generation.outBusGen.PEleHP.value', "subsystem": 'outBus.PEleHP.value'}}
     elif subsystem == "hydraulic.distribution":
+        # TODO: There is a bug in this system. The temperature output of the fluid to the dhw does not match.
         model_name = models_dir.joinpath(
             "BESMod_Systems_Hydraulical_Distribution_FMIDistributionTwoStorageParallel.fmu")
         data_path = data_dir.joinpath("inputs_hydraulic_distribution.csv")

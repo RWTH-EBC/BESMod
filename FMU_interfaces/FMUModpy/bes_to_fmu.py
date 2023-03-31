@@ -1,11 +1,29 @@
 import pathlib
 from typing import Union, List
-from ebcpy import FMU_API, DymolaAPI, TimeSeriesData
-# import .variable_search as search
+from ebcpy import FMU_API, DymolaAPI
 import FMUModpy.variable_search as search
 
 
-def generate_inputs(sim_api, save_path, sim_setup, variables, variables_prefix=None):
+def generate_inputs(sim_api: Union[FMU_API, DymolaAPI],
+                    save_path: Union[str, pathlib.Path],
+                    sim_setup: dict,
+                    variables: List[str],
+                    variables_prefix: List[str] = None):
+    """
+    Generate inputs from a bes simulation for a model in an FMU-interface.
+
+    :param sim_api:
+        Sim_api of the bes model.
+    :param save_path:
+        Path where to save the data.
+    :param sim_setup:
+        Dict with the keys "start_time", "stop_time" and "output_interval".
+    :param variables:
+        Specific names of variables to save.
+    :param variables_prefix:
+        Default None. Can be specified to get all variables with the same prefix.
+        specially useful for inputs in a bus connector.
+    """
     sim_api.set_sim_setup(sim_setup)
     if variables_prefix:
         if not isinstance(variables_prefix, list):
@@ -21,6 +39,20 @@ def generate_inputs(sim_api, save_path, sim_setup, variables, variables_prefix=N
 
 
 def get_top_down_parameters(sim_api, subsystem, diff_name=None):
+    """
+    Prints the top-down parameters of a subsystem from a bes model with their value and uint.
+    This can be directly copied and pasted in Dymola as modelica text in the declaration
+    of the Subsystem in the FMU-interfaces
+    :param sim_api:
+        FMU_api or DymolaAPI of the bes model
+    :param str subsystem:
+        Subsystem to get parameter values from: "hydraulic", "hydraulic.generation",
+        "hydraulic.distribution", "hydraulic.transfer", "ventilation.generation"
+        and "ventilation.distribution".
+    :param str diff_name:
+        Default None. If the name in the model differs from the subsystem string,
+        the name has to be specified here
+    """
     if diff_name:
         name = diff_name
     else:
@@ -91,7 +123,6 @@ def get_top_down_parameters(sim_api, subsystem, diff_name=None):
         raise ValueError(f"The top down parameters of the subsystem {subsystem} are not defined.")
     values = {}
     for para, info in parameters.items():
-        name_unit = para.split(".")[-1] + info[1]
         unit = info[1].split("[")[-1].split("]")[0]
         if unit == "-":
             name_modelica_unit = para.split(".")[-1]
@@ -108,7 +139,6 @@ def get_top_down_parameters(sim_api, subsystem, diff_name=None):
     print(f"Top-Down parameters of the subsystem {subsystem} in the model {sim_api.model_name}:")
     for name, value in values.items():
         print(f"{name} = {value},")
-    return values
 
 
 def get_parameter_value(sim_api, parameters: Union[str, List[str]]):
@@ -120,64 +150,3 @@ def get_parameter_value(sim_api, parameters: Union[str, List[str]]):
     for name, value in values.items():
         print(f"{name} = {value}")
     return values
-
-
-
-
-if __name__ == "__main__":
-    # can't finde hydraulic.gerneration.sigBusGen in dym_api only in fmu
-    # dym_api = DymolaAPI(
-    #     cd=r'D:\sbg-hst\Repos\BESMod\working_dir',
-    #     model_name="BESMod.Examples.UseCaseModelicaConferencePaper.TEASERBuilding",
-    #     packages=[r"D:\sbg-hst\Repos\BESMod\installed_dependencies\IBPSA\IBPSA\package.mo",
-    #               r"D:\sbg-hst\Repos\BESMod\installed_dependencies\AixLib\AixLib\package.mo",
-    #               r"D:\sbg-hst\Repos\BESMod\installed_dependencies\BuildingSystems\BuildingSystems\package.mo",
-    #               r"D:\sbg-hst\Repos\BESMod\BESMod\package.mo"],
-    #     show_window=True
-    # )
-    fmu_api = FMU_API(cd=pathlib.Path(__file__).parent.joinpath("results"),
-                      model_name=pathlib.Path(__file__).parent.joinpath("models",
-                                                                        "TEASERBuilding_noVen_Tsen.fmu"))
-    example_bes = BES(fmu_api)
-
-    example_bes.get_top_down_parameters("hydraulic.generation")
-    example_bes.get_top_down_parameters("hydraulic.distribution")
-    example_bes.get_top_down_parameters("hydraulic.transfer")
-    # example_bes.get_top_down_parameters("ventilation.generation")
-    # example_bes.get_top_down_parameters("ventilation.distribution")
-    example_bes.get_top_down_parameters("hydraulic")
-
-    # example_bes.get_parameter_value(["ventilation.generation.m_flow_nominal[1]",
-    #                                  "ventilation.distribution.TSup_nominal[1]"])
-
-    save_path = pathlib.Path(__file__).parent.joinpath("data", "TEASERBuilding_data_hydraulic.csv")
-    # single_variables = ["hydraulic.generation.portGen_in[1].m_flow",
-    #                     "hydraulic.generation.weaBus.TDryBul"]
-    # single_variables = ["hydraulic.transfer.portTra_in[1].m_flow",
-    #                     "hydraulic.transfer.portTra_in[1].p",
-    #                     "hydraulic.transfer.portTra_out[1].m_flow",
-    #                     "hydraulic.transfer.portTra_out[1].p",
-    #                     "hydraulic.transfer.heatPortRad[1].T",
-    #                     "hydraulic.transfer.heatPortRad[1].Q_flow",
-    #                     "hydraulic.transfer.heatPortCon[1].T",
-    #                     "hydraulic.transfer.heatPortCon[1].Q_flow",
-    #                     "hydraulic.transfer.outBusTra.T_out[1]",
-    #                     "hydraulic.distribution.sigBusDistr.TStoBufBotMea",
-    #                     "hydraulic.transfer.outBusTra.T_in[1]",
-    #                     "hydraulic.distribution.sigBusDistr.TStoBufTopMea",
-    #                     "hydraulic.transfer.traControlBus.opening[1]"]
-    single_variables = ["hydraulic.generation.sigBusGen.uPump"]
-    sim_setup = {"start_time": 0,
-                 "stop_time": 604800,
-                 "output_interval": 600}
-    example_bes.auto_gen_inputs(save_path=save_path,
-                                sim_setup=sim_setup,
-                                subsystem="hydraulic")
-    # example_bes.generate_inputs(
-    #     save_path=save_path,
-    #     variables=single_variables,
-    #     variables_prefix="hydraulic.generation.sigBusGen",
-    #     sim_setup=sim_setup
-    # )
-
-    example_bes.close()
