@@ -3,12 +3,13 @@ model SolarThermalAixLib "Solar thermal collector from AixLib"
   extends BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS(redeclare
       model hydGeneration =
         BESMod.Systems.Hydraulical.Generation.SolarThermalBivHPAixLib (
+        use_heaRod=false,
         redeclare model PerDataMainHP =
             AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (refrigerant=
                 "Propane", flowsheet="VIPhaseSeparatorFlowsheet"),
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
-          heatPumpParameters(genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentParallel),
+          heatPumpParameters(genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.Monovalent),
 
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
