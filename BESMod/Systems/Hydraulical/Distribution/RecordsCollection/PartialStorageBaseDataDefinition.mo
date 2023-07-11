@@ -9,6 +9,7 @@ partial record PartialStorageBaseDataDefinition
   parameter Modelica.Units.SI.HeatFlowRate Q_flow_nominal
     "Nominal heat flow rate";
 
+
   // Design
   parameter Real VPerQ_flow=23.5 "Litre per kW of nominal heat flow rate"  annotation (Dialog(group="Geometry"));
   parameter Real storage_H_dia_ratio = 2 "Storage tank height-diameter ration. SOURCE: Working Assumption of all paper before"  annotation (Dialog(group="Geometry"));
@@ -61,6 +62,26 @@ partial record PartialStorageBaseDataDefinition
       enable=use_HC1));
 
   // Heat losses
+
+  parameter
+    BESMod.Systems.Hydraulical.Distribution.Types.EnergyLabel
+    EnergyLabel "Level of Storage Tank Insulation" annotation (Dialog(
+      group="Insulation"));
+
+
+      parameter Real QLosPerDay=if  EnergyLabel==
+      Systems.Hydraulical.Distribution.Types.EnergyLabel.labelAPlus then (5.5+3.16*(V*1000)^(0.4))*0.024
+       elseif EnergyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.labelA
+       then (7+ 3.705*(V*1000)^(0.4))*0.024 elseif EnergyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.labelB
+       then (10.25 + 5.09*(V*1000)^(0.4))*0.024 elseif EnergyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.labelC
+       then (14.33+ 7.13 *(V*1000)^(0.4))*0.024 elseif EnergyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.labelD
+       then (18.83 + 9.33*(V*1000)^(0.4))*0.024 elseif EnergyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.labelE
+       then (23.5 + 11.995*(V*1000)^(0.4))*0.024 elseif EnergyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.labelF
+       then (28.5+ 15.16*(V*1000)^(0.4))*0.024 elseif EnergyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.labelG
+       then (31 + 16.66*(V*1000)^(0.4))*0.024
+       else 0
+      "Heat loss per day. MUST BE IN kWh/d";
+
   parameter Modelica.Units.SI.Temperature T_m
     "Average storage temperature. Used to calculate default heat loss"
     annotation (Dialog(group="Insulation"));
@@ -68,7 +89,7 @@ partial record PartialStorageBaseDataDefinition
     "Ambient temperature. Used to calculate default heat loss"
     annotation (Dialog(group="Insulation"));
   parameter Boolean use_QLos=false   "=true to use QLosPerDay instead of TLosPerDay" annotation (Dialog(group="Insulation"));
-  parameter Real QLosPerDay=1 "Heat loss per day. MUST BE IN kWh/d" annotation (Dialog(enable=use_QLos, group="Insulation"));
+
   parameter Real TLosPerDay=1 "Temperature decline per day in K/d" annotation (Dialog(enable=not use_QLos, group="Insulation"));
   parameter Modelica.Units.SI.CoefficientOfHeatTransfer hConIn=100
     "Model assumptions heat transfer coefficient water <-> wall"
