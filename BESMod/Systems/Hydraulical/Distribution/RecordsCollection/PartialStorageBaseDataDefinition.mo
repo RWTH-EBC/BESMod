@@ -70,17 +70,17 @@ partial record PartialStorageBaseDataDefinition
 
 
       parameter Real QLosPerDay=if  EnergyLabel==
-      Systems.Hydraulical.Distribution.Types.EnergyLabel.labelAPlus then (5.5+3.16*(V*1000)^(0.4))*0.024
-       elseif EnergyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.labelA
-       then (7+ 3.705*(V*1000)^(0.4))*0.024 elseif EnergyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.labelB
-       then (10.25 + 5.09*(V*1000)^(0.4))*0.024 elseif EnergyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.labelC
-       then (14.33+ 7.13 *(V*1000)^(0.4))*0.024 elseif EnergyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.labelD
-       then (18.83 + 9.33*(V*1000)^(0.4))*0.024 elseif EnergyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.labelE
-       then (23.5 + 11.995*(V*1000)^(0.4))*0.024 elseif EnergyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.labelF
-       then (28.5+ 15.16*(V*1000)^(0.4))*0.024 elseif EnergyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.labelG
+      Systems.Hydraulical.Distribution.Types.EnergyLabel.APlus then (5.5+3.16*(V*1000)^(0.4))*0.024
+       elseif EnergyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.A
+       then (7+ 3.705*(V*1000)^(0.4))*0.024 elseif EnergyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.B
+       then (10.25 + 5.09*(V*1000)^(0.4))*0.024 elseif EnergyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.C
+       then (14.33+ 7.13 *(V*1000)^(0.4))*0.024 elseif EnergyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.D
+       then (18.83 + 9.33*(V*1000)^(0.4))*0.024 elseif EnergyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.E
+       then (23.5 + 11.995*(V*1000)^(0.4))*0.024 elseif EnergyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.F
+       then (28.5+ 15.16*(V*1000)^(0.4))*0.024 elseif EnergyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.G
        then (31 + 16.66*(V*1000)^(0.4))*0.024
        else 0
-      "Heat loss per day. MUST BE IN kWh/d";
+      "Heat loss per day. MUST BE IN kWh/d" annotation (Dialog(enable=use_QLos, group="Insulation"));
 
   parameter Modelica.Units.SI.Temperature T_m
     "Average storage temperature. Used to calculate default heat loss"
@@ -88,7 +88,7 @@ partial record PartialStorageBaseDataDefinition
   parameter Modelica.Units.SI.Temperature TAmb
     "Ambient temperature. Used to calculate default heat loss"
     annotation (Dialog(group="Insulation"));
-  parameter Boolean use_QLos=false   "=true to use QLosPerDay instead of TLosPerDay" annotation (Dialog(group="Insulation"));
+  parameter Boolean use_QLos=true   "=true to use QLosPerDay instead of TLosPerDay" annotation (Dialog(group="Insulation"));
 
   parameter Real TLosPerDay=1 "Temperature decline per day in K/d" annotation (Dialog(enable=not use_QLos, group="Insulation"));
   parameter Modelica.Units.SI.CoefficientOfHeatTransfer hConIn=100
