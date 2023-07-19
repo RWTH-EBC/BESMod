@@ -54,10 +54,15 @@ model BES
         distribution(
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
-          bufParameters(VPerQ_flow=parameterStudy.VPerQFlow, dTLoadingHC1=0),
+          bufParameters(
+          VPerQ_flow=parameterStudy.VPerQFlow,
+          dTLoadingHC1=0,
+          energyLabel=BESMod.Systems.Hydraulical.Distribution.Types.EnergyLabel.B),
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
-          dhwParameters(dTLoadingHC1=10),
+          dhwParameters(
+		  dTLoadingHC1=10, 
+		  energyLabel=BESMod.Systems.Hydraulical.Distribution.Types.EnergyLabel.A),
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
           threeWayValveParameters),
       redeclare Systems.Hydraulical.Transfer.IdealValveRadiator transfer(
