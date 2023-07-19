@@ -71,7 +71,7 @@ Furthermore, you are welcome to contribute via [Pull Requests](https://github.co
 
 # How to cite BESMod
 
-URL to proceedings: https://2022.american.conference.modelica.org/documents/NA_Modelica_2022_Proceedings.pdf
+[Paper about BESMod at the Modelica Conference 2022](https://2022.american.conference.modelica.org/documents/01_papers/02_full/1_Wullhorst.pdf) 
 DOI:  10.3384/ECP211869
 
 ```
