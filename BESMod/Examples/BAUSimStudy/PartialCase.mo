@@ -65,14 +65,12 @@ partial model PartialCase
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorage
           bufParameters(
           use_QLos=true,
-          QLosPerDay=1.5,
           T_m=338.15),
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorage
           dhwParameters(
           dTLoadingHC1=10,
           use_QLos=true,
-          QLosPerDay=1.5,
           T_m=65 + 273.15),
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
