@@ -4,7 +4,9 @@ partial model PartialCase
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
     redeclare Systems.Demand.Building.TEASERThermalZone building(redeclare
         BESMod.Systems.Demand.Building.RecordsCollection.RefAachen oneZoneParam(
-          heaLoadFacGrd=0, heaLoadFacOut=0)),
+          heaLoadFacGrd=0, heaLoadFacOut=0),
+    hBui=sum(building.zoneParam.VAir)^(1/3),
+    ABui=sum(building.zoneParam.VAir)^(2/3)),
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
       redeclare Systems.Hydraulical.Generation.HeatPumpAndHeatingRod generation(
@@ -63,14 +65,12 @@ partial model PartialCase
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorage
           bufParameters(
           use_QLos=true,
-          QLosPerDay=1.5,
           T_m=338.15),
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorage
           dhwParameters(
           dTLoadingHC1=10,
           use_QLos=true,
-          QLosPerDay=1.5,
           T_m=65 + 273.15),
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR

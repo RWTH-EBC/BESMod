@@ -89,7 +89,7 @@ model HeatPumpAndHeatingRod "Bivalent monoenergetic heat pump"
     final GEvaOut=0,
     final GEvaIns=0,
     final tauSenT=temperatureSensorData.tau,
-    final transferHeat=true,
+    final transferHeat=temperatureSensorData.transferHeat,
     final allowFlowReversalEva=allowFlowReversal,
     final allowFlowReversalCon=allowFlowReversal,
     final tauHeaTraEva=temperatureSensorData.tauHeaTra,

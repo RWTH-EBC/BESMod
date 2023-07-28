@@ -3,7 +3,8 @@ model TEASERBuilding
   extends PartialModelicaConferenceUseCase(
     redeclare Systems.Demand.Building.TEASERThermalZone building(
       AZone={185.9548},
-      hZone={483.48248/185.9548},                                                                       redeclare
+      hZone={483.48248/185.9548},
+      ARoo=building.oneZoneParam.ARoof,                                                                 redeclare
         BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
         oneZoneParam(heaLoadFacGrd=0, heaLoadFacOut=0),
                       use_verboseEnergyBalance=false,

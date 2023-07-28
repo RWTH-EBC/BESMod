@@ -2,9 +2,9 @@
 model TEASERThermalZone
   "Reduced order building model, coupled with TEASER"
   extends BaseClasses.PartialDemand(
-    ARoo=sum(zoneParam.ARoof)/nZones,
-    hBui=sum(zoneParam.VAir)^(1/3),
-    ABui=2*sum(zoneParam.VAir)^(1/3),
+    hBui=0,
+    ABui=0,
+    ARoo=0,
     hZone=zoneParam.VAir ./ zoneParam.AZone,
     AZone=zoneParam.AZone);
   replaceable parameter AixLib.DataBase.ThermalZones.ZoneRecordDummy oneZoneParam constrainedby
@@ -23,6 +23,14 @@ model TEASERThermalZone
     annotation (Dialog(tab="Dynamics"));
   parameter Modelica.Units.SI.Temperature T_start=293.15
     "Start value of temperature" annotation (Dialog(tab="Initialization"));
+  final parameter Modelica.Units.SI.HeatFlowRate QRec_flow_nominal[nZones]= {
+        (zoneParam[i].heaLoadFacOut +
+          zoneParam[i].VAir * (0.5 - zoneParam[i].baseACH) / 3600 * cp * rho) *
+          (TSetZone_nominal[i] - TOda_nominal) +
+        zoneParam[i].heaLoadFacGrd*(TSetZone_nominal[i] - zoneParam[i].TSoil)
+        for i in 1:nZones}
+    "Nominal heat flow rate according to record at TOda_nominal";
+  parameter Modelica.Units.SI.Temperature TOda_nominal "Nominal outdoor air temperature";
 
   AixLib.ThermalZones.ReducedOrder.ThermalZone.ThermalZone thermalZone[nZones](
     redeclare each final package Medium = MediumZone,
@@ -365,5 +373,10 @@ equation
   connect(realPassThroughTDry.y, thermalZone.ventTemp) annotation (Line(points=
           {{103,62},{102,62},{102,74},{52,74},{52,42.24},{33.52,42.24}}, color=
           {0,0,127}));
-    annotation (Diagram(coordinateSystem(extent={{-100,-220},{100,100}})));
+    annotation (Diagram(coordinateSystem(extent={{-100,-220},{100,100}})),
+      Documentation(info="<html>
+<p>This model uses the reduced-order approach with the common TEASER output to model the building envelope. Relevant KPIs are calculated.</p>
+<p>You can model multiple thermal zones. We refer to the documentation of TEASER and the ThermalZone model for more information on usage.</p>
+<p>Assumptions</p>
+</html>"));
 end TEASERThermalZone;

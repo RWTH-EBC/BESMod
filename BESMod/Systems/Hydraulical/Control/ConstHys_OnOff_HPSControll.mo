@@ -6,11 +6,11 @@ model ConstHys_OnOff_HPSControll
       BESMod.Systems.Hydraulical.Control.Components.HeatPumpNSetController.OnOffHeatPumpController
       HP_nSet_Controller(final n_opt=nOptHP),
     redeclare
-      BESMod.Systems.Hydraulical.Control.Components.OnOffController.ConstantHysteresis
+      Components.OnOffController.ConstantHysteresisTimeBasedHR
       BufferOnOffController(Hysteresis=bivalentControlData.dTHysBui, dt_hr=
           bivalentControlData.dtHeaRodBui),
     redeclare
-      BESMod.Systems.Hydraulical.Control.Components.OnOffController.ConstantHysteresis
+      Components.OnOffController.ConstantHysteresisTimeBasedHR
       DHWOnOffContoller(Hysteresis=bivalentControlData.dTHysDHW, dt_hr=
           bivalentControlData.dtHeaRodDHW));
   parameter Real nOptHP=0.7
