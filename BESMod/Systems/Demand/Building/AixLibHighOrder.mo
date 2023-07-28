@@ -64,8 +64,8 @@ model AixLibHighOrder "High order building model from AixLib library"
     each WeatherFormat=1) annotation(Placement(transformation(extent={{18,42},{42,
             64}})));
 
-  Modelica.Blocks.Sources.Constant constVentRate[nZones](final k=ventRate)
-    if useConstVentRate               annotation (Placement(transformation(
+  Modelica.Blocks.Sources.Constant constVentRate[nZones](final k=ventRate) if
+       useConstVentRate               annotation (Placement(transformation(
           extent={{10,-10},{-10,10}}, rotation=180,
         origin={-90,10})));
   Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow InternalGains[nZones]

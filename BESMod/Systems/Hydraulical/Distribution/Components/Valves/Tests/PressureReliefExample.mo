@@ -9,7 +9,7 @@ model PressureReliefExample
     dpFullOpen_nominal=dp_nominal*1.4,
     dpThreshold_nominal=dp_nominal*1.1,
     use_inputFilter=false,
-    dpValve_nominal=dp_nominal)              if use_relVal
+    dpValve_nominal=dp_nominal) if              use_relVal
                                           annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,

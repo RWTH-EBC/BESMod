@@ -8,7 +8,6 @@ Tests
 RecordsCollection
 Types
 BaseClasses
-HeatPumpAndBoilerSerie
-HeatPumpAndGasBoilerSerie
+HeatPumpAndGasBoilerSerial
 HeatPumpAndGasBoilerParallel
 OnlyHeatPump

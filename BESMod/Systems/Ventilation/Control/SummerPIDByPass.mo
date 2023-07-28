@@ -3,8 +3,8 @@ model SummerPIDByPass "Bypass the HEX in summer"
   extends BaseClasses.PartialControl;
   parameter Boolean use_bypass = true "=false to disable the bypass";
 
-  Components.SummerByPass                     summerByPass
-                                        if use_bypass
+  Components.SummerByPass                     summerByPass if
+                                           use_bypass
     annotation (Placement(transformation(extent={{-30,-14},{22,36}})));
   Modelica.Blocks.Sources.Constant constZero(k=0) if not use_bypass
     "Bypass is not used"

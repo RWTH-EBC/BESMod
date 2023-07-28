@@ -93,8 +93,8 @@ partial model PartialDistributionTwoStorageParallelDetailed
         redeclare final AixLib.DataBase.Pipes.Copper.Copper_10x0_6 pipeHC2)
         annotation(Dialog(group="Component data"),
       choicesAllMatching=true, Placement(transformation(extent={{20,-62},{34,-48}})));
-  replaceable parameter Generation.RecordsCollection.HeatingRodBaseDataDefinition heatingRodAftBufParameters
-    if use_heatingRodAfterBuffer
+  replaceable parameter Generation.RecordsCollection.HeatingRodBaseDataDefinition heatingRodAftBufParameters if
+       use_heatingRodAfterBuffer
     "Parameters for heating rod after buffer storage"
     annotation (Dialog(group="Component data", enable=use_heatingRodAfterBuffer),
     choicesAllMatching=true, Placement(transformation(
@@ -254,8 +254,8 @@ partial model PartialDistributionTwoStorageParallelDetailed
         origin={50,90})));
 
   AixLib.Fluid.Interfaces.PassThroughMedium pasThrHeaRodBuf(redeclare package
-      Medium = Medium, allowFlowReversal=allowFlowReversal)
-    if not use_heatingRodAfterBuffer
+      Medium = Medium, allowFlowReversal=allowFlowReversal) if
+       not use_heatingRodAfterBuffer
     annotation (Placement(transformation(extent={{40,54},{60,74}})));
 
   Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow QHRStoDHWPre_flow(final
@@ -264,8 +264,8 @@ partial model PartialDistributionTwoStorageParallelDetailed
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-70,-50})));
-  Modelica.Blocks.Math.Gain gain(k=dhwParameters.QHR_flow_nominal)
- if dhwParameters.use_hr
+  Modelica.Blocks.Math.Gain gain(k=dhwParameters.QHR_flow_nominal) if
+    dhwParameters.use_hr
     annotation (Placement(transformation(extent={{-112,-60},{-92,-40}})));
   Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow QHRStoBufPre_flow(final
       T_ref=293.15, final alpha=0) if bufParameters.use_hr annotation (
@@ -273,8 +273,8 @@ partial model PartialDistributionTwoStorageParallelDetailed
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-70,30})));
-  Modelica.Blocks.Math.Gain gainHRBuf(k=bufParameters.QHR_flow_nominal)
- if bufParameters.use_hr
+  Modelica.Blocks.Math.Gain gainHRBuf(k=bufParameters.QHR_flow_nominal) if
+    bufParameters.use_hr
     annotation (Placement(transformation(extent={{-100,0},{-80,20}})));
 
   Components.Valves.ThreeWayValveWithFlowReturn threeWayValveWithFlowReturn(
@@ -317,8 +317,8 @@ partial model PartialDistributionTwoStorageParallelDetailed
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={30,-170})));
-  Utilities.KPIs.EnergyKPICalculator eneKPICalAftBufHeaRod(use_inpCon=true)
-    if use_heatingRodAfterBuffer annotation (Placement(transformation(
+  Utilities.KPIs.EnergyKPICalculator eneKPICalAftBufHeaRod(use_inpCon=true) if
+       use_heatingRodAfterBuffer annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={30,-130})));

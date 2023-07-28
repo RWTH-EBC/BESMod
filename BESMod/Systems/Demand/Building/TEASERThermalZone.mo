@@ -16,7 +16,7 @@ model TEASERThermalZone
 
   parameter Boolean use_verboseEnergyBalance=true   "=false to disable the integration of the verbose energy balance";
   parameter Modelica.Units.SI.TemperatureDifference dTComfort=2
-    "Temperature difference to room set temperature at which the comfort is still acceptable. In EN 16798-1, all temperatures below 22 °C - 2 K count as discomfort. Hence the default value. If your room set temperature is lower, consider using smaller values.";
+    "Temperature difference to room set temperature at which the comfort is still acceptable. In DIN EN 15251, all temperatures below 22 °C - 2 K count as discomfort. Hence the default value. If your room set temperature is lower, consider using smaller values.";
 
   parameter Modelica.Fluid.Types.Dynamics energyDynamics=Modelica.Fluid.Types.Dynamics.DynamicFreeInitial
     "Type of energy balance: dynamic (3 initialization options) or steady state"
@@ -99,14 +99,14 @@ model TEASERThermalZone
         rotation=180,
         origin={30,-206})));
   Modelica.Blocks.Nonlinear.Limiter limVentUp[nZones](each final
-      uMax=Modelica.Constants.inf, each final uMin=0)
-    if use_ventilation and use_verboseEnergyBalance
+      uMax=Modelica.Constants.inf, each final uMin=0) if
+       use_ventilation and use_verboseEnergyBalance
     annotation (Placement(transformation(extent={{-9,-9},{9,9}},
         rotation=180,
         origin={63,-185})));
   Modelica.Blocks.Nonlinear.Limiter limVentDown[nZones](each final
-      uMax=0, each final uMin=-Modelica.Constants.inf)
-    if use_ventilation and use_verboseEnergyBalance
+      uMax=0, each final uMin=-Modelica.Constants.inf) if
+       use_ventilation and use_verboseEnergyBalance
     annotation (Placement(transformation(extent={{-9,-9},{9,9}},
         rotation=180,
         origin={63,-205})));
@@ -129,12 +129,12 @@ model TEASERThermalZone
         rotation=0,
         origin={-30,-186})));
   Modelica.Blocks.Nonlinear.Limiter limAirExcUp[nZones](each final
-      uMax=Modelica.Constants.inf, each final uMin=0)
-                                                     if use_verboseEnergyBalance
+      uMax=Modelica.Constants.inf, each final uMin=0) if
+                                                        use_verboseEnergyBalance
     annotation (Placement(transformation(extent={{-70,-166},{-50,-146}})));
   Modelica.Blocks.Nonlinear.Limiter limAixExDown[nZones](
-      each final uMax=0, each final uMin=-Modelica.Constants.inf)
-                                                                 if use_verboseEnergyBalance
+      each final uMax=0, each final uMin=-Modelica.Constants.inf) if
+                                                                    use_verboseEnergyBalance
     annotation (Placement(transformation(extent={{-70,-196},{-50,-176}})));
   Modelica.Thermal.HeatTransfer.Sensors.HeatFlowSensor heatFlowSensorRad[
     nZones]
@@ -143,8 +143,8 @@ model TEASERThermalZone
     nZones]
     annotation (Placement(transformation(extent={{-86,50},{-66,70}})));
   Modelica.Blocks.Math.Add          addTra
-                                         [nZones]
-    if use_hydraulic and use_verboseEnergyBalance
+                                         [nZones] if
+       use_hydraulic and use_verboseEnergyBalance
     annotation (Placement(transformation(extent={{-60,-80},{-40,-60}})));
   BESMod.Utilities.KPIs.ComfortCalculator comfortCalculatorCool[nZones](TComBou=
        TSetZone_nominal .+ dTComfort, each for_heating=false)
