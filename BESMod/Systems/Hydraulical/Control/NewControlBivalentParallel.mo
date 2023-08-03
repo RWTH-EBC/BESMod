@@ -183,7 +183,7 @@ equation
   connect(OperationalBoundryCheck.y, or1.u2) annotation (Line(points={{-137,-454},
           {-137,-422},{-92,-422}}, color={255,0,255}));
   connect(lessThreshold.y, CheckBoilerConditions.u[1]) annotation (Line(points={{-130.4,
-          -320},{-20,-320},{-20,-466.933},{-4,-466.933}},         color={255,0,255}));
+          -320},{-20,-320},{-20,-476.033},{-4,-476.033}},         color={255,0,255}));
   connect(or1.y, CheckBoilerConditions.u[2]) annotation (Line(points={{-69,-414},
           {-52,-414},{-52,-416},{-32,-416},{-32,-473},{-4,-473}}, color={255,0,255}));
   connect(CheckBoilerConditions.y, or2.u2) annotation (Line(points={{23.95,-473},
@@ -193,7 +193,7 @@ equation
   connect(CheckTCut_Off.y, or2.u1) annotation (Line(points={{95.6,-372},{136,-372},
           {136,-450},{178,-450}}, color={255,0,255}));
   connect(heatDemand_AuxiliarHeater.y, CheckBoilerConditions.u[3]) annotation (
-      Line(points={{26.75,23},{26.75,-196},{26,-196},{26,-479.067},{-4,-479.067}},
+      Line(points={{26.75,23},{26.75,-196},{26,-196},{26,-469.967},{-4,-469.967}},
         color={255,0,255}));
   connect(constZero2.y, BoilerSwitch.u3) annotation (Line(points={{-29,-238},{-58,
           -238},{-58,-220}}, color={0,0,127}));

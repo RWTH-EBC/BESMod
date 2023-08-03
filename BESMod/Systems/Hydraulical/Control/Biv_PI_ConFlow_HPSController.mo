@@ -1,7 +1,7 @@
 within BESMod.Systems.Hydraulical.Control;
 model Biv_PI_ConFlow_HPSController
   "Using alt_bivalent + PI Inverter + Return Temperature as controller"
-  extends BaseClasses.PartialTwoPoint_HPS_Controller(
+  extends BaseClasses.PartialHeatPumpSystemController(
     redeclare
       BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.ConstTSet_DHW
       TSet_DHW,

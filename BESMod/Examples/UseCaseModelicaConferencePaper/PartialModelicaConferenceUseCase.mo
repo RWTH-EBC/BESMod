@@ -72,12 +72,12 @@ partial model PartialModelicaConferenceUseCase
         distribution(
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
-          bufParameters(dTLoadingHC1=0),
+          parStoBuf(dTLoadingHC1=0),
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
-          dhwParameters(dTLoadingHC1=10),
+          parStoDHW(dTLoadingHC1=10),
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
-          threeWayValveParameters),
+          parThrWayVal),
       redeclare Systems.Hydraulical.Transfer.IdealValveRadiator transfer(
         dTTra_nominal=fill(10, hydraulic.transfer.nParallelDem),
         f_design=fill(1.2, hydraulic.transfer.nParallelDem),

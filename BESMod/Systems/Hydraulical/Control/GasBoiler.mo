@@ -1,6 +1,6 @@
 within BESMod.Systems.Hydraulical.Control;
-model MonovalentGasBoiler "PI Control of gas boiler"
-  extends BaseClasses.SystemWithThermostaticValveControl;
+model GasBoiler "PI Control of gas boiler"
+  extends BaseClasses.PartialThermostaticValveControl;
   BESMod.Systems.Hydraulical.Control.Components.HeatingCurve
     heatingCurve(
     GraHeaCurve=monovalentControlParas.gradientHeatCurve,
@@ -58,8 +58,8 @@ model MonovalentGasBoiler "PI Control of gas boiler"
     final TBiv=monovalentControlParas.TOda_nominal)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-218,
             -36},{-204,-22}})));
-  Modelica.Blocks.Sources.BooleanConstant booleanConstant(k=false) if
-       not use_dhw annotation (Placement(transformation(
+  Modelica.Blocks.Sources.BooleanConstant booleanConstant(k=false)
+    if not use_dhw annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,
         origin={-30,-10})));
@@ -198,4 +198,4 @@ equation
       horizontalAlignment=TextAlignment.Left));
   connect(bufOn.u, boilerOnOffDHW.y) annotation (Line(points={{-82,-50},{-122,
           -50},{-122,50},{-139,50}}, color={255,0,255}));
-end MonovalentGasBoiler;
+end GasBoiler;

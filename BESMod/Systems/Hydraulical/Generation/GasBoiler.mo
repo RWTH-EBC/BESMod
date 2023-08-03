@@ -1,24 +1,28 @@
 within BESMod.Systems.Hydraulical.Generation;
 model GasBoiler "Just a gas boiler"
-  extends BaseClasses.PartialGeneration(dp_nominal={boilerNoControl.dp_nominal},
-                                        final nParallelDem=1);
-  replaceable parameter AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition
-    paramBoiler "Parameters for Boiler" annotation(Dialog(group="Component data"),
-    choicesAllMatching=true);
-  parameter Real etaTempBased[:,2]=[293.15,1.09; 303.15,1.08; 313.15,1.05;
-      323.15,1.; 373.15,0.99] "Table matrix for temperature based efficiency"
+  extends BaseClasses.PartialGeneration(dp_nominal={boi.dp_nominal}, final
+      nParallelDem=1);
+
+  parameter Real etaTem[:,2]=[293.15,1.09; 303.15,1.08; 313.15,1.05; 323.15,1.;
+      373.15,0.99] "Temperature based efficiency"
         annotation(Dialog(group="Component data"));
+
+  replaceable parameter AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition
+    parBoi
+    "Parameters for Boiler"
+    annotation(Placement(transformation(extent={{-58,44},{-42,60}})),
+      choicesAllMatching=true, Dialog(group="Component data"));
+
   replaceable parameter
     BESMod.Systems.RecordsCollection.TemperatureSensors.TemperatureSensorBaseDefinition
     parTemSen
     annotation (Dialog(group="Component data"), choicesAllMatching=true,
-    Placement(transformation(extent={{-98,-16},{-78,4}})));
+    Placement(transformation(extent={{-98,-16},{-80,-2}})));
   replaceable parameter
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
     parPum annotation (Dialog(group="Component data"),
-      choicesAllMatching=true, Placement(transformation(extent={{54,-80},
-            {68,-68}})));
-  AixLib.Fluid.BoilerCHP.BoilerNoControl boilerNoControl(
+      choicesAllMatching=true, Placement(transformation(extent={{64,-76},{78,-64}})));
+  AixLib.Fluid.BoilerCHP.BoilerNoControl boi(
     redeclare package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=m_flow_nominal[1],
@@ -32,12 +36,12 @@ model GasBoiler "Just a gas boiler"
     final rho_default=rho,
     final p_start=p_start,
     final T_start=T_start,
-    paramBoiler=paramBoiler,
-    etaTempBased=etaTempBased)
+    paramBoiler=parBoi,
+    etaTempBased=etaTem) "Boiler with external control"
     annotation (Placement(transformation(extent={{-66,-6},{-34,26}})));
 
 
-  Utilities.KPIs.EnergyKPICalculator KPIQHR(use_inpCon=false, y=boilerNoControl.QflowCalculation.y)
+  Utilities.KPIs.EnergyKPICalculator KPIQHR(use_inpCon=false, y=boi.QflowCalculation.y)
     annotation (Placement(transformation(extent={{-40,-100},{-20,-80}})));
 
   IBPSA.Fluid.Movers.SpeedControlled_y pump(
@@ -85,36 +89,36 @@ model GasBoiler "Just a gas boiler"
     calc_numSwi=true)
     annotation (Placement(transformation(extent={{-60,-80},{-40,-60}})));
 
-initial equation
-  assert(paramBoiler.Q_nom >= Q_flow_nominal[1], "Nominal heat flow rate
+initial algorithm
+  assert(parBoi.Q_nom >= Q_flow_nominal[1], "Nominal heat flow rate
   of boiler is smaller than nominal heat demand", AssertionLevel.warning);
 
 equation
 
-  connect(boilerNoControl.port_b, portGen_out[1]) annotation (Line(points={{-34,
-          10},{-20,10},{-20,80},{100,80}}, color={0,127,255}));
-  connect(boilerNoControl.T_in, sigBusGen.TBoiIn) annotation (Line(points={{-38.48,
-          19.28},{2,19.28},{2,98}}, color={0,0,127}), Text(
+  connect(boi.port_b, portGen_out[1]) annotation (Line(points={{-34,10},{-20,10},{
+          -20,80},{100,80}}, color={0,127,255}));
+  connect(boi.T_in, sigBusGen.TBoiIn) annotation (Line(points={{-38.48,19.28},{2,19.28},
+          {2,98}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(boilerNoControl.T_out, sigBusGen.TBoiOut) annotation (Line(points={{-38.48,
-          15.12},{2,15.12},{2,98}}, color={0,0,127}), Text(
+  connect(boi.T_out, sigBusGen.TBoiOut) annotation (Line(points={{-38.48,15.12},{2,
+          15.12},{2,98}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(boilerNoControl.u_rel, sigBusGen.uBoiSet) annotation (Line(points={{-61.2,
-          21.2},{-68,21.2},{-68,98},{2,98}}, color={0,0,127}), Text(
+  connect(boi.u_rel, sigBusGen.uBoiSet) annotation (Line(points={{-61.2,21.2},{-68,
+          21.2},{-68,98},{2,98}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(portGen_in[1], pump.port_a) annotation (Line(points={{100,-2},{94,-2},
           {94,-6},{86,-6},{86,-50},{56,-50}}, color={0,127,255}));
-  connect(boilerNoControl.port_a, pump.port_b) annotation (Line(points={{-66,10},
-          {-68,10},{-68,-50},{36,-50},{36,-50}}, color={0,127,255}));
+  connect(boi.port_a, pump.port_b) annotation (Line(points={{-66,10},{-68,10},{-68,
+          -50},{36,-50},{36,-50}}, color={0,127,255}));
   connect(bou1.ports[1], pump.port_a)
     annotation (Line(points={{66,-36},{66,-50},{56,-50}}, color={0,127,255}));
   connect(zeroLoad.internalElectricalPin, internalElectricalPin) annotation (

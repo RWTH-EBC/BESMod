@@ -2,7 +2,7 @@ within BESMod.Systems.Hydraulical.Control.BaseClasses;
 partial model PartialTwoPoint_HPS_Controller_BivalentBoiler
   "Partial model with replaceable blocks for rule based control of HPS using Boiler"
   extends
-    BESMod.Systems.Hydraulical.Control.BaseClasses.SystemWithThermostaticValveControl;
+    BESMod.Systems.Hydraulical.Control.BaseClasses.PartialThermostaticValveControl;
   replaceable
     BESMod.Systems.Hydraulical.Control.Components.OnOffController.BaseClasses.PartialOnOffController
     DHWOnOffContoller annotation (choicesAllMatching=true, Placement(
@@ -178,14 +178,14 @@ equation
       horizontalAlignment=TextAlignment.Right));
 
   connect(DHWOnOffContoller.Auxilliar_Heater_On, heatDemand_AuxiliarHeater.u[1])
-    annotation (Line(points={{-110.88,74},{-92,74},{-92,30},{-94,30},{-94,
-          21.8333},{16,21.8333}}, color={255,0,255}));
+    annotation (Line(points={{-110.88,74},{-92,74},{-92,30},{-94,30},{-94,21.8333},
+          {16,21.8333}},          color={255,0,255}));
   connect(BufferOnOffController.Auxilliar_Heater_On, heatDemand_AuxiliarHeater.u[
     2]) annotation (Line(points={{-108.88,39.5},{-108.88,38},{-94,38},{-94,23},
           {16,23}}, color={255,0,255}));
-  connect(TSet_DHW.y, heatDemand_AuxiliarHeater.u[3]) annotation (Line(points={
-          {-190.8,71.04},{-186,71.04},{-186,68},{-178,68},{-178,56},{-92,56},{
-          -92,30},{-94,30},{-94,24.1667},{16,24.1667}}, color={255,0,255}));
+  connect(TSet_DHW.y, heatDemand_AuxiliarHeater.u[3]) annotation (Line(points={{-190.8,
+          71.04},{-186,71.04},{-186,68},{-178,68},{-178,56},{-92,56},{-92,30},{
+          -94,30},{-94,24.1667},{16,24.1667}},          color={255,0,255}));
 
   connect(securityControl.modeSet, hp_mode.y) annotation (Line(points={{191.867,
           77.6},{168,77.6},{168,69},{162.7,69}}, color={255,0,255}));

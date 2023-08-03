@@ -2,7 +2,11 @@ clear
 
 convertClear();
 
-// Bus connectors
+
+convertClass("BESMod.Systems.Hydraulical.Generation.SolarThermalBivHPBuiLib", "BESMod.Systems.Hydraulical.Generation.SolarThermalBivHPBuiLib");
+convertClass("BESMod.Systems.Hydraulical.Generation.SolarThermalBivHPAixLib", "BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump");
+
+// Parameters
 convertElement("BESMod.Systems.Hydraulical.Generation.HeatPumpAndHeatingRod", "heatPumpParameters", "parHeaPum");
 convertElement("BESMod.Systems.Hydraulical.Generation.HeatPumpAndHeatingRod", "heatingRodParameters", "parHeaRod");
 convertElement("BESMod.Systems.Hydraulical.Generation.HeatPumpAndHeatingRod", "temperatureSensorData", "parTemSen");
@@ -21,4 +25,12 @@ convertElement("BESMod.Systems.Hydraulical.Generation.SolarThermalBivHPAixLib", 
 convertElement("BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedDirectLoading", "temperatureSensorData", "parTemSen");
 convertElement("BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedIndirectLoading", "temperatureSensorData", "parTemSen");
 
-convertClass
+
+convertElement("BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedIndirectLoading", "bufParameters", "parStoBuf");
+convertElement("BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedIndirectLoading", "dhwParameters", "parStoDHW");
+convertElement("BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedIndirectLoading", "threeWayValveParameters", "parThrWayVal");
+convertElement("BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedIndirectLoading", "heatingRodAftBufPar", "parHeaRodAftBuf");
+convertElement("BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedDirectLoading", "bufParameters", "parStoBuf");
+convertElement("BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedDirectLoading", "dhwParameters", "parStoDHW");
+convertElement("BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedDirectLoading", "threeWayValveParameters", "parThrWayVal");
+convertElement("BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedDirectLoading", "heatingRodAftBufPar", "parHeaRodAftBuf");

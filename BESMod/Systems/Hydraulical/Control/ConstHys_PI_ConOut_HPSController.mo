@@ -1,7 +1,7 @@
 within BESMod.Systems.Hydraulical.Control;
 model ConstHys_PI_ConOut_HPSController
   "Hys + PI with condenser outlet as control variable"
-  extends BaseClasses.PartialTwoPoint_HPS_Controller(
+  extends BaseClasses.PartialHeatPumpSystemController(
     redeclare
       BESMod.Systems.Hydraulical.Control.Components.HeatPumpNSetController.PI_InverterHeatPumpController
       HP_nSet_Controller(

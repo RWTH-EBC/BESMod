@@ -68,12 +68,12 @@ model BES_HOM
         distribution(
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
-          bufParameters(VPerQ_flow=parameterStudy.VPerQFlow, dTLoadingHC1=0),
+          parStoBuf(VPerQ_flow=parameterStudy.VPerQFlow, dTLoadingHC1=0),
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
-          dhwParameters(dTLoadingHC1=10),
+          parStoDHW(dTLoadingHC1=10),
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
-          threeWayValveParameters),
+          parThrWayVal),
       redeclare BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator transfer(
           redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData

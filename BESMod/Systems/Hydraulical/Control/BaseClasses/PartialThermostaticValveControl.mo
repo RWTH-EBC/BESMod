@@ -1,5 +1,6 @@
 within BESMod.Systems.Hydraulical.Control.BaseClasses;
-partial model SystemWithThermostaticValveControl
+partial model PartialThermostaticValveControl
+  "Only provide thermostatic valve control"
   extends PartialControl;
   replaceable
     BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.BaseClasses.PartialThermostaticValveController
@@ -44,4 +45,4 @@ equation
           lineColor={162,29,33},
           lineThickness=1,
           textString="Thermostatic Valve")}));
-end SystemWithThermostaticValveControl;
+end PartialThermostaticValveControl;

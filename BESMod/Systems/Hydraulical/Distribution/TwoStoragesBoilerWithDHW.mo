@@ -3,10 +3,10 @@ model TwoStoragesBoilerWithDHW
   "Two storages with a boiler after buffer and with DHW support"
   extends BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution(
     final dpDem_nominal={0},
-    final dpSup_nominal={2*(threeWayValveParameters1.dpValve_nominal + max(
-        threeWayValveParameters1.dp_nominal))},
-    final dTTraDHW_nominal=dhwParameters.dTLoadingHC1,
-    final dTTra_nominal={bufParameters.dTLoadingHC1},
+    final dpSup_nominal={2*(parThrWayVal1.dpValve_nominal + max(
+        parThrWayVal1.dp_nominal))},
+    final dTTraDHW_nominal=parStoDHW.dTLoadingHC1,
+    final dTTra_nominal={parStoBuf.dTLoadingHC1},
     final m_flow_nominal=mDem_flow_nominal,
     final TSup_nominal=TDem_nominal .+ dTLoss_nominal .+ dTTra_nominal,
     final nParallelSup=1,
@@ -22,7 +22,7 @@ model TwoStoragesBoilerWithDHW
  parameter Modelica.Units.SI.PressureDifference dpBufHCSto_nominal=0
    "Nominal pressure difference in buffer storage heating coil";
  final parameter Modelica.Units.SI.PressureDifference dpDHWHCSto_nominal=sum(
-     storageDHW.heatingCoil1.pipe.res.dp_nominal)
+     stoDHW.heatingCoil1.pipe.res.dp_nominal)
    "Nominal pressure difference in DHW storage heating coil";
  parameter Modelica.Units.SI.HeatFlowRate QHRAftBuf_flow_nominal
    "Nominal heat flow rate of heating rod after DHW storage"
@@ -37,7 +37,7 @@ model TwoStoragesBoilerWithDHW
    parTemSen
    annotation (choicesAllMatching=true, Placement(transformation(extent={{126,116},
             {144,130}})));
- replaceable parameter BESMod.Systems.RecordsCollection.Valves.ThreeWayValve threeWayValveParameters1
+ replaceable parameter BESMod.Systems.RecordsCollection.Valves.ThreeWayValve parThrWayVal1
     constrainedby BESMod.Systems.RecordsCollection.Valves.ThreeWayValve(
     final dp_nominal={dpBufHCSto_nominal,dpDHWHCSto_nominal},
     final m_flow_nominal=mSup_flow_nominal[1],
@@ -47,7 +47,7 @@ model TwoStoragesBoilerWithDHW
 
 replaceable
    BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition
-   bufParameters(discretizationStepsHR=2)
+   parStoBuf(discretizationStepsHR=2)
                  constrainedby
     BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition(
    final Q_flow_nominal=Q_flow_nominal[1]*f_design[1],
@@ -58,8 +58,8 @@ replaceable
    final QHC1_flow_nominal=Q_flow_nominal[1]*f_design[1],
    final mHC1_flow_nominal=mSup_flow_nominal[1],
    redeclare final AixLib.DataBase.Pipes.Copper.Copper_12x1 pipeHC1,
-   final use_HC2=storageBuf.useHeatingCoil2,
-   final use_HC1=storageBuf.useHeatingCoil1,
+   final use_HC2=stoBuf.useHeatingCoil2,
+   final use_HC1=stoBuf.useHeatingCoil1,
    final dTLoadingHC1=0,
    final dTLoadingHC2=9999999,
    final fHeiHC2=1,
@@ -72,14 +72,14 @@ replaceable
 
   replaceable
     BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition
-    dhwParameters(redeclare final AixLib.DataBase.Pipes.Copper.Copper_28x1
+    parStoDHW(redeclare final AixLib.DataBase.Pipes.Copper.Copper_28x1
       pipeHC1, redeclare final AixLib.DataBase.Pipes.Copper.Copper_28x1 pipeHC2)
     constrainedby
     BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition(
     final rho=rho,
     final c_p=cp,
     final TAmb=TAmb,
-    final use_HC1=storageDHW.useHeatingCoil1,
+    final use_HC1=stoDHW.useHeatingCoil1,
     final QHC1_flow_nominal=Q_flow_nominal[1]*f_design[1],
     final V=VDHWDay,
     final Q_flow_nominal=QDHW_flow_nominal,
@@ -87,7 +87,7 @@ replaceable
     T_m=TDHW_nominal,
     final mHC1_flow_nominal=mSup_flow_nominal[1],
     redeclare final AixLib.DataBase.Pipes.Copper.Copper_12x1 pipeHC1,
-    final use_HC2=storageDHW.useHeatingCoil2,
+    final use_HC2=stoDHW.useHeatingCoil2,
     final dTLoadingHC2=5,
     final fHeiHC2=1,
     final fDiaHC2=1,
@@ -97,37 +97,37 @@ replaceable
     annotation (choicesAllMatching=true, Placement(transformation(extent={{20,-62},
             {34,-48}})));
 
- Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixedTemperatureBuf(final T=bufParameters.TAmb)           annotation (Placement(transformation(
+ Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixedTemperatureBuf(final T=parStoBuf.TAmb)           annotation (Placement(transformation(
        extent={{-12,-12},{12,12}},
        rotation=0,
        origin={-82,2})));
- Modelica.Blocks.Sources.RealExpression T_stoDHWTop(final y(unit="K", displayUnit="degC")=storageDHW.layer[
-       dhwParameters.nLayer].T) annotation (Placement(transformation(
+ Modelica.Blocks.Sources.RealExpression T_stoDHWTop(final y(unit="K", displayUnit="degC")=stoDHW.layer[
+       parStoDHW.nLayer].T) annotation (Placement(transformation(
        extent={{-17,-6},{17,6}},
        rotation=0,
        origin={-33,70})));
- Modelica.Blocks.Sources.RealExpression T_stoBufTop(final y(unit="K", displayUnit="degC")=storageBuf.layer[
-       bufParameters.nLayer].T) annotation (Placement(transformation(
+ Modelica.Blocks.Sources.RealExpression T_stoBufTop(final y(unit="K", displayUnit="degC")=stoBuf.layer[
+       parStoBuf.nLayer].T) annotation (Placement(transformation(
        extent={{-16,-5},{16,5}},
        rotation=0,
        origin={-34,87})));
- Modelica.Blocks.Sources.RealExpression T_stoBufBot(final y(unit="K", displayUnit="degC")=storageBuf.layer[1].T)
+ Modelica.Blocks.Sources.RealExpression T_stoBufBot(final y(unit="K", displayUnit="degC")=stoBuf.layer[1].T)
    annotation (Placement(transformation(
        extent={{-16,-5},{16,5}},
        rotation=0,
        origin={-34,79})));
- Modelica.Blocks.Sources.RealExpression T_stoDHWBot(final y(unit="K", displayUnit="degC")=storageDHW.layer[1].T)
+ Modelica.Blocks.Sources.RealExpression T_stoDHWBot(final y(unit="K", displayUnit="degC")=stoDHW.layer[1].T)
    annotation (Placement(transformation(
        extent={{-16,-5},{16,5}},
        rotation=0,
        origin={-34,95})));
 
- Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixedTemperatureDHW(final T=dhwParameters.TAmb)           annotation (Placement(transformation(
+ Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixedTemperatureDHW(final T=parStoDHW.TAmb)           annotation (Placement(transformation(
        extent={{-10,-10},{10,10}},
        rotation=0,
        origin={-72,-88})));
 
- AixLib.Fluid.Storage.BufferStorage storageBuf(
+ AixLib.Fluid.Storage.BufferStorage stoBuf(
    redeclare final package Medium = Medium,
    final energyDynamics=energyDynamics,
    final p_start=p_start,
@@ -136,33 +136,33 @@ replaceable
    redeclare package MediumHC2 = MediumGen,
    final m1_flow_nominal=mSup_flow_nominal[1],
    final m2_flow_nominal=m_flow_nominal[1],
-   final mHC1_flow_nominal=bufParameters.mHC1_flow_nominal,
-   final mHC2_flow_nominal=bufParameters.mHC2_flow_nominal,
+   final mHC1_flow_nominal=parStoBuf.mHC1_flow_nominal,
+   final mHC2_flow_nominal=parStoBuf.mHC2_flow_nominal,
     useHeatingCoil1=false,
    final useHeatingCoil2=false,
-   final useHeatingRod=bufParameters.use_hr,
+   final useHeatingRod=parStoBuf.use_hr,
    final TStart=T_start,
    redeclare final BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.bufferData
                                                               data(
-     final hTank=bufParameters.h,
+     final hTank=parStoBuf.h,
      hHC1Low=0,
-     hHR=bufParameters.nLayerHR/bufParameters.nLayer*bufParameters.h,
-     final dTank=bufParameters.d,
-     final sWall=bufParameters.sIns/2,
-     final sIns=bufParameters.sIns/2,
-     final lambdaWall=bufParameters.lambda_ins,
-     final lambdaIns=bufParameters.lambda_ins,
+     hHR=parStoBuf.nLayerHR/parStoBuf.nLayer*parStoBuf.h,
+     final dTank=parStoBuf.d,
+     final sWall=parStoBuf.sIns/2,
+     final sIns=parStoBuf.sIns/2,
+     final lambdaWall=parStoBuf.lambda_ins,
+     final lambdaIns=parStoBuf.lambda_ins,
      final rhoIns=373000,
      final cIns=1000,
-     pipeHC1=bufParameters.pipeHC1,
-     pipeHC2=bufParameters.pipeHC2,
-     lengthHC1=bufParameters.lengthHC1,
-     lengthHC2=bufParameters.lengthHC2),
-   final n=bufParameters.nLayer,
-   final hConIn=bufParameters.hConIn,
-   final hConOut=bufParameters.hConOut,
-   final hConHC1=bufParameters.hConHC1,
-   final hConHC2=bufParameters.hConHC2,
+     pipeHC1=parStoBuf.pipeHC1,
+     pipeHC2=parStoBuf.pipeHC2,
+     lengthHC1=parStoBuf.lengthHC1,
+     lengthHC2=parStoBuf.lengthHC2),
+   final n=parStoBuf.nLayer,
+   final hConIn=parStoBuf.hConIn,
+   final hConOut=parStoBuf.hConOut,
+   final hConHC1=parStoBuf.hConHC1,
+   final hConHC2=parStoBuf.hConHC2,
    upToDownHC1=true,
    upToDownHC2=true,
    final TStartWall=T_start,
@@ -174,7 +174,7 @@ replaceable
    final allowFlowReversal_HC2=allowFlowReversal)
    annotation (Placement(transformation(extent={{-36,14},{0,58}})));
 
- AixLib.Fluid.Storage.BufferStorage storageDHW(
+ AixLib.Fluid.Storage.BufferStorage stoDHW(
    redeclare final package Medium = MediumDHW,
    final energyDynamics=energyDynamics,
    final p_start=p_start,
@@ -183,33 +183,33 @@ replaceable
    redeclare final package MediumHC2 = MediumGen,
    final m1_flow_nominal=mSup_flow_nominal[1],
    final m2_flow_nominal=mDHW_flow_nominal,
-   final mHC1_flow_nominal=dhwParameters.mHC1_flow_nominal,
-   final mHC2_flow_nominal=dhwParameters.mHC2_flow_nominal,
+   final mHC1_flow_nominal=parStoDHW.mHC1_flow_nominal,
+   final mHC2_flow_nominal=parStoDHW.mHC2_flow_nominal,
    final useHeatingCoil1=true,
     final useHeatingCoil2=true,
-   final useHeatingRod=dhwParameters.use_hr,
+   final useHeatingRod=parStoDHW.use_hr,
    final TStart=T_start,
    redeclare final BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.bufferData
                                                               data(
-     final hTank=dhwParameters.h,
+     final hTank=parStoDHW.h,
      hHC1Low=0,
-     hHR=dhwParameters.nLayerHR/dhwParameters.nLayer*dhwParameters.h,
-     final dTank=dhwParameters.d,
-     final sWall=dhwParameters.sIns/2,
-     final sIns=dhwParameters.sIns/2,
-     final lambdaWall=dhwParameters.lambda_ins,
-     final lambdaIns=dhwParameters.lambda_ins,
+     hHR=parStoDHW.nLayerHR/parStoDHW.nLayer*parStoDHW.h,
+     final dTank=parStoDHW.d,
+     final sWall=parStoDHW.sIns/2,
+     final sIns=parStoDHW.sIns/2,
+     final lambdaWall=parStoDHW.lambda_ins,
+     final lambdaIns=parStoDHW.lambda_ins,
      final rhoIns=373000,
      final cIns=1000,
-     pipeHC1=dhwParameters.pipeHC1,
-     pipeHC2=dhwParameters.pipeHC2,
-     lengthHC1=dhwParameters.lengthHC1,
-     lengthHC2=dhwParameters.lengthHC2),
-   final n=dhwParameters.nLayer,
-   final hConIn=dhwParameters.hConIn,
-   final hConOut=dhwParameters.hConOut,
-   final hConHC1=dhwParameters.hConHC1,
-   final hConHC2=dhwParameters.hConHC2,
+     pipeHC1=parStoDHW.pipeHC1,
+     pipeHC2=parStoDHW.pipeHC2,
+     lengthHC1=parStoDHW.lengthHC1,
+     lengthHC2=parStoDHW.lengthHC2),
+   final n=parStoDHW.nLayer,
+   final hConIn=parStoDHW.hConIn,
+   final hConOut=parStoDHW.hConOut,
+   final hConHC1=parStoDHW.hConHC1,
+   final hConHC2=parStoDHW.hConHC2,
    final upToDownHC1=true,
    final upToDownHC2=true,
    final TStartWall=T_start,
@@ -222,22 +222,22 @@ replaceable
    annotation (Placement(transformation(extent={{-36,-74},{0,-28}})));
 
  Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow QHRStoDHWPre_flow(final
-     T_ref=293.15, final alpha=0) if dhwParameters.use_hr annotation (
+     T_ref=293.15, final alpha=0) if parStoDHW.use_hr annotation (
      Placement(transformation(
        extent={{-7,-7},{7,7}},
        rotation=0,
        origin={-69,-51})));
- Modelica.Blocks.Math.Gain gain(k=dhwParameters.QHR_flow_nominal)
-if dhwParameters.use_hr
+ Modelica.Blocks.Math.Gain gain(k=parStoDHW.QHR_flow_nominal)
+if parStoDHW.use_hr
    annotation (Placement(transformation(extent={{-102,-60},{-86,-42}})));
  Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow QHRStoBufPre_flow1(final
-     T_ref=293.15, final alpha=0) if bufParameters.use_hr annotation (
+     T_ref=293.15, final alpha=0) if parStoBuf.use_hr annotation (
      Placement(transformation(
        extent={{-7,-7},{7,7}},
        rotation=0,
        origin={-47,35})));
- Modelica.Blocks.Math.Gain gainHRBuf(k=bufParameters.QHR_flow_nominal)
-if bufParameters.use_hr
+ Modelica.Blocks.Math.Gain gainHRBuf(k=parStoBuf.QHR_flow_nominal)
+if parStoBuf.use_hr
    annotation (Placement(transformation(extent={{-80,18},{-64,36}})));
 
   BESMod.Systems.Hydraulical.Distribution.Components.Valves.ThreeWayValveWithFlowReturn
@@ -251,7 +251,7 @@ if bufParameters.use_hr
     final C_nominal=C_nominal,
     final mSenFac=mSenFac,
     redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
-      parameters=threeWayValveParameters1)
+      parameters=parThrWayVal1)
     annotation (Placement(transformation(extent={{-84,54},{-64,74}})));
 
  IBPSA.Fluid.Sensors.TemperatureTwoPort senTBuiSup(
@@ -301,7 +301,7 @@ if bufParameters.use_hr
     final C_nominal=C_nominal,
     final mSenFac=mSenFac,
     redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
-      parameters(m_flow_nominal=m_flow_nominal[1], dp_nominal={0, sum(storageDHW.heatingCoil2.pipe.res.dp_nominal)}))
+      parameters(m_flow_nominal=m_flow_nominal[1], dp_nominal={0, sum(stoDHW.heatingCoil2.pipe.res.dp_nominal)}))
     annotation (Placement(transformation(extent={{38,48},{58,68}})));
   AixLib.Fluid.Storage.BufferStorage HydraulischeWeiche(
     redeclare final package Medium = Medium,
@@ -312,8 +312,8 @@ if bufParameters.use_hr
     redeclare package MediumHC2 = IBPSA.Media.Water,
     final m1_flow_nominal=m_flow_nominal[1],
     final m2_flow_nominal=m_flow_nominal[1],
-    final mHC1_flow_nominal=bufParameters.mHC1_flow_nominal,
-    final mHC2_flow_nominal=bufParameters.mHC2_flow_nominal,
+    final mHC1_flow_nominal=parStoBuf.mHC1_flow_nominal,
+    final mHC2_flow_nominal=parStoBuf.mHC2_flow_nominal,
     useHeatingCoil1=false,
     final useHeatingCoil2=false,
     final useHeatingRod=false,
@@ -323,7 +323,7 @@ if bufParameters.use_hr
       data(
       final hTank=hydParameters.h,
       hHC1Low=0,
-      hHR=hydParameters.nLayerHR/hydParameters.nLayer*bufParameters.h,
+      hHR=hydParameters.nLayerHR/hydParameters.nLayer*parStoBuf.h,
       final dTank=hydParameters.d,
       final sWall=hydParameters.sIns/2,
       final sIns=hydParameters.sIns/2,
@@ -338,8 +338,8 @@ if bufParameters.use_hr
     final n=hydParameters.nLayer,
     final hConIn=hydParameters.hConIn,
     final hConOut=hydParameters.hConOut,
-    final hConHC1=bufParameters.hConHC1,
-    final hConHC2=bufParameters.hConHC2,
+    final hConHC1=parStoBuf.hConHC1,
+    final hConHC2=parStoBuf.hConHC2,
     upToDownHC1=true,
     upToDownHC2=true,
     final TStartWall=T_start,
@@ -363,8 +363,8 @@ replaceable
     final QHC1_flow_nominal=Q_flow_nominal[1]*f_design[1],
     final mHC1_flow_nominal=mSup_flow_nominal[1],
     redeclare final AixLib.DataBase.Pipes.Copper.Copper_12x1 pipeHC1,
-    final use_HC2=storageBuf.useHeatingCoil2,
-    final use_HC1=storageBuf.useHeatingCoil1,
+    final use_HC2=stoBuf.useHeatingCoil2,
+    final use_HC1=stoBuf.useHeatingCoil1,
     final dTLoadingHC2=9999999,
     final dTLoadingHC1=9999999,
     final fHeiHC2=1,
@@ -416,10 +416,10 @@ replaceable
     annotation (Placement(transformation(extent={{108,164},{128,184}})));
 
     Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixTemBuf(final T=
-        bufParameters.TAmb) "Constant ambient temperature of storage";
+        parStoBuf.TAmb) "Constant ambient temperature of storage";
 
         Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixTemDHW(final T=
-        dhwParameters.TAmb) "Constant ambient temperature of storage";
+        parStoDHW.TAmb) "Constant ambient temperature of storage";
 
   Utilities.KPIs.EnergyKPICalculator eneKPICalBuf(use_inpCon=false, y=fixTemBuf.port.Q_flow)
     annotation (Placement(transformation(extent={{-42,-118},{-22,-98}})));
@@ -451,13 +451,13 @@ equation
      index=1,
      extent={{-6,3},{-6,3}},
      horizontalAlignment=TextAlignment.Right));
- connect(fixedTemperatureDHW.port, storageDHW.heatportOutside) annotation (
+ connect(fixedTemperatureDHW.port, stoDHW.heatportOutside) annotation (
      Line(points={{-62,-88},{14,-88},{14,-49.62},{-0.45,-49.62}},color={191,0,0}));
- connect(storageBuf.heatportOutside, fixedTemperatureBuf.port) annotation (
+ connect(stoBuf.heatportOutside, fixedTemperatureBuf.port) annotation (
      Line(points={{-0.45,37.32},{12,37.32},{12,2},{-70,2}},color={191,0,0}));
- connect(portDHW_in, storageDHW.fluidportBottom2) annotation (Line(points={{100,
+ connect(portDHW_in, stoDHW.fluidportBottom2) annotation (Line(points={{100,
          -82},{-12,-82},{-12,-74.23},{-12.825,-74.23}}, color={0,127,255}));
- connect(storageDHW.heatingRod, QHRStoDHWPre_flow.port) annotation (Line(
+ connect(stoDHW.heatingRod, QHRStoDHWPre_flow.port) annotation (Line(
      points={{-36,-51},{-62,-51}},
      color={191,0,0},
      pattern=LinePattern.Dash));
@@ -469,7 +469,7 @@ equation
      points={{-54,35},{-58,35},{-58,27},{-63.2,27}},
      color={0,0,127},
      pattern=LinePattern.Dash));
- connect(QHRStoBufPre_flow1.port, storageBuf.heatingRod) annotation (Line(
+ connect(QHRStoBufPre_flow1.port, stoBuf.heatingRod) annotation (Line(
      points={{-40,35},{-40,36},{-36,36}},
      color={191,0,0},
      pattern=LinePattern.Dash));
@@ -478,10 +478,10 @@ equation
  connect(portGen_out[1], threeWayValveWithFlowReturn.portGen_b) annotation (
      Line(points={{-100,40},{-96,40},{-96,38},{-92,38},{-92,60},{-84,60},{-84,60.4}},
        color={0,127,255}));
- connect(threeWayValveWithFlowReturn.portDHW_b, storageDHW.portHC1In)
+ connect(threeWayValveWithFlowReturn.portDHW_b, stoDHW.portHC1In)
    annotation (Line(points={{-64,60.4},{-60,60.4},{-60,60},{-46,60},{-46,-37.89},
          {-36.45,-37.89}}, color={0,127,255}));
- connect(storageDHW.portHC1Out, threeWayValveWithFlowReturn.portDHW_a)
+ connect(stoDHW.portHC1Out, threeWayValveWithFlowReturn.portDHW_a)
    annotation (Line(points={{-36.225,-45.02},{-52,-45.02},{-52,56.4},{-64,56.4}},
        color={0,127,255}));
  connect(threeWayValveWithFlowReturn.uBuf, sigBusDistr.uThrWayVal) annotation (
@@ -503,21 +503,21 @@ equation
      points={{50,-98},{70,-98}},
      color={0,0,0},
      thickness=1));
- connect(storageDHW.fluidportTop2, portDHW_out) annotation (Line(points={{-12.375,
+ connect(stoDHW.fluidportTop2, portDHW_out) annotation (Line(points={{-12.375,
          -27.77},{-12.375,-20},{100,-20},{100,-22}}, color={0,127,255}));
-  connect(storageBuf.fluidportTop1, threeWayValveWithFlowReturn.portBui_b)
+  connect(stoBuf.fluidportTop1, threeWayValveWithFlowReturn.portBui_b)
     annotation (Line(points={{-24.3,58.22},{-52,58.22},{-52,62},{-56,62},{-56,72},
           {-64,72}}, color={0,127,255}));
-  connect(storageBuf.fluidportBottom1, threeWayValveWithFlowReturn.portBui_a)
+  connect(stoBuf.fluidportBottom1, threeWayValveWithFlowReturn.portBui_a)
     annotation (Line(points={{-24.075,13.56},{-24.075,6},{-42,6},{-42,68},{-64,68}},
         color={0,127,255}));
-  connect(threeWayValveWithFlowReturn2.portGen_b, storageBuf.fluidportBottom2)
+  connect(threeWayValveWithFlowReturn2.portGen_b, stoBuf.fluidportBottom2)
     annotation (Line(points={{38,54.4},{10,54.4},{10,4},{-12.825,4},{-12.825,
           13.78}}, color={0,127,255}));
-  connect(threeWayValveWithFlowReturn2.portDHW_b, storageDHW.portHC2In)
+  connect(threeWayValveWithFlowReturn2.portDHW_b, stoDHW.portHC2In)
     annotation (Line(points={{58,54.4},{60,54.4},{60,-18},{-48,-18},{-48,-56.75},
           {-36.225,-56.75}}, color={0,127,255}));
-  connect(threeWayValveWithFlowReturn2.portDHW_a, storageDHW.portHC2Out)
+  connect(threeWayValveWithFlowReturn2.portDHW_a, stoDHW.portHC2Out)
     annotation (Line(points={{58,50.4},{64,50.4},{64,-84},{-38,-84},{-38,-78},{
           -40,-78},{-40,-64.11},{-36.225,-64.11}},
                              color={0,127,255}));
@@ -527,7 +527,7 @@ equation
   connect(threeWayValveWithFlowReturn2.portBui_b, HydraulischeWeiche.fluidportTop1)
     annotation (Line(points={{58,66},{64,66},{64,78},{69.9,78},{69.9,74.08}},
         color={0,127,255}));
-  connect(storageBuf.fluidportTop2, pumpBoiler.port_a) annotation (Line(points={{-12.375,
+  connect(stoBuf.fluidportTop2, pumpBoiler.port_a) annotation (Line(points={{-12.375,
           58.22},{-12.375,65},{4,65}},           color={0,127,255}));
   connect(pumpBoiler.port_b, boiNoCtrl.port_a)
     annotation (Line(points={{14,65},{26,65},{26,98}}, color={0,127,255}));

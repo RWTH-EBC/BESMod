@@ -4,7 +4,7 @@ model GasBoiler
       BESMod.Systems.Hydraulical.Generation.GasBoiler generation(
       dTTra_nominal={10},
       redeclare AixLib.DataBase.Boiler.General.Boiler_Vitogas200F_11kW
-        paramBoiler,
+        parBoi,
       redeclare
         BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
         parTemSen,

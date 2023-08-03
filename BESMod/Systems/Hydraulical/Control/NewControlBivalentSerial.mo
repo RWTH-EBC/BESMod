@@ -137,7 +137,7 @@ equation
   connect(TestBoilerZustand1.y, Boiler_uRel_Controller.IsOn) annotation (Line(
         points={{50.7,5},{50.7,4},{54,4},{54,6},{74,6},{74,0},{86,0},{86,7.2}},
                                                                color={255,0,255}));
-  connect(Boiler_uRel_Controller.T_Meas, sigBusGen.TBoilerOut) annotation (Line(
+  connect(Boiler_uRel_Controller.T_Meas, sigBusGen.TBoiOut) annotation (Line(
         points={{95,7.2},{96,7.2},{96,-74},{-148,-74},{-148,-82},{-152,-82},{
           -152,-99}},                                       color={0,0,127}),
       Text(
@@ -175,10 +175,11 @@ equation
   connect(constOne.y, thermalDesinfection.u1)
     annotation (Line(points={{-92.5,-175},{-117,-175}}, color={0,0,127}));
   connect(CheckBoilerConditions.u[3], heatDemand_AuxiliarHeater.y) annotation (
-      Line(points={{-4,-469.967},{-32,-469.967},{-32,-172},{26.75,-172},{26.75,
-          23}}, color={255,0,255}));
-  connect(not2.y,OperationalBoundryCheck. u1) annotation (Line(points={{-261,
-          -452},{-218,-452},{-218,-466}}, color={255,0,255}));
+      Line(points={{-4,-469.967},{-32,-469.967},{-32,-172},{26.75,-172},{26.75,23}},
+                color={255,0,255}));
+  connect(not2.y,OperationalBoundryCheck. u1) annotation (Line(points={{-261,-452},
+          {-254,-452},{-254,-466},{-218,-466}},
+                                          color={255,0,255}));
   connect(HP_IsON2.y,not2. u) annotation (Line(points={{-319,-450},{-302,-450},
           {-302,-452},{-284,-452}},
                            color={255,0,255}));
@@ -187,7 +188,7 @@ equation
   connect(OperationalBoundryCheck.y, or1.u2) annotation (Line(points={{-195,
           -466},{-195,-422},{-92,-422}},
                                    color={255,0,255}));
-  connect(thermalDesinfection.y, sigBusGen.yBoiler) annotation (Line(points={{
+  connect(thermalDesinfection.y, sigBusGen.yBoi) annotation (Line(points={{
           -128.5,-179},{-152,-179},{-152,-99}}, color={0,0,127}), Text(
       string="%second",
       index=1,
@@ -195,8 +196,8 @@ equation
       horizontalAlignment=TextAlignment.Right));
   connect(HP_NSet.y, HysteresisBoilerControl.u) annotation (Line(points={{
           -216.4,-379},{-192.2,-379},{-192.2,-376},{-168,-376}}, color={0,0,127}));
-  connect(HysteresisBoilerControl.y, or1.u1) annotation (Line(points={{-145,
-          -376},{-130,-376},{-130,-406},{-92,-406},{-92,-414}}, color={255,0,
+  connect(HysteresisBoilerControl.y, or1.u1) annotation (Line(points={{-145,-376},
+          {-128,-376},{-128,-414},{-92,-414}},                  color={255,0,
           255}));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(

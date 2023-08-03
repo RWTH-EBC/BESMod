@@ -4,22 +4,21 @@ model TestIndirectLoading
       BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedIndirectLoading
       distribution(
       QHRAftBuf_flow_nominal=0,
-      use_heatingRodAfterBuffer=false,
       redeclare
         BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
         parTemSen,
       redeclare
         BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
-        threeWayValveParameters,
+        parThrWayVal,
       redeclare
         BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorage
-        bufParameters,
+        parStoBuf,
       redeclare
         BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorage
-        dhwParameters,
+        parStoDHW,
       redeclare
         BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-        heatingRodAftBufParameters,
+        parHeaRodAftBuf,
       dTLoaHCBuf=10));
   extends Modelica.Icons.Example;
 

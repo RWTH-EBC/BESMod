@@ -2,12 +2,15 @@ within BESMod.Systems.Hydraulical.Generation.BaseClasses;
 model PartialHeatPumpAndGasBoiler "Partial heat pump and boiler"
   extends BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump(
       dp_nominal={heatPump.dpCon_nominal + boi.dp_nominal});
+  parameter Real etaTem[:,2]=[293.15,1.09; 303.15,1.08; 313.15,1.05; 323.15,1.; 373.15,
+      0.99] "Temperature based efficiency"
+        annotation(Dialog(group="Component data"));
 
   replaceable parameter AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition
     parBoi
     "Parameters for Boiler"
     annotation(Placement(transformation(extent={{22,62},{38,78}})),
-      choicesAllMatching=true, Dialog(group="Component choices"));
+      choicesAllMatching=true, Dialog(group="Component data"));
 
   AixLib.Fluid.BoilerCHP.BoilerNoControl boi(
     redeclare package Medium = Medium,
@@ -28,7 +31,7 @@ model PartialHeatPumpAndGasBoiler "Partial heat pump and boiler"
     final C=1.5*parBoi.Q_nom,
     final Q_nom=parBoi.Q_nom,
     final V=parBoi.volume,
-    final etaTempBased=[293.15,1.09; 303.15,1.08; 313.15,1.05; 323.15,1.; 373.15,0.99],
+    final etaTempBased=etaTem,
     final paramBoiler=parBoi) "Boiler with external control"
     annotation (Placement(transformation(extent={{20,40},{40,60}})));
 

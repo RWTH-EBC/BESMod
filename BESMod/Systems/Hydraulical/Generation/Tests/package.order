@@ -1,6 +1,8 @@
 ElectricalHeater
 GasBoiler
 HeatPump
+HeatPumpAndGasBoilerParallel
+HeatPumpAndGasBoilerSeries
 HeatPumpAndHeatingRod
 SolarThermalAndHeatPumpAndHeatingRodDetailed
 SolarThermalAndHeatPumpAndHeatingRodSimple

@@ -1,7 +1,7 @@
 within BESMod.Systems.Hydraulical.Control;
 model ConstHys_PI_StoTop_HPSController
   "Using const. hys + PI Inverter + top level storage as controller"
-  extends BaseClasses.PartialTwoPoint_HPS_Controller(
+  extends BaseClasses.PartialHeatPumpSystemController(
     redeclare
       BESMod.Systems.Hydraulical.Control.Components.HeatPumpNSetController.PI_InverterHeatPumpController
       HP_nSet_Controller(
@@ -38,4 +38,6 @@ equation
       index=1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
+  connect(switch2.y, HP_nSet_Controller.T_Meas) annotation (Line(points={{83,
+          -21.5},{82,-21.5},{82,-14},{97,-14},{97,61.2}}, color={0,0,127}));
 end ConstHys_PI_StoTop_HPSController;

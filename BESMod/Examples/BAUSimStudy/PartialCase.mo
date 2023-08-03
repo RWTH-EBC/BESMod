@@ -62,19 +62,19 @@ partial model PartialCase
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
           parTemSen,
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
-          threeWayValveParameters,
+          parThrWayVal,
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorage
-          bufParameters(use_QLos=true, T_m=338.15),
+          parStoBuf(use_QLos=true, T_m=338.15),
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorage
-          dhwParameters(
+          parStoDHW(
           dTLoadingHC1=10,
           use_QLos=true,
           T_m=65 + 273.15),
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-          heatingRodAftBufParameters),
+          parHeaRodAftBuf),
       redeclare BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased
         transfer(
         redeclare

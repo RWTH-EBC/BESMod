@@ -7,22 +7,15 @@ model PartialHeatPump "Generation with only the heat pump"
         i] > 44.9 + 273.15 then 8 else 5 for i in 1:nParallelDem},
     dp_nominal={heatPump.dpCon_nominal},
       nParallelDem=1);
-
-  parameter Boolean use_airSource=true
-    "Turn false to use water as temperature source."
-     annotation(Dialog(group="Component choices"));
-
-   parameter Boolean use_heaRod=true "=false to disable the heating rod"
-     annotation(Dialog(group="Component choices"));
-    replaceable model PerDataMainHP =
+  replaceable model PerDataMainHP =
       AixLib.DataBase.HeatPump.PerformanceData.LookUpTable2D
     constrainedby
     AixLib.DataBase.HeatPump.PerformanceData.BaseClasses.PartialPerformanceData
-    annotation (Dialog(group="Component data"), __Dymola_choicesAllMatching=true);
-  parameter Modelica.Media.Interfaces.Types.Temperature TSoilConst=273.15 + 10
-    "Constant soil temperature for ground source heat pumps"
-    annotation(Dialog(group="Component choices", enable=use_airSource));
-
+    "Heat pump model approach"
+    annotation (Dialog(group="Component data"), choicesAllMatching=true);
+  parameter Boolean use_airSource=true
+    "Turn false to use water as temperature source."
+     annotation(Dialog(group="Component choices"));
   replaceable package Medium_eva = IBPSA.Media.Air                         constrainedby
     Modelica.Media.Interfaces.PartialMedium annotation (Dialog(group="Component choices"),
       choices(
@@ -33,6 +26,10 @@ model PartialHeatPump "Generation with only the heat pump"
               property_T=293.15,
               X_a=0.40)
               "Propylene glycol water, 40% mass fraction")));
+  parameter Modelica.Media.Interfaces.Types.Temperature TSoilConst=273.15 + 10
+    "Constant soil temperature for ground source heat pumps"
+    annotation(Dialog(group="Component choices", enable=use_airSource));
+
   replaceable parameter
     BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumpBaseDataDefinition
     parHeaPum constrainedby
@@ -230,7 +227,6 @@ model PartialHeatPump "Generation with only the heat pump"
     calc_numSwi=true) "Heat pump KPIs"
     annotation (Placement(transformation(extent={{-120,-60},{-100,-40}})));
 equation
-
   connect(bouEva.ports[1], heatPump.port_a2) annotation (Line(points={{-80,50},{-74,
           50},{-74,42},{-57.5,42},{-57.5,37}}, color={0,127,255}));
   connect(heatPump.port_b2, bou_sinkAir.ports[1]) annotation (Line(
@@ -258,8 +254,10 @@ equation
       thickness=1));
   connect(multiSum.y, realToElecCon.PEleLoa)
     annotation (Line(points={{122.98,-82},{112,-82}}, color={0,0,127}));
-  if use_heaRod then
-    connect(multiSum.u[1], reaExpPEleHeaPum.y) annotation (Line(points={{136,
+  connect(multiSum.u[2], pump.P) annotation (Line(points={{136,-83.05},{144,
+            -83.05},{144,-114},{-14,-114},{-14,-58},{0,-58},{0,-61},{-1,-61}},
+                                             color={0,0,127}));
+  connect(multiSum.u[1], reaExpPEleHeaPum.y) annotation (Line(points={{136,
             -80.95},{144,-80.95},{144,-150},{-154,-150},{-154,-70},{-159,-70}},
                                                            color={0,0,127}),
       Text(
@@ -267,22 +265,7 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-    connect(multiSum.u[2], pump.P) annotation (Line(points={{136,-83.05},{144,
-            -83.05},{144,-114},{-14,-114},{-14,-58},{0,-58},{0,-61},{-1,-61}},
-                                             color={0,0,127}));
-  else
-    connect(multiSum.u[2], pump.P) annotation (Line(points={{136,-83.05},{144,
-            -83.05},{144,-114},{-14,-114},{-14,-58},{0,-58},{0,-61},{-1,-61}},
-                                             color={0,0,127}));
-    connect(multiSum.u[1], reaExpPEleHeaPum.y) annotation (Line(points={{136,
-            -80.95},{144,-80.95},{144,-150},{-154,-150},{-154,-70},{-159,-70}},
-                                                           color={0,0,127}),
-      Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  end if;
+
   connect(switch.u1, weaBus.TDryBul) annotation (Line(points={{-142,58},{-144,58},
           {-144,80},{-101,80}}, color={0,0,127}), Text(
       string="%second",

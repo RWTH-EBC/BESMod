@@ -2,6 +2,16 @@ within BESMod.Systems.Hydraulical.Generation;
 model HeatPumpAndGasBoilerParallel
   "Parallel connection of heat pump and gas boiler"
   extends BaseClasses.PartialHeatPumpAndGasBoiler;
+
+  replaceable parameter BESMod.Systems.RecordsCollection.Valves.ThreeWayValve
+    parThrWayVal constrainedby
+    BESMod.Systems.RecordsCollection.Valves.ThreeWayValve(
+    final dp_nominal={parHeaPum.dpCon_nominal,boi.dp_nominal},
+    final m_flow_nominal=2*m_flow_nominal[1],
+    final fraK=1) "Parameters for three-way-valve" annotation (Placement(
+        transformation(extent={{64,4},{78,18}})), choicesAllMatching=true,
+        Dialog(group="Component data"));
+
   Distribution.Components.Valves.ThreeWayValveWithFlowReturn thrWayVal(
     redeclare package Medium = Medium,
     final energyDynamics=energyDynamics,
@@ -15,14 +25,7 @@ model HeatPumpAndGasBoilerParallel
       parameters=parThrWayVal)
     "Three-way-valve to either run heat pump or gas boiler"
     annotation (Placement(transformation(extent={{40,20},{20,0}})));
-  replaceable parameter BESMod.Systems.RecordsCollection.Valves.ThreeWayValve
-    parThrWayVal(from_dp=true) constrainedby
-    BESMod.Systems.RecordsCollection.Valves.ThreeWayValve(
-    final dp_nominal={parHeaPum.dpCon_nominal,boi.dp_nominal},
-    final m_flow_nominal=2*m_flow_nominal[1],
-    final fraK=1,
-    use_inputFilter=false) "Parameters for three-way-valve" annotation (Placement(
-        transformation(extent={{64,4},{78,18}})), choicesAllMatching=true);
+
 equation
   connect(thrWayVal.portDHW_a, boi.port_b) annotation (Line(points={{20,17.6},{8,17.6},
           {8,26},{44,26},{44,50},{40,50}}, color={0,127,255}));

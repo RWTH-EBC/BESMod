@@ -1,7 +1,7 @@
 within BESMod.Systems.Hydraulical.Control;
 model ConstHys_OnOff_HPSControll
   "Constant Hysteresis for an on/off HP"
-  extends BaseClasses.PartialTwoPoint_HPS_Controller(
+  extends BaseClasses.PartialHeatPumpSystemController(
     redeclare
       BESMod.Systems.Hydraulical.Control.Components.HeatPumpNSetController.OnOffHeatPumpController
       HP_nSet_Controller(final n_opt=nOptHP),

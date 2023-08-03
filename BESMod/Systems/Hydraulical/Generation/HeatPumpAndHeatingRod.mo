@@ -3,8 +3,10 @@ model HeatPumpAndHeatingRod "Heat pump with heating rod in series"
   extends BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump(
   dp_nominal={heatPump.dpCon_nominal + dpHeaRod_nominal},
   multiSum(nu=3));
-   parameter Boolean use_heaRod=true "=false to disable the heating rod"
-     annotation(Dialog(group="Component choices"));
+
+  parameter Boolean use_heaRod=true "=false to disable the heating rod"
+   annotation(Dialog(group="Component choices"));
+
   AixLib.Fluid.HeatExchangers.HeatingRod hea(
     redeclare package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,

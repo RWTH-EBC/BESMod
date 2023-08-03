@@ -141,7 +141,7 @@ equation
           -196.4,-320},{-167.2,-320}},
                               color={0,0,127}));
   connect(lessThreshold.y, CheckBoilerConditions.u[1]) annotation (Line(points={{-130.4,
-          -320},{-20,-320},{-20,-466.933},{-4,-466.933}},          color={255,0,
+          -320},{-20,-320},{-20,-476.033},{-4,-476.033}},          color={255,0,
           255}));
   connect(or1.y, CheckBoilerConditions.u[2]) annotation (Line(points={{-69,-414},
           {-52,-414},{-52,-416},{-32,-416},{-32,-473},{-4,-473}}, color={255,0,
@@ -175,8 +175,8 @@ equation
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
   connect(CheckBoilerConditions.u[3], heatDemand_AuxiliarHeater.y) annotation (
-      Line(points={{-4,-479.067},{-28,-479.067},{-28,6},{40,6},{40,20},{26.75,
-          20},{26.75,23}}, color={255,0,255}));
+      Line(points={{-4,-469.967},{-28,-469.967},{-28,6},{40,6},{40,20},{26.75,20},
+          {26.75,23}},     color={255,0,255}));
   connect(not2.y,OperationalBoundryCheck. u1) annotation (Line(points={{-191,
           -456},{-148,-456},{-148,-470}}, color={255,0,255}));
   connect(HP_IsON2.y,not2. u) annotation (Line(points={{-249,-454},{-232,-454},
