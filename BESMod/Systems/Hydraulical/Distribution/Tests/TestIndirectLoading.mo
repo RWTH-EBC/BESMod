@@ -7,7 +7,7 @@ model TestIndirectLoading
       use_heatingRodAfterBuffer=false,
       redeclare
         BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
-        temperatureSensorData,
+        parTemSen,
       redeclare
         BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
         threeWayValveParameters,

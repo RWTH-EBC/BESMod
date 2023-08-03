@@ -7,8 +7,8 @@ model GasBoiler
         paramBoiler,
       redeclare
         BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
-        temperatureSensorData,
-      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData));
+        parTemSen,
+      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum));
   extends Modelica.Icons.Example;
 
   Modelica.Blocks.Sources.Pulse        pulse(period=1800)

@@ -10,7 +10,7 @@ model TestPressureBasedSystemWithReliefValve
         transferDataBaseDefinition,
       redeclare
         BESMod.Systems.RecordsCollection.Movers.DefaultMover
-        pumpData,
+        parPum,
       redeclare
         BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
         radParameters));

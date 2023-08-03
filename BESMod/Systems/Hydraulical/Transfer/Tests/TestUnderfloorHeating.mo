@@ -7,7 +7,7 @@ model TestUnderfloorHeating
         BESMod.Systems.Hydraulical.Transfer.RecordsCollection.DefaultUFHData
         UFHParameters, redeclare
         BESMod.Systems.RecordsCollection.Movers.DefaultMover
-        pumpData));
+        parPum));
   extends Modelica.Icons.Example;
 
 end TestUnderfloorHeating;

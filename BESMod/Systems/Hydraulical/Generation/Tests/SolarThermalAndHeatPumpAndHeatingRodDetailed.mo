@@ -1,25 +1,26 @@
 within BESMod.Systems.Hydraulical.Generation.Tests;
-model HeatPumpAndHeatingRod
-  extends PartialTest(   redeclare
-      BESMod.Systems.Hydraulical.Generation.HeatPumpAndHeatingRod
+model SolarThermalAndHeatPumpAndHeatingRodDetailed
+  extends PartialTest(redeclare
+      BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump
       generation(
-      use_heaRod=true,
       redeclare model PerDataMainHP =
           AixLib.DataBase.HeatPump.PerformanceData.LookUpTable2D (dataTable=
-              AixLib.DataBase.HeatPump.EN255.Vitocal350AWI114()),
+              AixLib.DataBase.HeatPump.EN14511.Vitocal200AWO201()),
       redeclare BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
         parHeaPum,
-      redeclare
-        BESMod.Systems.RecordsCollection.Movers.DefaultMover
-        parPum,
+      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
         parTemSen,
       redeclare BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-        parHeaRod));
-   extends Modelica.Icons.Example;
+        parHeaRod,
+      redeclare
+        BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultSolarThermal
+        solarThermalParas,
+      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPumSolThe));
+  extends Modelica.Icons.Example;
 
   Modelica.Blocks.Sources.Constant     const1(k=0)
-    annotation (Placement(transformation(extent={{-80,40},{-60,60}})));
+    annotation (Placement(transformation(extent={{-100,40},{-80,60}})));
   Modelica.Blocks.Sources.Pulse        pulse(period=1800)
     annotation (Placement(transformation(extent={{-40,80},{-20,100}})));
 equation
@@ -35,10 +36,10 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(const1.y, genControlBus.uHeaRod) annotation (Line(points={{-59,50},{
-          -24,50},{-24,48},{10,48},{10,74}}, color={0,0,127}), Text(
+  connect(const1.y, genControlBus.uHeaRod) annotation (Line(points={{-79,50},{
+          -32,50},{-32,48},{10,48},{10,74}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-end HeatPumpAndHeatingRod;
+end SolarThermalAndHeatPumpAndHeatingRodDetailed;

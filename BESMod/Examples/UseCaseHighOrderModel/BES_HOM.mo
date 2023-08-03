@@ -13,20 +13,22 @@ model BES_HOM
         Type_Win,
       redeclare model CorrSolarGainWin =
           AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.CorrectionSolarGain.CorGSimple,
+
       redeclare BESMod.Systems.Demand.Building.Components.AixLibHighOrderOFD
         HOMBuiEnv),
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
       redeclare BESMod.Systems.Hydraulical.Generation.HeatPumpAndHeatingRod
         generation(
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
+        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare package Medium_eva = AixLib.Media.Air,
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
-          heatPumpParameters(
+          parHeaPum(
           genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
+
           TBiv=parameterStudy.TBiv,
-          scalingFactor=hydraulic.generation.heatPumpParameters.QPri_flow_nominal
+          scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal
               /parameterStudy.QHP_flow_biv,
           dpCon_nominal=0,
           dpEva_nominal=0,
@@ -34,15 +36,16 @@ model BES_HOM
           refIneFre_constant=0),
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-          heatingRodParameters,
+          parHeaRod,
         redeclare model PerDataMainHP =
             AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
-            QCon_flow_nominal=hydraulic.generation.heatPumpParameters.QPri_flow_nominal,
+            QCon_flow_nominal=hydraulic.generation.parHeaPum.QPri_flow_nominal,
+
             refrigerant="Propane",
             flowsheet="VIPhaseSeparatorFlowsheet"),
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
-          temperatureSensorData),
+          parTemSen),
       redeclare BESMod.Systems.Hydraulical.Control.ConstHys_OnOff_HPSControll
         control(
         redeclare
@@ -75,10 +78,10 @@ model BES_HOM
           redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
           radParameters, redeclare
-          BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData)),
+          BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum)),
     redeclare BESMod.Systems.Demand.DHW.DHW DHW(
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
-      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
+      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
         calcmFlow),
     redeclare BESMod.Systems.UserProfiles.AixLibHighOrderProfiles userProfiles(

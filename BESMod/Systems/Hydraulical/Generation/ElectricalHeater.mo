@@ -24,19 +24,19 @@ model ElectricalHeater "Only heat using a heating rod"
     final m_flow_nominal=m_flow_nominal[1],
     final m_flow_small=1E-4*abs(m_flow_nominal[1]),
     final show_T=show_T,
-    final dp_nominal=heatingRodParameters.dp_nominal,
+    final dp_nominal=parHeaRod.dp_nominal,
     final tau=30,
     final energyDynamics=energyDynamics,
     final p_start=p_start,
     final T_start=T_start,
     final Q_flow_nominal=Q_flow_nominal[1],
-    final V=heatingRodParameters.V_hr,
-    final eta=heatingRodParameters.eta_hr)
+    final V=parHeaRod.V_hr,
+    final eta=parHeaRod.eta_hr)
     annotation (Placement(transformation(extent={{-16,-16},{16,16}},
         rotation=90,
         origin={-32,10})));
   replaceable parameter BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatingRodBaseDataDefinition
-    heatingRodParameters
+    parHeaRod
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-62,-42},
             {-50,-30}})));
 
@@ -56,17 +56,17 @@ model ElectricalHeater "Only heat using a heating rod"
     redeclare
       BESMod.Systems.RecordsCollection.Movers.AutomaticConfigurationData
       per(
-      final speed_rpm_nominal=pumpData.speed_rpm_nominal,
+      final speed_rpm_nominal=parPum.speed_rpm_nominal,
       final m_flow_nominal=m_flow_nominal[1],
       final dp_nominal=dpDem_nominal[1] + dp_nominal[1],
       final rho=rho,
-      final V_flowCurve=pumpData.V_flowCurve,
-      final dpCurve=pumpData.dpCurve),
+      final V_flowCurve=parPum.V_flowCurve,
+      final dpCurve=parPum.dpCurve),
     final inputType=IBPSA.Fluid.Types.InputType.Continuous,
-    final addPowerToMedium=pumpData.addPowerToMedium,
-    final tau=pumpData.tau,
-    final use_inputFilter=pumpData.use_inputFilter,
-    final riseTime=pumpData.riseTimeInpFilter,
+    final addPowerToMedium=parPum.addPowerToMedium,
+    final tau=parPum.tau,
+    final use_inputFilter=parPum.use_inputFilter,
+    final riseTime=parPum.riseTimeInpFilter,
     final init=Modelica.Blocks.Types.Init.InitialOutput,
     final y_start=1) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
@@ -86,7 +86,7 @@ model ElectricalHeater "Only heat using a heating rod"
     annotation (Placement(transformation(extent={{-40,-80},{-20,-60}})));
   replaceable parameter
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
-    pumpData annotation (choicesAllMatching=true, Placement(transformation(extent={{14,-64},
+    parPum annotation (choicesAllMatching=true, Placement(transformation(extent={{14,-64},
             {28,-52}})));
   BESMod.Utilities.Electrical.RealToElecCon realToElecCon(use_souGen=false)
     annotation (Placement(transformation(extent={{32,-108},{52,-88}})));

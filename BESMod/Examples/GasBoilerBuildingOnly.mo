@@ -16,8 +16,8 @@ model GasBoilerBuildingOnly
           paramBoiler,
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
-          temperatureSensorData,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData),
+          parTemSen,
+        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum),
       redeclare BESMod.Systems.Hydraulical.Control.MonovalentGasBoiler control(
         redeclare
           BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
@@ -38,12 +38,12 @@ model GasBoilerBuildingOnly
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
           transferDataBaseDefinition,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
+        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
           radParameters)),
     redeclare BESMod.Systems.Demand.DHW.DHW DHW(
-      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
+      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.PassThrough calcmFlow),
     redeclare BESMod.Systems.UserProfiles.TEASERProfiles userProfiles,

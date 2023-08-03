@@ -4,10 +4,10 @@ DistributionTwoStorageParallel
 DHWOnly
 TwoStoDetailedDirectLoading
 TwoStoDetailedIndirectLoading
+TwoStoragesBoilerWithoutDHW
+TwoStoragesBoilerWithDHW
 Components
 RecordsCollection
 Tests
 BaseClasses
 Types
-BivalentSystemDistributionWithBoilerAfterBuffer_WithoutDHW
-BivalentSystemDistributionWithBoilerAfterBuffer_WithDHW

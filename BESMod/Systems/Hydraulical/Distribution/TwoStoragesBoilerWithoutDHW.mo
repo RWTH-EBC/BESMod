@@ -1,6 +1,6 @@
 within BESMod.Systems.Hydraulical.Distribution;
-model BivalentSystemDistributionWithBoilerAfterBuffer_WithoutDHW
-  "bivalent system with boiler after buffer and without dhw support"
+model TwoStoragesBoilerWithoutDHW
+  "Two storages with a boiler after the buffer but without DHW support"
   extends BaseClasses.PartialDistribution(
     final VStoDHW=dhwParameters.V,
     final QDHWStoLoss_flow=dhwParameters.QLoss_flow,
@@ -17,11 +17,9 @@ model BivalentSystemDistributionWithBoilerAfterBuffer_WithoutDHW
     final nParallelSup=1,
     final nParallelDem=1);
 
-    parameter Modelica.Units.SI.Power Q_nom=boiNoCtrl.paramBoiler.Q_nom
-    "Nominal heating power";
-
-     parameter Modelica.Units.SI.Volume V=boiNoCtrl.paramBoiler.volume "Volume";
-
+  parameter AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition
+    parBoi=AixLib.DataBase.Boiler.General.Boiler_Vitogas200F_15kW()
+    "Parameters for Boiler";
   AixLib.Fluid.Storage.Storage storageDHW(
     redeclare final package Medium = MediumDHW,
     final n=dhwParameters.nLayer,
@@ -199,16 +197,16 @@ model BivalentSystemDistributionWithBoilerAfterBuffer_WithoutDHW
     final rho_default=rho,
     final p_start=p_start,
     final T_start=T_start,
-    final etaLoadBased= boiNoCtrl.paramBoiler.eta,
-    final G=0.003*Q_nom/50,
-    final C=1.5*Q_nom,
-    final Q_nom=boiNoCtrl.paramBoiler.Q_nom,
-    final V=boiNoCtrl.paramBoiler.volume,
+    final etaLoadBased=parBoi.eta,
+    final G=0.003*parBoi.Q_nom/50,
+    final C=1.5*parBoi.Q_nom,
+    final Q_nom=parBoi.Q_nom,
+    final V=parBoi.volume,
     final etaTempBased=[293.15,1.09; 303.15,1.08; 313.15,1.05; 323.15,1.; 373.15,0.99],
-    final paramBoiler=AixLib.DataBase.Boiler.General.Boiler_Vitogas200F_15kW())
-    annotation (Placement(transformation(extent={{60,84},{82,108}})));
+    final paramBoiler=parBoi)
+    annotation (Placement(transformation(extent={{60,80},{80,100}})));
   Utilities.KPIs.EnergyKPICalculator KPIBoi(use_inpCon=true)
-    annotation (Placement(transformation(extent={{102,150},{122,170}})));
+    annotation (Placement(transformation(extent={{-100,-40},{-80,-20}})));
 equation
   connect(fixTemBuf.port, storageBuf.heatPort) annotation (Line(points={{60,10},
           {80,10},{80,58},{62.6,58}}, color={191,0,0}));
@@ -290,31 +288,31 @@ equation
       horizontalAlignment=TextAlignment.Left));
   connect(bouPumBuf.ports[1], storageBuf.port_a_consumer) annotation (Line(
         points={{10,20},{10,32},{49,32},{49,40}}, color={0,127,255}));
-  connect(storageBuf.port_b_consumer, boiNoCtrl.port_a) annotation (Line(points=
-         {{49,76},{48,76},{48,96},{60,96}}, color={0,127,255}));
+  connect(storageBuf.port_b_consumer, boiNoCtrl.port_a) annotation (Line(points={{49,76},
+          {48,76},{48,90},{60,90}},         color={0,127,255}));
   connect(boiNoCtrl.port_b, portBui_out[1])
-    annotation (Line(points={{82,96},{100,96},{100,80}}, color={0,127,255}));
+    annotation (Line(points={{80,90},{100,90},{100,80}}, color={0,127,255}));
   connect(boiNoCtrl.T_out, sigBusDistr.TBoilerOutDistribution) annotation (Line(
-        points={{78.92,99.84},{92,99.84},{92,128},{0,128},{0,101}}, color={0,0,
+        points={{77.2,93.2},{92,93.2},{92,128},{0,128},{0,101}},    color={0,0,
           127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
   connect(boiNoCtrl.u_rel, sigBusDistr.yBoilerDistribution) annotation (Line(
-        points={{63.3,104.4},{48,104.4},{48,120},{0,120},{0,101}}, color={0,0,
+        points={{63,97},{50,97},{50,100},{0,100},{0,101}},         color={0,0,
           127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(boiNoCtrl.thermalPower, KPIBoi.u) annotation (Line(points={{78.92,
-          106.08},{100.2,106.08},{100.2,160}}, color={0,0,127}));
-  connect(KPIBoi.KPI, outBusDist.QBoi_Distribution_flow) annotation (Line(
-        points={{124.2,160},{170,160},{170,158},{178,158},{178,-148},{0,-148},{
-          0,-100}}, color={135,135,135}), Text(
+  connect(boiNoCtrl.thermalPower, KPIBoi.u) annotation (Line(points={{77.2,98.4},{
+          76,98.4},{76,120},{-108,120},{-108,-30},{-101.8,-30}},
+                                               color={0,0,127}));
+  connect(KPIBoi.KPI, outBusDist.QBoi_flow) annotation (Line(points={{-77.8,-30},{
+          -16,-30},{-16,-48},{0,-48},{0,-100}}, color={135,135,135}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-end BivalentSystemDistributionWithBoilerAfterBuffer_WithoutDHW;
+end TwoStoragesBoilerWithoutDHW;

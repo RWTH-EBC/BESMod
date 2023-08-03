@@ -1,8 +1,7 @@
 ﻿within BESMod.Systems.Hydraulical.Distribution;
-model BivalentSystemDistributionWithBoilerAfterBuffer_WithDHW
-  "bivalent system with boiler after buffer and with dhw support"
-  extends
-    BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution(
+model TwoStoragesBoilerWithDHW
+  "Two storages with a boiler after buffer and with DHW support"
+  extends BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution(
     final dpDem_nominal={0},
     final dpSup_nominal={2*(threeWayValveParameters1.dpValve_nominal + max(
         threeWayValveParameters1.dp_nominal))},
@@ -35,7 +34,7 @@ model BivalentSystemDistributionWithBoilerAfterBuffer_WithDHW
    "Number of steps to dicretize. =0 modulating, =1 resembels an on-off controller. =2 would sample 0, 0.5 and 1";
  replaceable parameter
    BESMod.Systems.RecordsCollection.TemperatureSensors.TemperatureSensorBaseDefinition
-   temperatureSensorData
+   parTemSen
    annotation (choicesAllMatching=true, Placement(transformation(extent={{126,116},
             {144,130}})));
  replaceable parameter BESMod.Systems.RecordsCollection.Valves.ThreeWayValve threeWayValveParameters1
@@ -228,8 +227,8 @@ replaceable
        extent={{-7,-7},{7,7}},
        rotation=0,
        origin={-69,-51})));
- Modelica.Blocks.Math.Gain gain(k=dhwParameters.QHR_flow_nominal) if
-   dhwParameters.use_hr
+ Modelica.Blocks.Math.Gain gain(k=dhwParameters.QHR_flow_nominal)
+if dhwParameters.use_hr
    annotation (Placement(transformation(extent={{-102,-60},{-86,-42}})));
  Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow QHRStoBufPre_flow1(final
      T_ref=293.15, final alpha=0) if bufParameters.use_hr annotation (
@@ -237,8 +236,8 @@ replaceable
        extent={{-7,-7},{7,7}},
        rotation=0,
        origin={-47,35})));
- Modelica.Blocks.Math.Gain gainHRBuf(k=bufParameters.QHR_flow_nominal) if
-   bufParameters.use_hr
+ Modelica.Blocks.Math.Gain gainHRBuf(k=bufParameters.QHR_flow_nominal)
+if bufParameters.use_hr
    annotation (Placement(transformation(extent={{-80,18},{-64,36}})));
 
   BESMod.Systems.Hydraulical.Distribution.Components.Valves.ThreeWayValveWithFlowReturn
@@ -259,12 +258,12 @@ replaceable
    redeclare final package Medium = Medium,
    final allowFlowReversal=allowFlowReversal,
    m_flow_nominal=m_flow_nominal[1],
-   tau=temperatureSensorData.tau,
-   initType=temperatureSensorData.initType,
+   tau=parTemSen.tau,
+   initType=parTemSen.initType,
    T_start=T_start,
-   final transferHeat=temperatureSensorData.transferHeat,
-   TAmb=temperatureSensorData.TAmb,
-   tauHeaTra=temperatureSensorData.tauHeaTra)
+   final transferHeat=parTemSen.transferHeat,
+   TAmb=parTemSen.TAmb,
+   tauHeaTra=parTemSen.tauHeaTra)
    "Temperature at supply for building" annotation (Placement(transformation(
        extent={{5,6},{-5,-6}},
        rotation=180,
@@ -384,19 +383,19 @@ replaceable
     final show_T=show_T,
     redeclare
       BESMod.Systems.RecordsCollection.Movers.AutomaticConfigurationData per(
-      final speed_rpm_nominal=pumpData.speed_rpm_nominal,
+      final speed_rpm_nominal=parPum.speed_rpm_nominal,
       final m_flow_nominal=m_flow_nominal[1],
       final dp_nominal=boiNoCtrl.dp_nominal + 2*(threeWayValveWithFlowReturn2.parameters.dpValve_nominal
            + threeWayValveWithFlowReturn2.parameters.dp_nominal[1] +
           threeWayValveWithFlowReturn2.parameters.dpFixed_nominal[1]),
       final rho=rho,
-      final V_flowCurve=pumpData.V_flowCurve,
-      final dpCurve=pumpData.dpCurve),
+      final V_flowCurve=parPum.V_flowCurve,
+      final dpCurve=parPum.dpCurve),
     final inputType=IBPSA.Fluid.Types.InputType.Continuous,
-    final addPowerToMedium=pumpData.addPowerToMedium,
-    final tau=pumpData.tau,
-    final use_inputFilter=pumpData.use_inputFilter,
-    final riseTime=pumpData.riseTimeInpFilter,
+    final addPowerToMedium=parPum.addPowerToMedium,
+    final tau=parPum.tau,
+    final use_inputFilter=parPum.use_inputFilter,
+    final riseTime=parPum.riseTimeInpFilter,
     final init=Modelica.Blocks.Types.Init.InitialOutput,
     final y_start=1) annotation (Placement(transformation(
         extent={{5,5},{-5,-5}},
@@ -406,7 +405,7 @@ replaceable
     annotation (Placement(transformation(extent={{4,84},{10,90}})));
   parameter
     BESMod.Systems.RecordsCollection.Movers.DefaultMover
-    pumpData annotation (Dialog(group="Component data"),
+    parPum annotation (Dialog(group="Component data"),
     choicesAllMatching=true, Placement(transformation(extent={{52,152},{74,174}})));
   parameter BESMod.Systems.RecordsCollection.Movers.DefaultMover defaultMoverBA
     annotation (
@@ -423,9 +422,9 @@ replaceable
         dhwParameters.TAmb) "Constant ambient temperature of storage";
 
   Utilities.KPIs.EnergyKPICalculator eneKPICalBuf(use_inpCon=false, y=fixTemBuf.port.Q_flow)
-    annotation (Placement(transformation(extent={{-204,-156},{-184,-136}})));
+    annotation (Placement(transformation(extent={{-42,-118},{-22,-98}})));
   Utilities.KPIs.EnergyKPICalculator eneKPICalDHW(use_inpCon=false, y=fixTemDHW.port.Q_flow)
-    annotation (Placement(transformation(extent={{-204,-196},{-184,-176}})));
+    annotation (Placement(transformation(extent={{-42,-158},{-22,-138}})));
 equation
  connect(T_stoDHWBot.y, sigBusDistr.TStoDHWBotMea) annotation (Line(points={{-16.4,
          95},{2.5,95},{2.5,101},{0,101}},              color={0,0,127}), Text(
@@ -579,14 +578,16 @@ equation
       index=-1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(eneKPICalDHW.KPI, outBusDist.QDHWLos_flow) annotation (Line(points={{-181.8,
-          -186},{0,-186},{0,-100}},     color={135,135,135}), Text(
+  connect(eneKPICalDHW.KPI, outBusDist.QDHWLos_flow) annotation (Line(points={{-19.8,
+          -148},{-19.8,-120},{-14,-120},{-14,-86},{0,-86},{0,-100}},
+                                        color={135,135,135}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(eneKPICalBuf.KPI, outBusDist.QBufLos_flow) annotation (Line(points={{-181.8,
-          -146},{0,-146},{0,-100}},     color={135,135,135}), Text(
+  connect(eneKPICalBuf.KPI, outBusDist.QBufLos_flow) annotation (Line(points={{-19.8,
+          -108},{-18,-108},{-18,-86},{0,-86},{0,-100}},
+                                        color={135,135,135}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
@@ -598,4 +599,4 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-end BivalentSystemDistributionWithBoilerAfterBuffer_WithDHW;
+end TwoStoragesBoilerWithDHW;

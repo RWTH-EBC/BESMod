@@ -24,7 +24,7 @@ model DHW "Standard DHW subsystem"
 
   replaceable parameter
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
-    pumpData
+    parPum
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-96,-96},{-84,-84}})));
 
   replaceable TappingProfiles.BaseClasses.PartialDHW calcmFlow constrainedby
@@ -57,18 +57,18 @@ Modelica.Blocks.Math.UnitConversions.From_degC fromDegC
     redeclare
       BESMod.Systems.RecordsCollection.Movers.AutomaticConfigurationData
       per(
-      final speed_rpm_nominal=pumpData.speed_rpm_nominal,
+      final speed_rpm_nominal=parPum.speed_rpm_nominal,
       final m_flow_nominal=mDHW_flow_nominal,
       final dp_nominal(displayUnit="Pa") = 100,
       final rho=rho,
-      final V_flowCurve=pumpData.V_flowCurve,
-      final dpCurve=pumpData.dpCurve),
+      final V_flowCurve=parPum.V_flowCurve,
+      final dpCurve=parPum.dpCurve),
     final inputType=IBPSA.Fluid.Types.InputType.Continuous,
-    final addPowerToMedium=pumpData.addPowerToMedium,
+    final addPowerToMedium=parPum.addPowerToMedium,
     final nominalValuesDefineDefaultPressureCurve=false,
-    final tau=pumpData.tau,
-    final use_inputFilter=pumpData.use_inputFilter,
-    final riseTime=pumpData.riseTimeInpFilter,
+    final tau=parPum.tau,
+    final use_inputFilter=parPum.use_inputFilter,
+    final riseTime=parPum.riseTimeInpFilter,
     final dp_nominal=100)                 annotation (Placement(transformation(
         extent={{-9.5,9.5},{9.5,-9.5}},
         rotation=180,

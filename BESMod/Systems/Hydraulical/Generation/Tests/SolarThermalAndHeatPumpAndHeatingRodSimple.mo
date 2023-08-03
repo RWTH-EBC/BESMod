@@ -1,24 +1,23 @@
 within BESMod.Systems.Hydraulical.Generation.Tests;
-model SolarThermalAndHeatPumpAndHeatingRod
+model SolarThermalAndHeatPumpAndHeatingRodSimple
   extends PartialTest(redeclare
-      BESMod.Systems.Hydraulical.Generation.SolarThermalBivHPAixLib generation(
+      BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump
+      generation(
       redeclare model PerDataMainHP =
           AixLib.DataBase.HeatPump.PerformanceData.VCLibMap,
-      redeclare
-        BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
-        heatPumpParameters,
-      redeclare
-        BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-        heatingRodParameters,
-      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
+      redeclare BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
+        parHeaPum,
       redeclare package Medium_eva = IBPSA.Media.Air,
-      redeclare
-        BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
-        temperatureSensorData,
+      redeclare BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
+        parTemSen,
+      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
+      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPumSolThe,
+
       redeclare
         BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultSolarThermal
-        solarThermalParas,
-      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpSTData));
+        parSolThe,
+      redeclare BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
+        parHeaRod));
   extends Modelica.Icons.Example;
 
   Modelica.Blocks.Sources.Constant     const1(k=0)
@@ -44,4 +43,4 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-end SolarThermalAndHeatPumpAndHeatingRod;
+end SolarThermalAndHeatPumpAndHeatingRodSimple;

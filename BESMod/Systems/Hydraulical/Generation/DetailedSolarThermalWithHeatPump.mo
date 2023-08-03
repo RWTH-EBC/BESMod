@@ -1,6 +1,6 @@
 within BESMod.Systems.Hydraulical.Generation;
-model SolarThermalBivHPBuiLib
-  "Solar thermal assistet monoenergetic heat pump with heating rod using Buildings ST model"
+model DetailedSolarThermalWithHeatPump
+  "Detailed solar thermal model with monoenergetic heat pump"
   extends HeatPumpAndHeatingRod(
     m_flow_nominal={Q_flow_nominal[1]*f_design[1]/dTTra_nominal[1]/4184,
         solarThermalParas.m_flow_nominal},
@@ -15,10 +15,11 @@ model SolarThermalBivHPBuiLib
     annotation (Dialog(group="Component data"), choicesAllMatching=true, Placement(transformation(extent={{-86,-62},
             {-66,-42}})));
   replaceable parameter
-    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
-    pumpSTData
-    annotation (Dialog(group="Component data"), choicesAllMatching=true, Placement(transformation(extent={{-80,
-            -158},{-66,-144}})));
+    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition parPumSolThe
+    "Parameters for solar thermal pump" annotation (
+    Dialog(group="Component data"),
+    choicesAllMatching=true,
+    Placement(transformation(extent={{-80,-158},{-66,-144}})));
   Buildings.Fluid.SolarCollectors.EN12975 solCol(
     redeclare final package Medium = Medium,
     final allowFlowReversal=true,
@@ -56,27 +57,28 @@ model SolarThermalBivHPBuiLib
         rotation=180,
         origin={-30,-170})));
 
-  IBPSA.Fluid.Movers.SpeedControlled_y pumpST(
+  IBPSA.Fluid.Movers.SpeedControlled_y pumpSolThe(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
     final p_start=p_start,
     final T_start=T_start,
     final allowFlowReversal=allowFlowReversal,
     final show_T=show_T,
-    redeclare BESMod.Systems.RecordsCollection.Movers.AutomaticConfigurationData per(
-      final speed_rpm_nominal=pumpSTData.speed_rpm_nominal,
+    redeclare BESMod.Systems.RecordsCollection.Movers.AutomaticConfigurationData
+      per(
+      final speed_rpm_nominal=parPumSolThe.speed_rpm_nominal,
       final m_flow_nominal=solarThermalParas.m_flow_nominal,
-      final dp_nominal=dpST_nominal+ dpDem_nominal[2],
+      final dp_nominal=dpST_nominal + dpDem_nominal[2],
       final rho=rho,
-      final V_flowCurve=pumpSTData.V_flowCurve,
-      final dpCurve=pumpSTData.dpCurve),
+      final V_flowCurve=parPumSolThe.V_flowCurve,
+      final dpCurve=parPumSolThe.dpCurve),
     final inputType=IBPSA.Fluid.Types.InputType.Continuous,
-    final addPowerToMedium=pumpSTData.addPowerToMedium,
-    final tau=pumpSTData.tau,
-    final use_inputFilter=pumpSTData.use_inputFilter,
-    final riseTime=pumpSTData.riseTimeInpFilter,
+    final addPowerToMedium=parPumSolThe.addPowerToMedium,
+    final tau=parPumSolThe.tau,
+    final use_inputFilter=parPumSolThe.use_inputFilter,
+    final riseTime=parPumSolThe.riseTimeInpFilter,
     final init=Modelica.Blocks.Types.Init.InitialOutput,
-    final y_start=1) annotation (Placement(transformation(
+    final y_start=1) "Solar thermal pump" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={30,-170})));
@@ -118,18 +120,17 @@ protected
     "Pressure drop at nominal mass flow rate";
 equation
 
-  connect(pumpST.port_a, bou.ports[1]) annotation (Line(points={{40,-170},{60,
-          -170}},     color={0,127,255}));
-  connect(pumpST.port_b, solCol.port_a) annotation (Line(points={{20,-170},{-20,
-          -170}},           color={0,127,255}));
+  connect(pumpSolThe.port_a, bou.ports[1])
+    annotation (Line(points={{40,-170},{60,-170}}, color={0,127,255}));
+  connect(pumpSolThe.port_b, solCol.port_a)
+    annotation (Line(points={{20,-170},{-20,-170}}, color={0,127,255}));
   connect(solCol.port_b, portGen_out[2]) annotation (Line(points={{-40,-170},{
           -40,-124},{-232,-124},{-232,126},{116,126},{116,78},{106,78},{106,
           82.5},{100,82.5}},                     color={0,127,255}));
-  connect(portGen_in[2], pumpST.port_a) annotation (Line(points={{100,0.5},{102,
-          0.5},{102,-156},{44,-156},{44,-170},{40,-170}},
-                                 color={0,127,255}));
-  connect(pumpST.P, outBusGen.PelPumpST) annotation (Line(points={{19,-179},{0,
-          -179},{0,-100}}, color={0,0,127}), Text(
+  connect(portGen_in[2], pumpSolThe.port_a) annotation (Line(points={{100,0.5},{
+          102,0.5},{102,-156},{44,-156},{44,-170},{40,-170}}, color={0,127,255}));
+  connect(pumpSolThe.P, outBusGen.PelPumpST) annotation (Line(points={{19,-179},{
+          0,-179},{0,-100}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
@@ -144,9 +145,8 @@ equation
       index=-1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(switch3.y, pumpST.y) annotation (Line(points={{-147,-170},{-130,-170},
-          {-130,-186},{30,-186},{30,-182}},
-                                      color={0,0,127}));
+  connect(switch3.y, pumpSolThe.y) annotation (Line(points={{-147,-170},{-130,-170},
+          {-130,-186},{30,-186},{30,-182}}, color={0,0,127}));
   connect(AirOrSoil2.y, switch3.u3) annotation (Line(points={{-179,-190},{-179,
           -186},{-170,-186},{-170,-178}},
                                         color={0,0,127}));
@@ -169,4 +169,4 @@ equation
           extent={{94,-198},{-218,-136}},
           lineColor={0,0,0},
           lineThickness=1)}));
-end SolarThermalBivHPBuiLib;
+end DetailedSolarThermalWithHeatPump;

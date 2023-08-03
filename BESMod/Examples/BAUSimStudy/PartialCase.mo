@@ -2,22 +2,23 @@ within BESMod.Examples.BAUSimStudy;
 partial model PartialCase
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
-    redeclare Systems.Demand.Building.TEASERThermalZone building(redeclare
-        BESMod.Systems.Demand.Building.RecordsCollection.RefAachen oneZoneParam(
-          heaLoadFacGrd=0, heaLoadFacOut=0),
-    hBui=sum(building.zoneParam.VAir)^(1/3),
-    ABui=sum(building.zoneParam.VAir)^(2/3)),
+    redeclare Systems.Demand.Building.TEASERThermalZone building(
+      redeclare BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
+        oneZoneParam(heaLoadFacGrd=0, heaLoadFacOut=0),
+      hBui=sum(building.zoneParam.VAir)^(1/3),
+      ABui=sum(building.zoneParam.VAir)^(2/3)),
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
       redeclare Systems.Hydraulical.Generation.HeatPumpAndHeatingRod generation(
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
+        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare package Medium_eva = AixLib.Media.Air,
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
-          heatPumpParameters(
+          parHeaPum(
           genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
+
           TBiv=TBiv,
-          scalingFactor=hydraulic.generation.heatPumpParameters.QPri_flow_nominal
+          scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal
               /5000,
           dpCon_nominal=0,
           dpEva_nominal=0,
@@ -25,15 +26,16 @@ partial model PartialCase
           refIneFre_constant=0),
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-          heatingRodParameters,
+          parHeaRod,
         redeclare model PerDataMainHP =
             AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
-            QCon_flow_nominal=hydraulic.generation.heatPumpParameters.QPri_flow_nominal,
+            QCon_flow_nominal=hydraulic.generation.parHeaPum.QPri_flow_nominal,
+
             refrigerant="Propane",
             flowsheet="VIPhaseSeparatorFlowsheet"),
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
-          temperatureSensorData),
+          parTemSen),
       redeclare Systems.Hydraulical.Control.ConstHys_PI_ConOut_HPSController
         control(
         redeclare
@@ -58,14 +60,12 @@ partial model PartialCase
         use_heatingRodAfterBuffer=false,
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
-          temperatureSensorData,
+          parTemSen,
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
           threeWayValveParameters,
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorage
-          bufParameters(
-          use_QLos=true,
-          T_m=338.15),
+          bufParameters(use_QLos=true, T_m=338.15),
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorage
           dhwParameters(
@@ -83,10 +83,11 @@ partial model PartialCase
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
           transferDataBaseDefinition,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData)),
+        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum)),
+
     redeclare Systems.Demand.DHW.DHW DHW(
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
-      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
+      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
         calcmFlow),
     redeclare Systems.UserProfiles.TEASERProfiles userProfiles,

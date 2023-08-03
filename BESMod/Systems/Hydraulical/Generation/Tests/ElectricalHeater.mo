@@ -5,9 +5,9 @@ model ElectricalHeater
       generation(
       redeclare
         BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-        heatingRodParameters, redeclare
+        parHeaRod, redeclare
         BESMod.Systems.RecordsCollection.Movers.DefaultMover
-        pumpData));
+        parPum));
   extends Modelica.Icons.Example;
 
   Modelica.Blocks.Sources.Constant     const1(k=1)

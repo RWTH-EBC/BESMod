@@ -65,16 +65,16 @@ model IdealValveRadiator
     each final show_T=show_T,
     redeclare
       BESMod.Systems.RecordsCollection.Movers.AutomaticConfigurationData per(
-      each final speed_rpm_nominal=pumpData.speed_rpm_nominal,
+      each final speed_rpm_nominal=parPum.speed_rpm_nominal,
       final m_flow_nominal=m_flow_nominal,
       final dp_nominal=dp_nominal,
       each final rho=rho,
-      each final V_flowCurve=pumpData.V_flowCurve,
-      each final dpCurve=pumpData.dpCurve),
+      each final V_flowCurve=parPum.V_flowCurve,
+      each final dpCurve=parPum.dpCurve),
     each final inputType=IBPSA.Fluid.Types.InputType.Continuous,
-    each final addPowerToMedium=pumpData.addPowerToMedium,
+    each final addPowerToMedium=parPum.addPowerToMedium,
     each final nominalValuesDefineDefaultPressureCurve=true,
-    each final tau=pumpData.tau,
+    each final tau=parPum.tau,
     each final use_inputFilter=false,
     final m_flow_start=m_flow_nominal) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -82,7 +82,7 @@ model IdealValveRadiator
         origin={-10,10})));
   replaceable parameter
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
-    pumpData annotation (choicesAllMatching=true, Placement(transformation(extent={{-98,78},{-78,98}})));
+    parPum annotation (choicesAllMatching=true, Placement(transformation(extent={{-98,78},{-78,98}})));
   BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{30,-106},{50,-86}})));
   Modelica.Blocks.Routing.RealPassThrough reaPasThrOpe[nParallelDem] annotation (Placement(transformation(

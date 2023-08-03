@@ -9,7 +9,7 @@ model PressureReliefExample
     dpFullOpen_nominal=dp_nominal*1.4,
     dpThreshold_nominal=dp_nominal*1.1,
     use_inputFilter=false,
-    dpValve_nominal=dp_nominal) if              use_relVal
+    dpValve_nominal=dp_nominal)              if use_relVal
                                           annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
@@ -37,12 +37,12 @@ model PressureReliefExample
     redeclare package Medium = Medium,
     redeclare
       BESMod.Systems.RecordsCollection.Movers.AutomaticConfigurationData per(
-      final speed_rpm_nominal=pumpData.speed_rpm_nominal,
+      final speed_rpm_nominal=parPum.speed_rpm_nominal,
       final m_flow_nominal=m_flow_nominal,
       final dp_nominal=dp_nominal,
       final rho(displayUnit="kg/m3") = 1000,
-      final V_flowCurve=pumpData.V_flowCurve,
-      final dpCurve=pumpData.dpCurve),
+      final V_flowCurve=parPum.V_flowCurve,
+      final dpCurve=parPum.dpCurve),
     final inputType=IBPSA.Fluid.Types.InputType.Continuous,
     final use_inputFilter=false,
     final y_start=1)                                    annotation (Placement(
@@ -52,7 +52,7 @@ model PressureReliefExample
         origin={-50,30})));
   replaceable parameter
     BESMod.Systems.RecordsCollection.Movers.DefaultMover
-    pumpData(V_flowCurve={0.000422526,0.28816252,0.580972823,0.868712818,
+    parPum(V_flowCurve={0.000422526,0.28816252,0.580972823,0.868712818,
         0.94983775,1.086736074,1.190677393,1.396024878,1.499966198}, dpCurve={
         1.587002096,1.526205451,1.375262055,1.161425577,1.07966457,0.857442348,
         0.645702306,0.224318658,0})

@@ -2,32 +2,30 @@ within BESMod.Examples.SolarThermalSystem;
 model SolarThermalAixLib "Solar thermal collector from AixLib"
   extends BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS(redeclare
       model hydGeneration =
-        BESMod.Systems.Hydraulical.Generation.SolarThermalBivHPAixLib (
+        BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump (
         use_heaRod=false,
         redeclare model PerDataMainHP =
             AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (refrigerant=
                 "Propane", flowsheet="VIPhaseSeparatorFlowsheet"),
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
-          heatPumpParameters(genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.Monovalent),
+          parHeaPum(genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.Monovalent),
 
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-          heatingRodParameters,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
-
+          parHeaRod,
+        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare package Medium_eva = AixLib.Media.Air,
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
-          temperatureSensorData,
-        redeclare BESMod.Examples.SolarThermalSystem.SolarCollector
-          solarThermalParas(
+          parTemSen,
+        redeclare BESMod.Examples.SolarThermalSystem.SolarCollector parSolThe(
           final A=parameterStudy.A,
           final eta_zero=parameterStudy.eta_zero,
           final c1=parameterStudy.c1,
           final c2=parameterStudy.c2),
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover
-          pumpSTData));
+          parPumSolThe));
 
   extends Modelica.Icons.Example;
 

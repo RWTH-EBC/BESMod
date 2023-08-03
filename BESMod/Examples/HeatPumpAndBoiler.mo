@@ -1,10 +1,9 @@
 within BESMod.Examples;
-package BivalentHeatPumpSystems "Bivalent Heat Pump System with Gas Boiler"
+package HeatPumpAndBoiler "Bivalent Heat Pump System with Gas Boiler"
   extends Modelica.Icons.ExamplesPackage;
 
   record ParametersToChange
-    extends
-      Systems.RecordsCollection.ParameterStudy.ParameterStudyBaseDefinition;
+    extends Systems.RecordsCollection.ParameterStudy.ParameterStudyBaseDefinition;
     // 1. Add parameters like this (WITH Evaluate=false)!
     // parameter Modelica.SIunits.Volume V=0.5 annotation(Evaluate=false);
     // 2. Overwrite the default parameter in the system simulation
@@ -35,8 +34,7 @@ package BivalentHeatPumpSystems "Bivalent Heat Pump System with Gas Boiler"
 
   end AachenSystem;
 
-  model BivalentHeatPumpSystems_Serial
-    "Bivalent Heat Pump Systems with serial heat generation"
+  model Serial "Bivalent Heat Pump Systems with serial heat generation"
     extends Systems.BaseClasses.PartialBuildingEnergySystem(
       redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
       redeclare Systems.Demand.Building.TEASERThermalZone building(redeclare
@@ -46,16 +44,15 @@ package BivalentHeatPumpSystems "Bivalent Heat Pump System with Gas Boiler"
       redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
         redeclare Systems.Hydraulical.Generation.HeatPumpAndGasBoilerSerial
           generation(
-          redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover
-            pumpData,
+          redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
           redeclare package Medium_eva = AixLib.Media.Air,
           redeclare
             BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
-            heatPumpParameters(
+            parHeaPum(
             genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
 
             TBiv=parameterStudy.TBiv,
-            scalingFactor=hydraulic.generation.heatPumpParameters.QPri_flow_nominal
+            scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal
                 /parameterStudy.QHP_flow_biv,
             dpCon_nominal=0,
             dpEva_nominal=0,
@@ -63,18 +60,17 @@ package BivalentHeatPumpSystems "Bivalent Heat Pump System with Gas Boiler"
             refIneFre_constant=0),
           redeclare
             BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-            heatingRodParameters,
+            parHeaRod,
           redeclare model PerDataMainHP =
               AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
-              QCon_flow_nominal=hydraulic.generation.heatPumpParameters.QPri_flow_nominal,
+              QCon_flow_nominal=hydraulic.generation.parHeaPum.QPri_flow_nominal,
 
               refrigerant="Propane",
               flowsheet="VIPhaseSeparatorFlowsheet"),
           redeclare
             BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
-            temperatureSensorData),
-        redeclare Systems.Hydraulical.Control.NewControlBivalentSerial
-                                                                    control(
+            parTemSen),
+        redeclare Systems.Hydraulical.Control.NewControlBivalentSerial control(
           redeclare
             BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
             thermostaticValveController,
@@ -91,7 +87,8 @@ package BivalentHeatPumpSystems "Bivalent Heat Pump System with Gas Boiler"
             BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultSafetyControl
             safetyControl,
           TCutOff=parameterStudy.TCutOff,
-          QHP_flow_cutOff=parameterStudy.QHP_flow_cutOff*hydraulic.generation.heatPumpParameters.scalingFactor,
+          QHP_flow_cutOff=parameterStudy.QHP_flow_cutOff*hydraulic.generation.parHeaPum.scalingFactor,
+
           CheckTCut_Off(threshold=parameterStudy.TCutOff)),
         redeclare Systems.Hydraulical.Distribution.DistributionTwoStorageParallel
           distribution(
@@ -107,10 +104,11 @@ package BivalentHeatPumpSystems "Bivalent Heat Pump System with Gas Boiler"
             redeclare
             BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
             radParameters, redeclare
-            BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData)),
+            BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum)),
       redeclare Systems.Demand.DHW.DHW DHW(
         redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
+
+        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
           calcmFlow),
       redeclare Systems.UserProfiles.TEASERProfiles userProfiles,
@@ -128,27 +126,27 @@ package BivalentHeatPumpSystems "Bivalent Heat Pump System with Gas Boiler"
         StopTime=31536000,
         Interval=600,
         __Dymola_Algorithm="Dassl"));
-  end BivalentHeatPumpSystems_Serial;
+  end Serial;
 
-  model BivalentHeatPumpSystems_BoilerAfterBuffer_WithoutDHW
+  model BoilerAfterBufferWithoutDHW
     "Bivalent Heat Pump System with boiler integration after buffer tank without DHW support"
     extends Systems.BaseClasses.PartialBuildingEnergySystem(
       redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
       redeclare Systems.Demand.Building.TEASERThermalZone building(redeclare
-          BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
-          oneZoneParam(heaLoadFacGrd=0, heaLoadFacOut=0)),
+          BESMod.Systems.Demand.Building.RecordsCollection.RefAachen oneZoneParam(
+            heaLoadFacGrd=0, heaLoadFacOut=0)),
       redeclare BESMod.Systems.Control.NoControl control,
       redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
-        redeclare Systems.Hydraulical.Generation.OnlyHeatPump generation(
-          redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover
-            pumpData,
+        redeclare Systems.Hydraulical.Generation.HeatPump generation(
+          redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
           redeclare package Medium_eva = AixLib.Media.Air,
           redeclare
             BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
-            heatPumpParameters(
+            parHeaPum(
             genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
+
             TBiv=parameterStudy.TBiv,
-            scalingFactor=hydraulic.generation.heatPumpParameters.QPri_flow_nominal
+            scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal
                 /parameterStudy.QHP_flow_biv,
             dpCon_nominal=0,
             dpEva_nominal=0,
@@ -156,15 +154,16 @@ package BivalentHeatPumpSystems "Bivalent Heat Pump System with Gas Boiler"
             refIneFre_constant=0),
           redeclare
             BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-            heatingRodParameters,
+            parHeaRod,
           redeclare model PerDataMainHP =
               AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
-              QCon_flow_nominal=hydraulic.generation.heatPumpParameters.QPri_flow_nominal,
+              QCon_flow_nominal=hydraulic.generation.parHeaPum.QPri_flow_nominal,
+
               refrigerant="Propane",
               flowsheet="VIPhaseSeparatorFlowsheet"),
           redeclare
             BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
-            temperatureSensorData),
+            parTemSen),
         redeclare
           Systems.Hydraulical.Control.NewControlBivalentSystem_BoilerAfterBuffer
           control(
@@ -184,31 +183,28 @@ package BivalentHeatPumpSystems "Bivalent Heat Pump System with Gas Boiler"
             BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultSafetyControl
             safetyControl,
           TCutOff=parameterStudy.TCutOff,
-          QHP_flow_cutOff=parameterStudy.QHP_flow_cutOff*hydraulic.generation.heatPumpParameters.scalingFactor,
+          QHP_flow_cutOff=parameterStudy.QHP_flow_cutOff*hydraulic.generation.parHeaPum.scalingFactor,
 
           CheckTCut_Off(threshold=parameterStudy.TCutOff)),
-        redeclare
-          Systems.Hydraulical.Distribution.BivalentSystemDistributionWithBoilerAfterBuffer_WithoutDHW
+        redeclare Systems.Hydraulical.Distribution.TwoStoragesBoilerWithoutDHW
           distribution(
           redeclare
             BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
             bufParameters(VPerQ_flow=parameterStudy.VPerQFlow, dTLoadingHC1=0),
-
           redeclare
             BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
             dhwParameters(dTLoadingHC1=10),
-          redeclare
-            BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
+          redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
             threeWayValveParameters),
         redeclare Systems.Hydraulical.Transfer.IdealValveRadiator transfer(
             redeclare
             BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
             radParameters, redeclare
-            BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData)),
+            BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum)),
       redeclare Systems.Demand.DHW.DHW DHW(
-        redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM
-          DHWProfile,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
+        redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
+
+        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
           calcmFlow),
       redeclare Systems.UserProfiles.TEASERProfiles userProfiles,
@@ -226,10 +222,9 @@ package BivalentHeatPumpSystems "Bivalent Heat Pump System with Gas Boiler"
         StopTime=31536000,
         Interval=600,
         __Dymola_Algorithm="Dassl"));
-  end BivalentHeatPumpSystems_BoilerAfterBuffer_WithoutDHW;
+  end BoilerAfterBufferWithoutDHW;
 
-  model BivalentHeatPumpSystems_Parallel
-    "Bivalent Heat Pump System with parallel heat generation"
+  model Parallel "Bivalent Heat Pump System with parallel heat generation"
     extends Systems.BaseClasses.PartialBuildingEnergySystem(
       redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
       redeclare Systems.Demand.Building.TEASERThermalZone building(redeclare
@@ -241,14 +236,14 @@ package BivalentHeatPumpSystems "Bivalent Heat Pump System with Gas Boiler"
           generation(
           use_heaRod=false,
           redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover
-            pumpData,
+            parPum,
           redeclare package Medium_eva = AixLib.Media.Air,
           redeclare
             BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
-            heatPumpParameters(
+            parHeaPum(
             genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
             TBiv=parameterStudy.TBiv,
-            scalingFactor=hydraulic.generation.heatPumpParameters.QPri_flow_nominal
+            scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal
                 /parameterStudy.QHP_flow_biv,
             dpCon_nominal=0,
             dpEva_nominal=0,
@@ -256,12 +251,12 @@ package BivalentHeatPumpSystems "Bivalent Heat Pump System with Gas Boiler"
             refIneFre_constant=0),
           redeclare model PerDataMainHP =
               AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
-              QCon_flow_nominal=hydraulic.generation.heatPumpParameters.QPri_flow_nominal,
+              QCon_flow_nominal=hydraulic.generation.parHeaPum.QPri_flow_nominal,
               refrigerant="Propane",
               flowsheet="VIPhaseSeparatorFlowsheet"),
           redeclare
             BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
-            temperatureSensorData,
+            parTemSen,
           redeclare
             BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
             threeWayValveParameters,
@@ -269,7 +264,7 @@ package BivalentHeatPumpSystems "Bivalent Heat Pump System with Gas Boiler"
               BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
               parameters(
               m_flow_nominal=2*m_flow_nominal[1],
-              dp_nominal={heatPumpParameters.dpCon_nominal,boilerNoControl.dp_nominal},
+              dp_nominal={parHeaPum.dpCon_nominal,boilerNoControl.dp_nominal},
               use_inputFilter=true,
               order=1))),
         redeclare Systems.Hydraulical.Control.NewControlBivalentParallel
@@ -290,7 +285,7 @@ package BivalentHeatPumpSystems "Bivalent Heat Pump System with Gas Boiler"
             BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultSafetyControl
             safetyControl,
           TCutOff=parameterStudy.TCutOff,
-          QHP_flow_cutOff=parameterStudy.QHP_flow_cutOff*hydraulic.generation.heatPumpParameters.scalingFactor,
+          QHP_flow_cutOff=parameterStudy.QHP_flow_cutOff*hydraulic.generation.parHeaPum.scalingFactor,
           CheckTCut_Off(threshold=parameterStudy.TCutOff)),
         redeclare
           Systems.Hydraulical.Distribution.DistributionTwoStorageParallel
@@ -311,10 +306,10 @@ package BivalentHeatPumpSystems "Bivalent Heat Pump System with Gas Boiler"
             redeclare
             BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
             radParameters, redeclare
-            BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData)),
+            BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum)),
       redeclare Systems.Demand.DHW.DHW DHW(
         redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
+        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
           calcmFlow),
       redeclare Systems.UserProfiles.TEASERProfiles userProfiles,
@@ -333,27 +328,27 @@ package BivalentHeatPumpSystems "Bivalent Heat Pump System with Gas Boiler"
         StopTime=31536000,
         Interval=600,
         __Dymola_Algorithm="Dassl"));
-  end BivalentHeatPumpSystems_Parallel;
+  end Parallel;
 
-  model BivalentHeatPumpSystems_BoilerAfterBuffer_WithDHW
+  model BoilerAfterBufferWithDHW
     "Bivalent Heat Pump System with boiler integration after buffer tank with DHW support"
     extends Systems.BaseClasses.PartialBuildingEnergySystem(
       redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
       redeclare Systems.Demand.Building.TEASERThermalZone building(redeclare
-          BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
-          oneZoneParam(heaLoadFacGrd=0, heaLoadFacOut=0)),
+          BESMod.Systems.Demand.Building.RecordsCollection.RefAachen oneZoneParam(
+            heaLoadFacGrd=0, heaLoadFacOut=0)),
       redeclare BESMod.Systems.Control.NoControl control,
       redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
-        redeclare Systems.Hydraulical.Generation.OnlyHeatPump generation(
-          redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover
-            pumpData,
+        redeclare Systems.Hydraulical.Generation.HeatPump generation(
+          redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
           redeclare package Medium_eva = AixLib.Media.Air,
           redeclare
             BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
-            heatPumpParameters(
+            parHeaPum(
             genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
+
             TBiv=parameterStudy.TBiv,
-            scalingFactor=hydraulic.generation.heatPumpParameters.QPri_flow_nominal
+            scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal
                 /parameterStudy.QHP_flow_biv,
             dpCon_nominal=0,
             dpEva_nominal=0,
@@ -361,15 +356,16 @@ package BivalentHeatPumpSystems "Bivalent Heat Pump System with Gas Boiler"
             refIneFre_constant=0),
           redeclare
             BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-            heatingRodParameters,
+            parHeaRod,
           redeclare model PerDataMainHP =
               AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
-              QCon_flow_nominal=hydraulic.generation.heatPumpParameters.QPri_flow_nominal,
+              QCon_flow_nominal=hydraulic.generation.parHeaPum.QPri_flow_nominal,
+
               refrigerant="Propane",
               flowsheet="VIPhaseSeparatorFlowsheet"),
           redeclare
             BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
-            temperatureSensorData),
+            parTemSen),
         redeclare
           Systems.Hydraulical.Control.NewControlBivalentSystem_BoilerAfterBuffer
           control(
@@ -389,11 +385,10 @@ package BivalentHeatPumpSystems "Bivalent Heat Pump System with Gas Boiler"
             BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultSafetyControl
             safetyControl,
           TCutOff=parameterStudy.TCutOff,
-          QHP_flow_cutOff=parameterStudy.QHP_flow_cutOff*hydraulic.generation.heatPumpParameters.scalingFactor,
+          QHP_flow_cutOff=parameterStudy.QHP_flow_cutOff*hydraulic.generation.parHeaPum.scalingFactor,
 
           CheckTCut_Off(threshold=parameterStudy.TCutOff)),
-        redeclare
-          Systems.Hydraulical.Distribution.BivalentSystemDistributionWithBoilerAfterBuffer_WithDHW
+        redeclare Systems.Hydraulical.Distribution.TwoStoragesBoilerWithDHW
           distribution(
           designType=BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage,
 
@@ -403,9 +398,8 @@ package BivalentHeatPumpSystems "Bivalent Heat Pump System with Gas Boiler"
           use_heatingRodAfterBuffer=false,
           redeclare
             BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
-            temperatureSensorData,
-          redeclare
-            BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
+            parTemSen,
+          redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
             threeWayValveParameters1,
           redeclare
             BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition
@@ -420,18 +414,18 @@ package BivalentHeatPumpSystems "Bivalent Heat Pump System with Gas Boiler"
             redeclare
             BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
             radParameters, redeclare
-            BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData)),
+            BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum)),
       redeclare Systems.Demand.DHW.DHW DHW(
-        redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM
-          DHWProfile,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
+        redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
+
+        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
           calcmFlow),
       redeclare Systems.UserProfiles.TEASERProfiles userProfiles,
       redeclare UseCaseDesignOptimization.AachenSystem systemParameters(
           use_ventilation=true),
-      redeclare UseCaseDesignOptimization.ParametersToChange parameterStudy(TCutOff=
-            262.15, TBiv=276.15),
+      redeclare UseCaseDesignOptimization.ParametersToChange parameterStudy(
+          TCutOff=262.15, TBiv=276.15),
       redeclare final package MediumDHW = AixLib.Media.Water,
       redeclare final package MediumZone = AixLib.Media.Air,
       redeclare final package MediumHyd = AixLib.Media.Water,
@@ -443,6 +437,6 @@ package BivalentHeatPumpSystems "Bivalent Heat Pump System with Gas Boiler"
         StopTime=31536000,
         Interval=600,
         __Dymola_Algorithm="Dassl"));
-  end BivalentHeatPumpSystems_BoilerAfterBuffer_WithDHW;
+  end BoilerAfterBufferWithDHW;
 
-end BivalentHeatPumpSystems;
+end HeatPumpAndBoiler;

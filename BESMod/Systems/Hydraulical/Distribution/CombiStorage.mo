@@ -84,13 +84,13 @@ model CombiStorage
     final allowFlowReversal_HC1=allowFlowReversal,
     final allowFlowReversal_HC2=allowFlowReversal)
     annotation (Placement(transformation(extent={{-26,0},{22,60}})));
-  Modelica.Blocks.Sources.Constant conDHWHeaRodOn(k=parameters.QHR_flow_nominal) if
-       parameters.use_hr annotation (Placement(transformation(
+  Modelica.Blocks.Sources.Constant conDHWHeaRodOn(k=parameters.QHR_flow_nominal)
+    if parameters.use_hr annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-54,-82})));
-  Modelica.Blocks.Sources.Constant conDHWHeaRodOff(final k=0) if
-       parameters.use_hr annotation (Placement(transformation(
+  Modelica.Blocks.Sources.Constant conDHWHeaRodOff(final k=0)
+    if parameters.use_hr annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-90,-82})));
@@ -100,8 +100,8 @@ model CombiStorage
         rotation=90,
         origin={-70,-48})));
   Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow
-                                                         prescribedHeatFlow if
-    parameters.use_hr              annotation (Placement(transformation(
+                                                         prescribedHeatFlow
+ if parameters.use_hr              annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-70,-18})));

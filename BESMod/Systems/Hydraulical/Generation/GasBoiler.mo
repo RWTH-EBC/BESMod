@@ -10,12 +10,12 @@ model GasBoiler "Just a gas boiler"
         annotation(Dialog(group="Component data"));
   replaceable parameter
     BESMod.Systems.RecordsCollection.TemperatureSensors.TemperatureSensorBaseDefinition
-    temperatureSensorData
+    parTemSen
     annotation (Dialog(group="Component data"), choicesAllMatching=true,
     Placement(transformation(extent={{-98,-16},{-78,4}})));
   replaceable parameter
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
-    pumpData annotation (Dialog(group="Component data"),
+    parPum annotation (Dialog(group="Component data"),
       choicesAllMatching=true, Placement(transformation(extent={{54,-80},
             {68,-68}})));
   AixLib.Fluid.BoilerCHP.BoilerNoControl boilerNoControl(
@@ -24,11 +24,11 @@ model GasBoiler "Just a gas boiler"
     final m_flow_nominal=m_flow_nominal[1],
     final m_flow_small=1E-4*abs(m_flow_nominal[1]),
     final show_T=show_T,
-    final tau=temperatureSensorData.tau,
-    final initType=temperatureSensorData.initType,
-    final transferHeat=temperatureSensorData.transferHeat,
-    final TAmb=temperatureSensorData.TAmb,
-    final tauHeaTra=temperatureSensorData.tauHeaTra,
+    final tau=parTemSen.tau,
+    final initType=parTemSen.initType,
+    final transferHeat=parTemSen.transferHeat,
+    final TAmb=parTemSen.TAmb,
+    final tauHeaTra=parTemSen.tauHeaTra,
     final rho_default=rho,
     final p_start=p_start,
     final T_start=T_start,
@@ -50,17 +50,17 @@ model GasBoiler "Just a gas boiler"
     redeclare
       BESMod.Systems.RecordsCollection.Movers.AutomaticConfigurationData
       per(
-      final speed_rpm_nominal=pumpData.speed_rpm_nominal,
+      final speed_rpm_nominal=parPum.speed_rpm_nominal,
       final m_flow_nominal=m_flow_nominal[1],
       final dp_nominal=dpDem_nominal[1] + dp_nominal[1],
       final rho=rho,
-      final V_flowCurve=pumpData.V_flowCurve,
-      final dpCurve=pumpData.dpCurve),
+      final V_flowCurve=parPum.V_flowCurve,
+      final dpCurve=parPum.dpCurve),
     final inputType=IBPSA.Fluid.Types.InputType.Continuous,
-    final addPowerToMedium=pumpData.addPowerToMedium,
-    final tau=pumpData.tau,
-    final use_inputFilter=pumpData.use_inputFilter,
-    final riseTime=pumpData.riseTimeInpFilter,
+    final addPowerToMedium=parPum.addPowerToMedium,
+    final tau=parPum.tau,
+    final use_inputFilter=parPum.use_inputFilter,
+    final riseTime=parPum.riseTimeInpFilter,
     final init=Modelica.Blocks.Types.Init.InitialOutput,
     final y_start=1) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
