@@ -43,7 +43,7 @@ partial model PartialCase
           thermostaticValveController,
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
-          thermostaticValveParameters,
+          parTheVal,
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultBivHPControl
           bivalentControlData(TBiv=TBiv),

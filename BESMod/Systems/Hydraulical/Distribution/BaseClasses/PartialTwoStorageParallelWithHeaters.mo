@@ -1,7 +1,8 @@
 within BESMod.Systems.Hydraulical.Distribution.BaseClasses;
 partial model PartialTwoStorageParallelWithHeaters
   "Partial two storage model with heaters"
-  extends BaseClasses.PartialTwoStorageParallel;
+  extends BaseClasses.PartialTwoStorageParallel(
+    final use_secHeaCoiDHWSto=false);
   parameter Modelica.Units.SI.HeatFlowRate QHRAftBuf_flow_nominal
     "Nominal heat flow rate of heating rod after DHW storage"
     annotation (Dialog(group="Component data", enable=heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.HeatingRod));
@@ -54,8 +55,9 @@ partial model PartialTwoStorageParallelWithHeaters
     BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.No
     annotation (Placement(transformation(extent={{40,54},{60,74}})));
 
-  Utilities.KPIs.EnergyKPICalculator eneKPICalAftBufHeaRod(use_inpCon=true)
-    if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.HeatingRod          annotation (Placement(transformation(
+  Utilities.KPIs.EnergyKPICalculator eneKPICalAftBufHeaRod(use_inpCon=false, y=
+        hea.Pel) if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.HeatingRod
+    "Heating rod after buffer KPIs"                                                                 annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={30,-130})));
@@ -85,9 +87,13 @@ partial model PartialTwoStorageParallelWithHeaters
  if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.Boiler
     "Boiler heat flow KPI"
     annotation (Placement(transformation(extent={{-60,-200},{-40,-180}})));
+  Utilities.KPIs.EnergyKPICalculator eneKPICalAftBufBoi(use_inpCon=false, y=boi.fuelPower)
+    if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.Boiler
+    "Boiler after buffer KPIs" annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={30,-150})));
 equation
-  connect(hea.Pel, eneKPICalAftBufHeaRod.u) annotation (Line(points={{61,96},{61,
-          94},{66,94},{66,104},{114,104},{114,-130},{41.8,-130}}, color={0,0,127}));
   connect(eneKPICalAftBufHeaRod.KPI, outBusDist.PEleHRAftBuf) annotation (Line(
         points={{17.8,-130},{0,-130},{0,-100}}, color={135,135,135}), Text(
       string="%second",
@@ -107,7 +113,7 @@ equation
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(KPIBoi.KPI, outBusDist.QBoi_flow) annotation (Line(points={{-37.8,-190},
-          {-24,-190},{-24,-192},{0,-192},{0,-100}}, color={135,135,135}), Text(
+          {0,-190},{0,-100}},                       color={135,135,135}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
@@ -124,5 +130,11 @@ equation
           {66,86},{66,80}}, color={0,127,255}));
   connect(pasThrHeaRodBuf.port_b, senTBuiSup.port_a)
     annotation (Line(points={{60,64},{66,64},{66,80}}, color={0,127,255}));
+  connect(eneKPICalAftBufBoi.KPI, outBusDist.PBoiAftBuf) annotation (Line(points={
+          {17.8,-150},{0,-150},{0,-100}}, color={135,135,135}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
   annotation (Diagram(coordinateSystem(extent={{-100,-180},{100,140}})));
 end PartialTwoStorageParallelWithHeaters;

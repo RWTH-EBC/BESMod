@@ -37,7 +37,10 @@ model GasBoiler "Just a gas boiler"
     final p_start=p_start,
     final T_start=T_start,
     paramBoiler=parBoi,
-    etaTempBased=etaTem) "Boiler with external control"
+    etaTempBased=etaTem,
+    T_out(unit="K", displayUnit="degC"),
+    T_in(unit="K", displayUnit="degC"))
+                         "Boiler with external control"
     annotation (Placement(transformation(extent={{-66,-6},{-34,26}})));
 
 

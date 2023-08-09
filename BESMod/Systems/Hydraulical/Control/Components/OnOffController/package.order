@@ -1,9 +1,8 @@
-AlternativeBivalentOnOffController
+AlternativeBivalent
 ConstantHysteresisTimeBasedHR
 DegreeMinuteController
 FloatingHysteresis
-ParallelBivalentControl
-StorageHysteresis
+PartParallelBivalent
 Examples
 Utilities
 BaseClasses

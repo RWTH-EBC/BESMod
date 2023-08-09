@@ -2,6 +2,7 @@ within BESMod.Systems.Hydraulical.Transfer;
 model RadiatorPressureBased "Pressure Based transfer system"
   // Abui =1 and hBui =1 to avaoid warnings, will be overwritten anyway
   extends BaseClasses.PartialTransfer(
+    nHeaTra=radParameters.n,
     ABui=1,
     hBui=1,
     final dp_nominal=transferDataBaseDefinition.dp_nominal,

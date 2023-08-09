@@ -1,6 +1,6 @@
 within BESMod.Systems.Hydraulical.Control.Components.OnOffController;
 model FloatingHysteresis
-  "OnOff controller based on the theory of floating hysteresis"
+  "Based on the floating hysteresis approach"
   extends BaseClasses.PartialOnOffController;
 
   parameter Modelica.Units.SI.TemperatureDifference Hysteresis_max=10
@@ -27,21 +27,22 @@ algorithm
    //end when;
 
    // When upper temperature of storage tank is lower than lower hysteresis value, activate hp
-   when T_Top < T_Set - Hysteresis_floating/2 then
-     HP_On := true;
+  when TStoTop < TSupSet - Hysteresis_floating/2 then
+    priGenOn := true;
      t1 :=time; // Start activation counter
    end when;
    // When second / lower temperature of storage tank is higher than upper hysteresis, deactivate hp
-   when T_bot > T_Set + Hysteresis_floating/2 then
-     HP_On := false;
-     Auxilliar_Heater_On := false;
-     Auxilliar_Heater_set := 0;
+  when TStoBot > TSupSet + Hysteresis_floating/2 then
+    priGenOn := false;
+    secGenOn := false;
+    ySecGenSet := 0;
    end when;
 
    // Activate hr in case temperature is below lower hysteresis and critical time period is passed
-   when (T_Top < T_Set - Hysteresis_floating/2) and time > (t1 + dt_hr) and HP_On then
-     Auxilliar_Heater_On :=true;
-     Auxilliar_Heater_set := 1;
+  when (TStoTop < TSupSet - Hysteresis_floating/2) and time > (t1 + dt_hr) and
+      priGenOn then
+    secGenOn := true;
+    ySecGenSet := 1;
    end when;
 
   annotation (Icon(graphics={

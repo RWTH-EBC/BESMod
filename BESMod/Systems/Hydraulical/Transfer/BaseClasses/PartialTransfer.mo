@@ -35,13 +35,15 @@ partial model PartialTransfer "Partial transfer model for BES"
   parameter Modelica.Units.SI.Height hBui "Height of building" annotation (
       Dialog(group=
           "Design - Top Down: Parameters are given by the parent system"));
-
+  parameter Real nHeaTra "Exponent of heat transfer system"
+    annotation (Dialog(
+        group="Design - Bottom Up: Parameters are defined by the subsystem"));
   Modelica.Fluid.Interfaces.FluidPort_b portTra_out[nParallelSup](redeclare
       final package Medium = Medium) "Outlet of the transfer system"
     annotation (Placement(transformation(extent={{-110,-52},{-90,-32}}),
         iconTransformation(extent={{-110,-52},{-90,-32}})));
-  Modelica.Fluid.Interfaces.FluidPort_a portTra_in[nParallelSup](redeclare
-      final package Medium = Medium) "Inlet to the transfer system" annotation (
+  Modelica.Fluid.Interfaces.FluidPort_a portTra_in[nParallelSup](redeclare final
+      package       Medium = Medium) "Inlet to the transfer system" annotation (
      Placement(transformation(extent={{-110,28},{-90,48}}), iconTransformation(
           extent={{-110,30},{-90,50}})));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPortRad[nParallelDem]

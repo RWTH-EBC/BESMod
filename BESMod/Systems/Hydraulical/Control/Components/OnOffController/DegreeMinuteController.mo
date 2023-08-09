@@ -1,6 +1,6 @@
 ﻿within BESMod.Systems.Hydraulical.Control.Components.OnOffController;
 model DegreeMinuteController
-  "OnOff controller based on degree minute approach"
+  "Based on degree minute approach"
   extends BaseClasses.PartialOnOffController;
 
   parameter Real DegreeMinute_HP_on(unit="K.min")=-60 "Degree minute when HP is turned on";
@@ -13,25 +13,25 @@ model DegreeMinuteController
     "Temperature difference when to reset the sum to 0";
 
   Real DegreeMinute(start=0) "Current degree minute value";
-  Modelica.Units.SI.TemperatureDifference delta_T=T_Top - T_Set;
+  Modelica.Units.SI.TemperatureDifference delta_T=TStoTop - TSupSet;
 
 algorithm
   when DegreeMinute < DegreeMinute_HP_on then
-    HP_On := true;
+    priGenOn := true;
   end when;
 
   when DegreeMinute > DegreeMinute_HP_off then
-    HP_On := false;
+    priGenOn := false;
   end when;
 
   when DegreeMinute < DegreeMinute_AuxHeater_on then
-    Auxilliar_Heater_On := true;
-    Auxilliar_Heater_set := 1;
+    secGenOn := true;
+    ySecGenSet := 1;
   end when;
 
   when delta_T > delta_T_AuxHeater_off then
-    Auxilliar_Heater_On := false;
-    Auxilliar_Heater_set := 0;
+    secGenOn := false;
+    ySecGenSet := 0;
   end when;
 
 equation

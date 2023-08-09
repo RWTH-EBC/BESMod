@@ -1,6 +1,6 @@
 within BESMod.Systems.Hydraulical.Control.Components.OnOffController;
 model ConstantHysteresisTimeBasedHR
-  "On-Off controller with a constant hysteresis for a time-based hr control"
+  "Const. hysteresis and time-based auxilliar heater control"
   extends
     BESMod.Systems.Hydraulical.Control.Components.OnOffController.BaseClasses.PartialOnOffController;
 
@@ -9,7 +9,7 @@ model ConstantHysteresisTimeBasedHR
     "Seconds for regulation when hr should be activated: If lower set temperature is hurt for more than this time period";
   parameter Real addSet_dt_hr=1 "Each time dt_hr passes, the output of the heating rod is increased by this amount in percentage. Maximum and default is 100 (on-off hr)%";
 
-  BESMod.Systems.Hydraulical.Control.Components.OnOffController.StorageHysteresis
+  BESMod.Systems.Hydraulical.Control.Components.OnOffController.Utilities.StorageHysteresis
     storageHysteresis(final bandwidth=Hysteresis, final pre_y_start=true)
     annotation (Placement(transformation(extent={{-58,18},{-18,58}})));
   BESMod.Systems.Hydraulical.Control.Components.OnOffController.Utilities.TriggerTime
@@ -36,34 +36,31 @@ model ConstantHysteresisTimeBasedHR
   Modelica.Blocks.Sources.Constant       const2(final k=Hysteresis/4)
     annotation (Placement(transformation(extent={{-98,-118},{-88,-108}})));
 equation
-  connect(T_Top, storageHysteresis.T_top) annotation (Line(points={{-120,60},{
-          -86,60},{-86,38},{-62,38}},
-                                  color={0,0,127}));
-  connect(T_Set, storageHysteresis.T_set) annotation (Line(points={{0,-118},{0,
-          -20},{-80,-20},{-80,54},{-62,54}},
-                                        color={0,0,127}));
-  connect(storageHysteresis.y, HP_On) annotation (Line(points={{-16,38},{30,38},
+  connect(TStoTop, storageHysteresis.T_top) annotation (Line(points={{-120,60},{-86,
+          60},{-86,38},{-62,38}}, color={0,0,127}));
+  connect(TSupSet, storageHysteresis.T_set) annotation (Line(points={{0,-118},{0,-20},
+          {-80,-20},{-80,54},{-62,54}}, color={0,0,127}));
+  connect(storageHysteresis.y, priGenOn) annotation (Line(points={{-16,38},{30,38},
           {30,60},{110,60}}, color={255,0,255}));
-  connect(greaterThreshold.y, Auxilliar_Heater_On)
-    annotation (Line(points={{86.8,-60},{110,-60}},
-                                                  color={255,0,255}));
+  connect(greaterThreshold.y, secGenOn)
+    annotation (Line(points={{86.8,-60},{110,-60}}, color={255,0,255}));
   connect(const.y, switch1.u3) annotation (Line(points={{24.5,-93},{28,-93},{28,
           -84.6},{32.6,-84.6}}, color={0,0,127}));
-  connect(switch1.y, Auxilliar_Heater_set) annotation (Line(points={{48.7,-79},
-          {70,-79},{70,-80},{110,-80}}, color={0,0,127}));
+  connect(switch1.y, ySecGenSet) annotation (Line(points={{48.7,-79},{70,-79},{70,
+          -80},{110,-80}}, color={0,0,127}));
   connect(switch1.y, greaterThreshold.u) annotation (Line(points={{48.7,-79},{
           56,-79},{56,-60},{68.4,-60}}, color={0,0,127}));
   connect(realExpression.y, switch1.u1) annotation (Line(points={{27,-60},{30,
           -60},{30,-73.4},{32.6,-73.4}}, color={0,0,127}));
-  connect(T_Top, storageHysteresis.T_bot) annotation (Line(points={{-120,60},{
-          -92,60},{-92,22},{-62,22}}, color={0,0,127}));
-  connect(T_Top, AuxilliarHeaterHys.u) annotation (Line(points={{-120,60},{-92,
-          60},{-92,-66},{-64,-66}}, color={0,0,127}));
+  connect(TStoTop, storageHysteresis.T_bot) annotation (Line(points={{-120,60},{-92,
+          60},{-92,22},{-62,22}}, color={0,0,127}));
+  connect(TStoTop, AuxilliarHeaterHys.u) annotation (Line(points={{-120,60},{-92,60},
+          {-92,-66},{-64,-66}}, color={0,0,127}));
   connect(const2.y, add1.u1) annotation (Line(points={{-87.5,-113},{-74,-113},{
           -74,-103.4},{-73.2,-103.4}}, color={0,0,127}));
   connect(add1.y, AuxilliarHeaterHys.reference) annotation (Line(points={{-69,
           -87.3},{-69,-54},{-64,-54}}, color={0,0,127}));
-  connect(T_Set, add1.u2) annotation (Line(points={{0,-118},{0,-104},{-20,-104},
+  connect(TSupSet, add1.u2) annotation (Line(points={{0,-118},{0,-104},{-20,-104},
           {-20,-103.4},{-64.8,-103.4}}, color={0,0,127}));
   connect(AuxilliarHeaterHys.y, triggerTime.u) annotation (Line(points={{-41,-60},
           {-38,-60},{-38,-78},{-34,-78}},      color={255,0,255}));

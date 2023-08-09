@@ -71,7 +71,7 @@ package HeatPumpAndBoiler "Bivalent Heat Pump System with Gas Boiler"
             thermostaticValveController,
           redeclare
             BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
-            thermostaticValveParameters,
+            parTheVal,
           redeclare
             BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultBivHPControl
             bivalentControlData(TBiv=parameterStudy.TBiv),
@@ -163,7 +163,7 @@ package HeatPumpAndBoiler "Bivalent Heat Pump System with Gas Boiler"
             thermostaticValveController,
           redeclare
             BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
-            thermostaticValveParameters,
+            parTheVal,
           redeclare
             BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultBivHPControl
             bivalentControlData(TBiv=parameterStudy.TBiv),
@@ -263,7 +263,7 @@ package HeatPumpAndBoiler "Bivalent Heat Pump System with Gas Boiler"
             thermostaticValveController,
           redeclare
             BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
-            thermostaticValveParameters,
+            parTheVal,
           redeclare
             BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultBivHPControl
             bivalentControlData(TBiv=parameterStudy.TBiv),
@@ -335,9 +335,10 @@ package HeatPumpAndBoiler "Bivalent Heat Pump System with Gas Boiler"
             BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
             parHeaPum(
             genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
+
             TBiv=parameterStudy.TBiv,
-            scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal
-                /parameterStudy.QHP_flow_biv,
+            scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal/
+                parameterStudy.QHP_flow_biv,
             dpCon_nominal=0,
             dpEva_nominal=0,
             use_refIne=false,
@@ -348,6 +349,7 @@ package HeatPumpAndBoiler "Bivalent Heat Pump System with Gas Boiler"
           redeclare model PerDataMainHP =
               AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
               QCon_flow_nominal=hydraulic.generation.parHeaPum.QPri_flow_nominal,
+
               refrigerant="Propane",
               flowsheet="VIPhaseSeparatorFlowsheet"),
           redeclare
@@ -361,7 +363,7 @@ package HeatPumpAndBoiler "Bivalent Heat Pump System with Gas Boiler"
             thermostaticValveController,
           redeclare
             BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
-            thermostaticValveParameters,
+            parTheVal,
           redeclare
             BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultBivHPControl
             bivalentControlData(TBiv=parameterStudy.TBiv),
@@ -373,19 +375,24 @@ package HeatPumpAndBoiler "Bivalent Heat Pump System with Gas Boiler"
             safetyControl,
           TCutOff=parameterStudy.TCutOff,
           QHP_flow_cutOff=parameterStudy.QHP_flow_cutOff*hydraulic.generation.parHeaPum.scalingFactor,
+
           CheckTCut_Off(threshold=parameterStudy.TCutOff)),
         redeclare Systems.Hydraulical.Distribution.TwoStoragesBoilerWithDHW
           distribution(
           designType=BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage,
+
+          redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
+            parThrWayVal,
+          redeclare AixLib.DataBase.Boiler.General.Boiler_Vitogas200F_11kW parBoi,
+
+          redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
           QDHWStoLoss_flow=1,
           VStoDHW(displayUnit="l") = 0.1,
-          QHRAftBuf_flow_nominal=0,
-          use_heatingRodAfterBuffer=false,
           redeclare
             BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
             parTemSen,
           redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
-            parThrWayVal1,
+            parThrWayValBoi,
           redeclare
             BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition
             parStoBuf,
@@ -394,7 +401,7 @@ package HeatPumpAndBoiler "Bivalent Heat Pump System with Gas Boiler"
             parStoDHW(dTLoadingHC1=10),
           redeclare
             BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition
-            hydParameters),
+            parHydSep),
         redeclare Systems.Hydraulical.Transfer.IdealValveRadiator transfer(
             redeclare
             BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
@@ -402,6 +409,7 @@ package HeatPumpAndBoiler "Bivalent Heat Pump System with Gas Boiler"
             BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum)),
       redeclare Systems.Demand.DHW.DHW DHW(
         redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
+
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
           calcmFlow),

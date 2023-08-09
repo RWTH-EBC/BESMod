@@ -4,3 +4,8 @@ ThermostaticValveController
 OnOffController
 HeatPumpNSetController
 HeatPumpBusPassThrough
+BuildingAndDHWControl
+ConstantAdd
+BoilerInHybridSystem
+SetAndMeasuredValueSelector
+MeasuredValue

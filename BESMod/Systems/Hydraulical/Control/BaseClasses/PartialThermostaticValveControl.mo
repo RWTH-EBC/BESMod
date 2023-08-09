@@ -7,29 +7,32 @@ partial model PartialThermostaticValveControl
     thermostaticValveController constrainedby
     BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.BaseClasses.PartialThermostaticValveController(
       final nZones=transferParameters.nParallelDem, final leakageOpening=
-        thermostaticValveParameters.leakageOpening) annotation (
-      choicesAllMatching=true, Placement(transformation(extent={{112,-94},{138,
-            -64}})));
+        parTheVal.leakageOpening) annotation (
+      choicesAllMatching=true, Placement(transformation(extent={{122,-78},{138,
+            -62}})));
   replaceable parameter
     BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
-    thermostaticValveParameters annotation (choicesAllMatching=true, Placement(
-        transformation(extent={{178,-80},{198,-60}})));
+    parTheVal "Thermostatic valve parameters"
+              annotation (choicesAllMatching=true, Placement(
+        transformation(extent={{182,-78},{198,-62}})));
 equation
   connect(thermostaticValveController.opening, sigBusTra.opening) annotation (
-      Line(points={{140.6,-79},{174,-79},{174,-100}}, color={0,0,127}), Text(
+      Line(points={{139.6,-70},{174,-70},{174,-100}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
   connect(thermostaticValveController.TZoneMea, buiMeaBus.TZoneMea) annotation (
-     Line(points={{109.4,-70},{104,-70},{104,-42},{238,-42},{238,103},{65,103}},
+     Line(points={{120.4,-65.2},{120.4,-66},{76,-66},{76,-116},{-250,-116},{-250,
+          118},{65,118},{65,103}},
         color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(thermostaticValveController.TZoneSet, useProBus.TZoneSet) annotation (
-     Line(points={{109.4,-88},{102,-88},{102,-40},{236,-40},{236,103},{-119,103}},
+     Line(points={{120.4,-74.8},{76,-74.8},{76,-116},{-250,-116},{-250,102},{-119,
+          102},{-119,103}},
         color={0,0,127}), Text(
       string="%second",
       index=1,

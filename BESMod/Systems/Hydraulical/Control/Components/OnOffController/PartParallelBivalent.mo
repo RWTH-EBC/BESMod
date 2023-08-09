@@ -1,6 +1,5 @@
 within BESMod.Systems.Hydraulical.Control.Components.OnOffController;
-model ParallelBivalentControl
-  "Parallel bivalent control"
+model PartParallelBivalent "Part-parallel bivalent control"
   extends
     BESMod.Systems.Hydraulical.Control.Components.OnOffController.BaseClasses.PartialOnOffController;
 
@@ -12,7 +11,7 @@ model ParallelBivalentControl
   parameter Modelica.Units.SI.HeatFlowRate QDem_flow_nominal;
   parameter Modelica.Units.SI.HeatFlowRate QHP_flow_cutOff;
 
-  BESMod.Systems.Hydraulical.Control.Components.OnOffController.StorageHysteresis
+  BESMod.Systems.Hydraulical.Control.Components.OnOffController.Utilities.StorageHysteresis
     storageHysteresis(final bandwidth=Hysteresis, final pre_y_start=true)
     annotation (Placement(transformation(extent={{-58,18},{-18,58}})));
 
@@ -26,38 +25,38 @@ protected
   parameter Real phiBiv = (TRoom - TBiv)/(TRoom - TOda_nominal) "Part load at bivalence temperature";
   parameter Real partLoadHeaPumAtCutOff(min=0, max=1)=QHP_flow_cutOff/QDem_flow_nominal "Percentage of nominal heat demand supplied by heat pump at cut-off temperature";
 
-  Real partLoadAuxHea = min(1, (TRoom - T_oda) / (TRoom - TOda_nominal));
+  Real partLoadAuxHea=min(1, (TRoom - TOda)/(TRoom - TOda_nominal));
 
 equation
 
-  if T_oda < TCutOff then
+  if TOda < TCutOff then
     // Only auxilliar device is active
-    Auxilliar_Heater_On = storageHysteresis.y;
-    Auxilliar_Heater_set = partLoadAuxHea;
-  elseif T_oda < TBiv then
+    secGenOn = storageHysteresis.y;
+    ySecGenSet = partLoadAuxHea;
+  elseif TOda < TBiv then
     // Both devices are active
-    Auxilliar_Heater_On = storageHysteresis.y;
-    Auxilliar_Heater_set = max(0, partLoadAuxHea - (partLoadHeaPumAtCutOff  + (phiBiv - partLoadHeaPumAtCutOff)* (T_oda - TCutOff) / (TBiv - TCutOff)));
+    secGenOn = storageHysteresis.y;
+    ySecGenSet = max(0, partLoadAuxHea - (partLoadHeaPumAtCutOff + (phiBiv -
+      partLoadHeaPumAtCutOff)*(TOda - TCutOff)/(TBiv - TCutOff)));
   else
     // Only heat pump is active
-    Auxilliar_Heater_On = false;
-    Auxilliar_Heater_set = 0;
+    secGenOn = false;
+    ySecGenSet = 0;
   end if;
 
-  connect(T_Top, storageHysteresis.T_top) annotation (Line(points={{-120,60},{-86,
+  connect(TStoTop, storageHysteresis.T_top) annotation (Line(points={{-120,60},{-86,
           60},{-86,38},{-62,38}}, color={0,0,127}));
-  connect(T_Set, storageHysteresis.T_set) annotation (Line(points={{0,-118},{0,
-          -20},{-80,-20},{-80,54},{-62,54}},
-                                        color={0,0,127}));
-  connect(T_Top, storageHysteresis.T_bot) annotation (Line(points={{-120,60},{
-          -92,60},{-92,22},{-62,22}}, color={0,0,127}));
+  connect(TSupSet, storageHysteresis.T_set) annotation (Line(points={{0,-118},{0,-20},
+          {-80,-20},{-80,54},{-62,54}}, color={0,0,127}));
+  connect(TStoTop, storageHysteresis.T_bot) annotation (Line(points={{-120,60},{-92,
+          60},{-92,22},{-62,22}}, color={0,0,127}));
   connect(greaterEqualT_biv.y, and1.u1) annotation (Line(points={{37.2,66},{42,66},
           {42,56},{58,56}}, color={255,0,255}));
   connect(storageHysteresis.y, and1.u2) annotation (Line(points={{-16,38},{42,38},
           {42,48},{58,48}}, color={255,0,255}));
-  connect(and1.y, HP_On) annotation (Line(points={{81,56},{92,56},{92,60},{110,60}},
-        color={255,0,255}));
-  connect(T_oda, greaterEqualT_biv.u)
+  connect(and1.y, priGenOn) annotation (Line(points={{81,56},{92,56},{92,60},{110,
+          60}}, color={255,0,255}));
+  connect(TOda, greaterEqualT_biv.u)
     annotation (Line(points={{0,120},{0,66},{9.6,66}}, color={0,0,127}));
   annotation (Icon(graphics={     Polygon(
             points={{-65,89},{-73,67},{-57,67},{-65,89}},
@@ -111,4 +110,4 @@ equation
           lineColor={28,108,200},
           textString="Internal
 (see equations)")}));
-end ParallelBivalentControl;
+end PartParallelBivalent;

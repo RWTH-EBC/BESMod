@@ -1,9 +1,4 @@
-ConstHys_OnOff_HPSControll
-ConstHys_P_ConOut_HPSController
-ConstHys_P_ConIn_HPSController
-ConstHys_PI_ConOut_HPSController
-ConstHys_PI_StoTop_HPSController
-Biv_PI_ConFlow_HPSController
+MonoenergeticHeatPumpSystem
 NoControl
 GasBoiler
 BivalentPartParallel

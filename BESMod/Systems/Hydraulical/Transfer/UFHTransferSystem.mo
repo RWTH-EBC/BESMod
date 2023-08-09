@@ -1,6 +1,7 @@
 within BESMod.Systems.Hydraulical.Transfer;
 model UFHTransferSystem
-  extends BaseClasses.PartialTransfer(final nParallelSup=1, final dp_nominal=fill(0, nParallelDem));
+  extends BaseClasses.PartialTransfer(
+    nHeaTra=1,                        final nParallelSup=1, final dp_nominal=fill(0, nParallelDem));
 
   IBPSA.Fluid.FixedResistances.PressureDrop res[nParallelDem](
     redeclare package Medium = Medium,
@@ -181,4 +182,7 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  annotation (Documentation(info="<html>
+<p>According to https://www.energie-lexikon.info/heizkoerperexponent.html, the heating transfer exponent of underfloor heating systems is between 1 and 1.1.</p>
+</html>"));
 end UFHTransferSystem;

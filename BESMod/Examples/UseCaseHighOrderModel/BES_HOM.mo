@@ -53,7 +53,7 @@ model BES_HOM
           thermostaticValveController,
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
-          thermostaticValveParameters,
+          parTheVal,
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultSafetyControl
           safetyControl,

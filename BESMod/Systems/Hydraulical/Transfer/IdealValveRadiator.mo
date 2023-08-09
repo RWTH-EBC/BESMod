@@ -2,6 +2,7 @@ within BESMod.Systems.Hydraulical.Transfer;
 model IdealValveRadiator
   "Subsystem using a radiator and ideal thermostatic valves"
   extends BaseClasses.PartialTransfer(
+    final nHeaTra=radParameters.n,
     final QLoss_flow_nominal=f_design .* Q_flow_nominal .- Q_flow_nominal,
     final dTLoss_nominal=fill(0, nParallelDem),
     final nParallelSup=1,

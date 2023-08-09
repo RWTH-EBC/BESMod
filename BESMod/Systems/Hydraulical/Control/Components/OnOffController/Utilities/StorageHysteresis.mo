@@ -1,5 +1,5 @@
-within BESMod.Systems.Hydraulical.Control.Components.OnOffController;
-block StorageHysteresis "On-off controller for a storage control. "
+within BESMod.Systems.Hydraulical.Control.Components.OnOffController.Utilities;
+block StorageHysteresis "On-off controller for a storage control."
   extends Modelica.Blocks.Icons.PartialBooleanBlock;
   Modelica.Blocks.Interfaces.RealInput T_set "Set temperature"
     annotation (Placement(transformation(extent={{-140,100},{-100,60}})));

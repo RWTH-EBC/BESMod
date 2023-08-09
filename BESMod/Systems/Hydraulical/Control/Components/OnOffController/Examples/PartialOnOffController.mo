@@ -19,13 +19,13 @@ partial model PartialOnOffController
     annotation (Placement(transformation(extent={{-60,-60},{-40,-40}})));
 
 equation
-  connect(ramp.y, onOffController.T_oda)
+  connect(ramp.y, onOffController.TOda)
     annotation (Line(points={{-57,68},{10,68},{10,41.24}}, color={0,0,127}));
-  connect(pulse.y, onOffController.T_Top) annotation (Line(points={{-63,12},{-56,
+  connect(pulse.y, onOffController.TStoTop) annotation (Line(points={{-63,12},{-56,
           12},{-56,30},{-20.8,30},{-20.8,29.9}}, color={0,0,127}));
-  connect(pulse.y, onOffController.T_bot) annotation (Line(points={{-63,12},{-56,
+  connect(pulse.y, onOffController.TStoBot) annotation (Line(points={{-63,12},{-56,
           12},{-56,-2.5},{-20.8,-2.5}}, color={0,0,127}));
-  connect(constTSet.y, onOffController.T_Set)
+  connect(constTSet.y, onOffController.TSupSet)
     annotation (Line(points={{-39,-50},{10,-50},{10,-18.7}}, color={0,0,127}));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,

@@ -25,12 +25,16 @@ convertElement("BESMod.Systems.Hydraulical.Generation.SolarThermalBivHPAixLib", 
 convertElement("BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedDirectLoading", "temperatureSensorData", "parTemSen");
 convertElement("BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedIndirectLoading", "temperatureSensorData", "parTemSen");
 
+convertElement("BESMod.Systems.Hydraulical.Control.BaseClasses.PartialThermostaticValveControl", "thermostaticValveParameters", "parTheVal");
+convertElement("BESMod.Systems.Hydraulical.Control.BaseClasses.PartialThermostaticValveControl", "thermostaticValveParameters", "parTheVal");
+
+
 
 convertElement("BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedIndirectLoading", "bufParameters", "parStoBuf");
 convertElement("BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedIndirectLoading", "dhwParameters", "parStoDHW");
 convertElement("BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedIndirectLoading", "threeWayValveParameters", "parThrWayVal");
-convertElement("BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedIndirectLoading", "heatingRodAftBufPar", "parHeaRodAftBuf");
+convertElement("BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedIndirectLoading", "heatingRodAftBufParameters", "parHeaRodAftBuf");
 convertElement("BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedDirectLoading", "bufParameters", "parStoBuf");
 convertElement("BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedDirectLoading", "dhwParameters", "parStoDHW");
 convertElement("BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedDirectLoading", "threeWayValveParameters", "parThrWayVal");
-convertElement("BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedDirectLoading", "heatingRodAftBufPar", "parHeaRodAftBuf");
+convertElement("BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedDirectLoading", "heatingRodAftBufParameters", "parHeaRodAftBuf");

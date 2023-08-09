@@ -2,7 +2,7 @@ within BESMod.Systems.Hydraulical.Distribution.BaseClasses;
 partial model PartialTwoStorageParallel "Partial model to later extent"
   extends BaseClasses.PartialDistribution(
     final dpDem_nominal={0},
-    final dpSup_nominal={2*(parThrWayVal.dpValve_nominal + max(parThrWayVal.dp_nominal))},
+    final dpSup_nominal={parThrWayVal.dpValve_nominal + max(parThrWayVal.dp_nominal)},
     final dTTraDHW_nominal=parStoDHW.dTLoadingHC1,
     final dTTra_nominal={parStoBuf.dTLoadingHC1},
     final m_flow_nominal=mDem_flow_nominal,
@@ -77,13 +77,13 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
     final QHC1_flow_nominal=QDHW_flow_nominal,
     final mHC1_flow_nominal=mSup_flow_nominal[1],
     redeclare final AixLib.DataBase.Pipes.Copper.Copper_12x1 pipeHC1,
-    final use_HC2=stoBuf.useHeatingCoil2,
-    final use_HC1=stoBuf.useHeatingCoil1,
-    final dTLoadingHC2=9999999,
-    final fHeiHC2=1,
-    final fDiaHC2=1,
-    final QHC2_flow_nominal=9999999,
-    final mHC2_flow_nominal=9999999,
+    final use_HC2=stoDHW.useHeatingCoil2,
+    final use_HC1=stoDHW.useHeatingCoil1,
+    final dTLoadingHC2=dTLoadingHC2,
+    fHeiHC2=1,
+    fDiaHC2=1,
+    final QHC2_flow_nominal=QHC2_flow_nominal,
+    final mHC2_flow_nominal=mHC2_flow_nominal,
     redeclare final AixLib.DataBase.Pipes.Copper.Copper_10x0_6 pipeHC2)
     "Parameters for DHW storage" annotation (
     Dialog(group="Component data"),
@@ -190,7 +190,7 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
     final mHC1_flow_nominal=parStoDHW.mHC1_flow_nominal,
     final mHC2_flow_nominal=parStoDHW.mHC2_flow_nominal,
     final useHeatingCoil1=true,
-    final useHeatingCoil2=false,
+    final useHeatingCoil2=use_secHeaCoiDHWSto,
     final useHeatingRod=parStoDHW.use_hr,
     final TStart=T_start,
     redeclare final RecordsCollection.BufferStorage.bufferData data(
@@ -295,6 +295,15 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-70,-70})));
+protected
+  parameter Boolean use_secHeaCoiDHWSto
+    "=false to disable second heating coil in DHW storage";
+  parameter Modelica.Units.SI.TemperatureDifference dTLoadingHC2=9999999
+    "Temperature difference for loading of first heating coil";
+  parameter Modelica.Units.SI.HeatFlowRate QHC2_flow_nominal=9999999
+    "Nominal heat flow rate in second heating coil";
+  parameter Modelica.Units.SI.MassFlowRate mHC2_flow_nominal=9999999
+    "Nominal mass flow rate of HC fluid";
 equation
   connect(reaExpTStoDHWBot.y, sigBusDistr.TStoDHWBotMea) annotation (Line(
         points={{-19,95},{2.5,95},{2.5,101},{0,101}}, color={0,0,127}), Text(

@@ -9,7 +9,7 @@ model BivalentPartParallel
       nMin=bivalentControlData.nMin,
       T_I=bivalentControlData.T_I),
     redeclare
-      BESMod.Systems.Hydraulical.Control.Components.OnOffController.ParallelBivalentControl
+      BESMod.Systems.Hydraulical.Control.Components.OnOffController.PartParallelBivalent
       BufferOnOffController(
       Hysteresis=bivalentControlData.dTHysBui,
       TCutOff=TCutOff,
@@ -19,7 +19,7 @@ model BivalentPartParallel
       QDem_flow_nominal=sum(transferParameters.Q_flow_nominal),
       QHP_flow_cutOff=QHP_flow_cutOff),
     redeclare
-      BESMod.Systems.Hydraulical.Control.Components.OnOffController.ParallelBivalentControl
+      BESMod.Systems.Hydraulical.Control.Components.OnOffController.PartParallelBivalent
       DHWOnOffContoller(
       Hysteresis=bivalentControlData.dTHysDHW,
       TCutOff=TCutOff,

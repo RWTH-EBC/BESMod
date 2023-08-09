@@ -78,7 +78,7 @@ equation
           127}));
   connect(realExpression.y, QCon_flow) annotation (Line(points={{51,82},{88,82},
           {88,60},{110,60}}, color={0,0,127}));
-  connect(const3.y, heatingCurve.TSetRoom) annotation (Line(points={{-79,-90},{
+  connect(const3.y,heatingCurve.TZoneSet)  annotation (Line(points={{-79,-90},{
           -78,-90},{-78,-92},{-9,-92},{-9,-84.2}},                  color={0,0,
           127}));
   connect(generation.weaBus, weaBus) annotation (Line(

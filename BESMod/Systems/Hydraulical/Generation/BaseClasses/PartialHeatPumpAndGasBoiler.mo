@@ -32,7 +32,9 @@ model PartialHeatPumpAndGasBoiler "Partial heat pump and boiler"
     final Q_nom=parBoi.Q_nom,
     final V=parBoi.volume,
     final etaTempBased=etaTem,
-    final paramBoiler=parBoi) "Boiler with external control"
+    final paramBoiler=parBoi,
+    T_out(unit="K", displayUnit="degC"))
+                              "Boiler with external control"
     annotation (Placement(transformation(extent={{20,40},{40,60}})));
 
   Utilities.KPIs.EnergyKPICalculator KPIBoi(use_inpCon=false, y=boi.thermalPower)

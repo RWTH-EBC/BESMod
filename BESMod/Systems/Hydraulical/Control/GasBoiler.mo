@@ -8,7 +8,7 @@ model GasBoiler "PI Control of gas boiler"
     dTOffSet_HC=monovalentControlParas.dTOffSetHeatCurve)
     annotation (Placement(transformation(extent={{-220,20},{-200,40}})));
   BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.ConstTSet_DHW
-    TSet_DHW(T_DHW=distributionParameters.TDHW_nominal) if use_dhw
+    TSet_DHW(TSetDHW_nominal=distributionParameters.TDHW_nominal) if use_dhw
     annotation (Placement(transformation(extent={{-220,80},{-200,100}})));
   replaceable
     BESMod.Systems.Hydraulical.Control.Components.HeatPumpNSetController.PI_InverterHeatPumpController
@@ -104,10 +104,8 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(TSet_DHW.TSet_DHW, boilerOnOffDHW.reference) annotation (Line(
-        points={{-199,90},{-194,90},{-194,72},{-168,72},{-168,56},{-162,56}},
-                                                                color={0,0,
-          127}));
+  connect(TSet_DHW.TSetDHW, boilerOnOffDHW.reference) annotation (Line(points={{-199,
+          90},{-194,90},{-194,72},{-168,72},{-168,56},{-162,56}}, color={0,0,127}));
   connect(heatingCurve.TSet, BoilerOnOffBuf.reference) annotation (Line(
         points={{-199,30},{-168,30},{-168,16},{-162,16}},         color={0,0,
           127}));
@@ -146,9 +144,8 @@ equation
       horizontalAlignment=TextAlignment.Right));
   connect(const_dT_loading1.y, add_dT_LoadingDHW.u2) annotation (Line(points={{-79,90},
           {-72,90},{-72,76},{-62,76}},               color={0,0,127}));
-  connect(TSet_DHW.TSet_DHW, add_dT_LoadingDHW.u1) annotation (Line(points={{-199,90},
-          {-194,90},{-194,72},{-70,72},{-70,64},{-62,64}},
-                                                    color={0,0,127}));
+  connect(TSet_DHW.TSetDHW, add_dT_LoadingDHW.u1) annotation (Line(points={{-199,
+          90},{-194,90},{-194,72},{-70,72},{-70,64},{-62,64}}, color={0,0,127}));
   connect(switch1.y, HP_nSet_Controller.T_Set) annotation (Line(points={{21,70},
           {40,70},{40,74},{84,74},{84,70.8},{98.4,70.8}},
                                       color={0,0,127}));
@@ -180,7 +177,7 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(minMax.yMax, heatingCurve.TSetRoom)
+  connect(minMax.yMax,heatingCurve.TZoneSet)
     annotation (Line(points={{-219,66},{-210,66},{-210,42}}, color={0,0,127}));
   connect(minMax.u, useProBus.TZoneSet) annotation (Line(points={{-240,60},{-244,
           60},{-244,103},{-119,103}}, color={0,0,127}), Text(
