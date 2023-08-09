@@ -6,13 +6,13 @@ partial model PartialControl
     are not available in open modelica" annotation(Dialog(tab="Advanced"));
   replaceable parameter
     BESMod.Systems.RecordsCollection.SubsystemControlBaseDataDefinition
-    distributionParameters constrainedby
+    parDis constrainedby
     BESMod.Systems.RecordsCollection.SubsystemControlBaseDataDefinition
     annotation (Placement(transformation(extent={{-94,-100},{-74,-80}})),
       choicesAllMatching=true);
   replaceable parameter
     BESMod.Systems.RecordsCollection.SubsystemControlBaseDataDefinition
-    generationParameters constrainedby
+    parGen constrainedby
     BESMod.Systems.RecordsCollection.SubsystemControlBaseDataDefinition
     annotation (Placement(transformation(extent={{30,-100},{50,-80}})),
       choicesAllMatching=true);

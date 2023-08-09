@@ -6,7 +6,7 @@ partial model PartialThermostaticValveControl
     BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.BaseClasses.PartialThermostaticValveController
     thermostaticValveController constrainedby
     BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.BaseClasses.PartialThermostaticValveController(
-      final nZones=transferParameters.nParallelDem, final leakageOpening=
+      final nZones=parTra.nParallelDem, final leakageOpening=
         parTheVal.leakageOpening) annotation (
       choicesAllMatching=true, Placement(transformation(extent={{122,-78},{138,
             -62}})));

@@ -8,7 +8,7 @@ model GasBoiler "PI Control of gas boiler"
     dTOffSet_HC=monovalentControlParas.dTOffSetHeatCurve)
     annotation (Placement(transformation(extent={{-220,20},{-200,40}})));
   BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.ConstTSet_DHW
-    TSet_DHW(TSetDHW_nominal=distributionParameters.TDHW_nominal) if use_dhw
+    TSet_DHW(TSetDHW_nominal=parDis.TDHW_nominal) if use_dhw
     annotation (Placement(transformation(extent={{-220,80},{-200,100}})));
   replaceable
     BESMod.Systems.Hydraulical.Control.Components.HeatPumpNSetController.PI_InverterHeatPumpController
@@ -26,7 +26,7 @@ model GasBoiler "PI Control of gas boiler"
         monovalentControlParas.dTHysDHW, pre_y_start=true) if use_dhw
     "Generates the on/off signal depending on the temperature inputs"
     annotation (Placement(transformation(extent={{-160,40},{-140,60}})));
-  Modelica.Blocks.Sources.Constant const_dT_loading(k=distributionParameters.dTTra_nominal[1])
+  Modelica.Blocks.Sources.Constant const_dT_loading(k=parDis.dTTra_nominal[1])
                                      annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,
@@ -41,7 +41,7 @@ model GasBoiler "PI Control of gas boiler"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=0,
         origin={10,70})));
-  Modelica.Blocks.Sources.Constant const_dT_loading1(k=distributionParameters.dTTraDHW_nominal
+  Modelica.Blocks.Sources.Constant const_dT_loading1(k=parDis.dTTraDHW_nominal
          + monovalentControlParas.dTHysDHW /2) if use_dhw
                                                annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
@@ -52,9 +52,9 @@ model GasBoiler "PI Control of gas boiler"
   replaceable parameter RecordsCollection.BivalentHeatPumpControlDataDefinition
     monovalentControlParas constrainedby
     RecordsCollection.BivalentHeatPumpControlDataDefinition(
-    TOda_nominal=generationParameters.TOda_nominal,
-    TSup_nominal=generationParameters.TSup_nominal[1],
-    TSetRoomConst=transferParameters.TDem_nominal[1],
+    TOda_nominal=parGen.TOda_nominal,
+    TSup_nominal=parGen.TSup_nominal[1],
+    TSetRoomConst=parTra.TDem_nominal[1],
     final TBiv=monovalentControlParas.TOda_nominal)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-218,
             -36},{-204,-22}})));
@@ -67,7 +67,7 @@ model GasBoiler "PI Control of gas boiler"
     annotation (Placement(transformation(extent={{46,48},{66,68}})));
   Modelica.Blocks.Math.BooleanToReal booleanToReal
     annotation (Placement(transformation(extent={{40,0},{60,20}})));
-  Modelica.Blocks.Math.MinMax minMax(nu=transferParameters.nParallelDem)
+  Modelica.Blocks.Math.MinMax minMax(nu=parTra.nParallelDem)
     annotation (Placement(transformation(extent={{-240,50},{-220,70}})));
   Modelica.Blocks.Logical.Not bufOn if use_dhw
                                     "buffer is charged" annotation (Placement(

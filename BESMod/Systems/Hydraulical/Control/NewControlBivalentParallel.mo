@@ -16,7 +16,7 @@ model NewControlBivalentParallel
       TBiv=bivalentControlData.TBiv,
       TOda_nominal=bivalentControlData.TOda_nominal,
       TRoom=bivalentControlData.TSetRoomConst,
-      QDem_flow_nominal=sum(transferParameters.Q_flow_nominal),
+      QDem_flow_nominal=sum(parTra.Q_flow_nominal),
       QHP_flow_cutOff=QHP_flow_cutOff),
     redeclare
       BESMod.Systems.Hydraulical.Control.Components.OnOffController.PartParallelBivalent
@@ -26,7 +26,7 @@ model NewControlBivalentParallel
       TBiv=bivalentControlData.TBiv,
       TOda_nominal=bivalentControlData.TOda_nominal,
       TRoom=bivalentControlData.TSetRoomConst,
-      QDem_flow_nominal=sum(transferParameters.Q_flow_nominal),
+      QDem_flow_nominal=sum(parTra.Q_flow_nominal),
       QHP_flow_cutOff=QHP_flow_cutOff));
 
   parameter Modelica.Units.SI.Temperature TCutOff "Cut-off temperature";

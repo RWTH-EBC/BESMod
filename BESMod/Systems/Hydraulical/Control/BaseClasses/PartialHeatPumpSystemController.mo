@@ -24,7 +24,7 @@ partial model PartialHeatPumpSystemController
       BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.ConstTSet_DHW
     constrainedby
     BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.BaseClasses.PartialTSet_DHW_Control(
-      final TSetDHW_nominal=distributionParameters.TDHW_nominal)
+      final TSetDHW_nominal=parDis.TDHW_nominal)
       "DHW set temperture module" annotation (choicesAllMatching=true);
 
   replaceable BESMod.Systems.Hydraulical.Control.RecordsCollection.HeatPumpSafetyControl
@@ -34,9 +34,9 @@ partial model PartialHeatPumpSystemController
   replaceable parameter RecordsCollection.BivalentHeatPumpControlDataDefinition
     bivalentControlData constrainedby
     RecordsCollection.BivalentHeatPumpControlDataDefinition(
-      final TOda_nominal=generationParameters.TOda_nominal,
-      TSup_nominal=generationParameters.TSup_nominal[1],
-      TSetRoomConst=sum(transferParameters.TDem_nominal)/transferParameters.nParallelDem)
+      final TOda_nominal=parGen.TOda_nominal,
+      TSup_nominal=parGen.TSup_nominal[1],
+      TSetRoomConst=sum(parTra.TDem_nominal)/parTra.nParallelDem)
     "Parameters for bivalent control"
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-96,-36},
             {-82,-22}})));
@@ -91,12 +91,12 @@ partial model PartialHeatPumpSystemController
         rotation=180,
         origin={170,64})));
   Components.BuildingAndDHWControl buiAndDHWCtr(
-    final nZones=transferParameters.nParallelDem,
-    final TSup_nominal=max(transferParameters.TSup_nominal),
-    final TRet_nominal=max(transferParameters.TSup_nominal - transferParameters.dTTra_nominal),
-    final TOda_nominal=generationParameters.TOda_nominal,
-    final TSetDHW_nominal=distributionParameters.TDHW_nominal,
-    final nHeaTra=transferParameters.nHeaTra,
+    final nZones=parTra.nParallelDem,
+    final TSup_nominal=max(parTra.TSup_nominal),
+    final TRet_nominal=max(parTra.TSup_nominal - parTra.dTTra_nominal),
+    final TOda_nominal=parGen.TOda_nominal,
+    final TSetDHW_nominal=parDis.TDHW_nominal,
+    final nHeaTra=parTra.nHeaTra,
     final supCtrHeaCurTyp=supCtrHeaCurTyp,
     final supCtrDHWTyp=supCtrDHWTyp,
     redeclare final model DHWHysteresis = DHWHysteresis,

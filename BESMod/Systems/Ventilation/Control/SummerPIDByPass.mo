@@ -10,9 +10,9 @@ model SummerPIDByPass "Bypass the HEX in summer"
     "Bypass is not used"
     annotation (Placement(transformation(extent={{-6,-54},{14,-34}})));
 
-  Modelica.Blocks.Math.MinMax minMaxMea(final nu=distributionParameters.nParallelDem)
+  Modelica.Blocks.Math.MinMax minMaxMea(final nu=parDis.nParallelDem)
     annotation (Placement(transformation(extent={{-88,32},{-68,52}})));
-  Modelica.Blocks.Math.MinMax minMaxSet(final nu=distributionParameters.nParallelDem)
+  Modelica.Blocks.Math.MinMax minMaxSet(final nu=parDis.nParallelDem)
     annotation (Placement(transformation(extent={{-78,-50},{-58,-30}})));
 equation
   connect(summerByPass.TOda, weaBus.TDryBul) annotation (Line(points={{-35.2,26},
