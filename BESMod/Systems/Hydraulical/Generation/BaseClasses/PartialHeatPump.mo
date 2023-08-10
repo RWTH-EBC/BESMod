@@ -80,7 +80,7 @@ model PartialHeatPump "Generation with only the heat pump"
     final GEvaOut=0,
     final GEvaIns=0,
     final tauSenT=parTemSen.tau,
-    final transferHeat=true,
+    final transferHeat=parTemSen.transferHeat,
     final allowFlowReversalEva=allowFlowReversal,
     final allowFlowReversalCon=allowFlowReversal,
     final tauHeaTraEva=parTemSen.tauHeaTra,

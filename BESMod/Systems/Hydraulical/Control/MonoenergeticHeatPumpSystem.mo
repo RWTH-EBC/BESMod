@@ -1,6 +1,6 @@
 within BESMod.Systems.Hydraulical.Control;
 model MonoenergeticHeatPumpSystem
-  "Control for HPS with on/off heating rod"
+  "Monoenergetic HPS with on/off heating rod"
   extends BaseClasses.PartialHeatPumpSystemController;
 
   Modelica.Blocks.Sources.Constant constZero(final k=0) annotation (Placement(

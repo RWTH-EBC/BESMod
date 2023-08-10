@@ -29,13 +29,13 @@ equation
           127}));
   connect(T_Set.y, floatingHysteresis.TSupSet) annotation (Line(points={{-122.2,-2},
           {-86,-2},{-86,-94},{-5,-94},{-5,-77.9}}, color={0,0,127}));
-  connect(T_Set.y, constantHysteresisTimeBasedHR.TSupSet) annotation (Line(points
-        ={{-122.2,-2},{-112,-2},{-112,-4},{-80,-4},{-80,32},{-6,32},{-6,40}},
+  connect(T_Set.y, constantHysteresisTimeBasedHR.TSupSet) annotation (Line(points=
+         {{-122.2,-2},{-112,-2},{-112,-4},{-80,-4},{-80,32},{-6,32},{-6,40}},
         color={0,0,127}));
-  connect(T_Top.y, constantHysteresisTimeBasedHR.TStoTop) annotation (Line(points
-        ={{-120.1,63},{-44,63},{-44,76},{-30.2,76}}, color={0,0,127}));
-  connect(T_Top.y, constantHysteresisTimeBasedHR.TStoBot) annotation (Line(points
-        ={{-120.1,63},{-72,63},{-72,40},{-44,40},{-44,52},{-30.2,52}}, color={0,0,
+  connect(T_Top.y, constantHysteresisTimeBasedHR.TStoTop) annotation (Line(points=
+         {{-120.1,63},{-44,63},{-44,76},{-30.2,76}}, color={0,0,127}));
+  connect(T_Top.y, constantHysteresisTimeBasedHR.TStoBot) annotation (Line(points=
+         {{-120.1,63},{-72,63},{-72,40},{-44,40},{-44,52},{-30.2,52}}, color={0,0,
           127}));
   connect(T_Top.y, degreeMinuteController.TStoTop) annotation (Line(points={{-120.1,
           63},{-96,63},{-96,16},{-28.1,16}}, color={0,0,127}));

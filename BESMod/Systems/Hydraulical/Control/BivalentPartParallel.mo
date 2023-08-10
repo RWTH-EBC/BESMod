@@ -34,7 +34,7 @@ model BivalentPartParallel
 
 equation
     connect(HP_nSet_Controller.T_Meas, sigBusGen.THeaPumOut) annotation (
-       Line(points={{97,61.2},{97,-56},{-152,-56},{-152,-99}},  color={0,0,127}),
+       Line(points={{110,80.4},{110,-56},{-152,-56},{-152,-99}},color={0,0,127}),
         Text(
         string="%second",
         index=1,

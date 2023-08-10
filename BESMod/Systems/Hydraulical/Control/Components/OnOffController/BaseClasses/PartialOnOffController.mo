@@ -24,8 +24,8 @@ partial model PartialOnOffController "Partial model for an on off controller"
     "Turn the auxilliar heater on or off" annotation (Placement(transformation(
           extent={{100,-70},{120,-50}}), iconTransformation(extent={{100,-64},{
             128,-36}})));
-  Modelica.Blocks.Interfaces.RealInput TOda "Ambient air temperature" annotation
-    (Placement(transformation(
+  Modelica.Blocks.Interfaces.RealInput TOda "Ambient air temperature" annotation (
+     Placement(transformation(
         extent={{-20,-20},{20,20}},
         rotation=270,
         origin={0,120}), iconTransformation(

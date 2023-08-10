@@ -1,7 +1,7 @@
 within BESMod.Systems.Hydraulical.Control;
 model NewControlBivalentSerial
   "Bivalent Serial Control Class (Part-parallel PI controlled HPS according to condenser outflow)"
-  extends BaseClasses.PartialTwoPoint_HPS_Controller_BivalentBoiler(
+  extends BaseClasses.PartialHybridHeatPumpSystemController(
     redeclare
       BESMod.Systems.Hydraulical.Control.Components.HeatPumpNSetController.PI_InverterHeatPumpController
       HP_nSet_Controller(
@@ -43,7 +43,7 @@ model NewControlBivalentSerial
     annotation (choicesAllMatching=true, Placement(transformation(extent={{80,10},
             {110,38}})));
   Components.BoilerInHybridSystem boiInHybSys annotation (Placement(
-        transformation(rotation=0, extent={{-32,20},{-12,40}})));
+        transformation(rotation=0, extent={{-54,12},{-34,32}})));
 equation
     connect(HP_nSet_Controller.T_Meas, sigBusGen.THeaPumOut) annotation (
        Line(points={{110,80.4},{110,20},{98,20},{98,-22},{-152,-22},{-152,-99}},

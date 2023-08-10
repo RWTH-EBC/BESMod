@@ -1,7 +1,7 @@
 within BESMod.Systems.Hydraulical.Control;
 model NewControlBivalentParallel
   "Bivalent Parallel Generation Control Class (Part-parallel PI controlled HPS according to condenser outflow)"
-  extends BaseClasses.PartialTwoPoint_HPS_Controller_BivalentBoiler(
+  extends BaseClasses.PartialHybridHeatPumpSystemController(
     redeclare
       BESMod.Systems.Hydraulical.Control.Components.HeatPumpNSetController.PI_InverterHeatPumpController
       HP_nSet_Controller(
