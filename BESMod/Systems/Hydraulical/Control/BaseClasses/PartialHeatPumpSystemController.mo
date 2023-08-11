@@ -3,47 +3,67 @@ partial model PartialHeatPumpSystemController
   "Partial model with replaceable blocks for rule based control of heat pump systems"
   extends
     BESMod.Systems.Hydraulical.Control.BaseClasses.PartialThermostaticValveControl;
+  parameter Modelica.Units.SI.TemperatureDifference dTHysBui
+    "Hysteresis for building demand control"
+    annotation (Dialog(group="Building control"));
+  parameter Modelica.Units.SI.TemperatureDifference dTHysDHW
+    "Hysteresis for DHW demand control" annotation (Dialog(group="DHW control"));
+
   parameter Utilities.SupervisoryControl.Types.SupervisoryControlType
     supCtrHeaCurTyp=BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Local
-    "Heating curve supervisory control";
+    "Heating curve supervisory control" annotation(Dialog(group="Building control"));
   parameter Utilities.SupervisoryControl.Types.SupervisoryControlType
     supCtrDHWTyp=BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Local
-    "Supervisory control approach for DHW supply temperature ";
-
+    "Supervisory control approach for DHW supply temperature "
+      annotation(Dialog(group="DHW control"));
+  parameter Components.MeasuredValue meaValPriGen=BESMod.Systems.Hydraulical.Control.Components.MeasuredValue.GenerationSupplyTemperature
+    "Control measurement value for primary device"
+    annotation (Dialog(group="Component choices"));
+  parameter Components.MeasuredValue meaValSecGen
+    "Control measurement value for secondary device"
+        annotation (Dialog(group="Component choices"));
   replaceable model DHWHysteresis =
-      BESMod.Systems.Hydraulical.Control.Components.OnOffController.ConstantHysteresisTimeBasedHR
+      BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.BaseClasses.PartialOnOffController
     constrainedby
-    BESMod.Systems.Hydraulical.Control.Components.OnOffController.BaseClasses.PartialOnOffController
-    "Hysteresis for DHW system" annotation (choicesAllMatching=true);
+    BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.BaseClasses.PartialOnOffController(
+      final dTHys=dTHysDHW)
+    "Hysteresis for DHW system" annotation (Dialog(group="Component choices"),
+    choicesAllMatching=true);
   replaceable model BuildingHysteresis =
-      BESMod.Systems.Hydraulical.Control.Components.OnOffController.ConstantHysteresisTimeBasedHR
+      BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.BaseClasses.PartialOnOffController
     constrainedby
-    BESMod.Systems.Hydraulical.Control.Components.OnOffController.BaseClasses.PartialOnOffController
-    "Hysteresis for building" annotation (choicesAllMatching=true);
+    BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.BaseClasses.PartialOnOffController(
+      final dTHys=dTHysBui)
+    "Hysteresis for building" annotation (Dialog(group="Component choices"),
+    choicesAllMatching=true);
   replaceable model DHWSetTemperature =
       BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.ConstTSet_DHW
     constrainedby
     BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.BaseClasses.PartialTSet_DHW_Control(
-      final TSetDHW_nominal=parDis.TDHW_nominal)
-      "DHW set temperture module" annotation (choicesAllMatching=true);
+     final TSetDHW_nominal=parDis.TDHW_nominal)
+      "DHW set temperture module" annotation (Dialog(group="Component choices"),
+      choicesAllMatching=true);
+  replaceable record parPIDHeaPum =
+      BESMod.Systems.Hydraulical.Control.RecordsCollection.PIDBaseDataDefinition
+    constrainedby
+    BESMod.Systems.Hydraulical.Control.RecordsCollection.PIDBaseDataDefinition
+    "PID parameters of heat pump"
+    annotation (choicesAllMatching=true,
+                Dialog(group="Primary device"),
+                Placement(transformation(extent={{100,40},{120,60}})));
 
   replaceable BESMod.Systems.Hydraulical.Control.RecordsCollection.HeatPumpSafetyControl
-    safetyControl
+    safetyControl "Parameters for safety control of heat pump"
     annotation (choicesAllMatching=true,Placement(transformation(extent={{204,84},
-            {218,98}})));
-  replaceable parameter RecordsCollection.BivalentHeatPumpControlDataDefinition
-    bivalentControlData constrainedby
-    RecordsCollection.BivalentHeatPumpControlDataDefinition(
-      final TOda_nominal=parGen.TOda_nominal,
-      TSup_nominal=parGen.TSup_nominal[1],
-      TSetRoomConst=sum(parTra.TDem_nominal)/parTra.nParallelDem)
-    "Parameters for bivalent control"
-    annotation (choicesAllMatching=true, Placement(transformation(extent={{-96,-36},
-            {-82,-22}})));
+            {218,98}})), Dialog(group="Component data"));
   replaceable
-    BESMod.Systems.Hydraulical.Control.Components.HeatPumpNSetController.BaseClasses.PartialHPNSetController
-    HP_nSet_Controller annotation (choicesAllMatching=true, Placement(
-        transformation(extent={{102,82},{118,98}})));
+    BESMod.Systems.Hydraulical.Control.Components.RelativeSpeedController.PID
+    priGenPIDCtrl(redeclare record parPID = parPIDHeaPum) constrainedby
+    BESMod.Systems.Hydraulical.Control.Components.RelativeSpeedController.BaseClasses.PartialControler
+    "Control of primary generation device" annotation (
+    Dialog(group="Primary device", tab="Advanced"),
+    choicesAllMatching=true,
+    Placement(transformation(extent={{102,82},{118,98}})));
 
   AixLib.Controls.HeatPump.SafetyControls.SafetyControl safCtr(
     final minRunTime=safetyControl.minRunTime,
@@ -73,17 +93,18 @@ partial model PartialHeatPumpSystemController
         rotation=0,
         origin={170,90})));
 
-  Modelica.Blocks.Math.BooleanToReal booToRea "Turn pump on if any device is on"
+  Modelica.Blocks.Math.BooleanToReal booToRea(final realTrue=1, final realFalse=0)
+                                              "Turn pump on if any device is on"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
-        origin={-170,-50})));
+        origin={-150,-50})));
   Modelica.Blocks.MathBoolean.Or anyGenDevIsOn(nu=2)
     "True if any generation device is on and pump must run" annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
-        origin={-170,-20})));
+        origin={-150,-10})));
   Components.HeatPumpBusPassThrough heaPumSigBusPasThr
     "Bus connector pass through for OpenModelica" annotation (Placement(
         transformation(
@@ -105,12 +126,23 @@ partial model PartialHeatPumpSystemController
     "Control for building and DHW system"
     annotation (Placement(transformation(extent={{-200,20},{-120,80}})));
 
-  Components.SetAndMeasuredValueSelector setAndMeaSelPri
+  Components.SetAndMeasuredValueSelector setAndMeaSelPri(
+    final meaVal=meaValPriGen,
+    final dTTraToDis_nominal=parTra.dTLoss_nominal[1],
+    final dTDisToGen_nominal=parDis.dTTra_nominal[1] + parGen.dTLoss_nominal[1],
+    final dTDHWToGen_nominal=parDis.dTTraDHW_nominal,
+    final dTHysDHW=dTHysDHW)
     "Selection of set and measured value for primary generation device"
     annotation (Placement(transformation(extent={{40,60},{60,80}})));
-  Components.SetAndMeasuredValueSelector setAndMeaSelSec
+  Components.SetAndMeasuredValueSelector setAndMeaSelSec(
+    final meaVal=meaValSecGen,
+    final dTTraToDis_nominal=parTra.dTLoss_nominal[1],
+    final dTDisToGen_nominal=parDis.dTTra_nominal[1] + parGen.dTLoss_nominal[1],
+    final dTDHWToGen_nominal=parDis.dTTraDHW_nominal,
+    final dTHysDHW=dTHysDHW)
     "Selection of set and measured value for secondary generation device"
     annotation (Placement(transformation(extent={{40,0},{60,20}})));
+
 equation
 
   connect(safCtr.modeSet, heaPumHea.y) annotation (Line(points={{198.667,68},{186,
@@ -121,28 +153,27 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(HP_nSet_Controller.n_Set, safCtr.nSet) annotation (Line(points={{118.8,
-          90},{154,90},{154,76},{190,76},{190,72},{198.667,72}}, color={0,0,127}));
+  connect(priGenPIDCtrl.ySet, safCtr.nSet) annotation (Line(points={{118.8,90},{
+          154,90},{154,76},{190,76},{190,72},{198.667,72}},
+                                                        color={0,0,127}));
 
-  connect(HP_nSet_Controller.IsOn, sigBusGen.heaPumIsOn) annotation (Line(
-        points={{105.2,80.4},{105.2,78},{106,78},{106,48},{260,48},{260,-114},{-152,
-          -114},{-152,-99}},                               color={255,0,255}),
-      Text(
+  connect(priGenPIDCtrl.isOn, sigBusGen.heaPumIsOn) annotation (Line(points={{105.2,
+          80.4},{105.2,78},{106,78},{106,48},{260,48},{260,-114},{-152,-114},{-152,
+          -99}}, color={255,0,255}), Text(
       string="%second",
       index=1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
   connect(booToRea.u, anyGenDevIsOn.y)
-    annotation (Line(points={{-170,-38},{-170,-31.5}}, color={255,0,255}));
-  connect(booToRea.y, sigBusGen.uPump) annotation (Line(points={{-170,-61},{-172,
-          -61},{-172,-72},{-152,-72},{-152,-99}}, color={0,0,127}), Text(
+    annotation (Line(points={{-150,-38},{-150,-21.5}}, color={255,0,255}));
+  connect(booToRea.y, sigBusGen.uPump) annotation (Line(points={{-150,-61},{-150,-70},
+          {-152,-70},{-152,-99}},                 color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
   connect(heaPumSigBusPasThr.sigBusGen, sigBusGen) annotation (Line(
-      points={{160,64},{154,64},{154,-56},{-16,-56},{-16,-70},{-126,-70},{-126,
-          -68},{-152,-68},{-152,-99}},
+      points={{160,64},{154,64},{154,-56},{0,-56},{0,-70},{-152,-70},{-152,-99}},
       color={255,204,51},
       thickness=0.5), Text(
       string="%second",
@@ -191,26 +222,25 @@ equation
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(buiAndDHWCtr.secGen, anyGenDevIsOn.u[1]) annotation (Line(points={{-118,
-          37.5},{-110,37.5},{-110,6},{-168,6},{-168,-6},{-171.75,-6},{-171.75,-10}},
+          37.5},{-118,36},{-112,36},{-112,6},{-151.75,6},{-151.75,0}},
         color={255,0,255}));
-  connect(buiAndDHWCtr.priGren, anyGenDevIsOn.u[2]) annotation (Line(points={{
-          -118,27.5},{-110,27.5},{-110,6},{-168,6},{-168,-6},{-168.25,-6},{
-          -168.25,-10}}, color={255,0,255}));
-  connect(HP_nSet_Controller.HP_On, buiAndDHWCtr.priGren) annotation (Line(points={{100.4,
-          90},{96,90},{96,40},{-80,40},{-80,27.5},{-118,27.5}},          color={
-          255,0,255}));
+  connect(buiAndDHWCtr.priGren, anyGenDevIsOn.u[2]) annotation (Line(points={{-118,
+          27.5},{-118,26},{-112,26},{-112,6},{-148.25,6},{-148.25,0}},
+                         color={255,0,255}));
+  connect(priGenPIDCtrl.setOn, buiAndDHWCtr.priGren) annotation (Line(points={{100.4,
+          90},{96,90},{96,40},{-80,40},{-80,27.5},{-118,27.5}}, color={255,0,255}));
   connect(setAndMeaSelPri.DHW, buiAndDHWCtr.DHW) annotation (Line(points={{39,76},
           {28,76},{28,74},{-106,74},{-106,68},{-118,68}}, color={0,0,127}));
   connect(buiAndDHWCtr.TDHWSet, setAndMeaSelPri.TDHWSet) annotation (Line(points={
           {-118,75},{-118,74},{28,74},{28,78.8},{39,78.8}}, color={0,0,127}));
   connect(setAndMeaSelPri.TBuiSet, buiAndDHWCtr.TBuiSet) annotation (Line(points={
           {39,72.8},{38,72.8},{38,74},{-106,74},{-106,60},{-118,60}}, color={0,0,127}));
-  connect(setAndMeaSelPri.TSet, HP_nSet_Controller.T_Set) annotation (Line(points=
-         {{61,76},{94,76},{94,94.8},{100.4,94.8}}, color={0,0,127}));
-  connect(setAndMeaSelPri.TMea, HP_nSet_Controller.T_Meas)
+  connect(setAndMeaSelPri.TSet, priGenPIDCtrl.TSet) annotation (Line(points={{61,76},
+          {94,76},{94,94.8},{100.4,94.8}}, color={0,0,127}));
+  connect(setAndMeaSelPri.TMea, priGenPIDCtrl.TMea)
     annotation (Line(points={{61,66},{110,66},{110,80.4}}, color={0,0,127}));
   connect(setAndMeaSelPri.sigBusGen, sigBusGen) annotation (Line(
-      points={{40,61.8},{16,61.8},{16,62},{-68,62},{-68,-99},{-152,-99}},
+      points={{40,61.8},{20,61.8},{20,62},{0,62},{0,-99},{-152,-99}},
       color={255,204,51},
       thickness=0.5), Text(
       string="%second",
@@ -242,7 +272,7 @@ equation
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(setAndMeaSelSec.sigBusGen, sigBusGen) annotation (Line(
-      points={{40,1.8},{40,-56},{-16,-56},{-16,-70},{-68,-70},{-68,-99},{-152,-99}},
+      points={{40,1.8},{40,2},{0,2},{0,-70},{-152,-70},{-152,-99}},
       color={255,204,51},
       thickness=0.5), Text(
       string="%second",
@@ -252,7 +282,7 @@ equation
 
   annotation (Diagram(graphics={
         Rectangle(
-          extent={{0,100},{132,36}},
+          extent={{4,100},{136,36}},
           lineColor={28,108,200},
           lineThickness=1),
         Text(
@@ -261,7 +291,7 @@ equation
           lineThickness=1,
           textString="Heat Pump Control"),
         Rectangle(
-          extent={{0,32},{132,-22}},
+          extent={{4,32},{136,-22}},
           lineColor={162,29,33},
           lineThickness=1),
         Text(

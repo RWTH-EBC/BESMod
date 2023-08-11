@@ -39,7 +39,7 @@ equation
           -70},{-6,-70},{-6,-34},{50,-34},{50,6},{40,6},{40,5.6}}, color={0,127,255}));
   connect(thrWayVal.portBui_b, heatPump.port_a1) annotation (Line(points={{20,2},{
           -6,2},{-6,-7},{-30.5,-7}}, color={0,127,255}));
-  connect(thrWayVal.uBuf, sigBusGen.uBoiOrHeaPum) annotation (Line(points={{30,-2},
+  connect(thrWayVal.uBuf, sigBusGen.uPriOrSecGen) annotation (Line(points={{30,-2},
           {30,-16},{2,-16},{2,98}}, color={0,0,127}), Text(
       string="%second",
       index=1,

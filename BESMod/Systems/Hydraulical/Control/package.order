@@ -1,3 +1,4 @@
+HybridHeatPumpSystem
 MonoenergeticHeatPumpSystem
 NoControl
 GasBoiler
@@ -5,6 +6,3 @@ BivalentPartParallel
 Components
 BaseClasses
 RecordsCollection
-NewControlBivalentSerial
-NewControlBivalentSystem_BoilerAfterBuffer
-NewControlBivalentParallel

@@ -3,3 +3,6 @@ DefaultSafetyControl
 BivalentHeatPumpControlDataDefinition
 DefaultBivHPControl
 ThermostaticValveDataDefinition
+PIDBaseDataDefinition
+BasicHeatPumpPI
+BasicBoilerPI

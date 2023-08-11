@@ -1,6 +1,11 @@
 within BESMod.Systems.Hydraulical.Control.Components;
-model BoilerInHybridSystem
-  Modelica.Blocks.Logical.LessThreshold lesTBiv(threshold=bivalentControlData.TBiv)
+model BoilerInHybridSystem "Decides when to use the boiler"
+
+  parameter Modelica.Units.SI.Temperature TBiv "Bivalence temperature";
+  parameter Modelica.Units.SI.Temperature TCutOff "Cutoff temperature";
+
+
+  Modelica.Blocks.Logical.LessThreshold lesTBiv(threshold=TBiv)
     "Checks, if Toda is below Tbiv"
     annotation (Placement(transformation(extent={{-60,80},{-40,100}})));
   Modelica.Blocks.Logical.Or or1
@@ -12,7 +17,7 @@ model BoilerInHybridSystem
   Modelica.Blocks.Logical.Or or2
     "if Toda is smaller than TCutOff, activate Boiler"
     annotation (Placement(transformation(extent={{72,-10},{92,10}})));
-  Modelica.Blocks.Logical.LessThreshold lesTCutOff(threshold=bivalentControlData.TCutOff)
+  Modelica.Blocks.Logical.LessThreshold lesTCutOff(threshold=TCutOff)
     "Checks if Toda is below TCutOff"
     annotation (Placement(transformation(extent={{-60,50},{-40,70}})));
   Modelica.Blocks.Logical.And safCtrOn

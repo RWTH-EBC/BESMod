@@ -10,6 +10,7 @@ partial model PartialModelicaConferenceUseCase
       redeclare BESMod.Systems.Electrical.Generation.PVSystemMultiSub generation(
         redeclare model CellTemperature =
             AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround,
+
         redeclare AixLib.DataBase.SolarElectric.SchuecoSPV170SME1 pVParameters,
         lat=weaDat.lat,
         lon=weaDat.lon,
@@ -17,6 +18,7 @@ partial model PartialModelicaConferenceUseCase
         timZon=3600,
         ARoo=building.ARoo/2),
       redeclare BESMod.Systems.Electrical.Transfer.NoElectricalTransfer transfer,
+
       redeclare BESMod.Systems.Electrical.Control.NoControl control),
     redeclare BESMod.Systems.Control.DHWSuperheating control(TSetDHW=
           systemParameters.TSetDHW),
@@ -30,6 +32,7 @@ partial model PartialModelicaConferenceUseCase
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           parHeaPum(
           genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
+
           TBiv=271.15,
           scalingFactor=scalingFactorHP,
           dpCon_nominal=0,
@@ -49,7 +52,7 @@ partial model PartialModelicaConferenceUseCase
         control(
         redeclare
           BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
-          thermostaticValveController,
+          valCtrl,
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
           parTheVal,
@@ -63,6 +66,7 @@ partial model PartialModelicaConferenceUseCase
           BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.ConstTSet_DHW
           TSet_DHW,
         supCtrlTypeDHWSet=BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Internal),
+
       redeclare Systems.Hydraulical.Distribution.DistributionTwoStorageParallel
         distribution(
         redeclare

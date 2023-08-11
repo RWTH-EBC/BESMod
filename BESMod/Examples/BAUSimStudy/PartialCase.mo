@@ -16,9 +16,9 @@ partial model PartialCase
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           parHeaPum(
           genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
+
           TBiv=TBiv,
-          scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal
-              /5000,
+          scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal/5000,
           dpCon_nominal=0,
           dpEva_nominal=0,
           use_refIne=false,
@@ -37,7 +37,7 @@ partial model PartialCase
       redeclare Systems.Hydraulical.Control.MonoenergeticHeatPumpSystem control(
         redeclare
           BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
-          thermostaticValveController,
+          valCtrl,
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
           parTheVal,

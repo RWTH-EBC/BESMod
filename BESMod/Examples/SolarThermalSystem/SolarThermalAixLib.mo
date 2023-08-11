@@ -10,7 +10,6 @@ model SolarThermalAixLib "Solar thermal collector from AixLib"
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           parHeaPum(genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.Monovalent),
-
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
           parHeaRod,

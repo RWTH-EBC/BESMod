@@ -14,9 +14,10 @@ model BES
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           parHeaPum(
           genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
+
           TBiv=parameterStudy.TBiv,
-          scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal
-              /parameterStudy.QHP_flow_biv,
+          scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal/
+              parameterStudy.QHP_flow_biv,
           dpCon_nominal=0,
           dpEva_nominal=0,
           use_refIne=false,
@@ -35,7 +36,7 @@ model BES
       redeclare Systems.Hydraulical.Control.BivalentPartParallel control(
         redeclare
           BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
-          thermostaticValveController,
+          valCtrl,
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
           parTheVal,
@@ -50,6 +51,7 @@ model BES
           safetyControl,
         TCutOff=parameterStudy.TCutOff,
         QHP_flow_cutOff=parameterStudy.QHP_flow_cutOff*hydraulic.generation.parHeaPum.scalingFactor),
+
       redeclare Systems.Hydraulical.Distribution.DistributionTwoStorageParallel
         distribution(
         redeclare
@@ -58,9 +60,11 @@ model BES
           VPerQ_flow=parameterStudy.VPerQFlow,
           dTLoadingHC1=0,
           energyLabel=BESMod.Systems.Hydraulical.Distribution.Types.EnergyLabel.B),
+
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
           parStoDHW(dTLoadingHC1=10, energyLabel=BESMod.Systems.Hydraulical.Distribution.Types.EnergyLabel.A),
+
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
           parThrWayVal),
       redeclare Systems.Hydraulical.Transfer.IdealValveRadiator transfer(

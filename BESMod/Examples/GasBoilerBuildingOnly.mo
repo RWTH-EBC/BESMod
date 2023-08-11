@@ -26,7 +26,7 @@ model GasBoilerBuildingOnly
           BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
           parTheVal,
         redeclare
-          BESMod.Systems.Hydraulical.Control.Components.HeatPumpNSetController.PI_InverterHeatPumpController
+          BESMod.Systems.Hydraulical.Control.Components.RelativeSpeedController.PI
           HP_nSet_Controller,
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultBivHPControl

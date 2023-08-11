@@ -1,11 +1,12 @@
 HeatingCurve
 DHWSetControl
 ThermostaticValveController
-OnOffController
-HeatPumpNSetController
+BivalentOnOffControllers
+RelativeSpeedController
 HeatPumpBusPassThrough
 BuildingAndDHWControl
 ConstantAdd
 BoilerInHybridSystem
 SetAndMeasuredValueSelector
 MeasuredValue
+ParallelValveController

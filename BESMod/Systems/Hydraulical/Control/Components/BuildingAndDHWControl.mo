@@ -1,6 +1,7 @@
 within BESMod.Systems.Hydraulical.Control.Components;
 model BuildingAndDHWControl
   "Control model to control both building and DHW systems"
+
   parameter Integer nZones "Number of heated zones";
   parameter Modelica.Units.SI.Temperature TSup_nominal
     "Nominal supply temperature";
@@ -20,16 +21,19 @@ model BuildingAndDHWControl
 
 
   replaceable model DHWHysteresis =
-      BESMod.Systems.Hydraulical.Control.Components.OnOffController.ConstantHysteresisTimeBasedHR
-    constrainedby BESMod.Systems.Hydraulical.Control.Components.OnOffController.BaseClasses.PartialOnOffController
+      BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod
+    constrainedby
+    BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.BaseClasses.PartialOnOffController
     "Hysteresis for DHW system" annotation (choicesAllMatching=true);
   replaceable model BuildingHysteresis =
-      BESMod.Systems.Hydraulical.Control.Components.OnOffController.ConstantHysteresisTimeBasedHR
-    constrainedby BESMod.Systems.Hydraulical.Control.Components.OnOffController.BaseClasses.PartialOnOffController
+      BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod
+    constrainedby
+    BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.BaseClasses.PartialOnOffController
     "Hysteresis for building" annotation (choicesAllMatching=true);
   replaceable model DHWSetTemperature =
       BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.ConstTSet_DHW
-    constrainedby BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.BaseClasses.PartialTSet_DHW_Control
+    constrainedby
+    BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.BaseClasses.PartialTSet_DHW_Control
       "DHW set temperture module" annotation (choicesAllMatching=true);
 
 

@@ -13,7 +13,6 @@ model BES_HOM
         Type_Win,
       redeclare model CorrSolarGainWin =
           AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.CorrectionSolarGain.CorGSimple,
-
       redeclare BESMod.Systems.Demand.Building.Components.AixLibHighOrderOFD
         HOMBuiEnv),
     redeclare BESMod.Systems.Control.NoControl control,
@@ -26,7 +25,6 @@ model BES_HOM
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           parHeaPum(
           genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
-
           TBiv=parameterStudy.TBiv,
           scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal
               /parameterStudy.QHP_flow_biv,
@@ -40,7 +38,6 @@ model BES_HOM
         redeclare model PerDataMainHP =
             AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
             QCon_flow_nominal=hydraulic.generation.parHeaPum.QPri_flow_nominal,
-
             refrigerant="Propane",
             flowsheet="VIPhaseSeparatorFlowsheet"),
         redeclare

@@ -11,7 +11,6 @@ model SolarThermalBuildings
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           parHeaPum(genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.Monovalent),
-
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
           parHeaRod,
