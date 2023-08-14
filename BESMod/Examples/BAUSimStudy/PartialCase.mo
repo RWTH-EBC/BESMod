@@ -16,7 +16,6 @@ partial model PartialCase
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           parHeaPum(
           genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
-
           TBiv=TBiv,
           scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal/5000,
           dpCon_nominal=0,
@@ -41,12 +40,17 @@ partial model PartialCase
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
           parTheVal,
+        dTHysBui=10,
+        dTHysDHW=10,
+        redeclare model DHWHysteresis =
+            BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod,
+
+        redeclare model BuildingHysteresis =
+            BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod,
+
         redeclare
-          BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultBivHPControl
-          bivalentControlData(TBiv=TBiv),
-        redeclare
-          Systems.Hydraulical.Control.Components.DHWSetControl.ConstTSet_DHW
-          TSet_DHW,
+          BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
+          parPIDHeaPum,
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultSafetyControl
           safetyControl),
@@ -54,7 +58,6 @@ partial model PartialCase
         BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedDirectLoading
         distribution(
         QHRAftBuf_flow_nominal=0,
-        use_heatingRodAfterBuffer=false,
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
           parTemSen,

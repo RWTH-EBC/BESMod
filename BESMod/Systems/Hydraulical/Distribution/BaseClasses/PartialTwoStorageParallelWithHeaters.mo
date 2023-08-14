@@ -3,14 +3,14 @@ partial model PartialTwoStorageParallelWithHeaters
   "Partial two storage model with heaters"
   extends BaseClasses.PartialTwoStorageParallel(
     final use_secHeaCoiDHWSto=false);
-  parameter Modelica.Units.SI.HeatFlowRate QHRAftBuf_flow_nominal
+  parameter Modelica.Units.SI.HeatFlowRate QHRAftBuf_flow_nominal=0
     "Nominal heat flow rate of heating rod after DHW storage"
     annotation (Dialog(group="Component data", enable=heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.HeatingRod));
   parameter BESMod.Systems.Hydraulical.Distribution.Types.HeaterType heaAftBufTyp=BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.No
     "Type of heater after the buffer storage"
     annotation(Dialog(group="Component choices"));
 
-  replaceable parameter Generation.RecordsCollection.HeatingRodBaseDataDefinition
+  replaceable parameter BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
     parHeaRodAftBuf if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.HeatingRod
     "Parameters for heating rod after buffer storage" annotation (
     Dialog(group="Component data", enable=heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.HeatingRod),
@@ -22,7 +22,7 @@ partial model PartialTwoStorageParallelWithHeaters
   parameter Real etaTem[:,2]=[293.15,1.09; 303.15,1.08; 313.15,1.05; 323.15,1.; 373.15,
       0.99] if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.Boiler
       "Temperature based efficiency"
-        annotation(Dialog(group="Component data"));
+        annotation(Dialog(group="Component data", enable=heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.Boiler));
 
   replaceable parameter AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition
     parBoi if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.Boiler

@@ -163,9 +163,9 @@ model BuildingsRoomCase600FF
         origin={8.5,-46})));
   Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor TRooAir
     "Room air temperature"
-    annotation (Placement(transformation(extent={{9,-9},{-9,9}},
+    annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=270,
-        origin={-1,59})));
+        origin={10,50})));
   replaceable parameter
     Buildings.ThermalZones.Detailed.Validation.BESTEST.Data.StandardResultsFreeFloating
       staRes(
@@ -213,6 +213,11 @@ model BuildingsRoomCase600FF
   BESMod.Utilities.KPIs.ComfortCalculator comfortCalculatorCool[nZones](TComBou=
        TSetZone_nominal .+ dTComfort, each for_heating=false)
     annotation (Placement(transformation(extent={{66,-18},{80,-4}})));
+  Modelica.Blocks.Routing.RealPassThrough reaPasThrTMea[nZones]
+    "Enable array bus connector" annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={-30,70})));
 equation
   connect(roo.uSha, replicator.y) annotation (Line(
       points={{32.8,32.7},{32.8,38},{48,38},{48,59.6}},
@@ -227,7 +232,7 @@ equation
       color={191,0,0},
       smooth=Smooth.None));
   connect(roo.heaPorAir, TRooAir.port)  annotation (Line(
-      points={{-3.25,3},{-3.25,2},{-2,2},{-2,44},{-1,44},{-1,50}},
+      points={{-3.25,3},{-3.25,2},{-44,2},{-44,40},{10,40}},
       color={191,0,0},
       smooth=Smooth.None));
   connect(roo.qGai_flow, useProBus.intGains) annotation (Line(points={{32.8,
@@ -239,12 +244,6 @@ equation
       horizontalAlignment=TextAlignment.Right));
   connect(replicator.u, useProBus.uSha) annotation (Line(points={{48,68.8},{51,68.8},
           {51,101}},                               color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
-  connect(TRooAir.T, buiMeaBus.TZoneMea[1]) annotation (Line(points={{-1,68.9},
-          {-1,83.5},{0,83.5},{0,99}},                color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
@@ -315,12 +314,21 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(TRooAir.T, comfortCalculatorHea[1].TZone) annotation (Line(points={{-1,68.9},
-          {40,68.9},{40,7},{64.6,7}},   color={0,0,127}));
-  connect(TRooAir.T, comfortCalculatorCool[1].TZone) annotation (Line(points={{-1,68.9},
-          {-2,68.9},{-2,70},{0,70},{0,68},{40,68},{40,-11},{64.6,-11}},   color=
+  connect(TRooAir.T, comfortCalculatorHea[1].TZone) annotation (Line(points={{10,61},
+          {10,66},{42,66},{42,7},{64.6,7}},
+                                        color={0,0,127}));
+  connect(TRooAir.T, comfortCalculatorCool[1].TZone) annotation (Line(points={{10,61},
+          {10,66},{42,66},{42,6},{58,6},{58,-11},{64.6,-11}},             color=
          {0,0,127}));
 
+  connect(reaPasThrTMea[1].u, TRooAir.T)
+    annotation (Line(points={{-18,70},{10,70},{10,61}}, color={0,0,127}));
+  connect(reaPasThrTMea.y, buiMeaBus.TZoneMea) annotation (Line(points={{-41,70},
+          {-46,70},{-46,84},{0,84},{0,99}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
   annotation (
 experiment(Tolerance=1e-06, StopTime=3.1536e+07),
 __Dymola_Commands(file="modelica://Buildings/Resources/Scripts/Dymola/ThermalZones/Detailed/Validation/BESTEST/Cases6xx/Case600FF.mos"

@@ -171,6 +171,15 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
     upToDownHC2=true,
     final TStartWall=T_start,
     final TStartIns=T_start,
+    nLowerPortSupply=1,
+    nUpperPortSupply=parStoBuf.nLayer,
+    nLowerPortDemand=1,
+    nUpperPortDemand=parStoBuf.nLayer,
+    nTS1=1,
+    nTS2=parStoBuf.nLayer,
+    nHC1Up=parStoBuf.nLayer,
+    nHC1Low=1,
+    nHR=parStoBuf.nLayerHR,
     redeclare model HeatTransfer =
         AixLib.Fluid.Storage.BaseClasses.HeatTransferBuoyancyWetter,
     final allowFlowReversal_layers=allowFlowReversal,
@@ -217,6 +226,15 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
     final upToDownHC2=true,
     final TStartWall=T_start,
     final TStartIns=T_start,
+    nLowerPortSupply=1,
+    nUpperPortSupply=parStoDHW.nLayer,
+    nLowerPortDemand=1,
+    nUpperPortDemand=parStoDHW.nLayer,
+    nTS1=1,
+    nTS2=parStoDHW.nLayer,
+    nHC1Up=parStoDHW.nLayer,
+    nHC1Low=1,
+    nHR=parStoDHW.nLayerHR,
     redeclare model HeatTransfer =
         AixLib.Fluid.Storage.BaseClasses.HeatTransferBuoyancyWetter,
     final allowFlowReversal_layers=allowFlowReversal,
@@ -289,8 +307,8 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
         QHRStoBufPre_flow.Q_flow) if parStoBuf.use_hr
     annotation (Placement(transformation(extent={{-100,-180},{-80,-160}})));
 
-  AixLib.Fluid.Interfaces.PassThroughMedium pasThrNoDHW(redeclare package Medium =
-        Medium, allowFlowReversal=allowFlowReversal) if not use_dhw
+  AixLib.Fluid.Interfaces.PassThroughMedium pasThrNoDHW(redeclare package Medium
+      = Medium, allowFlowReversal=allowFlowReversal) if not use_dhw
     "Pass through if DHW is disabled" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,

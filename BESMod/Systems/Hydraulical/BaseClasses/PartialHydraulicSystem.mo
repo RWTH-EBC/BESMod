@@ -91,6 +91,10 @@ partial model PartialHydraulicSystem
       final dTLoss_nominal=transfer.dTLoss_nominal,
       final f_design=transfer.f_design,
       final QLoss_flow_nominal=transfer.QLoss_flow_nominal,
+      final TTra_nominal=transfer.TTra_nominal,
+      final QSup_flow_nominal=transfer.QSup_flow_nominal,
+      final dpSup_nominal=transfer.dpSup_nominal,
+      final mSup_flow_nominal=transfer.mSup_flow_nominal,
       final nHeaTra=transfer.nHeaTra),
     final use_openModelica=use_openModelica)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-132,54},

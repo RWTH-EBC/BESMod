@@ -1,7 +1,5 @@
 HeatPumpSafetyControl
 DefaultSafetyControl
-BivalentHeatPumpControlDataDefinition
-DefaultBivHPControl
 ThermostaticValveDataDefinition
 PIDBaseDataDefinition
 BasicHeatPumpPI

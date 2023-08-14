@@ -57,8 +57,8 @@ partial model PartialElectricalSystem "Partial model for electrical system"
   BESMod.Systems.Interfaces.BuiMeaBus buiMeaBus annotation (
       Placement(transformation(extent={{48,124},{92,156}}), iconTransformation(
           extent={{48,124},{92,156}})));
-  BESMod.Systems.Interfaces.ElectricalOutputs outBusElect if
-       not use_openModelica
+  BESMod.Systems.Interfaces.ElectricalOutputs outBusElect
+    if not use_openModelica
     annotation (Placement(transformation(extent={{-22,-160},{24,-120}}),
         iconTransformation(extent={{-22,-160},{24,-120}})));
   Interfaces.ExternalElectricalPin externalElectricalPin1

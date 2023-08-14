@@ -34,6 +34,11 @@ model SimpleSolarThermalWithHeatPump
     final transferHeat=parTemSen.transferHeat,
     final TAmb=parTemSen.TAmb,
     final tauHeaTra=parTemSen.tauHeaTra,
+    dp_start=solThe.pressureDropCoeff*(solThe.m_flow_start/solThe.Medium.density(
+        solThe.Medium.setState_pTX(
+        solThe.p_start,
+        solThe.T_start,
+        solThe.Medium.reference_X)))^2,
     final p_start=p_start,
     final dp_nominal=dpST_nominal,
     final rho_default=rho,

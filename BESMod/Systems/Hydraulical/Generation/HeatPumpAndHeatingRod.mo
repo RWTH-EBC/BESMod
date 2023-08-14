@@ -36,7 +36,8 @@ model HeatPumpAndHeatingRod "Heat pump with heating rod in series"
     use_reaInp=true,
     calc_singleOnTime=true,
     calc_totalOnTime=true,
-    calc_numSwi=true) "Heating rod KPIs"
+    calc_numSwi=true) if use_heaRod
+                      "Heating rod KPIs"
     annotation (Placement(transformation(extent={{-120,-120},{-100,-100}})));
   Utilities.KPIs.EnergyKPICalculator KPIQHeaRod_flow(use_inpCon=false, y=hea.vol.heatPort.Q_flow)
     if use_heaRod "Heating rod heat flow rate"
@@ -62,12 +63,6 @@ equation
   connect(heatPump.port_b1,hea. port_a) annotation (Line(points={{-30.5,37},{-30.5,
           36},{-30,36},{-30,50},{20,50}},
                               color={0,127,255}));
-  connect(KPIHeaPum.KPI, outBusGen.heaRod) annotation (Line(points={{-97.8,-50},{
-          -76,-50},{-76,-100},{0,-100}}, color={135,135,135}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
   connect(hea.u, sigBusGen.uHeaRod) annotation (Line(points={{18,56},{2,56},{2,98}},
         color={0,0,127}), Text(
       string="%second",
@@ -88,6 +83,12 @@ equation
   connect(KPIPEleHeaRod.KPI, outBusGen.PEleHeaRod) annotation (Line(points={{
           -117.8,-90},{-68,-90},{-68,-92},{0,-92},{0,-100}}, color={135,135,135}),
       Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(KPIHeaRod.KPI, outBusGen.heaRod) annotation (Line(points={{-97.8,-110},{
+          -56,-110},{-56,-100},{0,-100}}, color={135,135,135}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},

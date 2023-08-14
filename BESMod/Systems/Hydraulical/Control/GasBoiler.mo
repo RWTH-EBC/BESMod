@@ -1,6 +1,12 @@
 within BESMod.Systems.Hydraulical.Control;
 model GasBoiler "PI Control of gas boiler"
   extends BaseClasses.PartialThermostaticValveControl;
+  parameter Modelica.Units.SI.TemperatureDifference dTHysBui
+    "Hysteresis for building demand control"
+    annotation (Dialog(group="Building control"));
+  parameter Modelica.Units.SI.TemperatureDifference dTHysDHW
+    "Hysteresis for DHW demand control" annotation (Dialog(group="DHW control"));
+
   BESMod.Systems.Hydraulical.Control.Components.HeatingCurve
     heatingCurve(
     GraHeaCurve=monovalentControlParas.gradientHeatCurve,
@@ -11,12 +17,17 @@ model GasBoiler "PI Control of gas boiler"
     TSet_DHW(TSetDHW_nominal=parDis.TDHW_nominal) if use_dhw
     annotation (Placement(transformation(extent={{-220,80},{-200,100}})));
   replaceable
-    BESMod.Systems.Hydraulical.Control.Components.RelativeSpeedController.PI
+    BESMod.Systems.Hydraulical.Control.Components.RelativeSpeedController.PID
     HP_nSet_Controller(
-    P=monovalentControlParas.k,
-    yMin=monovalentControlParas.nMin,
-    timeInt=monovalentControlParas.T_I,
-    Ni=monovalentControlParas.Ni) annotation (choicesAllMatching=true, Placement(
+    yMax=parPID.yMax,
+    yOff=parPID.yOff,
+    y_start=parPID.y_start,
+    P=parPID.P,
+    yMin=parPID.yMin,
+    timeInt=parPID.timeInt,
+    Ni=parPID.Ni,
+    timeDer=parPID.timeDer,
+    Nd=parPID.Nd)                 annotation (choicesAllMatching=true, Placement(
         transformation(extent={{102,42},{138,78}})));
   Modelica.Blocks.Logical.OnOffController BoilerOnOffBuf(bandwidth=
         monovalentControlParas.dTHysBui, pre_y_start=true)
@@ -81,6 +92,9 @@ model GasBoiler "PI Control of gas boiler"
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-30,-50})));
+  replaceable RecordsCollection.PIDBaseDataDefinition parPID
+    "PID parameters for boiler"
+    annotation (Placement(transformation(extent={{142,84},{162,104}})));
 equation
   connect(sigBusDistr,TSet_DHW. sigBusDistr) annotation (Line(
       points={{1,-100},{10,-100},{10,-146},{-280,-146},{-280,89.9},{-220,89.9}},

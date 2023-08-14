@@ -20,6 +20,8 @@ partial model PartialDemand "Partial demand model for HPS"
     annotation (Dialog(group="Geometry"));
   parameter Boolean use_hydraulic=true "=false to disable hydraulic supply";
   parameter Boolean use_ventilation=true "=false to disable ventilation supply";
+  parameter Modelica.Units.SI.Temperature TOda_nominal "Nominal outdoor air temperature"
+   annotation(Dialog(group="Design - Top Down: Parameters are given by the parent system"));
 
   replaceable package MediumZone = IBPSA.Media.Air constrainedby
     Modelica.Media.Interfaces.PartialMedium annotation (choices(
@@ -43,14 +45,14 @@ partial model PartialDemand "Partial demand model for HPS"
   BESMod.Systems.Interfaces.DemandOutputs outBusDem if not use_openModelica
     annotation (Placement(transformation(extent={{88,-12},{108,8}})));
   Modelica.Fluid.Interfaces.FluidPort_a portVent_in[nZones](
-      redeclare final package Medium = MediumZone) if
-                              use_ventilation
+      redeclare final package Medium = MediumZone)
+                           if use_ventilation
     "Inlet for the demand of ventilation"
     annotation (Placement(transformation(extent={{90,28},{110,48}}),
         iconTransformation(extent={{90,28},{110,48}})));
   Modelica.Fluid.Interfaces.FluidPort_b portVent_out[nZones](
-      redeclare final package Medium = MediumZone) if
-                              use_ventilation
+      redeclare final package Medium = MediumZone)
+                           if use_ventilation
     "Outlet of the demand of Ventilation"
     annotation (Placement(transformation(extent={{90,-50},{110,-30}}),
         iconTransformation(extent={{90,-50},{110,-30}})));

@@ -20,14 +20,14 @@ partial model PartialAixLibHighOrder
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a groundTemp
     annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
   Modelica.Fluid.Interfaces.FluidPort_a portVent_in[nZones](redeclare final
-      package Medium = MediumZone) if
-                              use_ventilation
+      package Medium = MediumZone)
+                           if use_ventilation
     "Inlet for the demand of ventilation"
     annotation (Placement(transformation(extent={{90,-76},{110,-56}}),
         iconTransformation(extent={{90,-74},{110,-54}})));
   Modelica.Fluid.Interfaces.FluidPort_b portVent_out[nZones](redeclare final
-      package Medium = MediumZone) if
-                              use_ventilation
+      package Medium = MediumZone)
+                           if use_ventilation
     "Outlet of the demand of Ventilation"
     annotation (Placement(transformation(extent={{90,-102},{110,-82}}),
         iconTransformation(extent={{90,-98},{110,-78}})));

@@ -10,8 +10,23 @@ model HybridHeatPumpSystem
   parameter Modelica.Units.SI.Temperature TCutOff "Cutoff temperature";
   parameter Boolean boiInGeneration
     "=true for boiler in generation system, false for distribution";
+  replaceable parameter BESMod.Systems.Hydraulical.Control.RecordsCollection.PIDBaseDataDefinition parPIDBoi
+    constrainedby
+    BESMod.Systems.Hydraulical.Control.RecordsCollection.PIDBaseDataDefinition
+    "PID parameters of boiler" annotation (
+    choicesAllMatching=true,
+    Dialog(group="Primary device control"),
+    Placement(transformation(extent={{100,-20},{120,0}})));
   replaceable BESMod.Systems.Hydraulical.Control.Components.RelativeSpeedController.PID boiPIDCtrl(
-      final parPID=parPIDBoi)
+    final yMax=parPIDBoi.yMax,
+    final yOff=parPIDBoi.yOff,
+    final y_start=parPIDBoi.y_start,
+    final yMin=parPIDBoi.yMin,
+    final P=parPIDBoi.P,
+    final timeInt=parPIDBoi.timeInt,
+    final Ni=parPIDBoi.Ni,
+    final timeDer=parPIDBoi.timeDer,
+    final Nd=parPIDBoi.Nd)
      constrainedby
     BESMod.Systems.Hydraulical.Control.Components.RelativeSpeedController.BaseClasses.PartialControler
     "PID control of boiler" annotation (choicesAllMatching=true,
@@ -29,12 +44,6 @@ model HybridHeatPumpSystem
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-190,-30})));
-  replaceable parameter RecordsCollection.PIDBaseDataDefinition parPIDBoi
-    constrainedby RecordsCollection.PIDBaseDataDefinition
-    "PID parameters of boiler" annotation (
-    choicesAllMatching=true,
-    Dialog(group="Primary device control"),
-    Placement(transformation(extent={{100,-20},{120,0}})));
 equation
   connect(boiInHybSys.secGen, buiAndDHWCtr.secGen) annotation (Line(points={{-31.8,
           -6},{-110,-6},{-110,37.5},{-118,37.5}}, color={255,0,255}));

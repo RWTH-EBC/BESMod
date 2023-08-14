@@ -30,7 +30,6 @@ model TEASERThermalZone
         zoneParam[i].heaLoadFacGrd*(TSetZone_nominal[i] - zoneParam[i].TSoil)
         for i in 1:nZones}
     "Nominal heat flow rate according to record at TOda_nominal";
-  parameter Modelica.Units.SI.Temperature TOda_nominal "Nominal outdoor air temperature";
 
   AixLib.ThermalZones.ReducedOrder.ThermalZone.ThermalZone thermalZone[nZones](
     redeclare each final package Medium = MediumZone,
@@ -99,14 +98,14 @@ model TEASERThermalZone
         rotation=180,
         origin={30,-206})));
   Modelica.Blocks.Nonlinear.Limiter limVentUp[nZones](each final
-      uMax=Modelica.Constants.inf, each final uMin=0) if
-       use_ventilation and use_verboseEnergyBalance
+      uMax=Modelica.Constants.inf, each final uMin=0)
+    if use_ventilation and use_verboseEnergyBalance
     annotation (Placement(transformation(extent={{-9,-9},{9,9}},
         rotation=180,
         origin={63,-185})));
   Modelica.Blocks.Nonlinear.Limiter limVentDown[nZones](each final
-      uMax=0, each final uMin=-Modelica.Constants.inf) if
-       use_ventilation and use_verboseEnergyBalance
+      uMax=0, each final uMin=-Modelica.Constants.inf)
+    if use_ventilation and use_verboseEnergyBalance
     annotation (Placement(transformation(extent={{-9,-9},{9,9}},
         rotation=180,
         origin={63,-205})));
@@ -129,12 +128,12 @@ model TEASERThermalZone
         rotation=0,
         origin={-30,-186})));
   Modelica.Blocks.Nonlinear.Limiter limAirExcUp[nZones](each final
-      uMax=Modelica.Constants.inf, each final uMin=0) if
-                                                        use_verboseEnergyBalance
+      uMax=Modelica.Constants.inf, each final uMin=0)
+                                                     if use_verboseEnergyBalance
     annotation (Placement(transformation(extent={{-70,-166},{-50,-146}})));
   Modelica.Blocks.Nonlinear.Limiter limAixExDown[nZones](
-      each final uMax=0, each final uMin=-Modelica.Constants.inf) if
-                                                                    use_verboseEnergyBalance
+      each final uMax=0, each final uMin=-Modelica.Constants.inf)
+                                                                 if use_verboseEnergyBalance
     annotation (Placement(transformation(extent={{-70,-196},{-50,-176}})));
   Modelica.Thermal.HeatTransfer.Sensors.HeatFlowSensor heatFlowSensorRad[
     nZones]
@@ -143,8 +142,8 @@ model TEASERThermalZone
     nZones]
     annotation (Placement(transformation(extent={{-86,50},{-66,70}})));
   Modelica.Blocks.Math.Add          addTra
-                                         [nZones] if
-       use_hydraulic and use_verboseEnergyBalance
+                                         [nZones]
+    if use_hydraulic and use_verboseEnergyBalance
     annotation (Placement(transformation(extent={{-60,-80},{-40,-60}})));
   BESMod.Utilities.KPIs.ComfortCalculator comfortCalculatorCool[nZones](TComBou=
        TSetZone_nominal .+ dTComfort, each for_heating=false)

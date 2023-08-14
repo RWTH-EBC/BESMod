@@ -12,20 +12,26 @@ partial model PartialSolarThermalHPS
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
       redeclare hydGeneration generation,
-      redeclare BESMod.Systems.Hydraulical.Control.Biv_PI_ConFlow_HPSController
+      redeclare BESMod.Systems.Hydraulical.Control.MonoenergeticHeatPumpSystem
         control(
         redeclare
           BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
-          thermostaticValveController,
+          valCtrl,
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
           parTheVal,
+        redeclare model DHWHysteresis =
+            BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod,
+
+        redeclare model BuildingHysteresis =
+            BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod,
+
+        redeclare
+          BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
+          parPIDHeaPum,
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultSafetyControl
-          safetyControl,
-        redeclare
-          BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultBivHPControl
-          bivalentControlData),
+          safetyControl),
       redeclare BESMod.Systems.Hydraulical.Distribution.CombiStorage
         distribution(redeclare BESMod.Examples.SolarThermalSystem.CombiStorage
           parameters(

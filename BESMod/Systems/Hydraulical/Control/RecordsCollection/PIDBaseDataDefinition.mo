@@ -1,7 +1,6 @@
 within BESMod.Systems.Hydraulical.Control.RecordsCollection;
 partial record PIDBaseDataDefinition "Record for a PID controller"
   extends Modelica.Icons.Record;
-
   parameter Real yMax=1 "Upper limit of output";
   parameter Real yOff=0 "Constant output value if device is turned off";
   parameter Real y_start=0 "Initial value of output";

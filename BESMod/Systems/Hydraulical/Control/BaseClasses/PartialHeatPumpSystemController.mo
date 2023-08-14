@@ -3,10 +3,10 @@ partial model PartialHeatPumpSystemController
   "Partial model with replaceable blocks for rule based control of heat pump systems"
   extends
     BESMod.Systems.Hydraulical.Control.BaseClasses.PartialThermostaticValveControl;
-  parameter Modelica.Units.SI.TemperatureDifference dTHysBui
+  parameter Modelica.Units.SI.TemperatureDifference dTHysBui=10
     "Hysteresis for building demand control"
     annotation (Dialog(group="Building control"));
-  parameter Modelica.Units.SI.TemperatureDifference dTHysDHW
+  parameter Modelica.Units.SI.TemperatureDifference dTHysDHW=10
     "Hysteresis for DHW demand control" annotation (Dialog(group="DHW control"));
 
   parameter Utilities.SupervisoryControl.Types.SupervisoryControlType
@@ -43,9 +43,8 @@ partial model PartialHeatPumpSystemController
      final TSetDHW_nominal=parDis.TDHW_nominal)
       "DHW set temperture module" annotation (Dialog(group="Component choices"),
       choicesAllMatching=true);
-  replaceable record parPIDHeaPum =
-      BESMod.Systems.Hydraulical.Control.RecordsCollection.PIDBaseDataDefinition
-    constrainedby
+  replaceable parameter BESMod.Systems.Hydraulical.Control.RecordsCollection.PIDBaseDataDefinition
+    parPIDHeaPum constrainedby
     BESMod.Systems.Hydraulical.Control.RecordsCollection.PIDBaseDataDefinition
     "PID parameters of heat pump"
     annotation (choicesAllMatching=true,
@@ -58,7 +57,16 @@ partial model PartialHeatPumpSystemController
             {218,98}})), Dialog(group="Component data"));
   replaceable
     BESMod.Systems.Hydraulical.Control.Components.RelativeSpeedController.PID
-    priGenPIDCtrl(redeclare record parPID = parPIDHeaPum) constrainedby
+    priGenPIDCtrl(
+    final yMax=parPIDHeaPum.yMax,
+    final yOff=parPIDHeaPum.yOff,
+    final y_start=parPIDHeaPum.y_start,
+    final yMin=parPIDHeaPum.yMin,
+    final P=parPIDHeaPum.P,
+    final timeInt=parPIDHeaPum.timeInt,
+    final Ni=parPIDHeaPum.Ni,
+    final timeDer=parPIDHeaPum.timeDer,
+    final Nd=parPIDHeaPum.Nd)                                                                                                             constrainedby
     BESMod.Systems.Hydraulical.Control.Components.RelativeSpeedController.BaseClasses.PartialControler
     "Control of primary generation device" annotation (
     Dialog(group="Primary device", tab="Advanced"),
@@ -114,7 +122,7 @@ partial model PartialHeatPumpSystemController
   Components.BuildingAndDHWControl buiAndDHWCtr(
     final nZones=parTra.nParallelDem,
     final TSup_nominal=max(parTra.TSup_nominal),
-    final TRet_nominal=max(parTra.TSup_nominal - parTra.dTTra_nominal),
+    final TRet_nominal=max(parTra.TTra_nominal .- parTra.dTTra_nominal),
     final TOda_nominal=parGen.TOda_nominal,
     final TSetDHW_nominal=parDis.TDHW_nominal,
     final nHeaTra=parTra.nHeaTra,
@@ -224,9 +232,6 @@ equation
   connect(buiAndDHWCtr.secGen, anyGenDevIsOn.u[1]) annotation (Line(points={{-118,
           37.5},{-118,36},{-112,36},{-112,6},{-151.75,6},{-151.75,0}},
         color={255,0,255}));
-  connect(buiAndDHWCtr.priGren, anyGenDevIsOn.u[2]) annotation (Line(points={{-118,
-          27.5},{-118,26},{-112,26},{-112,6},{-148.25,6},{-148.25,0}},
-                         color={255,0,255}));
   connect(priGenPIDCtrl.setOn, buiAndDHWCtr.priGren) annotation (Line(points={{100.4,
           90},{96,90},{96,40},{-80,40},{-80,27.5},{-118,27.5}}, color={255,0,255}));
   connect(setAndMeaSelPri.DHW, buiAndDHWCtr.DHW) annotation (Line(points={{39,76},
@@ -280,6 +285,13 @@ equation
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
 
+  connect(anyGenDevIsOn.u[2], sigBusGen.heaPumIsOn) annotation (Line(points={{-148.25,
+          0},{-148,0},{-148,6},{-168,6},{-168,-99},{-152,-99}}, color={255,0,255}),
+      Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
   annotation (Diagram(graphics={
         Rectangle(
           extent={{4,100},{136,36}},

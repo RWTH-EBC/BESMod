@@ -9,7 +9,8 @@ model TwoStoragesBoilerWithDHW
     stoBuf(final useHeatingCoil1=false),
     final dpBufHCSto_nominal=0,
     final dTLoaHCBuf=0,
-    final use_secHeaCoiDHWSto=true);
+    final use_secHeaCoiDHWSto=true,
+    stoDHW(nHC2Up=parStoDHW.nLayer, nHC2Low=1));
   parameter Modelica.Units.SI.TemperatureDifference dTBoiDHWLoa = 5
     "Temperature difference for DHW storage loading with the boiler"
     annotation(Dialog(group="Component data"));
@@ -247,5 +248,11 @@ equation
           -55}}, color={0,127,255}));
   connect(stoDHW.portHC2Out, thrWayValBoiDHW.portDHW_a) annotation (Line(points={{
           -50.2,-61.4},{-50.2,-62},{-52,-62},{-52,-74},{44,-74},{44,-37.6},{40,-37.6}},
+        color={0,127,255}));
+  connect(stoBuf.fluidportTop1, threeWayValveWithFlowReturn.portBui_b)
+    annotation (Line(points={{-39.6,40.2},{-39.6,58},{-52,58},{-52,78},{-60,78}},
+        color={0,127,255}));
+  connect(threeWayValveWithFlowReturn.portBui_a, stoBuf.fluidportBottom1)
+    annotation (Line(points={{-60,74},{-56,74},{-56,-10},{-39.4,-10},{-39.4,-0.4}},
         color={0,127,255}));
 end TwoStoragesBoilerWithDHW;

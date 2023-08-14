@@ -20,14 +20,14 @@ model BES_HOM
       redeclare BESMod.Systems.Hydraulical.Generation.HeatPumpAndHeatingRod
         generation(
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
-        redeclare package Medium_eva = AixLib.Media.Air,
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           parHeaPum(
           genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
+
           TBiv=parameterStudy.TBiv,
-          scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal
-              /parameterStudy.QHP_flow_biv,
+          scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal/
+              parameterStudy.QHP_flow_biv,
           dpCon_nominal=0,
           dpEva_nominal=0,
           use_refIne=false,
@@ -43,23 +43,26 @@ model BES_HOM
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
           parTemSen),
-      redeclare BESMod.Systems.Hydraulical.Control.ConstHys_OnOff_HPSControll
+      redeclare BESMod.Systems.Hydraulical.Control.MonoenergeticHeatPumpSystem
         control(
         redeclare
           BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
-          thermostaticValveController,
+          valCtrl,
+        redeclare model DHWHysteresis =
+            BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod,
+
+        redeclare model BuildingHysteresis =
+            BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod,
+
+        redeclare
+          BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
+          parPIDHeaPum,
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
           parTheVal,
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultSafetyControl
-          safetyControl,
-        redeclare
-          BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultBivHPControl
-          bivalentControlData,
-        redeclare
-          BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.ConstTSet_DHW
-          TSet_DHW),
+          safetyControl),
       redeclare
         BESMod.Systems.Hydraulical.Distribution.DistributionTwoStorageParallel
         distribution(

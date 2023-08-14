@@ -1,40 +1,43 @@
 within BESMod.Systems.Hydraulical.Control.Components.RelativeSpeedController;
 model PID "PID controller for inverter controlled devices"
   extends BaseClasses.PartialControler;
-
+  parameter Real yMax=1 "Upper limit of output";
+  parameter Real yOff=0 "Constant output value if device is turned off";
+  parameter Real y_start=0 "Initial value of output";
+  parameter Real yMin "Lower limit of relative speed";
+  parameter Real P "Gain of PID-controller";
+  parameter Modelica.Units.SI.Time timeInt "Time constant of Integrator block";
+  parameter Real Ni=0.9 "Ni*Ti is time constant of anti-windup compensation";
+  parameter Modelica.Units.SI.Time timeDer "Time constant of Derivative block";
+  parameter Real Nd=10 "The higher Nd, the more ideal the derivative block";
   BESMod.Systems.Hydraulical.Control.Components.RelativeSpeedController.BaseClasses.LimPID
     PID(
     controllerType=Modelica.Blocks.Types.SimpleController.PID,
-    final k=parPID.P,
-    Ti=parPID.timeInt,
-    Td=parPID.timeDer,
-    final yMax=parPID.yMax,
-    final yMin=parPID.yMin,
+    final k=P,
+    final Ti=timeInt,
+    final Td=timeDer,
+    final yMax=yMax,
+    final yMin=yMin,
     final wp=1,
     final wd=0,
-    Ni=parPID.Ni,
-    Nd=parPID.Nd,
+    final Ni=Ni,
+    final Nd=Nd,
     final initType=Modelica.Blocks.Types.Init.InitialState,
-    homotopyType=Modelica.Blocks.Types.LimiterHomotopy.NoHomotopy,
+    final homotopyType=Modelica.Blocks.Types.LimiterHomotopy.NoHomotopy,
     final strict=false,
     final xi_start=0,
     final xd_start=0,
-    final y_start=parPID.y_start,
+    final y_start=y_start,
     final limitsAtInit=true)
     annotation (Placement(transformation(extent={{-30,22},{6,58}})));
 
   Modelica.Blocks.Logical.Switch onOffSwi "Switch on off"
     annotation (Placement(transformation(extent={{38,-14},{68,16}})));
-  Modelica.Blocks.Sources.Constant const(final k=parPID.yOff) "HP turned off"
+  Modelica.Blocks.Sources.Constant const(final k=yOff) "HP turned off"
     annotation (Placement(transformation(extent={{-6,-36},{10,-20}})));
   Modelica.Blocks.Logical.And and1
     annotation (Placement(transformation(extent={{-52,-64},{-32,-44}})));
 
-  replaceable record parPID=
-      BESMod.Systems.Hydraulical.Control.RecordsCollection.PIDBaseDataDefinition
-    constrainedby BESMod.Systems.Hydraulical.Control.RecordsCollection.PIDBaseDataDefinition "PID parameters"
-    annotation (choicesAllMatching=true,
-                Placement(transformation(extent={{80,-100},{100,-80}})));
 equation
   connect(setOn, onOffSwi.u2)
     annotation (Line(points={{-120,0},{34,0},{34,1},{35,1}}, color={255,0,255}));

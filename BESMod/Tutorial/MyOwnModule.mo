@@ -18,8 +18,8 @@ model MyOwnModule "My module can do this and that"
     startTime=myComponentParameters.startTime)
     annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));
   Modelica.Blocks.Nonlinear.Limiter
-                            limiter(final uMax=yMax, final uMin=-yMax) if
-       use_lim
+                            limiter(final uMax=yMax, final uMin=-yMax)
+    if use_lim
     annotation (Placement(transformation(extent={{6,4},{26,24}})));
   Modelica.Blocks.Interfaces.RealOutput y "Output signal connector"
     annotation (Placement(transformation(extent={{100,-10},{120,10}})));

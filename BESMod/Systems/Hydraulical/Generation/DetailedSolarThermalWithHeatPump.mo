@@ -97,7 +97,8 @@ model DetailedSolarThermalWithHeatPump
         rotation=0,
         origin={-190,-150})));
 
-  Utilities.KPIs.EnergyKPICalculator KPIWel1(use_inpCon=false, y=sum(solCol.vol.heatPort.Q_flow))
+  Utilities.KPIs.EnergyKPICalculator KPIQSol(use_inpCon=false, y=sum(solCol.vol.heatPort.Q_flow))
+    "Solar thermal KPI"
     annotation (Placement(transformation(extent={{-60,-120},{-40,-100}})));
 
   Modelica.Blocks.Logical.Switch switch3 annotation (Placement(transformation(
@@ -161,6 +162,12 @@ equation
       horizontalAlignment=TextAlignment.Right));
   connect(AirOrSoil1.y, switch3.u1) annotation (Line(points={{-179,-150},{-170,
           -150},{-170,-162}}, color={0,0,127}));
+  connect(KPIQSol.KPI, outBusGen.QSolThe_flow) annotation (Line(points={{-37.8,
+          -110},{0,-110},{0,-100}}, color={135,135,135}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
   annotation (Diagram(coordinateSystem(extent={{-220,-200},{100,100}}),
         graphics={Text(
           extent={{-216,-122},{-152,-140}},

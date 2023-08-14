@@ -162,7 +162,8 @@ model PartialHeatPump "Generation with only the heat pump"
         rotation=0,
         origin={-170,50})));
 
-  Utilities.KPIs.EnergyKPICalculator KPIQHP(use_inpCon=false, y=heatPump.con.QFlow_in)
+  Utilities.KPIs.EnergyKPICalculator KPIQHP(use_inpCon=false, final y=heatPump.con.QFlow_in)
+    if false
     annotation (Placement(transformation(extent={{-140,-80},{-120,-60}})));
 
   IBPSA.Fluid.Sources.Boundary_pT bouPum(

@@ -26,20 +26,20 @@ model DeviceKPICalculator "KPI useful for the analysis of a device"
     annotation (Placement(transformation(extent={{-42,10},{-22,30}})));
   Modelica.Blocks.Sources.Constant const1(k=0) if calc_singleOnTime
     annotation (Placement(transformation(extent={{-42,-30},{-22,-10}})));
-  Modelica.Blocks.Continuous.Integrator integrator3(use_reset=true, y(unit="s")) if
-    calc_singleOnTime
+  Modelica.Blocks.Continuous.Integrator integrator3(use_reset=true, y(unit="s"))
+ if calc_singleOnTime
     annotation (Placement(transformation(extent={{26,-40},{46,-20}})));
   Modelica.Blocks.Logical.Not not1 if calc_singleOnTime
     annotation (Placement(transformation(extent={{-34,-60},{-14,-40}})));
-  Modelica.Blocks.Sources.IntegerConstant integerConstant(final k=1) if
-    calc_numSwi
+  Modelica.Blocks.Sources.IntegerConstant integerConstant(final k=1)
+ if calc_numSwi
     annotation (Placement(transformation(extent={{-34,60},{-14,80}})));
   Modelica.Blocks.MathInteger.TriggeredAdd triggeredAdd(final use_reset=false,
       final y_start=0) if calc_numSwi
     "To count on-off cycles"
     annotation (Placement(transformation(extent={{6,60},{26,80}})));
-  Modelica.Blocks.Continuous.Integrator integrator1(y(unit="s")) if
-                                                       calc_totalOnTime
+  Modelica.Blocks.Continuous.Integrator integrator1(y(unit="s"))
+                                                    if calc_totalOnTime
     annotation (Placement(transformation(extent={{26,20},{46,40}})));
   BaseClasses.KPIDevice KPI
     annotation (Placement(transformation(extent={{102,-20},{142,20}}),
