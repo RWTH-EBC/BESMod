@@ -1,7 +1,6 @@
 within BESMod.Systems.Hydraulical.Control.Components.RelativeSpeedController;
 model PID "PID controller for inverter controlled devices"
   extends BaseClasses.PartialControler;
-  parameter Real yMax=1 "Upper limit of output";
   parameter Real yOff=0 "Constant output value if device is turned off";
   parameter Real y_start=0 "Initial value of output";
   parameter Real yMin "Lower limit of relative speed";

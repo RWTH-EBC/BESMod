@@ -2,7 +2,7 @@ within BESMod.Systems.Hydraulical.Generation;
 model HeatPumpAndHeatingRod "Heat pump with heating rod in series"
   extends BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump(
   dp_nominal={heatPump.dpCon_nominal + dpHeaRod_nominal},
-  multiSum(nu=3));
+  multiSum(nu=if use_heaRod then 3 else 2));
 
   parameter Boolean use_heaRod=true "=false to disable the heating rod"
    annotation(Dialog(group="Component choices"));
