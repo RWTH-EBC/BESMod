@@ -1,9 +1,6 @@
 within BESMod.Utilities.HeatGeneration;
 model GetHeatPumpCurveVCLib
   extends PartialGetHeatGenerationCurve(
-    redeclare
-      BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultBivHPControl
-      bivalentHeatPumpControlDataDefinition,
     redeclare Examples.UseCaseDesignOptimization.AachenSystem systemParameters,
     redeclare Systems.Hydraulical.Generation.HeatPumpAndHeatingRod generation(
       redeclare package Medium_eva = IBPSA.Media.Air,

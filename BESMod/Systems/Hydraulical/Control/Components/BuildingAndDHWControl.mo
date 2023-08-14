@@ -22,11 +22,13 @@ model BuildingAndDHWControl
 
   replaceable model DHWHysteresis =
       BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod
+      (dTHys=10)
     constrainedby
     BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.BaseClasses.PartialOnOffController
     "Hysteresis for DHW system" annotation (choicesAllMatching=true);
   replaceable model BuildingHysteresis =
       BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod
+      (dTHys=10)
     constrainedby
     BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.BaseClasses.PartialOnOffController
     "Hysteresis for building" annotation (choicesAllMatching=true);
@@ -37,10 +39,10 @@ model BuildingAndDHWControl
       "DHW set temperture module" annotation (choicesAllMatching=true);
 
 
-  DHWHysteresis hysDHW(dTHys=10)
+  DHWHysteresis hysDHW
     "Hysteresis for DHW system" annotation (Placement(
         transformation(extent={{62,62},{78,78}})));
-  BuildingHysteresis hysBui(dTHys=10)
+  BuildingHysteresis hysBui
     "Hysteresis for building" annotation (Placement(
         transformation(extent={{42,-78},{58,-62}})));
   DHWSetTemperature TSetDHW "DHW set temperature module" annotation (

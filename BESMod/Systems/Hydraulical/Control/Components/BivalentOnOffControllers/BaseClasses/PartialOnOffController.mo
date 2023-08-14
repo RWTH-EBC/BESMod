@@ -4,7 +4,6 @@ partial model PartialOnOffController "Partial model for an on off controller"
   parameter Modelica.Units.SI.TemperatureDifference dTHys
     "Hysteresis for control";
 
-
   Modelica.Blocks.Interfaces.RealInput TStoTop
     "Top layer temperature of the storage in distribution system" annotation (
       Placement(transformation(extent={{-140,40},{-100,80}}), iconTransformation(

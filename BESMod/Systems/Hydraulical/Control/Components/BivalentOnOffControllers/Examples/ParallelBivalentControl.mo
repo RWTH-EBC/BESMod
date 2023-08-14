@@ -1,6 +1,6 @@
 within BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.Examples;
 model ParallelBivalentControl
-  extends PartialOnOffController(dTHys=onOffController.Hysteresis, redeclare
+  extends PartialOnOffController(dTHys=onOffController.dTHys, redeclare
       BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.PartParallelBivalent
       onOffController(
       dTHys=10,

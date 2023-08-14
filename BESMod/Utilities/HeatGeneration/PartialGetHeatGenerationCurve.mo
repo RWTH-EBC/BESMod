@@ -29,10 +29,10 @@ partial model PartialGetHeatGenerationCurve
         rotation=180,
         origin={82,10})));
   Systems.Hydraulical.Control.Components.HeatingCurve heatingCurve(
-    GraHeaCurve=bivalentHeatPumpControlDataDefinition.gradientHeatCurve,
-    THeaThres=systemParameters.TSetZone_nominal[1],
-    dTOffSet_HC=bivalentHeatPumpControlDataDefinition.dTOffSetHeatCurve -
-        generation.dTTra_nominal[1]) annotation (Placement(transformation(
+    TSup_nominal=systemParameters.THydSup_nominal[1],
+    TRet_nominal=systemParameters.THydSup_nominal[1] - 7,
+    TOda_nominal=systemParameters.TOda_nominal,
+    nHeaTra=1.3)                     annotation (Placement(transformation(
         extent={{-11,11},{11,-11}},
         rotation=0,
         origin={-9,-71})));
@@ -45,13 +45,6 @@ partial model PartialGetHeatGenerationCurve
   Modelica.Blocks.Sources.RealExpression
                                    realExpression
     annotation (Placement(transformation(extent={{30,72},{50,92}})));
-  replaceable
-    Systems.Hydraulical.Control.RecordsCollection.BivalentHeatPumpControlDataDefinition
-    bivalentHeatPumpControlDataDefinition(
-    TOda_nominal=systemParameters.TOda_nominal,
-    TSup_nominal=systemParameters.THydSup_nominal[1],
-    TSetRoomConst=systemParameters.TSetZone_nominal[1])
-    annotation (choicesAllMatching=true,Placement(transformation(extent={{-100,82},{-80,102}})));
   Modelica.Blocks.Sources.Constant const3(k=max(systemParameters.TSetZone_nominal))
     annotation (Placement(transformation(extent={{-100,-100},{-80,-80}})));
   IBPSA.BoundaryConditions.WeatherData.Bus weaBus "Weather data bus"

@@ -142,7 +142,8 @@ partial model PartialHydraulicSystem
       Placement(transformation(extent={{-12,-104},{90,28}})));
 
   replaceable BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialTransfer
-    transfer(dp_nominal=fill(0, transfer.nParallelDem)) constrainedby
+    transfer(dp_nominal=fill(0, transfer.nParallelDem), nHeaTra=1)
+                                                        constrainedby
     Transfer.BaseClasses.PartialTransfer(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,

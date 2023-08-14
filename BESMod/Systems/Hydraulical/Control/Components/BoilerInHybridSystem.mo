@@ -4,7 +4,6 @@ model BoilerInHybridSystem "Decides when to use the boiler"
   parameter Modelica.Units.SI.Temperature TBiv "Bivalence temperature";
   parameter Modelica.Units.SI.Temperature TCutOff "Cutoff temperature";
 
-
   Modelica.Blocks.Logical.LessThreshold lesTBiv(threshold=TBiv)
     "Checks, if Toda is below Tbiv"
     annotation (Placement(transformation(extent={{-60,80},{-40,100}})));
