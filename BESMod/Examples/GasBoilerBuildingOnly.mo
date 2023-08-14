@@ -12,25 +12,24 @@ model GasBoilerBuildingOnly
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
       redeclare BESMod.Systems.Hydraulical.Generation.GasBoiler generation(
         dTTra_nominal={10},
-        redeclare AixLib.DataBase.Boiler.General.Boiler_Vitogas200F_11kW
-          paramBoiler,
+        redeclare AixLib.DataBase.Boiler.General.Boiler_Vitogas200F_11kW parBoi,
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
           parTemSen,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum),
-      redeclare BESMod.Systems.Hydraulical.Control.MonovalentGasBoiler control(
+      redeclare BESMod.Systems.Hydraulical.Control.GasBoiler control(
         redeclare
           BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
-          thermostaticValveController,
+          valCtrl,
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
           parTheVal,
         redeclare
-          BESMod.Systems.Hydraulical.Control.Components.RelativeSpeedController.PI
-          HP_nSet_Controller,
+          BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicBoilerPI
+          parPID,
         redeclare
-          BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultBivHPControl
-          monovalentControlParas),
+          BESMod.Systems.Hydraulical.Control.Components.RelativeSpeedController.PID
+          PIDCtrl),
       redeclare BESMod.Systems.Hydraulical.Distribution.BuildingOnly
         distribution(nParallelDem=1),
       redeclare BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased

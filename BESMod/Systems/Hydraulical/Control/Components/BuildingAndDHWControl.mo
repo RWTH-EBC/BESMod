@@ -37,10 +37,10 @@ model BuildingAndDHWControl
       "DHW set temperture module" annotation (choicesAllMatching=true);
 
 
-  DHWHysteresis hysDHW
+  DHWHysteresis hysDHW(dTHys=10)
     "Hysteresis for DHW system" annotation (Placement(
         transformation(extent={{62,62},{78,78}})));
-  BuildingHysteresis hysBui
+  BuildingHysteresis hysBui(dTHys=10)
     "Hysteresis for building" annotation (Placement(
         transformation(extent={{42,-78},{58,-62}})));
   DHWSetTemperature TSetDHW "DHW set temperature module" annotation (

@@ -1,5 +1,7 @@
 within BESMod.Systems.Hydraulical.Control.Components.RelativeSpeedController.BaseClasses;
 partial model PartialControler "Partial controller model"
+  parameter Real yMax=1 "Upper limit of output";
+
   Modelica.Blocks.Interfaces.BooleanInput setOn(final start=true)
     "True if the device is set to turn on"
 annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));

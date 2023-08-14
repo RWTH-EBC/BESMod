@@ -3,7 +3,7 @@ model ParallelBivalentControl
   extends PartialOnOffController(dTHys=onOffController.Hysteresis, redeclare
       BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.PartParallelBivalent
       onOffController(
-      Hysteresis=10,
+      dTHys=10,
       TCutOff=263.15,
       TBiv=270.15,
       TOda_nominal=258.15,

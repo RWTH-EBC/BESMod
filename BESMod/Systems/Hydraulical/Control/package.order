@@ -2,7 +2,6 @@ HybridHeatPumpSystem
 MonoenergeticHeatPumpSystem
 NoControl
 GasBoiler
-BivalentPartParallel
 Components
 BaseClasses
 RecordsCollection

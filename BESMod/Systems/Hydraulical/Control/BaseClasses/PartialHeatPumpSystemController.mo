@@ -121,7 +121,7 @@ partial model PartialHeatPumpSystemController
         origin={170,64})));
   Components.BuildingAndDHWControl buiAndDHWCtr(
     final nZones=parTra.nParallelDem,
-    final TSup_nominal=max(parTra.TSup_nominal),
+    final TSup_nominal=max(parTra.TTra_nominal),
     final TRet_nominal=max(parTra.TTra_nominal .- parTra.dTTra_nominal),
     final TOda_nominal=parGen.TOda_nominal,
     final TSetDHW_nominal=parDis.TDHW_nominal,

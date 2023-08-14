@@ -2,16 +2,19 @@ within BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.Ex
 model OnOffControllerTest
   extends Modelica.Icons.Example;
 
-  ConstantHysteresisTimeBasedHeatingRod constantHysteresisTimeBasedHR(dtHeaRod=
-        1800) annotation (Placement(transformation(extent={{-28,42},{16,82}})));
+  ConstantHysteresisTimeBasedHeatingRod constantHysteresisTimeBasedHR(dTHys=10,
+      dtHeaRod=1800)
+              annotation (Placement(transformation(extent={{-28,42},{16,82}})));
   BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.DegreeMinuteController
-    degreeMinuteController(DegreeMinuteReset=100) annotation (Placement(
+    degreeMinuteController(dTHys=10,
+                           DegreeMinuteReset=100) annotation (Placement(
         transformation(
         extent={{-21,-20},{21,20}},
         rotation=0,
         origin={-5,2})));
   BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.FloatingHysteresis
-    floatingHysteresis(Hysteresis_max=15, Hysteresis_min=2)
+    floatingHysteresis(
+    dTHys=10,          Hysteresis_max=15, Hysteresis_min=2)
     annotation (Placement(transformation(extent={{-26,-76},{16,-38}})));
   Modelica.Blocks.Sources.Constant T_Set(k=323.15)
     annotation (Placement(transformation(extent={{-160,-20},{-124,16}})));
