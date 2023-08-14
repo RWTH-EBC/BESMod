@@ -168,6 +168,12 @@ model TEASERThermalZone
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={114,62})));
+  Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow preAbsHeaGaiRad[nZones](
+      final T_ref=293.15, final alpha=0) "Add absolute radiative heat gain"
+    annotation (Placement(transformation(extent={{142,100},{162,120}})));
+  Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow preAbsHeaGaiCon[nZones](
+      final T_ref=293.15, final alpha=0) "Add absolute radiative heat gain"
+    annotation (Placement(transformation(extent={{102,102},{122,122}})));
 equation
 
   for i in 1:nZones loop
@@ -372,6 +378,25 @@ equation
   connect(realPassThroughTDry.y, thermalZone.ventTemp) annotation (Line(points=
           {{103,62},{102,62},{102,74},{52,74},{52,42.24},{33.52,42.24}}, color=
           {0,0,127}));
+  connect(preAbsHeaGaiRad.port, thermalZone.intGainsRad) annotation (Line(points=
+          {{162,110},{170,110},{170,132},{-80,132},{-80,60},{-56,60},{-56,60.24},
+          {-39.74,60.24}}, color={191,0,0}));
+  connect(preAbsHeaGaiCon.port, thermalZone.intGainsConv) annotation (Line(points
+        ={{122,112},{134,112},{134,128},{-76,128},{-76,50},{-42,50},{-42,52},{
+          -39.74,52},{-39.74,49.44}}, color={191,0,0}));
+  connect(preAbsHeaGaiRad.Q_flow, useProBus.absIntGaiRad) annotation (Line(points
+        ={{142,110},{-56,110},{-56,28},{-40,28},{-40,10},{96,10},{96,101},{51,101}},
+        color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(preAbsHeaGaiCon.Q_flow, useProBus.absIntGaiCon) annotation (Line(points
+        ={{102,112},{94,112},{94,82},{51,82},{51,101}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
     annotation (Diagram(coordinateSystem(extent={{-100,-220},{100,100}})),
       Documentation(info="<html>
 <p>This model uses the reduced-order approach with the common TEASER output to model the building envelope. Relevant KPIs are calculated.</p>
