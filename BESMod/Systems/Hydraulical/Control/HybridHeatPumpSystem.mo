@@ -34,8 +34,7 @@ model HybridHeatPumpSystem
         transformation(extent={{100,10},{120,28}})));
 
   Components.BoilerInHybridSystem boiInHybSys(final TBiv=TBiv, final TCutOff=
-        TCutOff)
-    "Check whether the boiler can turn on"
+        TCutOff) "Check whether the boiler can turn on"
     annotation (Placement(transformation(extent={{-30,-20},{-12,0}})));
 
   BESMod.Systems.Hydraulical.Control.Components.ParallelValveController priOrSecDevValCtrl

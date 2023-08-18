@@ -307,8 +307,8 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
         QHRStoBufPre_flow.Q_flow) if parStoBuf.use_hr
     annotation (Placement(transformation(extent={{-100,-180},{-80,-160}})));
 
-  AixLib.Fluid.Interfaces.PassThroughMedium pasThrNoDHW(redeclare package Medium
-      = Medium, allowFlowReversal=allowFlowReversal) if not use_dhw
+  AixLib.Fluid.Interfaces.PassThroughMedium pasThrNoDHW(redeclare package Medium =
+        Medium, allowFlowReversal=allowFlowReversal) if not use_dhw
     "Pass through if DHW is disabled" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,

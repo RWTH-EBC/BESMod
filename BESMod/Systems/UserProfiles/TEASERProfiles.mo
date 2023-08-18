@@ -28,11 +28,6 @@ model TEASERProfiles "Standard TEASER Profiles"
         extent={{10,10},{-10,-10}},
         rotation=180,
         origin={-10,-50})));
-  Modelica.Blocks.Sources.Constant constZero[nZones](each final k=0)
-    "Constant zero for absolute gains" annotation (Placement(transformation(
-        extent={{10,10},{-10,-10}},
-        rotation=180,
-        origin={-10,-12})));
 equation
   connect(tabIntGai.y, gainIntGai.u)
     annotation (Line(points={{1,30},{18,30}}, color={0,0,127}));
@@ -44,18 +39,6 @@ equation
       horizontalAlignment=TextAlignment.Left));
   connect(conTSetZone.y, useProBus.TZoneSet) annotation (Line(points={{1,-50},{
           115,-50},{115,-1}}, color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(constZero.y, useProBus.absIntGaiRad) annotation (Line(points={{1,-12},{74,
-          -12},{74,-1},{115,-1}}, color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(constZero.y, useProBus.absIntGaiCon) annotation (Line(points={{1,-12},{
-          74,-12},{74,-1},{115,-1}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
