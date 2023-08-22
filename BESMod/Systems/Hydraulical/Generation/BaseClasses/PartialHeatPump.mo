@@ -90,7 +90,7 @@ model PartialHeatPump "Generation with only the heat pump"
     final pCon_start=p_start,
     final TCon_start=T_start,
     final pEva_start=Medium_eva.p_default,
-    final TEva_start=Medium_eva.T_default,
+    final TEva_start=TOda_nominal,
     final energyDynamics=energyDynamics,
     final show_TPort=show_T,
     redeclare model PerDataMainHP = PerDataMainHP,
