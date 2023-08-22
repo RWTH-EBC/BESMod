@@ -16,6 +16,7 @@ partial model PartialCase
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           parHeaPum(
           genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
+
           TBiv=TBiv,
           scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal/5000,
           dpCon_nominal=0,
@@ -28,6 +29,7 @@ partial model PartialCase
         redeclare model PerDataMainHP =
             AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
             QCon_flow_nominal=hydraulic.generation.parHeaPum.QPri_flow_nominal,
+
             refrigerant="Propane",
             flowsheet="VIPhaseSeparatorFlowsheet"),
         redeclare
@@ -57,7 +59,7 @@ partial model PartialCase
       redeclare
         BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedDirectLoading
         distribution(
-        QHRAftBuf_flow_nominal=0,
+        QHeaAftBuf_flow_nominal=0,
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
           parTemSen,
@@ -84,8 +86,10 @@ partial model PartialCase
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
           transferDataBaseDefinition,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum)),
+
     redeclare Systems.Demand.DHW.DHW DHW(
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
+
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
         calcmFlow),

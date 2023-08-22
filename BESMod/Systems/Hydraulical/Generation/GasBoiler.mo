@@ -7,8 +7,9 @@ model GasBoiler "Just a gas boiler"
       373.15,0.99] "Temperature based efficiency"
         annotation(Dialog(group="Component data"));
 
-  replaceable parameter AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition
-    parBoi
+  replaceable parameter BESMod.Systems.Hydraulical.Generation.RecordsCollection.AutoparameterBoiler
+    parBoi constrainedby AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition(
+      Q_nom=Q_flow_nominal[1])
     "Parameters for Boiler"
     annotation(Placement(transformation(extent={{-58,44},{-42,60}})),
       choicesAllMatching=true, Dialog(group="Component data"));

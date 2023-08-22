@@ -18,8 +18,9 @@ model TwoStoragesBoilerWithDHW
       0.99] "Temperature based efficiency"
         annotation(Dialog(group="Component data"));
 
-  replaceable parameter AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition
-    parBoi
+  replaceable parameter BESMod.Systems.Hydraulical.Generation.RecordsCollection.AutoparameterBoiler
+    parBoi constrainedby AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition(
+      Q_nom=Q_flow_nominal[1])
     "Parameters for Boiler"
     annotation(Placement(transformation(extent={{44,124},{58,138}})),
       choicesAllMatching=true, Dialog(group="Component data"));

@@ -9,5 +9,5 @@ record BasicBoilerPI "Currently used PI values for a boiler"
     y_start=0,
     yOff=0,
     yMax=1,
-    yMin=0.2);
+    yMin=0.3);
 end BasicBoilerPI;

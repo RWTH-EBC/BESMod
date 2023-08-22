@@ -3,7 +3,6 @@ model TestIndirectLoading
   extends PartialTest(redeclare
       BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedIndirectLoading
       distribution(
-      QHRAftBuf_flow_nominal=0,
       redeclare
         BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
         parTemSen,
@@ -19,7 +18,9 @@ model TestIndirectLoading
       redeclare
         BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
         parHeaRodAftBuf,
-      dTLoaHCBuf=10));
+      dTLoaHCBuf=10,
+      QHeaAftBuf_flow_nominal=
+                             0));
   extends Modelica.Icons.Example;
 
   Modelica.Blocks.Sources.Pulse        pulse(       period=100) annotation (

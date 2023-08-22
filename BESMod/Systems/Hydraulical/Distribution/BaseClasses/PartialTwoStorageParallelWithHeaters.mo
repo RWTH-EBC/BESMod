@@ -3,9 +3,9 @@ partial model PartialTwoStorageParallelWithHeaters
   "Partial two storage model with heaters"
   extends BaseClasses.PartialTwoStorageParallel(
     final use_secHeaCoiDHWSto=false);
-  parameter Modelica.Units.SI.HeatFlowRate QHRAftBuf_flow_nominal=0
-    "Nominal heat flow rate of heating rod after DHW storage"
-    annotation (Dialog(group="Component data", enable=heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.HeatingRod));
+  parameter Modelica.Units.SI.HeatFlowRate QHeaAftBuf_flow_nominal=0
+    "Nominal heat flow rate of heater after DHW storage"
+    annotation (Dialog(group="Component data", enable=heaAftBufTyp <> BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.No));
   parameter BESMod.Systems.Hydraulical.Distribution.Types.HeaterType heaAftBufTyp=BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.No
     "Type of heater after the buffer storage"
     annotation(Dialog(group="Component choices"));
@@ -24,8 +24,10 @@ partial model PartialTwoStorageParallelWithHeaters
       "Temperature based efficiency"
         annotation(Dialog(group="Component data", enable=heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.Boiler));
 
-  replaceable parameter AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition
+    replaceable parameter BESMod.Systems.Hydraulical.Generation.RecordsCollection.AutoparameterBoiler
     parBoi if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.Boiler
+    constrainedby AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition(
+      Q_nom=QHeaAftBuf_flow_nominal)
     "Parameters for Boiler"
     annotation(Placement(transformation(extent={{64,124},{80,140}})),
       choicesAllMatching=true, Dialog(group="Component data"));
@@ -41,11 +43,10 @@ partial model PartialTwoStorageParallelWithHeaters
     final energyDynamics=energyDynamics,
     final p_start=p_start,
     final T_start=T_start,
-    final Q_flow_nominal=QHRAftBuf_flow_nominal,
+    final Q_flow_nominal=QHeaAftBuf_flow_nominal,
     final V=parHeaRodAftBuf.V_hr,
     final eta=parHeaRodAftBuf.eta_hr) if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.HeatingRod
-                                                                   annotation (
-      Placement(transformation(
+    annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={50,90})));
