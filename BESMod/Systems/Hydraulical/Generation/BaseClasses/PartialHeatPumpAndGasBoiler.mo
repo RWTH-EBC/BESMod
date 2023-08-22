@@ -8,7 +8,7 @@ model PartialHeatPumpAndGasBoiler "Partial heat pump and boiler"
 
   replaceable parameter BESMod.Systems.Hydraulical.Generation.RecordsCollection.AutoparameterBoiler
     parBoi constrainedby AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition(
-      Q_nom=parHeaPum.QSec_flow_nominal)
+      Q_nom=max(11000, parHeaPum.QSec_flow_nominal))
     "Parameters for Boiler"
     annotation(Placement(transformation(extent={{22,62},{38,78}})),
       choicesAllMatching=true, Dialog(group="Component data"));

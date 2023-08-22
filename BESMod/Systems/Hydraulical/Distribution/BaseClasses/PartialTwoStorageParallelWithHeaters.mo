@@ -27,7 +27,7 @@ partial model PartialTwoStorageParallelWithHeaters
     replaceable parameter BESMod.Systems.Hydraulical.Generation.RecordsCollection.AutoparameterBoiler
     parBoi if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.Boiler
     constrainedby AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition(
-      Q_nom=QHeaAftBuf_flow_nominal)
+      Q_nom=max(11000, QHeaAftBuf_flow_nominal))
     "Parameters for Boiler"
     annotation(Placement(transformation(extent={{64,124},{80,140}})),
       choicesAllMatching=true, Dialog(group="Component data"));
