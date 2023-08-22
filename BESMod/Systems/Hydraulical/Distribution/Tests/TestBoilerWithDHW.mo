@@ -16,7 +16,6 @@ model TestBoilerWithDHW "Test two storages boiler with DHW"
         BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorage
         parStoDHW,
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
-      redeclare AixLib.DataBase.Boiler.General.Boiler_Vitogas200F_11kW parBoi,
       redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
         parThrWayValBoi));
   extends Modelica.Icons.Example;

@@ -22,10 +22,8 @@ partial model PartialSolarThermalHPS
           parTheVal,
         redeclare model DHWHysteresis =
             BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod,
-
         redeclare model BuildingHysteresis =
             BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod,
-
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
           parPIDHeaPum,

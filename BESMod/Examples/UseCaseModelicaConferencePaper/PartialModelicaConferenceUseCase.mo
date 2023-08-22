@@ -54,13 +54,10 @@ partial model PartialModelicaConferenceUseCase
           BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
           parTheVal,
         supCtrDHWTyp=BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Internal,
-
         redeclare model DHWHysteresis =
             BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod,
-
         redeclare model BuildingHysteresis =
             BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod,
-
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
           parPIDHeaPum,

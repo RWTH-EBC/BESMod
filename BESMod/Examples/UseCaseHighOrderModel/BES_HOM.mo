@@ -24,7 +24,6 @@ model BES_HOM
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           parHeaPum(
           genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
-
           TBiv=parameterStudy.TBiv,
           scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal/
               parameterStudy.QHP_flow_biv,
@@ -50,10 +49,8 @@ model BES_HOM
           valCtrl,
         redeclare model DHWHysteresis =
             BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod,
-
         redeclare model BuildingHysteresis =
             BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod,
-
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
           parPIDHeaPum,

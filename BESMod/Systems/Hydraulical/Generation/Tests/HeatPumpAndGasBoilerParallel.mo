@@ -14,7 +14,6 @@ model HeatPumpAndGasBoilerParallel
         parPum,
       redeclare BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
         parTemSen,
-      redeclare AixLib.DataBase.Boiler.General.Boiler_Vitogas200F_11kW parBoi,
       redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
         parThrWayVal));
    extends Modelica.Icons.Example;
