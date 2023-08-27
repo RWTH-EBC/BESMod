@@ -5,7 +5,7 @@ model DHW "Standard DHW subsystem"
     tCrit=DHWProfile.tCrit,
     TDHWCold_nominal=283.15,
     TDHW_nominal=323.15,
-    VDHWDay=if use_dhwCalc then V_dhwCalc_day else DHWProfile.VDHWDay,
+    VDHWDay=if use_dhwCalc then VDHWCalcDay else DHWProfile.VDHWDay,
     mDHW_flow_nominal=DHWProfile.m_flow_nominal);
   replaceable parameter Systems.Demand.DHW.RecordsCollection.ProfileM
     DHWProfile constrainedby Systems.Demand.DHW.RecordsCollection.PartialDHWTap annotation (choicesAllMatching=true, Dialog(
@@ -18,8 +18,9 @@ model DHW "Standard DHW subsystem"
       "modelica://BESMod/Resources/DHWCalc.txt")
     "File where matrix is stored for DHWCalc"
     annotation (Dialog(enable=use_dhwCalc and use_dhw));
-  parameter Modelica.Units.SI.Volume V_dhwCalc_day=0
-    "Average daily tapping volume in DHWCalc table" annotation (Dialog(enable=use_dhwCalc));
+  parameter Modelica.Units.SI.Volume VDHWCalcDay=0
+    "Average daily tapping volume in DHWCalc table" annotation (Dialog(enable=
+          use_dhwCalc));
 
   replaceable parameter
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
