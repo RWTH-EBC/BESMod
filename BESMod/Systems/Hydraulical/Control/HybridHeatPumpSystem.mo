@@ -108,4 +108,7 @@ equation
       index=1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
+  connect(buiAndDHWCtr.priGren, priGenPIDCtrl.setOn) annotation (Line(points={{
+          -118,27.5},{-118,26},{74,26},{74,74},{96,74},{96,90},{100.4,90}},
+        color={255,0,255}));
 end HybridHeatPumpSystem;

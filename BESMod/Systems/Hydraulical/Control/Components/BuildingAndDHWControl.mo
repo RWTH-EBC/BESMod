@@ -37,6 +37,7 @@ model BuildingAndDHWControl
     constrainedby
     BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.BaseClasses.PartialTSet_DHW_Control
       "DHW set temperture module" annotation (choicesAllMatching=true);
+  parameter Modelica.Units.SI.Temperature THeaTrh = 273.15+15 "Heating threshold for summer mode";
 
 
   DHWHysteresis hysDHW
@@ -58,7 +59,7 @@ model BuildingAndDHWControl
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={170,-70})));
+        origin={250,-90})));
   Modelica.Blocks.MathBoolean.Or orDHW(nu=3) "If any is true, dhw is activated"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -80,7 +81,7 @@ model BuildingAndDHWControl
         transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
-        origin={130,-34})));
+        origin={210,-50})));
   Interfaces.DistributionControlBus sigBusDistr
     "Necessary to control DHW temperatures"
     annotation (Placement(transformation(extent={{-110,60},{-90,80}})));
@@ -95,7 +96,7 @@ model BuildingAndDHWControl
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={130,-90})));
+        origin={210,-110})));
   Modelica.Blocks.Interfaces.BooleanOutput secGen
     "=true to activate secondary generator"
     annotation (Placement(transformation(extent={{300,-80},{320,-60}})));
@@ -138,14 +139,37 @@ model BuildingAndDHWControl
   Modelica.Blocks.Interfaces.RealOutput TBuiSet(unit="K", displayUnit="degC")
     "Building supply set temperature"
     annotation (Placement(transformation(extent={{300,10},{320,30}})));
+  Modelica.Blocks.Logical.Timer timer
+    annotation (Placement(transformation(extent={{28,-30},{48,-10}})));
+  SummerTimeConstraint notSumMod "=false if summer mode is present"
+    annotation (Placement(transformation(extent={{60,-30},{80,-10}})));
+  Modelica.Blocks.Logical.LogicalSwitch logSwiDHW "Logical switch"
+    annotation (Placement(transformation(extent={{240,10},{260,30}})));
+  Modelica.Blocks.Logical.Hysteresis hysSum(
+    uLow=THeaTrh - 0.1,
+    final uHigh=THeaTrh + 0.1,
+    final pre_y_start=false) "Summer mode"
+    annotation (Placement(transformation(extent={{-32,-30},{-12,-10}})));
+  Modelica.Blocks.Logical.Not not1 "Not"
+    annotation (Placement(transformation(extent={{0,-30},{20,-10}})));
+  Modelica.Blocks.Sources.BooleanConstant conSumMod(final k=true)
+    "Constant summer mode"
+    annotation (Placement(transformation(extent={{180,20},{200,40}})));
+  Modelica.Blocks.Logical.LogicalSwitch logSwiSumModSecGen
+    "Logical switch for second heat generator"
+    annotation (Placement(transformation(extent={{120,-120},{140,-100}})));
+  Modelica.Blocks.Logical.LogicalSwitch logSwiSumModPriGen
+    "Logical switch for primary heat generator"
+    annotation (Placement(transformation(extent={{120,-80},{140,-60}})));
+  Modelica.Blocks.Sources.BooleanConstant conSumModGen(final k=false)
+    "Constant summer mode, generators off"
+    annotation (Placement(transformation(extent={{20,-140},{40,-120}})));
 equation
-  connect(hysBui.priGenOn, priGenOn.u2) annotation (Line(points={{59.12,-64.4},{74,
-          -64.4},{74,-106},{152,-106},{152,-78},{158,-78}}, color={255,0,255}));
   connect(hysDHW.priGenOn, priGenOn.u1) annotation (Line(points={{79.12,75.6},{79.12,
-          74},{106,74},{106,-62},{150,-62},{150,-70},{158,-70}}, color={255,0,255}));
+          74},{108,74},{108,46},{230,46},{230,-90},{238,-90}},   color={255,0,255}));
   connect(TSetDHW.y, orDHW.u[1]) annotation (Line(points={{-61.2,85.36},{-54,
-          85.36},{-54,50},{-48,50},{-48,34},{90,34},{90,74},{108,74},{108,67.6667},
-          {120,67.6667}},                   color={255,0,255}));
+          85.36},{-54,50},{-48,50},{-48,34},{90,34},{90,74},{108,74},{108,
+          67.6667},{120,67.6667}},          color={255,0,255}));
   connect(hysDHW.secGenOn, orDHW.u[2]) annotation (Line(points={{79.12,66},{90,66},
           {90,50},{120,50},{120,70}}, color={255,0,255}));
   connect(TSetDHW.TSetDHW, supCtrDHW.uLoc) annotation (Line(points={{-61.2,90},{-10,
@@ -179,27 +203,24 @@ equation
   connect(hysDHW.priGenOn, orDHW.u[3]) annotation (Line(points={{79.12,75.6},{
           79.12,74},{108,74},{108,72.3333},{120,72.3333}},
                                                      color={255,0,255}));
-  connect(priGenOn.y, priGren) annotation (Line(points={{181,-70},{208,-70},{208,
+  connect(priGenOn.y, priGren) annotation (Line(points={{261,-90},{294,-90},{294,
           -110},{310,-110}},
                        color={255,0,255}));
-  connect(secGenOn.y, secGen) annotation (Line(points={{141.5,-90},{292,-90},{292,
-          -70},{310,-70}},                                         color={255,0,255}));
-  connect(secGenOn.u[1], hysBui.secGenOn) annotation (Line(points={{120,-92.3333},
-          {114,-92.3333},{114,-74},{59.12,-74}}, color={255,0,255}));
-  connect(hysDHW.secGenOn, secGenOn.u[2]) annotation (Line(points={{79.12,66},{90,
-          66},{90,50},{114,50},{114,-90},{120,-90}}, color={255,0,255}));
-  connect(TSetDHW.y, secGenOn.u[3]) annotation (Line(points={{-61.2,85.36},{-54,
-          85.36},{-54,50},{-48,50},{-48,34},{90,34},{90,50},{114,50},{114,
-          -87.6667},{120,-87.6667}},
+  connect(secGenOn.y, secGen) annotation (Line(points={{221.5,-110},{286,-110},{
+          286,-70},{310,-70}},                                     color={255,0,255}));
+  connect(hysDHW.secGenOn, secGenOn.u[1]) annotation (Line(points={{79.12,66},{
+          90,66},{90,34},{178,34},{178,-112.333},{200,-112.333}},
+                                                     color={255,0,255}));
+  connect(TSetDHW.y, secGenOn.u[2]) annotation (Line(points={{-61.2,85.36},{-54,
+          85.36},{-54,50},{-48,50},{-48,34},{178,34},{178,-110},{200,-110}},
                       color={255,0,255}));
-  connect(maxSecHeaGen.u[1], hysDHW.ySecGenSet) annotation (Line(points={{120,
-          -31.6667},{86,-31.6667},{86,8},{52,8},{52,54},{79.12,54},{79.12,63.12}},
-                                                                         color={0,
+  connect(maxSecHeaGen.u[1], hysDHW.ySecGenSet) annotation (Line(points={{200,
+          -47.6667},{86,-47.6667},{86,63.12},{79.12,63.12}},             color={0,
           0,127}));
-  connect(maxSecHeaGen.u[2], hysBui.ySecGenSet) annotation (Line(points={{120,-34},
-          {86,-34},{86,-76.88},{59.12,-76.88}}, color={0,0,127}));
-  connect(swiAntLeg.y, maxSecHeaGen.u[3]) annotation (Line(points={{-19,50},{52,
-          50},{52,8},{86,8},{86,-36.3333},{120,-36.3333}},
+  connect(maxSecHeaGen.u[2], hysBui.ySecGenSet) annotation (Line(points={{200,-50},
+          {66,-50},{66,-76.88},{59.12,-76.88}}, color={0,0,127}));
+  connect(swiAntLeg.y, maxSecHeaGen.u[3]) annotation (Line(points={{-19,50},{86,
+          50},{86,-52.3333},{200,-52.3333}},
                                        color={0,0,127}));
   connect(TSetDHW.y, swiAntLeg.u2) annotation (Line(points={{-61.2,85.36},{-54,
           85.36},{-54,50},{-42,50}},
@@ -219,7 +240,7 @@ equation
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(maxSecHeaGen.yMax, ySecGenSet)
-    annotation (Line(points={{141,-40},{310,-40}},
+    annotation (Line(points={{221,-56},{286,-56},{286,-40},{310,-40}},
                                                color={0,0,127}));
   connect(TOda, hysDHW.TOda) annotation (Line(points={{-120,0},{-94,0},{-94,102},{
           70,102},{70,78.96}}, color={0,0,127}));
@@ -256,8 +277,6 @@ equation
           70}}, color={255,0,255}));
   connect(booToReal.u, bufOn.y)
     annotation (Line(points={{188,80},{171,80}}, color={255,0,255}));
-  connect(orDHW.y, DHW) annotation (Line(points={{141.5,70},{144,70},{144,52},{310,
-          52}}, color={255,0,255}));
   connect(supCtrHeaCur.uSup, sigBusHyd.TBuiSupOve) annotation (Line(points={{-2,-82},
           {-16,-82},{-16,12},{-106,12},{-106,132},{100,132},{100,103}}, color={0,0,
           127}), Text(
@@ -276,6 +295,39 @@ equation
           -134},{284,-134},{284,20},{310,20}}, color={0,0,127}));
   connect(supCtrDHW.y, TDHWSet) annotation (Line(points={{22,70},{22,42},{274,42},
           {274,80},{310,80}}, color={0,0,127}));
+  connect(timer.y, notSumMod.u)
+    annotation (Line(points={{49,-20},{58,-20}}, color={0,0,127}));
+  connect(notSumMod.y, logSwiDHW.u2) annotation (Line(points={{81,-20},{206,-20},
+          {206,20},{238,20}}, color={255,0,255}));
+  connect(timer.u, not1.y)
+    annotation (Line(points={{26,-20},{21,-20}}, color={255,0,255}));
+  connect(not1.u, hysSum.y)
+    annotation (Line(points={{-2,-20},{-11,-20}}, color={255,0,255}));
+  connect(hysSum.u, TOda) annotation (Line(points={{-34,-20},{-54,-20},{-54,0},{
+          -120,0}}, color={0,0,127}));
+  connect(logSwiSumModPriGen.y, priGenOn.u2) annotation (Line(points={{141,-70},
+          {164,-70},{164,-98},{238,-98}}, color={255,0,255}));
+  connect(notSumMod.y, logSwiSumModPriGen.u2) annotation (Line(points={{81,-20},
+          {92,-20},{92,-70},{118,-70}}, color={255,0,255}));
+  connect(logSwiSumModSecGen.y, secGenOn.u[3]) annotation (Line(points={{141,
+          -110},{140,-110},{140,-126},{200,-126},{200,-107.667}},
+                                                            color={255,0,255}));
+  connect(logSwiSumModSecGen.u2, notSumMod.y) annotation (Line(points={{118,-110},
+          {92,-110},{92,-20},{81,-20}}, color={255,0,255}));
+  connect(logSwiDHW.y, DHW) annotation (Line(points={{261,20},{282,20},{282,52},
+          {310,52}}, color={255,0,255}));
+  connect(logSwiSumModSecGen.u3, conSumModGen.y) annotation (Line(points={{118,
+          -118},{102,-118},{102,-130},{41,-130}}, color={255,0,255}));
+  connect(hysBui.secGenOn, logSwiSumModSecGen.u1) annotation (Line(points={{
+          59.12,-74},{104,-74},{104,-102},{118,-102}}, color={255,0,255}));
+  connect(logSwiSumModPriGen.u3, conSumModGen.y) annotation (Line(points={{118,
+          -78},{64,-78},{64,-130},{41,-130}}, color={255,0,255}));
+  connect(hysBui.priGenOn, logSwiSumModPriGen.u1) annotation (Line(points={{
+          59.12,-64.4},{59.12,-62},{118,-62}}, color={255,0,255}));
+  connect(conSumMod.y, logSwiDHW.u3) annotation (Line(points={{201,30},{232,30},
+          {232,12},{238,12}}, color={255,0,255}));
+  connect(logSwiDHW.u1, orDHW.y) annotation (Line(points={{238,28},{234,28},{
+          234,64},{141.5,64},{141.5,70}}, color={255,0,255}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-140},
             {300,100}})), Diagram(coordinateSystem(preserveAspectRatio=false,
           extent={{-100,-140},{300,100}}), graphics={
@@ -296,5 +348,15 @@ equation
           extent={{-100,-146},{-6,-112}},
           lineColor={0,140,72},
           lineThickness=1,
-          textString="Building Control")}));
+          textString="Building Control"),
+        Rectangle(
+          extent={{-40,16},{120,-40}},
+          lineColor={162,29,33},
+          lineThickness=1),
+        Text(
+          extent={{-44,-30},{24,-42}},
+          lineColor={162,29,33},
+          lineThickness=1,
+          fontSize=12,
+          textString="Summer mode")}));
 end BuildingAndDHWControl;

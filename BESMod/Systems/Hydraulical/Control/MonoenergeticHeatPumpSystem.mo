@@ -28,4 +28,7 @@ equation
                                               color={255,0,255}));
   connect(swiSecGen.u1, buiAndDHWCtr.ySecGenSet) annotation (Line(points={{98,18},
           {90,18},{90,45},{-118,45}},     color={0,0,127}));
+  connect(buiAndDHWCtr.priGren, priGenPIDCtrl.setOn) annotation (Line(points={{
+          -118,27.5},{-100,27.5},{-100,30},{-10,30},{-10,78},{-8,78},{-8,90},{
+          100.4,90}}, color={255,0,255}));
 end MonoenergeticHeatPumpSystem;

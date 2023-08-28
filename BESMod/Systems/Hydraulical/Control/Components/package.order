@@ -10,3 +10,4 @@ BoilerInHybridSystem
 SetAndMeasuredValueSelector
 MeasuredValue
 ParallelValveController
+SummerTimeConstraint

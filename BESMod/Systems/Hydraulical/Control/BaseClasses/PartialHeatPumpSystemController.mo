@@ -153,16 +153,18 @@ partial model PartialHeatPumpSystemController
 
 equation
 
-  connect(safCtr.modeSet, heaPumHea.y) annotation (Line(points={{198.667,68},{186,
-          68},{186,90},{181,90}}, color={255,0,255}));
-  connect(safCtr.nOut, sigBusGen.yHeaPumSet) annotation (Line(points={{220.833,72},
-          {254,72},{254,-118},{-152,-118},{-152,-99}}, color={0,0,127}), Text(
+  connect(safCtr.modeSet, heaPumHea.y) annotation (Line(points={{198.667,68},{
+          186,68},{186,90},{181,90}},
+                                  color={255,0,255}));
+  connect(safCtr.nOut, sigBusGen.yHeaPumSet) annotation (Line(points={{220.833,
+          72},{254,72},{254,-118},{-152,-118},{-152,-99}},
+                                                       color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(priGenPIDCtrl.ySet, safCtr.nSet) annotation (Line(points={{118.8,90},{
-          154,90},{154,76},{190,76},{190,72},{198.667,72}},
+  connect(priGenPIDCtrl.ySet, safCtr.nSet) annotation (Line(points={{118.8,90},
+          {154,90},{154,76},{190,76},{190,72},{198.667,72}},
                                                         color={0,0,127}));
 
   connect(priGenPIDCtrl.isOn, sigBusGen.heaPumIsOn) annotation (Line(points={{105.2,
@@ -232,8 +234,6 @@ equation
   connect(buiAndDHWCtr.secGen, anyGenDevIsOn.u[1]) annotation (Line(points={{-118,
           37.5},{-118,36},{-112,36},{-112,6},{-151.75,6},{-151.75,0}},
         color={255,0,255}));
-  connect(priGenPIDCtrl.setOn, buiAndDHWCtr.priGren) annotation (Line(points={{100.4,
-          90},{96,90},{96,40},{-80,40},{-80,27.5},{-118,27.5}}, color={255,0,255}));
   connect(setAndMeaSelPri.DHW, buiAndDHWCtr.DHW) annotation (Line(points={{39,76},
           {28,76},{28,74},{-106,74},{-106,68},{-118,68}}, color={0,0,127}));
   connect(buiAndDHWCtr.TDHWSet, setAndMeaSelPri.TDHWSet) annotation (Line(points={
