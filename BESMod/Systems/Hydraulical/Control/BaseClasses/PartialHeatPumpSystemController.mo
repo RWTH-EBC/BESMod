@@ -43,6 +43,11 @@ partial model PartialHeatPumpSystemController
      final TSetDHW_nominal=parDis.TDHW_nominal)
       "DHW set temperture module" annotation (Dialog(group="Component choices"),
       choicesAllMatching=true);
+  replaceable model SummerMode =
+   BESMod.Systems.Hydraulical.Control.Components.SummerMode.No
+   constrainedby
+   BESMod.Systems.Hydraulical.Control.Components.SummerMode.BaseClasses.PartialSummerMode
+    "Summer mode model" annotation(Dialog(group="Component choices"), choicesAllMatching=true);
   replaceable parameter BESMod.Systems.Hydraulical.Control.RecordsCollection.PIDBaseDataDefinition
     parPIDHeaPum constrainedby
     BESMod.Systems.Hydraulical.Control.RecordsCollection.PIDBaseDataDefinition
@@ -128,6 +133,7 @@ partial model PartialHeatPumpSystemController
     final nHeaTra=parTra.nHeaTra,
     final supCtrHeaCurTyp=supCtrHeaCurTyp,
     final supCtrDHWTyp=supCtrDHWTyp,
+    redeclare final model SummerMode = SummerMode,
     redeclare final model DHWHysteresis = DHWHysteresis,
     redeclare final model BuildingHysteresis = BuildingHysteresis,
     redeclare final model DHWSetTemperature = DHWSetTemperature)
@@ -153,18 +159,16 @@ partial model PartialHeatPumpSystemController
 
 equation
 
-  connect(safCtr.modeSet, heaPumHea.y) annotation (Line(points={{198.667,68},{
-          186,68},{186,90},{181,90}},
-                                  color={255,0,255}));
-  connect(safCtr.nOut, sigBusGen.yHeaPumSet) annotation (Line(points={{220.833,
-          72},{254,72},{254,-118},{-152,-118},{-152,-99}},
-                                                       color={0,0,127}), Text(
+  connect(safCtr.modeSet, heaPumHea.y) annotation (Line(points={{198.667,68},{186,
+          68},{186,90},{181,90}}, color={255,0,255}));
+  connect(safCtr.nOut, sigBusGen.yHeaPumSet) annotation (Line(points={{220.833,72},
+          {254,72},{254,-118},{-152,-118},{-152,-99}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(priGenPIDCtrl.ySet, safCtr.nSet) annotation (Line(points={{118.8,90},
-          {154,90},{154,76},{190,76},{190,72},{198.667,72}},
+  connect(priGenPIDCtrl.ySet, safCtr.nSet) annotation (Line(points={{118.8,90},{
+          154,90},{154,76},{190,76},{190,72},{198.667,72}},
                                                         color={0,0,127}));
 
   connect(priGenPIDCtrl.isOn, sigBusGen.heaPumIsOn) annotation (Line(points={{105.2,

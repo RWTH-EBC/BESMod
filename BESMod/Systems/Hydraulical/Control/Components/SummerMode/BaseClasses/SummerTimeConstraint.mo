@@ -1,4 +1,4 @@
-within BESMod.Systems.Hydraulical.Control.Components;
+within BESMod.Systems.Hydraulical.Control.Components.SummerMode.BaseClasses;
 block SummerTimeConstraint
   "Output is true if summer mode is activated"
   extends Modelica.Blocks.Interfaces.partialBooleanThresholdComparison(final

@@ -37,7 +37,15 @@ model BuildingAndDHWControl
     constrainedby
     BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.BaseClasses.PartialTSet_DHW_Control
       "DHW set temperture module" annotation (choicesAllMatching=true);
-  parameter Modelica.Units.SI.Temperature THeaTrh = 273.15+15 "Heating threshold for summer mode";
+
+  replaceable model SummerMode =
+   BESMod.Systems.Hydraulical.Control.Components.SummerMode.No
+   constrainedby
+   BESMod.Systems.Hydraulical.Control.Components.SummerMode.BaseClasses.PartialSummerMode
+    "Summer mode model" annotation(choicesAllMatching=true);
+
+  SummerMode sumMod "Summer mode instance"
+    annotation (Placement(transformation(extent={{42,-18},{62,2}})));
 
 
   DHWHysteresis hysDHW
@@ -139,19 +147,8 @@ model BuildingAndDHWControl
   Modelica.Blocks.Interfaces.RealOutput TBuiSet(unit="K", displayUnit="degC")
     "Building supply set temperature"
     annotation (Placement(transformation(extent={{300,10},{320,30}})));
-  Modelica.Blocks.Logical.Timer timer
-    annotation (Placement(transformation(extent={{28,-30},{48,-10}})));
-  SummerTimeConstraint notSumMod "=false if summer mode is present"
-    annotation (Placement(transformation(extent={{60,-30},{80,-10}})));
   Modelica.Blocks.Logical.LogicalSwitch logSwiDHW "Logical switch"
     annotation (Placement(transformation(extent={{240,10},{260,30}})));
-  Modelica.Blocks.Logical.Hysteresis hysSum(
-    uLow=THeaTrh - 0.1,
-    final uHigh=THeaTrh + 0.1,
-    final pre_y_start=false) "Summer mode"
-    annotation (Placement(transformation(extent={{-32,-30},{-12,-10}})));
-  Modelica.Blocks.Logical.Not not1 "Not"
-    annotation (Placement(transformation(extent={{0,-30},{20,-10}})));
   Modelica.Blocks.Sources.BooleanConstant conSumMod(final k=true)
     "Constant summer mode"
     annotation (Placement(transformation(extent={{180,20},{200,40}})));
@@ -164,12 +161,18 @@ model BuildingAndDHWControl
   Modelica.Blocks.Sources.BooleanConstant conSumModGen(final k=false)
     "Constant summer mode, generators off"
     annotation (Placement(transformation(extent={{20,-140},{40,-120}})));
+
+  Modelica.Blocks.Logical.Not winMod "=true for winter mode" annotation (
+      Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={90,-10})));
 equation
   connect(hysDHW.priGenOn, priGenOn.u1) annotation (Line(points={{79.12,75.6},{79.12,
           74},{108,74},{108,46},{230,46},{230,-90},{238,-90}},   color={255,0,255}));
   connect(TSetDHW.y, orDHW.u[1]) annotation (Line(points={{-61.2,85.36},{-54,
-          85.36},{-54,50},{-48,50},{-48,34},{90,34},{90,74},{108,74},{108,
-          67.6667},{120,67.6667}},          color={255,0,255}));
+          85.36},{-54,50},{-48,50},{-48,34},{90,34},{90,74},{108,74},{108,67.6667},
+          {120,67.6667}},                   color={255,0,255}));
   connect(hysDHW.secGenOn, orDHW.u[2]) annotation (Line(points={{79.12,66},{90,66},
           {90,50},{120,50},{120,70}}, color={255,0,255}));
   connect(TSetDHW.TSetDHW, supCtrDHW.uLoc) annotation (Line(points={{-61.2,90},{-10,
@@ -208,8 +211,8 @@ equation
                        color={255,0,255}));
   connect(secGenOn.y, secGen) annotation (Line(points={{221.5,-110},{286,-110},{
           286,-70},{310,-70}},                                     color={255,0,255}));
-  connect(hysDHW.secGenOn, secGenOn.u[1]) annotation (Line(points={{79.12,66},{
-          90,66},{90,34},{178,34},{178,-112.333},{200,-112.333}},
+  connect(hysDHW.secGenOn, secGenOn.u[1]) annotation (Line(points={{79.12,66},{90,
+          66},{90,34},{178,34},{178,-112.333},{200,-112.333}},
                                                      color={255,0,255}));
   connect(TSetDHW.y, secGenOn.u[2]) annotation (Line(points={{-61.2,85.36},{-54,
           85.36},{-54,50},{-48,50},{-48,34},{178,34},{178,-110},{200,-110}},
@@ -273,8 +276,6 @@ equation
       index=1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(bufOn.u, orDHW.y) annotation (Line(points={{148,80},{141.5,80},{141.5,
-          70}}, color={255,0,255}));
   connect(booToReal.u, bufOn.y)
     annotation (Line(points={{188,80},{171,80}}, color={255,0,255}));
   connect(supCtrHeaCur.uSup, sigBusHyd.TBuiSupOve) annotation (Line(points={{-2,-82},
@@ -295,25 +296,10 @@ equation
           -134},{284,-134},{284,20},{310,20}}, color={0,0,127}));
   connect(supCtrDHW.y, TDHWSet) annotation (Line(points={{22,70},{22,42},{274,42},
           {274,80},{310,80}}, color={0,0,127}));
-  connect(timer.y, notSumMod.u)
-    annotation (Line(points={{49,-20},{58,-20}}, color={0,0,127}));
-  connect(notSumMod.y, logSwiDHW.u2) annotation (Line(points={{81,-20},{206,-20},
-          {206,20},{238,20}}, color={255,0,255}));
-  connect(timer.u, not1.y)
-    annotation (Line(points={{26,-20},{21,-20}}, color={255,0,255}));
-  connect(not1.u, hysSum.y)
-    annotation (Line(points={{-2,-20},{-11,-20}}, color={255,0,255}));
-  connect(hysSum.u, TOda) annotation (Line(points={{-34,-20},{-54,-20},{-54,0},{
-          -120,0}}, color={0,0,127}));
   connect(logSwiSumModPriGen.y, priGenOn.u2) annotation (Line(points={{141,-70},
           {164,-70},{164,-98},{238,-98}}, color={255,0,255}));
-  connect(notSumMod.y, logSwiSumModPriGen.u2) annotation (Line(points={{81,-20},
-          {92,-20},{92,-70},{118,-70}}, color={255,0,255}));
-  connect(logSwiSumModSecGen.y, secGenOn.u[3]) annotation (Line(points={{141,
-          -110},{140,-110},{140,-126},{200,-126},{200,-107.667}},
-                                                            color={255,0,255}));
-  connect(logSwiSumModSecGen.u2, notSumMod.y) annotation (Line(points={{118,-110},
-          {92,-110},{92,-20},{81,-20}}, color={255,0,255}));
+  connect(logSwiSumModSecGen.y, secGenOn.u[3]) annotation (Line(points={{141,-110},
+          {140,-110},{140,-126},{200,-126},{200,-107.667}}, color={255,0,255}));
   connect(logSwiDHW.y, DHW) annotation (Line(points={{261,20},{282,20},{282,52},
           {310,52}}, color={255,0,255}));
   connect(logSwiSumModSecGen.u3, conSumModGen.y) annotation (Line(points={{118,
@@ -326,8 +312,20 @@ equation
           59.12,-64.4},{59.12,-62},{118,-62}}, color={255,0,255}));
   connect(conSumMod.y, logSwiDHW.u3) annotation (Line(points={{201,30},{232,30},
           {232,12},{238,12}}, color={255,0,255}));
-  connect(logSwiDHW.u1, orDHW.y) annotation (Line(points={{238,28},{234,28},{
-          234,64},{141.5,64},{141.5,70}}, color={255,0,255}));
+  connect(logSwiDHW.u1, orDHW.y) annotation (Line(points={{238,28},{234,28},{234,62},
+          {141.5,62},{141.5,70}},         color={255,0,255}));
+  connect(sumMod.TOda, TOda) annotation (Line(points={{40,-8},{-54,-8},{-54,0},{-120,
+          0}}, color={0,0,127}));
+  connect(winMod.y, logSwiSumModPriGen.u2) annotation (Line(points={{101,-10},{100,
+          -10},{100,-70},{118,-70}}, color={255,0,255}));
+  connect(winMod.y, logSwiSumModSecGen.u2) annotation (Line(points={{101,-10},{100,
+          -10},{100,-70},{112,-70},{112,-110},{118,-110}}, color={255,0,255}));
+  connect(winMod.u, sumMod.sumMod) annotation (Line(points={{78,-10},{66,-10},{66,
+          -8},{63,-8}}, color={255,0,255}));
+  connect(winMod.y, logSwiDHW.u2) annotation (Line(points={{101,-10},{228,-10},{228,
+          20},{238,20}}, color={255,0,255}));
+  connect(logSwiDHW.y, bufOn.u) annotation (Line(points={{261,20},{266,20},{266,
+          66},{148,66},{148,80}}, color={255,0,255}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-140},
             {300,100}})), Diagram(coordinateSystem(preserveAspectRatio=false,
           extent={{-100,-140},{300,100}}), graphics={
