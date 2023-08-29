@@ -3,7 +3,7 @@ partial model PartialDHW "Partial model for domestic hot water (DHW)"
   extends BESMod.Systems.BaseClasses.PartialFluidSubsystem;
   extends BESMod.Utilities.Icons.DHWIcon;
   parameter Boolean subsystemDisabled "To enable the icon if the subsystem is disabled" annotation (Dialog(tab="Graphics"));
-  parameter Modelica.Units.SI.MassFlowRate mDHW_flow_nominal
+  parameter Modelica.Units.SI.MassFlowRate mDHW_flow_nominal(min=1e-60)
     "Nominal mass flow rate"
                             annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
   parameter Modelica.Units.SI.Temperature TDHW_nominal
