@@ -96,6 +96,10 @@ model UFHTransferSystem
             {-78,98}})));
   BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{32,-108},{52,-88}})));
+  Modelica.Blocks.Routing.RealPassThrough reaPasThrOpe[nParallelDem] annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=270,
+        origin={0,70})));
 protected
   parameter
     BESMod.Systems.Hydraulical.Components.UFH.ActiveWallBaseDataDefinition
@@ -175,9 +179,16 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(gain.u, outBusTra.opening) annotation (Line(points={{-30,92},{-30,100},
-          {-14,100},{-14,-2},{-12,-2},{-12,-90},{0,-90},{0,-104}},
-        color={0,0,127}), Text(
+  connect(reaPasThrOpe.u, traControlBus.opening) annotation (Line(points={{
+          2.22045e-15,82},{2.22045e-15,91},{0,91},{0,100}}, color={0,0,127}),
+      Text(
+      string="%second",
+      index=1,
+      extent={{-3,6},{-3,6}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(reaPasThrOpe.y, outBusTra.opening) annotation (Line(points={{
+          -1.9984e-15,59},{38,59},{38,-82},{0,-82},{0,-104}}, color={0,0,127}),
+      Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
