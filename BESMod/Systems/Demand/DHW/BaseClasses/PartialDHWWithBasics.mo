@@ -1,26 +1,6 @@
-within BESMod.Systems.Demand.DHW;
-model DHW "Standard DHW subsystem"
-  extends BaseClasses.PartialDHW(
-    QCrit=DHWProfile.QCrit,
-    tCrit=DHWProfile.tCrit,
-    TDHWCold_nominal=283.15,
-    TDHW_nominal=323.15,
-    VDHWDay=if use_dhwCalc then VDHWCalcDay else DHWProfile.VDHWDay,
-    mDHW_flow_nominal=DHWProfile.m_flow_nominal);
-  replaceable parameter Systems.Demand.DHW.RecordsCollection.ProfileM
-    DHWProfile constrainedby Systems.Demand.DHW.RecordsCollection.PartialDHWTap annotation (choicesAllMatching=true, Dialog(
-      enable=not use_dhwCalc and use_dhw));
-
-  parameter Boolean use_dhwCalc=false "=true to use the tables in DHWCalc. Will slow down the simulation, but represents DHW tapping more in a more realistic way."     annotation (Dialog(enable=use_dhw));
-  parameter String tableName="DHWCalc" "Table name on file for DHWCalc"
-    annotation (Dialog(enable=use_dhwCalc and use_dhw));
-  parameter String fileName=Modelica.Utilities.Files.loadResource(
-      "modelica://BESMod/Resources/DHWCalc.txt")
-    "File where matrix is stored for DHWCalc"
-    annotation (Dialog(enable=use_dhwCalc and use_dhw));
-  parameter Modelica.Units.SI.Volume VDHWCalcDay=0
-    "Average daily tapping volume in DHWCalc table" annotation (Dialog(enable=
-          use_dhwCalc));
+within BESMod.Systems.Demand.DHW.BaseClasses;
+partial model PartialDHWWithBasics "DHW module with basic models"
+  extends BaseClasses.PartialDHW;
 
   replaceable parameter
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
@@ -89,10 +69,6 @@ Modelica.Blocks.Math.UnitConversions.From_degC fromDegC
   BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{20,-100},{40,-80}})));
   Modelica.Blocks.Sources.CombiTimeTable combiTimeTableDHWInput(
-    final tableOnFile=use_dhwCalc,
-    final table=DHWProfile.table,
-    final tableName=tableName,
-    final fileName=fileName,
     final columns=2:5,
     final smoothness=Modelica.Blocks.Types.Smoothness.ConstantSegments,
     final extrapolation=Modelica.Blocks.Types.Extrapolation.Periodic)
@@ -142,4 +118,4 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-end DHW;
+end PartialDHWWithBasics;

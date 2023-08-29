@@ -13,6 +13,7 @@ model BES_HOM
         Type_Win,
       redeclare model CorrSolarGainWin =
           AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.CorrectionSolarGain.CorGSimple,
+
       redeclare BESMod.Systems.Demand.Building.Components.AixLibHighOrderOFD
         HOMBuiEnv),
     redeclare BESMod.Systems.Control.NoControl control,
@@ -24,6 +25,7 @@ model BES_HOM
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           parHeaPum(
           genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
+
           TBiv=parameterStudy.TBiv,
           scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal/
               parameterStudy.QHP_flow_biv,
@@ -49,8 +51,10 @@ model BES_HOM
           valCtrl,
         redeclare model DHWHysteresis =
             BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod,
+
         redeclare model BuildingHysteresis =
             BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod,
+
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
           parPIDHeaPum,
@@ -76,7 +80,7 @@ model BES_HOM
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
           radParameters, redeclare
           BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum)),
-    redeclare BESMod.Systems.Demand.DHW.DHW DHW(
+    redeclare BESMod.Systems.Demand.DHW.StandardProfiles DHW(
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic

@@ -189,8 +189,8 @@ partial model PartialHydraulicSystem
       Medium = MediumDHW) "Outlet for the distribution to the DHW" annotation (
       Placement(transformation(extent={{190,-70},{210,-50}}),iconTransformation(
           extent={{188,-76},{208,-56}})));
-  Modelica.Fluid.Interfaces.FluidPort_a portDHW_in(redeclare final package
-      Medium = MediumDHW) "Inet for the distribution from the DHW" annotation (
+  Modelica.Fluid.Interfaces.FluidPort_a portDHW_in(redeclare final package Medium
+      =        MediumDHW) "Inet for the distribution from the DHW" annotation (
       Placement(transformation(extent={{190,-130},{210,-110}}),
                                                              iconTransformation(
           extent={{188,-116},{208,-96}})));

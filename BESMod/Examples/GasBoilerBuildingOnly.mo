@@ -3,9 +3,9 @@ model GasBoilerBuildingOnly
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
     redeclare BESMod.Systems.Demand.Building.TEASERThermalZone building(
-        hBui=sum(building.zoneParam.VAir)^(1/3),
-        ABui=sum(building.zoneParam.VAir)^(2/3),
-        redeclare BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
+      hBui=sum(building.zoneParam.VAir)^(1/3),
+      ABui=sum(building.zoneParam.VAir)^(2/3),
+      redeclare BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
         oneZoneParam(heaLoadFacGrd=0, heaLoadFacOut=0)),
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Ventilation.NoVentilation ventilation,
@@ -29,8 +29,8 @@ model GasBoilerBuildingOnly
         redeclare
           BESMod.Systems.Hydraulical.Control.Components.RelativeSpeedController.PID
           PIDCtrl),
-      redeclare BESMod.Systems.Hydraulical.Distribution.BuildingOnly
-        distribution(nParallelDem=1),
+      redeclare BESMod.Systems.Hydraulical.Distribution.BuildingOnly distribution(
+          nParallelDem=1),
       redeclare BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased
         transfer(
         redeclare
@@ -40,10 +40,11 @@ model GasBoilerBuildingOnly
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
           radParameters)),
-    redeclare BESMod.Systems.Demand.DHW.DHW DHW(
+    redeclare BESMod.Systems.Demand.DHW.StandardProfiles DHW(
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.PassThrough calcmFlow),
+
     redeclare BESMod.Systems.UserProfiles.TEASERProfiles userProfiles,
     redeclare BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy
       parameterStudy,

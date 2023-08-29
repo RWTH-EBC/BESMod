@@ -2,6 +2,7 @@ clear
 
 convertClear();
 
+convertClass("BESMod.Systems.Demand.DHW.DHW", "BESMod.Systems.Demand.DHW.StandardProfiles");
 
 convertClass("BESMod.Systems.Hydraulical.Generation.SolarThermalBivHPBuiLib", "BESMod.Systems.Hydraulical.Generation.SolarThermalBivHPBuiLib");
 convertClass("BESMod.Systems.Hydraulical.Generation.SolarThermalBivHPAixLib", "BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump");
@@ -38,3 +39,4 @@ convertElement("BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedDirectLoad
 convertElement("BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedDirectLoading", "dhwParameters", "parStoDHW");
 convertElement("BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedDirectLoading", "threeWayValveParameters", "parThrWayVal");
 convertElement("BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedDirectLoading", "heatingRodAftBufParameters", "parHeaRodAftBuf");
+

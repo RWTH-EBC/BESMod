@@ -4,11 +4,10 @@ partial model PartialSolarThermalHPS
   extends BESMod.Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
     redeclare Systems.Demand.Building.TEASERThermalZone building(
-        hBui=sum(building.zoneParam.VAir)^(1/3),
-        ABui=sum(building.zoneParam.VAir)^(2/3),
-        redeclare
-        BESMod.Systems.Demand.Building.RecordsCollection.RefAachen oneZoneParam(
-          heaLoadFacGrd=0, heaLoadFacOut=0)),
+      hBui=sum(building.zoneParam.VAir)^(1/3),
+      ABui=sum(building.zoneParam.VAir)^(2/3),
+      redeclare BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
+        oneZoneParam(heaLoadFacGrd=0, heaLoadFacOut=0)),
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
       redeclare hydGeneration generation,
@@ -22,17 +21,18 @@ partial model PartialSolarThermalHPS
           parTheVal,
         redeclare model DHWHysteresis =
             BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod,
+
         redeclare model BuildingHysteresis =
             BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod,
+
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
           parPIDHeaPum,
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultSafetyControl
           safetyControl),
-      redeclare BESMod.Systems.Hydraulical.Distribution.CombiStorage
-        distribution(redeclare BESMod.Examples.SolarThermalSystem.CombiStorage
-          parameters(
+      redeclare BESMod.Systems.Hydraulical.Distribution.CombiStorage distribution(
+          redeclare BESMod.Examples.SolarThermalSystem.CombiStorage parameters(
           V=parameterStudy.V,
           use_HC1=true,
           dTLoadingHC1=5,
@@ -47,10 +47,11 @@ partial model PartialSolarThermalHPS
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
           transferDataBaseDefinition,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum)),
-    redeclare Systems.Demand.DHW.DHW DHW(
+    redeclare Systems.Demand.DHW.StandardProfiles DHW(
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic calcmFlow),
+
     redeclare SolarThermalSystemParameters systemParameters,
     redeclare SolarThermalDesignOptimization parameterStudy(
       A=11,

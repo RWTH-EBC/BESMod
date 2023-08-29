@@ -8,8 +8,8 @@ package BaseClasses "Contains partial example case"
           BESMod.Systems.Demand.Building.RecordsCollection.RefAachen oneZoneParam(
             heaLoadFacGrd=0, heaLoadFacOut=0)),
       redeclare BESMod.Systems.Control.NoControl control,
-      redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
-        redeclare Systems.Hydraulical.Control.HybridHeatPumpSystem control(
+      redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(redeclare
+          Systems.Hydraulical.Control.HybridHeatPumpSystem control(
           redeclare
             BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
             valCtrl,
@@ -19,12 +19,16 @@ package BaseClasses "Contains partial example case"
           dTHysBui=5,
           dTHysDHW=5,
           meaValPriGen=BESMod.Systems.Hydraulical.Control.Components.MeasuredValue.GenerationSupplyTemperature,
+
           redeclare model DHWHysteresis =
               BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod,
+
           redeclare model BuildingHysteresis =
               BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod,
+
           redeclare model DHWSetTemperature =
               BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.ConstTSet_DHW,
+
           redeclare
             BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
             parPIDHeaPum,
@@ -36,14 +40,14 @@ package BaseClasses "Contains partial example case"
           TCutOff=parameterStudy.TCutOff,
           redeclare
             BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicBoilerPI
-            parPIDBoi),
-        redeclare final Systems.Hydraulical.Transfer.IdealValveRadiator transfer(
-            redeclare
+            parPIDBoi), redeclare final
+          Systems.Hydraulical.Transfer.IdealValveRadiator transfer(redeclare
             BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
             radParameters, redeclare
             BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum)),
-      redeclare Systems.Demand.DHW.DHW DHW(
+      redeclare Systems.Demand.DHW.StandardProfiles DHW(
         redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
+
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
           calcmFlow),

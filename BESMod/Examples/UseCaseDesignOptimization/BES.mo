@@ -14,6 +14,7 @@ model BES
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           parHeaPum(
           genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
+
           TBiv=parameterStudy.TBiv,
           scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal/
               parameterStudy.QHP_flow_biv,
@@ -71,9 +72,11 @@ model BES
           VPerQ_flow=parameterStudy.VPerQFlow,
           dTLoadingHC1=0,
           energyLabel=BESMod.Systems.Hydraulical.Distribution.Types.EnergyLabel.B),
+
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
           parStoDHW(dTLoadingHC1=10, energyLabel=BESMod.Systems.Hydraulical.Distribution.Types.EnergyLabel.A),
+
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
           parThrWayVal),
       redeclare Systems.Hydraulical.Transfer.IdealValveRadiator transfer(
@@ -81,7 +84,7 @@ model BES
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
           radParameters, redeclare
           BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum)),
-    redeclare Systems.Demand.DHW.DHW DHW(
+    redeclare Systems.Demand.DHW.StandardProfiles DHW(
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
