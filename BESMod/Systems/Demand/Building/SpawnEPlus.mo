@@ -1,6 +1,6 @@
 within BESMod.Systems.Demand.Building;
 model SpawnEPlus
-  extends BaseClasses.PartialDemand(nZones=6);
+  extends BaseClasses.PartialDemand(nZones=5);
    final parameter Modelica.Units.SI.Area AFlo=AFloCor + AFloSou + AFloNor +
       AFloEas + AFloWes "Total floor area";
 
@@ -319,33 +319,33 @@ equation
       color={0,0,0},
       thickness=1));
   connect(nor.heaPorAir, heatPortCon[1]) annotation (Line(points={{24,-320},{24,
-          -76},{-84,-76},{-84,55.8333},{-100,55.8333}}, color={191,0,0}));
+          -76},{-84,-76},{-84,56},{-100,56}},           color={191,0,0}));
   connect(nor.heaPorAir, heatPortRad[1]) annotation (Line(points={{24,-320},{24,
-          -76},{-84,-76},{-84,-64.1667},{-100,-64.1667}}, color={191,0,0}));
-  connect(wes.heaPorAir, heatPortCon[2]) annotation (Line(points={{-108,-372},{-108,
-          -76},{-84,-76},{-84,57.5},{-100,57.5}}, color={191,0,0}));
-  connect(wes.heaPorAir, heatPortRad[2]) annotation (Line(points={{-108,-372},{-108,
-          -76},{-84,-76},{-84,-62.5},{-100,-62.5}}, color={191,0,0}));
+          -76},{-84,-76},{-84,-64},{-100,-64}},           color={191,0,0}));
+  connect(wes.heaPorAir, heatPortCon[2]) annotation (Line(points={{-108,-372},{
+          -108,-76},{-84,-76},{-84,58},{-100,58}},color={191,0,0}));
+  connect(wes.heaPorAir, heatPortRad[2]) annotation (Line(points={{-108,-372},{
+          -108,-76},{-84,-76},{-84,-62},{-100,-62}},color={191,0,0}));
   connect(cor.heaPorAir, heatPortCon[3]) annotation (Line(points={{24,-376},{24,
-          -76},{-84,-76},{-84,59.1667},{-100,59.1667}}, color={191,0,0}));
+          -76},{-84,-76},{-84,60},{-100,60}},           color={191,0,0}));
   connect(cor.heaPorAir, heatPortRad[3]) annotation (Line(points={{24,-376},{24,
-          -76},{-84,-76},{-84,-60.8333},{-100,-60.8333}}, color={191,0,0}));
+          -76},{-84,-76},{-84,-60},{-100,-60}},           color={191,0,0}));
   connect(eas.heaPorAir, heatPortCon[4]) annotation (Line(points={{180,-368},{
-          180,-274},{24,-274},{24,-76},{-84,-76},{-84,60.8333},{-100,60.8333}},
+          180,-274},{24,-274},{24,-76},{-84,-76},{-84,62},{-100,62}},
         color={191,0,0}));
   connect(eas.heaPorAir, heatPortRad[4]) annotation (Line(points={{180,-368},{
-          180,-274},{24,-274},{24,-76},{-84,-76},{-84,-59.1667},{-100,-59.1667}},
+          180,-274},{24,-274},{24,-76},{-84,-76},{-84,-58},{-100,-58}},
         color={191,0,0}));
   connect(sou.heaPorAir, heatPortCon[5]) annotation (Line(points={{24,-480},{24,
-          -76},{-84,-76},{-84,62.5},{-100,62.5}}, color={191,0,0}));
+          -76},{-84,-76},{-84,64},{-100,64}},     color={191,0,0}));
   connect(sou.heaPorAir, heatPortRad[5]) annotation (Line(points={{24,-480},{24,
-          -76},{-84,-76},{-84,-57.5},{-100,-57.5}}, color={191,0,0}));
+          -76},{-84,-76},{-84,-56},{-100,-56}},     color={191,0,0}));
   connect(att.heaPorAir, heatPortCon[6]) annotation (Line(points={{180,-496},{
-          180,-274},{24,-274},{24,-76},{-84,-76},{-84,64.1667},{-100,64.1667}},
+          180,-274},{24,-274},{24,-76},{-84,-76},{-84,60},{-100,60}},
         color={191,0,0}));
   connect(att.heaPorAir, heatPortRad[6]) annotation (Line(points={{180,-496},{
-          180,-274},{24,-274},{24,-76},{-84,-76},{-84,-55.8333},{-100,-55.8333}},
+          180,-274},{24,-274},{24,-76},{-84,-76},{-84,-60},{-100,-60}},
         color={191,0,0}));
-  annotation (Diagram(coordinateSystem(extent={{-100,-240},{100,100}})), Icon(
-        coordinateSystem(extent={{-100,-240},{100,100}})));
+  annotation (Diagram(coordinateSystem(extent={{-340,-580},{320,100}})), Icon(
+        coordinateSystem(extent={{-340,-580},{320,100}})));
 end SpawnEPlus;

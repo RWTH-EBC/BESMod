@@ -1,0 +1,814 @@
+Basement Audit File 
+  Processing Data Dictionary (BasementGHT.idd) File -- Complete
+  Maximum number of Alpha Args=           1
+  Maximum number of Numeric Args=          44
+  Number of Object Definitions=          14
+  Number of Section Definitions=           0
+  Processing Input Data File (BasementGHTIn.idf) -- Start
+      1 !-Generator IDFEditor 1.53
+      2 !-Option SortedOrder
+      3 
+      4 !-NOTE: All comments with '!-' are ignored by the IDFEditor and are generated automatically.
+      5 !-      Use '!' comments if they need to be retained when using the IDFEditor.
+      6 
+      7 
+      8 !-   ===========  ALL OBJECTS IN CLASS: VERSION ===========
+      9 
+     10 Version,
+   ** Severe  ** IP: IDF line~10 Did not find "Version" in list of Objects
+     11     9.6;                     !- Version Identifier
+     12 
+     13 
+     14 !-   ===========  ALL OBJECTS IN CLASS: SIMULATIONCONTROL ===========
+     15 
+     16 SimulationControl,
+   ** Severe  ** IP: IDF line~16 Did not find "SimulationControl" in list of Objects
+     17     No,                      !- Do Zone Sizing Calculation
+     18     Yes,                     !- Do System Sizing Calculation
+     19     No,                      !- Do Plant Sizing Calculation
+     20     No,                      !- Run Simulation for Sizing Periods
+     21     Yes,                     !- Run Simulation for Weather File Run Periods
+     22     No,                      !- Do HVAC Sizing Simulation for Sizing Periods
+     23     1;                       !- Maximum Number of HVAC Sizing Simulation Passes
+     24 
+     25 
+     26 !-   ===========  ALL OBJECTS IN CLASS: BUILDING ===========
+     27 
+     28 Building,
+   ** Severe  ** IP: IDF line~28 Did not find "Building" in list of Objects
+     29     None,                    !- Name
+     30     270,                     !- North Axis {deg}
+     31     City,                    !- Terrain
+     32     0.04,                    !- Loads Convergence Tolerance Value {W}
+     33     0.4,                     !- Temperature Convergence Tolerance Value {deltaC}
+     34     FullExterior,            !- Solar Distribution
+     35     25,                      !- Maximum Number of Warmup Days
+     36     6;                       !- Minimum Number of Warmup Days
+     37 
+     38 
+     39 !-   ===========  ALL OBJECTS IN CLASS: TIMESTEP ===========
+     40 
+     41 Timestep,
+   ** Severe  ** IP: IDF line~41 Did not find "Timestep" in list of Objects
+     42     4;                       !- Number of Timesteps per Hour
+     43 
+     44 
+     45 !-   ===========  ALL OBJECTS IN CLASS: SITE:LOCATION ===========
+     46 
+     47 Site:Location,
+   ** Severe  ** IP: IDF line~47 Did not find "Site:Location" in list of Objects
+     48     Aachen,                  !- Name
+     49     50.77,                   !- Latitude {deg}
+     50     6.08,                    !- Longitude {deg}
+     51     1,                       !- Time Zone {hr}
+     52     300;                     !- Elevation {m}
+     53 
+     54 
+     55 !-   ===========  ALL OBJECTS IN CLASS: SIZINGPERIOD:DESIGNDAY ===========
+     56 
+     57 SizingPeriod:DesignDay,
+   ** Severe  ** IP: IDF line~57 Did not find "SizingPeriod:DesignDay" in list of Objects
+     58     DENVER_STAPLETON Ann Htg 99.6% Condns DB,  !- Name
+     59     12,                      !- Month
+     60     21,                      !- Day of Month
+     61     WinterDesignDay,         !- Day Type
+     62     -20,                     !- Maximum Dry-Bulb Temperature {C}
+     63     0,                       !- Daily Dry-Bulb Temperature Range {deltaC}
+     64     ,                        !- Dry-Bulb Temperature Range Modifier Type
+     65     ,                        !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+     66     Wetbulb,                 !- Humidity Condition Type
+     67     -20,                     !- Wetbulb or DewPoint at Maximum Dry-Bulb {C}
+     68     ,                        !- Humidity Condition Day Schedule Name
+     69     ,                        !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+     70     ,                        !- Enthalpy at Maximum Dry-Bulb {J/kg}
+     71     ,                        !- Daily Wet-Bulb Temperature Range {deltaC}
+     72     83411,                   !- Barometric Pressure {Pa}
+     73     2.3,                     !- Wind Speed {m/s}
+     74     180,                     !- Wind Direction {deg}
+     75     No,                      !- Rain Indicator
+     76     No,                      !- Snow Indicator
+     77     No,                      !- Daylight Saving Time Indicator
+     78     ASHRAEClearSky,          !- Solar Model Indicator
+     79     ,                        !- Beam Solar Day Schedule Name
+     80     ,                        !- Diffuse Solar Day Schedule Name
+     81     ,                        !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub) {dimensionless}
+     82     ,                        !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud) {dimensionless}
+     83     0;                       !- Sky Clearness
+     84 
+     85 SizingPeriod:DesignDay,
+   ** Severe  ** IP: IDF line~85 Did not find "SizingPeriod:DesignDay" in list of Objects
+     86     DENVER_STAPLETON Ann Clg .4% Condns DB=>MWB,  !- Name
+     87     7,                       !- Month
+     88     21,                      !- Day of Month
+     89     SummerDesignDay,         !- Day Type
+     90     34.1,                    !- Maximum Dry-Bulb Temperature {C}
+     91     15.2,                    !- Daily Dry-Bulb Temperature Range {deltaC}
+     92     ,                        !- Dry-Bulb Temperature Range Modifier Type
+     93     ,                        !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+     94     Wetbulb,                 !- Humidity Condition Type
+     95     15.8,                    !- Wetbulb or DewPoint at Maximum Dry-Bulb {C}
+     96     ,                        !- Humidity Condition Day Schedule Name
+     97     ,                        !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+     98     ,                        !- Enthalpy at Maximum Dry-Bulb {J/kg}
+     99     ,                        !- Daily Wet-Bulb Temperature Range {deltaC}
+    100     83411,                   !- Barometric Pressure {Pa}
+    101     4,                       !- Wind Speed {m/s}
+    102     120,                     !- Wind Direction {deg}
+    103     No,                      !- Rain Indicator
+    104     No,                      !- Snow Indicator
+    105     No,                      !- Daylight Saving Time Indicator
+    106     ASHRAEClearSky,          !- Solar Model Indicator
+    107     ,                        !- Beam Solar Day Schedule Name
+    108     ,                        !- Diffuse Solar Day Schedule Name
+    109     ,                        !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub) {dimensionless}
+    110     ,                        !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud) {dimensionless}
+    111     1;                       !- Sky Clearness
+    112 
+    113 
+    114 !-   ===========  ALL OBJECTS IN CLASS: RUNPERIOD ===========
+    115 
+    116 RunPeriod,
+   ** Severe  ** IP: IDF line~116 Did not find "RunPeriod" in list of Objects
+    117     Run Period 1,            !- Name
+    118     1,                       !- Begin Month
+    119     1,                       !- Begin Day of Month
+    120     ,                        !- Begin Year
+    121     12,                      !- End Month
+    122     31,                      !- End Day of Month
+    123     ,                        !- End Year
+    124     Tuesday,                 !- Day of Week for Start Day
+    125     Yes,                     !- Use Weather File Holidays and Special Days
+    126     Yes,                     !- Use Weather File Daylight Saving Period
+    127     No,                      !- Apply Weekend Holiday Rule
+    128     Yes,                     !- Use Weather File Rain Indicators
+    129     Yes;                     !- Use Weather File Snow Indicators
+    130 
+    131 
+    132 !-   ===========  ALL OBJECTS IN CLASS: SITE:GROUNDTEMPERATURE:BUILDINGSURFACE ===========
+    133 
+    134 Site:GroundTemperature:BuildingSurface,
+   ** Severe  ** IP: IDF line~134 Did not find "Site:GroundTemperature:BuildingSurface" in list of Objects
+    135     13,                      !- January Ground Temperature {C}
+    136     13,                      !- February Ground Temperature {C}
+    137     13,                      !- March Ground Temperature {C}
+    138     13,                      !- April Ground Temperature {C}
+    139     13,                      !- May Ground Temperature {C}
+    140     13,                      !- June Ground Temperature {C}
+    141     13,                      !- July Ground Temperature {C}
+    142     13,                      !- August Ground Temperature {C}
+    143     13,                      !- September Ground Temperature {C}
+    144     13,                      !- October Ground Temperature {C}
+    145     13,                      !- November Ground Temperature {C}
+    146     13;                      !- December Ground Temperature {C}
+    147 
+    148 
+    149 !-   ===========  ALL OBJECTS IN CLASS: SCHEDULETYPELIMITS ===========
+    150 
+    151 ScheduleTypeLimits,
+   ** Severe  ** IP: IDF line~151 Did not find "ScheduleTypeLimits" in list of Objects
+    152     Fraction,                !- Name
+    153     0.0,                     !- Lower Limit Value
+    154     1.0,                     !- Upper Limit Value
+    155     Continuous;              !- Numeric Type
+    156 
+    157 ScheduleTypeLimits,
+   ** Severe  ** IP: IDF line~157 Did not find "ScheduleTypeLimits" in list of Objects
+    158     On/Off,                  !- Name
+    159     0.0,                     !- Lower Limit Value
+    160     1.0,                     !- Upper Limit Value
+    161     Discrete;                !- Numeric Type
+    162 
+    163 ScheduleTypeLimits,
+   ** Severe  ** IP: IDF line~163 Did not find "ScheduleTypeLimits" in list of Objects
+    164     Temperature,             !- Name
+    165     ,                        !- Lower Limit Value
+    166     ,                        !- Upper Limit Value
+    167     ,                        !- Numeric Type
+    168     Dimensionless;           !- Unit Type
+    169 
+    170 ScheduleTypeLimits,
+   ** Severe  ** IP: IDF line~170 Did not find "ScheduleTypeLimits" in list of Objects
+    171     Any Number,              !- Name
+    172     ,                        !- Lower Limit Value
+    173     ,                        !- Upper Limit Value
+    174     ,                        !- Numeric Type
+    175     Dimensionless;           !- Unit Type
+    176 
+    177 
+    178 !-   ===========  ALL OBJECTS IN CLASS: SCHEDULE:DAY:HOURLY ===========
+    179 
+    180 Schedule:Day:Hourly,
+   ** Severe  ** IP: IDF line~180 Did not find "Schedule:Day:Hourly" in list of Objects
+    181     Schedule Heating Bed room,  !- Name
+    182     Temperature,             !- Schedule Type Limits Name
+    183     22,                      !- Hour 1
+    184     22,                      !- Hour 2
+    185     22,                      !- Hour 3
+    186     22,                      !- Hour 4
+    187     22,                      !- Hour 5
+    188     22,                      !- Hour 6
+    189     22,                      !- Hour 7
+    190     22,                      !- Hour 8
+    191     22,                      !- Hour 9
+    192     22,                      !- Hour 10
+    193     22,                      !- Hour 11
+    194     22,                      !- Hour 12
+    195     22,                      !- Hour 13
+    196     22,                      !- Hour 14
+    197     22,                      !- Hour 15
+    198     22,                      !- Hour 16
+    199     22,                      !- Hour 17
+    200     22,                      !- Hour 18
+    201     22,                      !- Hour 19
+    202     22,                      !- Hour 20
+    203     22,                      !- Hour 21
+    204     22,                      !- Hour 22
+    205     22,                      !- Hour 23
+    206     22;                      !- Hour 24
+    207 
+    208 Schedule:Day:Hourly,
+   ** Severe  ** IP: IDF line~208 Did not find "Schedule:Day:Hourly" in list of Objects
+    209     Schedule Cooling Bed room,  !- Name
+    210     Temperature,             !- Schedule Type Limits Name
+    211     22,                      !- Hour 1
+    212     22,                      !- Hour 2
+    213     22,                      !- Hour 3
+    214     22,                      !- Hour 4
+    215     22,                      !- Hour 5
+    216     22,                      !- Hour 6
+    217     22,                      !- Hour 7
+    218     22,                      !- Hour 8
+    219     22,                      !- Hour 9
+    220     22,                      !- Hour 10
+    221     22,                      !- Hour 11
+    222     22,                      !- Hour 12
+    223     22,                      !- Hour 13
+    224     22,                      !- Hour 14
+    225     22,                      !- Hour 15
+    226     22,                      !- Hour 16
+    227     22,                      !- Hour 17
+    228     22,                      !- Hour 18
+    229     22,                      !- Hour 19
+    230     22,                      !- Hour 20
+    231     22,                      !- Hour 21
+    232     22,                      !- Hour 22
+    233     22,                      !- Hour 23
+    234     22;                      !- Hour 24
+    235 
+    236 Schedule:Day:Hourly,
+   ** Severe  ** IP: IDF line~236 Did not find "Schedule:Day:Hourly" in list of Objects
+    237     Schedule People Bed room,!- Name
+    238     Fraction,                !- Schedule Type Limits Name
+    239     1,                       !- Hour 1
+    240     1,                       !- Hour 2
+    241     1,                       !- Hour 3
+    242     1,                       !- Hour 4
+    243     1,                       !- Hour 5
+    244     1,                       !- Hour 6
+    245     1,                       !- Hour 7
+    246     1,                       !- Hour 8
+    247     1,                       !- Hour 9
+    248     1,                       !- Hour 10
+    249     1,                       !- Hour 11
+    250     1,                       !- Hour 12
+    251     1,                       !- Hour 13
+    252     1,                       !- Hour 14
+    253     1,                       !- Hour 15
+    254     1,                       !- Hour 16
+    255     1,                       !- Hour 17
+    256     1,                       !- Hour 18
+    257     1,                       !- Hour 19
+    258     1,                       !- Hour 20
+    259     1,                       !- Hour 21
+    260     1,                       !- Hour 22
+    261     1,                       !- Hour 23
+    262     1;                       !- Hour 24
+    263 
+    264 Schedule:Day:Hourly,
+   ** Severe  ** IP: IDF line~264 Did not find "Schedule:Day:Hourly" in list of Objects
+    265     Schedule Equipment Bed room,  !- Name
+    266     Fraction,                !- Schedule Type Limits Name
+    267     0.2,                     !- Hour 1
+    268     0.2,                     !- Hour 2
+    269     0.2,                     !- Hour 3
+    270     0.2,                     !- Hour 4
+    271     0.2,                     !- Hour 5
+    272     0.2,                     !- Hour 6
+    273     0.2,                     !- Hour 7
+    274     0.2,                     !- Hour 8
+    275     0.2,                     !- Hour 9
+    276     0.2,                     !- Hour 10
+    277     0.2,                     !- Hour 11
+    278     0.2,                     !- Hour 12
+    279     0.2,                     !- Hour 13
+    280     0.2,                     !- Hour 14
+    281     0.2,                     !- Hour 15
+    282     0.2,                     !- Hour 16
+    283     0.2,                     !- Hour 17
+    284     0.2,                     !- Hour 18
+    285     0.2,                     !- Hour 19
+    286     0.8,                     !- Hour 20
+    287     0.6,                     !- Hour 21
+    288     0.4,                     !- Hour 22
+    289     0.2,                     !- Hour 23
+    290     0.2;                     !- Hour 24
+    291 
+    292 Schedule:Day:Hourly,
+   ** Severe  ** IP: IDF line~292 Did not find "Schedule:Day:Hourly" in list of Objects
+    293     Schedule Lighting Bed room,  !- Name
+    294     Fraction,                !- Schedule Type Limits Name
+    295     0,                       !- Hour 1
+    296     0,                       !- Hour 2
+    297     0,                       !- Hour 3
+    298     0,                       !- Hour 4
+    299     0,                       !- Hour 5
+    300     0,                       !- Hour 6
+    301     1,                       !- Hour 7
+    302     1,                       !- Hour 8
+    303     1,                       !- Hour 9
+    304     1,                       !- Hour 10
+    305     1,                       !- Hour 11
+    306     1,                       !- Hour 12
+    307     1,                       !- Hour 13
+    308     1,                       !- Hour 14
+    309     1,                       !- Hour 15
+    310     1,                       !- Hour 16
+    311     1,                       !- Hour 17
+    312     1,                       !- Hour 18
+    313     0,                       !- Hour 19
+    314     0,                       !- Hour 20
+    315     0,                       !- Hour 21
+    316     0,                       !- Hour 22
+    317     0,                       !- Hour 23
+    318     0;                       !- Hour 24
+    319 
+    320 
+    321 !-   ===========  ALL OBJECTS IN CLASS: SCHEDULE:WEEK:COMPACT ===========
+    322 
+    323 Schedule:Week:Compact,
+   ** Severe  ** IP: IDF line~323 Did not find "Schedule:Week:Compact" in list of Objects
+    324     Schedule Heating Bed room,  !- Name
+    325     AllDays,                 !- DayType List 1
+    326     Schedule Heating Bed room;  !- Schedule:Day Name 1
+    327 
+    328 Schedule:Week:Compact,
+   ** Severe  ** IP: IDF line~328 Did not find "Schedule:Week:Compact" in list of Objects
+    329     Schedule Cooling Bed room,  !- Name
+    330     AllDays,                 !- DayType List 1
+    331     Schedule Cooling Bed room;  !- Schedule:Day Name 1
+    332 
+    333 Schedule:Week:Compact,
+   ** Severe  ** IP: IDF line~333 Did not find "Schedule:Week:Compact" in list of Objects
+    334     Schedule People Bed room,!- Name
+    335     AllDays,                 !- DayType List 1
+    336     Schedule People Bed room;!- Schedule:Day Name 1
+    337 
+    338 Schedule:Week:Compact,
+   ** Severe  ** IP: IDF line~338 Did not find "Schedule:Week:Compact" in list of Objects
+    339     Schedule Equipment Bed room,  !- Name
+    340     AllDays,                 !- DayType List 1
+    341     Schedule Equipment Bed room;  !- Schedule:Day Name 1
+    342 
+    343 Schedule:Week:Compact,
+   ** Severe  ** IP: IDF line~343 Did not find "Schedule:Week:Compact" in list of Objects
+    344     Schedule Lighting Bed room,  !- Name
+    345     AllDays,                 !- DayType List 1
+    346     Schedule Lighting Bed room;  !- Schedule:Day Name 1
+    347 
+    348 
+    349 !-   ===========  ALL OBJECTS IN CLASS: SCHEDULE:YEAR ===========
+    350 
+    351 Schedule:Year,
+   ** Severe  ** IP: IDF line~351 Did not find "Schedule:Year" in list of Objects
+    352     Schedule Heating Bed room,  !- Name
+    353     Temperature,             !- Schedule Type Limits Name
+    354     Schedule Heating Bed room,  !- Schedule:Week Name 1
+    355     1,                       !- Start Month 1
+    356     1,                       !- Start Day 1
+    357     12,                      !- End Month 1
+    358     31;                      !- End Day 1
+    359 
+    360 Schedule:Year,
+   ** Severe  ** IP: IDF line~360 Did not find "Schedule:Year" in list of Objects
+    361     Schedule Cooling Bed room,  !- Name
+    362     Temperature,             !- Schedule Type Limits Name
+    363     Schedule Cooling Bed room,  !- Schedule:Week Name 1
+    364     1,                       !- Start Month 1
+    365     1,                       !- Start Day 1
+    366     12,                      !- End Month 1
+    367     31;                      !- End Day 1
+    368 
+    369 Schedule:Year,
+   ** Severe  ** IP: IDF line~369 Did not find "Schedule:Year" in list of Objects
+    370     Schedule People Bed room,!- Name
+    371     Fraction,                !- Schedule Type Limits Name
+    372     Schedule People Bed room,!- Schedule:Week Name 1
+    373     1,                       !- Start Month 1
+    374     1,                       !- Start Day 1
+    375     12,                      !- End Month 1
+    376     31;                      !- End Day 1
+    377 
+    378 Schedule:Year,
+   ** Severe  ** IP: IDF line~378 Did not find "Schedule:Year" in list of Objects
+    379     Schedule Equipment Bed room,  !- Name
+    380     Fraction,                !- Schedule Type Limits Name
+    381     Schedule Equipment Bed room,  !- Schedule:Week Name 1
+    382     1,                       !- Start Month 1
+    383     1,                       !- Start Day 1
+    384     12,                      !- End Month 1
+    385     31;                      !- End Day 1
+    386 
+    387 Schedule:Year,
+   ** Severe  ** IP: IDF line~387 Did not find "Schedule:Year" in list of Objects
+    388     Schedule Lighting Bed room,  !- Name
+    389     Fraction,                !- Schedule Type Limits Name
+    390     Schedule Lighting Bed room,  !- Schedule:Week Name 1
+    391     1,                       !- Start Month 1
+    392     1,                       !- Start Day 1
+    393     12,                      !- End Month 1
+    394     31;                      !- End Day 1
+    395 
+    396 
+    397 !-   ===========  ALL OBJECTS IN CLASS: SCHEDULE:COMPACT ===========
+    398 
+    399 Schedule:Compact,
+   ** Severe  ** IP: IDF line~399 Did not find "Schedule:Compact" in list of Objects
+    400     Constant,                !- Name
+    401     on/off,                  !- Schedule Type Limits Name
+    402     Through: 12/31,          !- Field 1
+    403     For: AllDays,            !- Field 2
+    404     Until: 24:00,            !- Field 3
+    405     1.0;                     !- Field 4
+    406 
+    407 Schedule:Compact,
+   ** Severe  ** IP: IDF line~407 Did not find "Schedule:Compact" in list of Objects
+    408     Continuous,              !- Name
+    409     on/off,                  !- Schedule Type Limits Name
+    410     Through: 12/31,          !- Field 1
+    411     For: AllDays,            !- Field 2
+    412     Until: 24:00,            !- Field 3
+    413     1.0;                     !- Field 4
+    414 
+    415 Schedule:Compact,
+   ** Severe  ** IP: IDF line~415 Did not find "Schedule:Compact" in list of Objects
+    416     Daytime Ventilation,     !- Name
+    417     Fraction,                !- Schedule Type Limits Name
+    418     Through: 12/31,          !- Field 1
+    419     For: Weekdays SummerDesignDay,  !- Field 2
+    420     Until: 08:00,            !- Field 3
+    421     0.0,                     !- Field 4
+    422     Until: 18:00,            !- Field 5
+    423     1.0,                     !- Field 6
+    424     Until: 24:00,            !- Field 7
+    425     0.0,                     !- Field 8
+    426     For: Weekends WinterDesignDay,  !- Field 9
+    427     Until: 10:00,            !- Field 10
+    428     0.0,                     !- Field 11
+    429     Until: 16:00,            !- Field 12
+    430     1.0,                     !- Field 13
+    431     Until: 24:00,            !- Field 14
+    432     0.0,                     !- Field 15
+    433     For: Holidays AllOtherDays,  !- Field 16
+    434     Until: 24:00,            !- Field 17
+    435     0.0;                     !- Field 18
+    436 
+    437 Schedule:Compact,
+   ** Severe  ** IP: IDF line~437 Did not find "Schedule:Compact" in list of Objects
+    438     Intermittent,            !- Name
+    439     Fraction,                !- Schedule Type Limits Name
+    440     Through: 12/31,          !- Field 1
+    441     For: AllDays,            !- Field 2
+    442     Until: 08:00,            !- Field 3
+    443     0.0,                     !- Field 4
+    444     Until: 18:00,            !- Field 5
+    445     1.0,                     !- Field 6
+    446     Until: 24:00,            !- Field 7
+    447     0.0;                     !- Field 8
+    448 
+    449 Schedule:Compact,
+   ** Severe  ** IP: IDF line~449 Did not find "Schedule:Compact" in list of Objects
+    450     Maximum Outside Air,     !- Name
+    451     Fraction,                !- Schedule Type Limits Name
+    452     Through: 12/31,          !- Field 1
+    453     For: AllDays,            !- Field 2
+    454     Until: 24:00,            !- Field 3
+    455     1.0;                     !- Field 4
+    456 
+    457 Schedule:Compact,
+   ** Severe  ** IP: IDF line~457 Did not find "Schedule:Compact" in list of Objects
+    458     Minimum Outside Air,     !- Name
+    459     Fraction,                !- Schedule Type Limits Name
+    460     Through: 12/31,          !- Field 1
+    461     For: Weekdays SummerDesignDay,  !- Field 2
+    462     Until: 24:00,            !- Field 3
+    463     0.15,                    !- Field 4
+    464     For: Weekends WinterDesignDay Holidays AllOtherDays,  !- Field 5
+    465     Until: 24:00,            !- Field 6
+    466     0.05;                    !- Field 7
+    467 
+    468 Schedule:Compact,
+   ** Severe  ** IP: IDF line~468 Did not find "Schedule:Compact" in list of Objects
+    469     Off,                     !- Name
+    470     on/off,                  !- Schedule Type Limits Name
+    471     Through: 12/31,          !- Field 1
+    472     For: AllDays,            !- Field 2
+    473     Until: 24:00,            !- Field 3
+    474     0.0;                     !- Field 4
+    475 
+    476 Schedule:Compact,
+   ** Severe  ** IP: IDF line~476 Did not find "Schedule:Compact" in list of Objects
+    477     On,                      !- Name
+    478     Fraction,                !- Schedule Type Limits Name
+    479     Through: 12/31,          !- Field 1
+    480     For: AllDays,            !- Field 2
+    481     Until: 24:00,            !- Field 3
+    482     1.0;                     !- Field 4
+    483 
+    484 Schedule:Compact,
+   ** Severe  ** IP: IDF line~484 Did not find "Schedule:Compact" in list of Objects
+    485     VAV Minimum Air Fraction,!- Name
+    486     Fraction,                !- Schedule Type Limits Name
+    487     Through: 12/31,          !- Field 1
+    488     For: AllDays,            !- Field 2
+    489     Until: 24:00,            !- Field 3
+    490     0.1;                     !- Field 4
+    491 
+    492 Schedule:Compact,
+   ** Severe  ** IP: IDF line~492 Did not find "Schedule:Compact" in list of Objects
+    493     Assembly HVAC,           !- Name
+    494     on/off,                  !- Schedule Type Limits Name
+    495     Through: 12/31,          !- Field 1
+    496     For: Weekdays SummerDesignDay,  !- Field 2
+    497     Until: 05:00,            !- Field 3
+    498     0.0,                     !- Field 4
+    499     Until: 23:00,            !- Field 5
+    500     1.0,                     !- Field 6
+    501     Until: 24:00,            !- Field 7
+    502     0.0,                     !- Field 8
+    503     For: Saturday WinterDesignDay,  !- Field 9
+    504     Until: 06:00,            !- Field 10
+    505     0.0,                     !- Field 11
+    506     Until: 23:00,            !- Field 12
+    507     1.0,                     !- Field 13
+    508     Until: 24:00,            !- Field 14
+    509     0.0,                     !- Field 15
+    510     For: Sunday Holidays AllOtherDays,  !- Field 16
+    511     Until: 06:00,            !- Field 17
+    512     0.0,                     !- Field 18
+    513     Until: 23:00,            !- Field 19
+    514     1.0,                     !- Field 20
+    515     Until: 24:00,            !- Field 21
+    516     0.0;                     !- Field 22
+    517 
+    518 Schedule:Compact,
+   ** Severe  ** IP: IDF line~518 Did not find "Schedule:Compact" in list of Objects
+    519     Assembly Lighting,       !- Name
+    520     Fraction,                !- Schedule Type Limits Name
+    521     Through: 12/31,          !- Field 1
+    522     For: Weekdays SummerDesignDay,  !- Field 2
+    523     Until: 08:00,            !- Field 3
+    524     0.0,                     !- Field 4
+    525     Until: 11:00,            !- Field 5
+    526     0.4,                     !- Field 6
+    527     Until: 22:00,            !- Field 7
+    528     0.75,                    !- Field 8
+    529     Until: 23:00,            !- Field 9
+    530     0.25,                    !- Field 10
+    531     Until: 24:00,            !- Field 11
+    532     0.0,                     !- Field 12
+    533     For: Saturday WinterDesignDay,  !- Field 13
+    534     Until: 07:00,            !- Field 14
+    535     0.0,                     !- Field 15
+    536     Until: 09:00,            !- Field 16
+    537     0.3,                     !- Field 17
+    538     Until: 23:00,            !- Field 18
+    539     0.5,                     !- Field 19
+    540     Until: 24:00,            !- Field 20
+    541     0.0,                     !- Field 21
+    542     For: Sunday Holidays AllOtherDays,  !- Field 22
+    543     Until: 07:00,            !- Field 23
+    544     0.0,                     !- Field 24
+    545     Until: 12:00,            !- Field 25
+    546     0.3,                     !- Field 26
+    547     Until: 22:00,            !- Field 27
+    548     0.65,                    !- Field 28
+    549     Until: 24:00,            !- Field 29
+    550     0.0;                     !- Field 30
+    551 
+    552 Schedule:Compact,
+   ** Severe  ** IP: IDF line~552 Did not find "Schedule:Compact" in list of Objects
+    553     Assembly Occupancy,      !- Name
+    554     Fraction,                !- Schedule Type Limits Name
+    555     Through: 12/31,          !- Field 1
+    556     For: Weekdays SummerDesignDay,  !- Field 2
+    557     Until: 08:00,            !- Field 3
+    558     0.0,                     !- Field 4
+    559     Until: 12:00,            !- Field 5
+    560     0.2,                     !- Field 6
+    561     Until: 18:00,            !- Field 7
+    562     0.8,                     !- Field 8
+    563     Until: 22:00,            !- Field 9
+    564     0.2,                     !- Field 10
+    565     Until: 23:00,            !- Field 11
+    566     0.1,                     !- Field 12
+    567     Until: 24:00,            !- Field 13
+    568     0.0,                     !- Field 14
+    569     For: Saturday WinterDesignDay,  !- Field 15
+    570     Until: 08:00,            !- Field 16
+    571     0.0,                     !- Field 17
+    572     Until: 12:00,            !- Field 18
+    573     0.2,                     !- Field 19
+    574     Until: 21:00,            !- Field 20
+    575     0.6,                     !- Field 21
+    576     Until: 22:00,            !- Field 22
+    577     0.8,                     !- Field 23
+    578     Until: 23:00,            !- Field 24
+    579     0.1,                     !- Field 25
+    580     Until: 24:00,            !- Field 26
+    581     0.0,                     !- Field 27
+    582     For: Sunday Holidays AllOtherDays,  !- Field 28
+    583     Until: 08:00,            !- Field 29
+    584     0.0,                     !- Field 30
+    585     Until: 13:00,            !- Field 31
+    586     0.1,                     !- Field 32
+    587     Until: 22:00,            !- Field 33
+    588     0.7,                     !- Field 34
+    589     Until: 23:00,            !- Field 35
+    590     0.2,                     !- Field 36
+    591     Until: 24:00,            !- Field 37
+    592     0.0;                     !- Field 38
+    593 
+    594 Schedule:Compact,
+   ** Severe  ** IP: IDF line~594 Did not find "Schedule:Compact" in list of Objects
+    595     Assembly SWH,            !- Name
+    596     Fraction,                !- Schedule Type Limits Name
+    597     Through: 12/31,          !- Field 1
+    598     For: Weekdays SummerDesignDay,  !- Field 2
+    599     Until: 09:00,            !- Field 3
+    600     0.0,                     !- Field 4
+    601     Until: 11:00,            !- Field 5
+    602     0.05,                    !- Field 6
+    603     Until: 12:00,            !- Field 7
+    604     0.35,                    !- Field 8
+    605     Until: 17:00,            !- Field 9
+    606     0.05,                    !- Field 10
+    607     Until: 24:00,            !- Field 11
+    608     0.0,                     !- Field 12
+    609     For: Saturday WinterDesignDay,  !- Field 13
+    610     Until: 09:00,            !- Field 14
+    611     0.0,                     !- Field 15
+    612     Until: 11:00,            !- Field 16
+    613     0.05,                    !- Field 17
+    614     Until: 12:00,            !- Field 18
+    615     0.2,                     !- Field 19
+    616     Until: 19:00,            !- Field 20
+    617     0.0,                     !- Field 21
+    618     Until: 20:00,            !- Field 22
+    619     0.65,                    !- Field 23
+    620     Until: 21:00,            !- Field 24
+    621     0.3,                     !- Field 25
+    622     Until: 24:00,            !- Field 26
+    623     0.0,                     !- Field 27
+    624     For: Sunday Holidays AllOtherDays,  !- Field 28
+    625     Until: 09:00,            !- Field 29
+    626     0.0,                     !- Field 30
+    627     Until: 11:00,            !- Field 31
+    628     0.05,                    !- Field 32
+    629     Until: 12:00,            !- Field 33
+    630     0.1,                     !- Field 34
+    631     Until: 20:00,            !- Field 35
+    632     0.0,                     !- Field 36
+    633     Until: 21:00,            !- Field 37
+    634     0.65,                    !- Field 38
+    635     Until: 22:00,            !- Field 39
+    636     0.3,                     !- Field 40
+    637     Until: 24:00,            !- Field 41
+    638     0.0;                     !- Field 42
+    639 
+    640 Schedule:Compact,
+   ** Severe  ** IP: IDF line~640 Did not find "Schedule:Compact" in list of Objects
+    641     Health HVAC,             !- Name
+    642     on/off,                  !- Schedule Type Limits Name
+    643     Through: 12/31,          !- Field 1
+    644     For: AllDays,            !- Field 2
+    645     Until: 24:00,            !- Field 3
+    646     1.0;                     !- Field 4
+    647 
+    648 Schedule:Compact,
+   ** Severe  ** IP: IDF line~648 Did not find "Schedule:Compact" in list of Objects
+    649     Health Lighting,         !- Name
+    650     Fraction,                !- Schedule Type Limits Name
+    651     Through: 12/31,          !- Field 1
+    652     For: Weekdays SummerDesignDay,  !- Field 2
+    653     Until: 07:00,            !- Field 3
+    654     0.1,                     !- Field 4
+    655     Until: 08:00,            !- Field 5
+    656     0.5,                     !- Field 6
+    657     Until: 16:00,            !- Field 7
+    658     0.9,                     !- Field 8
+    659     Until: 23:00,            !- Field 9
+    660     0.3,                     !- Field 10
+    661     Until: 24:00,            !- Field 11
+    662     0.1,                     !- Field 12
+    663     For: Saturday WinterDesignDay,  !- Field 13
+    664     Until: 07:00,            !- Field 14
+    665     0.1,                     !- Field 15
+    666     Until: 08:00,            !- Field 16
+    667     0.2,                     !- Field 17
+    668     Until: 18:00,            !- Field 18
+    669     0.4,                     !- Field 19
+    670     Until: 24:00,            !- Field 20
+    671     0.1,                     !- Field 21
+    672     For: Sunday Holidays AllOtherDays,  !- Field 22
+    673     Until: 08:00,            !- Field 23
+    674     0.05,                    !- Field 24
+    675     Until: 16:00,            !- Field 25
+    676     0.1,                     !- Field 26
+    677     Until: 24:00,            !- Field 27
+    678     0.05;                    !- Field 28
+    679 
+    680 Schedule:Compact,
+   ** Severe  ** IP: IDF line~680 Did not find "Schedule:Compact" in list of Objects
+    681     Health Occupancy,        !- Name
+    682     Fraction,                !- Schedule Type Limits Name
+    683     Through: 12/31,          !- Field 1
+    684     For: Weekdays SummerDesignDay,  !- Field 2
+    685     Until: 07:00,            !- Field 3
+    686     0.0,                     !- Field 4
+    687     Until: 08:00,            !- Field 5
+    688     0.1,                     !- Field 6
+    689     Until: 09:00,            !- Field 7
+    690     0.5,                     !- Field 8
+    691     Until: 17:00,            !- Field 9
+    692     0.8,                     !- Field 10
+    693     Until: 18:00,            !- Field 11
+    694     0.5,                     !- Field 12
+    695     Until: 20:00,            !- Field 13
+    696     0.3,                     !- Field 14
+    697     Until: 22:00,            !- Field 15
+    698     0.2,                     !- Field 16
+    699     Until: 24:00,            !- Field 17
+    700     0.0,                     !- Field 18
+    701     For: Saturday WinterDesignDay,  !- Field 19
+    702     Until: 07:00,            !- Field 20
+    703     0.0,                     !- Field 21
+    704     Until: 08:00,            !- Field 22
+    705     0.1,                     !- Field 23
+    706     Until: 09:00,            !- Field 24
+    707     0.3,                     !- Field 25
+    708     Until: 17:00,            !- Field 26
+    709     0.4,                     !- Field 27
+    710     Until: 19:00,            !- Field 28
+    711     0.1,                     !- Field 29
+    712     Until: 24:00,            !- Field 30
+    713     0.0,                     !- Field 31
+    714     For: Sunday Holidays AllOtherDays,  !- Field 32
+    715     Until: 08:00,            !- Field 33
+    716     0.0,                     !- Field 34
+    717     Until: 16:00,            !- Field 35
+    718     0.05,                    !- Field 36
+    719     Until: 24:00,            !- Field 37
+    720     0.0;                     !- Field 38
+    721 
+    722 Schedule:Compact,
+   ** Severe  ** IP: IDF line~722 Did not find "Schedule:Compact" in list of Objects
+    723     Health SWH,              !- Name
+    724     Fraction,                !- Schedule Type Limits Name
+    725     Through: 12/31,          !- Field 1
+    726     For: Weekdays SummerDesignDay,  !- Field 2
+    727     Until: 07:00,            !- Field 3
+    728     0.1,                     !- Field 4
+    729     Until: 08:00,            !- Field 5
+    730     0.17,                    !- Field 6
+    731     Until: 09:00,            !- Field 7
+    732     0.58,                    !- Field 8
+    733     Until: 10:00,            !- Field 9
+    734     0.66,                    !- Field 10
+    735     Until: 11:00,            !- Field 11
+    736     0.78,                    !- Field 12
+    737     Until: 12:00,            !- Field 13
+    738     0.82,                    !- Field 14
+    739     Until: 13:00,            !- Field 15
+    740     0.71,                    !- Field 16
+    741     Until: 14:00,            !- Field 17
+    742     0.82,                    !- Field 18
+    743     Until: 15:00,            !- Field 19
+    744     0.78,                    !- Field 20
+    745     Until: 16:00,            !- Field 21
+    746     0.74,                    !- Field 22
+    747     Until: 17:00,            !- Field 23
+    748     0.63,                    !- Field 24
+    749     Until: 18:00,            !- Field 25
+    750     0.41,                    !- Field 26
+    751     Until: 21:00,            !- Field 27
+    752     0.18,                    !- Field 28
+    753     Until: 22:00,            !- Field 29
+    754     0.1,                     !- Field 30
+    755     Until: 24:00,            !- Field 31
+    756     0.01,                    !- Field 32
+    757     For: Saturday WinterDesignDay,  !- Field 33
+    758     Until: 08:00,            !- Field 34
+    759     0.1,                     !- Field 35
+    760     Until: 09:00,            !- Field 36
+    761     0.2,                     !- Field 37
+

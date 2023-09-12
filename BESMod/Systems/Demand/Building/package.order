@@ -1,9 +1,12 @@
 TEASERThermalZone
 BuildingsRoomCase600FF
 AixLibHighOrder
+SpawnHOM
 Components
 BaseClasses
 RecordsCollection
 HeatDemand
 SpawnEPlus
 SpawnWithParameters
+Spawn6Rooms
+Spawn

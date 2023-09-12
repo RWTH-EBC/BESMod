@@ -1,0 +1,62 @@
+ Output:PreprocessorMessage,GroundTempCalc - Basement,Severe,
+IP: IDF line~10 Did not find "Version" in list of Objects;
+ Output:PreprocessorMessage,GroundTempCalc - Basement,Severe,
+IP: IDF line~16 Did not find "SimulationControl" in list of Objects;
+ Output:PreprocessorMessage,GroundTempCalc - Basement,Severe,
+IP: IDF line~28 Did not find "Building" in list of Objects;
+ Output:PreprocessorMessage,GroundTempCalc - Basement,Severe,
+IP: IDF line~41 Did not find "Timestep" in list of Objects;
+ Output:PreprocessorMessage,GroundTempCalc - Basement,Severe,
+IP: IDF line~47 Did not find "Site:Location" in list of Objects;
+ Output:PreprocessorMessage,GroundTempCalc - Basement,Severe,
+IP: IDF line~57 Did not find "SizingPeriod:DesignDay" in list of Objects;
+ Output:PreprocessorMessage,GroundTempCalc - Basement,Severe,
+IP: IDF line~85 Did not find "SizingPeriod:DesignDay" in list of Objects;
+ Output:PreprocessorMessage,GroundTempCalc - Basement,Severe,
+IP: IDF line~116 Did not find "RunPeriod" in list of Objects;
+ Output:PreprocessorMessage,GroundTempCalc - Basement,Severe,
+IP: IDF line~134 Did not find "Site:GroundTemperature:BuildingSurface" in list of Objects;
+ Output:PreprocessorMessage,GroundTempCalc - Basement,Severe,
+IP: IDF line~151 Did not find "ScheduleTypeLimits" in list of Objects;
+ Output:PreprocessorMessage,GroundTempCalc - Basement,Severe,
+IP: IDF line~157 Did not find "ScheduleTypeLimits" in list of Objects;
+ Output:PreprocessorMessage,GroundTempCalc - Basement,Severe,
+IP: IDF line~163 Did not find "ScheduleTypeLimits" in list of Objects;
+ Output:PreprocessorMessage,GroundTempCalc - Basement,Severe,
+IP: IDF line~170 Did not find "ScheduleTypeLimits" in list of Objects;
+ Output:PreprocessorMessage,GroundTempCalc - Basement,Severe,
+IP: IDF line~180 Did not find "Schedule:Day:Hourly" in list of Objects;
+ Output:PreprocessorMessage,GroundTempCalc - Basement,Severe,
+IP: IDF line~208 Did not find "Schedule:Day:Hourly" in list of Objects;
+ Output:PreprocessorMessage,GroundTempCalc - Basement,Severe,
+IP: IDF line~236 Did not find "Schedule:Day:Hourly" in list of Objects;
+ Output:PreprocessorMessage,GroundTempCalc - Basement,Severe,
+IP: IDF line~264 Did not find "Schedule:Day:Hourly" in list of Objects;
+ Output:PreprocessorMessage,GroundTempCalc - Basement,Severe,
+IP: IDF line~292 Did not find "Schedule:Day:Hourly" in list of Objects;
+ Output:PreprocessorMessage,GroundTempCalc - Basement,Severe,
+IP: IDF line~323 Did not find "Schedule:Week:Compact" in list of Objects;
+ Output:PreprocessorMessage,GroundTempCalc - Basement,Severe,
+IP: IDF line~328 Did not find "Schedule:Week:Compact" in list of Objects;
+ Output:PreprocessorMessage,GroundTempCalc - Basement,Severe,
+IP: IDF line~333 Did not find "Schedule:Week:Compact" in list of Objects;
+ Output:PreprocessorMessage,GroundTempCalc - Basement,Severe,
+IP: IDF line~338 Did not find "Schedule:Week:Compact" in list of Objects;
+ Output:PreprocessorMessage,GroundTempCalc - Basement,Severe,
+IP: IDF line~343 Did not find "Schedule:Week:Compact" in list of Objects;
+ Output:PreprocessorMessage,GroundTempCalc - Basement,Severe,
+IP: IDF line~351 Did not find "Schedule:Year" in list of Objects;
+ Output:PreprocessorMessage,GroundTempCalc - Basement,Severe,
+IP: IDF line~360 Did not find "Schedule:Year" in list of Objects;
+ Output:PreprocessorMessage,GroundTempCalc - Basement,Severe,
+IP: IDF line~369 Did not find "Schedule:Year" in list of Objects;
+ Output:PreprocessorMessage,GroundTempCalc - Basement,Severe,
+IP: IDF line~378 Did not find "Schedule:Year" in list of Objects;
+ Output:PreprocessorMessage,GroundTempCalc - Basement,Severe,
+IP: IDF line~387 Did not find "Schedule:Year" in list of Objects;
+ Output:PreprocessorMessage,GroundTempCalc - Basement,Severe,
+IP: IDF line~399 Did not find "Schedule:Compact" in list of Objects;
+ Output:PreprocessorMessage,GroundTempCalc - Basement,Severe,
+IP: IDF line~407 Did not find "Schedule:Compact" in list of Objects;
+ Output:PreprocessorMessage,GroundTempCalc - Basement,Severe,
+IP: IDF line~415 Did not find "Schedule:Compact" in list of Objects;
