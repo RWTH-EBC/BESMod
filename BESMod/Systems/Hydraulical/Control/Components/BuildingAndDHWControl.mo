@@ -167,12 +167,16 @@ model BuildingAndDHWControl
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={90,-10})));
+  Modelica.Blocks.Routing.RealPassThrough
+                                   realPassThrough
+    "Disable secondary device if no anti legionella"
+    annotation (Placement(transformation(extent={{0,120},{20,140}})));
 equation
   connect(hysDHW.priGenOn, priGenOn.u1) annotation (Line(points={{79.12,75.6},{79.12,
           74},{108,74},{108,46},{230,46},{230,-90},{238,-90}},   color={255,0,255}));
   connect(TSetDHW.y, orDHW.u[1]) annotation (Line(points={{-61.2,85.36},{-54,
-          85.36},{-54,50},{-48,50},{-48,34},{90,34},{90,74},{108,74},{108,67.6667},
-          {120,67.6667}},                   color={255,0,255}));
+          85.36},{-54,50},{-48,50},{-48,34},{90,34},{90,74},{108,74},{108,
+          67.6667},{120,67.6667}},          color={255,0,255}));
   connect(hysDHW.secGenOn, orDHW.u[2]) annotation (Line(points={{79.12,66},{90,66},
           {90,50},{120,50},{120,70}}, color={255,0,255}));
   connect(TSetDHW.TSetDHW, supCtrDHW.uLoc) annotation (Line(points={{-61.2,90},{-10,
@@ -211,8 +215,8 @@ equation
                        color={255,0,255}));
   connect(secGenOn.y, secGen) annotation (Line(points={{221.5,-110},{286,-110},{
           286,-70},{310,-70}},                                     color={255,0,255}));
-  connect(hysDHW.secGenOn, secGenOn.u[1]) annotation (Line(points={{79.12,66},{90,
-          66},{90,34},{178,34},{178,-112.333},{200,-112.333}},
+  connect(hysDHW.secGenOn, secGenOn.u[1]) annotation (Line(points={{79.12,66},{
+          90,66},{90,34},{178,34},{178,-112.333},{200,-112.333}},
                                                      color={255,0,255}));
   connect(TSetDHW.y, secGenOn.u[2]) annotation (Line(points={{-61.2,85.36},{-54,
           85.36},{-54,50},{-48,50},{-48,34},{178,34},{178,-110},{200,-110}},
@@ -298,8 +302,9 @@ equation
           {274,80},{310,80}}, color={0,0,127}));
   connect(logSwiSumModPriGen.y, priGenOn.u2) annotation (Line(points={{141,-70},
           {164,-70},{164,-98},{238,-98}}, color={255,0,255}));
-  connect(logSwiSumModSecGen.y, secGenOn.u[3]) annotation (Line(points={{141,-110},
-          {140,-110},{140,-126},{200,-126},{200,-107.667}}, color={255,0,255}));
+  connect(logSwiSumModSecGen.y, secGenOn.u[3]) annotation (Line(points={{141,
+          -110},{140,-110},{140,-126},{200,-126},{200,-107.667}},
+                                                            color={255,0,255}));
   connect(logSwiDHW.y, DHW) annotation (Line(points={{261,20},{282,20},{282,52},
           {310,52}}, color={255,0,255}));
   connect(logSwiSumModSecGen.u3, conSumModGen.y) annotation (Line(points={{118,
@@ -326,6 +331,26 @@ equation
           20},{238,20}}, color={255,0,255}));
   connect(logSwiDHW.y, bufOn.u) annotation (Line(points={{261,20},{266,20},{266,
           66},{148,66},{148,80}}, color={255,0,255}));
+  connect(heaCur.TSet, sigBusHyd.TBuiLoc) annotation (Line(points={{-19,-90},{
+          -20,-90},{-20,-24},{-112,-24},{-112,103},{100,103}}, color={0,0,127}),
+      Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(realPassThrough.y, sigBusHyd.TStoDHWTop) annotation (Line(points={{21,
+          130},{21,100},{78,100},{78,84},{100,84},{100,103}}, color={0,0,127}),
+      Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(realPassThrough.u, sigBusDistr.TStoDHWTopMea) annotation (Line(points
+        ={{-2,130},{-100,130},{-100,70}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-140},
             {300,100}})), Diagram(coordinateSystem(preserveAspectRatio=false,
           extent={{-100,-140},{300,100}}), graphics={
