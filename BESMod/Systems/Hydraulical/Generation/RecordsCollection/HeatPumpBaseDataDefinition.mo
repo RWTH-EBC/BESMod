@@ -41,7 +41,7 @@ partial record HeatPumpBaseDataDefinition
       Systems.Hydraulical.Generation.Types.GenerationDesign.Monovalent then 0
        elseif genDesTyp == Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentAlternativ
        then QGen_flow_nominal elseif genDesTyp == Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentParallel
-       then QGen_flow_nominal - QPriAtTOdaNom_flow_nominal else QGen_flow_nominal
+       then max(0, QGen_flow_nominal - QPriAtTOdaNom_flow_nominal) else QGen_flow_nominal
     "Nominal heat flow rate of secondary generation component (e.g. auxilliar heater)"
     annotation (Dialog(group="Design"));
 
