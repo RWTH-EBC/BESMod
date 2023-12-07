@@ -57,27 +57,19 @@ model DetailedSolarThermalWithHeatPump
         rotation=180,
         origin={-30,-170})));
 
-  IBPSA.Fluid.Movers.SpeedControlled_y pumpSolThe(
+  IBPSA.Fluid.Movers.Preconfigured.SpeedControlled_y pumpSolThe(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
     final p_start=p_start,
     final T_start=T_start,
     final allowFlowReversal=allowFlowReversal,
     final show_T=show_T,
-    redeclare BESMod.Systems.RecordsCollection.Movers.AutomaticConfigurationData
-      per(
-      final speed_rpm_nominal=parPumSolThe.speed_rpm_nominal,
-      final m_flow_nominal=solarThermalParas.m_flow_nominal,
-      final dp_nominal=dpST_nominal + dpDem_nominal[2],
-      final rho=rho,
-      final V_flowCurve=parPumSolThe.V_flowCurve,
-      final dpCurve=parPumSolThe.dpCurve),
-    final inputType=IBPSA.Fluid.Types.InputType.Continuous,
-    final addPowerToMedium=parPumSolThe.addPowerToMedium,
+    final m_flow_nominal=solarThermalParas.m_flow_nominal,
+    final dp_nominal=dpST_nominal + dpDem_nominal[2],
+      final addPowerToMedium=parPumSolThe.addPowerToMedium,
     final tau=parPumSolThe.tau,
     final use_inputFilter=parPumSolThe.use_inputFilter,
     final riseTime=parPumSolThe.riseTimeInpFilter,
-    final init=Modelica.Blocks.Types.Init.InitialOutput,
     final y_start=1) "Solar thermal pump" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
@@ -153,8 +145,8 @@ equation
                                         color={0,0,127}));
   connect(switch3.u2, isOnHR1.y) annotation (Line(points={{-170,-170},{-199,
           -170}},                                             color={255,0,255}));
-  connect(isOnHR1.u, weaBus.HDirNor) annotation (Line(points={{-222,-170},{-228,
-          -170},{-228,28},{-101,28},{-101,80}},
+  connect(isOnHR1.u, weaBus.HDirNor) annotation (Line(points={{-222,-170},{-228,-170},
+          {-228,28},{-100.895,28},{-100.895,80.11}},
         color={0,0,127}), Text(
       string="%second",
       index=1,

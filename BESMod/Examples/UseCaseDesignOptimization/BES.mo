@@ -2,9 +2,11 @@ within BESMod.Examples.UseCaseDesignOptimization;
 model BES
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
-    redeclare Systems.Demand.Building.TEASERThermalZone building(redeclare
-        BESMod.Systems.Demand.Building.RecordsCollection.RefAachen oneZoneParam(
-          heaLoadFacGrd=0, heaLoadFacOut=0)),
+    redeclare Systems.Demand.Building.TEASERThermalZone building(
+      ABui=sum(building.zoneParam.VAir)^(2/3),
+      hBui=sum(building.zoneParam.VAir)^(1/3),
+      redeclare BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
+        oneZoneParam(heaLoadFacGrd=0, heaLoadFacOut=0)),
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
       redeclare Systems.Hydraulical.Generation.HeatPumpAndHeatingRod generation(
@@ -80,10 +82,13 @@ model BES
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
           parThrWayVal),
       redeclare Systems.Hydraulical.Transfer.IdealValveRadiator transfer(
-          redeclare
+        redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
-          radParameters, redeclare
-          BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum)),
+          parRad,
+        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
+        redeclare
+          BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
+          parTra)),
     redeclare Systems.Demand.DHW.StandardProfiles DHW(
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,

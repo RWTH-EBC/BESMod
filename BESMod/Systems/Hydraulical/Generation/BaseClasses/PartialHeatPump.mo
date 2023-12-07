@@ -130,27 +130,19 @@ model PartialHeatPump "Generation with only the heat pump"
   Utilities.KPIs.EnergyKPICalculator KPIWel(use_inpCon=true)
     annotation (Placement(transformation(extent={{-140,-40},{-120,-20}})));
 
-  IBPSA.Fluid.Movers.SpeedControlled_y pump(
+  IBPSA.Fluid.Movers.Preconfigured.SpeedControlled_y pump(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
     final p_start=p_start,
     final T_start=T_start,
     final allowFlowReversal=allowFlowReversal,
     final show_T=show_T,
-    redeclare BESMod.Systems.RecordsCollection.Movers.AutomaticConfigurationData
-      per(
-      final speed_rpm_nominal=parPum.speed_rpm_nominal,
-      final m_flow_nominal=m_flow_nominal[1],
-      final dp_nominal=dpDem_nominal[1] + dp_nominal[1],
-      final rho=rho,
-      final V_flowCurve=parPum.V_flowCurve,
-      final dpCurve=parPum.dpCurve),
-    final inputType=IBPSA.Fluid.Types.InputType.Continuous,
+    final m_flow_nominal=m_flow_nominal[1],
+    final dp_nominal=dpDem_nominal[1] + dp_nominal[1],
     final addPowerToMedium=parPum.addPowerToMedium,
     final tau=parPum.tau,
     final use_inputFilter=parPum.use_inputFilter,
     final riseTime=parPum.riseTimeInpFilter,
-    final init=Modelica.Blocks.Types.Init.InitialOutput,
     final y_start=1) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=180,
@@ -267,7 +259,8 @@ equation
       horizontalAlignment=TextAlignment.Left));
 
   connect(switch.u1, weaBus.TDryBul) annotation (Line(points={{-142,58},{-144,58},
-          {-144,80},{-101,80}}, color={0,0,127}), Text(
+          {-144,80.11},{-100.895,80.11}},
+                                color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},

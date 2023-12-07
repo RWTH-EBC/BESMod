@@ -147,27 +147,19 @@ model TwoStoragesBoilerWithDHW
     final allowFlowReversal_HC2=allowFlowReversal) "Hydraulic seperator"
     annotation (Placement(transformation(extent={{60,-2},{76,18}})));
 
-  IBPSA.Fluid.Movers.SpeedControlled_y pumpBoiler(
+  IBPSA.Fluid.Movers.Preconfigured.SpeedControlled_y pumpBoiler(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
     final p_start=p_start,
     final T_start=T_start,
     final allowFlowReversal=allowFlowReversal,
     final show_T=show_T,
-    redeclare BESMod.Systems.RecordsCollection.Movers.AutomaticConfigurationData
-      per(
-      final speed_rpm_nominal=parPum.speed_rpm_nominal,
-      final m_flow_nominal=m_flow_nominal[1],
-      final dp_nominal=boi.dp_nominal + (parThrWayValBoi.dpValve_nominal + max(parThrWayValBoi.dp_nominal)),
-      final rho=rho,
-      final V_flowCurve=parPum.V_flowCurve,
-      final dpCurve=parPum.dpCurve),
-    final inputType=IBPSA.Fluid.Types.InputType.Continuous,
+    final m_flow_nominal=m_flow_nominal[1],
+    final dp_nominal=boi.dp_nominal + (parThrWayValBoi.dpValve_nominal + max(parThrWayValBoi.dp_nominal)),
     final addPowerToMedium=parPum.addPowerToMedium,
     final tau=parPum.tau,
     final use_inputFilter=parPum.use_inputFilter,
     final riseTime=parPum.riseTimeInpFilter,
-    final init=Modelica.Blocks.Types.Init.InitialOutput,
     final y_start=1) annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,

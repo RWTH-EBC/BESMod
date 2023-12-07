@@ -8,7 +8,8 @@ model GasBoiler "Just a gas boiler"
         annotation(Dialog(group="Component data"));
 
   replaceable parameter BESMod.Systems.Hydraulical.Generation.RecordsCollection.AutoparameterBoiler
-    parBoi constrainedby AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition(
+    parBoi constrainedby
+    AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition(
       Q_nom=max(11000, Q_flow_nominal[1]))
     "Parameters for Boiler"
     annotation(Placement(transformation(extent={{-58,44},{-42,60}})),
@@ -48,32 +49,24 @@ model GasBoiler "Just a gas boiler"
   Utilities.KPIs.EnergyKPICalculator KPIQHR(use_inpCon=false, y=boi.QflowCalculation.y)
     annotation (Placement(transformation(extent={{-40,-100},{-20,-80}})));
 
-  IBPSA.Fluid.Movers.SpeedControlled_y pump(
+  IBPSA.Fluid.Movers.Preconfigured.SpeedControlled_y pump(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
     final p_start=p_start,
     final T_start=T_start,
     final allowFlowReversal=allowFlowReversal,
     final show_T=show_T,
-    redeclare
-      BESMod.Systems.RecordsCollection.Movers.AutomaticConfigurationData
-      per(
-      final speed_rpm_nominal=parPum.speed_rpm_nominal,
-      final m_flow_nominal=m_flow_nominal[1],
-      final dp_nominal=dpDem_nominal[1] + dp_nominal[1],
-      final rho=rho,
-      final V_flowCurve=parPum.V_flowCurve,
-      final dpCurve=parPum.dpCurve),
-    final inputType=IBPSA.Fluid.Types.InputType.Continuous,
     final addPowerToMedium=parPum.addPowerToMedium,
     final tau=parPum.tau,
     final use_inputFilter=parPum.use_inputFilter,
     final riseTime=parPum.riseTimeInpFilter,
-    final init=Modelica.Blocks.Types.Init.InitialOutput,
-    final y_start=1) annotation (Placement(transformation(
+    final y_start=1,
+    final m_flow_nominal=m_flow_nominal[1],
+    final dp_nominal=dpDem_nominal[1] + dp_nominal[1])
+                     annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=180,
-        origin={46,-50})));
+        origin={30,-50})));
 
   IBPSA.Fluid.Sources.Boundary_pT bou1(
     redeclare package Medium = Medium,
@@ -119,19 +112,19 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(portGen_in[1], pump.port_a) annotation (Line(points={{100,-2},{94,-2},
-          {94,-6},{86,-6},{86,-50},{56,-50}}, color={0,127,255}));
+  connect(portGen_in[1], pump.port_a) annotation (Line(points={{100,-2},{94,-2},{94,
+          -6},{86,-6},{86,-50},{40,-50}},     color={0,127,255}));
   connect(boi.port_a, pump.port_b) annotation (Line(points={{-66,10},{-68,10},{-68,
-          -50},{36,-50},{36,-50}}, color={0,127,255}));
+          -50},{20,-50}},          color={0,127,255}));
   connect(bou1.ports[1], pump.port_a)
-    annotation (Line(points={{66,-36},{66,-50},{56,-50}}, color={0,127,255}));
+    annotation (Line(points={{66,-36},{66,-50},{40,-50}}, color={0,127,255}));
   connect(zeroLoad.internalElectricalPin, internalElectricalPin) annotation (
       Line(
       points={{46,-98},{60,-98},{60,-100},{72,-100}},
       color={0,0,0},
       thickness=1));
-  connect(pump.y, sigBusGen.uPump) annotation (Line(points={{46,-38},{48,-38},{
-          48,14},{2,14},{2,98}}, color={0,0,127}), Text(
+  connect(pump.y, sigBusGen.uPump) annotation (Line(points={{30,-38},{30,14},{2,14},
+          {2,98}},               color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},

@@ -1,11 +1,13 @@
 within BESMod.Systems.Hydraulical.Transfer;
 model UFHTransferSystem
   extends BaseClasses.PartialTransfer(
-    nHeaTra=1,                        final nParallelSup=1, final dp_nominal=fill(0, nParallelDem));
+    nHeaTra=1,
+    final nParallelSup=1,
+    final dp_nominal=parTra.dp_nominal);
 
   IBPSA.Fluid.FixedResistances.PressureDrop res[nParallelDem](
     redeclare package Medium = Medium,
-    each final dp_nominal=1,
+    each final dp_nominal=parTra.dpHeaDistr_nominal,
     final m_flow_nominal=m_flow_nominal) "Hydraulic resistance of supply"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -59,7 +61,7 @@ model UFHTransferSystem
 
   Utilities.KPIs.EnergyKPICalculator integralKPICalculator[nParallelDem]
     annotation (Placement(transformation(extent={{-40,-80},{-20,-60}})));
-  IBPSA.Fluid.Movers.FlowControlled_m_flow pumpFix_m_flow[nParallelDem](
+  IBPSA.Fluid.Movers.Preconfigured.FlowControlled_m_flow pumpFix_m_flow[nParallelDem](
     redeclare package Medium = Medium,
     each final energyDynamics=energyDynamics,
     each final p_start=p_start,
@@ -71,18 +73,8 @@ model UFHTransferSystem
     final m_flow_nominal=m_flow_nominal,
     final m_flow_small=1E-4*abs(m_flow_nominal),
     each final show_T=show_T,
-    redeclare
-      BESMod.Systems.RecordsCollection.Movers.AutomaticConfigurationData
-      per(
-      each final speed_rpm_nominal=parPum.speed_rpm_nominal,
-      final m_flow_nominal=m_flow_nominal,
-      final dp_nominal=dp_nominal,
-      each final rho=rho,
-      each final V_flowCurve=parPum.V_flowCurve,
-      each final dpCurve=parPum.dpCurve),
-    each final inputType=IBPSA.Fluid.Types.InputType.Continuous,
+    final dp_nominal=dp_nominal,
     each final addPowerToMedium=parPum.addPowerToMedium,
-    each final nominalValuesDefineDefaultPressureCurve=true,
     each final tau=parPum.tau,
     each final use_inputFilter=false,
     final m_flow_start=m_flow_nominal)             annotation (Placement(
@@ -100,6 +92,17 @@ model UFHTransferSystem
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={0,70})));
+  replaceable parameter RecordsCollection.TransferDataBaseDefinition parTra
+    constrainedby RecordsCollection.TransferDataBaseDefinition(
+    final Q_flow_nominal=Q_flow_nominal .* f_design,
+    final nZones=nParallelDem,
+    final AFloor=ABui,
+    final heiBui=hBui,
+    mRad_flow_nominal=m_flow_nominal,
+    mHeaCir_flow_nominal=mSup_flow_nominal[1]) "Transfer parameters" annotation (
+    Dialog(group="Component data"),
+    choicesAllMatching=true,
+    Placement(transformation(extent={{-100,-98},{-80,-78}})));
 protected
   parameter
     BESMod.Systems.Hydraulical.Components.UFH.ActiveWallBaseDataDefinition

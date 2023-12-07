@@ -56,27 +56,19 @@ model SimpleSolarThermalWithHeatPump
         rotation=180,
         origin={-30,-148})));
 
-  IBPSA.Fluid.Movers.SpeedControlled_y pumpSolThe(
+  IBPSA.Fluid.Movers.Preconfigured.SpeedControlled_y pumpSolThe(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
     final p_start=p_start,
     final T_start=T_start,
     final allowFlowReversal=allowFlowReversal,
     final show_T=show_T,
-    redeclare BESMod.Systems.RecordsCollection.Movers.AutomaticConfigurationData
-      per(
-      final speed_rpm_nominal=parPumSolThe.speed_rpm_nominal,
-      final m_flow_nominal=parSolThe.m_flow_nominal,
-      final dp_nominal=dpST_nominal + dpDem_nominal[2],
-      final rho=rho,
-      final V_flowCurve=parPumSolThe.V_flowCurve,
-      final dpCurve=parPumSolThe.dpCurve),
-    final inputType=IBPSA.Fluid.Types.InputType.Continuous,
+    final m_flow_nominal=parSolThe.m_flow_nominal,
+    final dp_nominal=dpST_nominal + dpDem_nominal[2],
     final addPowerToMedium=parPumSolThe.addPowerToMedium,
     final tau=parPumSolThe.tau,
     final use_inputFilter=parPumSolThe.use_inputFilter,
     final riseTime=parPumSolThe.riseTimeInpFilter,
-    final init=Modelica.Blocks.Types.Init.InitialOutput,
     final y_start=1) "Solar thermal pump" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
@@ -142,13 +134,15 @@ equation
       horizontalAlignment=TextAlignment.Left));
 
   connect(solThe.T_air, weaBus.TDryBul) annotation (Line(points={{-24,-158},{-24,-178},
-          {-194,-178},{-194,80},{-101,80}}, color={0,0,127}), Text(
+          {-194,-178},{-194,80.11},{-100.895,80.11}},
+                                            color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(solThe.Irradiation, weaBus.HGloHor) annotation (Line(points={{-30,-158},
-          {-30,-182},{-198,-182},{-198,80},{-101,80}}, color={0,0,127}), Text(
+          {-30,-182},{-198,-182},{-198,80.11},{-100.895,80.11}},
+                                                       color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},

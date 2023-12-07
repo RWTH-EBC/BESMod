@@ -25,31 +25,20 @@ Modelica.Blocks.Math.UnitConversions.From_degC fromDegC
   Utilities.KPIs.EnergyKPICalculator integralKPICalculator(use_inpCon=false, y=
         -port_b.m_flow*cp*(TIs.y - TDHWCold_nominal))
     annotation (Placement(transformation(extent={{60,-60},{80,-40}})));
-  IBPSA.Fluid.Movers.FlowControlled_m_flow pump(
+  IBPSA.Fluid.Movers.Preconfigured.FlowControlled_m_flow pump(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
     final p_start=p_start,
     final T_start=TDHWCold_nominal,
     final allowFlowReversal=allowFlowReversal,
-    final m_flow_nominal=mDHW_flow_nominal,
     final m_flow_small=1E-4*abs(mDHW_flow_nominal),
     final show_T=show_T,
-    redeclare
-      BESMod.Systems.RecordsCollection.Movers.AutomaticConfigurationData
-      per(
-      final speed_rpm_nominal=parPum.speed_rpm_nominal,
-      final m_flow_nominal=mDHW_flow_nominal,
-      final dp_nominal(displayUnit="Pa") = 100,
-      final rho=rho,
-      final V_flowCurve=parPum.V_flowCurve,
-      final dpCurve=parPum.dpCurve),
-    final inputType=IBPSA.Fluid.Types.InputType.Continuous,
+    final m_flow_nominal=mDHW_flow_nominal,
+    final dp_nominal(displayUnit="Pa") = 100,
     final addPowerToMedium=parPum.addPowerToMedium,
-    final nominalValuesDefineDefaultPressureCurve=false,
     final tau=parPum.tau,
     final use_inputFilter=parPum.use_inputFilter,
-    final riseTime=parPum.riseTimeInpFilter,
-    final dp_nominal=100)                 annotation (Placement(transformation(
+    final riseTime=parPum.riseTimeInpFilter)                 annotation (Placement(transformation(
         extent={{-9.5,9.5},{9.5,-9.5}},
         rotation=180,
         origin={-69.5,-50.5})));

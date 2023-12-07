@@ -33,17 +33,10 @@ model PressureReliefExample
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={50,30})));
-  IBPSA.Fluid.Movers.SpeedControlled_y     pump(
+  IBPSA.Fluid.Movers.Preconfigured.SpeedControlled_y pump(
     redeclare package Medium = Medium,
-    redeclare
-      BESMod.Systems.RecordsCollection.Movers.AutomaticConfigurationData per(
-      final speed_rpm_nominal=parPum.speed_rpm_nominal,
-      final m_flow_nominal=m_flow_nominal,
-      final dp_nominal=dp_nominal,
-      final rho(displayUnit="kg/m3") = 1000,
-      final V_flowCurve=parPum.V_flowCurve,
-      final dpCurve=parPum.dpCurve),
-    final inputType=IBPSA.Fluid.Types.InputType.Continuous,
+    final m_flow_nominal=m_flow_nominal,
+    final dp_nominal=dp_nominal,
     final use_inputFilter=false,
     final y_start=1)                                    annotation (Placement(
         transformation(
@@ -52,11 +45,7 @@ model PressureReliefExample
         origin={-50,30})));
   replaceable parameter
     BESMod.Systems.RecordsCollection.Movers.DefaultMover
-    parPum(V_flowCurve={0.000422526,0.28816252,0.580972823,0.868712818,
-        0.94983775,1.086736074,1.190677393,1.396024878,1.499966198}, dpCurve={
-        1.587002096,1.526205451,1.375262055,1.161425577,1.07966457,0.857442348,
-        0.645702306,0.224318658,0})
-             annotation (choicesAllMatching=true, Placement(transformation(extent={{-98,82},
+    parPum   annotation (choicesAllMatching=true, Placement(transformation(extent={{-98,82},
             {-80,98}})));
   Modelica.Blocks.Sources.Constant const(final k=1)
     annotation (Placement(transformation(extent={{-100,40},{-80,60}})));
