@@ -8,19 +8,19 @@ partial model PartialDemand "Partial demand model for HPS"
   parameter Modelica.Units.SI.Temperature TSetZone_nominal[nZones]=fill(293.15,
       nZones) "Nominal room set temerature"
     annotation (Dialog(group="Temperature demand"));
-  parameter Modelica.Units.SI.Area AZone[nZones](each min=Modelica.Constants.eps)
+  parameter Modelica.Units.SI.Area AZone[nZones](each min=0.1)
     "Area of zones/rooms"
     annotation (Dialog(group="Geometry"));
-  parameter Modelica.Units.SI.Height hZone[nZones](each min=Modelica.Constants.eps)
+  parameter Modelica.Units.SI.Height hZone[nZones](each min=0.1)
     "Height of zones"
     annotation (Dialog(group="Geometry"));
-  parameter Modelica.Units.SI.Area ABui(min=Modelica.Constants.eps)
+  parameter Modelica.Units.SI.Area ABui(min=0.1)
     "Ground area of building"
     annotation (Dialog(group="Geometry"));
-  parameter Modelica.Units.SI.Height hBui(min=Modelica.Constants.eps)
+  parameter Modelica.Units.SI.Height hBui(min=0.1)
     "Height of building"
     annotation (Dialog(group="Geometry"));
-  parameter Modelica.Units.SI.Area ARoo(min=Modelica.Constants.eps)
+  parameter Modelica.Units.SI.Area ARoo(min=0.1)
     "Roof area of building"
     annotation (Dialog(group="Geometry"));
   parameter Boolean use_hydraulic=true "=false to disable hydraulic supply";
