@@ -15,7 +15,7 @@ partial model PartialTransfer "Partial transfer model for BES"
    annotation(Dialog(group="Design - Top Down: Parameters are given by the parent system"));
   parameter Modelica.Units.SI.MassFlowRate mSup_flow_nominal[nParallelSup]=fill(sum(
       m_flow_nominal), nParallelSup)
-                                  "Nominal mass flow rate of the supply ports to the transfer system" annotation (Dialog(
+   "Nominal mass flow rate of the supply ports to the transfer system" annotation (Dialog(
         group="Design - Bottom Up: Parameters are defined by the subsystem"));
 
   parameter Modelica.Units.SI.PressureDifference dpSup_nominal[nParallelSup]
@@ -23,16 +23,20 @@ partial model PartialTransfer "Partial transfer model for BES"
     annotation (Dialog(group=
           "Design - Top Down: Parameters are given by the parent system"));
 
-  parameter Modelica.Units.SI.Area AZone[nParallelDem] "Area of zones/rooms"
+  parameter Modelica.Units.SI.Area AZone[nParallelDem](each min=0.1)
+     "Area of zones/rooms"
     annotation (Dialog(group=
           "Design - Top Down: Parameters are given by the parent system"));
-  parameter Modelica.Units.SI.Height hZone[nParallelDem] "Height of zones"
+  parameter Modelica.Units.SI.Height hZone[nParallelDem](each min=0.1)
+     "Height of zones"
     annotation (Dialog(group=
           "Design - Top Down: Parameters are given by the parent system"));
-  parameter Modelica.Units.SI.Area ABui "Ground area of building" annotation (
+  parameter Modelica.Units.SI.Area ABui(min=0.1)
+     "Ground area of building" annotation (
       Dialog(group=
           "Design - Top Down: Parameters are given by the parent system"));
-  parameter Modelica.Units.SI.Height hBui "Height of building" annotation (
+  parameter Modelica.Units.SI.Height hBui(min=0.1)
+     "Height of building" annotation (
       Dialog(group=
           "Design - Top Down: Parameters are given by the parent system"));
   parameter Real nHeaTra "Exponent of heat transfer system"
