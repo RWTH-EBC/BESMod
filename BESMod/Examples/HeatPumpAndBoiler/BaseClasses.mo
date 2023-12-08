@@ -4,7 +4,9 @@ package BaseClasses "Contains partial example case"
   partial model PartialHybridSystem "Partial bivalent heat pump system"
     extends Systems.BaseClasses.PartialBuildingEnergySystem(
       redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
-      redeclare Systems.Demand.Building.TEASERThermalZone building(redeclare
+      redeclare Systems.Demand.Building.TEASERThermalZone building(
+        ABui=sum(building.zoneParam.VAir)^(2/3),
+        hBui=sum(building.zoneParam.VAir)^(1/3),                   redeclare
           BESMod.Systems.Demand.Building.RecordsCollection.RefAachen oneZoneParam(
             heaLoadFacGrd=0, heaLoadFacOut=0)),
       redeclare BESMod.Systems.Control.NoControl control,
@@ -19,16 +21,12 @@ package BaseClasses "Contains partial example case"
           dTHysBui=5,
           dTHysDHW=5,
           meaValPriGen=BESMod.Systems.Hydraulical.Control.Components.MeasuredValue.GenerationSupplyTemperature,
-
           redeclare model DHWHysteresis =
               BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod,
-
           redeclare model BuildingHysteresis =
               BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod,
-
           redeclare model DHWSetTemperature =
               BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.ConstTSet_DHW,
-
           redeclare
             BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
             parPIDHeaPum,
@@ -41,20 +39,23 @@ package BaseClasses "Contains partial example case"
           redeclare
             BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicBoilerPI
             parPIDBoi), redeclare final
-          Systems.Hydraulical.Transfer.IdealValveRadiator transfer(redeclare
+          Systems.Hydraulical.Transfer.IdealValveRadiator transfer(
+          redeclare
             BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
-            parRad, redeclare
-            BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum)),
+            parRad,
+          redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
+          redeclare
+            BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
+            parTra)),
       redeclare Systems.Demand.DHW.StandardProfiles DHW(
         redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
-
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
           calcmFlow),
       redeclare Systems.UserProfiles.TEASERProfiles userProfiles,
-      redeclare UseCaseDesignOptimization.AachenSystem systemParameters(
-          use_ventilation=true),
-      redeclare UseCaseDesignOptimization.ParametersToChange parameterStudy,
+      redeclare DesignOptimization.AachenSystem systemParameters(use_ventilation=
+            true),
+      redeclare DesignOptimization.ParametersToChange parameterStudy,
       redeclare final package MediumDHW = AixLib.Media.Water,
       redeclare final package MediumZone = AixLib.Media.Air,
       redeclare final package MediumHyd = AixLib.Media.Water,

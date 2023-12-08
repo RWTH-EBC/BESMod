@@ -1,4 +1,4 @@
-within BESMod.Examples.UseCaseHighOrderModel;
+within BESMod.Examples.HighOrderModel;
 record HOMSystem
   extends Systems.RecordsCollection.SystemParametersBaseDataDefinition(
     use_elecHeating=false,

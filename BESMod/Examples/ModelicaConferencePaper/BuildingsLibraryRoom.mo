@@ -1,4 +1,4 @@
-within BESMod.Examples.UseCaseModelicaConferencePaper;
+within BESMod.Examples.ModelicaConferencePaper;
 model BuildingsLibraryRoom "System using the buildings libraries room model"
   extends PartialModelicaConferenceUseCase(
     redeclare
@@ -9,6 +9,6 @@ model BuildingsLibraryRoom "System using the buildings libraries room model"
     systemParameters(QBui_flow_nominal={2504}));
   extends Modelica.Icons.Example;
 
-annotation(__Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/UseCaseModelicaConferencePaper/BuildingsLibraryRoom.mos"
+annotation(__Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/ModelicaConferencePaper/BuildingsLibraryRoom.mos"
         "Simulate and plot"));
 end BuildingsLibraryRoom;

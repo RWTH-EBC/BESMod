@@ -1,4 +1,4 @@
-within BESMod.Examples.UseCaseDesignOptimization;
+within BESMod.Examples.DesignOptimization;
 record ParametersToChange
   extends Systems.RecordsCollection.ParameterStudy.ParameterStudyBaseDefinition;
   // 1. Add parameters like this (WITH Evaluate=false)!

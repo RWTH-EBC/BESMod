@@ -1,4 +1,4 @@
-within BESMod.Examples.UseCaseModelicaConferencePaper;
+within BESMod.Examples.ModelicaConferencePaper;
 partial model PartialModelicaConferenceUseCase
   "Partial model to be extended to replace single subsystems"
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
@@ -80,7 +80,10 @@ partial model PartialModelicaConferenceUseCase
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
           parRad,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum)),
+        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
+        redeclare
+          BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
+          parTra)),
     redeclare Systems.Demand.DHW.StandardProfiles DHW(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare final BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM
@@ -88,7 +91,7 @@ partial model PartialModelicaConferenceUseCase
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
         calcmFlow),
-    redeclare BESMod.Examples.UseCaseModelicaConferencePaper.BESModSystemParas
+    redeclare BESMod.Examples.ModelicaConferencePaper.BESModSystemParas
       systemParameters(use_elecHeating=false),
     redeclare BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy
       parameterStudy,

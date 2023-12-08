@@ -1,4 +1,4 @@
-within BESMod.Examples.UseCaseDesignOptimization;
+within BESMod.Examples.DesignOptimization;
 model BES
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
