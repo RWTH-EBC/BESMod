@@ -6,8 +6,8 @@ package Functions
     extends partialFrostingMap;
 
   protected
-    Modelica.SIunits.TemperatureDifference dT = 1.7e3 * CICO ^ (-0.36);
-    Modelica.SIunits.Temperature T_c = T_oda - dT;
+    Modelica.Units.SI.TemperatureDifference dT = 1.7e3 * CICO ^ (-0.36);
+    Modelica.Units.SI.Temperature T_c = T_oda - dT;
   algorithm
     growth_rate :=  (-3e-7 * log(CICO) + 5.4e-6);
     critDefTim := 0;
@@ -73,13 +73,13 @@ package Functions
   end ZhuFrostingMapCico;
 
   partial function partialFrostingMap "Function for a partial frost map"
-    input Modelica.SIunits.Temperature T_oda "Outdoor air temperature";
+    input Modelica.Units.SI.Temperature T_oda "Outdoor air temperature";
     input Real relHum "Relative humidity as float (betwenn 0 and 1)";
     input Real CICO(unit="s/m") "CICO  value";
     output Real Char[2] "Array with: growth_rate (Time until next defrost cycle) and growth_rate(Growth rate of ice on the surface)";
   protected
-    Modelica.SIunits.Velocity growth_rate(min=0) "Growth rate of ice";
-    Modelica.SIunits.Time critDefTim "Time until next defrost cycle (based on time-method)";
+    Modelica.Units.SI.Velocity growth_rate(min=0) "Growth rate of ice";
+    Modelica.Units.SI.Time critDefTim "Time until next defrost cycle (based on time-method)";
 
   end partialFrostingMap;
 

@@ -1,10 +1,10 @@
 within BESMod.Systems.Hydraulical.Components.Frosting.BaseClasses;
 partial model partialIceFac "PartialIceFacCalculator"
   parameter Boolean use_reverse_cycle=true "If false, an eletrical heater will be used instead of reverse cycle method";
-  parameter Modelica.SIunits.SpecificEnthalpy h_water_fusion=333.5e3 "Fusion enthalpy of water (Schmelzenthalpie)";
+  parameter Modelica.Units.SI.SpecificEnthalpy h_water_fusion=333.5e3 "Fusion enthalpy of water (Schmelzenthalpie)";
   parameter Real eta_hr=1 "Efficiency of used heating rod"
     annotation (Dialog(enable=not use_reverse_cycle));
-  parameter Modelica.SIunits.Power P_el_hr=0 "Heating power of heating rod" annotation (Dialog(enable=not use_reverse_cycle));
+  parameter Modelica.Units.SI.Power P_el_hr=0 "Heating power of heating rod" annotation (Dialog(enable=not use_reverse_cycle));
 
   Modelica.Blocks.Interfaces.RealOutput P_el_add
     "Additional power required to defrost"       annotation (Placement(
