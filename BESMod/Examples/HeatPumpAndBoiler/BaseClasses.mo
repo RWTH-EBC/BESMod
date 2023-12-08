@@ -43,7 +43,7 @@ package BaseClasses "Contains partial example case"
             parPIDBoi), redeclare final
           Systems.Hydraulical.Transfer.IdealValveRadiator transfer(redeclare
             BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
-            radParameters, redeclare
+            parRad, redeclare
             BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum)),
       redeclare Systems.Demand.DHW.StandardProfiles DHW(
         redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,

@@ -2,7 +2,7 @@ within BESMod.Systems.Hydraulical.Transfer;
 model RadiatorPressureBased "Pressure Based transfer system"
   // Abui =1 and hBui =1 to avaoid warnings, will be overwritten anyway
   extends BaseClasses.PartialTransfer(
-    nHeaTra=radParameters.n,
+    nHeaTra=parRad.n,
     ABui=1,
     hBui=1,
     final dp_nominal=parTra.dp_nominal,
@@ -31,7 +31,7 @@ model RadiatorPressureBased "Pressure Based transfer system"
             {-72,100}})));
 
   replaceable parameter BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
-    radParameters
+    parRad
     annotation (Dialog(group="Component data"), choicesAllMatching=true,
     Placement(transformation(extent={{-100,-98},{-80,-78}})));
   IBPSA.Fluid.HeatExchangers.Radiators.RadiatorEN442_2 rad[nParallelDem](
@@ -40,14 +40,14 @@ model RadiatorPressureBased "Pressure Based transfer system"
     each final show_T=show_T,
     each final energyDynamics=energyDynamics,
     each final p_start=p_start,
-    each final nEle=radParameters.nEle,
-    each final fraRad=radParameters.fraRad,
+    each final nEle=parRad.nEle,
+    each final fraRad=parRad.fraRad,
     final Q_flow_nominal=Q_flow_nominal .* f_design,
     final T_a_nominal=TTra_nominal,
     final T_b_nominal=TTra_nominal .- dTTra_nominal,
     final TAir_nominal=TDem_nominal,
     final TRad_nominal=TDem_nominal,
-    each final n=radParameters.n,
+    each final n=parRad.n,
     each final deltaM=0.3,
     final dp_nominal=parTra.dpRad_nominal,
     redeclare package Medium = Medium,

@@ -80,7 +80,7 @@ partial model PartialCase
         transfer(
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
-          radParameters,
+          parRad,
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
           parTra,

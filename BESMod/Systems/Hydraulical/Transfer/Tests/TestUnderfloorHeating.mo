@@ -7,7 +7,10 @@ model TestUnderfloorHeating
         BESMod.Systems.Hydraulical.Transfer.RecordsCollection.DefaultUFHData
         UFHParameters, redeclare
         BESMod.Systems.RecordsCollection.Movers.DefaultMover
-        parPum));
+        parPum,
+      redeclare
+        BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
+        parTra));
   extends Modelica.Icons.Example;
 
 end TestUnderfloorHeating;

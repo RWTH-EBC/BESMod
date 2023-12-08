@@ -78,7 +78,7 @@ model BES_HOM
       redeclare BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator transfer(
           redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
-          radParameters, redeclare
+          parRad, redeclare
           BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum)),
     redeclare BESMod.Systems.Demand.DHW.StandardProfiles DHW(
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,

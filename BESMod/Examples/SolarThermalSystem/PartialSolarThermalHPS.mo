@@ -42,10 +42,10 @@ partial model PartialSolarThermalHPS
         transfer(
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
-          radParameters,
+          parRad,
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
-          transferDataBaseDefinition,
+          parTra,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum)),
     redeclare Systems.Demand.DHW.StandardProfiles DHW(
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,

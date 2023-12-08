@@ -79,7 +79,7 @@ partial model PartialModelicaConferenceUseCase
         f_design=fill(1.2, hydraulic.transfer.nParallelDem),
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
-          radParameters,
+          parRad,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum)),
     redeclare Systems.Demand.DHW.StandardProfiles DHW(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,

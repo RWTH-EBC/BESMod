@@ -35,11 +35,11 @@ model GasBoilerBuildingOnly
         transfer(
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
-          transferDataBaseDefinition,
+          parTra,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
-          radParameters)),
+          parRad)),
     redeclare BESMod.Systems.Demand.DHW.StandardProfiles DHW(
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
