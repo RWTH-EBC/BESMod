@@ -5,11 +5,22 @@ model BES
     redeclare Systems.Demand.Building.TEASERThermalZone building(
       ABui=sum(building.zoneParam.VAir)^(2/3),
       hBui=sum(building.zoneParam.VAir)^(1/3),
+      ARoo=sum(building.zoneParam.ARoof),
       redeclare BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
         oneZoneParam(heaLoadFacGrd=0, heaLoadFacOut=0)),
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
       redeclare Systems.Hydraulical.Generation.HeatPumpAndHeatingRod generation(
+        redeclare model PerDataRevHP =
+            AixLib.DataBase.Chiller.PerformanceData.PolynomalApproach (redeclare
+              function PolyData =
+                AixLib.DataBase.HeatPump.Functions.Characteristics.ConstantCoP (
+                  powerCompressor=2000, CoP=2)),
+        redeclare
+          BESMod.Systems.Hydraulical.Components.Frosting.ZhuIceFacCalculation
+          frost(density=200, redeclare function frostMapFunc =
+              BESMod.Systems.Hydraulical.Components.Frosting.Functions.ZhuFrostingMapCico),
+
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare package Medium_eva = AixLib.Media.Air,
         redeclare
@@ -74,11 +85,9 @@ model BES
           VPerQ_flow=parameterStudy.VPerQFlow,
           dTLoadingHC1=0,
           energyLabel=BESMod.Systems.Hydraulical.Distribution.Types.EnergyLabel.B),
-
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
           parStoDHW(dTLoadingHC1=10, energyLabel=BESMod.Systems.Hydraulical.Distribution.Types.EnergyLabel.A),
-
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
           parThrWayVal),
       redeclare Systems.Hydraulical.Transfer.IdealValveRadiator transfer(

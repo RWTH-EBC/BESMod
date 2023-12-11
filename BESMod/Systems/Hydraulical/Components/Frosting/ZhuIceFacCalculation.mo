@@ -1,6 +1,7 @@
 within BESMod.Systems.Hydraulical.Components.Frosting;
 model ZhuIceFacCalculation "IceFac based on Zhus Frosting Map"
-    extends BaseClasses.partialIceFac;
+    extends BaseClasses.PartialFrosting;
+  parameter Modelica.Units.SI.SpecificEnthalpy h_water_fusion=333.5e3 "Fusion enthalpy of water (Schmelzenthalpie)";
 
   parameter Modelica.Units.SI.Area A=15
                                     "Area of heat exchanger (All fins from both sides, as the growth rate is specific for the area of the HE";
@@ -18,13 +19,9 @@ model ZhuIceFacCalculation "IceFac based on Zhus Frosting Map"
                                              "Maximal compressor rotational speed";
   parameter Modelica.Units.SI.VolumeFlowRate V_flow_air=0.001
                                                        "Volume flow rate over outdoor air coil";
-  parameter Real natConvCoeff(unit="m/(s*K)")=1e-7
+  parameter Real natConvCoeff(unit="m/(s.K)")=1e-7
                                               "Parameter to be calibrated for natural defrost";
 
-  Modelica.Blocks.Sources.RealExpression       P_el_internal(y=P_el)         "Additional power from internal calculations" annotation (Placement(transformation(
-        extent={{-10,10},{10,-10}},
-        rotation=0,
-        origin={-30,-90})));
   Modelica.Blocks.Sources.RealExpression iceFac_internal(y=iceFac)
     "iceFac from internal calculations" annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
@@ -41,8 +38,6 @@ model ZhuIceFacCalculation "IceFac based on Zhus Frosting Map"
   Real iceFac(start=1) "Icing Factor";
   Modelica.Units.SI.MassFlowRate m_flow_ice(start=0) "Current mass of ice on evaporator surface";
   Modelica.Units.SI.Mass m_ice(start=0) "Total mass that was on evaporator surface over whole simulation duration";
-  Modelica.Units.SI.Power P_el(start=0) "Current power required";
-  Modelica.Units.SI.HeatFlowRate QDef_flow(start=0) "Input energy to melt the ice";
   Modelica.Units.SI.Velocity growth_rate_natural_conv(min=0, start=0) "Growth rate of ice for natural convection (melting)";
   Modelica.Units.SI.Velocity growth_rate_forced_conv(min=0, start=0) "Growth rate of ice for forced convection";
   Real densityCoeff(start=1) "density coefficient";
@@ -53,11 +48,6 @@ model ZhuIceFacCalculation "IceFac based on Zhus Frosting Map"
   replaceable function frostMapFunc =
       BESMod.Systems.Hydraulical.Components.Frosting.Functions.partialFrostingMap
                                                                                                 annotation(choicesAllMatching=true);
-
-  Modelica.Blocks.Routing.RealPassThrough realPassQEva_flow
-    annotation (Placement(transformation(extent={{-90,-20},{-70,0}})));
-  Modelica.Blocks.Routing.RealPassThrough realPassT_Amb
-    annotation (Placement(transformation(extent={{-90,-50},{-70,-30}})));
 
   Modelica.Blocks.Logical.Hysteresis hys(uLow=minIceFac, uHigh=1)
     "For the iceFac control. Output signal is used internally"
@@ -89,7 +79,7 @@ model ZhuIceFacCalculation "IceFac based on Zhus Frosting Map"
   Modelica.Blocks.Logical.LessEqualThreshold lesEquThr(threshold=1 - Modelica.Constants.eps)
     annotation (Placement(transformation(extent={{-40,-60},{-20,-40}})));
   Modelica.Blocks.Routing.BooleanPassThrough boolPassHP_on
-    annotation (Placement(transformation(extent={{-90,-76},{-70,-56}})));
+    annotation (Placement(transformation(extent={{-90,-78},{-70,-58}})));
 
   Modelica.Units.SI.Time totalTimeDefrost "Total time where defrost operation was necessary in the year";
 
@@ -101,9 +91,9 @@ model ZhuIceFacCalculation "IceFac based on Zhus Frosting Map"
                                        "Either hys or crit min time"
     annotation (Placement(transformation(extent={{72,-10},{92,10}})));
   Modelica.Blocks.Routing.RealPassThrough realPass_n_hp
-    annotation (Placement(transformation(extent={{-90,-100},{-70,-80}})));
+    annotation (Placement(transformation(extent={{-90,-102},{-70,-82}})));
   Modelica.Blocks.Interfaces.RealOutput growth_rate "Growth rate of ice"
-    annotation (Placement(transformation(extent={{100,38},{124,62}}),
+    annotation (Placement(transformation(extent={{100,20},{124,44}}),
         iconTransformation(extent={{-140,56},{-100,96}})));
   Modelica.Blocks.Sources.RealExpression growthRateNat_internal(y=
         growth_rate_natural_conv) "growthRate from internal calcuations"
@@ -112,14 +102,8 @@ model ZhuIceFacCalculation "IceFac based on Zhus Frosting Map"
         rotation=0,
         origin={-10,30})));
   Modelica.Blocks.Logical.Switch switchGrowthRate
-    annotation (Placement(transformation(extent={{60,40},{80,60}})));
-  Modelica.Blocks.Interfaces.BooleanOutput modeHeaPum "Value of Boolean output"
-    annotation (Placement(transformation(extent={{100,-58},{120,-38}})));
-  Modelica.Blocks.Interfaces.RealOutput iceFacMea "Value of Real output"
-    annotation (Placement(transformation(extent={{100,70},{120,90}})));
+    annotation (Placement(transformation(extent={{58,40},{78,60}})));
 protected
-  parameter Modelica.Units.SI.Power const_P_el_internal = if use_reverse_cycle then 0 else P_el_hr "Additional power used to defrost";
-  parameter Boolean const_mode_hp = not use_reverse_cycle;
   Modelica.Blocks.Sources.RealExpression m_ice_internal(y=m_ice);
   Real Char[2];
 
@@ -127,12 +111,12 @@ initial equation
   assert(A * V_flow_air / (V_h * N_max)^2 > 7e6, "The paper found the correlations for CICOS greater than 7e6. Extrapolation will yield wrong results", AssertionLevel.warning);
 equation
   if m_ice > Modelica.Constants.eps then
-    growth_rate_natural_conv = min(0, -natConvCoeff * (realPassT_Amb.y - 273.15)) "Simply energy balance with constant Area and constant defrost";
+    growth_rate_natural_conv = min(0, -natConvCoeff * (TOda - 273.15)) "Simply energy balance with constant Area and constant defrost";
   else
     growth_rate_natural_conv = 0 "Not possible to melt the ice if no ice is present";
   end if;
 
-  Char = frostMapFunc(realPassT_Amb.y, relHum, CICO);
+  Char = frostMapFunc(TOda, relHum, CICO);
   // Only vaild if the hp is turned on
   if boolPassHP_on.y then
     critDefTim = Char[1];
@@ -145,6 +129,7 @@ equation
     CICO = 8e-6 "Only used to avoid log(0) as CICO is not defined for n_hp = 0";
   end if;
 
+  // TODO: Check if necessary
   if growth_rate >= 3.6e-7 then
     densityCoeff = 1;
   elseif growth_rate >= 2.5e-7 then
@@ -156,35 +141,20 @@ equation
   end if;
 
   der(m_ice) = m_flow_ice;
-  if use_reverse_cycle then
-    QDef_flow = realPassQEva_flow.y;
-  else
-    // No reverse cycle
-    QDef_flow = P_el_hr/eta_hr;
-  end if;
 
   // Calculate defrost:
   if defrost then
-    m_flow_ice =-(QDef_flow/h_water_fusion)*densityCoeff;
-    P_el = const_P_el_internal;
-    mode_hp = const_mode_hp;
+    m_flow_ice =-(QEva_flow/h_water_fusion)*densityCoeff;
+    mode_hp = false;
     der(totalTimeDefrost) = 1;
   else
     m_flow_ice = A * density * growth_rate;
-    P_el = 0;
     mode_hp = true;
     der(totalTimeDefrost) = 0;
   end if;
 
   iceFac = 1 - (m_ice/m_ice_max);
 
-  connect(P_el_internal.y,P_el_add)  annotation (Line(
-      points={{-19,-90},{0,-90},{0,-110}},
-      color={0,0,127}));
-  connect(genConBus.QEva_flow, realPassQEva_flow.u) annotation (Line(
-      points={{-108,0},{-104,0},{-104,2},{-106,2},{-106,-10},{-92,-10}},
-      color={255,204,51},
-      thickness=0.5));
   connect(iceFac_internal.y, hys.u)
     annotation (Line(points={{-51,80},{-32,80}}, color={0,0,127}));
   connect(critDefTim_internal.y, greater.u2) annotation (Line(points={{41,-70},{
@@ -215,37 +185,32 @@ equation
   connect(greaterThreshold.y, andDefrost.u2) annotation (Line(points={{-9,-10},{
           70,-10},{70,-8}},                                   color={255,0,255}));
   connect(greaterThreshold.y, switchGrowthRate.u2) annotation (Line(points={{-9,-10},
-          {8,-10},{8,50},{58,50}},        color={255,0,255}));
+          {8,-10},{8,50},{56,50}},        color={255,0,255}));
   connect(growthRateNat_internal.y, switchGrowthRate.u3) annotation (Line(
-        points={{1,30},{14,30},{14,42},{58,42}},         color={0,0,127}));
+        points={{1,30},{14,30},{14,42},{56,42}},         color={0,0,127}));
   connect(growthRateFor_internal.y, switchGrowthRate.u1) annotation (Line(
-        points={{-39,30},{-26,30},{-26,58},{58,58}},           color={0,0,127}));
-  connect(switchGrowthRate.y, growth_rate) annotation (Line(points={{81,50},{112,
-          50}},                  color={0,0,127}));
-  connect(realPassT_Amb.u, genConBus.TOdaMea) annotation (Line(points={{-92,-40},
-          {-107.9,-40},{-107.9,0.1}}, color={0,0,127}), Text(
+        points={{-39,30},{-26,30},{-26,58},{56,58}},           color={0,0,127}));
+  connect(switchGrowthRate.y, growth_rate) annotation (Line(points={{79,50},{96,50},
+          {96,32},{112,32}},     color={0,0,127}));
+  connect(boolPassHP_on.u, genConBus.onOffMea) annotation (Line(points={{-92,-68},
+          {-102,-68},{-102,-59.9},{-107.9,-59.9}},
+                                               color={255,0,255}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(boolPassHP_on.u, genConBus.onOffMea) annotation (Line(points={{-92,-66},
-          {-102,-66},{-102,0.1},{-107.9,0.1}}, color={255,0,255}), Text(
+  connect(realPass_n_hp.u, genConBus.nSet) annotation (Line(points={{-92,-92},{-102,
+          -92},{-102,-59.9},{-107.9,-59.9}},  color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(realPass_n_hp.u, genConBus.nSet) annotation (Line(points={{-92,-90},{
-          -102,-90},{-102,0.1},{-107.9,0.1}}, color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
-  connect(mode_internal.y, modeHeaPum) annotation (Line(points={{81,-90},{99.1,
-          -90},{99.1,-48},{110,-48}}, color={255,0,255}));
-  connect(iceFac_internal.y, iceFacMea) annotation (Line(points={{-51,80},{-38,80},
-          {-38,66},{70,66},{70,80},{110,80}}, color={0,0,127}));
   connect(growth_rate, growth_rate)
-    annotation (Line(points={{112,50},{112,50}}, color={0,0,127}));
+    annotation (Line(points={{112,32},{112,32}}, color={0,0,127}));
+  connect(mode_internal.y, modeHeaPum) annotation (Line(points={{81,-90},{90,-90},
+          {90,-60},{110,-60}}, color={255,0,255}));
+  connect(iceFac_internal.y, iceFacMea) annotation (Line(points={{-51,80},{-48,80},
+          {-48,60},{110,60}}, color={0,0,127}));
   annotation (Icon(graphics={Text(
           extent={{-64,46},{78,-56}},
           lineColor={0,0,0},

@@ -2,7 +2,7 @@ within BESMod.Systems.Hydraulical.Components.Frosting;
 package Functions
 
   function CICOBasedFunction
-    "Function to calculate the frosting map based on the CICO value - Liang 2019."
+    "Function to calculate the growth rate according to CICO (Liang et al. 2019) and defrost time according to Zhu, 2015."
     extends partialFrostingMap;
 
   protected
@@ -30,7 +30,7 @@ package Functions
   end CICOBasedFunction;
 
   function ZhuFrostingMapCico
-    "Function to calculate the frosting map according to Zhu, 2015. The grwoth rates of the ice are taken from Liu et. al. (the CICO-Paper)"
+    "Function to calculate the growth rate according to Liang et al. 2020 and defrost time according to Zhu, 2015."
     extends partialFrostingMap;
 
   protected
@@ -76,7 +76,7 @@ package Functions
     input Modelica.Units.SI.Temperature T_oda "Outdoor air temperature";
     input Real relHum "Relative humidity as float (betwenn 0 and 1)";
     input Real CICO(unit="s/m") "CICO  value";
-    output Real Char[2] "Array with: growth_rate (Time until next defrost cycle) and growth_rate(Growth rate of ice on the surface)";
+    output Real Char[2] "Array with: critDefTim (Time until next defrost cycle) and growth_rate(Growth rate of ice on the surface)";
   protected
     Modelica.Units.SI.Velocity growth_rate(min=0) "Growth rate of ice";
     Modelica.Units.SI.Time critDefTim "Time until next defrost cycle (based on time-method)";
