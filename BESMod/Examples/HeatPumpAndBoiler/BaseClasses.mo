@@ -6,9 +6,9 @@ package BaseClasses "Contains partial example case"
       redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
       redeclare Systems.Demand.Building.TEASERThermalZone building(
         ABui=sum(building.zoneParam.VAir)^(2/3),
-        hBui=sum(building.zoneParam.VAir)^(1/3),                   redeclare
-          BESMod.Systems.Demand.Building.RecordsCollection.RefAachen oneZoneParam(
-            heaLoadFacGrd=0, heaLoadFacOut=0)),
+        hBui=sum(building.zoneParam.VAir)^(1/3),
+        redeclare BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
+          oneZoneParam(heaLoadFacGrd=0, heaLoadFacOut=0)),
       redeclare BESMod.Systems.Control.NoControl control,
       redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(redeclare
           Systems.Hydraulical.Control.HybridHeatPumpSystem control(
@@ -20,13 +20,17 @@ package BaseClasses "Contains partial example case"
             parTheVal,
           dTHysBui=5,
           dTHysDHW=5,
-          meaValPriGen=BESMod.Systems.Hydraulical.Control.Components.MeasuredValue.GenerationSupplyTemperature,
+          meaValPriGen=BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue.GenerationSupplyTemperature,
+
           redeclare model DHWHysteresis =
               BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod,
+
           redeclare model BuildingHysteresis =
               BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod,
+
           redeclare model DHWSetTemperature =
               BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.ConstTSet_DHW,
+
           redeclare
             BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
             parPIDHeaPum,
@@ -49,6 +53,7 @@ package BaseClasses "Contains partial example case"
             parTra)),
       redeclare Systems.Demand.DHW.StandardProfiles DHW(
         redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
+
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
           calcmFlow),

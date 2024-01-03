@@ -1,4 +1,4 @@
-within BESMod.Systems.Hydraulical.Control.Components;
+within BESMod.Systems.Hydraulical.Control.Components.BaseClasses;
 model ParallelValveController
   "Model to switch a three way valve based on device usage"
   Modelica.Blocks.Interfaces.BooleanInput priGen

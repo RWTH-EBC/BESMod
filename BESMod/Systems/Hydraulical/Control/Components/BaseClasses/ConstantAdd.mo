@@ -1,4 +1,4 @@
-within BESMod.Systems.Hydraulical.Control.Components;
+within BESMod.Systems.Hydraulical.Control.Components.BaseClasses;
 block ConstantAdd
   "Output the addition of a constant offset with the input signal"
 

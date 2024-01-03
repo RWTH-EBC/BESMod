@@ -3,9 +3,8 @@ model HybridHeatPumpSystem
   "Hybrid HPS with PID controlled boiler"
   extends
     BESMod.Systems.Hydraulical.Control.BaseClasses.PartialHeatPumpSystemController(
-      final meaValSecGen=
-        if boiInGeneration then BESMod.Systems.Hydraulical.Control.Components.MeasuredValue.GenerationSupplyTemperature
-          else BESMod.Systems.Hydraulical.Control.Components.MeasuredValue.DistributionTemperature);
+      final meaValSecGen=if boiInGeneration then BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue.GenerationSupplyTemperature
+         else BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue.DistributionTemperature);
   parameter Modelica.Units.SI.Temperature TBiv "Bivalence temperature";
   parameter Modelica.Units.SI.Temperature TCutOff "Cutoff temperature";
   parameter Boolean boiInGeneration
@@ -37,7 +36,8 @@ model HybridHeatPumpSystem
         TCutOff) "Check whether the boiler can turn on"
     annotation (Placement(transformation(extent={{-30,-20},{-12,0}})));
 
-  BESMod.Systems.Hydraulical.Control.Components.ParallelValveController priOrSecDevValCtrl
+  BESMod.Systems.Hydraulical.Control.Components.BaseClasses.ParallelValveController
+    priOrSecDevValCtrl
     "Control the valve to switch between primary and secondary device"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},

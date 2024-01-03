@@ -41,7 +41,7 @@ model BuildingAndDHWControl
   replaceable model SummerMode =
    BESMod.Systems.Hydraulical.Control.Components.SummerMode.No
    constrainedby
-   BESMod.Systems.Hydraulical.Control.Components.SummerMode.BaseClasses.PartialSummerMode
+    BESMod.Systems.Hydraulical.Control.Components.SummerMode.BaseClasses.PartialSummerMode
     "Summer mode model" annotation(choicesAllMatching=true);
 
   SummerMode sumMod "Summer mode instance"
@@ -57,12 +57,17 @@ model BuildingAndDHWControl
   DHWSetTemperature TSetDHW "DHW set temperature module" annotation (
       Placement(transformation(extent={{-78,82},{-62,98}})));
 
-  BESMod.Systems.Hydraulical.Control.Components.HeatingCurve heaCur(
+  replaceable
+    BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.HeatingCurve
+    heaCur constrainedby
+    BuildingSupplyTemperatureSetpoints.PartialSetpoint(
     final TSup_nominal=TSup_nominal,
     final TRet_nominal=TRet_nominal,
     final TOda_nominal=TOda_nominal,
-    final nHeaTra=nHeaTra)                                   "Heating curve"
-    annotation (Placement(transformation(extent={{-40,-100},{-20,-80}})));
+    final nZones=nZones,
+    final nHeaTra=nHeaTra)
+    "Heating curve" annotation (Placement(transformation(extent={{-60,-100},{-40,-80}})),
+      choicesAllMatching=true);
   Modelica.Blocks.Logical.Or priGenOn "Turn on primary generation device"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -76,8 +81,6 @@ model BuildingAndDHWControl
   BESMod.Utilities.SupervisoryControl.SupervisoryControl supCtrDHW(ctrlType=supCtrDHWTyp)
                            "Supervisory control of DHW"
     annotation (Placement(transformation(extent={{0,60},{20,80}})));
-  Modelica.Blocks.Math.MinMax minMax(nu=nZones)
-    annotation (Placement(transformation(extent={{-80,-76},{-60,-56}})));
   Modelica.Blocks.Interfaces.RealInput TOda(unit="K", displayUnit="degC")
     "Outdoor air temperature"
     annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));
@@ -175,17 +178,15 @@ equation
   connect(hysDHW.priGenOn, priGenOn.u1) annotation (Line(points={{79.12,75.6},{79.12,
           74},{108,74},{108,46},{230,46},{230,-90},{238,-90}},   color={255,0,255}));
   connect(TSetDHW.y, orDHW.u[1]) annotation (Line(points={{-61.2,85.36},{-54,
-          85.36},{-54,50},{-48,50},{-48,34},{90,34},{90,74},{108,74},{108,
-          67.6667},{120,67.6667}},          color={255,0,255}));
+          85.36},{-54,50},{-48,50},{-48,34},{90,34},{90,74},{108,74},{108,67.6667},
+          {120,67.6667}},                   color={255,0,255}));
   connect(hysDHW.secGenOn, orDHW.u[2]) annotation (Line(points={{79.12,66},{90,66},
           {90,50},{120,50},{120,70}}, color={255,0,255}));
   connect(TSetDHW.TSetDHW, supCtrDHW.uLoc) annotation (Line(points={{-61.2,90},{-10,
           90},{-10,62},{-2,62}}, color={0,0,127}));
   connect(supCtrDHW.y, hysDHW.TSupSet) annotation (Line(points={{22,70},{22,56},{70,
           56},{70,61.2}}, color={0,0,127}));
-  connect(minMax.yMax,heaCur.TZoneSet)
-    annotation (Line(points={{-59,-60},{-30,-60},{-30,-78}}, color={0,0,127}));
-  connect(heaCur.TOda, TOda) annotation (Line(points={{-42,-90},{-94,-90},{-94,0},
+  connect(heaCur.TOda, TOda) annotation (Line(points={{-62,-90},{-90,-90},{-90,0},
           {-120,0}},   color={0,0,127}));
   connect(TSetDHW.sigBusDistr, sigBusDistr) annotation (Line(
       points={{-78,89.92},{-78,90},{-86,90},{-86,70},{-100,70}},
@@ -215,8 +216,8 @@ equation
                        color={255,0,255}));
   connect(secGenOn.y, secGen) annotation (Line(points={{221.5,-110},{286,-110},{
           286,-70},{310,-70}},                                     color={255,0,255}));
-  connect(hysDHW.secGenOn, secGenOn.u[1]) annotation (Line(points={{79.12,66},{
-          90,66},{90,34},{178,34},{178,-112.333},{200,-112.333}},
+  connect(hysDHW.secGenOn, secGenOn.u[1]) annotation (Line(points={{79.12,66},{90,
+          66},{90,34},{178,34},{178,-112.333},{200,-112.333}},
                                                      color={255,0,255}));
   connect(TSetDHW.y, secGenOn.u[2]) annotation (Line(points={{-61.2,85.36},{-54,
           85.36},{-54,50},{-48,50},{-48,34},{178,34},{178,-110},{200,-110}},
@@ -266,10 +267,8 @@ equation
       horizontalAlignment=TextAlignment.Right));
   connect(supCtrHeaCur.y, hysBui.TSupSet)
     annotation (Line(points={{22,-90},{50,-90},{50,-78.8}}, color={0,0,127}));
-  connect(supCtrHeaCur.uLoc, heaCur.TSet) annotation (Line(points={{-2,-98},{-14,
-          -98},{-14,-90},{-19,-90}}, color={0,0,127}));
-  connect(minMax.u, TZoneSet) annotation (Line(points={{-80,-66},{-92,-66},{-92,
-          -80},{-120,-80}}, color={0,0,127}));
+  connect(supCtrHeaCur.uLoc, heaCur.TSet) annotation (Line(points={{-2,-98},{-14,-98},
+          {-14,-90},{-39,-90}},      color={0,0,127}));
   connect(constAntLegOff.y, swiAntLeg.u3) annotation (Line(points={{-59,30},{-50,
           30},{-50,42},{-42,42}}, color={0,0,127}));
   connect(constAntLeg.y, swiAntLeg.u1)
@@ -302,9 +301,8 @@ equation
           {274,80},{310,80}}, color={0,0,127}));
   connect(logSwiSumModPriGen.y, priGenOn.u2) annotation (Line(points={{141,-70},
           {164,-70},{164,-98},{238,-98}}, color={255,0,255}));
-  connect(logSwiSumModSecGen.y, secGenOn.u[3]) annotation (Line(points={{141,
-          -110},{140,-110},{140,-126},{200,-126},{200,-107.667}},
-                                                            color={255,0,255}));
+  connect(logSwiSumModSecGen.y, secGenOn.u[3]) annotation (Line(points={{141,-110},
+          {140,-110},{140,-126},{200,-126},{200,-107.667}}, color={255,0,255}));
   connect(logSwiDHW.y, DHW) annotation (Line(points={{261,20},{282,20},{282,52},
           {310,52}}, color={255,0,255}));
   connect(logSwiSumModSecGen.u3, conSumModGen.y) annotation (Line(points={{118,
@@ -331,8 +329,8 @@ equation
           20},{238,20}}, color={255,0,255}));
   connect(logSwiDHW.y, bufOn.u) annotation (Line(points={{261,20},{266,20},{266,
           66},{148,66},{148,80}}, color={255,0,255}));
-  connect(heaCur.TSet, sigBusHyd.TBuiLoc) annotation (Line(points={{-19,-90},{
-          -20,-90},{-20,-24},{-112,-24},{-112,103},{100,103}}, color={0,0,127}),
+  connect(heaCur.TSet, sigBusHyd.TBuiLoc) annotation (Line(points={{-39,-90},{-20,
+          -90},{-20,-24},{-112,-24},{-112,103},{100,103}},     color={0,0,127}),
       Text(
       string="%second",
       index=1,
@@ -345,12 +343,16 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(realPassThrough.u, sigBusDistr.TStoDHWTopMea) annotation (Line(points
-        ={{-2,130},{-100,130},{-100,70}}, color={0,0,127}), Text(
+  connect(realPassThrough.u, sigBusDistr.TStoDHWTopMea) annotation (Line(points=
+         {{-2,130},{-100,130},{-100,70}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
+  connect(heaCur.TZoneMea, TZoneMea) annotation (Line(points={{-62,-82},{-86,-82},
+          {-86,-40},{-120,-40}}, color={0,0,127}));
+  connect(heaCur.TZoneSet, TZoneSet) annotation (Line(points={{-62,-98},{-92,-98},
+          {-92,-80},{-120,-80}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-140},
             {300,100}})), Diagram(coordinateSystem(preserveAspectRatio=false,
           extent={{-100,-140},{300,100}}), graphics={

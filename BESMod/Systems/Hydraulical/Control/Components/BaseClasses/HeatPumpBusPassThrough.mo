@@ -1,4 +1,4 @@
-within BESMod.Systems.Hydraulical.Control.Components;
+within BESMod.Systems.Hydraulical.Control.Components.BaseClasses;
 model HeatPumpBusPassThrough
   Interfaces.GenerationControlBus sigBusGen
     annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));

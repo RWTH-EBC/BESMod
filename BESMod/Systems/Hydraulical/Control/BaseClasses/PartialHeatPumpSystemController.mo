@@ -16,12 +16,12 @@ partial model PartialHeatPumpSystemController
     supCtrDHWTyp=BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Local
     "Supervisory control approach for DHW supply temperature "
       annotation(Dialog(group="DHW control"));
-  parameter Components.MeasuredValue meaValPriGen=BESMod.Systems.Hydraulical.Control.Components.MeasuredValue.GenerationSupplyTemperature
+  parameter Components.BaseClasses.MeasuredValue meaValPriGen=BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue.GenerationSupplyTemperature
     "Control measurement value for primary device"
     annotation (Dialog(group="Component choices"));
-  parameter Components.MeasuredValue meaValSecGen
+  parameter Components.BaseClasses.MeasuredValue meaValSecGen
     "Control measurement value for secondary device"
-        annotation (Dialog(group="Component choices"));
+    annotation (Dialog(group="Component choices"));
   replaceable model DHWHysteresis =
       BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.BaseClasses.PartialOnOffController
     constrainedby
@@ -118,7 +118,7 @@ partial model PartialHeatPumpSystemController
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-150,-10})));
-  Components.HeatPumpBusPassThrough heaPumSigBusPasThr
+  Components.BaseClasses.HeatPumpBusPassThrough heaPumSigBusPasThr
     "Bus connector pass through for OpenModelica" annotation (Placement(
         transformation(
         extent={{10,-10},{-10,10}},
@@ -140,7 +140,7 @@ partial model PartialHeatPumpSystemController
     "Control for building and DHW system"
     annotation (Placement(transformation(extent={{-200,20},{-120,80}})));
 
-  Components.SetAndMeasuredValueSelector setAndMeaSelPri(
+  Components.BaseClasses.SetAndMeasuredValueSelector setAndMeaSelPri(
     final meaVal=meaValPriGen,
     final dTTraToDis_nominal=parTra.dTLoss_nominal[1],
     final dTDisToGen_nominal=parDis.dTTra_nominal[1] + parGen.dTLoss_nominal[1],
@@ -148,7 +148,7 @@ partial model PartialHeatPumpSystemController
     final dTHysDHW=dTHysDHW)
     "Selection of set and measured value for primary generation device"
     annotation (Placement(transformation(extent={{40,60},{60,80}})));
-  Components.SetAndMeasuredValueSelector setAndMeaSelSec(
+  Components.BaseClasses.SetAndMeasuredValueSelector setAndMeaSelSec(
     final meaVal=meaValSecGen,
     final dTTraToDis_nominal=parTra.dTLoss_nominal[1],
     final dTDisToGen_nominal=parDis.dTTra_nominal[1] + parGen.dTLoss_nominal[1],
@@ -230,7 +230,8 @@ equation
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
   connect(buiAndDHWCtr.TOda, weaBus.TDryBul) annotation (Line(points={{-204,55},{
-          -244,55},{-244,2},{-237,2}}, color={0,0,127}), Text(
+          -244,55},{-244,2.11},{-236.895,2.11}},
+                                       color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},

@@ -9,7 +9,7 @@ model GasBoiler "PI Control of gas boiler"
   replaceable parameter RecordsCollection.PIDBaseDataDefinition parPID
     "PID parameters for boiler"
     annotation (choicesAllMatching=true, Placement(transformation(extent={{142,84},{162,104}})));
-  BESMod.Systems.Hydraulical.Control.Components.HeatingCurve
+  BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.HeatingCurve
     heatingCurve(
     TSup_nominal=max(parTra.TTra_nominal),
     TRet_nominal=max(parTra.TTra_nominal - parTra.dTTra_nominal),
@@ -139,8 +139,9 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(heatingCurve.TOda, weaBus.TDryBul) annotation (Line(points={{-222,30},
-          {-237,30},{-237,2}},     color={0,0,127}), Text(
+  connect(heatingCurve.TOda, weaBus.TDryBul) annotation (Line(points={{-222,30},{
+          -236.895,30},{-236.895,2.11}},
+                                   color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
@@ -179,7 +180,7 @@ equation
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
   connect(minMax.yMax,heatingCurve.TZoneSet)
-    annotation (Line(points={{-219,66},{-210,66},{-210,42}}, color={0,0,127}));
+    annotation (Line(points={{-219,66},{-222,66},{-222,22}}, color={0,0,127}));
   connect(minMax.u, useProBus.TZoneSet) annotation (Line(points={{-240,60},{-244,
           60},{-244,103},{-119,103}}, color={0,0,127}), Text(
       string="%second",

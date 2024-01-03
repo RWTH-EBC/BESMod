@@ -1,7 +1,8 @@
 within BESMod.Systems.Hydraulical.Control;
 model MonoenergeticHeatPumpSystem
   "Monoenergetic HPS with on/off heating rod"
-  extends BaseClasses.PartialHeatPumpSystemController(final meaValSecGen=BESMod.Systems.Hydraulical.Control.Components.MeasuredValue.GenerationSupplyTemperature);
+  extends BaseClasses.PartialHeatPumpSystemController(final meaValSecGen=BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue
+        .GenerationSupplyTemperature);
 
   Modelica.Blocks.Sources.Constant constZero(final k=0) annotation (Placement(
         transformation(

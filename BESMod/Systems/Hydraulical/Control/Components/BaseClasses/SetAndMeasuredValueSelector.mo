@@ -1,8 +1,9 @@
-within BESMod.Systems.Hydraulical.Control.Components;
+within BESMod.Systems.Hydraulical.Control.Components.BaseClasses;
 model SetAndMeasuredValueSelector
   "Model to select the measured value and add to the set value accordingly"
-  parameter BESMod.Systems.Hydraulical.Control.Components.MeasuredValue meaVal
-    "Type of measurement to use in control";
+  parameter
+    BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue
+    meaVal "Type of measurement to use in control";
 
   parameter Modelica.Units.SI.TemperatureDifference dTTraToDis_nominal
     "Nominal temperature difference between transfer and distribution system";
@@ -29,17 +30,16 @@ model SetAndMeasuredValueSelector
   Modelica.Blocks.Interfaces.RealInput  TDHWSet(unit="K", displayUnit="degC")
     "DHW supply set temperature"
     annotation (Placement(transformation(extent={{-120,78},{-100,98}})));
-  BESMod.Systems.Hydraulical.Control.Components.ConstantAdd constAddBuf(
-    final k=dTBui_nominal)
-    "Add temperature difference in DHW system"
+  BESMod.Systems.Hydraulical.Control.Components.BaseClasses.ConstantAdd
+    constAddBuf(final k=dTBui_nominal) "Add temperature difference in DHW system"
     annotation (Placement(transformation(extent={{-60,30},{-40,50}})));
   Modelica.Blocks.Logical.Switch swiDHWBuiSet "Switch between building and DHW"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-10,60})));
-  BESMod.Systems.Hydraulical.Control.Components.ConstantAdd constAddDHW(
-    final k=dTTraDHW_nominal + dTHysDHW/2)
+  BESMod.Systems.Hydraulical.Control.Components.BaseClasses.ConstantAdd
+    constAddDHW(final k=dTTraDHW_nominal + dTHysDHW/2)
     "Add temperature difference in DHW system"
     annotation (Placement(transformation(extent={{-60,70},{-40,90}})));
   Modelica.Blocks.Interfaces.RealOutput TMea(unit="K", displayUnit="degC")
@@ -48,22 +48,22 @@ model SetAndMeasuredValueSelector
   Modelica.Blocks.Interfaces.RealOutput TSet(unit="K", displayUnit="degC")
     "Set temperature"
     annotation (Placement(transformation(extent={{100,50},{120,70}})));
-  Modelica.Blocks.Logical.Switch swiDHWBuiMea
-    if meaVal == BESMod.Systems.Hydraulical.Control.Components.MeasuredValue.DistributionTemperature
+  Modelica.Blocks.Logical.Switch swiDHWBuiMea if meaVal == BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue.DistributionTemperature
     "Switch between building and DHW" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-10,-40})));
-  Modelica.Blocks.Routing.RealPassThrough reaPasTrhGenSup if meaVal == BESMod.Systems.Hydraulical.Control.Components.MeasuredValue.GenerationSupplyTemperature
+  Modelica.Blocks.Routing.RealPassThrough reaPasTrhGenSup if meaVal == BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue.
+    GenerationSupplyTemperature
     "Real pass through for conditional option"
     annotation (Placement(transformation(extent={{-20,-92},{0,-72}})));
 protected
   parameter Modelica.Units.SI.TemperatureDifference dTTraDHW_nominal=
-    if meaVal == BESMod.Systems.Hydraulical.Control.Components.MeasuredValue.GenerationSupplyTemperature
+    if meaVal ==BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue.GenerationSupplyTemperature
       then dTDHWToGen_nominal else 0
     "Helper for conditional sum in DHW dTs";
   parameter Modelica.Units.SI.TemperatureDifference dTBui_nominal=
-    if meaVal == BESMod.Systems.Hydraulical.Control.Components.MeasuredValue.GenerationSupplyTemperature
+    if meaVal ==BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue.GenerationSupplyTemperature
       then dTTraToDis_nominal + dTDisToGen_nominal else dTTraToDis_nominal
     "Helper for conditional sum in building dTs";
 equation

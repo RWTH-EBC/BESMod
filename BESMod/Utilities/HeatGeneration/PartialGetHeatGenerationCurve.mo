@@ -28,11 +28,12 @@ partial model PartialGetHeatGenerationCurve
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={82,10})));
-  Systems.Hydraulical.Control.Components.HeatingCurve heatingCurve(
+  Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.HeatingCurve
+    heatingCurve(
     TSup_nominal=systemParameters.THydSup_nominal[1],
     TRet_nominal=systemParameters.THydSup_nominal[1] - 7,
     TOda_nominal=systemParameters.TOda_nominal,
-    nHeaTra=1.3)                     annotation (Placement(transformation(
+    nHeaTra=1.3) annotation (Placement(transformation(
         extent={{-11,11},{11,-11}},
         rotation=0,
         origin={-9,-71})));
