@@ -194,7 +194,7 @@ model PartialHeatPump "Generation with only the heat pump"
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={100,-78})));
-  Modelica.Blocks.Math.MultiSum multiSum(nu=1)                           annotation (Placement(
+  Modelica.Blocks.Math.MultiSum multiSum(nu=2)                           annotation (Placement(
         transformation(
         extent={{-6,-6},{6,6}},
         rotation=180,
@@ -249,8 +249,8 @@ equation
       thickness=1));
   connect(multiSum.y, realToElecCon.PEleLoa)
     annotation (Line(points={{122.98,-82},{112,-82}}, color={0,0,127}));
-  connect(multiSum.u[1], reaExpPEleHeaPum.y) annotation (Line(points={{136,-82},
-          {144,-82},{144,-150},{-154,-150},{-154,-70},{-159,-70}},
+  connect(multiSum.u[1], reaExpPEleHeaPum.y) annotation (Line(points={{136,-80.95},
+          {144,-80.95},{144,-150},{-154,-150},{-154,-70},{-159,-70}},
                                                            color={0,0,127}),
       Text(
       string="%second",
@@ -355,6 +355,8 @@ equation
       horizontalAlignment=TextAlignment.Right));
   connect(reaExpQEva_flow.y, frost.QEva_flow) annotation (Line(points={{-199,6},{-190,
           6},{-190,5.68},{-179.6,5.68}}, color={0,0,127}));
+  connect(pump.P, multiSum.u[2]) annotation (Line(points={{-1,-61},{-10,-61},{-10,
+          -116},{148,-116},{148,-83.05},{136,-83.05}}, color={0,0,127}));
   annotation (Line(
       points={{-52.775,-6.78},{-52.775,33.61},{-56,33.61},{-56,74}},
       color={255,204,51},

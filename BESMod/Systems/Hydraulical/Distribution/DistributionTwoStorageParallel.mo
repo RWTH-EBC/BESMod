@@ -112,8 +112,7 @@ model DistributionTwoStorageParallel
         final TAmb=TAmb,
         final T_m=TDem_nominal[1],
         final QHC1_flow_nominal=Q_flow_nominal[1],
-        final mHC1_flow_nominal=mSup_flow_nominal[1],
-        redeclare final AixLib.DataBase.Pipes.Copper.Copper_12x1 pipeHC1)                    annotation (
+        final mHC1_flow_nominal=mSup_flow_nominal[1])                    annotation (
       choicesAllMatching=true, Placement(transformation(extent={{84,56},{98,70}})));
   replaceable parameter
     BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.SimpleStorageBaseDataDefinition
@@ -127,8 +126,7 @@ model DistributionTwoStorageParallel
         final Q_flow_nominal=0,
         final VPerQ_flow=0,
         final T_m=TDHW_nominal,
-        final mHC1_flow_nominal=mSup_flow_nominal[1],
-        redeclare final AixLib.DataBase.Pipes.Copper.Copper_12x1 pipeHC1)                                          annotation (
+        final mHC1_flow_nominal=mSup_flow_nominal[1])                                          annotation (
       choicesAllMatching=true, Placement(transformation(extent={{82,-58},{98,-42}})));
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixTemDHW(final T=
         parStoDHW.TAmb) "Constant ambient temperature of storage"

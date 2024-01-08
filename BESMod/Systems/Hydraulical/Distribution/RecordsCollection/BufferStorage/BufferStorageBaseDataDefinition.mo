@@ -28,8 +28,13 @@ record BufferStorageBaseDataDefinition
   parameter Modelica.Units.SI.MassFlowRate mHC2_flow_nominal
     "Nominal mass flow rate of HC fluid"
     annotation (Dialog(group="Loading", enable=use_HC2));
-  replaceable parameter AixLib.DataBase.Pipes.Copper.Copper_12x0_6 pipeHC2   constrainedby
-    AixLib.DataBase.Pipes.PipeBaseDataDefinition                                                                                           "Type of Pipe for HC2" annotation (choicesAllMatching=true, Dialog(group="Loading", enable=use_HC2));
+  final parameter Modelica.Units.SI.Velocity vHC2_nominal=mHC2_flow_nominal/(
+    rho*Modelica.Constants.pi*(pipeHC2.d_i/2)^2)
+    "Fluid velocity in pipe of HC 1 at nominal conditions";
+  replaceable parameter BESMod.Systems.Hydraulical.RecordsCollection.CopperPipeVariableSize
+    pipeHC2(d_i=2 * sqrt(mHC2_flow_nominal/(v_nominal * rho * Modelica.Constants.pi)))
+    constrainedby AixLib.DataBase.Pipes.PipeBaseDataDefinition "Type of Pipe for HC2"
+    annotation (choicesAllMatching=true, Dialog(group="Loading", tab="Calculated", enable=use_HC2));
   parameter Modelica.Units.SI.CoefficientOfHeatTransfer hConHC2=(2/pipeHC2.d_i
        + 2/pipeHC2.d_o)/(((max(dTLoadingHC2, dTLoaMin)*2*Modelica.Constants.pi*
       lengthHC2)/QHC2_flow_nominal) - (1/pipeHC2.lambda*log(pipeHC2.d_o/pipeHC2.d_i)))
@@ -38,11 +43,6 @@ record BufferStorageBaseDataDefinition
       tab="Calculated",
       group="Loading",
       enable=use_HC2));
-  parameter Modelica.Units.SI.Velocity vHC2_nominal=mHC2_flow_nominal/(rho*(
-      pipeHC2.d_i*Modelica.Constants.pi/2)^2)
-    "Fluid velocity in pipe of HC 1 at nominal conditions" annotation (Dialog(
-      tab="Calculated",
-      group="Loading",
-      enable=use_HC2));
+
 
 end BufferStorageBaseDataDefinition;

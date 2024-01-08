@@ -2,7 +2,7 @@ within BESMod.Systems.Hydraulical.Generation;
 model HeatPumpAndHeatingRod "Heat pump with heating rod in series"
   extends BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump(
   dp_nominal={heatPump.dpCon_nominal + dpHeaRod_nominal},
-  multiSum(nu=if use_heaRod then 2 else 1));
+  multiSum(nu=if use_heaRod then 3 else 2));
 
   parameter Boolean use_heaRod=true "=false to disable the heating rod"
    annotation(Dialog(group="Component choices"));
@@ -69,7 +69,7 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-    connect(multiSum.u[2], hea.Pel) annotation (Line(points={{136,-82},{140,-82},{
+  connect(multiSum.u[3], hea.Pel) annotation (Line(points={{136,-82},{140,-82},{
           140,56},{41,56}},       color={0,0,127}));
   connect(KPIQHeaRod_flow.KPI, outBusGen.QHeaRod_flow) annotation (Line(points={{
           -117.8,-130},{0,-130},{0,-100}}, color={135,135,135}), Text(

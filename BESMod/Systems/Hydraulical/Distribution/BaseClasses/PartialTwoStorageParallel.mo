@@ -48,15 +48,13 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
     T_m=TSup_nominal[1],
     final QHC1_flow_nominal=Q_flow_nominal[1]*f_design[1],
     final mHC1_flow_nominal=mSup_flow_nominal[1],
-    redeclare final AixLib.DataBase.Pipes.Copper.Copper_12x1 pipeHC1,
     final use_HC2=stoBuf.useHeatingCoil2,
     final use_HC1=stoBuf.useHeatingCoil1,
     final dTLoadingHC2=9999999,
     final fHeiHC2=1,
     final fDiaHC2=1,
     final QHC2_flow_nominal=9999999,
-    final mHC2_flow_nominal=9999999,
-    redeclare final AixLib.DataBase.Pipes.Copper.Copper_10x0_6 pipeHC2)
+    final mHC2_flow_nominal=9999999)
     "Parameters for buffer storage" annotation (
     Dialog(group="Component data"),
     choicesAllMatching=true,
@@ -76,15 +74,13 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
     T_m=TDHW_nominal,
     final QHC1_flow_nominal=QDHW_flow_nominal,
     final mHC1_flow_nominal=mSup_flow_nominal[1],
-    redeclare final AixLib.DataBase.Pipes.Copper.Copper_12x1 pipeHC1,
     final use_HC2=stoDHW.useHeatingCoil2,
     final use_HC1=stoDHW.useHeatingCoil1,
     final dTLoadingHC2=dTLoadingHC2,
     fHeiHC2=1,
     fDiaHC2=1,
     final QHC2_flow_nominal=QHC2_flow_nominal,
-    final mHC2_flow_nominal=mHC2_flow_nominal,
-    redeclare final AixLib.DataBase.Pipes.Copper.Copper_10x0_6 pipeHC2)
+    final mHC2_flow_nominal=mHC2_flow_nominal)
     "Parameters for DHW storage" annotation (
     Dialog(group="Component data"),
     choicesAllMatching=true,
