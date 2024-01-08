@@ -22,32 +22,43 @@ partial model PartialHeatPumpSystemController
   parameter Components.BaseClasses.MeasuredValue meaValSecGen
     "Control measurement value for secondary device"
     annotation (Dialog(group="Component choices"));
-  replaceable model DHWHysteresis =
-      BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.BaseClasses.PartialOnOffController
-    constrainedby
-    BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.BaseClasses.PartialOnOffController(
-      final dTHys=dTHysDHW)
-    "Hysteresis for DHW system" annotation (Dialog(group="Component choices"),
-    choicesAllMatching=true);
+
   replaceable model BuildingHysteresis =
       BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.BaseClasses.PartialOnOffController
     constrainedby
     BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.BaseClasses.PartialOnOffController(
       final dTHys=dTHysBui)
-    "Hysteresis for building" annotation (Dialog(group="Component choices"),
+    "Hysteresis for building" annotation (Dialog(group="Building control"),
     choicesAllMatching=true);
+  replaceable model BuildingSupplySetTemperature =
+      BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.HeatingCurve
+      constrainedby BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.PartialSetpoint(
+        final TSup_nominal=buiAndDHWCtr.TSup_nominal,
+        final TRet_nominal=buiAndDHWCtr.TRet_nominal,
+        final TOda_nominal=buiAndDHWCtr.TOda_nominal,
+        final nZones=buiAndDHWCtr.nZones,
+        final nHeaTra=buiAndDHWCtr.nHeaTra)
+      "Supply temperature setpoint model, e.g. heating curve"
+    annotation (choicesAllMatching=true, Dialog(group="Building control"));
   replaceable model DHWSetTemperature =
       BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.ConstTSet_DHW
     constrainedby
     BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.BaseClasses.PartialTSet_DHW_Control(
      final TSetDHW_nominal=parDis.TDHW_nominal)
-      "DHW set temperture module" annotation (Dialog(group="Component choices"),
+      "DHW set temperture module" annotation (Dialog(group="DHW control"),
       choicesAllMatching=true);
+  replaceable model DHWHysteresis =
+      BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.BaseClasses.PartialOnOffController
+    constrainedby
+    BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.BaseClasses.PartialOnOffController(
+      final dTHys=dTHysDHW)
+    "Hysteresis for DHW system" annotation (Dialog(group="DHW control"),
+    choicesAllMatching=true);
   replaceable model SummerMode =
    BESMod.Systems.Hydraulical.Control.Components.SummerMode.No
    constrainedby
    BESMod.Systems.Hydraulical.Control.Components.SummerMode.BaseClasses.PartialSummerMode
-    "Summer mode model" annotation(Dialog(group="Component choices"), choicesAllMatching=true);
+    "Summer mode model" annotation(Dialog(group="Building control"), choicesAllMatching=true);
   replaceable parameter BESMod.Systems.Hydraulical.Control.RecordsCollection.PIDBaseDataDefinition
     parPIDHeaPum constrainedby
     BESMod.Systems.Hydraulical.Control.RecordsCollection.PIDBaseDataDefinition
@@ -159,16 +170,18 @@ partial model PartialHeatPumpSystemController
 
 equation
 
-  connect(safCtr.modeSet, heaPumHea.y) annotation (Line(points={{198.667,68},{186,
-          68},{186,90},{181,90}}, color={255,0,255}));
-  connect(safCtr.nOut, sigBusGen.yHeaPumSet) annotation (Line(points={{220.833,72},
-          {254,72},{254,-118},{-152,-118},{-152,-99}}, color={0,0,127}), Text(
+  connect(safCtr.modeSet, heaPumHea.y) annotation (Line(points={{198.667,68},{
+          186,68},{186,90},{181,90}},
+                                  color={255,0,255}));
+  connect(safCtr.nOut, sigBusGen.yHeaPumSet) annotation (Line(points={{220.833,
+          72},{254,72},{254,-118},{-152,-118},{-152,-99}},
+                                                       color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(priGenPIDCtrl.ySet, safCtr.nSet) annotation (Line(points={{118.8,90},{
-          154,90},{154,76},{190,76},{190,72},{198.667,72}},
+  connect(priGenPIDCtrl.ySet, safCtr.nSet) annotation (Line(points={{118.8,90},
+          {154,90},{154,76},{190,76},{190,72},{198.667,72}},
                                                         color={0,0,127}));
 
   connect(priGenPIDCtrl.isOn, sigBusGen.heaPumIsOn) annotation (Line(points={{105.2,

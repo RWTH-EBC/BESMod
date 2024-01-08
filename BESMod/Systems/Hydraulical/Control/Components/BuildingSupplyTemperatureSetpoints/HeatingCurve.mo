@@ -1,6 +1,6 @@
 within BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints;
 model HeatingCurve
-  "Defines supply temperature to building in dependency of ambient temperature"
+  "Ideal heating curve"
   extends PartialSetpoint;
   Modelica.Blocks.Math.MinMax maxTZoneSet(final nu=nZones)
     annotation (Placement(transformation(extent={{-60,-80},{-40,-60}})));

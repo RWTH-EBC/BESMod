@@ -1,6 +1,6 @@
 within BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints;
 model SingleZonePID
-  "Model which controls the setpoint based on a single zone PID"
+  "Single zone PID controller"
   extends PartialSetpoint;
 
   replaceable parameter RecordsCollection.PIDBaseDataDefinition parPID

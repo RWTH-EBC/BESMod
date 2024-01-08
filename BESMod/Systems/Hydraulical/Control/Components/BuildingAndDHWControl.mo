@@ -19,25 +19,33 @@ model BuildingAndDHWControl
     supCtrDHWTyp=BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Local
     "Supervisory control approach for DHW supply temperature ";
 
-
-  replaceable model DHWHysteresis =
-      BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod
-      (dTHys=10)
-    constrainedby
-    BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.BaseClasses.PartialOnOffController
-    "Hysteresis for DHW system" annotation (choicesAllMatching=true);
   replaceable model BuildingHysteresis =
       BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod
       (dTHys=10)
     constrainedby
     BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.BaseClasses.PartialOnOffController
     "Hysteresis for building" annotation (choicesAllMatching=true);
+  replaceable model BuildingSupplySetTemperature =
+      BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.HeatingCurve
+      constrainedby BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.PartialSetpoint(
+        final TSup_nominal=TSup_nominal,
+        final TRet_nominal=TRet_nominal,
+        final TOda_nominal=TOda_nominal,
+        final nZones=nZones,
+        final nHeaTra=nHeaTra)
+    "Supply temperature setpoint model, e.g. heating curve" annotation (
+      choicesAllMatching=true);
+  replaceable model DHWHysteresis =
+      BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod
+      (dTHys=10)
+    constrainedby
+    BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.BaseClasses.PartialOnOffController
+    "Hysteresis for DHW system" annotation (choicesAllMatching=true);
   replaceable model DHWSetTemperature =
       BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.ConstTSet_DHW
     constrainedby
     BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.BaseClasses.PartialTSet_DHW_Control
       "DHW set temperture module" annotation (choicesAllMatching=true);
-
   replaceable model SummerMode =
    BESMod.Systems.Hydraulical.Control.Components.SummerMode.No
    constrainedby
@@ -47,27 +55,19 @@ model BuildingAndDHWControl
   SummerMode sumMod "Summer mode instance"
     annotation (Placement(transformation(extent={{42,-18},{62,2}})));
 
-
-  DHWHysteresis hysDHW
-    "Hysteresis for DHW system" annotation (Placement(
-        transformation(extent={{62,62},{78,78}})));
   BuildingHysteresis hysBui
     "Hysteresis for building" annotation (Placement(
         transformation(extent={{42,-78},{58,-62}})));
+  BuildingSupplySetTemperature TSetBuiSup
+    "Building supply set temperature module"  annotation (
+      Placement(transformation(extent={{-60,-100},{-40,-80}})));
+  DHWHysteresis hysDHW
+    "Hysteresis for DHW system" annotation (Placement(
+        transformation(extent={{62,62},{78,78}})));
   DHWSetTemperature TSetDHW "DHW set temperature module" annotation (
       Placement(transformation(extent={{-78,82},{-62,98}})));
 
-  replaceable
-    BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.HeatingCurve
-    heaCur constrainedby
-    BuildingSupplyTemperatureSetpoints.PartialSetpoint(
-    final TSup_nominal=TSup_nominal,
-    final TRet_nominal=TRet_nominal,
-    final TOda_nominal=TOda_nominal,
-    final nZones=nZones,
-    final nHeaTra=nHeaTra)
-    "Heating curve" annotation (Placement(transformation(extent={{-60,-100},{-40,-80}})),
-      choicesAllMatching=true);
+
   Modelica.Blocks.Logical.Or priGenOn "Turn on primary generation device"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -178,16 +178,16 @@ equation
   connect(hysDHW.priGenOn, priGenOn.u1) annotation (Line(points={{79.12,75.6},{79.12,
           74},{108,74},{108,46},{230,46},{230,-90},{238,-90}},   color={255,0,255}));
   connect(TSetDHW.y, orDHW.u[1]) annotation (Line(points={{-61.2,85.36},{-54,
-          85.36},{-54,50},{-48,50},{-48,34},{90,34},{90,74},{108,74},{108,67.6667},
-          {120,67.6667}},                   color={255,0,255}));
+          85.36},{-54,50},{-48,50},{-48,34},{90,34},{90,74},{108,74},{108,
+          67.6667},{120,67.6667}},          color={255,0,255}));
   connect(hysDHW.secGenOn, orDHW.u[2]) annotation (Line(points={{79.12,66},{90,66},
           {90,50},{120,50},{120,70}}, color={255,0,255}));
   connect(TSetDHW.TSetDHW, supCtrDHW.uLoc) annotation (Line(points={{-61.2,90},{-10,
           90},{-10,62},{-2,62}}, color={0,0,127}));
   connect(supCtrDHW.y, hysDHW.TSupSet) annotation (Line(points={{22,70},{22,56},{70,
           56},{70,61.2}}, color={0,0,127}));
-  connect(heaCur.TOda, TOda) annotation (Line(points={{-62,-90},{-90,-90},{-90,0},
-          {-120,0}},   color={0,0,127}));
+  connect(TSetBuiSup.TOda, TOda) annotation (Line(points={{-62,-90},{-90,-90},{-90,
+          0},{-120,0}}, color={0,0,127}));
   connect(TSetDHW.sigBusDistr, sigBusDistr) annotation (Line(
       points={{-78,89.92},{-78,90},{-86,90},{-86,70},{-100,70}},
       color={255,204,51},
@@ -216,8 +216,8 @@ equation
                        color={255,0,255}));
   connect(secGenOn.y, secGen) annotation (Line(points={{221.5,-110},{286,-110},{
           286,-70},{310,-70}},                                     color={255,0,255}));
-  connect(hysDHW.secGenOn, secGenOn.u[1]) annotation (Line(points={{79.12,66},{90,
-          66},{90,34},{178,34},{178,-112.333},{200,-112.333}},
+  connect(hysDHW.secGenOn, secGenOn.u[1]) annotation (Line(points={{79.12,66},{
+          90,66},{90,34},{178,34},{178,-112.333},{200,-112.333}},
                                                      color={255,0,255}));
   connect(TSetDHW.y, secGenOn.u[2]) annotation (Line(points={{-61.2,85.36},{-54,
           85.36},{-54,50},{-48,50},{-48,34},{178,34},{178,-110},{200,-110}},
@@ -267,8 +267,8 @@ equation
       horizontalAlignment=TextAlignment.Right));
   connect(supCtrHeaCur.y, hysBui.TSupSet)
     annotation (Line(points={{22,-90},{50,-90},{50,-78.8}}, color={0,0,127}));
-  connect(supCtrHeaCur.uLoc, heaCur.TSet) annotation (Line(points={{-2,-98},{-14,-98},
-          {-14,-90},{-39,-90}},      color={0,0,127}));
+  connect(supCtrHeaCur.uLoc, TSetBuiSup.TSet) annotation (Line(points={{-2,-98},{-14,
+          -98},{-14,-90},{-39,-90}}, color={0,0,127}));
   connect(constAntLegOff.y, swiAntLeg.u3) annotation (Line(points={{-59,30},{-50,
           30},{-50,42},{-42,42}}, color={0,0,127}));
   connect(constAntLeg.y, swiAntLeg.u1)
@@ -301,8 +301,9 @@ equation
           {274,80},{310,80}}, color={0,0,127}));
   connect(logSwiSumModPriGen.y, priGenOn.u2) annotation (Line(points={{141,-70},
           {164,-70},{164,-98},{238,-98}}, color={255,0,255}));
-  connect(logSwiSumModSecGen.y, secGenOn.u[3]) annotation (Line(points={{141,-110},
-          {140,-110},{140,-126},{200,-126},{200,-107.667}}, color={255,0,255}));
+  connect(logSwiSumModSecGen.y, secGenOn.u[3]) annotation (Line(points={{141,
+          -110},{140,-110},{140,-126},{200,-126},{200,-107.667}},
+                                                            color={255,0,255}));
   connect(logSwiDHW.y, DHW) annotation (Line(points={{261,20},{282,20},{282,52},
           {310,52}}, color={255,0,255}));
   connect(logSwiSumModSecGen.u3, conSumModGen.y) annotation (Line(points={{118,
@@ -329,8 +330,8 @@ equation
           20},{238,20}}, color={255,0,255}));
   connect(logSwiDHW.y, bufOn.u) annotation (Line(points={{261,20},{266,20},{266,
           66},{148,66},{148,80}}, color={255,0,255}));
-  connect(heaCur.TSet, sigBusHyd.TBuiLoc) annotation (Line(points={{-39,-90},{-20,
-          -90},{-20,-24},{-112,-24},{-112,103},{100,103}},     color={0,0,127}),
+  connect(TSetBuiSup.TSet, sigBusHyd.TBuiLoc) annotation (Line(points={{-39,-90},{-20,
+          -90},{-20,-24},{-112,-24},{-112,103},{100,103}}, color={0,0,127}),
       Text(
       string="%second",
       index=1,
@@ -349,9 +350,9 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(heaCur.TZoneMea, TZoneMea) annotation (Line(points={{-62,-82},{-86,-82},
+  connect(TSetBuiSup.TZoneMea, TZoneMea) annotation (Line(points={{-62,-82},{-86,-82},
           {-86,-40},{-120,-40}}, color={0,0,127}));
-  connect(heaCur.TZoneSet, TZoneSet) annotation (Line(points={{-62,-98},{-92,-98},
+  connect(TSetBuiSup.TZoneSet, TZoneSet) annotation (Line(points={{-62,-98},{-92,-98},
           {-92,-80},{-120,-80}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-140},
             {300,100}})), Diagram(coordinateSystem(preserveAspectRatio=false,
