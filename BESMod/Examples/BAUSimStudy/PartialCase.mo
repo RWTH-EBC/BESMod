@@ -9,7 +9,7 @@ partial model PartialCase
       ABui=sum(building.zoneParam.VAir)^(2/3)),
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
-      redeclare Systems.Hydraulical.Generation.HeatPumpAndHeatingRod generation(
+      redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater generation(
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare package Medium_eva = AixLib.Media.Air,
         redeclare
@@ -23,8 +23,8 @@ partial model PartialCase
           use_refIne=false,
           refIneFre_constant=0),
         redeclare
-          BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-          parHeaRod,
+          BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
+          parEleHea,
         redeclare model PerDataMainHP =
             AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
             QCon_flow_nominal=hydraulic.generation.parHeaPum.QPri_flow_nominal,
@@ -43,9 +43,9 @@ partial model PartialCase
         dTHysBui=10,
         dTHysDHW=10,
         redeclare model DHWHysteresis =
-            BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod,
+            BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
         redeclare model BuildingHysteresis =
-            BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod,
+            BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
           parPIDHeaPum,
@@ -71,8 +71,8 @@ partial model PartialCase
           use_QLos=true,
           T_m=65 + 273.15),
         redeclare
-          BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-          parHeaRodAftBuf),
+          BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
+          parEleHeaAftBuf),
       redeclare BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased
         transfer(
         redeclare

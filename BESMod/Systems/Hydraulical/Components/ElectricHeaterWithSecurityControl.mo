@@ -1,5 +1,5 @@
 within BESMod.Systems.Hydraulical.Components;
-model HeatingRodWithSecurityControl
+model ElectricHeaterWithSecurityControl
   "Heating rod which converts electrical energy into heat with a given efficiency"
   extends IBPSA.Fluid.Interfaces.TwoPortHeatMassExchanger(
     redeclare final IBPSA.Fluid.MixingVolumes.MixingVolume vol(
@@ -273,4 +273,4 @@ revisions="<html><ul>
   </li>
 </ul>
 </html>"));
-end HeatingRodWithSecurityControl;
+end ElectricHeaterWithSecurityControl;

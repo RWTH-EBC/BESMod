@@ -24,19 +24,19 @@ model ElectricalHeater "Only heat using a heating rod"
     final m_flow_nominal=m_flow_nominal[1],
     final m_flow_small=1E-4*abs(m_flow_nominal[1]),
     final show_T=show_T,
-    final dp_nominal=parHeaRod.dp_nominal,
+    final dp_nominal=parEleHea.dp_nominal,
     final tau=30,
     final energyDynamics=energyDynamics,
     final p_start=p_start,
     final T_start=T_start,
     final Q_flow_nominal=Q_flow_nominal[1],
-    final V=parHeaRod.V_hr,
-    final eta=parHeaRod.eta_hr)
+    final V=parEleHea.V_hr,
+    final eta=parEleHea.eta_hr)
     annotation (Placement(transformation(extent={{-16,-16},{16,16}},
         rotation=90,
         origin={-32,10})));
-  replaceable parameter BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatingRodBaseDataDefinition
-    parHeaRod
+  replaceable parameter BESMod.Systems.Hydraulical.Generation.RecordsCollection.EletricHeaterBaseDataDefinition
+    parEleHea "Electric heater parameters"
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-62,-42},
             {-50,-30}})));
 
@@ -73,7 +73,8 @@ model ElectricalHeater "Only heat using a heating rod"
         rotation=90,
         origin={62,-74})));
 
-  Utilities.KPIs.EnergyKPICalculator KPIQHR(use_inpCon=false, y=hea.vol.heatPort.Q_flow)
+  Utilities.KPIs.EnergyKPICalculator KPIQEleHea(use_inpCon=false, y=hea.vol.heatPort.Q_flow)
+    "Electric heater heat flow rate"
     annotation (Placement(transformation(extent={{-40,-80},{-20,-60}})));
   replaceable parameter
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
@@ -81,11 +82,11 @@ model ElectricalHeater "Only heat using a heating rod"
             {28,-52}})));
   BESMod.Utilities.Electrical.RealToElecCon realToElecCon(use_souGen=false)
     annotation (Placement(transformation(extent={{32,-108},{52,-88}})));
-  Utilities.KPIs.DeviceKPICalculator KPIHeaRod1(
+  Utilities.KPIs.DeviceKPICalculator KPIEleHea(
     use_reaInp=true,
     calc_singleOnTime=true,
     calc_totalOnTime=true,
-    calc_numSwi=true)
+    calc_numSwi=true) "Electric heater KPIs"
     annotation (Placement(transformation(extent={{-60,-100},{-40,-80}})));
 equation
   connect(dummyZero.y,switch1. u3)
@@ -126,25 +127,25 @@ equation
   connect(realToElecCon.PEleLoa, hea.Pel) annotation (Line(points={{30,-94},{
           -80,-94},{-80,28},{-60,28},{-60,27.6},{-41.6,27.6}},
                                              color={0,0,127}));
-  connect(KPIQHR.KPI, outBusGen.QHR_flow) annotation (Line(points={{-17.8,-70},
+  connect(KPIQEleHea.KPI, outBusGen.QEleHea_flow) annotation (Line(points={{-17.8,-70},
           {0,-70},{0,-100}}, color={135,135,135}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(KPIHeaRod1.KPI, outBusGen.heaRod) annotation (Line(points={{-37.8,-90},
-          {-14,-90},{-14,-86},{0,-86},{0,-100}}, color={135,135,135}), Text(
+  connect(KPIEleHea.KPI, outBusGen.eleHea) annotation (Line(points={{-37.8,-90},{-14,
+          -90},{-14,-86},{0,-86},{0,-100}}, color={135,135,135}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(KPIHeaRod1.uRea, sigBusGen.uHR) annotation (Line(points={{-62.2,-90},
-          {-76,-90},{-76,98},{2,98}}, color={0,0,127}), Text(
+  connect(KPIEleHea.uRea, sigBusGen.uHR) annotation (Line(points={{-62.2,-90},{-76,
+          -90},{-76,98},{2,98}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(hea.u, sigBusGen.uHeaRod) annotation (Line(points={{-41.6,-9.2},{
+  connect(hea.u, sigBusGen.uEleHea) annotation (Line(points={{-41.6,-9.2},{
           -41.6,-14},{-54,-14},{-54,98},{2,98}}, color={0,0,127}), Text(
       string="%second",
       index=1,

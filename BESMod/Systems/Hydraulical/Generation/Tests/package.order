@@ -3,7 +3,7 @@ GasBoiler
 HeatPump
 HeatPumpAndGasBoilerParallel
 HeatPumpAndGasBoilerSeries
-HeatPumpAndHeatingRod
-SolarThermalAndHeatPumpAndHeatingRodDetailed
-SolarThermalAndHeatPumpAndHeatingRodSimple
+HeatPumpAndElectricHeater
 PartialTest
+SolarThermalAndHeatPumpDetailed
+SolarThermalAndHeatPumpSimple

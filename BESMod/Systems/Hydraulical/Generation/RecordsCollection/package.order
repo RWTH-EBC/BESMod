@@ -1,8 +1,8 @@
-HeatingRodBaseDataDefinition
-DefaultHR
-SolarThermalBaseDataDefinition
-DefaultSolarThermal
-HeatPumpBaseDataDefinition
-DefaultHP
-BivalentHeatPumpBaseDataDefinition
 AutoparameterBoiler
+BivalentHeatPumpBaseDataDefinition
+DefaultElectricHeater
+DefaultHP
+DefaultSolarThermal
+EletricHeaterBaseDataDefinition
+HeatPumpBaseDataDefinition
+SolarThermalBaseDataDefinition

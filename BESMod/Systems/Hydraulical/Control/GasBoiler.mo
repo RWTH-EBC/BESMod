@@ -11,6 +11,7 @@ model GasBoiler "PI Control of gas boiler"
     annotation (choicesAllMatching=true, Placement(transformation(extent={{142,84},{162,104}})));
   BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.HeatingCurve
     heatingCurve(
+    final nZones=parTra.nParallelDem,
     TSup_nominal=max(parTra.TTra_nominal),
     TRet_nominal=max(parTra.TTra_nominal - parTra.dTTra_nominal),
     TOda_nominal=parGen.TOda_nominal,
@@ -71,8 +72,6 @@ model GasBoiler "PI Control of gas boiler"
     annotation (Placement(transformation(extent={{46,48},{66,68}})));
   Modelica.Blocks.Math.BooleanToReal booleanToReal
     annotation (Placement(transformation(extent={{40,0},{60,20}})));
-  Modelica.Blocks.Math.MinMax minMax(nu=parTra.nParallelDem)
-    annotation (Placement(transformation(extent={{-240,50},{-220,70}})));
   Modelica.Blocks.Logical.Not bufOn if use_dhw
                                     "buffer is charged" annotation (Placement(
         transformation(
@@ -179,14 +178,6 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(minMax.yMax,heatingCurve.TZoneSet)
-    annotation (Line(points={{-219,66},{-222,66},{-222,22}}, color={0,0,127}));
-  connect(minMax.u, useProBus.TZoneSet) annotation (Line(points={{-240,60},{-244,
-          60},{-244,103},{-119,103}}, color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
   connect(bufOn.y, booToRea.u)
     annotation (Line(points={{-59,-50},{-42,-50}}, color={255,0,255}));
   connect(booToRea.y, sigBusDistr.uThrWayVal) annotation (Line(points={{-19,-50},
@@ -197,4 +188,18 @@ equation
       horizontalAlignment=TextAlignment.Left));
   connect(bufOn.u, boilerOnOffDHW.y) annotation (Line(points={{-82,-50},{-122,
           -50},{-122,50},{-139,50}}, color={255,0,255}));
+  connect(heatingCurve.TZoneMea, buiMeaBus.TZoneMea) annotation (Line(points={{
+          -222,38},{-234,38},{-234,40},{-242,40},{-242,103},{65,103}}, color={0,0,
+          127}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(heatingCurve.TZoneSet, useProBus.TZoneSet) annotation (Line(points={{
+          -222,22},{-236,22},{-236,24},{-238,24},{-238,103},{-119,103}}, color={0,
+          0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
 end GasBoiler;

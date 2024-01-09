@@ -16,8 +16,8 @@ model TestDirectLoading
         BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorage
         parStoDHW(dTLoadingHC1=5),
       redeclare
-        BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-        parHeaRodAftBuf,
+        BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
+        parEleHeaAftBuf,
       QHeaAftBuf_flow_nominal=
                              0));
   extends Modelica.Icons.Example;

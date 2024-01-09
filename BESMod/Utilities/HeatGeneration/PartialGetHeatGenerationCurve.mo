@@ -97,7 +97,7 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(const1.y, sigBusGen.uHeaRod) annotation (Line(points={{-79,30},{-62,
+  connect(const1.y, sigBusGen.uEleHea) annotation (Line(points={{-79,30},{-62,
           30},{-62,64}}, color={0,0,127}), Text(
       string="%second",
       index=1,

@@ -2,8 +2,8 @@ within BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.Ex
 model OnOffControllerTest
   extends Modelica.Icons.Example;
 
-  ConstantHysteresisTimeBasedHeatingRod constantHysteresisTimeBasedHR(dTHys=10,
-      dtHeaRod=1800)
+  TimeBasedElectricHeater constantHysteresisTimeBasedHR(dTHys=10,
+      dtEleHea=1800)
               annotation (Placement(transformation(extent={{-28,42},{16,82}})));
   BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.DegreeMinuteController
     degreeMinuteController(dTHys=10,

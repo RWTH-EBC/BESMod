@@ -22,7 +22,7 @@ partial model PartialModelicaConferenceUseCase
           systemParameters.TSetDHW),
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
-      redeclare Systems.Hydraulical.Generation.HeatPumpAndHeatingRod generation(
+      redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater generation(
         dTTra_nominal={10},
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare package Medium_eva = AixLib.Media.Air,
@@ -37,8 +37,8 @@ partial model PartialModelicaConferenceUseCase
           use_refIne=false,
           refIneFre_constant=0),
         redeclare
-          BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-          parHeaRod,
+          BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
+          parEleHea,
         redeclare model PerDataMainHP =
             AixLib.DataBase.HeatPump.PerformanceData.LookUpTable2D (dataTable=
                 AixLib.DataBase.HeatPump.EN255.Vitocal350AWI114()),
@@ -55,9 +55,9 @@ partial model PartialModelicaConferenceUseCase
           parTheVal,
         supCtrDHWTyp=BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Internal,
         redeclare model DHWHysteresis =
-            BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod,
+            BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
         redeclare model BuildingHysteresis =
-            BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod,
+            BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
           parPIDHeaPum,

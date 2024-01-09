@@ -10,10 +10,10 @@ partial model PartialTwoStorageParallelWithHeaters
     "Type of heater after the buffer storage"
     annotation(Dialog(group="Component choices"));
 
-  replaceable parameter BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-    parHeaRodAftBuf if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.HeatingRod
+  replaceable parameter BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
+    parEleHeaAftBuf if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.ElectricHeater
     "Parameters for heating rod after buffer storage" annotation (
-    Dialog(group="Component data", enable=heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.HeatingRod),
+    Dialog(group="Component data", enable=heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.ElectricHeater),
     choicesAllMatching=true,
     Placement(transformation(
         extent={{-6,-6},{6,6}},
@@ -32,20 +32,20 @@ partial model PartialTwoStorageParallelWithHeaters
     annotation(Placement(transformation(extent={{64,124},{80,140}})),
       choicesAllMatching=true, Dialog(group="Component data"));
 
-  BESMod.Systems.Hydraulical.Components.HeatingRodWithSecurityControl hea(
+  BESMod.Systems.Hydraulical.Components.ElectricHeaterWithSecurityControl hea(
     redeclare package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=m_flow_nominal[1],
     final m_flow_small=1E-4*abs(m_flow_nominal[1]),
     final show_T=show_T,
-    final dp_nominal=parHeaRodAftBuf.dp_nominal,
+    final dp_nominal=parEleHeaAftBuf.dp_nominal,
     final tau=30,
     final energyDynamics=energyDynamics,
     final p_start=p_start,
     final T_start=T_start,
     final Q_flow_nominal=QHeaAftBuf_flow_nominal,
-    final V=parHeaRodAftBuf.V_hr,
-    final eta=parHeaRodAftBuf.eta_hr) if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.HeatingRod
+    final V=parEleHeaAftBuf.V_hr,
+    final eta=parEleHeaAftBuf.eta_hr) if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.ElectricHeater
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -56,8 +56,8 @@ partial model PartialTwoStorageParallelWithHeaters
     BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.No
     annotation (Placement(transformation(extent={{40,54},{60,74}})));
 
-  Utilities.KPIs.EnergyKPICalculator eneKPICalAftBufHeaRod(use_inpCon=false, y=
-        hea.Pel) if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.HeatingRod
+  Utilities.KPIs.EnergyKPICalculator eneKPICalAftBufEleHea(use_inpCon=false, y=
+        hea.Pel) if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.ElectricHeater
     "Heating rod after buffer KPIs"                                                                 annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
@@ -95,7 +95,7 @@ partial model PartialTwoStorageParallelWithHeaters
         rotation=180,
         origin={30,-150})));
 equation
-  connect(eneKPICalAftBufHeaRod.KPI, outBusDist.PEleHRAftBuf) annotation (Line(
+  connect(eneKPICalAftBufEleHea.KPI, outBusDist.PEleHeaAftBuf) annotation (Line(
         points={{17.8,-130},{0,-130},{0,-100}}, color={135,135,135}), Text(
       string="%second",
       index=1,

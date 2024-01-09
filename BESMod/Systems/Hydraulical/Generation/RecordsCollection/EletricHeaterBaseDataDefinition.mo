@@ -1,5 +1,5 @@
 within BESMod.Systems.Hydraulical.Generation.RecordsCollection;
-partial record HeatingRodBaseDataDefinition
+partial record EletricHeaterBaseDataDefinition
   extends Modelica.Icons.Record;
   // Generation: Heating Rod
   parameter Real eta_hr "Heating rod efficiency";
@@ -13,4 +13,4 @@ partial record HeatingRodBaseDataDefinition
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
-end HeatingRodBaseDataDefinition;
+end EletricHeaterBaseDataDefinition;

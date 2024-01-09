@@ -1,9 +1,9 @@
+BoilerInHybridSystem
+BuildingAndDHWControl
 BivalentOnOffControllers
 BuildingSupplyTemperatureSetpoints
 DHWSetControl
+RelativeSpeedController
 SummerMode
 ThermostaticValveController
-RelativeSpeedController
-BuildingAndDHWControl
-BoilerInHybridSystem
 BaseClasses

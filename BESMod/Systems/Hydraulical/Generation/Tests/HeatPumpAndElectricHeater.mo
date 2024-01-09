@@ -1,9 +1,9 @@
 within BESMod.Systems.Hydraulical.Generation.Tests;
-model HeatPumpAndHeatingRod
+model HeatPumpAndElectricHeater "Test for HeatPumpAndElectricHeater"
   extends PartialTest(   redeclare
-      BESMod.Systems.Hydraulical.Generation.HeatPumpAndHeatingRod
+      BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater
       generation(
-      use_heaRod=true,
+      use_eleHea=true,
       redeclare model PerDataMainHP =
           AixLib.DataBase.HeatPump.PerformanceData.LookUpTable2D (dataTable=
               AixLib.DataBase.HeatPump.EN255.Vitocal350AWI114()),
@@ -14,8 +14,8 @@ model HeatPumpAndHeatingRod
         parPum,
       redeclare BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
         parTemSen,
-      redeclare BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-        parHeaRod));
+      redeclare BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
+        parEleHea));
    extends Modelica.Icons.Example;
 
   Modelica.Blocks.Sources.Constant     const1(k=0)
@@ -35,10 +35,10 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(const1.y, genControlBus.uHeaRod) annotation (Line(points={{-59,50},{
+  connect(const1.y, genControlBus.uEleHea) annotation (Line(points={{-59,50},{
           -24,50},{-24,48},{10,48},{10,74}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-end HeatPumpAndHeatingRod;
+end HeatPumpAndElectricHeater;

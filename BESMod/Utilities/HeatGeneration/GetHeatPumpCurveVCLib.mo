@@ -2,7 +2,7 @@ within BESMod.Utilities.HeatGeneration;
 model GetHeatPumpCurveVCLib
   extends PartialGetHeatGenerationCurve(
     redeclare Examples.DesignOptimization.AachenSystem systemParameters,
-    redeclare Systems.Hydraulical.Generation.HeatPumpAndHeatingRod generation(
+    redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater generation(
       redeclare package Medium_eva = IBPSA.Media.Air,
       redeclare BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
         parHeaPum,
@@ -12,8 +12,8 @@ model GetHeatPumpCurveVCLib
       redeclare BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
         parTemSen,
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
-      redeclare BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-        parHeaRod),
+      redeclare BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
+        parEleHea),
     ramp(
       height=35,
       duration=84400,
