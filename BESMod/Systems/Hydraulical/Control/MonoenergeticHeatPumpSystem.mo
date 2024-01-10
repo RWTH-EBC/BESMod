@@ -1,6 +1,6 @@
 within BESMod.Systems.Hydraulical.Control;
 model MonoenergeticHeatPumpSystem
-  "Monoenergetic HPS with on/off heating rod"
+  "Monoenergetic HPS with on/off electric heater"
   extends BaseClasses.PartialHeatPumpSystemController(
     final meaValSecGen=BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue.GenerationSupplyTemperature);
 

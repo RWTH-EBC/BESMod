@@ -6,16 +6,10 @@ partial model PartialThermostaticValveControl
     BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.BaseClasses.PartialThermostaticValveController
     valCtrl constrainedby
     BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.BaseClasses.PartialThermostaticValveController(
-     final nZones=parTra.nParallelDem, final leakageOpening=parTheVal.leakageOpening)
+     final nZones=parTra.nParallelDem)
     "Thermostatic valve controller" annotation (
       Dialog(group="Building control"), choicesAllMatching=true,
       Placement(transformation(extent={{122,-78},{138,-62}})));
-  replaceable parameter
-    BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
-    parTheVal "Thermostatic valve parameters"
-      annotation (Dialog(group="Building control"),
-      choicesAllMatching=true, Placement(
-        transformation(extent={{182,-78},{198,-62}})));
 equation
   connect(valCtrl.opening, sigBusTra.opening) annotation (Line(points={{139.6,-70},
           {174,-70},{174,-100}}, color={0,0,127}), Text(

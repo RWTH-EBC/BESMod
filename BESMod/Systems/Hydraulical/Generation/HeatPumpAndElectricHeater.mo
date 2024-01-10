@@ -20,12 +20,12 @@ model HeatPumpAndElectricHeater "Heat pump with an electric heater in series"
     final T_start=T_start,
     final Q_flow_nominal=parHeaPum.QSec_flow_nominal,
     final V=parEleHea.V_hr,
-    final eta=parEleHea.eta_hr,
+    final eta=parEleHea.eta,
     use_countNumSwi=false) if use_eleHea "Electric heater"
     annotation (Placement(transformation(extent={{20,40},{40,60}})));
   AixLib.Fluid.Interfaces.PassThroughMedium pasThrMedEleHea(redeclare package
       Medium = Medium, allowFlowReversal=allowFlowReversal) if not use_eleHea
-    "Pass through if heating rod is not used"
+    "Pass through if electric heater is not used"
     annotation (Placement(transformation(extent={{20,20},{40,40}})));
   replaceable parameter RecordsCollection.EletricHeaterBaseDataDefinition parEleHea
     "Electric heater parameters"

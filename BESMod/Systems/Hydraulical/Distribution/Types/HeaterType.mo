@@ -6,4 +6,4 @@ type HeaterType = enumeration(
              "Use an electric heater",
     Boiler
          "Use a boiler")
-  "Select between boiler, heating rod or no additional heater";
+  "Select between boiler, electric heater or no additional heater";

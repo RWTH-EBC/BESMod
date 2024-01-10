@@ -28,7 +28,7 @@ partial model PartialGetHeatGenerationCurve
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={82,10})));
-  Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.HeatingCurve
+  Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.IdealHeatingCurve
     heatingCurve(
     TSup_nominal=systemParameters.THydSup_nominal[1],
     TRet_nominal=systemParameters.THydSup_nominal[1] - 7,

@@ -3,4 +3,3 @@ BasicHeatPumpPI
 DefaultSafetyControl
 HeatPumpSafetyControl
 PIDBaseDataDefinition
-ThermostaticValveDataDefinition

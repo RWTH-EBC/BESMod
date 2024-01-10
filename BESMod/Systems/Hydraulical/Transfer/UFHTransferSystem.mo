@@ -24,7 +24,7 @@ model UFHTransferSystem
     final floorHeatingType=floorHeatingType,
     each final dis=5,
     final A=UFHParameters.area,
-    final T0=TDem_nominal,
+    each final T0=T_start,
     each calcMethod=1) "Underfloor heating" annotation (Placement(
         transformation(
         extent={{-29.5,-10.5},{29.5,10.5}},

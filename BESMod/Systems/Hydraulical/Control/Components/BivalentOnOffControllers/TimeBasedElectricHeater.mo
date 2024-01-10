@@ -7,7 +7,7 @@ model TimeBasedElectricHeater
   parameter Modelica.Units.SI.Time dtEleHea(displayUnit="min")=1800
     "Seconds for regulation when hr should be activated: If lower set temperature is hurt for more than this time period";
   parameter Real addSetDelTimEleHea=1
-    "Each time dt_hr passes, the output of the heating rod is increased by this amount in percentage. Maximum and default is 100 (on-off hr)%";
+    "Each time electric heater time passes, the output of the electric heater is increased by this amount in percentage. Maximum and default is 100 (on-off hr)%";
 
   BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.Utilities.StorageHysteresis
     hysSto(final bandwidth=dTHys, final pre_y_start=true) "Storage hysteresis"
@@ -17,7 +17,7 @@ model TimeBasedElectricHeater
     annotation (Placement(transformation(extent={{-32,-88},{-12,-68}})));
   Modelica.Blocks.Sources.RealExpression reaExp(y=min(floor((time - trigTime.y)/
         dtEleHea)*addSetDelTimEleHea, 1))
-    "Calculate if heating rod time has elapsed"
+    "Calculate if electric heater time has elapsed"
     annotation (Placement(transformation(extent={{6,-70},{26,-50}})));
   Modelica.Blocks.Logical.GreaterThreshold greThr(threshold=Modelica.Constants.eps)
     annotation (Placement(transformation(extent={{70,-68},{86,-52}})));

@@ -1,11 +1,9 @@
 within BESMod.Systems.Hydraulical.Generation.Tests;
 model ElectricalHeater
   extends PartialTest(redeclare
-      BESMod.Systems.Hydraulical.Generation.ElectricalHeater
-      generation(  redeclare
-        BESMod.Systems.RecordsCollection.Movers.DefaultMover
-        parPum,
-      redeclare
+      BESMod.Systems.Hydraulical.Generation.ElectricalHeater generation(
+        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
+        redeclare
         BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
         parEleHea));
   extends Modelica.Icons.Example;

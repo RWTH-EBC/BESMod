@@ -12,7 +12,7 @@ partial model PartialTwoStorageParallelWithHeaters
 
   replaceable parameter BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
     parEleHeaAftBuf if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.ElectricHeater
-    "Parameters for heating rod after buffer storage" annotation (
+    "Parameters for electric heater after buffer storage" annotation (
     Dialog(group="Component data", enable=heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.ElectricHeater),
     choicesAllMatching=true,
     Placement(transformation(
@@ -45,20 +45,20 @@ partial model PartialTwoStorageParallelWithHeaters
     final T_start=T_start,
     final Q_flow_nominal=QHeaAftBuf_flow_nominal,
     final V=parEleHeaAftBuf.V_hr,
-    final eta=parEleHeaAftBuf.eta_hr) if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.ElectricHeater
+    final eta=parEleHeaAftBuf.eta) if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.ElectricHeater
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={50,90})));
 
-  AixLib.Fluid.Interfaces.PassThroughMedium pasThrHeaRodBuf(redeclare package
+  AixLib.Fluid.Interfaces.PassThroughMedium pasThrEleHeaBuf(redeclare package
       Medium = Medium, allowFlowReversal=allowFlowReversal) if heaAftBufTyp ==
     BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.No
     annotation (Placement(transformation(extent={{40,54},{60,74}})));
 
   Utilities.KPIs.EnergyKPICalculator eneKPICalAftBufEleHea(use_inpCon=false, y=
         hea.Pel) if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.ElectricHeater
-    "Heating rod after buffer KPIs"                                                                 annotation (Placement(transformation(
+    "Electric heater after buffer KPIs"                                                                 annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={30,-130})));
@@ -119,7 +119,7 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(stoBuf.fluidportTop2, pasThrHeaRodBuf.port_a) annotation (Line(points={{
+  connect(stoBuf.fluidportTop2, pasThrEleHeaBuf.port_a) annotation (Line(points={{
           -29,40.2},{-29,60},{32,60},{32,64},{40,64}}, color={0,127,255}));
   connect(stoBuf.fluidportTop2, hea.port_a) annotation (Line(points={{-29,40.2},{-29,
           60},{32,60},{32,90},{40,90}}, color={0,127,255}));
@@ -129,7 +129,7 @@ equation
           {66,102},{64,102},{64,82},{62,82},{62,80},{66,80}}, color={0,127,255}));
   connect(hea.port_b, senTBuiSup.port_a) annotation (Line(points={{60,90},{60,86},
           {66,86},{66,80}}, color={0,127,255}));
-  connect(pasThrHeaRodBuf.port_b, senTBuiSup.port_a)
+  connect(pasThrEleHeaBuf.port_b, senTBuiSup.port_a)
     annotation (Line(points={{60,64},{66,64},{66,80}}, color={0,127,255}));
   connect(eneKPICalAftBufBoi.KPI, outBusDist.PBoiAftBuf) annotation (Line(points={
           {17.8,-150},{0,-150},{0,-100}}, color={135,135,135}), Text(

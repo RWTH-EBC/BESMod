@@ -1,4 +1,4 @@
-within BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints;
+within BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.BaseClasses;
 model PartialSetpoint
   parameter Integer nZones "Number of heated zones";
   parameter Modelica.Units.SI.Temperature TSup_nominal

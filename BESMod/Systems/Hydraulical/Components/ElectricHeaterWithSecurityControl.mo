@@ -1,6 +1,6 @@
 within BESMod.Systems.Hydraulical.Components;
 model ElectricHeaterWithSecurityControl
-  "Heating rod which converts electrical energy into heat with a given efficiency"
+  "Electric heater which converts electrical energy into heat with a given efficiency"
   extends IBPSA.Fluid.Interfaces.TwoPortHeatMassExchanger(
     redeclare final IBPSA.Fluid.MixingVolumes.MixingVolume vol(
       final m_flow_small=m_flow_small,
@@ -11,11 +11,11 @@ model ElectricHeaterWithSecurityControl
     "Heat flow rate at u=1, positive for heating";
   parameter Modelica.Units.SI.Volume V=m_flow_nominal*tau/rho_default
     "Volume of heat exchanger";
-  parameter Real eta      "Efficiency of the heating rod";
+  parameter Real eta      "Efficiency of the electric heater rod";
 
   // Count switches
   parameter Boolean use_countNumSwi=true
-    "Turn the counting of the number of heating rod uses on or off."
+    "Turn the counting of the number of electric heater uses on or off."
     annotation (Dialog(tab="Advanced", group="Diagnostics"), choices(checkBox=true));
   Modelica.Blocks.Interfaces.RealInput u(unit="1",
     min=0,
@@ -211,7 +211,7 @@ equation
           thickness=0.5)}),
 defaultComponentName="hea",
 Documentation(info="<html><p>
-  Model for a heating rod.
+  Model for a electric heater.
 </p>
 <p>
   This model adds heat in the amount of <span style=
@@ -245,7 +245,7 @@ Documentation(info="<html><p>
   efficiency which is a parameter of the model.
 </p>
 <p>
-  Lastly, the number of times the heating rod switches on may be used
+  Lastly, the number of times the electric heater switches on may be used
   as an output.
 </p>
 <h4>

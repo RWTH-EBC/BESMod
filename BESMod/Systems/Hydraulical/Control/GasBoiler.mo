@@ -9,7 +9,7 @@ model GasBoiler "PI Control of gas boiler"
   replaceable parameter RecordsCollection.PIDBaseDataDefinition parPID
     "PID parameters for boiler"
     annotation (choicesAllMatching=true, Placement(transformation(extent={{142,84},{162,104}})));
-  BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.HeatingCurve
+  BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.IdealHeatingCurve
     heatingCurve(
     final nZones=parTra.nParallelDem,
     TSup_nominal=max(parTra.TTra_nominal),

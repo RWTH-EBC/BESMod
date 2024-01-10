@@ -1,5 +1,5 @@
 within BESMod.Systems.Hydraulical.Generation;
-model ElectricalHeater "Only heat using a heating rod"
+model ElectricalHeater "Only heat using an electric heater"
   extends BaseClasses.PartialGeneration(
     final dTLoss_nominal=fill(0, nParallelDem),
     dp_nominal={hea.dp_nominal}, final nParallelDem=1);
@@ -31,7 +31,7 @@ model ElectricalHeater "Only heat using a heating rod"
     final T_start=T_start,
     final Q_flow_nominal=Q_flow_nominal[1],
     final V=parEleHea.V_hr,
-    final eta=parEleHea.eta_hr)
+    final eta=parEleHea.eta)
     annotation (Placement(transformation(extent={{-16,-16},{16,16}},
         rotation=90,
         origin={-32,10})));
@@ -88,14 +88,18 @@ model ElectricalHeater "Only heat using a heating rod"
     calc_totalOnTime=true,
     calc_numSwi=true) "Electric heater KPIs"
     annotation (Placement(transformation(extent={{-60,-100},{-40,-80}})));
+  Modelica.Blocks.Sources.RealExpression reaExpTOut(y=hea.vol.T)
+                                                   annotation (Placement(
+        transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-30,70})));
 equation
   connect(dummyZero.y,switch1. u3)
     annotation (Line(points={{29,4},{38,4},{38,-4}},    color={0,0,127}));
   connect(dummyMassFlow.y,switch1. u1)
     annotation (Line(points={{63,4},{54,4},{54,-4}}, color={0,0,127}));
 
-  connect(hea.port_b, portGen_out[1]) annotation (Line(points={{-32,26},{-32,80},
-          {100,80}},        color={0,127,255}));
   connect(hea.Pel, outBusGen.PelHR) annotation (Line(points={{-41.6,27.6},{-41.6,
           49.6},{-72,49.6},{-72,-100},{0,-100}},
                                        color={0,0,127}), Text(
@@ -113,7 +117,7 @@ equation
     annotation (Line(points={{46,7.4},{46,-4}}, color={255,0,255}));
   connect(hea.port_a, pump.port_b) annotation (Line(points={{-32,-6},{-34,-6},{
           -34,-48},{38,-48}}, color={0,127,255}));
-  connect(isOnHR.u, sigBusGen.uHR) annotation (Line(points={{46,21.2},{48,21.2},
+  connect(isOnHR.u, sigBusGen.uEleHea) annotation (Line(points={{46,21.2},{48,21.2},
           {48,46},{2,46},{2,98}}, color={0,0,127}), Text(
       string="%second",
       index=1,
@@ -139,7 +143,7 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(KPIEleHea.uRea, sigBusGen.uHR) annotation (Line(points={{-62.2,-90},{-76,
+  connect(KPIEleHea.uRea, sigBusGen.uEleHea) annotation (Line(points={{-62.2,-90},{-76,
           -90},{-76,98},{2,98}}, color={0,0,127}), Text(
       string="%second",
       index=1,
@@ -151,4 +155,12 @@ equation
       index=1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
+  connect(reaExpTOut.y, sigBusGen.TGenOutMea) annotation (Line(points={{-19,70},{
+          2,70},{2,98}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(hea.port_b, portGen_out[1]) annotation (Line(points={{-32,26},{-32,40},
+          {20,40},{20,80},{100,80}}, color={0,127,255}));
 end ElectricalHeater;

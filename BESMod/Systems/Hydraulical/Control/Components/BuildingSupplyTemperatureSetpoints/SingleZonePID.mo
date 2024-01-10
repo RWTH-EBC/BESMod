@@ -1,7 +1,7 @@
 within BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints;
 model SingleZonePID
   "Single zone PID controller"
-  extends PartialSetpoint;
+  extends BaseClasses.PartialSetpoint;
 
   replaceable parameter RecordsCollection.PIDBaseDataDefinition parPID
     constrainedby RecordsCollection.PIDBaseDataDefinition(
@@ -10,8 +10,7 @@ model SingleZonePID
     final y_start=TSup_nominal,
     final yMin=293.15,
     final timeDer=0,
-    final Nd=10)
-    "PID parameters for boiler"
+    final Nd=10) "PID parameters"
     annotation (choicesAllMatching=true, Placement(transformation(extent={{42,22},
             {58,38}})));
   Modelica.Blocks.Continuous.LimPID PI(

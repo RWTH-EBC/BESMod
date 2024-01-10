@@ -26,8 +26,8 @@ model BuildingAndDHWControl
     BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.BaseClasses.PartialOnOffController
     "Hysteresis for building" annotation (choicesAllMatching=true);
   replaceable model BuildingSupplySetTemperature =
-      BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.HeatingCurve
-      constrainedby BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.PartialSetpoint(
+      BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.IdealHeatingCurve
+      constrainedby BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.BaseClasses.PartialSetpoint(
         final TSup_nominal=TSup_nominal,
         final TRet_nominal=TRet_nominal,
         final TOda_nominal=TOda_nominal,
