@@ -3,3 +3,4 @@ BasicHeatPumpPI
 DefaultSafetyControl
 HeatPumpSafetyControl
 PIDBaseDataDefinition
+SmartThermostatPI

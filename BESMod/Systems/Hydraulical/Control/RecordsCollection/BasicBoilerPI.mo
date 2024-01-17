@@ -4,7 +4,7 @@ record BasicBoilerPI "Currently used PI values for a boiler"
     Nd=10,
     timeDer=0,
     Ni=0.9,
-    timeInt=1200,
+    timeInt=600,
     P=2,
     y_start=0,
     yOff=0,
