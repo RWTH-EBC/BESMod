@@ -68,7 +68,7 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
     final VPerQ_flow=0,
     final rho=rho,
     final c_p=cp,
-    final V=if designType == Types.DHWDesignType.FullStorage then VDHWDay*
+    V=if designType == Types.DHWDesignType.FullStorage then VDHWDay*
         fFullSto else VDHWDay,
     final TAmb=TAmb,
     T_m=TDHW_nominal,
