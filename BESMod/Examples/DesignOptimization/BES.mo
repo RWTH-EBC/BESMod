@@ -10,7 +10,7 @@ model BES
         oneZoneParam(heaLoadFacGrd=0, heaLoadFacOut=0)),
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
-      redeclare Systems.Hydraulical.Generation.HeatPumpAndHeatingRod generation(
+      redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater generation(
         redeclare model PerDataRevHP =
             AixLib.DataBase.Chiller.PerformanceData.PolynomalApproach (redeclare
               function PolyData =
@@ -20,14 +20,12 @@ model BES
           BESMod.Systems.Hydraulical.Components.Frosting.ZhuIceFacCalculation
           frost(density=200, redeclare function frostMapFunc =
               BESMod.Systems.Hydraulical.Components.Frosting.Functions.ZhuFrostingMapCico),
-
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare package Medium_eva = AixLib.Media.Air,
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           parHeaPum(
           genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
-
           TBiv=parameterStudy.TBiv,
           scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal/
               parameterStudy.QHP_flow_biv,
@@ -36,8 +34,8 @@ model BES
           use_refIne=false,
           refIneFre_constant=0),
         redeclare
-          BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-          parHeaRod,
+          BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
+          parEleHea,
         redeclare model PerDataMainHP =
             AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
             QCon_flow_nominal=hydraulic.generation.parHeaPum.QPri_flow_nominal,

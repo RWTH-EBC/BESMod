@@ -1,6 +1,6 @@
 within BESMod.Systems.Hydraulical.Control;
 model MonoenergeticHeatPumpSystem
-  "Monoenergetic HPS with on/off heating rod"
+  "Monoenergetic HPS with on/off electric heater"
   extends BaseClasses.PartialHeatPumpSystemController(
     final meaValSecGen=BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue.GenerationSupplyTemperature);
 
@@ -17,7 +17,7 @@ model MonoenergeticHeatPumpSystem
 equation
   connect(constZero.y,swiSecGen. u3)
     annotation (Line(points={{81,-10},{92,-10},{92,2},{98,2}}, color={0,0,127}));
-  connect(swiSecGen.y, sigBusGen.uHeaRod) annotation (Line(points={{121,10},{126,
+  connect(swiSecGen.y, sigBusGen.uEleHea) annotation (Line(points={{121,10},{126,
           10},{126,-60},{-152,-60},{-152,-99}},
                                        color={0,0,127}), Text(
       string="%second",

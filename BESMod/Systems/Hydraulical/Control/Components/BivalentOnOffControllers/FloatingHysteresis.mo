@@ -9,7 +9,7 @@ model FloatingHysteresis
     "Minimum hysteresis";
   parameter Modelica.Units.SI.Time time_factor=20
     "The time which should be spent to have the floating hysteresis equal to the average of maximum and minimum hysteresis.";
-  parameter Modelica.Units.SI.Time dtHeaRod=20*60
+  parameter Modelica.Units.SI.Time dtEleHea=20*60
     "Seconds for regulation when hr should be activated: If lower set temperature is hurt for more than this time period";
 
   /******************************* Variables *******************************/
@@ -39,7 +39,7 @@ algorithm
    end when;
 
    // Activate hr in case temperature is below lower hysteresis and critical time period is passed
-  when (TStoTop < TSupSet - Hysteresis_floating/2) and time > (t1 + dtHeaRod)
+  when (TStoTop < TSupSet - Hysteresis_floating/2) and time > (t1 + dtEleHea)
        and priGenOn then
     secGenOn := true;
     ySecGenSet := 1;

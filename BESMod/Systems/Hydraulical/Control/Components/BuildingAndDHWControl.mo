@@ -20,14 +20,14 @@ model BuildingAndDHWControl
     "Supervisory control approach for DHW supply temperature ";
 
   replaceable model BuildingHysteresis =
-      BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod
+      BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater
       (dTHys=10)
     constrainedby
     BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.BaseClasses.PartialOnOffController
     "Hysteresis for building" annotation (choicesAllMatching=true);
   replaceable model BuildingSupplySetTemperature =
-      BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.HeatingCurve
-      constrainedby BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.PartialSetpoint(
+      BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.IdealHeatingCurve
+      constrainedby BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.BaseClasses.PartialSetpoint(
         final TSup_nominal=TSup_nominal,
         final TRet_nominal=TRet_nominal,
         final TOda_nominal=TOda_nominal,
@@ -36,7 +36,7 @@ model BuildingAndDHWControl
     "Supply temperature setpoint model, e.g. heating curve" annotation (
       choicesAllMatching=true);
   replaceable model DHWHysteresis =
-      BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod
+      BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater
       (dTHys=10)
     constrainedby
     BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.BaseClasses.PartialOnOffController

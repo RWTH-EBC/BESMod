@@ -31,8 +31,8 @@ partial model PartialHeatPumpSystemController
     "Hysteresis for building" annotation (Dialog(group="Building control"),
     choicesAllMatching=true);
   replaceable model BuildingSupplySetTemperature =
-      BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.HeatingCurve
-      constrainedby BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.PartialSetpoint(
+      BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.IdealHeatingCurve
+      constrainedby BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.BaseClasses.PartialSetpoint(
         final TSup_nominal=buiAndDHWCtr.TSup_nominal,
         final TRet_nominal=buiAndDHWCtr.TRet_nominal,
         final TOda_nominal=buiAndDHWCtr.TOda_nominal,

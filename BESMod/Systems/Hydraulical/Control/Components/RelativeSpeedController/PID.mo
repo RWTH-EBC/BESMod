@@ -13,8 +13,8 @@ model PID "PID controller for inverter controlled devices"
     PID(
     controllerType=Modelica.Blocks.Types.SimpleController.PID,
     final k=P,
-    final Ti=timeInt,
-    final Td=timeDer,
+    final Ti=timeInt*P,
+    final Td=timeDer/P,
     final yMax=yMax,
     final yMin=yMin,
     final wp=1,

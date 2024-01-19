@@ -4,7 +4,7 @@ model SolarThermalBuildings
   extends BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS(redeclare
       model hydGeneration =
         BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump (
-        use_heaRod=false,
+        use_eleHea=false,
         redeclare model PerDataMainHP =
             AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (refrigerant=
                 "Propane", flowsheet="VIPhaseSeparatorFlowsheet"),
@@ -12,8 +12,8 @@ model SolarThermalBuildings
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           parHeaPum(genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.Monovalent),
         redeclare
-          BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-          parHeaRod,
+          BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
+          parEleHea,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare package Medium_eva = AixLib.Media.Air,
         redeclare

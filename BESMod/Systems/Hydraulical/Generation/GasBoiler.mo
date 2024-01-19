@@ -46,7 +46,8 @@ model GasBoiler "Just a gas boiler"
     annotation (Placement(transformation(extent={{-66,-6},{-34,26}})));
 
 
-  Utilities.KPIs.EnergyKPICalculator KPIQHR(use_inpCon=false, y=boi.QflowCalculation.y)
+  Utilities.KPIs.EnergyKPICalculator KPIQBoi(use_inpCon=false, y=boi.QflowCalculation.y)
+    "Boiler heat flow rate"
     annotation (Placement(transformation(extent={{-40,-100},{-20,-80}})));
 
   IBPSA.Fluid.Movers.Preconfigured.SpeedControlled_y pump(
@@ -79,11 +80,11 @@ model GasBoiler "Just a gas boiler"
         origin={66,-26})));
   BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{26,-108},{46,-88}})));
-  Utilities.KPIs.DeviceKPICalculator KPIHeaRod1(
+  Utilities.KPIs.DeviceKPICalculator KPIBoi(
     use_reaInp=true,
     calc_singleOnTime=true,
     calc_totalOnTime=true,
-    calc_numSwi=true)
+    calc_numSwi=true) "Boiler KPIs"
     annotation (Placement(transformation(extent={{-60,-80},{-40,-60}})));
 
 initial algorithm
@@ -129,20 +130,20 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(KPIQHR.KPI, outBusGen.QBoi_flow) annotation (Line(points={{-17.8,-90},
+  connect(KPIQBoi.KPI, outBusGen.QBoi_flow) annotation (Line(points={{-17.8,-90},
           {-10,-90},{-10,-88},{0,-88},{0,-100}}, color={135,135,135}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(KPIHeaRod1.KPI, outBusGen.boi) annotation (Line(points={{-37.8,-70},{
-          0,-70},{0,-100}}, color={135,135,135}), Text(
+  connect(KPIBoi.KPI, outBusGen.boi) annotation (Line(points={{-37.8,-70},{0,-70},
+          {0,-100}}, color={135,135,135}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(KPIHeaRod1.uRea, sigBusGen.uBoiSet) annotation (Line(points={{-62.2,
-          -70},{-74,-70},{-74,98},{2,98}}, color={0,0,127}), Text(
+  connect(KPIBoi.uRea, sigBusGen.uBoiSet) annotation (Line(points={{-62.2,-70},{-74,
+          -70},{-74,98},{2,98}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},

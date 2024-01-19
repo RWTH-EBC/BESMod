@@ -1,5 +1,5 @@
 within BESMod.Systems.Hydraulical.Generation.Tests;
-model SolarThermalAndHeatPumpAndHeatingRodDetailed
+model SolarThermalAndHeatPumpDetailed "Test for SolarThermalAndHeatPumpDetailed"
   extends PartialTest(redeclare
       BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump
       generation(
@@ -11,12 +11,12 @@ model SolarThermalAndHeatPumpAndHeatingRodDetailed
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
         parTemSen,
-      redeclare BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-        parHeaRod,
       redeclare
         BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultSolarThermal
         solarThermalParas,
-      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPumSolThe));
+      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPumSolThe,
+      redeclare BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
+        parEleHea));
   extends Modelica.Icons.Example;
 
   Modelica.Blocks.Sources.Constant     const1(k=0)
@@ -36,10 +36,10 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(const1.y, genControlBus.uHeaRod) annotation (Line(points={{-79,50},{
+  connect(const1.y, genControlBus.uEleHea) annotation (Line(points={{-79,50},{
           -32,50},{-32,48},{10,48},{10,74}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-end SolarThermalAndHeatPumpAndHeatingRodDetailed;
+end SolarThermalAndHeatPumpDetailed;

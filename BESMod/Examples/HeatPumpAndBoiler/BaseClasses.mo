@@ -23,10 +23,10 @@ package BaseClasses "Contains partial example case"
           meaValPriGen=BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue.GenerationSupplyTemperature,
 
           redeclare model DHWHysteresis =
-              BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod,
+              BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
 
           redeclare model BuildingHysteresis =
-              BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod,
+              BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
 
           redeclare model DHWSetTemperature =
               BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.ConstTSet_DHW,

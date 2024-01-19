@@ -1,8 +1,8 @@
 AlternativeBivalent
-ConstantHysteresisTimeBasedHeatingRod
 DegreeMinuteController
 FloatingHysteresis
 PartParallelBivalent
-Examples
+TimeBasedElectricHeater
 Utilities
+Examples
 BaseClasses

@@ -16,8 +16,8 @@ model TestIndirectLoading
         BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorage
         parStoDHW,
       redeclare
-        BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-        parHeaRodAftBuf,
+        BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
+        parEleHeaAftBuf,
       dTLoaHCBuf=10,
       QHeaAftBuf_flow_nominal=
                              0));

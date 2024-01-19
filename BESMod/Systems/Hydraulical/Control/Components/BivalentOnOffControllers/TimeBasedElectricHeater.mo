@@ -1,13 +1,13 @@
 within BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers;
-model ConstantHysteresisTimeBasedHeatingRod
+model TimeBasedElectricHeater
   "Const. hysteresis and time-based auxilliar heater control"
   extends
     BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.BaseClasses.PartialOnOffController;
 
-  parameter Modelica.Units.SI.Time dtHeaRod(displayUnit="min")=1800
+  parameter Modelica.Units.SI.Time dtEleHea(displayUnit="min")=1800
     "Seconds for regulation when hr should be activated: If lower set temperature is hurt for more than this time period";
-  parameter Real addSetDelTimHeaRod=1
-    "Each time dt_hr passes, the output of the heating rod is increased by this amount in percentage. Maximum and default is 100 (on-off hr)%";
+  parameter Real addSetDelTimEleHea=1
+    "Each time electric heater time passes, the output of the electric heater is increased by this amount in percentage. Maximum and default is 100 (on-off hr)%";
 
   BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.Utilities.StorageHysteresis
     hysSto(final bandwidth=dTHys, final pre_y_start=true) "Storage hysteresis"
@@ -16,8 +16,8 @@ model ConstantHysteresisTimeBasedHeatingRod
     trigTime "Trigger once the hysteresis is violated"
     annotation (Placement(transformation(extent={{-32,-88},{-12,-68}})));
   Modelica.Blocks.Sources.RealExpression reaExp(y=min(floor((time - trigTime.y)/
-        dtHeaRod)*addSetDelTimHeaRod, 1))
-    "Calculate if heating rod time has elapsed"
+        dtEleHea)*addSetDelTimEleHea, 1))
+    "Calculate if electric heater time has elapsed"
     annotation (Placement(transformation(extent={{6,-70},{26,-50}})));
   Modelica.Blocks.Logical.GreaterThreshold greThr(threshold=Modelica.Constants.eps)
     annotation (Placement(transformation(extent={{70,-68},{86,-52}})));
@@ -113,4 +113,4 @@ equation
             lineColor={0,0,0},
             textString="uLow"),Line(points={{-69,10},{-60,10}}, color={160,
           160,164})}));
-end ConstantHysteresisTimeBasedHeatingRod;
+end TimeBasedElectricHeater;

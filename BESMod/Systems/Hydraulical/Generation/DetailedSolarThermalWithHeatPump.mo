@@ -1,14 +1,14 @@
 within BESMod.Systems.Hydraulical.Generation;
 model DetailedSolarThermalWithHeatPump
   "Detailed solar thermal model with monoenergetic heat pump"
-  extends HeatPumpAndHeatingRod(
+  extends HeatPumpAndElectricHeater(
     m_flow_nominal={Q_flow_nominal[1]*f_design[1]/dTTra_nominal[1]/4184,
         solarThermalParas.m_flow_nominal},
     redeclare package Medium = IBPSA.Media.Water,
                                 dTTra_nominal={if TDem_nominal[1] > 273.15 + 55
          then 10 elseif TDem_nominal[1] > 44.9 then 8 else 5,solarThermalParas.dTMax},
          final nParallelDem=2,
-         final dp_nominal={heatPump.dpCon_nominal + dpHeaRod_nominal, dpST_nominal});
+         final dp_nominal={heatPump.dpCon_nominal +dpEleHea_nominal,  dpST_nominal});
   replaceable parameter BESMod.Systems.Hydraulical.Generation.RecordsCollection.SolarThermalBaseDataDefinition
     solarThermalParas constrainedby
     BESMod.Systems.Hydraulical.Generation.RecordsCollection.SolarThermalBaseDataDefinition( final c_p=cp)

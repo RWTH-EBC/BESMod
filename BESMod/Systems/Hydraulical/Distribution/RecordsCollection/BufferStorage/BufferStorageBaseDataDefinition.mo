@@ -3,12 +3,12 @@ record BufferStorageBaseDataDefinition
   extends
     Systems.Hydraulical.Distribution.RecordsCollection.PartialStorageBaseDataDefinition;
 
-  // Heating rod:
-  parameter Boolean use_hr=false annotation (Dialog(group="Heating Rod"));
+  // electric heater:
+  parameter Boolean use_hr=false annotation (Dialog(group="Electric Heater"));
   parameter Modelica.Units.SI.Power QHR_flow_nominal=0
-    annotation (Dialog(group="Heating Rod"));
-  parameter Integer nLayerHR = integer(floor(nLayer/2)) "Layer of heating rod" annotation (Dialog(group="Heating Rod"));
-  parameter Integer discretizationStepsHR=0 "Number of steps to dicretize the heating rod. =0 modulating, =1 resembels an on-off controller. =2 would sample 0, 0.5 and 1" annotation (Dialog(group="Heating Rod"));
+    annotation (Dialog(group="Electric Heater"));
+  parameter Integer nLayerHR = integer(floor(nLayer/2)) "Layer of electric heater" annotation (Dialog(group="Electric Heater"));
+  parameter Integer discretizationStepsHR=0 "Number of steps to dicretize the electric heater. =0 modulating, =1 resembels an on-off controller. =2 would sample 0, 0.5 and 1" annotation (Dialog(group="Electric Heater"));
   // Heating coil 2:
   parameter Boolean use_HC2 "=false to disable heating coil 2"  annotation (Dialog(group="Loading"));
   parameter Modelica.Units.SI.TemperatureDifference dTLoadingHC2

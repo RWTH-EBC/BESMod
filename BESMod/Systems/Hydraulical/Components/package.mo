@@ -6,7 +6,7 @@ annotation (Documentation(info="<html>
 <p>Components used in building energy systems which are not given in an existing model library to the modeling depth required by the simulation.</p>
 <p>Most of these components shall not stay in this library but rather</p>
 <ul>
-<li>be integrated into the corresponding component library. For instance, we modified the heating rod model in the IBPSA. This will be added to the IBPSA in the near future</li>
+<li>be integrated into the corresponding component library. For instance, we modified the electric heater model in the AixLib. This will be added to the IBPSA in the near future</li>
 <li>be replaced by better fitting models. For instance, the ArtificalPumps were used starting this library but are replaced one after another be the movers from IBPSA</li>
 <li>be moved to a matching project library. For instance, we simulated an UFH system in one project. Moving the UFH-subsystem and these models into an own project library is more straightforward.</li>
 </ul>

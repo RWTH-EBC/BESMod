@@ -122,7 +122,7 @@ model DistributionTwoStorageParallel
         final c_p=cp,
         final TAmb=TAmb,
         final QHC1_flow_nominal=QDHW_flow_nominal,
-        final V=if designType == Types.DHWDesignType.FullStorage then VDHWDay * fFullSto else VDHWDay,
+        V=if designType == Types.DHWDesignType.FullStorage then VDHWDay * fFullSto else VDHWDay,
         final Q_flow_nominal=0,
         final VPerQ_flow=0,
         final T_m=TDHW_nominal,

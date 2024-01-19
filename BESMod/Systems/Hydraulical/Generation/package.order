@@ -3,7 +3,7 @@ GasBoiler
 HeatPump
 HeatPumpAndGasBoilerParallel
 HeatPumpAndGasBoilerSerial
-HeatPumpAndHeatingRod
+HeatPumpAndElectricHeater
 NoGeneration
 SimpleSolarThermalWithHeatPump
 DetailedSolarThermalWithHeatPump
