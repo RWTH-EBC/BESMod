@@ -7,14 +7,17 @@ partial model PartialModelicaConferenceUseCase
           redeclare
           BuildingSystems.Technologies.ElectricalStorages.Data.LithiumIon.LithiumIonTeslaPowerwall1
           batteryParameters),
-      redeclare BESMod.Systems.Electrical.Generation.PVSystemMultiSub generation(
+      redeclare BESMod.Systems.Electrical.Generation.PVSystemMultiSub
+        generation(
         redeclare model CellTemperature =
             AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround,
+
         redeclare AixLib.DataBase.SolarElectric.SchuecoSPV170SME1 pVParameters,
+
         lat=weaDat.lat,
         lon=weaDat.lon,
         alt=weaDat.alt,
-        timZon=3600,
+        timZon=weaDat.timZon,
         ARoo=building.ARoo/2),
       redeclare BESMod.Systems.Electrical.Transfer.NoElectricalTransfer transfer,
       redeclare BESMod.Systems.Electrical.Control.NoControl control),
