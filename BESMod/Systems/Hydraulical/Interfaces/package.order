@@ -1,8 +1,8 @@
-GenerationControlBus
-DistributionControlBus
-TransferControlBus
-GenerationOutputs
-TransferOutputs
-DistributionOutputs
 ControlOutputs
+DistributionControlBus
+DistributionOutputs
+GenerationControlBus
+GenerationOutputs
 SystemControlBus
+TransferControlBus
+TransferOutputs

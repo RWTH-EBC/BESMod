@@ -4,6 +4,7 @@ DistributionTwoStorageParallel
 DHWOnly
 TwoStoDetailedDirectLoading
 TwoStoDetailedIndirectLoading
+TwoStoragesBoilerWithDHW
 Components
 RecordsCollection
 Tests

@@ -26,28 +26,19 @@ model ControlledDomesticVentilation
         extent={{-8,-8},{8,8}},
         rotation=180,
         origin={78,-22})));
-  IBPSA.Fluid.Movers.SpeedControlled_y fanFlow(
+  IBPSA.Fluid.Movers.Preconfigured.SpeedControlled_y fanFlow(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
     final p_start=p_start,
     final T_start=T_start,
     final allowFlowReversal=allowFlowReversal,
     final show_T=show_T,
-    redeclare
-      BESMod.Systems.RecordsCollection.Movers.AutomaticConfigurationData
-      per(
-      final speed_rpm_nominal=fanData.speed_rpm_nominal,
-      final m_flow_nominal=m_flow_nominal[1],
-      final dp_nominal=dpDem_nominal[1] + dp_nominal[1],
-      final rho=rho,
-      final V_flowCurve=fanData.V_flowCurve,
-      final dpCurve=fanData.dpCurve),
-    final inputType=IBPSA.Fluid.Types.InputType.Continuous,
-    final addPowerToMedium=fanData.addPowerToMedium,
+    final m_flow_nominal=m_flow_nominal[1],
+    final dp_nominal=dpDem_nominal[1] + dp_nominal[1],
+     final addPowerToMedium=fanData.addPowerToMedium,
     final tau=fanData.tau,
     final use_inputFilter=fanData.use_inputFilter,
     final riseTime=fanData.riseTimeInpFilter,
-    final init=Modelica.Blocks.Types.Init.InitialOutput,
     final y_start=1) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=180,
@@ -79,28 +70,19 @@ model ControlledDomesticVentilation
         rotation=180,
         origin={73,-41})));
 
-  IBPSA.Fluid.Movers.SpeedControlled_y fanRet(
+  IBPSA.Fluid.Movers.Preconfigured.SpeedControlled_y fanRet(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
     final p_start=p_start,
     final T_start=T_start,
     final allowFlowReversal=allowFlowReversal,
     final show_T=show_T,
-    redeclare
-      BESMod.Systems.RecordsCollection.Movers.AutomaticConfigurationData
-      per(
-      final speed_rpm_nominal=fanData.speed_rpm_nominal,
-      final m_flow_nominal=m_flow_nominal[1],
-      final dp_nominal=dpDem_nominal [1]+ parameters.dpHex_nominal + 2*threeWayValveParas.dpValve_nominal,
-      final rho=rho,
-      final V_flowCurve=fanData.V_flowCurve,
-      final dpCurve=fanData.dpCurve),
-    final inputType=IBPSA.Fluid.Types.InputType.Continuous,
+    final m_flow_nominal=m_flow_nominal[1],
+    final dp_nominal=dpDem_nominal [1]+ parameters.dpHex_nominal + 2*threeWayValveParas.dpValve_nominal,
     final addPowerToMedium=fanData.addPowerToMedium,
     final tau=fanData.tau,
     final use_inputFilter=fanData.use_inputFilter,
     final riseTime=fanData.riseTimeInpFilter,
-    final init=Modelica.Blocks.Types.Init.InitialOutput,
     final y_start=1) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=0,
@@ -187,14 +169,14 @@ model ControlledDomesticVentilation
   Modelica.Blocks.Math.Add add
     annotation (Placement(transformation(extent={{2,-114},{22,-94}})));
 equation
-  connect(bouSup.p_in, weaBus.pAtm) annotation (Line(points={{87.6,-28.4},{112,
-          -28.4},{112,92},{41,92},{41,100}},           color={0,0,127}), Text(
+  connect(bouSup.p_in, weaBus.pAtm) annotation (Line(points={{87.6,-28.4},{112,-28.4},
+          {112,92},{41.105,92},{41.105,100.11}},       color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(bouSup.T_in, weaBus.TDryBul) annotation (Line(points={{87.6,-25.2},{
-          112,-25.2},{112,92},{41,92},{41,100}},            color={0,0,127}),
+  connect(bouSup.T_in, weaBus.TDryBul) annotation (Line(points={{87.6,-25.2},{112,
+          -25.2},{112,92},{41.105,92},{41.105,100.11}},     color={0,0,127}),
       Text(
       string="%second",
       index=1,

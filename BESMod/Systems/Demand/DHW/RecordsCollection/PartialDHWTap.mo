@@ -10,5 +10,8 @@ record PartialDHWTap
   parameter Real QCrit "Energy demand in kWh during critical period according to EN 15450" annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem", enable=designType <> BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.NoStorage));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)),
+    Documentation(info="<html>
+<p></span><span style=\"font-size: 8.25pt;\">These records are based on the EU Regulation 812/2013 profiles and the approach in the EN 15450 to size DHW tanks based on a critical time period.</p>
+</html>"));
 end PartialDHWTap;

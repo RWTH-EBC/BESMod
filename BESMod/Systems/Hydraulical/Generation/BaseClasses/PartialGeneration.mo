@@ -18,8 +18,8 @@ partial model PartialGeneration "Partial generation model for HPS"
       final package Medium = Medium) "Outlet of the generation" annotation (
       Placement(transformation(extent={{90,70},{110,90}}), iconTransformation(
           extent={{90,70},{110,90}})));
-  Modelica.Fluid.Interfaces.FluidPort_a portGen_in[nParallelDem](redeclare
-      final package Medium = Medium) "Inlet to the generation" annotation (
+  Modelica.Fluid.Interfaces.FluidPort_a portGen_in[nParallelDem](redeclare final
+      package       Medium = Medium) "Inlet to the generation" annotation (
       Placement(transformation(extent={{90,-12},{110,8}}), iconTransformation(
           extent={{90,30},{110,50}})));
   BESMod.Systems.Hydraulical.Interfaces.GenerationOutputs

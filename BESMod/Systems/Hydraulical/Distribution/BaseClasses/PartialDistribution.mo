@@ -34,8 +34,8 @@ partial model PartialDistribution
     annotation (Dialog(group=
           "Design - Bottom Up: Parameters are defined by the subsystem"));
 
-  Modelica.Fluid.Interfaces.FluidPort_a portGen_in[nParallelSup](redeclare
-      final package Medium = MediumGen) "Inlet from the generation" annotation (
+  Modelica.Fluid.Interfaces.FluidPort_a portGen_in[nParallelSup](redeclare final
+      package       Medium = MediumGen) "Inlet from the generation" annotation (
      Placement(transformation(extent={{-110,70},{-90,90}}), iconTransformation(
           extent={{-110,70},{-90,90}})));
   Modelica.Fluid.Interfaces.FluidPort_b portGen_out[nParallelSup](redeclare
@@ -47,8 +47,8 @@ partial model PartialDistribution
                Medium) "Outlet for the distribution to the building"
     annotation (Placement(transformation(extent={{90,70},{110,90}}),
         iconTransformation(extent={{90,70},{110,90}})));
-  Modelica.Fluid.Interfaces.FluidPort_a portBui_in[nParallelDem](redeclare
-      final package Medium =
+  Modelica.Fluid.Interfaces.FluidPort_a portBui_in[nParallelDem](redeclare final
+      package       Medium =
                Medium) "Inlet for the distribution from the building"
     annotation (Placement(transformation(extent={{90,30},{110,50}}),
         iconTransformation(extent={{90,30},{110,50}})));

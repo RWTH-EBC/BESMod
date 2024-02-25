@@ -2,7 +2,18 @@ within BESMod.Systems.Electrical.Generation;
 model PVSystemMultiSub
   "PV system with subsystems of different orientation and module type"
   extends BESMod.Systems.Electrical.Generation.BaseClasses.PartialGeneration(
-      numGenUnits=1);
+      numGenUnits=if useTwoRoo then 2 else 1);
+
+  parameter Modelica.Units.SI.Area ARooSid = ARoo / 2
+    "Roof area of one side of the whole roof";
+
+  parameter Boolean useTwoRoo = true
+    "=true to use both roof-sides, e.g. north and south or east and west";
+  parameter Modelica.Units.SI.Angle tilAllMod=0.34906585039887
+    "Surface's tilt angle of all modules (0:flat)";
+  parameter Modelica.Units.SI.Angle aziMaiRoo=0
+    "Main roof areas surface's azimut angle (0:South)";
+
   replaceable model CellTemperature =
       AixLib.Electrical.PVSystem.BaseClasses.PartialCellTemperature annotation (
      __Dymola_choicesAllMatching=true);
@@ -15,18 +26,21 @@ model PVSystemMultiSub
   parameter Real alt "Site altitude in Meters, default= 1";
   parameter Modelica.Units.SI.Time timZon
     "Time zone. Should be equal with timZon in ReaderTMY3, if PVSystem and ReaderTMY3 are used together.";
-  parameter Real n_mod[numGenUnits]={f_design[i]*ARoo/pVParameters[i].A_mod for i in 1:numGenUnits}
-    "Number of connected PV modules";
-  parameter Modelica.Units.SI.Angle til[numGenUnits]=fill(20*Modelica.Constants.pi/180,numGenUnits)
+  parameter Real numMod[numGenUnits]={(f_design[i]*ARooSid/pVParameters[i].A_mod)
+      for i in 1:numGenUnits} "Number of connected PV modules";
+  parameter Modelica.Units.SI.Angle til[numGenUnits]=fill(tilAllMod,numGenUnits)
     "Surface's tilt angle (0:flat)";
-  parameter Modelica.Units.SI.Angle azi[numGenUnits]=fill(0*Modelica.Constants.pi/180,numGenUnits)
+  parameter Modelica.Units.SI.Angle azi[numGenUnits]={aziMaiRoo + (i-1) * Modelica.Constants.pi for i in 1:numGenUnits}
     "Surface's azimut angle (0:South)";
+  parameter Modelica.Units.SI.Power PEleMaxPowPoi[numGenUnits](each displayUnit="kW")={numMod[i]*
+      pVParameters[i].P_mp0 for i in 1:numGenUnits}
+    "MPP Power of the PV System [kWp]";
   AixLib.Electrical.PVSystem.PVSystem pVSystem[numGenUnits](
     final data=pVParameters,
     redeclare final model IVCharacteristics =
         AixLib.Electrical.PVSystem.BaseClasses.IVCharacteristics5pAnalytical,
     redeclare model CellTemperature = CellTemperature,
-    final n_mod=n_mod,
+    final n_mod=numMod,
     final til=til,
     final azi=azi,
     each final lat=lat,
@@ -50,9 +64,7 @@ model PVSystemMultiSub
         rotation=90,
         origin={50,58})));
 
-
-
-  Utilities.KPIs.EnergyKPICalculator intKPICalPElePV(use_inpCon=true)
+  BESMod.Utilities.KPIs.EnergyKPICalculator intKPICalPElePV(use_inpCon=true)
     annotation (Placement(transformation(extent={{60,-60},{80,-40}})));
 equation
   for i in 1:numGenUnits loop

@@ -4,11 +4,11 @@ model GasBoiler
       BESMod.Systems.Hydraulical.Generation.GasBoiler generation(
       dTTra_nominal={10},
       redeclare AixLib.DataBase.Boiler.General.Boiler_Vitogas200F_11kW
-        paramBoiler,
+        parBoi,
       redeclare
         BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
-        temperatureSensorData,
-      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData));
+        parTemSen,
+      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum));
   extends Modelica.Icons.Example;
 
   Modelica.Blocks.Sources.Pulse        pulse(period=1800)

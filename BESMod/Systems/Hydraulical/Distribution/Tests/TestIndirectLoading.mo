@@ -3,24 +3,24 @@ model TestIndirectLoading
   extends PartialTest(redeclare
       BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedIndirectLoading
       distribution(
-      QHRAftBuf_flow_nominal=0,
-      use_heatingRodAfterBuffer=false,
       redeclare
         BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
-        temperatureSensorData,
+        parTemSen,
       redeclare
         BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
-        threeWayValveParameters,
+        parThrWayVal,
       redeclare
         BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorage
-        bufParameters,
+        parStoBuf,
       redeclare
         BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorage
-        dhwParameters,
+        parStoDHW,
       redeclare
-        BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-        heatingRodAftBufParameters,
-      dTLoaHCBuf=10));
+        BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
+        parEleHeaAftBuf,
+      dTLoaHCBuf=10,
+      QHeaAftBuf_flow_nominal=
+                             0));
   extends Modelica.Icons.Example;
 
   Modelica.Blocks.Sources.Pulse        pulse(       period=100) annotation (

@@ -41,6 +41,7 @@ partial model PartialBuildingEnergySystem "Partial BES"
     BESMod.Systems.Demand.Building.BaseClasses.PartialDemand(
       redeclare final package MediumZone = MediumZone,
       final nZones=systemParameters.nZones,
+      final TOda_nominal=systemParameters.TOda_nominal,
       final TSetZone_nominal=systemParameters.TSetZone_nominal,
       final use_hydraulic=systemParameters.use_hydraulic,
       final use_ventilation=systemParameters.use_ventilation,
@@ -190,8 +191,8 @@ equation
         color={255,204,51},
         thickness=0.5));
     connect(hydraulic.outBusHyd, outputs.hydraulic) annotation (Line(
-        points={{-124.516,-98.6857},{-124.516,-100},{-124,-100},{-124,-124},{
-            244,-124},{244,0},{285,0}},
+        points={{-124.516,-98.6857},{-124.516,-100},{-124,-100},{-124,-124},{244,
+            -124},{244,0},{285,0}},
         color={175,175,175},
         thickness=0.5), Text(
         string="%second",
@@ -206,8 +207,8 @@ equation
           points={{-42,-23.2571},{-42,-24},{-20,-24},{-20,62.8},{2,62.8}},color=
            {191,0,0}));
     connect(userProfiles.useProBus, hydraulic.useProBus) annotation (Line(
-      points={{-225.167,150.775},{-214,150.775},{-214,16},{-157.358,16},{
-            -157.358,-2}},
+      points={{-225.167,150.775},{-214,150.775},{-214,16},{-157.358,16},{-157.358,
+            -2}},
       color={0,127,0},
       thickness=0.5));
     connect(control.sigBusHyd, hydraulic.sigBusHyd) annotation (Line(
@@ -219,15 +220,13 @@ equation
       points={{-225.167,150.775},{-32,150.775},{-32,-36},{60.9,-36},{60.9,-42}},
       color={0,127,0},
       thickness=0.5));
-    connect(hydraulic.portDHW_out, DHW.port_a) annotation (Line(points={{
-            -42.8211,-72.6286},{-2,-72.6286},{-2,-57.2},{2,-57.2}},
-                                                              color={0,127,255}));
-    connect(hydraulic.portDHW_in, DHW.port_b) annotation (Line(points={{
-            -42.8211,-86.3429},{-2,-86.3429},{-2,-102.8},{2,-102.8}},
-                                                              color={0,127,255}));
+    connect(hydraulic.portDHW_out, DHW.port_a) annotation (Line(points={{-42.8211,
+            -72.6286},{-2,-72.6286},{-2,-57.2},{2,-57.2}},    color={0,127,255}));
+    connect(hydraulic.portDHW_in, DHW.port_b) annotation (Line(points={{-42.8211,
+            -86.3429},{-2,-86.3429},{-2,-102.8},{2,-102.8}},  color={0,127,255}));
     connect(DHW.internalElectricalPin, electrical.internalElectricalPin[3])   annotation (Line(
-    points={{66.6,-117.24},{66.6,-126},{72,-126},{72,-140},{-210,-140},{-210,
-            118},{-198,118},{-198,118.171}},
+    points={{66.6,-117.24},{66.6,-126},{72,-126},{72,-140},{-210,-140},{-210,118},
+            {-198,118},{-198,118.171}},
     color={0,0,0},
     thickness=1));
     connect(DHW.outBusDHW, outputs.DHW) annotation (Line(
@@ -241,8 +240,8 @@ equation
 
     connect(electrical.internalElectricalPin[1], hydraulic.internalElectricalPin)
   annotation (Line(
-    points={{-198,118.171},{-198,118},{-210,118},{-210,-140},{-56,-140},{-56,
-            -124},{-54.3158,-124},{-54.3158,-98}},
+    points={{-198,118.171},{-198,118},{-210,118},{-210,-140},{-56,-140},{-56,-124},
+            {-54.3158,-124},{-54.3158,-98}},
     color={0,0,0},
     thickness=1));
   else

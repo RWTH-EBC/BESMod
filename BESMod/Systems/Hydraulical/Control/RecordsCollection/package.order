@@ -1,5 +1,6 @@
-HeatPumpSafetyControl
+BasicBoilerPI
+BasicHeatPumpPI
 DefaultSafetyControl
-BivalentHeatPumpControlDataDefinition
-DefaultBivHPControl
-ThermostaticValveDataDefinition
+HeatPumpSafetyControl
+PIDBaseDataDefinition
+SmartThermostatPI

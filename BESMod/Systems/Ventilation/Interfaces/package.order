@@ -1,6 +1,6 @@
-GenerationControlBus
-DistributionControlBus
-GenerationOutputs
-DistributionOutputs
 ControlOutputs
+DistributionControlBus
+DistributionOutputs
+GenerationControlBus
+GenerationOutputs
 SystemControlBus

@@ -1,8 +1,9 @@
 within BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.BaseClasses;
 partial model PartialTSet_DHW_Control "Model to output the dhw set temperature"
-  parameter Modelica.Media.Interfaces.Types.Temperature T_DHW
-    "Constant TSet DHW output value";
-  Modelica.Blocks.Interfaces.RealOutput TSet_DHW
+  parameter Modelica.Units.SI.Temperature TSetDHW_nominal
+    "Nominal DHW set temperature";
+  Modelica.Blocks.Interfaces.RealOutput TSetDHW(unit="K", displayUnit="degC")
+    "DHW set temperature"
     annotation (Placement(transformation(extent={{100,-10},{120,10}})));
   Systems.Hydraulical.Interfaces.DistributionControlBus sigBusDistr
     "Necessary to control DHW temperatures"

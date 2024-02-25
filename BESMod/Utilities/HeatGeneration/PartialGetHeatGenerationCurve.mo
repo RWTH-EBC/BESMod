@@ -28,11 +28,12 @@ partial model PartialGetHeatGenerationCurve
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={82,10})));
-  Systems.Hydraulical.Control.Components.HeatingCurve heatingCurve(
-    GraHeaCurve=bivalentHeatPumpControlDataDefinition.gradientHeatCurve,
-    THeaThres=systemParameters.TSetZone_nominal[1],
-    dTOffSet_HC=bivalentHeatPumpControlDataDefinition.dTOffSetHeatCurve -
-        generation.dTTra_nominal[1]) annotation (Placement(transformation(
+  Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.IdealHeatingCurve
+    heatingCurve(
+    TSup_nominal=systemParameters.THydSup_nominal[1],
+    TRet_nominal=systemParameters.THydSup_nominal[1] - 7,
+    TOda_nominal=systemParameters.TOda_nominal,
+    nHeaTra=1.3) annotation (Placement(transformation(
         extent={{-11,11},{11,-11}},
         rotation=0,
         origin={-9,-71})));
@@ -45,13 +46,6 @@ partial model PartialGetHeatGenerationCurve
   Modelica.Blocks.Sources.RealExpression
                                    realExpression
     annotation (Placement(transformation(extent={{30,72},{50,92}})));
-  replaceable
-    Systems.Hydraulical.Control.RecordsCollection.BivalentHeatPumpControlDataDefinition
-    bivalentHeatPumpControlDataDefinition(
-    TOda_nominal=systemParameters.TOda_nominal,
-    TSup_nominal=systemParameters.THydSup_nominal[1],
-    TSetRoomConst=systemParameters.TSetZone_nominal[1])
-    annotation (choicesAllMatching=true,Placement(transformation(extent={{-100,82},{-80,102}})));
   Modelica.Blocks.Sources.Constant const3(k=max(systemParameters.TSetZone_nominal))
     annotation (Placement(transformation(extent={{-100,-100},{-80,-80}})));
   IBPSA.BoundaryConditions.WeatherData.Bus weaBus "Weather data bus"
@@ -78,7 +72,7 @@ equation
           127}));
   connect(realExpression.y, QCon_flow) annotation (Line(points={{51,82},{88,82},
           {88,60},{110,60}}, color={0,0,127}));
-  connect(const3.y, heatingCurve.TSetRoom) annotation (Line(points={{-79,-90},{
+  connect(const3.y,heatingCurve.TZoneSet)  annotation (Line(points={{-79,-90},{
           -78,-90},{-78,-92},{-9,-92},{-9,-84.2}},                  color={0,0,
           127}));
   connect(generation.weaBus, weaBus) annotation (Line(
@@ -103,7 +97,7 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(const1.y, sigBusGen.uHeaRod) annotation (Line(points={{-79,30},{-62,
+  connect(const1.y, sigBusGen.uEleHea) annotation (Line(points={{-79,30},{-62,
           30},{-62,64}}, color={0,0,127}), Text(
       string="%second",
       index=1,

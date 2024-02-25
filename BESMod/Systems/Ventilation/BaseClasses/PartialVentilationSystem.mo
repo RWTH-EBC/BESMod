@@ -66,7 +66,7 @@ partial model PartialVentilationSystem
 
   replaceable Control.BaseClasses.PartialControl control constrainedby
     Control.BaseClasses.PartialControl(
-    final generationParameters(
+    final parGen(
       final nParallelDem=generation.nParallelDem,
       final nParallelSup=generation.nParallelSup,
       final Q_flow_nominal=generation.Q_flow_nominal,
@@ -79,7 +79,7 @@ partial model PartialVentilationSystem
       final dTLoss_nominal=generation.dTLoss_nominal,
       final f_design=generation.f_design,
       final QLoss_flow_nominal=generation.QLoss_flow_nominal),
-    final distributionParameters(
+    final parDis(
       final nParallelDem=distribution.nParallelDem,
       final nParallelSup=distribution.nParallelSup,
       final Q_flow_nominal=distribution.Q_flow_nominal,

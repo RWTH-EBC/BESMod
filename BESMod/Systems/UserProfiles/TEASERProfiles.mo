@@ -23,7 +23,9 @@ model TEASERProfiles "Standard TEASER Profiles"
         rotation=180,
         origin={30,30})));
 
-  Modelica.Blocks.Sources.Constant conTSetZone[nZones](k=TSetZone_nominal)
+  Modelica.Blocks.Sources.Constant conTSetZone[nZones](
+    k(each unit="K", each displayUnit="K")=TSetZone_nominal,
+    y(each unit="K", each displayUnit="K"))
     "Constant room set temperature" annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,

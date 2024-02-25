@@ -4,11 +4,11 @@ model TestSimpleStorages
       BESMod.Systems.Hydraulical.Distribution.DistributionTwoStorageParallel
       distribution(redeclare
         BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
-        bufParameters(dTLoadingHC1=5), redeclare
+        parStoBuf(dTLoadingHC1=5), redeclare
         BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
-        dhwParameters(dTLoadingHC1=5),
+        parStoDHW(dTLoadingHC1=5),
       redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
-        threeWayValveParameters));
+        parThrWayVal));
   extends Modelica.Icons.Example;
 
   Modelica.Blocks.Sources.Pulse        pulse(       period=100) annotation (

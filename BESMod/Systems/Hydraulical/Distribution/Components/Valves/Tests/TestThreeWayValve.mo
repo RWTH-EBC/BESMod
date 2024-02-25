@@ -34,18 +34,12 @@ model TestThreeWayValve
       fraK=1,
       riseTime=50))
     annotation (Placement(transformation(extent={{-46,-40},{24,20}})));
-  IBPSA.Fluid.Movers.FlowControlled_m_flow
+  IBPSA.Fluid.Movers.Preconfigured.FlowControlled_m_flow
                                         pumpHP(
     redeclare final package Medium = Medium,
-    m_flow_nominal=m_flow_nominal,
-    redeclare Systems.RecordsCollection.Movers.AutomaticConfigurationData per(
-      final m_flow_nominal=m_flow_nominal,
-      final dp_nominal=2*(threeWayValveWithFlowReturn.parameters.dpValve_nominal
+    final m_flow_nominal=m_flow_nominal,
+    final dp_nominal=2*(threeWayValveWithFlowReturn.parameters.dpValve_nominal
            + threeWayValveWithFlowReturn.parameters.dpFixed_nominal[1]) + dpRes,
-      final rho(displayUnit="kg/m3") = 1000,
-      V_flowCurve={0,0.99,1,1.01},
-      dpCurve={2,1,0.5,0}),
-    final inputType=IBPSA.Fluid.Types.InputType.Continuous,
     final addPowerToMedium=false,
     final use_inputFilter=false)
                      annotation (Placement(transformation(

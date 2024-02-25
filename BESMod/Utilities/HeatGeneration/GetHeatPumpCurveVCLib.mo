@@ -1,25 +1,19 @@
 within BESMod.Utilities.HeatGeneration;
 model GetHeatPumpCurveVCLib
   extends PartialGetHeatGenerationCurve(
-    redeclare
-      BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultBivHPControl
-      bivalentHeatPumpControlDataDefinition,
-    redeclare Examples.UseCaseDesignOptimization.AachenSystem systemParameters,
-    redeclare Systems.Hydraulical.Generation.HeatPumpAndHeatingRod generation(
-      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
+    redeclare Examples.DesignOptimization.AachenSystem systemParameters,
+    redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater generation(
       redeclare package Medium_eva = IBPSA.Media.Air,
-      redeclare
-        BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
-        heatPumpParameters,
-      redeclare
-        BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-        heatingRodParameters,
+      redeclare BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
+        parHeaPum,
       redeclare model PerDataMainHP =
           AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (refrigerant=
               "Propane", flowsheet="VIPhaseSeparatorFlowsheet"),
-      redeclare
-        BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
-        temperatureSensorData),
+      redeclare BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
+        parTemSen,
+      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
+      redeclare BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
+        parEleHea),
     ramp(
       height=35,
       duration=84400,

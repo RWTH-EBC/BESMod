@@ -30,35 +30,6 @@ model ThreeWayValveWithFlowReturn
     redeclare package Medium = Medium)
     "Port connecting to heating demand"
     annotation (Placement(transformation(extent={{110,70},{90,90}})));
-  IBPSA.Fluid.Actuators.Valves.ThreeWayEqualPercentageLinear threWayValRet(
-      redeclare final package Medium = Medium,
-    final energyDynamics=energyDynamics,
-    final p_start=p_start,
-    final T_start=T_start,
-    final tau=parameters.tau,
-    final from_dp=true,
-    final portFlowDirection_1=Modelica.Fluid.Types.PortFlowDirection.Bidirectional,
-    final portFlowDirection_2=Modelica.Fluid.Types.PortFlowDirection.Bidirectional,
-    final portFlowDirection_3=Modelica.Fluid.Types.PortFlowDirection.Bidirectional,
-    final verifyFlowReversal=false,
-    final use_inputFilter=parameters.use_inputFilter,
-    final riseTime=parameters.riseTime,
-    final init=parameters.init,
-    final y_start=parameters.y_start,
-      final CvData=IBPSA.Fluid.Types.CvTypes.OpPoint,
-    final deltaM=parameters.deltaM,
-    final m_flow_nominal=parameters.m_flow_nominal,
-    final dpValve_nominal=parameters.dpValve_nominal,
-    final dpFixed_nominal=parameters.dpFixed_nominal,
-    final fraK=parameters.fraK,
-    final l=parameters.l,
-    final linearized={false,false},
-    final R=parameters.R,
-    final delta0=parameters.delta0)
-    annotation (Placement(transformation(
-        extent={{-23,18},{23,-18}},
-        rotation=180,
-        origin={-1,-36})));
   IBPSA.Fluid.Actuators.Valves.ThreeWayEqualPercentageLinear threWayValFlow(
     redeclare package Medium = Medium,
     final energyDynamics=energyDynamics,
@@ -96,20 +67,16 @@ model ThreeWayValveWithFlowReturn
 equation
   connect(threWayValFlow.y, uBuf)
     annotation (Line(points={{0,68},{0,120}}, color={0,0,127}));
-  connect(threWayValRet.port_2, portGen_b)
-    annotation (Line(points={{-24,-36},{-100,-36}}, color={0,127,255}));
-  connect(threWayValRet.port_3, portDHW_a)
-    annotation (Line(points={{-1,-54},{-1,-76},{100,-76}}, color={0,127,255}));
-  connect(uBuf, threWayValRet.y) annotation (Line(points={{0,120},{0,82},{-46,
-          82},{-46,6},{-1,6},{-1,-14.4}}, color={0,0,127}));
-  connect(portBui_a, threWayValRet.port_1) annotation (Line(points={{100,40},{62,
-          40},{62,-36},{22,-36}}, color={0,127,255}));
   connect(threWayValFlow.port_1, portBui_b) annotation (Line(points={{22,44},{
           34,44},{34,42},{56,42},{56,80},{100,80}}, color={0,127,255}));
   connect(threWayValFlow.port_3, portDHW_b) annotation (Line(points={{0,24},{0,
           14},{84,14},{84,-36},{100,-36}}, color={0,127,255}));
   connect(threWayValFlow.port_2, portGen_a) annotation (Line(points={{-22,44},{
           -62,44},{-62,44},{-100,44}}, color={0,127,255}));
+  connect(portDHW_a, portGen_b) annotation (Line(points={{100,-76},{70,-76},{70,
+          -36},{-100,-36}}, color={0,127,255}));
+  connect(portBui_a, portGen_b) annotation (Line(points={{100,40},{70,40},{70,-36},
+          {-100,-36}}, color={0,127,255}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Rectangle(
           extent={{-100,100},{100,-100}},
@@ -144,6 +111,6 @@ equation
           lineColor={0,0,0},
           lineThickness=0.5,
           fillColor={28,108,200},
-          fillPattern=FillPattern.Solid)}),                      Diagram(graphics,
+          fillPattern=FillPattern.Solid)}),                      Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end ThreeWayValveWithFlowReturn;

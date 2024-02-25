@@ -2,7 +2,7 @@
   "required": {
     "IBPSA": {
       "url": "https://github.com/ibpsa/modelica-ibpsa",
-      "commit": "3eb103a9fafb0ee718661ce6a97ae4f6fc8a99c0",
+      "commit": "3fad3f62ccb411b2ef84f11fcfdf13f2c6c53e41",
 	  "default_branch": "master",
       "mo": "IBPSA//package.mo"
     }
@@ -10,19 +10,19 @@
   "optional": {
     "AixLib": {
       "url": "https://github.com/RWTH-EBC/AixLib",
-      "commit": "3bc1bcd9b33c8991eb50aa8fb3913b6dac6a1a1e",
+      "commit": "07a4c9b0e0766b5259e2a2caa660d4ab551adab4",
 	  "default_branch": "development",
       "mo": "AixLib//package.mo"
     },
     "Buildings": {
       "url": "https://github.com/lbl-srg/modelica-buildings",
-      "commit": "fba63b60c75bb0285ede2081ae17dbdc9f38d9e7",
+      "commit": "87857396286acc419e0a704fbe028650f8863f5d",
 	  "default_branch": "master",
       "mo": "Buildings//package.mo"
     },
     "BuildingSystems": {
       "url": "https://github.com/UdK-VPT/BuildingSystems",
-      "commit": "64adca47eae19d2744d86aa8d1624cbf7ad6326b",
+      "commit": "2787f24d35fab72fb798d92ba10489ce4346c524",
 	  "default_branch": "master",
       "mo": "BuildingSystems//package.mo"
     }
