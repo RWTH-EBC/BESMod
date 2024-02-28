@@ -3,7 +3,8 @@ model SolarThermalBuildings
   "HPS which is supported by a solar thermal collector"
   extends BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS(redeclare
       model hydGeneration =
-        BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump (
+        BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump
+        (
         use_heaRod=false,
         redeclare model PerDataMainHP =
             AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (refrigerant=

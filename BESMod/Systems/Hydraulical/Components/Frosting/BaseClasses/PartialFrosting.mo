@@ -15,8 +15,8 @@ partial model PartialFrosting
     annotation (Placement(transformation(extent={{100,50},{120,70}})));
   Modelica.Blocks.Interfaces.BooleanOutput modeHeaPum "Value of Boolean output"
     annotation (Placement(transformation(extent={{100,-70},{120,-50}})));
-  Modelica.Blocks.Interfaces.RealInput TOda "Outdoor air temperature" annotation
-    (Placement(transformation(extent={{-140,-40},{-100,0}}), iconTransformation(
+  Modelica.Blocks.Interfaces.RealInput TOda "Outdoor air temperature" annotation (
+     Placement(transformation(extent={{-140,-40},{-100,0}}), iconTransformation(
           extent={{-140,-16},{-100,24}})));
   Modelica.Blocks.Interfaces.RealInput QEva_flow "Evaporator heat flow"
     annotation (Placement(transformation(extent={{-140,10},{-100,50}}),

@@ -21,16 +21,12 @@ package BaseClasses "Contains partial example case"
           dTHysBui=5,
           dTHysDHW=5,
           meaValPriGen=BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue.GenerationSupplyTemperature,
-
           redeclare model DHWHysteresis =
               BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod,
-
           redeclare model BuildingHysteresis =
               BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.ConstantHysteresisTimeBasedHeatingRod,
-
           redeclare model DHWSetTemperature =
               BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.ConstTSet_DHW,
-
           redeclare
             BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
             parPIDHeaPum,
@@ -53,7 +49,6 @@ package BaseClasses "Contains partial example case"
             parTra)),
       redeclare Systems.Demand.DHW.StandardProfiles DHW(
         redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
-
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
           calcmFlow),

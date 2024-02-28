@@ -40,7 +40,6 @@ model CalcHeaDemHOM
         Type_Win,
       redeclare model CorrSolarGainWin =
           AixLib.ThermalZones.HighOrder.Components.WindowsDoors.BaseClasses.CorrectionSolarGain.CorGSimple,
-
       use_sunblind=false,
       UValOutDoors=if TIR == 1 then 1.8 else 2.9,
       use_infiltEN12831=true,

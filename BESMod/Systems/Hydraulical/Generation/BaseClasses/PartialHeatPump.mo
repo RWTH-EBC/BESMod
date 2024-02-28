@@ -15,7 +15,7 @@ model PartialHeatPump "Generation with only the heat pump"
     annotation (Dialog(group="Component data"), choicesAllMatching=true);
   replaceable model PerDataRevHP =
       AixLib.DataBase.Chiller.PerformanceData.PolynomalApproach (redeclare
-        function                                                                    PolyData =
+        function PolyData =
           AixLib.DataBase.HeatPump.Functions.Characteristics.ConstantCoP (                                                                                     powerCompressor=2000, CoP=2))
     constrainedby
     AixLib.DataBase.Chiller.PerformanceData.BaseClasses.PartialPerformanceData
@@ -36,10 +36,14 @@ model PartialHeatPump "Generation with only the heat pump"
   parameter Modelica.Media.Interfaces.Types.Temperature TSoilConst=273.15 + 10
     "Constant soil temperature for ground source heat pumps"
     annotation(Dialog(group="Component choices", enable=use_airSource));
-  replaceable Components.Frosting.NoFrosting frost constrainedby
+  replaceable BESModDefrostPackage.FrostingModels.ZhuIceFacVarHysVarDen
+                                             frost(redeclare function
+      frostMapFunc =
+        BESModDefrostPackage.FrostingModels.Functions.ZhuFrostingMapCico_Cus)
+                                                   constrainedby
     Components.Frosting.BaseClasses.PartialFrosting
     "Model to account for frosting and defrost control" annotation (Dialog(group="Frosting"), Placement(
-        transformation(extent={{-178,2},{-162,18}})), choicesAllMatching=true);
+        transformation(extent={{-180,4},{-164,20}})), choicesAllMatching=true);
   replaceable parameter
     BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumpBaseDataDefinition
     parHeaPum constrainedby
@@ -277,12 +281,6 @@ equation
   connect(reaExpPEleHeaPum.y, KPIWel.u)
     annotation (Line(points={{-159,-70},{-148,-70},{-148,-30},{-141.8,-30}},
                                                        color={0,0,127}));
-  connect(heatPump.nSet, sigBusGen.yHeaPumSet) annotation (Line(points={{-39.5,-10.52},
-          {-39.5,-26},{2,-26},{2,98}}, color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{-3,-6},{-3,-6}},
-      horizontalAlignment=TextAlignment.Right));
   connect(booExpHeaPumIsOn.y, sigBusGen.heaPumIsOn) annotation (Line(points={{-161,
           -30},{-142,-30},{-142,98},{2,98}}, color={255,0,255}), Text(
       string="%second",
@@ -335,29 +333,40 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(frost.modeHeaPum, heatPump.modeSet) annotation (Line(points={{-161.2,5.2},
-          {-112,5.2},{-112,-36},{-48.5,-36},{-48.5,-10.52}}, color={255,0,255}));
-  connect(frost.iceFacMea, heatPump.iceFac_in) annotation (Line(points={{-161.2,14.8},
-          {-120,14.8},{-120,-1.72},{-74.6,-1.72}}, color={0,0,127}));
-  connect(frost.relHum, weaBus.relHum) annotation (Line(points={{-179.6,16.08},{-190,
-          16.08},{-190,80.11},{-100.895,80.11}}, color={0,0,127}), Text(
+  connect(frost.modeHeaPum, heatPump.modeSet) annotation (Line(points={{-163.2,7.2},
+          {-112,7.2},{-112,-36},{-48.5,-36},{-48.5,-10.52}}, color={255,0,255}));
+  connect(frost.iceFacMea, heatPump.iceFac_in) annotation (Line(points={{-163.2,
+          16.8},{-120,16.8},{-120,-1.72},{-74.6,-1.72}},
+                                                   color={0,0,127}));
+  connect(frost.relHum, weaBus.relHum) annotation (Line(points={{-181.6,18.08},{
+          -190,18.08},{-190,80.11},{-100.895,80.11}},
+                                                 color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(frost.genConBus, heatPump.sigBus) annotation (Line(
-      points={{-178.8,2.96},{-190,2.96},{-190,-38},{-52.775,-38},{-52.775,-6.78}},
+      points={{-180.8,4.96},{-190,4.96},{-190,-38},{-52.775,-38},{-52.775,-6.78}},
       color={255,204,51},
       thickness=0.5));
 
-  connect(frost.TOda, weaBus.TDryBul) annotation (Line(points={{-179.6,10.32},{-200,
-          10.32},{-200,80.11},{-100.895,80.11}}, color={0,0,127}), Text(
+  connect(frost.TOda, weaBus.TDryBul) annotation (Line(points={{-181.6,12.32},{-200,
+          12.32},{-200,80.11},{-100.895,80.11}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(reaExpQEva_flow.y, frost.QEva_flow) annotation (Line(points={{-199,6},{-190,
-          6},{-190,5.68},{-179.6,5.68}}, color={0,0,127}));
+  connect(reaExpQEva_flow.y, frost.QEva_flow) annotation (Line(points={{-199,6},
+          {-190,6},{-190,7.68},{-181.6,7.68}},
+                                         color={0,0,127}));
+  connect(sigBusGen.yHeaPumSet, heatPump.nSet) annotation (Line(
+      points={{2,98},{2,-20},{-39.5,-20},{-39.5,-10.52}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%first",
+      index=-1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
   annotation (Line(
       points={{-52.775,-6.78},{-52.775,33.61},{-56,33.61},{-56,74}},
       color={255,204,51},

@@ -14,20 +14,18 @@ model BES
         redeclare model PerDataRevHP =
             AixLib.DataBase.Chiller.PerformanceData.PolynomalApproach (redeclare
               function PolyData =
-                AixLib.DataBase.HeatPump.Functions.Characteristics.ConstantCoP (
-                  powerCompressor=2000, CoP=2)),
+                AixLib.DataBase.HeatPump.Functions.Characteristics.ConstantCoP
+                ( powerCompressor=2000, CoP=2)),
         redeclare
           BESMod.Systems.Hydraulical.Components.Frosting.ZhuIceFacCalculation
           frost(density=200, redeclare function frostMapFunc =
               BESMod.Systems.Hydraulical.Components.Frosting.Functions.ZhuFrostingMapCico),
-
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare package Medium_eva = AixLib.Media.Air,
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           parHeaPum(
           genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
-
           TBiv=parameterStudy.TBiv,
           scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal/
               parameterStudy.QHP_flow_biv,
