@@ -5,7 +5,7 @@ partial model PartialDistribution
   extends BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters(final
       dp_nominal=dpDem_nominal,
       TSup_nominal=TDem_nominal .+ dTLoss_nominal .+ dTTra_nominal);
-  extends PartialDHWParameters;
+  extends PartialDHWParameters(fFullSto=1);
   replaceable package MediumDHW =
       Modelica.Media.Interfaces.PartialMedium
     annotation (choicesAllMatching=true);

@@ -166,8 +166,8 @@ model PartialHeatPump "Generation with only the heat pump"
         rotation=0,
         origin={-170,50})));
 
-  Utilities.KPIs.EnergyKPICalculator KPIQHP(use_inpCon=false, final y=heatPump.con.QFlow_in)
-    annotation (Placement(transformation(extent={{-140,-80},{-120,-60}})));
+  Utilities.KPIs.EnergyKPICalculator KPIQHP(use_inpCon=true)
+    annotation (Placement(transformation(extent={{-86,-128},{-66,-108}})));
 
   IBPSA.Fluid.Sources.Boundary_pT bouPum(
     redeclare package Medium = Medium,
@@ -225,6 +225,20 @@ model PartialHeatPump "Generation with only the heat pump"
     "Electrical power consumption of heat pump"
     annotation (Placement(transformation(extent={{-220,-4},{-200,16}})));
 
+  Modelica.Blocks.Nonlinear.Limiter limiter(
+    uMax=Modelica.Constants.inf,
+    uMin=0,
+    u=heatPump.con.QFlow_in)
+    annotation (Placement(transformation(extent={{-120,-128},{-100,-108}})));
+  Utilities.KPIs.EnergyKPICalculator QhPdefrost(use_inpCon=true)
+    annotation (Placement(transformation(extent={{-86,-94},{-66,-74}})));
+  Modelica.Blocks.Nonlinear.Limiter limiter1(
+    uMax=0,
+    uMin=-Modelica.Constants.inf,
+    u=heatPump.con.QFlow_in)
+    annotation (Placement(transformation(extent={{-148,-94},{-128,-74}})));
+  Modelica.Blocks.Math.Gain gain(k=-1)
+    annotation (Placement(transformation(extent={{-116,-94},{-96,-74}})));
 equation
   connect(bouEva.ports[1], heatPump.port_a2) annotation (Line(points={{-80,50},{-74,
           50},{-74,42},{-57.5,42},{-57.5,37}}, color={0,127,255}));
@@ -311,8 +325,8 @@ equation
       index=1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(KPIQHP.KPI, outBusGen.QHeaPum_flow) annotation (Line(points={{-117.8,
-          -70},{-114,-70},{-114,-122},{0,-122},{0,-100}}, color={135,135,135}),
+  connect(KPIQHP.KPI, outBusGen.QHeaPum_flow) annotation (Line(points={{-63.8,
+          -118},{0,-118},{0,-100}},                       color={135,135,135}),
       Text(
       string="%second",
       index=1,
@@ -367,6 +381,19 @@ equation
       index=-1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  connect(limiter.y, KPIQHP.u)
+    annotation (Line(points={{-99,-118},{-87.8,-118}}, color={0,0,127}));
+  connect(QhPdefrost.KPI, outBusGen.QHeaPum_flow_defrost) annotation (Line(
+        points={{-63.8,-84},{-16,-84},{-16,-100},{0,-100}}, color={135,135,135}),
+      Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(limiter1.y, gain.u)
+    annotation (Line(points={{-127,-84},{-118,-84}}, color={0,0,127}));
+  connect(gain.y, QhPdefrost.u)
+    annotation (Line(points={{-95,-84},{-87.8,-84}}, color={0,0,127}));
   annotation (Line(
       points={{-52.775,-6.78},{-52.775,33.61},{-56,33.61},{-56,74}},
       color={255,204,51},
