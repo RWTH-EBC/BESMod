@@ -4,6 +4,7 @@ model TimeConstantEstimationControl
   extends Systems.Hydraulical.Control.BaseClasses.PartialThermostaticValveControl(redeclare
       BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
       valCtrl);
+  parameter Boolean useOpeTemCtrl = false "=true to control the operative room temperature";
   replaceable parameter
     Systems.Hydraulical.Control.RecordsCollection.PIDBaseDataDefinition parPID
     "PID parameters for boiler" annotation (choicesAllMatching=true, Placement(
@@ -41,14 +42,24 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
+  if useOpeTemCtrl then
+    connect(supTSet.TZoneMea, buiMeaBus.TZoneOpeMea) annotation (Line(points={{-162,38},
+            {-234,38},{-234,40},{-242,40},{-242,103},{65,103}}, color={0,0,127}),
+        Text(
+        string="%second",
+        index=1,
+        extent={{-6,3},{-6,3}},
+        horizontalAlignment=TextAlignment.Right));
+  else
+    connect(supTSet.TZoneMea, buiMeaBus.TZoneMea) annotation (Line(points={{-162,38},
+            {-234,38},{-234,40},{-242,40},{-242,103},{65,103}}, color={0,0,127}),
+        Text(
+        string="%second",
+        index=1,
+        extent={{-6,3},{-6,3}},
+        horizontalAlignment=TextAlignment.Right));
 
-  connect(supTSet.TZoneMea, buiMeaBus.TZoneMea) annotation (Line(points={{-162,38},
-          {-234,38},{-234,40},{-242,40},{-242,103},{65,103}}, color={0,0,127}),
-      Text(
-      string="%second",
-      index=1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
+  end if;
   connect(supTSet.TZoneSet, useProBus.TZoneSet) annotation (Line(points={{-162,22},
           {-236,22},{-236,24},{-238,24},{-238,103},{-119,103}}, color={0,0,127}),
       Text(
