@@ -3,6 +3,7 @@ model ProfilesWithStep "User profile with a step and no internal gains"
   extends Systems.UserProfiles.BaseClasses.PartialUserProfiles;
   parameter Modelica.Units.SI.TemperatureDifference dTStep "Temperature difference of step";
   parameter Modelica.Units.SI.Time startTime=0 "Start time of step";
+  parameter Real hoursStep "Number of hours the step lasts, maximum 24";
 
   Modelica.Blocks.Sources.Constant conIntGai[3](each final k=0)
     "Constant no internal gains" annotation (Placement(transformation(
@@ -11,7 +12,7 @@ model ProfilesWithStep "User profile with a step and no internal gains"
         origin={-10,-10})));
   Modelica.Blocks.Sources.Pulse nigSetBakTSetZone[nZones](
     each amplitude=-dTStep,
-    each width=100*8/24,
+    each width=100*hoursStep /24,
     each period=86400,
     offset=TSetZone_nominal,
     each startTime=startTime)                  "Constant room set temperature"
