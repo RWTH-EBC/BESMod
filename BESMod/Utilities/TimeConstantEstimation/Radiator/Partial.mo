@@ -8,8 +8,11 @@ partial model Partial "Estimate UFH time constants"
       T_start=273.15 + 55,
       redeclare BESMod.Systems.Hydraulical.Distribution.BuildingOnly distribution(
           nParallelDem=1),
-      redeclare BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased
+      redeclare
+        BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator
         transfer(
+        f_design=QBuiNoRetrofit_flow_nominal ./ systemParameters.QBui_flow_nominal,
+
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
           parTra,
@@ -18,7 +21,6 @@ partial model Partial "Estimate UFH time constants"
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
           parRad),
       control(
-        valCtrl(k={0.5}),
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicBoilerPI
           parPID(
@@ -27,6 +29,9 @@ partial model Partial "Estimate UFH time constants"
           timeInt=100))),
     systemParameters(THydSup_nominal={328.15},
                      use_dhw=false));
+
+   parameter Modelica.Units.SI.HeatFlowRate QBuiNoRetrofit_flow_nominal[systemParameters.nZones]
+     "Nominal heat flow rate before possible retrofits";
   annotation (experiment(
       StopTime=864000,
       Interval=600,

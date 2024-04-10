@@ -169,9 +169,10 @@ model TEASERThermalZone
         rotation=180,
         origin={114,62})));
   Modelica.Blocks.Math.Add calTOpe[nZones](
-    final k1=0.5,
-    final k2=0.5,
-    y(unit="K", displayUnit="degC")) "Calculate operative room temperature"
+    each final k1=0.5,
+    each final k2=0.5,
+    each y(unit="K", displayUnit="degC"))
+    "Calculate operative room temperature"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
@@ -410,7 +411,7 @@ equation
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
   connect(calTOpe.y, buiMeaBus.TZoneOpeMea) annotation (Line(points={{-81,30},{
-          -88,30},{-88,44},{-52,44},{-52,28},{-46,28},{-46,6},{0,6},{0,99}},
+          -88,30},{-88,92},{0,92},{0,99}},
         color={0,0,127}), Text(
       string="%second",
       index=1,

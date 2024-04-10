@@ -11,10 +11,10 @@ model ProfilesWithStep "User profile with a step and no internal gains"
         origin={-10,-10})));
   Modelica.Blocks.Sources.Pulse nigSetBakTSetZone[nZones](
     each amplitude=-dTStep,
-    width=100*8/24,
-    period=86400,
+    each width=100*8/24,
+    each period=86400,
     offset=TSetZone_nominal,
-    startTime=startTime)                       "Constant room set temperature"
+    each startTime=startTime)                  "Constant room set temperature"
     annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,

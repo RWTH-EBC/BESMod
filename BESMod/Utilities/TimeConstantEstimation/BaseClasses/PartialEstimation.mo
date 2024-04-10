@@ -7,9 +7,10 @@ partial model PartialEstimation "Partial model for estimation of time constants"
     redeclare Systems.Demand.Building.TEASERThermalZone building(
       ARoo=sum(building.zoneParam.ARoof),
       redeclare BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
-        oneZoneParam,
+        oneZoneParam(useConstantACHrate=true),
       hBui=sum(building.zoneParam.VAir)^(1/3),
       ABui=sum(building.zoneParam.VAir)^(2/3),
+      ventRate={0.3},
       T_start=293.15 - dTStepSet),
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(redeclare
@@ -68,6 +69,12 @@ partial model PartialEstimation "Partial model for estimation of time constants"
     height=-dTStepOda,               offset=TOda_start,
     startTime=startTimeTOda)                                   "No irradiation"
     annotation (Placement(transformation(extent={{-322,82},{-300,104}})));
+
+initial equation
+  building.thermalZone[1].ROM.extWallRC.thermCapExt[1].T = building.T_start;
+  building.thermalZone[1].ROM.floorRC.thermCapExt[1].T = building.T_start;
+  building.thermalZone[1].ROM.intWallRC.thermCapInt[1].T = building.T_start;
+  building.thermalZone[1].ROM.roofRC.thermCapExt[1].T = building.T_start;
 equation
   connect(consNultIrr.y, weaDat.HGloHor_in) annotation (Line(points={{-296.9,29},{
           -292.45,29},{-292.45,31},{-283,31}}, color={0,0,127}));

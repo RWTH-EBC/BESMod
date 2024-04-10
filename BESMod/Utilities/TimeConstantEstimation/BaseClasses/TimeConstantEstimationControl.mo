@@ -1,10 +1,9 @@
 within BESMod.Utilities.TimeConstantEstimation.BaseClasses;
 model TimeConstantEstimationControl
   "Control model to help time constant estimation"
-  extends Systems.Hydraulical.Control.BaseClasses.PartialThermostaticValveControl(redeclare
+  extends Systems.Hydraulical.Control.BaseClasses.PartialThermostaticValveControl(redeclare replaceable
       BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
       valCtrl);
-  parameter Boolean useOpeTemCtrl = false "=true to control the operative room temperature";
   replaceable parameter
     Systems.Hydraulical.Control.RecordsCollection.PIDBaseDataDefinition parPID
     "PID parameters for boiler" annotation (choicesAllMatching=true, Placement(
