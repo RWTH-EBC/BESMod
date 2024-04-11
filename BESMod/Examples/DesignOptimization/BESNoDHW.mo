@@ -1,5 +1,5 @@
 within BESMod.Examples.DesignOptimization;
-model BES
+model BESNoDHW "Example to demonstrate usage without DHW"
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
     redeclare Systems.Demand.Building.TEASERThermalZone building(
@@ -74,19 +74,8 @@ model BES
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultSafetyControl
           safetyControl),
-      redeclare Systems.Hydraulical.Distribution.DistributionTwoStorageParallel
-        distribution(
-        redeclare
-          BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
-          parStoBuf(
-          VPerQ_flow=parameterStudy.VPerQFlow,
-          dTLoadingHC1=0,
-          energyLabel=BESMod.Systems.Hydraulical.Distribution.Types.EnergyLabel.B),
-        redeclare
-          BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
-          parStoDHW(dTLoadingHC1=10, energyLabel=BESMod.Systems.Hydraulical.Distribution.Types.EnergyLabel.A),
-        redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
-          parThrWayVal),
+      redeclare BESMod.Systems.Hydraulical.Distribution.BuildingOnly
+        distribution(nParallelDem=1),
       redeclare Systems.Hydraulical.Transfer.IdealValveRadiator transfer(
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
@@ -101,7 +90,8 @@ model BES
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
         calcmFlow),
     redeclare Systems.UserProfiles.TEASERProfiles userProfiles,
-    redeclare AachenSystem systemParameters,
+    redeclare AachenSystem systemParameters(use_ventilation=false, use_dhw=
+          false),
     redeclare ParametersToChange parameterStudy,
     redeclare final package MediumDHW = AixLib.Media.Water,
     redeclare final package MediumZone = AixLib.Media.Air,
@@ -114,4 +104,4 @@ model BES
       StopTime=86400,
       Interval=600,
       __Dymola_Algorithm="Dassl"));
-end BES;
+end BESNoDHW;

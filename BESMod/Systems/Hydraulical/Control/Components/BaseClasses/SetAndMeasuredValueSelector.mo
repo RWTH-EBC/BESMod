@@ -114,7 +114,8 @@ equation
       points={{-39,40},{70,40},{70,60},{110,60}},
       color={0,0,127},
       pattern=LinePattern.Dash));
-    connect(TMea, sigBusDistr.TStoBufTopMea) annotation (Line(
+    if meaVal == BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue.DistributionTemperature then
+      connect(TMea, sigBusDistr.TStoBufTopMea) annotation (Line(
       points={{110,-40},{26,-40},{26,-58},{-86,-58},{-86,-21},{-100,-21}},
       color={0,0,127},
       pattern=LinePattern.Dash), Text(
@@ -122,6 +123,7 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
+    end if;
   end if;
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));

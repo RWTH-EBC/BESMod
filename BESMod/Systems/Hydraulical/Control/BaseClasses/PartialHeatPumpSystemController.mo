@@ -80,8 +80,6 @@ partial model PartialHeatPumpSystemController
   parameter String filNamSGReady=ModelicaServices.ExternalReferences.loadResource("modelica://BESMod/Resources/SGReady/EVU_Sperre_EON.txt")
     "Name of SG Ready scenario input file"
     annotation (Dialog(group="SG Ready", enable=not useExtSGSig and useSGReady));
-  SummerMode sumMod "Summer mode instance"
-    annotation (Placement(transformation(extent={{42,-18},{62,2}})));
 
   replaceable parameter BESMod.Systems.Hydraulical.Control.RecordsCollection.PIDBaseDataDefinition
     parPIDHeaPum constrainedby
@@ -344,9 +342,7 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-    annotation (Dialog(group="SG Ready"),
-                Dialog(group="SG Ready"),
-              Diagram(graphics={
+    annotation (Diagram(graphics={
         Rectangle(
           extent={{4,100},{136,36}},
           lineColor={28,108,200},

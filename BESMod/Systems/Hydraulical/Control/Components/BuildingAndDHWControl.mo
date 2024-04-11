@@ -88,7 +88,8 @@ model BuildingAndDHWControl
       Placement(transformation(extent={{-80,80},{-60,100}})));
 
 
-  Modelica.Blocks.Logical.Or priGenOn "Turn on primary generation device"
+  Modelica.Blocks.Logical.Or priGenOn if use_dhw
+                                      "Turn on primary generation device"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -109,7 +110,7 @@ model BuildingAndDHWControl
     if use_dhw
     "DHW supply set temperature"
     annotation (Placement(transformation(extent={{300,70},{320,90}})));
-  Modelica.Blocks.Math.MinMax maxSecHeaGen(nu=3)
+  Modelica.Blocks.Math.MinMax maxSecHeaGen(nu=if use_dhw then 3 else 1)
     "Maximal value suggested for secondary heat generator" annotation (Placement(
         transformation(
         extent={{10,-10},{-10,10}},
@@ -124,7 +125,7 @@ model BuildingAndDHWControl
   Modelica.Blocks.Interfaces.BooleanOutput priGren
     "=true to activate primary generation device"
     annotation (Placement(transformation(extent={{300,-120},{320,-100}})));
-  Modelica.Blocks.MathBoolean.Or secGenOn(nu=3)
+  Modelica.Blocks.MathBoolean.Or secGenOn(nu=3) if use_dhw
     "If any is true, secondary heater is activated" annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
@@ -244,10 +245,6 @@ equation
   connect(TSetBuiSup.TOda, TOda) annotation (Line(points={{-72,-70},{-90,-70},{-90,
           -38},{-54,-38},{-54,0},{-120,0}},
                         color={0,0,127}));
-  connect(TSetDHW.sigBusDistr, sigBusDistr) annotation (Line(
-      points={{-80,89.9},{-80,90},{-86,90},{-86,70},{-100,70}},
-      color={255,204,51},
-      thickness=0.5));
   connect(hysBui.TOda, TOda) annotation (Line(points={{50,-58.8},{50,-54},{-54,-54},
           {-54,0},{-120,0}}, color={0,0,127}));
   connect(supCtrDHW.uSup, sigBusHyd.TSetDHWOve) annotation (Line(points={{-2,78},
@@ -270,16 +267,15 @@ equation
   connect(TSetDHW.y, secGenOn.u[2]) annotation (Line(points={{-59,84.2},{-54,84.2},
           {-54,34},{176,34},{176,-112},{182,-112}},
                       color={255,0,255}));
-  connect(maxSecHeaGen.u[1], hysDHW.ySecGenSet) annotation (Line(points={{200,
-          -47.6667},{180,-47.6667},{180,-48},{164,-48},{164,42},{84,42},{84,58},
-          {81.4,58},{81.4,61.4}},                                        color={0,
+  connect(maxSecHeaGen.u[2], hysDHW.ySecGenSet) annotation (Line(points={{200,-50},
+          {180,-50},{180,-48},{164,-48},{164,42},{84,42},{84,58},{81.4,58},{81.4,
+          61.4}},                                                        color={0,
           0,127}));
-  connect(maxSecHeaGen.u[2], hysBui.ySecGenSet) annotation (Line(points={{200,-50},
+  connect(maxSecHeaGen.u[1], hysBui.ySecGenSet) annotation (Line(points={{200,-50},
           {200,-44},{72,-44},{72,-78.6},{61.4,-78.6}},
                                                 color={0,0,127}));
-  connect(swiAntLeg.y, maxSecHeaGen.u[3]) annotation (Line(points={{-19,50},{
-          164,50},{164,-52.3333},{200,-52.3333}},
-                                       color={0,0,127}));
+  connect(swiAntLeg.y, maxSecHeaGen.u[3]) annotation (Line(points={{-19,50},{164,
+          50},{164,-50},{200,-50}},    color={0,0,127}));
   connect(TSetDHW.y, swiAntLeg.u2) annotation (Line(points={{-59,84.2},{-54,84.2},
           {-54,50},{-42,50}}, color={255,0,255}));
   connect(hysDHW.TStoTop, sigBusDistr.TStoDHWTopMea) annotation (Line(points={{59,77},
@@ -450,8 +446,23 @@ equation
           76},{96,76},{96,72.3333},{100,72.3333}}, color={255,0,255}));
   connect(conDHWOff.y, bufOn.u)
     annotation (Line(points={{201,30},{260,30},{260,50}}, color={255,0,255}));
-    annotation (Dialog(group="SG Ready", enable=useSGReady),
-              Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-140},
+  if use_dhw then
+    connect(TSetDHW.sigBusDistr, sigBusDistr) annotation (Line(
+      points={{-80,89.9},{-80,90},{-86,90},{-86,70},{-100,70}},
+      color={255,204,51},
+      thickness=0.5));
+  else
+    connect(secGenOffSGRead.u1, logSwiSumModSecGen.y) annotation (Line(
+      points={{264,-126},{148,-126},{148,-110},{141,-110}},
+      color={255,0,255},
+      pattern=LinePattern.Dash));
+    connect(logSwiSumModPriGen.y, priGenOffSGRead.u1) annotation (Line(
+      points={{141,-70},{250,-70},{250,-78},{258,-78}},
+      color={255,0,255},
+      pattern=LinePattern.Dash));
+  end if;
+
+    annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-140},
             {300,100}})), Diagram(coordinateSystem(preserveAspectRatio=false,
           extent={{-100,-140},{300,100}}), graphics={
         Rectangle(
