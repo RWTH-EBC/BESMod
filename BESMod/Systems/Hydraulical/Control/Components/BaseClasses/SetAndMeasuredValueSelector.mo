@@ -4,6 +4,7 @@ model SetAndMeasuredValueSelector
   parameter
     BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue
     meaVal "Type of measurement to use in control";
+  parameter Boolean use_dhw = true "=false to disable DHW";
 
   parameter Modelica.Units.SI.TemperatureDifference dTTraToDis_nominal
     "Nominal temperature difference between transfer and distribution system";
@@ -22,24 +23,27 @@ model SetAndMeasuredValueSelector
     sigBusGen
     annotation (Placement(transformation(extent={{-116,-98},{-84,-66}}),
         iconTransformation(extent={{-116,-98},{-84,-66}})));
-  Modelica.Blocks.Interfaces.BooleanInput  DHW "=true for DHW loading"
+  Modelica.Blocks.Interfaces.BooleanInput  DHW if use_dhw
+                                               "=true for DHW loading"
     annotation (Placement(transformation(extent={{-120,50},{-100,70}})));
   Modelica.Blocks.Interfaces.RealInput  TBuiSet(unit="K", displayUnit="degC")
     "Building supply set temperature"
     annotation (Placement(transformation(extent={{-120,18},{-100,38}})));
   Modelica.Blocks.Interfaces.RealInput  TDHWSet(unit="K", displayUnit="degC")
+    if use_dhw
     "DHW supply set temperature"
     annotation (Placement(transformation(extent={{-120,78},{-100,98}})));
   BESMod.Systems.Hydraulical.Control.Components.BaseClasses.ConstantAdd
     constAddBuf(final k=dTBui_nominal) "Add temperature difference in DHW system"
     annotation (Placement(transformation(extent={{-60,30},{-40,50}})));
-  Modelica.Blocks.Logical.Switch swiDHWBuiSet "Switch between building and DHW"
+  Modelica.Blocks.Logical.Switch swiDHWBuiSet if use_dhw
+                                              "Switch between building and DHW"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-10,60})));
   BESMod.Systems.Hydraulical.Control.Components.BaseClasses.ConstantAdd
-    constAddDHW(final k=dTTraDHW_nominal + dTHysDHW/2)
+    constAddDHW(final k=dTTraDHW_nominal + dTHysDHW/2) if use_dhw
     "Add temperature difference in DHW system"
     annotation (Placement(transformation(extent={{-60,70},{-40,90}})));
   Modelica.Blocks.Interfaces.RealOutput TMea(unit="K", displayUnit="degC")
@@ -49,6 +53,7 @@ model SetAndMeasuredValueSelector
     "Set temperature"
     annotation (Placement(transformation(extent={{100,50},{120,70}})));
   Modelica.Blocks.Logical.Switch swiDHWBuiMea if meaVal == BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue.DistributionTemperature
+     and use_dhw
     "Switch between building and DHW" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -89,8 +94,8 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(swiDHWBuiMea.u3, sigBusDistr.TStoBufTopMea) annotation (Line(points={{-22,
-          -48},{-78,-48},{-78,-24},{-80,-24},{-80,-21},{-100,-21}}, color={0,0,127}),
+  connect(swiDHWBuiMea.u3, sigBusDistr.TStoBufTopMea) annotation (Line(points={{-22,-48},
+          {-78,-48},{-78,-21},{-100,-21}},                          color={0,0,127}),
       Text(
       string="%second",
       index=1,
@@ -104,6 +109,20 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
+  if not use_dhw then
+    connect(constAddBuf.y, TSet) annotation (Line(
+      points={{-39,40},{70,40},{70,60},{110,60}},
+      color={0,0,127},
+      pattern=LinePattern.Dash));
+    connect(TMea, sigBusDistr.TStoBufTopMea) annotation (Line(
+      points={{110,-40},{26,-40},{26,-58},{-86,-58},{-86,-21},{-100,-21}},
+      color={0,0,127},
+      pattern=LinePattern.Dash), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  end if;
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end SetAndMeasuredValueSelector;

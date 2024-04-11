@@ -14,8 +14,8 @@ model BES
         redeclare model PerDataRevHP =
             AixLib.DataBase.Chiller.PerformanceData.PolynomalApproach (redeclare
               function PolyData =
-                AixLib.DataBase.HeatPump.Functions.Characteristics.ConstantCoP (
-                  powerCompressor=2000, CoP=2)),
+                AixLib.DataBase.HeatPump.Functions.Characteristics.ConstantCoP
+                ( powerCompressor=2000, CoP=2)),
         redeclare
           BESMod.Systems.Hydraulical.Components.Frosting.ZhuIceFacCalculation
           frost(density=200, redeclare function frostMapFunc =
@@ -48,9 +48,6 @@ model BES
         redeclare
           BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
           valCtrl,
-        redeclare
-          BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
-          parTheVal,
         redeclare model DHWHysteresis =
             BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.PartParallelBivalent
             (
@@ -69,6 +66,8 @@ model BES
             TRoom=systemParameters.TSetZone_nominal[1],
             QDem_flow_nominal=systemParameters.QBui_flow_nominal[1],
             QHP_flow_cutOff=parameterStudy.QHP_flow_cutOff),
+        useSGReady=true,
+        useExtSGSig=false,
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
           parPIDHeaPum,

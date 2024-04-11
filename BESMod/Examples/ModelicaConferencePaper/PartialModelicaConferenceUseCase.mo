@@ -53,9 +53,6 @@ partial model PartialModelicaConferenceUseCase
         redeclare
           BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
           valCtrl,
-        redeclare
-          BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
-          parTheVal,
         supCtrDHWTyp=BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Internal,
         redeclare model DHWHysteresis =
             BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,

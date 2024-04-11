@@ -37,9 +37,6 @@ partial model PartialCase
         redeclare
           BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
           valCtrl,
-        redeclare
-          BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
-          parTheVal,
         dTHysBui=10,
         dTHysDHW=10,
         redeclare model DHWHysteresis =

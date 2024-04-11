@@ -55,9 +55,6 @@ model BES_HOM
           BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
           parPIDHeaPum,
         redeclare
-          BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
-          parTheVal,
-        redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultSafetyControl
           safetyControl),
       redeclare

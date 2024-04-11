@@ -3,6 +3,12 @@ partial model PartialHeatPumpSystemController
   "Partial model with replaceable blocks for rule based control of heat pump systems"
   extends
     BESMod.Systems.Hydraulical.Control.BaseClasses.PartialThermostaticValveControl;
+   parameter Components.BaseClasses.MeasuredValue meaValPriGen=BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue.GenerationSupplyTemperature
+    "Control measurement value for primary device"
+    annotation (Dialog(group="Heat Pump"));
+  parameter Components.BaseClasses.MeasuredValue meaValSecGen
+    "Control measurement value for secondary device"
+    annotation (Dialog(group="Backup heater"));
   parameter Modelica.Units.SI.TemperatureDifference dTHysBui=10
     "Hysteresis for building demand control"
     annotation (Dialog(group="Building control"));
@@ -16,12 +22,7 @@ partial model PartialHeatPumpSystemController
     supCtrDHWTyp=BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Local
     "Supervisory control approach for DHW supply temperature "
       annotation(Dialog(group="DHW control"));
-  parameter Components.BaseClasses.MeasuredValue meaValPriGen=BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue.GenerationSupplyTemperature
-    "Control measurement value for primary device"
-    annotation (Dialog(group="Component choices"));
-  parameter Components.BaseClasses.MeasuredValue meaValSecGen
-    "Control measurement value for secondary device"
-    annotation (Dialog(group="Component choices"));
+
 
   replaceable model BuildingHysteresis =
       BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.BaseClasses.PartialOnOffController
@@ -32,7 +33,8 @@ partial model PartialHeatPumpSystemController
     choicesAllMatching=true);
   replaceable model BuildingSupplySetTemperature =
       BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.IdealHeatingCurve
-      constrainedby BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.BaseClasses.PartialSetpoint(
+      constrainedby
+    BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.BaseClasses.PartialSetpoint(
         final TSup_nominal=buiAndDHWCtr.TSup_nominal,
         final TRet_nominal=buiAndDHWCtr.TRet_nominal,
         final TOda_nominal=buiAndDHWCtr.TOda_nominal,
@@ -57,14 +59,36 @@ partial model PartialHeatPumpSystemController
   replaceable model SummerMode =
    BESMod.Systems.Hydraulical.Control.Components.SummerMode.No
    constrainedby
-   BESMod.Systems.Hydraulical.Control.Components.SummerMode.BaseClasses.PartialSummerMode
+    BESMod.Systems.Hydraulical.Control.Components.SummerMode.BaseClasses.PartialSummerMode
     "Summer mode model" annotation(Dialog(group="Building control"), choicesAllMatching=true);
+  parameter Boolean useSGReady=false "=true to use SG Ready"
+    annotation (Dialog(group="SG Ready"));
+  parameter Boolean useExtSGSig=true "=true to use external SG ready signal"
+    annotation (Dialog(group="SG Ready", enable=useSGReady));
+  parameter Modelica.Units.SI.TemperatureDifference TAddSta3Bui=5
+    "Increase for SG-Ready state 3 for building supply"
+    annotation (Dialog(group="SG Ready", enable=useSGReady));
+  parameter Modelica.Units.SI.TemperatureDifference TAddSta4Bui=10
+    "Increase for SG-Ready state 4 for building supply"
+    annotation (Dialog(group="SG Ready", enable=useSGReady));
+  parameter Modelica.Units.SI.TemperatureDifference TAddSta3DHW=5
+    "Increase for SG-Ready state 3 for DHW supply"
+    annotation (Dialog(group="SG Ready", enable=useSGReady));
+  parameter Modelica.Units.SI.TemperatureDifference TAddSta4DHW=10
+    "Increase for SG-Ready state 4 for DHW supply"
+    annotation (Dialog(group="SG Ready", enable=useSGReady));
+  parameter String filNamSGReady=ModelicaServices.ExternalReferences.loadResource("modelica://BESMod/Resources/SGReady/EVU_Sperre_EON.txt")
+    "Name of SG Ready scenario input file"
+    annotation (Dialog(group="SG Ready", enable=not useExtSGSig and useSGReady));
+  SummerMode sumMod "Summer mode instance"
+    annotation (Placement(transformation(extent={{42,-18},{62,2}})));
+
   replaceable parameter BESMod.Systems.Hydraulical.Control.RecordsCollection.PIDBaseDataDefinition
     parPIDHeaPum constrainedby
     BESMod.Systems.Hydraulical.Control.RecordsCollection.PIDBaseDataDefinition
     "PID parameters of heat pump"
     annotation (choicesAllMatching=true,
-                Dialog(group="Primary device"),
+                Dialog(group="Heat Pump"),
                 Placement(transformation(extent={{100,40},{120,60}})));
 
   replaceable BESMod.Systems.Hydraulical.Control.RecordsCollection.HeatPumpSafetyControl
@@ -84,8 +108,8 @@ partial model PartialHeatPumpSystemController
     final timeDer=parPIDHeaPum.timeDer,
     final Nd=parPIDHeaPum.Nd)                                                                                                             constrainedby
     BESMod.Systems.Hydraulical.Control.Components.RelativeSpeedController.BaseClasses.PartialControler
-    "Control of primary generation device" annotation (
-    Dialog(group="Primary device", tab="Advanced"),
+    "Control of heat pump" annotation (
+    Dialog(group="Heat Pump", tab="Advanced"),
     choicesAllMatching=true,
     Placement(transformation(extent={{102,82},{118,98}})));
 
@@ -136,6 +160,7 @@ partial model PartialHeatPumpSystemController
         rotation=180,
         origin={170,64})));
   Components.BuildingAndDHWControl buiAndDHWCtr(
+    final use_dhw=use_dhw,
     final nZones=parTra.nParallelDem,
     final TSup_nominal=max(parTra.TTra_nominal),
     final TRet_nominal=max(parTra.TTra_nominal .- parTra.dTTra_nominal),
@@ -147,12 +172,20 @@ partial model PartialHeatPumpSystemController
     redeclare final model SummerMode = SummerMode,
     redeclare final model DHWHysteresis = DHWHysteresis,
     redeclare final model BuildingHysteresis = BuildingHysteresis,
-    redeclare final model DHWSetTemperature = DHWSetTemperature)
+    redeclare final model DHWSetTemperature = DHWSetTemperature,
+    final useExtSGSig=useExtSGSig,
+    final TAddSta3Bui=TAddSta3Bui,
+    final useSGReady=useSGReady,
+    final TAddSta4Bui=TAddSta4Bui,
+    final filNamSGReady=filNamSGReady,
+    final TAddSta3DHW=TAddSta3DHW,
+    final TAddSta4DHW=TAddSta4DHW)
     "Control for building and DHW system"
     annotation (Placement(transformation(extent={{-200,20},{-120,80}})));
 
   Components.BaseClasses.SetAndMeasuredValueSelector setAndMeaSelPri(
     final meaVal=meaValPriGen,
+    final use_dhw=use_dhw,
     final dTTraToDis_nominal=parTra.dTLoss_nominal[1],
     final dTDisToGen_nominal=parDis.dTTra_nominal[1] + parGen.dTLoss_nominal[1],
     final dTDHWToGen_nominal=parDis.dTTraDHW_nominal,
@@ -161,6 +194,7 @@ partial model PartialHeatPumpSystemController
     annotation (Placement(transformation(extent={{40,60},{60,80}})));
   Components.BaseClasses.SetAndMeasuredValueSelector setAndMeaSelSec(
     final meaVal=meaValSecGen,
+    final use_dhw=use_dhw,
     final dTTraToDis_nominal=parTra.dTLoss_nominal[1],
     final dTDisToGen_nominal=parDis.dTTra_nominal[1] + parGen.dTLoss_nominal[1],
     final dTDHWToGen_nominal=parDis.dTTraDHW_nominal,
@@ -310,7 +344,9 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  annotation (Diagram(graphics={
+    annotation (Dialog(group="SG Ready"),
+                Dialog(group="SG Ready"),
+              Diagram(graphics={
         Rectangle(
           extent={{4,100},{136,36}},
           lineColor={28,108,200},

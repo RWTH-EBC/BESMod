@@ -21,9 +21,6 @@ model GasBoilerBuildingOnly
           BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
           valCtrl,
         redeclare
-          BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
-          parTheVal,
-        redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicBoilerPI
           parPID,
         redeclare

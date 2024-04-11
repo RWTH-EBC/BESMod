@@ -15,9 +15,6 @@ package BaseClasses "Contains partial example case"
           redeclare
             BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
             valCtrl,
-          redeclare
-            BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
-            parTheVal,
           dTHysBui=5,
           dTHysDHW=5,
           meaValPriGen=BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue.GenerationSupplyTemperature,
