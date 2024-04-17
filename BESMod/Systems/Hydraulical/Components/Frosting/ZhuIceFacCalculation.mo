@@ -46,8 +46,8 @@ model ZhuIceFacCalculation "IceFac based on Zhus Frosting Map"
   Real CICO(unit="s/m") "CICO  value";
 
   replaceable function frostMapFunc =
-      BESMod.Systems.Hydraulical.Components.Frosting.Functions.partialFrostingMap
-                                                                                                annotation(choicesAllMatching=true);
+      BESMod.Systems.Hydraulical.Components.Frosting.Functions.ZhuFrostingMapCico
+      constrainedby BESMod.Systems.Hydraulical.Components.Frosting.Functions.partialFrostingMap annotation(choicesAllMatching=true);
 
   Modelica.Blocks.Logical.Hysteresis hys(uLow=minIceFac, uHigh=1)
     "For the iceFac control. Output signal is used internally"
