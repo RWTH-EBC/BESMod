@@ -19,6 +19,8 @@ model SmartThermostat "Smart thermotat PI control estimation"
             timeInt=timeInt))), transfer(use_dynamicFraRad=true, parRad(
             nEle=4))),           systemParameters(QBui_flow_nominal={11000},
         THydSup_nominal={343.15}));
+  extends Modelica.Icons.Example;
+
   parameter Modelica.Units.SI.Time timeInt=400
     "Time constant of Integrator block";
   parameter Real P=0.03

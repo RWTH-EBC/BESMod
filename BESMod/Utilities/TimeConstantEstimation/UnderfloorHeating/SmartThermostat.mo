@@ -8,6 +8,7 @@ model SmartThermostat "Smart thermotat PI control estimation"
             yMax=273.15 + 45,
             P=P,
             timeInt=timeInt)))), systemParameters(QBui_flow_nominal={11000}));
+  extends Modelica.Icons.Example;
   parameter Modelica.Units.SI.Time timeInt=1200
     "Time constant of Integrator block";
   parameter Real P=0.3 "Gain of PID-controller";

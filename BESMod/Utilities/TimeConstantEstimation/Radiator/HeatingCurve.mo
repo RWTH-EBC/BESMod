@@ -16,6 +16,7 @@ model HeatingCurve
           supTSet(dTAddCon=dTAddCon)),
       transfer(parRad(nEle=4))),
     systemParameters(QBui_flow_nominal={11000}, THydSup_nominal={312.15}));
+  extends Modelica.Icons.Example;
   parameter Modelica.Units.SI.TemperatureDifference dTAddCon=0
     "Constant supply temperature" annotation (Evaluate=false);
 end HeatingCurve;

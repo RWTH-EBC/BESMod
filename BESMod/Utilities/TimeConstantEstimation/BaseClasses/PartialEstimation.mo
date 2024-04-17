@@ -54,8 +54,6 @@ partial model PartialEstimation "Partial model for estimation of time constants"
       HInfHor=0,
       HSou=if use_solGai then IBPSA.BoundaryConditions.Types.RadiationDataSource.File else IBPSA.BoundaryConditions.Types.RadiationDataSource.Input_HGloHor_HDifHor));
 
-  extends Modelica.Icons.Example;
-
   parameter Modelica.Units.SI.TemperatureDifference dTStepSet=2
     "Temperature difference of set temperature";
   parameter Modelica.Units.SI.TemperatureDifference dTStepOda=2

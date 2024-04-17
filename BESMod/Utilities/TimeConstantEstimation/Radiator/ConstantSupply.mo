@@ -12,6 +12,7 @@ model ConstantSupply "Smart thermotat PI control estimation"
           supTSet(TConSup=TConSup)), transfer(rad(use_dynamicFraRad=true))),
                                  systemParameters(QBui_flow_nominal={11000},
         THydSup_nominal={343.15}));
+  extends Modelica.Icons.Example;
   parameter Modelica.Units.SI.Time timeInt=1200
     "Time constant of Integrator block";
   parameter Real P=0.3 "Gain of PID-controller";
