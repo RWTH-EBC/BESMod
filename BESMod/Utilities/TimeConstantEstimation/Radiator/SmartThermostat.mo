@@ -2,7 +2,7 @@ within BESMod.Utilities.TimeConstantEstimation.Radiator;
 model SmartThermostat "Smart thermotat PI control estimation"
   extends Partial(
     QBuiNoRetrofit_flow_nominal=systemParameters.QBui_flow_nominal*3,
-    dTStepSet=2,  hydraulic(
+    dTStepSet=0,  hydraulic(
       T_start=333.15,
       control(
         useOpeTemCtrl=true,
@@ -16,7 +16,7 @@ model SmartThermostat "Smart thermotat PI control estimation"
             parPID(
             yMax=273.15 + 75,
             P=P,
-            timeInt=timeInt))), transfer(rad(use_dynamicFraRad=false), parRad(
+            timeInt=timeInt))), transfer(use_dynamicFraRad=true, parRad(
             nEle=4))),           systemParameters(QBui_flow_nominal={11000},
         THydSup_nominal={343.15}));
   parameter Modelica.Units.SI.Time timeInt=400

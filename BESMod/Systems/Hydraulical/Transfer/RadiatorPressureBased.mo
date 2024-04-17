@@ -130,6 +130,10 @@ model RadiatorPressureBased "Pressure Based transfer system"
         extent={{10,-10},{-10,10}},
         rotation=90,
         origin={-90,-10})));
+  Modelica.Blocks.Routing.RealPassThrough reaPasThrOpe[nParallelDem] annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=270,
+        origin={30,70})));
 equation
   connect(rad.heatPortRad, heatPortRad) annotation (Line(points={{-5.08,-27.2},
           {40,-27.2},{40,-40},{100,-40}}, color={191,0,0}));
@@ -172,4 +176,16 @@ equation
           {-90,-42},{-100,-42}},           color={0,127,255}));
   connect(pump.port_b, pressureReliefValve.port_a) annotation (Line(points={{-64,38},
           {-60,38},{-60,30},{-90,30},{-90,0}},         color={0,127,255}));
+  connect(reaPasThrOpe.u, traControlBus.opening) annotation (Line(points={{30,
+          82},{30,94},{0,94},{0,100}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(reaPasThrOpe.y, outBusTra.opening) annotation (Line(points={{30,59},{
+          30,-32},{4,-32},{4,-90},{0,-90},{0,-104}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
 end RadiatorPressureBased;

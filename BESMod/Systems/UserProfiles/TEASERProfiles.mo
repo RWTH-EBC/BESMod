@@ -1,5 +1,5 @@
 within BESMod.Systems.UserProfiles;
-model TEASERProfiles "Standard TEASER Profiles"
+model TEASERProfiles "TEASER Profiles with possible set-back temperature"
   extends BaseClasses.PartialUserProfiles;
   parameter String fileNameIntGains=Modelica.Utilities.Files.loadResource("modelica://BESMod/Resources/InternalGains.txt")
     "File where matrix is stored";
@@ -8,7 +8,7 @@ model TEASERProfiles "Standard TEASER Profiles"
   parameter Modelica.Units.SI.TemperatureDifference dTSetBack=0
     "Temperature difference of set-back";
   parameter Modelica.Units.SI.Time startTimeSetBack(displayUnit="h")=79200
-                                                      "Start time of day of set back";
+                                                      "Start time of set back";
   parameter Real hoursSetBack(max=24, min=0)=8
                                              "Number of hours the set-back lasts, maximum 24";
 

@@ -11,9 +11,11 @@ partial model PartialEstimation "Partial model for estimation of time constants"
       hBui=sum(building.zoneParam.VAir)^(1/3),
       ABui=sum(building.zoneParam.VAir)^(2/3),
       ventRate={0.3},
+      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       T_start=293.15 - dTStepSet),
     redeclare BESMod.Systems.Control.NoControl control,
-    redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(redeclare
+    redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
+      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,   redeclare
         BESMod.Systems.Hydraulical.Generation.ElectricalHeater generation(
         dTTra_nominal={max(hydraulic.transfer.dTTra_nominal)},
         f_design={2},
@@ -25,13 +27,15 @@ partial model PartialEstimation "Partial model for estimation of time constants"
         BESMod.Utilities.TimeConstantEstimation.BaseClasses.TimeConstantEstimationControl
         control),
     redeclare Systems.Demand.DHW.StandardProfiles DHW(
+      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.NoDHW DHWProfile,
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
         calcmFlow),
-    redeclare
-      BESMod.Utilities.TimeConstantEstimation.BaseClasses.ProfilesWithStep
-      userProfiles(dTStep=dTStepSet, startTime=startTimeTSet),
+    redeclare BESMod.Systems.UserProfiles.TEASERProfiles userProfiles(gain={0,0,
+          0},
+      dTSetBack=dTStepSet,
+      startTimeSetBack=startTimeTSet),
     redeclare BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy
       parameterStudy,
     redeclare final package MediumDHW = AixLib.Media.Water,
@@ -53,7 +57,7 @@ partial model PartialEstimation "Partial model for estimation of time constants"
   extends Modelica.Icons.Example;
 
   parameter Modelica.Units.SI.TemperatureDifference dTStepSet=2
-    "Temperature difference of step";
+    "Temperature difference of set temperature";
   parameter Modelica.Units.SI.TemperatureDifference dTStepOda=2
     "Temperature difference of step";
   parameter Modelica.Units.SI.Temperature TOda_start=systemParameters.TSetZone_nominal[1] annotation (Evaluate=false);

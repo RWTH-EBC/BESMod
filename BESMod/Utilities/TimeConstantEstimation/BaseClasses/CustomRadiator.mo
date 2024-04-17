@@ -44,7 +44,8 @@ model CustomRadiator "Custom radiator with radiative fractions"
     each final energyDynamics=energyDynamics,
     each final p_start=p_start,
     each final nEle=parRad.nEle,
-    fraRad_nominal=parRad.fraRad,
+    each fraRad_nominal=parRad.fraRad,
+    each use_dynamicFraRad=use_dynamicFraRad,
     final Q_flow_nominal=Q_flow_nominal .* f_design,
     final T_a_nominal=TTra_nominal,
     final T_b_nominal=TTra_nominal .- dTTra_nominal,
@@ -57,7 +58,7 @@ model CustomRadiator "Custom radiator with radiative fractions"
     each final T_start=T_start) "Radiator" annotation (Placement(transformation(
         extent={{11,11},{-11,-11}},
         rotation=90,
-        origin={-13,-25})));
+        origin={-13,-27})));
 
   IBPSA.Fluid.FixedResistances.PressureDrop res[nParallelDem](
     redeclare package Medium = Medium,
@@ -133,22 +134,23 @@ model CustomRadiator "Custom radiator with radiative fractions"
         extent={{10,-10},{-10,10}},
         rotation=90,
         origin={-90,-10})));
+  parameter Boolean use_dynamicFraRad=true;
 equation
-  connect(rad.heatPortRad, heatPortRad) annotation (Line(points={{-5.08,-27.2},
-          {40,-27.2},{40,-40},{100,-40}}, color={191,0,0}));
-  connect(rad.heatPortCon, heatPortCon) annotation (Line(points={{-5.08,-22.8},
+  connect(rad.heatPortRad, heatPortRad) annotation (Line(points={{-5.08,-29.2},
+          {40,-29.2},{40,-40},{100,-40}}, color={191,0,0}));
+  connect(rad.heatPortCon, heatPortCon) annotation (Line(points={{-5.08,-24.8},
           {-5.08,-26},{40,-26},{40,40},{100,40}},  color={191,0,0}));
 
   for i in 1:nParallelDem loop
-    connect(rad[i].port_b, portTra_out[1]) annotation (Line(points={{-13,-36},{-13,
-            -42},{-100,-42}},
+    connect(rad[i].port_b, portTra_out[1]) annotation (Line(points={{-13,-38},{
+            -13,-42},{-100,-42}},
                        color={0,127,255}));
     connect(res[i].port_a, vol.ports[i + 1]) annotation (Line(points={{-47,37.5},
             {-56,37.5},{-56,28},{-58,28}}, color={0,127,255}));
   end for;
 
   connect(val.port_b, rad.port_a) annotation (Line(points={{-12,-9},{-12,-13.5},
-          {-13,-13.5},{-13,-14}}, color={0,127,255}));
+          {-13,-13.5},{-13,-16}}, color={0,127,255}));
   connect(res.port_b, val.port_a) annotation (Line(points={{-22,37.5},{-12,37.5},
           {-12,11}}, color={0,127,255}));
   connect(portTra_in[1],pump.port_a)

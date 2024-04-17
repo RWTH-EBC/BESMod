@@ -21,12 +21,13 @@ model RadiatorEN442_2 "Dynamic radiator for space heating"
   parameter Modelica.Units.SI.Temperature TMean_nominal = (T_a_nominal + T_b_nominal)/2;
   parameter Boolean use_dynamicFraRad = true;
   Real fraRad[nEle](each min=0, each max=1) = if use_dynamicFraRad then
-    {max(0, min(1, fraRad_nominal *
-    (vol[i].T^4 - heatPortRad.T^4)  /(
-     (dTRad_nominal[i] + TRad_nominal)^4 - TRad_nominal^4) *
-    (dTCon_nominal[i]/(vol[i].T - heatPortCon.T))^n))
+    {max(fraRad_nominal, min(1, helper[i]))
     for i in 1:nEle} else fill(fraRad_nominal, nEle) "Fraction radiant heat transfer";
   // Assumptions
+  Real helper[nEle] = {fraRad_nominal * dTRadiationToWalls4[i]/dTRadiationToWalls4Nom[i] * (dTCon_nominal[i]/dT[i])^n for i in 1:nEle};
+  Real dTRadiationToWalls4Nom[nEle] = {(dTRad_nominal[i] + TRad_nominal)^4 - TRad_nominal^4 for i in 1:nEle};
+  Real dTRadiationToWalls4[nEle] = {(vol[i].T^4 - heatPortRad.T^4) for i in 1:nEle};
+  Real dT[nEle] = {(vol[i].T - heatPortCon.T) for i in 1:nEle};
 
   parameter Modelica.Units.SI.Power Q_flow_nominal
     "Nominal heating power (positive for heating)"
