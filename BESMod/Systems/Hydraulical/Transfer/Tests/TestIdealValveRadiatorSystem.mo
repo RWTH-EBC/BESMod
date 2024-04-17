@@ -5,9 +5,12 @@ model TestIdealValveRadiatorSystem
       BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator
       transfer(redeclare
         BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
-        radParameters, redeclare
+        parRad, redeclare
         BESMod.Systems.RecordsCollection.Movers.DefaultMover
-        pumpData));
+        parPum,
+      redeclare
+        BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
+        parTra));
   extends Modelica.Icons.Example;
 
 end TestIdealValveRadiatorSystem;

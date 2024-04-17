@@ -16,7 +16,7 @@ model TEASERThermalZone
 
   parameter Boolean use_verboseEnergyBalance=true   "=false to disable the integration of the verbose energy balance";
   parameter Modelica.Units.SI.TemperatureDifference dTComfort=2
-    "Temperature difference to room set temperature at which the comfort is still acceptable. In EN 16798-1, all temperatures below 22 °C - 2 K count as discomfort. Hence the default value. If your room set temperature is lower, consider using smaller values.";
+    "Temperature difference to room set temperature at which the comfort is still acceptable. In DIN EN 15251, all temperatures below 22 °C - 2 K count as discomfort. Hence the default value. If your room set temperature is lower, consider using smaller values.";
 
   parameter Modelica.Fluid.Types.Dynamics energyDynamics=Modelica.Fluid.Types.Dynamics.DynamicFreeInitial
     "Type of energy balance: dynamic (3 initialization options) or steady state"
@@ -30,7 +30,6 @@ model TEASERThermalZone
         zoneParam[i].heaLoadFacGrd*(TSetZone_nominal[i] - zoneParam[i].TSoil)
         for i in 1:nZones}
     "Nominal heat flow rate according to record at TOda_nominal";
-  parameter Modelica.Units.SI.Temperature TOda_nominal "Nominal outdoor air temperature";
 
   AixLib.ThermalZones.ReducedOrder.ThermalZone.ThermalZone thermalZone[nZones](
     redeclare each final package Medium = MediumZone,
@@ -169,11 +168,28 @@ model TEASERThermalZone
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={114,62})));
+  Modelica.Blocks.Math.Add calTOpe[nZones](
+    each final k1=0.5,
+    each final k2=0.5,
+    each y(unit="K", displayUnit="degC"))
+    "Calculate operative room temperature"
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={-70,30})));
+  Utilities.KPIs.ComfortCalculator comCalHeaOpe[nZones](TComBou=
+        TSetZone_nominal .- dTComfort, each for_heating=true)
+    "Comfort calculator operative room temperature for heating"
+    annotation (Placement(transformation(extent={{20,-30},{40,-10}})));
+  Utilities.KPIs.ComfortCalculator comCalCooOpe[nZones](TComBou=
+        TSetZone_nominal .+ dTComfort, each for_heating=true)
+    "Comfort calculator operative room temperature for cooling"
+    annotation (Placement(transformation(extent={{20,-70},{40,-50}})));
 equation
 
   for i in 1:nZones loop
     connect(weaBus.TDryBul, realPassThroughTDry[i].u) annotation (Line(
-        points={{-47,98},{-47,96},{134,96},{134,62},{126,62}},
+        points={{-46.895,98.11},{-46.895,96},{134,96},{134,62},{126,62}},
         color={255,204,51},
         thickness=0.5), Text(
         string="%first",
@@ -373,6 +389,41 @@ equation
   connect(realPassThroughTDry.y, thermalZone.ventTemp) annotation (Line(points=
           {{103,62},{102,62},{102,74},{52,74},{52,42.24},{33.52,42.24}}, color=
           {0,0,127}));
+  connect(calTOpe.u2, thermalZone.TAir) annotation (Line(points={{-58,36},{-48,
+          36},{-48,76.8},{-42.7,76.8}}, color={0,0,127}));
+  connect(calTOpe.u1, thermalZone.TRad) annotation (Line(points={{-58,24},{-50,
+          24},{-50,69.6},{-42.7,69.6}}, color={0,0,127}));
+  connect(comCalHeaOpe.dTComSec, outBusDem.dTComHeaOpe) annotation (Line(points
+        ={{41,-20},{54,-20},{54,-2},{98,-2}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(comCalHeaOpe.TZone, calTOpe.y) annotation (Line(points={{18,-20},{-32,
+          -20},{-32,-16},{-81,-16},{-81,30}}, color={0,0,127}));
+  connect(comCalCooOpe.TZone, calTOpe.y) annotation (Line(points={{18,-60},{10,
+          -60},{10,0},{2,0},{2,2},{0,2},{0,6},{-46,6},{-46,28},{-52,28},{-52,44},
+          {-88,44},{-88,30},{-81,30}}, color={0,0,127}));
+  connect(comCalCooOpe.dTComSec, outBusDem.dTComCooOpe) annotation (Line(points
+        ={{41,-60},{78,-60},{78,-2},{98,-2}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(calTOpe.y, buiMeaBus.TZoneOpeMea) annotation (Line(points={{-81,30},{
+          -88,30},{-88,92},{0,92},{0,99}},
+        color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(calTOpe.y, outBusDem.TZoneOpe) annotation (Line(points={{-81,30},{-88,
+          30},{-88,44},{-52,44},{-52,28},{-46,28},{-46,6},{0,6},{0,2},{2,2},{2,
+          0},{54,0},{54,-2},{98,-2}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
     annotation (Diagram(coordinateSystem(extent={{-100,-220},{100,100}})),
       Documentation(info="<html>
 <p>This model uses the reduced-order approach with the common TEASER output to model the building envelope. Relevant KPIs are calculated.</p>

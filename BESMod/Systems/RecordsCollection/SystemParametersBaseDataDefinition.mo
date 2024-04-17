@@ -64,7 +64,7 @@ record SystemParametersBaseDataDefinition
   parameter Boolean use_hydraulic=true "=false to disable hydraulic subsystem" annotation(Dialog(group="System layout"));
   parameter Boolean use_ventilation=true "=false to disable ventilation subsystem" annotation(Dialog(group="System layout"));
   parameter Boolean use_dhw=use_hydraulic "=false to disable DHW subsystem" annotation(Dialog(group="System layout", enable=use_hydraulic));
-  parameter Boolean use_elecHeating=true "= false to disable heating using the electric system" annotation(Dialog(group="System layout", enable=use_hydraulic));
+  parameter Boolean use_elecHeating=true "= false to disable heating using the electric system" annotation(Dialog(group="System layout"));
   annotation (defaultComponentName = "baseParameterAssumptions", Icon(graphics,
                                                                       coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));

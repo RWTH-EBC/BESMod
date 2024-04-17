@@ -1,9 +1,12 @@
 ElectricalHeater
 GasBoiler
-HeatPumpAndHeatingRod
+HeatPump
+HeatPumpAndGasBoilerParallel
+HeatPumpAndGasBoilerSerial
+HeatPumpAndElectricHeater
 NoGeneration
-SolarThermalBivHPAixLib
-SolarThermalBivHPBuiLib
+SimpleSolarThermalWithHeatPump
+DetailedSolarThermalWithHeatPump
 Tests
 RecordsCollection
 Types

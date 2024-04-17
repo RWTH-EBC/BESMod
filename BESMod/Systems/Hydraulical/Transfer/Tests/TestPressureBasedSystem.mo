@@ -6,13 +6,13 @@ model TestPressureBasedSystem
       transfer(
       redeclare
         BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
-        transferDataBaseDefinition,
+        parTra,
       redeclare
         BESMod.Systems.RecordsCollection.Movers.DefaultMover
-        pumpData,
+        parPum,
       redeclare
         BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
-        radParameters));
+        parRad));
   extends Modelica.Icons.Example;
 
 end TestPressureBasedSystem;

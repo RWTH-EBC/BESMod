@@ -2,36 +2,36 @@ within BESMod.Systems.Hydraulical.Transfer;
 model RadiatorPressureBased "Pressure Based transfer system"
   // Abui =1 and hBui =1 to avaoid warnings, will be overwritten anyway
   extends BaseClasses.PartialTransfer(
+    nHeaTra=parRad.n,
     ABui=1,
     hBui=1,
-    final dp_nominal=transferDataBaseDefinition.dp_nominal,
+    final dp_nominal=parTra.dp_nominal,
     final nParallelSup=1);
   parameter Boolean use_preRelVal=false "=false to disable pressure relief valve"
     annotation(Dialog(group="Component choices"));
   parameter Real perPreRelValOpens=0.99
     "Percentage of nominal pressure difference at which the pressure relief valve starts to open"
       annotation(Dialog(group="Component choices", enable=use_preRelVal));
-  replaceable parameter RecordsCollection.TransferDataBaseDefinition
-    transferDataBaseDefinition constrainedby
-    RecordsCollection.TransferDataBaseDefinition(
+  replaceable parameter RecordsCollection.TransferDataBaseDefinition parTra
+    constrainedby RecordsCollection.TransferDataBaseDefinition(
     final Q_flow_nominal=Q_flow_nominal .* f_design,
     final nZones=nParallelDem,
     final AFloor=ABui,
     final heiBui=hBui,
     mRad_flow_nominal=m_flow_nominal,
-    mHeaCir_flow_nominal=mSup_flow_nominal[1])
-    annotation (Dialog(group="Component data"),
-      choicesAllMatching=true,
-       Placement(transformation(extent={{-62,-98},{-42,-78}})));
+    mHeaCir_flow_nominal=mSup_flow_nominal[1]) "Transfer parameters" annotation (
+    Dialog(group="Component data"),
+    choicesAllMatching=true,
+    Placement(transformation(extent={{-62,-98},{-42,-78}})));
 
   replaceable parameter
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
-    pumpData annotation (Dialog(group="Component data"),
+    parPum annotation (Dialog(group="Component data"),
       choicesAllMatching=true, Placement(transformation(extent={{-98,78},
             {-72,100}})));
 
   replaceable parameter BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
-    radParameters
+    parRad
     annotation (Dialog(group="Component data"), choicesAllMatching=true,
     Placement(transformation(extent={{-100,-98},{-80,-78}})));
   IBPSA.Fluid.HeatExchangers.Radiators.RadiatorEN442_2 rad[nParallelDem](
@@ -40,26 +40,25 @@ model RadiatorPressureBased "Pressure Based transfer system"
     each final show_T=show_T,
     each final energyDynamics=energyDynamics,
     each final p_start=p_start,
-    each final nEle=radParameters.nEle,
-    each final fraRad=radParameters.fraRad,
-    final Q_flow_nominal=Q_flow_nominal.*f_design,
+    each final nEle=parRad.nEle,
+    each final fraRad=parRad.fraRad,
+    final Q_flow_nominal=Q_flow_nominal .* f_design,
     final T_a_nominal=TTra_nominal,
     final T_b_nominal=TTra_nominal .- dTTra_nominal,
     final TAir_nominal=TDem_nominal,
     final TRad_nominal=TDem_nominal,
-    each final n=radParameters.n,
+    each final n=parRad.n,
     each final deltaM=0.3,
-    final dp_nominal=transferDataBaseDefinition.dpRad_nominal,
+    final dp_nominal=parTra.dpRad_nominal,
     redeclare package Medium = Medium,
-    each final T_start=T_start) "Radiator"
-    annotation (Placement(transformation(
+    each final T_start=T_start) "Radiator" annotation (Placement(transformation(
         extent={{11,11},{-11,-11}},
         rotation=90,
         origin={-13,-25})));
 
   IBPSA.Fluid.FixedResistances.PressureDrop res[nParallelDem](
     redeclare package Medium = Medium,
-    each final dp_nominal=transferDataBaseDefinition.dpHeaDistr_nominal,
+    each final dp_nominal=parTra.dpHeaDistr_nominal,
     final m_flow_nominal=m_flow_nominal) "Hydraulic resistance of supply"
     annotation (Placement(transformation(
         extent={{-12.5,-13.5},{12.5,13.5}},
@@ -71,11 +70,10 @@ model RadiatorPressureBased "Pressure Based transfer system"
     final m_flow_nominal=m_flow_nominal,
     each final show_T=show_T,
     each final CvData=IBPSA.Fluid.Types.CvTypes.OpPoint,
-    final dpValve_nominal=transferDataBaseDefinition.dpHeaSysValve_nominal,
+    final dpValve_nominal=parTra.dpHeaSysValve_nominal,
     each final use_inputFilter=false,
-    final dpFixed_nominal=transferDataBaseDefinition.dpHeaSysPreValve_nominal,
-    each final l=transferDataBaseDefinition.leakageOpening)
-                                            annotation (Placement(transformation(
+    final dpFixed_nominal=parTra.dpHeaSysPreValve_nominal,
+    each final l=parTra.leakageOpening) annotation (Placement(transformation(
         extent={{-10,-11},{10,11}},
         rotation=270,
         origin={-12,1})));
@@ -89,34 +87,26 @@ model RadiatorPressureBased "Pressure Based transfer system"
     final m_flow_nominal=sum(rad.m_flow_nominal),
     final m_flow_small=1E-4*abs(sum(rad.m_flow_nominal)),
     final allowFlowReversal=allowFlowReversal,
-    final V(displayUnit="l") = transferDataBaseDefinition.vol,
+    final V(displayUnit="l") = parTra.vol,
     final use_C_flow=false,
     nPorts=1 + nParallelDem) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-58,18})));
-  IBPSA.Fluid.Movers.SpeedControlled_y     pump(
+  IBPSA.Fluid.Movers.Preconfigured.SpeedControlled_y pump(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
     final p_start=p_start,
     final T_start=T_start,
     final allowFlowReversal=allowFlowReversal,
     final show_T=show_T,
-    redeclare BESMod.Systems.RecordsCollection.Movers.AutomaticConfigurationData per(
-      final speed_rpm_nominal=pumpData.speed_rpm_nominal,
-      final m_flow_nominal=sum(m_flow_nominal),
-      final dp_nominal=transferDataBaseDefinition.dpPumpHeaCir_nominal + dpSup_nominal[1],
-      final rho=rho,
-      final V_flowCurve=pumpData.V_flowCurve,
-      final dpCurve=pumpData.dpCurve),
-    final inputType=IBPSA.Fluid.Types.InputType.Continuous,
-    final addPowerToMedium=pumpData.addPowerToMedium,
-    final tau=pumpData.tau,
-    final use_inputFilter=pumpData.use_inputFilter,
-    final riseTime=pumpData.riseTimeInpFilter,
-    final init=Modelica.Blocks.Types.Init.InitialOutput,
-    final y_start=1)                                    annotation (Placement(
-        transformation(
+    final m_flow_nominal=sum(m_flow_nominal),
+    final dp_nominal=parTra.dpPumpHeaCir_nominal + dpSup_nominal[1],
+    final addPowerToMedium=parPum.addPowerToMedium,
+    final tau=parPum.tau,
+    final use_inputFilter=parPum.use_inputFilter,
+    final riseTime=parPum.riseTimeInpFilter,
+    final y_start=1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-74,38})));
@@ -134,12 +124,16 @@ model RadiatorPressureBased "Pressure Based transfer system"
     m_flow_nominal=mSup_flow_nominal[1],
     final dpFullOpen_nominal=dp_nominal[1],
     final dpThreshold_nominal=perPreRelValOpens*dp_nominal[1],
-    final facDpValve_nominal=transferDataBaseDefinition.valveAutho[1],
-    final l=transferDataBaseDefinition.leakageOpening) if use_preRelVal
-                        annotation (Placement(transformation(
+    final facDpValve_nominal=parTra.valveAutho[1],
+    final l=parTra.leakageOpening) if use_preRelVal annotation (Placement(
+        transformation(
         extent={{10,-10},{-10,10}},
         rotation=90,
         origin={-90,-10})));
+  Modelica.Blocks.Routing.RealPassThrough reaPasThrOpe[nParallelDem] annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=270,
+        origin={30,70})));
 equation
   connect(rad.heatPortRad, heatPortRad) annotation (Line(points={{-5.08,-27.2},
           {40,-27.2},{40,-40},{100,-40}}, color={191,0,0}));
@@ -182,4 +176,16 @@ equation
           {-90,-42},{-100,-42}},           color={0,127,255}));
   connect(pump.port_b, pressureReliefValve.port_a) annotation (Line(points={{-64,38},
           {-60,38},{-60,30},{-90,30},{-90,0}},         color={0,127,255}));
+  connect(reaPasThrOpe.u, traControlBus.opening) annotation (Line(points={{30,
+          82},{30,94},{0,94},{0,100}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(reaPasThrOpe.y, outBusTra.opening) annotation (Line(points={{30,59},{
+          30,-32},{4,-32},{4,-90},{0,-90},{0,-104}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
 end RadiatorPressureBased;

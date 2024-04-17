@@ -25,7 +25,7 @@ model AntiLegionellaControl "Control to avoid Legionella in the DHW"
   Modelica.Blocks.Sources.Constant constTLegMin(final k=TLegMin)
     "Temperature at which the legionella in DWH dies"
     annotation (Placement(transformation(extent={{-88,-84},{-70,-66}})));
-  Modelica.Blocks.Sources.Constant const(final k=T_DHW)
+  Modelica.Blocks.Sources.Constant const(final k=TSetDHW_nominal)
     annotation (Placement(transformation(extent={{-6,78},{14,98}})));
   Modelica.Blocks.Logical.GreaterEqual
                                TConLessTLegMin
@@ -88,8 +88,8 @@ algorithm
 equation
   connect(switchTLeg.u3, constTLegMin.y) annotation (Line(points={{62.6,-4.6},{52,
           -4.6},{52,-75},{-69.1,-75}},color={0,0,127}));
-  connect(switchTLeg.y, TSet_DHW) annotation (Line(points={{78.7,1},{92,1},{92,0},
-          {110,0}},            color={0,0,127}));
+  connect(switchTLeg.y, TSetDHW)
+    annotation (Line(points={{78.7,1},{92,1},{92,0},{110,0}}, color={0,0,127}));
   connect(const.y, switchTLeg.u1) annotation (Line(points={{15,88},{56,88},{56,6.6},
           {62.6,6.6}},        color={0,0,127}));
   connect(timeAntiLeg.u,pre1. y)

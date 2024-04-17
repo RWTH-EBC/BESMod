@@ -1,20 +1,13 @@
 within BESMod.Systems.Hydraulical.Transfer;
 model UFHTransferSystem
-  extends BaseClasses.PartialTransfer(final nParallelSup=1, final dp_nominal=fill(0, nParallelDem));
+  extends BaseClasses.PartialTransfer(
+    nHeaTra=1,
+    final nParallelSup=1,
+    final dp_nominal=parTra.dp_nominal);
 
-  replaceable parameter BESMod.Systems.Hydraulical.Transfer.RecordsCollection.UFHData UFHParameters
-    constrainedby RecordsCollection.UFHData(nZones=nParallelDem, area=AZone)
-    annotation (Dialog(group="Component data"),
-    choicesAllMatching=true, Placement(transformation(extent={{78,78},
-            {98,98}})));
-  replaceable parameter
-    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
-    pumpData annotation (choicesAllMatching=true,
-    Dialog(group="Component data"), Placement(transformation(extent={{-98,78},
-            {-78,98}})));
   IBPSA.Fluid.FixedResistances.PressureDrop res[nParallelDem](
     redeclare package Medium = Medium,
-    each final dp_nominal=1,
+    each final dp_nominal=parTra.dpHeaDistr_nominal,
     final m_flow_nominal=m_flow_nominal) "Hydraulic resistance of supply"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -31,7 +24,7 @@ model UFHTransferSystem
     final floorHeatingType=floorHeatingType,
     each final dis=5,
     final A=UFHParameters.area,
-    final T0=TDem_nominal,
+    each final T0=T_start,
     each calcMethod=1) "Underfloor heating" annotation (Placement(
         transformation(
         extent={{-29.5,-10.5},{29.5,10.5}},
@@ -60,9 +53,15 @@ model UFHTransferSystem
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-64,4})));
+
+  replaceable parameter BESMod.Systems.Hydraulical.Transfer.RecordsCollection.UFHData UFHParameters
+    constrainedby RecordsCollection.UFHData(nZones=nParallelDem, area=AZone)
+    annotation (choicesAllMatching=true, Placement(transformation(extent={{78,78},
+            {98,98}})));
+
   Utilities.KPIs.EnergyKPICalculator integralKPICalculator[nParallelDem]
     annotation (Placement(transformation(extent={{-40,-80},{-20,-60}})));
-  IBPSA.Fluid.Movers.FlowControlled_m_flow pumpFix_m_flow[nParallelDem](
+  IBPSA.Fluid.Movers.Preconfigured.FlowControlled_m_flow pumpFix_m_flow[nParallelDem](
     redeclare package Medium = Medium,
     each final energyDynamics=energyDynamics,
     each final p_start=p_start,
@@ -74,31 +73,36 @@ model UFHTransferSystem
     final m_flow_nominal=m_flow_nominal,
     final m_flow_small=1E-4*abs(m_flow_nominal),
     each final show_T=show_T,
-    redeclare
-      BESMod.Systems.RecordsCollection.Movers.AutomaticConfigurationData
-      per(
-      each final speed_rpm_nominal=pumpData.speed_rpm_nominal,
-      final m_flow_nominal=m_flow_nominal,
-      final dp_nominal=dp_nominal,
-      each final rho=rho,
-      each final V_flowCurve=pumpData.V_flowCurve,
-      each final dpCurve=pumpData.dpCurve),
-    each final inputType=IBPSA.Fluid.Types.InputType.Continuous,
-    each final addPowerToMedium=pumpData.addPowerToMedium,
-    each final nominalValuesDefineDefaultPressureCurve=true,
-    each final tau=pumpData.tau,
+    final dp_nominal=dp_nominal,
+    each final addPowerToMedium=parPum.addPowerToMedium,
+    each final tau=parPum.tau,
     each final use_inputFilter=false,
     final m_flow_start=m_flow_nominal)             annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-30,50})));
-
+  replaceable parameter
+    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
+    parPum annotation (choicesAllMatching=true, Placement(transformation(extent={{-98,78},
+            {-78,98}})));
   BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{32,-108},{52,-88}})));
-  Modelica.Blocks.Routing.RealPassThrough reaPasThrOpe[nParallelDem]
-    "Opening KPI"
-    annotation (Placement(transformation(extent={{20,80},{40,100}})));
+  Modelica.Blocks.Routing.RealPassThrough reaPasThrOpe[nParallelDem] annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=270,
+        origin={0,70})));
+  replaceable parameter RecordsCollection.TransferDataBaseDefinition parTra
+    constrainedby RecordsCollection.TransferDataBaseDefinition(
+    final Q_flow_nominal=Q_flow_nominal .* f_design,
+    final nZones=nParallelDem,
+    final AFloor=ABui,
+    final heiBui=hBui,
+    mRad_flow_nominal=m_flow_nominal,
+    mHeaCir_flow_nominal=mSup_flow_nominal[1]) "Transfer parameters" annotation (
+    Dialog(group="Component data"),
+    choicesAllMatching=true,
+    Placement(transformation(extent={{-100,-98},{-80,-78}})));
 protected
   parameter
     BESMod.Systems.Hydraulical.Components.UFH.ActiveWallBaseDataDefinition
@@ -178,16 +182,21 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(reaPasThrOpe.u, traControlBus.opening) annotation (Line(points={{18,
-          90},{18,86},{0,86},{0,100}}, color={0,0,127}), Text(
+  connect(reaPasThrOpe.u, traControlBus.opening) annotation (Line(points={{
+          2.22045e-15,82},{2.22045e-15,91},{0,91},{0,100}}, color={0,0,127}),
+      Text(
       string="%second",
       index=1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(reaPasThrOpe.y, outBusTra.opening) annotation (Line(points={{41,90},{
-          46,90},{46,-84},{0,-84},{0,-104}}, color={0,0,127}), Text(
+  connect(reaPasThrOpe.y, outBusTra.opening) annotation (Line(points={{
+          -1.9984e-15,59},{38,59},{38,-82},{0,-82},{0,-104}}, color={0,0,127}),
+      Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  annotation (Documentation(info="<html>
+<p>According to https://www.energie-lexikon.info/heizkoerperexponent.html, the heating transfer exponent of underfloor heating systems is between 1 and 1.1.</p>
+</html>"));
 end UFHTransferSystem;

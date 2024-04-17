@@ -87,7 +87,7 @@ def install_dependencies(
     with open(besmod_directory.joinpath("startup.mos"), "w+") as file:
         file.write(open_libs_mos)
         file.write("\n// Change working directory\n")
-        file.write(f'cd("{str(working_directory)}")')
+        file.write(f'cd("{str(working_directory)}");')
 
 
 if __name__ == '__main__':
