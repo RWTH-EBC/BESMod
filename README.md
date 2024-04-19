@@ -33,9 +33,6 @@ To install all dependencies, you need python installed (>= 3.7).
 If you don't have python or don't want to install it, just clone the required libraries manually. 
 You can extract the relevant information from the `dependencies.cfg` script.
 
-**Note:**  The requirement `Buildings` requires git large-file-storage (`git lfs`). Either install it
-or, in a command line on windows, run: `set GIT_LFS_SKIP_SMUDGE=1`. 
-
 To install, open a command line interface in the folder of BESMod and run:
 ```python
 python install_dependencies.py full
