@@ -2,6 +2,7 @@ import os
 import sys
 import pathlib
 import json
+from subprocess import check_output, STDOUT, CalledProcessError
 
 
 class LibraryInstaller:
@@ -56,6 +57,13 @@ def install_dependencies(
     for optional_dependency in optional_dependencies:
         if optional_dependency not in optional_dependencies_config:
             raise KeyError(f"Given dependency '{optional_dependency}' is not supported.")
+        if optional_dependency == "Buildings":
+            try:
+                check_output(['git', 'lfs', 'version'], stderr=STDOUT)
+            except CalledProcessError:
+                raise ModuleNotFoundError(
+                    "The optional requirement Buildings requires git large-file-storage (git lfs).\n"
+                    "Install it when you want to use this library.")
         install_libraries[optional_dependency] = optional_dependencies_config[optional_dependency]
 
     open_models = []
