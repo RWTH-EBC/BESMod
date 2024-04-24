@@ -152,7 +152,7 @@ partial model PartialHydraulicSystem
     final T_start=T_start,
     final X_start=X_start,
     final C_start=C_start,
-    final TTra_nominal=hydraulicSystemParameters.TSup_nominal,
+    final TTra_nominal={if transfer.NoRetrofit[i] then hydraulicSystemParameters.TSupNoRetrofit_nominal[i] else hydraulicSystemParameters.TSup_nominal[i] for i in 1:transfer.nParallelDem},
     final AZone=hydraulicSystemParameters.AZone,
     final hZone=hydraulicSystemParameters.hZone,
     final ABui=hydraulicSystemParameters.ABui,
@@ -163,7 +163,7 @@ partial model PartialHydraulicSystem
     final TOda_nominal=hydraulicSystemParameters.TOda_nominal,
     final nParallelDem=hydraulicSystemParameters.nZones,
     final TAmb=hydraulicSystemParameters.TAmb,
-    final Q_flow_nominal=hydraulicSystemParameters.Q_flow_nominal,
+    final Q_flow_nominal={if transfer.NoRetrofit[i] then hydraulicSystemParameters.QNoRetrofit_flow_nominal[i] else hydraulicSystemParameters.Q_flow_nominal[i] for i in 1:transfer.nParallelDem},
     final TDem_nominal=hydraulicSystemParameters.TZone_nominal,
     final allowFlowReversal=allowFlowReversal,
     final show_T=show_T,
@@ -189,8 +189,8 @@ partial model PartialHydraulicSystem
       Medium = MediumDHW) "Outlet for the distribution to the DHW" annotation (
       Placement(transformation(extent={{190,-70},{210,-50}}),iconTransformation(
           extent={{188,-76},{208,-56}})));
-  Modelica.Fluid.Interfaces.FluidPort_a portDHW_in(redeclare final package Medium
-      =        MediumDHW) "Inet for the distribution from the DHW" annotation (
+  Modelica.Fluid.Interfaces.FluidPort_a portDHW_in(redeclare final package Medium =
+               MediumDHW) "Inet for the distribution from the DHW" annotation (
       Placement(transformation(extent={{190,-130},{210,-110}}),
                                                              iconTransformation(
           extent={{188,-116},{208,-96}})));

@@ -65,6 +65,17 @@ record SystemParametersBaseDataDefinition
   parameter Boolean use_ventilation=true "=false to disable ventilation subsystem" annotation(Dialog(group="System layout"));
   parameter Boolean use_dhw=use_hydraulic "=false to disable DHW subsystem" annotation(Dialog(group="System layout", enable=use_hydraulic));
   parameter Boolean use_elecHeating=true "= false to disable heating using the electric system" annotation(Dialog(group="System layout"));
+
+  parameter Modelica.Units.SI.HeatFlowRate QBuiNoRetrofit_flow_nominal[nZones]=QBui_flow_nominal
+    "Nominal heating load at outdoor air temperature of each zone befor retrofits"
+    annotation (Dialog(group="Partial retrofit"));
+  parameter Modelica.Units.SI.Temperature THydSupNoRetrofit_nominal[nZones](
+    each min=233.15,
+    each max=373.15,
+    each start=313.15) = THydSup_nominal
+    "Hydraulic supply temperature at nominal condition in the transfer system befor retrofits"
+    annotation (Dialog(group="Partial retrofit"));
+
   annotation (defaultComponentName = "baseParameterAssumptions", Icon(graphics,
                                                                       coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));

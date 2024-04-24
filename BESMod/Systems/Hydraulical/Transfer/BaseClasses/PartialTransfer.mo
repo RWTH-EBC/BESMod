@@ -11,6 +11,9 @@ partial model PartialTransfer "Partial transfer model for BES"
       Q_flow_nominal .* f_design), nParallelSup)
     "Nominal heat flow rate at supply ports to transfer system" annotation (Dialog(group=
           "Design - Bottom Up: Parameters are defined by the subsystem"));
+  parameter Boolean NoRetrofit[nParallelDem]=fill(false, nParallelDem)
+    "If, true Q_flow_nominal[i]=QNoRetrofit_flow_nominal[i] and TTra_nominal[i]=TSupNoRetrofit_nominal for i in nParallelDem"
+    annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
   parameter Modelica.Units.SI.Temperature TTra_nominal[nParallelDem] "Nominal supply temperature to transfer systems"
    annotation(Dialog(group="Design - Top Down: Parameters are given by the parent system"));
   parameter Modelica.Units.SI.MassFlowRate mSup_flow_nominal[nParallelSup]=fill(sum(
@@ -46,8 +49,8 @@ partial model PartialTransfer "Partial transfer model for BES"
       final package Medium = Medium) "Outlet of the transfer system"
     annotation (Placement(transformation(extent={{-110,-52},{-90,-32}}),
         iconTransformation(extent={{-110,-52},{-90,-32}})));
-  Modelica.Fluid.Interfaces.FluidPort_a portTra_in[nParallelSup](redeclare final
-      package       Medium = Medium) "Inlet to the transfer system" annotation (
+  Modelica.Fluid.Interfaces.FluidPort_a portTra_in[nParallelSup](redeclare
+      final package Medium = Medium) "Inlet to the transfer system" annotation (
      Placement(transformation(extent={{-110,28},{-90,48}}), iconTransformation(
           extent={{-110,30},{-90,50}})));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPortRad[nParallelDem]
