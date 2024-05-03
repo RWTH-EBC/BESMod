@@ -5,17 +5,28 @@ partial model PartialTransfer "Partial transfer model for BES"
     TSup_nominal=fill(max(TTra_nominal),nParallelSup),
       dTTra_nominal={if TTra_nominal[i] > 64.9 + 273.15 then 15 elseif
         TTra_nominal[i] > 44.9 + 273.15 then 10 else 7 for i in 1:nParallelDem},
-      m_flow_nominal=Q_flow_nominal ./ (dTTra_nominal .* 4184));
+      m_flow_nominal=Q_flow_nominal ./ (dTTra_nominal .* 4184),
+      dTTra_nominal_design={if TTra_nominal_design[i] > 64.9 + 273.15 then 15 elseif
+        TTra_nominal_design[i] > 44.9 + 273.15 then 10 else 7 for i in 1:nParallelDem},
+      m_flow_nominal_design=Q_flow_nominal_design ./ (dTTra_nominal .* 4184));
 
   parameter Modelica.Units.SI.HeatFlowRate QSup_flow_nominal[nParallelSup]=fill(sum(
       Q_flow_nominal .* f_design), nParallelSup)
     "Nominal heat flow rate at supply ports to transfer system" annotation (Dialog(group=
           "Design - Bottom Up: Parameters are defined by the subsystem"));
-  parameter Boolean NoRetrofit[nParallelDem]=fill(false, nParallelDem)
-    "If, true Q_flow_nominal[i]=QNoRetrofit_flow_nominal[i] and TTra_nominal[i]=TSupNoRetrofit_nominal for i in nParallelDem"
-    annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
+  parameter Modelica.Units.SI.HeatFlowRate QSup_flow_nominal_old[nParallelSup]=fill(sum(
+      Q_flow_nominal_old_design .* f_design), nParallelSup)
+    "Nominal heat flow rate at supply ports to transfer system" annotation (Dialog(group=
+          "Design - Bottom Up: Parameters are defined by the subsystem"));
+
   parameter Modelica.Units.SI.Temperature TTra_nominal[nParallelDem] "Nominal supply temperature to transfer systems"
    annotation(Dialog(group="Design - Top Down: Parameters are given by the parent system"));
+  parameter Modelica.Units.SI.Temperature TTra_nominal_old_design[nParallelDem] "Nominal supply temperature to transfer systems at old design"
+   annotation(Dialog(group="Design - Top Down: Parameters are given by the parent system"));
+  parameter Modelica.Units.SI.Temperature TTra_nominal_design[nParallelDem]=
+      {if NoRetrofit then TTra_nominal_old_design[i] else TTra_nominal[i] for i in 1:nParallelDem}
+      "Nominal supply temperature to transfer systems at first design"
+   annotation(Dialog(group="Design - Internal: Parameters are defined by the subsystem at first design"));
   parameter Modelica.Units.SI.MassFlowRate mSup_flow_nominal[nParallelSup]=fill(sum(
       m_flow_nominal), nParallelSup)
    "Nominal mass flow rate of the supply ports to the transfer system" annotation (Dialog(
