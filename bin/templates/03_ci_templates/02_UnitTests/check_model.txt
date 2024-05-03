@@ -9,6 +9,8 @@ stages:
         - export PIP_CACHE_DIR="/opt/cache/pip"
         - source activate myenv  
         - export PYTHONIOENCODING=utf-8 # just in case
+		- apt-get update -y
+        - apt-get install git-lfs -y
         - python install_dependencies.py full
     script:
         - python bin/CITests/02_UnitTests/CheckPackages/validatetest.py  --single-package "${lib_package}" --library ${library} -DS ${dymolaversion} ${wh_flag} ${filterflag} 
@@ -44,6 +46,8 @@ Check_${library}_${package}:
         - export PIP_CACHE_DIR="/opt/cache/pip"
         - source activate myenv
         - export PYTHONIOENCODING=utf-8 # just in case
+ 		- apt-get update -y
+        - apt-get install git-lfs -y
         - python install_dependencies.py full
     script:
         - git diff --raw --diff-filter=AMT HEAD^1 >  ${ch_file}
@@ -84,6 +88,8 @@ Check_${library}_${package}_changed_models:
         - export PIP_CACHE_DIR="/opt/cache/pip"
         - source activate myenv  
         - export PYTHONIOENCODING=utf-8 # just in case
+		- apt-get update -y
+        - apt-get install git-lfs -y
         - python install_dependencies.py full
     script:
         - python bin/CITests/02_UnitTests/CheckPackages/validatetest.py  --single-package "${lib_package}" --library ${library} -DS ${dymolaversion} ${wh_flag} ${filterflag} 
