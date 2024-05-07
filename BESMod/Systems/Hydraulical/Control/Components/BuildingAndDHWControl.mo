@@ -72,7 +72,12 @@ model BuildingAndDHWControl
   BuildingHysteresis hysBui
     "Hysteresis for building" annotation (Placement(
         transformation(extent={{40,-80},{60,-60}})));
-  BuildingSupplySetTemperature TSetBuiSup
+  BuildingSupplySetTemperature TSetBuiSup(
+    nZones=nZones,
+    TSup_nominal=TSup_nominal,
+    TRet_nominal=TRet_nominal,
+    TOda_nominal=TOda_nominal,
+    nHeaTra=nHeaTra)
     "Building supply set temperature module"  annotation (
       Placement(transformation(extent={{-70,-80},{-50,-60}})));
   DHWHysteresis hysDHW if use_dhw
