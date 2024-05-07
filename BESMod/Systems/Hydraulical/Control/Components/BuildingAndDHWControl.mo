@@ -27,6 +27,12 @@ model BuildingAndDHWControl
     "Hysteresis for building" annotation (choicesAllMatching=true);
   replaceable model BuildingSupplySetTemperature =
       BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.IdealHeatingCurve
+      (
+      nZones=nZones,
+      TSup_nominal=TSup_nominal,
+      TRet_nominal=TRet_nominal,
+      TOda_nominal=TOda_nominal,
+      nHeaTra=nHeaTra)
       constrainedby
     BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.BaseClasses.PartialSetpoint
     "Supply temperature setpoint model, e.g. heating curve" annotation (
@@ -72,12 +78,7 @@ model BuildingAndDHWControl
   BuildingHysteresis hysBui
     "Hysteresis for building" annotation (Placement(
         transformation(extent={{40,-80},{60,-60}})));
-  BuildingSupplySetTemperature TSetBuiSup(
-    nZones=nZones,
-    TSup_nominal=TSup_nominal,
-    TRet_nominal=TRet_nominal,
-    TOda_nominal=TOda_nominal,
-    nHeaTra=nHeaTra)
+  BuildingSupplySetTemperature TSetBuiSup
     "Building supply set temperature module"  annotation (
       Placement(transformation(extent={{-70,-80},{-50,-60}})));
   DHWHysteresis hysDHW if use_dhw
