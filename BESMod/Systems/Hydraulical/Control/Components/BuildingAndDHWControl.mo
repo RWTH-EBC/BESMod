@@ -28,12 +28,7 @@ model BuildingAndDHWControl
   replaceable model BuildingSupplySetTemperature =
       BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.IdealHeatingCurve
       constrainedby
-    BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.BaseClasses.PartialSetpoint(
-        final TSup_nominal=TSup_nominal,
-        final TRet_nominal=TRet_nominal,
-        final TOda_nominal=TOda_nominal,
-        final nZones=nZones,
-        final nHeaTra=nHeaTra)
+    BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.BaseClasses.PartialSetpoint
     "Supply temperature setpoint model, e.g. heating curve" annotation (
       choicesAllMatching=true);
   replaceable model DHWHysteresis =
