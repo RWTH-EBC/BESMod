@@ -171,6 +171,8 @@ partial model PartialHeatPumpSystemController
     redeclare final model DHWHysteresis = DHWHysteresis,
     redeclare final model BuildingHysteresis = BuildingHysteresis,
     redeclare final model DHWSetTemperature = DHWSetTemperature,
+    redeclare final model BuildingSupplySetTemperature =
+        BuildingSupplySetTemperature,
     final useExtSGSig=useExtSGSig,
     final TAddSta3Bui=TAddSta3Bui,
     final useSGReady=useSGReady,

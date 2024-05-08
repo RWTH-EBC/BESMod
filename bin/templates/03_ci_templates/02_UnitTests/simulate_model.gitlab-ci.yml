@@ -8,6 +8,8 @@ stages:
         - export PIP_CACHE_DIR="/opt/cache/pip"
         - source activate myenv
         - export PYTHONIOENCODING=utf-8 # just in case
+        - apt-get update -y
+        - apt-get install git-lfs -y
         - python install_dependencies.py full
     script:
         - python bin/CITests/02_UnitTests/CheckPackages/validatetest.py  --single-package "${lib_package}" --library BESMod -DS 2022   --simulateexamples 
@@ -51,6 +53,8 @@ CI_simulate_BESMod_Systems:
         - export PIP_CACHE_DIR="/opt/cache/pip"
         - source activate myenv  
         - export PYTHONIOENCODING=utf-8 # just in case
+        - apt-get update -y
+        - apt-get install git-lfs -y
         - python install_dependencies.py full
     script:
         - python bin/CITests/02_UnitTests/CheckPackages/validatetest.py  --single-package "${lib_package}" --library BESMod -DS 2022   --simulateexamples 
@@ -106,6 +110,8 @@ simulate_BESMod_Systems:
         - export PIP_CACHE_DIR="/opt/cache/pip"
         - source activate myenv
         - export PYTHONIOENCODING=utf-8 # just in case
+        - apt-get update -y
+        - apt-get install git-lfs -y
         - python install_dependencies.py full
     script:
         - git diff --raw --diff-filter=AMT HEAD^1 >  bin/Configfiles/ci_changed_model_list.txt

@@ -56,8 +56,7 @@ model GasBoiler "PI Control of gas boiler"
         rotation=0,
         origin={10,70})));
   Modelica.Blocks.Sources.Constant const_dT_loading1(k=parDis.dTTraDHW_nominal
-         + monovalentControlParas.dTHysDHW /2) if use_dhw
-                                               annotation (Placement(transformation(
+         + dTHysDHW /2) if use_dhw             annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,
         origin={-90,90})));
