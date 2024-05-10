@@ -167,6 +167,7 @@ partial model PartialHydraulicSystem
     final Q_flow_nominal=hydraulicSystemParameters.Q_flow_nominal,
     final Q_flow_nominal_old_design=hydraulicSystemParameters.QNoRetrofit_flow_nominal,
     final TDem_nominal=hydraulicSystemParameters.TZone_nominal,
+    final TDem_nominal_old_design=transfer.TDem_nominal,
     final allowFlowReversal=allowFlowReversal,
     final show_T=show_T,
     final rho=rho,

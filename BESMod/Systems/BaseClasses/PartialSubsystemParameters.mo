@@ -10,6 +10,9 @@ model PartialSubsystemParameters "Model for a partial subsystem"
   parameter Modelica.Units.SI.Temperature TSup_nominal[nParallelSup]
     "Nominal supply temperature" annotation (Dialog(group=
           "Design - Bottom Up: Parameters are defined by the subsystem"));
+  parameter Modelica.Units.SI.Temperature TSup_nominal_old_design[nParallelSup]
+    "Nominal supply temperature, if the supply system is based on the old system" annotation (Dialog(group=
+          "Design - Bottom Up: Parameters are defined by the subsystem"));
   parameter Modelica.Units.SI.TemperatureDifference dTTra_nominal[nParallelDem]
     "Nominal temperature difference for heat transfer" annotation (Dialog(group=
          "Design - Bottom Up: Parameters are defined by the subsystem"));
@@ -47,6 +50,9 @@ model PartialSubsystemParameters "Model for a partial subsystem"
   parameter Modelica.Units.SI.Temperature TDem_nominal[nParallelDem]
     "Nominal demand temperature" annotation (Dialog(group=
           "Design - Top Down: Parameters are given by the parent system"));
+  parameter Modelica.Units.SI.Temperature TDem_nominal_old_design[nParallelDem]
+    "Nominal no retrofit demand temperature" annotation (Dialog(group=
+          "Design - Top Down: Parameters are given by the parent system"));
   parameter Modelica.Units.SI.Temperature TAmb
     "Ambient temperature of system. Used to calculate default heat loss."
     annotation (Dialog(group=
@@ -55,7 +61,7 @@ model PartialSubsystemParameters "Model for a partial subsystem"
   parameter Boolean NoRetrofit[nParallelDem]=fill(false, nParallelDem)
     "If, true Q_flow_nominal[i]=QNoRetrofit_flow_nominal[i] and TTra_nominal[i]=TSupNoRetrofit_nominal for i in nParallelDem"
     annotation (Dialog(group="Design - Internal: Parameters are defined by the subsystem at first design"));
-  parameter Modelica.Units.SI.HeatFlowRate Q_flow_nominal_design[nParallelDem](each min=Modelica.Constants.eps) = {if NoRetrofit then Q_flow_nominal_old_design[i] else Q_flow_nominal[i] for i in 1:nParallelDem}
+  parameter Modelica.Units.SI.HeatFlowRate Q_flow_nominal_design[nParallelDem](each min=Modelica.Constants.eps) = {if NoRetrofit[i] then Q_flow_nominal_old_design[i] else Q_flow_nominal[i] for i in 1:nParallelDem}
     "Nominal heat flow rate at design of System" annotation (Dialog(group=
           "Design - Internal: Parameters are defined by the subsystem at first design"));
   parameter Modelica.Units.SI.MassFlowRate m_flow_nominal_design[nParallelDem](each

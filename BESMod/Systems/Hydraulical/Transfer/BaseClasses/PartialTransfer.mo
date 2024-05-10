@@ -3,6 +3,7 @@ partial model PartialTransfer "Partial transfer model for BES"
   extends BESMod.Utilities.Icons.TransferIcon;
   extends BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters(
     TSup_nominal=fill(max(TTra_nominal),nParallelSup),
+    TSup_nominal_old_design=fill(max(TTra_nominal_old_design),nParallelSup),
       dTTra_nominal={if TTra_nominal[i] > 64.9 + 273.15 then 15 elseif
         TTra_nominal[i] > 44.9 + 273.15 then 10 else 7 for i in 1:nParallelDem},
       m_flow_nominal=Q_flow_nominal ./ (dTTra_nominal .* 4184),
@@ -14,7 +15,7 @@ partial model PartialTransfer "Partial transfer model for BES"
       Q_flow_nominal .* f_design), nParallelSup)
     "Nominal heat flow rate at supply ports to transfer system" annotation (Dialog(group=
           "Design - Bottom Up: Parameters are defined by the subsystem"));
-  parameter Modelica.Units.SI.HeatFlowRate QSup_flow_nominal_old[nParallelSup]=fill(sum(
+  parameter Modelica.Units.SI.HeatFlowRate QSup_flow_nominal_old_design[nParallelSup]=fill(sum(
       Q_flow_nominal_old_design .* f_design), nParallelSup)
     "Nominal heat flow rate at supply ports to transfer system" annotation (Dialog(group=
           "Design - Bottom Up: Parameters are defined by the subsystem"));
@@ -28,6 +29,10 @@ partial model PartialTransfer "Partial transfer model for BES"
       "Nominal supply temperature to transfer systems at first design"
    annotation(Dialog(group="Design - Internal: Parameters are defined by the subsystem at first design"));
   parameter Modelica.Units.SI.MassFlowRate mSup_flow_nominal[nParallelSup]=fill(sum(
+      m_flow_nominal), nParallelSup)
+   "Nominal mass flow rate of the supply ports to the transfer system" annotation (Dialog(
+        group="Design - Bottom Up: Parameters are defined by the subsystem"));
+  parameter Modelica.Units.SI.MassFlowRate mSup_flow_nominal_old_design[nParallelSup]=fill(sum(
       m_flow_nominal), nParallelSup)
    "Nominal mass flow rate of the supply ports to the transfer system" annotation (Dialog(
         group="Design - Bottom Up: Parameters are defined by the subsystem"));
