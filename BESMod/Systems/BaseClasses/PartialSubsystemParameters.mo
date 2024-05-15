@@ -20,6 +20,9 @@ model PartialSubsystemParameters "Model for a partial subsystem"
   parameter Modelica.Units.SI.MassFlowRate m_flow_nominal[nParallelDem](each
       min=Modelica.Constants.eps) "Nominal mass flow rate at operation" annotation (Dialog(
         group="Design - Bottom Up: Parameters are defined by the subsystem"));
+  parameter Modelica.Units.SI.MassFlowRate m_flow_nominal_old_design[nParallelDem](each
+      min=Modelica.Constants.eps)=m_flow_nominal "Nominal mass flow rate at operation" annotation (Dialog(
+        group="Design - Bottom Up: Parameters are defined by the subsystem"));
 
   parameter Modelica.Units.SI.PressureDifference dp_nominal[nParallelDem]
     "Nominal pressure difference at m_flow_nominal" annotation (Dialog(group=
@@ -68,7 +71,10 @@ model PartialSubsystemParameters "Model for a partial subsystem"
       min=Modelica.Constants.eps) = m_flow_nominal "Nominal mass flow rate at design" annotation (Dialog(
         group="Design - Internal: Parameters are defined by the subsystem at first design"));
   parameter Modelica.Units.SI.TemperatureDifference dTTra_nominal_design[nParallelDem] = dTTra_nominal
-    "Nominal temperature difference for heat transfer at design" annotation (Dialog(group=
+    "Nominal temperature difference for heat transfer at actual design" annotation (Dialog(group=
+         "Design - Internal: Parameters are defined by the subsystem at first design"));
+  parameter Modelica.Units.SI.TemperatureDifference dTTra_nominal_old_design[nParallelDem] = dTTra_nominal
+    "Nominal temperature difference for heat transfer at first design" annotation (Dialog(group=
          "Design - Internal: Parameters are defined by the subsystem at first design"));
   parameter Modelica.Units.SI.PressureDifference dp_nominal_design[nParallelDem] = dp_nominal
     "Nominal pressure difference at m_flow_nominal_design" annotation (Dialog(group=

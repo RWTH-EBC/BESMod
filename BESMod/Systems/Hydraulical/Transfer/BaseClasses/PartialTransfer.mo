@@ -7,9 +7,12 @@ partial model PartialTransfer "Partial transfer model for BES"
       dTTra_nominal={if TTra_nominal[i] > 64.9 + 273.15 then 15 elseif
         TTra_nominal[i] > 44.9 + 273.15 then 10 else 7 for i in 1:nParallelDem},
       m_flow_nominal=Q_flow_nominal ./ (dTTra_nominal .* 4184),
+      m_flow_nominal_old_design=Q_flow_nominal_old_design ./ (dTTra_nominal_old_design .* 4184),
       dTTra_nominal_design={if TTra_nominal_design[i] > 64.9 + 273.15 then 15 elseif
         TTra_nominal_design[i] > 44.9 + 273.15 then 10 else 7 for i in 1:nParallelDem},
-      m_flow_nominal_design=Q_flow_nominal_design ./ (dTTra_nominal .* 4184));
+      dTTra_nominal_old_design={if TTra_nominal_old_design[i] > 64.9 + 273.15 then 15 elseif
+        TTra_nominal_old_design[i] > 44.9 + 273.15 then 10 else 7 for i in 1:nParallelDem},
+      m_flow_nominal_design=Q_flow_nominal_design ./ (dTTra_nominal_design .* 4184));
 
   parameter Modelica.Units.SI.HeatFlowRate QSup_flow_nominal[nParallelSup]=fill(sum(
       Q_flow_nominal .* f_design), nParallelSup)
@@ -33,11 +36,15 @@ partial model PartialTransfer "Partial transfer model for BES"
    "Nominal mass flow rate of the supply ports to the transfer system" annotation (Dialog(
         group="Design - Bottom Up: Parameters are defined by the subsystem"));
   parameter Modelica.Units.SI.MassFlowRate mSup_flow_nominal_old_design[nParallelSup]=fill(sum(
-      m_flow_nominal), nParallelSup)
+      m_flow_nominal_old_design), nParallelSup)
    "Nominal mass flow rate of the supply ports to the transfer system" annotation (Dialog(
         group="Design - Bottom Up: Parameters are defined by the subsystem"));
 
   parameter Modelica.Units.SI.PressureDifference dpSup_nominal[nParallelSup]
+    "Nominal pressure loss of resistances in the supply system of the distribution"
+    annotation (Dialog(group=
+          "Design - Top Down: Parameters are given by the parent system"));
+  parameter Modelica.Units.SI.PressureDifference dpSup_nominal_old_design[nParallelSup]
     "Nominal pressure loss of resistances in the supply system of the distribution"
     annotation (Dialog(group=
           "Design - Top Down: Parameters are given by the parent system"));

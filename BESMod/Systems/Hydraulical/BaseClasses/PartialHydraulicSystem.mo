@@ -16,14 +16,19 @@ partial model PartialHydraulicSystem
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-178,-136},{-158,-116}})));
 
   replaceable BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration generation(
-      dTTra_nominal=fill(1, generation.nParallelDem), dp_nominal=fill(0,
-        generation.nParallelDem))       constrainedby
+      dTTra_nominal=fill(1, generation.nParallelDem),
+      dTTra_nominal_design=fill(1, generation.nParallelDem),
+      dp_nominal=fill(0, generation.nParallelDem))       constrainedby
     BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration(
     final TDem_nominal=distribution.TSup_nominal,
+    final TDem_nominal_old_design=distribution.TSup_nominal_old_design,
     final Q_flow_nominal={sum(distribution.Q_flow_nominal)*generation.f_design[
+        i] + distribution.QDHWBefSto_flow_nominal for i in 1:generation.nParallelDem},
+    final Q_flow_nominal_old_design={sum(distribution.Q_flow_nominal_old_design)*generation.f_design[
         i] + distribution.QDHWBefSto_flow_nominal for i in 1:generation.nParallelDem},
     redeclare package Medium = Medium,
     final dpDem_nominal=distribution.dpSup_nominal,
+    final dpDem_nominal_old_design=distribution.dpSup_nominal_old_design,
     final energyDynamics=energyDynamics,
     final massDynamics=massDynamics,
     final p_start=p_start,
@@ -122,7 +127,9 @@ partial model PartialHydraulicSystem
     final mSenFac=mSenFac,
     final TAmb=hydraulicSystemParameters.TAmb,
     final Q_flow_nominal=transfer.QSup_flow_nominal,
+    final Q_flow_nominal_old_design=transfer.QSup_flow_nominal_old_design,
     final TDem_nominal=transfer.TSup_nominal,
+    final TDem_nominal_old_design=transfer.TSup_nominal_old_design,
     final allowFlowReversal=allowFlowReversal,
     final show_T=show_T,
     final rho=rho,
@@ -130,7 +137,9 @@ partial model PartialHydraulicSystem
     final TOda_nominal=hydraulicSystemParameters.TOda_nominal,
     final use_dhw=use_dhw,
     final mDem_flow_nominal=transfer.mSup_flow_nominal,
+    final mDem_flow_nominal_old_design=transfer.mSup_flow_nominal_old_design,
     final mSup_flow_nominal=generation.m_flow_nominal,
+    final mSup_flow_nominal_old_design=generation.m_flow_nominal_old_design,
     final mDHW_flow_nominal=hydraulicSystemParameters.mDHW_flow_nominal,
     final VDHWDay=hydraulicSystemParameters.VDHWDay,
     final QDHW_flow_nominal=hydraulicSystemParameters.QDHW_flow_nominal,
@@ -159,6 +168,7 @@ partial model PartialHydraulicSystem
     final ABui=hydraulicSystemParameters.ABui,
     final hBui=hydraulicSystemParameters.hBui,
     final dpSup_nominal=distribution.dpDem_nominal,
+    final dpSup_nominal_old_design=distribution.dpDem_nominal_old_design,
     final C_nominal=C_nominal,
     final mSenFac=mSenFac,
     final TOda_nominal=hydraulicSystemParameters.TOda_nominal,

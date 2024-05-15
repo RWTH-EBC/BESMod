@@ -4,7 +4,8 @@ partial model PartialDistribution
   extends BESMod.Utilities.Icons.StorageIcon;
   extends BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters(final
       dp_nominal=dpDem_nominal,
-      TSup_nominal=TDem_nominal .+ dTLoss_nominal .+ dTTra_nominal);
+      TSup_nominal=TDem_nominal .+ dTLoss_nominal .+ dTTra_nominal,
+      TSup_nominal_old_design=TDem_nominal_old_design .+ dTLoss_nominal .+ dTTra_nominal_old_design);
   extends PartialDHWParameters;
   replaceable package MediumDHW =
       Modelica.Media.Interfaces.PartialMedium
@@ -18,7 +19,15 @@ partial model PartialDistribution
     "Nominal mass flow rate of system supplying the distribution" annotation (
       Dialog(group=
           "Design - Top Down: Parameters are given by the parent system"));
+  parameter Modelica.Units.SI.MassFlowRate mSup_flow_nominal_old_design[nParallelSup](each min=Modelica.Constants.eps)
+    "Nominal mass flow rate of system supplying the distribution befor a retrofit" annotation (
+      Dialog(group=
+          "Design - Top Down: Parameters are given by the parent system"));
   parameter Modelica.Units.SI.MassFlowRate mDem_flow_nominal[nParallelDem](each min=Modelica.Constants.eps)
+    "Nominal mass flow rate of demand system of the distribution" annotation (
+      Dialog(group=
+          "Design - Top Down: Parameters are given by the parent system"));
+  parameter Modelica.Units.SI.MassFlowRate mDem_flow_nominal_old_design[nParallelDem](each min=Modelica.Constants.eps)
     "Nominal mass flow rate of demand system of the distribution" annotation (
       Dialog(group=
           "Design - Top Down: Parameters are given by the parent system"));
@@ -29,13 +38,21 @@ partial model PartialDistribution
     "Nominal pressure loss of resistances connected to the supply system of the distribution"
     annotation (Dialog(group=
           "Design - Bottom Up: Parameters are defined by the subsystem"));
+  parameter Modelica.Units.SI.PressureDifference dpSup_nominal_old_design[nParallelSup]=dpSup_nominal
+    "Nominal pressure loss of resistances connected to the supply system of the distribution"
+    annotation (Dialog(group=
+          "Design - Bottom Up: Parameters are defined by the subsystem"));
   parameter Modelica.Units.SI.PressureDifference dpDem_nominal[nParallelDem]
     "Nominal pressure loss of resistances connected to the demand system of the distribution"
     annotation (Dialog(group=
           "Design - Bottom Up: Parameters are defined by the subsystem"));
+  parameter Modelica.Units.SI.PressureDifference dpDem_nominal_old_design[nParallelDem] = dpSup_nominal
+    "Nominal pressure loss of resistances connected to the demand system of the distribution"
+    annotation (Dialog(group=
+          "Design - Bottom Up: Parameters are defined by the subsystem"));
 
-  Modelica.Fluid.Interfaces.FluidPort_a portGen_in[nParallelSup](redeclare final
-      package       Medium = MediumGen) "Inlet from the generation" annotation (
+  Modelica.Fluid.Interfaces.FluidPort_a portGen_in[nParallelSup](redeclare
+      final package Medium = MediumGen) "Inlet from the generation" annotation (
      Placement(transformation(extent={{-110,70},{-90,90}}), iconTransformation(
           extent={{-110,70},{-90,90}})));
   Modelica.Fluid.Interfaces.FluidPort_b portGen_out[nParallelSup](redeclare
@@ -47,8 +64,8 @@ partial model PartialDistribution
                Medium) "Outlet for the distribution to the building"
     annotation (Placement(transformation(extent={{90,70},{110,90}}),
         iconTransformation(extent={{90,70},{110,90}})));
-  Modelica.Fluid.Interfaces.FluidPort_a portBui_in[nParallelDem](redeclare final
-      package       Medium =
+  Modelica.Fluid.Interfaces.FluidPort_a portBui_in[nParallelDem](redeclare
+      final package Medium =
                Medium) "Inlet for the distribution from the building"
     annotation (Placement(transformation(extent={{90,30},{110,50}}),
         iconTransformation(extent={{90,30},{110,50}})));

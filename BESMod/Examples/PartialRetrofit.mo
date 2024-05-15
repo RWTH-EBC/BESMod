@@ -33,6 +33,8 @@ extends Modelica.Icons.ExamplesPackage;
 
   model Case1PartialRetrofit
     extends PartialCase(
+      NoRetrofitHydGen=true,
+      NoRetrofitHydDis=true,
       NoRetrofitHydTra=true,
       building(redeclare
           BESMod.Examples.PartialRetrofit.Buildings.Case_1_retrofit
@@ -63,14 +65,18 @@ extends Modelica.Icons.ExamplesPackage;
       redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
         redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater
           generation(
+          NoRetrofit={NoRetrofitHydDis},
           redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
+
           redeclare package Medium_eva = AixLib.Media.Air,
           redeclare
             BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
             parHeaPum(
             genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
+
             TBiv=TBiv,
             scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal/5000,
+
             dpCon_nominal=0,
             dpEva_nominal=0,
             use_refIne=false,
@@ -81,12 +87,14 @@ extends Modelica.Icons.ExamplesPackage;
           redeclare model PerDataMainHP =
               AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
               QCon_flow_nominal=hydraulic.generation.parHeaPum.QPri_flow_nominal,
+
               refrigerant="Propane",
               flowsheet="VIPhaseSeparatorFlowsheet"),
           redeclare
             BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
             parTemSen),
-        redeclare Systems.Hydraulical.Control.MonoenergeticHeatPumpSystem control(
+        redeclare Systems.Hydraulical.Control.MonoenergeticHeatPumpSystem
+          control(
           redeclare
             BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
             valCtrl,
@@ -94,8 +102,10 @@ extends Modelica.Icons.ExamplesPackage;
           dTHysDHW=10,
           redeclare model DHWHysteresis =
               BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
+
           redeclare model BuildingHysteresis =
               BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
+
           redeclare
             BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
             parPIDHeaPum,
@@ -105,11 +115,13 @@ extends Modelica.Icons.ExamplesPackage;
         redeclare
           BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedDirectLoading
           distribution(
+          NoRetrofit={NoRetrofitHydDis},
           QHeaAftBuf_flow_nominal=0,
           redeclare
             BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
             parTemSen,
-          redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
+          redeclare
+            BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
             parThrWayVal,
           redeclare
             BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorage
@@ -151,6 +163,10 @@ extends Modelica.Icons.ExamplesPackage;
       "Nominal bivalence temperature. = TOda_nominal for monovalent systems.";
     parameter Boolean NoRetrofitHydTra = false
       "If true, hydraulic transfersystem uses QBuiNoRetrofit.";
+    parameter Boolean NoRetrofitHydDis = false
+      "If true, hydraulic distribution system uses QBuiNoRetrofit.";
+    parameter Boolean NoRetrofitHydGen = false
+      "If true, hydraulic generation system uses QBuiNoRetrofit.";
     annotation (experiment(
         StopTime=31536000,
         Interval=600,
