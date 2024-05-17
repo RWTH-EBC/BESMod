@@ -5,7 +5,7 @@ partial model PartialDistribution
   extends BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters(final
       dp_nominal=dpDem_nominal,
       TSup_nominal=TDem_nominal .+ dTLoss_nominal .+ dTTra_nominal,
-      TSup_nominal_old_design=TDem_nominal_old_design .+ dTLoss_nominal .+ dTTra_nominal_old_design);
+      TSupOld_design=TDemOld_design .+ dTLoss_nominal .+ dTTraOld_design);
   extends PartialDHWParameters;
   replaceable package MediumDHW =
       Modelica.Media.Interfaces.PartialMedium
@@ -19,16 +19,16 @@ partial model PartialDistribution
     "Nominal mass flow rate of system supplying the distribution" annotation (
       Dialog(group=
           "Design - Top Down: Parameters are given by the parent system"));
-  parameter Modelica.Units.SI.MassFlowRate mSup_flow_nominal_old_design[nParallelSup](each min=Modelica.Constants.eps)
-    "Nominal mass flow rate of system supplying the distribution befor a retrofit" annotation (
+  parameter Modelica.Units.SI.MassFlowRate mSupOld_flow_design[nParallelSup](each min=Modelica.Constants.eps)
+    "Old nominal design mass flow rate of system supplying the distribution" annotation (
       Dialog(group=
           "Design - Top Down: Parameters are given by the parent system"));
   parameter Modelica.Units.SI.MassFlowRate mDem_flow_nominal[nParallelDem](each min=Modelica.Constants.eps)
     "Nominal mass flow rate of demand system of the distribution" annotation (
       Dialog(group=
           "Design - Top Down: Parameters are given by the parent system"));
-  parameter Modelica.Units.SI.MassFlowRate mDem_flow_nominal_old_design[nParallelDem](each min=Modelica.Constants.eps)
-    "Nominal mass flow rate of demand system of the distribution" annotation (
+  parameter Modelica.Units.SI.MassFlowRate mDemOld_flow_design[nParallelDem](each min=Modelica.Constants.eps)
+    "Old nominal design mass flow rate of demand system of the distribution" annotation (
       Dialog(group=
           "Design - Top Down: Parameters are given by the parent system"));
   parameter Modelica.Units.SI.TemperatureDifference dTTraDHW_nominal
@@ -38,16 +38,16 @@ partial model PartialDistribution
     "Nominal pressure loss of resistances connected to the supply system of the distribution"
     annotation (Dialog(group=
           "Design - Bottom Up: Parameters are defined by the subsystem"));
-  parameter Modelica.Units.SI.PressureDifference dpSup_nominal_old_design[nParallelSup]=dpSup_nominal
-    "Nominal pressure loss of resistances connected to the supply system of the distribution"
+  parameter Modelica.Units.SI.PressureDifference dpSupOld_design[nParallelSup]=dpSup_nominal
+    "Old nominal design pressure loss of resistances connected to the supply system of the distribution"
     annotation (Dialog(group=
           "Design - Bottom Up: Parameters are defined by the subsystem"));
   parameter Modelica.Units.SI.PressureDifference dpDem_nominal[nParallelDem]
     "Nominal pressure loss of resistances connected to the demand system of the distribution"
     annotation (Dialog(group=
           "Design - Bottom Up: Parameters are defined by the subsystem"));
-  parameter Modelica.Units.SI.PressureDifference dpDem_nominal_old_design[nParallelDem] = dpSup_nominal
-    "Nominal pressure loss of resistances connected to the demand system of the distribution"
+  parameter Modelica.Units.SI.PressureDifference dpDemOld_design[nParallelDem] = dpDem_nominal
+    "Old nominal design pressure loss of resistances connected to the demand system of the distribution"
     annotation (Dialog(group=
           "Design - Bottom Up: Parameters are defined by the subsystem"));
 

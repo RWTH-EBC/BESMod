@@ -33,8 +33,8 @@ extends Modelica.Icons.ExamplesPackage;
 
   model Case1PartialRetrofit
     extends PartialCase(
-      NoRetrofitHydGen=true,
-      NoRetrofitHydDis=true,
+      NoRetrofitHydGen=false,
+      NoRetrofitHydDis=false,
       NoRetrofitHydTra=true,
       building(redeclare
           BESMod.Examples.PartialRetrofit.Buildings.Case_1_retrofit
@@ -43,8 +43,8 @@ extends Modelica.Icons.ExamplesPackage;
         QBui_flow_nominal={5300},
         TOda_nominal=263.15,
         THydSup_nominal={318.15},
-        QBuiNoRetrofit_flow_nominal={15300},
-        THydSupNoRetrofit_nominal={338.15}));
+        QBuiOld_flow_design={15300},
+        THydSupOld_design={338.15}));
     extends Modelica.Icons.Example;
 
     annotation (experiment(
@@ -65,18 +65,15 @@ extends Modelica.Icons.ExamplesPackage;
       redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
         redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater
           generation(
-          NoRetrofit={NoRetrofitHydDis},
+          use_old_design={NoRetrofitHydDis},
           redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
-
           redeclare package Medium_eva = AixLib.Media.Air,
           redeclare
             BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
             parHeaPum(
             genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
-
             TBiv=TBiv,
             scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal/5000,
-
             dpCon_nominal=0,
             dpEva_nominal=0,
             use_refIne=false,
@@ -87,7 +84,6 @@ extends Modelica.Icons.ExamplesPackage;
           redeclare model PerDataMainHP =
               AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
               QCon_flow_nominal=hydraulic.generation.parHeaPum.QPri_flow_nominal,
-
               refrigerant="Propane",
               flowsheet="VIPhaseSeparatorFlowsheet"),
           redeclare
@@ -102,10 +98,8 @@ extends Modelica.Icons.ExamplesPackage;
           dTHysDHW=10,
           redeclare model DHWHysteresis =
               BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
-
           redeclare model BuildingHysteresis =
               BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
-
           redeclare
             BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
             parPIDHeaPum,
@@ -115,7 +109,7 @@ extends Modelica.Icons.ExamplesPackage;
         redeclare
           BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedDirectLoading
           distribution(
-          NoRetrofit={NoRetrofitHydDis},
+          use_old_design={NoRetrofitHydDis},
           QHeaAftBuf_flow_nominal=0,
           redeclare
             BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
@@ -137,7 +131,7 @@ extends Modelica.Icons.ExamplesPackage;
             parEleHeaAftBuf),
         redeclare BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased
           transfer(
-          NoRetrofit={NoRetrofitHydTra},
+          use_old_design={NoRetrofitHydTra},
           redeclare
             BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
             parRad,
