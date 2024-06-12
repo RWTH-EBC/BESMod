@@ -131,7 +131,7 @@ extends Modelica.Icons.ExamplesPackage;
             parEleHeaAftBuf),
         redeclare BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased
           transfer(
-          use_old_design={NoRetrofitHydTra},
+          use_oldRadDesign={NoRetrofitHydTra},
           redeclare
             BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
             parRad,

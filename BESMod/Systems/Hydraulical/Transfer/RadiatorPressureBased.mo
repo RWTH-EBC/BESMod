@@ -6,7 +6,13 @@ model RadiatorPressureBased "Pressure Based transfer system"
     ABui=1,
     hBui=1,
     final dp_nominal=parTra.dp_nominal,
-    final nParallelSup=1);
+    final nParallelSup=1,
+    final use_old_design=use_oldRadDesign);
+
+  parameter Boolean use_oldRadDesign[nParallelDem]=fill(false, nParallelDem)
+    "If true, radiator design of old building state is used"
+    annotation (Dialog(group="Design - Internal: Parameters are defined by the subsystem"));
+
   parameter Boolean use_preRelVal=false "=false to disable pressure relief valve"
     annotation(Dialog(group="Component choices"));
   parameter Real perPreRelValOpens=0.99
@@ -14,12 +20,11 @@ model RadiatorPressureBased "Pressure Based transfer system"
       annotation(Dialog(group="Component choices", enable=use_preRelVal));
   replaceable parameter RecordsCollection.TransferDataBaseDefinition parTra
     constrainedby RecordsCollection.TransferDataBaseDefinition(
-    final Q_flow_nominal=Q_flow_nominal .* f_design,
+    final Q_flow_nominal=Q_flow_design .* f_design,
     final nZones=nParallelDem,
     final AFloor=ABui,
     final heiBui=hBui,
-    mRad_flow_nominal=m_flow_nominal,
-    mHeaCir_flow_nominal=mSup_flow_nominal[1]) "Transfer parameters" annotation (
+    mRad_flow_nominal=m_flow_nominal) "Transfer parameters" annotation (
     Dialog(group="Component data"),
     choicesAllMatching=true,
     Placement(transformation(extent={{-62,-98},{-42,-78}})));
@@ -36,20 +41,20 @@ model RadiatorPressureBased "Pressure Based transfer system"
     Placement(transformation(extent={{-100,-98},{-80,-78}})));
   IBPSA.Fluid.HeatExchangers.Radiators.RadiatorEN442_2 rad[nParallelDem](
     each final allowFlowReversal=allowFlowReversal,
-    final m_flow_nominal=m_flow_nominal,
+    final m_flow_nominal=m_flow_design,
     each final show_T=show_T,
     each final energyDynamics=energyDynamics,
     each final p_start=p_start,
     each final nEle=parRad.nEle,
     each final fraRad=parRad.fraRad,
-    final Q_flow_nominal=Q_flow_nominal .* f_design,
-    final T_a_nominal=TTra_nominal,
-    final T_b_nominal=TTra_nominal .- dTTra_nominal,
+    final Q_flow_nominal=Q_flow_design .* f_design,
+    final T_a_nominal=TTra_design,
+    final T_b_nominal=TTra_design .- dTTra_design,
     final TAir_nominal=TDem_nominal,
     final TRad_nominal=TDem_nominal,
     each final n=parRad.n,
     each final deltaM=0.3,
-    final dp_nominal=parTra.dpRad_nominal,
+    final dp_nominal=0,
     redeclare package Medium = Medium,
     each final T_start=T_start) "Radiator" annotation (Placement(transformation(
         extent={{11,11},{-11,-11}},
