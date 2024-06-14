@@ -33,9 +33,9 @@ extends Modelica.Icons.ExamplesPackage;
 
   model Case1PartialRetrofit
     extends PartialCase(
-      NoRetrofitHydGen=false,
+      NoRetrofitHydGen=true,
       NoRetrofitHydDis=false,
-      NoRetrofitHydTra=true,
+      NoRetrofitHydTra=false,
       building(redeclare
           BESMod.Examples.PartialRetrofit.Buildings.Case_1_retrofit
           oneZoneParam),
@@ -65,7 +65,7 @@ extends Modelica.Icons.ExamplesPackage;
       redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
         redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater
           generation(
-          use_old_design={NoRetrofitHydDis},
+          use_old_design={NoRetrofitHydGen},
           redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
           redeclare package Medium_eva = AixLib.Media.Air,
           redeclare

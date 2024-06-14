@@ -5,6 +5,9 @@ model PartialHeatPump "Generation with only the heat pump"
     final dTLoss_nominal=fill(0, nParallelDem),
     dTTra_nominal={if TDem_nominal[i] > 273.15 + 55 then 10 elseif TDem_nominal[
         i] > 44.9 + 273.15 then 8 else 5 for i in 1:nParallelDem},
+    dTTraOld_design={if TDemOld_design[i] > 273.15 + 55 then 10 elseif TDemOld_design[
+        i] > 44.9 + 273.15 then 8 else 5 for i in 1:nParallelDem},
+    dTTra_design={if use_old_design[i] then dTTraOld_design[i] else dTTra_nominal[i] for i in 1:nParallelDem},
     dp_nominal={heatPump.dpCon_nominal},
       nParallelDem=1);
   replaceable model PerDataMainHP =
@@ -44,7 +47,7 @@ model PartialHeatPump "Generation with only the heat pump"
     BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumpBaseDataDefinition
     parHeaPum constrainedby
     BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumpBaseDataDefinition(
-      final QGen_flow_nominal=Q_flow_nominal[1], final TOda_nominal=TOda_nominal)
+      final QGen_flow_nominal=Q_flow_design[1], final TOda_nominal=TOda_nominal)
     "Heat pump parameters" annotation (
     Dialog(group="Component data"),
     choicesAllMatching=true,
@@ -75,7 +78,7 @@ model PartialHeatPump "Generation with only the heat pump"
     final refIneFre_constant=parHeaPum.refIneFre_constant,
     final nthOrder=1,
     final useBusConnectorOnly=false,
-    final mFlow_conNominal=m_flow_nominal[1],
+    final mFlow_conNominal=m_flow_design[1],
     final VCon=parHeaPum.VCon,
     final dpCon_nominal=parHeaPum.dpCon_nominal,
     final use_conCap=false,
@@ -145,7 +148,7 @@ model PartialHeatPump "Generation with only the heat pump"
     final T_start=T_start,
     final allowFlowReversal=allowFlowReversal,
     final show_T=show_T,
-    final m_flow_nominal=m_flow_nominal[1],
+    final m_flow_nominal=m_flow_design[1],
     final dp_nominal=dpDem_nominal[1] + dp_nominal[1],
     final addPowerToMedium=parPum.addPowerToMedium,
     final tau=parPum.tau,
