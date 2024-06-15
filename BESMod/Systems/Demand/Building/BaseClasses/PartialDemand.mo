@@ -8,18 +8,25 @@ partial model PartialDemand "Partial demand model for HPS"
   parameter Modelica.Units.SI.Temperature TSetZone_nominal[nZones]=fill(293.15,
       nZones) "Nominal room set temerature"
     annotation (Dialog(group="Temperature demand"));
-  parameter Modelica.Units.SI.Area AZone[nZones] "Area of zones/rooms"
+  parameter Modelica.Units.SI.Area AZone[nZones](each min=0.1)
+    "Area of zones/rooms"
     annotation (Dialog(group="Geometry"));
-  parameter Modelica.Units.SI.Height hZone[nZones] "Height of zones"
+  parameter Modelica.Units.SI.Height hZone[nZones](each min=0.1)
+    "Height of zones"
     annotation (Dialog(group="Geometry"));
-  parameter Modelica.Units.SI.Area ABui "Ground area of building"
+  parameter Modelica.Units.SI.Area ABui(min=0.1)
+    "Ground area of building"
     annotation (Dialog(group="Geometry"));
-  parameter Modelica.Units.SI.Height hBui "Height of building"
+  parameter Modelica.Units.SI.Height hBui(min=0.1)
+    "Height of building"
     annotation (Dialog(group="Geometry"));
-  parameter Modelica.Units.SI.Area ARoo "Roof area of building"
+  parameter Modelica.Units.SI.Area ARoo(min=0.1)
+    "Roof area of building"
     annotation (Dialog(group="Geometry"));
   parameter Boolean use_hydraulic=true "=false to disable hydraulic supply";
   parameter Boolean use_ventilation=true "=false to disable ventilation supply";
+  parameter Modelica.Units.SI.Temperature TOda_nominal "Nominal outdoor air temperature"
+   annotation(Dialog(group="Design - Top Down: Parameters are given by the parent system"));
 
   replaceable package MediumZone = IBPSA.Media.Air constrainedby
     Modelica.Media.Interfaces.PartialMedium annotation (choices(

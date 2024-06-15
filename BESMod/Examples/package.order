@@ -1,6 +1,8 @@
-UseCaseModelicaConferencePaper
-UseCaseDesignOptimization
-BAUSimStudy
-UseCaseHighOrderModel
-SolarThermalSystem
 GasBoilerBuildingOnly
+BAUSimStudy
+DesignOptimization
+HeatPumpAndBoiler
+HighOrderModel
+ModelicaConferencePaper
+SolarThermalSystem
+TEASERHeatLoadCalculation

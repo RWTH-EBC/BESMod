@@ -8,7 +8,8 @@ partial record PartialStorageBaseDataDefinition
     "Heat capacity of water";
   parameter Modelica.Units.SI.HeatFlowRate Q_flow_nominal
     "Nominal heat flow rate";
-
+  parameter Modelica.Units.SI.Velocity v_nominal=0.5
+    "Nominal fluid velocity to calculate pipe diameters for given m_flow_nominal";
   // Design
   parameter Real VPerQ_flow=23.5 "Litre per kW of nominal heat flow rate"  annotation (Dialog(group="Geometry"));
   parameter Real storage_H_dia_ratio = 2 "Storage tank height-diameter ration. SOURCE: Working Assumption of all paper before"  annotation (Dialog(group="Geometry"));
@@ -43,8 +44,12 @@ partial record PartialStorageBaseDataDefinition
   parameter Modelica.Units.SI.MassFlowRate mHC1_flow_nominal
     "Nominal mass flow rate of HC fluid"
     annotation (Dialog(group="Loading", enable=use_HC1));
-  replaceable parameter AixLib.DataBase.Pipes.Copper.Copper_12x0_6 pipeHC1 constrainedby
-    AixLib.DataBase.Pipes.PipeBaseDataDefinition                                                                                         "Type of Pipe for HC1" annotation (choicesAllMatching=true, Dialog(group="Loading", enable=use_HC1));
+  final parameter Modelica.Units.SI.Velocity vHC1_nominal=mHC1_flow_nominal/(rho*Modelica.Constants.pi*(pipeHC1.d_i/2)^2)
+    "Fluid velocity in pipe of HC 1 at nominal conditions";
+  replaceable parameter BESMod.Systems.Hydraulical.RecordsCollection.CopperPipeVariableSize
+   pipeHC1(final d_i=2 * sqrt(mHC1_flow_nominal/(v_nominal * rho * Modelica.Constants.pi))) constrainedby
+    AixLib.DataBase.Pipes.PipeBaseDataDefinition "Type of Pipe for HC1"
+    annotation (choicesAllMatching=true, Dialog(group="Loading", tab="Calculated", enable=use_HC1));
   parameter Modelica.Units.SI.CoefficientOfHeatTransfer hConHC1=(2/pipeHC1.d_o)
       /(((max(dTLoadingHC1, dTLoaMin)*2*Modelica.Constants.pi*lengthHC1)/
       QHC1_flow_nominal) - (1/pipeHC1.lambda*log(pipeHC1.d_o/pipeHC1.d_i)))
@@ -53,22 +58,35 @@ partial record PartialStorageBaseDataDefinition
       tab="Calculated",
       group="Loading",
       enable=use_HC1));
-  parameter Modelica.Units.SI.Velocity vHC1_nominal=mHC1_flow_nominal/(rho*(
-      pipeHC1.d_i*Modelica.Constants.pi/2)^2)
-    "Fluid velocity in pipe of HC 1 at nominal conditions" annotation (Dialog(
-      tab="Calculated",
-      group="Loading",
-      enable=use_HC1));
+
 
   // Heat losses
+
+  parameter Types.EnergyLabel energyLabel "Level of Storage Tank Insulation"
+                                                   annotation (Dialog(
+      group="Insulation"));
+
+  parameter Real QLosPerDay=if energyLabel ==
+      Systems.Hydraulical.Distribution.Types.EnergyLabel.APlus then (5.5+3.16*(V*1000)^(0.4))*0.024
+       elseif energyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.A
+       then (7+ 3.705*(V*1000)^(0.4))*0.024 elseif energyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.B
+       then (10.25 + 5.09*(V*1000)^(0.4))*0.024 elseif energyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.C
+       then (14.33+ 7.13 *(V*1000)^(0.4))*0.024 elseif energyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.D
+       then (18.83 + 9.33*(V*1000)^(0.4))*0.024 elseif energyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.E
+       then (23.5 + 11.995*(V*1000)^(0.4))*0.024 elseif energyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.F
+       then (28.5+ 15.16*(V*1000)^(0.4))*0.024 elseif energyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.G
+       then (31 + 16.66*(V*1000)^(0.4))*0.024
+       else 0
+      "Heat loss per day. MUST BE IN kWh/d" annotation (Dialog(enable=use_QLos, group="Insulation"));
+
   parameter Modelica.Units.SI.Temperature T_m
     "Average storage temperature. Used to calculate default heat loss"
     annotation (Dialog(group="Insulation"));
   parameter Modelica.Units.SI.Temperature TAmb
     "Ambient temperature. Used to calculate default heat loss"
     annotation (Dialog(group="Insulation"));
-  parameter Boolean use_QLos=false   "=true to use QLosPerDay instead of TLosPerDay" annotation (Dialog(group="Insulation"));
-  parameter Real QLosPerDay=1 "Heat loss per day. MUST BE IN kWh/d" annotation (Dialog(enable=use_QLos, group="Insulation"));
+  parameter Boolean use_QLos=true   "=true to use QLosPerDay instead of TLosPerDay" annotation (Dialog(group="Insulation"));
+
   parameter Real TLosPerDay=1 "Temperature decline per day in K/d" annotation (Dialog(enable=not use_QLos, group="Insulation"));
   parameter Modelica.Units.SI.CoefficientOfHeatTransfer hConIn=100
     "Model assumptions heat transfer coefficient water <-> wall"

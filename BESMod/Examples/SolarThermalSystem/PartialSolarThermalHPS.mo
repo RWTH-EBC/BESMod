@@ -4,31 +4,30 @@ partial model PartialSolarThermalHPS
   extends BESMod.Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
     redeclare Systems.Demand.Building.TEASERThermalZone building(
-        hBui=sum(building.zoneParam.VAir)^(1/3),
-        ABui=sum(building.zoneParam.VAir)^(2/3),
-        redeclare
-        BESMod.Systems.Demand.Building.RecordsCollection.RefAachen oneZoneParam(
-          heaLoadFacGrd=0, heaLoadFacOut=0)),
+      hBui=sum(building.zoneParam.VAir)^(1/3),
+      ABui=sum(building.zoneParam.VAir)^(2/3),
+      redeclare BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
+        oneZoneParam(heaLoadFacGrd=0, heaLoadFacOut=0)),
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
       redeclare hydGeneration generation,
-      redeclare BESMod.Systems.Hydraulical.Control.Biv_PI_ConFlow_HPSController
+      redeclare BESMod.Systems.Hydraulical.Control.MonoenergeticHeatPumpSystem
         control(
         redeclare
           BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
-          thermostaticValveController,
+          valCtrl,
+        redeclare model DHWHysteresis =
+            BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
+        redeclare model BuildingHysteresis =
+            BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
         redeclare
-          BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
-          thermostaticValveParameters,
+          BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
+          parPIDHeaPum,
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultSafetyControl
-          safetyControl,
-        redeclare
-          BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultBivHPControl
-          bivalentControlData),
-      redeclare BESMod.Systems.Hydraulical.Distribution.CombiStorage
-        distribution(redeclare BESMod.Examples.SolarThermalSystem.CombiStorage
-          parameters(
+          safetyControl),
+      redeclare BESMod.Systems.Hydraulical.Distribution.CombiStorage distribution(
+          redeclare BESMod.Examples.SolarThermalSystem.CombiStorage parameters(
           V=parameterStudy.V,
           use_HC1=true,
           dTLoadingHC1=5,
@@ -38,14 +37,14 @@ partial model PartialSolarThermalHPS
         transfer(
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
-          radParameters,
+          parRad,
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
-          transferDataBaseDefinition,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData)),
-    redeclare Systems.Demand.DHW.DHW DHW(
+          parTra,
+        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum)),
+    redeclare Systems.Demand.DHW.StandardProfiles DHW(
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
-      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
+      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic calcmFlow),
     redeclare SolarThermalSystemParameters systemParameters,
     redeclare SolarThermalDesignOptimization parameterStudy(
@@ -59,7 +58,8 @@ partial model PartialSolarThermalHPS
 
   replaceable model hydGeneration =
       BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration(nParallelDem=2)
-     constrainedby BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration
+     constrainedby
+    BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration
      annotation (choicesAllMatching=true);
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
