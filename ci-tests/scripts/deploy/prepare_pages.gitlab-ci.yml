@@ -1,8 +1,7 @@
+# Variables
 # ci_stage_prepare_page : prepare_pages
 # result_dir : ci-tests/result
 # expire_in_time : 7h
-
-
 
 stages:
     - prepare_pages

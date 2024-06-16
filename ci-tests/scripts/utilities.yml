@@ -1,3 +1,4 @@
+# Variables
 # conda_environment: myenv
 # modelica_py_ci_url: https://github.com/RWTH-EBC/ModelicaPyCI.git
 # ci_toml_path: ci-tests/config/modelica_py_ci_config.toml

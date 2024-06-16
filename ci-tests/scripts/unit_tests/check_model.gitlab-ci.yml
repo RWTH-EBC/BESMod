@@ -1,3 +1,4 @@
+# Variables
 # dym_image_name: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola_2022-miniconda
 # ci_stage_model_check: model_check
 # ci_stage_create_whitelist: create_model_whitelist

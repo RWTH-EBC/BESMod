@@ -1,9 +1,9 @@
+# Variables
 # dym_image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola_2022-miniconda
 # ci_stage_regression_test: RegressionTest
 # ci_stage_ref_check :Ref_Check
 # ci_stage_plot_ref : plot_ref
 # ci_stage_prepare : prepare
-
 # modelicapyci_test_reference_module: ModelicaPyCI.unittest.reference_check
 # modelicapyci_google_chart_module : ModelicaPyCI.converter.google_charts
 # config_ci_exit_file : exit.sh
