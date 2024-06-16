@@ -6,7 +6,7 @@
 # ci_stage_prepare : prepare
 # modelicapyci_test_reference_module: ModelicaPyCI.unittest.reference_check
 # modelicapyci_google_chart_module : ModelicaPyCI.converter.google_charts
-# config_ci_exit_file : exit.sh
+# config_ci_exit_file : ci-tests/Configfiles/exit.sh
 # result_dir : ci-tests/result
 # ci_regression_test_commit : $ {ci_regression_test_commit}
 # expire_in_time : 7h
@@ -46,7 +46,7 @@ stages:
         - export CI_PYTHON_CONFIG_FILE="../ci-tests/config/modelica_py_ci_config.toml"
         - cd BESMod && xvfb-run -n 77 python -m ModelicaPyCI.unittest.reference_check --batch  --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages $lib_package --library BESMod 
     after_script:
-        - if cat exit.sh | grep "FAIL"; then
+        - if cat ci-tests/Configfiles/exit.sh | grep "FAIL"; then
             source activate myenv ;
             python -m ModelicaPyCI.converter.google_charts --create-layout-flag  --funnel-comp-flag  --error-flag  --line-html-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod --packages Examples Tutorial Utilities Systems  ;
             exit 1 ;
@@ -74,7 +74,7 @@ stages:
         - export CI_PYTHON_CONFIG_FILE="../ci-tests/config/modelica_py_ci_config.toml"
         - cd BESMod && xvfb-run -n 77 python -m ModelicaPyCI.unittest.reference_check --changed-flag  --batch  --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages $lib_package --library BESMod 
     after_script:
-        - if cat exit.sh | grep "FAIL"; then
+        - if cat ci-tests/Configfiles/exit.sh | grep "FAIL"; then
             source activate myenv ;
             python -m ModelicaPyCI.converter.google_charts --create-layout-flag  --funnel-comp-flag  --error-flag  --line-html-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod --packages Examples Tutorial Utilities Systems  ;
             exit 1 ;
@@ -233,7 +233,7 @@ RegressionTest_Check_References:
     after_script:
         - source activate myenv
         - cd CorrectedVersion/$CI_PROJECT_NAME
-        - if cat exit.sh | grep "FAIL"; then
+        - if cat ci-tests/Configfiles/exit.sh | grep "FAIL"; then
             push_model=$(git ls-files --others --exclude-standard --directory BESMod) ;
             (git ls-files --others --exclude-standard --directory BESMod) > ci_new_created_reference.txt ;
             message="CI message from ebc-aixlib-bot. Automatic push of CI with new regression reference files. Please pull the new files before push again. Plottet Results $GITLAB_Page/$CI_COMMIT_REF_NAME/charts/" ;

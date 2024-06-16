@@ -15,7 +15,7 @@
 # result_dir : ci-tests/result
 # expire_in_time: 7h
 # xvfb_flag : xvfb-run -n 77
-# config_ci_exit_file : exit.sh
+# config_ci_exit_file : ci-tests/Configfiles/exit.sh
 
 include: 'ci-tests/scripts/utilities.yml'
 
@@ -115,7 +115,7 @@ simulate_whitelist_job:
         - xvfb-run -n 77 python -m ModelicaPyCI.unittest.checkpackages.validatetest  --dym-options DYM_SIM --create-whitelist-flag  --dymola-version 2022 --additional-libraries-to-load  --packages Examples Tutorial Utilities Systems --library BESMod 
     after_script:
         - cd whitelist && cd $CI_PROJECT_NAME
-        - if cat exit.sh | grep "FAIL"; then
+        - if cat ci-tests/Configfiles/exit.sh | grep "FAIL"; then
             message="CI message from ebc-aixlib-bot. Update file whitelist-simulate_file. Please pull the new files before push again." ;
             git add dymola_simulate_whitelist.txt ;
             git commit -m "$message" ;

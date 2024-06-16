@@ -11,7 +11,7 @@
 # ci_create_model_whitelist_commit: ci_create_model_whitelist
 # arg_push: --dym-options DYM_CHECK --filter-whitelist-flag  --changed-flag  --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
 # arg_PR: --dym-options DYM_CHECK --filter-whitelist-flag  --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
-# config_ci_exit_file: exit.sh
+# config_ci_exit_file: ci-tests/Configfiles/exit.sh
 # bot_update_model_whitelist_commit: CI message from ebc-aixlib-bot. Update file whitelist-check_file. Please pull the new files before push again.
 # whitelist_model_file: dymola_check_whitelist.txt
 # arg_wh: --dym-options DYM_CHECK --create-whitelist-flag  --dymola-version 2022 --additional-libraries-to-load  --packages Examples Tutorial Utilities Systems --library BESMod 
@@ -116,7 +116,7 @@ check_whitelist_job:
         - xvfb-run -n 77 python -m ModelicaPyCI.unittest.checkpackages.validatetest --dym-options DYM_CHECK --create-whitelist-flag  --dymola-version 2022 --additional-libraries-to-load  --packages Examples Tutorial Utilities Systems --library BESMod 
     after_script:
         - cd whitelist && cd $CI_PROJECT_NAME
-        - if cat exit.sh | grep "FAIL"; then
+        - if cat ci-tests/Configfiles/exit.sh | grep "FAIL"; then
             message="CI message from ebc-aixlib-bot. Update file whitelist-check_file. Please pull the new files before push again." ;
             git add dymola_check_whitelist.txt ;
             git commit -m "$message" ;
