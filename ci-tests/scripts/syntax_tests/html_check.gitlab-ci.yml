@@ -37,6 +37,7 @@ Check_HTML:PR:
         - python -m ModelicaPyCI.syntax.html_tidy --filter-whitelist-flag  --correct-view-flag  --log-flag  --whitelist-library IBPSA --library BESMod --packages Examples Tutorial Utilities Systems 
     after_script:
         - !reference [.activate_python_and_install_requirements, script]
+        - !reference [.github_ssh_auth, script]
         - if cat ci-tests/Configfiles/exit.sh | grep "exit 1"; then
             mkdir CorrectedVersion && cd CorrectedVersion;
             git clone --single-branch --branch $CI_COMMIT_REF_NAME git@github.com:$Github_Repository.git;
