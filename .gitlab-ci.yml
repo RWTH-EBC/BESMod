@@ -1,2 +1,2 @@
-include:
-    - 'ci-tests/scripts/.gitlab-ci.yml'
+include:
+    - 'ci-tests/scripts/.gitlab-ci.yml'
