@@ -5,7 +5,7 @@
 # ci_stage_open_PR : open_PR
 # html_praefix : correct_HTML_
 # ModelicaPyCI.syntax.html_tidy : modelicapyci_html_tidy_module
-# arg_correct_html: --filter-whitelist-flag  --log-flag  --whitelist-library IBPSA --library BESMod --packages Examples Tutorial Utilities Systems 
+# arg_correct_html: --filter-whitelist-flag  --log-flag  --correct-overwrite-flag  --whitelist-library IBPSA --library BESMod --packages Examples Tutorial Utilities Systems 
 # result_dir : ci-tests/result
 # expire_in_time : 7h
 # library : BESMod
@@ -42,7 +42,7 @@ Check_HTML:PR:
             mkdir CorrectedVersion && cd CorrectedVersion;
             git clone --single-branch --branch $CI_COMMIT_REF_NAME git@github.com:$Github_Repository.git;
             cd $CI_PROJECT_NAME;
-            python -m ModelicaPyCI.syntax.html_tidy --library BESMod --correct-overwrite-flag --filter-whitelist-flag --log-flag;
+            python -m ModelicaPyCI.syntax.html_tidy --filter-whitelist-flag  --log-flag  --correct-overwrite-flag  --whitelist-library IBPSA --library BESMod --packages Examples Tutorial Utilities Systems ;
             git checkout -B $Newbranch;
             message="CI message from ebc-aixlib-bot. Push new files with corrected html Syntax .";
             git add BESMod;
