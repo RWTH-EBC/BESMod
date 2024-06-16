@@ -6,8 +6,8 @@
 # library : BESMod
 # ci_style_commit : ci_style_check
 # result_dir : ci-tests/result
-# arg_PR : --dymola-version 2022 --library BESMod 
-# arg_Push : --changed-flag  --dymola-version 2022 --library BESMod 
+# arg_PR : --startup-mos startup.mos --dymola-version 2022 --library BESMod 
+# arg_Push : --changed-flag  --startup-mos startup.mos --dymola-version 2022 --library BESMod 
 
 include: 'ci-tests/scripts/utilities.yml'
 stages:
@@ -20,7 +20,7 @@ StyleCheck:BESMod:PR:
     before_script:
         - !reference [.activate_python_and_install_requirements, script]
     script:
-        - xvfb-run -n 77 python -m ModelicaPyCI.syntax.style_checking --dymola-version 2022 --library BESMod 
+        - xvfb-run -n 77 python -m ModelicaPyCI.syntax.style_checking --startup-mos startup.mos --dymola-version 2022 --library BESMod 
     artifacts:
         when: on_failure
         paths:
@@ -38,7 +38,7 @@ StyleCheck:BESMod:Push:
     before_script:
         - !reference [.activate_python_and_install_requirements, script]
     script:
-        - xvfb-run -n 77 python -m ModelicaPyCI.syntax.style_checking --changed-flag  --dymola-version 2022 --library BESMod 
+        - xvfb-run -n 77 python -m ModelicaPyCI.syntax.style_checking --changed-flag  --startup-mos startup.mos --dymola-version 2022 --library BESMod 
     artifacts:
         when: on_failure
         paths:

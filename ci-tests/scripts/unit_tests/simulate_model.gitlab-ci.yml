@@ -2,13 +2,13 @@
 # dym_image_name : registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola_2022-miniconda
 # ci_stage_simulate: simulate
 # ci_stage_create_exampel_whitelist: create_example_whitelist
-# arg_push : --dym-options DYM_SIM --filter-whitelist-flag  --changed-flag  --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
-# arg_PR: --dym-options DYM_SIM --filter-whitelist-flag  --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
+# arg_push : --dym-options DYM_SIM --filter-whitelist-flag  --changed-flag  --startup-mos startup.mos --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
+# arg_PR: --dym-options DYM_SIM --filter-whitelist-flag  --startup-mos startup.mos --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
 # library: BESMod
 # ci_check_commit ci_simulate
 # modelicapyci_test_validate_module: ModelicaPyCI.unittest.checkpackages.validatetest
 # package_list: ['Examples', 'Tutorial', 'Utilities', 'Systems']
-# arg_wh: --dym-options DYM_SIM --create-whitelist-flag  --dymola-version 2022 --additional-libraries-to-load  --packages Examples Tutorial Utilities Systems --library BESMod 
+# arg_wh: --dym-options DYM_SIM --create-whitelist-flag  --startup-mos startup.mos --dymola-version 2022 --additional-libraries-to-load  --packages Examples Tutorial Utilities Systems --library BESMod 
 # bot_update_model_whitelist_commit: CI message from ebc-aixlib-bot. Update file whitelist-simulate_file. Please pull the new files before push again.
 # whitelist_model_file: dymola_simulate_whitelist.txt
 # ci_create_model_whitelist_commit: ci_create_example_whitelist
@@ -31,7 +31,7 @@ stages:
         - !reference [.activate_python_and_install_requirements, script]
         - !reference [.custom_install_additional_modelica_libraries, script]
     script:
-        - xvfb-run -n 77 python -m ModelicaPyCI.unittest.checkpackages.validatetest  --dym-options DYM_SIM --filter-whitelist-flag  --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
+        - xvfb-run -n 77 python -m ModelicaPyCI.unittest.checkpackages.validatetest  --dym-options DYM_SIM --filter-whitelist-flag  --startup-mos startup.mos --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
     artifacts:
         when: on_failure
         paths:
@@ -49,7 +49,7 @@ stages:
         - !reference [.activate_python_and_install_requirements, script]
         - !reference [.custom_install_additional_modelica_libraries, script]
     script:
-        - xvfb-run -n 77 python -m ModelicaPyCI.unittest.checkpackages.validatetest --dym-options DYM_SIM --filter-whitelist-flag  --changed-flag  --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
+        - xvfb-run -n 77 python -m ModelicaPyCI.unittest.checkpackages.validatetest --dym-options DYM_SIM --filter-whitelist-flag  --changed-flag  --startup-mos startup.mos --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
     artifacts:
         when: on_failure
         paths:
@@ -112,7 +112,7 @@ simulate_whitelist_job:
         - mkdir whitelist && cd whitelist
         - git clone --single-branch --branch $CI_COMMIT_REF_NAME git@github.com:$Github_Repository.git
         - cd $CI_PROJECT_NAME
-        - xvfb-run -n 77 python -m ModelicaPyCI.unittest.checkpackages.validatetest  --dym-options DYM_SIM --create-whitelist-flag  --dymola-version 2022 --additional-libraries-to-load  --packages Examples Tutorial Utilities Systems --library BESMod 
+        - xvfb-run -n 77 python -m ModelicaPyCI.unittest.checkpackages.validatetest  --dym-options DYM_SIM --create-whitelist-flag  --startup-mos startup.mos --dymola-version 2022 --additional-libraries-to-load  --packages Examples Tutorial Utilities Systems --library BESMod 
     after_script:
         - cd whitelist && cd $CI_PROJECT_NAME
         - if cat ci-tests/Configfiles/exit.sh | grep "FAIL"; then

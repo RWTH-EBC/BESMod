@@ -10,8 +10,8 @@
 # result_dir : ci-tests/result
 # ci_regression_test_commit : $ {ci_regression_test_commit}
 # expire_in_time : 7h
-# arg_PR: --batch  --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages $lib_package --library BESMod 
-# arg_push: --changed-flag  --batch  --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages $lib_package --library BESMod 
+# arg_PR: --batch  --startup-mos startup.mos --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages $lib_package --library BESMod 
+# arg_push: --changed-flag  --batch  --startup-mos startup.mos --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages $lib_package --library BESMod 
 # arg_chart: --create-layout-flag  --funnel-comp-flag  --error-flag  --line-html-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod --packages Examples Tutorial Utilities Systems 
 # package_list: ['Examples', 'Tutorial', 'Utilities', 'Systems']
 # modelicapyci_api_github_module: ModelicaPyCI.api_script.api_github
@@ -22,7 +22,7 @@
 # ci_regression_test_commit :  ci_regression_test
 # xvfb_flag: xvfb-run -n 77
 # modelicapyci_structure_module: ModelicaPyCI.structure.config_structure
-# arg_ref: --create-ref  --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages Examples Tutorial Utilities Systems --library BESMod 
+# arg_ref: --create-ref  --startup-mos startup.mos --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages Examples Tutorial Utilities Systems --library BESMod 
 # config_ci_new_create_ref_file: ci_new_created_reference.txt
 # bot_create_ref_commit: CI message from ebc-aixlib-bot. Automatic push of CI with new regression reference files. Please pull the new files before push again. Plottet Results $GITLAB_Page/$CI_COMMIT_REF_NAME/charts/
 # ci_show_ref_commit: ci_show_ref
@@ -44,7 +44,7 @@ stages:
         - !reference [.custom_install_additional_modelica_libraries, script]
     script:
         - export CI_PYTHON_CONFIG_FILE="../ci-tests/config/modelica_py_ci_config.toml"
-        - cd BESMod && xvfb-run -n 77 python -m ModelicaPyCI.unittest.reference_check --batch  --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages $lib_package --library BESMod 
+        - cd BESMod && xvfb-run -n 77 python -m ModelicaPyCI.unittest.reference_check --batch  --startup-mos startup.mos --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages $lib_package --library BESMod 
     after_script:
         - if cat ci-tests/Configfiles/exit.sh | grep "FAIL"; then
             source activate myenv ;
@@ -72,7 +72,7 @@ stages:
 
     script:
         - export CI_PYTHON_CONFIG_FILE="../ci-tests/config/modelica_py_ci_config.toml"
-        - cd BESMod && xvfb-run -n 77 python -m ModelicaPyCI.unittest.reference_check --changed-flag  --batch  --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages $lib_package --library BESMod 
+        - cd BESMod && xvfb-run -n 77 python -m ModelicaPyCI.unittest.reference_check --changed-flag  --batch  --startup-mos startup.mos --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages $lib_package --library BESMod 
     after_script:
         - if cat ci-tests/Configfiles/exit.sh | grep "FAIL"; then
             source activate myenv ;
@@ -138,7 +138,7 @@ Regression_overall_coverage:PR:
         - !reference [.custom_install_additional_modelica_libraries, script]
     script:
         - export CI_PYTHON_CONFIG_FILE="../ci-tests/config/modelica_py_ci_config.toml"
-        - cd BESMod && xvfb-run -n 77 python -m ModelicaPyCI.unittest.reference_check --coverage-only  --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages Examples Tutorial Utilities Systems --library BESMod 
+        - cd BESMod && xvfb-run -n 77 python -m ModelicaPyCI.unittest.reference_check --coverage-only  --startup-mos startup.mos --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages Examples Tutorial Utilities Systems --library BESMod 
     artifacts:
         when: on_failure
         paths:
@@ -156,7 +156,7 @@ Regression_overall_coverage:Push:
         - !reference [.custom_install_additional_modelica_libraries, script]
     script:
         - export CI_PYTHON_CONFIG_FILE="../ci-tests/config/modelica_py_ci_config.toml"
-        - cd BESMod && xvfb-run -n 77 python -m ModelicaPyCI.unittest.reference_check  --coverage-only  --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages Examples Tutorial Utilities Systems --library BESMod 
+        - cd BESMod && xvfb-run -n 77 python -m ModelicaPyCI.unittest.reference_check  --coverage-only  --startup-mos startup.mos --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages Examples Tutorial Utilities Systems --library BESMod 
     artifacts:
         when: on_failure
         paths:
@@ -229,7 +229,7 @@ RegressionTest_Check_References:
         - git clone --single-branch --branch $CI_COMMIT_REF_NAME git@github.com:$Github_Repository.git
         - cd $CI_PROJECT_NAME
         - export CI_PYTHON_CONFIG_FILE="../ci-tests/config/modelica_py_ci_config.toml"
-        - cd BESMod && xvfb-run -n 77 python -m ModelicaPyCI.unittest.reference_check  --create-ref  --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages Examples Tutorial Utilities Systems --library BESMod 
+        - cd BESMod && xvfb-run -n 77 python -m ModelicaPyCI.unittest.reference_check  --create-ref  --startup-mos startup.mos --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages Examples Tutorial Utilities Systems --library BESMod 
     after_script:
         - source activate myenv
         - cd CorrectedVersion/$CI_PROJECT_NAME
