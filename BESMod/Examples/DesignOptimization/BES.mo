@@ -16,10 +16,8 @@ model BES
               function PolyData =
                 AixLib.DataBase.HeatPump.Functions.Characteristics.ConstantCoP
                 ( powerCompressor=2000, CoP=2)),
-        redeclare
-          BESMod.Systems.Hydraulical.Components.Frosting.ZhuIceFacCalculation
-          frost(density=200, redeclare function frostMapFunc =
-              BESMod.Systems.Hydraulical.Components.Frosting.Functions.ZhuFrostingMapCico),
+        redeclare BESMod.Systems.Hydraulical.Components.Frosting.NoFrosting
+          frost,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare package Medium_eva = AixLib.Media.Air,
         redeclare
@@ -43,11 +41,14 @@ model BES
             flowsheet="VIPhaseSeparatorFlowsheet"),
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
-          parTemSen),
+          parTemSen(transferHeat=true)),
       redeclare Systems.Hydraulical.Control.MonoenergeticHeatPumpSystem control(
         redeclare
           BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
           valCtrl,
+        redeclare model BuildingSupplySetTemperature =
+            BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.IdealHeatingCurve
+            (dTAddCon=5),
         redeclare model DHWHysteresis =
             BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.PartParallelBivalent
             (
@@ -102,7 +103,7 @@ model BES
         calcmFlow),
     redeclare Systems.UserProfiles.TEASERProfiles userProfiles,
     redeclare AachenSystem systemParameters,
-    redeclare ParametersToChange parameterStudy,
+    redeclare ParametersToChange parameterStudy(VPerQFlow=1),
     redeclare final package MediumDHW = AixLib.Media.Water,
     redeclare final package MediumZone = AixLib.Media.Air,
     redeclare final package MediumHyd = AixLib.Media.Water,
@@ -111,7 +112,7 @@ model BES
   extends Modelica.Icons.Example;
 
   annotation (experiment(
-      StopTime=86400,
-      Interval=600,
+      StopTime=31536000,
+      Interval=599.999616,
       __Dymola_Algorithm="Dassl"));
 end BES;

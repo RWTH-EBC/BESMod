@@ -92,7 +92,7 @@ model BESNoDHW "Example to demonstrate usage without DHW"
     redeclare Systems.UserProfiles.TEASERProfiles userProfiles,
     redeclare AachenSystem systemParameters(use_ventilation=false, use_dhw=
           false),
-    redeclare ParametersToChange parameterStudy,
+    redeclare ParametersToChange parameterStudy(VPerQFlow=1),
     redeclare final package MediumDHW = AixLib.Media.Water,
     redeclare final package MediumZone = AixLib.Media.Air,
     redeclare final package MediumHyd = AixLib.Media.Water,
@@ -101,7 +101,7 @@ model BESNoDHW "Example to demonstrate usage without DHW"
   extends Modelica.Icons.Example;
 
   annotation (experiment(
-      StopTime=86400,
-      Interval=600,
+      StopTime=31536000,
+      Interval=599.999616,
       __Dymola_Algorithm="Dassl"));
 end BESNoDHW;
