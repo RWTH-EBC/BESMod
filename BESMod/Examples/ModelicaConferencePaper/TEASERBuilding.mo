@@ -23,9 +23,9 @@ initial equation
 
 
 annotation(experiment(
-      StopTime=31536000,
+      StopTime=864000,
       Interval=600,
-	  Tolerance=1e-06), 
-	  __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/ModelicaConferencePaper/TEASERBuilding.mos"
+   Tolerance=1e-06),
+   __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/ModelicaConferencePaper/TEASERBuilding.mos"
         "Simulate and plot"));
 end TEASERBuilding;
