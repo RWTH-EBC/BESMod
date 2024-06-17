@@ -125,9 +125,4 @@ partial model PartialModelicaConferenceUseCase
  parameter Real scalingFactorHP=hydraulic.generation.parHeaPum.QPri_flow_nominal
       /13000 "May be overwritten to avoid warnings and thus a fail in the CI";
 
-
-  annotation (experiment(
-      StopTime=31536000,
-      Interval=600,
-      __Dymola_Algorithm="Dassl"));
 end PartialModelicaConferenceUseCase;
