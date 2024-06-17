@@ -223,15 +223,15 @@ RegressionTest_Check_References:
         - !reference [.github_ssh_auth, script]
         - apt-get update -y && apt-get install xdg-utils --fix-missing -y
     script:
-        - mkdir CorrectedVersion && cd CorrectedVersion
-        - git clone --single-branch --branch $CI_COMMIT_REF_NAME git@github.com:$Github_Repository.git
+        #- mkdir CorrectedVersion && cd CorrectedVersion
+        #- git clone --single-branch --branch $CI_COMMIT_REF_NAME git@github.com:$Github_Repository.git
         - cd $CI_PROJECT_NAME
         - export CI_PYTHON_CONFIG_FILE="../ci-tests/config/modelica_py_ci_config.toml"
         - !reference [.custom_install_additional_modelica_libraries, script]
         - cd BESMod && xvfb-run -n 77 python -m ModelicaPyCI.unittest.reference_check --create-ref  --startup-mos startup.mos --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages Examples Tutorial Utilities Systems --library BESMod 
     after_script:
         - source activate myenv
-        - cd CorrectedVersion/$CI_PROJECT_NAME
+        #- cd CorrectedVersion/$CI_PROJECT_NAME
         - if cat ci-tests/Configfiles/exit.sh | grep "FAIL"; then
             push_model=$(git ls-files --others --exclude-standard --directory BESMod) ;
             (git ls-files --others --exclude-standard --directory BESMod) > ci_new_created_reference.txt ;
@@ -241,8 +241,8 @@ RegressionTest_Check_References:
             git add $push_model ;
             git commit -m "$message";
             git push git@github.com:$Github_Repository.git ;
-            mkdir -p ../../ci-tests/result/ ;
-            cp -r ci-tests/result/* ../../ci-tests/result ;
+            mkdir -p ../ci-tests/result/ ;
+            cp -r ci-tests/result/* ../ci-tests/result ;
             exit 1 ;
           else
             exit 0 ;
