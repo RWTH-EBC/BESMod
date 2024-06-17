@@ -220,16 +220,15 @@ RegressionTest_Check_References:
     stage: Ref_Check
     before_script:
         - !reference [.activate_python_and_install_requirements, script]
-        - !reference [.custom_install_additional_modelica_libraries, script]
         - !reference [.github_ssh_auth, script]
         - apt-get update -y && apt-get install xdg-utils --fix-missing -y
-
     script:
         - mkdir CorrectedVersion && cd CorrectedVersion
         - git clone --single-branch --branch $CI_COMMIT_REF_NAME git@github.com:$Github_Repository.git
         - cd $CI_PROJECT_NAME
         - export CI_PYTHON_CONFIG_FILE="../ci-tests/config/modelica_py_ci_config.toml"
-        - cd BESMod && xvfb-run -n 77 python -m ModelicaPyCI.unittest.reference_check  --create-ref  --startup-mos startup.mos --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages Examples Tutorial Utilities Systems --library BESMod 
+        - !reference [.custom_install_additional_modelica_libraries, script]
+        - cd BESMod && xvfb-run -n 77 python -m ModelicaPyCI.unittest.reference_check --create-ref  --startup-mos startup.mos --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages Examples Tutorial Utilities Systems --library BESMod 
     after_script:
         - source activate myenv
         - cd CorrectedVersion/$CI_PROJECT_NAME
