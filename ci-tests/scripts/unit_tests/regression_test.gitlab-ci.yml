@@ -226,8 +226,6 @@ RegressionTest_Check_References:
         #- mkdir CorrectedVersion && cd CorrectedVersion
         #- git clone --single-branch --branch $CI_COMMIT_REF_NAME git@github.com:$Github_Repository.git
         #- cd $CI_PROJECT_NAME
-        - pip uninstall buildingspy -y
-        - pip install git+https://github.com/FWuellhorst/BuildingsPy.git@issue558
         - !reference [.custom_install_additional_modelica_libraries, script]
         - export CI_PYTHON_CONFIG_FILE="../ci-tests/config/modelica_py_ci_config.toml"
         - cd BESMod && xvfb-run -n 77 python -m ModelicaPyCI.unittest.reference_check --create-ref  --startup-mos startup.mos --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages Examples Tutorial Utilities Systems --library BESMod 
