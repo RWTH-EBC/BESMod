@@ -228,7 +228,8 @@ RegressionTest_Check_References:
         #- cd $CI_PROJECT_NAME
         - !reference [.custom_install_additional_modelica_libraries, script]
         - export CI_PYTHON_CONFIG_FILE="../ci-tests/config/modelica_py_ci_config.toml"
-        - cd BESMod && xvfb-run -n 77 python -m ModelicaPyCI.unittest.reference_check --create-ref  --startup-mos startup.mos --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages Examples Tutorial Utilities Systems --library BESMod 
+        - Xvfb :77 -extension RANDR -extension GLX
+        - cd BESMod && python -m ModelicaPyCI.unittest.reference_check --create-ref  --startup-mos startup.mos --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages Examples Tutorial Utilities Systems --library BESMod
     after_script:
         - source activate myenv
         #- cd CorrectedVersion/$CI_PROJECT_NAME
