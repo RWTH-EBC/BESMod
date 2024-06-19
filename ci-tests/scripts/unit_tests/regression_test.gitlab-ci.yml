@@ -46,6 +46,7 @@ stages:
         - export CI_PYTHON_CONFIG_FILE="../ci-tests/config/modelica_py_ci_config.toml"
         - cd BESMod && xvfb-run -n 77 python -m ModelicaPyCI.unittest.reference_check --batch  --startup-mos startup.mos --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages $lib_package --library BESMod 
     after_script:
+        - cd ..
         - if cat ci-tests/Configfiles/exit.sh | grep "FAIL"; then
             source activate myenv ;
             python -m ModelicaPyCI.converter.google_charts --create-layout-flag  --funnel-comp-flag  --error-flag  --line-html-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod --packages Examples Tutorial Utilities Systems  ;
@@ -74,6 +75,7 @@ stages:
         - export CI_PYTHON_CONFIG_FILE="../ci-tests/config/modelica_py_ci_config.toml"
         - cd BESMod && xvfb-run -n 77 python -m ModelicaPyCI.unittest.reference_check --changed-flag  --batch  --startup-mos startup.mos --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages $lib_package --library BESMod 
     after_script:
+        - cd ..
         - if cat ci-tests/Configfiles/exit.sh | grep "FAIL"; then
             source activate myenv ;
             python -m ModelicaPyCI.converter.google_charts --create-layout-flag  --funnel-comp-flag  --error-flag  --line-html-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod --packages Examples Tutorial Utilities Systems  ;
