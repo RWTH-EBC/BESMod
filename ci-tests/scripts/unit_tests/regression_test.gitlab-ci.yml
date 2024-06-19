@@ -242,6 +242,7 @@ RegressionTest_Check_References:
               message="CI message from ebc-aixlib-bot. Automatic push of CI with new regression reference files. Please pull the new files before push again. Plottet Results $GITLAB_Page/$CI_COMMIT_REF_NAME/charts/";
               pip install pandas mako matplot;
               python -m ModelicaPyCI.converter.google_charts --new-ref-flag  --line-html-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod --packages Examples Tutorial Utilities Systems ;
+              git switch $CI_COMMIT_BRANCH;
               git add $push_model;
               git commit -m "$message";
               git push git@github.com:$Github_Repository.git;
