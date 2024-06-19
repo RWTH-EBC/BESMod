@@ -37,8 +37,9 @@ model IdealValveRadiator
 
   IBPSA.Fluid.FixedResistances.PressureDrop res[nParallelDem](
     redeclare package Medium = Medium,
-    each final dp_nominal=parTra.dpHeaDistr_nominal,
-    final m_flow_nominal=m_flow_nominal) "Hydraulic resistance of supply"
+    each final dp_nominal=parTra.dpHeaDistr_nominal+parTra.dpRad_nominal,
+    final m_flow_nominal=m_flow_nominal)
+    "Hydraulic resistance of supply and radiator to set dp allways to m_flow_nominal"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
