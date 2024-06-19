@@ -1,0 +1,12 @@
+Regression tests are only run for the following package:
+  BESMod.Examples.ModelicaConferencePaper
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Examples_ModelicaConferencePaper_TEASERBuilding.txt.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Examples_ModelicaConferencePaper_BuildingsLibraryRoom.txt.
+Comparison files output by funnel are stored in the directory 'funnel_comp' of size 0.0 MB.
+Run 'python -c "import buildingspy.development.regressiontest as t; t.Tester(tool=\"dymola\").report()"'
+to access a summary of the comparison results.
+
+Script that runs unit tests had 0 warnings and 0 errors.
+
+Unit tests completed successfully.
+
