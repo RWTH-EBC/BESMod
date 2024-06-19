@@ -223,35 +223,26 @@ RegressionTest_Check_References:
         - !reference [.github_ssh_auth, script]
         - apt-get update -y && apt-get install xdg-utils --fix-missing -y
     script:
-        #- mkdir CorrectedVersion && cd CorrectedVersion
-        #- git clone --single-branch --branch $CI_COMMIT_REF_NAME git@github.com:$Github_Repository.git
-        #- cd $CI_PROJECT_NAME
+        # TODO: Remove custom version once merged to buildingspy
         - pip uninstall buildingspy -y && pip install git+https://github.com/FWuellhorst/BuildingsPy@issue558
         - !reference [.custom_install_additional_modelica_libraries, script]
         - export CI_PYTHON_CONFIG_FILE="../ci-tests/config/modelica_py_ci_config.toml"
         - cd BESMod && xvfb-run -n 77 python -m ModelicaPyCI.unittest.reference_check --create-ref  --startup-mos startup.mos --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages Examples Tutorial Utilities Systems --library BESMod 
     after_script:
         - source activate myenv
-        #- cd CorrectedVersion/$CI_PROJECT_NAME
-        - |
-            if cat ci-tests/Configfiles/exit.sh | grep "GENERATED_NEW_RESULTS"; then
-              # Get newly created files
-              push_model=$(git ls-files --others --exclude-standard --directory BESMod);
-              # Save them for google_charts templates
-              echo $push_model > ci_new_created_reference.txt;
-              message="CI message from ebc-aixlib-bot. Automatic push of CI with new regression reference files. Please pull the new files before push again. Plottet Results $GITLAB_Page/$CI_COMMIT_REF_NAME/charts/";
-              pip install pandas mako matplot;
-              python -m ModelicaPyCI.converter.google_charts --new-ref-flag  --line-html-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod --packages Examples Tutorial Utilities Systems ;
-              git switch $CI_COMMIT_BRANCH;
-              git add $push_model;
-              git commit -m "$message";
-              git push git@github.com:$Github_Repository.git;
-              #mkdir -p ../ci-tests/result/;
-              #cp -r ci-tests/result/* ../ci-tests/result;
-              exit 1 ;
-            else
-              exit 0 ;
-            fi
+        - if ! cat ci-tests/Configfiles/exit.sh | grep "GENERATED_NEW_RESULTS"; then
+            exit 0;
+          fi
+        # Get newly created files
+        - files_to_push=$(git ls-files --others --exclude-standard --directory BESMod);
+        # Save them for google_charts templates
+        - echo $files_to_push > ci_new_created_reference.txt;
+        - message="CI message from ebc-aixlib-bot. Automatic push of CI with new regression reference files. Please pull the new files before push again. Plottet Results $GITLAB_Page/$CI_COMMIT_REF_NAME/charts/";
+        - pip install pandas mako matplot;
+        - python -m ModelicaPyCI.converter.google_charts --new-ref-flag  --line-html-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod --packages Examples Tutorial Utilities Systems ;
+        - !reference [.git_push, script]
+        - exit 1 ;
+
     artifacts:
         when: on_failure
         paths:

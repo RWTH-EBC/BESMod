@@ -109,21 +109,14 @@ simulate_whitelist_job:
         - !reference [.custom_install_additional_modelica_libraries, script]
         - !reference [.github_ssh_auth, script]
     script:
-        - mkdir whitelist && cd whitelist
-        - git clone --single-branch --branch $CI_COMMIT_REF_NAME git@github.com:$Github_Repository.git
-        - cd $CI_PROJECT_NAME
-        - xvfb-run -n 77 python -m ModelicaPyCI.unittest.checkpackages.validatetest  --dym-options DYM_SIM --create-whitelist-flag  --startup-mos startup.mos --dymola-version 2022 --additional-libraries-to-load  --packages Examples Tutorial Utilities Systems --library BESMod 
+        - xvfb-run -n 77 python -m ModelicaPyCI.unittest.checkpackages.validatetest --dym-options DYM_SIM --create-whitelist-flag  --startup-mos startup.mos --dymola-version 2022 --additional-libraries-to-load  --packages Examples Tutorial Utilities Systems --library BESMod 
     after_script:
-        - cd whitelist && cd $CI_PROJECT_NAME
-        - if cat ci-tests/Configfiles/exit.sh | grep "FAIL"; then
-            message="CI message from ebc-aixlib-bot. Update file whitelist-simulate_file. Please pull the new files before push again." ;
-            git add dymola_simulate_whitelist.txt ;
-            git commit -m "$message" ;
-            git push git@github.com:$Github_Repository.git ;
+        - if ! cat ci-tests/Configfiles/exit.sh | grep "FAIL"; then
             exit 0;
-          else
-            exit 0 ;
           fi
+        - message="CI message from ebc-aixlib-bot. Update file whitelist-simulate_file. Please pull the new files before push again."
+        - files_to_push="dymola_simulate_whitelist.txt"
+        - !reference [.git_push, script]
     artifacts:
         paths:
             - ci-tests/result/

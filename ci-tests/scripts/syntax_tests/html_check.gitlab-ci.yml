@@ -38,22 +38,16 @@ Check_HTML:PR:
     after_script:
         - !reference [.activate_python_and_install_requirements, script]
         - !reference [.github_ssh_auth, script]
-        - if cat ci-tests/Configfiles/exit.sh | grep "exit 1"; then
-            mkdir CorrectedVersion && cd CorrectedVersion;
-            git clone --single-branch --branch $CI_COMMIT_REF_NAME git@github.com:$Github_Repository.git;
-            cd $CI_PROJECT_NAME;
-            python -m ModelicaPyCI.syntax.html_tidy --filter-whitelist-flag  --log-flag  --correct-overwrite-flag  --whitelist-library IBPSA --library BESMod --packages Examples Tutorial Utilities Systems ;
-            git checkout -B $Newbranch;
-            message="CI message from ebc-aixlib-bot. Push new files with corrected html Syntax .";
-            git add BESMod;
-            echo $message;
-            git commit -m "$message";
-            git push git@github.com:$Github_Repository.git;
-            wait;
-            exit 1;
-          else
+        - if ! cat ci-tests/Configfiles/exit.sh | grep "exit 1"; then
             exit 0;
           fi
+        - python -m ModelicaPyCI.syntax.html_tidy --filter-whitelist-flag  --log-flag  --correct-overwrite-flag  --whitelist-library IBPSA --library BESMod --packages Examples Tutorial Utilities Systems ;
+        - git checkout -B $Newbranch;
+        - git add BESMod;
+        - git commit -m "CI message from ebc-aixlib-bot. Push new files with corrected html Syntax .";
+        - git push git@github.com:$Github_Repository.git;
+        - exit 1;
+
     artifacts:
         paths:
             - ci-tests/result/
@@ -94,15 +88,11 @@ html_whitelist_job:
     before_script:
         - !reference [.activate_python_and_install_requirements, script]
         - !reference [.github_ssh_auth, script]
-
     script:
-        - mkdir whitelist && cd whitelist
-        - git clone --single-branch --branch $CI_COMMIT_REF_NAME git@github.com:$Github_Repository.git
-        - cd $CI_PROJECT_NAME
-        - python -m ModelicaPyCI.syntax.html_tidy --filter-whitelist-flag  --log-flag  --whitelist-library IBPSA         - message="CI message from ebc-aixlib-bot. Update or created new whitelist. Please pull the new whitelist before push again."
-        - git add ibpsa_whitelist.txt
-        - git commit -m "$message"
-        - git push git@github.com:$Github_Repository.git
+        - python -m ModelicaPyCI.syntax.html_tidy --filter-whitelist-flag  --log-flag  --whitelist-library IBPSA 
+        - message="CI message from ebc-aixlib-bot. Update or created new whitelist. Please pull the new whitelist before push again."
+        - files_to_push="ibpsa_whitelist.txt"
+        - !reference [.git_push, script]
     artifacts:
         paths:
             - ci-tests/result/

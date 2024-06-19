@@ -52,3 +52,10 @@
 .open_modelica_git_user_setting:
   script:
     - runuser -u openmodelicausers -- sh -c 'git config --global --add safe.directory "$(pwd)"'
+
+.git_push:
+  script:
+    - git switch $CI_COMMIT_BRANCH
+    - git add $files_to_push
+    - git commit -m "$message"
+    - git push git@github.com:$Github_Repository.git
