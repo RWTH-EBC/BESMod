@@ -233,7 +233,7 @@ RegressionTest_Check_References:
     after_script:
         - source activate myenv
         #- cd CorrectedVersion/$CI_PROJECT_NAME
-        - cd ..  # Go pack to library home
+        - cd ..
         - if cat ci-tests/Configfiles/exit.sh | grep "GENERATED_NEW_RESULTS"; then
             # Get newly created files
             push_model=$(git ls-files --others --exclude-standard --directory BESMod);
