@@ -10,7 +10,7 @@ model PartialSubsystemParameters "Model for a partial subsystem"
   parameter Modelica.Units.SI.Temperature TSup_nominal[nParallelSup]
     "Nominal supply temperature" annotation (Dialog(group=
           "Design - Bottom Up: Parameters are defined by the subsystem"));
-  parameter Modelica.Units.SI.Temperature TSupOld_design[nParallelSup]
+  parameter Modelica.Units.SI.Temperature TSupOld_design[nParallelSup]=TSup_nominal
     "Old nominal design supply temperature" annotation (Dialog(group=
           "Design - Bottom Up: Parameters are defined by the subsystem"));
   parameter Modelica.Units.SI.TemperatureDifference dTTra_nominal[nParallelDem]
@@ -56,7 +56,7 @@ model PartialSubsystemParameters "Model for a partial subsystem"
   parameter Modelica.Units.SI.Temperature TDem_nominal[nParallelDem]
     "Nominal demand temperature" annotation (Dialog(group=
           "Design - Top Down: Parameters are given by the parent system"));
-  parameter Modelica.Units.SI.Temperature TDemOld_design[nParallelDem]
+  parameter Modelica.Units.SI.Temperature TDemOld_design[nParallelDem]=TDem_nominal
     "Old nominal design demand temperature" annotation (Dialog(group=
           "Design - Top Down: Parameters are given by the parent system"));
   parameter Modelica.Units.SI.Temperature TAmb

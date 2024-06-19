@@ -127,6 +127,7 @@ partial model PartialBuildingEnergySystem "Partial BES"
       ventilationSystemParameters(
       final nZones=systemParameters.nZones,
       final Q_flow_nominal=systemParameters.QBui_flow_nominal,
+      final QOld_flow_design=systemParameters.QBuiOld_flow_design,
       final TOda_nominal=systemParameters.TOda_nominal,
       final TSup_nominal=systemParameters.TVenSup_nominal,
       final TZone_nominal=systemParameters.TSetZone_nominal,
