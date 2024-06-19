@@ -2,6 +2,7 @@ within BESMod.Systems.Hydraulical.Distribution;
 model CombiStorage
   "Combi Storage for heating, dhw and solar assitance"
   extends BaseClasses.PartialDistribution(
+    final dpDHW_nominal=sum(bufSto.heatingCoil1.pipe.res.dp_nominal),
     dpSup_nominal={0,sum(bufSto.heatingCoil2.pipe.res.dp_nominal)},
     final dpDem_nominal={0},
     final VStoDHW=parameters.V,
