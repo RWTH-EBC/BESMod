@@ -233,6 +233,7 @@ RegressionTest_Check_References:
     after_script:
         - source activate myenv
         #- cd CorrectedVersion/$CI_PROJECT_NAME
+        - cat ci-tests/Configfiles/exit.sh
         - |
             if cat ci-tests/Configfiles/exit.sh | grep "GENERATED_NEW_RESULTS"; then
               # Get newly created files
