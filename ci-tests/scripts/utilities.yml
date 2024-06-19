@@ -55,7 +55,7 @@
 
 .git_push:
   script:
-    - git add $files_to_push
     - git switch $CI_COMMIT_BRANCH
+    - git add $files_to_push
     - git commit -m "$message"
     - git push git@github.com:$Github_Repository.git
