@@ -233,17 +233,20 @@ RegressionTest_Check_References:
     after_script:
         - source activate myenv
         #- cd CorrectedVersion/$CI_PROJECT_NAME
-        - if cat ci-tests/Configfiles/exit.sh | grep "FAIL"; then
-            push_model=$(git ls-files --others --exclude-standard --directory BESMod) ;
-            (git ls-files --others --exclude-standard --directory BESMod) > ci_new_created_reference.txt ;
-            message="CI message from ebc-aixlib-bot. Automatic push of CI with new regression reference files. Please pull the new files before push again. Plottet Results $GITLAB_Page/$CI_COMMIT_REF_NAME/charts/" ;
+        - cd ..  # Go pack to library home
+        - if cat ci-tests/Configfiles/exit.sh | grep "GENERATED_NEW_RESULTS"; then
+            # Get newly created files
+            push_model=$(git ls-files --others --exclude-standard --directory BESMod);
+            # Save them for google_charts templates
+            echo $push_model > ci_new_created_reference.txt;
+            message="CI message from ebc-aixlib-bot. Automatic push of CI with new regression reference files. Please pull the new files before push again. Plottet Results $GITLAB_Page/$CI_COMMIT_REF_NAME/charts/";
             pip install pandas mako matplot;
-            python -m ModelicaPyCI.converter.google_charts --new-ref-flag  --line-html-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod  ;
-            git add $push_model ;
+            python -m ModelicaPyCI.converter.google_charts --new-ref-flag  --line-html-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod ;
+            git add $push_model;
             git commit -m "$message";
-            git push git@github.com:$Github_Repository.git ;
-            mkdir -p ../ci-tests/result/ ;
-            cp -r ci-tests/result/* ../ci-tests/result ;
+            git push git@github.com:$Github_Repository.git;
+            mkdir -p ../ci-tests/result/;
+            cp -r ci-tests/result/* ../ci-tests/result;
             exit 1 ;
           else
             exit 0 ;
