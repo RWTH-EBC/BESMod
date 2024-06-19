@@ -236,6 +236,8 @@ RegressionTest_Check_References:
         - source activate myenv
         #- cd CorrectedVersion/$CI_PROJECT_NAME
         - cd ..  # Go pack to library home
+        - ls
+        - echo "$PWD"
         - |
             if cat ci-tests/Configfiles/exit.sh | grep "GENERATED_NEW_RESULTS"; then
               # Get newly created files
