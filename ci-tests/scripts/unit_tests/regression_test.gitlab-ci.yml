@@ -233,7 +233,6 @@ RegressionTest_Check_References:
     after_script:
         - source activate myenv
         #- cd CorrectedVersion/$CI_PROJECT_NAME
-        - cat ci-tests/Configfiles/exit.sh
         - |
             if cat ci-tests/Configfiles/exit.sh | grep "GENERATED_NEW_RESULTS"; then
               # Get newly created files
@@ -242,7 +241,7 @@ RegressionTest_Check_References:
               echo $push_model > ci_new_created_reference.txt;
               message="CI message from ebc-aixlib-bot. Automatic push of CI with new regression reference files. Please pull the new files before push again. Plottet Results $GITLAB_Page/$CI_COMMIT_REF_NAME/charts/";
               pip install pandas mako matplot;
-              python -m ModelicaPyCI.converter.google_charts --new-ref-flag  --line-html-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod ;
+              python -m ModelicaPyCI.converter.google_charts --new-ref-flag  --line-html-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod --packages Examples Tutorial Utilities Systems ;
               git add $push_model;
               git commit -m "$message";
               git push git@github.com:$Github_Repository.git;
