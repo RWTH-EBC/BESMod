@@ -15,7 +15,8 @@
 # arg_chart: --create-layout-flag  --funnel-comp-flag  --error-flag  --line-html-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod --packages Examples Tutorial Utilities Systems 
 # package_list: ['Examples', 'Tutorial', 'Utilities', 'Systems']
 # modelicapyci_api_github_module: ModelicaPyCI.api_script.api_github
-# {arg_create_plots} : --create-layout-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod --packages Examples Tutorial Utilities Systems 
+# arg_create_plots : --create-layout-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod --packages Examples Tutorial Utilities Systems 
+# api_github_create_ref_arg: --post-pr-comment-flag  --show-plot-flag  --gitlab-page https://ebc.pages.rwth-aachen.de/EBC_all/github_ci/BESMod --github-token ${GITHUB_API_TOKEN} --main-branch main --working-branch $CI_COMMIT_REF_NAME --github-repository RWTH-EBC/BESMod 
 # api_github_arg: --post-pr-comment-flag  --prepare-plot-flag  --gitlab-page https://ebc.pages.rwth-aachen.de/EBC_all/github_ci/BESMod --github-token ${GITHUB_API_TOKEN} --main-branch main --working-branch $CI_COMMIT_REF_NAME --github-repository RWTH-EBC/BESMod 
 # PR_main_branch_rule : &{PR_main_branch_rule}
 # library: BESMod
@@ -171,7 +172,6 @@ prepare_create_plots:Push:
         - !reference [.activate_python_and_install_requirements, script]
         - !reference [.custom_install_additional_modelica_libraries, script]
         - apt-get update -y && apt-get install zip unzip -y
-        - pip install pandas mako matplot toml requests
     script:
         - python -m ModelicaPyCI.converter.google_charts --create-layout-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod --packages Examples Tutorial Utilities Systems 
         - python -m ModelicaPyCI.api_script.api_github --post-pr-comment-flag  --prepare-plot-flag  --gitlab-page https://ebc.pages.rwth-aachen.de/EBC_all/github_ci/BESMod --github-token ${GITHUB_API_TOKEN} --main-branch main --working-branch $CI_COMMIT_REF_NAME --github-repository RWTH-EBC/BESMod 
@@ -234,12 +234,13 @@ RegressionTest_Check_References:
             exit 0;
           fi
         # Get newly created files
-        - files_to_push=$(git ls-files --others --exclude-standard --directory BESMod);
+        - files_to_push=$(git ls-files --others --exclude-standard --directory BESMod)
         # Save them for google_charts templates
-        - echo $files_to_push > ci_new_created_reference.txt;
-        - message="CI message from ebc-aixlib-bot. Automatic push of CI with new regression reference files. Please pull the new files before push again. Plottet Results $GITLAB_Page/$CI_COMMIT_REF_NAME/charts/";
-        - pip install pandas mako matplot;
-        - python -m ModelicaPyCI.converter.google_charts --new-ref-flag  --line-html-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod --packages Examples Tutorial Utilities Systems ;
+        - echo $files_to_push > ci_new_created_reference.txt
+        - message="CI message from ebc-aixlib-bot. Automatic push of CI with new regression reference files. Please pull the new files before push again. Plottet Results $GITLAB_Page/$CI_COMMIT_REF_NAME/charts/"
+        - pip install pandas mako matplot
+        - python -m ModelicaPyCI.converter.google_charts --new-ref-flag  --line-html-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod --packages Examples Tutorial Utilities Systems 
+        - python -m ModelicaPyCI.api_script.api_github --post-pr-comment-flag  --show-plot-flag  --gitlab-page https://ebc.pages.rwth-aachen.de/EBC_all/github_ci/BESMod --github-token ${GITHUB_API_TOKEN} --main-branch main --working-branch $CI_COMMIT_REF_NAME --github-repository RWTH-EBC/BESMod 
         - !reference [.git_push, script]
         - exit 1 ;
 
@@ -251,22 +252,4 @@ RegressionTest_Check_References:
     rules:
         - !reference [.rules:PR , rules]
         - if: $CI_COMMIT_MESSAGE  =~ /ci_reference_check/ && $CI_PIPELINE_SOURCE == "push"
-          when: always
-
-plot_reference_results:
-    stage: plot_ref
-    before_script:
-        - !reference [.activate_python_and_install_requirements, script]
-        - apt-get update -y && apt-get install zip unzip -y
-        - pip install pandas mako matplot toml requests
-
-    script:
-        - python -m ModelicaPyCI.converter.google_charts --line-html --show-ref --single-package BESMod --library BESMod
-        - python -m ModelicaPyCI.api_script.api_github --working-branch $CI_COMMIT_REF_NAME --github-repo $Github_Repository --gitlab-page $GITLAB_Page --github-token $GITHUB_API_TOKEN --post-pr-comment --show-plot
-    artifacts:
-        when: always
-        paths:
-            - ci-tests/result/
-    rules:
-        - if: $CI_COMMIT_MESSAGE  =~ /ci_show_ref/
           when: always
