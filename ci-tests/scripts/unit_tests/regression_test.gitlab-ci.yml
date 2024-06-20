@@ -12,10 +12,9 @@
 # expire_in_time : 7h
 # arg_PR: --batch  --startup-mos startup.mos --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages $lib_package --library BESMod 
 # arg_push: --changed-flag  --batch  --startup-mos startup.mos --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages $lib_package --library BESMod 
-# arg_chart: --create-layout-flag  --funnel-comp-flag  --error-flag  --line-html-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod --packages Examples Tutorial Utilities Systems 
+# arg_chart: --funnel-comp-flag  --error-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod --packages Examples Tutorial Utilities Systems 
 # package_list: ['Examples', 'Tutorial', 'Utilities', 'Systems']
 # modelicapyci_api_github_module: ModelicaPyCI.api_script.api_github
-# arg_create_plots : --create-layout-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod --packages Examples Tutorial Utilities Systems 
 # api_github_create_ref_arg: --post-pr-comment-flag  --show-plot-flag  --gitlab-page https://ebc.pages.rwth-aachen.de/EBC_all/github_ci/BESMod --github-token ${GITHUB_API_TOKEN} --main-branch main --working-branch $CI_COMMIT_REF_NAME --github-repository RWTH-EBC/BESMod 
 # api_github_arg: --post-pr-comment-flag  --prepare-plot-flag  --gitlab-page https://ebc.pages.rwth-aachen.de/EBC_all/github_ci/BESMod --github-token ${GITHUB_API_TOKEN} --main-branch main --working-branch $CI_COMMIT_REF_NAME --github-repository RWTH-EBC/BESMod 
 # library: BESMod
@@ -51,7 +50,7 @@ stages:
             exit 0;
           fi
         - !reference [.activate_python_and_install_requirements, script]
-        - python -m ModelicaPyCI.converter.google_charts --create-layout-flag  --funnel-comp-flag  --error-flag  --line-html-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod --packages Examples Tutorial Utilities Systems 
+        - python -m ModelicaPyCI.converter.google_charts --funnel-comp-flag  --error-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod --packages Examples Tutorial Utilities Systems 
         - python -m ModelicaPyCI.api_script.api_github --post-pr-comment-flag  --prepare-plot-flag  --gitlab-page https://ebc.pages.rwth-aachen.de/EBC_all/github_ci/BESMod --github-token ${GITHUB_API_TOKEN} --main-branch main --working-branch $CI_COMMIT_REF_NAME --github-repository RWTH-EBC/BESMod 
         - exit 1
     artifacts:
@@ -78,7 +77,7 @@ stages:
             exit 0;
           fi
         - !reference [.activate_python_and_install_requirements, script]
-        - python -m ModelicaPyCI.converter.google_charts --create-layout-flag  --funnel-comp-flag  --error-flag  --line-html-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod --packages Examples Tutorial Utilities Systems 
+        - python -m ModelicaPyCI.converter.google_charts --funnel-comp-flag  --error-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod --packages Examples Tutorial Utilities Systems 
         - python -m ModelicaPyCI.api_script.api_github --post-pr-comment-flag  --prepare-plot-flag  --gitlab-page https://ebc.pages.rwth-aachen.de/EBC_all/github_ci/BESMod --github-token ${GITHUB_API_TOKEN} --main-branch main --working-branch $CI_COMMIT_REF_NAME --github-repository RWTH-EBC/BESMod 
         - exit 1
     artifacts:
@@ -188,7 +187,7 @@ RegressionTest_Check_References:
         # Save them for google_charts templates
         - echo $files_to_push > ci-tests/Configfiles/ci_new_created_reference.txt
         - message="CI message from ebc-aixlib-bot. Automatic push of CI with new regression reference files. Please pull the new files before push again. Plottet Results $GITLAB_Page/$CI_COMMIT_REF_NAME/charts/"
-        - python -m ModelicaPyCI.converter.google_charts --new-ref-flag  --line-html-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod --packages Examples Tutorial Utilities Systems 
+        - python -m ModelicaPyCI.converter.google_charts --new-ref-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod --packages Examples Tutorial Utilities Systems 
         - python -m ModelicaPyCI.api_script.api_github --post-pr-comment-flag  --show-plot-flag  --gitlab-page https://ebc.pages.rwth-aachen.de/EBC_all/github_ci/BESMod --github-token ${GITHUB_API_TOKEN} --main-branch main --working-branch $CI_COMMIT_REF_NAME --github-repository RWTH-EBC/BESMod 
         - !reference [.git_push, script]
         - exit 1 ;
