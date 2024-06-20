@@ -229,10 +229,10 @@ RegressionTest_Check_References:
         - export CI_PYTHON_CONFIG_FILE="../ci-tests/config/modelica_py_ci_config.toml"
         - cd BESMod && xvfb-run -n 77 python -m ModelicaPyCI.unittest.reference_check --create-ref  --startup-mos startup.mos --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages Examples Tutorial Utilities Systems --library BESMod 
     after_script:
-        - source activate myenv
         - if ! cat ci-tests/Configfiles/exit.sh | grep "GENERATED_NEW_RESULTS"; then
             exit 0;
           fi
+        - !reference [.activate_python_and_install_requirements, script]
         # Get newly created files
         - files_to_push=$(git ls-files --others --exclude-standard --directory BESMod)
         # Save them for google_charts templates
