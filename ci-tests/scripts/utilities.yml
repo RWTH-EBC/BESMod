@@ -55,9 +55,8 @@
 
 .git_push:
   script:
-    - git stash --include-untracked
-    - git switch $CI_COMMIT_BRANCH
-    - git stash pop
+    #- git switch $CI_COMMIT_BRANCH
+    - git status
     - git add $files_to_push
     - git commit -m "$message"
-    - git push git@github.com:$Github_Repository.git
+    - git push git@github.com:$Github_Repository.git "HEAD:$CI_COMMIT_REF_NAME"
