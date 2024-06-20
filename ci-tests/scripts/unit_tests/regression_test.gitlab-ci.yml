@@ -183,7 +183,7 @@ RegressionTest_Check_References:
           fi
         - !reference [.activate_python_and_install_requirements, script]
         # Get newly created files
-        - files_to_push=$(git ls-files --others --exclude-standard --directory BESMod)
+        - files_to_push=$(git ls-files --others --exclude-standard BESMod)
         # Save them for google_charts templates
         - echo $files_to_push > ci-tests/Configfiles/ci_new_created_reference.txt
         - message="CI message from ebc-aixlib-bot. Automatic push of CI with new regression reference files. Please pull the new files before push again. Plottet Results $GITLAB_Page/$CI_COMMIT_REF_NAME/charts/"
