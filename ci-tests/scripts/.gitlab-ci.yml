@@ -20,6 +20,7 @@ stages:
 variables:
     Github_Repository: RWTH-EBC/BESMod
     GITLAB_Page:  https://ebc.pages.rwth-aachen.de/EBC_all/github_ci/BESMod
+    CREATE_PAGES_ON_FAILURE: true
 
 include:
     - 'ci-tests/scripts/deploy/prepare_pages.gitlab-ci.yml'  
