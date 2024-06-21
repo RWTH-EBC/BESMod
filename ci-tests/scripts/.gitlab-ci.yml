@@ -35,5 +35,5 @@ include:
     - project: 'EBC/EBC_all/gitlab_ci/templates'
       file: 'pages/gl-pages.gitlab-ci.yml'
       ref: AixLibCI
-    - project: 'EBC/EBC_all/gitlab_ci/templates'
-      file: 'pages/gh-pages.gitlab-ci.yml'
+    #- project: 'EBC/EBC_all/gitlab_ci/templates'
+    #  file: 'pages/gh-pages.gitlab-ci.yml'
