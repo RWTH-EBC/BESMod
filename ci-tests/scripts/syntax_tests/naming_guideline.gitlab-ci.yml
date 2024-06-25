@@ -5,7 +5,7 @@
 # library : BESMod
 # ci_naming_guideline : ci_check_naming
 # result_dir : ci-tests/result
-# arg : --changed-flag  --gitlab-page https://ebc.pages.rwth-aachen.de/EBC_all/github_ci/BESMod --github-token ${GITHUB_API_TOKEN} --working-branch $CI_COMMIT_BRANCH --github-repository RWTH-EBC/BESMod --main-branch main --config ci-tests/naming_guideline.toml --library BESMod 
+# arg : --changed-flag  --main-branch main --config ci-tests/naming_guideline.toml --library BESMod 
 
 include: 'ci-tests/scripts/utilities.yml'
 stages:
@@ -18,7 +18,7 @@ NamingGuideline:BESMod:PR:
     before_script:
         - !reference [.activate_python_and_install_requirements, script]
     script:
-        - python -m ModelicaPyCI.syntax.naming_guideline --changed-flag  --gitlab-page https://ebc.pages.rwth-aachen.de/EBC_all/github_ci/BESMod --github-token ${GITHUB_API_TOKEN} --working-branch $CI_COMMIT_BRANCH --github-repository RWTH-EBC/BESMod --main-branch main --config ci-tests/naming_guideline.toml --library BESMod 
+        - python -m ModelicaPyCI.syntax.naming_guideline --changed-flag  --main-branch main --config ci-tests/naming_guideline.toml --library BESMod 
     artifacts:
         paths:
             - ci-tests/result/

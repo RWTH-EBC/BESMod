@@ -3,6 +3,7 @@
 # result_dir : ci-tests/result
 # expire_in_time : 7h
 
+
 stages:
     - prepare_pages
 prepare_pages:
@@ -10,6 +11,7 @@ prepare_pages:
     script:
         - mkdir -p $CI_COMMIT_REF_NAME
         - if [ ! -d "ci-tests/result" ]; then echo "No results in this pipeline, no pages to publish" && exit 0; fi
+        - python -m ModelicaPyCI.deploy.create_central_index_html
         - cp -r ci-tests/result/* $CI_COMMIT_REF_NAME
     artifacts:
         paths:

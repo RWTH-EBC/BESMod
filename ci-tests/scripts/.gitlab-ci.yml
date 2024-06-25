@@ -1,5 +1,6 @@
 # You can adjust the sequence of the stages to your needs:
 stages:
+    - post_initial_pr_comment
     - Ref_Check
     - open_PR
     - create_html_whitelist
@@ -19,10 +20,10 @@ stages:
 
 variables:
     Github_Repository: RWTH-EBC/BESMod
-    GITLAB_Page:  https://ebc.pages.rwth-aachen.de/EBC_all/github_ci/BESMod
     CREATE_PAGES_ON_FAILURE: true
 
 include:
+    - 'ci-tests/scripts/deploy/ci_pr_interact_comment_file.gitlab-ci.yml'  
     - 'ci-tests/scripts/deploy/prepare_pages.gitlab-ci.yml'  
     - 'ci-tests/scripts/syntax_tests/html_check.gitlab-ci.yml'  
     - 'ci-tests/scripts/syntax_tests/naming_guideline.gitlab-ci.yml'  
@@ -33,7 +34,4 @@ include:
     - 'ci-tests/scripts/unit_tests/simulate_OM_model.gitlab-ci.yml'  
     - 'ci-tests/scripts/unit_tests/simulate_model.gitlab-ci.yml'  
     - project: 'EBC/EBC_all/gitlab_ci/templates'
-      file: 'pages/gl-pages.gitlab-ci.yml'
-      ref: AixLibCI
-    #- project: 'EBC/EBC_all/gitlab_ci/templates'
-    #  file: 'pages/gh-pages.gitlab-ci.yml'
+      file: 'pages/gh-pages.gitlab-ci.yml'

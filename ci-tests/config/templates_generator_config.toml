@@ -1,6 +1,6 @@
 dymola_image = "registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola_2022-miniconda"
 open_modelica_image = "registry.git.rwth-aachen.de/ebc/ebc_intern/openmodelica-docker:main"
-gitlab_page = "https://ebc.pages.rwth-aachen.de/EBC_all/github_ci/BESMod"
+page = "https://rwth-ebc.github.io/BESMod/main/docs"
 github_repository = "RWTH-EBC/BESMod"
 stage_list = [ "html", "style", "check", "simulate", "regression",]
 library = "BESMod"
@@ -30,20 +30,6 @@ BESMod = [ "Examples", "Tutorial", "Utilities", "Systems"]
 
 [modelica_py_ci]
 url = "https://github.com/RWTH-EBC/ModelicaPyCI.git"
-OM_python_check_model_module = "ModelicaPyCI.unittest.om_check"
-test_validate_module = "ModelicaPyCI.unittest.checkpackages.validatetest"
-test_reference_module = "ModelicaPyCI.unittest.reference_check"
-google_chart_module = "ModelicaPyCI.converter.google_charts"
-api_github_module = "ModelicaPyCI.api_script.api_github"
-html_tidy_module = "ModelicaPyCI.syntax.html_tidy"
-syntax_test_module = "ModelicaPyCI.syntax.style_checking"
-naming_guideline_module = "ModelicaPyCI.syntax.naming_guideline"
-configuration_module = "ModelicaPyCI.config"
-library_merge_module = "ModelicaPyCI.deploy.ibpsa_merge"
-lock_model_module = "ModelicaPyCI.converter.lock_model"
-config_structure_module = "ModelicaPyCI.structure.config_structure"
-create_whitelist_module = "ModelicaPyCI.structure.create_whitelist"
-om_badge_module = "ModelicaPyCI.deploy.create_om_badge"
 
 [template_files]
 base = "D:\\04_git\\MoCITempGen\\templates\\ci_templates"

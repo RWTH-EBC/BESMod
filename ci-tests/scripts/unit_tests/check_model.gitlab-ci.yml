@@ -5,7 +5,7 @@
 # library: BESMod
 # ci_check_commit: ci_check
 # xvfb_flag: xvfb-run -n 77
-# modelicapyci_test_validate_module: ModelicaPyCI.unittest.checkpackages.validatetest
+# modelicapyci_test_validate_module: ModelicaPyCI.unittest.validatetest
 # result_dir: ci-tests/result
 # expire_in_time: 7h
 # ci_create_model_whitelist_commit: ci_create_model_whitelist
@@ -32,7 +32,7 @@ stages:
         - !reference [.activate_python_and_install_requirements, script]
         - !reference [.custom_install_additional_modelica_libraries, script]
     script:
-        - xvfb-run -n 77 python -m ModelicaPyCI.unittest.checkpackages.validatetest --dym-options DYM_CHECK --filter-whitelist-flag  --startup-mos startup.mos --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
+        - xvfb-run -n 77 python -m ModelicaPyCI.unittest.validatetest --dym-options DYM_CHECK --filter-whitelist-flag  --startup-mos startup.mos --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
     artifacts:
         when: on_failure
         paths:
@@ -50,7 +50,7 @@ stages:
         - !reference [.activate_python_and_install_requirements, script]
         - !reference [.custom_install_additional_modelica_libraries, script]
     script:
-        - xvfb-run -n 77 python -m ModelicaPyCI.unittest.checkpackages.validatetest --dym-options DYM_CHECK --filter-whitelist-flag  --changed-flag  --startup-mos startup.mos --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
+        - xvfb-run -n 77 python -m ModelicaPyCI.unittest.validatetest --dym-options DYM_CHECK --filter-whitelist-flag  --changed-flag  --startup-mos startup.mos --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
     artifacts:
         when: on_failure
         paths:
@@ -110,7 +110,7 @@ check_whitelist_job:
         - !reference [.github_ssh_auth, script]
 
     script:
-        - xvfb-run -n 77 python -m ModelicaPyCI.unittest.checkpackages.validatetest --dym-options DYM_CHECK --create-whitelist-flag  --startup-mos startup.mos --dymola-version 2022 --additional-libraries-to-load  --packages Examples Tutorial Utilities Systems --library BESMod 
+        - xvfb-run -n 77 python -m ModelicaPyCI.unittest.validatetest --dym-options DYM_CHECK --create-whitelist-flag  --startup-mos startup.mos --dymola-version 2022 --additional-libraries-to-load  --packages Examples Tutorial Utilities Systems --library BESMod 
     after_script:
         - if ! cat ci-tests/Configfiles/exit.sh | grep "FAIL"; then
             exit 0;
