@@ -25,7 +25,7 @@ model Parameterization "Parameterization"
     </ul>
 
     <h4>Bottom-Up Parameters</h4>
-    <p>Bottom-up parameters are defined within subsystems and propagated upwards to connected subsystems using <code>NAMESup_nominal</code> and <code>NAMEDem_nominal</code> parameters. Nominal parameters of the subsystems are either directly set by top-down parameters or calculated using physics-based or rule-based equations. These <code>nominal</code> parameters are also propagated to the control systems.</p>
+    <p>Bottom-up parameters are defined within subsystems and propagated upwards to connected subsystems using <code>Sup_nominal</code> and <code>Dem_nominal</code> parameters. Nominal parameters of the subsystems are either directly set by top-down parameters or calculated using physics-based or rule-based equations. These <code>nominal</code> parameters are also propagated to the control systems.</p>
 
     <h4>Subsystem Design Parameters</h4>
     <p>Each subsystem has internal <code>design</code> parameters to define the actual design of components. Typically, design parameters are equivalent to nominal parameters but can be specified separately if needed. Both nominal and design parameters are used to parameterize components, either directly or through additional physics-based or rule-based equations and design-independent parameters.</p>
@@ -41,8 +41,8 @@ model Parameterization "Parameterization"
         </li>
         <li><strong>Subsystem Parameters for Old Building State</strong>:
             <ul>
-                <li><code>NAMESupOld_design</code></li>
-                <li><code>NAMEDemOld_design</code></li>
+                <li><code>SupOld_design</code></li>
+                <li><code>DemOld_design</code></li>
             </ul>
         </li>
     </ul>
