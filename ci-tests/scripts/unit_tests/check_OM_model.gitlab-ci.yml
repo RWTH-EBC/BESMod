@@ -23,7 +23,9 @@ stages:
         - !reference [.custom_install_additional_modelica_libraries, script]
         - !reference [.open_modelica_git_user_setting, script]
     script:
-        - setfacl -Rm d:u:openmodelicausers:rwX .
+        - alias python=python3
+        - chmod -R u+rwX .
+        - chown -R openmodelicausers:openmodelicausers .
         - runuser -u openmodelicausers -- python3 -m ModelicaPyCI.unittest.om_check --om-options OM_CHECK --startup-mos startup.mos --whitelist-library IBPSA --packages $lib_package --library BESMod 
     artifacts:
         when: on_failure
@@ -44,7 +46,9 @@ stages:
         - !reference [.custom_install_additional_modelica_libraries, script]
         - !reference [.open_modelica_git_user_setting, script]
     script:
-        - setfacl -Rm d:u:openmodelicausers:rwX .
+        - alias python=python3
+        - chmod -R u+rwX .
+        - chown -R openmodelicausers:openmodelicausers .
         - runuser -u openmodelicausers -- python3 -m ModelicaPyCI.unittest.om_check --om-options OM_CHECK --startup-mos startup.mos --changed-flag  --whitelist-library IBPSA --packages $lib_package --library BESMod 
     artifacts:
         when: on_failure

@@ -26,7 +26,7 @@
     - source activate myenv || echo "myenv is not installed, can't activate it"
     - pip install --upgrade pip && pip install natsort toml pandas mako requests
     - export PYTHONIOENCODING=utf-8
-    - pip install git+https://github.com/lbl-srg/BuildingsPy.git@issue253_coverage
+    - pip install git+https://github.com/FWuellhorst/BuildingsPy.git@issue253_coverage
     - pip install git+https://github.com/RWTH-EBC/ModelicaPyCI.git
     - export CI_PYTHON_CONFIG_FILE="ci-tests/config/modelica_py_ci_config.toml"
 

@@ -4,10 +4,15 @@
 # expire_in_time : 7h
 
 
+include: 'ci-tests/scripts/utilities.yml'
+
+
 stages:
     - prepare_pages
 prepare_pages:
     stage: prepare_pages
+    before_script:
+        - !reference [.activate_python_and_install_requirements, script]
     script:
         - mkdir -p $CI_COMMIT_REF_NAME
         - if [ ! -d "ci-tests/result" ]; then echo "No results in this pipeline, no pages to publish" && exit 0; fi
