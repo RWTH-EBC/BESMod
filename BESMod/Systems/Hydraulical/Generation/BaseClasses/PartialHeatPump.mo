@@ -3,6 +3,7 @@ model PartialHeatPump "Generation with only the heat pump"
   extends BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration(
     final QLoss_flow_nominal=f_design .* Q_flow_nominal .- Q_flow_nominal,
     final dTLoss_nominal=fill(0, nParallelDem),
+    Q_flow_design = {if use_old_design[i] then QOld_flow_design[i] else Q_flow_nominal[i] for i in 1:nParallelDem},
     dTTra_nominal={if TDem_nominal[i] > 273.15 + 55 then 10 elseif TDem_nominal[
         i] > 44.9 + 273.15 then 8 else 5 for i in 1:nParallelDem},
     dTTraOld_design={if TDemOld_design[i] > 273.15 + 55 then 10 elseif TDemOld_design[
@@ -10,6 +11,11 @@ model PartialHeatPump "Generation with only the heat pump"
     dTTra_design={if use_old_design[i] then dTTraOld_design[i] else dTTra_nominal[i] for i in 1:nParallelDem},
     dp_nominal={heatPump.dpCon_nominal},
       nParallelDem=1);
+
+  parameter Boolean use_old_design[nParallelDem]=fill(false, nParallelDem)
+    "If true, design parameters of old building state are used"
+    annotation (Dialog(group="Design - Internal: Parameters are defined by the subsystem"));
+
   replaceable model PerDataMainHP =
       AixLib.DataBase.HeatPump.PerformanceData.LookUpTable2D
     constrainedby

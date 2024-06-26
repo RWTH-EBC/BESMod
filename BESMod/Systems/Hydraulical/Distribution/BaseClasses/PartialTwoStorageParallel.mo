@@ -1,9 +1,11 @@
 within BESMod.Systems.Hydraulical.Distribution.BaseClasses;
 partial model PartialTwoStorageParallel "Partial model to later extent"
   extends BaseClasses.PartialDistribution(
+    Q_flow_design={if use_old_design[i] then QOld_flow_design[i] else
+        Q_flow_nominal[i] for i in 1:nParallelDem},
     m_flow_design={if use_old_design[i] then mOld_flow_design[i] else
         m_flow_nominal[i] for i in 1:nParallelDem},
-    mOld_flow_design=mDemOld_flow_design,
+    final mOld_flow_design=mDemOld_flow_design,
     final dpDem_nominal={0},
     final dpSup_nominal={parThrWayVal.dpValve_nominal + max(parThrWayVal.dp_nominal)},
     final dTTraDHW_nominal=parStoDHW.dTLoadingHC1,
@@ -15,6 +17,10 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
     final TSup_nominal=TDem_nominal .+ dTLoss_nominal .+ dTTra_nominal,
     final nParallelSup=1,
     final nParallelDem=1);
+
+  parameter Boolean use_old_design[nParallelDem]=fill(false, nParallelDem)
+    "If true, design parameters of old building state are used"
+    annotation (Dialog(group="Design - Internal: Parameters are defined by the subsystem"));
 
   parameter Modelica.Units.SI.TemperatureDifference dTLoaHCBuf
     "Temperature difference for loading of heating coil in buffer storage"

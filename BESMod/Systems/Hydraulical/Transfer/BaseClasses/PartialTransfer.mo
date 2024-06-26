@@ -27,8 +27,7 @@ partial model PartialTransfer "Partial transfer model for BES"
    annotation(Dialog(group="Design - Top Down: Parameters are given by the parent system"));
   parameter Modelica.Units.SI.Temperature TTraOld_design[nParallelDem] "Old design nominal supply temperature to transfer systems"
    annotation(Dialog(group="Design - Top Down: Parameters are given by the parent system"));
-  parameter Modelica.Units.SI.Temperature TTra_design[nParallelDem]=
-      {if use_old_design[i] then TTraOld_design[i] else TTra_nominal[i] for i in 1:nParallelDem}
+  parameter Modelica.Units.SI.Temperature TTra_design[nParallelDem]=TTra_nominal
       "Nominal design supply temperature to transfer systems"
    annotation(Dialog(group="Design - Internal: Parameters are defined by the subsystem"));
   parameter Modelica.Units.SI.MassFlowRate mSup_flow_nominal[nParallelSup]=fill(sum(

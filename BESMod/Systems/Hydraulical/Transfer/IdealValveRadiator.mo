@@ -7,9 +7,10 @@ model IdealValveRadiator
     final dTLoss_nominal=fill(0, nParallelDem),
     final nParallelSup=1,
     final dp_nominal=parTra.dp_nominal,
-    final use_old_design=use_oldRadDesign);
+    Q_flow_design={if use_oldRad_design[i] then QOld_flow_design[i] else Q_flow_nominal[i] for i in 1:nParallelDem},
+    TTra_design={if use_oldRad_design[i] then TTraOld_design[i] else TTra_nominal[i] for i in 1:nParallelDem});
 
-  parameter Boolean use_oldRadDesign[nParallelDem]=fill(false, nParallelDem)
+  parameter Boolean use_oldRad_design[nParallelDem]=fill(false, nParallelDem)
     "If true, radiator design of old building state is used"
     annotation (Dialog(group="Design - Internal: Parameters are defined by the subsystem"));
 
@@ -28,7 +29,7 @@ model IdealValveRadiator
     final TRad_nominal=TDem_nominal,
     each final n=parRad.n,
     each final deltaM=0.3,
-    final dp_nominal=parTra.dpRad_nominal,
+    each final dp_nominal=0,
     redeclare package Medium = Medium,
     each final T_start=T_start) "Radiator" annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
@@ -37,7 +38,7 @@ model IdealValveRadiator
 
   IBPSA.Fluid.FixedResistances.PressureDrop res[nParallelDem](
     redeclare package Medium = Medium,
-    each final dp_nominal=parTra.dpHeaDistr_nominal+parTra.dpRad_nominal,
+    each final dp_nominal=parTra.dpHeaDistr_nominal+parTra.dpRad_nominal[1],
     final m_flow_nominal=m_flow_nominal)
     "Hydraulic resistance of supply and radiator to set dp allways to m_flow_nominal"
     annotation (Placement(transformation(

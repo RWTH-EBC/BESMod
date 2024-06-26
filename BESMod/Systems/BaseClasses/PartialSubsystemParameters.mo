@@ -64,10 +64,7 @@ model PartialSubsystemParameters "Model for a partial subsystem"
     annotation (Dialog(group=
           "Design - Top Down: Parameters are given by the parent system"));
 
-  parameter Boolean use_old_design[nParallelDem]=fill(false, nParallelDem)
-    "If true, design parameters of old building state are used"
-    annotation (Dialog(group="Design - Internal: Parameters are defined by the subsystem"));
-  parameter Modelica.Units.SI.HeatFlowRate Q_flow_design[nParallelDem](each min=Modelica.Constants.eps) = {if use_old_design[i] then QOld_flow_design[i] else Q_flow_nominal[i] for i in 1:nParallelDem}
+  parameter Modelica.Units.SI.HeatFlowRate Q_flow_design[nParallelDem](each min=Modelica.Constants.eps) = Q_flow_nominal
     "Nominal design heat flow rate" annotation (Dialog(group=
           "Design - Internal: Parameters are defined by the subsystem"));
   parameter Modelica.Units.SI.MassFlowRate m_flow_design[nParallelDem](each
