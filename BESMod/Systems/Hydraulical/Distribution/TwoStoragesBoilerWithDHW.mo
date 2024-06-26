@@ -10,7 +10,8 @@ model TwoStoragesBoilerWithDHW
     final dpBufHCSto_nominal=0,
     final dTLoaHCBuf=0,
     final use_secHeaCoiDHWSto=true,
-    stoDHW(nHC2Up=parStoDHW.nLayer, nHC2Low=1));
+    stoDHW(nHC2Up=parStoDHW.nLayer, nHC2Low=1),
+    final use_old_design=fill(false, nParallelDem));
   parameter Modelica.Units.SI.TemperatureDifference dTBoiDHWLoa = 5
     "Temperature difference for DHW storage loading with the boiler"
     annotation(Dialog(group="Component data"));
