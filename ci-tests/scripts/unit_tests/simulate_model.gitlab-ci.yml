@@ -2,13 +2,13 @@
 # dym_image_name : registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola_2022-miniconda
 # ci_stage_simulate: simulate
 # ci_stage_create_exampel_whitelist: create_example_whitelist
-# arg_push : --dym-options DYM_SIM --filter-whitelist-flag  --changed-flag  --startup-mos startup.mos --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
-# arg_PR: --dym-options DYM_SIM --filter-whitelist-flag  --startup-mos startup.mos --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
+# arg_push : --dym-options DYM_SIM --filter-whitelist-flag  --changed-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
+# arg_PR: --dym-options DYM_SIM --filter-whitelist-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
 # library: BESMod
 # ci_check_commit ci_simulate
 # modelicapyci_test_validate_module: ModelicaPyCI.unittest.validatetest
-# package_list: ['Examples', 'Tutorial', 'Utilities', 'Systems']
-# arg_wh: --dym-options DYM_SIM --create-whitelist-flag  --startup-mos startup.mos --dymola-version 2022 --additional-libraries-to-load  --packages Examples Tutorial Utilities Systems --library BESMod 
+# packages_per_job: {'Examples': 'Examples', 'Systems': 'Systems', 'Other': 'Tutorial Utilities'}
+# arg_wh: --dym-options DYM_SIM --create-whitelist-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --additional-libraries-to-load  --packages Examples Tutorial Utilities Systems --library BESMod 
 # bot_update_model_whitelist_commit: CI message from ebc-aixlib-bot. Update file whitelist-simulate_file. Please pull the new files before push again.
 # whitelist_model_file: dymola_simulate_whitelist.txt
 # ci_create_model_whitelist_commit: ci_create_example_whitelist
@@ -31,7 +31,7 @@ stages:
         - !reference [.activate_python_and_install_requirements, script]
         - !reference [.custom_install_additional_modelica_libraries, script]
     script:
-        - xvfb-run -n 77 python -m ModelicaPyCI.unittest.validatetest  --dym-options DYM_SIM --filter-whitelist-flag  --startup-mos startup.mos --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
+        - xvfb-run -n 77 python -m ModelicaPyCI.unittest.validatetest  --dym-options DYM_SIM --filter-whitelist-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
     artifacts:
         when: on_failure
         paths:
@@ -49,7 +49,7 @@ stages:
         - !reference [.activate_python_and_install_requirements, script]
         - !reference [.custom_install_additional_modelica_libraries, script]
     script:
-        - xvfb-run -n 77 python -m ModelicaPyCI.unittest.validatetest --dym-options DYM_SIM --filter-whitelist-flag  --changed-flag  --startup-mos startup.mos --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
+        - xvfb-run -n 77 python -m ModelicaPyCI.unittest.validatetest --dym-options DYM_SIM --filter-whitelist-flag  --changed-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
     artifacts:
         when: on_failure
         paths:
@@ -63,19 +63,14 @@ Simulate_BESMod_Examples:PR:
         lib_package: Examples
     extends: .simulate_model_job:PR
 
-Simulate_BESMod_Tutorial:PR:
-    variables:
-        lib_package: Tutorial
-    extends: .simulate_model_job:PR
-
-Simulate_BESMod_Utilities:PR:
-    variables:
-        lib_package: Utilities
-    extends: .simulate_model_job:PR
-
 Simulate_BESMod_Systems:PR:
     variables:
         lib_package: Systems
+    extends: .simulate_model_job:PR
+
+Simulate_BESMod_Other:PR:
+    variables:
+        lib_package: Tutorial Utilities
     extends: .simulate_model_job:PR
 
 
@@ -85,19 +80,14 @@ Simulate_BESMod_Examples:Push:
         lib_package: Examples
     extends: .simulate_model_job:Push
 
-Simulate_BESMod_Tutorial:Push:
-    variables:
-        lib_package: Tutorial
-    extends: .simulate_model_job:Push
-
-Simulate_BESMod_Utilities:Push:
-    variables:
-        lib_package: Utilities
-    extends: .simulate_model_job:Push
-
 Simulate_BESMod_Systems:Push:
     variables:
         lib_package: Systems
+    extends: .simulate_model_job:Push
+
+Simulate_BESMod_Other:Push:
+    variables:
+        lib_package: Tutorial Utilities
     extends: .simulate_model_job:Push
 
 
@@ -109,7 +99,7 @@ simulate_whitelist_job:
         - !reference [.custom_install_additional_modelica_libraries, script]
         - !reference [.github_ssh_auth, script]
     script:
-        - xvfb-run -n 77 python -m ModelicaPyCI.unittest.validatetest --dym-options DYM_SIM --create-whitelist-flag  --startup-mos startup.mos --dymola-version 2022 --additional-libraries-to-load  --packages Examples Tutorial Utilities Systems --library BESMod 
+        - xvfb-run -n 77 python -m ModelicaPyCI.unittest.validatetest --dym-options DYM_SIM --create-whitelist-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --additional-libraries-to-load  --packages Examples Tutorial Utilities Systems --library BESMod 
     after_script:
         - if ! cat ci-tests/Configfiles/exit.sh | grep "FAIL"; then
             exit 0;

@@ -24,9 +24,13 @@ commit_string = "$CI_COMMIT_MESSAGE  !~ /ci_update_ref/   && $CI_COMMIT_MESSAGE 
 pr_main_branch_rule = "$CI_COMMIT_BRANCH  == \"main\"  "
 extra_command_list = ["apt-get install git-lfs -y", "python install_dependencies.py full"]
 startup_mos = "startup.mos"
+packages = [ "Examples", "Tutorial", "Utilities", "Systems"]
 
-[packages]
-BESMod = [ "Examples", "Tutorial", "Utilities", "Systems"]
+[packages_per_job]
+Examples = [ "Examples",]
+Systems = [ "Systems",]
+Other = [ "Tutorial", "Utilities", ]
+
 
 [modelica_py_ci]
 url = "https://github.com/RWTH-EBC/ModelicaPyCI.git"
