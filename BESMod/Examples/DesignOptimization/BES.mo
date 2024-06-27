@@ -103,7 +103,7 @@ model BES
         calcmFlow),
     redeclare Systems.UserProfiles.TEASERProfiles userProfiles,
     redeclare AachenSystem systemParameters,
-    redeclare ParametersToChange parameterStudy(VPerQFlow=1),
+    redeclare ParametersToChange parameterStudy,
     redeclare final package MediumDHW = AixLib.Media.Water,
     redeclare final package MediumZone = AixLib.Media.Air,
     redeclare final package MediumHyd = AixLib.Media.Water,
@@ -113,6 +113,6 @@ model BES
 
   annotation (experiment(
       StopTime=172800,
-      Interval=599.999616,
+      Interval=600,
       __Dymola_Algorithm="Dassl"));
 end BES;
