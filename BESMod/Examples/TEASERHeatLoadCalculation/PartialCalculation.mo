@@ -34,7 +34,7 @@ model PartialCalculation "Partial model with common interfaces"
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     experiment(
-      StopTime=31536000,
+      StopTime=172800,
       Interval=3600,
       __Dymola_Algorithm="Dassl"));
 end PartialCalculation;

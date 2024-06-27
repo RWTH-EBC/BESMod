@@ -124,7 +124,7 @@ equation
           textString="Right click -> Parameters -> 
 Select your system parameters -> 
 Simulate and extract QDemand and 
-array based demand for your systemParameters")}),      experiment(StopTime=31536000, Interval=3600),
+array based demand for your systemParameters")}),      experiment(StopTime=172800, Interval=3600),
     Documentation(info="<html>
 <p>The heat demand is one of the most important paramters to quantify in order to correctly size the components in a BES. Hence, we add this partial heat demand calculator to enable a heat demand calculation according to EN 12831 for all possible Building-Subsystems.</p>
 <h4>Note:</h4>

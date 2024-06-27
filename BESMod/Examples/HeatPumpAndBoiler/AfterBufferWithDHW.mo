@@ -50,7 +50,7 @@ model AfterBufferWithDHW
   extends Modelica.Icons.Example;
 
   annotation (experiment(
-      StopTime=31536000,
+      StopTime=172800,
       Interval=600,
       __Dymola_Algorithm="Dassl"));
 end AfterBufferWithDHW;

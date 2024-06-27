@@ -55,7 +55,7 @@ model GasBoilerBuildingOnly
   extends Modelica.Icons.Example;
 
   annotation (experiment(
-      StopTime=31536000,
+      StopTime=172800,
       Interval=900.00288,
       __Dymola_Algorithm="Dassl"));
 end GasBoilerBuildingOnly;

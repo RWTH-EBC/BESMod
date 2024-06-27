@@ -96,7 +96,7 @@ partial model PartialCase
   parameter Modelica.Units.SI.Temperature TBiv=271.15
     "Nominal bivalence temperature. = TOda_nominal for monovalent systems.";
   annotation (experiment(
-      StopTime=31536000,
+      StopTime=172800,
       Interval=600,
       __Dymola_Algorithm="Dassl"));
 end PartialCase;

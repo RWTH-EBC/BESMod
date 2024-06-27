@@ -52,6 +52,9 @@
 .open_modelica_git_user_setting:
   script:
     - runuser -u openmodelicausers -- sh -c 'git config --global --add safe.directory "$(pwd)"'
+    - chmod -R u+rwX .
+    - chown -R openmodelicausers:openmodelicausers .
+    - alias python=python3
 
 .git_push:
   script:
