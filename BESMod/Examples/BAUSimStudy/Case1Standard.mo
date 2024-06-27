@@ -8,5 +8,7 @@ model Case1Standard
   annotation (experiment(
       StopTime=86400,
       Interval=600,
-      __Dymola_Algorithm="Dassl"));
+      __Dymola_Algorithm="Dassl"),
+   __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/BAUSimStudy/Case1Standard.mos"
+        "Simulate and plot"));
 end Case1Standard;

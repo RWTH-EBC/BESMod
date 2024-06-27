@@ -57,5 +57,7 @@ model GasBoilerBuildingOnly
   annotation (experiment(
       StopTime=172800,
       Interval=900.00288,
-      __Dymola_Algorithm="Dassl"));
+      __Dymola_Algorithm="Dassl"),
+   __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/GasBoilerBuildingOnly.mos"
+        "Simulate and plot"));
 end GasBoilerBuildingOnly;

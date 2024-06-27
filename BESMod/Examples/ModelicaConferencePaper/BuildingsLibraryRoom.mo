@@ -14,5 +14,7 @@ annotation(experiment(
       Interval=600,
    Tolerance=1e-06),
    __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/ModelicaConferencePaper/BuildingsLibraryRoom.mos"
+        "Simulate and plot"),
+   __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/ModelicaConferencePaper/BuildingsLibraryRoom.mos"
         "Simulate and plot"));
 end BuildingsLibraryRoom;

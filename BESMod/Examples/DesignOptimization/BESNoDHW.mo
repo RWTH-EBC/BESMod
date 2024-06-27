@@ -103,5 +103,7 @@ model BESNoDHW "Example to demonstrate usage without DHW"
   annotation (experiment(
       StopTime=172800,
       Interval=599.999616,
-      __Dymola_Algorithm="Dassl"));
+      __Dymola_Algorithm="Dassl"),
+   __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/DesignOptimization/BESNoDHW.mos"
+        "Simulate and plot"));
 end BESNoDHW;

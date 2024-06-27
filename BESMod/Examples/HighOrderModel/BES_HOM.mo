@@ -96,5 +96,7 @@ model BES_HOM
   annotation (experiment(
       StopTime=172800,
       Interval=600,
-      __Dymola_Algorithm="Dassl"));
+      __Dymola_Algorithm="Dassl"),
+   __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/HighOrderModel/BES_HOM.mos"
+        "Simulate and plot"));
 end BES_HOM;

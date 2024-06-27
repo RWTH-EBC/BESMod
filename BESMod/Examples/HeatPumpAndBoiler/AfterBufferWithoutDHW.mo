@@ -46,5 +46,7 @@ model AfterBufferWithoutDHW
   annotation (experiment(
       StopTime=172800,
       Interval=600,
-      __Dymola_Algorithm="Dassl"));
+      __Dymola_Algorithm="Dassl"),
+   __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/HeatPumpAndBoiler/AfterBufferWithoutDHW.mos"
+        "Simulate and plot"));
 end AfterBufferWithoutDHW;
