@@ -12,7 +12,7 @@
     },
     "model": "BESMod.Examples.BAUSimStudy.Case1Standard",
     "simulation": {
-      "elapsed_time": 4.14,
+      "elapsed_time": 3.5,
       "final_time": 172800,
       "jacobians": 4638,
       "start_time": 0,

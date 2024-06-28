@@ -12,7 +12,7 @@
     },
     "model": "BESMod.Examples.SolarThermalSystem.SolarThermalAixLib",
     "simulation": {
-      "elapsed_time": 6.15,
+      "elapsed_time": 5.88,
       "final_time": 172800,
       "jacobians": 2072,
       "start_time": 0,
@@ -33,7 +33,7 @@
     },
     "model": "BESMod.Examples.SolarThermalSystem.SolarThermalBuildings",
     "simulation": {
-      "elapsed_time": 6.59,
+      "elapsed_time": 6.67,
       "final_time": 172800,
       "jacobians": 2304,
       "start_time": 0,

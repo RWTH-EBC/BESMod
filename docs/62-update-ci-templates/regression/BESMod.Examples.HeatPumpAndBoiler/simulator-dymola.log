@@ -1,8 +1,8 @@
  = true
 
 
-rCheck = checkModel("BESMod.Examples.HeatPumpAndBoiler.Serial");
-Check of BESMod.Examples.HeatPumpAndBoiler.Serial:
+rCheck = checkModel("BESMod.Examples.HeatPumpAndBoiler.Parallel");
+Check of BESMod.Examples.HeatPumpAndBoiler.Parallel:
 Warning: Non-literal value.
 In nominal attribute for hydraulic.generation.heatPump.con.preDro.m_flow.
 Ignoring nominal attribute.
@@ -29,25 +29,25 @@ Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHP
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-The model has the same number of unknowns and equations: 6267
+The model has the same number of unknowns and equations: 6396
 The model has the same number of unknowns and equations
-for the given numerical settings of parameters: 6267
-Check of BESMod.Examples.HeatPumpAndBoiler.Serial successful.
+for the given numerical settings of parameters: 6396
+Check of BESMod.Examples.HeatPumpAndBoiler.Parallel successful.
 Warning: WARNINGS have been issued.
 Declaring variable: Boolean rCheck ;
 
-Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Examples/HeatPumpAndBoiler/Serial.mos\",", "BESMod.Examples.HeatPumpAndBoiler.Serial.statistics.log");
-Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Examples.HeatPumpAndBoiler.Serial\",", "BESMod.Examples.HeatPumpAndBoiler.Serial.statistics.log");
-Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Examples.HeatPumpAndBoiler.Serial.statistics.log");
-Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Examples.HeatPumpAndBoiler.Serial\\\");\",", "BESMod.Examples.HeatPumpAndBoiler.Serial.statistics.log");
-Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Examples.HeatPumpAndBoiler.Serial.statistics.log");
-Modelica.Utilities.Streams.print("      },", "BESMod.Examples.HeatPumpAndBoiler.Serial.statistics.log");
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Examples/HeatPumpAndBoiler/Parallel.mos\",", "BESMod.Examples.HeatPumpAndBoiler.Parallel.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Examples.HeatPumpAndBoiler.Parallel\",", "BESMod.Examples.HeatPumpAndBoiler.Parallel.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Examples.HeatPumpAndBoiler.Parallel.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Examples.HeatPumpAndBoiler.Parallel\\\");\",", "BESMod.Examples.HeatPumpAndBoiler.Parallel.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Examples.HeatPumpAndBoiler.Parallel.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Examples.HeatPumpAndBoiler.Parallel.statistics.log");
 
 
-rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/HeatPumpAndBoiler/Serial.mos");
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/HeatPumpAndBoiler/Parallel.mos");
 
-simulateModel("BESMod.Examples.HeatPumpAndBoiler.Serial", stopTime=172800, method="dassl", tolerance=1e-06, resultFile="BESMod.Examples.HeatPumpAndBoiler.Serial");
-Translation of BESMod.Examples.HeatPumpAndBoiler.Serial:
+simulateModel("BESMod.Examples.HeatPumpAndBoiler.Parallel", stopTime=172800, method="dassl", tolerance=1e-06, resultFile="BESMod.Examples.HeatPumpAndBoiler.Parallel");
+Translation of BESMod.Examples.HeatPumpAndBoiler.Parallel:
 Warning: Non-literal value.
 In nominal attribute for hydraulic.generation.heatPump.con.preDro.m_flow.
 Ignoring nominal attribute.
@@ -74,7 +74,7 @@ Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHP
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-The DAE has 6267 scalar unknowns and 6267 scalar equations.
+The DAE has 6396 scalar unknowns and 6396 scalar equations.
 Warning: The initial conditions are not fully specified.
 Dymola has selected default initial conditions.
 Warning: Assuming fixed start value for the continuous states:
@@ -100,6 +100,7 @@ Warning: Assuming fixed start value for the continuous states:
     hydraulic.generation.heatPump.eva.vol.dynBal.mXi[](each start = 1.2*(      hydraulic.generation.heatPump.eva.vol.dynBal.fluidVolume*hydraulic.generation.heatPump.eva.vol.dynBal.X_start[1]))
     hydraulic.generation.heatPump.eva.vol.dynBal.U(start = (-80808.92039999993)*      hydraulic.generation.heatPump.eva.vol.dynBal.fluidVolume)
     hydraulic.generation.pump.vol.dynBal.U(start = 83310636.48*hydraulic.generation.pump.vol.dynBal.fluidVolume)
+    hydraulic.generation.thrWayVal.threWayValFlow.vol.dynBal.U(start =       83310636.48*hydraulic.generation.thrWayVal.threWayValFlow.vol.dynBal.fluidVolume)
     hydraulic.transfer.pumFixMFlo[1].vol.dynBal.U(start = 83310636.48*      hydraulic.transfer.pumFixMFlo[1].vol.dynBal.fluidVolume)
     hydraulic.transfer.rad[1].vol[1].dynBal.U(start = 1586785.2032094253)
     hydraulic.transfer.rad[1].vol[2].dynBal.U(start = 1586785.2032094253)
@@ -112,9 +113,9 @@ This could be caused by incorrectly calling loadResource on the result of loadRe
 Warning: A call of loadResource with a non-literal string hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.Table_COP.filename remains in the generated code.
 This could be caused by incorrectly calling loadResource on the result of loadResource, but apart from that it will not work for an URI.
 Warning: The conditions of the following assert statements are always false:
-Warning:   assert(hydraulic.generation.heatPump.con.preDro.homotopyInitialization,     "In Serial.hydraulic.generation.heatPump.con.preDro: The constant homotopyInitialization has been modified from its default value. This constant will be removed in future releases.",     AssertionLevel.warning);
+Warning:   assert(hydraulic.generation.heatPump.con.preDro.homotopyInitialization,     "In Parallel.hydraulic.generation.heatPump.con.preDro: The constant homotopyInitialization has been modified from its default value. This constant will be removed in future releases.",     AssertionLevel.warning);
     The variable hydraulic.generation.heatPump.con.preDro.homotopyInitialization = false, was declared in class AixLib.Fluid.BaseClasses.PartialResistance, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo at line 12, and used in component hydraulic.generation.heatPump.con.preDro.PartialResistance.
-Warning:   assert(hydraulic.generation.heatPump.eva.preDro.homotopyInitialization,     "In Serial.hydraulic.generation.heatPump.eva.preDro: The constant homotopyInitialization has been modified from its default value. This constant will be removed in future releases.",     AssertionLevel.warning);
+Warning:   assert(hydraulic.generation.heatPump.eva.preDro.homotopyInitialization,     "In Parallel.hydraulic.generation.heatPump.eva.preDro: The constant homotopyInitialization has been modified from its default value. This constant will be removed in future releases.",     AssertionLevel.warning);
     The variable hydraulic.generation.heatPump.eva.preDro.homotopyInitialization = false, was declared in class AixLib.Fluid.BaseClasses.PartialResistance, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo at line 12, and used in component hydraulic.generation.heatPump.eva.preDro.PartialResistance.
 Warning: The variable building.ARoo=0 is not in range [0.1,1e+100].
 Ignoring range
@@ -124,34 +125,34 @@ Ignoring range
 Statistics
  
 Original Model
-  Number of components: 1260
-  Variables: 11568
-  Constants: 223 (224 scalars)
-  Parameters: 5125 (6843 scalars)
-  Unknowns: 6220 (6418 scalars)
-  Differentiated variables: 106 scalars
-  Equations: 5187
-  Nontrivial: 4317
+  Number of components: 1281
+  Variables: 11980
+  Constants: 233 (234 scalars)
+  Parameters: 5339 (7057 scalars)
+  Unknowns: 6408 (6556 scalars)
+  Differentiated variables: 108 scalars
+  Equations: 5309
+  Nontrivial: 4415
 Translated Model
-  Constants: 4697 scalars
-  Free parameters: 1145 scalars
-  Parameter depending: 2264 scalars
+  Constants: 4837 scalars
+  Free parameters: 1169 scalars
+  Parameter depending: 2340 scalars
   Outputs: 46 scalars
-  Continuous time states: 77 scalars
-  Time-varying variables: 1503 scalars
-  Alias variables: 3876 scalars
-  Assumed default initial conditions: 28
+  Continuous time states: 78 scalars
+  Time-varying variables: 1536 scalars
+  Alias variables: 3965 scalars
+  Assumed default initial conditions: 29
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 4, 4, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0}
-  Sizes of nonlinear systems of equations: {10, 59, 3, 1, 1, 1, 1, 1, 1, 1, 1}
-  Sizes after manipulation of the nonlinear systems: {2, 6, 1, 0, 1, 0, 1, 0, 1, 1, 1}
+  Sizes of nonlinear systems of equations: {16, 59, 3, 1, 1, 1, 1, 1, 1, 1, 1}
+  Sizes after manipulation of the nonlinear systems: {3, 6, 1, 0, 1, 0, 1, 0, 1, 1, 1}
   Number of numerical Jacobians: 0
   Initialization problem
     Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2}
     Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0}
-    Sizes of nonlinear systems of equations: {2, 1, 11, 70, 10, 1, 1, 1, 1}
-    Sizes after manipulation of the nonlinear systems: {0, 0, 5, 7, 2, 0, 0, 1, 1}
+    Sizes of nonlinear systems of equations: {2, 1, 11, 70, 16, 1, 1}
+    Sizes after manipulation of the nonlinear systems: {0, 0, 5, 7, 4, 1, 1}
     Number of numerical Jacobians: 0
  
 Selected continuous time states
@@ -226,6 +227,7 @@ Statically selected continuous time states
   hydraulic.generation.KPIWel.integrator2.y
   hydraulic.generation.pump.vol.dynBal.U
   hydraulic.generation.senTGenOut.T
+  hydraulic.generation.thrWayVal.threWayValFlow.vol.dynBal.U
   hydraulic.transfer.intKPICalHeaFlo.integrator2.y
   hydraulic.transfer.pumFixMFlo[1].vol.dynBal.U
   hydraulic.transfer.rad[1].vol[1].dynBal.U
@@ -241,7 +243,7 @@ Finished
     
 Declaring variable: Boolean rScript ;
 
-savelog("BESMod.Examples.HeatPumpAndBoiler.Serial.translation.log"); = true
+savelog("BESMod.Examples.HeatPumpAndBoiler.Parallel.translation.log"); = true
 
 
 rCheck = checkModel("BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW");
@@ -596,8 +598,8 @@ Declaring variable: Boolean rScript ;
 savelog("BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW.translation.log"); = true
 
 
-rCheck = checkModel("BESMod.Examples.HeatPumpAndBoiler.Parallel");
-Check of BESMod.Examples.HeatPumpAndBoiler.Parallel:
+rCheck = checkModel("BESMod.Examples.HeatPumpAndBoiler.Serial");
+Check of BESMod.Examples.HeatPumpAndBoiler.Serial:
 Warning: Non-literal value.
 In nominal attribute for hydraulic.generation.heatPump.con.preDro.m_flow.
 Ignoring nominal attribute.
@@ -624,25 +626,25 @@ Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHP
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-The model has the same number of unknowns and equations: 6396
+The model has the same number of unknowns and equations: 6267
 The model has the same number of unknowns and equations
-for the given numerical settings of parameters: 6396
-Check of BESMod.Examples.HeatPumpAndBoiler.Parallel successful.
+for the given numerical settings of parameters: 6267
+Check of BESMod.Examples.HeatPumpAndBoiler.Serial successful.
 Warning: WARNINGS have been issued.
 Declaring variable: Boolean rCheck ;
 
-Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Examples/HeatPumpAndBoiler/Parallel.mos\",", "BESMod.Examples.HeatPumpAndBoiler.Parallel.statistics.log");
-Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Examples.HeatPumpAndBoiler.Parallel\",", "BESMod.Examples.HeatPumpAndBoiler.Parallel.statistics.log");
-Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Examples.HeatPumpAndBoiler.Parallel.statistics.log");
-Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Examples.HeatPumpAndBoiler.Parallel\\\");\",", "BESMod.Examples.HeatPumpAndBoiler.Parallel.statistics.log");
-Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Examples.HeatPumpAndBoiler.Parallel.statistics.log");
-Modelica.Utilities.Streams.print("      },", "BESMod.Examples.HeatPumpAndBoiler.Parallel.statistics.log");
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Examples/HeatPumpAndBoiler/Serial.mos\",", "BESMod.Examples.HeatPumpAndBoiler.Serial.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Examples.HeatPumpAndBoiler.Serial\",", "BESMod.Examples.HeatPumpAndBoiler.Serial.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Examples.HeatPumpAndBoiler.Serial.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Examples.HeatPumpAndBoiler.Serial\\\");\",", "BESMod.Examples.HeatPumpAndBoiler.Serial.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Examples.HeatPumpAndBoiler.Serial.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Examples.HeatPumpAndBoiler.Serial.statistics.log");
 
 
-rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/HeatPumpAndBoiler/Parallel.mos");
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/HeatPumpAndBoiler/Serial.mos");
 
-simulateModel("BESMod.Examples.HeatPumpAndBoiler.Parallel", stopTime=172800, method="dassl", tolerance=1e-06, resultFile="BESMod.Examples.HeatPumpAndBoiler.Parallel");
-Translation of BESMod.Examples.HeatPumpAndBoiler.Parallel:
+simulateModel("BESMod.Examples.HeatPumpAndBoiler.Serial", stopTime=172800, method="dassl", tolerance=1e-06, resultFile="BESMod.Examples.HeatPumpAndBoiler.Serial");
+Translation of BESMod.Examples.HeatPumpAndBoiler.Serial:
 Warning: Non-literal value.
 In nominal attribute for hydraulic.generation.heatPump.con.preDro.m_flow.
 Ignoring nominal attribute.
@@ -669,7 +671,7 @@ Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHP
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-The DAE has 6396 scalar unknowns and 6396 scalar equations.
+The DAE has 6267 scalar unknowns and 6267 scalar equations.
 Warning: The initial conditions are not fully specified.
 Dymola has selected default initial conditions.
 Warning: Assuming fixed start value for the continuous states:
@@ -695,7 +697,6 @@ Warning: Assuming fixed start value for the continuous states:
     hydraulic.generation.heatPump.eva.vol.dynBal.mXi[](each start = 1.2*(      hydraulic.generation.heatPump.eva.vol.dynBal.fluidVolume*hydraulic.generation.heatPump.eva.vol.dynBal.X_start[1]))
     hydraulic.generation.heatPump.eva.vol.dynBal.U(start = (-80808.92039999993)*      hydraulic.generation.heatPump.eva.vol.dynBal.fluidVolume)
     hydraulic.generation.pump.vol.dynBal.U(start = 83310636.48*hydraulic.generation.pump.vol.dynBal.fluidVolume)
-    hydraulic.generation.thrWayVal.threWayValFlow.vol.dynBal.U(start =       83310636.48*hydraulic.generation.thrWayVal.threWayValFlow.vol.dynBal.fluidVolume)
     hydraulic.transfer.pumFixMFlo[1].vol.dynBal.U(start = 83310636.48*      hydraulic.transfer.pumFixMFlo[1].vol.dynBal.fluidVolume)
     hydraulic.transfer.rad[1].vol[1].dynBal.U(start = 1586785.2032094253)
     hydraulic.transfer.rad[1].vol[2].dynBal.U(start = 1586785.2032094253)
@@ -708,9 +709,9 @@ This could be caused by incorrectly calling loadResource on the result of loadRe
 Warning: A call of loadResource with a non-literal string hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.Table_COP.filename remains in the generated code.
 This could be caused by incorrectly calling loadResource on the result of loadResource, but apart from that it will not work for an URI.
 Warning: The conditions of the following assert statements are always false:
-Warning:   assert(hydraulic.generation.heatPump.con.preDro.homotopyInitialization,     "In Parallel.hydraulic.generation.heatPump.con.preDro: The constant homotopyInitialization has been modified from its default value. This constant will be removed in future releases.",     AssertionLevel.warning);
+Warning:   assert(hydraulic.generation.heatPump.con.preDro.homotopyInitialization,     "In Serial.hydraulic.generation.heatPump.con.preDro: The constant homotopyInitialization has been modified from its default value. This constant will be removed in future releases.",     AssertionLevel.warning);
     The variable hydraulic.generation.heatPump.con.preDro.homotopyInitialization = false, was declared in class AixLib.Fluid.BaseClasses.PartialResistance, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo at line 12, and used in component hydraulic.generation.heatPump.con.preDro.PartialResistance.
-Warning:   assert(hydraulic.generation.heatPump.eva.preDro.homotopyInitialization,     "In Parallel.hydraulic.generation.heatPump.eva.preDro: The constant homotopyInitialization has been modified from its default value. This constant will be removed in future releases.",     AssertionLevel.warning);
+Warning:   assert(hydraulic.generation.heatPump.eva.preDro.homotopyInitialization,     "In Serial.hydraulic.generation.heatPump.eva.preDro: The constant homotopyInitialization has been modified from its default value. This constant will be removed in future releases.",     AssertionLevel.warning);
     The variable hydraulic.generation.heatPump.eva.preDro.homotopyInitialization = false, was declared in class AixLib.Fluid.BaseClasses.PartialResistance, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo at line 12, and used in component hydraulic.generation.heatPump.eva.preDro.PartialResistance.
 Warning: The variable building.ARoo=0 is not in range [0.1,1e+100].
 Ignoring range
@@ -720,34 +721,34 @@ Ignoring range
 Statistics
  
 Original Model
-  Number of components: 1281
-  Variables: 11980
-  Constants: 233 (234 scalars)
-  Parameters: 5339 (7057 scalars)
-  Unknowns: 6408 (6556 scalars)
-  Differentiated variables: 108 scalars
-  Equations: 5309
-  Nontrivial: 4415
+  Number of components: 1260
+  Variables: 11568
+  Constants: 223 (224 scalars)
+  Parameters: 5125 (6843 scalars)
+  Unknowns: 6220 (6418 scalars)
+  Differentiated variables: 106 scalars
+  Equations: 5187
+  Nontrivial: 4317
 Translated Model
-  Constants: 4837 scalars
-  Free parameters: 1169 scalars
-  Parameter depending: 2340 scalars
+  Constants: 4697 scalars
+  Free parameters: 1145 scalars
+  Parameter depending: 2264 scalars
   Outputs: 46 scalars
-  Continuous time states: 78 scalars
-  Time-varying variables: 1536 scalars
-  Alias variables: 3965 scalars
-  Assumed default initial conditions: 29
+  Continuous time states: 77 scalars
+  Time-varying variables: 1503 scalars
+  Alias variables: 3876 scalars
+  Assumed default initial conditions: 28
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 4, 4, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0}
-  Sizes of nonlinear systems of equations: {16, 59, 3, 1, 1, 1, 1, 1, 1, 1, 1}
-  Sizes after manipulation of the nonlinear systems: {3, 6, 1, 0, 1, 0, 1, 0, 1, 1, 1}
+  Sizes of nonlinear systems of equations: {10, 59, 3, 1, 1, 1, 1, 1, 1, 1, 1}
+  Sizes after manipulation of the nonlinear systems: {2, 6, 1, 0, 1, 0, 1, 0, 1, 1, 1}
   Number of numerical Jacobians: 0
   Initialization problem
     Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2}
     Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0}
-    Sizes of nonlinear systems of equations: {2, 1, 11, 70, 16, 1, 1}
-    Sizes after manipulation of the nonlinear systems: {0, 0, 5, 7, 4, 1, 1}
+    Sizes of nonlinear systems of equations: {2, 1, 11, 70, 10, 1, 1, 1, 1}
+    Sizes after manipulation of the nonlinear systems: {0, 0, 5, 7, 2, 0, 0, 1, 1}
     Number of numerical Jacobians: 0
  
 Selected continuous time states
@@ -822,7 +823,6 @@ Statically selected continuous time states
   hydraulic.generation.KPIWel.integrator2.y
   hydraulic.generation.pump.vol.dynBal.U
   hydraulic.generation.senTGenOut.T
-  hydraulic.generation.thrWayVal.threWayValFlow.vol.dynBal.U
   hydraulic.transfer.intKPICalHeaFlo.integrator2.y
   hydraulic.transfer.pumFixMFlo[1].vol.dynBal.U
   hydraulic.transfer.rad[1].vol[1].dynBal.U
@@ -838,7 +838,7 @@ Finished
     
 Declaring variable: Boolean rScript ;
 
-savelog("BESMod.Examples.HeatPumpAndBoiler.Parallel.translation.log"); = true
+savelog("BESMod.Examples.HeatPumpAndBoiler.Serial.translation.log"); = true
 
 
 rCheck = checkModel("BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW");

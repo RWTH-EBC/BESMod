@@ -1,27 +1,6 @@
 ﻿[
   {
     "comparison": {
-      "file_name": "BESMod.Examples.HeatPumpAndBoiler.Serial.mat",
-      "funnel_dirs": [],
-      "success_rate": 0,
-      "t_err_max": [],
-      "test_passed": [],
-      "var_groups": [],
-      "variables": [],
-      "warnings": []
-    },
-    "model": "BESMod.Examples.HeatPumpAndBoiler.Serial",
-    "simulation": {
-      "elapsed_time": 3.39,
-      "final_time": 172800,
-      "jacobians": 5282,
-      "start_time": 0,
-      "state_events": 388,
-      "success": true
-    }
-  },
-  {
-    "comparison": {
       "file_name": "BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW.mat",
       "funnel_dirs": [],
       "success_rate": 0,
@@ -33,32 +12,11 @@
     },
     "model": "BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW",
     "simulation": {
-      "elapsed_time": 3.19,
+      "elapsed_time": 2.88,
       "final_time": 172800,
       "jacobians": 3927,
       "start_time": 0,
       "state_events": 207,
-      "success": true
-    }
-  },
-  {
-    "comparison": {
-      "file_name": "BESMod.Examples.HeatPumpAndBoiler.Parallel.mat",
-      "funnel_dirs": [],
-      "success_rate": 0,
-      "t_err_max": [],
-      "test_passed": [],
-      "var_groups": [],
-      "variables": [],
-      "warnings": []
-    },
-    "model": "BESMod.Examples.HeatPumpAndBoiler.Parallel",
-    "simulation": {
-      "elapsed_time": 8.84,
-      "final_time": 172800,
-      "jacobians": 14617,
-      "start_time": 0,
-      "state_events": 1798,
       "success": true
     }
   },
@@ -75,11 +33,53 @@
     },
     "model": "BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW",
     "simulation": {
-      "elapsed_time": 5.15,
+      "elapsed_time": 4.44,
       "final_time": 172800,
       "jacobians": 3984,
       "start_time": 0,
       "state_events": 228,
+      "success": true
+    }
+  },
+  {
+    "comparison": {
+      "file_name": "BESMod.Examples.HeatPumpAndBoiler.Parallel.mat",
+      "funnel_dirs": [],
+      "success_rate": 0,
+      "t_err_max": [],
+      "test_passed": [],
+      "var_groups": [],
+      "variables": [],
+      "warnings": []
+    },
+    "model": "BESMod.Examples.HeatPumpAndBoiler.Parallel",
+    "simulation": {
+      "elapsed_time": 8.11,
+      "final_time": 172800,
+      "jacobians": 14617,
+      "start_time": 0,
+      "state_events": 1798,
+      "success": true
+    }
+  },
+  {
+    "comparison": {
+      "file_name": "BESMod.Examples.HeatPumpAndBoiler.Serial.mat",
+      "funnel_dirs": [],
+      "success_rate": 0,
+      "t_err_max": [],
+      "test_passed": [],
+      "var_groups": [],
+      "variables": [],
+      "warnings": []
+    },
+    "model": "BESMod.Examples.HeatPumpAndBoiler.Serial",
+    "simulation": {
+      "elapsed_time": 2.56,
+      "final_time": 172800,
+      "jacobians": 5282,
+      "start_time": 0,
+      "state_events": 388,
       "success": true
     }
   }

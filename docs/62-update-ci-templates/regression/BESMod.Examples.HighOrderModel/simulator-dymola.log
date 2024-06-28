@@ -17,10 +17,10 @@ In class Modelica.Units.SI.
   Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
 Used in base-class hydraulic.generation.heatPump.eva.preDro.PartialTwoPortInterface.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
-Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TConInMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.nSet is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.nSet is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TConInMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 The DAE has 19332 scalar unknowns and 19332 scalar equations.
 After eliminating unused variables:

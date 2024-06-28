@@ -12,7 +12,7 @@
     },
     "model": "BESMod.Examples.TEASERHeatLoadCalculation.Example",
     "simulation": {
-      "elapsed_time": 0.161,
+      "elapsed_time": 0.238,
       "final_time": 172800,
       "jacobians": 874,
       "start_time": 0,
