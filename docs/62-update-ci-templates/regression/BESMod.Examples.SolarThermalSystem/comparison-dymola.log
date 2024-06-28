@@ -1,7 +1,7 @@
 ﻿[
   {
     "comparison": {
-      "file_name": "BESMod.Examples.DesignOptimization.BES.mat",
+      "file_name": "BESMod.Examples.SolarThermalSystem.SolarThermalAixLib.mat",
       "funnel_dirs": [],
       "success_rate": 0,
       "t_err_max": [],
@@ -10,19 +10,19 @@
       "variables": [],
       "warnings": []
     },
-    "model": "BESMod.Examples.DesignOptimization.BES",
+    "model": "BESMod.Examples.SolarThermalSystem.SolarThermalAixLib",
     "simulation": {
-      "elapsed_time": 1.8,
+      "elapsed_time": 0,
       "final_time": 172800,
-      "jacobians": 3225,
+      "jacobians": 0,
       "start_time": 0,
-      "state_events": 72,
-      "success": true
+      "state_events": 0,
+      "success": false
     }
   },
   {
     "comparison": {
-      "file_name": "BESMod.Examples.DesignOptimization.BESNoDHW.mat",
+      "file_name": "BESMod.Examples.SolarThermalSystem.SolarThermalBuildings.mat",
       "funnel_dirs": [],
       "success_rate": 0,
       "t_err_max": [],
@@ -31,14 +31,14 @@
       "variables": [],
       "warnings": []
     },
-    "model": "BESMod.Examples.DesignOptimization.BESNoDHW",
+    "model": "BESMod.Examples.SolarThermalSystem.SolarThermalBuildings",
     "simulation": {
-      "elapsed_time": 3.18,
+      "elapsed_time": 0,
       "final_time": 172800,
-      "jacobians": 6117,
+      "jacobians": 0,
       "start_time": 0,
-      "state_events": 328,
-      "success": true
+      "state_events": 0,
+      "success": false
     }
   }
 ]
