@@ -15,11 +15,6 @@ model TEASERBuilding
       userProfiles,
     systemParameters(use_hydraulic=true, use_ventilation=true));
   extends Modelica.Icons.Example;
-initial equation
-  building.thermalZone[1].ROM.extWallRC.thermCapExt[1].T = 293.15;
-  building.thermalZone[1].ROM.floorRC.thermCapExt[1].T = 293.15;
-  building.thermalZone[1].ROM.intWallRC.thermCapInt[1].T = 293.15;
-  building.thermalZone[1].ROM.roofRC.thermCapExt[1].T = 293.15;
 
 
 annotation(experiment(StopTime=172800,

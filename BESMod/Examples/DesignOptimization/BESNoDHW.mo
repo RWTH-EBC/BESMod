@@ -7,7 +7,8 @@ model BESNoDHW "Example to demonstrate usage without DHW"
       hBui=sum(building.zoneParam.VAir)^(1/3),
       ARoo=sum(building.zoneParam.ARoof),
       redeclare BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
-        oneZoneParam(heaLoadFacGrd=0, heaLoadFacOut=0)),
+        oneZoneParam(heaLoadFacGrd=0, heaLoadFacOut=0),
+      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial),
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
       redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater generation(
