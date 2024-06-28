@@ -5,10 +5,9 @@ model Case1Standard
   systemParameters(QBui_flow_nominal={16308.1}, TOda_nominal=263.15, THydSup_nominal={328.15}));
   extends Modelica.Icons.Example;
 
-  annotation (experiment(
-      StopTime=86400,
-      Interval=600,
-      __Dymola_Algorithm="Dassl"),
+  annotation (experiment(StopTime=172800
+     Interval=600
+     Tolerance=1e-06),
    __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/BAUSimStudy/Case1Standard.mos"
         "Simulate and plot"));
 end Case1Standard;

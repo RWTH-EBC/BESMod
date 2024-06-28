@@ -9,10 +9,9 @@ model BuildingsLibraryRoom "System using the buildings libraries room model"
     systemParameters(QBui_flow_nominal={2504}));
   extends Modelica.Icons.Example;
 
-annotation(experiment(
-      StopTime=864000,
-      Interval=600,
-   Tolerance=1e-06),
+annotation(experiment(StopTime=172800
+     Interval=600
+     Tolerance=1e-06),
    __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/ModelicaConferencePaper/BuildingsLibraryRoom.mos"
         "Simulate and plot"),
    __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/ModelicaConferencePaper/BuildingsLibraryRoom.mos"
