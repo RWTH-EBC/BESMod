@@ -22,8 +22,8 @@ initial equation
   building.thermalZone[1].ROM.roofRC.thermCapExt[1].T = 293.15;
 
 
-annotation(experiment(StopTime=172800
-     Interval=600
+annotation(experiment(StopTime=172800,
+     Interval=600,
      Tolerance=1e-06),
    __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/ModelicaConferencePaper/TEASERBuilding.mos"
         "Simulate and plot"),
