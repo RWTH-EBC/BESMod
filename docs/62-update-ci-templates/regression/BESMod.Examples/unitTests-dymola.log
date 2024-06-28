@@ -1,0 +1,56 @@
+Regression tests are only run for the following package:
+  BESMod.Examples
+*** Warning: Unspecified initial conditions in 'RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/HeatPumpAndBoiler/AfterBufferWithoutDHW.mos");'.
+
+*** Warning: Unspecified initial conditions in 'RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/HeatPumpAndBoiler/AfterBufferWithDHW.mos");'.
+
+*** Warning: Unspecified initial conditions in 'RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/DesignOptimization/BES.mos");'.
+
+*** Warning: Unspecified initial conditions in 'RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/TEASERHeatLoadCalculation/Example.mos");'.
+
+*** Warning: Unspecified initial conditions in 'RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/BAUSimStudy/Case1Standard.mos");'.
+
+*** Warning: Unspecified initial conditions in 'RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/HeatPumpAndBoiler/Parallel.mos");'.
+
+*** Warning: Unspecified initial conditions in 'RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/HighOrderModel/BES_HOM.mos");'.
+
+*** Error: Simulation failed for 'RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/SolarThermalSystem/SolarThermalAixLib.mos");'.
+*** Warning: Unspecified initial conditions in 'RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/SolarThermalSystem/SolarThermalAixLib.mos");'.
+
+*** Warning: Unspecified initial conditions in 'RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/GasBoilerBuildingOnly.mos");'.
+
+*** Warning: Unspecified initial conditions in 'RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/DesignOptimization/BESNoDHW.mos");'.
+
+*** Error: Simulation failed for 'RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/SolarThermalSystem/SolarThermalBuildings.mos");'.
+*** Warning: Unspecified initial conditions in 'RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/SolarThermalSystem/SolarThermalBuildings.mos");'.
+
+*** Warning: Unspecified initial conditions in 'RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/HeatPumpAndBoiler/Serial.mos");'.
+
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Examples_GasBoilerBuildingOnly.txt.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Examples_HeatPumpAndBoiler_Serial.txt.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Examples_HeatPumpAndBoiler_AfterBufferWithoutDHW.txt.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Examples_HeatPumpAndBoiler_Parallel.txt.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Examples_HeatPumpAndBoiler_AfterBufferWithDHW.txt.
+*** Error: Examples/TEASERHeatLoadCalculation/Example.mos uses hydraulic.generation.weaBus.TDryBul which does not exist in BESMod.Examples.TEASERHeatLoadCalculation.Example.mat.
+
+*** Error: Examples/TEASERHeatLoadCalculation/Example.mos uses hydraulic.generation.sigBusGen.TGenOutMea which does not exist in BESMod.Examples.TEASERHeatLoadCalculation.Example.mat.
+
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Examples_SolarThermalSystem_SolarThermalAixLib.txt.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Examples_SolarThermalSystem_SolarThermalBuildings.txt.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Examples_BAUSimStudy_Case1Standard.txt.
+*** Error: BESMod_Examples_ModelicaConferencePaper_TEASERBuilding.txt: Errors during result verification.
+           Did not find variable hydraulic.generation.weaBus.TDryBul in old results.
+           While processing file BESMod.Examples.ModelicaConferencePaper.TEASERBuilding.mat for variable hydraulic.generation.sigBusGen.TGenOutMea: Different end time between reference and test data.
+           tNew = [0.0, 172800.0]
+           tOld = [0.0, 864000.0]
+           Did not find variable outputs.building.TZone[1] in old results.
+           Did not find variable electricalGrid.PElecGen in old results.
+           Did not find variable electricalGrid.PElecLoa in old results.
+*** Error: Examples/ModelicaConferencePaper/BuildingsLibraryRoom.mos uses outputs.building.TZone[1] which does not exist in BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom.mat.
+
+Comparison files output by funnel are stored in the directory 'funnel_comp' of size 0.2 MB.
+Run 'python -c "import buildingspy.development.regressiontest as t; t.Tester(tool=\"dymola\").report()"'
+to access a summary of the comparison results.
+
+Script that runs unit tests had 15 warnings and 6 errors.
+

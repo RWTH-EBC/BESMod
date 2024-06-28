@@ -1,0 +1,23 @@
+﻿[
+  {
+    "comparison": {
+      "file_name": "BESMod.Examples.HighOrderModel.BES_HOM.mat",
+      "funnel_dirs": [],
+      "success_rate": 0,
+      "t_err_max": [],
+      "test_passed": [],
+      "var_groups": [],
+      "variables": [],
+      "warnings": []
+    },
+    "model": "BESMod.Examples.HighOrderModel.BES_HOM",
+    "simulation": {
+      "elapsed_time": 96.7,
+      "final_time": 172800,
+      "jacobians": 5603,
+      "start_time": 0,
+      "state_events": 295,
+      "success": true
+    }
+  }
+]
