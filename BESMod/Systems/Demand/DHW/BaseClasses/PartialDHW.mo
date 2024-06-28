@@ -6,6 +6,9 @@ partial model PartialDHW "Partial model for domestic hot water (DHW)"
   parameter Modelica.Units.SI.MassFlowRate mDHW_flow_nominal(min=1e-60)
     "Nominal mass flow rate"
                             annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
+  parameter Modelica.Units.SI.PressureDifference dpDHW_nominal=0
+    "Nominal pressure drop" annotation (Dialog(group=
+          "Design - Top Down: Parameters are given by the parent system"));
   parameter Modelica.Units.SI.Temperature TDHW_nominal
     "Nominal DHW temperature"
                              annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));

@@ -1,6 +1,7 @@
 within BESMod.Systems.Hydraulical.Distribution.BaseClasses;
 partial model PartialTwoStorageParallel "Partial model to later extent"
   extends BaseClasses.PartialDistribution(
+    final dpDHW_nominal=0,
     final dpDem_nominal={0},
     final dpSup_nominal={parThrWayVal.dpValve_nominal + max(parThrWayVal.dp_nominal)},
     final dTTraDHW_nominal=parStoDHW.dTLoadingHC1,
