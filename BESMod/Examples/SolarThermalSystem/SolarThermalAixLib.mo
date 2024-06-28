@@ -27,5 +27,8 @@ model SolarThermalAixLib "Solar thermal collector from AixLib"
           parPumSolThe));
 
   extends Modelica.Icons.Example;
-
+  annotation (
+    experiment(stopTime=172800
+     Interval=600
+     Tolerance=1e-06));
 end SolarThermalAixLib;

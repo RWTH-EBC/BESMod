@@ -26,15 +26,9 @@ model PartialCalculation "Partial model with common interfaces"
     redeclare BESMod.Systems.Demand.DHW.StandardProfiles DHW(
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.PassThrough calcmFlow,
-
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.NoDHW DHWProfile),
     redeclare BESMod.Systems.Demand.Building.TEASERThermalZone building,
     redeclare BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy
       parameterStudy);
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
-        coordinateSystem(preserveAspectRatio=false)),
-    experiment(
-      StopTime=172800,
-      Interval=3600,
-      __Dymola_Algorithm="Dassl"));
+
 end PartialCalculation;

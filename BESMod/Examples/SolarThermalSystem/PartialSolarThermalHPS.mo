@@ -61,11 +61,5 @@ partial model PartialSolarThermalHPS
      constrainedby
     BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration
      annotation (choicesAllMatching=true);
-  annotation (Icon(graphics,
-                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
-        coordinateSystem(preserveAspectRatio=false)),
-    experiment(
-      StopTime=864000,
-      Interval=600,
-      __Dymola_Algorithm="Dassl"));
+
 end PartialSolarThermalHPS;
