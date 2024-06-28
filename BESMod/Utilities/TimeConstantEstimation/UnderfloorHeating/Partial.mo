@@ -25,7 +25,8 @@ partial model Partial "Estimate UFH time constants"
           P=0.05,
           timeInt=100))),
     systemParameters(THydSup_nominal={308.15},
-                     use_dhw=false));
+                     use_dhw=false),
+    building(energyDynamics=Modelica.Fluid.Types.Dynamics.DynamicFreeInitial));
   annotation (experiment(
       StopTime=864000,
       Interval=600,
