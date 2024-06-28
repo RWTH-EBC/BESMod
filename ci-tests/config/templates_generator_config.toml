@@ -1,6 +1,6 @@
 dymola_image = "registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola_2022-miniconda"
 open_modelica_image = "registry.git.rwth-aachen.de/ebc/ebc_intern/openmodelica-docker:main"
-page = "https://rwth-ebc.github.io/BESMod/main/docs"
+page = "https://rwth-ebc.github.io/BESMod"
 github_repository = "RWTH-EBC/BESMod"
 stage_list = [ "html", "style", "check", "simulate", "regression",]
 library = "BESMod"

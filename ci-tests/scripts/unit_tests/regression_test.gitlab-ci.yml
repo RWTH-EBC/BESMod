@@ -15,8 +15,8 @@
 # arg_chart: --funnel-comp-flag  --error-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod --packages Examples Tutorial Utilities Systems 
 # packages_per_job: {'Examples': 'Examples', 'Systems': 'Systems', 'Other': 'Tutorial Utilities'}
 # modelicapyci_api_github_module: ModelicaPyCI.api_script.api_github
-# api_github_create_ref_arg: --post-pr-comment-flag  --show-plot-flag  --page https://rwth-ebc.github.io/BESMod/main/docs --github-token ${GITHUB_API_TOKEN} --main-branch main --working-branch $CI_COMMIT_REF_NAME --library BESMod --github-repository RWTH-EBC/BESMod 
-# api_github_arg: --post-pr-comment-flag  --prepare-plot-flag  --page https://rwth-ebc.github.io/BESMod/main/docs --github-token ${GITHUB_API_TOKEN} --main-branch main --working-branch $CI_COMMIT_REF_NAME --library BESMod --github-repository RWTH-EBC/BESMod 
+# api_github_create_ref_arg: --post-pr-comment-flag  --show-plot-flag  --page https://rwth-ebc.github.io/BESMod --github-token ${GITHUB_API_TOKEN} --main-branch main --working-branch $CI_COMMIT_REF_NAME --library BESMod --github-repository RWTH-EBC/BESMod 
+# api_github_arg: --post-pr-comment-flag  --prepare-plot-flag  --page https://rwth-ebc.github.io/BESMod --github-token ${GITHUB_API_TOKEN} --main-branch main --working-branch $CI_COMMIT_REF_NAME --library BESMod --github-repository RWTH-EBC/BESMod 
 # library: BESMod
 # xvfb_flag: xvfb-run -n 77
 # modelicapyci_structure_module: ModelicaPyCI.structure.config_structure
@@ -51,7 +51,7 @@ stages:
           fi
         - !reference [.activate_python_and_install_requirements, script]
         - python -m ModelicaPyCI.converter.google_charts --funnel-comp-flag  --error-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod --packages Examples Tutorial Utilities Systems 
-        - python -m ModelicaPyCI.api_script.api_github --post-pr-comment-flag  --prepare-plot-flag  --page https://rwth-ebc.github.io/BESMod/main/docs --github-token ${GITHUB_API_TOKEN} --main-branch main --working-branch $CI_COMMIT_REF_NAME --library BESMod --github-repository RWTH-EBC/BESMod 
+        - python -m ModelicaPyCI.api_script.api_github --post-pr-comment-flag  --prepare-plot-flag  --page https://rwth-ebc.github.io/BESMod --github-token ${GITHUB_API_TOKEN} --main-branch main --working-branch $CI_COMMIT_REF_NAME --library BESMod --github-repository RWTH-EBC/BESMod 
         - exit 1
     artifacts:
         when: on_failure
@@ -78,7 +78,7 @@ stages:
           fi
         - !reference [.activate_python_and_install_requirements, script]
         - python -m ModelicaPyCI.converter.google_charts --funnel-comp-flag  --error-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod --packages Examples Tutorial Utilities Systems 
-        - python -m ModelicaPyCI.api_script.api_github --post-pr-comment-flag  --prepare-plot-flag  --page https://rwth-ebc.github.io/BESMod/main/docs --github-token ${GITHUB_API_TOKEN} --main-branch main --working-branch $CI_COMMIT_REF_NAME --library BESMod --github-repository RWTH-EBC/BESMod 
+        - python -m ModelicaPyCI.api_script.api_github --post-pr-comment-flag  --prepare-plot-flag  --page https://rwth-ebc.github.io/BESMod --github-token ${GITHUB_API_TOKEN} --main-branch main --working-branch $CI_COMMIT_REF_NAME --library BESMod --github-repository RWTH-EBC/BESMod 
         - exit 1
     artifacts:
         when: on_failure
@@ -178,7 +178,7 @@ RegressionTest_Check_References:
         - echo $files_to_push > ci-tests/Configfiles/ci_new_created_reference.txt
         - message="CI message from ebc-aixlib-bot. Automatic push of CI with new regression reference files. Please pull the new files before push again. Plottet Results $GITLAB_Page/$CI_COMMIT_REF_NAME/charts/"
         - python -m ModelicaPyCI.converter.google_charts --new-ref-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod --packages Examples Tutorial Utilities Systems 
-        - python -m ModelicaPyCI.api_script.api_github --post-pr-comment-flag  --show-plot-flag  --page https://rwth-ebc.github.io/BESMod/main/docs --github-token ${GITHUB_API_TOKEN} --main-branch main --working-branch $CI_COMMIT_REF_NAME --library BESMod --github-repository RWTH-EBC/BESMod 
+        - python -m ModelicaPyCI.api_script.api_github --post-pr-comment-flag  --show-plot-flag  --page https://rwth-ebc.github.io/BESMod --github-token ${GITHUB_API_TOKEN} --main-branch main --working-branch $CI_COMMIT_REF_NAME --library BESMod --github-repository RWTH-EBC/BESMod 
         - !reference [.git_push, script]
         - exit 1 ;
 
