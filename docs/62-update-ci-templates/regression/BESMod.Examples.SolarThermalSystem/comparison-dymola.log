@@ -12,12 +12,12 @@
     },
     "model": "BESMod.Examples.SolarThermalSystem.SolarThermalAixLib",
     "simulation": {
-      "elapsed_time": 0,
+      "elapsed_time": 6.15,
       "final_time": 172800,
-      "jacobians": 0,
+      "jacobians": 2072,
       "start_time": 0,
-      "state_events": 0,
-      "success": false
+      "state_events": 38,
+      "success": true
     }
   },
   {
@@ -33,12 +33,12 @@
     },
     "model": "BESMod.Examples.SolarThermalSystem.SolarThermalBuildings",
     "simulation": {
-      "elapsed_time": 0,
+      "elapsed_time": 6.59,
       "final_time": 172800,
-      "jacobians": 0,
+      "jacobians": 2304,
       "start_time": 0,
-      "state_events": 0,
-      "success": false
+      "state_events": 48,
+      "success": true
     }
   }
 ]

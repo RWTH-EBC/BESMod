@@ -202,13 +202,6 @@ The DAE has 12772 scalar unknowns and 12772 scalar equations.
 Warning: The initial conditions are not fully specified.
 Dymola has selected default initial conditions.
 Warning: Assuming fixed start value for the continuous states:
-    building.thermalZone[1].ROM.extWallRC.thermCapExt[1].T(start =       building.thermalZone[1].ROM.extWallRC.T_start)
-    building.thermalZone[1].ROM.floorRC.thermCapExt[1].T(start =       building.thermalZone[1].ROM.floorRC.T_start)
-    building.thermalZone[1].ROM.intWallRC.thermCapInt[1].T(start =       building.thermalZone[1].ROM.intWallRC.T_start)
-    building.thermalZone[1].ROM.roofRC.thermCapExt[1].T(start = building.thermalZone[1].ROM.roofRC.T_start)
-    building.thermalZone[1].ROM.volAir.dynBal.m(start = 483.48248*      building.thermalZone[1].ROM.volAir.rho_start)
-    building.thermalZone[1].ROM.volAir.dynBal.mXi[](each start = 483.48248*(      building.thermalZone[1].ROM.volAir.dynBal.rho_start*building.thermalZone[1].ROM.volAir.dynBal.X_start[1]))
-    building.thermalZone[1].ROM.volAir.dynBal.U(start = 483.48248*(      building.thermalZone[1].ROM.volAir.dynBal.rho_start*(smooth(5, 1006.0*((      building.thermalZone[1].ROM.volAir.dynBal.T_start-273.15)*(1-      building.thermalZone[1].ROM.volAir.dynBal.X_start[1]))+(2501014.5+1860*(      building.thermalZone[1].ROM.volAir.dynBal.T_start-273.15))*      building.thermalZone[1].ROM.volAir.dynBal.X_start[1])-84437.5)))
     DHW.pump.vol.dynBal.U(start = 4165531.824*(DHW.pump.vol.dynBal.fluidVolume*(      DHW.pump.vol.dynBal.T_start-273.15)))
     hydraulic.distribution.bufSto.bottomCover.loadIns.T(start = 293.15)
     hydraulic.distribution.bufSto.bottomCover.loadWall.T(start = 293.15)
@@ -308,22 +301,22 @@ Statistics
  
 Original Model
   Number of components: 2538
-  Variables: 29089
+  Variables: 29091
   Constants: 535 (535 scalars)
-  Parameters: 13367 (14906 scalars)
+  Parameters: 13369 (14908 scalars)
   Unknowns: 15187 (13094 scalars)
   Differentiated variables: 330 scalars
   Equations: 12220
   Nontrivial: 9614
 Translated Model
-  Constants: 11553 scalars
+  Constants: 11555 scalars
   Free parameters: 1595 scalars
   Parameter depending: 4388 scalars
   Outputs: 59 scalars
   Continuous time states: 237 scalars
-  Time-varying variables: 3096 scalars
-  Alias variables: 7903 scalars
-  Assumed default initial conditions: 85
+  Time-varying variables: 3100 scalars
+  Alias variables: 7899 scalars
+  Assumed default initial conditions: 78
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,   3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 3, 2, 2, 2, 2, 2,   2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 3, 2, 2, 4, 4, 2, 2}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
@@ -333,8 +326,8 @@ Translated Model
   Initialization problem
     Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2}
     Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0}
-    Sizes of nonlinear systems of equations: {11, 25, 7, 3, 59, 1}
-    Sizes after manipulation of the nonlinear systems: {5, 2, 1, 1, 5, 1}
+    Sizes of nonlinear systems of equations: {11, 25, 70, 7, 3, 1}
+    Sizes after manipulation of the nonlinear systems: {5, 2, 7, 1, 1, 1}
     Number of numerical Jacobians: 0
  
 Selected continuous time states
@@ -578,8 +571,8 @@ Statically selected continuous time states
   hydraulic.transfer.vol.dynBal.U
  
 Warning: WARNINGS have been issued.
-Failed
- = false
+Finished
+ = true
 
     
 Declaring variable: Boolean rScript ;
@@ -774,13 +767,6 @@ The DAE has 13238 scalar unknowns and 13238 scalar equations.
 Warning: The initial conditions are not fully specified.
 Dymola has selected default initial conditions.
 Warning: Assuming fixed start value for the continuous states:
-    building.thermalZone[1].ROM.extWallRC.thermCapExt[1].T(start =       building.thermalZone[1].ROM.extWallRC.T_start)
-    building.thermalZone[1].ROM.floorRC.thermCapExt[1].T(start =       building.thermalZone[1].ROM.floorRC.T_start)
-    building.thermalZone[1].ROM.intWallRC.thermCapInt[1].T(start =       building.thermalZone[1].ROM.intWallRC.T_start)
-    building.thermalZone[1].ROM.roofRC.thermCapExt[1].T(start = building.thermalZone[1].ROM.roofRC.T_start)
-    building.thermalZone[1].ROM.volAir.dynBal.m(start = 483.48248*      building.thermalZone[1].ROM.volAir.rho_start)
-    building.thermalZone[1].ROM.volAir.dynBal.mXi[](each start = 483.48248*(      building.thermalZone[1].ROM.volAir.dynBal.rho_start*building.thermalZone[1].ROM.volAir.dynBal.X_start[1]))
-    building.thermalZone[1].ROM.volAir.dynBal.U(start = 483.48248*(      building.thermalZone[1].ROM.volAir.dynBal.rho_start*(smooth(5, 1006.0*((      building.thermalZone[1].ROM.volAir.dynBal.T_start-273.15)*(1-      building.thermalZone[1].ROM.volAir.dynBal.X_start[1]))+(2501014.5+1860*(      building.thermalZone[1].ROM.volAir.dynBal.T_start-273.15))*      building.thermalZone[1].ROM.volAir.dynBal.X_start[1])-84437.5)))
     DHW.pump.vol.dynBal.U(start = 4165531.824*(DHW.pump.vol.dynBal.fluidVolume*(      DHW.pump.vol.dynBal.T_start-273.15)))
     hydraulic.distribution.bufSto.bottomCover.loadIns.T(start = 293.15)
     hydraulic.distribution.bufSto.bottomCover.loadWall.T(start = 293.15)
@@ -884,22 +870,22 @@ Statistics
  
 Original Model
   Number of components: 2608
-  Variables: 29930
+  Variables: 29932
   Constants: 562 (562 scalars)
-  Parameters: 13637 (15154 scalars)
+  Parameters: 13639 (15156 scalars)
   Unknowns: 15731 (13568 scalars)
   Differentiated variables: 336 scalars
   Equations: 12562
   Nontrivial: 9868
 Translated Model
-  Constants: 11862 scalars
+  Constants: 11864 scalars
   Free parameters: 1605 scalars
   Parameter depending: 4318 scalars
   Outputs: 57 scalars
   Continuous time states: 239 scalars
-  Time-varying variables: 3295 scalars
-  Alias variables: 8204 scalars
-  Assumed default initial conditions: 89
+  Time-varying variables: 3299 scalars
+  Alias variables: 8200 scalars
+  Assumed default initial conditions: 82
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,   3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 3, 2, 2, 2, 2, 2,   2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 3, 2, 2, 4, 4, 2, 2}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
@@ -909,8 +895,8 @@ Translated Model
   Initialization problem
     Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2}
     Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0}
-    Sizes of nonlinear systems of equations: {11, 7, 3, 59, 25, 1}
-    Sizes after manipulation of the nonlinear systems: {5, 1, 1, 5, 1, 1}
+    Sizes of nonlinear systems of equations: {11, 70, 7, 3, 25, 1}
+    Sizes after manipulation of the nonlinear systems: {5, 7, 1, 1, 1, 1}
     Number of numerical Jacobians: 0
  
 Selected continuous time states
@@ -1156,8 +1142,8 @@ Statically selected continuous time states
   hydraulic.transfer.vol.dynBal.U
  
 Warning: WARNINGS have been issued.
-Failed
- = false
+Finished
+ = true
 
     
 Declaring variable: Boolean rScript ;

@@ -12,7 +12,7 @@
     },
     "model": "BESMod.Examples.HighOrderModel.BES_HOM",
     "simulation": {
-      "elapsed_time": 96.7,
+      "elapsed_time": 117,
       "final_time": 172800,
       "jacobians": 5603,
       "start_time": 0,

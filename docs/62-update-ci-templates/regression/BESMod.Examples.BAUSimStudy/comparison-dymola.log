@@ -1,0 +1,23 @@
+﻿[
+  {
+    "comparison": {
+      "file_name": "BESMod.Examples.BAUSimStudy.Case1Standard.mat",
+      "funnel_dirs": [],
+      "success_rate": 0,
+      "t_err_max": [],
+      "test_passed": [],
+      "var_groups": [],
+      "variables": [],
+      "warnings": []
+    },
+    "model": "BESMod.Examples.BAUSimStudy.Case1Standard",
+    "simulation": {
+      "elapsed_time": 4.14,
+      "final_time": 172800,
+      "jacobians": 4638,
+      "start_time": 0,
+      "state_events": 252,
+      "success": true
+    }
+  }
+]
