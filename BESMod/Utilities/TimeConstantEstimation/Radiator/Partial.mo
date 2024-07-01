@@ -12,7 +12,6 @@ partial model Partial "Estimate UFH time constants"
         BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator
         transfer(
         f_design=QBuiNoRetrofit_flow_nominal ./ systemParameters.QBui_flow_nominal,
-
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
           parTra,
@@ -28,7 +27,8 @@ partial model Partial "Estimate UFH time constants"
           P=0.05,
           timeInt=100))),
     systemParameters(THydSup_nominal={328.15},
-                     use_dhw=false));
+                     use_dhw=false),
+    building(energyDynamics=Modelica.Fluid.Types.Dynamics.DynamicFreeInitial));
 
    parameter Modelica.Units.SI.HeatFlowRate QBuiNoRetrofit_flow_nominal[systemParameters.nZones]
      "Nominal heat flow rate before possible retrofits";
