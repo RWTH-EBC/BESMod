@@ -11,6 +11,7 @@ partial model PartialSolarThermalHPS
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial),
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
+      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare hydGeneration generation,
       redeclare BESMod.Systems.Hydraulical.Control.MonoenergeticHeatPumpSystem
         control(
@@ -44,6 +45,7 @@ partial model PartialSolarThermalHPS
           parTra,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum)),
     redeclare Systems.Demand.DHW.StandardProfiles DHW(
+      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic calcmFlow),

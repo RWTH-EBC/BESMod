@@ -11,7 +11,8 @@ package BaseClasses "Contains partial example case"
           oneZoneParam(heaLoadFacGrd=0, heaLoadFacOut=0),
         energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial),
       redeclare BESMod.Systems.Control.NoControl control,
-      redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(redeclare
+      redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
+        energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,   redeclare
           Systems.Hydraulical.Control.HybridHeatPumpSystem control(
           redeclare
             BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
@@ -46,6 +47,7 @@ package BaseClasses "Contains partial example case"
             BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
             parTra)),
       redeclare Systems.Demand.DHW.StandardProfiles DHW(
+        energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
         redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic

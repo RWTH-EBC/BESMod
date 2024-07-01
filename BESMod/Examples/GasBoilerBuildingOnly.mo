@@ -10,6 +10,7 @@ model GasBoilerBuildingOnly
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Ventilation.NoVentilation ventilation,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
+      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare BESMod.Systems.Hydraulical.Generation.GasBoiler generation(
         dTTra_nominal={10},
         redeclare
@@ -38,6 +39,7 @@ model GasBoilerBuildingOnly
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
           parRad)),
     redeclare BESMod.Systems.Demand.DHW.StandardProfiles DHW(
+      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.PassThrough calcmFlow),
