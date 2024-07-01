@@ -26,7 +26,8 @@ partial model PartialTwoStorageParallelWithHeaters
 
     replaceable parameter BESMod.Systems.Hydraulical.Generation.RecordsCollection.AutoparameterBoiler
     parBoi if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.Boiler
-    constrainedby AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition(
+    constrainedby
+    AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition(
       Q_nom=max(11000, QHeaAftBuf_flow_nominal))
     "Parameters for Boiler"
     annotation(Placement(transformation(extent={{64,124},{80,140}})),
@@ -69,8 +70,11 @@ partial model PartialTwoStorageParallelWithHeaters
     final m_flow_nominal=m_flow_nominal[1],
     final m_flow_small=1E-4*abs(m_flow_nominal[1]),
     final show_T=show_T,
-    final initType=Modelica.Blocks.Types.Init.NoInit,
-    final transferHeat=false,
+    final tau=parTemSen.tau,
+    final initType=parTemSen.initType,
+    final transferHeat=parTemSen.transferHeat,
+    final TAmb=parTemSen.TAmb,
+    final tauHeaTra=parTemSen.tauHeaTra,
     final rho_default=rho,
     final p_start=p_start,
     final T_start=T_start,
