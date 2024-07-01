@@ -1,7 +1,5 @@
 Regression tests are only run for the following package:
   BESMod.Examples
-*** Warning: Unspecified initial conditions in 'RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/HeatPumpAndBoiler/AfterBufferWithDHW.mos");'.
-
 *** Warning: BESMod.Examples.GasBoilerBuildingOnly: Found translation statistics for initialization for linear in old but not in new results.
  Old = 0, 0, 0, 0, 0
 *** Error: BESMod_Examples_DesignOptimization_BESNoDHW.txt: Errors during result verification.
@@ -15,5 +13,5 @@ Comparison files output by funnel are stored in the directory 'funnel_comp' of s
 Run 'python -c "import buildingspy.development.regressiontest as t; t.Tester(tool=\"dymola\").report()"'
 to access a summary of the comparison results.
 
-Script that runs unit tests had 3 warnings and 1 errors.
+Script that runs unit tests had 2 warnings and 1 errors.
 
