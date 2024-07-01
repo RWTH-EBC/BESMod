@@ -19,9 +19,7 @@ model BESNoDHW "Example to demonstrate usage without DHW"
                 AixLib.DataBase.HeatPump.Functions.Characteristics.ConstantCoP
                 ( powerCompressor=2000, CoP=2)),
         redeclare
-          BESMod.Systems.Hydraulical.Components.Frosting.ZhuIceFacCalculation
-          frost(density=200, redeclare function frostMapFunc =
-              BESMod.Systems.Hydraulical.Components.Frosting.Functions.ZhuFrostingMapCico),
+          BESMod.Systems.Hydraulical.Components.Frosting.NoFrosting frost,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare package Medium_eva = AixLib.Media.Air,
         redeclare

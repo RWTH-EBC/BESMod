@@ -30,7 +30,7 @@ model AfterBufferWithDHW
         distribution(
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
-          parTemSen,
+          parTemSen(initType=Modelica.Blocks.Types.Init.InitialOutput),
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorage
           parStoBuf(VPerQ_flow=parameterStudy.VPerQFlow),

@@ -3,6 +3,8 @@ model BES_HOM
   extends BESMod.Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
     redeclare BESMod.Systems.Demand.Building.AixLibHighOrder building(
+      energyDynamicsWalls=Modelica.Fluid.Types.Dynamics.FixedInitial,
+      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       useConstVentRate=false,
       TimeCorrection=0,
       DiffWeatherDataTime=Modelica.Units.Conversions.to_hour(weaDat.timZon),
@@ -17,6 +19,7 @@ model BES_HOM
         HOMBuiEnv),
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
+      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater
         generation(
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
@@ -77,6 +80,7 @@ model BES_HOM
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
           parTra)),
     redeclare BESMod.Systems.Demand.DHW.StandardProfiles DHW(
+      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
