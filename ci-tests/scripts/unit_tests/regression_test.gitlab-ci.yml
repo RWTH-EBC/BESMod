@@ -44,7 +44,7 @@ stages:
         - !reference [.custom_install_additional_modelica_libraries, script]
     script:
         - export CI_PYTHON_CONFIG_FILE="../ci-tests/config/modelica_py_ci_config.toml"
-        - cd BESMod && xvfb-run -n 77 python -m ModelicaPyCI.unittest.reference_check --changed-flag  --batch  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages $lib_package --library BESMod 
+        - cd BESMod && xvfb-run -n 77 python -m ModelicaPyCI.unittest.reference_check --batch  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages $lib_package --library BESMod 
     after_script:
         - if ! cat ci-tests/Configfiles/exit.sh | grep "FAIL"; then
             exit 0;
