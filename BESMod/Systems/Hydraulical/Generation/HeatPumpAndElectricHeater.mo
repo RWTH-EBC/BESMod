@@ -10,8 +10,8 @@ model HeatPumpAndElectricHeater "Heat pump with an electric heater in series"
   AixLib.Fluid.HeatExchangers.HeatingRod eleHea(
     redeclare package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
-    final m_flow_nominal=m_flow_nominal[1],
-    final m_flow_small=1E-4*abs(m_flow_nominal[1]),
+    final m_flow_nominal=m_flow_design[1],
+    final m_flow_small=1E-4*abs(m_flow_design[1]),
     final show_T=show_T,
     final dp_nominal=parEleHea.dp_nominal,
     final tau=30,

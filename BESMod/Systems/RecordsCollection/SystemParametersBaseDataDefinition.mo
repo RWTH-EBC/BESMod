@@ -65,6 +65,17 @@ record SystemParametersBaseDataDefinition
   parameter Boolean use_ventilation=true "=false to disable ventilation subsystem" annotation(Dialog(group="System layout"));
   parameter Boolean use_dhw=use_hydraulic "=false to disable DHW subsystem" annotation(Dialog(group="System layout", enable=use_hydraulic));
   parameter Boolean use_elecHeating=true "= false to disable heating using the electric system" annotation(Dialog(group="System layout"));
+
+  parameter Modelica.Units.SI.HeatFlowRate QBuiOld_flow_design[nZones]=QBui_flow_nominal
+    "Nominal design heating load at outdoor air temperature of each zone in the old builing state"
+    annotation (Dialog(group="Old building state"));
+  parameter Modelica.Units.SI.Temperature THydSupOld_design[nZones](
+    each min=233.15,
+    each max=373.15,
+    each start=313.15) = THydSup_nominal
+    "Hydraulic supply temperature at design condition in the transfer system in the old builing state"
+    annotation (Dialog(group="Old building state"));
+
   annotation (defaultComponentName = "baseParameterAssumptions", Icon(graphics,
                                                                       coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));

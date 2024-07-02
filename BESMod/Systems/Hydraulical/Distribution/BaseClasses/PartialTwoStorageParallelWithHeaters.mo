@@ -36,8 +36,8 @@ partial model PartialTwoStorageParallelWithHeaters
   BESMod.Systems.Hydraulical.Components.ElectricHeaterWithSecurityControl hea(
     redeclare package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
-    final m_flow_nominal=m_flow_nominal[1],
-    final m_flow_small=1E-4*abs(m_flow_nominal[1]),
+    final m_flow_nominal=m_flow_design[1],
+    final m_flow_small=1E-4*abs(m_flow_design[1]),
     final show_T=show_T,
     final dp_nominal=parEleHeaAftBuf.dp_nominal,
     final tau=30,
@@ -67,8 +67,8 @@ partial model PartialTwoStorageParallelWithHeaters
   AixLib.Fluid.BoilerCHP.BoilerNoControl boi(
     redeclare package Medium = AixLib.Media.Water,
     final allowFlowReversal=true,
-    final m_flow_nominal=m_flow_nominal[1],
-    final m_flow_small=1E-4*abs(m_flow_nominal[1]),
+    final m_flow_nominal=m_flow_design[1],
+    final m_flow_small=1E-4*abs(m_flow_design[1]),
     final show_T=show_T,
     final tau=parTemSen.tau,
     final initType=parTemSen.initType,
