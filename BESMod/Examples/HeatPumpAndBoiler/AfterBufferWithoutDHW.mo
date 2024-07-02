@@ -30,7 +30,7 @@ model AfterBufferWithoutDHW
         distribution(
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
-          parTemSen,
+          parTemSen(initType=Modelica.Blocks.Types.Init.InitialOutput),
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorage
           parStoBuf(VPerQ_flow=parameterStudy.VPerQFlow),
@@ -43,8 +43,9 @@ model AfterBufferWithoutDHW
 
   extends Modelica.Icons.Example;
 
-  annotation (experiment(
-      StopTime=31536000,
-      Interval=600,
-      __Dymola_Algorithm="Dassl"));
+  annotation (experiment(StopTime=172800,
+     Interval=600,
+     Tolerance=1e-06),
+   __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/HeatPumpAndBoiler/AfterBufferWithoutDHW.mos"
+        "Simulate and plot"));
 end AfterBufferWithoutDHW;

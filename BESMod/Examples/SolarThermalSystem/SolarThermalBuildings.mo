@@ -3,7 +3,8 @@ model SolarThermalBuildings
   "HPS which is supported by a solar thermal collector"
   extends BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS(redeclare
       model hydGeneration =
-        BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump (
+        BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump
+        (
         use_eleHea=false,
         redeclare model PerDataMainHP =
             AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (refrigerant=
@@ -29,5 +30,10 @@ model SolarThermalBuildings
           parPumSolThe));
 
   extends Modelica.Icons.Example;
-
+  annotation (
+    experiment(StopTime=172800,
+     Interval=600,
+     Tolerance=1e-06),
+   __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/SolarThermalSystem/SolarThermalBuildings.mos"
+        "Simulate and plot"));
 end SolarThermalBuildings;

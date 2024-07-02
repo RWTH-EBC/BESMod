@@ -59,6 +59,7 @@ partial model PartialBuildingEnergySystem "Partial BES"
     Demand.DHW.BaseClasses.PartialDHW(
     redeclare final package Medium = MediumDHW,
     final TDHW_nominal=systemParameters.TSetDHW,
+    final dpDHW_nominal=hydraulic.distribution.dpDHW_nominal,
     final TDHWCold_nominal=systemParameters.TDHWWaterCold,
     final subsystemDisabled=not systemParameters.use_dhw)
                                               annotation (choicesAllMatching=true, Placement(

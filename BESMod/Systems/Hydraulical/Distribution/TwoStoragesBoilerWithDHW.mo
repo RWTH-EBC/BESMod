@@ -20,7 +20,8 @@ model TwoStoragesBoilerWithDHW
         annotation(Dialog(group="Component data"));
 
   replaceable parameter BESMod.Systems.Hydraulical.Generation.RecordsCollection.AutoparameterBoiler
-    parBoi constrainedby AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition(
+    parBoi constrainedby
+    AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition(
       Q_nom=max(11000, Q_flow_nominal[1]))
     "Parameters for Boiler"
     annotation(Placement(transformation(extent={{44,124},{58,138}})),
@@ -69,12 +70,15 @@ model TwoStoragesBoilerWithDHW
     final m_flow_nominal=m_flow_nominal[1],
     final m_flow_small=1E-4*abs(m_flow_nominal[1]),
     final show_T=show_T,
-    final initType=Modelica.Blocks.Types.Init.NoInit,
-    final transferHeat=false,
     final dp_nominal=m_flow_nominal[1]^2*boi.a/(rho^2),
     final rho_default=rho,
     final p_start=p_start,
     final T_start=T_start,
+    final tau=parTemSen.tau,
+    final initType=parTemSen.initType,
+    final transferHeat=parTemSen.transferHeat,
+    final TAmb=parTemSen.TAmb,
+    final tauHeaTra=parTemSen.tauHeaTra,
     final etaLoadBased=parBoi.eta,
     final G=0.003*parBoi.Q_nom/50,
     final C=1.5*parBoi.Q_nom,

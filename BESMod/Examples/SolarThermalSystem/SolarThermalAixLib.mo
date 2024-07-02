@@ -27,5 +27,10 @@ model SolarThermalAixLib "Solar thermal collector from AixLib"
           parPumSolThe));
 
   extends Modelica.Icons.Example;
-
+  annotation (
+    experiment(StopTime=172800,
+     Interval=600,
+     Tolerance=1e-06),
+   __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/SolarThermalSystem/SolarThermalAixLib.mos"
+        "Simulate and plot"));
 end SolarThermalAixLib;

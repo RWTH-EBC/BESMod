@@ -34,7 +34,8 @@ Modelica.Blocks.Math.UnitConversions.From_degC fromDegC
     final m_flow_small=1E-4*abs(mDHW_flow_nominal),
     final show_T=show_T,
     final m_flow_nominal=mDHW_flow_nominal,
-    final dp_nominal(displayUnit="Pa") = 100,
+    final dp_nominal(displayUnit="Pa") = if dpDHW_nominal <> 0 then
+      dpDHW_nominal else 100,
     final addPowerToMedium=parPum.addPowerToMedium,
     final tau=parPum.tau,
     final use_inputFilter=parPum.use_inputFilter,
