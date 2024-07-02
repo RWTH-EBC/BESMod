@@ -13,8 +13,13 @@ model StandardProfiles "DHW profiles based on EU 812/2013"
       enable=not use_dhwCalc and use_dhw));
 
 
-  annotation (Documentation(info="<html>
-<p></span><span style=\"font-size: 8.25pt;\">Source for EU Regulation 812/2013:</p>
-<p></span><span style=\"font-size: 8.25pt;\">https://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2013:239:0083:0135:en:PDF</p>
+  annotation (Documentation(info="<html><p>
+  <span style=\"font-size: 8.25pt;\">Source for EU Regulation
+  812/2013:</span>
+</p>
+<p>
+  <span style=
+  \"font-size: 8.25pt;\">https://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2013:239:0083:0135:en:PDF</span>
+</p>
 </html>"));
 end StandardProfiles;

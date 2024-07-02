@@ -6,9 +6,11 @@ partial model PartialCase
       redeclare BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
         oneZoneParam(heaLoadFacGrd=0, heaLoadFacOut=0),
       hBui=sum(building.zoneParam.VAir)^(1/3),
-      ABui=sum(building.zoneParam.VAir)^(2/3)),
+      ABui=sum(building.zoneParam.VAir)^(2/3),
+      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial),
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
+      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater generation(
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare package Medium_eva = AixLib.Media.Air,
@@ -80,6 +82,7 @@ partial model PartialCase
           parTra,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum)),
     redeclare Systems.Demand.DHW.StandardProfiles DHW(
+      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
@@ -96,7 +99,7 @@ partial model PartialCase
   parameter Modelica.Units.SI.Temperature TBiv=271.15
     "Nominal bivalence temperature. = TOda_nominal for monovalent systems.";
   annotation (experiment(
-      StopTime=31536000,
+      StopTime=172800,
       Interval=600,
       __Dymola_Algorithm="Dassl"));
 end PartialCase;

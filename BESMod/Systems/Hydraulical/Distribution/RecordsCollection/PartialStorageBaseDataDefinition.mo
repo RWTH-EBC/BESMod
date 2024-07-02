@@ -118,7 +118,10 @@ partial record PartialStorageBaseDataDefinition
  annotation (Icon(graphics,
                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)),
-    Documentation(info="<html>
-<p><img src=\"modelica://BESMod/Resources/Images/equations/heatTraNLayerWall.png\"/></p>
+    Documentation(info="<html><p>
+  <img src=
+  \"modelica://BESMod/Resources/Images/equations/heatTraNLayerWall.png\"
+  alt=\"1\">
+</p>
 </html>"));
 end PartialStorageBaseDataDefinition;

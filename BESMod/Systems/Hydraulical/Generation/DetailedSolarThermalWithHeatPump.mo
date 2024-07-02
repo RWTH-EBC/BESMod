@@ -22,6 +22,7 @@ model DetailedSolarThermalWithHeatPump
     Placement(transformation(extent={{-80,-158},{-66,-144}})));
   Buildings.Fluid.SolarCollectors.EN12975 solCol(
     redeclare final package Medium = Medium,
+    final energyDynamics=energyDynamics,
     final allowFlowReversal=true,
     final m_flow_small=1E-4*abs(solarThermalParas.m_flow_nominal),
     final show_T=false,

@@ -7,9 +7,11 @@ model BESNoDHW "Example to demonstrate usage without DHW"
       hBui=sum(building.zoneParam.VAir)^(1/3),
       ARoo=sum(building.zoneParam.ARoof),
       redeclare BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
-        oneZoneParam(heaLoadFacGrd=0, heaLoadFacOut=0)),
+        oneZoneParam(heaLoadFacGrd=0, heaLoadFacOut=0),
+      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial),
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
+      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater generation(
         redeclare model PerDataRevHP =
             AixLib.DataBase.Chiller.PerformanceData.PolynomalApproach (redeclare
@@ -17,9 +19,7 @@ model BESNoDHW "Example to demonstrate usage without DHW"
                 AixLib.DataBase.HeatPump.Functions.Characteristics.ConstantCoP
                 ( powerCompressor=2000, CoP=2)),
         redeclare
-          BESMod.Systems.Hydraulical.Components.Frosting.ZhuIceFacCalculation
-          frost(density=200, redeclare function frostMapFunc =
-              BESMod.Systems.Hydraulical.Components.Frosting.Functions.ZhuFrostingMapCico),
+          BESMod.Systems.Hydraulical.Components.Frosting.NoFrosting frost,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare package Medium_eva = AixLib.Media.Air,
         redeclare
@@ -85,6 +85,7 @@ model BESNoDHW "Example to demonstrate usage without DHW"
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
           parTra)),
     redeclare Systems.Demand.DHW.StandardProfiles DHW(
+      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
@@ -92,7 +93,7 @@ model BESNoDHW "Example to demonstrate usage without DHW"
     redeclare Systems.UserProfiles.TEASERProfiles userProfiles,
     redeclare AachenSystem systemParameters(use_ventilation=false, use_dhw=
           false),
-    redeclare ParametersToChange parameterStudy,
+    redeclare ParametersToChange parameterStudy(VPerQFlow=1),
     redeclare final package MediumDHW = AixLib.Media.Water,
     redeclare final package MediumZone = AixLib.Media.Air,
     redeclare final package MediumHyd = AixLib.Media.Water,
@@ -100,8 +101,9 @@ model BESNoDHW "Example to demonstrate usage without DHW"
 
   extends Modelica.Icons.Example;
 
-  annotation (experiment(
-      StopTime=86400,
-      Interval=600,
-      __Dymola_Algorithm="Dassl"));
+  annotation (experiment(StopTime=172800,
+     Interval=600,
+     Tolerance=1e-06),
+   __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/DesignOptimization/BESNoDHW.mos"
+        "Simulate and plot"));
 end BESNoDHW;

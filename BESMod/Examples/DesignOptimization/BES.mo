@@ -7,19 +7,19 @@ model BES
       hBui=sum(building.zoneParam.VAir)^(1/3),
       ARoo=sum(building.zoneParam.ARoof),
       redeclare BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
-        oneZoneParam(heaLoadFacGrd=0, heaLoadFacOut=0)),
+        oneZoneParam(heaLoadFacGrd=0, heaLoadFacOut=0),
+      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial),
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
+      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater generation(
         redeclare model PerDataRevHP =
             AixLib.DataBase.Chiller.PerformanceData.PolynomalApproach (redeclare
               function PolyData =
                 AixLib.DataBase.HeatPump.Functions.Characteristics.ConstantCoP
                 ( powerCompressor=2000, CoP=2)),
-        redeclare
-          BESMod.Systems.Hydraulical.Components.Frosting.ZhuIceFacCalculation
-          frost(density=200, redeclare function frostMapFunc =
-              BESMod.Systems.Hydraulical.Components.Frosting.Functions.ZhuFrostingMapCico),
+        redeclare BESMod.Systems.Hydraulical.Components.Frosting.NoFrosting
+          frost,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare package Medium_eva = AixLib.Media.Air,
         redeclare
@@ -43,11 +43,14 @@ model BES
             flowsheet="VIPhaseSeparatorFlowsheet"),
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
-          parTemSen),
+          parTemSen(transferHeat=true)),
       redeclare Systems.Hydraulical.Control.MonoenergeticHeatPumpSystem control(
         redeclare
           BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
           valCtrl,
+        redeclare model BuildingSupplySetTemperature =
+            BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.IdealHeatingCurve
+            (dTAddCon=5),
         redeclare model DHWHysteresis =
             BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.PartParallelBivalent
             (
@@ -96,6 +99,7 @@ model BES
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
           parTra)),
     redeclare Systems.Demand.DHW.StandardProfiles DHW(
+      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
@@ -110,8 +114,9 @@ model BES
 
   extends Modelica.Icons.Example;
 
-  annotation (experiment(
-      StopTime=86400,
-      Interval=600,
-      __Dymola_Algorithm="Dassl"));
+  annotation (experiment(StopTime=172800,
+     Interval=600,
+     Tolerance=1e-06),
+   __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/DesignOptimization/BES.mos"
+        "Simulate and plot"));
 end BES;

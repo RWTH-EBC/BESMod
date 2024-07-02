@@ -11,7 +11,10 @@ record PartialDHWTap
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)),
-    Documentation(info="<html>
-<p></span><span style=\"font-size: 8.25pt;\">These records are based on the EU Regulation 812/2013 profiles and the approach in the EN 15450 to size DHW tanks based on a critical time period.</p>
+    Documentation(info="<html><p>
+  <span style=\"font-size: 8.25pt;\">These records are based on the EU
+  Regulation 812/2013 profiles and the approach in the EN 15450 to size
+  DHW tanks based on a critical time period.</span>
+</p>
 </html>"));
 end PartialDHWTap;

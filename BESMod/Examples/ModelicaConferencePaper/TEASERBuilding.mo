@@ -15,13 +15,13 @@ model TEASERBuilding
       userProfiles,
     systemParameters(use_hydraulic=true, use_ventilation=true));
   extends Modelica.Icons.Example;
-initial equation
-  building.thermalZone[1].ROM.extWallRC.thermCapExt[1].T = 293.15;
-  building.thermalZone[1].ROM.floorRC.thermCapExt[1].T = 293.15;
-  building.thermalZone[1].ROM.intWallRC.thermCapInt[1].T = 293.15;
-  building.thermalZone[1].ROM.roofRC.thermCapExt[1].T = 293.15;
 
 
-annotation(__Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/ModelicaConferencePaper/TEASERBuilding.mos"
+annotation(experiment(StopTime=172800,
+     Interval=600,
+     Tolerance=1e-06),
+   __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/ModelicaConferencePaper/TEASERBuilding.mos"
+        "Simulate and plot"),
+   __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/ModelicaConferencePaper/TEASERBuilding.mos"
         "Simulate and plot"));
 end TEASERBuilding;

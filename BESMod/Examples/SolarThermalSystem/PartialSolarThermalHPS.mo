@@ -7,9 +7,11 @@ partial model PartialSolarThermalHPS
       hBui=sum(building.zoneParam.VAir)^(1/3),
       ABui=sum(building.zoneParam.VAir)^(2/3),
       redeclare BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
-        oneZoneParam(heaLoadFacGrd=0, heaLoadFacOut=0)),
+        oneZoneParam(heaLoadFacGrd=0, heaLoadFacOut=0),
+      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial),
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
+      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare hydGeneration generation,
       redeclare BESMod.Systems.Hydraulical.Control.MonoenergeticHeatPumpSystem
         control(
@@ -43,6 +45,7 @@ partial model PartialSolarThermalHPS
           parTra,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum)),
     redeclare Systems.Demand.DHW.StandardProfiles DHW(
+      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic calcmFlow),
@@ -61,11 +64,5 @@ partial model PartialSolarThermalHPS
      constrainedby
     BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration
      annotation (choicesAllMatching=true);
-  annotation (Icon(graphics,
-                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
-        coordinateSystem(preserveAspectRatio=false)),
-    experiment(
-      StopTime=864000,
-      Interval=600,
-      __Dymola_Algorithm="Dassl"));
+
 end PartialSolarThermalHPS;

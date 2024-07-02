@@ -23,9 +23,20 @@ algorithm
   end if;
   vol_internal := Modelica.Constants.e^(slope * Modelica.Math.log(QFlow_nominal_internal) + offset);
   vol := vol_internal/1000;
-  annotation (Documentation(info="<html>
-<p>Calculate the average volume of water in the heating system for a given type of heating system. Based on tables in [1, p. 3].</p>
-<p><img src=\"modelica://BESMod/Resources/Images/DesignParameters/AverageVolumeOfWater.png\"/></p>
-<p>[1] MHG HEIZTECHNIK GMBH: Auslegung von Druckausgleichsgef&auml;&szlig;en: MHG-Information. 2006; <a href=\"https://mhg.de/index.php?eID=dumpFile&t=f&f=429&token=c46b1c9a43bfb2bf6342613fb2dc5cedad595d00\">Link to pdf</a></p>
+  annotation (Documentation(info="<html><p>
+  Calculate the average volume of water in the heating system for a
+  given type of heating system. Based on tables in [1, p. 3].
+</p>
+<p>
+  <img src=
+  \"modelica://BESMod/Resources/Images/DesignParameters/AverageVolumeOfWater.png\"
+  alt=\"1\">
+</p>
+<p>
+  [1] MHG HEIZTECHNIK GMBH: Auslegung von Druckausgleichsgefäßen:
+  MHG-Information. 2006; <a href=
+  \"https://mhg.de/index.php?eID=dumpFile&amp;t=f&amp;f=429&amp;token=c46b1c9a43bfb2bf6342613fb2dc5cedad595d00\">
+  Link to pdf</a>
+</p>
 </html>"));
 end GetAverageVolumeOfWater;

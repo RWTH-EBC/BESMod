@@ -1,0 +1,193 @@
+# Variables
+# dym_image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola_2022-miniconda
+# ci_stage_regression_test: RegressionTest
+# ci_stage_ref_check :Ref_Check
+# ci_stage_plot_ref : plot_ref
+# ci_stage_prepare : prepare
+# modelicapyci_test_reference_module: ModelicaPyCI.unittest.reference_check
+# modelicapyci_google_chart_module : ModelicaPyCI.converter.google_charts
+# config_ci_exit_file : ci-tests/Configfiles/exit.sh
+# result_dir : ci-tests/result
+# ci_regression_test_commit : $ {ci_regression_test_commit}
+# expire_in_time : 7h
+# arg_PR: --batch  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages $lib_package --library BESMod 
+# arg_push: --changed-flag  --batch  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages $lib_package --library BESMod 
+# arg_chart: --funnel-comp-flag  --error-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod --packages $lib_package 
+# packages_per_job: {'Examples': 'Examples', 'Systems': 'Systems', 'Other': 'Tutorial Utilities'}
+# modelicapyci_api_github_module: ModelicaPyCI.api_script.api_github
+# api_github_create_ref_arg: --post-pr-comment-flag  --show-plot-flag  --page https://rwth-ebc.github.io/BESMod --github-token ${GITHUB_API_TOKEN} --main-branch main --working-branch $CI_COMMIT_REF_NAME --library BESMod --github-repository RWTH-EBC/BESMod 
+# api_github_arg: --post-pr-comment-flag  --prepare-plot-flag  --page https://rwth-ebc.github.io/BESMod --github-token ${GITHUB_API_TOKEN} --main-branch main --working-branch $CI_COMMIT_REF_NAME --library BESMod --github-repository RWTH-EBC/BESMod 
+# library: BESMod
+# xvfb_flag: xvfb-run -n 77
+# modelicapyci_structure_module: ModelicaPyCI.structure.config_structure
+# arg_ref: --create-ref  --batch  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages Examples Tutorial Utilities Systems --library BESMod 
+# config_ci_new_create_ref_file: ci-tests/Configfiles/ci_new_created_reference.txt
+# bot_create_ref_commit: CI message from ebc-aixlib-bot. Automatic push of CI with new regression reference files. Please pull the new files before push again. Plottet Results $GITLAB_Page/$CI_COMMIT_REF_NAME/charts/
+# ci_show_ref_commit: ci_show_ref
+# arg_ref_check: --create-ref  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages Examples Tutorial Utilities Systems --library BESMod 
+# coverage_arg: --coverage-only  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages Examples Tutorial Utilities Systems --library BESMod 
+
+include: 'ci-tests/scripts/utilities.yml'
+
+stages:
+    - RegressionTest
+    - Ref_Check
+    - plot_ref
+    - prepare
+
+
+.Regressiontest:PR:
+    image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola_2022-miniconda
+    stage: RegressionTest
+    before_script:
+        - !reference [.activate_python_and_install_requirements, script]
+        - !reference [.custom_install_additional_modelica_libraries, script]
+    script:
+        - export CI_PYTHON_CONFIG_FILE="../ci-tests/config/modelica_py_ci_config.toml"
+        - cd BESMod && xvfb-run -n 77 python -m ModelicaPyCI.unittest.reference_check --batch  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages $lib_package --library BESMod 
+    after_script:
+        - if ! cat ci-tests/Configfiles/exit.sh | grep "FAIL"; then
+            exit 0;
+          fi
+        - !reference [.activate_python_and_install_requirements, script]
+        - python -m ModelicaPyCI.converter.google_charts --funnel-comp-flag  --error-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod --packages $lib_package 
+        - python -m ModelicaPyCI.api_script.api_github --post-pr-comment-flag  --prepare-plot-flag  --page https://rwth-ebc.github.io/BESMod --github-token ${GITHUB_API_TOKEN} --main-branch main --working-branch $CI_COMMIT_REF_NAME --library BESMod --github-repository RWTH-EBC/BESMod 
+        - exit 1
+    artifacts:
+        when: on_failure
+        paths:
+            - ci-tests/result/
+        expire_in: 7h
+    rules:
+        - !reference [.rules:PR , rules]
+        - if: $CI_COMMIT_MESSAGE  =~ /ci_regression_test/ && $CI_PIPELINE_SOURCE == "push"
+          when: always
+
+.Regressiontest:Push:
+    image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola_2022-miniconda
+    stage: RegressionTest
+    before_script:
+        - !reference [.activate_python_and_install_requirements, script]
+        - !reference [.custom_install_additional_modelica_libraries, script]
+    script:
+        - export CI_PYTHON_CONFIG_FILE="../ci-tests/config/modelica_py_ci_config.toml"
+        - cd BESMod && xvfb-run -n 77 python -m ModelicaPyCI.unittest.reference_check --changed-flag  --batch  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages $lib_package --library BESMod 
+    after_script:
+        - if ! cat ci-tests/Configfiles/exit.sh | grep "FAIL"; then
+            exit 0;
+          fi
+        - !reference [.activate_python_and_install_requirements, script]
+        - python -m ModelicaPyCI.converter.google_charts --funnel-comp-flag  --error-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod --packages $lib_package 
+        - python -m ModelicaPyCI.api_script.api_github --post-pr-comment-flag  --prepare-plot-flag  --page https://rwth-ebc.github.io/BESMod --github-token ${GITHUB_API_TOKEN} --main-branch main --working-branch $CI_COMMIT_REF_NAME --library BESMod --github-repository RWTH-EBC/BESMod 
+        - exit 1
+    artifacts:
+        when: on_failure
+        paths:
+            - ci-tests/result/
+        expire_in: 7h
+    rules:
+        - !reference [.rules:push , rules]
+
+Regressiontest_BESMod_Examples:PR:
+    variables:
+        lib_package: Examples
+    extends: .Regressiontest:PR
+
+Regressiontest_BESMod_Systems:PR:
+    variables:
+        lib_package: Systems
+    extends: .Regressiontest:PR
+
+Regressiontest_BESMod_Other:PR:
+    variables:
+        lib_package: Tutorial Utilities
+    extends: .Regressiontest:PR
+
+
+Regressiontest_BESMod_Examples:Push:
+    variables:
+        lib_package: Examples
+    extends: .Regressiontest:Push
+
+Regressiontest_BESMod_Systems:Push:
+    variables:
+        lib_package: Systems
+    extends: .Regressiontest:Push
+
+Regressiontest_BESMod_Other:Push:
+    variables:
+        lib_package: Tutorial Utilities
+    extends: .Regressiontest:Push
+
+
+Regression_overall_coverage:PR:
+    stage: RegressionTest
+    before_script:
+        - !reference [.activate_python_and_install_requirements, script]
+        - !reference [.custom_install_additional_modelica_libraries, script]
+    script:
+        - export CI_PYTHON_CONFIG_FILE="../ci-tests/config/modelica_py_ci_config.toml"
+        - cd BESMod && xvfb-run -n 77 python -m ModelicaPyCI.unittest.reference_check --coverage-only  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages Examples Tutorial Utilities Systems --library BESMod 
+    artifacts:
+        when: on_failure
+        paths:
+            - ci-tests/result/
+        expire_in: 7h
+    rules:
+        - !reference [.rules:PR , rules]
+        - if: $CI_COMMIT_MESSAGE  =~ /ci_regression_test/ && $CI_PIPELINE_SOURCE == "push"
+          when: always
+
+Regression_overall_coverage:Push:
+    stage: RegressionTest
+    before_script:
+        - !reference [.activate_python_and_install_requirements, script]
+        - !reference [.custom_install_additional_modelica_libraries, script]
+    script:
+        - export CI_PYTHON_CONFIG_FILE="../ci-tests/config/modelica_py_ci_config.toml"
+        - cd BESMod && xvfb-run -n 77 python -m ModelicaPyCI.unittest.reference_check  --coverage-only  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages Examples Tutorial Utilities Systems --library BESMod 
+    artifacts:
+        when: on_failure
+        paths:
+            - ci-tests/result/
+        expire_in: 7h
+    rules:
+        - !reference [.rules:push , rules]
+
+
+RegressionTest_Check_References:
+    stage: Ref_Check
+    before_script:
+        - !reference [.activate_python_and_install_requirements, script]
+        - !reference [.github_ssh_auth, script]
+        - apt-get update -y && apt-get install xdg-utils --fix-missing -y
+    script:
+        # TODO: Remove custom version once merged to buildingspy
+        - pip uninstall buildingspy -y && pip install git+https://github.com/FWuellhorst/BuildingsPy@issue558
+        - !reference [.custom_install_additional_modelica_libraries, script]
+        - export CI_PYTHON_CONFIG_FILE="../ci-tests/config/modelica_py_ci_config.toml"
+        - cd BESMod && xvfb-run -n 77 python -m ModelicaPyCI.unittest.reference_check --create-ref  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages Examples Tutorial Utilities Systems --library BESMod 
+    after_script:
+        - if ! cat ci-tests/Configfiles/exit.sh | grep "GENERATED_NEW_RESULTS"; then
+            exit 0;
+          fi
+        - !reference [.activate_python_and_install_requirements, script]
+        # Get newly created files
+        - files_to_push=$(git ls-files --others --exclude-standard BESMod)
+        # Save them for google_charts templates
+        - echo $files_to_push > ci-tests/Configfiles/ci_new_created_reference.txt
+        - message="CI message from ebc-aixlib-bot. Automatic push of CI with new regression reference files. Please pull the new files before push again. Plottet Results $GITLAB_Page/$CI_COMMIT_REF_NAME/charts/"
+        - python -m ModelicaPyCI.converter.google_charts --new-ref-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod --packages Examples Tutorial Utilities Systems 
+        - python -m ModelicaPyCI.api_script.api_github --post-pr-comment-flag  --show-plot-flag  --page https://rwth-ebc.github.io/BESMod --github-token ${GITHUB_API_TOKEN} --main-branch main --working-branch $CI_COMMIT_REF_NAME --library BESMod --github-repository RWTH-EBC/BESMod 
+        - !reference [.git_push, script]
+        - exit 1 ;
+
+    artifacts:
+        when: on_failure
+        paths:
+            - ci-tests/result/
+        expire_in: 7h
+    rules:
+        - !reference [.rules:PR , rules]
+        - if: $CI_COMMIT_MESSAGE  =~ /ci_reference_check/ && $CI_PIPELINE_SOURCE == "push"
+          when: always

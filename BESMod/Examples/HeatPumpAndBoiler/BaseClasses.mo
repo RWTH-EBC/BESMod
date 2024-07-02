@@ -8,9 +8,11 @@ package BaseClasses "Contains partial example case"
         ABui=sum(building.zoneParam.VAir)^(2/3),
         hBui=sum(building.zoneParam.VAir)^(1/3),
         redeclare BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
-          oneZoneParam(heaLoadFacGrd=0, heaLoadFacOut=0)),
+          oneZoneParam(heaLoadFacGrd=0, heaLoadFacOut=0),
+        energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial),
       redeclare BESMod.Systems.Control.NoControl control,
-      redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(redeclare
+      redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
+        energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,   redeclare
           Systems.Hydraulical.Control.HybridHeatPumpSystem control(
           redeclare
             BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
@@ -18,16 +20,12 @@ package BaseClasses "Contains partial example case"
           dTHysBui=5,
           dTHysDHW=5,
           meaValPriGen=BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue.GenerationSupplyTemperature,
-
           redeclare model DHWHysteresis =
               BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
-
           redeclare model BuildingHysteresis =
               BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
-
           redeclare model DHWSetTemperature =
               BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.ConstTSet_DHW,
-
           redeclare
             BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
             parPIDHeaPum,
@@ -49,8 +47,8 @@ package BaseClasses "Contains partial example case"
             BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
             parTra)),
       redeclare Systems.Demand.DHW.StandardProfiles DHW(
+        energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
         redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
-
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
           calcmFlow),
@@ -64,7 +62,7 @@ package BaseClasses "Contains partial example case"
       redeclare BESMod.Systems.Ventilation.NoVentilation ventilation);
 
     annotation (experiment(
-        StopTime=31536000,
+        StopTime=172800,
         Interval=600,
         __Dymola_Algorithm="Dassl"));
   end PartialHybridSystem;
