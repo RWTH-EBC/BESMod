@@ -123,7 +123,7 @@
     },
     "model": "BESMod.Examples.ModelicaConferencePaper.TEASERBuilding",
     "simulation": {
-      "elapsed_time": 17.3,
+      "elapsed_time": 15.4,
       "final_time": 864000,
       "jacobians": 20560,
       "start_time": 0,
@@ -174,7 +174,7 @@
     },
     "model": "BESMod.Examples.TEASERHeatLoadCalculation.Example",
     "simulation": {
-      "elapsed_time": 0.152,
+      "elapsed_time": 0.165,
       "final_time": 172800,
       "jacobians": 874,
       "start_time": 0,
@@ -231,7 +231,7 @@
     },
     "model": "BESMod.Examples.HeatPumpAndBoiler.Parallel",
     "simulation": {
-      "elapsed_time": 7.2,
+      "elapsed_time": 7.55,
       "final_time": 172800,
       "jacobians": 14617,
       "start_time": 0,
@@ -288,7 +288,7 @@
     },
     "model": "BESMod.Examples.GasBoilerBuildingOnly",
     "simulation": {
-      "elapsed_time": 0.606,
+      "elapsed_time": 0.587,
       "final_time": 172800,
       "jacobians": 1716,
       "start_time": 0,
@@ -345,7 +345,7 @@
     },
     "model": "BESMod.Examples.SolarThermalSystem.SolarThermalBuildings",
     "simulation": {
-      "elapsed_time": 6.86,
+      "elapsed_time": 6.92,
       "final_time": 172800,
       "jacobians": 2302,
       "start_time": 0,
@@ -402,7 +402,7 @@
     },
     "model": "BESMod.Examples.HeatPumpAndBoiler.Serial",
     "simulation": {
-      "elapsed_time": 2.47,
+      "elapsed_time": 2.65,
       "final_time": 172800,
       "jacobians": 5282,
       "start_time": 0,
@@ -459,7 +459,7 @@
     },
     "model": "BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW",
     "simulation": {
-      "elapsed_time": 2.62,
+      "elapsed_time": 2.74,
       "final_time": 172800,
       "jacobians": 3927,
       "start_time": 0,
@@ -516,7 +516,7 @@
     },
     "model": "BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW",
     "simulation": {
-      "elapsed_time": 4.2,
+      "elapsed_time": 4.28,
       "final_time": 172800,
       "jacobians": 3986,
       "start_time": 0,
@@ -648,7 +648,7 @@
     },
     "model": "BESMod.Examples.BAUSimStudy.Case1Standard",
     "simulation": {
-      "elapsed_time": 3.47,
+      "elapsed_time": 3.43,
       "final_time": 172800,
       "jacobians": 4646,
       "start_time": 0,
@@ -711,7 +711,7 @@
     },
     "model": "BESMod.Examples.HighOrderModel.BES_HOM",
     "simulation": {
-      "elapsed_time": 96,
+      "elapsed_time": 97.6,
       "final_time": 172800,
       "jacobians": 5603,
       "start_time": 0,
@@ -768,7 +768,7 @@
     },
     "model": "BESMod.Examples.SolarThermalSystem.SolarThermalAixLib",
     "simulation": {
-      "elapsed_time": 5.82,
+      "elapsed_time": 5.96,
       "final_time": 172800,
       "jacobians": 2072,
       "start_time": 0,
@@ -825,7 +825,7 @@
     },
     "model": "BESMod.Examples.DesignOptimization.BESNoDHW",
     "simulation": {
-      "elapsed_time": 0.955,
+      "elapsed_time": 0.962,
       "final_time": 172800,
       "jacobians": 2629,
       "start_time": 0,

@@ -48,7 +48,7 @@
     },
     "model": "BESMod.Examples.DesignOptimization.BES",
     "simulation": {
-      "elapsed_time": 1.66,
+      "elapsed_time": 1.79,
       "final_time": 172800,
       "jacobians": 3251,
       "start_time": 0,
@@ -105,7 +105,7 @@
     },
     "model": "BESMod.Examples.DesignOptimization.BESNoDHW",
     "simulation": {
-      "elapsed_time": 0.978,
+      "elapsed_time": 0.927,
       "final_time": 172800,
       "jacobians": 2629,
       "start_time": 0,
