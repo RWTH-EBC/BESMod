@@ -1,4 +1,308 @@
 
+Error in model:  BESMod.Systems.Hydraulical.Generation.Tests.HeatPump 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Generation.Tests.HeatPump">BESMod.Systems.Hydraulical.Generation.Tests.HeatPump</a>:
+Warning: Failed to evaluate and check the size declaration of systemParameters.QBui_flow_nominal.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is systemParameters.nZones, and the required size is 1.
+Warning: Failed to evaluate and check the size declaration of systemParameters.THydSup_nominal.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is systemParameters.nZones, and the required size is 1.
+Warning: The variable generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.nSet is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TConInMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Error: The following parameter doesn't have any value:
+    generation.dpDemOld_design
+
+The model has the same number of unknowns and equations: 925
+The model could not be deduced to be symbolically well-posed.
+The model has
+  913+generation.heatPump.con.vol.dynBal.nPorts+2*generation.heatPump.eva.vol.dynBal.nPorts  +generation.pump.vol.dynBal.nPorts+generation.multiSum.nu+vol[1].dynBal.nPorts
+scalar unknowns and
+  878+(if generation.bou_sinkAir.use_Xi_in then 2 else (if generation.bou_sinkAir.use_X_in   then 1 else 3))+(if  not generation.bou_sinkAir.use_p_in then 1 else 0)+(if    not generation.bou_sinkAir.use_h_in then 1 else 0)+(if generation.bouEva.use_Xi_in   then 2 else (if generation.bouEva.use_X_in then 1 else 3))+(if   generation.bouPum.use_Xi_in then 1 else (if generation.bouPum.use_X_in then 0   else 1))+(if  not generation.bouPum.use_p_in then 1 else 0)+(if  not   generation.bouPum.use_T_in then 1 else 0)+(if weaDat.pAtmSou ==   IBPSA.BoundaryConditions.Types.DataSource.Parameter then 1 else 0)+(if   weaDat.TDewPoiSou == IBPSA.BoundaryConditions.Types.DataSource.Parameter then 1   else 0)+(if weaDat.TDryBulSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TBlaSkySou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.relHumSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.opaSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.ceiHeiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.totSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winSpeSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winDirSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HInfHorSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HDifHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HGloHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HGloHor_HDifHor then 2 else 1)+(if  not generation.heatPump.con.vol.dynBal.use_mWat_flow   then 1 else 0)+3*generation.heatPump.con.vol.dynBal.nPorts+(if  not   generation.heatPump.eva.vol.dynBal.use_mWat_flow then 1 else 0)+5*  generation.heatPump.eva.vol.dynBal.nPorts+(if  not generation.pump.vol.dynBal.use_mWat_flow   then 1 else 0)+3*generation.pump.vol.dynBal.nPorts+(if  not vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*vol[1].dynBal.nPorts
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  925
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater">BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater</a>:
+Error: The following parameter doesn't have any value:
+    generation.dpDemOld_design
+
+The model has the same number of unknowns and equations: 543
+The model could not be deduced to be symbolically well-posed.
+The model has
+  537+generation.hea.vol.dynBal.nPorts+generation.pump.vol.dynBal.nPorts+  vol[1].dynBal.nPorts
+scalar unknowns and
+  513+(if generation.bou1.use_Xi_in then 1 else (if generation.bou1.use_X_in then 0   else 1))+(if  not generation.bou1.use_p_in then 1 else 0)+2*generation.bou1.nPorts  +(if  not generation.bou1.use_T_in then 1 else 0)+(if weaDat.pAtmSou ==   IBPSA.BoundaryConditions.Types.DataSource.Parameter then 1 else 0)+(if   weaDat.TDewPoiSou == IBPSA.BoundaryConditions.Types.DataSource.Parameter then 1   else 0)+(if weaDat.TDryBulSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TBlaSkySou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.relHumSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.opaSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.ceiHeiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.totSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winSpeSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winDirSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HInfHorSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HDifHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HGloHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HGloHor_HDifHor then 2 else 1)+(if  not generation.hea.vol.dynBal.use_mWat_flow   then 1 else 0)+3*generation.hea.vol.dynBal.nPorts+(if  not generation.pump.vol.dynBal.use_mWat_flow   then 1 else 0)+3*generation.pump.vol.dynBal.nPorts+(if  not vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*vol[1].dynBal.nPorts
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  543
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Distribution.Tests.TestOnlyDHW 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.Tests.TestOnlyDHW">BESMod.Systems.Hydraulical.Distribution.Tests.TestOnlyDHW</a>:
+Error: The following parameters don't have any value:
+  distribution.mDemOld_flow_design
+  distribution.mSupOld_flow_design
+
+The model has the same number of unknowns and equations: 401
+The model could not be deduced to be symbolically well-posed.
+The model has
+  395+fanTra[1].vol.dynBal.nPorts+fanDHW.vol.dynBal.nPorts+fanGen[1].vol.dynBal.nPorts
+scalar unknowns and
+  371+(if bouDHW.use_Xi_in then 1 else (if bouDHW.use_X_in then 0 else 1))+(if    not bouDHW.use_p_in then 1 else 0)+(if  not bouDHW.use_T_in then 1 else 0)+(  if bouTra[1].use_Xi_in then 1 else (if bouTra[1].use_X_in then 0 else 1))+(if    not bouTra[1].use_p_in then 1 else 0)+(if  not bouTra[1].use_T_in then 1   else 0)+(if bouTra1[1].use_Xi_in then 1 else (if bouTra1[1].use_X_in then 0   else 1))+(if  not bouTra1[1].use_p_in then 1 else 0)+(if  not   bouTra1[1].use_T_in then 1 else 0)+(if  not fanTra[1].vol.dynBal.use_mWat_flow   then 1 else 0)+3*fanTra[1].vol.dynBal.nPorts+(if  not fanDHW.vol.dynBal.use_mWat_flow   then 1 else 0)+3*fanDHW.vol.dynBal.nPorts+(if  not fanGen[1].vol.dynBal.use_mWat_flow   then 1 else 0)+3*fanGen[1].vol.dynBal.nPorts
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  401
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel">BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel</a>:
+Warning: Failed to evaluate and check the size declaration of systemParameters.QBui_flow_nominal.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is systemParameters.nZones, and the required size is 1.
+Warning: Failed to evaluate and check the size declaration of systemParameters.THydSup_nominal.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is systemParameters.nZones, and the required size is 1.
+Warning: Non-literal value.
+In nominal attribute for generation.boi.pressureDrop.dp.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class generation.boi.pressureDrop.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: The variable generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.nSet is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TConInMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Error: The following parameter doesn't have any value:
+    generation.dpDemOld_design
+
+The model has the same number of unknowns and equations: 1219
+The model could not be deduced to be symbolically well-posed.
+The model has
+  1202+generation.heatPump.con.vol.dynBal.nPorts+2*generation.heatPump.eva.vol.dynBal.nPorts  +generation.pump.vol.dynBal.nPorts+generation.multiSum.nu+generation.boi.vol.dynBal.nPorts  +generation.thrWayVal.threWayValFlow.vol.dynBal.nPorts+vol[1].dynBal.nPorts
+scalar unknowns and
+  1155+(if generation.bou_sinkAir.use_Xi_in then 2 else (if generation.bou_sinkAir.use_X_in   then 1 else 3))+(if  not generation.bou_sinkAir.use_p_in then 1 else 0)+(if    not generation.bou_sinkAir.use_h_in then 1 else 0)+(if generation.bouEva.use_Xi_in   then 2 else (if generation.bouEva.use_X_in then 1 else 3))+(if   generation.bouPum.use_Xi_in then 1 else (if generation.bouPum.use_X_in then 0   else 1))+(if  not generation.bouPum.use_p_in then 1 else 0)+(if  not   generation.bouPum.use_T_in then 1 else 0)+(if weaDat.pAtmSou ==   IBPSA.BoundaryConditions.Types.DataSource.Parameter then 1 else 0)+(if   weaDat.TDewPoiSou == IBPSA.BoundaryConditions.Types.DataSource.Parameter then 1   else 0)+(if weaDat.TDryBulSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TBlaSkySou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.relHumSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.opaSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.ceiHeiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.totSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winSpeSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winDirSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HInfHorSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HDifHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HGloHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HGloHor_HDifHor then 2 else 1)+(if  not generation.heatPump.con.vol.dynBal.use_mWat_flow   then 1 else 0)+3*generation.heatPump.con.vol.dynBal.nPorts+(if  not   generation.heatPump.eva.vol.dynBal.use_mWat_flow then 1 else 0)+5*  generation.heatPump.eva.vol.dynBal.nPorts+(if  not generation.pump.vol.dynBal.use_mWat_flow   then 1 else 0)+3*generation.pump.vol.dynBal.nPorts+(if  not generation.boi.vol.dynBal.use_mWat_flow   then 1 else 0)+3*generation.boi.vol.dynBal.nPorts+(if  not vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*vol[1].dynBal.nPorts+(if  not generation.thrWayVal.threWayValFlow.vol.dynBal.use_mWat_flow   then 1 else 0)+3*generation.thrWayVal.threWayValFlow.vol.dynBal.nPorts
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  1219
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve">BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve</a>:
+Error: The following parameter doesn't have any value:
+    transfer.dpSupOld_design
+
+Warning: The following parameters don't have any value, only a start value:
+    transfer.TTraOld_design(start = {288.15})
+
+The model has the same number of unknowns and equations: 674
+The model could not be deduced to be symbolically well-posed.
+The model has
+  637+2*transfer.parRad.nEle+transfer.rad[1].vol[1].dynBal.nPorts+transfer.rad[1].vol[2].dynBal.nPorts  +transfer.rad[1].vol[3].dynBal.nPorts+transfer.rad[1].vol[4].dynBal.nPorts+  transfer.rad[1].vol[5].dynBal.nPorts+transfer.rad[1].sumCon.nin+  transfer.rad[1].sumRad.nin+transfer.vol.dynBal.nPorts+transfer.pump.vol.dynBal.nPorts  +vol[1].dynBal.nPorts
+scalar unknowns and
+  602+(if bou1[1].use_Xi_in then 1 else (if bou1[1].use_X_in then 0 else 1))+(if    not bou1[1].use_p_in then 1 else 0)+(if  not bou1[1].use_T_in then 1 else 0)+  (if  not transfer.rad[1].vol[1].dynBal.use_mWat_flow then 1 else 0)+3*  transfer.rad[1].vol[1].dynBal.nPorts+(if  not transfer.rad[1].vol[2].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad[1].vol[2].dynBal.nPorts+(if  not   transfer.rad[1].vol[3].dynBal.use_mWat_flow then 1 else 0)+3*transfer.rad[1].vol[3].dynBal.nPorts  +(if  not transfer.rad[1].vol[4].dynBal.use_mWat_flow then 1 else 0)+3*  transfer.rad[1].vol[4].dynBal.nPorts+(if  not transfer.rad[1].vol[5].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad[1].vol[5].dynBal.nPorts+(if  not   transfer.vol.dynBal.use_mWat_flow then 1 else 0)+3*transfer.vol.dynBal.nPorts+  (if  not transfer.pump.vol.dynBal.use_mWat_flow then 1 else 0)+3*  transfer.pump.vol.dynBal.nPorts+(if  not vol[1].dynBal.use_mWat_flow then 1   else 0)+3*vol[1].dynBal.nPorts+2*transfer.parRad.nEle
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  674
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Distribution.Tests.TestIndirectLoading 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.Tests.TestIndirectLoading">BESMod.Systems.Hydraulical.Distribution.Tests.TestIndirectLoading</a>:
+Warning: Failed to evaluate and check the size declaration of systemParameters.QBui_flow_nominal.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is systemParameters.nZones, and the required size is 1.
+Warning: Non-literal value.
+In nominal attribute for distribution.stoBuf.heatingCoil1.pipe[1].res.dp.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class distribution.stoBuf.heatingCoil1.pipe.res.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for distribution.stoBuf.heatingCoil1.pipe[2].res.dp.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class distribution.stoBuf.heatingCoil1.pipe.res.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for distribution.stoBuf.heatingCoil1.pipe[3].res.dp.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class distribution.stoBuf.heatingCoil1.pipe.res.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for distribution.stoBuf.heatingCoil1.pipe[4].res.dp.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class distribution.stoBuf.heatingCoil1.pipe.res.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for distribution.stoDHW.heatingCoil1.pipe[1].res.dp.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class distribution.stoDHW.heatingCoil1.pipe.res.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for distribution.stoDHW.heatingCoil1.pipe[2].res.dp.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class distribution.stoDHW.heatingCoil1.pipe.res.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for distribution.stoDHW.heatingCoil1.pipe[3].res.dp.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class distribution.stoDHW.heatingCoil1.pipe.res.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for distribution.stoDHW.heatingCoil1.pipe[4].res.dp.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class distribution.stoDHW.heatingCoil1.pipe.res.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Error: The following parameters don't have any value:
+  distribution.mDemOld_flow_design
+  distribution.mSupOld_flow_design
+
+The model has the same number of unknowns and equations: 3192
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Distribution.Tests.TestCombiStorage 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.Tests.TestCombiStorage">BESMod.Systems.Hydraulical.Distribution.Tests.TestCombiStorage</a>:
+Warning: Incompatible sizes for variable and its definition equation;
+  distribution.TSupOld_design = distribution.TDemOld_design.+distribution.dTLoss_nominal.+distribution.dTTraOld_design
+They have for dimension 1 the sizes 2 and 1.
+Errors detected in variable declarations.
+Check of class aborted.
+Warning: WARNINGS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler">BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler</a>:
+Warning: Non-literal value.
+In nominal attribute for generation.boi.pressureDrop.dp.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class generation.boi.pressureDrop.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Error: The following parameter doesn't have any value:
+    generation.dpDemOld_design
+
+The model has the same number of unknowns and equations: 584
+The model could not be deduced to be symbolically well-posed.
+The model has
+  578+generation.boi.vol.dynBal.nPorts+generation.pump.vol.dynBal.nPorts+  vol[1].dynBal.nPorts
+scalar unknowns and
+  554+(if generation.bou1.use_Xi_in then 1 else (if generation.bou1.use_X_in then 0   else 1))+(if  not generation.bou1.use_p_in then 1 else 0)+2*generation.bou1.nPorts  +(if  not generation.bou1.use_T_in then 1 else 0)+(if weaDat.pAtmSou ==   IBPSA.BoundaryConditions.Types.DataSource.Parameter then 1 else 0)+(if   weaDat.TDewPoiSou == IBPSA.BoundaryConditions.Types.DataSource.Parameter then 1   else 0)+(if weaDat.TDryBulSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TBlaSkySou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.relHumSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.opaSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.ceiHeiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.totSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winSpeSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winDirSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HInfHorSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HDifHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HGloHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HGloHor_HDifHor then 2 else 1)+(if  not generation.boi.vol.dynBal.use_mWat_flow   then 1 else 0)+3*generation.boi.vol.dynBal.nPorts+(if  not generation.pump.vol.dynBal.use_mWat_flow   then 1 else 0)+3*generation.pump.vol.dynBal.nPorts+(if  not vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*vol[1].dynBal.nPorts
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  584
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem">BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem</a>:
+Error: The following parameter doesn't have any value:
+    transfer.dpSupOld_design
+
+Warning: The following parameters don't have any value, only a start value:
+    transfer.TTraOld_design(start = {288.15})
+
+The model has the same number of unknowns and equations: 633
+The model could not be deduced to be symbolically well-posed.
+The model has
+  596+2*transfer.parRad.nEle+transfer.rad[1].vol[1].dynBal.nPorts+transfer.rad[1].vol[2].dynBal.nPorts  +transfer.rad[1].vol[3].dynBal.nPorts+transfer.rad[1].vol[4].dynBal.nPorts+  transfer.rad[1].vol[5].dynBal.nPorts+transfer.rad[1].sumCon.nin+  transfer.rad[1].sumRad.nin+transfer.vol.dynBal.nPorts+transfer.pump.vol.dynBal.nPorts  +vol[1].dynBal.nPorts
+scalar unknowns and
+  561+(if bou1[1].use_Xi_in then 1 else (if bou1[1].use_X_in then 0 else 1))+(if    not bou1[1].use_p_in then 1 else 0)+(if  not bou1[1].use_T_in then 1 else 0)+  (if  not transfer.rad[1].vol[1].dynBal.use_mWat_flow then 1 else 0)+3*  transfer.rad[1].vol[1].dynBal.nPorts+(if  not transfer.rad[1].vol[2].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad[1].vol[2].dynBal.nPorts+(if  not   transfer.rad[1].vol[3].dynBal.use_mWat_flow then 1 else 0)+3*transfer.rad[1].vol[3].dynBal.nPorts  +(if  not transfer.rad[1].vol[4].dynBal.use_mWat_flow then 1 else 0)+3*  transfer.rad[1].vol[4].dynBal.nPorts+(if  not transfer.rad[1].vol[5].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad[1].vol[5].dynBal.nPorts+(if  not   transfer.vol.dynBal.use_mWat_flow then 1 else 0)+3*transfer.vol.dynBal.nPorts+  (if  not transfer.pump.vol.dynBal.use_mWat_flow then 1 else 0)+3*  transfer.pump.vol.dynBal.nPorts+(if  not vol[1].dynBal.use_mWat_flow then 1   else 0)+3*vol[1].dynBal.nPorts+2*transfer.parRad.nEle
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  633
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Distribution.Tests.TestOnlyBuilding 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.Tests.TestOnlyBuilding">BESMod.Systems.Hydraulical.Distribution.Tests.TestOnlyBuilding</a>:
+Error: The following parameters don't have any value:
+  distribution.mDemOld_flow_design
+  distribution.mSupOld_flow_design
+
+The model has the same number of unknowns and equations: 404
+The model could not be deduced to be symbolically well-posed.
+The model has
+  398+fanTra[1].vol.dynBal.nPorts+fanDHW.vol.dynBal.nPorts+fanGen[1].vol.dynBal.nPorts
+scalar unknowns and
+  374+(if bouDHW.use_Xi_in then 1 else (if bouDHW.use_X_in then 0 else 1))+(if    not bouDHW.use_p_in then 1 else 0)+(if  not bouDHW.use_T_in then 1 else 0)+(  if bouTra[1].use_Xi_in then 1 else (if bouTra[1].use_X_in then 0 else 1))+(if    not bouTra[1].use_p_in then 1 else 0)+(if  not bouTra[1].use_T_in then 1   else 0)+(if bouTra1[1].use_Xi_in then 1 else (if bouTra1[1].use_X_in then 0   else 1))+(if  not bouTra1[1].use_p_in then 1 else 0)+(if  not   bouTra1[1].use_T_in then 1 else 0)+(if  not fanTra[1].vol.dynBal.use_mWat_flow   then 1 else 0)+3*fanTra[1].vol.dynBal.nPorts+(if  not fanDHW.vol.dynBal.use_mWat_flow   then 1 else 0)+3*fanDHW.vol.dynBal.nPorts+(if  not fanGen[1].vol.dynBal.use_mWat_flow   then 1 else 0)+3*fanGen[1].vol.dynBal.nPorts
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  404
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Distribution.Tests.TestDirectLoading 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.Tests.TestDirectLoading">BESMod.Systems.Hydraulical.Distribution.Tests.TestDirectLoading</a>:
+Warning: Non-literal value.
+In nominal attribute for distribution.stoDHW.heatingCoil1.pipe[1].res.dp.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class distribution.stoDHW.heatingCoil1.pipe.res.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for distribution.stoDHW.heatingCoil1.pipe[2].res.dp.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class distribution.stoDHW.heatingCoil1.pipe.res.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for distribution.stoDHW.heatingCoil1.pipe[3].res.dp.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class distribution.stoDHW.heatingCoil1.pipe.res.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for distribution.stoDHW.heatingCoil1.pipe[4].res.dp.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class distribution.stoDHW.heatingCoil1.pipe.res.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Error: The following parameters don't have any value:
+  distribution.mDemOld_flow_design
+  distribution.mSupOld_flow_design
+
+The model has the same number of unknowns and equations: 2440
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
 Error in model:  BESMod.Systems.Hydraulical.Distribution.CombiStorage 
 Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.CombiStorage">BESMod.Systems.Hydraulical.Distribution.CombiStorage</a>:
 Component type specifier BaseProperties is a partial type
@@ -610,4 +914,449 @@ Failure to expand could be due to unknown sizes, which is not an error
 if the sizes are given when using the component.
 Check of class aborted.
 Warning: WARNINGS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Generation.Tests.SolarThermalAndHeatPumpSimple 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Generation.Tests.SolarThermalAndHeatPumpSimple">BESMod.Systems.Hydraulical.Generation.Tests.SolarThermalAndHeatPumpSimple</a>:
+Warning: Failed to evaluate and check the size declaration of systemParameters.QBui_flow_nominal.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is systemParameters.nZones, and the required size is 1.
+Warning: Failed to evaluate and check the size declaration of systemParameters.THydSup_nominal.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is systemParameters.nZones, and the required size is 1.
+Warning: Non-literal value.
+In nominal attribute for generation.solThe.pressureDrop.dp.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class generation.solThe.pressureDrop.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: The variable generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.nSet is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TConInMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Error: The following parameter doesn't have any value:
+    generation.dpDemOld_design
+
+The model has the same number of unknowns and equations: 1376
+The model could not be deduced to be symbolically well-posed.
+The model has
+  1349+2*(generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n1+  generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n2+  generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n3)+  generation.heatPump.con.vol.dynBal.nPorts+2*generation.heatPump.eva.vol.dynBal.nPorts  +generation.pump.vol.dynBal.nPorts+generation.multiSum.nu+generation.eleHea.vol.dynBal.nPorts  +generation.solThe.vol.dynBal.nPorts+generation.pumpSolThe.vol.dynBal.nPorts+  vol[1].dynBal.nPorts+vol[2].dynBal.nPorts
+scalar unknowns and
+  1290+2*(generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n1+  generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n2+  generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n3)+(if   generation.bou_sinkAir.use_Xi_in then 2 else (if generation.bou_sinkAir.use_X_in   then 1 else 3))+(if  not generation.bou_sinkAir.use_p_in then 1 else 0)+(if    not generation.bou_sinkAir.use_h_in then 1 else 0)+(if generation.bouEva.use_Xi_in   then 2 else (if generation.bouEva.use_X_in then 1 else 3))+(if   generation.bouPum.use_Xi_in then 1 else (if generation.bouPum.use_X_in then 0   else 1))+(if  not generation.bouPum.use_p_in then 1 else 0)+(if  not   generation.bouPum.use_T_in then 1 else 0)+(if generation.bou.use_Xi_in then 1   else (if generation.bou.use_X_in then 0 else 1))+(if  not generation.bou.use_p_in   then 1 else 0)+2*generation.bou.nPorts+(if  not generation.bou.use_T_in then 1   else 0)+(if weaDat.pAtmSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TDewPoiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TDryBulSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TBlaSkySou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.relHumSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.opaSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.ceiHeiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.totSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winSpeSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winDirSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HInfHorSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HDifHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HGloHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HGloHor_HDifHor then 2 else 1)+(if  not generation.heatPump.con.vol.dynBal.use_mWat_flow   then 1 else 0)+3*generation.heatPump.con.vol.dynBal.nPorts+(if  not   generation.heatPump.eva.vol.dynBal.use_mWat_flow then 1 else 0)+5*  generation.heatPump.eva.vol.dynBal.nPorts+(if  not generation.pump.vol.dynBal.use_mWat_flow   then 1 else 0)+3*generation.pump.vol.dynBal.nPorts+(if  not generation.eleHea.vol.dynBal.use_mWat_flow   then 1 else 0)+3*generation.eleHea.vol.dynBal.nPorts+(if  not   generation.solThe.vol.dynBal.use_mWat_flow then 1 else 0)+3*generation.solThe.vol.dynBal.nPorts  +(if  not generation.pumpSolThe.vol.dynBal.use_mWat_flow then 1 else 0)+3*  generation.pumpSolThe.vol.dynBal.nPorts+(if  not vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*vol[1].dynBal.nPorts+(if  not vol[2].dynBal.use_mWat_flow   then 1 else 0)+3*vol[2].dynBal.nPorts
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  1376
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Distribution.Tests.TestSimpleStorages 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.Tests.TestSimpleStorages">BESMod.Systems.Hydraulical.Distribution.Tests.TestSimpleStorages</a>:
+Error: The following parameters don't have any value:
+  distribution.mDemOld_flow_design
+  distribution.mSupOld_flow_design
+
+The model has the same number of unknowns and equations: 1591
+The model could not be deduced to be symbolically well-posed.
+The model has
+  1550+distribution.stoDHW.layer[1].dynBal.nPorts+distribution.stoDHW.layer[2].dynBal.nPorts  +distribution.stoDHW.layer[3].dynBal.nPorts+distribution.stoDHW.layer[4].dynBal.nPorts  +distribution.stoDHW.layer_HE[1].dynBal.nPorts+distribution.stoDHW.layer_HE[2].dynBal.nPorts  +distribution.stoDHW.layer_HE[3].dynBal.nPorts+distribution.stoDHW.layer_HE[4].dynBal.nPorts  +distribution.stoBuf.layer[1].dynBal.nPorts+distribution.stoBuf.layer[2].dynBal.nPorts  +distribution.stoBuf.layer[3].dynBal.nPorts+distribution.stoBuf.layer[4].dynBal.nPorts  +distribution.stoBuf.layer_HE[1].dynBal.nPorts+distribution.stoBuf.layer_HE[2].dynBal.nPorts  +distribution.stoBuf.layer_HE[3].dynBal.nPorts+distribution.stoBuf.layer_HE[4].dynBal.nPorts  +distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.nPorts+  fanTra[1].vol.dynBal.nPorts+fanDHW.vol.dynBal.nPorts+fanGen[1].vol.dynBal.nPorts
+scalar unknowns and
+  1436+(if distribution.bouPumBuf.use_Xi_in then 1 else (if distribution.bouPumBuf.use_X_in   then 0 else 1))+(if  not distribution.bouPumBuf.use_p_in then 1 else 0)+(if    not distribution.bouPumBuf.use_T_in then 1 else 0)+(if bouDHW.use_Xi_in then 1   else (if bouDHW.use_X_in then 0 else 1))+(if  not bouDHW.use_p_in then 1   else 0)+(if  not bouDHW.use_T_in then 1 else 0)+(if bouTra[1].use_Xi_in then 1   else (if bouTra[1].use_X_in then 0 else 1))+(if  not bouTra[1].use_p_in then 1   else 0)+(if  not bouTra[1].use_T_in then 1 else 0)+(if bouTra1[1].use_Xi_in   then 1 else (if bouTra1[1].use_X_in then 0 else 1))+(if  not bouTra1[1].use_p_in   then 1 else 0)+(if  not bouTra1[1].use_T_in then 1 else 0)+(if  not   fanTra[1].vol.dynBal.use_mWat_flow then 1 else 0)+3*fanTra[1].vol.dynBal.nPorts  +(if  not fanDHW.vol.dynBal.use_mWat_flow then 1 else 0)+3*fanDHW.vol.dynBal.nPorts  +(if  not fanGen[1].vol.dynBal.use_mWat_flow then 1 else 0)+3*fanGen[1].vol.dynBal.nPorts  +(if  not distribution.stoDHW.layer[1].dynBal.use_mWat_flow then 1 else 0)+3*  distribution.stoDHW.layer[1].dynBal.nPorts+(if  not distribution.stoDHW.layer[2].dynBal.use_mWat_flow   then 1 else 0)+3*distribution.stoDHW.layer[2].dynBal.nPorts+(if  not   distribution.stoDHW.layer[3].dynBal.use_mWat_flow then 1 else 0)+3*  distribution.stoDHW.layer[3].dynBal.nPorts+(if  not distribution.stoDHW.layer[4].dynBal.use_mWat_flow   then 1 else 0)+3*distribution.stoDHW.layer[4].dynBal.nPorts+(if  not   distribution.stoDHW.layer_HE[1].dynBal.use_mWat_flow then 1 else 0)+3*  distribution.stoDHW.layer_HE[1].dynBal.nPorts+(if  not distribution.stoDHW.layer_HE[2].dynBal.use_mWat_flow   then 1 else 0)+3*distribution.stoDHW.layer_HE[2].dynBal.nPorts+(if  not   distribution.stoDHW.layer_HE[3].dynBal.use_mWat_flow then 1 else 0)+3*  distribution.stoDHW.layer_HE[3].dynBal.nPorts+(if  not distribution.stoDHW.layer_HE[4].dynBal.use_mWat_flow   then 1 else 0)+3*distribution.stoDHW.layer_HE[4].dynBal.nPorts+(if  not   distribution.stoBuf.layer[1].dynBal.use_mWat_flow then 1 else 0)+3*  distribution.stoBuf.layer[1].dynBal.nPorts+(if  not distribution.stoBuf.layer[2].dynBal.use_mWat_flow   then 1 else 0)+3*distribution.stoBuf.layer[2].dynBal.nPorts+(if  not   distribution.stoBuf.layer[3].dynBal.use_mWat_flow then 1 else 0)+3*  distribution.stoBuf.layer[3].dynBal.nPorts+(if  not distribution.stoBuf.layer[4].dynBal.use_mWat_flow   then 1 else 0)+3*distribution.stoBuf.layer[4].dynBal.nPorts+(if  not   distribution.stoBuf.layer_HE[1].dynBal.use_mWat_flow then 1 else 0)+3*  distribution.stoBuf.layer_HE[1].dynBal.nPorts+(if  not distribution.stoBuf.layer_HE[2].dynBal.use_mWat_flow   then 1 else 0)+3*distribution.stoBuf.layer_HE[2].dynBal.nPorts+(if  not   distribution.stoBuf.layer_HE[3].dynBal.use_mWat_flow then 1 else 0)+3*  distribution.stoBuf.layer_HE[3].dynBal.nPorts+(if  not distribution.stoBuf.layer_HE[4].dynBal.use_mWat_flow   then 1 else 0)+3*distribution.stoBuf.layer_HE[4].dynBal.nPorts+(if  not   distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.use_mWat_flow   then 1 else 0)+3*distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.nPorts
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  1591
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating">BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating</a>:
+Note: 
+Your model is using an outer "system" component but
+an inner "system" component is not defined.
+For simulation drag Modelica.Fluid.System into your model
+to specify system properties.
+
+Warning: For variable transfer.ufh[1].panelHeatingSegment[1].HeatConv.calcMethod
+ declared in class <a href="Modelica://AixLib.ThermalZones.HighOrder.Components.Types">AixLib.ThermalZones.HighOrder.Components.Types</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Utilities/HeatTransfer/HeatConvInside.mo at line 8, and used in component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating#$transfer.ufh.panelHeatingSegment:HeatConv">transfer.ufh[1].panelHeatingSegment[1].HeatConv</a>.
+Type inconsistent definition equation:
+  transfer.ufh[1].panelHeatingSegment[1].HeatConv.calcMethod = transfer.ufh[1].panelHeatingSegment[1].calcMethod;
+Warning: The types of the operands in (transfer.ufh[1].panelHeatingSegment[1].HeatConv.calcMethod)    =    (  transfer.ufh[1].panelHeatingSegment[1].calcMethod)
+are Enumeration and Integer, but they must be compatible.
+Variable transfer.ufh[1].panelHeatingSegment[1].calcMethod was declared in class <a href="Modelica://BESMod.Systems.Hydraulical.Components.UFH.PanelHeatingSegment">BESMod.Systems.Hydraulical.Components.UFH.PanelHeatingSegment</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/UFH/PanelHeatingSegment.mo at line <a href="Modelica://BESMod.Systems.Hydraulical.Components.UFH.PanelHeatingSegment#text:25">26</a>, and used in component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating#$transfer.ufh:panelHeatingSegment">transfer.ufh[1].panelHeatingSegment[1]</a>.
+Warning: For variable transfer.ufh[1].panelHeatingSegment[1].HeatConv.surfaceOrientation
+ declared in class <a href="Modelica://AixLib.ThermalZones.HighOrder.Components.Types">AixLib.ThermalZones.HighOrder.Components.Types</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Utilities/HeatTransfer/HeatConvInside.mo at line 22, and used in component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating#$transfer.ufh.panelHeatingSegment:HeatConv">transfer.ufh[1].panelHeatingSegment[1].HeatConv</a>.
+Type inconsistent definition equation:
+  transfer.ufh[1].panelHeatingSegment[1].HeatConv.surfaceOrientation = (if     transfer.ufh[1].panelHeatingSegment[1].isFloor then 2 else 1);
+Warning: The types of the operands in (transfer.ufh[1].panelHeatingSegment[1].HeatConv.surfaceOrientation)    =    ((  if transfer.ufh[1].panelHeatingSegment[1].isFloor then 2 else 1))
+are Enumeration and Integer, but they must be compatible.
+Warning: For variable transfer.ufh[1].panelHeatingSegment[2].HeatConv.calcMethod
+ declared in class <a href="Modelica://AixLib.ThermalZones.HighOrder.Components.Types">AixLib.ThermalZones.HighOrder.Components.Types</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Utilities/HeatTransfer/HeatConvInside.mo at line 8, and used in component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating#$transfer.ufh.panelHeatingSegment:HeatConv">transfer.ufh[1].panelHeatingSegment[2].HeatConv</a>.
+Type inconsistent definition equation:
+  transfer.ufh[1].panelHeatingSegment[2].HeatConv.calcMethod = transfer.ufh[1].panelHeatingSegment[2].calcMethod;
+Warning: The types of the operands in (transfer.ufh[1].panelHeatingSegment[2].HeatConv.calcMethod)    =    (  transfer.ufh[1].panelHeatingSegment[2].calcMethod)
+are Enumeration and Integer, but they must be compatible.
+Variable transfer.ufh[1].panelHeatingSegment[2].calcMethod was declared in class <a href="Modelica://BESMod.Systems.Hydraulical.Components.UFH.PanelHeatingSegment">BESMod.Systems.Hydraulical.Components.UFH.PanelHeatingSegment</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/UFH/PanelHeatingSegment.mo at line <a href="Modelica://BESMod.Systems.Hydraulical.Components.UFH.PanelHeatingSegment#text:25">26</a>, and used in component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating#$transfer.ufh:panelHeatingSegment">transfer.ufh[1].panelHeatingSegment[2]</a>.
+Warning: For variable transfer.ufh[1].panelHeatingSegment[2].HeatConv.surfaceOrientation
+ declared in class <a href="Modelica://AixLib.ThermalZones.HighOrder.Components.Types">AixLib.ThermalZones.HighOrder.Components.Types</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Utilities/HeatTransfer/HeatConvInside.mo at line 22, and used in component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating#$transfer.ufh.panelHeatingSegment:HeatConv">transfer.ufh[1].panelHeatingSegment[2].HeatConv</a>.
+Type inconsistent definition equation:
+  transfer.ufh[1].panelHeatingSegment[2].HeatConv.surfaceOrientation = (if     transfer.ufh[1].panelHeatingSegment[2].isFloor then 2 else 1);
+Warning: The types of the operands in (transfer.ufh[1].panelHeatingSegment[2].HeatConv.surfaceOrientation)    =    ((  if transfer.ufh[1].panelHeatingSegment[2].isFloor then 2 else 1))
+are Enumeration and Integer, but they must be compatible.
+Warning: For variable transfer.ufh[1].panelHeatingSegment[3].HeatConv.calcMethod
+ declared in class <a href="Modelica://AixLib.ThermalZones.HighOrder.Components.Types">AixLib.ThermalZones.HighOrder.Components.Types</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Utilities/HeatTransfer/HeatConvInside.mo at line 8, and used in component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating#$transfer.ufh.panelHeatingSegment:HeatConv">transfer.ufh[1].panelHeatingSegment[3].HeatConv</a>.
+Type inconsistent definition equation:
+  transfer.ufh[1].panelHeatingSegment[3].HeatConv.calcMethod = transfer.ufh[1].panelHeatingSegment[3].calcMethod;
+Warning: The types of the operands in (transfer.ufh[1].panelHeatingSegment[3].HeatConv.calcMethod)    =    (  transfer.ufh[1].panelHeatingSegment[3].calcMethod)
+are Enumeration and Integer, but they must be compatible.
+Variable transfer.ufh[1].panelHeatingSegment[3].calcMethod was declared in class <a href="Modelica://BESMod.Systems.Hydraulical.Components.UFH.PanelHeatingSegment">BESMod.Systems.Hydraulical.Components.UFH.PanelHeatingSegment</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/UFH/PanelHeatingSegment.mo at line <a href="Modelica://BESMod.Systems.Hydraulical.Components.UFH.PanelHeatingSegment#text:25">26</a>, and used in component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating#$transfer.ufh:panelHeatingSegment">transfer.ufh[1].panelHeatingSegment[3]</a>.
+Warning: For variable transfer.ufh[1].panelHeatingSegment[3].HeatConv.surfaceOrientation
+ declared in class <a href="Modelica://AixLib.ThermalZones.HighOrder.Components.Types">AixLib.ThermalZones.HighOrder.Components.Types</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Utilities/HeatTransfer/HeatConvInside.mo at line 22, and used in component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating#$transfer.ufh.panelHeatingSegment:HeatConv">transfer.ufh[1].panelHeatingSegment[3].HeatConv</a>.
+Type inconsistent definition equation:
+  transfer.ufh[1].panelHeatingSegment[3].HeatConv.surfaceOrientation = (if     transfer.ufh[1].panelHeatingSegment[3].isFloor then 2 else 1);
+Warning: The types of the operands in (transfer.ufh[1].panelHeatingSegment[3].HeatConv.surfaceOrientation)    =    ((  if transfer.ufh[1].panelHeatingSegment[3].isFloor then 2 else 1))
+are Enumeration and Integer, but they must be compatible.
+Warning: For variable transfer.ufh[1].panelHeatingSegment[4].HeatConv.calcMethod
+ declared in class <a href="Modelica://AixLib.ThermalZones.HighOrder.Components.Types">AixLib.ThermalZones.HighOrder.Components.Types</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Utilities/HeatTransfer/HeatConvInside.mo at line 8, and used in component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating#$transfer.ufh.panelHeatingSegment:HeatConv">transfer.ufh[1].panelHeatingSegment[4].HeatConv</a>.
+Type inconsistent definition equation:
+  transfer.ufh[1].panelHeatingSegment[4].HeatConv.calcMethod = transfer.ufh[1].panelHeatingSegment[4].calcMethod;
+Warning: The types of the operands in (transfer.ufh[1].panelHeatingSegment[4].HeatConv.calcMethod)    =    (  transfer.ufh[1].panelHeatingSegment[4].calcMethod)
+are Enumeration and Integer, but they must be compatible.
+Variable transfer.ufh[1].panelHeatingSegment[4].calcMethod was declared in class <a href="Modelica://BESMod.Systems.Hydraulical.Components.UFH.PanelHeatingSegment">BESMod.Systems.Hydraulical.Components.UFH.PanelHeatingSegment</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/UFH/PanelHeatingSegment.mo at line <a href="Modelica://BESMod.Systems.Hydraulical.Components.UFH.PanelHeatingSegment#text:25">26</a>, and used in component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating#$transfer.ufh:panelHeatingSegment">transfer.ufh[1].panelHeatingSegment[4]</a>.
+Warning: For variable transfer.ufh[1].panelHeatingSegment[4].HeatConv.surfaceOrientation
+ declared in class <a href="Modelica://AixLib.ThermalZones.HighOrder.Components.Types">AixLib.ThermalZones.HighOrder.Components.Types</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Utilities/HeatTransfer/HeatConvInside.mo at line 22, and used in component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating#$transfer.ufh.panelHeatingSegment:HeatConv">transfer.ufh[1].panelHeatingSegment[4].HeatConv</a>.
+Type inconsistent definition equation:
+  transfer.ufh[1].panelHeatingSegment[4].HeatConv.surfaceOrientation = (if     transfer.ufh[1].panelHeatingSegment[4].isFloor then 2 else 1);
+Warning: The types of the operands in (transfer.ufh[1].panelHeatingSegment[4].HeatConv.surfaceOrientation)    =    ((  if transfer.ufh[1].panelHeatingSegment[4].isFloor then 2 else 1))
+are Enumeration and Integer, but they must be compatible.
+Warning: For variable transfer.ufh[1].panelHeatingSegment[5].HeatConv.calcMethod
+ declared in class <a href="Modelica://AixLib.ThermalZones.HighOrder.Components.Types">AixLib.ThermalZones.HighOrder.Components.Types</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Utilities/HeatTransfer/HeatConvInside.mo at line 8, and used in component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating#$transfer.ufh.panelHeatingSegment:HeatConv">transfer.ufh[1].panelHeatingSegment[5].HeatConv</a>.
+Type inconsistent definition equation:
+  transfer.ufh[1].panelHeatingSegment[5].HeatConv.calcMethod = transfer.ufh[1].panelHeatingSegment[5].calcMethod;
+Warning: The types of the operands in (transfer.ufh[1].panelHeatingSegment[5].HeatConv.calcMethod)    =    (  transfer.ufh[1].panelHeatingSegment[5].calcMethod)
+are Enumeration and Integer, but they must be compatible.
+Variable transfer.ufh[1].panelHeatingSegment[5].calcMethod was declared in class <a href="Modelica://BESMod.Systems.Hydraulical.Components.UFH.PanelHeatingSegment">BESMod.Systems.Hydraulical.Components.UFH.PanelHeatingSegment</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/UFH/PanelHeatingSegment.mo at line <a href="Modelica://BESMod.Systems.Hydraulical.Components.UFH.PanelHeatingSegment#text:25">26</a>, and used in component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating#$transfer.ufh:panelHeatingSegment">transfer.ufh[1].panelHeatingSegment[5]</a>.
+Warning: For variable transfer.ufh[1].panelHeatingSegment[5].HeatConv.surfaceOrientation
+ declared in class <a href="Modelica://AixLib.ThermalZones.HighOrder.Components.Types">AixLib.ThermalZones.HighOrder.Components.Types</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Utilities/HeatTransfer/HeatConvInside.mo at line 22, and used in component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating#$transfer.ufh.panelHeatingSegment:HeatConv">transfer.ufh[1].panelHeatingSegment[5].HeatConv</a>.
+Type inconsistent definition equation:
+  transfer.ufh[1].panelHeatingSegment[5].HeatConv.surfaceOrientation = (if     transfer.ufh[1].panelHeatingSegment[5].isFloor then 2 else 1);
+Warning: The types of the operands in (transfer.ufh[1].panelHeatingSegment[5].HeatConv.surfaceOrientation)    =    ((  if transfer.ufh[1].panelHeatingSegment[5].isFloor then 2 else 1))
+are Enumeration and Integer, but they must be compatible.
+Warning: The types of the operands in (1)   ==   (AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.  EN_ISO_6946_Appendix_A)
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in (1)   ==   (AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.  Bernd_Glueck)
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in (1)   ==   (AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.  ASHRAE140_2017)
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in (1)   ==   (AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.  Custom_hCon)
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in (1)   ==   (AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.  EN_ISO_6946_Appendix_A)
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in (1)   ==   (AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.  Bernd_Glueck)
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in (1)   ==   (AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.  ASHRAE140_2017)
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in (1)   ==   (AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.  Custom_hCon)
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in (1)   ==   (AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.  Custom_hCon)
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in (1)   ==   (AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.  Custom_hCon)
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in (1)   ==   (AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.  Custom_hCon)
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in (1)   ==   (AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.  EN_ISO_6946_Appendix_A)
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in (1)   ==   (AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.  Bernd_Glueck)
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in (1)   ==   (AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.  ASHRAE140_2017)
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in (1)   ==   (AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.  Custom_hCon)
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in (1)   ==   (AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.  EN_ISO_6946_Appendix_A)
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in (1)   ==   (AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.  Bernd_Glueck)
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in (1)   ==   (AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.  ASHRAE140_2017)
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in (1)   ==   (AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.  Custom_hCon)
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in (1)   ==   (AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.  Custom_hCon)
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in (1)   ==   (AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.  Custom_hCon)
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in (1)   ==   (AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.  EN_ISO_6946_Appendix_A)
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in (1)   ==   (AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.  Bernd_Glueck)
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in (1)   ==   (AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.  ASHRAE140_2017)
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in (1)   ==   (AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.  Custom_hCon)
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in 1 = AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.EN_ISO_6946_Appendix_A
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in 2 = AixLib.ThermalZones.HighOrder.Components.Types.InsideSurfaceOrientation.floor
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in 2 = AixLib.ThermalZones.HighOrder.Components.Types.InsideSurfaceOrientation.ceiling
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in 1 = AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.Bernd_Glueck
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in 1 = AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.Custom_hCon
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in 1 = AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.ASHRAE140_2017
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in 1 = AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.EN_ISO_6946_Appendix_A
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in 2 = AixLib.ThermalZones.HighOrder.Components.Types.InsideSurfaceOrientation.floor
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in 2 = AixLib.ThermalZones.HighOrder.Components.Types.InsideSurfaceOrientation.ceiling
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in 1 = AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.Bernd_Glueck
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in 1 = AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.Custom_hCon
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in 1 = AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.ASHRAE140_2017
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in 1 = AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.EN_ISO_6946_Appendix_A
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in 2 = AixLib.ThermalZones.HighOrder.Components.Types.InsideSurfaceOrientation.floor
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in 2 = AixLib.ThermalZones.HighOrder.Components.Types.InsideSurfaceOrientation.ceiling
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in 1 = AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.Bernd_Glueck
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in 1 = AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.Custom_hCon
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in 1 = AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.ASHRAE140_2017
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in 1 = AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.EN_ISO_6946_Appendix_A
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in 2 = AixLib.ThermalZones.HighOrder.Components.Types.InsideSurfaceOrientation.floor
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in 2 = AixLib.ThermalZones.HighOrder.Components.Types.InsideSurfaceOrientation.ceiling
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in 1 = AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.Bernd_Glueck
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in 1 = AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.Custom_hCon
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in 1 = AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.ASHRAE140_2017
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in 1 = AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.EN_ISO_6946_Appendix_A
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in 2 = AixLib.ThermalZones.HighOrder.Components.Types.InsideSurfaceOrientation.floor
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in 2 = AixLib.ThermalZones.HighOrder.Components.Types.InsideSurfaceOrientation.ceiling
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in 1 = AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.Bernd_Glueck
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in 1 = AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.Custom_hCon
+are Integer and Enumeration, but they must be compatible.
+Warning: The types of the operands in 1 = AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.ASHRAE140_2017
+are Integer and Enumeration, but they must be compatible.
+Error: The following parameter doesn't have any value:
+    transfer.dpSupOld_design
+
+Warning: The following parameters don't have any value, only a start value:
+    transfer.TTraOld_design(start = {288.15})
+
+The model has the same number of unknowns and equations: 1024
+The model could not be deduced to be symbolically well-posed.
+The model has
+  869+15*(transfer.ufh[1].panelHeatingSegment[1].vol.nPorts+transfer.ufh[1].panelHeatingSegment[2].vol.nPorts  +transfer.ufh[1].panelHeatingSegment[3].vol.nPorts+transfer.ufh[1].panelHeatingSegment[4].vol.nPorts  +transfer.ufh[1].panelHeatingSegment[5].vol.nPorts)+transfer.pumpFix_m_flow[1].vol.dynBal.nPorts  +vol[1].dynBal.nPorts
+scalar unknowns and
+  829+(if  not transfer.ufh[1].panelHeatingSegment[1].vol.use_portsData then 4*  transfer.ufh[1].panelHeatingSegment[1].vol.nPorts else 0)+13*transfer.ufh[1].panelHeatingSegment[1].vol.nPorts  +(if  not transfer.ufh[1].panelHeatingSegment[1].twoStar_RadEx.use_A_in then 1   else 0)+(if  not transfer.ufh[1].panelHeatingSegment[2].vol.use_portsData   then 4*transfer.ufh[1].panelHeatingSegment[2].vol.nPorts else 0)+13*  transfer.ufh[1].panelHeatingSegment[2].vol.nPorts+(if  not transfer.ufh[1].panelHeatingSegment[2].twoStar_RadEx.use_A_in   then 1 else 0)+(if  not transfer.ufh[1].panelHeatingSegment[3].vol.use_portsData   then 4*transfer.ufh[1].panelHeatingSegment[3].vol.nPorts else 0)+13*  transfer.ufh[1].panelHeatingSegment[3].vol.nPorts+(if  not transfer.ufh[1].panelHeatingSegment[3].twoStar_RadEx.use_A_in   then 1 else 0)+(if  not transfer.ufh[1].panelHeatingSegment[4].vol.use_portsData   then 4*transfer.ufh[1].panelHeatingSegment[4].vol.nPorts else 0)+13*  transfer.ufh[1].panelHeatingSegment[4].vol.nPorts+(if  not transfer.ufh[1].panelHeatingSegment[4].twoStar_RadEx.use_A_in   then 1 else 0)+(if  not transfer.ufh[1].panelHeatingSegment[5].vol.use_portsData   then 4*transfer.ufh[1].panelHeatingSegment[5].vol.nPorts else 0)+13*  transfer.ufh[1].panelHeatingSegment[5].vol.nPorts+(if  not transfer.ufh[1].panelHeatingSegment[5].twoStar_RadEx.use_A_in   then 1 else 0)+(if bou1[1].use_Xi_in then 1 else (if bou1[1].use_X_in then 0   else 1))+(if  not bou1[1].use_p_in then 1 else 0)+(if  not bou1[1].use_T_in   then 1 else 0)+(if  not transfer.pumpFix_m_flow[1].vol.dynBal.use_mWat_flow   then 1 else 0)+3*transfer.pumpFix_m_flow[1].vol.dynBal.nPorts+(if  not   vol[1].dynBal.use_mWat_flow then 1 else 0)+3*vol[1].dynBal.nPorts
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  1024
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Distribution.Tests.TestBoilerWithDHW 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.Tests.TestBoilerWithDHW">BESMod.Systems.Hydraulical.Distribution.Tests.TestBoilerWithDHW</a>:
+Warning: Non-literal value.
+In nominal attribute for distribution.stoDHW.heatingCoil1.pipe[1].res.dp.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class distribution.stoDHW.heatingCoil1.pipe.res.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for distribution.stoDHW.heatingCoil1.pipe[2].res.dp.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class distribution.stoDHW.heatingCoil1.pipe.res.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for distribution.stoDHW.heatingCoil1.pipe[3].res.dp.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class distribution.stoDHW.heatingCoil1.pipe.res.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for distribution.stoDHW.heatingCoil1.pipe[4].res.dp.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class distribution.stoDHW.heatingCoil1.pipe.res.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for distribution.boi.pressureDrop.dp.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class distribution.boi.pressureDrop.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for distribution.stoDHW.heatingCoil2.pipe[1].res.dp.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class distribution.stoDHW.heatingCoil2.pipe.res.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for distribution.stoDHW.heatingCoil2.pipe[2].res.dp.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class distribution.stoDHW.heatingCoil2.pipe.res.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for distribution.stoDHW.heatingCoil2.pipe[3].res.dp.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class distribution.stoDHW.heatingCoil2.pipe.res.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for distribution.stoDHW.heatingCoil2.pipe[4].res.dp.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class distribution.stoDHW.heatingCoil2.pipe.res.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Error: The following parameters don't have any value:
+  distribution.mDemOld_flow_design
+  distribution.mSupOld_flow_design
+
+The model has the same number of unknowns and equations: 4141
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries">BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries</a>:
+Warning: Failed to evaluate and check the size declaration of systemParameters.QBui_flow_nominal.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is systemParameters.nZones, and the required size is 1.
+Warning: Failed to evaluate and check the size declaration of systemParameters.THydSup_nominal.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is systemParameters.nZones, and the required size is 1.
+Warning: Non-literal value.
+In nominal attribute for generation.boi.pressureDrop.dp.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class generation.boi.pressureDrop.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: The variable generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.nSet is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TConInMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Error: The following parameter doesn't have any value:
+    generation.dpDemOld_design
+
+The model has the same number of unknowns and equations: 1086
+The model could not be deduced to be symbolically well-posed.
+The model has
+  1072+generation.heatPump.con.vol.dynBal.nPorts+2*generation.heatPump.eva.vol.dynBal.nPorts  +generation.pump.vol.dynBal.nPorts+generation.multiSum.nu+generation.boi.vol.dynBal.nPorts  +vol[1].dynBal.nPorts
+scalar unknowns and
+  1032+(if generation.bou_sinkAir.use_Xi_in then 2 else (if generation.bou_sinkAir.use_X_in   then 1 else 3))+(if  not generation.bou_sinkAir.use_p_in then 1 else 0)+(if    not generation.bou_sinkAir.use_h_in then 1 else 0)+(if generation.bouEva.use_Xi_in   then 2 else (if generation.bouEva.use_X_in then 1 else 3))+(if   generation.bouPum.use_Xi_in then 1 else (if generation.bouPum.use_X_in then 0   else 1))+(if  not generation.bouPum.use_p_in then 1 else 0)+(if  not   generation.bouPum.use_T_in then 1 else 0)+(if weaDat.pAtmSou ==   IBPSA.BoundaryConditions.Types.DataSource.Parameter then 1 else 0)+(if   weaDat.TDewPoiSou == IBPSA.BoundaryConditions.Types.DataSource.Parameter then 1   else 0)+(if weaDat.TDryBulSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TBlaSkySou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.relHumSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.opaSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.ceiHeiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.totSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winSpeSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winDirSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HInfHorSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HDifHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HGloHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HGloHor_HDifHor then 2 else 1)+(if  not generation.heatPump.con.vol.dynBal.use_mWat_flow   then 1 else 0)+3*generation.heatPump.con.vol.dynBal.nPorts+(if  not   generation.heatPump.eva.vol.dynBal.use_mWat_flow then 1 else 0)+5*  generation.heatPump.eva.vol.dynBal.nPorts+(if  not generation.pump.vol.dynBal.use_mWat_flow   then 1 else 0)+3*generation.pump.vol.dynBal.nPorts+(if  not generation.boi.vol.dynBal.use_mWat_flow   then 1 else 0)+3*generation.boi.vol.dynBal.nPorts+(if  not vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*vol[1].dynBal.nPorts
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  1086
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater">BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater</a>:
+Warning: Failed to evaluate and check the size declaration of systemParameters.QBui_flow_nominal.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is systemParameters.nZones, and the required size is 1.
+Warning: Failed to evaluate and check the size declaration of systemParameters.THydSup_nominal.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is systemParameters.nZones, and the required size is 1.
+Warning: The variable generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.nSet is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TConInMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Error: The following parameter doesn't have any value:
+    generation.dpDemOld_design
+
+The model has the same number of unknowns and equations: 1059
+The model could not be deduced to be symbolically well-posed.
+The model has
+  1044+generation.heatPump.con.vol.dynBal.nPorts+2*generation.heatPump.eva.vol.dynBal.nPorts  +generation.pump.vol.dynBal.nPorts+generation.multiSum.nu+generation.eleHea.vol.dynBal.nPorts  +vol[1].dynBal.nPorts
+scalar unknowns and
+  1005+(if generation.bou_sinkAir.use_Xi_in then 2 else (if generation.bou_sinkAir.use_X_in   then 1 else 3))+(if  not generation.bou_sinkAir.use_p_in then 1 else 0)+(if    not generation.bou_sinkAir.use_h_in then 1 else 0)+(if generation.bouEva.use_Xi_in   then 2 else (if generation.bouEva.use_X_in then 1 else 3))+(if   generation.bouPum.use_Xi_in then 1 else (if generation.bouPum.use_X_in then 0   else 1))+(if  not generation.bouPum.use_p_in then 1 else 0)+(if  not   generation.bouPum.use_T_in then 1 else 0)+(if weaDat.pAtmSou ==   IBPSA.BoundaryConditions.Types.DataSource.Parameter then 1 else 0)+(if   weaDat.TDewPoiSou == IBPSA.BoundaryConditions.Types.DataSource.Parameter then 1   else 0)+(if weaDat.TDryBulSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TBlaSkySou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.relHumSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.opaSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.ceiHeiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.totSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winSpeSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winDirSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HInfHorSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HDifHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HGloHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HGloHor_HDifHor then 2 else 1)+(if  not generation.heatPump.con.vol.dynBal.use_mWat_flow   then 1 else 0)+3*generation.heatPump.con.vol.dynBal.nPorts+(if  not   generation.heatPump.eva.vol.dynBal.use_mWat_flow then 1 else 0)+5*  generation.heatPump.eva.vol.dynBal.nPorts+(if  not generation.pump.vol.dynBal.use_mWat_flow   then 1 else 0)+3*generation.pump.vol.dynBal.nPorts+(if  not generation.eleHea.vol.dynBal.use_mWat_flow   then 1 else 0)+3*generation.eleHea.vol.dynBal.nPorts+(if  not   vol[1].dynBal.use_mWat_flow then 1 else 0)+3*vol[1].dynBal.nPorts
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  1059
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Generation.Tests.SolarThermalAndHeatPumpDetailed 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Generation.Tests.SolarThermalAndHeatPumpDetailed">BESMod.Systems.Hydraulical.Generation.Tests.SolarThermalAndHeatPumpDetailed</a>:
+Warning: Failed to evaluate and check the size declaration of systemParameters.QBui_flow_nominal.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is systemParameters.nZones, and the required size is 1.
+Warning: Failed to evaluate and check the size declaration of systemParameters.THydSup_nominal.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is systemParameters.nZones, and the required size is 1.
+Warning: The variable generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.nSet is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TConInMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Error: The following parameter doesn't have any value:
+    generation.dpDemOld_design
+
+The model has the same number of unknowns and equations: 1844
+The model could not be deduced to be symbolically well-posed.
+The model has
+  1785+6*generation.solCol.nSeg+generation.heatPump.con.vol.dynBal.nPorts+2*  generation.heatPump.eva.vol.dynBal.nPorts+generation.pump.vol.dynBal.nPorts+  generation.multiSum.nu+generation.eleHea.vol.dynBal.nPorts+generation.solCol.vol[1].dynBal.nPorts  +generation.solCol.vol[2].dynBal.nPorts+generation.solCol.vol[3].dynBal.nPorts  +generation.solCol.vol[4].dynBal.nPorts+generation.solCol.vol[5].dynBal.nPorts  +generation.pumpSolThe.vol.dynBal.nPorts+vol[1].dynBal.nPorts+vol[2].dynBal.nPorts
+scalar unknowns and
+  1714+(if generation.bou_sinkAir.use_Xi_in then 2 else (if generation.bou_sinkAir.use_X_in   then 1 else 3))+(if  not generation.bou_sinkAir.use_p_in then 1 else 0)+(if    not generation.bou_sinkAir.use_h_in then 1 else 0)+(if generation.bouEva.use_Xi_in   then 2 else (if generation.bouEva.use_X_in then 1 else 3))+(if   generation.bouPum.use_Xi_in then 1 else (if generation.bouPum.use_X_in then 0   else 1))+(if  not generation.bouPum.use_p_in then 1 else 0)+(if  not   generation.bouPum.use_T_in then 1 else 0)+2*(if  not generation.solCol.use_shaCoe_in   then 1 else 0)+4*generation.solCol.nSeg+(if generation.bou.use_Xi_in then 1   else (if generation.bou.use_X_in then 0 else 1))+(if  not generation.bou.use_p_in   then 1 else 0)+2*generation.bou.nPorts+(if  not generation.bou.use_T_in then 1   else 0)+(if weaDat.pAtmSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TDewPoiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TDryBulSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TBlaSkySou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.relHumSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.opaSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.ceiHeiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.totSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winSpeSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winDirSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HInfHorSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HDifHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HGloHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HGloHor_HDifHor then 2 else 1)+(if  not generation.heatPump.con.vol.dynBal.use_mWat_flow   then 1 else 0)+3*generation.heatPump.con.vol.dynBal.nPorts+(if  not   generation.heatPump.eva.vol.dynBal.use_mWat_flow then 1 else 0)+5*  generation.heatPump.eva.vol.dynBal.nPorts+(if  not generation.pump.vol.dynBal.use_mWat_flow   then 1 else 0)+3*generation.pump.vol.dynBal.nPorts+(if  not generation.eleHea.vol.dynBal.use_mWat_flow   then 1 else 0)+3*generation.eleHea.vol.dynBal.nPorts+(if  not   generation.solCol.vol[1].dynBal.use_mWat_flow then 1 else 0)+3*  generation.solCol.vol[1].dynBal.nPorts+(if  not generation.solCol.vol[2].dynBal.use_mWat_flow   then 1 else 0)+3*generation.solCol.vol[2].dynBal.nPorts+(if  not   generation.solCol.vol[3].dynBal.use_mWat_flow then 1 else 0)+3*  generation.solCol.vol[3].dynBal.nPorts+(if  not generation.solCol.vol[4].dynBal.use_mWat_flow   then 1 else 0)+3*generation.solCol.vol[4].dynBal.nPorts+(if  not   generation.solCol.vol[5].dynBal.use_mWat_flow then 1 else 0)+3*  generation.solCol.vol[5].dynBal.nPorts+(if  not generation.pumpSolThe.vol.dynBal.use_mWat_flow   then 1 else 0)+3*generation.pumpSolThe.vol.dynBal.nPorts+(if  not   vol[1].dynBal.use_mWat_flow then 1 else 0)+3*vol[1].dynBal.nPorts+(if  not   vol[2].dynBal.use_mWat_flow then 1 else 0)+3*vol[2].dynBal.nPorts
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  1844
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem">BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem</a>:
+Error: The following parameter doesn't have any value:
+    transfer.dpSupOld_design
+
+Warning: The following parameters don't have any value, only a start value:
+    transfer.TTraOld_design(start = {288.15})
+
+The model has the same number of unknowns and equations: 572
+The model could not be deduced to be symbolically well-posed.
+The model has
+  537+2*transfer.parRad.nEle+transfer.rad[1].sumCon.nin+transfer.rad[1].sumRad.nin  +transfer.rad[1].vol[1].dynBal.nPorts+transfer.rad[1].vol[2].dynBal.nPorts+  transfer.rad[1].vol[3].dynBal.nPorts+transfer.rad[1].vol[4].dynBal.nPorts+  transfer.rad[1].vol[5].dynBal.nPorts+transfer.pumFixMFlo[1].vol.dynBal.nPorts+  vol[1].dynBal.nPorts
+scalar unknowns and
+  507+(if bou1[1].use_Xi_in then 1 else (if bou1[1].use_X_in then 0 else 1))+(if    not bou1[1].use_p_in then 1 else 0)+(if  not bou1[1].use_T_in then 1 else 0)+  (if  not transfer.pumFixMFlo[1].vol.dynBal.use_mWat_flow then 1 else 0)+3*  transfer.pumFixMFlo[1].vol.dynBal.nPorts+(if  not vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*vol[1].dynBal.nPorts+(if  not transfer.rad[1].vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad[1].vol[1].dynBal.nPorts+(if  not   transfer.rad[1].vol[2].dynBal.use_mWat_flow then 1 else 0)+3*transfer.rad[1].vol[2].dynBal.nPorts  +(if  not transfer.rad[1].vol[3].dynBal.use_mWat_flow then 1 else 0)+3*  transfer.rad[1].vol[3].dynBal.nPorts+(if  not transfer.rad[1].vol[4].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad[1].vol[4].dynBal.nPorts+(if  not   transfer.rad[1].vol[5].dynBal.use_mWat_flow then 1 else 0)+3*transfer.rad[1].vol[5].dynBal.nPorts  +2*transfer.parRad.nEle
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  572
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
 
