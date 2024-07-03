@@ -72,16 +72,16 @@ In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
   Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
 Used in base-class hydraulic.distribution.bufSto.heatingCoil2.pipe.res.PartialTwoPortInterface.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
-Warning: The bus-input hydraulic.control.setAndMeaSelSec.sigBusGen.TGenOutMea lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
+Warning: The bus-input hydraulic.control.setAndMeaSelPri.sigBusGen.TGenOutMea lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
 Bus-signal: TGenOutMea
-Use: <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#diagram$hydraulic.control.setAndMeaSelPri:reaPasTrhGenSup,sigBusGen"> connect(hydraulic.control.setAndMeaSelPri.sigBusGen.TGenOutMea, hydraulic.control.setAndMeaSelPri.reaPasTrhGenSup.u)</a>;
 Use: <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#diagram$hydraulic.control.setAndMeaSelSec:reaPasTrhGenSup,sigBusGen"> connect(hydraulic.control.setAndMeaSelSec.sigBusGen.TGenOutMea, hydraulic.control.setAndMeaSelSec.reaPasTrhGenSup.u)</a>;
+Use: <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#diagram$hydraulic.control.setAndMeaSelPri:reaPasTrhGenSup,sigBusGen"> connect(hydraulic.control.setAndMeaSelPri.sigBusGen.TGenOutMea, hydraulic.control.setAndMeaSelPri.reaPasTrhGenSup.u)</a>;
 Connected bus variables:
 <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#$hydraulic.control.heaPumSigBusPasThr.sigBusGen:TGenOutMea">hydraulic.control.heaPumSigBusPasThr.sigBusGen.TGenOutMea</a> (connect) "Connector of Real input signal"
 <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#$hydraulic.control.sigBusGen:TGenOutMea">hydraulic.control.sigBusGen.TGenOutMea</a> (connect)
 <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#$hydraulic.generation.sigBusGen:TGenOutMea">hydraulic.generation.sigBusGen.TGenOutMea</a> (connect)
-input <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#$hydraulic.control.setAndMeaSelPri.sigBusGen:TGenOutMea">hydraulic.control.setAndMeaSelPri.sigBusGen.TGenOutMea</a> (connect)
 input <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#$hydraulic.control.setAndMeaSelSec.sigBusGen:TGenOutMea">hydraulic.control.setAndMeaSelSec.sigBusGen.TGenOutMea</a> (connect)
+input <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#$hydraulic.control.setAndMeaSelPri.sigBusGen:TGenOutMea">hydraulic.control.setAndMeaSelPri.sigBusGen.TGenOutMea</a> (connect)
 Warning: The bus-input hydraulic.control.heaPumSigBusPasThr.sigBusGen.THeaPumEvaIn lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
 Bus-signal: THeaPumEvaIn
 Use: <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#diagram$hydraulic.control.heaPumSigBusPasThr:realPassThrough,sigBusGen"> connect(hydraulic.control.heaPumSigBusPasThr.sigBusGen.THeaPumEvaIn, hydraulic.control.heaPumSigBusPasThr.realPassThrough[4].u)</a>;
@@ -109,16 +109,16 @@ Connected bus variables:
 <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#$hydraulic.control.sigBusGen:THeaPumOut">hydraulic.control.sigBusGen.THeaPumOut</a> (connect)
 <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#$hydraulic.generation.sigBusGen:THeaPumOut">hydraulic.generation.sigBusGen.THeaPumOut</a> (connect)
 input <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#$hydraulic.control.heaPumSigBusPasThr.sigBusGen:THeaPumOut">hydraulic.control.heaPumSigBusPasThr.sigBusGen.THeaPumOut</a> (connect)
-Warning: The bus-input hydraulic.control.sigBusGen.heaPumIsOn lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
+Warning: The bus-input hydraulic.control.heaPumSigBusPasThr.sigBusGen.heaPumIsOn lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
 Bus-signal: heaPumIsOn
-Use: <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#diagram$hydraulic.control.heaPumSigBusPasThr:booleanPassThrough,sigBusGen"> connect(hydraulic.control.heaPumSigBusPasThr.sigBusGen.heaPumIsOn, hydraulic.control.heaPumSigBusPasThr.booleanPassThrough.u)</a>;
 Use: <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#diagram$hydraulic.control:anyGenDevIsOn,sigBusGen"> connect(hydraulic.control.sigBusGen.heaPumIsOn, hydraulic.control.anyGenDevIsOn.u[2])</a>;
+Use: <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#diagram$hydraulic.control.heaPumSigBusPasThr:booleanPassThrough,sigBusGen"> connect(hydraulic.control.heaPumSigBusPasThr.sigBusGen.heaPumIsOn, hydraulic.control.heaPumSigBusPasThr.booleanPassThrough.u)</a>;
 Connected bus variables:
 <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#$hydraulic.control.setAndMeaSelPri.sigBusGen:heaPumIsOn">hydraulic.control.setAndMeaSelPri.sigBusGen.heaPumIsOn</a> (connect) "True if the device is actually on"
 <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#$hydraulic.control.setAndMeaSelSec.sigBusGen:heaPumIsOn">hydraulic.control.setAndMeaSelSec.sigBusGen.heaPumIsOn</a> (connect)
 <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#$hydraulic.generation.sigBusGen:heaPumIsOn">hydraulic.generation.sigBusGen.heaPumIsOn</a> (connect)
+input <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#$hydraulic.control.sigBusGen:heaPumIsOn">hydraulic.control.sigBusGen.heaPumIsOn</a> (connect)
 input <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#$hydraulic.control.heaPumSigBusPasThr.sigBusGen:heaPumIsOn">hydraulic.control.heaPumSigBusPasThr.sigBusGen.heaPumIsOn</a> (connect) "Connector of Boolean input signal"
-input <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#$hydraulic.control.sigBusGen:heaPumIsOn">hydraulic.control.sigBusGen.heaPumIsOn</a> (connect) "True if the device is actually on"
 Warning: Incompatible sizes for variable and its definition equation;
   hydraulic.distribution.TSupOld_design = hydraulic.distribution.TDemOld_design.+hydraulic.distribution.dTLoss_nominal.+  hydraulic.distribution.dTTraOld_design
 They have for dimension 1 the sizes 2 and 1.
@@ -134,15 +134,22 @@ Check of class aborted.
 Warning: WARNINGS have been issued.
 
 
-Error in model:  BESMod.Examples.SolarThermalSystem.SolarThermalBuildings 
-Check of <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings">BESMod.Examples.SolarThermalSystem.SolarThermalBuildings</a>:
+Error in model:  BESMod.Examples.SolarThermalSystem.SolarThermalAixLib 
+Check of <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib">BESMod.Examples.SolarThermalSystem.SolarThermalAixLib</a>:
 Warning: Non-literal value.
-In nominal attribute for hydraulic.generation.solCol.res.m_flow.
+In nominal attribute for hydraulic.generation.solThe.pressureDrop.m_flow.
 Ignoring nominal attribute.
 In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
   Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
-Used in base-class hydraulic.generation.solCol.res.PartialTwoPortInterface.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/Buildings/Buildings/Fluid/BaseClasses/PartialResistance.mo, line 3
+Used in base-class hydraulic.generation.solThe.pressureDrop.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for hydraulic.generation.solThe.pressureDrop.dp.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class hydraulic.generation.solThe.pressureDrop.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
 Warning: Non-literal value.
 In nominal attribute for hydraulic.distribution.bufSto.heatingCoil2.pipe[1].res.m_flow.
 Ignoring nominal attribute.
@@ -226,22 +233,15 @@ Check of class aborted.
 Warning: WARNINGS have been issued.
 
 
-Error in model:  BESMod.Examples.SolarThermalSystem.SolarThermalAixLib 
-Check of <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib">BESMod.Examples.SolarThermalSystem.SolarThermalAixLib</a>:
+Error in model:  BESMod.Examples.SolarThermalSystem.SolarThermalBuildings 
+Check of <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings">BESMod.Examples.SolarThermalSystem.SolarThermalBuildings</a>:
 Warning: Non-literal value.
-In nominal attribute for hydraulic.generation.solThe.pressureDrop.m_flow.
+In nominal attribute for hydraulic.generation.solCol.res.m_flow.
 Ignoring nominal attribute.
 In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
   Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
-Used in base-class hydraulic.generation.solThe.pressureDrop.PartialTwoPortInterface.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
-Warning: Non-literal value.
-In nominal attribute for hydraulic.generation.solThe.pressureDrop.dp.
-Ignoring nominal attribute.
-In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
-Used in base-class hydraulic.generation.solThe.pressureDrop.PartialTwoPortInterface.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Used in base-class hydraulic.generation.solCol.res.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/Buildings/Buildings/Fluid/BaseClasses/PartialResistance.mo, line 3
 Warning: Non-literal value.
 In nominal attribute for hydraulic.distribution.bufSto.heatingCoil2.pipe[1].res.m_flow.
 Ignoring nominal attribute.
