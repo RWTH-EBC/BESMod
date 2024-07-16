@@ -10,8 +10,8 @@
 # result_dir : ci-tests/result
 # ci_regression_test_commit : $ {ci_regression_test_commit}
 # expire_in_time : 7h
-# arg_PR: --batch  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages $lib_package --library BESMod 
-# arg_push: --changed-flag  --batch  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages $lib_package --library BESMod 
+# arg_push: --batch  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages $lib_package --library BESMod 
+# arg_changed: --changed-flag  --batch  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --tool dymola --number-of-processors 4 --path . --library-root .. --packages $lib_package --library BESMod 
 # arg_chart: --funnel-comp-flag  --error-flag  --templates-url https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica --library BESMod --packages $lib_package 
 # packages_per_job: {'Examples': 'Examples', 'Systems': 'Systems', 'Other': 'Tutorial Utilities'}
 # modelicapyci_api_github_module: ModelicaPyCI.api_script.api_github
@@ -36,7 +36,7 @@ stages:
     - prepare
 
 
-.Regressiontest:PR:
+.Regressiontest:push:
     image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola_2022-miniconda
     stage: RegressionTest
     before_script:
@@ -59,11 +59,11 @@ stages:
             - ci-tests/result/
         expire_in: 7h
     rules:
-        - !reference [.rules:PR , rules]
+        - !reference [.rules:push , rules]
         - if: $CI_COMMIT_MESSAGE  =~ /ci_regression_test/ && $CI_PIPELINE_SOURCE == "push"
           when: always
 
-.Regressiontest:Push:
+.Regressiontest:changed:
     image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola_2022-miniconda
     stage: RegressionTest
     before_script:
@@ -86,41 +86,41 @@ stages:
             - ci-tests/result/
         expire_in: 7h
     rules:
-        - !reference [.rules:push , rules]
+        - !reference [.rules:changed , rules]
 
-Regressiontest_BESMod_Examples:PR:
+Regressiontest_BESMod_Examples:push:
     variables:
         lib_package: Examples
-    extends: .Regressiontest:PR
+    extends: .Regressiontest:push
 
-Regressiontest_BESMod_Systems:PR:
+Regressiontest_BESMod_Systems:push:
     variables:
         lib_package: Systems
-    extends: .Regressiontest:PR
+    extends: .Regressiontest:push
 
-Regressiontest_BESMod_Other:PR:
+Regressiontest_BESMod_Other:push:
     variables:
         lib_package: Tutorial Utilities
-    extends: .Regressiontest:PR
+    extends: .Regressiontest:push
 
 
-Regressiontest_BESMod_Examples:Push:
+Regressiontest_BESMod_Examples:changed:
     variables:
         lib_package: Examples
-    extends: .Regressiontest:Push
+    extends: .Regressiontest:changed
 
-Regressiontest_BESMod_Systems:Push:
+Regressiontest_BESMod_Systems:changed:
     variables:
         lib_package: Systems
-    extends: .Regressiontest:Push
+    extends: .Regressiontest:changed
 
-Regressiontest_BESMod_Other:Push:
+Regressiontest_BESMod_Other:changed:
     variables:
         lib_package: Tutorial Utilities
-    extends: .Regressiontest:Push
+    extends: .Regressiontest:changed
 
 
-Regression_overall_coverage:PR:
+Regression_overall_coverage:push:
     stage: RegressionTest
     before_script:
         - !reference [.activate_python_and_install_requirements, script]
@@ -134,11 +134,11 @@ Regression_overall_coverage:PR:
             - ci-tests/result/
         expire_in: 7h
     rules:
-        - !reference [.rules:PR , rules]
+        - !reference [.rules:push , rules]
         - if: $CI_COMMIT_MESSAGE  =~ /ci_regression_test/ && $CI_PIPELINE_SOURCE == "push"
           when: always
 
-Regression_overall_coverage:Push:
+Regression_overall_coverage:changed:
     stage: RegressionTest
     before_script:
         - !reference [.activate_python_and_install_requirements, script]
@@ -152,7 +152,7 @@ Regression_overall_coverage:Push:
             - ci-tests/result/
         expire_in: 7h
     rules:
-        - !reference [.rules:push , rules]
+        - !reference [.rules:changed , rules]
 
 
 RegressionTest_Check_References:
@@ -188,6 +188,6 @@ RegressionTest_Check_References:
             - ci-tests/result/
         expire_in: 7h
     rules:
-        - !reference [.rules:PR , rules]
+        - !reference [.rules:push , rules]
         - if: $CI_COMMIT_MESSAGE  =~ /ci_reference_check/ && $CI_PIPELINE_SOURCE == "push"
           when: always

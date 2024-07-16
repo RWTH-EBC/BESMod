@@ -9,8 +9,8 @@
 # result_dir: ci-tests/result
 # expire_in_time: 7h
 # ci_create_model_whitelist_commit: ci_create_model_whitelist
-# arg_push: --dym-options DYM_CHECK --filter-whitelist-flag  --changed-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
-# arg_PR: --dym-options DYM_CHECK --filter-whitelist-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
+# arg_changed: --dym-options DYM_CHECK --filter-whitelist-flag  --changed-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
+# arg_push: --dym-options DYM_CHECK --filter-whitelist-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
 # config_ci_exit_file: ci-tests/Configfiles/exit.sh
 # bot_update_model_whitelist_commit: CI message from ebc-aixlib-bot. Update file whitelist-check_file. Please pull the new files before push again.
 # whitelist_model_file: dymola_check_whitelist.txt
@@ -25,7 +25,7 @@ stages:
     - create_model_whitelist
 
 
-.check_model_job:PR:
+.check_model_job:push:
     image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola_2022-miniconda
     stage: model_check
     before_script:
@@ -41,9 +41,9 @@ stages:
     rules:
         - if: $CI_COMMIT_MESSAGE  =~ /ci_check/ && $CI_PIPELINE_SOURCE == "push"
           when: always
-        - !reference [.rules:PR , rules]
+        - !reference [.rules:push , rules]
 
-.check_model_job:Push:
+.check_model_job:changed:
     image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola_2022-miniconda
     stage: model_check
     before_script:
@@ -57,38 +57,38 @@ stages:
             - ci-tests/result/
         expire_in: 7h
     rules:
-        - !reference [.rules:push , rules]
+        - !reference [.rules:changed , rules]
 
-Check_BESMod_Examples:PR:
+Check_BESMod_Examples:push:
     variables:
         lib_package: Examples
-    extends: .check_model_job:PR
+    extends: .check_model_job:push
 
-Check_BESMod_Systems:PR:
+Check_BESMod_Systems:push:
     variables:
         lib_package: Systems
-    extends: .check_model_job:PR
+    extends: .check_model_job:push
 
-Check_BESMod_Other:PR:
+Check_BESMod_Other:push:
     variables:
         lib_package: Tutorial Utilities
-    extends: .check_model_job:PR
+    extends: .check_model_job:push
 
 
-Check_BESMod_Examples:Push:
+Check_BESMod_Examples:changed:
     variables:
         lib_package: Examples
-    extends: .check_model_job:Push
+    extends: .check_model_job:changed
 
-Check_BESMod_Systems:Push:
+Check_BESMod_Systems:changed:
     variables:
         lib_package: Systems
-    extends: .check_model_job:Push
+    extends: .check_model_job:changed
 
-Check_BESMod_Other:Push:
+Check_BESMod_Other:changed:
     variables:
         lib_package: Tutorial Utilities
-    extends: .check_model_job:Push
+    extends: .check_model_job:changed
 
 
 check_whitelist_job:

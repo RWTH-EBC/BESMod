@@ -2,8 +2,8 @@
 # dym_image_name : registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola_2022-miniconda
 # ci_stage_simulate: simulate
 # ci_stage_create_exampel_whitelist: create_example_whitelist
-# arg_push : --dym-options DYM_SIM --filter-whitelist-flag  --changed-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
-# arg_PR: --dym-options DYM_SIM --filter-whitelist-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
+# arg_changed : --dym-options DYM_SIM --filter-whitelist-flag  --changed-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
+# arg_push: --dym-options DYM_SIM --filter-whitelist-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
 # library: BESMod
 # ci_check_commit ci_simulate
 # modelicapyci_test_validate_module: ModelicaPyCI.unittest.validatetest
@@ -24,7 +24,7 @@ stages:
     - create_example_whitelist
 
 
-.simulate_model_job:PR:
+.simulate_model_job:push:
     image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola_2022-miniconda
     stage: simulate
     before_script:
@@ -40,9 +40,9 @@ stages:
     rules:
         - if: $CI_COMMIT_MESSAGE  =~ /ci_simulate/ && $CI_PIPELINE_SOURCE == "push"
           when: always
-        - !reference [.rules:PR , rules]
+        - !reference [.rules:push , rules]
 
-.simulate_model_job:Push:
+.simulate_model_job:changed:
     image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola_2022-miniconda
     stage: simulate
     before_script:
@@ -56,39 +56,39 @@ stages:
             - ci-tests/result/
         expire_in: 7h
     rules:
-        - !reference [.rules:push , rules]
+        - !reference [.rules:changed , rules]
 
-Simulate_BESMod_Examples:PR:
+Simulate_BESMod_Examples:push:
     variables:
         lib_package: Examples
-    extends: .simulate_model_job:PR
+    extends: .simulate_model_job:push
 
-Simulate_BESMod_Systems:PR:
+Simulate_BESMod_Systems:push:
     variables:
         lib_package: Systems
-    extends: .simulate_model_job:PR
+    extends: .simulate_model_job:push
 
-Simulate_BESMod_Other:PR:
+Simulate_BESMod_Other:push:
     variables:
         lib_package: Tutorial Utilities
-    extends: .simulate_model_job:PR
+    extends: .simulate_model_job:push
 
 
 
-Simulate_BESMod_Examples:Push:
+Simulate_BESMod_Examples:changed:
     variables:
         lib_package: Examples
-    extends: .simulate_model_job:Push
+    extends: .simulate_model_job:changed
 
-Simulate_BESMod_Systems:Push:
+Simulate_BESMod_Systems:changed:
     variables:
         lib_package: Systems
-    extends: .simulate_model_job:Push
+    extends: .simulate_model_job:changed
 
-Simulate_BESMod_Other:Push:
+Simulate_BESMod_Other:changed:
     variables:
         lib_package: Tutorial Utilities
-    extends: .simulate_model_job:Push
+    extends: .simulate_model_job:changed
 
 
 simulate_whitelist_job:

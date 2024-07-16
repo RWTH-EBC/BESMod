@@ -11,7 +11,7 @@
 # library : BESMod
 # ci_html_commit : ci_html
 # ModelicaPyCI.api_script.api_github : modelicapyci_api_github_module
-# arg_PR : --filter-whitelist-flag  --correct-view-flag  --log-flag  --whitelist-library IBPSA --library BESMod --packages Examples Tutorial Utilities Systems 
+# arg_push : --filter-whitelist-flag  --correct-view-flag  --log-flag  --whitelist-library IBPSA --library BESMod --packages Examples Tutorial Utilities Systems 
 # arg_wh : --filter-whitelist-flag  --log-flag  --whitelist-library IBPSA 
 # bot_create_html_file_commit : CI message from ebc-aixlib-bot. Push new files with corrected html Syntax .
 
@@ -29,19 +29,23 @@ variables:
 
 
 
-Check_HTML:PR:
+Check_HTML:push:
     stage: HTML_Check
     before_script:
         - !reference [.activate_python_and_install_requirements, script]
     script:
         - python -m ModelicaPyCI.syntax.html_tidy --filter-whitelist-flag  --correct-view-flag  --log-flag  --whitelist-library IBPSA --library BESMod --packages Examples Tutorial Utilities Systems 
     after_script:
-        - !reference [.activate_python_and_install_requirements, script]
-        - !reference [.github_ssh_auth, script]
-        - if ! cat ci-tests/Configfiles/exit.sh | grep "exit 1"; then
+        - if ! cat ci-tests/Configfiles/exit.sh | grep "Syntax Error"; then
             exit 0;
           fi
+        - !reference [.activate_python_and_install_requirements, script]
+        - !reference [.github_ssh_auth, script]
         - python -m ModelicaPyCI.syntax.html_tidy --filter-whitelist-flag  --log-flag  --correct-overwrite-flag  --whitelist-library IBPSA --library BESMod --packages Examples Tutorial Utilities Systems ;
+        - if [[ $CI_COMMIT_REF_NAME =~ ^$Praefix_Branch ]]; then
+            echo "Branch is already used to fix html, exiting";
+            exit 1;
+          fi
         - git checkout -B $Newbranch;
         - git add BESMod;
         - git commit -m "CI message from ebc-aixlib-bot. Push new files with corrected html Syntax .";
@@ -55,9 +59,9 @@ Check_HTML:PR:
     rules:
         - if: $CI_COMMIT_MESSAGE  =~ /ci_html/ && $CI_PIPELINE_SOURCE == "push"
           when: always
-        - !reference [.rules:PR , rules]
+        - !reference [.rules:push , rules]
 
-Check_HTML:push:
+Check_HTML:changed:
     stage: HTML_Check
     before_script:
         - !reference [.github_ssh_auth, script]
@@ -69,7 +73,7 @@ Check_HTML:push:
             - ci-tests/result/
         expire_in: 7h
     rules:
-        - !reference [.rules:push , rules]
+        - !reference [.rules:changed , rules]
 
 Open_Pull_HTML_Request:
     stage: open_PR
