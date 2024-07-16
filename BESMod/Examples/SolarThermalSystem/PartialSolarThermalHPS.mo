@@ -6,6 +6,7 @@ partial model PartialSolarThermalHPS
     redeclare Systems.Demand.Building.TEASERThermalZone building(
       hBui=sum(building.zoneParam.VAir)^(1/3),
       ABui=sum(building.zoneParam.VAir)^(2/3),
+      ARoo=sum(building.zoneParam.ARoof),
       redeclare BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
         oneZoneParam,
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial),

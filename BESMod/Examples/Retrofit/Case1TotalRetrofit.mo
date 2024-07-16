@@ -8,7 +8,9 @@ model Case1TotalRetrofit
   annotation (experiment(
       StopTime=86400,
       Interval=600,
-      __Dymola_Algorithm="Dassl"), Documentation(info="<html>
+      Tolerance=1e-06),
+       __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/Retrofit/Case1TotalRetrofit.mos"
+        "Simulate and plot"), Documentation(info="<html>
 <p>
   This example demonstrates the usage of a total retrofit, 
   where <code>QOld_flow_design</code> equals <code>Q_flow_nominal</code>. 

@@ -4,9 +4,12 @@ partial model PartialCase
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
     redeclare Systems.Demand.Building.TEASERThermalZone building(
       hBui=sum(building.zoneParam.VAir)^(1/3),
-      ABui=sum(building.zoneParam.VAir)^(2/3)),
+      ABui=sum(building.zoneParam.VAir)^(2/3),
+      ARoo=sum(building.zoneParam.ARoof),
+      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial),
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
+      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater
         generation(
         use_old_design={NoRetrofitHydGen},
@@ -84,6 +87,7 @@ partial model PartialCase
           parTra,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum)),
     redeclare Systems.Demand.DHW.StandardProfiles DHW(
+      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic

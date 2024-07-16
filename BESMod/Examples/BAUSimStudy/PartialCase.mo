@@ -5,6 +5,7 @@ partial model PartialCase
     redeclare Systems.Demand.Building.TEASERThermalZone building(
       hBui=sum(building.zoneParam.VAir)^(1/3),
       ABui=sum(building.zoneParam.VAir)^(2/3),
+      ARoo=sum(building.zoneParam.ARoof),
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial),
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
