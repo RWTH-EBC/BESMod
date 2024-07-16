@@ -1,11 +1,10 @@
 Regression tests are only run for the following package:
   BESMod.Examples
-Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Examples_GasBoilerBuildingOnly.txt.
 *** Error: BESMod_Examples_DesignOptimization_BES.txt: Errors during result verification.
            Absolute error = 5.997e+01 at t = 167616.0 for electricalGrid.PElecLoa
 *** Error: BESMod_Examples_DesignOptimization_BESNoDHW.txt: Errors during result verification.
            Absolute error = 3.338e-01 at t = 155520.0 for electricalGrid.PElecLoa
-Comparison files output by funnel are stored in the directory 'funnel_comp' of size 0.9 MB.
+Comparison files output by funnel are stored in the directory 'funnel_comp' of size 1.0 MB.
 Run 'python -c "import buildingspy.development.regressiontest as t; t.Tester(tool=\"dymola\").report()"'
 to access a summary of the comparison results.
 
