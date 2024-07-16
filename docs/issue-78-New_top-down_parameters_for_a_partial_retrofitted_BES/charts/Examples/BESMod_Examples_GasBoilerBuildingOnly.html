@@ -1,0 +1,48 @@
+<html>
+<head>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['line']});
+      google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'time');
+				data.addColumn('number','weaDat.weaBus.TDryBul');
+				data.addColumn('number','hydraulic.generation.sigBusGen.TBoiOut');
+				data.addColumn('number','outputs.building.TZone[1]');
+				data.addColumn('number','electricalGrid.PElecGen');
+				data.addColumn('number','electricalGrid.PElecLoa');
+
+	  
+      data.addRows([
+				[0.0, 271.3500061035156, 293.1499938964844, 293.1499938964844, 0.0, 0.04334544017910957],
+				[1710.8910891089108, 271.4423522949219, 313.5543823242188, 288.1063842773438, 0.0, 6.089551448822021],
+      ]);
+
+      var options = {
+        chart: {
+          title: 'BESMod/Resources/ReferenceResults/Dymola/BESMod_Examples_GasBoilerBuildingOnly.txt',
+          subtitle: 'BESMod/Resources/ReferenceResults/Dymola/BESMod_Examples_GasBoilerBuildingOnly.txt'
+        },
+        width: 900,
+        height: 500,
+        axes: {
+          x: {
+            0: {side: 'bottom'}
+          }
+        }
+      };
+
+      var chart = new google.charts.Line(document.getElementById('line_top_x'));
+
+      chart.draw(data, google.charts.Line.convertOptions(options));
+    }
+  </script>
+</head>
+<body>
+  <div id="line_top_x"></div>
+</body>
+</html>
+

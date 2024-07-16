@@ -1,0 +1,48 @@
+<html>
+<head>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['line']});
+      google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'time');
+				data.addColumn('number','weaDat.weaBus.TDryBul');
+				data.addColumn('number','hydraulic.generation.sigBusGen.TGenOutMea');
+				data.addColumn('number','outputs.building.TZone[1]');
+				data.addColumn('number','electricalGrid.PElecGen');
+				data.addColumn('number','electricalGrid.PElecLoa');
+
+	  
+      data.addRows([
+				[0.0, 271.1499938964844, 293.1499938964844, 293.1499938964844, 0.0, 4202.01708984375],
+				[1710.8910891089108, 271.1964111328125, 324.5396423339844, 287.3885803222656, 0.0, 5177.1630859375],
+      ]);
+
+      var options = {
+        chart: {
+          title: 'BESMod/Resources/ReferenceResults/Dymola/BESMod_Examples_HeatPumpAndBoiler_AfterBufferWithDHW.txt',
+          subtitle: 'BESMod/Resources/ReferenceResults/Dymola/BESMod_Examples_HeatPumpAndBoiler_AfterBufferWithDHW.txt'
+        },
+        width: 900,
+        height: 500,
+        axes: {
+          x: {
+            0: {side: 'bottom'}
+          }
+        }
+      };
+
+      var chart = new google.charts.Line(document.getElementById('line_top_x'));
+
+      chart.draw(data, google.charts.Line.convertOptions(options));
+    }
+  </script>
+</head>
+<body>
+  <div id="line_top_x"></div>
+</body>
+</html>
+

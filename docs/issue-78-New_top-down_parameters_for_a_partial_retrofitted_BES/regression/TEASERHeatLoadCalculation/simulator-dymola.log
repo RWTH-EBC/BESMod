@@ -1,0 +1,91 @@
+ = true
+
+
+rCheck = checkModel("BESMod.Examples.TEASERHeatLoadCalculation.Example");
+Check of BESMod.Examples.TEASERHeatLoadCalculation.Example:
+The model has the same number of unknowns and equations: 2544
+The model has the same number of unknowns and equations
+for the given numerical settings of parameters: 2544
+Check of BESMod.Examples.TEASERHeatLoadCalculation.Example successful.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Examples/TEASERHeatLoadCalculation/Example.mos\",", "BESMod.Examples.TEASERHeatLoadCalculation.Example.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Examples.TEASERHeatLoadCalculation.Example\",", "BESMod.Examples.TEASERHeatLoadCalculation.Example.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Examples.TEASERHeatLoadCalculation.Example.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Examples.TEASERHeatLoadCalculation.Example\\\");\",", "BESMod.Examples.TEASERHeatLoadCalculation.Example.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Examples.TEASERHeatLoadCalculation.Example.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Examples.TEASERHeatLoadCalculation.Example.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/TEASERHeatLoadCalculation/Example.mos");
+
+simulateModel("BESMod.Examples.TEASERHeatLoadCalculation.Example", stopTime=172800, method="dassl", tolerance=1e-06, resultFile="BESMod.Examples.TEASERHeatLoadCalculation.Example");
+Translation of BESMod.Examples.TEASERHeatLoadCalculation.Example:
+The DAE has 2544 scalar unknowns and 2544 scalar equations.
+Warning: The variable building.ABui=0 is not in range [0.1,1e+100].
+Ignoring range
+Warning: The variable building.hBui=0 is not in range [0.1,1e+100].
+Ignoring range
+Warning: The variable building.ARoo=0 is not in range [0.1,1e+100].
+Ignoring range
+ 
+Statistics
+ 
+Original Model
+  Number of components: 422
+  Variables: 3106
+  Constants: 77 (77 scalars)
+  Parameters: 1301 (1525 scalars)
+  Unknowns: 1728 (2544 scalars)
+  Differentiated variables: 20 scalars
+  Equations: 1684
+  Nontrivial: 1528
+Translated Model
+  Constants: 879 scalars
+  Free parameters: 395 scalars
+  Parameter depending: 588 scalars
+  Outputs: 20 scalars
+  Continuous time states: 20 scalars
+  Time-varying variables: 712 scalars
+  Alias variables: 1572 scalars
+  Number of mixed real/discrete systems of equations: 0
+  Sizes of linear systems of equations: {46, 4, 4}
+  Sizes after manipulation of the linear systems: {10, 0, 0}
+  Sizes of nonlinear systems of equations: {3, 1, 1, 1, 1, 1, 1}
+  Sizes after manipulation of the nonlinear systems: {1, 0, 1, 0, 1, 0, 1}
+  Number of numerical Jacobians: 0
+  Initialization problem
+    Sizes of linear systems of equations: {57}
+    Sizes after manipulation of the linear systems: {7}
+ 
+Selected continuous time states
+Statically selected continuous time states
+  building.comCalCooOpe[1].intDisCom.y
+  building.comCalHeaOpe[1].intDisCom.y
+  building.comfortCalculatorCool[1].intDisCom.y
+  building.comfortCalculatorHea[1].intDisCom.y
+  building.intKPICal[1].integrator2.y
+  building.intKPICalTraGain2[1].integrator2.y
+  building.intKPICalTraLoss2[1].integrator2.y
+  building.thermalZone[1].ROM.extWallRC.thermCapExt[1].T
+  building.thermalZone[1].ROM.floorRC.thermCapExt[1].T
+  building.thermalZone[1].ROM.intWallRC.thermCapInt[1].T
+  building.thermalZone[1].ROM.roofRC.thermCapExt[1].T
+  building.thermalZone[1].ROM.volAir.dynBal.m
+  building.thermalZone[1].ROM.volAir.dynBal.mXi[1]
+  building.thermalZone[1].ROM.volAir.dynBal.U
+  building.thermalZone[1].ventCont.dEMA.ExpAVG.x[1]
+  building.thermalZone[1].ventCont.dEMA.ExpAVG1.x[1]
+  electrical.distribution.eneKPIGen.integrator2.y
+  electrical.distribution.eneKPILoa.integrator2.y
+  electrical.transfer.heaKPI[1].integrator2.y
+  electrical.transfer.heaterCooler[1].pITempHeat.PI.I.y
+ 
+Warning: WARNINGS have been issued.
+Finished
+ = true
+
+
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Examples.TEASERHeatLoadCalculation.Example.translation.log");

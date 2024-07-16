@@ -1,0 +1,444 @@
+ = true
+
+
+rCheck = checkModel("BESMod.Examples.ModelicaConferencePaper.TEASERBuilding");
+Check of BESMod.Examples.ModelicaConferencePaper.TEASERBuilding:
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.nSet is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TConInMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+The model has the same number of unknowns and equations: 7089
+The model has the same number of unknowns and equations
+for the given numerical settings of parameters: 7089
+Check of BESMod.Examples.ModelicaConferencePaper.TEASERBuilding successful.
+Warning: WARNINGS have been issued.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Examples/ModelicaConferencePaper/TEASERBuilding.mos\",", "BESMod.Examples.ModelicaConferencePaper.TEASERBuilding.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Examples.ModelicaConferencePaper.TEASERBuilding\",", "BESMod.Examples.ModelicaConferencePaper.TEASERBuilding.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Examples.ModelicaConferencePaper.TEASERBuilding.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Examples.ModelicaConferencePaper.TEASERBuilding\\\");\",", "BESMod.Examples.ModelicaConferencePaper.TEASERBuilding.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Examples.ModelicaConferencePaper.TEASERBuilding.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Examples.ModelicaConferencePaper.TEASERBuilding.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/ModelicaConferencePaper/TEASERBuilding.mos");
+simulateModel("BESMod.Examples.ModelicaConferencePaper.TEASERBuilding", stopTime=864000, method="dassl", tolerance=1e-06, resultFile="BESMod.Examples.ModelicaConferencePaper.TEASERBuilding");
+Translation of BESMod.Examples.ModelicaConferencePaper.TEASERBuilding:
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.nSet is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TConInMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+The DAE has 7089 scalar unknowns and 7089 scalar equations.
+Redundant consistent initial conditions.
+Removed the following equations which are redundant and consistent: 
+  electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.EAva    +electrical.distribution.batterySimple.EBou;
+  ventilation.generation.p_start = ventilation.p_start;
+  if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+      hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = hydraulic.generation.heatPump.eva.vol.dynBal.p_start;
+    end if;
+  else
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==       Modelica.Fluid.Types.Dynamics.SteadyStateInitial) then 
+      if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+        der(hydraulic.generation.heatPump.eva.vol.dynBal.medium.p) = 0;
+      end if;
+    end if;
+  end if;
+ 
+This required evaluation of 
+the interactive parameters 
+    hydraulic.generation.bou_sinkAir.p(start = 101325)
+    ventilation.generation.bouExh.p(start = 101325)
+    ventilation.p_start(start = 101325)
+ 
+The redundancies involve
+initial equations: 
+  hydraulic.generation.bou_sinkAir.p = 101325.0;
+  ventilation.generation.bouExh.p = ventilation.generation.threeWayValve_b.vol.dynBal.p_start;
+  electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
+  electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
+  electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
+ 
+Warning: The conditions of the following assert statements are always false:
+Warning:   assert(hydraulic.generation.heatPump.con.preDro.homotopyInitialization,     "In TEASERBuilding.hydraulic.generation.heatPump.con.preDro: The constant homotopyInitialization has been modified from its default value. This constant will be removed in future releases.",     AssertionLevel.warning);
+    The variable hydraulic.generation.heatPump.con.preDro.homotopyInitialization = false, was declared in class AixLib.Fluid.BaseClasses.PartialResistance, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo at line 12, and used in component hydraulic.generation.heatPump.con.preDro.PartialResistance.
+Warning:   assert(hydraulic.generation.heatPump.eva.preDro.homotopyInitialization,     "In TEASERBuilding.hydraulic.generation.heatPump.eva.preDro: The constant homotopyInitialization has been modified from its default value. This constant will be removed in future releases.",     AssertionLevel.warning);
+    The variable hydraulic.generation.heatPump.eva.preDro.homotopyInitialization = false, was declared in class AixLib.Fluid.BaseClasses.PartialResistance, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo at line 12, and used in component hydraulic.generation.heatPump.eva.preDro.PartialResistance.
+ 
+Statistics
+ 
+Original Model
+  Number of components: 1409
+  Variables: 13660
+  Constants: 289 (289 scalars)
+  Parameters: 6289 (8553 scalars)
+  Unknowns: 7082 (7316 scalars)
+  Differentiated variables: 113 scalars
+  Equations: 5946
+  Nontrivial: 4922
+Translated Model
+  Constants: 5541 scalars
+  Free parameters: 1370 scalars
+  Parameter depending: 3086 scalars
+  Outputs: 41 scalars
+  Continuous time states: 84 scalars
+  Time-varying variables: 1783 scalars
+  Alias variables: 4378 scalars
+  Number of mixed real/discrete systems of equations: 0
+  Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 4, 4}
+  Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0}
+  Sizes of nonlinear systems of equations: {10, 5, 1, 59, 1, 1, 3, 4, 3, 1, 1, 1, 1, 1, 1, 1, 1}
+  Sizes after manipulation of the nonlinear systems: {2, 1, 1, 6, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1}
+  Number of numerical Jacobians: 0
+  Initialization problem
+    Sizes of linear systems of equations: {2}
+    Sizes after manipulation of the linear systems: {0}
+    Sizes of nonlinear systems of equations: {11, 70, 10, 1, 1, 5, 1, 3, 1, 4, 1, 1}
+    Sizes after manipulation of the nonlinear systems: {5, 7, 2, 0, 0, 1, 1, 1, 0, 1, 1, 1}
+    Number of numerical Jacobians: 0
+ 
+Selected continuous time states
+Statically selected continuous time states
+  building.comCalCooOpe[1].intDisCom.y
+  building.comCalHeaOpe[1].intDisCom.y
+  building.comfortCalculatorCool[1].intDisCom.y
+  building.comfortCalculatorHea[1].intDisCom.y
+  building.thermalZone[1].ROM.extWallRC.thermCapExt[1].T
+  building.thermalZone[1].ROM.floorRC.thermCapExt[1].T
+  building.thermalZone[1].ROM.intWallRC.thermCapInt[1].T
+  building.thermalZone[1].ROM.roofRC.thermCapExt[1].T
+  building.thermalZone[1].ROM.volAir.dynBal.m
+  building.thermalZone[1].ROM.volAir.dynBal.mXi[1]
+  building.thermalZone[1].ROM.volAir.dynBal.U
+  building.thermalZone[1].ventCont.dEMA.ExpAVG.x[1]
+  building.thermalZone[1].ventCont.dEMA.ExpAVG1.x[1]
+  DHW.integralKPICalculator.integrator2.y
+  DHW.pump.vol.dynBal.U
+  electrical.distribution.batterySimple.E_charged
+  electrical.distribution.batterySimple.E_discharged
+  electrical.distribution.batterySimple.EAva
+  electrical.distribution.batterySimple.EBou
+  electrical.distribution.eneKPIGen.integrator2.y
+  electrical.distribution.eneKPILoa.integrator2.y
+  electrical.generation.intKPICalPElePV.integrator2.y
+  hydraulic.control.priGenPIDCtrl.intAbs.y
+  hydraulic.control.priGenPIDCtrl.intSqu.y
+  hydraulic.control.priGenPIDCtrl.PID.D.x
+  hydraulic.control.priGenPIDCtrl.PID.I.y
+  hydraulic.control.valCtrl.PI[1].I.y
+  hydraulic.distribution.eneKPICalBuf.integrator2.y
+  hydraulic.distribution.eneKPICalDHW.integrator2.y
+  hydraulic.distribution.stoBuf.layer[1].dynBal.U
+  hydraulic.distribution.stoBuf.layer[2].dynBal.U
+  hydraulic.distribution.stoBuf.layer[3].dynBal.U
+  hydraulic.distribution.stoBuf.layer[4].dynBal.U
+  hydraulic.distribution.stoBuf.layer_HE[1].dynBal.U
+  hydraulic.distribution.stoBuf.layer_HE[2].dynBal.U
+  hydraulic.distribution.stoBuf.layer_HE[3].dynBal.U
+  hydraulic.distribution.stoBuf.layer_HE[4].dynBal.U
+  hydraulic.distribution.stoDHW.layer[1].dynBal.U
+  hydraulic.distribution.stoDHW.layer[2].dynBal.U
+  hydraulic.distribution.stoDHW.layer[3].dynBal.U
+  hydraulic.distribution.stoDHW.layer[4].dynBal.U
+  hydraulic.distribution.stoDHW.layer_HE[1].dynBal.U
+  hydraulic.distribution.stoDHW.layer_HE[2].dynBal.U
+  hydraulic.distribution.stoDHW.layer_HE[3].dynBal.U
+  hydraulic.distribution.stoDHW.layer_HE[4].dynBal.U
+  hydraulic.distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.U
+  hydraulic.generation.eleHea.vol.dynBal.U
+  hydraulic.generation.heatPump.con.vol.dynBal.U
+  hydraulic.generation.heatPump.eva.vol.dynBal.mXi[1]
+  hydraulic.generation.heatPump.eva.vol.dynBal.U
+  hydraulic.generation.heatPump.senT_a1.T
+  hydraulic.generation.heatPump.senT_a2.T
+  hydraulic.generation.heatPump.senT_b1.T
+  hydraulic.generation.heatPump.senT_b2.T
+  hydraulic.generation.KPIEleHea.integrator1.y
+  hydraulic.generation.KPIEleHea.integrator3.y
+  hydraulic.generation.KPIHeaPum.integrator1.y
+  hydraulic.generation.KPIHeaPum.integrator3.y
+  hydraulic.generation.KPIPEleEleHea.integrator2.y
+  hydraulic.generation.KPIQEleHea_flow.integrator2.y
+  hydraulic.generation.KPIQHP.integrator2.y
+  hydraulic.generation.KPIWel.integrator2.y
+  hydraulic.generation.pump.vol.dynBal.U
+  hydraulic.generation.senTGenOut.T
+  hydraulic.transfer.intKPICalHeaFlo.integrator2.y
+  hydraulic.transfer.pumFixMFlo[1].vol.dynBal.U
+  hydraulic.transfer.rad[1].vol[1].dynBal.U
+  hydraulic.transfer.rad[1].vol[2].dynBal.U
+  hydraulic.transfer.rad[1].vol[3].dynBal.U
+  hydraulic.transfer.rad[1].vol[4].dynBal.U
+  hydraulic.transfer.rad[1].vol[5].dynBal.U
+  ventilation.generation.fanFlow.vol.dynBal.m
+  ventilation.generation.fanFlow.vol.dynBal.medium.Xi[1]
+  ventilation.generation.fanFlow.vol.dynBal.U
+  ventilation.generation.fanRet.vol.dynBal.m
+  ventilation.generation.fanRet.vol.dynBal.medium.Xi[1]
+  ventilation.generation.fanRet.vol.dynBal.U
+  ventilation.generation.TExhIn.T
+  ventilation.generation.threeWayValve_a.vol.dynBal.m
+  ventilation.generation.threeWayValve_a.vol.dynBal.medium.Xi[1]
+  ventilation.generation.threeWayValve_a.vol.dynBal.U
+  ventilation.generation.threeWayValve_b.vol.dynBal.medium.Xi[1]
+  ventilation.generation.threeWayValve_b.vol.dynBal.U
+  ventilation.generation.TSup.T
+ 
+Warning: WARNINGS have been issued.
+Finished
+ = true
+
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Examples.ModelicaConferencePaper.TEASERBuilding.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom");
+Check of BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom:
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.nSet is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TConInMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+The model has the same number of unknowns and equations: 7634
+Check of BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom successful.
+Warning: WARNINGS have been issued.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Examples/ModelicaConferencePaper/BuildingsLibraryRoom.mos\",", "BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom\",", "BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom\\\");\",", "BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/ModelicaConferencePaper/BuildingsLibraryRoom.mos");
+simulateModel("BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom", stopTime=864000, method="dassl", tolerance=1e-06, resultFile="BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom");
+Translation of BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom:
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.nSet is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TConInMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+The DAE has 7634 scalar unknowns and 7634 scalar equations.
+Redundant consistent initial conditions.
+Removed the following equations which are redundant and consistent: 
+  electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.EAva    +electrical.distribution.batterySimple.EBou;
+  building.roo.air.p_start = building.roo.p_start;
+  ventilation.generation.p_start = ventilation.p_start;
+  if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+      hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = hydraulic.generation.heatPump.eva.vol.dynBal.p_start;
+    end if;
+  else
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==       Modelica.Fluid.Types.Dynamics.SteadyStateInitial) then 
+      if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+        der(hydraulic.generation.heatPump.eva.vol.dynBal.medium.p) = 0;
+      end if;
+    end if;
+  end if;
+ 
+This required evaluation of 
+the interactive parameters 
+    building.roo.p_start(start = 101325)
+    hydraulic.generation.bou_sinkAir.p(start = 101325)
+    ventilation.generation.bouExh.p(start = 101325)
+    ventilation.p_start(start = 101325)
+    weaDat.pAtm(start = 101325)
+ 
+The redundancies involve
+initial equations: 
+  weaDat.pAtmSel.p = building.roo.air.vol.dynBal.p_start;
+  hydraulic.generation.bou_sinkAir.p = 101325.0;
+  ventilation.generation.bouExh.p = ventilation.generation.threeWayValve_b.vol.dynBal.p_start;
+  electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
+  electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
+  electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
+ 
+Sparse solver handling possible: false.
+Due to flag Advanced.SparseActivate=false.
+Model sparse and large enough: true.
+Sparse solvers are available for dassl, lsodar, cvode, radau, esdirk*, sdirk* (using OpenMP, set number of cores with Advanced.NumberOfCores).
+Warning: The conditions of the following assert statements are always false:
+Warning:   assert(hydraulic.generation.heatPump.con.preDro.homotopyInitialization,     "In BuildingsLibraryRoom.hydraulic.generation.heatPump.con.preDro: The constant homotopyInitialization has been modified from its default value. This constant will be removed in future releases.",     AssertionLevel.warning);
+    The variable hydraulic.generation.heatPump.con.preDro.homotopyInitialization = false, was declared in class AixLib.Fluid.BaseClasses.PartialResistance, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo at line 12, and used in component hydraulic.generation.heatPump.con.preDro.PartialResistance.
+Warning:   assert(hydraulic.generation.heatPump.eva.preDro.homotopyInitialization,     "In BuildingsLibraryRoom.hydraulic.generation.heatPump.eva.preDro: The constant homotopyInitialization has been modified from its default value. This constant will be removed in future releases.",     AssertionLevel.warning);
+    The variable hydraulic.generation.heatPump.eva.preDro.homotopyInitialization = false, was declared in class AixLib.Fluid.BaseClasses.PartialResistance, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo at line 12, and used in component hydraulic.generation.heatPump.eva.preDro.PartialResistance.
+ 
+Statistics
+ 
+Original Model
+  Number of components: 1779
+  Variables: 20164
+  Constants: 708 (708 scalars)
+  Parameters: 11489 (15540 scalars)
+  Unknowns: 7967 (7879 scalars)
+  Differentiated variables: 161 scalars
+  Equations: 6142
+  Nontrivial: 5139
+Translated Model
+  Constants: 10000 scalars
+  Free parameters: 1527 scalars
+  Parameter depending: 6069 scalars
+  Outputs: 37 scalars
+  Continuous time states: 131 scalars
+  Time-varying variables: 1848 scalars
+  Alias variables: 4683 scalars
+  Number of mixed real/discrete systems of equations: 0
+  Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 35, 6, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 19}
+  Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+  Sizes of nonlinear systems of equations: {10, 5, 1, 3, 4, 1, 1, 3, 1, 1}
+  Sizes after manipulation of the nonlinear systems: {2, 1, 1, 1, 1, 0, 0, 1, 1, 1}
+  Number of numerical Jacobians: 0
+  Initialization problem
+    Sizes of linear systems of equations: {55, 2}
+    Sizes after manipulation of the linear systems: {19, 0}
+    Sizes of nonlinear systems of equations: {11, 65, 10, 1, 1, 5, 1, 3, 1, 4, 1, 1}
+    Sizes after manipulation of the nonlinear systems: {5, 14, 2, 0, 0, 1, 1, 1, 0, 1, 1, 1}
+    Number of numerical Jacobians: 0
+ 
+Selected continuous time states
+Statically selected continuous time states
+  building.comfortCalculatorCool[1].intDisCom.y
+  building.comfortCalculatorHea[1].intDisCom.y
+  building.roo.air.vol.dynBal.medium.Xi[1]
+  building.roo.air.vol.dynBal.U
+  building.roo.conBou[1].opa.lay[2].T[1]
+  building.roo.conBou[1].opa.lay[2].T[2]
+  building.roo.conBou[1].opa.lay[2].T[3]
+  building.roo.conBou[1].opa.lay[2].T[4]
+  building.roo.conExt[1].opa.lay[1].T[1]
+  building.roo.conExt[1].opa.lay[1].T[2]
+  building.roo.conExt[1].opa.lay[2].T[1]
+  building.roo.conExt[1].opa.lay[2].T[2]
+  building.roo.conExt[1].opa.lay[2].T[3]
+  building.roo.conExt[1].opa.lay[2].T[4]
+  building.roo.conExt[1].opa.lay[3].T[1]
+  building.roo.conExt[1].opa.lay[3].T[2]
+  building.roo.conExt[2].opa.lay[1].T[1]
+  building.roo.conExt[2].opa.lay[1].T[2]
+  building.roo.conExt[2].opa.lay[2].T[1]
+  building.roo.conExt[2].opa.lay[2].T[2]
+  building.roo.conExt[2].opa.lay[3].T[1]
+  building.roo.conExt[2].opa.lay[3].T[2]
+  building.roo.conExt[3].opa.lay[1].T[1]
+  building.roo.conExt[3].opa.lay[1].T[2]
+  building.roo.conExt[3].opa.lay[2].T[1]
+  building.roo.conExt[3].opa.lay[2].T[2]
+  building.roo.conExt[3].opa.lay[3].T[1]
+  building.roo.conExt[3].opa.lay[3].T[2]
+  building.roo.conExt[4].opa.lay[1].T[1]
+  building.roo.conExt[4].opa.lay[1].T[2]
+  building.roo.conExt[4].opa.lay[2].T[1]
+  building.roo.conExt[4].opa.lay[2].T[2]
+  building.roo.conExt[4].opa.lay[3].T[1]
+  building.roo.conExt[4].opa.lay[3].T[2]
+  building.roo.conExtWin[1].opa.lay[1].T[1]
+  building.roo.conExtWin[1].opa.lay[1].T[2]
+  building.roo.conExtWin[1].opa.lay[2].T[1]
+  building.roo.conExtWin[1].opa.lay[2].T[2]
+  building.roo.conExtWin[1].opa.lay[3].T[1]
+  building.roo.conExtWin[1].opa.lay[3].T[2]
+  building.roo.conExtWin[1].win.capFra.T
+  building.roo.conExtWin[1].win.capGla.TUns
+  building.soi.T[1]
+  building.soi.T[2]
+  building.soi.T[3]
+  building.soi.T[4]
+  building.soi.T[5]
+  building.soi.T[6]
+  building.soi.T[7]
+  building.soi.T[8]
+  building.soi.T[9]
+  building.soi.T[10]
+  building.soi.T[11]
+  building.soi.T[12]
+  building.soi.T[13]
+  building.soi.T[14]
+  building.soi.T[15]
+  building.soi.T[16]
+  building.soi.T[17]
+  building.soi.T[18]
+  DHW.integralKPICalculator.integrator2.y
+  DHW.pump.vol.dynBal.U
+  electrical.distribution.batterySimple.E_charged
+  electrical.distribution.batterySimple.E_discharged
+  electrical.distribution.batterySimple.EAva
+  electrical.distribution.batterySimple.EBou
+  electrical.distribution.eneKPIGen.integrator2.y
+  electrical.distribution.eneKPILoa.integrator2.y
+  electrical.generation.intKPICalPElePV.integrator2.y
+  hydraulic.control.priGenPIDCtrl.intAbs.y
+  hydraulic.control.priGenPIDCtrl.intSqu.y
+  hydraulic.control.priGenPIDCtrl.PID.D.x
+  hydraulic.control.priGenPIDCtrl.PID.I.y
+  hydraulic.control.valCtrl.PI[1].I.y
+  hydraulic.distribution.eneKPICalBuf.integrator2.y
+  hydraulic.distribution.eneKPICalDHW.integrator2.y
+  hydraulic.distribution.stoBuf.layer[1].dynBal.U
+  hydraulic.distribution.stoBuf.layer[2].dynBal.U
+  hydraulic.distribution.stoBuf.layer[3].dynBal.U
+  hydraulic.distribution.stoBuf.layer[4].dynBal.U
+  hydraulic.distribution.stoBuf.layer_HE[1].dynBal.U
+  hydraulic.distribution.stoBuf.layer_HE[2].dynBal.U
+  hydraulic.distribution.stoBuf.layer_HE[3].dynBal.U
+  hydraulic.distribution.stoBuf.layer_HE[4].dynBal.U
+  hydraulic.distribution.stoDHW.layer[1].dynBal.U
+  hydraulic.distribution.stoDHW.layer[2].dynBal.U
+  hydraulic.distribution.stoDHW.layer[3].dynBal.U
+  hydraulic.distribution.stoDHW.layer[4].dynBal.U
+  hydraulic.distribution.stoDHW.layer_HE[1].dynBal.U
+  hydraulic.distribution.stoDHW.layer_HE[2].dynBal.U
+  hydraulic.distribution.stoDHW.layer_HE[3].dynBal.U
+  hydraulic.distribution.stoDHW.layer_HE[4].dynBal.U
+  hydraulic.distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.U
+  hydraulic.generation.eleHea.vol.dynBal.U
+  hydraulic.generation.heatPump.con.vol.dynBal.U
+  hydraulic.generation.heatPump.eva.vol.dynBal.mXi[1]
+  hydraulic.generation.heatPump.eva.vol.dynBal.U
+  hydraulic.generation.heatPump.senT_a1.T
+  hydraulic.generation.heatPump.senT_a2.T
+  hydraulic.generation.heatPump.senT_b1.T
+  hydraulic.generation.heatPump.senT_b2.T
+  hydraulic.generation.KPIEleHea.integrator1.y
+  hydraulic.generation.KPIEleHea.integrator3.y
+  hydraulic.generation.KPIHeaPum.integrator1.y
+  hydraulic.generation.KPIHeaPum.integrator3.y
+  hydraulic.generation.KPIPEleEleHea.integrator2.y
+  hydraulic.generation.KPIQEleHea_flow.integrator2.y
+  hydraulic.generation.KPIQHP.integrator2.y
+  hydraulic.generation.KPIWel.integrator2.y
+  hydraulic.generation.pump.vol.dynBal.U
+  hydraulic.generation.senTGenOut.T
+  hydraulic.transfer.intKPICalHeaFlo.integrator2.y
+  hydraulic.transfer.pumFixMFlo[1].vol.dynBal.U
+  hydraulic.transfer.rad[1].vol[1].dynBal.U
+  hydraulic.transfer.rad[1].vol[2].dynBal.U
+  hydraulic.transfer.rad[1].vol[3].dynBal.U
+  hydraulic.transfer.rad[1].vol[4].dynBal.U
+  hydraulic.transfer.rad[1].vol[5].dynBal.U
+  ventilation.generation.fanFlow.vol.dynBal.m
+  ventilation.generation.fanFlow.vol.dynBal.medium.Xi[1]
+  ventilation.generation.fanFlow.vol.dynBal.U
+  ventilation.generation.fanRet.vol.dynBal.m
+  ventilation.generation.fanRet.vol.dynBal.medium.Xi[1]
+  ventilation.generation.fanRet.vol.dynBal.U
+  ventilation.generation.TExhIn.T
+  ventilation.generation.threeWayValve_a.vol.dynBal.m
+  ventilation.generation.threeWayValve_a.vol.dynBal.medium.Xi[1]
+  ventilation.generation.threeWayValve_a.vol.dynBal.U
+  ventilation.generation.threeWayValve_b.vol.dynBal.medium.Xi[1]
+  ventilation.generation.threeWayValve_b.vol.dynBal.U
+  ventilation.generation.TSup.T
+ 
+Warning: WARNINGS have been issued.
+Finished
+ = true
+
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom.translation.log");

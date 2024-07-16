@@ -1,0 +1,86 @@
+﻿[
+  {
+    "comparison": {
+      "file_name": "BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW.mat",
+      "funnel_dirs": [],
+      "success_rate": 0,
+      "t_err_max": [],
+      "test_passed": [],
+      "var_groups": [],
+      "variables": [],
+      "warnings": []
+    },
+    "model": "BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW",
+    "simulation": {
+      "elapsed_time": 2.65,
+      "final_time": 172800,
+      "jacobians": 3954,
+      "start_time": 0,
+      "state_events": 207,
+      "success": true
+    }
+  },
+  {
+    "comparison": {
+      "file_name": "BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW.mat",
+      "funnel_dirs": [],
+      "success_rate": 0,
+      "t_err_max": [],
+      "test_passed": [],
+      "var_groups": [],
+      "variables": [],
+      "warnings": []
+    },
+    "model": "BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW",
+    "simulation": {
+      "elapsed_time": 4.08,
+      "final_time": 172800,
+      "jacobians": 3985,
+      "start_time": 0,
+      "state_events": 228,
+      "success": true
+    }
+  },
+  {
+    "comparison": {
+      "file_name": "BESMod.Examples.HeatPumpAndBoiler.Parallel.mat",
+      "funnel_dirs": [],
+      "success_rate": 0,
+      "t_err_max": [],
+      "test_passed": [],
+      "var_groups": [],
+      "variables": [],
+      "warnings": []
+    },
+    "model": "BESMod.Examples.HeatPumpAndBoiler.Parallel",
+    "simulation": {
+      "elapsed_time": 6.87,
+      "final_time": 172800,
+      "jacobians": 13147,
+      "start_time": 0,
+      "state_events": 1562,
+      "success": true
+    }
+  },
+  {
+    "comparison": {
+      "file_name": "BESMod.Examples.HeatPumpAndBoiler.Serial.mat",
+      "funnel_dirs": [],
+      "success_rate": 0,
+      "t_err_max": [],
+      "test_passed": [],
+      "var_groups": [],
+      "variables": [],
+      "warnings": []
+    },
+    "model": "BESMod.Examples.HeatPumpAndBoiler.Serial",
+    "simulation": {
+      "elapsed_time": 2.48,
+      "final_time": 172800,
+      "jacobians": 5252,
+      "start_time": 0,
+      "state_events": 388,
+      "success": true
+    }
+  }
+]
