@@ -1,4 +1,103 @@
 
+Error in model:  BESMod.Examples.SolarThermalSystem.SolarThermalAixLib 
+Check of <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib">BESMod.Examples.SolarThermalSystem.SolarThermalAixLib</a>:
+Warning: Non-literal value.
+In nominal attribute for hydraulic.generation.solThe.pressureDrop.m_flow.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class hydraulic.generation.solThe.pressureDrop.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for hydraulic.generation.solThe.pressureDrop.dp.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class hydraulic.generation.solThe.pressureDrop.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for hydraulic.distribution.bufSto.heatingCoil2.pipe[1].res.m_flow.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class hydraulic.distribution.bufSto.heatingCoil2.pipe.res.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for hydraulic.distribution.bufSto.heatingCoil2.pipe[2].res.m_flow.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class hydraulic.distribution.bufSto.heatingCoil2.pipe.res.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for hydraulic.distribution.bufSto.heatingCoil2.pipe[3].res.m_flow.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class hydraulic.distribution.bufSto.heatingCoil2.pipe.res.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for hydraulic.distribution.bufSto.heatingCoil2.pipe[4].res.m_flow.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class hydraulic.distribution.bufSto.heatingCoil2.pipe.res.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for hydraulic.distribution.bufSto.heatingCoil2.pipe[5].res.m_flow.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class hydraulic.distribution.bufSto.heatingCoil2.pipe.res.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for hydraulic.distribution.bufSto.heatingCoil2.pipe[6].res.m_flow.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class hydraulic.distribution.bufSto.heatingCoil2.pipe.res.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for hydraulic.distribution.bufSto.heatingCoil2.pipe[7].res.m_flow.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class hydraulic.distribution.bufSto.heatingCoil2.pipe.res.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for hydraulic.distribution.bufSto.heatingCoil2.pipe[8].res.m_flow.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class hydraulic.distribution.bufSto.heatingCoil2.pipe.res.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for hydraulic.distribution.bufSto.heatingCoil2.pipe[9].res.m_flow.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class hydraulic.distribution.bufSto.heatingCoil2.pipe.res.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for hydraulic.distribution.bufSto.heatingCoil2.pipe[10].res.m_flow.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class hydraulic.distribution.bufSto.heatingCoil2.pipe.res.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.nSet is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TConInMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: Incompatible sizes for variable and its definition equation;
+  hydraulic.distribution.TSupOld_design = hydraulic.distribution.TDemOld_design.+hydraulic.distribution.dTLoss_nominal.+  hydraulic.distribution.dTTraOld_design
+They have for dimension 1 the sizes 2 and 1.
+Errors detected in variable declarations.
+Check of class aborted.
+Warning: WARNINGS have been issued.
+
+
 Error in model:  BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS 
 Check of <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS">BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS</a>:
 Check is assuming: hydraulic.generation.dTTra_nominal = fill(0, 2)
@@ -130,105 +229,6 @@ and its definition equation:
 hydraulic.generation.TDemOld_design.+hydraulic.generation.dTLoss_nominal
 Failure to expand could be due to unknown sizes, which is not an error 
 if the sizes are given when using the component.
-Check of class aborted.
-Warning: WARNINGS have been issued.
-
-
-Error in model:  BESMod.Examples.SolarThermalSystem.SolarThermalAixLib 
-Check of <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib">BESMod.Examples.SolarThermalSystem.SolarThermalAixLib</a>:
-Warning: Non-literal value.
-In nominal attribute for hydraulic.generation.solThe.pressureDrop.m_flow.
-Ignoring nominal attribute.
-In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
-Used in base-class hydraulic.generation.solThe.pressureDrop.PartialTwoPortInterface.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
-Warning: Non-literal value.
-In nominal attribute for hydraulic.generation.solThe.pressureDrop.dp.
-Ignoring nominal attribute.
-In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
-Used in base-class hydraulic.generation.solThe.pressureDrop.PartialTwoPortInterface.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
-Warning: Non-literal value.
-In nominal attribute for hydraulic.distribution.bufSto.heatingCoil2.pipe[1].res.m_flow.
-Ignoring nominal attribute.
-In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
-Used in base-class hydraulic.distribution.bufSto.heatingCoil2.pipe.res.PartialTwoPortInterface.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
-Warning: Non-literal value.
-In nominal attribute for hydraulic.distribution.bufSto.heatingCoil2.pipe[2].res.m_flow.
-Ignoring nominal attribute.
-In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
-Used in base-class hydraulic.distribution.bufSto.heatingCoil2.pipe.res.PartialTwoPortInterface.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
-Warning: Non-literal value.
-In nominal attribute for hydraulic.distribution.bufSto.heatingCoil2.pipe[3].res.m_flow.
-Ignoring nominal attribute.
-In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
-Used in base-class hydraulic.distribution.bufSto.heatingCoil2.pipe.res.PartialTwoPortInterface.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
-Warning: Non-literal value.
-In nominal attribute for hydraulic.distribution.bufSto.heatingCoil2.pipe[4].res.m_flow.
-Ignoring nominal attribute.
-In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
-Used in base-class hydraulic.distribution.bufSto.heatingCoil2.pipe.res.PartialTwoPortInterface.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
-Warning: Non-literal value.
-In nominal attribute for hydraulic.distribution.bufSto.heatingCoil2.pipe[5].res.m_flow.
-Ignoring nominal attribute.
-In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
-Used in base-class hydraulic.distribution.bufSto.heatingCoil2.pipe.res.PartialTwoPortInterface.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
-Warning: Non-literal value.
-In nominal attribute for hydraulic.distribution.bufSto.heatingCoil2.pipe[6].res.m_flow.
-Ignoring nominal attribute.
-In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
-Used in base-class hydraulic.distribution.bufSto.heatingCoil2.pipe.res.PartialTwoPortInterface.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
-Warning: Non-literal value.
-In nominal attribute for hydraulic.distribution.bufSto.heatingCoil2.pipe[7].res.m_flow.
-Ignoring nominal attribute.
-In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
-Used in base-class hydraulic.distribution.bufSto.heatingCoil2.pipe.res.PartialTwoPortInterface.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
-Warning: Non-literal value.
-In nominal attribute for hydraulic.distribution.bufSto.heatingCoil2.pipe[8].res.m_flow.
-Ignoring nominal attribute.
-In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
-Used in base-class hydraulic.distribution.bufSto.heatingCoil2.pipe.res.PartialTwoPortInterface.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
-Warning: Non-literal value.
-In nominal attribute for hydraulic.distribution.bufSto.heatingCoil2.pipe[9].res.m_flow.
-Ignoring nominal attribute.
-In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
-Used in base-class hydraulic.distribution.bufSto.heatingCoil2.pipe.res.PartialTwoPortInterface.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
-Warning: Non-literal value.
-In nominal attribute for hydraulic.distribution.bufSto.heatingCoil2.pipe[10].res.m_flow.
-Ignoring nominal attribute.
-In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
-Used in base-class hydraulic.distribution.bufSto.heatingCoil2.pipe.res.PartialTwoPortInterface.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
-Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.nSet is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TConInMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-Warning: Incompatible sizes for variable and its definition equation;
-  hydraulic.distribution.TSupOld_design = hydraulic.distribution.TDemOld_design.+hydraulic.distribution.dTLoss_nominal.+  hydraulic.distribution.dTTraOld_design
-They have for dimension 1 the sizes 2 and 1.
-Errors detected in variable declarations.
 Check of class aborted.
 Warning: WARNINGS have been issued.
 

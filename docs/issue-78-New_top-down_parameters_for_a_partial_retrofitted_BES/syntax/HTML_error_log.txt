@@ -1,4 +1,0 @@
-
----- BESMod/Utilities/TimeConstantEstimation/BaseClasses/RadiatorEN442_2.mo ----
-line 24 column 1 - Warning: <p> attribute "align" not allowed for HTML5
-
