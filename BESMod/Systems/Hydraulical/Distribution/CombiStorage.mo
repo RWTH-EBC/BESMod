@@ -13,6 +13,8 @@ model CombiStorage
     dTTra_nominal={0},
     final TSup_nominal=fill(TDem_nominal[1] .+ dTLoss_nominal[1] .+
         dTTra_nominal[1], nParallelSup),
+    final TSupOld_design=fill(TDemOld_design[1] .+ dTLoss_nominal[1] .+
+        dTTraOld_design[1], nParallelSup),
     final nParallelSup=2,
     final nParallelDem=1);
 
