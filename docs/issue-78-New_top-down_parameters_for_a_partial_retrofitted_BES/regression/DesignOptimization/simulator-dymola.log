@@ -1,0 +1,458 @@
+ = true
+
+
+rCheck = checkModel("BESMod.Examples.DesignOptimization.BES");
+Check of BESMod.Examples.DesignOptimization.BES:
+Warning: Non-literal value.
+In nominal attribute for hydraulic.generation.heatPump.con.preDro.m_flow.
+Ignoring nominal attribute.
+In class Modelica.Units.SI.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class hydraulic.generation.heatPump.con.preDro.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for hydraulic.generation.heatPump.eva.preDro.m_flow.
+Ignoring nominal attribute.
+In class Modelica.Units.SI.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class hydraulic.generation.heatPump.eva.preDro.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.nSet is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TConInMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+The model has the same number of unknowns and equations: 5899
+The model has the same number of unknowns and equations
+for the given numerical settings of parameters: 5899
+Check of BESMod.Examples.DesignOptimization.BES successful.
+Warning: WARNINGS have been issued.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Examples/DesignOptimization/BES.mos\",", "BESMod.Examples.DesignOptimization.BES.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Examples.DesignOptimization.BES\",", "BESMod.Examples.DesignOptimization.BES.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Examples.DesignOptimization.BES.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Examples.DesignOptimization.BES\\\");\",", "BESMod.Examples.DesignOptimization.BES.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Examples.DesignOptimization.BES.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Examples.DesignOptimization.BES.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/DesignOptimization/BES.mos");
+
+simulateModel("BESMod.Examples.DesignOptimization.BES", stopTime=172800, method="dassl", tolerance=1e-06, resultFile="BESMod.Examples.DesignOptimization.BES");
+Translation of BESMod.Examples.DesignOptimization.BES:
+Warning: Non-literal value.
+In nominal attribute for hydraulic.generation.heatPump.con.preDro.m_flow.
+Ignoring nominal attribute.
+In class Modelica.Units.SI.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class hydraulic.generation.heatPump.con.preDro.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for hydraulic.generation.heatPump.eva.preDro.m_flow.
+Ignoring nominal attribute.
+In class Modelica.Units.SI.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class hydraulic.generation.heatPump.eva.preDro.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.nSet is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TConInMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+The DAE has 5899 scalar unknowns and 5899 scalar equations.
+Redundant consistent initial conditions.
+Removed the following equations which are redundant and consistent: 
+  if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+      hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = hydraulic.generation.heatPump.eva.vol.dynBal.p_start;
+    end if;
+  else
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==       Modelica.Fluid.Types.Dynamics.SteadyStateInitial) then 
+      if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+        der(hydraulic.generation.heatPump.eva.vol.dynBal.medium.p) = 0;
+      end if;
+    end if;
+  end if;
+ 
+This required evaluation of 
+the interactive parameters 
+    hydraulic.generation.bou_sinkAir.p(start = 101325)
+ 
+The redundancies involve
+initial equations: 
+  hydraulic.generation.bou_sinkAir.p = 101325.0;
+ 
+Warning: A call of loadResource with a non-literal string hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.Table_QCon.filename remains in the generated code.
+This could be caused by incorrectly calling loadResource on the result of loadResource, but apart from that it will not work for an URI.
+Warning: A call of loadResource with a non-literal string hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.Table_COP.filename remains in the generated code.
+This could be caused by incorrectly calling loadResource on the result of loadResource, but apart from that it will not work for an URI.
+Warning: The conditions of the following assert statements are always false:
+Warning:   assert(hydraulic.generation.heatPump.con.preDro.homotopyInitialization,     "In BES.hydraulic.generation.heatPump.con.preDro: The constant homotopyInitialization has been modified from its default value. This constant will be removed in future releases.",     AssertionLevel.warning);
+    The variable hydraulic.generation.heatPump.con.preDro.homotopyInitialization = false, was declared in class AixLib.Fluid.BaseClasses.PartialResistance, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo at line 12, and used in component hydraulic.generation.heatPump.con.preDro.PartialResistance.
+Warning:   assert(hydraulic.generation.heatPump.eva.preDro.homotopyInitialization,     "In BES.hydraulic.generation.heatPump.eva.preDro: The constant homotopyInitialization has been modified from its default value. This constant will be removed in future releases.",     AssertionLevel.warning);
+    The variable hydraulic.generation.heatPump.eva.preDro.homotopyInitialization = false, was declared in class AixLib.Fluid.BaseClasses.PartialResistance, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo at line 12, and used in component hydraulic.generation.heatPump.eva.preDro.PartialResistance.
+ 
+Statistics
+ 
+Original Model
+  Number of components: 1194
+  Variables: 10960
+  Constants: 221 (221 scalars)
+  Parameters: 4895 (6570 scalars)
+  Unknowns: 5844 (6022 scalars)
+  Differentiated variables: 99 scalars
+  Equations: 4971
+  Nontrivial: 4117
+Translated Model
+  Constants: 4542 scalars
+  Free parameters: 1078 scalars
+  Parameter depending: 2156 scalars
+  Outputs: 45 scalars
+  Continuous time states: 71 scalars
+  Time-varying variables: 1426 scalars
+  Alias variables: 3611 scalars
+  Number of mixed real/discrete systems of equations: 0
+  Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 4, 4}
+  Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0}
+  Sizes of nonlinear systems of equations: {10, 59, 3, 1, 1, 1, 1, 1, 1, 1, 1}
+  Sizes after manipulation of the nonlinear systems: {2, 6, 1, 0, 1, 0, 1, 0, 1, 1, 1}
+  Number of numerical Jacobians: 0
+  Initialization problem
+    Sizes of linear systems of equations: {2}
+    Sizes after manipulation of the linear systems: {0}
+    Sizes of nonlinear systems of equations: {11, 70, 10, 1, 1, 1, 1}
+    Sizes after manipulation of the nonlinear systems: {5, 7, 2, 0, 0, 1, 1}
+    Number of numerical Jacobians: 0
+ 
+Selected continuous time states
+Statically selected continuous time states
+  building.comCalCooOpe[1].intDisCom.y
+  building.comCalHeaOpe[1].intDisCom.y
+  building.comfortCalculatorCool[1].intDisCom.y
+  building.comfortCalculatorHea[1].intDisCom.y
+  building.intKPICal[1].integrator2.y
+  building.intKPICalTraGain2[1].integrator2.y
+  building.intKPICalTraGain[1].integrator2.y
+  building.intKPICalTraLoss2[1].integrator2.y
+  building.intKPICalTraLoss[1].integrator2.y
+  building.thermalZone[1].ROM.extWallRC.thermCapExt[1].T
+  building.thermalZone[1].ROM.floorRC.thermCapExt[1].T
+  building.thermalZone[1].ROM.intWallRC.thermCapInt[1].T
+  building.thermalZone[1].ROM.roofRC.thermCapExt[1].T
+  building.thermalZone[1].ROM.volAir.dynBal.m
+  building.thermalZone[1].ROM.volAir.dynBal.mXi[1]
+  building.thermalZone[1].ROM.volAir.dynBal.U
+  building.thermalZone[1].ventCont.dEMA.ExpAVG.x[1]
+  building.thermalZone[1].ventCont.dEMA.ExpAVG1.x[1]
+  DHW.integralKPICalculator.integrator2.y
+  DHW.pump.vol.dynBal.U
+  electrical.distribution.eneKPIGen.integrator2.y
+  electrical.distribution.eneKPILoa.integrator2.y
+  hydraulic.control.priGenPIDCtrl.intAbs.y
+  hydraulic.control.priGenPIDCtrl.intSqu.y
+  hydraulic.control.priGenPIDCtrl.PID.D.x
+  hydraulic.control.priGenPIDCtrl.PID.I.y
+  hydraulic.control.valCtrl.PI[1].I.y
+  hydraulic.distribution.eneKPICalBuf.integrator2.y
+  hydraulic.distribution.eneKPICalDHW.integrator2.y
+  hydraulic.distribution.stoBuf.layer[1].dynBal.U
+  hydraulic.distribution.stoBuf.layer[2].dynBal.U
+  hydraulic.distribution.stoBuf.layer[3].dynBal.U
+  hydraulic.distribution.stoBuf.layer[4].dynBal.U
+  hydraulic.distribution.stoBuf.layer_HE[1].dynBal.U
+  hydraulic.distribution.stoBuf.layer_HE[2].dynBal.U
+  hydraulic.distribution.stoBuf.layer_HE[3].dynBal.U
+  hydraulic.distribution.stoBuf.layer_HE[4].dynBal.U
+  hydraulic.distribution.stoDHW.layer[1].dynBal.U
+  hydraulic.distribution.stoDHW.layer[2].dynBal.U
+  hydraulic.distribution.stoDHW.layer[3].dynBal.U
+  hydraulic.distribution.stoDHW.layer[4].dynBal.U
+  hydraulic.distribution.stoDHW.layer_HE[1].dynBal.U
+  hydraulic.distribution.stoDHW.layer_HE[2].dynBal.U
+  hydraulic.distribution.stoDHW.layer_HE[3].dynBal.U
+  hydraulic.distribution.stoDHW.layer_HE[4].dynBal.U
+  hydraulic.distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.U
+  hydraulic.generation.eleHea.vol.dynBal.U
+  hydraulic.generation.heatPump.con.vol.dynBal.U
+  hydraulic.generation.heatPump.eva.vol.dynBal.mXi[1]
+  hydraulic.generation.heatPump.eva.vol.dynBal.U
+  hydraulic.generation.heatPump.senT_a1.T
+  hydraulic.generation.heatPump.senT_a2.T
+  hydraulic.generation.heatPump.senT_b1.T
+  hydraulic.generation.heatPump.senT_b2.T
+  hydraulic.generation.KPIEleHea.integrator1.y
+  hydraulic.generation.KPIEleHea.integrator3.y
+  hydraulic.generation.KPIHeaPum.integrator1.y
+  hydraulic.generation.KPIHeaPum.integrator3.y
+  hydraulic.generation.KPIPEleEleHea.integrator2.y
+  hydraulic.generation.KPIQEleHea_flow.integrator2.y
+  hydraulic.generation.KPIQHP.integrator2.y
+  hydraulic.generation.KPIWel.integrator2.y
+  hydraulic.generation.pump.vol.dynBal.U
+  hydraulic.generation.senTGenOut.T
+  hydraulic.transfer.intKPICalHeaFlo.integrator2.y
+  hydraulic.transfer.pumFixMFlo[1].vol.dynBal.U
+  hydraulic.transfer.rad[1].vol[1].dynBal.U
+  hydraulic.transfer.rad[1].vol[2].dynBal.U
+  hydraulic.transfer.rad[1].vol[3].dynBal.U
+  hydraulic.transfer.rad[1].vol[4].dynBal.U
+  hydraulic.transfer.rad[1].vol[5].dynBal.U
+ 
+Warning: WARNINGS have been issued.
+Finished
+ = true
+
+    
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Examples.DesignOptimization.BES.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Examples.DesignOptimization.BESNoDHW");
+Check of BESMod.Examples.DesignOptimization.BESNoDHW:
+Warning: Non-literal value.
+In nominal attribute for hydraulic.generation.heatPump.con.preDro.m_flow.
+Ignoring nominal attribute.
+In class Modelica.Units.SI.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class hydraulic.generation.heatPump.con.preDro.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for hydraulic.generation.heatPump.eva.preDro.m_flow.
+Ignoring nominal attribute.
+In class Modelica.Units.SI.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class hydraulic.generation.heatPump.eva.preDro.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.nSet is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TConInMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The bus-input hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
+Bus-signal: TStoBufBotMea
+Use:  connect(hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea, hydraulic.control.buiAndDHWCtr.hysBui.TStoBot);
+Connected bus variables:
+hydraulic.control.setAndMeaSelPri.sigBusDistr.TStoBufBotMea (connect) "Supply temperature of the lower layers of the storage. Does not have to be the lowest layer, depending on comfort even the top may be selected"
+hydraulic.control.setAndMeaSelSec.sigBusDistr.TStoBufBotMea (connect)
+hydraulic.control.sigBusDistr.TStoBufBotMea (connect)
+hydraulic.distribution.sigBusDistr.TStoBufBotMea (connect)
+input hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea (connect)
+The DAE has 4606 scalar unknowns and 4606 scalar equations.
+After eliminating unused variables:
+  hydraulic.control.buiAndDHWCtr.hysBui.TStoBot
+  hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea
+  hydraulic.control.setAndMeaSelPri.sigBusDistr.TStoBufBotMea
+  hydraulic.control.setAndMeaSelSec.sigBusDistr.TStoBufBotMea
+  hydraulic.control.sigBusDistr.TStoBufBotMea
+  hydraulic.distribution.sigBusDistr.TStoBufBotMea
+ 
+The model could not be deduced to be symbolically well-posed.
+The model has
+  4345+6*size(hydraulic.control.safCtr.operationalEnvelope.tableMerge, 1)+4*size(  hydraulic.control.safetyControl.tableUpp, 1)+6*size(hydraulic.control.safCtr.operationalEnvelope.boundaryMap.tableMerge,   1)+2*hydraulic.transfer.parRad.nEle+29*building.thermalZone[1].zoneParam.nOrientations  +2*building.thermalZone[1].ROM.volAir.dynBal.nPorts+building.thermalZone[1].humanSenHeaDependent.productHeatOutput.nu  +building.thermalZone[1].machinesSenHea.productHeatOutput.nu+building.thermalZone[1].lights.productHeatOutput.nu  +5*building.thermalZone[1].zoneParam.nOrientationsRoof+building.thermalZone[1].ventCont.optimalTemp.nin  +building.thermalZone[1].ventCont.optimalTemp.nout+building.thermalZone[1].ventCont.dEMA.nout  +building.thermalZone[1].ventCont.dEMA.ExpAVG.n+building.thermalZone[1].ventCont.dEMA.ExpAVG1.n  +max([size(userProfiles.tabIntGai.columns, 1); size(userProfiles.tabIntGai.offset,   1)])+DHW.calcmFlow.multiProduct.nu+DHW.pump.vol.dynBal.nPorts+max([4; size(  DHW.combiTimeTableDHWInput.offset, 1)])+14*systemParameters.nZones+2*  hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n1  +2*hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n2  +2*hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n3  +hydraulic.generation.heatPump.con.vol.dynBal.nPorts+2*hydraulic.generation.heatPump.eva.vol.dynBal.nPorts  +hydraulic.generation.pump.vol.dynBal.nPorts+hydraulic.generation.multiSum.nu+  hydraulic.generation.eleHea.vol.dynBal.nPorts+size(hydraulic.control.safCtr.operationalEnvelope.boundaryMap.uppCombiTable1Ds.columns,   1)+hydraulic.control.safCtr.operationalEnvelope.boundaryMap.nor1.nu+  hydraulic.control.safCtr.onOffController.orSetN.nu+hydraulic.control.anyGenDevIsOn.nu  +hydraulic.control.buiAndDHWCtr.maxSecHeaGen.nu+max([size(hydraulic.control.buiAndDHWCtr.TSetBuiSupSGReady.datRea.columns,   1); size(hydraulic.control.buiAndDHWCtr.TSetBuiSupSGReady.datRea.offset, 1)])  +hydraulic.transfer.rad[1].sumCon.nin+hydraulic.transfer.rad[1].sumRad.nin+  hydraulic.transfer.rad[1].vol[1].dynBal.nPorts+hydraulic.transfer.rad[1].vol[2].dynBal.nPorts  +hydraulic.transfer.rad[1].vol[3].dynBal.nPorts+hydraulic.transfer.rad[1].vol[4].dynBal.nPorts  +hydraulic.transfer.rad[1].vol[5].dynBal.nPorts+hydraulic.transfer.pumFixMFlo[1].vol.dynBal.nPorts
+scalar unknowns and
+  4350+max([size(userProfiles.tabIntGai.columns, 1); size(userProfiles.tabIntGai.offset,   1)])+(if DHW.bou_sink.use_Xi_in then 1 else (if DHW.bou_sink.use_X_in then 0   else 1))+(if  not DHW.bou_sink.use_p_in then 1 else 0)+2*DHW.bou_sink.nPorts+  (if  not DHW.bou_sink.use_h_in then 1 else 0)+(if DHW.bouSou.use_Xi_in then 1   else (if DHW.bouSou.use_X_in then 0 else 1))+(if  not DHW.bouSou.use_p_in   then 1 else 0)+(if  not DHW.bouSou.use_T_in then 1 else 0)+max([4; size(  DHW.combiTimeTableDHWInput.offset, 1)])+2*hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n1  +2*hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n2  +2*hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n3  +(if hydraulic.generation.bou_sinkAir.use_Xi_in then 2 else (if   hydraulic.generation.bou_sinkAir.use_X_in then 1 else 3))+(if  not   hydraulic.generation.bou_sinkAir.use_p_in then 1 else 0)+(if  not   hydraulic.generation.bou_sinkAir.use_h_in then 1 else 0)+(if hydraulic.generation.bouEva.use_Xi_in   then 2 else (if hydraulic.generation.bouEva.use_X_in then 1 else 3))+(if   hydraulic.generation.bouPum.use_Xi_in then 1 else (if hydraulic.generation.bouPum.use_X_in   then 0 else 1))+(if  not hydraulic.generation.bouPum.use_p_in then 1 else 0)+  (if  not hydraulic.generation.bouPum.use_T_in then 1 else 0)+size(  hydraulic.control.safCtr.operationalEnvelope.boundaryMap.uppCombiTable1Ds.columns,   1)+max([size(hydraulic.control.buiAndDHWCtr.TSetBuiSupSGReady.datRea.columns,   1); size(hydraulic.control.buiAndDHWCtr.TSetBuiSupSGReady.datRea.offset, 1)])  +(if weaDat.pAtmSou == IBPSA.BoundaryConditions.Types.DataSource.Parameter   then 1 else 0)+(if weaDat.TDewPoiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TDryBulSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TBlaSkySou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.relHumSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.opaSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.ceiHeiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.totSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winSpeSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winDirSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HInfHorSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HDifHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HGloHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HGloHor_HDifHor then 2 else 1)+19*building.thermalZone[1].zoneParam.nOrientations  +3*building.thermalZone[1].zoneParam.nOrientationsRoof+building.thermalZone[1].ventCont.optimalTemp.nout  +building.thermalZone[1].ventCont.dEMA.ExpAVG.n+building.thermalZone[1].ventCont.dEMA.ExpAVG1.n  +(if  not DHW.pump.vol.dynBal.use_mWat_flow then 1 else 0)+3*DHW.pump.vol.dynBal.nPorts  +(if  not hydraulic.generation.heatPump.con.vol.dynBal.use_mWat_flow then 1   else 0)+3*hydraulic.generation.heatPump.con.vol.dynBal.nPorts+(if  not   hydraulic.generation.heatPump.eva.vol.dynBal.use_mWat_flow then 1 else 0)+5*  hydraulic.generation.heatPump.eva.vol.dynBal.nPorts+(if  not hydraulic.generation.pump.vol.dynBal.use_mWat_flow   then 1 else 0)+3*hydraulic.generation.pump.vol.dynBal.nPorts+(if  not   hydraulic.generation.eleHea.vol.dynBal.use_mWat_flow then 1 else 0)+3*  hydraulic.generation.eleHea.vol.dynBal.nPorts+(if  not hydraulic.transfer.pumFixMFlo[1].vol.dynBal.use_mWat_flow   then 1 else 0)+3*hydraulic.transfer.pumFixMFlo[1].vol.dynBal.nPorts+(if  not   building.thermalZone[1].ROM.volAir.dynBal.use_mWat_flow then 1 else 0)+5*  building.thermalZone[1].ROM.volAir.dynBal.nPorts+(if  not hydraulic.transfer.rad[1].vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*hydraulic.transfer.rad[1].vol[1].dynBal.nPorts+(if  not   hydraulic.transfer.rad[1].vol[2].dynBal.use_mWat_flow then 1 else 0)+3*  hydraulic.transfer.rad[1].vol[2].dynBal.nPorts+(if  not hydraulic.transfer.rad[1].vol[3].dynBal.use_mWat_flow   then 1 else 0)+3*hydraulic.transfer.rad[1].vol[3].dynBal.nPorts+(if  not   hydraulic.transfer.rad[1].vol[4].dynBal.use_mWat_flow then 1 else 0)+3*  hydraulic.transfer.rad[1].vol[4].dynBal.nPorts+(if  not hydraulic.transfer.rad[1].vol[5].dynBal.use_mWat_flow   then 1 else 0)+3*hydraulic.transfer.rad[1].vol[5].dynBal.nPorts+7*  systemParameters.nZones+6*size(hydraulic.control.safCtr.operationalEnvelope.tableMerge,   1)+4*size(hydraulic.control.safetyControl.tableUpp, 1)+6*size(  hydraulic.control.safCtr.operationalEnvelope.boundaryMap.tableMerge, 1)+2*  hydraulic.transfer.parRad.nEle
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  4606
+Warning: Some connector variables are removed from the simulation problem,
+since they are not used in the model.
+Warning: Connector variables that are removed:
+hydraulic.control.buiAndDHWCtr.hysBui.TStoBot
+Expandable connector variables that are removed:
+hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea
+hydraulic.control.setAndMeaSelPri.sigBusDistr.TStoBufBotMea
+hydraulic.control.setAndMeaSelSec.sigBusDistr.TStoBufBotMea
+hydraulic.control.sigBusDistr.TStoBufBotMea
+hydraulic.distribution.sigBusDistr.TStoBufBotMea
+Check of BESMod.Examples.DesignOptimization.BESNoDHW successful.
+Warning: WARNINGS have been issued.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Examples/DesignOptimization/BESNoDHW.mos\",", "BESMod.Examples.DesignOptimization.BESNoDHW.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Examples.DesignOptimization.BESNoDHW\",", "BESMod.Examples.DesignOptimization.BESNoDHW.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Examples.DesignOptimization.BESNoDHW.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Examples.DesignOptimization.BESNoDHW\\\");\",", "BESMod.Examples.DesignOptimization.BESNoDHW.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Examples.DesignOptimization.BESNoDHW.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Examples.DesignOptimization.BESNoDHW.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/DesignOptimization/BESNoDHW.mos");
+
+simulateModel("BESMod.Examples.DesignOptimization.BESNoDHW", stopTime=172800, method="dassl", tolerance=1e-06, resultFile="BESMod.Examples.DesignOptimization.BESNoDHW");
+Translation of BESMod.Examples.DesignOptimization.BESNoDHW:
+Warning: Non-literal value.
+In nominal attribute for hydraulic.generation.heatPump.con.preDro.m_flow.
+Ignoring nominal attribute.
+In class Modelica.Units.SI.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class hydraulic.generation.heatPump.con.preDro.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for hydraulic.generation.heatPump.eva.preDro.m_flow.
+Ignoring nominal attribute.
+In class Modelica.Units.SI.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class hydraulic.generation.heatPump.eva.preDro.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.nSet is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TConInMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The bus-input hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
+Bus-signal: TStoBufBotMea
+Use:  connect(hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea, hydraulic.control.buiAndDHWCtr.hysBui.TStoBot);
+Connected bus variables:
+hydraulic.control.setAndMeaSelPri.sigBusDistr.TStoBufBotMea (connect) "Supply temperature of the lower layers of the storage. Does not have to be the lowest layer, depending on comfort even the top may be selected"
+hydraulic.control.setAndMeaSelSec.sigBusDistr.TStoBufBotMea (connect)
+hydraulic.control.sigBusDistr.TStoBufBotMea (connect)
+hydraulic.distribution.sigBusDistr.TStoBufBotMea (connect)
+input hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea (connect)
+The DAE has 4606 scalar unknowns and 4606 scalar equations.
+After eliminating unused variables:
+  hydraulic.control.buiAndDHWCtr.hysBui.TStoBot
+  hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea
+  hydraulic.control.setAndMeaSelPri.sigBusDistr.TStoBufBotMea
+  hydraulic.control.setAndMeaSelSec.sigBusDistr.TStoBufBotMea
+  hydraulic.control.sigBusDistr.TStoBufBotMea
+  hydraulic.distribution.sigBusDistr.TStoBufBotMea
+ 
+Warning: Some connector variables are removed from the simulation problem,
+since they are not used in the model.
+Warning: Connector variables that are removed:
+hydraulic.control.buiAndDHWCtr.hysBui.TStoBot
+Expandable connector variables that are removed:
+hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea
+hydraulic.control.setAndMeaSelPri.sigBusDistr.TStoBufBotMea
+hydraulic.control.setAndMeaSelSec.sigBusDistr.TStoBufBotMea
+hydraulic.control.sigBusDistr.TStoBufBotMea
+hydraulic.distribution.sigBusDistr.TStoBufBotMea
+Redundant consistent initial conditions.
+Removed the following equations which are redundant and consistent: 
+  if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+      hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = hydraulic.generation.heatPump.eva.vol.dynBal.p_start;
+    end if;
+  else
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==       Modelica.Fluid.Types.Dynamics.SteadyStateInitial) then 
+      if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+        der(hydraulic.generation.heatPump.eva.vol.dynBal.medium.p) = 0;
+      end if;
+    end if;
+  end if;
+ 
+This required evaluation of 
+the interactive parameters 
+    hydraulic.generation.bou_sinkAir.p(start = 101325)
+ 
+The redundancies involve
+initial equations: 
+  hydraulic.generation.bou_sinkAir.p = 101325.0;
+ 
+Warning: A call of loadResource with a non-literal string hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.Table_QCon.filename remains in the generated code.
+This could be caused by incorrectly calling loadResource on the result of loadResource, but apart from that it will not work for an URI.
+Warning: A call of loadResource with a non-literal string hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.Table_COP.filename remains in the generated code.
+This could be caused by incorrectly calling loadResource on the result of loadResource, but apart from that it will not work for an URI.
+Warning: The conditions of the following assert statements are always false:
+Warning:   assert(hydraulic.generation.heatPump.con.preDro.homotopyInitialization,     "In BESNoDHW.hydraulic.generation.heatPump.con.preDro: The constant homotopyInitialization has been modified from its default value. This constant will be removed in future releases.",     AssertionLevel.warning);
+    The variable hydraulic.generation.heatPump.con.preDro.homotopyInitialization = false, was declared in class AixLib.Fluid.BaseClasses.PartialResistance, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo at line 12, and used in component hydraulic.generation.heatPump.con.preDro.PartialResistance.
+Warning:   assert(hydraulic.generation.heatPump.eva.preDro.homotopyInitialization,     "In BESNoDHW.hydraulic.generation.heatPump.eva.preDro: The constant homotopyInitialization has been modified from its default value. This constant will be removed in future releases.",     AssertionLevel.warning);
+    The variable hydraulic.generation.heatPump.eva.preDro.homotopyInitialization = false, was declared in class AixLib.Fluid.BaseClasses.PartialResistance, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo at line 12, and used in component hydraulic.generation.heatPump.eva.preDro.PartialResistance.
+ 
+Statistics
+ 
+Original Model
+  Number of components: 942
+  Variables: 7797
+  Constants: 143 (143 scalars)
+  Parameters: 3559 (5316 scalars)
+  Unknowns: 4095 (4679 scalars)
+  Differentiated variables: 63 scalars
+  Equations: 3686
+  Nontrivial: 3190
+Translated Model
+  Constants: 3242 scalars
+  Free parameters: 997 scalars
+  Parameter depending: 1921 scalars
+  Outputs: 41 scalars
+  Continuous time states: 52 scalars
+  Time-varying variables: 1130 scalars
+  Alias variables: 2848 scalars
+  Number of mixed real/discrete systems of equations: 0
+  Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 4, 4}
+  Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0}
+  Sizes of nonlinear systems of equations: {59, 3, 1, 1, 1, 1, 1, 1, 1, 1}
+  Sizes after manipulation of the nonlinear systems: {6, 1, 0, 1, 0, 1, 0, 1, 1, 1}
+  Number of numerical Jacobians: 0
+  Initialization problem
+    Sizes of linear systems of equations: {2}
+    Sizes after manipulation of the linear systems: {0}
+    Sizes of nonlinear systems of equations: {11, 70, 1, 1}
+    Sizes after manipulation of the nonlinear systems: {5, 7, 1, 1}
+    Number of numerical Jacobians: 0
+ 
+Selected continuous time states
+Statically selected continuous time states
+  building.comCalCooOpe[1].intDisCom.y
+  building.comCalHeaOpe[1].intDisCom.y
+  building.comfortCalculatorCool[1].intDisCom.y
+  building.comfortCalculatorHea[1].intDisCom.y
+  building.intKPICal[1].integrator2.y
+  building.intKPICalTraGain2[1].integrator2.y
+  building.intKPICalTraGain[1].integrator2.y
+  building.intKPICalTraLoss2[1].integrator2.y
+  building.intKPICalTraLoss[1].integrator2.y
+  building.thermalZone[1].ROM.extWallRC.thermCapExt[1].T
+  building.thermalZone[1].ROM.floorRC.thermCapExt[1].T
+  building.thermalZone[1].ROM.intWallRC.thermCapInt[1].T
+  building.thermalZone[1].ROM.roofRC.thermCapExt[1].T
+  building.thermalZone[1].ROM.volAir.dynBal.m
+  building.thermalZone[1].ROM.volAir.dynBal.mXi[1]
+  building.thermalZone[1].ROM.volAir.dynBal.U
+  building.thermalZone[1].ventCont.dEMA.ExpAVG.x[1]
+  building.thermalZone[1].ventCont.dEMA.ExpAVG1.x[1]
+  DHW.integralKPICalculator.integrator2.y
+  DHW.pump.vol.dynBal.U
+  electrical.distribution.eneKPIGen.integrator2.y
+  electrical.distribution.eneKPILoa.integrator2.y
+  hydraulic.control.priGenPIDCtrl.intAbs.y
+  hydraulic.control.priGenPIDCtrl.intSqu.y
+  hydraulic.control.priGenPIDCtrl.PID.D.x
+  hydraulic.control.priGenPIDCtrl.PID.I.y
+  hydraulic.control.valCtrl.PI[1].I.y
+  hydraulic.generation.eleHea.vol.dynBal.U
+  hydraulic.generation.heatPump.con.vol.dynBal.U
+  hydraulic.generation.heatPump.eva.vol.dynBal.mXi[1]
+  hydraulic.generation.heatPump.eva.vol.dynBal.U
+  hydraulic.generation.heatPump.senT_a1.T
+  hydraulic.generation.heatPump.senT_a2.T
+  hydraulic.generation.heatPump.senT_b1.T
+  hydraulic.generation.heatPump.senT_b2.T
+  hydraulic.generation.KPIEleHea.integrator1.y
+  hydraulic.generation.KPIEleHea.integrator3.y
+  hydraulic.generation.KPIHeaPum.integrator1.y
+  hydraulic.generation.KPIHeaPum.integrator3.y
+  hydraulic.generation.KPIPEleEleHea.integrator2.y
+  hydraulic.generation.KPIQEleHea_flow.integrator2.y
+  hydraulic.generation.KPIQHP.integrator2.y
+  hydraulic.generation.KPIWel.integrator2.y
+  hydraulic.generation.pump.vol.dynBal.U
+  hydraulic.generation.senTGenOut.T
+  hydraulic.transfer.intKPICalHeaFlo.integrator2.y
+  hydraulic.transfer.pumFixMFlo[1].vol.dynBal.U
+  hydraulic.transfer.rad[1].vol[1].dynBal.U
+  hydraulic.transfer.rad[1].vol[2].dynBal.U
+  hydraulic.transfer.rad[1].vol[3].dynBal.U
+  hydraulic.transfer.rad[1].vol[4].dynBal.U
+  hydraulic.transfer.rad[1].vol[5].dynBal.U
+ 
+Warning: WARNINGS have been issued.
+Finished
+ = true
+
+    
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Examples.DesignOptimization.BESNoDHW.translation.log");
