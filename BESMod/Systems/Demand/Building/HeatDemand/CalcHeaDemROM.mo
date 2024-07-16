@@ -12,7 +12,8 @@ model CalcHeaDemROM
     redeclare BESMod.Systems.Demand.Building.TEASERThermalZone
       building(
       nZones=1,
-      redeclare BESMod.Examples.BAUSimStudy.Buildings.Case_1_retrofit
+      redeclare
+        BESMod.Systems.Demand.Building.RecordsCollection.ACoolHeadAndBEStPar.Retrofit1918_SingleDwelling
         oneZoneParam,
       final ventRate=0.5 .- building.zoneParam.baseACH,
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,

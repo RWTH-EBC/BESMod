@@ -1,8 +1,9 @@
 within BESMod.Examples.TEASERHeatLoadCalculation;
 model Example "Simple example"
   extends PartialCalculation(building(redeclare
-        BESMod.Examples.BAUSimStudy.Buildings.Case_2_retrofit oneZoneParam(
-          heaLoadFacOut=200, heaLoadFacGrd=100), energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial),
+        BESMod.Systems.Demand.Building.RecordsCollection.ACoolHeadAndBEStPar.Retrofit1983_SingleDwelling
+        oneZoneParam(heaLoadFacOut=200, heaLoadFacGrd=100),
+                                                 energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial),
                                                   userProfiles(dTSetBack=3));
   extends Modelica.Icons.Example;
 

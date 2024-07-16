@@ -1,8 +1,9 @@
 within BESMod.Examples.BAUSimStudy;
 model Case1Standard
-  extends PartialCase(building(redeclare Buildings.Case_1_standard oneZoneParam(
-          heaLoadFacGrd=0, heaLoadFacOut=0)),
-  systemParameters(QBui_flow_nominal={16308.1}, TOda_nominal=263.15, THydSup_nominal={328.15}));
+  extends PartialCase(building(redeclare
+        BESMod.Systems.Demand.Building.RecordsCollection.ACoolHeadAndBEStPar.NoRetrofit1918_SingleDwelling
+        oneZoneParam(heaLoadFacGrd=0, heaLoadFacOut=0)),
+  systemParameters(TOda_nominal=263.15, THydSup_nominal={328.15}));
   extends Modelica.Icons.Example;
 
   annotation (experiment(StopTime=172800,
