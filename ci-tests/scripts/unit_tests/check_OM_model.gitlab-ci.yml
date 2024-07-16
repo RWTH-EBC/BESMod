@@ -1,4 +1,4 @@
-# ci_stage_OM_model_check: OM_model_check
+# ci_stage_OM_model_check: model_check
 # library: BESMod
 # ci_OM_check_commit: ci_om_check
 # OM_Image: registry.git.rwth-aachen.de/ebc/ebc_intern/openmodelica-docker:main
@@ -12,12 +12,12 @@
 include: 'ci-tests/scripts/utilities.yml'
 
 stages:
-    - OM_model_check
+    - model_check
 
 
 .OM_check_model_job:push:
     image: registry.git.rwth-aachen.de/ebc/ebc_intern/openmodelica-docker:main
-    stage: OM_model_check
+    stage: model_check
     before_script:
         - !reference [.activate_python_and_install_requirements, script]
         - !reference [.custom_install_additional_modelica_libraries, script]
@@ -37,7 +37,7 @@ stages:
 
 .OM_check_model_job:changed:
     image: registry.git.rwth-aachen.de/ebc/ebc_intern/openmodelica-docker:main
-    stage: OM_model_check
+    stage: model_check
     before_script:
         - !reference [.activate_python_and_install_requirements, script]
         - !reference [.custom_install_additional_modelica_libraries, script]

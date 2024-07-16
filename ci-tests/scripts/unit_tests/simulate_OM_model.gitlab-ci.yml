@@ -1,5 +1,5 @@
 # Variables
-# ci_stage_OM_simulate: OM_simulate
+# ci_stage_OM_simulate: simulate
 # library: BESMod
 # ci_OM_sim_commit: ci_om_simulate
 # OM_python_check_model_module: ModelicaPyCI.unittest.om_check
@@ -13,12 +13,12 @@
 include: 'ci-tests/scripts/utilities.yml'
 
 stages:
-    - OM_simulate
+    - simulate
 
 
 .OM_simulate_model_job:push:
     image: registry.git.rwth-aachen.de/ebc/ebc_intern/openmodelica-docker:main
-    stage: OM_simulate
+    stage: simulate
     before_script:
         - !reference [.activate_python_and_install_requirements, script]
         - !reference [.custom_install_additional_modelica_libraries, script]
@@ -38,7 +38,7 @@ stages:
 
 .OM_simulate_model_job:changed:
     image: registry.git.rwth-aachen.de/ebc/ebc_intern/openmodelica-docker:main
-    stage: OM_simulate
+    stage: simulate
     before_script:
         - !reference [.activate_python_and_install_requirements, script]
         - !reference [.custom_install_additional_modelica_libraries, script]
