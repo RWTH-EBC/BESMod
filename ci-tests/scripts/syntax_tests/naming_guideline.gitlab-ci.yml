@@ -12,7 +12,7 @@ stages:
     - Style_check
 
 
-NamingGuideline:BESMod:PR:
+NamingGuideline:BESMod:push:
     image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola_2022-miniconda
     stage: Style_check
     before_script:
@@ -26,5 +26,5 @@ NamingGuideline:BESMod:PR:
     rules:
         - if: $CI_COMMIT_MESSAGE  =~ /ci_check_naming/ && $CI_PIPELINE_SOURCE == "push"
           when: always
-        - !reference [.rules:PR , rules]
+        - !reference [.rules:push , rules]
 

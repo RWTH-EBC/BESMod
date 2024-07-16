@@ -1,7 +1,8 @@
 within BESMod.Systems.Hydraulical.Generation;
 model HeatPumpAndGasBoilerParallel
   "Parallel connection of heat pump and gas boiler"
-  extends BaseClasses.PartialHeatPumpAndGasBoiler;
+  extends BaseClasses.PartialHeatPumpAndGasBoiler(
+    final use_old_design=fill(false, nParallelDem));
 
   replaceable parameter BESMod.Systems.RecordsCollection.Valves.ThreeWayValve
     parThrWayVal constrainedby

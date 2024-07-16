@@ -7,17 +7,19 @@ partial model PartialTest
     genControlBus
     annotation (Placement(transformation(extent={{-10,54},{30,94}})));
   replaceable BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration generation
-  constrainedby
-    BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration(
+    constrainedby BaseClasses.PartialGeneration(
     redeclare package Medium = IBPSA.Media.Water,
     energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
     dTTra_nominal=fill(10, generation.nParallelDem),
     m_flow_nominal=fill(0.317, generation.nParallelDem),
     Q_flow_nominal=fill(sum(systemParameters.QBui_flow_nominal), generation.nParallelDem),
+
     TOda_nominal=systemParameters.TOda_nominal,
     dpDem_nominal=fill(0, generation.nParallelDem),
     TDem_nominal=fill(systemParameters.THydSup_nominal[1], generation.nParallelDem),
-    TAmb=systemParameters.TAmbHyd)
+
+    TAmb=systemParameters.TAmbHyd,
+    dpDemOld_design=fill(0, generation.nParallelDem))
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-50,-44},{24,28}})));
   IBPSA.Fluid.MixingVolumes.MixingVolume vol[generation.nParallelDem](
     redeclare final package Medium = IBPSA.Media.Water,

@@ -9,9 +9,7 @@ stages:
     - HTML_Check
     - Style_check
     - model_check
-    - OM_model_check
     - simulate
-    - OM_simulate
     - RegressionTest
     - plot_ref
     - prepare

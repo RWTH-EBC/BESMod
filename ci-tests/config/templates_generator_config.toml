@@ -150,7 +150,7 @@ name = "model_check"
 order = 4.0
 
 [stage_names.OM_model_check]
-name = "OM_model_check"
+name = "model_check"
 order = 4.1
 
 [stage_names.simulate]
@@ -158,7 +158,7 @@ name = "simulate"
 order = 5.0
 
 [stage_names.OM_simulate]
-name = "OM_simulate"
+name = "simulate"
 order = 5.1
 
 [stage_names.regression_test]

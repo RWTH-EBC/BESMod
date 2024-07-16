@@ -1,0 +1,10 @@
+Regression tests are only run for the following package:
+  BESMod.Examples.ModelicaConferencePaper
+Regression tests are only run for the following package:
+  BESMod.Examples.BAUSimStudy
+Regression tests are only run for the following package:
+  BESMod.Examples.TEASERHeatLoadCalculation
+Regression tests are only run for the following package:
+  BESMod.Examples.HeatPumpAndBoiler
+Regression tests are only run for the following package:
+  BESMod.Examples

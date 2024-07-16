@@ -5,8 +5,9 @@ model GasBoilerBuildingOnly
     redeclare BESMod.Systems.Demand.Building.TEASERThermalZone building(
       hBui=sum(building.zoneParam.VAir)^(1/3),
       ABui=sum(building.zoneParam.VAir)^(2/3),
+      ARoo=sum(building.zoneParam.ARoof),
       redeclare BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
-        oneZoneParam(heaLoadFacGrd=0, heaLoadFacOut=0)),
+        oneZoneParam),
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Ventilation.NoVentilation ventilation,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
@@ -48,7 +49,7 @@ model GasBoilerBuildingOnly
       parameterStudy,
     redeclare BESMod.Systems.RecordsCollection.ExampleSystemParameters
       systemParameters(
-      QBui_flow_nominal={12820},
+      QBui_flow_nominal=building.QRec_flow_nominal,
       THydSup_nominal={338.15},
       use_ventilation=false,
       use_dhw=false,

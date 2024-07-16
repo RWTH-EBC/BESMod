@@ -1,10 +1,10 @@
 # Variables
-# ci_stage_OM_simulate: OM_simulate
+# ci_stage_OM_simulate: simulate
 # library: BESMod
 # ci_OM_sim_commit: ci_om_simulate
 # OM_python_check_model_module: ModelicaPyCI.unittest.om_check
-# arg_PR : --om-options OM_SIM --startup-mos startup.mos --whitelist-library IBPSA --packages Examples Tutorial Utilities Systems --library BESMod 
-# arg_push: --om-options OM_SIM --startup-mos startup.mos --changed-flag  --whitelist-library IBPSA --packages Examples Tutorial Utilities Systems --library BESMod 
+# arg_push : --om-options OM_SIM --startup-mos startup.mos --whitelist-library IBPSA --packages Examples Tutorial Utilities Systems --library BESMod 
+# arg_changed: --om-options OM_SIM --startup-mos startup.mos --changed-flag  --whitelist-library IBPSA --packages Examples Tutorial Utilities Systems --library BESMod 
 # result_dir: ci-tests/result
 # OM_Image:  registry.git.rwth-aachen.de/ebc/ebc_intern/openmodelica-docker:main
 # expire_in_time: 7h
@@ -13,12 +13,12 @@
 include: 'ci-tests/scripts/utilities.yml'
 
 stages:
-    - OM_simulate
+    - simulate
 
 
-.OM_simulate_model_job:PR:
+.OM_simulate_model_job:push:
     image: registry.git.rwth-aachen.de/ebc/ebc_intern/openmodelica-docker:main
-    stage: OM_simulate
+    stage: simulate
     before_script:
         - !reference [.activate_python_and_install_requirements, script]
         - !reference [.custom_install_additional_modelica_libraries, script]
@@ -34,11 +34,11 @@ stages:
     rules:
         - if: $CI_COMMIT_MESSAGE  =~ /ci_om_simulate/ && $CI_PIPELINE_SOURCE == "push"
           when: always
-        - !reference [.rules:PR , rules]
+        - !reference [.rules:push , rules]
 
-.OM_simulate_model_job:push:
+.OM_simulate_model_job:changed:
     image: registry.git.rwth-aachen.de/ebc/ebc_intern/openmodelica-docker:main
-    stage: OM_simulate
+    stage: simulate
     before_script:
         - !reference [.activate_python_and_install_requirements, script]
         - !reference [.custom_install_additional_modelica_libraries, script]
@@ -52,23 +52,7 @@ stages:
         expire_in: 7h
     allow_failure: true
     rules:
-        - !reference [.rules:push, rules]
-
-OM_Simulate_BESMod_Examples:PR:
-    variables:
-        lib_package: Examples
-    extends: .OM_simulate_model_job:PR
-
-OM_Simulate_BESMod_Systems:PR:
-    variables:
-        lib_package: Systems
-    extends: .OM_simulate_model_job:PR
-
-OM_Simulate_BESMod_Other:PR:
-    variables:
-        lib_package: Tutorial Utilities
-    extends: .OM_simulate_model_job:PR
-
+        - !reference [.rules:changed, rules]
 
 OM_Simulate_BESMod_Examples:push:
     variables:
@@ -84,6 +68,22 @@ OM_Simulate_BESMod_Other:push:
     variables:
         lib_package: Tutorial Utilities
     extends: .OM_simulate_model_job:push
+
+
+OM_Simulate_BESMod_Examples:changed:
+    variables:
+        lib_package: Examples
+    extends: .OM_simulate_model_job:changed
+
+OM_Simulate_BESMod_Systems:changed:
+    variables:
+        lib_package: Systems
+    extends: .OM_simulate_model_job:changed
+
+OM_Simulate_BESMod_Other:changed:
+    variables:
+        lib_package: Tutorial Utilities
+    extends: .OM_simulate_model_job:changed
 
 
 

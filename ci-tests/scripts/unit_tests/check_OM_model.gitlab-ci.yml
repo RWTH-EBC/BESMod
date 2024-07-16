@@ -1,23 +1,23 @@
-# ci_stage_OM_model_check: OM_model_check
+# ci_stage_OM_model_check: model_check
 # library: BESMod
 # ci_OM_check_commit: ci_om_check
 # OM_Image: registry.git.rwth-aachen.de/ebc/ebc_intern/openmodelica-docker:main
 # OM_python_check_model_module: ModelicaPyCI.unittest.om_check
 # result_dir: ci-tests/result
 # expire_in_time: 7h
-# arg_PR: --om-options OM_CHECK --startup-mos startup.mos --whitelist-library IBPSA --packages $lib_package --library BESMod 
-# arg_push: --om-options OM_CHECK --startup-mos startup.mos --changed-flag  --whitelist-library IBPSA --packages $lib_package --library BESMod 
+# arg_push: --om-options OM_CHECK --startup-mos startup.mos --whitelist-library IBPSA --packages $lib_package --library BESMod 
+# arg_changed: --om-options OM_CHECK --startup-mos startup.mos --changed-flag  --whitelist-library IBPSA --packages $lib_package --library BESMod 
 # packages_per_job: {'Examples': 'Examples', 'Systems': 'Systems', 'Other': 'Tutorial Utilities'}
 
 include: 'ci-tests/scripts/utilities.yml'
 
 stages:
-    - OM_model_check
+    - model_check
 
 
-.OM_check_model_job:PR:
+.OM_check_model_job:push:
     image: registry.git.rwth-aachen.de/ebc/ebc_intern/openmodelica-docker:main
-    stage: OM_model_check
+    stage: model_check
     before_script:
         - !reference [.activate_python_and_install_requirements, script]
         - !reference [.custom_install_additional_modelica_libraries, script]
@@ -33,11 +33,11 @@ stages:
     rules:
         - if: $CI_COMMIT_MESSAGE  =~ /ci_om_check/ && $CI_PIPELINE_SOURCE == "push"
           when: always
-        - !reference [.rules:PR , rules]
+        - !reference [.rules:push , rules]
 
-.OM_check_model_job:push:
+.OM_check_model_job:changed:
     image: registry.git.rwth-aachen.de/ebc/ebc_intern/openmodelica-docker:main
-    stage: OM_model_check
+    stage: model_check
     before_script:
         - !reference [.activate_python_and_install_requirements, script]
         - !reference [.custom_install_additional_modelica_libraries, script]
@@ -51,23 +51,7 @@ stages:
         expire_in: 7h
     allow_failure: true
     rules:
-        - !reference [.rules:push, rules]
-
-OM_Check_BESMod_Examples:PR:
-    variables:
-        lib_package: Examples
-    extends: .OM_check_model_job:PR
-
-OM_Check_BESMod_Systems:PR:
-    variables:
-        lib_package: Systems
-    extends: .OM_check_model_job:PR
-
-OM_Check_BESMod_Other:PR:
-    variables:
-        lib_package: Tutorial Utilities
-    extends: .OM_check_model_job:PR
-
+        - !reference [.rules:changed, rules]
 
 OM_Check_BESMod_Examples:push:
     variables:
@@ -83,4 +67,20 @@ OM_Check_BESMod_Other:push:
     variables:
         lib_package: Tutorial Utilities
     extends: .OM_check_model_job:push
+
+
+OM_Check_BESMod_Examples:changed:
+    variables:
+        lib_package: Examples
+    extends: .OM_check_model_job:changed
+
+OM_Check_BESMod_Systems:changed:
+    variables:
+        lib_package: Systems
+    extends: .OM_check_model_job:changed
+
+OM_Check_BESMod_Other:changed:
+    variables:
+        lib_package: Tutorial Utilities
+    extends: .OM_check_model_job:changed
 

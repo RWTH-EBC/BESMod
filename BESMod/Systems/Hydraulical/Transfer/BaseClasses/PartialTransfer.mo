@@ -3,23 +3,48 @@ partial model PartialTransfer "Partial transfer model for BES"
   extends BESMod.Utilities.Icons.TransferIcon;
   extends BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters(
     TSup_nominal=fill(max(TTra_nominal),nParallelSup),
+    TSupOld_design=fill(max(TTraOld_design),nParallelSup),
       dTTra_nominal={if TTra_nominal[i] > 64.9 + 273.15 then 15 elseif
         TTra_nominal[i] > 44.9 + 273.15 then 10 else 7 for i in 1:nParallelDem},
-      m_flow_nominal=Q_flow_nominal ./ (dTTra_nominal .* 4184));
+      m_flow_nominal=Q_flow_nominal ./ (dTTra_nominal .* 4184),
+      mOld_flow_design=QOld_flow_design ./ (dTTraOld_design .* 4184),
+      dTTra_design={if TTra_design[i] > 64.9 + 273.15 then 15 elseif
+        TTra_design[i] > 44.9 + 273.15 then 10 else 7 for i in 1:nParallelDem},
+      dTTraOld_design={if TTraOld_design[i] > 64.9 + 273.15 then 15 elseif
+        TTraOld_design[i] > 44.9 + 273.15 then 10 else 7 for i in 1:nParallelDem},
+      m_flow_design=Q_flow_design ./ (dTTra_design .* 4184));
 
   parameter Modelica.Units.SI.HeatFlowRate QSup_flow_nominal[nParallelSup]=fill(sum(
       Q_flow_nominal .* f_design), nParallelSup)
     "Nominal heat flow rate at supply ports to transfer system" annotation (Dialog(group=
           "Design - Bottom Up: Parameters are defined by the subsystem"));
+  parameter Modelica.Units.SI.HeatFlowRate QSupOld_flow_design[nParallelSup]=fill(sum(
+      QOld_flow_design .* f_design), nParallelSup)
+    "Old design heat flow rate at supply ports to transfer system" annotation (Dialog(group=
+          "Design - Bottom Up: Parameters are defined by the subsystem"));
+
   parameter Modelica.Units.SI.Temperature TTra_nominal[nParallelDem] "Nominal supply temperature to transfer systems"
    annotation(Dialog(group="Design - Top Down: Parameters are given by the parent system"));
+  parameter Modelica.Units.SI.Temperature TTraOld_design[nParallelDem] "Old design nominal supply temperature to transfer systems"
+   annotation(Dialog(group="Design - Top Down: Parameters are given by the parent system"));
+  parameter Modelica.Units.SI.Temperature TTra_design[nParallelDem]=TTra_nominal
+      "Nominal design supply temperature to transfer systems"
+   annotation(Dialog(group="Design - Internal: Parameters are defined by the subsystem"));
   parameter Modelica.Units.SI.MassFlowRate mSup_flow_nominal[nParallelSup]=fill(sum(
       m_flow_nominal), nParallelSup)
    "Nominal mass flow rate of the supply ports to the transfer system" annotation (Dialog(
         group="Design - Bottom Up: Parameters are defined by the subsystem"));
+  parameter Modelica.Units.SI.MassFlowRate mSupOld_flow_design[nParallelSup]=fill(sum(
+      mOld_flow_design), nParallelSup)
+   "Old design mass flow rate of the supply ports to the transfer system" annotation (Dialog(
+        group="Design - Bottom Up: Parameters are defined by the subsystem"));
 
   parameter Modelica.Units.SI.PressureDifference dpSup_nominal[nParallelSup]
     "Nominal pressure loss of resistances in the supply system of the distribution"
+    annotation (Dialog(group=
+          "Design - Top Down: Parameters are given by the parent system"));
+  parameter Modelica.Units.SI.PressureDifference dpSupOld_design[nParallelSup]
+    "Old design pressure loss of resistances in the supply system of the distribution"
     annotation (Dialog(group=
           "Design - Top Down: Parameters are given by the parent system"));
 
@@ -46,8 +71,8 @@ partial model PartialTransfer "Partial transfer model for BES"
       final package Medium = Medium) "Outlet of the transfer system"
     annotation (Placement(transformation(extent={{-110,-52},{-90,-32}}),
         iconTransformation(extent={{-110,-52},{-90,-32}})));
-  Modelica.Fluid.Interfaces.FluidPort_a portTra_in[nParallelSup](redeclare final
-      package       Medium = Medium) "Inlet to the transfer system" annotation (
+  Modelica.Fluid.Interfaces.FluidPort_a portTra_in[nParallelSup](redeclare
+      final package Medium = Medium) "Inlet to the transfer system" annotation (
      Placement(transformation(extent={{-110,28},{-90,48}}), iconTransformation(
           extent={{-110,30},{-90,50}})));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPortRad[nParallelDem]
