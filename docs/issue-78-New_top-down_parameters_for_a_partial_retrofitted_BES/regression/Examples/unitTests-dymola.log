@@ -1,0 +1,33 @@
+Regression tests are only run for the following package:
+  BESMod.Examples
+*** Error: BESMod_Examples_GasBoilerBuildingOnly.txt: Errors during result verification.
+           Absolute error = 1.414e+00 at t = 141696.0 for electricalGrid.PElecLoa
+*** Error: BESMod_Examples_HeatPumpAndBoiler_Serial.txt: Errors during result verification.
+           Absolute error = 1.771e+01 at t = 167616.0 for electricalGrid.PElecLoa
+*** Error: BESMod_Examples_HeatPumpAndBoiler_AfterBufferWithoutDHW.txt: Errors during result verification.
+           Absolute error = 2.856e+01 at t = 162432.0 for electricalGrid.PElecLoa
+*** Error: BESMod_Examples_HeatPumpAndBoiler_Parallel.txt: Errors during result verification.
+           Absolute error = 1.514e+00 at t = 172800.0 for hydraulic.generation.sigBusGen.TGenOutMea
+           Absolute error = 2.797e+03 at t = 172800.0 for electricalGrid.PElecLoa
+*** Error: BESMod_Examples_HeatPumpAndBoiler_AfterBufferWithDHW.txt: Errors during result verification.
+           Absolute error = 2.454e+01 at t = 160704.0 for electricalGrid.PElecLoa
+*** Error: BESMod_Examples_DesignOptimization_BES.txt: Errors during result verification.
+           Absolute error = 5.997e+01 at t = 167616.0 for electricalGrid.PElecLoa
+*** Error: BESMod_Examples_DesignOptimization_BESNoDHW.txt: Errors during result verification.
+           Absolute error = 3.338e-01 at t = 155520.0 for electricalGrid.PElecLoa
+*** Error: BESMod_Examples_TEASERHeatLoadCalculation_Example.txt: Errors during result verification.
+           Absolute error = 6.681e-01 at t = 13824.0 for outputs.building.TZone[1]
+           Absolute error = 1.454e+03 at t = 12096.0 for electricalGrid.PElecLoa
+*** Error: BESMod_Examples_BAUSimStudy_Case1Standard.txt: Errors during result verification.
+           Absolute error = 2.134e+01 at t = 84672.0 for hydraulic.generation.sigBusGen.TGenOutMea
+           Absolute error = 5.362e-01 at t = 167616.0 for outputs.building.TZone[1]
+           Absolute error = 1.630e+04 at t = 34560.0 for electricalGrid.PElecLoa
+*** Error: BESMod_Examples_ModelicaConferencePaper_TEASERBuilding.txt: Errors during result verification.
+           Absolute error = 2.039e+02 at t = 207360.0 for electrical.distribution.batterySimple.PLoad
+           Absolute error = 6.966e-01 at t = 578880.0 for hydraulic.distribution.sigBusDistr.TStoBufTopMea
+Comparison files output by funnel are stored in the directory 'funnel_comp' of size 1.0 MB.
+Run 'python -c "import buildingspy.development.regressiontest as t; t.Tester(tool=\"dymola\").report()"'
+to access a summary of the comparison results.
+
+Script that runs unit tests had 0 warnings and 10 errors.
+
