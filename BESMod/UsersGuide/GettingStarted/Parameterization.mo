@@ -1,4 +1,4 @@
-within BESMod.UsersGuide.GettingStarted;
+﻿within BESMod.UsersGuide.GettingStarted;
 model Parameterization "Parameterization"
 
   annotation(Documentation(info="<html><p>
@@ -49,22 +49,30 @@ model Parameterization "Parameterization"
 <p>
   Bottom-up parameters are defined within subsystems and propagated
   upwards to connected subsystems using <code>Sup_nominal</code> and
-  <code>Dem_nominal</code> parameters. Nominal parameters of the
-  subsystems are either directly set by top-down parameters or
-  calculated using physics-based or rule-based equations. These
+  <code>Dem_nominal</code> parameters. The <code>nominal</code> parameters 
+  of component models, e.g. from IBPSA, are either directly set by top-down parameters or
+  calculated using physics-based or rule-based equations. Relevant 
   <code>nominal</code> parameters are also propagated to the control
-  systems.
+  systems. For general information on <code>nominal</code> parameters,
+  we refer the the IBPSA UsersGuide: 
+  <a href=\"IBPSA.Fluid.UsersGuide\">IBPSA.Fluid.UsersGuide</a>.
 </p>
 <h4>
   Subsystem Design Parameters
 </h4>
 <p>
-  Each subsystem has internal <code>design</code> parameters to define
-  the actual design of components. Typically, design parameters are
-  equivalent to nominal parameters but can be specified separately if
-  needed. Both nominal and design parameters are used to parameterize
-  components, either directly or through additional physics-based or
-  rule-based equations and design-independent parameters.
+  In IBPSA, the <code>nominal</code> parameters define both nominal value 
+  during simulation and the design condition. For instance, the radiator 
+  has <code>Q_flow_nominal</code> which specifies the design size of the
+  component. In BES, partial or full retrofit can lead to cases where the old 
+  componentes are kept (e.g. pipes, radiators, etc.) but the nominal heat flow
+  rate and supply temperatures changes. 
+  To consider such cases, each subsystem has internal <code>design</code> 
+  parameters to define the actual design of components. Typically, design parameters are
+  equivalent to <code>nominal</code> parameters but can be specified separately if
+  needed. Both <code>nominal</code> and <code>design</code> parameters 
+  are used to parameterize components, either directly or through additional 
+  physics-based or rule-based equations and design-independent parameters.
 </p>
 <h4>
   Partially Retrofitted Hydraulic System
@@ -115,9 +123,10 @@ model Parameterization "Parameterization"
   retrofits include a <code>use_old_design</code> parameter. This
   parameter allows the subsystem to use either the old design
   parameters or the nominal parameters based on whether the subsystem
-  or a parallel path within the subsystem has been retrofitted. If a
-  parameter of this type does not exist or is set to final false the
-  parameterization is done with the nominal values.
+  or a parallel path within the subsystem (TODO: What does that mean?)
+  has been retrofitted. If a
+  parameter of this type does not exist or is set to <code>final use_old_design=false</code>, 
+  the parameterization is done with the nominal values.
 </p>
 <p>
   Example usage:

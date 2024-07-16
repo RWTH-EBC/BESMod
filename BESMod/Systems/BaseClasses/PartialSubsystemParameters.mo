@@ -11,20 +11,20 @@ model PartialSubsystemParameters "Model for a partial subsystem"
     "Nominal supply temperature" annotation (Dialog(group=
           "Design - Bottom Up: Parameters are defined by the subsystem"));
   parameter Modelica.Units.SI.Temperature TSupOld_design[nParallelSup]=TSup_nominal
-    "Old nominal design supply temperature" annotation (Dialog(group=
+    "Old design supply temperature" annotation (Dialog(group=
           "Design - Bottom Up: Parameters are defined by the subsystem"));
   parameter Modelica.Units.SI.TemperatureDifference dTTra_nominal[nParallelDem]
     "Nominal temperature difference for heat transfer" annotation (Dialog(group=
          "Design - Bottom Up: Parameters are defined by the subsystem"));
   parameter Modelica.Units.SI.TemperatureDifference dTTraOld_design[nParallelDem]=dTTra_nominal
-    "Old nominal design temperature difference for heat transfer" annotation (Dialog(group=
+    "Old design temperature difference for heat transfer" annotation (Dialog(group=
          "Design - Bottom Up: Parameters are defined by the subsystem"));
 
   parameter Modelica.Units.SI.MassFlowRate m_flow_nominal[nParallelDem](each
       min=Modelica.Constants.eps) "Nominal mass flow rate" annotation (Dialog(
         group="Design - Bottom Up: Parameters are defined by the subsystem"));
   parameter Modelica.Units.SI.MassFlowRate mOld_flow_design[nParallelDem](each
-      min=Modelica.Constants.eps)=m_flow_nominal "Old nominal design mass flow rate of old design" annotation (Dialog(
+      min=Modelica.Constants.eps)=m_flow_nominal "Old design mass flow rate of old design" annotation (Dialog(
         group="Design - Bottom Up: Parameters are defined by the subsystem"));
 
   parameter Modelica.Units.SI.PressureDifference dp_nominal[nParallelDem]
@@ -48,7 +48,7 @@ model PartialSubsystemParameters "Model for a partial subsystem"
           "Design - Top Down: Parameters are given by the parent system"));
 
   parameter Modelica.Units.SI.HeatFlowRate QOld_flow_design[nParallelDem](each min=Modelica.Constants.eps) = Q_flow_nominal
-    "Old nominal design heat flow rate" annotation (Dialog(group=
+    "Old design heat flow rate" annotation (Dialog(group=
           "Design - Top Down: Parameters are given by the parent system"));
   parameter Modelica.Units.SI.Temperature TOda_nominal
     "Nominal outdoor air temperature" annotation (Dialog(group=
@@ -57,7 +57,7 @@ model PartialSubsystemParameters "Model for a partial subsystem"
     "Nominal demand temperature" annotation (Dialog(group=
           "Design - Top Down: Parameters are given by the parent system"));
   parameter Modelica.Units.SI.Temperature TDemOld_design[nParallelDem]=TDem_nominal
-    "Old nominal design demand temperature" annotation (Dialog(group=
+    "Old design demand temperature" annotation (Dialog(group=
           "Design - Top Down: Parameters are given by the parent system"));
   parameter Modelica.Units.SI.Temperature TAmb
     "Ambient temperature of system. Used to calculate default heat loss."

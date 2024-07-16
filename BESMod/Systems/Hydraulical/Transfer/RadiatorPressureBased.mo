@@ -11,7 +11,7 @@ model RadiatorPressureBased "Pressure Based transfer system"
     TTra_design={if use_oldRad_design[i] then TTraOld_design[i] else TTra_nominal[i] for i in 1:nParallelDem});
 
   parameter Boolean use_oldRad_design[nParallelDem]=fill(false, nParallelDem)
-    "If true, radiator design of old building state is used"
+    "If true, radiator design of the building with no retrofit (old state) is used"
     annotation (Dialog(group="Design - Internal: Parameters are defined by the subsystem"));
 
   parameter Boolean use_preRelVal=false "=false to disable pressure relief valve"

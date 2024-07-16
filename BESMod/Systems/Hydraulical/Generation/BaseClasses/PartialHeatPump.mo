@@ -13,7 +13,7 @@ model PartialHeatPump "Generation with only the heat pump"
       nParallelDem=1);
 
   parameter Boolean use_old_design[nParallelDem]=fill(false, nParallelDem)
-    "If true, design parameters of old building state are used"
+    "If true, design parameters of the building with no retrofit (old state) are used"
     annotation (Dialog(group="Design - Internal: Parameters are defined by the subsystem"));
 
   replaceable model PerDataMainHP =

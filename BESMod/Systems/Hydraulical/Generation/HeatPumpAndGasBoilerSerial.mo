@@ -1,7 +1,7 @@
 within BESMod.Systems.Hydraulical.Generation;
 model HeatPumpAndGasBoilerSerial "serial arrangement of heatpump and boiler"
-  extends BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPumpAndGasBoiler(final
-      use_old_design);
+  extends BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPumpAndGasBoiler(
+    final use_old_design=fill(false, nParallelDem));
 
 
 equation

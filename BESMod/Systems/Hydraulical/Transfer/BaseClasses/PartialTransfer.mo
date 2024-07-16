@@ -20,7 +20,7 @@ partial model PartialTransfer "Partial transfer model for BES"
           "Design - Bottom Up: Parameters are defined by the subsystem"));
   parameter Modelica.Units.SI.HeatFlowRate QSupOld_flow_design[nParallelSup]=fill(sum(
       QOld_flow_design .* f_design), nParallelSup)
-    "Old nominal design heat flow rate at supply ports to transfer system" annotation (Dialog(group=
+    "Old design heat flow rate at supply ports to transfer system" annotation (Dialog(group=
           "Design - Bottom Up: Parameters are defined by the subsystem"));
 
   parameter Modelica.Units.SI.Temperature TTra_nominal[nParallelDem] "Nominal supply temperature to transfer systems"
@@ -36,7 +36,7 @@ partial model PartialTransfer "Partial transfer model for BES"
         group="Design - Bottom Up: Parameters are defined by the subsystem"));
   parameter Modelica.Units.SI.MassFlowRate mSupOld_flow_design[nParallelSup]=fill(sum(
       mOld_flow_design), nParallelSup)
-   "Old nominal design mass flow rate of the supply ports to the transfer system" annotation (Dialog(
+   "Old design mass flow rate of the supply ports to the transfer system" annotation (Dialog(
         group="Design - Bottom Up: Parameters are defined by the subsystem"));
 
   parameter Modelica.Units.SI.PressureDifference dpSup_nominal[nParallelSup]
@@ -44,7 +44,7 @@ partial model PartialTransfer "Partial transfer model for BES"
     annotation (Dialog(group=
           "Design - Top Down: Parameters are given by the parent system"));
   parameter Modelica.Units.SI.PressureDifference dpSupOld_design[nParallelSup]
-    "Old nominal design pressure loss of resistances in the supply system of the distribution"
+    "Old design pressure loss of resistances in the supply system of the distribution"
     annotation (Dialog(group=
           "Design - Top Down: Parameters are given by the parent system"));
 

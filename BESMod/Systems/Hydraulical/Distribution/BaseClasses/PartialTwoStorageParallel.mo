@@ -5,6 +5,10 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
         Q_flow_nominal[i] for i in 1:nParallelDem},
     m_flow_design={if use_old_design[i] then mOld_flow_design[i] else
         m_flow_nominal[i] for i in 1:nParallelDem},
+    mSup_flow_design={if use_old_design[i] then mSupOld_flow_design[i] else
+        mSup_flow_nominal[i] for i in 1:nParallelSup},
+    mDem_flow_design={if use_old_design[i] then mDemOld_flow_design[i] else
+        mDem_flow_nominal[i] for i in 1:nParallelDem},
     final mOld_flow_design=mDemOld_flow_design,
     final dpDem_nominal={0},
     final dpSup_nominal={parThrWayVal.dpValve_nominal + max(parThrWayVal.dp_nominal)},
@@ -19,7 +23,7 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
     final nParallelDem=1);
 
   parameter Boolean use_old_design[nParallelDem]=fill(false, nParallelDem)
-    "If true, design parameters of old building state are used"
+    "If true, design parameters of the building with no retrofit (old state) are used"
     annotation (Dialog(group="Design - Internal: Parameters are defined by the subsystem"));
 
   parameter Modelica.Units.SI.TemperatureDifference dTLoaHCBuf
@@ -39,7 +43,7 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
   replaceable parameter BESMod.Systems.RecordsCollection.Valves.ThreeWayValve parThrWayVal
     constrainedby BESMod.Systems.RecordsCollection.Valves.ThreeWayValve(
     final dp_nominal={dpBufHCSto_nominal,dpDHWHCSto_nominal},
-    final m_flow_nominal=if use_old_design[1] then mSupOld_flow_design[1] else mSup_flow_nominal[1],
+    final m_flow_nominal=mSup_flow_design[1],
     final fraK=1,
     use_inputFilter=false) "Parameters for three way valve" annotation (
     Dialog(group="Component data"),
@@ -56,7 +60,7 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
     final TAmb=TAmb,
     T_m=TSup_nominal[1],
     final QHC1_flow_nominal=Q_flow_design[1]*f_design[1],
-    final mHC1_flow_nominal=if use_old_design[1] then mSupOld_flow_design[1] else mSup_flow_nominal[1],
+    final mHC1_flow_nominal=mSup_flow_design[1],
     final use_HC2=stoBuf.useHeatingCoil2,
     final use_HC1=stoBuf.useHeatingCoil1,
     final dTLoadingHC2=9999999,
@@ -82,7 +86,7 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
     final TAmb=TAmb,
     T_m=TDHW_nominal,
     final QHC1_flow_nominal=QDHW_flow_nominal,
-    final mHC1_flow_nominal=if use_old_design[1] then mSupOld_flow_design[1] else mSup_flow_nominal[1],
+    final mHC1_flow_nominal=mSup_flow_design[1],
     final use_HC2=stoDHW.useHeatingCoil2,
     final use_HC1=stoDHW.useHeatingCoil1,
     final dTLoadingHC2=dTLoadingHC2,
@@ -145,7 +149,7 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
     final mSenFac=1,
     redeclare package MediumHC1 = MediumGen,
     redeclare package MediumHC2 = MediumGen,
-    final m1_flow_nominal=if use_old_design[1] then mSupOld_flow_design[1] else mSup_flow_nominal[1],
+    final m1_flow_nominal=mSup_flow_design[1],
     final m2_flow_nominal=m_flow_design[1],
     final mHC1_flow_nominal=parStoBuf.mHC1_flow_nominal,
     final mHC2_flow_nominal=parStoBuf.mHC2_flow_nominal,
@@ -199,7 +203,7 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
     final mSenFac=1,
     redeclare final package MediumHC1 = MediumGen,
     redeclare final package MediumHC2 = MediumGen,
-    final m1_flow_nominal=if use_old_design[1] then mSupOld_flow_design[1] else mSup_flow_nominal[1],
+    final m1_flow_nominal=mSup_flow_design[1],
     final m2_flow_nominal=mDHW_flow_nominal,
     final mHC1_flow_nominal=parStoDHW.mHC1_flow_nominal,
     final mHC2_flow_nominal=parStoDHW.mHC2_flow_nominal,
