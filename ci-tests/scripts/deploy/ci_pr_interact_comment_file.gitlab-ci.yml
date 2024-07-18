@@ -1,20 +1,20 @@
 # Variables
-# ci_stage_post_pr : post_initial_pr_comment
+# ci_stage_post_pr : prepare_pages
 # modelicapyci_api_github_module: ModelicaPyCI.api_script.api_github
 # arg: --post-initial-pr-comment  --page https://rwth-ebc.github.io/BESMod --github-token ${GITHUB_API_TOKEN} --main-branch main --working-branch $CI_COMMIT_BRANCH --library BESMod --github-repository RWTH-EBC/BESMod 
 
 include: 'ci-tests/scripts/utilities.yml'
 
 stages:
-    - post_initial_pr_comment
+    - prepare_pages
 
 post_ci_comment:
-    stage: post_initial_pr_comment
+    stage: prepare_pages
     before_script:
      - !reference [.github_ssh_auth, script]
      - !reference [.activate_python_and_install_requirements, script]
     script:
         - python -m ModelicaPyCI.api_script.api_github --post-initial-pr-comment  --page https://rwth-ebc.github.io/BESMod --github-token ${GITHUB_API_TOKEN} --main-branch main --working-branch $CI_COMMIT_BRANCH --library BESMod --github-repository RWTH-EBC/BESMod 
     rules:
-        - if: $CI_PIPELINE_SOURCE == "external_pull_request_event"
+        - if: $CI_PIPELINE_SOURCE == "push"
           when: always

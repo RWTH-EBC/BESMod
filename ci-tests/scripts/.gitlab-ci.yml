@@ -1,6 +1,5 @@
 # You can adjust the sequence of the stages to your needs:
 stages:
-    - post_initial_pr_comment
     - Ref_Check
     - open_PR
     - create_html_whitelist
