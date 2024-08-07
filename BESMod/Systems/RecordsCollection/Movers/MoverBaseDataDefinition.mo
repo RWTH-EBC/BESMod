@@ -1,6 +1,6 @@
 within BESMod.Systems.RecordsCollection.Movers;
 partial record MoverBaseDataDefinition
-  extends Modelica.Icons.Record;
+  extends BESMod.Utilities.Icons.RecordWithName;
    parameter Boolean addPowerToMedium
     "Set to false to avoid any power (=heat and flow work) being added to medium (may give simpler equations)";
   parameter Boolean use_inputFilter
