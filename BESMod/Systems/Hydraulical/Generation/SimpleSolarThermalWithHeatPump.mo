@@ -16,12 +16,6 @@ model SimpleSolarThermalWithHeatPump
     Dialog(group="Component data"),
     choicesAllMatching=true,
     Placement(transformation(extent={{-86,-62},{-66,-42}})));
-  replaceable parameter
-    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition parPumSolThe
-    "Parameter for solar thermal pump" annotation (
-    Dialog(group="Component data"),
-    choicesAllMatching=true,
-    Placement(transformation(extent={{-98,-176},{-84,-162}})));
   AixLib.Fluid.Solar.Thermal.SolarThermal solThe(
     redeclare final package Medium = Medium,
     final allowFlowReversal=true,
@@ -56,38 +50,6 @@ model SimpleSolarThermalWithHeatPump
         rotation=180,
         origin={-30,-148})));
 
-  IBPSA.Fluid.Movers.Preconfigured.SpeedControlled_y pumpSolThe(
-    redeclare final package Medium = Medium,
-    final energyDynamics=energyDynamics,
-    final p_start=p_start,
-    final T_start=T_start,
-    final allowFlowReversal=allowFlowReversal,
-    final show_T=show_T,
-    final m_flow_nominal=parSolThe.m_flow_nominal,
-    final dp_nominal=dpST_nominal + dpDem_nominal[2],
-    final addPowerToMedium=parPumSolThe.addPowerToMedium,
-    final tau=parPumSolThe.tau,
-    final use_inputFilter=parPumSolThe.use_inputFilter,
-    final riseTime=parPumSolThe.riseTimeInpFilter,
-    final y_start=1) "Solar thermal pump" annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=180,
-        origin={10,-150})));
-
-  IBPSA.Fluid.Sources.Boundary_pT bou(
-    redeclare package Medium = Medium,
-    final p=p_start,
-    final T=T_start,              nPorts=1) annotation (Placement(
-        transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=180,
-        origin={70,-150})));
-  Modelica.Blocks.Sources.Constant uPumSolTheAlwOn(k=1) annotation (Placement(
-        transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=180,
-        origin={50,-170})));
-
   Utilities.KPIs.EnergyKPICalculator KPIWel1(use_inpCon=false, y=-solThe.heater.port.Q_flow)
     annotation (Placement(transformation(extent={{-60,-100},{-40,-80}})));
 
@@ -102,22 +64,9 @@ protected
     "Pressure drop at nominal mass flow rate";
 equation
 
-  connect(pumpSolThe.port_a, bou.ports[1]) annotation (Line(points={{20,-150},{20,
-          -136},{60,-136},{60,-150}}, color={0,127,255}));
-  connect(pumpSolThe.port_b, solThe.port_a) annotation (Line(points={{-1.77636e-15,
-          -150},{-1.77636e-15,-148},{-20,-148}}, color={0,127,255}));
   connect(solThe.port_b, portGen_out[2]) annotation (Line(points={{-40,-148},{-202,
           -148},{-202,124},{106,124},{106,82},{108,82},{108,82.5},{100,82.5}},
         color={0,127,255}));
-  connect(portGen_in[2], pumpSolThe.port_a) annotation (Line(points={{100,0.5},{102,
-          0.5},{102,-6},{100,-6},{100,-48},{162,-48},{162,-136},{20,-136},{20,-150}},
-        color={0,127,255}));
-  connect(pumpSolThe.P, outBusGen.PelPumpST) annotation (Line(points={{-1,-159},{-6,
-          -159},{-6,-132},{0,-132},{0,-100}}, color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
   connect(reaExpSolTheTCol.y, outBusGen.TSolCol_in) annotation (Line(points={{-79,
           -136},{-68,-136},{-68,-124},{0,-124},{0,-100}},     color={0,0,127}),
       Text(
@@ -154,8 +103,8 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(uPumSolTheAlwOn.y, pumpSolThe.y)
-    annotation (Line(points={{39,-170},{10,-170},{10,-162}}, color={0,0,127}));
+  connect(portGen_in[2], solThe.port_a) annotation (Line(points={{100,0.5},{96,
+          0.5},{96,-148},{-20,-148}}, color={0,127,255}));
   annotation (Diagram(coordinateSystem(extent={{-200,-180},{100,100}}),
         graphics={Rectangle(
           extent={{100,-180},{-200,-118}},

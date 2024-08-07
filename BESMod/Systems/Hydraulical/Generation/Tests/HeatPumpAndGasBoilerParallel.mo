@@ -9,9 +9,6 @@ model HeatPumpAndGasBoilerParallel
               AixLib.DataBase.HeatPump.EN255.Vitocal350AWI114()),
       redeclare BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
         parHeaPum,
-      redeclare
-        BESMod.Systems.RecordsCollection.Movers.DefaultMover
-        parPum,
       redeclare BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
         parTemSen,
       redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve

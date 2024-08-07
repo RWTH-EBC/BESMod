@@ -3,7 +3,7 @@ partial model PartialDistribution
   "Partial distribution model for HPS"
   extends BESMod.Utilities.Icons.StorageIcon;
   extends BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters(final
-      dp_nominal=dpDem_nominal,
+      dp_nominal=0,
       TSup_nominal=TDem_nominal .+ dTLoss_nominal .+ dTTra_nominal,
       TSupOld_design=TDemOld_design .+ dTLoss_nominal .+ dTTraOld_design);
   extends PartialDHWParameters;
@@ -38,16 +38,16 @@ partial model PartialDistribution
     annotation (Dialog(group="DHW Demand"));
   parameter Modelica.Units.SI.PressureDifference dpSup_nominal[nParallelSup]
     "Nominal pressure loss of resistances connected to the supply system of the distribution"
-    annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
+    annotation (Dialog(group="Design - Top Down: Parameters are given by the parent system"));
   parameter Modelica.Units.SI.PressureDifference dpSupOld_design[nParallelSup]=dpSup_nominal
     "Old design pressure loss of resistances connected to the supply system of the distribution"
-    annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
+    annotation (Dialog(group="Design - Top Down: Parameters are given by the parent system"));
   parameter Modelica.Units.SI.PressureDifference dpDem_nominal[nParallelDem]
     "Nominal pressure loss of resistances connected to the demand system of the distribution"
-    annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
+    annotation (Dialog(group="Design - Top Down: Parameters are given by the parent system"));
   parameter Modelica.Units.SI.PressureDifference dpDemOld_design[nParallelDem] = dpDem_nominal
     "Old design pressure loss of resistances connected to the demand system of the distribution"
-    annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
+    annotation (Dialog(group="Design - Top Down: Parameters are given by the parent system"));
 
   Modelica.Fluid.Interfaces.FluidPort_a portGen_in[nParallelSup](redeclare
       final package Medium = MediumGen) "Inlet from the generation" annotation (
@@ -95,5 +95,8 @@ equation
   end if;
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)),
+    Documentation(info="<html>
+<p>dp_nominal bottom up parameter is set to zero as is depends on the hydraulic connections</p>
+</html>"));
 end PartialDistribution;

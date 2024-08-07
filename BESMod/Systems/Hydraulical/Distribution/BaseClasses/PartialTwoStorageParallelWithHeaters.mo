@@ -18,7 +18,7 @@ partial model PartialTwoStorageParallelWithHeaters
     Placement(transformation(
         extent={{-6,-6},{6,6}},
         rotation=0,
-        origin={50,38})));
+        origin={50,150})));
   parameter Real etaTem[:,2]=[293.15,1.09; 303.15,1.08; 313.15,1.05; 323.15,1.; 373.15,
       0.99] if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.Boiler
       "Temperature based efficiency"
@@ -30,7 +30,7 @@ partial model PartialTwoStorageParallelWithHeaters
     AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition(
       Q_nom=max(11000, QHeaAftBuf_flow_nominal))
     "Parameters for Boiler"
-    annotation(Placement(transformation(extent={{64,124},{80,140}})),
+    annotation(Placement(transformation(extent={{24,164},{36,176}})),
       choicesAllMatching=true, Dialog(group="Component data"));
 
   BESMod.Systems.Hydraulical.Components.ElectricHeaterWithSecurityControl hea(
@@ -91,13 +91,15 @@ partial model PartialTwoStorageParallelWithHeaters
   Utilities.KPIs.EnergyKPICalculator KPIBoi(use_inpCon=false, y=boi.thermalPower)
  if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.Boiler
     "Boiler heat flow KPI"
-    annotation (Placement(transformation(extent={{-60,-200},{-40,-180}})));
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={50,-150})));
   Utilities.KPIs.EnergyKPICalculator eneKPICalAftBufBoi(use_inpCon=false, y=boi.fuelPower)
     if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.Boiler
     "Boiler after buffer KPIs" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={30,-150})));
+        origin={30,-170})));
 equation
   connect(eneKPICalAftBufEleHea.KPI, outBusDist.PEleHeaAftBuf) annotation (Line(
         points={{17.8,-130},{0,-130},{0,-100}}, color={135,135,135}), Text(
@@ -117,29 +119,31 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(KPIBoi.KPI, outBusDist.QBoi_flow) annotation (Line(points={{-37.8,-190},
-          {0,-190},{0,-100}},                       color={135,135,135}), Text(
+  connect(KPIBoi.KPI, outBusDist.QBoi_flow) annotation (Line(points={{37.8,-150},
+          {0,-150},{0,-100}},                       color={135,135,135}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(stoBuf.fluidportTop2, pasThrEleHeaBuf.port_a) annotation (Line(points={{
-          -29,40.2},{-29,60},{32,60},{32,64},{40,64}}, color={0,127,255}));
-  connect(stoBuf.fluidportTop2, hea.port_a) annotation (Line(points={{-29,40.2},{-29,
-          60},{32,60},{32,90},{40,90}}, color={0,127,255}));
-  connect(stoBuf.fluidportTop2, boi.port_a) annotation (Line(points={{-29,40.2},{-29,
-          60},{32,60},{32,96},{34,96},{34,120},{40,120}}, color={0,127,255}));
-  connect(boi.port_b, senTBuiSup.port_a) annotation (Line(points={{60,120},{66,120},
-          {66,102},{64,102},{64,82},{62,82},{62,80},{66,80}}, color={0,127,255}));
-  connect(hea.port_b, senTBuiSup.port_a) annotation (Line(points={{60,90},{60,86},
-          {66,86},{66,80}}, color={0,127,255}));
+  connect(stoBuf.fluidportTop2, pasThrEleHeaBuf.port_a) annotation (Line(points={{-29,
+          40.2},{-29,44},{32,44},{32,64},{40,64}},     color={0,127,255}));
+  connect(stoBuf.fluidportTop2, hea.port_a) annotation (Line(points={{-29,40.2},
+          {-29,44},{32,44},{32,90},{40,90}},
+                                        color={0,127,255}));
+  connect(stoBuf.fluidportTop2, boi.port_a) annotation (Line(points={{-29,40.2},
+          {-29,44},{32,44},{32,120},{40,120}},            color={0,127,255}));
+  connect(boi.port_b, senTBuiSup.port_a) annotation (Line(points={{60,120},{66,
+          120},{66,80}},                                      color={0,127,255}));
+  connect(hea.port_b, senTBuiSup.port_a) annotation (Line(points={{60,90},{66,
+          90},{66,80}},     color={0,127,255}));
   connect(pasThrEleHeaBuf.port_b, senTBuiSup.port_a)
     annotation (Line(points={{60,64},{66,64},{66,80}}, color={0,127,255}));
-  connect(eneKPICalAftBufBoi.KPI, outBusDist.PBoiAftBuf) annotation (Line(points={
-          {17.8,-150},{0,-150},{0,-100}}, color={135,135,135}), Text(
+  connect(eneKPICalAftBufBoi.KPI, outBusDist.PBoiAftBuf) annotation (Line(points={{17.8,
+          -170},{0,-170},{0,-100}},       color={135,135,135}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  annotation (Diagram(coordinateSystem(extent={{-100,-180},{100,140}})));
+  connect(pumpTra.port_a, portBui_in[1])
+    annotation (Line(points={{80,40},{100,40}}, color={0,127,255}));
 end PartialTwoStorageParallelWithHeaters;

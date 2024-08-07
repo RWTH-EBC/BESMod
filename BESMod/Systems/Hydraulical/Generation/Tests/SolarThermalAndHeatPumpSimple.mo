@@ -10,8 +10,6 @@ model SolarThermalAndHeatPumpSimple "Test for SolarThermalAndHeatPumpSimple"
       redeclare package Medium_eva = IBPSA.Media.Air,
       redeclare BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
         parTemSen,
-      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
-      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPumSolThe,
       redeclare
         BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultSolarThermal
         parSolThe,

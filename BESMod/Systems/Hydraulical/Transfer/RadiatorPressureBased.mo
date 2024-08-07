@@ -30,12 +30,6 @@ model RadiatorPressureBased "Pressure Based transfer system"
     choicesAllMatching=true,
     Placement(transformation(extent={{-62,-98},{-42,-78}})));
 
-  replaceable parameter
-    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
-    parPum annotation (Dialog(group="Component data"),
-      choicesAllMatching=true, Placement(transformation(extent={{-98,78},
-            {-72,100}})));
-
   replaceable parameter BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
     parRad
     annotation (Dialog(group="Component data"), choicesAllMatching=true,
@@ -58,9 +52,9 @@ model RadiatorPressureBased "Pressure Based transfer system"
     each final dp_nominal=0,
     redeclare package Medium = Medium,
     each final T_start=T_start) "Radiator" annotation (Placement(transformation(
-        extent={{11,11},{-11,-11}},
+        extent={{10,10},{-10,-10}},
         rotation=90,
-        origin={-13,-25})));
+        origin={-10,-30})));
 
   IBPSA.Fluid.FixedResistances.PressureDrop res[nParallelDem](
     redeclare package Medium = Medium,
@@ -68,9 +62,9 @@ model RadiatorPressureBased "Pressure Based transfer system"
     final m_flow_nominal=m_flow_nominal)
     "Hydraulic resistance of supply and radiator to set dp allways to m_flow_nominal"
     annotation (Placement(transformation(
-        extent={{-12.5,-13.5},{12.5,13.5}},
+        extent={{-10,-10.5},{10,10.5}},
         rotation=0,
-        origin={-34.5,37.5})));
+        origin={-30,40.5})));
   IBPSA.Fluid.Actuators.Valves.TwoWayLinear val[nParallelDem](
     redeclare package Medium = Medium,
     each final allowFlowReversal=allowFlowReversal,
@@ -83,9 +77,9 @@ model RadiatorPressureBased "Pressure Based transfer system"
     each final l=parTra.leakageOpening) annotation (Placement(transformation(
         extent={{-10,-11},{10,11}},
         rotation=270,
-        origin={-12,1})));
+        origin={-10,9})));
 
-  IBPSA.Fluid.MixingVolumes.MixingVolume vol(
+  IBPSA.Fluid.MixingVolumes.MixingVolume volSup(
     redeclare package Medium = Medium,
     final energyDynamics=energyDynamics,
     final p_start=p_start,
@@ -94,38 +88,16 @@ model RadiatorPressureBased "Pressure Based transfer system"
     final m_flow_nominal=sum(rad.m_flow_nominal),
     final m_flow_small=1E-4*abs(sum(rad.m_flow_nominal)),
     final allowFlowReversal=allowFlowReversal,
-    final V(displayUnit="l") = parTra.vol,
+    final V(displayUnit="l") = parTra.vol/2,
     final use_C_flow=false,
-    nPorts=1 + nParallelDem) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=180,
-        origin={-58,18})));
-  IBPSA.Fluid.Movers.Preconfigured.SpeedControlled_y pump(
-    redeclare final package Medium = Medium,
-    final energyDynamics=energyDynamics,
-    final p_start=p_start,
-    final T_start=T_start,
-    final allowFlowReversal=allowFlowReversal,
-    final show_T=show_T,
-    final m_flow_nominal=sum(m_flow_nominal),
-    final dp_nominal=parTra.dpPumpHeaCir_nominal + dpSup_nominal[1],
-    final addPowerToMedium=parPum.addPowerToMedium,
-    final tau=parPum.tau,
-    final use_inputFilter=parPum.use_inputFilter,
-    final riseTime=parPum.riseTimeInpFilter,
-    final y_start=1) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=0,
-        origin={-74,38})));
-
-  Modelica.Blocks.Sources.Constant m_flow1(k=1)   annotation (Placement(
+    nPorts=nParallelSup)     "Volume of supply pipes" annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={-48,68})));
+        origin={-60,20})));
 
-  BESMod.Utilities.Electrical.RealToElecCon realToElecCon(use_souGen=false)
-    annotation (Placement(transformation(extent={{34,-94},{54,-74}})));
+  Utilities.Electrical.ZeroLoad             zeroLoad
+    annotation (Placement(transformation(extent={{40,-80},{60,-60}})));
   Distribution.Components.Valves.PressureReliefValve pressureReliefValve(
     redeclare final package Medium = Medium,
     m_flow_nominal=mSup_flow_nominal[1],
@@ -141,48 +113,54 @@ model RadiatorPressureBased "Pressure Based transfer system"
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={30,70})));
+  IBPSA.Fluid.MixingVolumes.MixingVolume volRet(
+    redeclare package Medium = Medium,
+    final energyDynamics=energyDynamics,
+    final p_start=p_start,
+    final T_start=T_start,
+    final mSenFac=1,
+    final m_flow_nominal=sum(rad.m_flow_nominal),
+    final m_flow_small=1E-4*abs(sum(rad.m_flow_nominal)),
+    final allowFlowReversal=allowFlowReversal,
+    final V(displayUnit="l") = parTra.vol/2,
+    final use_C_flow=false,
+    nPorts=2) "Volume of return pipes" annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-60,-22})));
 equation
-  connect(rad.heatPortRad, heatPortRad) annotation (Line(points={{-5.08,-27.2},
-          {40,-27.2},{40,-40},{100,-40}}, color={191,0,0}));
-  connect(rad.heatPortCon, heatPortCon) annotation (Line(points={{-5.08,-22.8},
-          {-5.08,-26},{40,-26},{40,40},{100,40}},  color={191,0,0}));
+  connect(rad.heatPortRad, heatPortRad) annotation (Line(points={{-2.8,-32},{40,
+          -32},{40,-40},{100,-40}},       color={191,0,0}));
+  connect(rad.heatPortCon, heatPortCon) annotation (Line(points={{-2.8,-28},{
+          -2.8,-26},{40,-26},{40,40},{100,40}},    color={191,0,0}));
 
   for i in 1:nParallelDem loop
-    connect(rad[i].port_b, portTra_out[1]) annotation (Line(points={{-13,-36},{-13,
-            -42},{-100,-42}},
+    connect(rad[i].port_b, volRet.ports[i + 1]) annotation (Line(points={{-10,-40},
+            {-60,-40},{-60,-32}},
                        color={0,127,255}));
-    connect(res[i].port_a, vol.ports[i + 1]) annotation (Line(points={{-47,37.5},
-            {-56,37.5},{-56,28},{-58,28}}, color={0,127,255}));
+    connect(res[i].port_a, volSup.ports[i + 1]) annotation (Line(points={{-40,
+            40.5},{-56,40.5},{-56,30},{-60,30}},
+                                           color={0,127,255}));
   end for;
 
-  connect(val.port_b, rad.port_a) annotation (Line(points={{-12,-9},{-12,-13.5},
-          {-13,-13.5},{-13,-14}}, color={0,127,255}));
-  connect(res.port_b, val.port_a) annotation (Line(points={{-22,37.5},{-12,37.5},
-          {-12,11}}, color={0,127,255}));
-  connect(portTra_in[1],pump.port_a)
-    annotation (Line(points={{-100,38},{-84,38}}, color={0,127,255}));
-  connect(pump.port_b, vol.ports[1]) annotation (Line(points={{-64,38},{-62,38},
-          {-62,28},{-58,28}}, color={0,127,255}));
+  connect(val.port_b, rad.port_a) annotation (Line(points={{-10,-1},{-10,-20}},
+                                  color={0,127,255}));
+  connect(res.port_b, val.port_a) annotation (Line(points={{-20,40.5},{-10,40.5},
+          {-10,19}}, color={0,127,255}));
 
-  connect(m_flow1.y,pump. y)
-    annotation (Line(points={{-59,68},{-74,68},{-74,50}}, color={0,0,127}));
-  connect(val.y, traControlBus.opening) annotation (Line(points={{1.2,1},{8,1},{
-          8,74},{0,74},{0,100}}, color={0,0,127}), Text(
+  connect(val.y, traControlBus.opening) annotation (Line(points={{3.2,9},{8,9},
+          {8,74},{0,74},{0,100}},color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(realToElecCon.internalElectricalPin, internalElectricalPin)
-    annotation (Line(
-      points={{54.2,-83.8},{54.2,-84},{72,-84},{72,-98}},
+  connect(zeroLoad.internalElectricalPin, internalElectricalPin) annotation (
+      Line(
+      points={{60,-70},{72,-70},{72,-98}},
       color={0,0,0},
       thickness=1));
-  connect(realToElecCon.PEleLoa, pump.P) annotation (Line(points={{32,-80},{
-          22,-80},{22,47},{-63,47}}, color={0,0,127}));
   connect(pressureReliefValve.port_b, portTra_out[1]) annotation (Line(points={{-90,-20},
           {-90,-42},{-100,-42}},           color={0,127,255}));
-  connect(pump.port_b, pressureReliefValve.port_a) annotation (Line(points={{-64,38},
-          {-60,38},{-60,30},{-90,30},{-90,0}},         color={0,127,255}));
   connect(reaPasThrOpe.u, traControlBus.opening) annotation (Line(points={{30,
           82},{30,94},{0,94},{0,100}}, color={0,0,127}), Text(
       string="%second",
@@ -195,4 +173,11 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  connect(volRet.ports[1], portTra_out[1]) annotation (Line(points={{-61,-32},{
+          -61,-42},{-100,-42}},
+                            color={0,127,255}));
+  connect(pressureReliefValve.port_a, portTra_in[1])
+    annotation (Line(points={{-90,0},{-90,38},{-100,38}}, color={0,127,255}));
+  connect(volSup.ports, portTra_in) annotation (Line(points={{-60,30},{-56,30},
+          {-56,38},{-100,38}}, color={0,127,255}));
 end RadiatorPressureBased;

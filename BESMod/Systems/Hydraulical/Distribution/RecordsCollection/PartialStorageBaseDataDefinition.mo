@@ -1,6 +1,6 @@
 within BESMod.Systems.Hydraulical.Distribution.RecordsCollection;
 partial record PartialStorageBaseDataDefinition
-  extends Modelica.Icons.Record;
+  extends BESMod.Utilities.Icons.RecordWithName;
   // Global parameters
   parameter Modelica.Units.SI.Density rho(displayUnit="kg/m3") = 1000
     "Density of liquid water";

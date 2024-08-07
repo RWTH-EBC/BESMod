@@ -6,8 +6,7 @@ model TestBoilerWithDHW "Test two storages boiler with DHW"
       redeclare
         BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
         parTemSen,
-      redeclare
-        BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
+      redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
         parThrWayVal,
       redeclare
         BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorage

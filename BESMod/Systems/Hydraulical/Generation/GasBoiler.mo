@@ -20,10 +20,6 @@ model GasBoiler "Just a gas boiler"
     parTemSen
     annotation (Dialog(group="Component data"), choicesAllMatching=true,
     Placement(transformation(extent={{-98,-16},{-80,-2}})));
-  replaceable parameter
-    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
-    parPum annotation (Dialog(group="Component data"),
-      choicesAllMatching=true, Placement(transformation(extent={{64,-76},{78,-64}})));
   AixLib.Fluid.BoilerCHP.BoilerNoControl boi(
     redeclare package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
@@ -50,34 +46,6 @@ model GasBoiler "Just a gas boiler"
     "Boiler heat flow rate"
     annotation (Placement(transformation(extent={{-40,-100},{-20,-80}})));
 
-  IBPSA.Fluid.Movers.Preconfigured.SpeedControlled_y pump(
-    redeclare final package Medium = Medium,
-    final energyDynamics=energyDynamics,
-    final p_start=p_start,
-    final T_start=T_start,
-    final allowFlowReversal=allowFlowReversal,
-    final show_T=show_T,
-    final addPowerToMedium=parPum.addPowerToMedium,
-    final tau=parPum.tau,
-    final use_inputFilter=parPum.use_inputFilter,
-    final riseTime=parPum.riseTimeInpFilter,
-    final y_start=1,
-    final m_flow_nominal=m_flow_nominal[1],
-    final dp_nominal=dpDem_nominal[1] + dp_nominal[1])
-                     annotation (Placement(transformation(
-        extent={{-10,10},{10,-10}},
-        rotation=180,
-        origin={30,-50})));
-
-  IBPSA.Fluid.Sources.Boundary_pT bou1(
-    redeclare package Medium = Medium,
-    p=p_start,
-    T=T_start,
-    nPorts=1)                                    annotation (Placement(
-        transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={66,-26})));
   BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{26,-108},{46,-88}})));
   Utilities.KPIs.DeviceKPICalculator KPIBoi(
@@ -113,23 +81,11 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(portGen_in[1], pump.port_a) annotation (Line(points={{100,-2},{94,-2},{94,
-          -6},{86,-6},{86,-50},{40,-50}},     color={0,127,255}));
-  connect(boi.port_a, pump.port_b) annotation (Line(points={{-66,10},{-68,10},{-68,
-          -50},{20,-50}},          color={0,127,255}));
-  connect(bou1.ports[1], pump.port_a)
-    annotation (Line(points={{66,-36},{66,-50},{40,-50}}, color={0,127,255}));
   connect(zeroLoad.internalElectricalPin, internalElectricalPin) annotation (
       Line(
       points={{46,-98},{60,-98},{60,-100},{72,-100}},
       color={0,0,0},
       thickness=1));
-  connect(pump.y, sigBusGen.uPump) annotation (Line(points={{30,-38},{30,14},{2,14},
-          {2,98}},               color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
   connect(KPIQBoi.KPI, outBusGen.QBoi_flow) annotation (Line(points={{-17.8,-90},
           {-10,-90},{-10,-88},{0,-88},{0,-100}}, color={135,135,135}), Text(
       string="%second",
@@ -148,4 +104,6 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
+  connect(portGen_in[1], boi.port_a) annotation (Line(points={{100,-2},{42,-2},
+          {42,-46},{-66,-46},{-66,10}}, color={0,127,255}));
 end GasBoiler;

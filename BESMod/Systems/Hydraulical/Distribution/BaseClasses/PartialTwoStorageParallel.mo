@@ -37,10 +37,11 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
 
   replaceable parameter
     BESMod.Systems.RecordsCollection.TemperatureSensors.TemperatureSensorBaseDefinition
-    parTemSen
+    parTemSen(iconName="T-Sensors")
     annotation (Dialog(group="Component data"), choicesAllMatching=true,
-    Placement(transformation(extent={{84,102},{100,118}})));
-  replaceable parameter BESMod.Systems.RecordsCollection.Valves.ThreeWayValve parThrWayVal
+    Placement(transformation(extent={{84,164},{96,176}})));
+  replaceable parameter BESMod.Systems.RecordsCollection.Valves.ThreeWayValve parThrWayVal(iconName=
+        "ThreeWayValve")
     constrainedby BESMod.Systems.RecordsCollection.Valves.ThreeWayValve(
     final dp_nominal={dpBufHCSto_nominal,dpDHWHCSto_nominal},
     final m_flow_nominal=mSup_flow_design[1],
@@ -48,11 +49,13 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
     use_inputFilter=false) "Parameters for three way valve" annotation (
     Dialog(group="Component data"),
     choicesAllMatching=true,
-    Placement(transformation(extent={{-78,102},{-62,118}})));
+    Placement(transformation(extent={{84,144},{96,156}})));
 
   replaceable parameter
-    RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition parStoBuf
-    constrainedby RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition(
+    RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition parStoBuf(iconName=
+        "Buffer")
+    constrainedby
+    RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition(
     final Q_flow_nominal=Q_flow_design[1]*f_design[1],
     final rho=rho,
     final c_p=cp,
@@ -71,10 +74,11 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
     "Parameters for buffer storage" annotation (
     Dialog(group="Component data"),
     choicesAllMatching=true,
-    Placement(transformation(extent={{2,-4},{16,10}})));
+    Placement(transformation(extent={{44,164},{56,176}})));
 
   replaceable parameter
-    RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition parStoDHW
+    RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition parStoDHW(iconName=
+        "DHW")
     if use_dhw constrainedby
     RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition(
     final Q_flow_nominal=0,
@@ -97,42 +101,42 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
     "Parameters for DHW storage" annotation (
     Dialog(group="Component data"),
     choicesAllMatching=true,
-    Placement(transformation(extent={{-8,-68},{6,-54}})));
+    Placement(transformation(extent={{64,144},{76,156}})));
 
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixTemBuf(final T=
         parStoBuf.TAmb) "Constant ambient temperature of storage" annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={10,30})));
+        origin={4,20})));
   Modelica.Blocks.Sources.RealExpression reaExpTStoDHWTop(final y(
       unit="K",
       displayUnit="degC") = stoDHW.layer[parStoDHW.nLayer].T) if use_dhw
     "Directly access temperature layer" annotation (Placement(transformation(
         extent={{-10,-6},{10,6}},
         rotation=0,
-        origin={-30,70})));
+        origin={-70,150})));
   Modelica.Blocks.Sources.RealExpression reaExpTStoBufTop(final y(
       unit="K",
       displayUnit="degC") = stoBuf.layer[parStoBuf.nLayer].T)
     "Directly access temperature layer " annotation (Placement(transformation(
         extent={{-10,-5},{10,5}},
         rotation=0,
-        origin={-30,87})));
+        origin={-70,167})));
   Modelica.Blocks.Sources.RealExpression reaExpTStoBufBot(final y(
       unit="K",
       displayUnit="degC") = stoBuf.layer[1].T)
     "Directly access temperature layer" annotation (Placement(transformation(
         extent={{-10,-5},{10,5}},
         rotation=0,
-        origin={-30,79})));
+        origin={-70,159})));
   Modelica.Blocks.Sources.RealExpression reaExpTStoDHWBot(final y(
       unit="K",
       displayUnit="degC") = stoDHW.layer[1].T) if use_dhw
     "Directly access temperature layer " annotation (Placement(transformation(
         extent={{-10,-5},{10,5}},
         rotation=0,
-        origin={-30,95})));
+        origin={-70,175})));
 
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixTemDHW(final T=
         parStoDHW.TAmb) if use_dhw
@@ -140,7 +144,7 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={0,-30})));
+        origin={0,-50})));
 
   AixLib.Fluid.Storage.BufferStorage stoBuf(
     redeclare final package Medium = Medium,
@@ -282,10 +286,10 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
     final mSenFac=mSenFac,
     redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
       parameters=parThrWayVal)
-    annotation (Placement(transformation(extent={{-80,60},{-60,80}})));
+    annotation (Placement(transformation(extent={{-40,54},{-20,74}})));
 
   Utilities.KPIs.EnergyKPICalculator eneKPICalBuf(use_inpCon=false, y=fixTemBuf.port.Q_flow)
-    annotation (Placement(transformation(extent={{-60,-160},{-40,-140}})));
+    annotation (Placement(transformation(extent={{-80,-160},{-60,-140}})));
   Utilities.KPIs.EnergyKPICalculator eneKPICalDHW(final use_inpCon=false, y=
         fixTemDHW.port.Q_flow)
     annotation (Placement(transformation(extent={{-100,-140},{-80,-120}})));
@@ -304,24 +308,89 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
         rotation=180,
         origin={76,80})));
 
-  BESMod.Utilities.Electrical.ZeroLoad zeroLoad
-    annotation (Placement(transformation(extent={{30,-108},{50,-88}})));
   Utilities.KPIs.EnergyKPICalculator eneKPICalDHWHeaRod(use_inpCon=false, y=
         QHRStoDHWPre_flow.Q_flow) if parStoDHW.use_hr     annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
-        rotation=180,
-        origin={30,-170})));
+        rotation=0,
+        origin={-50,-170})));
   Utilities.KPIs.EnergyKPICalculator eneKPICalBufHeaRod(use_inpCon=false, y=
         QHRStoBufPre_flow.Q_flow) if parStoBuf.use_hr
     annotation (Placement(transformation(extent={{-100,-180},{-80,-160}})));
 
-  AixLib.Fluid.Interfaces.PassThroughMedium pasThrNoDHW(redeclare package Medium =
+  AixLib.Fluid.Interfaces.PassThroughMedium pasThrNoDHW(redeclare package
+      Medium =
         Medium, allowFlowReversal=allowFlowReversal) if not use_dhw
     "Pass through if DHW is disabled" annotation (Placement(transformation(
+        extent={{-4,-4},{4,4}},
+        rotation=270,
+        origin={-6,54})));
+  IBPSA.Fluid.Movers.Preconfigured.SpeedControlled_y pump(
+    redeclare final package Medium = Medium,
+    final energyDynamics=energyDynamics,
+    final p_start=p_start,
+    final T_start=T_start,
+    final allowFlowReversal=allowFlowReversal,
+    final show_T=show_T,
+    final m_flow_nominal=m_flow_design[1],
+    final dp_nominal=dpDem_nominal[1] + dp_nominal[1],
+    final addPowerToMedium=parPum.addPowerToMedium,
+    final tau=parPum.tau,
+    final use_inputFilter=parPum.use_inputFilter,
+    final riseTime=parPum.riseTimeInpFilter,
+    final y_start=1) annotation (Placement(transformation(
+        extent={{-10,10},{10,-10}},
+        rotation=180,
+        origin={-70,60})));
+  IBPSA.Fluid.Sources.Boundary_pT bouPum(
+    redeclare package Medium = Medium,
+    final p=p_start,
+    final T=T_start,
+    final nPorts=1) "Pressure boundary for pump" annotation (Placement(
+        transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={-70,-70})));
+        origin={-70,120})));
+  replaceable parameter
+    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition parPum(iconName=
+        "Pumps")
+    "Parameters for pump" annotation (
+    Dialog(group="Component data"),
+    choicesAllMatching=true,
+    Placement(transformation(extent={{64,164},{76,176}})));
+  Modelica.Blocks.Math.MultiSum multiSum(nu=3)                           annotation (Placement(
+        transformation(
+        extent={{-9,-9},{9,9}},
+        rotation=0,
+        origin={-49,-111})));
+  Utilities.Electrical.RealToElecCon        realToElecCon(use_souGen=false)
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={30,-110})));
+  Modelica.Blocks.Routing.RealPassThrough reaPasThr[2]
+    "For conditional heaters" annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-80,-90})));
+  IBPSA.Fluid.Movers.Preconfigured.SpeedControlled_y pumpTra(
+    redeclare final package Medium = Medium,
+    final energyDynamics=energyDynamics,
+    final p_start=p_start,
+    final T_start=T_start,
+    final allowFlowReversal=allowFlowReversal,
+    final show_T=show_T,
+    final m_flow_nominal=sum(m_flow_nominal),
+    final dp_nominal=parTra.dpPumpHeaCir_nominal + dpSup_nominal[1],
+    final addPowerToMedium=parPum.addPowerToMedium,
+    final tau=parPum.tau,
+    final use_inputFilter=parPum.use_inputFilter,
+    final riseTime=parPum.riseTimeInpFilter,
+    final y_start=1) "Pump to transfer system" annotation (Placement(
+        transformation(
+        extent={{-10,10},{10,-10}},
+        rotation=180,
+        origin={70,40})));
 protected
   parameter Boolean use_secHeaCoiDHWSto
     "=false to disable second heating coil in DHW storage";
@@ -331,35 +400,40 @@ protected
     "Nominal heat flow rate in second heating coil";
   parameter Modelica.Units.SI.MassFlowRate mHC2_flow_nominal=9999999
     "Nominal mass flow rate of HC fluid";
+  Modelica.Blocks.Sources.Constant constZero(final k=0);
 equation
   connect(reaExpTStoDHWBot.y, sigBusDistr.TStoDHWBotMea) annotation (Line(
-        points={{-19,95},{2.5,95},{2.5,101},{0,101}}, color={0,0,127}), Text(
+        points={{-59,175},{-60,175},{-60,176},{0,176},{0,101}},
+                                                      color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(reaExpTStoDHWTop.y, sigBusDistr.TStoDHWTopMea) annotation (Line(
-        points={{-19,70},{0,70},{0,101}}, color={0,0,127}), Text(
+        points={{-59,150},{0,150},{0,101}},
+                                          color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(reaExpTStoBufBot.y, sigBusDistr.TStoBufBotMea) annotation (Line(
-        points={{-19,79},{0,79},{0,101}}, color={0,0,127}), Text(
+        points={{-59,159},{0,159},{0,101}},
+                                          color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
   connect(reaExpTStoBufTop.y, sigBusDistr.TStoBufTopMea) annotation (Line(
-        points={{-19,87},{0,87},{0,101}}, color={0,0,127}), Text(
+        points={{-59,167},{0,167},{0,101}},
+                                          color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(fixTemDHW.port, stoDHW.heatportOutside) annotation (Line(points={{-10,-30},
-          {-14,-30},{-14,-44},{-12,-44},{-12,-48.8},{-18.4,-48.8}}, color={191,0,0}));
+  connect(fixTemDHW.port, stoDHW.heatportOutside) annotation (Line(points={{-10,-50},
+          {-10,-48.8},{-18.4,-48.8}},                               color={191,0,0}));
   connect(stoBuf.heatportOutside, fixTemBuf.port) annotation (Line(points={{-18.4,
-          21.2},{-6,21.2},{-6,30},{0,30}}, color={191,0,0}));
+          21.2},{-18.4,20},{-6,20}},       color={191,0,0}));
   connect(portDHW_in, stoDHW.fluidportBottom2) annotation (Line(points={{100,-82},
           {-29.4,-82},{-29.4,-70.2}}, color={0,127,255}));
   connect(stoDHW.heatingRod, QHRStoDHWPre_flow.port) annotation (Line(
@@ -379,18 +453,17 @@ equation
       color={191,0,0},
       pattern=LinePattern.Dash));
   connect(portGen_in[1], threeWayValveWithFlowReturn.portGen_a) annotation (
-      Line(points={{-100,80},{-92,80},{-92,74.4},{-80,74.4}}, color={0,127,255}));
-  connect(portGen_out[1], threeWayValveWithFlowReturn.portGen_b) annotation (
-      Line(points={{-100,40},{-96,40},{-96,38},{-92,38},{-92,60},{-80,60},{-80,66.4}},
-        color={0,127,255}));
+      Line(points={{-100,80},{-48,80},{-48,68.4},{-40,68.4}}, color={0,127,255}));
   connect(threeWayValveWithFlowReturn.portDHW_b, stoDHW.portHC1In) annotation (
-      Line(points={{-60,66.4},{-54,66.4},{-54,44},{-64,44},{-64,-38.6},{-50.4,-38.6}},
+      Line(points={{-20,60.4},{-20,62},{0,62},{0,44},{-14,44},{-14,-8},{-50.4,
+          -8},{-50.4,-38.6}},
         color={0,127,255}));
   connect(stoDHW.portHC1Out, threeWayValveWithFlowReturn.portDHW_a) annotation (
-      Line(points={{-50.2,-44.8},{-66,-44.8},{-66,42},{-56,42},{-56,62.4},{-60,62.4}},
+      Line(points={{-50.2,-44.8},{-50.2,-46},{-54,-46},{-54,-8},{-14,-8},{-14,
+          56.4},{-20,56.4}},
         color={0,127,255}));
   connect(threeWayValveWithFlowReturn.uBuf, sigBusDistr.uThrWayVal) annotation (
-     Line(points={{-70,82},{-70,101},{0,101}}, color={0,0,127}), Text(
+     Line(points={{-30,76},{-30,101},{0,101}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-3,6},{-3,6}},
@@ -404,14 +477,10 @@ equation
       index=1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(zeroLoad.internalElectricalPin, internalElectricalPin) annotation (
-      Line(
-      points={{50,-98},{70,-98}},
-      color={0,0,0},
-      thickness=1));
-  connect(stoDHW.fluidportTop2, portDHW_out) annotation (Line(points={{-29,-29.8},
-          {-29,-14},{84,-14},{84,-22},{100,-22}}, color={0,127,255}));
-  connect(eneKPICalBuf.KPI, outBusDist.QBufLos_flow) annotation (Line(points={{-37.8,
+  connect(stoDHW.fluidportTop2, portDHW_out) annotation (Line(points={{-29,
+          -29.8},{-29,-26},{-30,-26},{-30,-22},{100,-22}},
+                                                  color={0,127,255}));
+  connect(eneKPICalBuf.KPI, outBusDist.QBufLos_flow) annotation (Line(points={{-57.8,
           -150},{0,-150},{0,-100}}, color={135,135,135}), Text(
       string="%second",
       index=1,
@@ -424,13 +493,14 @@ equation
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
   connect(eneKPICalBufHeaRod.KPI, outBusDist.PEleHRPreBuf) annotation (Line(
-        points={{-77.8,-170},{0,-170},{0,-100}}, color={135,135,135}), Text(
+        points={{-77.8,-170},{-54,-170},{-54,-136},{0,-136},{0,-100}},
+                                                 color={135,135,135}), Text(
       string="%second",
       index=1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
   connect(eneKPICalDHWHeaRod.KPI, outBusDist.PEleHRPreDHW) annotation (Line(
-        points={{17.8,-170},{0,-170},{0,-100}}, color={135,135,135}), Text(
+        points={{-37.8,-170},{0,-170},{0,-100}},color={135,135,135}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
@@ -441,17 +511,59 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(gainHRBuf.u, sigBusDistr.uHRStoBuf) annotation (Line(points={{-102,20},{
-          -116,20},{-116,101},{0,101}},          color={0,0,127}), Text(
+  connect(gainHRBuf.u, sigBusDistr.uHRStoBuf) annotation (Line(points={{-102,20},
+          {-120,20},{-120,102},{0,102},{0,101}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(threeWayValveWithFlowReturn.portDHW_b, pasThrNoDHW.port_a) annotation (
-      Line(points={{-60,66.4},{-54,66.4},{-54,44},{-64,44},{-64,-34},{-88,-34},{-88,
-          -70},{-80,-70}}, color={0,127,255}));
+      Line(points={{-20,60.4},{-20,60},{-6,60},{-6,58}},
+                           color={0,127,255},
+      pattern=LinePattern.Dash));
   connect(pasThrNoDHW.port_b, threeWayValveWithFlowReturn.portDHW_a) annotation (
-      Line(points={{-60,-70},{-56,-70},{-56,-44},{-66,-44},{-66,42},{-56,42},{-56,
-          62},{-60,62},{-60,62.4}}, color={0,127,255}));
-  annotation (Diagram(coordinateSystem(extent={{-100,-180},{100,140}})));
+      Line(points={{-6,50},{-6,48},{-14,48},{-14,56.4},{-20,56.4}},
+                                    color={0,127,255},
+      pattern=LinePattern.Dash));
+  connect(bouPum.ports[1],pump. port_a)
+    annotation (Line(points={{-60,120},{-58,120},{-58,60},{-60,60}},
+                                                          color={0,127,255}));
+  connect(threeWayValveWithFlowReturn.portGen_b, pump.port_a) annotation (Line(
+        points={{-40,60.4},{-42,60.4},{-42,60},{-60,60}}, color={0,127,255}));
+  connect(pump.port_b, portGen_out[1]) annotation (Line(points={{-80,60},{-100,60},
+          {-100,40}}, color={0,127,255}));
+  connect(pump.y, sigBusDistr.uPump) annotation (Line(points={{-70,72},{-120,72},
+          {-120,102},{-2,102},{-2,101},{0,101}},
+                               color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(multiSum.y, realToElecCon.PEleLoa)
+    annotation (Line(points={{-38.47,-111},{-38.47,-110},{-40,-110},{-40,-106},
+          {18,-106}},                                 color={0,0,127}));
+  connect(realToElecCon.internalElectricalPin, internalElectricalPin)
+    annotation (Line(
+      points={{40.2,-109.8},{56,-109.8},{56,-98},{70,-98}},
+      color={0,0,0},
+      thickness=1));
+  connect(pump.P, multiSum.u[1]) annotation (Line(points={{-81,69},{-82,69},{
+          -82,102},{-120,102},{-120,-113.1},{-58,-113.1}},
+                                                       color={0,0,127}));
+  connect(reaPasThr.y, multiSum.u[2:3]) annotation (Line(points={{-69,-90},{-62,
+          -90},{-62,-108.9},{-58,-108.9}},           color={0,0,127}));
+  if parStoDHW.use_hr and use_dhw then
+    connect(reaPasThr[1].u, gain.y) annotation (Line(points={{-92,-90},{-100,
+            -90},{-100,-68},{-91,-68},{-91,-50}},     color={0,0,127}));
+  else
+    connect(reaPasThr[1].u, constZero.y);
+  end if;
+  if parStoBuf.use_hr then
+    connect(reaPasThr[2].u, gainHRBuf.y) annotation (Line(points={{-92,-90},{
+            -120,-90},{-120,4},{-79,4},{-79,20}},
+                         color={0,0,127}));
+  else
+    connect(reaPasThr[2].u, constZero.y);
+  end if;
+  annotation (Diagram(coordinateSystem(extent={{-100,-180},{100,180}})));
 end PartialTwoStorageParallel;

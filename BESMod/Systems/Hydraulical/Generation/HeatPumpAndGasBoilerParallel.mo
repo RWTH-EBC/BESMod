@@ -36,8 +36,8 @@ equation
           {-30.5,42},{-6,42},{-6,6},{20,6}}, color={0,127,255}));
   connect(thrWayVal.portGen_b, senTGenOut.port_a) annotation (Line(points={{40,13.6},
           {54,13.6},{54,80},{60,80}}, color={0,127,255}));
-  connect(pump.port_b, thrWayVal.portGen_a) annotation (Line(points={{1.77636e-15,
-          -70},{-6,-70},{-6,-34},{50,-34},{50,6},{40,6},{40,5.6}}, color={0,127,255}));
+  connect(portGen_in[1], thrWayVal.portGen_a) annotation (Line(points={{100,-2},
+          {40,-2},{40,5.6}},                                       color={0,127,255}));
   connect(thrWayVal.portBui_b, heatPump.port_a1) annotation (Line(points={{20,2},{
           -6,2},{-6,-7},{-30.5,-7}}, color={0,127,255}));
   connect(thrWayVal.uBuf, sigBusGen.uPriOrSecGen) annotation (Line(points={{30,-2},

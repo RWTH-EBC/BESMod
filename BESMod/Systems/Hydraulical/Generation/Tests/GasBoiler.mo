@@ -3,12 +3,10 @@ model GasBoiler
   extends Generation.Tests.PartialTest(redeclare
       BESMod.Systems.Hydraulical.Generation.GasBoiler generation(
       dTTra_nominal={10},
-      redeclare AixLib.DataBase.Boiler.General.Boiler_Vitogas200F_11kW
-        parBoi,
+      redeclare AixLib.DataBase.Boiler.General.Boiler_Vitogas200F_11kW parBoi,
       redeclare
         BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
-        parTemSen,
-      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum));
+        parTemSen));
   extends Modelica.Icons.Example;
 
   Modelica.Blocks.Sources.Pulse        pulse(period=1800)

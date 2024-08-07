@@ -8,7 +8,6 @@ model SolarThermalAndHeatPumpDetailed "Test for SolarThermalAndHeatPumpDetailed"
               AixLib.DataBase.HeatPump.EN14511.Vitocal200AWO201()),
       redeclare BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
         parHeaPum,
-      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
         parTemSen,
       redeclare

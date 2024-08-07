@@ -2,7 +2,7 @@ within BESMod.Systems.Hydraulical.Generation;
 model HeatPumpAndElectricHeater "Heat pump with an electric heater in series"
   extends BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump(
   dp_nominal={heatPump.dpCon_nominal +dpEleHea_nominal},
-  multiSum(nu=if use_eleHea then 3 else 2));
+  multiSum(nu=if use_eleHea then 2 else 1));
 
   parameter Boolean use_eleHea=true "=false to disable the electric heater"
    annotation(Dialog(group="Component choices"));
@@ -51,8 +51,8 @@ protected
     "Possible electric heater nominal pressure drop";
 
 equation
-  connect(heatPump.port_a1, pump.port_b) annotation (Line(points={{-30.5,-7},{
-          -30.5,-70},{1.77636e-15,-70}}, color={0,127,255}));
+  connect(heatPump.port_a1, portGen_in[1]) annotation (Line(points={{-30.5,-7},{
+          -30.5,-2},{100,-2}},           color={0,127,255}));
   connect(pasThrMedEleHea.port_b, senTGenOut.port_a) annotation (Line(points={{40,30},
           {54,30},{54,80},{60,80}},     color={0,127,255}));
   connect(eleHea.port_b, senTGenOut.port_a) annotation (Line(points={{40,50},{54,50},
@@ -68,7 +68,7 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(multiSum.u[3], eleHea.Pel) annotation (Line(points={{136,-82},{140,-82},
+  connect(multiSum.u[2], eleHea.Pel) annotation (Line(points={{136,-82},{140,-82},
           {140,56},{41,56}}, color={0,0,127}));
   connect(KPIQEleHea_flow.KPI, outBusGen.QEleHea_flow) annotation (Line(points={{
           -117.8,-130},{0,-130},{0,-100}}, color={135,135,135}), Text(
