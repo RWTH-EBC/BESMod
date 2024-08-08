@@ -13,11 +13,9 @@ model GasBoilerBuildingOnly
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare BESMod.Systems.Hydraulical.Generation.GasBoiler generation(
-        dTTra_nominal={10},
-        redeclare
+          dTTra_nominal={10}, redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
-          parTemSen,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum),
+          parTemSen),
       redeclare BESMod.Systems.Hydraulical.Control.GasBoiler control(
         redeclare
           BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
@@ -28,22 +26,22 @@ model GasBoilerBuildingOnly
         redeclare
           BESMod.Systems.Hydraulical.Control.Components.RelativeSpeedController.PID
           PIDCtrl),
-      redeclare BESMod.Systems.Hydraulical.Distribution.BuildingOnly distribution(
-          nParallelDem=1),
+      redeclare BESMod.Systems.Hydraulical.Distribution.BuildingOnly
+        distribution(nParallelDem=1, redeclare
+          BESMod.Systems.RecordsCollection.Movers.DPVar parPum),
       redeclare BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased
-        transfer(
-        redeclare
+        transfer(redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
-          parTra,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
-        redeclare
+          parTra, redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
           parRad)),
     redeclare BESMod.Systems.Demand.DHW.StandardProfiles DHW(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
-      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
+      redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
+
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.PassThrough calcmFlow),
+
     redeclare BESMod.Systems.UserProfiles.TEASERProfiles userProfiles,
     redeclare BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy
       parameterStudy,

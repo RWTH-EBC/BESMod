@@ -11,9 +11,7 @@ partial model PartialModelicaConferenceUseCase
         generation(
         redeclare model CellTemperature =
             AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround,
-
         redeclare AixLib.DataBase.SolarElectric.SchuecoSPV170SME1 pVParameters,
-
         lat=weaDat.lat,
         lon=weaDat.lon,
         alt=weaDat.alt,
@@ -27,7 +25,7 @@ partial model PartialModelicaConferenceUseCase
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater generation(
         dTTra_nominal={10},
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
+        redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
         redeclare package Medium_eva = AixLib.Media.Air,
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
@@ -80,7 +78,7 @@ partial model PartialModelicaConferenceUseCase
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
           parRad,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
+        redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
           parTra)),
@@ -88,7 +86,7 @@ partial model PartialModelicaConferenceUseCase
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare final BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM
         DHWProfile,
-      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
+      redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
         calcmFlow),
     redeclare BESMod.Examples.ModelicaConferencePaper.BESModSystemParas
@@ -112,7 +110,7 @@ partial model PartialModelicaConferenceUseCase
         redeclare IBPSA.Fluid.Actuators.Valves.ThreeWayLinear threeWayValve_a,
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
           threeWayValveParas,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover fanData,
+        redeclare BESMod.Systems.RecordsCollection.Movers.DPVar fanData,
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
           tempSensorData),

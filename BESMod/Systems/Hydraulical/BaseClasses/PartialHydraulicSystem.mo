@@ -15,10 +15,11 @@ partial model PartialHydraulicSystem
     BESMod.Systems.Hydraulical.RecordsCollection.HydraulicSystemBaseDataDefinition
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-178,-136},{-158,-116}})));
 
-  replaceable BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration generation(
-      dTTra_nominal=fill(1, generation.nParallelDem),
-      dp_nominal=fill(0, generation.nParallelDem))       constrainedby
-    BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration(
+  replaceable
+    BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration
+    generation(dTTra_nominal=fill(1, generation.nParallelDem), dp_nominal=fill(0,
+        generation.nParallelDem)) constrainedby
+    Generation.BaseClasses.PartialGeneration(
     final TDem_nominal=distribution.TSup_nominal,
     final TDemOld_design=distribution.TSupOld_design,
     final Q_flow_nominal={sum(distribution.Q_flow_nominal)*generation.f_design[
@@ -26,8 +27,6 @@ partial model PartialHydraulicSystem
     final QOld_flow_design={sum(distribution.QOld_flow_design)*generation.f_design[
         i] + distribution.QDHWBefSto_flow_nominal for i in 1:generation.nParallelDem},
     redeclare package Medium = Medium,
-    final dpDem_nominal=distribution.dpSup_nominal,
-    final dpDemOld_design=distribution.dpSupOld_design,
     final energyDynamics=energyDynamics,
     final massDynamics=massDynamics,
     final p_start=p_start,
@@ -42,9 +41,9 @@ partial model PartialHydraulicSystem
     final show_T=show_T,
     final rho=rho,
     final cp=cp,
-    final use_openModelica=use_openModelica) annotation (
-      choicesAllMatching=true, Placement(transformation(extent={{-140,-104},{-24,
-            28}})));
+    final use_openModelica=use_openModelica) annotation (choicesAllMatching=true,
+      Placement(transformation(extent={{-140,-104},{-24,28}})));
+
   replaceable BESMod.Systems.Hydraulical.Control.BaseClasses.PartialControl control
     constrainedby Control.BaseClasses.PartialControl(
     final use_dhw=use_dhw,
@@ -106,13 +105,11 @@ partial model PartialHydraulicSystem
   replaceable BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution distribution(
     dTTra_nominal=fill(1, distribution.nParallelDem),
     m_flow_nominal=fill(0, distribution.nParallelDem),
+    dp_nominal=fill(0, distribution.nParallelDem),
     dTTraDHW_nominal=1,
     designType=BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.NoStorage,
     QDHWStoLoss_flow=0,
-    VStoDHW=0,
-    dpSup_nominal=fill(0, distribution.nParallelDem),
-    dpDem_nominal=fill(0, distribution.nParallelDem)) constrainedby
-    Distribution.BaseClasses.PartialDistribution(
+    VStoDHW=0) constrainedby Distribution.BaseClasses.PartialDistribution(
     redeclare package Medium = Medium,
     redeclare final package MediumDHW = MediumDHW,
     redeclare final package MediumGen = Medium,
@@ -146,11 +143,18 @@ partial model PartialHydraulicSystem
     final TDHW_nominal=hydraulicSystemParameters.TDHW_nominal,
     final tCrit=hydraulicSystemParameters.tCrit,
     final QCrit=hydraulicSystemParameters.QCrit,
-    final use_openModelica=use_openModelica) annotation (choicesAllMatching=true,
+    final use_openModelica=use_openModelica,
+    final dpSup_nominal=generation.dp_nominal,
+    final dpSupOld_design=generation.dpOld_design,
+    final dpDem_nominal=transfer.dpSup_nominal,
+    final dpDemOld_design=transfer.dpSupOld_design)
+                                             annotation (choicesAllMatching=true,
       Placement(transformation(extent={{-12,-104},{90,28}})));
 
   replaceable BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialTransfer
-    transfer(dp_nominal=fill(0, transfer.nParallelDem), nHeaTra=1)
+    transfer(dp_nominal=fill(0, transfer.nParallelDem),
+    dpSup_nominal=fill(0, transfer.nParallelDem),
+    dpSupOld_design=fill(0, transfer.nParallelDem),     nHeaTra=1)
                                                         constrainedby
     Transfer.BaseClasses.PartialTransfer(
     redeclare final package Medium = Medium,
@@ -166,8 +170,6 @@ partial model PartialHydraulicSystem
     final hZone=hydraulicSystemParameters.hZone,
     final ABui=hydraulicSystemParameters.ABui,
     final hBui=hydraulicSystemParameters.hBui,
-    final dpSup_nominal=distribution.dpDem_nominal,
-    final dpSupOld_design=distribution.dpDemOld_design,
     final C_nominal=C_nominal,
     final mSenFac=mSenFac,
     final TOda_nominal=hydraulicSystemParameters.TOda_nominal,

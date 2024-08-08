@@ -40,13 +40,14 @@ partial model PartialTransfer "Partial transfer model for BES"
         group="Design - Bottom Up: Parameters are defined by the subsystem"));
 
   parameter Modelica.Units.SI.PressureDifference dpSup_nominal[nParallelSup]
-    "Nominal pressure loss of resistances in the supply system of the distribution"
+    "Nominal pressure loss to design the distribution system"
     annotation (Dialog(group=
-          "Design - Top Down: Parameters are given by the parent system"));
-  parameter Modelica.Units.SI.PressureDifference dpSupOld_design[nParallelSup]
-    "Old design pressure loss of resistances in the supply system of the distribution"
+          "Design - Bottom Up: Parameters are defined by the subsystem"));
+  parameter Modelica.Units.SI.PressureDifference dpSupOld_design[nParallelSup]=
+      dpSup_nominal
+    "Old design pressure loss to design the distribution system"
     annotation (Dialog(group=
-          "Design - Top Down: Parameters are given by the parent system"));
+          "Design - Bottom Up: Parameters are defined by the subsystem"));
 
   parameter Modelica.Units.SI.Area AZone[nParallelDem](each min=0.1)
      "Area of zones/rooms"

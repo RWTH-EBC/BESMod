@@ -5,7 +5,7 @@ model Parallel
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
       redeclare Systems.Hydraulical.Generation.HeatPumpAndGasBoilerParallel
         generation(
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
+        redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           parHeaPum(

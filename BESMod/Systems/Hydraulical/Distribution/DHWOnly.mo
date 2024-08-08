@@ -7,8 +7,6 @@ model DHWOnly "only loads DHW"
     final QDHWStoLoss_flow=0,
     final designType=BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.NoStorage,
     nParallelDem=1,
-    final dpDem_nominal=fill(0, nParallelDem),
-    final dpSup_nominal=fill(0, nParallelSup),
     final dTTraDHW_nominal=0,
     final QLoss_flow_nominal=f_design .* Q_flow_nominal .- Q_flow_nominal,
     final f_design=fill(1, nParallelDem),

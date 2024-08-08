@@ -74,9 +74,11 @@ model PartialSubsystemParameters "Model for a partial subsystem"
     "Nominal design temperature difference for heat transfer" annotation (Dialog(group=
          "Design - Internal: Parameters are defined by the subsystem"));
   parameter Modelica.Units.SI.PressureDifference dp_design[nParallelDem] = dp_nominal
-    "Nominal design pressure difference at m_flow_design" annotation (Dialog(group=
+    "Design pressure difference at m_flow_design" annotation (Dialog(group=
           "Design - Internal: Parameters are defined by the subsystem"));
-
+  parameter Modelica.Units.SI.PressureDifference dpOld_design[nParallelDem] = dp_nominal
+    "Old design pressure difference at mOld_flow_design" annotation (Dialog(group=
+          "Design - Internal: Parameters are defined by the subsystem"));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));

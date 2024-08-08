@@ -5,9 +5,8 @@ model TestIdealValveRadiatorSystem
       BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator
       transfer(redeclare
         BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
-        parRad, redeclare
-        BESMod.Systems.RecordsCollection.Movers.DefaultMover
-        parPum,
+        parRad,
+      redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
       redeclare
         BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
         parTra));

@@ -22,7 +22,7 @@ model BES_HOM
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater
         generation(
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
+        redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           parHeaPum(
@@ -75,14 +75,14 @@ model BES_HOM
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
           parRad,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
+        redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
           parTra)),
     redeclare BESMod.Systems.Demand.DHW.StandardProfiles DHW(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
-      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
+      redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
         calcmFlow),
     redeclare BESMod.Systems.UserProfiles.AixLibHighOrderProfiles userProfiles(

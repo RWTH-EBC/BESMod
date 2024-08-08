@@ -2,13 +2,11 @@ within BESMod.Systems.Hydraulical.Distribution;
 model DistributionTwoStorageParallel
   "Buffer storage and DHW storage"
   extends BaseClasses.PartialDistribution(
+    dp_nominal={0},
     final dpDHW_nominal=0,
     final VStoDHW=parStoDHW.V,
     final QDHWStoLoss_flow=parStoDHW.QLoss_flow,
     designType=BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage,
-    final dpDem_nominal={0},
-    dpSup_nominal={2*(parThrWayVal.dpValve_nominal + max(
-        parThrWayVal.dp_nominal))},
     final dTTraDHW_nominal=parStoDHW.dTLoadingHC1,
     final dTTra_nominal={parStoBuf.dTLoadingHC1},
     final QLoss_flow_nominal=f_design .* Q_flow_nominal .- Q_flow_nominal,
@@ -188,7 +186,8 @@ model DistributionTwoStorageParallel
     final allowFlowReversal=allowFlowReversal,
     final show_T=show_T,
     final m_flow_nominal=m_flow_design[1],
-    final dp_nominal=dpDem_nominal[1] + dp_nominal[1],
+    final dp_nominal=dpSup_nominal[1] + 2*(parThrWayVal.dpValve_nominal + max(
+        parThrWayVal.dp_nominal)),
     final addPowerToMedium=parPum.addPowerToMedium,
     final tau=parPum.tau,
     final use_inputFilter=parPum.use_inputFilter,
@@ -225,7 +224,7 @@ model DistributionTwoStorageParallel
     final allowFlowReversal=allowFlowReversal,
     final show_T=show_T,
     final m_flow_nominal=sum(m_flow_nominal),
-    final dp_nominal=parTra.dpPumpHeaCir_nominal + dpSup_nominal[1],
+    final dp_nominal=dpDem_nominal[1],
     final addPowerToMedium=parPum.addPowerToMedium,
     final tau=parPum.tau,
     final use_inputFilter=parPum.use_inputFilter,
@@ -245,8 +244,8 @@ equation
                                              color={0,127,255}));
   connect(portDHW_in, stoDHW.port_a_consumer) annotation (Line(points={{100,-82},
           {51,-82},{51,-68}},               color={0,127,255}));
-  connect(fixTemDHW.port, stoDHW.heatPort) annotation (Line(points={{40,-90},{
-          54,-90},{54,-76},{68,-76},{68,-48},{61.4,-48}},
+  connect(fixTemDHW.port, stoDHW.heatPort) annotation (Line(points={{40,-90},{54,
+          -90},{54,-76},{68,-76},{68,-48},{61.4,-48}},
                                          color={191,0,0}));
   connect(T_stoDHWBot.y, sigBusDistr.TStoDHWBotMea) annotation (Line(points={{31.5,
           99},{0,99},{0,101}}, color={0,0,127}), Text(
@@ -276,8 +275,8 @@ equation
     annotation (Line(points={{40.08,34},{-12,34},{-12,74},{-40,74}},
         color={0,127,255}));
   connect(stoDHW.port_b_heatGenerator, threeWayValveWithFlowReturn.portDHW_a)
-    annotation (Line(points={{40.08,-64},{2,-64},{2,-44},{-34,-44},{-34,62.4},{
-          -40,62.4}},                                               color={0,127,
+    annotation (Line(points={{40.08,-64},{2,-64},{2,-44},{-34,-44},{-34,62.4},{-40,
+          62.4}},                                                   color={0,127,
           255}));
   connect(portGen_in[1], threeWayValveWithFlowReturn.portGen_a) annotation (
       Line(points={{-100,80},{-72,80},{-72,74.4},{-60,74.4}}, color={0,127,255}));
@@ -329,12 +328,12 @@ equation
       points={{40.2,-119.8},{70,-119.8},{70,-98}},
       color={0,0,0},
       thickness=1));
-  connect(pump.P, realToElecCon.PEleLoa) annotation (Line(points={{-87,57},{
-          -116,57},{-116,-116},{18,-116}}, color={0,0,127}));
+  connect(pump.P, realToElecCon.PEleLoa) annotation (Line(points={{-87,57},{-116,
+          57},{-116,-116},{18,-116}}, color={0,0,127}));
   connect(pumpTra.port_b, stoBuf.port_a_consumer)
     annotation (Line(points={{60,10},{51,10},{51,30}}, color={0,127,255}));
-  connect(bouPumTra.ports[1], pumpTra.port_a) annotation (Line(points={{40,0},{
-          56,0},{56,-8},{84,-8},{84,10},{80,10}}, color={0,127,255}));
-  connect(pumpTra.port_a, portBui_in[1]) annotation (Line(points={{80,10},{86,
-          10},{86,40},{100,40}}, color={0,127,255}));
+  connect(bouPumTra.ports[1], pumpTra.port_a) annotation (Line(points={{40,0},{56,
+          0},{56,-8},{84,-8},{84,10},{80,10}}, color={0,127,255}));
+  connect(pumpTra.port_a, portBui_in[1]) annotation (Line(points={{80,10},{86,10},
+          {86,40},{100,40}}, color={0,127,255}));
 end DistributionTwoStorageParallel;

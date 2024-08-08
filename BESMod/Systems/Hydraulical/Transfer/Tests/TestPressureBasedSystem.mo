@@ -8,11 +8,9 @@ model TestPressureBasedSystem
         BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
         parTra,
       redeclare
-        BESMod.Systems.RecordsCollection.Movers.DefaultMover
-        parPum,
-      redeclare
         BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
-        parRad));
+        parRad), pumDis(each ctrlType=AixLib.Fluid.Movers.DpControlledMovers.Types.CtrlType.dpVar));
   extends Modelica.Icons.Example;
 
+  annotation (experiment(StopTime=3600, __Dymola_Algorithm="Dassl"));
 end TestPressureBasedSystem;

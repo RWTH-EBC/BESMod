@@ -1,6 +1,12 @@
 within BESMod.Systems.Hydraulical.Distribution;
 model BuildingOnly "Only loads building"
   extends BaseClasses.PartialDistribution(
+    final dpOld_design=dp_nominal,
+    final dp_design=dp_nominal,
+    dTTra_design=dTTra_nominal,
+    final m_flow_design=m_flow_nominal,
+    final Q_flow_design=Q_flow_nominal,
+    dp_nominal=fill(0, nParallelDem),
     use_dhw=false,
     final dpDHW_nominal=0,
     final fFullSto=0,
@@ -11,8 +17,6 @@ model BuildingOnly "Only loads building"
     final QDHWStoLoss_flow=0,
     final designType=BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.NoStorage,
     QDHW_flow_nominal=Modelica.Constants.eps,
-    final dpDem_nominal=fill(0, nParallelDem),
-    final dpSup_nominal=fill(0, nParallelSup),
     final nParallelSup=1,
     final dTTraDHW_nominal=0,
     final QLoss_flow_nominal=f_design .* Q_flow_nominal .- Q_flow_nominal,
@@ -33,17 +37,18 @@ model BuildingOnly "Only loads building"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={50,10})));
-  IBPSA.Fluid.Movers.Preconfigured.SpeedControlled_y pump(
+  BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredDPControlled pump(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
     final p_start=p_start,
     final T_start=T_start,
     final allowFlowReversal=allowFlowReversal,
-    final show_T=show_T,
     final m_flow_nominal=m_flow_design[1],
-    final dp_nominal=dpDem_nominal[1] + dp_nominal[1],
+    final dp_nominal=dpDemSca_nominal + dpSup_nominal[1],
+    final externalCtrlTyp=parPum.externalCtrlTyp,
+    final ctrlType=parPum.ctrlType,
+    final dpVarBase_nominal=parPum.dpVarBase_nominal,
     final addPowerToMedium=parPum.addPowerToMedium,
-    final tau=parPum.tau,
     final use_inputFilter=parPum.use_inputFilter,
     final riseTime=parPum.riseTimeInpFilter,
     final y_start=1) annotation (Placement(transformation(
@@ -69,7 +74,15 @@ model BuildingOnly "Only loads building"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={48,-56})));
+        origin={50,-50})));
+  // k = mPkt / dp^0.5
+  parameter Modelica.Units.SI.PressureDifference dpDemSca_nominal = dpDem_nominal[1] * (mSup_flow_design[1] / mDem_flow_design[1])^2
+    "Scaled nominal pressure difference";
+initial algorithm
+  assert(mSup_flow_design[1] == mDem_flow_design[1],
+   "Design mass flow rates do not match. Will try to size the movers accordingly, but check results on whether mass flow rates match.",
+   AssertionLevel.warning);
+
 equation
   connect(reaExpTStoBufTopMea.y, sigBusDistr.TStoBufTopMea) annotation (Line(
         points={{39,10},{0,10},{0,101}},  color={0,0,127}), Text(
@@ -93,9 +106,9 @@ equation
       horizontalAlignment=TextAlignment.Right));
   connect(realToElecCon.internalElectricalPin, internalElectricalPin)
     annotation (Line(
-      points={{58.2,-55.8},{70,-55.8},{70,-98}},
+      points={{60.2,-49.8},{70,-49.8},{70,-98}},
       color={0,0,0},
       thickness=1));
-  connect(pump.P, realToElecCon.PEleLoa) annotation (Line(points={{-41,49},{-70,
-          49},{-70,-52},{36,-52}}, color={0,0,127}));
+  connect(pump.P, realToElecCon.PEleLoa) annotation (Line(points={{-41,46},{-70,
+          46},{-70,-46},{38,-46}}, color={0,0,127}));
 end BuildingOnly;

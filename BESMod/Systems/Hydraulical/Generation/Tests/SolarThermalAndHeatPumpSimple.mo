@@ -29,12 +29,6 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(pulse.y, genControlBus.uPump) annotation (Line(points={{-19,90},{-14,
-          90},{-14,98},{10,98},{10,74}}, color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
   connect(const1.y, genControlBus.uEleHea) annotation (Line(points={{-79,50},{
           -32,50},{-32,48},{10,48},{10,74}}, color={0,0,127}), Text(
       string="%second",

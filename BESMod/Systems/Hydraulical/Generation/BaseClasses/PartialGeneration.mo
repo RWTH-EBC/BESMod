@@ -9,15 +9,6 @@ partial model PartialGeneration "Partial generation model for HPS"
     mOld_flow_design=QOld_flow_design .* f_design ./ dTTraOld_design ./ 4184,
     final nParallelSup=nParallelDem);
 
-  parameter Modelica.Units.SI.PressureDifference dpDem_nominal[nParallelDem]
-    "Nominal pressure loss of resistances in the demand system of the generation"
-    annotation (Dialog(group=
-          "Design - Top Down: Parameters are given by the parent system"));
-  parameter Modelica.Units.SI.PressureDifference dpDemOld_design[nParallelDem]
-    "Nominal design pressure loss of resistances in the old demand system of the generation"
-    annotation (Dialog(group=
-          "Design - Top Down: Parameters are given by the parent system"));
-
   BESMod.Systems.Hydraulical.Interfaces.GenerationControlBus
     sigBusGen
     annotation (Placement(transformation(extent={{-18,78},{22,118}})));

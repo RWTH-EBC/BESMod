@@ -2,8 +2,7 @@ within BESMod.Systems.Hydraulical.Distribution.BaseClasses;
 partial model PartialDistribution
   "Partial distribution model for HPS"
   extends BESMod.Utilities.Icons.StorageIcon;
-  extends BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters(final
-      dp_nominal=0,
+  extends BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters(
       TSup_nominal=TDem_nominal .+ dTLoss_nominal .+ dTTra_nominal,
       TSupOld_design=TDemOld_design .+ dTLoss_nominal .+ dTTraOld_design);
   extends PartialDHWParameters;
@@ -97,6 +96,5 @@ equation
                    coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>dp_nominal bottom up parameter is set to zero as is depends on the hydraulic connections</p>
 </html>"));
 end PartialDistribution;

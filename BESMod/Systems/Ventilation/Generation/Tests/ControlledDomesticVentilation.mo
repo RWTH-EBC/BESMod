@@ -13,9 +13,7 @@ model ControlledDomesticVentilation
       redeclare
         BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
         threeWayValveParas,
-      redeclare
-        BESMod.Systems.RecordsCollection.Movers.DefaultMover
-        fanData,
+      redeclare BESMod.Systems.RecordsCollection.Movers.DPVar fanData,
       redeclare
         BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
         tempSensorData));

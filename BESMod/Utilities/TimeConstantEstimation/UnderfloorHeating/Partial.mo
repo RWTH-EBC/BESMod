@@ -12,7 +12,7 @@ partial model Partial "Estimate UFH time constants"
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.DefaultUFHData
           UFHParameters,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
+        redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
           parTra),

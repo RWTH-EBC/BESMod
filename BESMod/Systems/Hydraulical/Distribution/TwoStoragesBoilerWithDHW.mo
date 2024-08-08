@@ -26,11 +26,13 @@ model TwoStoragesBoilerWithDHW
     "Parameters for Boiler"
     annotation(Placement(transformation(extent={{44,124},{58,138}})),
       choicesAllMatching=true, Dialog(group="Component data"));
-  replaceable parameter BESMod.Systems.RecordsCollection.Movers.DefaultMover
-    parPum constrainedby
-    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
-      annotation (Dialog(group="Component data"),
-    choicesAllMatching=true, Placement(transformation(extent={{22,124},{36,138}})));
+  replaceable parameter BESMod.Systems.RecordsCollection.Movers.DPVar parPum
+    constrainedby
+    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition annotation
+    (
+    Dialog(group="Component data"),
+    choicesAllMatching=true,
+    Placement(transformation(extent={{22,124},{36,138}})));
   replaceable parameter BESMod.Systems.RecordsCollection.Valves.ThreeWayValve parThrWayValBoi
     constrainedby BESMod.Systems.RecordsCollection.Valves.ThreeWayValve(
     final m_flow_nominal=m_flow_nominal[1],

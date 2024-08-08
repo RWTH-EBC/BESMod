@@ -4,7 +4,6 @@ model CombiStorage
   extends BaseClasses.PartialDistribution(
     final dpDHW_nominal=sum(bufSto.heatingCoil1.pipe.res.dp_nominal),
     dpSup_nominal={0,sum(bufSto.heatingCoil2.pipe.res.dp_nominal)},
-    final dpDem_nominal={0},
     final VStoDHW=parameters.V,
     final QDHWStoLoss_flow=parameters.QLoss_flow,
     designType=BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage,
@@ -255,17 +254,16 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(portGen_in[1], bufSto.fluidportTop1) annotation (Line(points={{-100,
-          77.5},{-100,80},{-5.65,80},{-5.65,48.24}},
+  connect(portGen_in[1], bufSto.fluidportTop1) annotation (Line(points={{-100,77.5},
+          {-100,80},{-5.65,80},{-5.65,48.24}},
                                              color={0,127,255}));
   connect(bufSto.fluidportTop2, portBui_out[1]) annotation (Line(points={{6.9375,
           48.24},{6.9375,80},{100,80}},                    color={0,127,255}));
   connect(bufSto.portHC1In, portDHW_in) annotation (Line(points={{-18.475,37.68},
-          {-20,37.68},{-20,4},{-22,4},{-22,-12},{86,-12},{86,-8},{114,-8},{114,
-          -68},{100,-68},{100,-82}},               color={0,127,255}));
-  connect(portDHW_out, bufSto.portHC1Out) annotation (Line(points={{100,-22},{
-          -24,-22},{-24,30.24},{-18.2375,30.24}},
-                                             color={0,127,255}));
+          {-20,37.68},{-20,4},{-22,4},{-22,-12},{86,-12},{86,-8},{114,-8},{114,-68},
+          {100,-68},{100,-82}},                    color={0,127,255}));
+  connect(portDHW_out, bufSto.portHC1Out) annotation (Line(points={{100,-22},{-24,
+          -22},{-24,30.24},{-18.2375,30.24}},color={0,127,255}));
   connect(reaExpTSen.y, outBusDist.TSto) annotation (Line(points={{41,-50},{64,
           -50},{64,-84},{0,-84},{0,-100}}, color={0,0,127}), Text(
       string="%second",
@@ -289,20 +287,20 @@ equation
       index=1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(pumpSec.y, sigBusDistr.uPumpSec) annotation (Line(points={{-80,2},{
-          -80,6},{-108,6},{-108,98},{0,98},{0,101}}, color={0,0,127}), Text(
+  connect(pumpSec.y, sigBusDistr.uPumpSec) annotation (Line(points={{-80,2},{-80,
+          6},{-108,6},{-108,98},{0,98},{0,101}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(pump.port_b, portGen_out[1]) annotation (Line(points={{-90,28},{-100,
-          28},{-100,37.5}}, color={0,127,255}));
-  connect(pump.port_a, bufSto.fluidportBottom1) annotation (Line(points={{-70,
-          28},{-64,28},{-64,-6},{-5.4125,-6},{-5.4125,-0.48}}, color={0,127,255}));
+  connect(pump.port_b, portGen_out[1]) annotation (Line(points={{-90,28},{-100,28},
+          {-100,37.5}}, color={0,127,255}));
+  connect(pump.port_a, bufSto.fluidportBottom1) annotation (Line(points={{-70,28},
+          {-64,28},{-64,-6},{-5.4125,-6},{-5.4125,-0.48}}, color={0,127,255}));
   connect(bufSto.portHC2Out, pumpSec.port_a) annotation (Line(points={{-18.2375,
           10.32},{-60,10.32},{-60,-10},{-70,-10}}, color={0,127,255}));
-  connect(portGen_out[2], pumpSec.port_b) annotation (Line(points={{-100,42.5},
-          {-100,-10},{-90,-10}}, color={0,127,255}));
+  connect(portGen_out[2], pumpSec.port_b) annotation (Line(points={{-100,42.5},{
+          -100,-10},{-90,-10}}, color={0,127,255}));
   connect(multiSum.y,realToElecCon. PEleLoa)
     annotation (Line(points={{39.53,-69},{39.53,-68},{50,-68},{50,-94},{26,-94}},
                                                       color={0,0,127}));
@@ -311,10 +309,10 @@ equation
       points={{48.2,-97.8},{59.1,-97.8},{59.1,-98},{70,-98}},
       color={0,0,0},
       thickness=1));
-  connect(multiSum.u[1], pumpSec.P) annotation (Line(points={{20,-70.575},{-20,
-          -70.575},{-20,-104},{-114,-104},{-114,-1},{-91,-1}}, color={0,0,127}));
-  connect(multiSum.u[2], pump.P) annotation (Line(points={{20,-67.425},{-20,
-          -67.425},{-20,-104},{-114,-104},{-114,37},{-91,37}}, color={0,0,127}));
+  connect(multiSum.u[1], pumpSec.P) annotation (Line(points={{20,-70.575},{-20,-70.575},
+          {-20,-104},{-114,-104},{-114,-1},{-91,-1}}, color={0,0,127}));
+  connect(multiSum.u[2], pump.P) annotation (Line(points={{20,-67.425},{-20,-67.425},
+          {-20,-104},{-114,-104},{-114,37},{-91,37}}, color={0,0,127}));
   connect(pumpTra.port_a, portBui_in[1])
     annotation (Line(points={{80,10},{100,10},{100,40}}, color={0,127,255}));
   connect(pumpTra.port_b, bufSto.fluidportBottom2) annotation (Line(points={{60,

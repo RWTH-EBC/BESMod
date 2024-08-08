@@ -43,10 +43,9 @@ model PressureReliefExample
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-50,30})));
-  replaceable parameter
-    BESMod.Systems.RecordsCollection.Movers.DefaultMover
-    parPum   annotation (choicesAllMatching=true, Placement(transformation(extent={{-98,82},
-            {-80,98}})));
+  replaceable parameter BESMod.Systems.RecordsCollection.Movers.DPVar parPum
+    annotation (choicesAllMatching=true, Placement(transformation(extent={{-98,
+            82},{-80,98}})));
   Modelica.Blocks.Sources.Constant const(final k=1)
     annotation (Placement(transformation(extent={{-100,40},{-80,60}})));
   Modelica.Blocks.Sources.Ramp ramp(

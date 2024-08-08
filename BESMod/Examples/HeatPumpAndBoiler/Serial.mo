@@ -4,7 +4,7 @@ model Serial "Bivalent Heat Pump Systems with serial heat generation"
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
       redeclare Systems.Hydraulical.Generation.HeatPumpAndGasBoilerSerial
         generation(
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
+        redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           parHeaPum(

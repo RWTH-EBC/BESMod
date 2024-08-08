@@ -2,6 +2,7 @@ within BESMod.Systems.Hydraulical.Transfer;
 model RadiatorPressureBased "Pressure Based transfer system"
   // Abui =1 and hBui =1 to avaoid warnings, will be overwritten anyway
   extends BaseClasses.PartialTransfer(
+    dpSup_nominal={parTra.dpPumpHeaCir_nominal},
     nHeaTra=parRad.n,
     ABui=1,
     hBui=1,
@@ -90,7 +91,7 @@ model RadiatorPressureBased "Pressure Based transfer system"
     final allowFlowReversal=allowFlowReversal,
     final V(displayUnit="l") = parTra.vol/2,
     final use_C_flow=false,
-    nPorts=nParallelSup)     "Volume of supply pipes" annotation (Placement(
+    nPorts=nParallelDem + 1)     "Volume of supply pipes" annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
@@ -124,23 +125,22 @@ model RadiatorPressureBased "Pressure Based transfer system"
     final allowFlowReversal=allowFlowReversal,
     final V(displayUnit="l") = parTra.vol/2,
     final use_C_flow=false,
-    nPorts=2) "Volume of return pipes" annotation (Placement(transformation(
+    nPorts=nParallelDem + 1) "Volume of return pipes" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-60,-22})));
 equation
   connect(rad.heatPortRad, heatPortRad) annotation (Line(points={{-2.8,-32},{40,
           -32},{40,-40},{100,-40}},       color={191,0,0}));
-  connect(rad.heatPortCon, heatPortCon) annotation (Line(points={{-2.8,-28},{
-          -2.8,-26},{40,-26},{40,40},{100,40}},    color={191,0,0}));
+  connect(rad.heatPortCon, heatPortCon) annotation (Line(points={{-2.8,-28},{-2.8,
+          -26},{40,-26},{40,40},{100,40}},         color={191,0,0}));
 
   for i in 1:nParallelDem loop
     connect(rad[i].port_b, volRet.ports[i + 1]) annotation (Line(points={{-10,-40},
             {-60,-40},{-60,-32}},
                        color={0,127,255}));
-    connect(res[i].port_a, volSup.ports[i + 1]) annotation (Line(points={{-40,
-            40.5},{-56,40.5},{-56,30},{-60,30}},
-                                           color={0,127,255}));
+    connect(res[i].port_a, volSup.ports[i + 1]) annotation (Line(points={{-40,40.5},
+            {-56,40.5},{-56,30},{-60,30}}, color={0,127,255}));
   end for;
 
   connect(val.port_b, rad.port_a) annotation (Line(points={{-10,-1},{-10,-20}},
@@ -148,8 +148,8 @@ equation
   connect(res.port_b, val.port_a) annotation (Line(points={{-20,40.5},{-10,40.5},
           {-10,19}}, color={0,127,255}));
 
-  connect(val.y, traControlBus.opening) annotation (Line(points={{3.2,9},{8,9},
-          {8,74},{0,74},{0,100}},color={0,0,127}), Text(
+  connect(val.y, traControlBus.opening) annotation (Line(points={{3.2,9},{8,9},{
+          8,74},{0,74},{0,100}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
@@ -173,11 +173,11 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(volRet.ports[1], portTra_out[1]) annotation (Line(points={{-61,-32},{
-          -61,-42},{-100,-42}},
-                            color={0,127,255}));
+  connect(volRet.ports[1], portTra_out[1]) annotation (Line(points={{-60,-32},{-60,
+          -42},{-100,-42}}, color={0,127,255}));
   connect(pressureReliefValve.port_a, portTra_in[1])
     annotation (Line(points={{-90,0},{-90,38},{-100,38}}, color={0,127,255}));
-  connect(volSup.ports, portTra_in) annotation (Line(points={{-60,30},{-56,30},
-          {-56,38},{-100,38}}, color={0,127,255}));
+  connect(volSup.ports[1], portTra_in[1]) annotation (Line(points={{-60,30},{-56,
+          30},{-56,40},{-102,40},{-102,38},{-100,38}},
+                              color={0,127,255}));
 end RadiatorPressureBased;

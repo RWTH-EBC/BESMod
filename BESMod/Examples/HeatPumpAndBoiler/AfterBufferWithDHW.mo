@@ -5,7 +5,7 @@ model AfterBufferWithDHW
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
       redeclare Systems.Hydraulical.Generation.HeatPump
         generation(
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
+        redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           parHeaPum(
@@ -40,7 +40,7 @@ model AfterBufferWithDHW
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
           parThrWayVal,
         dTBoiDHWLoa=10,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
+        redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
           parThrWayValBoi,
         redeclare
