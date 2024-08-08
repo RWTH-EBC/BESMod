@@ -1,0 +1,27 @@
+ = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions");
+Check of BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions:
+Did not find model BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions
+Error: ERRORS have been issued.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Components/PreconfiguredControlledMovers/PreconfiguredOptions.mos\",", "BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions\",", "BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions\\\");\",", "BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Components/PreconfiguredControlledMovers/PreconfiguredOptions.mos");
+simulateModel("BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions", stopTime=3600, tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions");
+Translation of BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions:
+Did not find model BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions
+Error: ERRORS have been issued.
+ = false
+
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.translation.log");
