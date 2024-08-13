@@ -19,8 +19,8 @@ equation
           -26},{0,-26},{0,-12}}, color={0,0,127}));
   connect(TZoneSet, PI.u_s) annotation (Line(points={{-120,-60},{-40,-60},{-40,
           0},{-12,0}}, color={0,0,127}));
-  connect(PI.y, supCtrl.uLoc)
-    annotation (Line(points={{11,0},{20,0},{20,-8},{58,-8}}, color={0,0,127}));
+  connect(PI.y, opening)
+    annotation (Line(points={{11,0},{120,0}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Polygon(
           points={{-80,90},{-88,68},{-72,68},{-80,90}},

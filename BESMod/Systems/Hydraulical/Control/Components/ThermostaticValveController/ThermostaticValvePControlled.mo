@@ -11,15 +11,15 @@ protected
   Real yVal_internal[nZones] "Internally calculated opening";
   Modelica.Blocks.Sources.RealExpression opening_internal[nZones](final y=
         yVal_internal)
-    annotation (Placement(transformation(extent={{0,-20},{20,0}})));
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
 equation
   for i in 1:nZones loop
     //Calculating the valve opening depending on the temperature deviation
     yVal_internal[i] =min(1, max(leakageOpening, (P[i] -TZoneMea [i] -TZoneSet
               [i])*(Kv_setT[i]/Kvs[i])/P[i]));
   end for;
-  connect(opening_internal.y, supCtrl.uLoc) annotation (Line(points={{21,-10},{24,
-          -10},{24,-8},{58,-8}}, color={0,0,127}));
+  connect(opening_internal.y, opening)
+    annotation (Line(points={{11,0},{120,0}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Line(points={{-82,-82},{-82,-22},{-82,0},{74,0}},  color={0,0,127}),
         Polygon(

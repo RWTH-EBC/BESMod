@@ -7,6 +7,6 @@ protected
 public
   parameter Real conOpe=1 "Constant opening";
 equation
-  connect(const.y, supCtrl.uLoc)
-    annotation (Line(points={{13,0},{18,0},{18,-8},{58,-8}}, color={0,0,127}));
+  connect(const.y, opening)
+    annotation (Line(points={{13,0},{120,0},{120,0}}, color={0,0,127}));
 end ConstantOpening;
