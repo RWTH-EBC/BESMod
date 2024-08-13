@@ -6,6 +6,10 @@ partial model PartialHeatPumpSystemController
    parameter Components.BaseClasses.MeasuredValue meaValPriGen=BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue.GenerationSupplyTemperature
     "Control measurement value for primary device"
     annotation (Dialog(group="Heat Pump"));
+  parameter Utilities.SupervisoryControl.Types.SupervisoryControlType
+    supCtrlNSetTyp=BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Local
+    "Type of supervisory control for compressor speed"
+    annotation (Dialog(group="Heat Pump"));
   parameter Components.BaseClasses.MeasuredValue meaValSecGen
     "Control measurement value for secondary device"
     annotation (Dialog(group="Backup heater"));
@@ -87,7 +91,7 @@ partial model PartialHeatPumpSystemController
     "PID parameters of heat pump"
     annotation (choicesAllMatching=true,
                 Dialog(group="Heat Pump"),
-                Placement(transformation(extent={{100,40},{120,60}})));
+                Placement(transformation(extent={{80,40},{100,60}})));
 
   replaceable BESMod.Systems.Hydraulical.Control.RecordsCollection.HeatPumpSafetyControl
     safetyControl "Parameters for safety control of heat pump"
@@ -109,7 +113,7 @@ partial model PartialHeatPumpSystemController
     "Control of heat pump" annotation (
     Dialog(group="Heat Pump", tab="Advanced"),
     choicesAllMatching=true,
-    Placement(transformation(extent={{102,82},{118,98}})));
+    Placement(transformation(extent={{82,82},{98,98}})));
 
   AixLib.Controls.HeatPump.SafetyControls.SafetyControl safCtr(
     final minRunTime=safetyControl.minRunTime,
@@ -202,6 +206,10 @@ partial model PartialHeatPumpSystemController
     "Selection of set and measured value for secondary generation device"
     annotation (Placement(transformation(extent={{40,0},{60,20}})));
 
+  BESMod.Utilities.SupervisoryControl.SupervisoryControl supCtrNSet(final ctrlType=
+        supCtrlNSetTyp) "Supervisory control of compressor speed"
+    annotation (Placement(transformation(extent={{110,80},{130,100}})));
+
 equation
 
   connect(safCtr.modeSet, heaPumHea.y) annotation (Line(points={{198.667,68},{
@@ -214,13 +222,10 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(priGenPIDCtrl.ySet, safCtr.nSet) annotation (Line(points={{118.8,90},
-          {154,90},{154,76},{190,76},{190,72},{198.667,72}},
-                                                        color={0,0,127}));
 
-  connect(priGenPIDCtrl.isOn, sigBusGen.heaPumIsOn) annotation (Line(points={{105.2,
-          80.4},{105.2,78},{106,78},{106,48},{260,48},{260,-114},{-152,-114},{-152,
-          -99}}, color={255,0,255}), Text(
+  connect(priGenPIDCtrl.isOn, sigBusGen.heaPumIsOn) annotation (Line(points={{85.2,
+          80.4},{85.2,62},{66,62},{66,-99},{-152,-99}},
+                 color={255,0,255}), Text(
       string="%second",
       index=1,
       extent={{-3,-6},{-3,-6}},
@@ -293,9 +298,9 @@ equation
   connect(setAndMeaSelPri.TBuiSet, buiAndDHWCtr.TBuiSet) annotation (Line(points={
           {39,72.8},{38,72.8},{38,74},{-106,74},{-106,60},{-118,60}}, color={0,0,127}));
   connect(setAndMeaSelPri.TSet, priGenPIDCtrl.TSet) annotation (Line(points={{61,76},
-          {94,76},{94,94.8},{100.4,94.8}}, color={0,0,127}));
+          {80.4,76},{80.4,94.8}},          color={0,0,127}));
   connect(setAndMeaSelPri.TMea, priGenPIDCtrl.TMea)
-    annotation (Line(points={{61,66},{110,66},{110,80.4}}, color={0,0,127}));
+    annotation (Line(points={{61,66},{90,66},{90,80.4}},   color={0,0,127}));
   connect(setAndMeaSelPri.sigBusGen, sigBusGen) annotation (Line(
       points={{40,61.8},{20,61.8},{20,62},{0,62},{0,-99},{-152,-99}},
       color={255,204,51},
@@ -344,6 +349,10 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  connect(supCtrNSet.y, safCtr.nSet) annotation (Line(points={{132,90},{132,110},
+          {196,110},{196,86},{194,86},{194,72},{198.667,72}}, color={0,0,127}));
+  connect(supCtrNSet.uLoc, priGenPIDCtrl.ySet) annotation (Line(points={{108,82},
+          {104,82},{104,90},{98.8,90}}, color={0,0,127}));
     annotation (Diagram(graphics={
         Rectangle(
           extent={{4,100},{136,36}},
