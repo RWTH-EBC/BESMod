@@ -28,18 +28,14 @@ model PanelHeating
   parameter Modelica.Units.SI.Temperature T0=
       Modelica.Units.Conversions.from_degC(20)
     "Initial temperature, in degrees Celsius";
-  parameter Integer calcMethod=2 "Calculation method for convective heat transfer coefficient at surface" annotation (Dialog(group="Heat convection",
-        descriptionLabel=true), choices(
-      choice=1 "EN ISO 6946 Appendix A >>Flat Surfaces<<",
-      choice=2 "By Bernd Glueck",
-      choice=3 "Custom hCon (constant)",
-      radioButtons=true));
-
+  parameter AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface calcMethod=AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.Bernd_Glueck "Calculation method for convective heat transfer coefficient" annotation (
+    Dialog(descriptionLabel=true),
+    Evaluate=true);
   parameter Modelica.Units.SI.CoefficientOfHeatTransfer hCon_const=2.5
     "Custom convective heat transfer coefficient" annotation (Dialog(
       group="Heat convection",
       descriptionLabel=true,
-      enable=if calcMethod == 3 then true else false));
+      enable=if calcMethod == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.Custom_hCon then true else false));
 
   final parameter Modelica.Units.SI.Emissivity eps=floorHeatingType.eps
     "Emissivity";
