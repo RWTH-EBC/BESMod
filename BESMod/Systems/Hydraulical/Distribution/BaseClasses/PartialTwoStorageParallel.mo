@@ -142,7 +142,7 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
         rotation=180,
         origin={0,-30})));
 
-  AixLib.Fluid.Storage.BufferStorage stoBuf(
+  AixLib.Fluid.Storage.StorageDetailed stoBuf(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
     final p_start=p_start,
@@ -196,7 +196,7 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
     final allowFlowReversal_HC2=allowFlowReversal) "Buffer storage"
     annotation (Placement(transformation(extent={{-50,0},{-18,40}})));
 
-  AixLib.Fluid.Storage.BufferStorage stoDHW(
+  AixLib.Fluid.Storage.StorageDetailed stoDHW(
     redeclare final package Medium = MediumDHW,
     final energyDynamics=energyDynamics,
     final p_start=p_start,

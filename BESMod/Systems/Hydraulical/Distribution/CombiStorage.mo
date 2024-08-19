@@ -41,7 +41,7 @@ model CombiStorage
     annotation (choicesAllMatching=true, Placement(transformation(extent={{82,56},
             {96,70}})));
 
-  AixLib.Fluid.Storage.BufferStorage bufSto(
+  AixLib.Fluid.Storage.StorageDetailed bufSto(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
     final p_start=p_start,
