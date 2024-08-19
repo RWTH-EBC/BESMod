@@ -1,0 +1,32 @@
+Regression tests are only run for the following package:
+  BESMod.Examples
+*** Error: BESMod_Examples_HeatPumpAndBoiler_AfterBufferWithoutDHW.txt: Errors during result verification.
+           Absolute error = 7.751e+00 at t = 1728.0 for hydraulic.generation.sigBusGen.TGenOutMea
+           Absolute error = 5.870e-01 at t = 1728.0 for outputs.building.TZone[1]
+           Absolute error = 2.651e+03 at t = 74304.0 for electricalGrid.PElecLoa
+*** Error: BESMod_Examples_HeatPumpAndBoiler_AfterBufferWithDHW.txt: Errors during result verification.
+           Absolute error = 2.481e+01 at t = 3456.0 for hydraulic.generation.sigBusGen.TGenOutMea
+           Absolute error = 1.022e+00 at t = 3456.0 for outputs.building.TZone[1]
+           Absolute error = 7.817e+02 at t = 3456.0 for electricalGrid.PElecLoa
+*** Error: BESMod_Examples_Retrofit_Case1TotalRetrofit.txt: Errors during result verification.
+           Absolute error = 2.270e+01 at t = 83808.0 for hydraulic.generation.sigBusGen.TGenOutMea
+           Absolute error = 7.222e-01 at t = 3456.0 for outputs.building.TZone[1]
+           Absolute error = 6.051e+03 at t = 79488.0 for electricalGrid.PElecLoa
+*** Error: BESMod_Examples_Retrofit_Case1NoRetrofit.txt: Errors during result verification.
+           Absolute error = 3.621e+01 at t = 1728.0 for hydraulic.generation.sigBusGen.TGenOutMea
+           Absolute error = 3.346e-01 at t = 3456.0 for outputs.building.TZone[1]
+           Absolute error = 1.690e+04 at t = 6048.0 for electricalGrid.PElecLoa
+*** Error: BESMod_Examples_Retrofit_Case1PartialRetrofit.txt: Errors during result verification.
+           Absolute error = 2.704e+01 at t = 46656.0 for hydraulic.generation.sigBusGen.TGenOutMea
+           Absolute error = 5.093e-01 at t = 1728.0 for outputs.building.TZone[1]
+           Absolute error = 4.357e+03 at t = 46656.0 for electricalGrid.PElecLoa
+*** Error: BESMod_Examples_BAUSimStudy_Case1Standard.txt: Errors during result verification.
+           Absolute error = 3.606e+01 at t = 1728.0 for hydraulic.generation.sigBusGen.TGenOutMea
+           Absolute error = 4.896e-01 at t = 3456.0 for outputs.building.TZone[1]
+           Absolute error = 1.727e+04 at t = 5184.0 for electricalGrid.PElecLoa
+Comparison files output by funnel are stored in the directory 'funnel_comp' of size 1.0 MB.
+Run 'python -c "import buildingspy.development.regressiontest as t; t.Tester(tool=\"dymola\").report()"'
+to access a summary of the comparison results.
+
+Script that runs unit tests had 0 warnings and 6 errors.
+
