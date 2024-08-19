@@ -6,8 +6,8 @@ partial model PartialFrosting
     "Input relative humidity of outdoor air" annotation (Placement(
         transformation(extent={{-140,60},{-100,100}}), iconTransformation(
           extent={{-140,56},{-100,96}})));
-  AixLib.Controls.Interfaces.VapourCompressionMachineControlBus
-                                  genConBus
+  AixLib.Obsolete.Year2024.Controls.Interfaces.VapourCompressionMachineControlBus
+    genConBus
     "Bus with the most relevant information for hp frosting calculation"
     annotation (Placement(transformation(extent={{-128,-80},{-88,-40}}),
         iconTransformation(extent={{-130,-108},{-90,-68}})));
@@ -15,8 +15,8 @@ partial model PartialFrosting
     annotation (Placement(transformation(extent={{100,50},{120,70}})));
   Modelica.Blocks.Interfaces.BooleanOutput modeHeaPum "Value of Boolean output"
     annotation (Placement(transformation(extent={{100,-70},{120,-50}})));
-  Modelica.Blocks.Interfaces.RealInput TOda "Outdoor air temperature" annotation
-    (Placement(transformation(extent={{-140,-40},{-100,0}}), iconTransformation(
+  Modelica.Blocks.Interfaces.RealInput TOda "Outdoor air temperature" annotation (
+     Placement(transformation(extent={{-140,-40},{-100,0}}), iconTransformation(
           extent={{-140,-16},{-100,24}})));
   Modelica.Blocks.Interfaces.RealInput QEva_flow "Evaporator heat flow"
     annotation (Placement(transformation(extent={{-140,10},{-100,50}}),

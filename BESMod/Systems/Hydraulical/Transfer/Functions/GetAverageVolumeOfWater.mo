@@ -1,4 +1,4 @@
-within BESMod.Systems.Hydraulical.Transfer.Functions;
+﻿within BESMod.Systems.Hydraulical.Transfer.Functions;
 function GetAverageVolumeOfWater
   "Calculate the average water volume for the whole heating unit based on the type of the unit and the installed heating load"
   input Modelica.Units.SI.HeatFlowRate Q_flow_nominal "Nominal heat flow rate";

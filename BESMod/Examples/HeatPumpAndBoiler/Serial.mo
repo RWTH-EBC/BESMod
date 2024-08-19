@@ -1,14 +1,14 @@
 within BESMod.Examples.HeatPumpAndBoiler;
 model Serial "Bivalent Heat Pump Systems with serial heat generation"
-  extends BaseClasses.PartialHybridSystem(
-    redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
-      redeclare Systems.Hydraulical.Generation.HeatPumpAndGasBoilerSerial
-        generation(
+  extends BaseClasses.PartialHybridSystem(redeclare
+      BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(redeclare
+        Systems.Hydraulical.Generation.HeatPumpAndGasBoilerSerial generation(
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           parHeaPum(
           genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
+
           TBiv=parameterStudy.TBiv,
           scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal/
               parameterStudy.QHP_flow_biv,
@@ -17,14 +17,16 @@ model Serial "Bivalent Heat Pump Systems with serial heat generation"
           use_refIne=false,
           refIneFre_constant=0),
         redeclare model PerDataMainHP =
-            AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
+            AixLib.Obsolete.Year2024.DataBase.HeatPump.PerformanceData.VCLibMap
+            (
             QCon_flow_nominal=hydraulic.generation.parHeaPum.QPri_flow_nominal,
+
             refrigerant="Propane",
             flowsheet="VIPhaseSeparatorFlowsheet"),
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
-          parTemSen),
-      redeclare Systems.Hydraulical.Distribution.DistributionTwoStorageParallel
+          parTemSen), redeclare
+        Systems.Hydraulical.Distribution.DistributionTwoStorageParallel
         distribution(
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage

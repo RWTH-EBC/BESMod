@@ -3,12 +3,12 @@ package BESMod
   extends Modelica.Icons.Package;
 
   annotation (
-    version="0.4.0",
+    version="0.5.0",
     uses(
     Modelica(version="4.0.0"),
     SDF(version="0.4.2"),
-    AixLib(version="1.4.0"),
-    IBPSA(version="4.0.0")),
+      IBPSA(version="4.0.0"),
+      AixLib(version="2.1.0")),
    conversion(
  from(
   version="0.2.2",

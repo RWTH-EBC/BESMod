@@ -2,7 +2,7 @@ within BESMod.Systems.Hydraulical.Control.Components.BaseClasses;
 model HeatPumpBusPassThrough
   Interfaces.GenerationControlBus sigBusGen
     annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
-  AixLib.Controls.Interfaces.VapourCompressionMachineControlBus
+  AixLib.Obsolete.Year2024.Controls.Interfaces.VapourCompressionMachineControlBus
     vapourCompressionMachineControlBus
     annotation (Placement(transformation(extent={{82,-22},{122,18}})));
   Modelica.Blocks.Routing.RealPassThrough realPassThrough[4]
@@ -17,7 +17,7 @@ equation
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(booleanPassThrough.y, vapourCompressionMachineControlBus.onOffMea)
-    annotation (Line(points={{11,-30},{46,-30},{46,-26},{102,-26},{102,-2}},
+    annotation (Line(points={{11,-30},{46,-30},{46,-26},{102.1,-26},{102.1,-1.9}},
         color={255,0,255}), Text(
       string="%second",
       index=1,
@@ -30,7 +30,8 @@ equation
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(realPassThrough[1].y, vapourCompressionMachineControlBus.TConInMea)
-    annotation (Line(points={{11,0},{78,0},{78,-2},{102,-2}}, color={0,0,127}),
+    annotation (Line(points={{11,0},{78,0},{78,-1.9},{102.1,-1.9}},
+                                                              color={0,0,127}),
       Text(
       string="%second",
       index=1,
@@ -43,14 +44,16 @@ equation
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(realPassThrough[2].y, vapourCompressionMachineControlBus.TConOutMea)
-    annotation (Line(points={{11,0},{78,0},{78,-2},{102,-2}}, color={0,0,127}),
+    annotation (Line(points={{11,0},{78,0},{78,-1.9},{102.1,-1.9}},
+                                                              color={0,0,127}),
       Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
   connect(realPassThrough[3].y, vapourCompressionMachineControlBus.nSet)
-    annotation (Line(points={{11,0},{78,0},{78,-2},{102,-2}}, color={0,0,127}),
+    annotation (Line(points={{11,0},{78,0},{78,-1.9},{102.1,-1.9}},
+                                                              color={0,0,127}),
       Text(
       string="%second",
       index=1,
@@ -69,7 +72,8 @@ equation
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(realPassThrough[4].y, vapourCompressionMachineControlBus.TEvaInMea)
-    annotation (Line(points={{11,0},{78,0},{78,-2},{102,-2}}, color={0,0,127}),
+    annotation (Line(points={{11,0},{78,0},{78,-1.9},{102.1,-1.9}},
+                                                              color={0,0,127}),
       Text(
       string="%second",
       index=1,

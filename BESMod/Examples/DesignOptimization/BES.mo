@@ -12,12 +12,13 @@ model BES
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
-      redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater generation(
+      redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater
+        generation(
         redeclare model PerDataRevHP =
-            AixLib.DataBase.Chiller.PerformanceData.PolynomalApproach (redeclare
-              function PolyData =
-                AixLib.DataBase.HeatPump.Functions.Characteristics.ConstantCoP
-                ( powerCompressor=2000, CoP=2)),
+            AixLib.Obsolete.Year2024.DataBase.Chiller.PerformanceData.PolynomalApproach
+            (redeclare function PolyData =
+                AixLib.Obsolete.Year2024.DataBase.HeatPump.Functions.Characteristics.ConstantCoP
+                (powerCompressor=2000, CoP=2)),
         redeclare BESMod.Systems.Hydraulical.Components.Frosting.NoFrosting
           frost,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
@@ -26,6 +27,7 @@ model BES
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           parHeaPum(
           genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
+
           TBiv=parameterStudy.TBiv,
           scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal/
               parameterStudy.QHP_flow_biv,
@@ -37,8 +39,10 @@ model BES
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
           parEleHea,
         redeclare model PerDataMainHP =
-            AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
+            AixLib.Obsolete.Year2024.DataBase.HeatPump.PerformanceData.VCLibMap
+            (
             QCon_flow_nominal=hydraulic.generation.parHeaPum.QPri_flow_nominal,
+
             refrigerant="Propane",
             flowsheet="VIPhaseSeparatorFlowsheet"),
         redeclare
@@ -85,9 +89,11 @@ model BES
           VPerQ_flow=parameterStudy.VPerQFlow,
           dTLoadingHC1=0,
           energyLabel=BESMod.Systems.Hydraulical.Distribution.Types.EnergyLabel.B),
+
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
           parStoDHW(dTLoadingHC1=10, energyLabel=BESMod.Systems.Hydraulical.Distribution.Types.EnergyLabel.A),
+
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
           parThrWayVal),
       redeclare Systems.Hydraulical.Transfer.IdealValveRadiator transfer(
@@ -101,6 +107,7 @@ model BES
     redeclare Systems.Demand.DHW.StandardProfiles DHW(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
+
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
         calcmFlow),

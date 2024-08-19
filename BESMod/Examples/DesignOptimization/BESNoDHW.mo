@@ -12,20 +12,22 @@ model BESNoDHW "Example to demonstrate usage without DHW"
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
-      redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater generation(
+      redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater
+        generation(
         redeclare model PerDataRevHP =
-            AixLib.DataBase.Chiller.PerformanceData.PolynomalApproach (redeclare
-              function PolyData =
-                AixLib.DataBase.HeatPump.Functions.Characteristics.ConstantCoP
-                ( powerCompressor=2000, CoP=2)),
-        redeclare
-          BESMod.Systems.Hydraulical.Components.Frosting.NoFrosting frost,
+            AixLib.Obsolete.Year2024.DataBase.Chiller.PerformanceData.PolynomalApproach
+            (redeclare function PolyData =
+                AixLib.Obsolete.Year2024.DataBase.HeatPump.Functions.Characteristics.ConstantCoP
+                (powerCompressor=2000, CoP=2)),
+        redeclare BESMod.Systems.Hydraulical.Components.Frosting.NoFrosting
+          frost,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare package Medium_eva = AixLib.Media.Air,
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           parHeaPum(
           genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
+
           TBiv=parameterStudy.TBiv,
           scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal/
               parameterStudy.QHP_flow_biv,
@@ -37,8 +39,10 @@ model BESNoDHW "Example to demonstrate usage without DHW"
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
           parEleHea,
         redeclare model PerDataMainHP =
-            AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
+            AixLib.Obsolete.Year2024.DataBase.HeatPump.PerformanceData.VCLibMap
+            (
             QCon_flow_nominal=hydraulic.generation.parHeaPum.QPri_flow_nominal,
+
             refrigerant="Propane",
             flowsheet="VIPhaseSeparatorFlowsheet"),
         redeclare
@@ -87,6 +91,7 @@ model BESNoDHW "Example to demonstrate usage without DHW"
     redeclare Systems.Demand.DHW.StandardProfiles DHW(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
+
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
         calcmFlow),

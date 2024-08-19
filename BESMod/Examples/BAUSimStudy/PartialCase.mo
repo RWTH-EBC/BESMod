@@ -10,13 +10,15 @@ partial model PartialCase
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
-      redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater generation(
+      redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater
+        generation(
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare package Medium_eva = AixLib.Media.Air,
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           parHeaPum(
           genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
+
           TBiv=TBiv,
           scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal/5000,
           dpCon_nominal=0,
@@ -27,8 +29,10 @@ partial model PartialCase
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
           parEleHea,
         redeclare model PerDataMainHP =
-            AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
+            AixLib.Obsolete.Year2024.DataBase.HeatPump.PerformanceData.VCLibMap
+            (
             QCon_flow_nominal=hydraulic.generation.parHeaPum.QPri_flow_nominal,
+
             refrigerant="Propane",
             flowsheet="VIPhaseSeparatorFlowsheet"),
         redeclare
@@ -42,8 +46,10 @@ partial model PartialCase
         dTHysDHW=10,
         redeclare model DHWHysteresis =
             BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
+
         redeclare model BuildingHysteresis =
             BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
+
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
           parPIDHeaPum,
@@ -80,14 +86,17 @@ partial model PartialCase
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
           parTra,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum)),
+
     redeclare Systems.Demand.DHW.StandardProfiles DHW(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
+
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
         calcmFlow),
     redeclare Systems.UserProfiles.TEASERProfiles userProfiles,
     redeclare BESParameters systemParameters(QBui_flow_nominal=building.QRec_flow_nominal),
+
     redeclare BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy
       parameterStudy,
     redeclare final package MediumDHW = AixLib.Media.Water,

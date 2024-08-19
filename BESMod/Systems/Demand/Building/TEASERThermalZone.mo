@@ -10,7 +10,9 @@ model TEASERThermalZone
   replaceable parameter AixLib.DataBase.ThermalZones.ZoneRecordDummy oneZoneParam constrainedby
     AixLib.DataBase.ThermalZones.ZoneBaseRecord
     "Default zone if only one is chosen" annotation(choicesAllMatching=true);
-  parameter AixLib.DataBase.ThermalZones.ZoneBaseRecord zoneParam[nZones] = fill(oneZoneParam, nZones)
+  parameter AixLib.DataBase.ThermalZones.ZoneBaseRecord zoneParam[nZones](
+    heaLoadFacGrd=0,
+    heaLoadFacOut=0)                                                      = fill(oneZoneParam, nZones)
     "Choose an array of multiple zones" annotation(choicesAllMatching=true);
   parameter Real ventRate[nZones]=fill(0, nZones) "Constant mechanical ventilation rate";
 

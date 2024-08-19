@@ -5,11 +5,12 @@ model SolarThermalAixLib "Solar thermal collector from AixLib"
         BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump (
         use_eleHea=false,
         redeclare model PerDataMainHP =
-            AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (refrigerant=
-                "Propane", flowsheet="VIPhaseSeparatorFlowsheet"),
+            AixLib.Obsolete.Year2024.DataBase.HeatPump.PerformanceData.VCLibMap
+            (refrigerant="Propane", flowsheet="VIPhaseSeparatorFlowsheet"),
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           parHeaPum(genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.Monovalent),
+
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
           parEleHea,

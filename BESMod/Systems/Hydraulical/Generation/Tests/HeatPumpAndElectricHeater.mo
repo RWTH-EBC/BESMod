@@ -1,20 +1,23 @@
 within BESMod.Systems.Hydraulical.Generation.Tests;
 model HeatPumpAndElectricHeater "Test for HeatPumpAndElectricHeater"
-  extends PartialTest(   redeclare
+  extends PartialTest(redeclare
       BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater
       generation(
       use_eleHea=true,
       redeclare model PerDataMainHP =
-          AixLib.DataBase.HeatPump.PerformanceData.LookUpTable2D (dataTable=
-              AixLib.DataBase.HeatPump.EN255.Vitocal350AWI114()),
-      redeclare BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
-        parHeaPum,
+          AixLib.Obsolete.Year2024.DataBase.HeatPump.PerformanceData.LookUpTable2D
+          (dataTable=
+              AixLib.Obsolete.Year2024.DataBase.HeatPump.EN255.Vitocal350AWI114
+              ()),
       redeclare
-        BESMod.Systems.RecordsCollection.Movers.DefaultMover
-        parPum,
-      redeclare BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
+        BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
+        parHeaPum,
+      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
+      redeclare
+        BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
         parTemSen,
-      redeclare BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
+      redeclare
+        BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
         parEleHea));
    extends Modelica.Icons.Example;
 

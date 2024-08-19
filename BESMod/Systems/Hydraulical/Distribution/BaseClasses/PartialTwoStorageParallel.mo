@@ -155,7 +155,7 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
     final mHC2_flow_nominal=parStoBuf.mHC2_flow_nominal,
     final useHeatingCoil2=false,
     final useHeatingRod=parStoBuf.use_hr,
-    final TStart=T_start,
+    TStart=fill(T_start, parStoBuf.nLayer),
     redeclare final RecordsCollection.BufferStorage.bufferData data(
       final hTank=parStoBuf.h,
       hHC1Low=0,
@@ -210,7 +210,7 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
     final useHeatingCoil1=true,
     final useHeatingCoil2=use_secHeaCoiDHWSto,
     final useHeatingRod=parStoDHW.use_hr,
-    final TStart=T_start,
+    TStart=fill(TDHW_nominal, parStoDHW.nLayer),
     redeclare final RecordsCollection.BufferStorage.bufferData data(
       final hTank=parStoDHW.h,
       hHC1Low=0,

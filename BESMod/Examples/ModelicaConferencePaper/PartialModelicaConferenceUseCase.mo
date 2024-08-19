@@ -3,8 +3,8 @@ partial model PartialModelicaConferenceUseCase
   "Partial model to be extended to replace single subsystems"
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.Electrical.ElectricalSystem electrical(
-      redeclare Systems.Electrical.Distribution.BatterySystemSimple distribution(
-          redeclare
+      redeclare Systems.Electrical.Distribution.BatterySystemSimple
+        distribution(redeclare
           BuildingSystems.Technologies.ElectricalStorages.Data.LithiumIon.LithiumIonTeslaPowerwall1
           batteryParameters),
       redeclare BESMod.Systems.Electrical.Generation.PVSystemMultiSub
@@ -19,13 +19,15 @@ partial model PartialModelicaConferenceUseCase
         alt=weaDat.alt,
         timZon=weaDat.timZon,
         ARoo=building.ARoo/2),
-      redeclare BESMod.Systems.Electrical.Transfer.NoElectricalTransfer transfer,
+      redeclare BESMod.Systems.Electrical.Transfer.NoElectricalTransfer
+        transfer,
       redeclare BESMod.Systems.Electrical.Control.NoControl control),
     redeclare BESMod.Systems.Control.DHWSuperheating control(TSetDHW=
           systemParameters.TSetDHW),
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
-      redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater generation(
+      redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater
+        generation(
         dTTra_nominal={10},
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare package Medium_eva = AixLib.Media.Air,
@@ -33,6 +35,7 @@ partial model PartialModelicaConferenceUseCase
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           parHeaPum(
           genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
+
           TBiv=271.15,
           scalingFactor=scalingFactorHP,
           dpCon_nominal=0,
@@ -43,8 +46,10 @@ partial model PartialModelicaConferenceUseCase
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
           parEleHea,
         redeclare model PerDataMainHP =
-            AixLib.DataBase.HeatPump.PerformanceData.LookUpTable2D (dataTable=
-                AixLib.DataBase.HeatPump.EN255.Vitocal350AWI114()),
+            AixLib.Obsolete.Year2024.DataBase.HeatPump.PerformanceData.LookUpTable2D
+            (dataTable=
+                AixLib.Obsolete.Year2024.DataBase.HeatPump.EN255.Vitocal350AWI114
+                ()),
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
           parTemSen),
@@ -54,10 +59,13 @@ partial model PartialModelicaConferenceUseCase
           BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
           valCtrl,
         supCtrDHWTyp=BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Internal,
+
         redeclare model DHWHysteresis =
             BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
+
         redeclare model BuildingHysteresis =
             BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
+
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
           parPIDHeaPum,
@@ -113,6 +121,7 @@ partial model PartialModelicaConferenceUseCase
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
           threeWayValveParas,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover fanData,
+
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
           tempSensorData),

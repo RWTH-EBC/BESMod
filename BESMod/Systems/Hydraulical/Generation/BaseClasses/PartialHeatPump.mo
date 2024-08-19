@@ -17,17 +17,18 @@ model PartialHeatPump "Generation with only the heat pump"
     annotation (Dialog(group="Design - Internal: Parameters are defined by the subsystem"));
 
   replaceable model PerDataMainHP =
-      AixLib.DataBase.HeatPump.PerformanceData.LookUpTable2D
+      AixLib.Obsolete.Year2024.DataBase.HeatPump.PerformanceData.LookUpTable2D
     constrainedby
-    AixLib.DataBase.HeatPump.PerformanceData.BaseClasses.PartialPerformanceData
+    AixLib.Obsolete.Year2024.DataBase.HeatPump.PerformanceData.BaseClasses.PartialPerformanceData
     "Heat pump model approach"
     annotation (Dialog(group="Component data"), choicesAllMatching=true);
   replaceable model PerDataRevHP =
-      AixLib.DataBase.Chiller.PerformanceData.PolynomalApproach (redeclare
-        function                                                                    PolyData =
-          AixLib.DataBase.HeatPump.Functions.Characteristics.ConstantCoP (                                                                                     powerCompressor=2000, CoP=2))
+      AixLib.Obsolete.Year2024.DataBase.Chiller.PerformanceData.PolynomalApproach
+      (redeclare function PolyData =
+          AixLib.Obsolete.Year2024.DataBase.HeatPump.Functions.Characteristics.ConstantCoP
+          (powerCompressor=2000, CoP=2))
     constrainedby
-    AixLib.DataBase.Chiller.PerformanceData.BaseClasses.PartialPerformanceData
+    AixLib.Obsolete.Year2024.DataBase.Chiller.PerformanceData.BaseClasses.PartialPerformanceData
     annotation (Dialog(group="Frosting"), choicesAllMatching=true);
   parameter Boolean use_airSource=true
     "Turn false to use water as temperature source."
@@ -73,7 +74,7 @@ model PartialHeatPump "Generation with only the heat pump"
     choicesAllMatching=true,
     Placement(transformation(extent={{62,104},{76,118}})));
 
-  AixLib.Fluid.HeatPumps.HeatPump heatPump(
+  AixLib.Obsolete.Year2024.Fluid.HeatPumps.HeatPump heatPump(
     redeclare package Medium_con = Medium,
     redeclare package Medium_eva = Medium_eva,
     final use_rev=true,
@@ -113,8 +114,8 @@ model PartialHeatPump "Generation with only the heat pump"
     final energyDynamics=energyDynamics,
     final show_TPort=show_T,
     redeclare model PerDataMainHP = PerDataMainHP,
-    redeclare model PerDataRevHP = PerDataRevHP)                 annotation (
-      Placement(transformation(
+    redeclare model PerDataRevHP = PerDataRevHP) annotation (Placement(
+        transformation(
         extent={{22,-27},{-22,27}},
         rotation=270,
         origin={-44,15})));

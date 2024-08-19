@@ -1,15 +1,15 @@
 within BESMod.Examples.HeatPumpAndBoiler;
 model AfterBufferWithoutDHW
   "Bivalent Heat Pump System with boiler integration after buffer tank without DHW support"
-  extends BaseClasses.PartialHybridSystem(
-    redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
-      redeclare Systems.Hydraulical.Generation.HeatPump
-        generation(
+  extends BaseClasses.PartialHybridSystem(redeclare
+      BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
+      redeclare Systems.Hydraulical.Generation.HeatPump generation(
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           parHeaPum(
           genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
+
           TBiv=parameterStudy.TBiv,
           scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal/
               parameterStudy.QHP_flow_biv,
@@ -18,8 +18,10 @@ model AfterBufferWithoutDHW
           use_refIne=false,
           refIneFre_constant=0),
         redeclare model PerDataMainHP =
-            AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
+            AixLib.Obsolete.Year2024.DataBase.HeatPump.PerformanceData.VCLibMap
+            (
             QCon_flow_nominal=hydraulic.generation.parHeaPum.QPri_flow_nominal,
+
             refrigerant="Propane",
             flowsheet="VIPhaseSeparatorFlowsheet"),
         redeclare

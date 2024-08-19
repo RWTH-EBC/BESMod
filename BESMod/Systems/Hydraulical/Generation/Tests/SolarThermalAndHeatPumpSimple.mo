@@ -4,18 +4,22 @@ model SolarThermalAndHeatPumpSimple "Test for SolarThermalAndHeatPumpSimple"
       BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump
       generation(
       redeclare model PerDataMainHP =
-          AixLib.DataBase.HeatPump.PerformanceData.VCLibMap,
-      redeclare BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
+          AixLib.Obsolete.Year2024.DataBase.HeatPump.PerformanceData.VCLibMap,
+      redeclare
+        BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
         parHeaPum,
       redeclare package Medium_eva = IBPSA.Media.Air,
-      redeclare BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
+      redeclare
+        BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
         parTemSen,
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
-      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPumSolThe,
+      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover
+        parPumSolThe,
       redeclare
         BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultSolarThermal
         parSolThe,
-      redeclare BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
+      redeclare
+        BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
         parEleHea));
 
   extends Modelica.Icons.Example;

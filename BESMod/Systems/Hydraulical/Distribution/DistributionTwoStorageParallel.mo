@@ -18,7 +18,7 @@ model DistributionTwoStorageParallel
       nParallelSup=1,
     final nParallelDem=1);
 
-  AixLib.Fluid.Storage.Storage stoDHW(
+  AixLib.Fluid.Storage.StorageSimple stoDHW(
     redeclare final package Medium = MediumDHW,
     final n=parStoDHW.nLayer,
     final d=parStoDHW.d,
@@ -35,7 +35,7 @@ model DistributionTwoStorageParallel
     final m_flow_nominal_layer=mDHW_flow_nominal,
     final m_flow_nominal_HE=mSup_flow_nominal[1],
     final energyDynamics=energyDynamics,
-    final T_start=TDHW_nominal,
+    T_start=fill(TDHW_nominal, parStoDHW.nLayer),
     final p_start=p_start,
     final m_flow_small_layer=1E-4*abs(stoDHW.m_flow_nominal_layer),
     final m_flow_small_layer_HE=1E-4*abs(stoDHW.m_flow_nominal_HE))
@@ -47,7 +47,7 @@ model DistributionTwoStorageParallel
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={50,10})));
-  AixLib.Fluid.Storage.Storage stoBuf(
+  AixLib.Fluid.Storage.StorageSimple stoBuf(
     redeclare package Medium = Medium,
     final n=parStoBuf.nLayer,
     final d=parStoBuf.d,
@@ -64,7 +64,7 @@ model DistributionTwoStorageParallel
     final m_flow_nominal_layer=m_flow_nominal[1],
     final m_flow_nominal_HE=mSup_flow_nominal[1],
     final energyDynamics=energyDynamics,
-    final T_start=T_start,
+    T_start=fill(T_start, parStoBuf.nLayer),
     final p_start=p_start,
     final m_flow_small_layer=1E-4*abs(stoBuf.m_flow_nominal_layer),
     final m_flow_small_layer_HE=1E-4*abs(stoBuf.m_flow_nominal_HE))

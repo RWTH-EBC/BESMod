@@ -111,14 +111,16 @@ partial model PartialHeatPumpSystemController
     choicesAllMatching=true,
     Placement(transformation(extent={{102,82},{118,98}})));
 
-  AixLib.Controls.HeatPump.SafetyControls.SafetyControl safCtr(
+  AixLib.Obsolete.Year2024.Controls.HeatPump.SafetyControls.SafetyControl
+    safCtr(
     final minRunTime=safetyControl.minRunTime,
     final minLocTime=safetyControl.minLocTime,
     final maxRunPerHou=safetyControl.maxRunPerHou,
     final use_opeEnv=safetyControl.use_opeEnv,
     final use_opeEnvFroRec=false,
-    final dataTable=AixLib.DataBase.HeatPump.EN14511.Vitocal200AWO201(tableUppBou=
-         [-20,50; -10,60; 30,60; 35,55]),
+    final dataTable=
+        AixLib.Obsolete.Year2024.DataBase.HeatPump.EN14511.Vitocal200AWO201(
+        tableUppBou=[-20,50; -10,60; 30,60; 35,55]),
     final tableUpp=safetyControl.tableUpp,
     final use_minRunTime=safetyControl.use_minRunTime,
     final use_minLocTime=safetyControl.use_minLocTime,

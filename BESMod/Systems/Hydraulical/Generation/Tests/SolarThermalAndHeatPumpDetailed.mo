@@ -4,18 +4,24 @@ model SolarThermalAndHeatPumpDetailed "Test for SolarThermalAndHeatPumpDetailed"
       BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump
       generation(
       redeclare model PerDataMainHP =
-          AixLib.DataBase.HeatPump.PerformanceData.LookUpTable2D (dataTable=
-              AixLib.DataBase.HeatPump.EN14511.Vitocal200AWO201()),
-      redeclare BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
+          AixLib.Obsolete.Year2024.DataBase.HeatPump.PerformanceData.LookUpTable2D
+          (dataTable=
+              AixLib.Obsolete.Year2024.DataBase.HeatPump.EN14511.Vitocal200AWO201
+              ()),
+      redeclare
+        BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
         parHeaPum,
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
-      redeclare BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
+      redeclare
+        BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
         parTemSen,
       redeclare
         BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultSolarThermal
         solarThermalParas,
-      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPumSolThe,
-      redeclare BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
+      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover
+        parPumSolThe,
+      redeclare
+        BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
         parEleHea));
   extends Modelica.Icons.Example;
 
