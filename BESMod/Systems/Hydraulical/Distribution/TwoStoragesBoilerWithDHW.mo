@@ -118,7 +118,7 @@ model TwoStoragesBoilerWithDHW
     final useHeatingCoil1=false,
     final useHeatingCoil2=false,
     final useHeatingRod=false,
-    final TStart=T_start,
+    final TStart=fill(T_start, parHydSep.nLayer),
     redeclare final
       BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.bufferData
       data(

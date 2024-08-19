@@ -55,7 +55,7 @@ model CombiStorage
     final useHeatingCoil1=true,
     final useHeatingCoil2=true,
     final useHeatingRod=parameters.use_hr,
-    final TStart=T_start,
+    final TStart=fill(T_start, parameters.nLayer),
     redeclare
       BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.bufferData
       data(
