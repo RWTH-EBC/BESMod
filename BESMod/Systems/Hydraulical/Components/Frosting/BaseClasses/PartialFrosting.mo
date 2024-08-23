@@ -6,7 +6,7 @@ partial model PartialFrosting
     "Input relative humidity of outdoor air" annotation (Placement(
         transformation(extent={{-140,60},{-100,100}}), iconTransformation(
           extent={{-140,56},{-100,96}})));
-  AixLib.Obsolete.Year2024.Controls.Interfaces.VapourCompressionMachineControlBus
+  AixLib.Fluid.HeatPumps.ModularReversible.BaseClasses.RefrigerantMachineControlBus
     genConBus
     "Bus with the most relevant information for hp frosting calculation"
     annotation (Placement(transformation(extent={{-128,-80},{-88,-40}}),

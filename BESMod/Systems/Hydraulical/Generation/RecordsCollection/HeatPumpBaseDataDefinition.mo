@@ -47,20 +47,12 @@ partial record HeatPumpBaseDataDefinition
 
   // Generation: Heat Pump
   parameter Real scalingFactor=1 "Scaling-factor of vapour compression machine";
-  parameter Modelica.Units.SI.MassFlowRate mEva_flow_nominal=1
-    "Mass flow rate through evaporator";
-  parameter Modelica.Units.SI.Volume VEva=0.004
-    "Manual input of the evaporator volume (if not automatically calculated)";
-  parameter Modelica.Units.SI.Volume VCon=0.001
-    "Manual input of the condenser volume";
+  parameter Modelica.Units.SI.TemperatureDifference dTEva_nominal=3
+    "Nominal temperature difference of evaporator to calculate mass flow rate through evaporator";
   parameter Modelica.Units.SI.PressureDifference dpCon_nominal=1000
     "Pressure difference";
   parameter Modelica.Units.SI.PressureDifference dpEva_nominal=1000
     "Pressure difference";
-   parameter Boolean use_refIne=false
-    "Consider the inertia of the refrigerant cycle";
-  parameter Modelica.Units.SI.Frequency refIneFre_constant=0
-    "Cut off frequency for inertia of refrigerant cycle";
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));

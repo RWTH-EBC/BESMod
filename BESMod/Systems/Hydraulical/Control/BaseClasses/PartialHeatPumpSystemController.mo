@@ -89,10 +89,6 @@ partial model PartialHeatPumpSystemController
                 Dialog(group="Heat Pump"),
                 Placement(transformation(extent={{100,40},{120,60}})));
 
-  replaceable BESMod.Systems.Hydraulical.Control.RecordsCollection.HeatPumpSafetyControl
-    safetyControl "Parameters for safety control of heat pump"
-    annotation (choicesAllMatching=true,Placement(transformation(extent={{204,84},
-            {218,98}})), Dialog(group="Component data"));
   replaceable
     BESMod.Systems.Hydraulical.Control.Components.RelativeSpeedController.PID
     priGenPIDCtrl(
@@ -111,38 +107,8 @@ partial model PartialHeatPumpSystemController
     choicesAllMatching=true,
     Placement(transformation(extent={{102,82},{118,98}})));
 
-  AixLib.Obsolete.Year2024.Controls.HeatPump.SafetyControls.SafetyControl
-    safCtr(
-    final minRunTime=safetyControl.minRunTime,
-    final minLocTime=safetyControl.minLocTime,
-    final maxRunPerHou=safetyControl.maxRunPerHou,
-    final use_opeEnv=safetyControl.use_opeEnv,
-    final use_opeEnvFroRec=false,
-    final dataTable=
-        AixLib.Obsolete.Year2024.DataBase.HeatPump.EN14511.Vitocal200AWO201(
-        tableUppBou=[-20,50; -10,60; 30,60; 35,55]),
-    final tableUpp=safetyControl.tableUpp,
-    final use_minRunTime=safetyControl.use_minRunTime,
-    final use_minLocTime=safetyControl.use_minLocTime,
-    final use_runPerHou=safetyControl.use_runPerHou,
-    final dTHystOperEnv=safetyControl.dT_opeEnv,
-    final use_deFro=false,
-    final minIceFac=0,
-    final use_chiller=false,
-    final calcPel_deFro=0,
-    final pre_n_start=safetyControl.pre_n_start_hp,
-    use_antFre=false) "Safety control" annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=0,
-        origin={210,70})));
-  Modelica.Blocks.Sources.BooleanConstant heaPumHea(final k=true)
-    "Heat pump is always heating" annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=0,
-        origin={170,90})));
-
   Modelica.Blocks.Math.BooleanToReal booToRea(final realTrue=1, final realFalse=0)
-                                              "Turn pump on if any device is on"
+    "Turn pump on if any device is on"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
@@ -153,12 +119,6 @@ partial model PartialHeatPumpSystemController
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-150,-10})));
-  Components.BaseClasses.HeatPumpBusPassThrough heaPumSigBusPasThr
-    "Bus connector pass through for OpenModelica" annotation (Placement(
-        transformation(
-        extent={{10,-10},{-10,10}},
-        rotation=180,
-        origin={170,64})));
   Components.BuildingAndDHWControl buiAndDHWCtr(
     final use_dhw=use_dhw,
     final nZones=parTra.nParallelDem,
@@ -204,21 +164,12 @@ partial model PartialHeatPumpSystemController
     "Selection of set and measured value for secondary generation device"
     annotation (Placement(transformation(extent={{40,0},{60,20}})));
 
+  Modelica.Blocks.Sources.BooleanConstant conHea(k=true) "Constant heating"
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-210,-50})));
 equation
-
-  connect(safCtr.modeSet, heaPumHea.y) annotation (Line(points={{198.667,68},{
-          186,68},{186,90},{181,90}},
-                                  color={255,0,255}));
-  connect(safCtr.nOut, sigBusGen.yHeaPumSet) annotation (Line(points={{220.833,
-          72},{254,72},{254,-118},{-152,-118},{-152,-99}},
-                                                       color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(priGenPIDCtrl.ySet, safCtr.nSet) annotation (Line(points={{118.8,90},
-          {154,90},{154,76},{190,76},{190,72},{198.667,72}},
-                                                        color={0,0,127}));
 
   connect(priGenPIDCtrl.isOn, sigBusGen.heaPumIsOn) annotation (Line(points={{105.2,
           80.4},{105.2,78},{106,78},{106,48},{260,48},{260,-114},{-152,-114},{-152,
@@ -235,19 +186,6 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(heaPumSigBusPasThr.sigBusGen, sigBusGen) annotation (Line(
-      points={{160,64},{154,64},{154,-56},{0,-56},{0,-70},{-152,-70},{-152,-99}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(heaPumSigBusPasThr.vapourCompressionMachineControlBus, safCtr.sigBusHP)
-    annotation (Line(
-      points={{180.2,64.2},{190,64.2},{190,63.1},{198.75,63.1}},
-      color={255,204,51},
-      thickness=0.5));
   connect(buiAndDHWCtr.TZoneSet, useProBus.TZoneSet) annotation (Line(points={{
           -204,35},{-238,35},{-238,103},{-119,103}}, color={0,0,127}), Text(
       string="%second",
@@ -346,6 +284,19 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  connect(priGenPIDCtrl.ySet, sigBusGen.yHeaPumSet) annotation (Line(points={{
+          118.8,90},{252,90},{252,-124},{-152,-124},{-152,-99}}, color={0,0,127}),
+      Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(conHea.y, sigBusGen.hea) annotation (Line(points={{-199,-50},{-184,
+          -50},{-184,-74},{-152,-74},{-152,-99}}, color={255,0,255}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
     annotation (Diagram(graphics={
         Rectangle(
           extent={{4,100},{136,36}},
@@ -364,14 +315,5 @@ equation
           extent={{2,-22},{106,-42}},
           lineColor={162,29,33},
           lineThickness=1,
-          textString="Auxilliary Heater Control"),
-        Rectangle(
-          extent={{138,100},{240,52}},
-          lineColor={28,108,200},
-          lineThickness=1),
-        Text(
-          extent={{138,122},{242,102}},
-          lineColor={28,108,200},
-          lineThickness=1,
-          textString="Heat Pump Safety")}));
+          textString="Auxilliary Heater Control")}));
 end PartialHeatPumpSystemController;
