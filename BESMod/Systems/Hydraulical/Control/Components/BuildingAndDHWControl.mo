@@ -231,6 +231,12 @@ model BuildingAndDHWControl
   Modelica.Blocks.Sources.BooleanConstant conDHWOff(final k=false)
     if not use_dhw "Constant DHW true in summer mode"
     annotation (Placement(transformation(extent={{180,20},{200,40}})));
+  Modelica.Blocks.Logical.Switch threeWayValveSwitch
+    annotation (Placement(transformation(extent={{224,148},{244,168}})));
+  Modelica.Blocks.Sources.RealExpression threeWayValveExtSet(y=0)
+    annotation (Placement(transformation(extent={{182,166},{202,186}})));
+  Modelica.Blocks.Sources.BooleanExpression threeWayValveExtCtrl(y=true)
+    annotation (Placement(transformation(extent={{182,138},{202,158}})));
 equation
   connect(hysDHW.priGenOn, priGenOn.u1) annotation (Line(points={{81.4,77},{81.4,
           76},{90,76},{90,32},{176,32},{176,-60},{194,-60},{194,-90},{220,-90}},
@@ -317,12 +323,6 @@ equation
           30},{-50,42},{-42,42}}, color={0,0,127}));
   connect(constAntLeg.y, swiAntLeg.u1)
     annotation (Line(points={{-59,60},{-59,58},{-42,58}}, color={0,0,127}));
-  connect(booToReal.y, sigBusDistr.uThrWayVal) annotation (Line(points={{260,103},
-          {260,112},{-118,112},{-118,70},{-100,70}},color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{-3,-6},{-3,-6}},
-      horizontalAlignment=TextAlignment.Right));
   connect(booToReal.u, bufOn.y)
     annotation (Line(points={{260,80},{260,73}}, color={255,0,255}));
   connect(supCtrHeaCur.uSup, sigBusHyd.TBuiSupOve) annotation (Line(points={{8,-82},
@@ -463,6 +463,19 @@ equation
       pattern=LinePattern.Dash));
   end if;
 
+  connect(threeWayValveSwitch.u3, booToReal.y) annotation (Line(points={{222,
+          150},{222,110},{260,110},{260,103}}, color={0,0,127}));
+  connect(threeWayValveExtCtrl.y, threeWayValveSwitch.u2) annotation (Line(
+        points={{203,148},{214,148},{214,158},{222,158}}, color={255,0,255}));
+  connect(threeWayValveExtSet.y, threeWayValveSwitch.u1) annotation (Line(
+        points={{203,176},{214,176},{214,166},{222,166}}, color={0,0,127}));
+  connect(threeWayValveSwitch.y, sigBusDistr.uThrWayVal) annotation (Line(
+        points={{245,158},{250,158},{250,194},{-100,194},{-100,70}}, color={0,0,
+          127}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
     annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-140},
             {300,100}})), Diagram(coordinateSystem(preserveAspectRatio=false,
           extent={{-100,-140},{300,100}}), graphics={
@@ -493,5 +506,13 @@ equation
           lineColor={162,29,33},
           lineThickness=1,
           fontSize=12,
-          textString="Summer mode")}));
+          textString="Summer mode"),
+        Rectangle(
+          extent={{264,132},{166,206}},
+          lineColor={0,140,72},
+          lineThickness=1),
+        Text(
+          extent={{166,206},{264,214}},
+          textColor={0,140,72},
+          textString="External Three Way Valve Control")}));
 end BuildingAndDHWControl;
