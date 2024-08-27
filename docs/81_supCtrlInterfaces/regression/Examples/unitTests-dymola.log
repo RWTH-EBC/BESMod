@@ -1,0 +1,223 @@
+Regression tests are only run for the following package:
+  BESMod.Examples
+*** Error: Simulation failed for 'RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/Retrofit/Case1PartialRetrofit.mos");'.
+*** Error: Simulation failed for 'RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/ModelicaConferencePaper/BuildingsLibraryRoom.mos");'.
+*** Error: Simulation failed for 'RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/HighOrderModel/BES_HOM.mos");'.
+*** Error: Simulation failed for 'RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/BAUSimStudy/Case1Standard.mos");'.
+*** Error: Simulation failed for 'RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/Retrofit/Case1TotalRetrofit.mos");'.
+*** Error: Simulation failed for 'RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/ModelicaConferencePaper/TEASERBuilding.mos");'.
+*** Error: Simulation failed for 'RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/Retrofit/Case1NoRetrofit.mos");'.
+*** Error: BESMod_Examples_HighOrderModel_BES_HOM.txt: Errors during result verification.
+           While processing file BESMod.Examples.HighOrderModel.BES_HOM.mat for variable weaDat.weaBus.TDryBul: Fewer data points than reference results.
+len(yOld) = 101
+len(yNew) = 89
+Skipping error checking for this variable.
+
+           While processing file BESMod.Examples.HighOrderModel.BES_HOM.mat for variable hydraulic.generation.sigBusGen.TGenOutMea: Fewer data points than reference results.
+len(yOld) = 101
+len(yNew) = 89
+Skipping error checking for this variable.
+
+           While processing file BESMod.Examples.HighOrderModel.BES_HOM.mat for variable hydraulic.control.buiMeaBus.TZoneMea[1]: Fewer data points than reference results.
+len(yOld) = 101
+len(yNew) = 89
+Skipping error checking for this variable.
+
+           While processing file BESMod.Examples.HighOrderModel.BES_HOM.mat for variable hydraulic.control.buiMeaBus.TZoneMea[10]: Fewer data points than reference results.
+len(yOld) = 101
+len(yNew) = 89
+Skipping error checking for this variable.
+
+           While processing file BESMod.Examples.HighOrderModel.BES_HOM.mat for variable electricalGrid.PElecLoa: Fewer data points than reference results.
+len(yOld) = 101
+len(yNew) = 89
+Skipping error checking for this variable.
+
+*** Error: BESMod_Examples_HeatPumpAndBoiler_Serial.txt: Errors during result verification.
+           Absolute error = 5.475e+01 at t = 172800.0 for hydraulic.generation.sigBusGen.TGenOutMea
+           Absolute error = 1.230e+01 at t = 172800.0 for outputs.building.TZone[1]
+           Absolute error = 5.106e+03 at t = 5184.0 for electricalGrid.PElecLoa
+*** Error: BESMod_Examples_HeatPumpAndBoiler_AfterBufferWithoutDHW.txt: Errors during result verification.
+           Absolute error = 2.638e+01 at t = 1728.0 for hydraulic.generation.sigBusGen.TGenOutMea
+           Absolute error = 1.150e+01 at t = 160704.0 for outputs.building.TZone[1]
+           Absolute error = 5.178e+03 at t = 89856.0 for electricalGrid.PElecLoa
+*** Error: BESMod_Examples_HeatPumpAndBoiler_Parallel.txt: Errors during result verification.
+           Absolute error = 4.826e+01 at t = 172800.0 for hydraulic.generation.sigBusGen.TGenOutMea
+           Absolute error = 1.231e+01 at t = 172800.0 for outputs.building.TZone[1]
+           Absolute error = 5.428e+03 at t = 32832.0 for electricalGrid.PElecLoa
+*** Error: BESMod_Examples_HeatPumpAndBoiler_AfterBufferWithDHW.txt: Errors during result verification.
+           Absolute error = 1.686e+01 at t = 5184.0 for hydraulic.generation.sigBusGen.TGenOutMea
+           Absolute error = 1.231e+01 at t = 172800.0 for outputs.building.TZone[1]
+           Absolute error = 5.572e+03 at t = 32832.0 for electricalGrid.PElecLoa
+*** Warning: BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW: Translation statistics for initialization and results changed for nonlinear.
+ Old = 0, 0, 5, 7, 2, 2, 1, 1
+ New = 0, 0, 5, 3, 7, 2, 1, 1
+*** Warning: BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW: Translation statistics for simulation and results changed for nonlinear.
+ Old = 1, 6, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1
+ New = 1, 6, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1
+*** Error: BESMod_Examples_Retrofit_Case1TotalRetrofit.txt: Errors during result verification.
+           While processing file BESMod.Examples.Retrofit.Case1TotalRetrofit.mat for variable weaDat.weaBus.TDryBul: Different end time between reference and test data.
+           tNew = [0.0, 10036.6787109375]
+           tOld = [0.0, 86400.0]
+           While processing file BESMod.Examples.Retrofit.Case1TotalRetrofit.mat for variable hydraulic.generation.sigBusGen.TGenOutMea: Different end time between reference and test data.
+           tNew = [0.0, 10036.6787109375]
+           tOld = [0.0, 86400.0]
+           While processing file BESMod.Examples.Retrofit.Case1TotalRetrofit.mat for variable outputs.building.TZone[1]: Different end time between reference and test data.
+           tNew = [0.0, 10036.6787109375]
+           tOld = [0.0, 86400.0]
+           Absolute error = 5.981e+03 at t = 26784.0 for electricalGrid.PElecLoa
+*** Error: BESMod_Examples_Retrofit_Case1NoRetrofit.txt: Errors during result verification.
+           While processing file BESMod.Examples.Retrofit.Case1NoRetrofit.mat for variable weaDat.weaBus.TDryBul: Fewer data points than reference results.
+len(yOld) = 101
+len(yNew) = 70
+Skipping error checking for this variable.
+
+           While processing file BESMod.Examples.Retrofit.Case1NoRetrofit.mat for variable hydraulic.generation.sigBusGen.TGenOutMea: Fewer data points than reference results.
+len(yOld) = 101
+len(yNew) = 70
+Skipping error checking for this variable.
+
+           While processing file BESMod.Examples.Retrofit.Case1NoRetrofit.mat for variable outputs.building.TZone[1]: Fewer data points than reference results.
+len(yOld) = 101
+len(yNew) = 70
+Skipping error checking for this variable.
+
+           While processing file BESMod.Examples.Retrofit.Case1NoRetrofit.mat for variable electricalGrid.PElecLoa: Fewer data points than reference results.
+len(yOld) = 101
+len(yNew) = 70
+Skipping error checking for this variable.
+
+*** Error: BESMod_Examples_Retrofit_Case1PartialRetrofit.txt: Errors during result verification.
+           While processing file BESMod.Examples.Retrofit.Case1PartialRetrofit.mat for variable weaDat.weaBus.TDryBul: Fewer data points than reference results.
+len(yOld) = 101
+len(yNew) = 70
+Skipping error checking for this variable.
+
+           While processing file BESMod.Examples.Retrofit.Case1PartialRetrofit.mat for variable hydraulic.generation.sigBusGen.TGenOutMea: Fewer data points than reference results.
+len(yOld) = 101
+len(yNew) = 70
+Skipping error checking for this variable.
+
+           While processing file BESMod.Examples.Retrofit.Case1PartialRetrofit.mat for variable outputs.building.TZone[1]: Fewer data points than reference results.
+len(yOld) = 101
+len(yNew) = 70
+Skipping error checking for this variable.
+
+           While processing file BESMod.Examples.Retrofit.Case1PartialRetrofit.mat for variable electricalGrid.PElecLoa: Fewer data points than reference results.
+len(yOld) = 101
+len(yNew) = 70
+Skipping error checking for this variable.
+
+*** Error: BESMod_Examples_DesignOptimization_BES.txt: Errors during result verification.
+           Absolute error = 3.379e+01 at t = 69120.0 for hydraulic.generation.sigBusGen.TGenOutMea
+           Absolute error = 1.258e+01 at t = 172800.0 for outputs.building.TZone[1]
+           Absolute error = 5.652e+03 at t = 133056.0 for electricalGrid.PElecLoa
+*** Error: BESMod_Examples_BAUSimStudy_Case1Standard.txt: Errors during result verification.
+           While processing file BESMod.Examples.BAUSimStudy.Case1Standard.mat for variable weaDat.weaBus.TDryBul: Fewer data points than reference results.
+len(yOld) = 101
+len(yNew) = 66
+Skipping error checking for this variable.
+
+           While processing file BESMod.Examples.BAUSimStudy.Case1Standard.mat for variable hydraulic.generation.sigBusGen.TGenOutMea: Fewer data points than reference results.
+len(yOld) = 101
+len(yNew) = 66
+Skipping error checking for this variable.
+
+           While processing file BESMod.Examples.BAUSimStudy.Case1Standard.mat for variable outputs.building.TZone[1]: Fewer data points than reference results.
+len(yOld) = 101
+len(yNew) = 66
+Skipping error checking for this variable.
+
+           While processing file BESMod.Examples.BAUSimStudy.Case1Standard.mat for variable electricalGrid.PElecLoa: Fewer data points than reference results.
+len(yOld) = 101
+len(yNew) = 66
+Skipping error checking for this variable.
+
+*** Error: BESMod_Examples_ModelicaConferencePaper_TEASERBuilding.txt: Errors during result verification.
+           While processing file BESMod.Examples.ModelicaConferencePaper.TEASERBuilding.mat for variable electrical.distribution.batterySimple.PLoad: Fewer data points than reference results.
+len(yOld) = 101
+len(yNew) = 67
+Skipping error checking for this variable.
+
+           While processing file BESMod.Examples.ModelicaConferencePaper.TEASERBuilding.mat for variable electrical.distribution.batterySimple.PCharge: Fewer data points than reference results.
+len(yOld) = 101
+len(yNew) = 67
+Skipping error checking for this variable.
+
+           While processing file BESMod.Examples.ModelicaConferencePaper.TEASERBuilding.mat for variable hydraulic.distribution.sigBusDistr.TStoDHWTopMea: Fewer data points than reference results.
+len(yOld) = 101
+len(yNew) = 67
+Skipping error checking for this variable.
+
+           While processing file BESMod.Examples.ModelicaConferencePaper.TEASERBuilding.mat for variable hydraulic.distribution.sigBusDistr.TStoBufTopMea: Fewer data points than reference results.
+len(yOld) = 101
+len(yNew) = 67
+Skipping error checking for this variable.
+
+           While processing file BESMod.Examples.ModelicaConferencePaper.TEASERBuilding.mat for variable hydraulic.generation.sigBusGen.TGenOutMea: Fewer data points than reference results.
+len(yOld) = 101
+len(yNew) = 67
+Skipping error checking for this variable.
+
+           While processing file BESMod.Examples.ModelicaConferencePaper.TEASERBuilding.mat for variable ventilation.generation.TSup.T: Fewer data points than reference results.
+len(yOld) = 101
+len(yNew) = 67
+Skipping error checking for this variable.
+
+           While processing file BESMod.Examples.ModelicaConferencePaper.TEASERBuilding.mat for variable ventilation.generation.weaBus.TDryBul: Fewer data points than reference results.
+len(yOld) = 101
+len(yNew) = 67
+Skipping error checking for this variable.
+
+           While processing file BESMod.Examples.ModelicaConferencePaper.TEASERBuilding.mat for variable building.buiMeaBus.TZoneMea[1]: Fewer data points than reference results.
+len(yOld) = 101
+len(yNew) = 67
+Skipping error checking for this variable.
+
+*** Error: BESMod_Examples_ModelicaConferencePaper_BuildingsLibraryRoom.txt: Errors during result verification.
+           While processing file BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom.mat for variable electrical.distribution.batterySimple.PLoad: Fewer data points than reference results.
+len(yOld) = 101
+len(yNew) = 81
+Skipping error checking for this variable.
+
+           While processing file BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom.mat for variable electrical.distribution.batterySimple.PCharge: Fewer data points than reference results.
+len(yOld) = 101
+len(yNew) = 81
+Skipping error checking for this variable.
+
+           While processing file BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom.mat for variable hydraulic.distribution.sigBusDistr.TStoDHWTopMea: Fewer data points than reference results.
+len(yOld) = 101
+len(yNew) = 81
+Skipping error checking for this variable.
+
+           While processing file BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom.mat for variable hydraulic.distribution.sigBusDistr.TStoBufTopMea: Fewer data points than reference results.
+len(yOld) = 101
+len(yNew) = 81
+Skipping error checking for this variable.
+
+           While processing file BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom.mat for variable hydraulic.generation.sigBusGen.TGenOutMea: Fewer data points than reference results.
+len(yOld) = 101
+len(yNew) = 81
+Skipping error checking for this variable.
+
+           While processing file BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom.mat for variable ventilation.generation.TSup.T: Fewer data points than reference results.
+len(yOld) = 101
+len(yNew) = 81
+Skipping error checking for this variable.
+
+           While processing file BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom.mat for variable ventilation.generation.weaBus.TDryBul: Fewer data points than reference results.
+len(yOld) = 101
+len(yNew) = 81
+Skipping error checking for this variable.
+
+           While processing file BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom.mat for variable building.buiMeaBus.TZoneMea[1]: Fewer data points than reference results.
+len(yOld) = 101
+len(yNew) = 81
+Skipping error checking for this variable.
+
+Comparison files output by funnel are stored in the directory 'funnel_comp' of size 0.5 MB.
+Run 'python -c "import buildingspy.development.regressiontest as t; t.Tester(tool=\"dymola\").report()"'
+to access a summary of the comparison results.
+
+Script that runs unit tests had 2 warnings and 19 errors.
+
