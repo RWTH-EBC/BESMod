@@ -1,121 +1,123 @@
 
-Error in model:  BESMod.Examples.Retrofit.Case1PartialRetrofit 
-Check of <a href="Modelica://BESMod.Examples.Retrofit.Case1PartialRetrofit">BESMod.Examples.Retrofit.Case1PartialRetrofit</a>:
+Error in model:  BESMod.Examples.Retrofit.Case1TotalRetrofit 
+Check of <a href="Modelica://BESMod.Examples.Retrofit.Case1TotalRetrofit">BESMod.Examples.Retrofit.Case1TotalRetrofit</a>:
 Warning: Record has a value, and attempt to modify specific elements.
 The element modification of e.g. heaLoadFacGrd will be ignored.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 13
 Attempted overriding found at:
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 14
+Error: Class or component 'genDesTyp' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 20
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1TotalRetrofit.mo, line 3
+Error: Class or component 'TBiv' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 20
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1TotalRetrofit.mo, line 3
+Error: Class or component 'scalingFactor' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 20
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1TotalRetrofit.mo, line 3
 Error: Class or component 'use_refIne' not found in DefaultHP parHeaPum
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 20
  Component context: hydraulic.generation.parHeaPum
-  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection">BESMod.Systems.Hydraulical.Generation.RecordsCollection</a>
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
   Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1PartialRetrofit.mo, line 4
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1TotalRetrofit.mo, line 3
 Error: Class or component 'refIneFre_constant' not found in DefaultHP parHeaPum
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 20
  Component context: hydraulic.generation.parHeaPum
-  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection">BESMod.Systems.Hydraulical.Generation.RecordsCollection</a>
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
   Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1PartialRetrofit.mo, line 4
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1TotalRetrofit.mo, line 3
 Warning: Component type specifier RefrigerantCycleHeatPumpHeating is equal to a partial type
   It must be redeclared before being used.
   File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/HeatPumps/ModularReversible/BaseClasses/RefrigerantCycle.mo, line 26
  Component context: hydraulic.generation.heatPump.refCyc.refCycHeaPumHea
   Component declared as RefrigerantCycleHeatPumpHeating refCycHeaPumHea in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: Class or component 'Medium_eva' not found in HeatPumpAndElectricHeater generation
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 14
+ Component context: hydraulic.generation
+  Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1TotalRetrofit.mo, line 3
 Error: Class or component 'PerDataMainHP' not found in HeatPumpAndElectricHeater generation
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 14
  Component context: hydraulic.generation
   Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
   Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1PartialRetrofit.mo, line 4
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1TotalRetrofit.mo, line 3
 Error: Class or component 'safetyControl' not found in MonoenergeticHeatPumpSystem control
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 42
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 41
  Component context: hydraulic.control
   Component declared as MonoenergeticHeatPumpSystem control in <a href="Modelica://BESMod.Systems.Hydraulical.Control">BESMod.Systems.Hydraulical.Control</a>
   Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1PartialRetrofit.mo, line 4
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1TotalRetrofit.mo, line 3
 Warning: WARNINGS have been issued.
 Error: ERRORS have been issued.
 
 
-Error in model:  BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase 
-Check of <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>:
+Error in model:  BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom 
+Check of <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom">BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom</a>:
+Error: Class or component 'genDesTyp' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 34
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/BuildingsLibraryRoom.mo, line 3
+Error: Class or component 'TBiv' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 34
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/BuildingsLibraryRoom.mo, line 3
+Error: Class or component 'scalingFactor' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 34
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/BuildingsLibraryRoom.mo, line 3
 Error: Class or component 'use_refIne' not found in DefaultHP parHeaPum
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 36
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 34
  Component context: hydraulic.generation.parHeaPum
-  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection">BESMod.Systems.Hydraulical.Generation.RecordsCollection</a>
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
   Attempted modification in <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 2
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/BuildingsLibraryRoom.mo, line 3
 Error: Class or component 'refIneFre_constant' not found in DefaultHP parHeaPum
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 36
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 34
  Component context: hydraulic.generation.parHeaPum
-  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection">BESMod.Systems.Hydraulical.Generation.RecordsCollection</a>
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
   Attempted modification in <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 2
-Error: Class or component 'PerDataMainHP' not found in HeatPumpAndElectricHeater generation
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 30
- Component context: hydraulic.generation
-  Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 2
-Error: Class or component 'safetyControl' not found in MonoenergeticHeatPumpSystem control
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 57
- Component context: hydraulic.control
-  Component declared as MonoenergeticHeatPumpSystem control in <a href="Modelica://BESMod.Systems.Hydraulical.Control">BESMod.Systems.Hydraulical.Control</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 2
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Examples.DesignOptimization.BES 
-Check of <a href="Modelica://BESMod.Examples.DesignOptimization.BES">BESMod.Examples.DesignOptimization.BES</a>:
-Warning: Record has a value, and attempt to modify specific elements.
-The element modification of e.g. heaLoadFacGrd will be ignored.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 13
-Attempted overriding found at:
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 14
-Error: Class or component 'use_refIne' not found in DefaultHP parHeaPum
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 28
- Component context: hydraulic.generation.parHeaPum
-  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection">BESMod.Systems.Hydraulical.Generation.RecordsCollection</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.DesignOptimization.BES">BESMod.Examples.DesignOptimization.BES</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 2
-Error: Class or component 'refIneFre_constant' not found in DefaultHP parHeaPum
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 28
- Component context: hydraulic.generation.parHeaPum
-  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection">BESMod.Systems.Hydraulical.Generation.RecordsCollection</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.DesignOptimization.BES">BESMod.Examples.DesignOptimization.BES</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 2
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/BuildingsLibraryRoom.mo, line 3
 Warning: Component type specifier RefrigerantCycleHeatPumpHeating is equal to a partial type
   It must be redeclared before being used.
   File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/HeatPumps/ModularReversible/BaseClasses/RefrigerantCycle.mo, line 26
  Component context: hydraulic.generation.heatPump.refCyc.refCycHeaPumHea
   Component declared as RefrigerantCycleHeatPumpHeating refCycHeaPumHea in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
-Error: Class or component 'PerDataRevHP' not found in HeatPumpAndElectricHeater generation
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 16
+Error: Class or component 'Medium_eva' not found in HeatPumpAndElectricHeater generation
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 28
  Component context: hydraulic.generation
   Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.DesignOptimization.BES">BESMod.Examples.DesignOptimization.BES</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 2
-Error: Class or component 'frost' not found in HeatPumpAndElectricHeater generation
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 16
- Component context: hydraulic.generation
-  Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.DesignOptimization.BES">BESMod.Examples.DesignOptimization.BES</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 2
+  Attempted modification in <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/BuildingsLibraryRoom.mo, line 3
 Error: Class or component 'PerDataMainHP' not found in HeatPumpAndElectricHeater generation
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 16
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 28
  Component context: hydraulic.generation
   Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.DesignOptimization.BES">BESMod.Examples.DesignOptimization.BES</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 2
+  Attempted modification in <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/BuildingsLibraryRoom.mo, line 3
 Error: Class or component 'safetyControl' not found in MonoenergeticHeatPumpSystem control
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 51
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 54
  Component context: hydraulic.control
   Component declared as MonoenergeticHeatPumpSystem control in <a href="Modelica://BESMod.Systems.Hydraulical.Control">BESMod.Systems.Hydraulical.Control</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.DesignOptimization.BES">BESMod.Examples.DesignOptimization.BES</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 2
+  Attempted modification in <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/BuildingsLibraryRoom.mo, line 3
 Warning: WARNINGS have been issued.
 Error: ERRORS have been issued.
 
@@ -127,16 +129,34 @@ The element modification of e.g. heaLoadFacGrd will be ignored.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 13
 Attempted overriding found at:
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 14
+Error: Class or component 'genDesTyp' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/AfterBufferWithoutDHW.mo, line 10
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/AfterBufferWithoutDHW.mo, line 2
+Error: Class or component 'TBiv' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/AfterBufferWithoutDHW.mo, line 10
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/AfterBufferWithoutDHW.mo, line 2
+Error: Class or component 'scalingFactor' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/AfterBufferWithoutDHW.mo, line 10
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/AfterBufferWithoutDHW.mo, line 2
 Error: Class or component 'use_refIne' not found in DefaultHP parHeaPum
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/AfterBufferWithoutDHW.mo, line 10
  Component context: hydraulic.generation.parHeaPum
-  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection">BESMod.Systems.Hydraulical.Generation.RecordsCollection</a>
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
   Attempted modification in <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/AfterBufferWithoutDHW.mo, line 2
 Error: Class or component 'refIneFre_constant' not found in DefaultHP parHeaPum
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/AfterBufferWithoutDHW.mo, line 10
  Component context: hydraulic.generation.parHeaPum
-  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection">BESMod.Systems.Hydraulical.Generation.RecordsCollection</a>
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
   Attempted modification in <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/AfterBufferWithoutDHW.mo, line 2
 Warning: Component type specifier RefrigerantCycleHeatPumpHeating is equal to a partial type
@@ -160,202 +180,6 @@ Warning: WARNINGS have been issued.
 Error: ERRORS have been issued.
 
 
-Error in model:  BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS 
-Check of <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS">BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS</a>:
-Warning: Record has a value, and attempt to modify specific elements.
-The element modification of e.g. heaLoadFacGrd will be ignored.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 13
-Attempted overriding found at:
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 14
-Error: Class or component 'safetyControl' not found in MonoenergeticHeatPumpSystem control
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/PartialSolarThermalHPS.mo, line 18
- Component context: hydraulic.control
-  Component declared as MonoenergeticHeatPumpSystem control in <a href="Modelica://BESMod.Systems.Hydraulical.Control">BESMod.Systems.Hydraulical.Control</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS">BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/PartialSolarThermalHPS.mo, line 2
-Warning: WARNINGS have been issued.
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Examples.BAUSimStudy.Case1Standard 
-Check of <a href="Modelica://BESMod.Examples.BAUSimStudy.Case1Standard">BESMod.Examples.BAUSimStudy.Case1Standard</a>:
-Warning: Record has a value, and attempt to modify specific elements.
-The element modification of e.g. heaLoadFacGrd will be ignored.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 13
-Attempted overriding found at:
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 14
-Error: Class or component 'use_refIne' not found in DefaultHP parHeaPum
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 19
- Component context: hydraulic.generation.parHeaPum
-  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection">BESMod.Systems.Hydraulical.Generation.RecordsCollection</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase">BESMod.Examples.BAUSimStudy.PartialCase</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/Case1Standard.mo, line 3
-Error: Class or component 'refIneFre_constant' not found in DefaultHP parHeaPum
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 19
- Component context: hydraulic.generation.parHeaPum
-  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection">BESMod.Systems.Hydraulical.Generation.RecordsCollection</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase">BESMod.Examples.BAUSimStudy.PartialCase</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/Case1Standard.mo, line 3
-Warning: Component type specifier RefrigerantCycleHeatPumpHeating is equal to a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/HeatPumps/ModularReversible/BaseClasses/RefrigerantCycle.mo, line 26
- Component context: hydraulic.generation.heatPump.refCyc.refCycHeaPumHea
-  Component declared as RefrigerantCycleHeatPumpHeating refCycHeaPumHea in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
-Error: Class or component 'PerDataMainHP' not found in HeatPumpAndElectricHeater generation
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 14
- Component context: hydraulic.generation
-  Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase">BESMod.Examples.BAUSimStudy.PartialCase</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/Case1Standard.mo, line 3
-Error: Class or component 'safetyControl' not found in MonoenergeticHeatPumpSystem control
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 41
- Component context: hydraulic.control
-  Component declared as MonoenergeticHeatPumpSystem control in <a href="Modelica://BESMod.Systems.Hydraulical.Control">BESMod.Systems.Hydraulical.Control</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase">BESMod.Examples.BAUSimStudy.PartialCase</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/Case1Standard.mo, line 3
-Warning: WARNINGS have been issued.
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Examples.Retrofit.Case1NoRetrofit 
-Check of <a href="Modelica://BESMod.Examples.Retrofit.Case1NoRetrofit">BESMod.Examples.Retrofit.Case1NoRetrofit</a>:
-Warning: Record has a value, and attempt to modify specific elements.
-The element modification of e.g. heaLoadFacGrd will be ignored.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 13
-Attempted overriding found at:
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 14
-Error: Class or component 'use_refIne' not found in DefaultHP parHeaPum
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 20
- Component context: hydraulic.generation.parHeaPum
-  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection">BESMod.Systems.Hydraulical.Generation.RecordsCollection</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1NoRetrofit.mo, line 3
-Error: Class or component 'refIneFre_constant' not found in DefaultHP parHeaPum
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 20
- Component context: hydraulic.generation.parHeaPum
-  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection">BESMod.Systems.Hydraulical.Generation.RecordsCollection</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1NoRetrofit.mo, line 3
-Warning: Component type specifier RefrigerantCycleHeatPumpHeating is equal to a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/HeatPumps/ModularReversible/BaseClasses/RefrigerantCycle.mo, line 26
- Component context: hydraulic.generation.heatPump.refCyc.refCycHeaPumHea
-  Component declared as RefrigerantCycleHeatPumpHeating refCycHeaPumHea in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
-Error: Class or component 'PerDataMainHP' not found in HeatPumpAndElectricHeater generation
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 14
- Component context: hydraulic.generation
-  Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1NoRetrofit.mo, line 3
-Error: Class or component 'safetyControl' not found in MonoenergeticHeatPumpSystem control
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 42
- Component context: hydraulic.control
-  Component declared as MonoenergeticHeatPumpSystem control in <a href="Modelica://BESMod.Systems.Hydraulical.Control">BESMod.Systems.Hydraulical.Control</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1NoRetrofit.mo, line 3
-Warning: WARNINGS have been issued.
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Examples.HeatPumpAndBoiler.Serial 
-Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Serial">BESMod.Examples.HeatPumpAndBoiler.Serial</a>:
-Warning: Record has a value, and attempt to modify specific elements.
-The element modification of e.g. heaLoadFacGrd will be ignored.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 13
-Attempted overriding found at:
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 14
-Error: Class or component 'use_refIne' not found in DefaultHP parHeaPum
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/Serial.mo, line 9
- Component context: hydraulic.generation.parHeaPum
-  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection">BESMod.Systems.Hydraulical.Generation.RecordsCollection</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Serial">BESMod.Examples.HeatPumpAndBoiler.Serial</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/Serial.mo, line 2
-Error: Class or component 'refIneFre_constant' not found in DefaultHP parHeaPum
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/Serial.mo, line 9
- Component context: hydraulic.generation.parHeaPum
-  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection">BESMod.Systems.Hydraulical.Generation.RecordsCollection</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Serial">BESMod.Examples.HeatPumpAndBoiler.Serial</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/Serial.mo, line 2
-Warning: Component type specifier RefrigerantCycleHeatPumpHeating is equal to a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/HeatPumps/ModularReversible/BaseClasses/RefrigerantCycle.mo, line 26
- Component context: hydraulic.generation.heatPump.refCyc.refCycHeaPumHea
-  Component declared as RefrigerantCycleHeatPumpHeating refCycHeaPumHea in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
-Error: Class or component 'PerDataMainHP' not found in HeatPumpAndGasBoilerSerial generation
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/Serial.mo, line 5
- Component context: hydraulic.generation
-  Component declared as HeatPumpAndGasBoilerSerial generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Serial">BESMod.Examples.HeatPumpAndBoiler.Serial</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/Serial.mo, line 2
-Error: Class or component 'safetyControl' not found in HybridHeatPumpSystem control
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/BaseClasses.mo, line 17
- Component context: hydraulic.control
-  Component declared as HybridHeatPumpSystem control in <a href="Modelica://BESMod.Systems.Hydraulical.Control">BESMod.Systems.Hydraulical.Control</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.BaseClasses.PartialHybridSystem">BESMod.Examples.HeatPumpAndBoiler.BaseClasses.PartialHybridSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/Serial.mo, line 3
-Warning: WARNINGS have been issued.
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Examples.Retrofit.Case1TotalRetrofit 
-Check of <a href="Modelica://BESMod.Examples.Retrofit.Case1TotalRetrofit">BESMod.Examples.Retrofit.Case1TotalRetrofit</a>:
-Warning: Record has a value, and attempt to modify specific elements.
-The element modification of e.g. heaLoadFacGrd will be ignored.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 13
-Attempted overriding found at:
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 14
-Error: Class or component 'use_refIne' not found in DefaultHP parHeaPum
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 20
- Component context: hydraulic.generation.parHeaPum
-  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection">BESMod.Systems.Hydraulical.Generation.RecordsCollection</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1TotalRetrofit.mo, line 3
-Error: Class or component 'refIneFre_constant' not found in DefaultHP parHeaPum
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 20
- Component context: hydraulic.generation.parHeaPum
-  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection">BESMod.Systems.Hydraulical.Generation.RecordsCollection</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1TotalRetrofit.mo, line 3
-Warning: Component type specifier RefrigerantCycleHeatPumpHeating is equal to a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/HeatPumps/ModularReversible/BaseClasses/RefrigerantCycle.mo, line 26
- Component context: hydraulic.generation.heatPump.refCyc.refCycHeaPumHea
-  Component declared as RefrigerantCycleHeatPumpHeating refCycHeaPumHea in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
-Error: Class or component 'PerDataMainHP' not found in HeatPumpAndElectricHeater generation
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 14
- Component context: hydraulic.generation
-  Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1TotalRetrofit.mo, line 3
-Error: Class or component 'safetyControl' not found in MonoenergeticHeatPumpSystem control
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 42
- Component context: hydraulic.control
-  Component declared as MonoenergeticHeatPumpSystem control in <a href="Modelica://BESMod.Systems.Hydraulical.Control">BESMod.Systems.Hydraulical.Control</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1TotalRetrofit.mo, line 3
-Warning: WARNINGS have been issued.
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Examples.HeatPumpAndBoiler.BaseClasses 
-Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.BaseClasses">BESMod.Examples.HeatPumpAndBoiler.BaseClasses</a>:
-
-Checking partial model <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.BaseClasses.PartialHybridSystem">BESMod.Examples.HeatPumpAndBoiler.BaseClasses.PartialHybridSystem</a>:
-Warning: Record has a value, and attempt to modify specific elements.
-The element modification of e.g. heaLoadFacGrd will be ignored.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 13
-Attempted overriding found at:
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 14
-Error: Class or component 'safetyControl' not found in HybridHeatPumpSystem control
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/BaseClasses.mo, line 17
- Component context: hydraulic.control
-  Component declared as HybridHeatPumpSystem control in <a href="Modelica://BESMod.Systems.Hydraulical.Control">BESMod.Systems.Hydraulical.Control</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.BaseClasses.PartialHybridSystem">BESMod.Examples.HeatPumpAndBoiler.BaseClasses.PartialHybridSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/BaseClasses.mo, line 4
-Warning: WARNINGS have been issued.
-Error: ERRORS have been issued.
-
-
 Error in model:  BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW 
 Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW</a>:
 Warning: Record has a value, and attempt to modify specific elements.
@@ -363,16 +187,34 @@ The element modification of e.g. heaLoadFacGrd will be ignored.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 13
 Attempted overriding found at:
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 14
+Error: Class or component 'genDesTyp' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/AfterBufferWithDHW.mo, line 10
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/AfterBufferWithDHW.mo, line 2
+Error: Class or component 'TBiv' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/AfterBufferWithDHW.mo, line 10
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/AfterBufferWithDHW.mo, line 2
+Error: Class or component 'scalingFactor' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/AfterBufferWithDHW.mo, line 10
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/AfterBufferWithDHW.mo, line 2
 Error: Class or component 'use_refIne' not found in DefaultHP parHeaPum
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/AfterBufferWithDHW.mo, line 10
  Component context: hydraulic.generation.parHeaPum
-  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection">BESMod.Systems.Hydraulical.Generation.RecordsCollection</a>
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
   Attempted modification in <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/AfterBufferWithDHW.mo, line 2
 Error: Class or component 'refIneFre_constant' not found in DefaultHP parHeaPum
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/AfterBufferWithDHW.mo, line 10
  Component context: hydraulic.generation.parHeaPum
-  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection">BESMod.Systems.Hydraulical.Generation.RecordsCollection</a>
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
   Attempted modification in <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/AfterBufferWithDHW.mo, line 2
 Warning: Component type specifier RefrigerantCycleHeatPumpHeating is equal to a partial type
@@ -396,6 +238,163 @@ Warning: WARNINGS have been issued.
 Error: ERRORS have been issued.
 
 
+Error in model:  BESMod.Examples.DesignOptimization.BES 
+Check of <a href="Modelica://BESMod.Examples.DesignOptimization.BES">BESMod.Examples.DesignOptimization.BES</a>:
+Warning: Record has a value, and attempt to modify specific elements.
+The element modification of e.g. heaLoadFacGrd will be ignored.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 13
+Attempted overriding found at:
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 14
+Error: Class or component 'genDesTyp' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 28
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.DesignOptimization.BES">BESMod.Examples.DesignOptimization.BES</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 2
+Error: Class or component 'TBiv' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 28
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.DesignOptimization.BES">BESMod.Examples.DesignOptimization.BES</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 2
+Error: Class or component 'scalingFactor' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 28
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.DesignOptimization.BES">BESMod.Examples.DesignOptimization.BES</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 2
+Error: Class or component 'use_refIne' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 28
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.DesignOptimization.BES">BESMod.Examples.DesignOptimization.BES</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 2
+Error: Class or component 'refIneFre_constant' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 28
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.DesignOptimization.BES">BESMod.Examples.DesignOptimization.BES</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 2
+Warning: Component type specifier RefrigerantCycleHeatPumpHeating is equal to a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/HeatPumps/ModularReversible/BaseClasses/RefrigerantCycle.mo, line 26
+ Component context: hydraulic.generation.heatPump.refCyc.refCycHeaPumHea
+  Component declared as RefrigerantCycleHeatPumpHeating refCycHeaPumHea in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: Class or component 'PerDataRevHP' not found in HeatPumpAndElectricHeater generation
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 16
+ Component context: hydraulic.generation
+  Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.DesignOptimization.BES">BESMod.Examples.DesignOptimization.BES</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 2
+Error: Class or component 'frost' not found in HeatPumpAndElectricHeater generation
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 16
+ Component context: hydraulic.generation
+  Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.DesignOptimization.BES">BESMod.Examples.DesignOptimization.BES</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 2
+Error: Class or component 'Medium_eva' not found in HeatPumpAndElectricHeater generation
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 16
+ Component context: hydraulic.generation
+  Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.DesignOptimization.BES">BESMod.Examples.DesignOptimization.BES</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 2
+Error: Class or component 'PerDataMainHP' not found in HeatPumpAndElectricHeater generation
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 16
+ Component context: hydraulic.generation
+  Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.DesignOptimization.BES">BESMod.Examples.DesignOptimization.BES</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 2
+Error: Class or component 'safetyControl' not found in MonoenergeticHeatPumpSystem control
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 50
+ Component context: hydraulic.control
+  Component declared as MonoenergeticHeatPumpSystem control in <a href="Modelica://BESMod.Systems.Hydraulical.Control">BESMod.Systems.Hydraulical.Control</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.DesignOptimization.BES">BESMod.Examples.DesignOptimization.BES</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 2
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS 
+Check of <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS">BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS</a>:
+Warning: Record has a value, and attempt to modify specific elements.
+The element modification of e.g. heaLoadFacGrd will be ignored.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 13
+Attempted overriding found at:
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 14
+Error: Class or component 'safetyControl' not found in MonoenergeticHeatPumpSystem control
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/PartialSolarThermalHPS.mo, line 18
+ Component context: hydraulic.control
+  Component declared as MonoenergeticHeatPumpSystem control in <a href="Modelica://BESMod.Systems.Hydraulical.Control">BESMod.Systems.Hydraulical.Control</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS">BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/PartialSolarThermalHPS.mo, line 2
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.Retrofit.Case1NoRetrofit 
+Check of <a href="Modelica://BESMod.Examples.Retrofit.Case1NoRetrofit">BESMod.Examples.Retrofit.Case1NoRetrofit</a>:
+Warning: Record has a value, and attempt to modify specific elements.
+The element modification of e.g. heaLoadFacGrd will be ignored.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 13
+Attempted overriding found at:
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 14
+Error: Class or component 'genDesTyp' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 20
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1NoRetrofit.mo, line 3
+Error: Class or component 'TBiv' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 20
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1NoRetrofit.mo, line 3
+Error: Class or component 'scalingFactor' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 20
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1NoRetrofit.mo, line 3
+Error: Class or component 'use_refIne' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 20
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1NoRetrofit.mo, line 3
+Error: Class or component 'refIneFre_constant' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 20
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1NoRetrofit.mo, line 3
+Warning: Component type specifier RefrigerantCycleHeatPumpHeating is equal to a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/HeatPumps/ModularReversible/BaseClasses/RefrigerantCycle.mo, line 26
+ Component context: hydraulic.generation.heatPump.refCyc.refCycHeaPumHea
+  Component declared as RefrigerantCycleHeatPumpHeating refCycHeaPumHea in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: Class or component 'Medium_eva' not found in HeatPumpAndElectricHeater generation
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 14
+ Component context: hydraulic.generation
+  Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1NoRetrofit.mo, line 3
+Error: Class or component 'PerDataMainHP' not found in HeatPumpAndElectricHeater generation
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 14
+ Component context: hydraulic.generation
+  Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1NoRetrofit.mo, line 3
+Error: Class or component 'safetyControl' not found in MonoenergeticHeatPumpSystem control
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 41
+ Component context: hydraulic.control
+  Component declared as MonoenergeticHeatPumpSystem control in <a href="Modelica://BESMod.Systems.Hydraulical.Control">BESMod.Systems.Hydraulical.Control</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1NoRetrofit.mo, line 3
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
 Error in model:  BESMod.Examples.SolarThermalSystem.SolarThermalBuildings 
 Check of <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings">BESMod.Examples.SolarThermalSystem.SolarThermalBuildings</a>:
 Warning: Record has a value, and attempt to modify specific elements.
@@ -403,6 +402,12 @@ The element modification of e.g. heaLoadFacGrd will be ignored.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 13
 Attempted overriding found at:
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 14
+Error: Class or component 'genDesTyp' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/SolarThermalBuildings.mo, line 14
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings">BESMod.Examples.SolarThermalSystem.SolarThermalBuildings</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/SolarThermalBuildings.mo, line 2
 Warning: Component type specifier RefrigerantCycleHeatPumpHeating is equal to a partial type
   It must be redeclared before being used.
   File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/HeatPumps/ModularReversible/BaseClasses/RefrigerantCycle.mo, line 26
@@ -415,123 +420,37 @@ Warning: Class or component 'PerDataMainHP' not found in hydGeneration generatio
   Attempted modification in <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings">BESMod.Examples.SolarThermalSystem.SolarThermalBuildings</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/SolarThermalBuildings.mo, line 2
 Definition missing in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump">BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump</a>.
+Warning: Class or component 'Medium_eva' not found in hydGeneration generation
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/PartialSolarThermalHPS.mo, line 16
+ Component context: hydraulic.generation
+  Component declared as hydGeneration generation in <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings">BESMod.Examples.SolarThermalSystem.SolarThermalBuildings</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings">BESMod.Examples.SolarThermalSystem.SolarThermalBuildings</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/SolarThermalBuildings.mo, line 2
+Definition missing in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump">BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump</a>.
 Error: Class or component 'safetyControl' not found in MonoenergeticHeatPumpSystem control
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/PartialSolarThermalHPS.mo, line 18
  Component context: hydraulic.control
   Component declared as MonoenergeticHeatPumpSystem control in <a href="Modelica://BESMod.Systems.Hydraulical.Control">BESMod.Systems.Hydraulical.Control</a>
   Attempted modification in <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS">BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/SolarThermalBuildings.mo, line 4
+Error: Class or component 'genDesTyp' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/SolarThermalBuildings.mo, line 14
+ Component context: hydGeneration.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings">BESMod.Examples.SolarThermalSystem.SolarThermalBuildings</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/SolarThermalBuildings.mo, line 2
 Warning: Class or component 'PerDataMainHP' not found in model hydGeneration
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/SolarThermalBuildings.mo, line 5
   Context: <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings">BESMod.Examples.SolarThermalSystem.SolarThermalBuildings.hydGeneration</a>
   Attempted modification in <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings">BESMod.Examples.SolarThermalSystem.SolarThermalBuildings</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/SolarThermalBuildings.mo, line 2
 Definition missing in <a href="Modelica://hydGeneration.DetailedSolarThermalWithHeatPump">hydGeneration.DetailedSolarThermalWithHeatPump</a>.
-Warning: WARNINGS have been issued.
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Examples.BAUSimStudy.PartialCase 
-Check of <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase">BESMod.Examples.BAUSimStudy.PartialCase</a>:
-Warning: Record has a value, and attempt to modify specific elements.
-The element modification of e.g. heaLoadFacGrd will be ignored.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 13
-Attempted overriding found at:
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 14
-Error: Class or component 'use_refIne' not found in DefaultHP parHeaPum
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 19
- Component context: hydraulic.generation.parHeaPum
-  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection">BESMod.Systems.Hydraulical.Generation.RecordsCollection</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase">BESMod.Examples.BAUSimStudy.PartialCase</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 2
-Error: Class or component 'refIneFre_constant' not found in DefaultHP parHeaPum
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 19
- Component context: hydraulic.generation.parHeaPum
-  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection">BESMod.Systems.Hydraulical.Generation.RecordsCollection</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase">BESMod.Examples.BAUSimStudy.PartialCase</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 2
-Error: Class or component 'PerDataMainHP' not found in HeatPumpAndElectricHeater generation
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 14
- Component context: hydraulic.generation
-  Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase">BESMod.Examples.BAUSimStudy.PartialCase</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 2
-Error: Class or component 'safetyControl' not found in MonoenergeticHeatPumpSystem control
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 41
- Component context: hydraulic.control
-  Component declared as MonoenergeticHeatPumpSystem control in <a href="Modelica://BESMod.Systems.Hydraulical.Control">BESMod.Systems.Hydraulical.Control</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase">BESMod.Examples.BAUSimStudy.PartialCase</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 2
-Warning: WARNINGS have been issued.
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Examples.SolarThermalSystem.SolarThermalAixLib 
-Check of <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib">BESMod.Examples.SolarThermalSystem.SolarThermalAixLib</a>:
-Warning: Record has a value, and attempt to modify specific elements.
-The element modification of e.g. heaLoadFacGrd will be ignored.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 13
-Attempted overriding found at:
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 14
-Warning: Component type specifier RefrigerantCycleHeatPumpHeating is equal to a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/HeatPumps/ModularReversible/BaseClasses/RefrigerantCycle.mo, line 26
- Component context: hydraulic.generation.heatPump.refCyc.refCycHeaPumHea
-  Component declared as RefrigerantCycleHeatPumpHeating refCycHeaPumHea in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
-Warning: Class or component 'PerDataMainHP' not found in hydGeneration generation
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/PartialSolarThermalHPS.mo, line 16
- Component context: hydraulic.generation
-  Component declared as hydGeneration generation in <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib">BESMod.Examples.SolarThermalSystem.SolarThermalAixLib</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib">BESMod.Examples.SolarThermalSystem.SolarThermalAixLib</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/SolarThermalAixLib.mo, line 2
-Definition missing in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump">BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump</a>.
-Error: Class or component 'safetyControl' not found in MonoenergeticHeatPumpSystem control
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/PartialSolarThermalHPS.mo, line 18
- Component context: hydraulic.control
-  Component declared as MonoenergeticHeatPumpSystem control in <a href="Modelica://BESMod.Systems.Hydraulical.Control">BESMod.Systems.Hydraulical.Control</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS">BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/SolarThermalAixLib.mo, line 3
-Warning: Class or component 'PerDataMainHP' not found in model hydGeneration
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/SolarThermalAixLib.mo, line 4
-  Context: <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib">BESMod.Examples.SolarThermalSystem.SolarThermalAixLib.hydGeneration</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib">BESMod.Examples.SolarThermalSystem.SolarThermalAixLib</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/SolarThermalAixLib.mo, line 2
-Definition missing in <a href="Modelica://hydGeneration.SimpleSolarThermalWithHeatPump">hydGeneration.SimpleSolarThermalWithHeatPump</a>.
-Warning: WARNINGS have been issued.
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom 
-Check of <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom">BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom</a>:
-Error: Class or component 'use_refIne' not found in DefaultHP parHeaPum
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 36
- Component context: hydraulic.generation.parHeaPum
-  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection">BESMod.Systems.Hydraulical.Generation.RecordsCollection</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/BuildingsLibraryRoom.mo, line 3
-Error: Class or component 'refIneFre_constant' not found in DefaultHP parHeaPum
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 36
- Component context: hydraulic.generation.parHeaPum
-  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection">BESMod.Systems.Hydraulical.Generation.RecordsCollection</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/BuildingsLibraryRoom.mo, line 3
-Warning: Component type specifier RefrigerantCycleHeatPumpHeating is equal to a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/HeatPumps/ModularReversible/BaseClasses/RefrigerantCycle.mo, line 26
- Component context: hydraulic.generation.heatPump.refCyc.refCycHeaPumHea
-  Component declared as RefrigerantCycleHeatPumpHeating refCycHeaPumHea in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
-Error: Class or component 'PerDataMainHP' not found in HeatPumpAndElectricHeater generation
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 30
- Component context: hydraulic.generation
-  Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/BuildingsLibraryRoom.mo, line 3
-Error: Class or component 'safetyControl' not found in MonoenergeticHeatPumpSystem control
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 57
- Component context: hydraulic.control
-  Component declared as MonoenergeticHeatPumpSystem control in <a href="Modelica://BESMod.Systems.Hydraulical.Control">BESMod.Systems.Hydraulical.Control</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/BuildingsLibraryRoom.mo, line 3
+Warning: Class or component 'Medium_eva' not found in model hydGeneration
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/SolarThermalBuildings.mo, line 5
+  Context: <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings">BESMod.Examples.SolarThermalSystem.SolarThermalBuildings.hydGeneration</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings">BESMod.Examples.SolarThermalSystem.SolarThermalBuildings</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/SolarThermalBuildings.mo, line 2
+Definition missing in <a href="Modelica://hydGeneration.DetailedSolarThermalWithHeatPump">hydGeneration.DetailedSolarThermalWithHeatPump</a>.
 Warning: WARNINGS have been issued.
 Error: ERRORS have been issued.
 
@@ -543,16 +462,40 @@ The element modification of e.g. heaLoadFacGrd will be ignored.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 13
 Attempted overriding found at:
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 14
+Error: Class or component 'genDesTyp' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 20
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 2
+Error: Class or component 'TBiv' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 20
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 2
+Error: Class or component 'scalingFactor' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 20
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 2
 Error: Class or component 'use_refIne' not found in DefaultHP parHeaPum
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 20
  Component context: hydraulic.generation.parHeaPum
-  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection">BESMod.Systems.Hydraulical.Generation.RecordsCollection</a>
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
   Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 2
 Error: Class or component 'refIneFre_constant' not found in DefaultHP parHeaPum
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 20
  Component context: hydraulic.generation.parHeaPum
-  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection">BESMod.Systems.Hydraulical.Generation.RecordsCollection</a>
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 2
+Error: Class or component 'Medium_eva' not found in HeatPumpAndElectricHeater generation
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 14
+ Component context: hydraulic.generation
+  Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
   Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 2
 Error: Class or component 'PerDataMainHP' not found in HeatPumpAndElectricHeater generation
@@ -562,7 +505,7 @@ Error: Class or component 'PerDataMainHP' not found in HeatPumpAndElectricHeater
   Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 2
 Error: Class or component 'safetyControl' not found in MonoenergeticHeatPumpSystem control
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 42
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 41
  Component context: hydraulic.control
   Component declared as MonoenergeticHeatPumpSystem control in <a href="Modelica://BESMod.Systems.Hydraulical.Control">BESMod.Systems.Hydraulical.Control</a>
   Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
@@ -573,16 +516,34 @@ Error: ERRORS have been issued.
 
 Error in model:  BESMod.Examples.HighOrderModel.BES_HOM 
 Check of <a href="Modelica://BESMod.Examples.HighOrderModel.BES_HOM">BESMod.Examples.HighOrderModel.BES_HOM</a>:
-Error: Class or component 'use_refIne' not found in DefaultHP parHeaPum
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HighOrderModel/BES_HOM.mo, line 29
+Error: Class or component 'genDesTyp' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HighOrderModel/BES_HOM.mo, line 28
  Component context: hydraulic.generation.parHeaPum
-  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection">BESMod.Systems.Hydraulical.Generation.RecordsCollection</a>
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.HighOrderModel.BES_HOM">BESMod.Examples.HighOrderModel.BES_HOM</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HighOrderModel/BES_HOM.mo, line 2
+Error: Class or component 'TBiv' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HighOrderModel/BES_HOM.mo, line 28
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.HighOrderModel.BES_HOM">BESMod.Examples.HighOrderModel.BES_HOM</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HighOrderModel/BES_HOM.mo, line 2
+Error: Class or component 'scalingFactor' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HighOrderModel/BES_HOM.mo, line 28
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.HighOrderModel.BES_HOM">BESMod.Examples.HighOrderModel.BES_HOM</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HighOrderModel/BES_HOM.mo, line 2
+Error: Class or component 'use_refIne' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HighOrderModel/BES_HOM.mo, line 28
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
   Attempted modification in <a href="Modelica://BESMod.Examples.HighOrderModel.BES_HOM">BESMod.Examples.HighOrderModel.BES_HOM</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HighOrderModel/BES_HOM.mo, line 2
 Error: Class or component 'refIneFre_constant' not found in DefaultHP parHeaPum
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HighOrderModel/BES_HOM.mo, line 29
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HighOrderModel/BES_HOM.mo, line 28
  Component context: hydraulic.generation.parHeaPum
-  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection">BESMod.Systems.Hydraulical.Generation.RecordsCollection</a>
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
   Attempted modification in <a href="Modelica://BESMod.Examples.HighOrderModel.BES_HOM">BESMod.Examples.HighOrderModel.BES_HOM</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HighOrderModel/BES_HOM.mo, line 2
 Warning: Component type specifier RefrigerantCycleHeatPumpHeating is equal to a partial type
@@ -591,17 +552,140 @@ Warning: Component type specifier RefrigerantCycleHeatPumpHeating is equal to a 
  Component context: hydraulic.generation.heatPump.refCyc.refCycHeaPumHea
   Component declared as RefrigerantCycleHeatPumpHeating refCycHeaPumHea in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
 Error: Class or component 'PerDataMainHP' not found in HeatPumpAndElectricHeater generation
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HighOrderModel/BES_HOM.mo, line 25
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HighOrderModel/BES_HOM.mo, line 24
  Component context: hydraulic.generation
   Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
   Attempted modification in <a href="Modelica://BESMod.Examples.HighOrderModel.BES_HOM">BESMod.Examples.HighOrderModel.BES_HOM</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HighOrderModel/BES_HOM.mo, line 2
 Error: Class or component 'safetyControl' not found in MonoenergeticHeatPumpSystem control
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HighOrderModel/BES_HOM.mo, line 53
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HighOrderModel/BES_HOM.mo, line 51
  Component context: hydraulic.control
   Component declared as MonoenergeticHeatPumpSystem control in <a href="Modelica://BESMod.Systems.Hydraulical.Control">BESMod.Systems.Hydraulical.Control</a>
   Attempted modification in <a href="Modelica://BESMod.Examples.HighOrderModel.BES_HOM">BESMod.Examples.HighOrderModel.BES_HOM</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HighOrderModel/BES_HOM.mo, line 2
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.BAUSimStudy.PartialCase 
+Check of <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase">BESMod.Examples.BAUSimStudy.PartialCase</a>:
+Warning: Record has a value, and attempt to modify specific elements.
+The element modification of e.g. heaLoadFacGrd will be ignored.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 13
+Attempted overriding found at:
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 14
+Error: Class or component 'genDesTyp' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 19
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase">BESMod.Examples.BAUSimStudy.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 2
+Error: Class or component 'TBiv' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 19
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase">BESMod.Examples.BAUSimStudy.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 2
+Error: Class or component 'scalingFactor' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 19
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase">BESMod.Examples.BAUSimStudy.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 2
+Error: Class or component 'use_refIne' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 19
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase">BESMod.Examples.BAUSimStudy.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 2
+Error: Class or component 'refIneFre_constant' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 19
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase">BESMod.Examples.BAUSimStudy.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 2
+Error: Class or component 'Medium_eva' not found in HeatPumpAndElectricHeater generation
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 14
+ Component context: hydraulic.generation
+  Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase">BESMod.Examples.BAUSimStudy.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 2
+Error: Class or component 'PerDataMainHP' not found in HeatPumpAndElectricHeater generation
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 14
+ Component context: hydraulic.generation
+  Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase">BESMod.Examples.BAUSimStudy.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 2
+Error: Class or component 'safetyControl' not found in MonoenergeticHeatPumpSystem control
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 40
+ Component context: hydraulic.control
+  Component declared as MonoenergeticHeatPumpSystem control in <a href="Modelica://BESMod.Systems.Hydraulical.Control">BESMod.Systems.Hydraulical.Control</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase">BESMod.Examples.BAUSimStudy.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 2
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.BAUSimStudy.Case1Standard 
+Check of <a href="Modelica://BESMod.Examples.BAUSimStudy.Case1Standard">BESMod.Examples.BAUSimStudy.Case1Standard</a>:
+Warning: Record has a value, and attempt to modify specific elements.
+The element modification of e.g. heaLoadFacGrd will be ignored.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 13
+Attempted overriding found at:
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 14
+Error: Class or component 'genDesTyp' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 19
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase">BESMod.Examples.BAUSimStudy.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/Case1Standard.mo, line 3
+Error: Class or component 'TBiv' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 19
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase">BESMod.Examples.BAUSimStudy.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/Case1Standard.mo, line 3
+Error: Class or component 'scalingFactor' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 19
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase">BESMod.Examples.BAUSimStudy.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/Case1Standard.mo, line 3
+Error: Class or component 'use_refIne' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 19
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase">BESMod.Examples.BAUSimStudy.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/Case1Standard.mo, line 3
+Error: Class or component 'refIneFre_constant' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 19
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase">BESMod.Examples.BAUSimStudy.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/Case1Standard.mo, line 3
+Warning: Component type specifier RefrigerantCycleHeatPumpHeating is equal to a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/HeatPumps/ModularReversible/BaseClasses/RefrigerantCycle.mo, line 26
+ Component context: hydraulic.generation.heatPump.refCyc.refCycHeaPumHea
+  Component declared as RefrigerantCycleHeatPumpHeating refCycHeaPumHea in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: Class or component 'Medium_eva' not found in HeatPumpAndElectricHeater generation
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 14
+ Component context: hydraulic.generation
+  Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase">BESMod.Examples.BAUSimStudy.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/Case1Standard.mo, line 3
+Error: Class or component 'PerDataMainHP' not found in HeatPumpAndElectricHeater generation
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 14
+ Component context: hydraulic.generation
+  Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase">BESMod.Examples.BAUSimStudy.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/Case1Standard.mo, line 3
+Error: Class or component 'safetyControl' not found in MonoenergeticHeatPumpSystem control
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/PartialCase.mo, line 40
+ Component context: hydraulic.control
+  Component declared as MonoenergeticHeatPumpSystem control in <a href="Modelica://BESMod.Systems.Hydraulical.Control">BESMod.Systems.Hydraulical.Control</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase">BESMod.Examples.BAUSimStudy.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/BAUSimStudy/Case1Standard.mo, line 3
 Warning: WARNINGS have been issued.
 Error: ERRORS have been issued.
 
@@ -613,16 +697,34 @@ The element modification of e.g. heaLoadFacGrd will be ignored.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 13
 Attempted overriding found at:
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 14
+Error: Class or component 'genDesTyp' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BESNoDHW.mo, line 28
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW">BESMod.Examples.DesignOptimization.BESNoDHW</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BESNoDHW.mo, line 2
+Error: Class or component 'TBiv' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BESNoDHW.mo, line 28
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW">BESMod.Examples.DesignOptimization.BESNoDHW</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BESNoDHW.mo, line 2
+Error: Class or component 'scalingFactor' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BESNoDHW.mo, line 28
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW">BESMod.Examples.DesignOptimization.BESNoDHW</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BESNoDHW.mo, line 2
 Error: Class or component 'use_refIne' not found in DefaultHP parHeaPum
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BESNoDHW.mo, line 28
  Component context: hydraulic.generation.parHeaPum
-  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection">BESMod.Systems.Hydraulical.Generation.RecordsCollection</a>
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
   Attempted modification in <a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW">BESMod.Examples.DesignOptimization.BESNoDHW</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BESNoDHW.mo, line 2
 Error: Class or component 'refIneFre_constant' not found in DefaultHP parHeaPum
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BESNoDHW.mo, line 28
  Component context: hydraulic.generation.parHeaPum
-  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection">BESMod.Systems.Hydraulical.Generation.RecordsCollection</a>
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
   Attempted modification in <a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW">BESMod.Examples.DesignOptimization.BESNoDHW</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BESNoDHW.mo, line 2
 Warning: Component type specifier RefrigerantCycleHeatPumpHeating is equal to a partial type
@@ -642,6 +744,12 @@ Error: Class or component 'frost' not found in HeatPumpAndElectricHeater generat
   Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
   Attempted modification in <a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW">BESMod.Examples.DesignOptimization.BESNoDHW</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BESNoDHW.mo, line 2
+Error: Class or component 'Medium_eva' not found in HeatPumpAndElectricHeater generation
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BESNoDHW.mo, line 16
+ Component context: hydraulic.generation
+  Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW">BESMod.Examples.DesignOptimization.BESNoDHW</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BESNoDHW.mo, line 2
 Error: Class or component 'PerDataMainHP' not found in HeatPumpAndElectricHeater generation
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BESNoDHW.mo, line 16
  Component context: hydraulic.generation
@@ -649,7 +757,7 @@ Error: Class or component 'PerDataMainHP' not found in HeatPumpAndElectricHeater
   Attempted modification in <a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW">BESMod.Examples.DesignOptimization.BESNoDHW</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BESNoDHW.mo, line 2
 Error: Class or component 'safetyControl' not found in MonoenergeticHeatPumpSystem control
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BESNoDHW.mo, line 51
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BESNoDHW.mo, line 50
  Component context: hydraulic.control
   Component declared as MonoenergeticHeatPumpSystem control in <a href="Modelica://BESMod.Systems.Hydraulical.Control">BESMod.Systems.Hydraulical.Control</a>
   Attempted modification in <a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW">BESMod.Examples.DesignOptimization.BESNoDHW</a>.
@@ -665,16 +773,34 @@ The element modification of e.g. heaLoadFacGrd will be ignored.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 13
 Attempted overriding found at:
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 14
-Error: Class or component 'use_refIne' not found in DefaultHP parHeaPum
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 36
+Error: Class or component 'genDesTyp' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 34
  Component context: hydraulic.generation.parHeaPum
-  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection">BESMod.Systems.Hydraulical.Generation.RecordsCollection</a>
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/TEASERBuilding.mo, line 3
+Error: Class or component 'TBiv' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 34
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/TEASERBuilding.mo, line 3
+Error: Class or component 'scalingFactor' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 34
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/TEASERBuilding.mo, line 3
+Error: Class or component 'use_refIne' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 34
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
   Attempted modification in <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/TEASERBuilding.mo, line 3
 Error: Class or component 'refIneFre_constant' not found in DefaultHP parHeaPum
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 36
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 34
  Component context: hydraulic.generation.parHeaPum
-  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection">BESMod.Systems.Hydraulical.Generation.RecordsCollection</a>
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
   Attempted modification in <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/TEASERBuilding.mo, line 3
 Warning: Component type specifier RefrigerantCycleHeatPumpHeating is equal to a partial type
@@ -682,18 +808,135 @@ Warning: Component type specifier RefrigerantCycleHeatPumpHeating is equal to a 
   File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/HeatPumps/ModularReversible/BaseClasses/RefrigerantCycle.mo, line 26
  Component context: hydraulic.generation.heatPump.refCyc.refCycHeaPumHea
   Component declared as RefrigerantCycleHeatPumpHeating refCycHeaPumHea in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: Class or component 'Medium_eva' not found in HeatPumpAndElectricHeater generation
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 28
+ Component context: hydraulic.generation
+  Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/TEASERBuilding.mo, line 3
 Error: Class or component 'PerDataMainHP' not found in HeatPumpAndElectricHeater generation
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 30
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 28
  Component context: hydraulic.generation
   Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
   Attempted modification in <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/TEASERBuilding.mo, line 3
 Error: Class or component 'safetyControl' not found in MonoenergeticHeatPumpSystem control
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 57
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 54
  Component context: hydraulic.control
   Component declared as MonoenergeticHeatPumpSystem control in <a href="Modelica://BESMod.Systems.Hydraulical.Control">BESMod.Systems.Hydraulical.Control</a>
   Attempted modification in <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/TEASERBuilding.mo, line 3
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase 
+Check of <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>:
+Error: Class or component 'genDesTyp' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 34
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 2
+Error: Class or component 'TBiv' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 34
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 2
+Error: Class or component 'scalingFactor' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 34
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 2
+Error: Class or component 'use_refIne' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 34
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 2
+Error: Class or component 'refIneFre_constant' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 34
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 2
+Error: Class or component 'Medium_eva' not found in HeatPumpAndElectricHeater generation
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 28
+ Component context: hydraulic.generation
+  Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 2
+Error: Class or component 'PerDataMainHP' not found in HeatPumpAndElectricHeater generation
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 28
+ Component context: hydraulic.generation
+  Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 2
+Error: Class or component 'safetyControl' not found in MonoenergeticHeatPumpSystem control
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 54
+ Component context: hydraulic.control
+  Component declared as MonoenergeticHeatPumpSystem control in <a href="Modelica://BESMod.Systems.Hydraulical.Control">BESMod.Systems.Hydraulical.Control</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 2
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.HeatPumpAndBoiler.Serial 
+Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Serial">BESMod.Examples.HeatPumpAndBoiler.Serial</a>:
+Warning: Record has a value, and attempt to modify specific elements.
+The element modification of e.g. heaLoadFacGrd will be ignored.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 13
+Attempted overriding found at:
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 14
+Error: Class or component 'genDesTyp' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/Serial.mo, line 9
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Serial">BESMod.Examples.HeatPumpAndBoiler.Serial</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/Serial.mo, line 2
+Error: Class or component 'TBiv' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/Serial.mo, line 9
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Serial">BESMod.Examples.HeatPumpAndBoiler.Serial</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/Serial.mo, line 2
+Error: Class or component 'scalingFactor' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/Serial.mo, line 9
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Serial">BESMod.Examples.HeatPumpAndBoiler.Serial</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/Serial.mo, line 2
+Error: Class or component 'use_refIne' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/Serial.mo, line 9
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Serial">BESMod.Examples.HeatPumpAndBoiler.Serial</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/Serial.mo, line 2
+Error: Class or component 'refIneFre_constant' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/Serial.mo, line 9
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Serial">BESMod.Examples.HeatPumpAndBoiler.Serial</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/Serial.mo, line 2
+Warning: Component type specifier RefrigerantCycleHeatPumpHeating is equal to a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/HeatPumps/ModularReversible/BaseClasses/RefrigerantCycle.mo, line 26
+ Component context: hydraulic.generation.heatPump.refCyc.refCycHeaPumHea
+  Component declared as RefrigerantCycleHeatPumpHeating refCycHeaPumHea in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: Class or component 'PerDataMainHP' not found in HeatPumpAndGasBoilerSerial generation
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/Serial.mo, line 5
+ Component context: hydraulic.generation
+  Component declared as HeatPumpAndGasBoilerSerial generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Serial">BESMod.Examples.HeatPumpAndBoiler.Serial</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/Serial.mo, line 2
+Error: Class or component 'safetyControl' not found in HybridHeatPumpSystem control
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/BaseClasses.mo, line 17
+ Component context: hydraulic.control
+  Component declared as HybridHeatPumpSystem control in <a href="Modelica://BESMod.Systems.Hydraulical.Control">BESMod.Systems.Hydraulical.Control</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.BaseClasses.PartialHybridSystem">BESMod.Examples.HeatPumpAndBoiler.BaseClasses.PartialHybridSystem</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/Serial.mo, line 3
 Warning: WARNINGS have been issued.
 Error: ERRORS have been issued.
 
@@ -705,16 +948,34 @@ The element modification of e.g. heaLoadFacGrd will be ignored.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 13
 Attempted overriding found at:
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 14
+Error: Class or component 'genDesTyp' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/Parallel.mo, line 10
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Parallel">BESMod.Examples.HeatPumpAndBoiler.Parallel</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/Parallel.mo, line 2
+Error: Class or component 'TBiv' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/Parallel.mo, line 10
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Parallel">BESMod.Examples.HeatPumpAndBoiler.Parallel</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/Parallel.mo, line 2
+Error: Class or component 'scalingFactor' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/Parallel.mo, line 10
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Parallel">BESMod.Examples.HeatPumpAndBoiler.Parallel</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/Parallel.mo, line 2
 Error: Class or component 'use_refIne' not found in DefaultHP parHeaPum
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/Parallel.mo, line 10
  Component context: hydraulic.generation.parHeaPum
-  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection">BESMod.Systems.Hydraulical.Generation.RecordsCollection</a>
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
   Attempted modification in <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Parallel">BESMod.Examples.HeatPumpAndBoiler.Parallel</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/Parallel.mo, line 2
 Error: Class or component 'refIneFre_constant' not found in DefaultHP parHeaPum
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/Parallel.mo, line 10
  Component context: hydraulic.generation.parHeaPum
-  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection">BESMod.Systems.Hydraulical.Generation.RecordsCollection</a>
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
   Attempted modification in <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Parallel">BESMod.Examples.HeatPumpAndBoiler.Parallel</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/Parallel.mo, line 2
 Warning: Component type specifier RefrigerantCycleHeatPumpHeating is equal to a partial type
@@ -734,6 +995,149 @@ Error: Class or component 'safetyControl' not found in HybridHeatPumpSystem cont
   Component declared as HybridHeatPumpSystem control in <a href="Modelica://BESMod.Systems.Hydraulical.Control">BESMod.Systems.Hydraulical.Control</a>
   Attempted modification in <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.BaseClasses.PartialHybridSystem">BESMod.Examples.HeatPumpAndBoiler.BaseClasses.PartialHybridSystem</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/Parallel.mo, line 4
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.SolarThermalSystem.SolarThermalAixLib 
+Check of <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib">BESMod.Examples.SolarThermalSystem.SolarThermalAixLib</a>:
+Warning: Record has a value, and attempt to modify specific elements.
+The element modification of e.g. heaLoadFacGrd will be ignored.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 13
+Attempted overriding found at:
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 14
+Error: Class or component 'genDesTyp' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/SolarThermalAixLib.mo, line 12
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib">BESMod.Examples.SolarThermalSystem.SolarThermalAixLib</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/SolarThermalAixLib.mo, line 2
+Warning: Component type specifier RefrigerantCycleHeatPumpHeating is equal to a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/HeatPumps/ModularReversible/BaseClasses/RefrigerantCycle.mo, line 26
+ Component context: hydraulic.generation.heatPump.refCyc.refCycHeaPumHea
+  Component declared as RefrigerantCycleHeatPumpHeating refCycHeaPumHea in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Warning: Class or component 'PerDataMainHP' not found in hydGeneration generation
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/PartialSolarThermalHPS.mo, line 16
+ Component context: hydraulic.generation
+  Component declared as hydGeneration generation in <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib">BESMod.Examples.SolarThermalSystem.SolarThermalAixLib</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib">BESMod.Examples.SolarThermalSystem.SolarThermalAixLib</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/SolarThermalAixLib.mo, line 2
+Definition missing in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump">BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump</a>.
+Warning: Class or component 'Medium_eva' not found in hydGeneration generation
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/PartialSolarThermalHPS.mo, line 16
+ Component context: hydraulic.generation
+  Component declared as hydGeneration generation in <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib">BESMod.Examples.SolarThermalSystem.SolarThermalAixLib</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib">BESMod.Examples.SolarThermalSystem.SolarThermalAixLib</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/SolarThermalAixLib.mo, line 2
+Definition missing in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump">BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump</a>.
+Error: Class or component 'safetyControl' not found in MonoenergeticHeatPumpSystem control
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/PartialSolarThermalHPS.mo, line 18
+ Component context: hydraulic.control
+  Component declared as MonoenergeticHeatPumpSystem control in <a href="Modelica://BESMod.Systems.Hydraulical.Control">BESMod.Systems.Hydraulical.Control</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS">BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/SolarThermalAixLib.mo, line 3
+Error: Class or component 'genDesTyp' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/SolarThermalAixLib.mo, line 12
+ Component context: hydGeneration.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib">BESMod.Examples.SolarThermalSystem.SolarThermalAixLib</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/SolarThermalAixLib.mo, line 2
+Warning: Class or component 'PerDataMainHP' not found in model hydGeneration
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/SolarThermalAixLib.mo, line 4
+  Context: <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib">BESMod.Examples.SolarThermalSystem.SolarThermalAixLib.hydGeneration</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib">BESMod.Examples.SolarThermalSystem.SolarThermalAixLib</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/SolarThermalAixLib.mo, line 2
+Definition missing in <a href="Modelica://hydGeneration.SimpleSolarThermalWithHeatPump">hydGeneration.SimpleSolarThermalWithHeatPump</a>.
+Warning: Class or component 'Medium_eva' not found in model hydGeneration
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/SolarThermalAixLib.mo, line 4
+  Context: <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib">BESMod.Examples.SolarThermalSystem.SolarThermalAixLib.hydGeneration</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib">BESMod.Examples.SolarThermalSystem.SolarThermalAixLib</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/SolarThermalSystem/SolarThermalAixLib.mo, line 2
+Definition missing in <a href="Modelica://hydGeneration.SimpleSolarThermalWithHeatPump">hydGeneration.SimpleSolarThermalWithHeatPump</a>.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.HeatPumpAndBoiler.BaseClasses 
+Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.BaseClasses">BESMod.Examples.HeatPumpAndBoiler.BaseClasses</a>:
+
+Checking partial model <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.BaseClasses.PartialHybridSystem">BESMod.Examples.HeatPumpAndBoiler.BaseClasses.PartialHybridSystem</a>:
+Warning: Record has a value, and attempt to modify specific elements.
+The element modification of e.g. heaLoadFacGrd will be ignored.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 13
+Attempted overriding found at:
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 14
+Error: Class or component 'safetyControl' not found in HybridHeatPumpSystem control
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/BaseClasses.mo, line 17
+ Component context: hydraulic.control
+  Component declared as HybridHeatPumpSystem control in <a href="Modelica://BESMod.Systems.Hydraulical.Control">BESMod.Systems.Hydraulical.Control</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.BaseClasses.PartialHybridSystem">BESMod.Examples.HeatPumpAndBoiler.BaseClasses.PartialHybridSystem</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/BaseClasses.mo, line 4
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.Retrofit.Case1PartialRetrofit 
+Check of <a href="Modelica://BESMod.Examples.Retrofit.Case1PartialRetrofit">BESMod.Examples.Retrofit.Case1PartialRetrofit</a>:
+Warning: Record has a value, and attempt to modify specific elements.
+The element modification of e.g. heaLoadFacGrd will be ignored.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 13
+Attempted overriding found at:
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo, line 14
+Error: Class or component 'genDesTyp' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 20
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1PartialRetrofit.mo, line 4
+Error: Class or component 'TBiv' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 20
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1PartialRetrofit.mo, line 4
+Error: Class or component 'scalingFactor' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 20
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1PartialRetrofit.mo, line 4
+Error: Class or component 'use_refIne' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 20
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1PartialRetrofit.mo, line 4
+Error: Class or component 'refIneFre_constant' not found in DefaultHP parHeaPum
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 20
+ Component context: hydraulic.generation.parHeaPum
+  Component declared as DefaultHP parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1PartialRetrofit.mo, line 4
+Warning: Component type specifier RefrigerantCycleHeatPumpHeating is equal to a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/HeatPumps/ModularReversible/BaseClasses/RefrigerantCycle.mo, line 26
+ Component context: hydraulic.generation.heatPump.refCyc.refCycHeaPumHea
+  Component declared as RefrigerantCycleHeatPumpHeating refCycHeaPumHea in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: Class or component 'Medium_eva' not found in HeatPumpAndElectricHeater generation
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 14
+ Component context: hydraulic.generation
+  Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1PartialRetrofit.mo, line 4
+Error: Class or component 'PerDataMainHP' not found in HeatPumpAndElectricHeater generation
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 14
+ Component context: hydraulic.generation
+  Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1PartialRetrofit.mo, line 4
+Error: Class or component 'safetyControl' not found in MonoenergeticHeatPumpSystem control
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 41
+ Component context: hydraulic.control
+  Component declared as MonoenergeticHeatPumpSystem control in <a href="Modelica://BESMod.Systems.Hydraulical.Control">BESMod.Systems.Hydraulical.Control</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1PartialRetrofit.mo, line 4
 Warning: WARNINGS have been issued.
 Error: ERRORS have been issued.
 
