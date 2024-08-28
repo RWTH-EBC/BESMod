@@ -43,7 +43,10 @@ model PartialHeatPump "Generation with only the heat pump"
     Placement(transformation(extent={{42,-56},{56,-44}})));
   replaceable parameter
     BESMod.Systems.RecordsCollection.TemperatureSensors.TemperatureSensorBaseDefinition
-    parTemSen "Parameters for temperature sensors"
+    parTemSen constrainedby
+    BESMod.Systems.RecordsCollection.TemperatureSensors.TemperatureSensorBaseDefinition(
+      transferHeat=true)
+              "Parameters for temperature sensors"
                                              annotation (
     choicesAllMatching=true,
     Placement(transformation(extent={{62,104},{76,118}})));
@@ -138,6 +141,7 @@ model PartialHeatPump "Generation with only the heat pump"
   BESMod.Systems.Hydraulical.Generation.BaseClasses.ModularPropagable heatPump(
     redeclare package MediumCon = Medium,
     redeclare package MediumEva = MediumEva,
+    final use_busConOnl=false,
     redeclare model RefrigerantCycleInertia = RefrigerantCycleInertia,
     final use_rev=use_rev,
     final tauCon=parHeaPum.tauCon,
@@ -400,10 +404,6 @@ equation
       index=1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(conTAmb.y, heatPump.TEvaAmb) annotation (Line(points={{-159,10},{-108,
-          10},{-108,-26},{-56.425,-26},{-56.425,-1.925}}, color={0,0,127}));
-  connect(conTAmb.y, heatPump.TConAmb) annotation (Line(points={{-159,10},{-108,
-          10},{-108,-26},{-26,-26},{-26,-1.925},{-24.925,-1.925}}, color={0,0,127}));
   if use_airSource then
     connect(heatPump.TEvaAmb, weaBus.TDryBul) annotation (Line(points={{-56.425,-1.925},
           {-56.425,-26},{-100.895,-26},{-100.895,80.11}}, color={0,0,127}),
@@ -419,6 +419,11 @@ equation
       index=1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
+  else
+    connect(conTAmb.y, heatPump.TEvaAmb) annotation (Line(points={{-159,10},{-108,
+            10},{-108,-26},{-56.425,-26},{-56.425,-1.925}}, color={0,0,127}));
+    connect(conTAmb.y, heatPump.TConAmb) annotation (Line(points={{-159,10},{-108,
+            10},{-108,-26},{-26,-26},{-26,-1.925},{-24.925,-1.925}}, color={0,0,127}));
   end if;
   annotation (Line(
       points={{-52.775,-6.78},{-52.775,33.61},{-56,33.61},{-56,74}},

@@ -23,10 +23,6 @@ model AixLibHighOrder "High order building model from AixLib library"
   parameter Modelica.Units.NonSI.Time_hour DiffWeatherDataTime=1 "difference between local time and UTC, e.g. +1 for MET";
   parameter Real GroundReflection = 0.2 "ground reflection coefficient";
 
-  Modelica.Thermal.HeatTransfer.Sources.PrescribedTemperature tempOutside
-    annotation (Placement(transformation(extent={{10,10},{-10,-10}},
-        rotation=90,
-        origin={-50,50})));
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature preTSoi(T=TSoil)
     "Prescribed soil temperature"
     annotation (Placement(transformation(extent={{-20,-100},{0,-80}})));
@@ -76,14 +72,6 @@ model AixLibHighOrder "High order building model from AixLib library"
   Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{24,-108},{44,-88}})));
 equation
-  connect(weaBus.TDryBul, tempOutside.T) annotation (Line(
-      points={{-47,98},{-47,96},{-50,96},{-50,62}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%first",
-      index=-1,
-      extent={{-3,-6},{-3,-6}},
-      horizontalAlignment=TextAlignment.Right));
   connect(convRadToCombPort.portConv, heatPortCon) annotation (Line(points={{-60,-7},
           {-72,-7},{-72,-6},{-104,-6},{-104,46},{-86,46},{-86,60},{-100,60}},
                                                 color={191,0,0}));
@@ -92,8 +80,6 @@ equation
   connect(HOMBuiEnv.heatingToRooms1, convRadToCombPort.portConvRadComb)
     annotation (Line(points={{-21.4,-1},{-32,-1},{-32,-12},{-40,-12}}, color={191,
           0,0}));
-  connect(HOMBuiEnv.thermOutside, tempOutside.port) annotation (Line(points={{-22,
-          33.3},{-20,33.3},{-20,30},{-50,30},{-50,40}}, color={191,0,0}));
   connect(HOMBuiEnv.groundTemp, preTSoi.port)
     annotation (Line(points={{8,-36},{8,-90},{0,-90}}, color={191,0,0}));
   connect(HOMBuiEnv.portVent_in, portVent_in) annotation (Line(points={{38,-23.4},
@@ -142,8 +128,8 @@ equation
       Line(points={{40.4,-14.3},{52,-14.3},{52,57.4},{40.8,57.4}},
                                                                color={255,128,0}));
   connect(weaBus.winSpe, HOMBuiEnv.WindSpeedPort) annotation (Line(
-      points={{-47,98},{-50,98},{-50,76},{-64,76},{-64,22},{-36,22},{-36,20.7},{
-          -23.8,20.7}},
+      points={{-46.895,98.11},{-50,98.11},{-50,76},{-64,76},{-64,22},{-36,22},{
+          -36,20.7},{-23.8,20.7}},
       color={255,204,51},
       thickness=0.5), Text(
       string="%first",

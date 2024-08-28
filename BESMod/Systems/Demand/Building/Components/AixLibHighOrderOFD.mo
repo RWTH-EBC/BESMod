@@ -124,9 +124,6 @@ equation
           191,0,0}));
   connect(wholeHouseBuildingEnvelope.WindSpeedPort, WindSpeedPort) annotation (
       Line(points={{-48.7,55.2},{-72,55.2},{-72,62},{-106,62}}, color={0,0,127}));
-  connect(wholeHouseBuildingEnvelope.thermOutside, thermOutside) annotation (
-      Line(points={{-44,70.88},{-60,70.88},{-60,100},{-100,100}},
-                                                               color={191,0,0}));
 
   connect(wholeHouseBuildingEnvelope.West, West) annotation (Line(points={{52.82,
           -5.28},{76,-5.28},{76,-38},{108,-38}}, color={255,128,0}));

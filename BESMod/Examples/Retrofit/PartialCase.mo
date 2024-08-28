@@ -14,27 +14,19 @@ partial model PartialCase
         generation(
         use_old_design={NoRetrofitHydGen},
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
-        redeclare package Medium_eva = AixLib.Media.Air,
+        TBiv=271.15,
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps.DefaultHP
-          parHeaPum(
-          genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
-
-          TBiv=TBiv,
-          scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal/5000,
-          dpCon_nominal=0,
-          dpEva_nominal=0,
-          use_refIne=false,
-          refIneFre_constant=0),
+          parHeaPum,
+        redeclare model RefrigerantCycleHeatPumpHeating =
+            AixLib.Fluid.HeatPumps.ModularReversible.RefrigerantCycle.TableData3D
+            (y_nominal=0.8, redeclare
+              AixLib.Fluid.HeatPumps.ModularReversible.Data.TableDataSDF.TableData3D.VCLibPy.VCLibVaporInjectionPhaseSeparatorPropane
+              datTab),
+        safCtrPar(use_minFlowCtr=false),
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater.DefaultElectricHeater
           parEleHea,
-        redeclare model PerDataMainHP =
-            AixLib.Obsolete.Year2024.DataBase.HeatPump.PerformanceData.VCLibMap
-            (
-            QCon_flow_nominal=hydraulic.generation.parHeaPum.QPri_flow_nominal,
-            refrigerant="Propane",
-            flowsheet="VIPhaseSeparatorFlowsheet"),
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
           parTemSen),
@@ -50,10 +42,7 @@ partial model PartialCase
             BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
-          parPIDHeaPum,
-        redeclare
-          BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultSafetyControl
-          safetyControl),
+          parPIDHeaPum),
       redeclare
         BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedDirectLoading
         distribution(
@@ -101,8 +90,6 @@ partial model PartialCase
     redeclare final package MediumHyd = AixLib.Media.Water,
     redeclare BESMod.Systems.Ventilation.NoVentilation ventilation);
 
-  parameter Modelica.Units.SI.Temperature TBiv=271.15
-    "Nominal bivalence temperature. = TOda_nominal for monovalent systems.";
   parameter Boolean NoRetrofitHydTra = false
     "If true, hydraulic transfersystem uses QBuiNoRetrofit.";
   parameter Boolean NoRetrofitHydDis = false
