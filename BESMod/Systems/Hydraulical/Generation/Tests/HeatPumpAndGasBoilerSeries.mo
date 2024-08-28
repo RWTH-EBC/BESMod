@@ -13,7 +13,7 @@ model HeatPumpAndGasBoilerSeries
         AixLib.Fluid.HeatPumps.ModularReversible.Controls.Safety.Data.Wuellhorst2021
         safCtrPar,
       redeclare
-        BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
+        BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps.DefaultHP
         parHeaPum,
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare

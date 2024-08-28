@@ -12,19 +12,19 @@ model SolarThermalAndHeatPumpDetailed "Test for SolarThermalAndHeatPumpDetailed"
         AixLib.Fluid.HeatPumps.ModularReversible.Controls.Safety.Data.Wuellhorst2021
         safCtrPar,
       redeclare
-        BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
+        BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps.DefaultHP
         parHeaPum,
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare
         BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
         parTemSen,
       redeclare
-        BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultSolarThermal
+        BESMod.Systems.Hydraulical.Generation.RecordsCollection.SolarThermal.DefaultSolarThermal
         solarThermalParas,
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover
         parPumSolThe,
       redeclare
-        BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
+        BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater.DefaultElectricHeater
         parEleHea));
   extends Modelica.Icons.Example;
 

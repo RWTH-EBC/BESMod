@@ -1,7 +1,7 @@
-within BESMod.Systems.Hydraulical.Generation.RecordsCollection;
+within BESMod.Systems.Hydraulical.Generation.RecordsCollection.SolarThermal;
 record DefaultSolarThermal "DummyParameters"
   extends
-    BESMod.Systems.Hydraulical.Generation.RecordsCollection.SolarThermalBaseDataDefinition(
+    BESMod.Systems.Hydraulical.Generation.RecordsCollection.SolarThermal.Generic(
     GMax=1000,
     dTMax=35,
     spacing=0.1,

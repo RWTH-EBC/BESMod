@@ -10,11 +10,11 @@ model SolarThermalBuildings
             AixLib.Obsolete.Year2024.DataBase.HeatPump.PerformanceData.VCLibMap
             (refrigerant="Propane", flowsheet="VIPhaseSeparatorFlowsheet"),
         redeclare
-          BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
+          BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps.DefaultHP
           parHeaPum(genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.Monovalent),
 
         redeclare
-          BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
+          BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater.DefaultElectricHeater
           parEleHea,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare package Medium_eva = AixLib.Media.Air,

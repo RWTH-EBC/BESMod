@@ -26,38 +26,77 @@ model PartialHeatPump "Generation with only the heat pump"
   "Refrigerant cycle module for the heating mode"
     annotation (choicesAllMatching=true);
 
-  replaceable model RefrigerantCycleHeatPumpCooling =
-      AixLib.Fluid.Chillers.ModularReversible.RefrigerantCycle.BaseClasses.NoCooling
-      constrainedby
-    AixLib.Fluid.Chillers.ModularReversible.RefrigerantCycle.BaseClasses.PartialChillerCycle(
-       final useInChi=false,
-       final cpCon=heatPump.cpCon,
-       final cpEva=heatPump.cpEva,
-       final TCon_nominal=heatPump.TEvaCoo_nominal,
-       final TEva_nominal=heatPump.TConCoo_nominal,
-       QCoo_flow_nominal=heatPump.QCoo_flow_nominal)
-  "Refrigerant cycle module for the cooling mode"
-    annotation (Dialog(enable=use_rev),choicesAllMatching=true);
+  replaceable parameter RecordsCollection.HeatPumps.Generic parHeaPum
+    "Heat pump parameters"
+    annotation (
+    Placement(transformation(extent={{-34,42},{-18,58}})));
   replaceable parameter
     AixLib.Fluid.HeatPumps.ModularReversible.Controls.Safety.Data.Wuellhorst2021
     safCtrPar "Safety control parameters" annotation (
-    Dialog(group="Component data"),
     choicesAllMatching=true,
     Placement(transformation(extent={{-58,44},{-42,58}})));
 
+  replaceable parameter
+    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition parPum
+    "Parameters for pump" annotation (
+    choicesAllMatching=true,
+    Placement(transformation(extent={{42,-56},{56,-44}})));
+  replaceable parameter
+    BESMod.Systems.RecordsCollection.TemperatureSensors.TemperatureSensorBaseDefinition
+    parTemSen "Parameters for temperature sensors"
+                                             annotation (
+    choicesAllMatching=true,
+    Placement(transformation(extent={{62,104},{76,118}})));
   replaceable model RefrigerantCycleInertia =
       AixLib.Fluid.HeatPumps.ModularReversible.RefrigerantCycle.Inertias.NoInertia
+      "Model approach for internal heat pump intertia"
     annotation (choicesAllMatching=true);
   parameter Boolean use_old_design[nParallelDem]=fill(false, nParallelDem)
     "If true, design parameters of the building with no retrofit (old state) are used"
     annotation (Dialog(group="Design - Internal: Parameters are defined by the subsystem"));
+  // Temperature Levels
+  parameter Modelica.Units.SI.Temperature TBiv=TOda_nominal
+    "Bivalence temperature. Equals TOda_nominal for monovalent systems."
+    annotation (Dialog(enable=genDesTyp <> Systems.Hydraulical.Generation.Types.GenerationDesign.Monovalent,
+        group="Heat Pump System Design"));
+  parameter Modelica.Units.SI.Temperature THeaTresh=293.15
+    "Heating treshhold temperature for bivalent design"
+    annotation (Dialog(group="Heat Pump System Design"));
+  parameter
+    BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign
+    genDesTyp "Type of generation system design" annotation (Dialog(
+      group="Heat Pump System Design"));
 
-  parameter Boolean use_rev=false
-    "=true if the heat pump is reversible";
+  parameter Modelica.Units.SI.HeatFlowRate QPriAtTOdaNom_flow_nominal=0
+    "Nominal heat flow rate of primary generation device at 
+    nominal outdoor air temperature, required for bivalent parallel design.
+    Default of 0 equals a part-parallel design with cut-off equal to TOda_nominal"
+    annotation (Dialog(group="Heat Pump System Design",
+    enable=genDesTyp == Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentParallel));
+
+  parameter Modelica.Units.SI.HeatFlowRate QGenBiv_flow_nominal=
+      Q_flow_design[1]*(TBiv - THeaTresh)/(TOda_nominal - THeaTresh)
+    "Nominal heat flow rate at bivalence temperature"
+    annotation (Dialog(tab="Calculated", group="Heat Pump System Design"));
+
+  parameter Modelica.Units.SI.HeatFlowRate QPri_flow_nominal=if genDesTyp ==
+      Systems.Hydraulical.Generation.Types.GenerationDesign.Monovalent then
+      Q_flow_design[1] else QGenBiv_flow_nominal
+    "Nominal heat flow rate of primary generation component (e.g. heat pump)"
+    annotation (Dialog(tab="Calculated", group="Heat Pump System Design"));
+  parameter Modelica.Units.SI.HeatFlowRate QSec_flow_nominal=if genDesTyp ==
+      Systems.Hydraulical.Generation.Types.GenerationDesign.Monovalent then 0
+       elseif genDesTyp == Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentAlternativ
+       then Q_flow_design[1] elseif genDesTyp == Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentParallel
+       then max(0, Q_flow_design[1] - QPriAtTOdaNom_flow_nominal) else Q_flow_design[1]
+    "Nominal heat flow rate of secondary generation component (e.g. auxilliar heater)"
+    annotation (Dialog(tab="Calculated", group="Heat Pump System Design"));
+
+
   parameter Boolean use_airSource=true
     "Turn false to use water as temperature source"
      annotation(Dialog(group="Component choices"));
-  replaceable package Medium_eva = IBPSA.Media.Air                         constrainedby
+  replaceable package MediumEva = IBPSA.Media.Air constrainedby
     Modelica.Media.Interfaces.PartialMedium annotation (Dialog(group="Component choices"),
       choices(
         choice(redeclare package Medium = IBPSA.Media.Air "Moist air"),
@@ -70,62 +109,67 @@ model PartialHeatPump "Generation with only the heat pump"
   parameter Modelica.Media.Interfaces.Types.Temperature TSoilConst=273.15 + 10
     "Constant soil temperature for ground source heat pumps"
     annotation(Dialog(group="Component choices", enable=use_airSource));
-  replaceable parameter
-    BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumpBaseDataDefinition
-    parHeaPum constrainedby
-    BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumpBaseDataDefinition(
-      final QGen_flow_nominal=Q_flow_design[1], final TOda_nominal=TOda_nominal)
-    "Heat pump parameters" annotation (
-    Dialog(group="Component data"),
-    choicesAllMatching=true,
-    Placement(transformation(extent={{-34,44},{-18,58}})));
 
-  replaceable parameter
-    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition parPum
-    "Parameters for pump" annotation (
-    Dialog(group="Component data"),
-    choicesAllMatching=true,
-    Placement(transformation(extent={{42,-56},{56,-44}})));
-  replaceable parameter
-    BESMod.Systems.RecordsCollection.TemperatureSensors.TemperatureSensorBaseDefinition
-    parTemSen "Parameters for temperature sensors"
-                                             annotation (
-    Dialog(group="Component data"),
-    choicesAllMatching=true,
-    Placement(transformation(extent={{62,104},{76,118}})));
+  parameter Boolean use_rev=false
+    "=true if the heat pump is reversible"
+    annotation(Dialog(group="Component choices"));
+  replaceable model RefrigerantCycleHeatPumpCooling =
+      AixLib.Fluid.Chillers.ModularReversible.RefrigerantCycle.BaseClasses.NoCooling
+      constrainedby
+    AixLib.Fluid.Chillers.ModularReversible.RefrigerantCycle.BaseClasses.PartialChillerCycle(
+       final useInChi=false,
+       final cpCon=heatPump.cpCon,
+       final cpEva=heatPump.cpEva,
+       final TCon_nominal=heatPump.TEvaCoo_nominal,
+       final TEva_nominal=heatPump.TConCoo_nominal,
+       QCoo_flow_nominal=heatPump.QCoo_flow_nominal)
+  "Refrigerant cycle module for the cooling mode"
+    annotation (Dialog(group="Component choices", enable=use_rev),choicesAllMatching=true);
 
+  parameter Modelica.Units.SI.Temperature TConCoo_nominal=291.15
+    "Nominal temperature of the cooled fluid"
+     annotation(Dialog(group="Component choices", enable=use_rev));
+  parameter Modelica.Units.SI.Temperature TEvaCoo_nominal=303.15
+    "Nominal temperature of the heated fluid"
+     annotation(Dialog(group="Component choices", enable=use_rev));
+  parameter Modelica.Units.SI.HeatFlowRate QCoo_flow_nominal=0
+    "Nominal cooling capacity"
+     annotation(Dialog(group="Component choices", enable=use_rev));
   BESMod.Systems.Hydraulical.Generation.BaseClasses.ModularPropagable heatPump(
     redeclare package MediumCon = Medium,
-    redeclare package MediumEva = Medium_eva,
+    redeclare package MediumEva = MediumEva,
     redeclare model RefrigerantCycleInertia = RefrigerantCycleInertia,
     final use_rev=use_rev,
+    final tauCon=parHeaPum.tauCon,
     final dTCon_nominal=dTTra_nominal[1],
     final mCon_flow_nominal=m_flow_design[1],
     final dpCon_nominal=parHeaPum.dpCon_nominal,
-    final use_conCap=false,
-    final CCon=0,
-    final GConOut=0,
-    final GConIns=0,
+    final use_conCap=parHeaPum.use_conCap,
+    final CCon=parHeaPum.CCon,
+    final GConOut=parHeaPum.GConOut,
+    final GConIns=parHeaPum.GConIns,
+    final tauEva=parHeaPum.tauEva,
     final dTEva_nominal=parHeaPum.dTEva_nominal,
     final dpEva_nominal=parHeaPum.dpEva_nominal,
-    final use_evaCap=false,
-    final CEva=0,
-    final GEvaOut=0,
-    final GEvaIns=0,
+    final use_evaCap=parHeaPum.use_evaCap,
+    final CEva=parHeaPum.CEva,
+    final GEvaOut=parHeaPum.GEvaOut,
+    final GEvaIns=parHeaPum.GEvaIns,
     final safCtrPar=safCtrPar,
     final allowFlowReversalEva=allowFlowReversal,
     final allowFlowReversalCon=allowFlowReversal,
     final pCon_start=p_start,
     final TCon_start=T_start,
-    final pEva_start=Medium_eva.p_default,
+    final pEva_start=MediumEva.p_default,
     final TEva_start=TOda_nominal,
     final energyDynamics=energyDynamics,
     final show_T=show_T,
-    final QHea_flow_nominal=parHeaPum.QPri_flow_nominal,
+    final QHea_flow_nominal=QPri_flow_nominal,
+    QCoo_flow_nominal=QCoo_flow_nominal,
     final TConHea_nominal=TSup_nominal[1],
-    final TEvaHea_nominal=parHeaPum.TBiv,
-    final TConCoo_nominal=273.15,
-    final TEvaCoo_nominal=273.15,
+    final TEvaHea_nominal=TBiv,
+    final TConCoo_nominal=TConCoo_nominal,
+    final TEvaCoo_nominal=TEvaCoo_nominal,
     refCyc(
       redeclare model RefrigerantCycleHeatPumpHeating =
           RefrigerantCycleHeatPumpHeating,
@@ -138,7 +182,7 @@ model PartialHeatPump "Generation with only the heat pump"
         origin={-40.5,17.5})));
 
   IBPSA.Fluid.Sources.Boundary_ph bou_sinkAir(final nPorts=1, redeclare package
-      Medium =         Medium_eva)                       annotation (Placement(
+      Medium =         MediumEva)                       annotation (Placement(
         transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
@@ -146,7 +190,7 @@ model PartialHeatPump "Generation with only the heat pump"
   IBPSA.Fluid.Sources.MassFlowSource_T bouEva(
     final m_flow=heatPump.mEva_flow_nominal,
     final use_T_in=true,
-    redeclare package Medium = Medium_eva,
+    redeclare package Medium = MediumEva,
     final use_m_flow_in=false,
     final nPorts=1) "Evaporator boundary"
     annotation (Placement(transformation(extent={{-100,40},{-80,60}})));
@@ -189,7 +233,7 @@ model PartialHeatPump "Generation with only the heat pump"
         rotation=0,
         origin={-170,50})));
 
-  Utilities.KPIs.EnergyKPICalculator KPIQHP(use_inpCon=true)
+  BESMod.Utilities.KPIs.EnergyKPICalculator KPIQHP(use_inpCon=true)
     annotation (Placement(transformation(extent={{-140,-80},{-120,-60}})));
 
   IBPSA.Fluid.Sources.Boundary_pT bouPum(
@@ -226,15 +270,15 @@ model PartialHeatPump "Generation with only the heat pump"
         extent={{-6,-6},{6,6}},
         rotation=180,
         origin={130,-82})));
-  Utilities.KPIs.DeviceKPICalculator KPIHeaPum(
+  BESMod.Utilities.KPIs.DeviceKPICalculator KPIHeaPum(
     use_reaInp=false,
     calc_singleOnTime=true,
     calc_totalOnTime=true,
     calc_numSwi=true) "Heat pump KPIs"
     annotation (Placement(transformation(extent={{-120,-60},{-100,-40}})));
 
-  Control.Components.BaseClasses.HeatPumpBusPassThrough
-                                                heaPumSigBusPasThr
+  BESMod.Systems.Hydraulical.Control.Components.BaseClasses.HeatPumpBusPassThrough
+    heaPumSigBusPasThr
     "Bus connector pass through for OpenModelica" annotation (Placement(
         transformation(
         extent={{10,-10},{-10,10}},
@@ -247,6 +291,7 @@ model PartialHeatPump "Generation with only the heat pump"
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-170,10})));
+
 equation
   connect(bouEva.ports[1], heatPump.port_a2) annotation (Line(points={{-80,50},{
           -70,50},{-70,35},{-51,35}},          color={0,127,255}));

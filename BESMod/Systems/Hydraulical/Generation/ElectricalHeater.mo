@@ -35,10 +35,10 @@ model ElectricalHeater "Only heat using an electric heater"
     annotation (Placement(transformation(extent={{-16,-16},{16,16}},
         rotation=90,
         origin={-32,10})));
-  replaceable parameter BESMod.Systems.Hydraulical.Generation.RecordsCollection.EletricHeaterBaseDataDefinition
-    parEleHea "Electric heater parameters"
-    annotation (choicesAllMatching=true, Placement(transformation(extent={{-62,-42},
-            {-50,-30}})));
+  replaceable parameter
+    BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater.Generic
+    parEleHea "Electric heater parameters" annotation (choicesAllMatching=true,
+      Placement(transformation(extent={{-62,-42},{-50,-30}})));
 
   Modelica.Blocks.Logical.GreaterThreshold isOnHR(threshold=Modelica.Constants.eps)
     annotation (Placement(transformation(

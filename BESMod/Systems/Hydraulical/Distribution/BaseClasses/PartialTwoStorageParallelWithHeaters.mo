@@ -10,10 +10,12 @@ partial model PartialTwoStorageParallelWithHeaters
     "Type of heater after the buffer storage"
     annotation(Dialog(group="Component choices"));
 
-  replaceable parameter BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
+  replaceable parameter
+    BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater.DefaultElectricHeater
     parEleHeaAftBuf if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.ElectricHeater
     "Parameters for electric heater after buffer storage" annotation (
     Dialog(group="Component data", enable=heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.ElectricHeater),
+
     choicesAllMatching=true,
     Placement(transformation(
         extent={{-6,-6},{6,6}},

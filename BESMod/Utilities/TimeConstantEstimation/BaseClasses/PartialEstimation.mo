@@ -20,7 +20,7 @@ partial model PartialEstimation "Partial model for estimation of time constants"
         dTTra_nominal={max(hydraulic.transfer.dTTra_nominal)},
         f_design={2},
         redeclare
-          BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
+          BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater.DefaultElectricHeater
           parEleHea,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum),
         redeclare

@@ -6,7 +6,7 @@ model AfterBufferWithDHW
       redeclare Systems.Hydraulical.Generation.HeatPump generation(
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare
-          BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
+          BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps.DefaultHP
           parHeaPum(
           genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
 
@@ -21,7 +21,6 @@ model AfterBufferWithDHW
             AixLib.Obsolete.Year2024.DataBase.HeatPump.PerformanceData.VCLibMap
             (
             QCon_flow_nominal=hydraulic.generation.parHeaPum.QPri_flow_nominal,
-
             refrigerant="Propane",
             flowsheet="VIPhaseSeparatorFlowsheet"),
         redeclare

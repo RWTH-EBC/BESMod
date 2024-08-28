@@ -9,11 +9,14 @@ model DetailedSolarThermalWithHeatPump
          then 10 elseif TDem_nominal[1] > 44.9 then 8 else 5,solarThermalParas.dTMax},
          final nParallelDem=2,
          final dp_nominal={heatPump.dpCon_nominal +dpEleHea_nominal,  dpST_nominal});
-  replaceable parameter BESMod.Systems.Hydraulical.Generation.RecordsCollection.SolarThermalBaseDataDefinition
+  replaceable parameter
+    BESMod.Systems.Hydraulical.Generation.RecordsCollection.SolarThermal.Generic
     solarThermalParas constrainedby
-    BESMod.Systems.Hydraulical.Generation.RecordsCollection.SolarThermalBaseDataDefinition( final c_p=cp)
-    annotation (Dialog(group="Component data"), choicesAllMatching=true, Placement(transformation(extent={{-86,-62},
-            {-66,-42}})));
+    BESMod.Systems.Hydraulical.Generation.RecordsCollection.SolarThermal.Generic(
+      final c_p=cp) annotation (
+    Dialog(group="Component data"),
+    choicesAllMatching=true,
+    Placement(transformation(extent={{-86,-62},{-66,-42}})));
   replaceable parameter
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition parPumSolThe
     "Parameters for solar thermal pump" annotation (
