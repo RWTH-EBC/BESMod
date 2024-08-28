@@ -11,6 +11,33 @@ model PartialHeatPump "Generation with only the heat pump"
     dTTra_design={if use_old_design[i] then dTTraOld_design[i] else dTTra_nominal[i] for i in 1:nParallelDem},
     dp_nominal={heatPump.dpCon_nominal},
       nParallelDem=1);
+
+  replaceable model RefrigerantCycleHeatPumpHeating =
+    AixLib.Fluid.HeatPumps.ModularReversible.RefrigerantCycle.BaseClasses.PartialHeatPumpCycle
+      (PEle_nominal=0)
+       constrainedby
+    AixLib.Fluid.HeatPumps.ModularReversible.RefrigerantCycle.BaseClasses.PartialHeatPumpCycle(
+       final useInHeaPum=true,
+       final QHea_flow_nominal=heatPump.QHea_flow_nominal,
+       final TCon_nominal=heatPump.TConHea_nominal,
+       final TEva_nominal=heatPump.TEvaHea_nominal,
+       final cpCon=heatPump.cpCon,
+       final cpEva=heatPump.cpEva)
+  "Refrigerant cycle module for the heating mode"
+    annotation (choicesAllMatching=true);
+
+  replaceable model RefrigerantCycleHeatPumpCooling =
+      AixLib.Fluid.Chillers.ModularReversible.RefrigerantCycle.BaseClasses.NoCooling
+      constrainedby
+    AixLib.Fluid.Chillers.ModularReversible.RefrigerantCycle.BaseClasses.PartialChillerCycle(
+       final useInChi=false,
+       final cpCon=heatPump.cpCon,
+       final cpEva=heatPump.cpEva,
+       final TCon_nominal=heatPump.TEvaCoo_nominal,
+       final TEva_nominal=heatPump.TConCoo_nominal,
+       QCoo_flow_nominal=heatPump.QCoo_flow_nominal)
+  "Refrigerant cycle module for the cooling mode"
+    annotation (Dialog(enable=use_rev),choicesAllMatching=true);
   replaceable parameter
     AixLib.Fluid.HeatPumps.ModularReversible.Controls.Safety.Data.Wuellhorst2021
     safCtrPar "Safety control parameters" annotation (
@@ -28,7 +55,7 @@ model PartialHeatPump "Generation with only the heat pump"
   parameter Boolean use_rev=false
     "=true if the heat pump is reversible";
   parameter Boolean use_airSource=true
-    "Turn false to use water as temperature source."
+    "Turn false to use water as temperature source"
      annotation(Dialog(group="Component choices"));
   replaceable package Medium_eva = IBPSA.Media.Air                         constrainedby
     Modelica.Media.Interfaces.PartialMedium annotation (Dialog(group="Component choices"),
@@ -67,7 +94,7 @@ model PartialHeatPump "Generation with only the heat pump"
     choicesAllMatching=true,
     Placement(transformation(extent={{62,104},{76,118}})));
 
-  AixLib.Fluid.HeatPumps.ModularReversible.Modular heatPump(
+  BESMod.Systems.Hydraulical.Generation.BaseClasses.ModularPropagable heatPump(
     redeclare package MediumCon = Medium,
     redeclare package MediumEva = Medium_eva,
     redeclare model RefrigerantCycleInertia = RefrigerantCycleInertia,
@@ -98,7 +125,12 @@ model PartialHeatPump "Generation with only the heat pump"
     final TConHea_nominal=TSup_nominal[1],
     final TEvaHea_nominal=parHeaPum.TBiv,
     final TConCoo_nominal=273.15,
-    final TEvaCoo_nominal=273.15)
+    final TEvaCoo_nominal=273.15,
+    refCyc(
+      redeclare model RefrigerantCycleHeatPumpHeating =
+          RefrigerantCycleHeatPumpHeating,
+      redeclare model RefrigerantCycleHeatPumpCooling =
+          RefrigerantCycleHeatPumpCooling))
                          annotation (
      Placement(transformation(
         extent={{17.5,-17.5},{-17.5,17.5}},
@@ -209,6 +241,12 @@ model PartialHeatPump "Generation with only the heat pump"
         rotation=180,
         origin={-40,90})));
 
+  Modelica.Blocks.Sources.Constant conTAmb(final k=TAmb) if not use_airSource
+    "Constant ambient temperature for heat pump" annotation (Placement(
+        transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-170,10})));
 equation
   connect(bouEva.ports[1], heatPump.port_a2) annotation (Line(points={{-80,50},{
           -70,50},{-70,35},{-51,35}},          color={0,127,255}));
@@ -317,6 +355,26 @@ equation
       index=1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
+  connect(conTAmb.y, heatPump.TEvaAmb) annotation (Line(points={{-159,10},{-108,
+          10},{-108,-26},{-56.425,-26},{-56.425,-1.925}}, color={0,0,127}));
+  connect(conTAmb.y, heatPump.TConAmb) annotation (Line(points={{-159,10},{-108,
+          10},{-108,-26},{-26,-26},{-26,-1.925},{-24.925,-1.925}}, color={0,0,127}));
+  if use_airSource then
+    connect(heatPump.TEvaAmb, weaBus.TDryBul) annotation (Line(points={{-56.425,-1.925},
+          {-56.425,-26},{-100.895,-26},{-100.895,80.11}}, color={0,0,127}),
+      Text(
+      string="%second",
+      index=1,
+      extent={{-3,-6},{-3,-6}},
+      horizontalAlignment=TextAlignment.Right));
+    connect(heatPump.TConAmb, weaBus.TDryBul) annotation (Line(points={{-24.925,-1.925},
+          {-24.925,-26},{-100.895,-26},{-100.895,80.11}}, color={0,0,127}),
+      Text(
+      string="%second",
+      index=1,
+      extent={{-3,-6},{-3,-6}},
+      horizontalAlignment=TextAlignment.Right));
+  end if;
   annotation (Line(
       points={{-52.775,-6.78},{-52.775,33.61},{-56,33.61},{-56,74}},
       color={255,204,51},

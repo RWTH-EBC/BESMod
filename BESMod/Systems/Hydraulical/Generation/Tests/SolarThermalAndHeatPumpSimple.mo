@@ -3,8 +3,14 @@ model SolarThermalAndHeatPumpSimple "Test for SolarThermalAndHeatPumpSimple"
   extends PartialTest(redeclare
       BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump
       generation(
-      redeclare model PerDataMainHP =
-          AixLib.Obsolete.Year2024.DataBase.HeatPump.PerformanceData.VCLibMap,
+      redeclare model RefrigerantCycleHeatPumpHeating =
+          AixLib.Fluid.HeatPumps.ModularReversible.RefrigerantCycle.TableData2D
+          (redeclare
+            AixLib.Fluid.HeatPumps.ModularReversible.Data.TableData2D.EN14511.Vitocal251A08
+            datTab),
+      redeclare
+        AixLib.Fluid.HeatPumps.ModularReversible.Controls.Safety.Data.Wuellhorst2021
+        safCtrPar,
       redeclare
         BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
         parHeaPum,

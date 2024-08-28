@@ -2,15 +2,14 @@ within BESMod.Systems.Hydraulical.Generation.Tests;
 model HeatPump "Heat pump test case"
   extends PartialTest(redeclare BESMod.Systems.Hydraulical.Generation.HeatPump
       generation(
+      redeclare model RefrigerantCycleHeatPumpHeating =
+          AixLib.Fluid.HeatPumps.ModularReversible.RefrigerantCycle.TableData2D
+          (redeclare
+            AixLib.Fluid.HeatPumps.ModularReversible.Data.TableData2D.EN14511.Vitocal251A08
+            datTab),
       redeclare
         AixLib.Fluid.HeatPumps.ModularReversible.Controls.Safety.Data.Wuellhorst2021
         safCtrPar,
-      heatPump(redeclare model RefrigerantCycleHeatPumpHeating =
-          AixLib.Fluid.HeatPumps.ModularReversible.RefrigerantCycle.TableData2D
-            (
-           redeclare
-            AixLib.Fluid.HeatPumps.ModularReversible.Data.TableData2D.EN14511.Vitocal251A08
-            datTab)),
       redeclare
         BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
         parHeaPum,
