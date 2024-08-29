@@ -70,46 +70,17 @@ equation
 <html>
 <ul>
   <li>
-    May 2, 2024, by Michael Wetter:<br/>
-    Refactored check for device identifiers.<br/>
-    This is for <a href=\"https://github.com/ibpsa/modelica-ibpsa/issues/1576\">IBPSA, #1576</a>.
-  </li>
-  <li>
-    <i>October 2, 2022</i> by Fabian Wuellhorst:<br/>
-    Adjusted based on the discussion in this issue <a href=
-    \"https://github.com/ibpsa/modelica-ibpsa/issues/1576\">#1576</a>)
-  </li>
-  <li>
-    <i>May 22, 2019</i> by Julian Matthes:<br/>
-    Rebuild due to the introducion of the thermal machine partial model
-    (see issue <a href=
-    \"https://github.com/RWTH-EBC/AixLib/issues/715\">AixLib #715</a>)
-  </li>
-  <li>
-    <i>November 26, 2018,</i> by Fabian Wuellhorst:<br/>
+    <i>August 29, 2024,</i> by Fabian Wuellhorst:<br/>
     First implementation (see issue <a href=
-    \"https://github.com/RWTH-EBC/AixLib/issues/577\">AixLib #577</a>)
+    \"https://github.com/RWTH-EBC/BESMod/issues/82\">#82</a>)
   </li>
 </ul>
 </html>", info="<html>
-<p>
-  Model of a reversible, modular heat pump.
-  This models allows combining any of the available modules
-  for refrigerant heating or cooling cycles, inertias,
-  heat losses, and safety controls.
-  All features are optional.
-</p>
-<p>
-  Adding to the partial model (
-  <a href=\"modelica://AixLib.Fluid.HeatPumps.ModularReversible.BaseClasses.PartialReversibleRefrigerantMachine\">
-  AixLib.Fluid.HeatPumps.ModularReversible.BaseClasses.PartialReversibleRefrigerantMachine</a>),
-  this model has the <code>hea</code> signal to choose
-  the operation mode of the heat pump.
-</p>
-<p>
-  For more information on the approach, see
-  <a href=\"modelica://AixLib.Fluid.HeatPumps.ModularReversible.UsersGuide\">
-  AixLib.Fluid.HeatPumps.ModularReversible.UsersGuide</a>.
-</p>
+<p>This model is a near exact copy of 
+<a href=\"AixLib.Fluid.HeatPumps.ModularReversible.Modular\">AixLib.Fluid.HeatPumps.ModularReversible.Modular</a>, 
+but enabling the propagation of the refrigerant modules with a constrainedby 
+clause and final modifiers. See 
+<a href=\"BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump\">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+for an exemplary usage.</p>
 </html>"));
 end ModularPropagable;

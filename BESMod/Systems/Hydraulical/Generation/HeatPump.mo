@@ -4,10 +4,10 @@ model HeatPump "Monovalent heat pump"
     final QSec_flow_nominal=0,
     final QGenBiv_flow_nominal=Q_flow_design[1]*(TBiv - THeaTresh)/(
         TOda_nominal - THeaTresh),
-    final THeaTresh=293.15,
-    final QPriAtTOdaNom_flow_nominal=0,
-    final genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.Monovalent,
-    final TBiv=TOda_nominal);
+    THeaTresh=293.15,
+    QPriAtTOdaNom_flow_nominal=0,
+    genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.Monovalent,
+    TBiv=TOda_nominal);
 
 equation
   connect(senTGenOut.port_a, heatPump.port_b1) annotation (Line(points={{60,80},

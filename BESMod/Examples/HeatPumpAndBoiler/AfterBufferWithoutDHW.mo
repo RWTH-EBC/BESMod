@@ -17,7 +17,8 @@ model AfterBufferWithoutDHW
         safCtrPar(use_minFlowCtr=false),
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
-          parTemSen),
+          parTemSen,
+        genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel),
       control(boiInGeneration=false),
       redeclare Systems.Hydraulical.Distribution.TwoStoDetailedDirectLoading
         distribution(
