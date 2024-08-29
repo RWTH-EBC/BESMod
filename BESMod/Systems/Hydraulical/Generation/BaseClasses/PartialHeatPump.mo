@@ -289,7 +289,7 @@ model PartialHeatPump "Generation with only the heat pump"
         rotation=180,
         origin={-40,90})));
 
-  Modelica.Blocks.Sources.Constant conTAmb(final k=TAmb) if not use_airSource
+  Modelica.Blocks.Sources.Constant constTAmb(final k=TAmb) if not use_airSource
     "Constant ambient temperature for heat pump" annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
@@ -404,26 +404,25 @@ equation
       index=1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
-  if use_airSource then
-    connect(heatPump.TEvaAmb, weaBus.TDryBul) annotation (Line(points={{-56.425,-1.925},
-          {-56.425,-26},{-100.895,-26},{-100.895,80.11}}, color={0,0,127}),
-      Text(
-      string="%second",
-      index=1,
-      extent={{-3,-6},{-3,-6}},
-      horizontalAlignment=TextAlignment.Right));
-    connect(heatPump.TConAmb, weaBus.TDryBul) annotation (Line(points={{-24.925,-1.925},
-          {-24.925,-26},{-100.895,-26},{-100.895,80.11}}, color={0,0,127}),
-      Text(
-      string="%second",
-      index=1,
-      extent={{-3,-6},{-3,-6}},
-      horizontalAlignment=TextAlignment.Right));
-  else
-    connect(conTAmb.y, heatPump.TEvaAmb) annotation (Line(points={{-159,10},{-108,
-            10},{-108,-26},{-56.425,-26},{-56.425,-1.925}}, color={0,0,127}));
-    connect(conTAmb.y, heatPump.TConAmb) annotation (Line(points={{-159,10},{-108,
-            10},{-108,-26},{-26,-26},{-26,-1.925},{-24.925,-1.925}}, color={0,0,127}));
+  if parHeaPum.use_conCap then
+    if use_airSource then
+      connect(heatPump.TConAmb, weaBus.TDryBul) annotation (Line(points={{-24.925,-1.925},
+            {-24.925,-26},{-100.895,-26},{-100.895,80.11}}, color={0,0,127}));
+    else
+      connect(constTAmb.y, heatPump.TConAmb) annotation (Line(points={{-159,10},{-108,
+              10},{-108,-26},{-26,-26},{-26,-1.925},{-24.925,-1.925}}, color={0,0,127}));
+    end if;
+  
+  end if;
+  if parHeaPum.use_evaCap then
+    if use_airSource then
+      connect(heatPump.TEvaAmb, weaBus.TDryBul) annotation (Line(points={{-56.425,-1.925},
+            {-56.425,-26},{-100.895,-26},{-100.895,80.11}}, color={0,0,127}));
+    else
+      connect(constTAmb.y, heatPump.TEvaAmb) annotation (Line(points={{-159,10},{-108,
+              10},{-108,-26},{-56.425,-26},{-56.425,-1.925}}, color={0,0,127}));
+    end if;
+  
   end if;
   annotation (Line(
       points={{-52.775,-6.78},{-52.775,33.61},{-56,33.61},{-56,74}},
