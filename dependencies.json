@@ -10,7 +10,7 @@
   "optional": {
     "AixLib": {
       "url": "https://github.com/RWTH-EBC/AixLib",
-      "commit": "543e7c8b0c4a7c47702e77b5e98a18ed98e16e78",
+      "commit": "86c8fc6c47909bfd95b9adc750101281e7e7fec4",
 	  "default_branch": "main",
       "mo": "AixLib//package.mo"
     },
