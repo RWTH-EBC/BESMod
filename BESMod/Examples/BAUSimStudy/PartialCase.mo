@@ -10,15 +10,18 @@ partial model PartialCase
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
-      redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater generation(
+      redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater
+        generation(
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare package Medium_eva = AixLib.Media.Air,
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
           parHeaPum(
           genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
+
           TBiv=TBiv,
-          scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal/5000,
+          scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal/
+              12439.481921330025,
           dpCon_nominal=0,
           dpEva_nominal=0,
           use_refIne=false,
@@ -29,8 +32,11 @@ partial model PartialCase
         redeclare model PerDataMainHP =
             AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
             QCon_flow_nominal=hydraulic.generation.parHeaPum.QPri_flow_nominal,
+
             refrigerant="Propane",
-            flowsheet="VIPhaseSeparatorFlowsheet"),
+            flowsheet="VaporInjectionPhaseSeparator",
+            tableName_COP="COP_outer",
+            tableName_QCon="Q_con_outer"),
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
           parTemSen),
