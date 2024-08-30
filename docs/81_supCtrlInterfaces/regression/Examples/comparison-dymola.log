@@ -3,26 +3,26 @@
     "comparison": {
       "file_name": "BESMod.Examples.Retrofit.Case1PartialRetrofit.mat",
       "funnel_dirs": [
-        null,
-        null,
-        null,
+        "funnel_comp/BESMod.Examples.Retrofit.Case1PartialRetrofit.mat_weaDat.weaBus.TDryBul",
+        "funnel_comp/BESMod.Examples.Retrofit.Case1PartialRetrofit.mat_hydraulic.generation.sigBusGen.TGenOutMea",
+        "funnel_comp/BESMod.Examples.Retrofit.Case1PartialRetrofit.mat_outputs.building.TZone[1]",
         "funnel_comp/BESMod.Examples.Retrofit.Case1PartialRetrofit.mat_electricalGrid.PElecGen",
-        null
+        "funnel_comp/BESMod.Examples.Retrofit.Case1PartialRetrofit.mat_electricalGrid.PElecLoa"
       ],
-      "success_rate": 0.2,
+      "success_rate": 1.0,
       "t_err_max": [
-        null,
-        null,
-        null,
         0.0,
-        null
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ],
       "test_passed": [
-        0,
-        0,
-        0,
         1,
-        0
+        1,
+        1,
+        1,
+        1
       ],
       "var_groups": [
         0,
@@ -39,56 +39,56 @@
         "electricalGrid.PElecLoa"
       ],
       "warnings": [
-        "While processing file BESMod.Examples.Retrofit.Case1PartialRetrofit.mat for variable weaDat.weaBus.TDryBul: Fewer data points than reference results.\nlen(yOld) = 101\nlen(yNew) = 70\nSkipping error checking for this variable.\n",
-        "While processing file BESMod.Examples.Retrofit.Case1PartialRetrofit.mat for variable hydraulic.generation.sigBusGen.TGenOutMea: Fewer data points than reference results.\nlen(yOld) = 101\nlen(yNew) = 70\nSkipping error checking for this variable.\n",
-        "While processing file BESMod.Examples.Retrofit.Case1PartialRetrofit.mat for variable outputs.building.TZone[1]: Fewer data points than reference results.\nlen(yOld) = 101\nlen(yNew) = 70\nSkipping error checking for this variable.\n",
         null,
-        "While processing file BESMod.Examples.Retrofit.Case1PartialRetrofit.mat for variable electricalGrid.PElecLoa: Fewer data points than reference results.\nlen(yOld) = 101\nlen(yNew) = 70\nSkipping error checking for this variable.\n"
+        null,
+        null,
+        null,
+        null
       ]
     },
     "model": "BESMod.Examples.Retrofit.Case1PartialRetrofit",
     "simulation": {
-      "elapsed_time": 0,
+      "elapsed_time": 1.29,
       "final_time": 86400,
-      "jacobians": 0,
+      "jacobians": 1950,
       "start_time": 0,
-      "state_events": 0,
-      "success": false
+      "state_events": 90,
+      "success": true
     }
   },
   {
     "comparison": {
       "file_name": "BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom.mat",
       "funnel_dirs": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
+        "funnel_comp/BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom.mat_electrical.distribution.batterySimple.PLoad",
+        "funnel_comp/BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom.mat_electrical.distribution.batterySimple.PCharge",
+        "funnel_comp/BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom.mat_hydraulic.distribution.sigBusDistr.TStoDHWTopMea",
+        "funnel_comp/BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom.mat_hydraulic.distribution.sigBusDistr.TStoBufTopMea",
+        "funnel_comp/BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom.mat_hydraulic.generation.sigBusGen.TGenOutMea",
+        "funnel_comp/BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom.mat_ventilation.generation.TSup.T",
+        "funnel_comp/BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom.mat_ventilation.generation.weaBus.TDryBul",
+        "funnel_comp/BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom.mat_building.buiMeaBus.TZoneMea[1]"
       ],
-      "success_rate": 0.0,
+      "success_rate": 1.0,
       "t_err_max": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ],
       "test_passed": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "var_groups": [
         0,
@@ -111,24 +111,24 @@
         "building.buiMeaBus.TZoneMea[1]"
       ],
       "warnings": [
-        "While processing file BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom.mat for variable electrical.distribution.batterySimple.PLoad: Fewer data points than reference results.\nlen(yOld) = 101\nlen(yNew) = 81\nSkipping error checking for this variable.\n",
-        "While processing file BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom.mat for variable electrical.distribution.batterySimple.PCharge: Fewer data points than reference results.\nlen(yOld) = 101\nlen(yNew) = 81\nSkipping error checking for this variable.\n",
-        "While processing file BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom.mat for variable hydraulic.distribution.sigBusDistr.TStoDHWTopMea: Fewer data points than reference results.\nlen(yOld) = 101\nlen(yNew) = 81\nSkipping error checking for this variable.\n",
-        "While processing file BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom.mat for variable hydraulic.distribution.sigBusDistr.TStoBufTopMea: Fewer data points than reference results.\nlen(yOld) = 101\nlen(yNew) = 81\nSkipping error checking for this variable.\n",
-        "While processing file BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom.mat for variable hydraulic.generation.sigBusGen.TGenOutMea: Fewer data points than reference results.\nlen(yOld) = 101\nlen(yNew) = 81\nSkipping error checking for this variable.\n",
-        "While processing file BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom.mat for variable ventilation.generation.TSup.T: Fewer data points than reference results.\nlen(yOld) = 101\nlen(yNew) = 81\nSkipping error checking for this variable.\n",
-        "While processing file BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom.mat for variable ventilation.generation.weaBus.TDryBul: Fewer data points than reference results.\nlen(yOld) = 101\nlen(yNew) = 81\nSkipping error checking for this variable.\n",
-        "While processing file BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom.mat for variable building.buiMeaBus.TZoneMea[1]: Fewer data points than reference results.\nlen(yOld) = 101\nlen(yNew) = 81\nSkipping error checking for this variable.\n"
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
       ]
     },
     "model": "BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom",
     "simulation": {
-      "elapsed_time": 0,
+      "elapsed_time": 26.4,
       "final_time": 864000,
-      "jacobians": 0,
+      "jacobians": 21139,
       "start_time": 0,
-      "state_events": 0,
-      "success": false
+      "state_events": 1365,
+      "success": true
     }
   },
   {
@@ -141,20 +141,20 @@
         "funnel_comp/BESMod.Examples.HeatPumpAndBoiler.Parallel.mat_electricalGrid.PElecGen",
         "funnel_comp/BESMod.Examples.HeatPumpAndBoiler.Parallel.mat_electricalGrid.PElecLoa"
       ],
-      "success_rate": 0.4,
+      "success_rate": 1.0,
       "t_err_max": [
         0.0,
-        172800.0,
-        172800.0,
         0.0,
-        32832.0
+        0.0,
+        0.0,
+        0.0
       ],
       "test_passed": [
         1,
-        0,
-        0,
         1,
-        0
+        1,
+        1,
+        1
       ],
       "var_groups": [
         0,
@@ -172,19 +172,19 @@
       ],
       "warnings": [
         null,
-        "Absolute error = 4.826e+01 at t = 172800.0 for hydraulic.generation.sigBusGen.TGenOutMea",
-        "Absolute error = 1.231e+01 at t = 172800.0 for outputs.building.TZone[1]",
         null,
-        "Absolute error = 5.428e+03 at t = 32832.0 for electricalGrid.PElecLoa"
+        null,
+        null,
+        null
       ]
     },
     "model": "BESMod.Examples.HeatPumpAndBoiler.Parallel",
     "simulation": {
-      "elapsed_time": 2.74,
+      "elapsed_time": 6.92,
       "final_time": 172800,
-      "jacobians": 4998,
+      "jacobians": 13147,
       "start_time": 0,
-      "state_events": 290,
+      "state_events": 1562,
       "success": true
     }
   },
@@ -237,7 +237,7 @@
     },
     "model": "BESMod.Examples.SolarThermalSystem.SolarThermalAixLib",
     "simulation": {
-      "elapsed_time": 5.58,
+      "elapsed_time": 6.13,
       "final_time": 172800,
       "jacobians": 2056,
       "start_time": 0,
@@ -294,7 +294,7 @@
     },
     "model": "BESMod.Examples.GasBoilerBuildingOnly",
     "simulation": {
-      "elapsed_time": 0.728,
+      "elapsed_time": 0.581,
       "final_time": 172800,
       "jacobians": 1715,
       "start_time": 0,
@@ -312,20 +312,20 @@
         "funnel_comp/BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW.mat_electricalGrid.PElecGen",
         "funnel_comp/BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW.mat_electricalGrid.PElecLoa"
       ],
-      "success_rate": 0.4,
+      "success_rate": 1.0,
       "t_err_max": [
         0.0,
-        5184.0,
-        172800.0,
         0.0,
-        32832.0
+        0.0,
+        0.0,
+        0.0
       ],
       "test_passed": [
         1,
-        0,
-        0,
         1,
-        0
+        1,
+        1,
+        1
       ],
       "var_groups": [
         0,
@@ -343,19 +343,19 @@
       ],
       "warnings": [
         null,
-        "Absolute error = 1.686e+01 at t = 5184.0 for hydraulic.generation.sigBusGen.TGenOutMea",
-        "Absolute error = 1.231e+01 at t = 172800.0 for outputs.building.TZone[1]",
         null,
-        "Absolute error = 5.572e+03 at t = 32832.0 for electricalGrid.PElecLoa"
+        null,
+        null,
+        null
       ]
     },
     "model": "BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW",
     "simulation": {
-      "elapsed_time": 4.34,
+      "elapsed_time": 4.07,
       "final_time": 172800,
-      "jacobians": 4108,
+      "jacobians": 3985,
       "start_time": 0,
-      "state_events": 237,
+      "state_events": 228,
       "success": true
     }
   },
@@ -369,20 +369,20 @@
         "funnel_comp/BESMod.Examples.DesignOptimization.BES.mat_electricalGrid.PElecGen",
         "funnel_comp/BESMod.Examples.DesignOptimization.BES.mat_electricalGrid.PElecLoa"
       ],
-      "success_rate": 0.4,
+      "success_rate": 1.0,
       "t_err_max": [
         0.0,
-        69120.0,
-        172800.0,
         0.0,
-        133056.0
+        0.0,
+        0.0,
+        0.0
       ],
       "test_passed": [
         1,
-        0,
-        0,
         1,
-        0
+        1,
+        1,
+        1
       ],
       "var_groups": [
         0,
@@ -400,19 +400,19 @@
       ],
       "warnings": [
         null,
-        "Absolute error = 3.379e+01 at t = 69120.0 for hydraulic.generation.sigBusGen.TGenOutMea",
-        "Absolute error = 1.258e+01 at t = 172800.0 for outputs.building.TZone[1]",
         null,
-        "Absolute error = 5.652e+03 at t = 133056.0 for electricalGrid.PElecLoa"
+        null,
+        null,
+        null
       ]
     },
     "model": "BESMod.Examples.DesignOptimization.BES",
     "simulation": {
-      "elapsed_time": 6.67,
+      "elapsed_time": 1.64,
       "final_time": 172800,
-      "jacobians": 12663,
+      "jacobians": 3222,
       "start_time": 0,
-      "state_events": 815,
+      "state_events": 74,
       "success": true
     }
   },
@@ -420,29 +420,29 @@
     "comparison": {
       "file_name": "BESMod.Examples.HighOrderModel.BES_HOM.mat",
       "funnel_dirs": [
-        null,
-        null,
-        null,
-        null,
+        "funnel_comp/BESMod.Examples.HighOrderModel.BES_HOM.mat_weaDat.weaBus.TDryBul",
+        "funnel_comp/BESMod.Examples.HighOrderModel.BES_HOM.mat_hydraulic.generation.sigBusGen.TGenOutMea",
+        "funnel_comp/BESMod.Examples.HighOrderModel.BES_HOM.mat_hydraulic.control.buiMeaBus.TZoneMea[1]",
+        "funnel_comp/BESMod.Examples.HighOrderModel.BES_HOM.mat_hydraulic.control.buiMeaBus.TZoneMea[10]",
         "funnel_comp/BESMod.Examples.HighOrderModel.BES_HOM.mat_electricalGrid.PElecGen",
-        null
+        "funnel_comp/BESMod.Examples.HighOrderModel.BES_HOM.mat_electricalGrid.PElecLoa"
       ],
-      "success_rate": 0.16666666666666666,
+      "success_rate": 1.0,
       "t_err_max": [
-        null,
-        null,
-        null,
-        null,
         0.0,
-        null
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ],
       "test_passed": [
-        0,
-        0,
-        0,
-        0,
         1,
-        0
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "var_groups": [
         0,
@@ -461,22 +461,22 @@
         "electricalGrid.PElecLoa"
       ],
       "warnings": [
-        "While processing file BESMod.Examples.HighOrderModel.BES_HOM.mat for variable weaDat.weaBus.TDryBul: Fewer data points than reference results.\nlen(yOld) = 101\nlen(yNew) = 89\nSkipping error checking for this variable.\n",
-        "While processing file BESMod.Examples.HighOrderModel.BES_HOM.mat for variable hydraulic.generation.sigBusGen.TGenOutMea: Fewer data points than reference results.\nlen(yOld) = 101\nlen(yNew) = 89\nSkipping error checking for this variable.\n",
-        "While processing file BESMod.Examples.HighOrderModel.BES_HOM.mat for variable hydraulic.control.buiMeaBus.TZoneMea[1]: Fewer data points than reference results.\nlen(yOld) = 101\nlen(yNew) = 89\nSkipping error checking for this variable.\n",
-        "While processing file BESMod.Examples.HighOrderModel.BES_HOM.mat for variable hydraulic.control.buiMeaBus.TZoneMea[10]: Fewer data points than reference results.\nlen(yOld) = 101\nlen(yNew) = 89\nSkipping error checking for this variable.\n",
         null,
-        "While processing file BESMod.Examples.HighOrderModel.BES_HOM.mat for variable electricalGrid.PElecLoa: Fewer data points than reference results.\nlen(yOld) = 101\nlen(yNew) = 89\nSkipping error checking for this variable.\n"
+        null,
+        null,
+        null,
+        null,
+        null
       ]
     },
     "model": "BESMod.Examples.HighOrderModel.BES_HOM",
     "simulation": {
-      "elapsed_time": 0,
+      "elapsed_time": 99,
       "final_time": 172800,
-      "jacobians": 0,
+      "jacobians": 5603,
       "start_time": 0,
-      "state_events": 0,
-      "success": false
+      "state_events": 295,
+      "success": true
     }
   },
   {
@@ -528,7 +528,7 @@
     },
     "model": "BESMod.Examples.SolarThermalSystem.SolarThermalBuildings",
     "simulation": {
-      "elapsed_time": 7,
+      "elapsed_time": 6.65,
       "final_time": 172800,
       "jacobians": 2289,
       "start_time": 0,
@@ -543,22 +543,22 @@
         null,
         null,
         null,
-        "funnel_comp/BESMod.Examples.BAUSimStudy.Case1Standard.mat_electricalGrid.PElecGen",
+        null,
         null
       ],
-      "success_rate": 0.2,
+      "success_rate": 0.0,
       "t_err_max": [
-        null,
-        null,
-        null,
-        0.0,
-        null
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "test_passed": [
         0,
         0,
         0,
-        1,
+        0,
         0
       ],
       "var_groups": [
@@ -576,11 +576,11 @@
         "electricalGrid.PElecLoa"
       ],
       "warnings": [
-        "While processing file BESMod.Examples.BAUSimStudy.Case1Standard.mat for variable weaDat.weaBus.TDryBul: Fewer data points than reference results.\nlen(yOld) = 101\nlen(yNew) = 66\nSkipping error checking for this variable.\n",
-        "While processing file BESMod.Examples.BAUSimStudy.Case1Standard.mat for variable hydraulic.generation.sigBusGen.TGenOutMea: Fewer data points than reference results.\nlen(yOld) = 101\nlen(yNew) = 66\nSkipping error checking for this variable.\n",
-        "While processing file BESMod.Examples.BAUSimStudy.Case1Standard.mat for variable outputs.building.TZone[1]: Fewer data points than reference results.\nlen(yOld) = 101\nlen(yNew) = 66\nSkipping error checking for this variable.\n",
-        null,
-        "While processing file BESMod.Examples.BAUSimStudy.Case1Standard.mat for variable electricalGrid.PElecLoa: Fewer data points than reference results.\nlen(yOld) = 101\nlen(yNew) = 66\nSkipping error checking for this variable.\n"
+        "Translation, simulation or extracting simulation results failed. IOError while reading /tmp/tmp-BESMod-2-b463qskg/BESMod/BESMod.Examples.BAUSimStudy.Case1Standard.mat generated by Examples/BAUSimStudy/Case1Standard.mos.\nFile /tmp/tmp-BESMod-2-b463qskg/BESMod/BESMod.Examples.BAUSimStudy.Case1Standard.mat does not exist.\n",
+        "",
+        "",
+        "",
+        ""
       ]
     },
     "model": "BESMod.Examples.BAUSimStudy.Case1Standard",
@@ -642,7 +642,7 @@
     },
     "model": "BESMod.Examples.DesignOptimization.BESNoDHW",
     "simulation": {
-      "elapsed_time": 1.01,
+      "elapsed_time": 0.922,
       "final_time": 172800,
       "jacobians": 2624,
       "start_time": 0,
@@ -654,26 +654,26 @@
     "comparison": {
       "file_name": "BESMod.Examples.Retrofit.Case1TotalRetrofit.mat",
       "funnel_dirs": [
-        null,
-        null,
-        null,
+        "funnel_comp/BESMod.Examples.Retrofit.Case1TotalRetrofit.mat_weaDat.weaBus.TDryBul",
+        "funnel_comp/BESMod.Examples.Retrofit.Case1TotalRetrofit.mat_hydraulic.generation.sigBusGen.TGenOutMea",
+        "funnel_comp/BESMod.Examples.Retrofit.Case1TotalRetrofit.mat_outputs.building.TZone[1]",
         "funnel_comp/BESMod.Examples.Retrofit.Case1TotalRetrofit.mat_electricalGrid.PElecGen",
         "funnel_comp/BESMod.Examples.Retrofit.Case1TotalRetrofit.mat_electricalGrid.PElecLoa"
       ],
-      "success_rate": 0.2,
+      "success_rate": 1.0,
       "t_err_max": [
-        10036.6787109375,
-        10036.6787109375,
-        10036.6787109375,
         0.0,
-        26784.0
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ],
       "test_passed": [
-        0,
-        0,
-        0,
         1,
-        0
+        1,
+        1,
+        1,
+        1
       ],
       "var_groups": [
         0,
@@ -690,21 +690,21 @@
         "electricalGrid.PElecLoa"
       ],
       "warnings": [
-        "While processing file BESMod.Examples.Retrofit.Case1TotalRetrofit.mat for variable weaDat.weaBus.TDryBul: Different end time between reference and test data.\n           tNew = [0.0, 10036.6787109375]\n           tOld = [0.0, 86400.0]",
-        "While processing file BESMod.Examples.Retrofit.Case1TotalRetrofit.mat for variable hydraulic.generation.sigBusGen.TGenOutMea: Different end time between reference and test data.\n           tNew = [0.0, 10036.6787109375]\n           tOld = [0.0, 86400.0]",
-        "While processing file BESMod.Examples.Retrofit.Case1TotalRetrofit.mat for variable outputs.building.TZone[1]: Different end time between reference and test data.\n           tNew = [0.0, 10036.6787109375]\n           tOld = [0.0, 86400.0]",
         null,
-        "Absolute error = 5.981e+03 at t = 26784.0 for electricalGrid.PElecLoa"
+        null,
+        null,
+        null,
+        null
       ]
     },
     "model": "BESMod.Examples.Retrofit.Case1TotalRetrofit",
     "simulation": {
-      "elapsed_time": 0,
+      "elapsed_time": 1.61,
       "final_time": 86400,
-      "jacobians": 0,
+      "jacobians": 2266,
       "start_time": 0,
-      "state_events": 0,
-      "success": false
+      "state_events": 111,
+      "success": true
     }
   },
   {
@@ -717,20 +717,20 @@
         "funnel_comp/BESMod.Examples.HeatPumpAndBoiler.Serial.mat_electricalGrid.PElecGen",
         "funnel_comp/BESMod.Examples.HeatPumpAndBoiler.Serial.mat_electricalGrid.PElecLoa"
       ],
-      "success_rate": 0.4,
+      "success_rate": 1.0,
       "t_err_max": [
         0.0,
-        172800.0,
-        172800.0,
         0.0,
-        5184.0
+        0.0,
+        0.0,
+        0.0
       ],
       "test_passed": [
         1,
-        0,
-        0,
         1,
-        0
+        1,
+        1,
+        1
       ],
       "var_groups": [
         0,
@@ -748,19 +748,19 @@
       ],
       "warnings": [
         null,
-        "Absolute error = 5.475e+01 at t = 172800.0 for hydraulic.generation.sigBusGen.TGenOutMea",
-        "Absolute error = 1.230e+01 at t = 172800.0 for outputs.building.TZone[1]",
         null,
-        "Absolute error = 5.106e+03 at t = 5184.0 for electricalGrid.PElecLoa"
+        null,
+        null,
+        null
       ]
     },
     "model": "BESMod.Examples.HeatPumpAndBoiler.Serial",
     "simulation": {
-      "elapsed_time": 2.36,
+      "elapsed_time": 2.5,
       "final_time": 172800,
-      "jacobians": 4788,
+      "jacobians": 5252,
       "start_time": 0,
-      "state_events": 273,
+      "state_events": 388,
       "success": true
     }
   },
@@ -774,20 +774,20 @@
         "funnel_comp/BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW.mat_electricalGrid.PElecGen",
         "funnel_comp/BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW.mat_electricalGrid.PElecLoa"
       ],
-      "success_rate": 0.4,
+      "success_rate": 1.0,
       "t_err_max": [
         0.0,
-        1728.0,
-        160704.0,
         0.0,
-        89856.0
+        0.0,
+        0.0,
+        0.0
       ],
       "test_passed": [
         1,
-        0,
-        0,
         1,
-        0
+        1,
+        1,
+        1
       ],
       "var_groups": [
         0,
@@ -805,19 +805,19 @@
       ],
       "warnings": [
         null,
-        "Absolute error = 2.638e+01 at t = 1728.0 for hydraulic.generation.sigBusGen.TGenOutMea",
-        "Absolute error = 1.150e+01 at t = 160704.0 for outputs.building.TZone[1]",
         null,
-        "Absolute error = 5.178e+03 at t = 89856.0 for electricalGrid.PElecLoa"
+        null,
+        null,
+        null
       ]
     },
     "model": "BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW",
     "simulation": {
-      "elapsed_time": 3.32,
+      "elapsed_time": 2.7,
       "final_time": 172800,
-      "jacobians": 3829,
+      "jacobians": 3954,
       "start_time": 0,
-      "state_events": 146,
+      "state_events": 207,
       "success": true
     }
   },
@@ -825,35 +825,35 @@
     "comparison": {
       "file_name": "BESMod.Examples.ModelicaConferencePaper.TEASERBuilding.mat",
       "funnel_dirs": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
+        "funnel_comp/BESMod.Examples.ModelicaConferencePaper.TEASERBuilding.mat_electrical.distribution.batterySimple.PLoad",
+        "funnel_comp/BESMod.Examples.ModelicaConferencePaper.TEASERBuilding.mat_electrical.distribution.batterySimple.PCharge",
+        "funnel_comp/BESMod.Examples.ModelicaConferencePaper.TEASERBuilding.mat_hydraulic.distribution.sigBusDistr.TStoDHWTopMea",
+        "funnel_comp/BESMod.Examples.ModelicaConferencePaper.TEASERBuilding.mat_hydraulic.distribution.sigBusDistr.TStoBufTopMea",
+        "funnel_comp/BESMod.Examples.ModelicaConferencePaper.TEASERBuilding.mat_hydraulic.generation.sigBusGen.TGenOutMea",
+        "funnel_comp/BESMod.Examples.ModelicaConferencePaper.TEASERBuilding.mat_ventilation.generation.TSup.T",
+        "funnel_comp/BESMod.Examples.ModelicaConferencePaper.TEASERBuilding.mat_ventilation.generation.weaBus.TDryBul",
+        "funnel_comp/BESMod.Examples.ModelicaConferencePaper.TEASERBuilding.mat_building.buiMeaBus.TZoneMea[1]"
       ],
-      "success_rate": 0.0,
+      "success_rate": 1.0,
       "t_err_max": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ],
       "test_passed": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "var_groups": [
         0,
@@ -876,24 +876,24 @@
         "building.buiMeaBus.TZoneMea[1]"
       ],
       "warnings": [
-        "While processing file BESMod.Examples.ModelicaConferencePaper.TEASERBuilding.mat for variable electrical.distribution.batterySimple.PLoad: Fewer data points than reference results.\nlen(yOld) = 101\nlen(yNew) = 67\nSkipping error checking for this variable.\n",
-        "While processing file BESMod.Examples.ModelicaConferencePaper.TEASERBuilding.mat for variable electrical.distribution.batterySimple.PCharge: Fewer data points than reference results.\nlen(yOld) = 101\nlen(yNew) = 67\nSkipping error checking for this variable.\n",
-        "While processing file BESMod.Examples.ModelicaConferencePaper.TEASERBuilding.mat for variable hydraulic.distribution.sigBusDistr.TStoDHWTopMea: Fewer data points than reference results.\nlen(yOld) = 101\nlen(yNew) = 67\nSkipping error checking for this variable.\n",
-        "While processing file BESMod.Examples.ModelicaConferencePaper.TEASERBuilding.mat for variable hydraulic.distribution.sigBusDistr.TStoBufTopMea: Fewer data points than reference results.\nlen(yOld) = 101\nlen(yNew) = 67\nSkipping error checking for this variable.\n",
-        "While processing file BESMod.Examples.ModelicaConferencePaper.TEASERBuilding.mat for variable hydraulic.generation.sigBusGen.TGenOutMea: Fewer data points than reference results.\nlen(yOld) = 101\nlen(yNew) = 67\nSkipping error checking for this variable.\n",
-        "While processing file BESMod.Examples.ModelicaConferencePaper.TEASERBuilding.mat for variable ventilation.generation.TSup.T: Fewer data points than reference results.\nlen(yOld) = 101\nlen(yNew) = 67\nSkipping error checking for this variable.\n",
-        "While processing file BESMod.Examples.ModelicaConferencePaper.TEASERBuilding.mat for variable ventilation.generation.weaBus.TDryBul: Fewer data points than reference results.\nlen(yOld) = 101\nlen(yNew) = 67\nSkipping error checking for this variable.\n",
-        "While processing file BESMod.Examples.ModelicaConferencePaper.TEASERBuilding.mat for variable building.buiMeaBus.TZoneMea[1]: Fewer data points than reference results.\nlen(yOld) = 101\nlen(yNew) = 67\nSkipping error checking for this variable.\n"
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
       ]
     },
     "model": "BESMod.Examples.ModelicaConferencePaper.TEASERBuilding",
     "simulation": {
-      "elapsed_time": 0,
+      "elapsed_time": 15.5,
       "final_time": 864000,
-      "jacobians": 0,
+      "jacobians": 20617,
       "start_time": 0,
-      "state_events": 0,
-      "success": false
+      "state_events": 1230,
+      "success": true
     }
   },
   {
@@ -939,7 +939,7 @@
     },
     "model": "BESMod.Examples.TEASERHeatLoadCalculation.Example",
     "simulation": {
-      "elapsed_time": 0.161,
+      "elapsed_time": 0.176,
       "final_time": 172800,
       "jacobians": 908,
       "start_time": 0,
@@ -951,26 +951,26 @@
     "comparison": {
       "file_name": "BESMod.Examples.Retrofit.Case1NoRetrofit.mat",
       "funnel_dirs": [
-        null,
-        null,
-        null,
+        "funnel_comp/BESMod.Examples.Retrofit.Case1NoRetrofit.mat_weaDat.weaBus.TDryBul",
+        "funnel_comp/BESMod.Examples.Retrofit.Case1NoRetrofit.mat_hydraulic.generation.sigBusGen.TGenOutMea",
+        "funnel_comp/BESMod.Examples.Retrofit.Case1NoRetrofit.mat_outputs.building.TZone[1]",
         "funnel_comp/BESMod.Examples.Retrofit.Case1NoRetrofit.mat_electricalGrid.PElecGen",
-        null
+        "funnel_comp/BESMod.Examples.Retrofit.Case1NoRetrofit.mat_electricalGrid.PElecLoa"
       ],
-      "success_rate": 0.2,
+      "success_rate": 1.0,
       "t_err_max": [
-        null,
-        null,
-        null,
         0.0,
-        null
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ],
       "test_passed": [
-        0,
-        0,
-        0,
         1,
-        0
+        1,
+        1,
+        1,
+        1
       ],
       "var_groups": [
         0,
@@ -987,21 +987,21 @@
         "electricalGrid.PElecLoa"
       ],
       "warnings": [
-        "While processing file BESMod.Examples.Retrofit.Case1NoRetrofit.mat for variable weaDat.weaBus.TDryBul: Fewer data points than reference results.\nlen(yOld) = 101\nlen(yNew) = 70\nSkipping error checking for this variable.\n",
-        "While processing file BESMod.Examples.Retrofit.Case1NoRetrofit.mat for variable hydraulic.generation.sigBusGen.TGenOutMea: Fewer data points than reference results.\nlen(yOld) = 101\nlen(yNew) = 70\nSkipping error checking for this variable.\n",
-        "While processing file BESMod.Examples.Retrofit.Case1NoRetrofit.mat for variable outputs.building.TZone[1]: Fewer data points than reference results.\nlen(yOld) = 101\nlen(yNew) = 70\nSkipping error checking for this variable.\n",
         null,
-        "While processing file BESMod.Examples.Retrofit.Case1NoRetrofit.mat for variable electricalGrid.PElecLoa: Fewer data points than reference results.\nlen(yOld) = 101\nlen(yNew) = 70\nSkipping error checking for this variable.\n"
+        null,
+        null,
+        null,
+        null
       ]
     },
     "model": "BESMod.Examples.Retrofit.Case1NoRetrofit",
     "simulation": {
-      "elapsed_time": 0,
+      "elapsed_time": 2.2,
       "final_time": 86400,
-      "jacobians": 0,
+      "jacobians": 2850,
       "start_time": 0,
-      "state_events": 0,
-      "success": false
+      "state_events": 150,
+      "success": true
     }
   }
 ]

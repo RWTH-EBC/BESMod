@@ -424,13 +424,13 @@ Original Model
   Equations: 12250
   Nontrivial: 9638
 Translated Model
-  Constants: 11665 scalars
+  Constants: 11658 scalars
   Free parameters: 1593 scalars
   Parameter depending: 4389 scalars
   Outputs: 59 scalars
   Continuous time states: 237 scalars
   Time-varying variables: 3098 scalars
-  Alias variables: 7884 scalars
+  Alias variables: 7891 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,   3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 3, 2, 2, 2, 2, 2,   2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 3, 2, 2, 4, 4, 2, 2}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
@@ -818,13 +818,13 @@ Original Model
   Equations: 5339
   Nontrivial: 4439
 Translated Model
-  Constants: 4968 scalars
+  Constants: 4949 scalars
   Free parameters: 1168 scalars
-  Parameter depending: 2352 scalars
+  Parameter depending: 2348 scalars
   Outputs: 46 scalars
   Continuous time states: 78 scalars
-  Time-varying variables: 1529 scalars
-  Alias variables: 3927 scalars
+  Time-varying variables: 1534 scalars
+  Alias variables: 3945 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 4, 4, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0}
@@ -988,9 +988,9 @@ initial equations:
   weaDat.pAtmSel.p = building.roo.air.vol.dynBal.p_start;
   hydraulic.generation.bou_sinkAir.p = 101325.0;
   ventilation.generation.bouExh.p = ventilation.generation.threeWayValve_b.vol.dynBal.p_start;
-  electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
   electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
   electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
+  electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
  
 Sparse solver handling possible: false.
 Due to flag Advanced.SparseActivate=false.
@@ -1014,15 +1014,15 @@ Original Model
   Equations: 6172
   Nontrivial: 5163
 Translated Model
-  Constants: 10039 scalars
+  Constants: 10020 scalars
   Free parameters: 1527 scalars
-  Parameter depending: 6073 scalars
+  Parameter depending: 6069 scalars
   Outputs: 37 scalars
   Continuous time states: 131 scalars
-  Time-varying variables: 1844 scalars
-  Alias variables: 4674 scalars
+  Time-varying variables: 1849 scalars
+  Alias variables: 4692 scalars
   Number of mixed real/discrete systems of equations: 0
-  Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 35, 6, 2, 2, 19, 2, 2, 2, 2, 2, 2, 2, 2}
+  Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 35, 6, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 19}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
   Sizes of nonlinear systems of equations: {10, 5, 1, 3, 4, 1, 1, 3, 1, 1}
   Sizes after manipulation of the nonlinear systems: {2, 1, 1, 1, 1, 0, 0, 1, 1, 1}
@@ -1169,8 +1169,8 @@ Statically selected continuous time states
   ventilation.generation.TSup.T
  
 Warning: WARNINGS have been issued.
-Failed
- = false
+Finished
+ = true
 
 Declaring variable: Boolean rScript ;
 
@@ -1311,15 +1311,15 @@ Original Model
   Equations: 5833
   Nontrivial: 4840
 Translated Model
-  Constants: 5356 scalars
+  Constants: 5337 scalars
   Free parameters: 1181 scalars
-  Parameter depending: 2812 scalars
+  Parameter depending: 2807 scalars
   Outputs: 43 scalars
   Continuous time states: 104 scalars
-  Time-varying variables: 1662 scalars
-  Alias variables: 4203 scalars
+  Time-varying variables: 1668 scalars
+  Alias variables: 4221 scalars
   Number of mixed real/discrete systems of equations: 0
-  Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 3, 3, 2, 2, 2, 2, 3, 2, 2, 4, 3, 2, 2, 2, 2, 4,   2, 2, 4, 3, 2, 2, 4, 3, 2, 2, 2, 2, 2, 2, 4, 3, 4}
+  Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 3, 3, 2, 2, 2, 2, 3, 2, 2, 4, 2, 2, 4, 3, 2, 2,   2, 2, 4, 3, 2, 2, 4, 3, 2, 2, 2, 2, 2, 2, 4, 3, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
   Sizes of nonlinear systems of equations: {5, 15, 59, 6, 6, 6, 6, 3, 1, 1, 1, 1, 1, 1, 1}
   Sizes after manipulation of the nonlinear systems: {1, 1, 6, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1}
@@ -1439,8 +1439,8 @@ Statically selected continuous time states
   hydraulic.transfer.vol.dynBal.U
  
 Warning: WARNINGS have been issued.
-Failed
- = false
+Finished
+ = true
 
     
 Declaring variable: Boolean rScript ;
@@ -1680,13 +1680,13 @@ Original Model
   Equations: 12592
   Nontrivial: 9892
 Translated Model
-  Constants: 11974 scalars
+  Constants: 11967 scalars
   Free parameters: 1603 scalars
   Parameter depending: 4319 scalars
   Outputs: 57 scalars
   Continuous time states: 239 scalars
   Time-varying variables: 3297 scalars
-  Alias variables: 8185 scalars
+  Alias variables: 8192 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,   3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 3, 2, 2, 2, 2, 2,   2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 3, 2, 2, 4, 4, 2, 2}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
@@ -2190,24 +2190,24 @@ Original Model
   Equations: 7526
   Nontrivial: 6172
 Translated Model
-  Constants: 7033 scalars
+  Constants: 7002 scalars
   Free parameters: 1385 scalars
-  Parameter depending: 3789 scalars
+  Parameter depending: 3723 scalars
   Outputs: 46 scalars
   Continuous time states: 144 scalars
-  Time-varying variables: 2071 scalars
-  Alias variables: 5383 scalars
+  Time-varying variables: 2139 scalars
+  Alias variables: 5412 scalars
   Number of mixed real/discrete systems of equations: 0
-  Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 3, 3, 2, 2, 2, 2, 3, 2, 2, 15, 4, 3, 2, 2, 2, 2,   2, 2, 4, 3, 2, 2, 4, 3, 4, 3, 2, 2, 4, 3, 2, 2, 2, 2, 2, 2, 4, 3, 2, 2, 4, 2,   2, 2, 2, 4, 4}
-  Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0}
-  Sizes of nonlinear systems of equations: {13, 59, 6, 6, 6, 6, 6, 6, 6, 6, 3, 1, 1, 1, 1, 1, 1, 1, 1}
-  Sizes after manipulation of the nonlinear systems: {1, 6, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1}
+  Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 3, 3, 2, 2, 2, 2, 3, 4, 3, 2, 2, 2, 2, 4, 3, 2,   2, 2, 2, 2, 2, 2, 2, 4, 3, 4, 3, 2, 2, 2, 2, 4, 2, 2, 15, 4, 3, 2, 2, 2, 2, 4,   3, 2, 2, 4, 4}
+  Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0}
+  Sizes of nonlinear systems of equations: {13, 59, 17, 6, 6, 6, 6, 6, 6, 6, 6, 3, 1, 1, 1, 1, 1, 1, 1, 1}
+  Sizes after manipulation of the nonlinear systems: {1, 6, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1}
   Number of numerical Jacobians: 0
   Initialization problem
     Sizes of linear systems of equations: {2}
     Sizes after manipulation of the linear systems: {0}
-    Sizes of nonlinear systems of equations: {2, 1, 11, 17, 70, 13, 1, 1}
-    Sizes after manipulation of the nonlinear systems: {0, 0, 5, 3, 7, 2, 1, 1}
+    Sizes of nonlinear systems of equations: {2, 1, 11, 70, 13, 17, 1, 1}
+    Sizes after manipulation of the nonlinear systems: {0, 0, 5, 7, 2, 2, 1, 1}
     Number of numerical Jacobians: 0
  
 Selected continuous time states
@@ -2471,13 +2471,13 @@ Original Model
   Equations: 5001
   Nontrivial: 4141
 Translated Model
-  Constants: 4581 scalars
+  Constants: 4562 scalars
   Free parameters: 1078 scalars
-  Parameter depending: 2160 scalars
+  Parameter depending: 2156 scalars
   Outputs: 45 scalars
   Continuous time states: 71 scalars
-  Time-varying variables: 1422 scalars
-  Alias variables: 3602 scalars
+  Time-varying variables: 1427 scalars
+  Alias variables: 3620 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 4, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0}
@@ -2704,13 +2704,13 @@ Original Model
   Equations: 16709
   Nontrivial: 13634
 Translated Model
-  Constants: 14609 scalars
+  Constants: 14590 scalars
   Free parameters: 3166 scalars
-  Parameter depending: 13858 scalars
+  Parameter depending: 13854 scalars
   Outputs: 38 scalars
   Continuous time states: 377 scalars
-  Time-varying variables: 4754 scalars
-  Alias variables: 12691 scalars
+  Time-varying variables: 4759 scalars
+  Alias variables: 12709 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,   2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4,   4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,   4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,   4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,   4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,   4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,   4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,   4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,   4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
@@ -3105,8 +3105,8 @@ Statically selected continuous time states
   hydraulic.transfer.rad[10].vol[5].dynBal.U
  
 Warning: WARNINGS have been issued.
-Failed
- = false
+Finished
+ = true
 
     
 Declaring variable: Boolean rScript ;
@@ -3416,15 +3416,15 @@ Original Model
   Equations: 5833
   Nontrivial: 4840
 Translated Model
-  Constants: 5384 scalars
+  Constants: 5365 scalars
   Free parameters: 1173 scalars
-  Parameter depending: 2798 scalars
+  Parameter depending: 2793 scalars
   Outputs: 43 scalars
   Continuous time states: 104 scalars
-  Time-varying variables: 1662 scalars
-  Alias variables: 4197 scalars
+  Time-varying variables: 1668 scalars
+  Alias variables: 4215 scalars
   Number of mixed real/discrete systems of equations: 0
-  Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 3, 3, 2, 2, 2, 2, 3, 2, 2, 4, 3, 2, 2, 2, 2, 4,   2, 2, 4, 3, 2, 2, 4, 3, 2, 2, 2, 2, 2, 2, 4, 3, 4}
+  Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 3, 3, 2, 2, 2, 2, 3, 2, 2, 4, 2, 2, 4, 3, 2, 2,   2, 2, 4, 3, 2, 2, 4, 3, 2, 2, 2, 2, 2, 2, 4, 3, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
   Sizes of nonlinear systems of equations: {5, 15, 59, 6, 6, 6, 6, 3, 1, 1, 1, 1, 1, 1, 1}
   Sizes after manipulation of the nonlinear systems: {1, 1, 6, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1}
@@ -3544,8 +3544,8 @@ Statically selected continuous time states
   hydraulic.transfer.vol.dynBal.U
  
 Warning: WARNINGS have been issued.
-Failed
- = false
+Finished
+ = true
 
     
 Declaring variable: Boolean rScript ;
@@ -3855,15 +3855,15 @@ Original Model
   Equations: 5833
   Nontrivial: 4840
 Translated Model
-  Constants: 5381 scalars
+  Constants: 5362 scalars
   Free parameters: 1173 scalars
-  Parameter depending: 2798 scalars
+  Parameter depending: 2793 scalars
   Outputs: 43 scalars
   Continuous time states: 104 scalars
-  Time-varying variables: 1662 scalars
-  Alias variables: 4197 scalars
+  Time-varying variables: 1668 scalars
+  Alias variables: 4215 scalars
   Number of mixed real/discrete systems of equations: 0
-  Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 3, 3, 2, 2, 2, 2, 3, 2, 2, 4, 3, 2, 2, 2, 2, 4,   2, 2, 4, 3, 2, 2, 4, 3, 2, 2, 2, 2, 2, 2, 4, 3, 4}
+  Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 3, 3, 2, 2, 2, 2, 3, 2, 2, 4, 2, 2, 4, 3, 2, 2,   2, 2, 4, 3, 2, 2, 4, 3, 2, 2, 2, 2, 2, 2, 4, 3, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
   Sizes of nonlinear systems of equations: {5, 15, 59, 6, 6, 6, 6, 3, 1, 1, 1, 1, 1, 1, 1}
   Sizes after manipulation of the nonlinear systems: {1, 1, 6, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1}
@@ -3984,6 +3984,7 @@ Statically selected continuous time states
  
 Warning: WARNINGS have been issued.
 Failed
+Not possible to open file "BESMod.Examples.BAUSimStudy.Case1Standard.mat": No such file or directory
  = false
 
     
@@ -4365,13 +4366,13 @@ Original Model
   Equations: 5217
   Nontrivial: 4341
 Translated Model
-  Constants: 4828 scalars
+  Constants: 4809 scalars
   Free parameters: 1144 scalars
-  Parameter depending: 2276 scalars
+  Parameter depending: 2272 scalars
   Outputs: 46 scalars
   Continuous time states: 77 scalars
-  Time-varying variables: 1496 scalars
-  Alias variables: 3838 scalars
+  Time-varying variables: 1501 scalars
+  Alias variables: 3856 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 4, 4, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0}
@@ -4657,15 +4658,15 @@ Original Model
   Equations: 5952
   Nontrivial: 4973
 Translated Model
-  Constants: 5453 scalars
+  Constants: 5434 scalars
   Free parameters: 1237 scalars
-  Parameter depending: 2959 scalars
+  Parameter depending: 2954 scalars
   Outputs: 46 scalars
   Continuous time states: 110 scalars
-  Time-varying variables: 1738 scalars
-  Alias variables: 4443 scalars
+  Time-varying variables: 1744 scalars
+  Alias variables: 4461 scalars
   Number of mixed real/discrete systems of equations: 0
-  Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 3, 3, 2, 2, 2, 2, 3, 4, 4, 4, 4, 3, 2, 2, 2, 2,   4, 3, 2, 2, 2, 2, 2, 2, 4, 3, 2, 2, 2, 2, 4, 3, 2, 2}
+  Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 3, 3, 2, 2, 2, 2, 3, 4, 2, 2, 4, 3, 2, 2, 4, 3,   2, 2, 2, 2, 2, 2, 2, 2, 4, 3, 4, 3, 2, 2, 2, 2, 4, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
   Sizes of nonlinear systems of equations: {13, 59, 6, 6, 6, 6, 3, 1, 1, 1, 1, 1, 1, 1, 1}
   Sizes after manipulation of the nonlinear systems: {1, 6, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1}
@@ -5102,15 +5103,15 @@ Original Model
   Equations: 5833
   Nontrivial: 4840
 Translated Model
-  Constants: 5384 scalars
+  Constants: 5365 scalars
   Free parameters: 1173 scalars
-  Parameter depending: 2798 scalars
+  Parameter depending: 2793 scalars
   Outputs: 43 scalars
   Continuous time states: 104 scalars
-  Time-varying variables: 1662 scalars
-  Alias variables: 4197 scalars
+  Time-varying variables: 1668 scalars
+  Alias variables: 4215 scalars
   Number of mixed real/discrete systems of equations: 0
-  Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 3, 3, 2, 2, 2, 2, 3, 2, 2, 4, 3, 2, 2, 2, 2, 4,   2, 2, 4, 3, 2, 2, 4, 3, 2, 2, 2, 2, 2, 2, 4, 3, 4}
+  Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 3, 3, 2, 2, 2, 2, 3, 2, 2, 4, 2, 2, 4, 3, 2, 2,   2, 2, 4, 3, 2, 2, 4, 3, 2, 2, 2, 2, 2, 2, 4, 3, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
   Sizes of nonlinear systems of equations: {5, 15, 59, 6, 6, 6, 6, 3, 1, 1, 1, 1, 1, 1, 1}
   Sizes after manipulation of the nonlinear systems: {1, 1, 6, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1}
@@ -5230,8 +5231,8 @@ Statically selected continuous time states
   hydraulic.transfer.vol.dynBal.U
  
 Warning: WARNINGS have been issued.
-Failed
- = false
+Finished
+ = true
 
     
 Declaring variable: Boolean rScript ;
@@ -5386,9 +5387,9 @@ The redundancies involve
 initial equations: 
   hydraulic.generation.bou_sinkAir.p = 101325.0;
   ventilation.generation.bouExh.p = ventilation.generation.threeWayValve_b.vol.dynBal.p_start;
-  electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
   electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
   electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
+  electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
  
 Warning: The conditions of the following assert statements are always false:
 Warning:   assert(hydraulic.generation.heatPump.con.preDro.homotopyInitialization,     "In TEASERBuilding.hydraulic.generation.heatPump.con.preDro: The constant homotopyInitialization has been modified from its default value. This constant will be removed in future releases.",     AssertionLevel.warning);
@@ -5408,13 +5409,13 @@ Original Model
   Equations: 5976
   Nontrivial: 4946
 Translated Model
-  Constants: 5580 scalars
+  Constants: 5561 scalars
   Free parameters: 1370 scalars
-  Parameter depending: 3090 scalars
+  Parameter depending: 3086 scalars
   Outputs: 41 scalars
   Continuous time states: 84 scalars
-  Time-varying variables: 1779 scalars
-  Alias variables: 4369 scalars
+  Time-varying variables: 1784 scalars
+  Alias variables: 4387 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 4, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0}
@@ -5516,8 +5517,8 @@ Statically selected continuous time states
   ventilation.generation.TSup.T
  
 Warning: WARNINGS have been issued.
-Failed
- = false
+Finished
+ = true
 
 Declaring variable: Boolean rScript ;
 
