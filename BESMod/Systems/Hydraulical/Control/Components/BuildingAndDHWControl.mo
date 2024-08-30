@@ -235,7 +235,7 @@ model BuildingAndDHWControl
     annotation (Placement(transformation(extent={{224,148},{244,168}})));
   Modelica.Blocks.Sources.RealExpression threeWayValveExtSet(y=0)
     annotation (Placement(transformation(extent={{182,166},{202,186}})));
-  Modelica.Blocks.Sources.BooleanExpression threeWayValveExtCtrl(y=true)
+  Modelica.Blocks.Sources.BooleanExpression threeWayValveExtCtrl(y=false)
     annotation (Placement(transformation(extent={{182,138},{202,158}})));
 equation
   connect(hysDHW.priGenOn, priGenOn.u1) annotation (Line(points={{81.4,77},{81.4,
