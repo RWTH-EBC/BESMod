@@ -180,7 +180,7 @@
     },
     "model": "BESMod.Examples.HeatPumpAndBoiler.Parallel",
     "simulation": {
-      "elapsed_time": 2.49,
+      "elapsed_time": 2.74,
       "final_time": 172800,
       "jacobians": 4998,
       "start_time": 0,
@@ -237,7 +237,7 @@
     },
     "model": "BESMod.Examples.SolarThermalSystem.SolarThermalAixLib",
     "simulation": {
-      "elapsed_time": 6,
+      "elapsed_time": 5.58,
       "final_time": 172800,
       "jacobians": 2056,
       "start_time": 0,
@@ -294,7 +294,7 @@
     },
     "model": "BESMod.Examples.GasBoilerBuildingOnly",
     "simulation": {
-      "elapsed_time": 0.58,
+      "elapsed_time": 0.728,
       "final_time": 172800,
       "jacobians": 1715,
       "start_time": 0,
@@ -351,7 +351,7 @@
     },
     "model": "BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW",
     "simulation": {
-      "elapsed_time": 3.99,
+      "elapsed_time": 4.34,
       "final_time": 172800,
       "jacobians": 4108,
       "start_time": 0,
@@ -408,7 +408,7 @@
     },
     "model": "BESMod.Examples.DesignOptimization.BES",
     "simulation": {
-      "elapsed_time": 6.56,
+      "elapsed_time": 6.67,
       "final_time": 172800,
       "jacobians": 12663,
       "start_time": 0,
@@ -528,7 +528,7 @@
     },
     "model": "BESMod.Examples.SolarThermalSystem.SolarThermalBuildings",
     "simulation": {
-      "elapsed_time": 6.52,
+      "elapsed_time": 7,
       "final_time": 172800,
       "jacobians": 2289,
       "start_time": 0,
@@ -642,7 +642,7 @@
     },
     "model": "BESMod.Examples.DesignOptimization.BESNoDHW",
     "simulation": {
-      "elapsed_time": 0.951,
+      "elapsed_time": 1.01,
       "final_time": 172800,
       "jacobians": 2624,
       "start_time": 0,
@@ -756,7 +756,7 @@
     },
     "model": "BESMod.Examples.HeatPumpAndBoiler.Serial",
     "simulation": {
-      "elapsed_time": 2.38,
+      "elapsed_time": 2.36,
       "final_time": 172800,
       "jacobians": 4788,
       "start_time": 0,
@@ -813,7 +813,7 @@
     },
     "model": "BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW",
     "simulation": {
-      "elapsed_time": 3.34,
+      "elapsed_time": 3.32,
       "final_time": 172800,
       "jacobians": 3829,
       "start_time": 0,
@@ -939,7 +939,7 @@
     },
     "model": "BESMod.Examples.TEASERHeatLoadCalculation.Example",
     "simulation": {
-      "elapsed_time": 0.197,
+      "elapsed_time": 0.161,
       "final_time": 172800,
       "jacobians": 908,
       "start_time": 0,
