@@ -13,27 +13,11 @@ Regression tests are only run for the following package:
 *** Warning: BESMod.Examples.HighOrderModel.BES_HOM: Translation statistics for simulation and results changed for number of continuous time states.
  Old = 377
  New = 373
-*** Error: BESMod_Examples_DesignOptimization_BES.txt: Errors during result verification.
-           Absolute error = 6.276e+00 at t = 171072.0 for hydraulic.generation.sigBusGen.TGenOutMea
-           Absolute error = 1.722e-01 at t = 169344.0 for outputs.building.TZone[1]
-           Absolute error = 1.471e+03 at t = 91584.0 for electricalGrid.PElecLoa
-*** Warning: BESMod.Examples.DesignOptimization.BES: Found translation statistics for initialization for linear in old but not in new results.
- Old = 0
-*** Warning: BESMod.Examples.DesignOptimization.BES: Translation statistics for simulation and results changed for number of continuous time states.
- Old = 71
- New = 67
-*** Error: BESMod_Examples_DesignOptimization_BESNoDHW.txt: Errors during result verification.
-           Absolute error = 4.519e+00 at t = 69120.0 for hydraulic.generation.sigBusGen.TGenOutMea
-           Absolute error = 1.068e-01 at t = 48384.0 for outputs.building.TZone[1]
-           Absolute error = 1.011e+03 at t = 48384.0 for electricalGrid.PElecLoa
-*** Warning: BESMod.Examples.DesignOptimization.BESNoDHW: Found translation statistics for initialization for linear in old but not in new results.
- Old = 0
-*** Warning: BESMod.Examples.DesignOptimization.BESNoDHW: Translation statistics for simulation and results changed for number of continuous time states.
- Old = 52
- New = 48
-Comparison files output by funnel are stored in the directory 'funnel_comp' of size 1.0 MB.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Examples_DesignOptimization_BES.txt.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Examples_DesignOptimization_BESNoDHW.txt.
+Comparison files output by funnel are stored in the directory 'funnel_comp' of size 0.9 MB.
 Run 'python -c "import buildingspy.development.regressiontest as t; t.Tester(tool=\"dymola\").report()"'
 to access a summary of the comparison results.
 
-Script that runs unit tests had 7 warnings and 3 errors.
+Script that runs unit tests had 3 warnings and 1 errors.
 
