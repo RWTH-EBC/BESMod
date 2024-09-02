@@ -26,7 +26,10 @@ partial model PartialHeatPumpSystemController
     supCtrDHWTyp=BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Local
     "Supervisory control approach for DHW supply temperature "
       annotation(Dialog(group="DHW control"));
-
+  parameter Utilities.SupervisoryControl.Types.SupervisoryControlType
+    supCtrlThrWayValTyp=BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Local
+    "Type of supervisory control for three way valve"
+    annotation (Dialog(tab="DHW control"));
 
   replaceable model BuildingHysteresis =
       BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.BaseClasses.PartialOnOffController
@@ -171,6 +174,7 @@ partial model PartialHeatPumpSystemController
     final nHeaTra=parTra.nHeaTra,
     final supCtrHeaCurTyp=supCtrHeaCurTyp,
     final supCtrDHWTyp=supCtrDHWTyp,
+    final supCtrlThrWayValTyp=supCtrlThrWayValTyp,
     redeclare final model SummerMode = SummerMode,
     redeclare final model DHWHysteresis = DHWHysteresis,
     redeclare final model BuildingHysteresis = BuildingHysteresis,
@@ -251,21 +255,22 @@ equation
       points={{180.2,64.2},{190,64.2},{190,63.1},{198.75,63.1}},
       color={255,204,51},
       thickness=0.5));
-  connect(buiAndDHWCtr.TZoneSet, useProBus.TZoneSet) annotation (Line(points={{
-          -204,35},{-238,35},{-238,103},{-119,103}}, color={0,0,127}), Text(
+  connect(buiAndDHWCtr.TZoneSet, useProBus.TZoneSet) annotation (Line(points={{-204,
+          32.3333},{-238,32.3333},{-238,103},{-119,103}},
+                                                     color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(buiAndDHWCtr.TZoneMea, buiMeaBus.TZoneMea) annotation (Line(points={{
-          -204,45},{-250,45},{-250,118},{64,118},{64,103},{65,103}}, color={0,0,
+  connect(buiAndDHWCtr.TZoneMea, buiMeaBus.TZoneMea) annotation (Line(points={{-204,39},
+          {-250,39},{-250,118},{64,118},{64,103},{65,103}},          color={0,0,
           127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(sigBusDistr, buiAndDHWCtr.sigBusDistr) annotation (Line(
-      points={{1,-100},{1,-116},{-250,-116},{-250,72.5},{-200,72.5}},
+      points={{1,-100},{1,-116},{-250,-116},{-250,57.3333},{-200,57.3333}},
       color={255,204,51},
       thickness=0.5), Text(
       string="%first",
@@ -273,30 +278,30 @@ equation
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(buiAndDHWCtr.sigBusHyd, sigBusHyd) annotation (Line(
-      points={{-185.6,80.25},{-185.6,112},{-186,112},{-186,118},{-28,118},{-28,
-          101}},
+      points={{-159.6,79.5},{-159.6,112},{-186,112},{-186,118},{-28,118},{-28,101}},
       color={255,204,51},
       thickness=0.5), Text(
       string="%second",
       index=1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(buiAndDHWCtr.TOda, weaBus.TDryBul) annotation (Line(points={{-204,55},{
-          -244,55},{-244,2.11},{-236.895,2.11}},
+  connect(buiAndDHWCtr.TOda, weaBus.TDryBul) annotation (Line(points={{-204,
+          45.6667},{-244,45.6667},{-244,2.11},{-236.895,2.11}},
                                        color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(buiAndDHWCtr.secGen, anyGenDevIsOn.u[1]) annotation (Line(points={{-118,
-          37.5},{-118,36},{-112,36},{-112,6},{-151.75,6},{-151.75,0}},
+  connect(buiAndDHWCtr.secGen, anyGenDevIsOn.u[1]) annotation (Line(points={{-118,34},
+          {-118,36},{-112,36},{-112,6},{-151.75,6},{-151.75,0}},
         color={255,0,255}));
   connect(setAndMeaSelPri.DHW, buiAndDHWCtr.DHW) annotation (Line(points={{39,76},
-          {28,76},{28,74},{-106,74},{-106,68},{-118,68}}, color={0,0,127}));
-  connect(buiAndDHWCtr.TDHWSet, setAndMeaSelPri.TDHWSet) annotation (Line(points={
-          {-118,75},{-118,74},{28,74},{28,78.8},{39,78.8}}, color={0,0,127}));
-  connect(setAndMeaSelPri.TBuiSet, buiAndDHWCtr.TBuiSet) annotation (Line(points={
-          {39,72.8},{38,72.8},{38,74},{-106,74},{-106,60},{-118,60}}, color={0,0,127}));
+          {28,76},{28,74},{-106,74},{-106,54.3333},{-118,54.3333}},
+                                                          color={0,0,127}));
+  connect(buiAndDHWCtr.TDHWSet, setAndMeaSelPri.TDHWSet) annotation (Line(points={{-118,59},
+          {-118,74},{28,74},{28,78.8},{39,78.8}},           color={0,0,127}));
+  connect(setAndMeaSelPri.TBuiSet, buiAndDHWCtr.TBuiSet) annotation (Line(points={{39,72.8},
+          {38,72.8},{38,74},{-106,74},{-106,49},{-118,49}},           color={0,0,127}));
   connect(setAndMeaSelPri.TSet, priGenPIDCtrl.TSet) annotation (Line(points={{61,76},
           {80.4,76},{80.4,94.8}},          color={0,0,127}));
   connect(setAndMeaSelPri.TMea, priGenPIDCtrl.TMea)
@@ -317,14 +322,15 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(setAndMeaSelSec.TDHWSet, buiAndDHWCtr.TDHWSet) annotation (Line(points={
-          {39,18.8},{34,18.8},{34,16},{-28,16},{-28,74},{-120,74},{-120,75},{-118,
-          75}}, color={0,0,127}));
-  connect(setAndMeaSelSec.TBuiSet, buiAndDHWCtr.TBuiSet) annotation (Line(points={
-          {39,12.8},{4,12.8},{4,16},{-28,16},{-28,74},{-106,74},{-106,60},{-118,60}},
+  connect(setAndMeaSelSec.TDHWSet, buiAndDHWCtr.TDHWSet) annotation (Line(points={{39,18.8},
+          {34,18.8},{34,16},{-28,16},{-28,74},{-120,74},{-120,59},{-118,59}},
+                color={0,0,127}));
+  connect(setAndMeaSelSec.TBuiSet, buiAndDHWCtr.TBuiSet) annotation (Line(points={{39,12.8},
+          {4,12.8},{4,16},{-28,16},{-28,74},{-106,74},{-106,49},{-118,49}},
         color={0,0,127}));
   connect(setAndMeaSelSec.DHW, buiAndDHWCtr.DHW) annotation (Line(points={{39,16},
-          {-28,16},{-28,74},{-106,74},{-106,68},{-118,68}}, color={255,0,255}));
+          {-28,16},{-28,74},{-106,74},{-106,54.3333},{-118,54.3333}},
+                                                            color={255,0,255}));
   connect(setAndMeaSelSec.sigBusDistr, sigBusDistr) annotation (Line(
       points={{40,7.9},{40,6},{1,6},{1,-100}},
       color={255,204,51},
