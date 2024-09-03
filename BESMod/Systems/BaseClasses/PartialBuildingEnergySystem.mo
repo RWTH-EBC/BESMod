@@ -349,6 +349,16 @@ equation
           -41.0824,118.857}},
       color={0,0,0},
       thickness=1));
+  connect(control.useProBus, userProfiles.useProBus) annotation (Line(
+      points={{16.82,198.37},{16.82,206},{-214,206},{-214,150.775},{-225.167,
+          150.775}},
+      color={0,127,0},
+      thickness=0.5));
+  connect(control.buiMeaBus, building.buiMeaBus) annotation (Line(
+      points={{62.04,198.37},{62.04,206},{-16,206},{-16,88},{39,88},{39,77.62}},
+
+      color={255,128,0},
+      thickness=0.5));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false, extent={{-280,
             -140},{280,200}})),

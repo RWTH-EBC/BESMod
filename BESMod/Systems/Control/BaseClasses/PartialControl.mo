@@ -17,6 +17,12 @@ partial model PartialControl "Model for a partial HEMS control"
   Electrical.Interfaces.SystemControlBus sigBusEle annotation (Placement(
         transformation(extent={{-116,-14},{-84,14}}), iconTransformation(extent=
            {{-116,-14},{-84,14}})));
+  Interfaces.UseProBus                useProBus annotation (
+      Placement(transformation(extent={{-80,78},{-38,124}}),
+        iconTransformation(extent={{-74,88},{-48,114}})));
+  Interfaces.BuiMeaBus                buiMeaBus annotation (
+      Placement(transformation(extent={{36,82},{82,120}}), iconTransformation(
+          extent={{44,88},{72,114}})));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
