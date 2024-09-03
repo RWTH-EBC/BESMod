@@ -38,9 +38,9 @@ In class Modelica.Units.SI.
   Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
 Used in base-class hydraulic.transfer.val.PartialTwoPortInterface.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/BaseClasses/PartialResistance.mo, line 3
-The model has the same number of unknowns and equations: 3806
+The model has the same number of unknowns and equations: 3842
 The model has the same number of unknowns and equations
-for the given numerical settings of parameters: 3806
+for the given numerical settings of parameters: 3842
 Check of BESMod.Examples.GasBoilerBuildingOnly successful.
 Warning: WARNINGS have been issued.
 Declaring variable: Boolean rCheck ;
@@ -92,27 +92,27 @@ In class Modelica.Units.SI.
   Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
 Used in base-class hydraulic.transfer.val.PartialTwoPortInterface.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/BaseClasses/PartialResistance.mo, line 3
-The DAE has 3806 scalar unknowns and 3806 scalar equations.
+The DAE has 3842 scalar unknowns and 3842 scalar equations.
  
 Statistics
  
 Original Model
-  Number of components: 750
-  Variables: 6418
+  Number of components: 761
+  Variables: 6469
   Constants: 133 (133 scalars)
-  Parameters: 2980 (4540 scalars)
-  Unknowns: 3305 (3857 scalars)
-  Differentiated variables: 52 scalars
-  Equations: 2958
-  Nontrivial: 2539
+  Parameters: 3004 (4565 scalars)
+  Unknowns: 3332 (3893 scalars)
+  Differentiated variables: 53 scalars
+  Equations: 2989
+  Nontrivial: 2566
 Translated Model
-  Constants: 2528 scalars
-  Free parameters: 857 scalars
-  Parameter depending: 1751 scalars
-  Outputs: 30 scalars
-  Continuous time states: 41 scalars
-  Time-varying variables: 997 scalars
-  Alias variables: 2397 scalars
+  Constants: 2550 scalars
+  Free parameters: 861 scalars
+  Parameter depending: 1752 scalars
+  Outputs: 31 scalars
+  Continuous time states: 42 scalars
+  Time-varying variables: 1010 scalars
+  Alias variables: 2418 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 4, 4, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0}
@@ -135,6 +135,7 @@ Statically selected continuous time states
   building.intKPICalTraGain[1].integrator2.y
   building.intKPICalTraLoss2[1].integrator2.y
   building.intKPICalTraLoss[1].integrator2.y
+  building.roomControlCalculator[1].intDisCom.y
   building.thermalZone[1].ROM.extWallRC.thermCapExt[1].T
   building.thermalZone[1].ROM.floorRC.thermCapExt[1].T
   building.thermalZone[1].ROM.intWallRC.thermCapInt[1].T
@@ -269,7 +270,7 @@ Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHP
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-The model has the same number of unknowns and equations: 12794
+The model has the same number of unknowns and equations: 12832
 Check of BESMod.Examples.SolarThermalSystem.SolarThermalAixLib successful.
 Warning: WARNINGS have been issued.
 Declaring variable: Boolean rCheck ;
@@ -375,7 +376,7 @@ Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHP
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-The DAE has 12794 scalar unknowns and 12794 scalar equations.
+The DAE has 12832 scalar unknowns and 12832 scalar equations.
 Redundant consistent initial conditions.
 Removed the following equations which are redundant and consistent: 
   if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
@@ -415,22 +416,22 @@ Warning:   assert(hydraulic.generation.heatPump.eva.preDro.homotopyInitializatio
 Statistics
  
 Original Model
-  Number of components: 2549
-  Variables: 29168
+  Number of components: 2561
+  Variables: 29226
   Constants: 535 (535 scalars)
-  Parameters: 13424 (14978 scalars)
-  Unknowns: 15209 (13116 scalars)
-  Differentiated variables: 330 scalars
-  Equations: 12250
-  Nontrivial: 9638
+  Parameters: 13453 (15008 scalars)
+  Unknowns: 15238 (13154 scalars)
+  Differentiated variables: 331 scalars
+  Equations: 12287
+  Nontrivial: 9671
 Translated Model
-  Constants: 11658 scalars
-  Free parameters: 1593 scalars
-  Parameter depending: 4389 scalars
-  Outputs: 59 scalars
-  Continuous time states: 237 scalars
-  Time-varying variables: 3098 scalars
-  Alias variables: 7891 scalars
+  Constants: 11685 scalars
+  Free parameters: 1597 scalars
+  Parameter depending: 4390 scalars
+  Outputs: 60 scalars
+  Continuous time states: 238 scalars
+  Time-varying variables: 3111 scalars
+  Alias variables: 7914 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,   3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 3, 2, 2, 2, 2, 2,   2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 3, 2, 2, 4, 4, 2, 2}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
@@ -455,6 +456,7 @@ Statically selected continuous time states
   building.intKPICalTraGain[1].integrator2.y
   building.intKPICalTraLoss2[1].integrator2.y
   building.intKPICalTraLoss[1].integrator2.y
+  building.roomControlCalculator[1].intDisCom.y
   building.thermalZone[1].ROM.extWallRC.thermCapExt[1].T
   building.thermalZone[1].ROM.floorRC.thermCapExt[1].T
   building.thermalZone[1].ROM.intWallRC.thermCapInt[1].T
@@ -717,14 +719,14 @@ In class Modelica.Units.SI.
   Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
 Used in base-class hydraulic.generation.boi.pressureDrop.PartialTwoPortInterface.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
-Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.nSet is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TConInMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-The model has the same number of unknowns and equations: 6418
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TConInMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.nSet is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+The model has the same number of unknowns and equations: 6456
 The model has the same number of unknowns and equations
-for the given numerical settings of parameters: 6418
+for the given numerical settings of parameters: 6456
 Check of BESMod.Examples.HeatPumpAndBoiler.Parallel successful.
 Warning: WARNINGS have been issued.
 Declaring variable: Boolean rCheck ;
@@ -762,12 +764,12 @@ In class Modelica.Units.SI.
   Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
 Used in base-class hydraulic.generation.boi.pressureDrop.PartialTwoPortInterface.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
-Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.nSet is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TConInMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-The DAE has 6418 scalar unknowns and 6418 scalar equations.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TConInMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.nSet is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+The DAE has 6456 scalar unknowns and 6456 scalar equations.
 Redundant consistent initial conditions.
 Removed the following equations which are redundant and consistent: 
   if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
@@ -809,22 +811,22 @@ Ignoring range
 Statistics
  
 Original Model
-  Number of components: 1292
-  Variables: 12077
+  Number of components: 1304
+  Variables: 12135
   Constants: 233 (234 scalars)
-  Parameters: 5414 (7132 scalars)
-  Unknowns: 6430 (6578 scalars)
-  Differentiated variables: 108 scalars
-  Equations: 5339
-  Nontrivial: 4439
+  Parameters: 5443 (7162 scalars)
+  Unknowns: 6459 (6616 scalars)
+  Differentiated variables: 109 scalars
+  Equations: 5376
+  Nontrivial: 4472
 Translated Model
-  Constants: 4949 scalars
-  Free parameters: 1168 scalars
-  Parameter depending: 2348 scalars
-  Outputs: 46 scalars
-  Continuous time states: 78 scalars
-  Time-varying variables: 1534 scalars
-  Alias variables: 3945 scalars
+  Constants: 4976 scalars
+  Free parameters: 1172 scalars
+  Parameter depending: 2349 scalars
+  Outputs: 47 scalars
+  Continuous time states: 79 scalars
+  Time-varying variables: 1547 scalars
+  Alias variables: 3968 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 4, 4, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0}
@@ -851,6 +853,7 @@ Statically selected continuous time states
   building.intKPICalTraLoss[1].integrator2.y
   building.intKPICalVentGain[1].integrator2.y
   building.intKPICalVentLoss[1].integrator2.y
+  building.roomControlCalculator[1].intDisCom.y
   building.thermalZone[1].ROM.extWallRC.thermCapExt[1].T
   building.thermalZone[1].ROM.floorRC.thermCapExt[1].T
   building.thermalZone[1].ROM.intWallRC.thermCapInt[1].T
@@ -936,7 +939,7 @@ Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHP
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-The model has the same number of unknowns and equations: 7656
+The model has the same number of unknowns and equations: 7664
 Check of BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom successful.
 Warning: WARNINGS have been issued.
 Declaring variable: Boolean rCheck ;
@@ -957,7 +960,7 @@ Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHP
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-The DAE has 7656 scalar unknowns and 7656 scalar equations.
+The DAE has 7664 scalar unknowns and 7664 scalar equations.
 Redundant consistent initial conditions.
 Removed the following equations which are redundant and consistent: 
   electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.EAva    +electrical.distribution.batterySimple.EBou;
@@ -1005,22 +1008,22 @@ Warning:   assert(hydraulic.generation.heatPump.eva.preDro.homotopyInitializatio
 Statistics
  
 Original Model
-  Number of components: 1790
-  Variables: 20194
+  Number of components: 1791
+  Variables: 20201
   Constants: 708 (708 scalars)
-  Parameters: 11497 (15548 scalars)
-  Unknowns: 7989 (7901 scalars)
+  Parameters: 11502 (15553 scalars)
+  Unknowns: 7991 (7909 scalars)
   Differentiated variables: 161 scalars
-  Equations: 6172
-  Nontrivial: 5163
+  Equations: 6180
+  Nontrivial: 5171
 Translated Model
-  Constants: 10020 scalars
+  Constants: 10025 scalars
   Free parameters: 1527 scalars
   Parameter depending: 6069 scalars
   Outputs: 37 scalars
   Continuous time states: 131 scalars
   Time-varying variables: 1849 scalars
-  Alias variables: 4692 scalars
+  Alias variables: 4700 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 35, 6, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 19}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
@@ -1212,7 +1215,7 @@ Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHP
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-The model has the same number of unknowns and equations: 6843
+The model has the same number of unknowns and equations: 6881
 Check of BESMod.Examples.Retrofit.Case1PartialRetrofit successful.
 Warning: WARNINGS have been issued.
 Declaring variable: Boolean rCheck ;
@@ -1262,7 +1265,7 @@ Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHP
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-The DAE has 6843 scalar unknowns and 6843 scalar equations.
+The DAE has 6881 scalar unknowns and 6881 scalar equations.
 Redundant consistent initial conditions.
 Removed the following equations which are redundant and consistent: 
   if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
@@ -1302,22 +1305,22 @@ Warning:   assert(hydraulic.generation.heatPump.eva.preDro.homotopyInitializatio
 Statistics
  
 Original Model
-  Number of components: 1413
-  Variables: 13488
+  Number of components: 1425
+  Variables: 13546
   Constants: 231 (231 scalars)
-  Parameters: 6319 (8000 scalars)
-  Unknowns: 6938 (6983 scalars)
-  Differentiated variables: 133 scalars
-  Equations: 5833
-  Nontrivial: 4840
+  Parameters: 6348 (8030 scalars)
+  Unknowns: 6967 (7021 scalars)
+  Differentiated variables: 134 scalars
+  Equations: 5870
+  Nontrivial: 4873
 Translated Model
-  Constants: 5337 scalars
-  Free parameters: 1181 scalars
-  Parameter depending: 2807 scalars
-  Outputs: 43 scalars
-  Continuous time states: 104 scalars
-  Time-varying variables: 1668 scalars
-  Alias variables: 4221 scalars
+  Constants: 5364 scalars
+  Free parameters: 1185 scalars
+  Parameter depending: 2808 scalars
+  Outputs: 44 scalars
+  Continuous time states: 105 scalars
+  Time-varying variables: 1681 scalars
+  Alias variables: 4244 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 3, 3, 2, 2, 2, 2, 3, 2, 2, 4, 2, 2, 4, 3, 2, 2,   2, 2, 4, 3, 2, 2, 4, 3, 2, 2, 2, 2, 2, 2, 4, 3, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
@@ -1342,6 +1345,7 @@ Statically selected continuous time states
   building.intKPICalTraGain[1].integrator2.y
   building.intKPICalTraLoss2[1].integrator2.y
   building.intKPICalTraLoss[1].integrator2.y
+  building.roomControlCalculator[1].intDisCom.y
   building.thermalZone[1].ROM.extWallRC.thermCapExt[1].T
   building.thermalZone[1].ROM.floorRC.thermCapExt[1].T
   building.thermalZone[1].ROM.intWallRC.thermCapInt[1].T
@@ -1532,7 +1536,7 @@ Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHP
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-The model has the same number of unknowns and equations: 13260
+The model has the same number of unknowns and equations: 13298
 Check of BESMod.Examples.SolarThermalSystem.SolarThermalBuildings successful.
 Warning: WARNINGS have been issued.
 Declaring variable: Boolean rCheck ;
@@ -1631,7 +1635,7 @@ Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHP
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-The DAE has 13260 scalar unknowns and 13260 scalar equations.
+The DAE has 13298 scalar unknowns and 13298 scalar equations.
 Redundant consistent initial conditions.
 Removed the following equations which are redundant and consistent: 
   if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
@@ -1671,22 +1675,22 @@ Warning:   assert(hydraulic.generation.heatPump.eva.preDro.homotopyInitializatio
 Statistics
  
 Original Model
-  Number of components: 2619
-  Variables: 30009
+  Number of components: 2631
+  Variables: 30067
   Constants: 562 (562 scalars)
-  Parameters: 13694 (15226 scalars)
-  Unknowns: 15753 (13590 scalars)
-  Differentiated variables: 336 scalars
-  Equations: 12592
-  Nontrivial: 9892
+  Parameters: 13723 (15256 scalars)
+  Unknowns: 15782 (13628 scalars)
+  Differentiated variables: 337 scalars
+  Equations: 12629
+  Nontrivial: 9925
 Translated Model
-  Constants: 11967 scalars
-  Free parameters: 1603 scalars
-  Parameter depending: 4319 scalars
-  Outputs: 57 scalars
-  Continuous time states: 239 scalars
-  Time-varying variables: 3297 scalars
-  Alias variables: 8192 scalars
+  Constants: 11994 scalars
+  Free parameters: 1607 scalars
+  Parameter depending: 4320 scalars
+  Outputs: 58 scalars
+  Continuous time states: 240 scalars
+  Time-varying variables: 3310 scalars
+  Alias variables: 8215 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,   3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 3, 2, 2, 2, 2, 2,   2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 3, 2, 2, 4, 4, 2, 2}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
@@ -1711,6 +1715,7 @@ Statically selected continuous time states
   building.intKPICalTraGain[1].integrator2.y
   building.intKPICalTraLoss2[1].integrator2.y
   building.intKPICalTraLoss[1].integrator2.y
+  building.roomControlCalculator[1].intDisCom.y
   building.thermalZone[1].ROM.extWallRC.thermCapExt[1].T
   building.thermalZone[1].ROM.floorRC.thermCapExt[1].T
   building.thermalZone[1].ROM.intWallRC.thermCapInt[1].T
@@ -2036,7 +2041,7 @@ Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHP
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-The model has the same number of unknowns and equations: 8682
+The model has the same number of unknowns and equations: 8720
 Check of BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW successful.
 Warning: WARNINGS have been issued.
 Declaring variable: Boolean rCheck ;
@@ -2135,7 +2140,7 @@ Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHP
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-The DAE has 8682 scalar unknowns and 8682 scalar equations.
+The DAE has 8720 scalar unknowns and 8720 scalar equations.
 Redundant consistent initial conditions.
 Removed the following equations which are redundant and consistent: 
   if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
@@ -2181,22 +2186,22 @@ Ignoring range
 Statistics
  
 Original Model
-  Number of components: 1778
-  Variables: 18240
+  Number of components: 1790
+  Variables: 18298
   Constants: 298 (299 scalars)
-  Parameters: 8656 (10455 scalars)
-  Unknowns: 9286 (8907 scalars)
-  Differentiated variables: 187 scalars
-  Equations: 7526
-  Nontrivial: 6172
+  Parameters: 8685 (10485 scalars)
+  Unknowns: 9315 (8945 scalars)
+  Differentiated variables: 188 scalars
+  Equations: 7563
+  Nontrivial: 6205
 Translated Model
-  Constants: 7002 scalars
-  Free parameters: 1385 scalars
-  Parameter depending: 3723 scalars
-  Outputs: 46 scalars
-  Continuous time states: 144 scalars
-  Time-varying variables: 2139 scalars
-  Alias variables: 5412 scalars
+  Constants: 7029 scalars
+  Free parameters: 1389 scalars
+  Parameter depending: 3724 scalars
+  Outputs: 47 scalars
+  Continuous time states: 145 scalars
+  Time-varying variables: 2152 scalars
+  Alias variables: 5435 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 3, 3, 2, 2, 2, 2, 3, 4, 3, 2, 2, 2, 2, 4, 3, 2,   2, 2, 2, 2, 2, 2, 2, 4, 3, 4, 3, 2, 2, 2, 2, 4, 2, 2, 15, 4, 3, 2, 2, 2, 2, 4,   3, 2, 2, 4, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0}
@@ -2223,6 +2228,7 @@ Statically selected continuous time states
   building.intKPICalTraLoss[1].integrator2.y
   building.intKPICalVentGain[1].integrator2.y
   building.intKPICalVentLoss[1].integrator2.y
+  building.roomControlCalculator[1].intDisCom.y
   building.thermalZone[1].ROM.extWallRC.thermCapExt[1].T
   building.thermalZone[1].ROM.floorRC.thermCapExt[1].T
   building.thermalZone[1].ROM.intWallRC.thermCapInt[1].T
@@ -2388,9 +2394,9 @@ Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHP
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-The model has the same number of unknowns and equations: 5921
+The model has the same number of unknowns and equations: 5959
 The model has the same number of unknowns and equations
-for the given numerical settings of parameters: 5921
+for the given numerical settings of parameters: 5959
 Check of BESMod.Examples.DesignOptimization.BES successful.
 Warning: WARNINGS have been issued.
 Declaring variable: Boolean rCheck ;
@@ -2426,7 +2432,7 @@ Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHP
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-The DAE has 5921 scalar unknowns and 5921 scalar equations.
+The DAE has 5959 scalar unknowns and 5959 scalar equations.
 Redundant consistent initial conditions.
 Removed the following equations which are redundant and consistent: 
   if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
@@ -2462,22 +2468,22 @@ Warning:   assert(hydraulic.generation.heatPump.eva.preDro.homotopyInitializatio
 Statistics
  
 Original Model
-  Number of components: 1205
-  Variables: 10990
+  Number of components: 1217
+  Variables: 11048
   Constants: 221 (221 scalars)
-  Parameters: 4903 (6578 scalars)
-  Unknowns: 5866 (6044 scalars)
-  Differentiated variables: 99 scalars
-  Equations: 5001
-  Nontrivial: 4141
+  Parameters: 4932 (6608 scalars)
+  Unknowns: 5895 (6082 scalars)
+  Differentiated variables: 100 scalars
+  Equations: 5038
+  Nontrivial: 4174
 Translated Model
-  Constants: 4562 scalars
-  Free parameters: 1078 scalars
-  Parameter depending: 2156 scalars
-  Outputs: 45 scalars
-  Continuous time states: 71 scalars
-  Time-varying variables: 1427 scalars
-  Alias variables: 3620 scalars
+  Constants: 4589 scalars
+  Free parameters: 1082 scalars
+  Parameter depending: 2157 scalars
+  Outputs: 46 scalars
+  Continuous time states: 72 scalars
+  Time-varying variables: 1440 scalars
+  Alias variables: 3643 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 4, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0}
@@ -2502,6 +2508,7 @@ Statically selected continuous time states
   building.intKPICalTraGain[1].integrator2.y
   building.intKPICalTraLoss2[1].integrator2.y
   building.intKPICalTraLoss[1].integrator2.y
+  building.roomControlCalculator[1].intDisCom.y
   building.thermalZone[1].ROM.extWallRC.thermCapExt[1].T
   building.thermalZone[1].ROM.floorRC.thermCapExt[1].T
   building.thermalZone[1].ROM.intWallRC.thermCapInt[1].T
@@ -2596,18 +2603,18 @@ Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHP
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-The DAE has 19426 scalar unknowns and 19426 scalar equations.
+The DAE has 19468 scalar unknowns and 19468 scalar equations.
 After eliminating unused variables:
   building.thermOutside.T
  
 The model could not be deduced to be symbolically well-posed.
 The model has
-  18796+6*size(hydraulic.control.safCtr.operationalEnvelope.tableMerge, 1)+4*size(  hydraulic.control.safetyControl.tableUpp, 1)+6*size(hydraulic.control.safCtr.operationalEnvelope.boundaryMap.tableMerge,   1)+20*hydraulic.transfer.parRad.nEle+2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children1.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bath.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.airload.dynBal.nPorts  +max([size(userProfiles.tabIntGai.columns, 1); size(userProfiles.tabIntGai.offset,   1)])+max([size(userProfiles.tabNatVen.columns, 1); size(userProfiles.tabNatVen.offset,   1)])+max([size(userProfiles.TSet.columns, 1); size(userProfiles.TSet.offset, 1)])  +DHW.calcmFlow.multiProduct.nu+DHW.pump.vol.dynBal.nPorts+max([4; size(  DHW.combiTimeTableDHWInput.offset, 1)])+13*systemParameters.nZones+2*  hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n1  +2*hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n2  +2*hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n3  +hydraulic.generation.heatPump.con.vol.dynBal.nPorts+2*hydraulic.generation.heatPump.eva.vol.dynBal.nPorts  +hydraulic.generation.pump.vol.dynBal.nPorts+hydraulic.generation.multiSum.nu+  hydraulic.generation.eleHea.vol.dynBal.nPorts+size(hydraulic.control.safCtr.operationalEnvelope.boundaryMap.uppCombiTable1Ds.columns,   1)+hydraulic.control.safCtr.operationalEnvelope.boundaryMap.nor1.nu+  hydraulic.control.safCtr.onOffController.orSetN.nu+hydraulic.control.anyGenDevIsOn.nu  +hydraulic.control.buiAndDHWCtr.orDHW.nu+hydraulic.control.buiAndDHWCtr.maxSecHeaGen.nu  +hydraulic.control.buiAndDHWCtr.secGenOn.nu+hydraulic.distribution.stoDHW.layer[1].dynBal.nPorts  +hydraulic.distribution.stoDHW.layer[2].dynBal.nPorts+hydraulic.distribution.stoDHW.layer[3].dynBal.nPorts  +hydraulic.distribution.stoDHW.layer[4].dynBal.nPorts+hydraulic.distribution.stoDHW.layer_HE[1].dynBal.nPorts  +hydraulic.distribution.stoDHW.layer_HE[2].dynBal.nPorts+hydraulic.distribution.stoDHW.layer_HE[3].dynBal.nPorts  +hydraulic.distribution.stoDHW.layer_HE[4].dynBal.nPorts+hydraulic.distribution.stoBuf.layer[1].dynBal.nPorts  +hydraulic.distribution.stoBuf.layer[2].dynBal.nPorts+hydraulic.distribution.stoBuf.layer[3].dynBal.nPorts  +hydraulic.distribution.stoBuf.layer[4].dynBal.nPorts+hydraulic.distribution.stoBuf.layer_HE[1].dynBal.nPorts  +hydraulic.distribution.stoBuf.layer_HE[2].dynBal.nPorts+hydraulic.distribution.stoBuf.layer_HE[3].dynBal.nPorts  +hydraulic.distribution.stoBuf.layer_HE[4].dynBal.nPorts+hydraulic.distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.nPorts  +hydraulic.transfer.rad[1].sumCon.nin+hydraulic.transfer.rad[1].sumRad.nin+  hydraulic.transfer.rad[1].vol[1].dynBal.nPorts+hydraulic.transfer.rad[1].vol[2].dynBal.nPorts  +hydraulic.transfer.rad[1].vol[3].dynBal.nPorts+hydraulic.transfer.rad[1].vol[4].dynBal.nPorts  +hydraulic.transfer.rad[1].vol[5].dynBal.nPorts+hydraulic.transfer.rad[2].sumCon.nin  +hydraulic.transfer.rad[2].sumRad.nin+hydraulic.transfer.rad[2].vol[1].dynBal.nPorts  +hydraulic.transfer.rad[2].vol[2].dynBal.nPorts+hydraulic.transfer.rad[2].vol[3].dynBal.nPorts  +hydraulic.transfer.rad[2].vol[4].dynBal.nPorts+hydraulic.transfer.rad[2].vol[5].dynBal.nPorts  +hydraulic.transfer.rad[3].sumCon.nin+hydraulic.transfer.rad[3].sumRad.nin+  hydraulic.transfer.rad[3].vol[1].dynBal.nPorts+hydraulic.transfer.rad[3].vol[2].dynBal.nPorts  +hydraulic.transfer.rad[3].vol[3].dynBal.nPorts+hydraulic.transfer.rad[3].vol[4].dynBal.nPorts  +hydraulic.transfer.rad[3].vol[5].dynBal.nPorts+hydraulic.transfer.rad[4].sumCon.nin  +hydraulic.transfer.rad[4].sumRad.nin+hydraulic.transfer.rad[4].vol[1].dynBal.nPorts  +hydraulic.transfer.rad[4].vol[2].dynBal.nPorts+hydraulic.transfer.rad[4].vol[3].dynBal.nPorts  +hydraulic.transfer.rad[4].vol[4].dynBal.nPorts+hydraulic.transfer.rad[4].vol[5].dynBal.nPorts  +hydraulic.transfer.rad[5].sumCon.nin+hydraulic.transfer.rad[5].sumRad.nin+  hydraulic.transfer.rad[5].vol[1].dynBal.nPorts+hydraulic.transfer.rad[5].vol[2].dynBal.nPorts  +hydraulic.transfer.rad[5].vol[3].dynBal.nPorts+hydraulic.transfer.rad[5].vol[4].dynBal.nPorts  +hydraulic.transfer.rad[5].vol[5].dynBal.nPorts+hydraulic.transfer.rad[6].sumCon.nin  +hydraulic.transfer.rad[6].sumRad.nin+hydraulic.transfer.rad[6].vol[1].dynBal.nPorts  +hydraulic.transfer.rad[6].vol[2].dynBal.nPorts+hydraulic.transfer.rad[6].vol[3].dynBal.nPorts  +hydraulic.transfer.rad[6].vol[4].dynBal.nPorts+hydraulic.transfer.rad[6].vol[5].dynBal.nPorts  +hydraulic.transfer.rad[7].sumCon.nin+hydraulic.transfer.rad[7].sumRad.nin+  hydraulic.transfer.rad[7].vol[1].dynBal.nPorts+hydraulic.transfer.rad[7].vol[2].dynBal.nPorts  +hydraulic.transfer.rad[7].vol[3].dynBal.nPorts+hydraulic.transfer.rad[7].vol[4].dynBal.nPorts  +hydraulic.transfer.rad[7].vol[5].dynBal.nPorts+hydraulic.transfer.rad[8].sumCon.nin  +hydraulic.transfer.rad[8].sumRad.nin+hydraulic.transfer.rad[8].vol[1].dynBal.nPorts  +hydraulic.transfer.rad[8].vol[2].dynBal.nPorts+hydraulic.transfer.rad[8].vol[3].dynBal.nPorts  +hydraulic.transfer.rad[8].vol[4].dynBal.nPorts+hydraulic.transfer.rad[8].vol[5].dynBal.nPorts  +hydraulic.transfer.rad[9].sumCon.nin+hydraulic.transfer.rad[9].sumRad.nin+  hydraulic.transfer.rad[9].vol[1].dynBal.nPorts+hydraulic.transfer.rad[9].vol[2].dynBal.nPorts  +hydraulic.transfer.rad[9].vol[3].dynBal.nPorts+hydraulic.transfer.rad[9].vol[4].dynBal.nPorts  +hydraulic.transfer.rad[9].vol[5].dynBal.nPorts+hydraulic.transfer.rad[10].sumCon.nin  +hydraulic.transfer.rad[10].sumRad.nin+hydraulic.transfer.rad[10].vol[1].dynBal.nPorts  +hydraulic.transfer.rad[10].vol[2].dynBal.nPorts+hydraulic.transfer.rad[10].vol[3].dynBal.nPorts  +hydraulic.transfer.rad[10].vol[4].dynBal.nPorts+hydraulic.transfer.rad[10].vol[5].dynBal.nPorts  +hydraulic.transfer.pumFixMFlo[1].vol.dynBal.nPorts+hydraulic.transfer.pumFixMFlo[2].vol.dynBal.nPorts  +hydraulic.transfer.pumFixMFlo[3].vol.dynBal.nPorts+hydraulic.transfer.pumFixMFlo[4].vol.dynBal.nPorts  +hydraulic.transfer.pumFixMFlo[5].vol.dynBal.nPorts+hydraulic.transfer.pumFixMFlo[6].vol.dynBal.nPorts  +hydraulic.transfer.pumFixMFlo[7].vol.dynBal.nPorts+hydraulic.transfer.pumFixMFlo[8].vol.dynBal.nPorts  +hydraulic.transfer.pumFixMFlo[9].vol.dynBal.nPorts+hydraulic.transfer.pumFixMFlo[10].vol.dynBal.nPorts
+  18828+6*size(hydraulic.control.safCtr.operationalEnvelope.tableMerge, 1)+4*size(  hydraulic.control.safetyControl.tableUpp, 1)+6*size(hydraulic.control.safCtr.operationalEnvelope.boundaryMap.tableMerge,   1)+20*hydraulic.transfer.parRad.nEle+2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children1.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bath.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.airload.dynBal.nPorts  +max([size(userProfiles.tabIntGai.columns, 1); size(userProfiles.tabIntGai.offset,   1)])+max([size(userProfiles.tabNatVen.columns, 1); size(userProfiles.tabNatVen.offset,   1)])+max([size(userProfiles.TSet.columns, 1); size(userProfiles.TSet.offset, 1)])  +DHW.calcmFlow.multiProduct.nu+DHW.pump.vol.dynBal.nPorts+max([4; size(  DHW.combiTimeTableDHWInput.offset, 1)])+14*systemParameters.nZones+2*  hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n1  +2*hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n2  +2*hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n3  +hydraulic.generation.heatPump.con.vol.dynBal.nPorts+2*hydraulic.generation.heatPump.eva.vol.dynBal.nPorts  +hydraulic.generation.pump.vol.dynBal.nPorts+hydraulic.generation.multiSum.nu+  hydraulic.generation.eleHea.vol.dynBal.nPorts+size(hydraulic.control.safCtr.operationalEnvelope.boundaryMap.uppCombiTable1Ds.columns,   1)+hydraulic.control.safCtr.operationalEnvelope.boundaryMap.nor1.nu+  hydraulic.control.safCtr.onOffController.orSetN.nu+hydraulic.control.anyGenDevIsOn.nu  +hydraulic.control.buiAndDHWCtr.orDHW.nu+hydraulic.control.buiAndDHWCtr.maxSecHeaGen.nu  +hydraulic.control.buiAndDHWCtr.secGenOn.nu+hydraulic.distribution.stoDHW.layer[1].dynBal.nPorts  +hydraulic.distribution.stoDHW.layer[2].dynBal.nPorts+hydraulic.distribution.stoDHW.layer[3].dynBal.nPorts  +hydraulic.distribution.stoDHW.layer[4].dynBal.nPorts+hydraulic.distribution.stoDHW.layer_HE[1].dynBal.nPorts  +hydraulic.distribution.stoDHW.layer_HE[2].dynBal.nPorts+hydraulic.distribution.stoDHW.layer_HE[3].dynBal.nPorts  +hydraulic.distribution.stoDHW.layer_HE[4].dynBal.nPorts+hydraulic.distribution.stoBuf.layer[1].dynBal.nPorts  +hydraulic.distribution.stoBuf.layer[2].dynBal.nPorts+hydraulic.distribution.stoBuf.layer[3].dynBal.nPorts  +hydraulic.distribution.stoBuf.layer[4].dynBal.nPorts+hydraulic.distribution.stoBuf.layer_HE[1].dynBal.nPorts  +hydraulic.distribution.stoBuf.layer_HE[2].dynBal.nPorts+hydraulic.distribution.stoBuf.layer_HE[3].dynBal.nPorts  +hydraulic.distribution.stoBuf.layer_HE[4].dynBal.nPorts+hydraulic.distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.nPorts  +hydraulic.transfer.rad[1].sumCon.nin+hydraulic.transfer.rad[1].sumRad.nin+  hydraulic.transfer.rad[1].vol[1].dynBal.nPorts+hydraulic.transfer.rad[1].vol[2].dynBal.nPorts  +hydraulic.transfer.rad[1].vol[3].dynBal.nPorts+hydraulic.transfer.rad[1].vol[4].dynBal.nPorts  +hydraulic.transfer.rad[1].vol[5].dynBal.nPorts+hydraulic.transfer.rad[2].sumCon.nin  +hydraulic.transfer.rad[2].sumRad.nin+hydraulic.transfer.rad[2].vol[1].dynBal.nPorts  +hydraulic.transfer.rad[2].vol[2].dynBal.nPorts+hydraulic.transfer.rad[2].vol[3].dynBal.nPorts  +hydraulic.transfer.rad[2].vol[4].dynBal.nPorts+hydraulic.transfer.rad[2].vol[5].dynBal.nPorts  +hydraulic.transfer.rad[3].sumCon.nin+hydraulic.transfer.rad[3].sumRad.nin+  hydraulic.transfer.rad[3].vol[1].dynBal.nPorts+hydraulic.transfer.rad[3].vol[2].dynBal.nPorts  +hydraulic.transfer.rad[3].vol[3].dynBal.nPorts+hydraulic.transfer.rad[3].vol[4].dynBal.nPorts  +hydraulic.transfer.rad[3].vol[5].dynBal.nPorts+hydraulic.transfer.rad[4].sumCon.nin  +hydraulic.transfer.rad[4].sumRad.nin+hydraulic.transfer.rad[4].vol[1].dynBal.nPorts  +hydraulic.transfer.rad[4].vol[2].dynBal.nPorts+hydraulic.transfer.rad[4].vol[3].dynBal.nPorts  +hydraulic.transfer.rad[4].vol[4].dynBal.nPorts+hydraulic.transfer.rad[4].vol[5].dynBal.nPorts  +hydraulic.transfer.rad[5].sumCon.nin+hydraulic.transfer.rad[5].sumRad.nin+  hydraulic.transfer.rad[5].vol[1].dynBal.nPorts+hydraulic.transfer.rad[5].vol[2].dynBal.nPorts  +hydraulic.transfer.rad[5].vol[3].dynBal.nPorts+hydraulic.transfer.rad[5].vol[4].dynBal.nPorts  +hydraulic.transfer.rad[5].vol[5].dynBal.nPorts+hydraulic.transfer.rad[6].sumCon.nin  +hydraulic.transfer.rad[6].sumRad.nin+hydraulic.transfer.rad[6].vol[1].dynBal.nPorts  +hydraulic.transfer.rad[6].vol[2].dynBal.nPorts+hydraulic.transfer.rad[6].vol[3].dynBal.nPorts  +hydraulic.transfer.rad[6].vol[4].dynBal.nPorts+hydraulic.transfer.rad[6].vol[5].dynBal.nPorts  +hydraulic.transfer.rad[7].sumCon.nin+hydraulic.transfer.rad[7].sumRad.nin+  hydraulic.transfer.rad[7].vol[1].dynBal.nPorts+hydraulic.transfer.rad[7].vol[2].dynBal.nPorts  +hydraulic.transfer.rad[7].vol[3].dynBal.nPorts+hydraulic.transfer.rad[7].vol[4].dynBal.nPorts  +hydraulic.transfer.rad[7].vol[5].dynBal.nPorts+hydraulic.transfer.rad[8].sumCon.nin  +hydraulic.transfer.rad[8].sumRad.nin+hydraulic.transfer.rad[8].vol[1].dynBal.nPorts  +hydraulic.transfer.rad[8].vol[2].dynBal.nPorts+hydraulic.transfer.rad[8].vol[3].dynBal.nPorts  +hydraulic.transfer.rad[8].vol[4].dynBal.nPorts+hydraulic.transfer.rad[8].vol[5].dynBal.nPorts  +hydraulic.transfer.rad[9].sumCon.nin+hydraulic.transfer.rad[9].sumRad.nin+  hydraulic.transfer.rad[9].vol[1].dynBal.nPorts+hydraulic.transfer.rad[9].vol[2].dynBal.nPorts  +hydraulic.transfer.rad[9].vol[3].dynBal.nPorts+hydraulic.transfer.rad[9].vol[4].dynBal.nPorts  +hydraulic.transfer.rad[9].vol[5].dynBal.nPorts+hydraulic.transfer.rad[10].sumCon.nin  +hydraulic.transfer.rad[10].sumRad.nin+hydraulic.transfer.rad[10].vol[1].dynBal.nPorts  +hydraulic.transfer.rad[10].vol[2].dynBal.nPorts+hydraulic.transfer.rad[10].vol[3].dynBal.nPorts  +hydraulic.transfer.rad[10].vol[4].dynBal.nPorts+hydraulic.transfer.rad[10].vol[5].dynBal.nPorts  +hydraulic.transfer.pumFixMFlo[1].vol.dynBal.nPorts+hydraulic.transfer.pumFixMFlo[2].vol.dynBal.nPorts  +hydraulic.transfer.pumFixMFlo[3].vol.dynBal.nPorts+hydraulic.transfer.pumFixMFlo[4].vol.dynBal.nPorts  +hydraulic.transfer.pumFixMFlo[5].vol.dynBal.nPorts+hydraulic.transfer.pumFixMFlo[6].vol.dynBal.nPorts  +hydraulic.transfer.pumFixMFlo[7].vol.dynBal.nPorts+hydraulic.transfer.pumFixMFlo[8].vol.dynBal.nPorts  +hydraulic.transfer.pumFixMFlo[9].vol.dynBal.nPorts+hydraulic.transfer.pumFixMFlo[10].vol.dynBal.nPorts
 scalar unknowns and
-  18364+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.outside_wall1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.outside_wall2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.outside_wall2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.outside_wall2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.inside_wall1a.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.inside_wall2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.Ceiling.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.floor.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.inside_wall1b.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.outside_wall1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.outside_wall2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.outside_wall2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.outside_wall2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.inside_wall1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.inside_wall2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.Ceiling.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.floor.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.outside_wall1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.outside_wall2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.outside_wall2.Door.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.outside_wall2.Door.twoStar_RadEx1.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.outside_wall2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.outside_wall2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.inside_wall1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.inside_wall2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.Ceiling.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.floor.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.outside_wall1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.outside_wall2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.outside_wall2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.outside_wall2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.inside_wall1a.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.inside_wall2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.Ceiling.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.floor.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.inside_wall1b.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.outside_wall1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.outside_wall1.Door.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.outside_wall1.Door.twoStar_RadEx1.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.inside_wall1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.inside_wall2a.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.inside_wall3.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.Ceiling.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.floor.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.inside_wall2b.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.outside_wall1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.outside_wall2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.outside_wall2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.outside_wall2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.inside_wall1a.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.inside_wall2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.Ceiling.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.floor.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.roof.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.roof.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.roof.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.inside_wall1b.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children1.outside_wall1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children1.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children1.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children1.outside_wall2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children1.outside_wall2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children1.outside_wall2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children1.inside_wall1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children1.inside_wall2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children1.Ceiling.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children1.floor.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children1.roof.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children1.roof.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children1.roof.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bath.outside_wall1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bath.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bath.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bath.outside_wall2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bath.outside_wall2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bath.outside_wall2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bath.inside_wall1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bath.inside_wall2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bath.Ceiling.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bath.floor.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bath.roof.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bath.roof.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bath.roof.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.outside_wall1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.outside_wall2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.outside_wall2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.outside_wall2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.inside_wall1a.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.inside_wall2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.Ceiling.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.floor.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.roof.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.roof.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.roof.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.inside_wall1b.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.outside_wall1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.inner_wall1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.inside_wall2a.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.inside_wall3.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.Ceiling.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.floor.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.inside_wall2b.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.roof.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.roof.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.roof.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.roof1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.roof1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.roof1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.roof2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.roof2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.roof2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.floorRoom2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.floorRoom1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.floorRoom3.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.floorRoom4.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.floorRoom5.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.OW1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.OW1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.OW1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.OW2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.OW2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.OW2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+max([size(userProfiles.tabIntGai.columns, 1);   size(userProfiles.tabIntGai.offset, 1)])+max([size(userProfiles.tabNatVen.columns,   1); size(userProfiles.tabNatVen.offset, 1)])+max([size(userProfiles.TSet.columns,   1); size(userProfiles.TSet.offset, 1)])+(if DHW.bou_sink.use_Xi_in then 1   else (if DHW.bou_sink.use_X_in then 0 else 1))+(if  not DHW.bou_sink.use_p_in   then 1 else 0)+DHW.bou_sink.nPorts+(if  not DHW.bou_sink.use_h_in then 1   else 0)+DHW.bou_sink.nPorts+(if DHW.bouSou.use_Xi_in then 1 else (if   DHW.bouSou.use_X_in then 0 else 1))+(if  not DHW.bouSou.use_p_in then 1 else 0)  +(if  not DHW.bouSou.use_T_in then 1 else 0)+max([4; size(DHW.combiTimeTableDHWInput.offset,   1)])+hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n1  +hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n2  +hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n3  +(if hydraulic.generation.bou_sinkAir.use_Xi_in then 2 else (if   hydraulic.generation.bou_sinkAir.use_X_in then 1 else 3))+(if  not   hydraulic.generation.bou_sinkAir.use_p_in then 1 else 0)+(if  not   hydraulic.generation.bou_sinkAir.use_h_in then 1 else 0)+(if hydraulic.generation.bouEva.use_Xi_in   then 2 else (if hydraulic.generation.bouEva.use_X_in then 1 else 3))+(if   hydraulic.generation.bouPum.use_Xi_in then 1 else (if hydraulic.generation.bouPum.use_X_in   then 0 else 1))+(if  not hydraulic.generation.bouPum.use_p_in then 1 else 0)+  (if  not hydraulic.generation.bouPum.use_T_in then 1 else 0)+size(  hydraulic.control.safCtr.operationalEnvelope.boundaryMap.uppCombiTable1Ds.columns,   1)+(if hydraulic.distribution.bouPumBuf.use_Xi_in then 1 else (if   hydraulic.distribution.bouPumBuf.use_X_in then 0 else 1))+(if  not   hydraulic.distribution.bouPumBuf.use_p_in then 1 else 0)+(if  not   hydraulic.distribution.bouPumBuf.use_T_in then 1 else 0)+(if weaDat.pAtmSou   == IBPSA.BoundaryConditions.Types.DataSource.Parameter then 1 else 0)+(if   weaDat.TDewPoiSou == IBPSA.BoundaryConditions.Types.DataSource.Parameter then 1   else 0)+(if weaDat.TDryBulSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TBlaSkySou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.relHumSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.opaSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.ceiHeiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.totSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winSpeSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winDirSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HInfHorSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HDifHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HGloHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HGloHor_HDifHor then 2 else 1)+2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.airload.dynBal.nPorts  +3*building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.airload.dynBal.nPorts  +3*building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.airload.dynBal.nPorts  +3*building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.airload.dynBal.nPorts  +3*building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.airload.dynBal.nPorts  +3*building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.airload.dynBal.nPorts  +3*building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children1.airload.dynBal.nPorts  +3*building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children1.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bath.airload.dynBal.nPorts  +3*building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bath.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.airload.dynBal.nPorts  +3*building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.airload.dynBal.nPorts  +3*building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.airload.dynBal.nPorts  +3*building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.airload.dynBal.nPorts  +(if  not DHW.pump.vol.dynBal.use_mWat_flow then 1 else 0)+DHW.pump.vol.dynBal.nPorts  +2*DHW.pump.vol.dynBal.nPorts+(if  not hydraulic.generation.heatPump.con.vol.dynBal.use_mWat_flow   then 1 else 0)+hydraulic.generation.heatPump.con.vol.dynBal.nPorts+2*  hydraulic.generation.heatPump.con.vol.dynBal.nPorts+(if  not hydraulic.generation.heatPump.eva.vol.dynBal.use_mWat_flow   then 1 else 0)+2*hydraulic.generation.heatPump.eva.vol.dynBal.nPorts+3*  hydraulic.generation.heatPump.eva.vol.dynBal.nPorts+(if  not hydraulic.generation.pump.vol.dynBal.use_mWat_flow   then 1 else 0)+hydraulic.generation.pump.vol.dynBal.nPorts+2*hydraulic.generation.pump.vol.dynBal.nPorts  +(if  not hydraulic.generation.eleHea.vol.dynBal.use_mWat_flow then 1 else 0)+  hydraulic.generation.eleHea.vol.dynBal.nPorts+2*hydraulic.generation.eleHea.vol.dynBal.nPorts  +(if  not hydraulic.transfer.pumFixMFlo[1].vol.dynBal.use_mWat_flow then 1   else 0)+hydraulic.transfer.pumFixMFlo[1].vol.dynBal.nPorts+2*hydraulic.transfer.pumFixMFlo[1].vol.dynBal.nPorts  +(if  not hydraulic.transfer.pumFixMFlo[2].vol.dynBal.use_mWat_flow then 1   else 0)+hydraulic.transfer.pumFixMFlo[2].vol.dynBal.nPorts+2*hydraulic.transfer.pumFixMFlo[2].vol.dynBal.nPorts  +(if  not hydraulic.transfer.pumFixMFlo[3].vol.dynBal.use_mWat_flow then 1   else 0)+hydraulic.transfer.pumFixMFlo[3].vol.dynBal.nPorts+2*hydraulic.transfer.pumFixMFlo[3].vol.dynBal.nPorts  +(if  not hydraulic.transfer.pumFixMFlo[4].vol.dynBal.use_mWat_flow then 1   else 0)+hydraulic.transfer.pumFixMFlo[4].vol.dynBal.nPorts+2*hydraulic.transfer.pumFixMFlo[4].vol.dynBal.nPorts  +(if  not hydraulic.transfer.pumFixMFlo[5].vol.dynBal.use_mWat_flow then 1   else 0)+hydraulic.transfer.pumFixMFlo[5].vol.dynBal.nPorts+2*hydraulic.transfer.pumFixMFlo[5].vol.dynBal.nPorts  +(if  not hydraulic.transfer.pumFixMFlo[6].vol.dynBal.use_mWat_flow then 1   else 0)+hydraulic.transfer.pumFixMFlo[6].vol.dynBal.nPorts+2*hydraulic.transfer.pumFixMFlo[6].vol.dynBal.nPorts  +(if  not hydraulic.transfer.pumFixMFlo[7].vol.dynBal.use_mWat_flow then 1   else 0)+hydraulic.transfer.pumFixMFlo[7].vol.dynBal.nPorts+2*hydraulic.transfer.pumFixMFlo[7].vol.dynBal.nPorts  +(if  not hydraulic.transfer.pumFixMFlo[8].vol.dynBal.use_mWat_flow then 1   else 0)+hydraulic.transfer.pumFixMFlo[8].vol.dynBal.nPorts+2*hydraulic.transfer.pumFixMFlo[8].vol.dynBal.nPorts  +(if  not hydraulic.transfer.pumFixMFlo[9].vol.dynBal.use_mWat_flow then 1   else 0)+hydraulic.transfer.pumFixMFlo[9].vol.dynBal.nPorts+2*hydraulic.transfer.pumFixMFlo[9].vol.dynBal.nPorts  +(if  not hydraulic.transfer.pumFixMFlo[10].vol.dynBal.use_mWat_flow then 1   else 0)+hydraulic.transfer.pumFixMFlo[10].vol.dynBal.nPorts+2*  hydraulic.transfer.pumFixMFlo[10].vol.dynBal.nPorts+(if  not hydraulic.distribution.stoDHW.layer[1].dynBal.use_mWat_flow   then 1 else 0)+hydraulic.distribution.stoDHW.layer[1].dynBal.nPorts+2*  hydraulic.distribution.stoDHW.layer[1].dynBal.nPorts+(if  not hydraulic.distribution.stoDHW.layer[2].dynBal.use_mWat_flow   then 1 else 0)+hydraulic.distribution.stoDHW.layer[2].dynBal.nPorts+2*  hydraulic.distribution.stoDHW.layer[2].dynBal.nPorts+(if  not hydraulic.distribution.stoDHW.layer[3].dynBal.use_mWat_flow   then 1 else 0)+hydraulic.distribution.stoDHW.layer[3].dynBal.nPorts+2*  hydraulic.distribution.stoDHW.layer[3].dynBal.nPorts+(if  not hydraulic.distribution.stoDHW.layer[4].dynBal.use_mWat_flow   then 1 else 0)+hydraulic.distribution.stoDHW.layer[4].dynBal.nPorts+2*  hydraulic.distribution.stoDHW.layer[4].dynBal.nPorts+(if  not hydraulic.distribution.stoDHW.layer_HE[1].dynBal.use_mWat_flow   then 1 else 0)+hydraulic.distribution.stoDHW.layer_HE[1].dynBal.nPorts+2*  hydraulic.distribution.stoDHW.layer_HE[1].dynBal.nPorts+(if  not   hydraulic.distribution.stoDHW.layer_HE[2].dynBal.use_mWat_flow then 1 else 0)+  hydraulic.distribution.stoDHW.layer_HE[2].dynBal.nPorts+2*hydraulic.distribution.stoDHW.layer_HE[2].dynBal.nPorts  +(if  not hydraulic.distribution.stoDHW.layer_HE[3].dynBal.use_mWat_flow then 1   else 0)+hydraulic.distribution.stoDHW.layer_HE[3].dynBal.nPorts+2*  hydraulic.distribution.stoDHW.layer_HE[3].dynBal.nPorts+(if  not   hydraulic.distribution.stoDHW.layer_HE[4].dynBal.use_mWat_flow then 1 else 0)+  hydraulic.distribution.stoDHW.layer_HE[4].dynBal.nPorts+2*hydraulic.distribution.stoDHW.layer_HE[4].dynBal.nPorts  +(if  not hydraulic.distribution.stoBuf.layer[1].dynBal.use_mWat_flow then 1   else 0)+hydraulic.distribution.stoBuf.layer[1].dynBal.nPorts+2*  hydraulic.distribution.stoBuf.layer[1].dynBal.nPorts+(if  not hydraulic.distribution.stoBuf.layer[2].dynBal.use_mWat_flow   then 1 else 0)+hydraulic.distribution.stoBuf.layer[2].dynBal.nPorts+2*  hydraulic.distribution.stoBuf.layer[2].dynBal.nPorts+(if  not hydraulic.distribution.stoBuf.layer[3].dynBal.use_mWat_flow   then 1 else 0)+hydraulic.distribution.stoBuf.layer[3].dynBal.nPorts+2*  hydraulic.distribution.stoBuf.layer[3].dynBal.nPorts+(if  not hydraulic.distribution.stoBuf.layer[4].dynBal.use_mWat_flow   then 1 else 0)+hydraulic.distribution.stoBuf.layer[4].dynBal.nPorts+2*  hydraulic.distribution.stoBuf.layer[4].dynBal.nPorts+(if  not hydraulic.distribution.stoBuf.layer_HE[1].dynBal.use_mWat_flow   then 1 else 0)+hydraulic.distribution.stoBuf.layer_HE[1].dynBal.nPorts+2*  hydraulic.distribution.stoBuf.layer_HE[1].dynBal.nPorts+(if  not   hydraulic.distribution.stoBuf.layer_HE[2].dynBal.use_mWat_flow then 1 else 0)+  hydraulic.distribution.stoBuf.layer_HE[2].dynBal.nPorts+2*hydraulic.distribution.stoBuf.layer_HE[2].dynBal.nPorts  +(if  not hydraulic.distribution.stoBuf.layer_HE[3].dynBal.use_mWat_flow then 1   else 0)+hydraulic.distribution.stoBuf.layer_HE[3].dynBal.nPorts+2*  hydraulic.distribution.stoBuf.layer_HE[3].dynBal.nPorts+(if  not   hydraulic.distribution.stoBuf.layer_HE[4].dynBal.use_mWat_flow then 1 else 0)+  hydraulic.distribution.stoBuf.layer_HE[4].dynBal.nPorts+2*hydraulic.distribution.stoBuf.layer_HE[4].dynBal.nPorts  +(if  not hydraulic.distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.use_mWat_flow   then 1 else 0)+hydraulic.distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.nPorts  +2*hydraulic.distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.nPorts  +(if  not hydraulic.transfer.rad[1].vol[1].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[1].vol[1].dynBal.nPorts+2*hydraulic.transfer.rad[1].vol[1].dynBal.nPorts  +(if  not hydraulic.transfer.rad[1].vol[2].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[1].vol[2].dynBal.nPorts+2*hydraulic.transfer.rad[1].vol[2].dynBal.nPorts  +(if  not hydraulic.transfer.rad[1].vol[3].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[1].vol[3].dynBal.nPorts+2*hydraulic.transfer.rad[1].vol[3].dynBal.nPorts  +(if  not hydraulic.transfer.rad[1].vol[4].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[1].vol[4].dynBal.nPorts+2*hydraulic.transfer.rad[1].vol[4].dynBal.nPorts  +(if  not hydraulic.transfer.rad[1].vol[5].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[1].vol[5].dynBal.nPorts+2*hydraulic.transfer.rad[1].vol[5].dynBal.nPorts  +(if  not hydraulic.transfer.rad[2].vol[1].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[2].vol[1].dynBal.nPorts+2*hydraulic.transfer.rad[2].vol[1].dynBal.nPorts  +(if  not hydraulic.transfer.rad[2].vol[2].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[2].vol[2].dynBal.nPorts+2*hydraulic.transfer.rad[2].vol[2].dynBal.nPorts  +(if  not hydraulic.transfer.rad[2].vol[3].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[2].vol[3].dynBal.nPorts+2*hydraulic.transfer.rad[2].vol[3].dynBal.nPorts  +(if  not hydraulic.transfer.rad[2].vol[4].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[2].vol[4].dynBal.nPorts+2*hydraulic.transfer.rad[2].vol[4].dynBal.nPorts  +(if  not hydraulic.transfer.rad[2].vol[5].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[2].vol[5].dynBal.nPorts+2*hydraulic.transfer.rad[2].vol[5].dynBal.nPorts  +(if  not hydraulic.transfer.rad[3].vol[1].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[3].vol[1].dynBal.nPorts+2*hydraulic.transfer.rad[3].vol[1].dynBal.nPorts  +(if  not hydraulic.transfer.rad[3].vol[2].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[3].vol[2].dynBal.nPorts+2*hydraulic.transfer.rad[3].vol[2].dynBal.nPorts  +(if  not hydraulic.transfer.rad[3].vol[3].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[3].vol[3].dynBal.nPorts+2*hydraulic.transfer.rad[3].vol[3].dynBal.nPorts  +(if  not hydraulic.transfer.rad[3].vol[4].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[3].vol[4].dynBal.nPorts+2*hydraulic.transfer.rad[3].vol[4].dynBal.nPorts  +(if  not hydraulic.transfer.rad[3].vol[5].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[3].vol[5].dynBal.nPorts+2*hydraulic.transfer.rad[3].vol[5].dynBal.nPorts  +(if  not hydraulic.transfer.rad[4].vol[1].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[4].vol[1].dynBal.nPorts+2*hydraulic.transfer.rad[4].vol[1].dynBal.nPorts  +(if  not hydraulic.transfer.rad[4].vol[2].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[4].vol[2].dynBal.nPorts+2*hydraulic.transfer.rad[4].vol[2].dynBal.nPorts  +(if  not hydraulic.transfer.rad[4].vol[3].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[4].vol[3].dynBal.nPorts+2*hydraulic.transfer.rad[4].vol[3].dynBal.nPorts  +(if  not hydraulic.transfer.rad[4].vol[4].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[4].vol[4].dynBal.nPorts+2*hydraulic.transfer.rad[4].vol[4].dynBal.nPorts  +(if  not hydraulic.transfer.rad[4].vol[5].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[4].vol[5].dynBal.nPorts+2*hydraulic.transfer.rad[4].vol[5].dynBal.nPorts  +(if  not hydraulic.transfer.rad[5].vol[1].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[5].vol[1].dynBal.nPorts+2*hydraulic.transfer.rad[5].vol[1].dynBal.nPorts  +(if  not hydraulic.transfer.rad[5].vol[2].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[5].vol[2].dynBal.nPorts+2*hydraulic.transfer.rad[5].vol[2].dynBal.nPorts  +(if  not hydraulic.transfer.rad[5].vol[3].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[5].vol[3].dynBal.nPorts+2*hydraulic.transfer.rad[5].vol[3].dynBal.nPorts  +(if  not hydraulic.transfer.rad[5].vol[4].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[5].vol[4].dynBal.nPorts+2*hydraulic.transfer.rad[5].vol[4].dynBal.nPorts  +(if  not hydraulic.transfer.rad[5].vol[5].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[5].vol[5].dynBal.nPorts+2*hydraulic.transfer.rad[5].vol[5].dynBal.nPorts  +(if  not hydraulic.transfer.rad[6].vol[1].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[6].vol[1].dynBal.nPorts+2*hydraulic.transfer.rad[6].vol[1].dynBal.nPorts  +(if  not hydraulic.transfer.rad[6].vol[2].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[6].vol[2].dynBal.nPorts+2*hydraulic.transfer.rad[6].vol[2].dynBal.nPorts  +(if  not hydraulic.transfer.rad[6].vol[3].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[6].vol[3].dynBal.nPorts+2*hydraulic.transfer.rad[6].vol[3].dynBal.nPorts  +(if  not hydraulic.transfer.rad[6].vol[4].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[6].vol[4].dynBal.nPorts+2*hydraulic.transfer.rad[6].vol[4].dynBal.nPorts  +(if  not hydraulic.transfer.rad[6].vol[5].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[6].vol[5].dynBal.nPorts+2*hydraulic.transfer.rad[6].vol[5].dynBal.nPorts  +(if  not hydraulic.transfer.rad[7].vol[1].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[7].vol[1].dynBal.nPorts+2*hydraulic.transfer.rad[7].vol[1].dynBal.nPorts  +(if  not hydraulic.transfer.rad[7].vol[2].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[7].vol[2].dynBal.nPorts+2*hydraulic.transfer.rad[7].vol[2].dynBal.nPorts  +(if  not hydraulic.transfer.rad[7].vol[3].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[7].vol[3].dynBal.nPorts+2*hydraulic.transfer.rad[7].vol[3].dynBal.nPorts  +(if  not hydraulic.transfer.rad[7].vol[4].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[7].vol[4].dynBal.nPorts+2*hydraulic.transfer.rad[7].vol[4].dynBal.nPorts  +(if  not hydraulic.transfer.rad[7].vol[5].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[7].vol[5].dynBal.nPorts+2*hydraulic.transfer.rad[7].vol[5].dynBal.nPorts  +(if  not hydraulic.transfer.rad[8].vol[1].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[8].vol[1].dynBal.nPorts+2*hydraulic.transfer.rad[8].vol[1].dynBal.nPorts  +(if  not hydraulic.transfer.rad[8].vol[2].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[8].vol[2].dynBal.nPorts+2*hydraulic.transfer.rad[8].vol[2].dynBal.nPorts  +(if  not hydraulic.transfer.rad[8].vol[3].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[8].vol[3].dynBal.nPorts+2*hydraulic.transfer.rad[8].vol[3].dynBal.nPorts  +(if  not hydraulic.transfer.rad[8].vol[4].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[8].vol[4].dynBal.nPorts+2*hydraulic.transfer.rad[8].vol[4].dynBal.nPorts  +(if  not hydraulic.transfer.rad[8].vol[5].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[8].vol[5].dynBal.nPorts+2*hydraulic.transfer.rad[8].vol[5].dynBal.nPorts  +(if  not hydraulic.transfer.rad[9].vol[1].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[9].vol[1].dynBal.nPorts+2*hydraulic.transfer.rad[9].vol[1].dynBal.nPorts  +(if  not hydraulic.transfer.rad[9].vol[2].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[9].vol[2].dynBal.nPorts+2*hydraulic.transfer.rad[9].vol[2].dynBal.nPorts  +(if  not hydraulic.transfer.rad[9].vol[3].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[9].vol[3].dynBal.nPorts+2*hydraulic.transfer.rad[9].vol[3].dynBal.nPorts  +(if  not hydraulic.transfer.rad[9].vol[4].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[9].vol[4].dynBal.nPorts+2*hydraulic.transfer.rad[9].vol[4].dynBal.nPorts  +(if  not hydraulic.transfer.rad[9].vol[5].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[9].vol[5].dynBal.nPorts+2*hydraulic.transfer.rad[9].vol[5].dynBal.nPorts  +(if  not hydraulic.transfer.rad[10].vol[1].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[10].vol[1].dynBal.nPorts+2*hydraulic.transfer.rad[10].vol[1].dynBal.nPorts  +(if  not hydraulic.transfer.rad[10].vol[2].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[10].vol[2].dynBal.nPorts+2*hydraulic.transfer.rad[10].vol[2].dynBal.nPorts  +(if  not hydraulic.transfer.rad[10].vol[3].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[10].vol[3].dynBal.nPorts+2*hydraulic.transfer.rad[10].vol[3].dynBal.nPorts  +(if  not hydraulic.transfer.rad[10].vol[4].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[10].vol[4].dynBal.nPorts+2*hydraulic.transfer.rad[10].vol[4].dynBal.nPorts  +(if  not hydraulic.transfer.rad[10].vol[5].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[10].vol[5].dynBal.nPorts+2*hydraulic.transfer.rad[10].vol[5].dynBal.nPorts  +systemParameters.nZones+systemParameters.nZones+systemParameters.nZones+  systemParameters.nZones+systemParameters.nZones+systemParameters.nZones+  systemParameters.nZones+hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n1  +hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n2  +hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n3  +2*(size(hydraulic.control.safCtr.operationalEnvelope.tableMerge, 1)+size(  hydraulic.control.safetyControl.tableUpp, 1))+size(hydraulic.control.safCtr.operationalEnvelope.tableMerge,   1)+size(hydraulic.control.safCtr.operationalEnvelope.tableMerge, 1)+size(  hydraulic.control.safCtr.operationalEnvelope.tableMerge, 1)+size(  hydraulic.control.safCtr.operationalEnvelope.tableMerge, 1)+2*size(  hydraulic.control.safCtr.operationalEnvelope.boundaryMap.tableMerge, 1)+2*size  (hydraulic.control.safetyControl.tableUpp, 1)+size(hydraulic.control.safCtr.operationalEnvelope.boundaryMap.tableMerge,   1)+size(hydraulic.control.safCtr.operationalEnvelope.boundaryMap.tableMerge, 1)  +size(hydraulic.control.safCtr.operationalEnvelope.boundaryMap.tableMerge, 1)+  size(hydraulic.control.safCtr.operationalEnvelope.boundaryMap.tableMerge, 1)+  hydraulic.transfer.parRad.nEle+hydraulic.transfer.parRad.nEle+hydraulic.transfer.parRad.nEle  +hydraulic.transfer.parRad.nEle+hydraulic.transfer.parRad.nEle+  hydraulic.transfer.parRad.nEle+hydraulic.transfer.parRad.nEle+hydraulic.transfer.parRad.nEle  +hydraulic.transfer.parRad.nEle+hydraulic.transfer.parRad.nEle+  hydraulic.transfer.parRad.nEle+hydraulic.transfer.parRad.nEle+hydraulic.transfer.parRad.nEle  +hydraulic.transfer.parRad.nEle+hydraulic.transfer.parRad.nEle+  hydraulic.transfer.parRad.nEle+hydraulic.transfer.parRad.nEle+hydraulic.transfer.parRad.nEle  +hydraulic.transfer.parRad.nEle+hydraulic.transfer.parRad.nEle
+  18396+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.outside_wall1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.outside_wall2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.outside_wall2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.outside_wall2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.inside_wall1a.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.inside_wall2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.Ceiling.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.floor.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.inside_wall1b.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.outside_wall1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.outside_wall2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.outside_wall2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.outside_wall2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.inside_wall1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.inside_wall2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.Ceiling.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.floor.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.outside_wall1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.outside_wall2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.outside_wall2.Door.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.outside_wall2.Door.twoStar_RadEx1.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.outside_wall2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.outside_wall2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.inside_wall1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.inside_wall2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.Ceiling.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.floor.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.outside_wall1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.outside_wall2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.outside_wall2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.outside_wall2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.inside_wall1a.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.inside_wall2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.Ceiling.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.floor.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.inside_wall1b.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.outside_wall1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.outside_wall1.Door.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.outside_wall1.Door.twoStar_RadEx1.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.inside_wall1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.inside_wall2a.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.inside_wall3.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.Ceiling.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.floor.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.inside_wall2b.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.outside_wall1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.outside_wall2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.outside_wall2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.outside_wall2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.inside_wall1a.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.inside_wall2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.Ceiling.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.floor.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.roof.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.roof.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.roof.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.inside_wall1b.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children1.outside_wall1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children1.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children1.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children1.outside_wall2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children1.outside_wall2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children1.outside_wall2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children1.inside_wall1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children1.inside_wall2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children1.Ceiling.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children1.floor.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children1.roof.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children1.roof.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children1.roof.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bath.outside_wall1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bath.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bath.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bath.outside_wall2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bath.outside_wall2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bath.outside_wall2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bath.inside_wall1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bath.inside_wall2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bath.Ceiling.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bath.floor.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bath.roof.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bath.roof.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bath.roof.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.outside_wall1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.outside_wall2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.outside_wall2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.outside_wall2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.inside_wall1a.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.inside_wall2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.Ceiling.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.floor.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.roof.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.roof.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.roof.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.inside_wall1b.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.outside_wall1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.outside_wall1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.inner_wall1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.inside_wall2a.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.inside_wall3.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.Ceiling.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.floor.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.inside_wall2b.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.roof.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.roof.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.roof.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.roof1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.roof1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.roof1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.roof2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.roof2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.roof2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.floorRoom2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.floorRoom1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.floorRoom3.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.floorRoom4.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.floorRoom5.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.OW1.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.OW1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.OW1.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if  not building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.OW2.Wall.twoStar_RadEx.use_A_in   then 1 else 0)+(if building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.OW2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.OW2.heatTransfer_Outside.calcMethod   == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+max([size(userProfiles.tabIntGai.columns, 1);   size(userProfiles.tabIntGai.offset, 1)])+max([size(userProfiles.tabNatVen.columns,   1); size(userProfiles.tabNatVen.offset, 1)])+max([size(userProfiles.TSet.columns,   1); size(userProfiles.TSet.offset, 1)])+(if DHW.bou_sink.use_Xi_in then 1   else (if DHW.bou_sink.use_X_in then 0 else 1))+(if  not DHW.bou_sink.use_p_in   then 1 else 0)+DHW.bou_sink.nPorts+(if  not DHW.bou_sink.use_h_in then 1   else 0)+DHW.bou_sink.nPorts+(if DHW.bouSou.use_Xi_in then 1 else (if   DHW.bouSou.use_X_in then 0 else 1))+(if  not DHW.bouSou.use_p_in then 1 else 0)  +(if  not DHW.bouSou.use_T_in then 1 else 0)+max([4; size(DHW.combiTimeTableDHWInput.offset,   1)])+hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n1  +hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n2  +hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n3  +(if hydraulic.generation.bou_sinkAir.use_Xi_in then 2 else (if   hydraulic.generation.bou_sinkAir.use_X_in then 1 else 3))+(if  not   hydraulic.generation.bou_sinkAir.use_p_in then 1 else 0)+(if  not   hydraulic.generation.bou_sinkAir.use_h_in then 1 else 0)+(if hydraulic.generation.bouEva.use_Xi_in   then 2 else (if hydraulic.generation.bouEva.use_X_in then 1 else 3))+(if   hydraulic.generation.bouPum.use_Xi_in then 1 else (if hydraulic.generation.bouPum.use_X_in   then 0 else 1))+(if  not hydraulic.generation.bouPum.use_p_in then 1 else 0)+  (if  not hydraulic.generation.bouPum.use_T_in then 1 else 0)+size(  hydraulic.control.safCtr.operationalEnvelope.boundaryMap.uppCombiTable1Ds.columns,   1)+(if hydraulic.distribution.bouPumBuf.use_Xi_in then 1 else (if   hydraulic.distribution.bouPumBuf.use_X_in then 0 else 1))+(if  not   hydraulic.distribution.bouPumBuf.use_p_in then 1 else 0)+(if  not   hydraulic.distribution.bouPumBuf.use_T_in then 1 else 0)+(if weaDat.pAtmSou   == IBPSA.BoundaryConditions.Types.DataSource.Parameter then 1 else 0)+(if   weaDat.TDewPoiSou == IBPSA.BoundaryConditions.Types.DataSource.Parameter then 1   else 0)+(if weaDat.TDryBulSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TBlaSkySou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.relHumSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.opaSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.ceiHeiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.totSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winSpeSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winDirSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HInfHorSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HDifHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HGloHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HGloHor_HDifHor then 2 else 1)+2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.airload.dynBal.nPorts  +3*building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.airload.dynBal.nPorts  +3*building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.airload.dynBal.nPorts  +3*building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.airload.dynBal.nPorts  +3*building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.airload.dynBal.nPorts  +3*building.HOMBuiEnv.wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.airload.dynBal.nPorts  +3*building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children1.airload.dynBal.nPorts  +3*building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children1.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bath.airload.dynBal.nPorts  +3*building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Bath.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.airload.dynBal.nPorts  +3*building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Children2.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.airload.dynBal.nPorts  +3*building.HOMBuiEnv.wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.airload.dynBal.nPorts  +2*building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.airload.dynBal.nPorts  +3*building.HOMBuiEnv.wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.airload.dynBal.nPorts  +(if  not DHW.pump.vol.dynBal.use_mWat_flow then 1 else 0)+DHW.pump.vol.dynBal.nPorts  +2*DHW.pump.vol.dynBal.nPorts+(if  not hydraulic.generation.heatPump.con.vol.dynBal.use_mWat_flow   then 1 else 0)+hydraulic.generation.heatPump.con.vol.dynBal.nPorts+2*  hydraulic.generation.heatPump.con.vol.dynBal.nPorts+(if  not hydraulic.generation.heatPump.eva.vol.dynBal.use_mWat_flow   then 1 else 0)+2*hydraulic.generation.heatPump.eva.vol.dynBal.nPorts+3*  hydraulic.generation.heatPump.eva.vol.dynBal.nPorts+(if  not hydraulic.generation.pump.vol.dynBal.use_mWat_flow   then 1 else 0)+hydraulic.generation.pump.vol.dynBal.nPorts+2*hydraulic.generation.pump.vol.dynBal.nPorts  +(if  not hydraulic.generation.eleHea.vol.dynBal.use_mWat_flow then 1 else 0)+  hydraulic.generation.eleHea.vol.dynBal.nPorts+2*hydraulic.generation.eleHea.vol.dynBal.nPorts  +(if  not hydraulic.transfer.pumFixMFlo[1].vol.dynBal.use_mWat_flow then 1   else 0)+hydraulic.transfer.pumFixMFlo[1].vol.dynBal.nPorts+2*hydraulic.transfer.pumFixMFlo[1].vol.dynBal.nPorts  +(if  not hydraulic.transfer.pumFixMFlo[2].vol.dynBal.use_mWat_flow then 1   else 0)+hydraulic.transfer.pumFixMFlo[2].vol.dynBal.nPorts+2*hydraulic.transfer.pumFixMFlo[2].vol.dynBal.nPorts  +(if  not hydraulic.transfer.pumFixMFlo[3].vol.dynBal.use_mWat_flow then 1   else 0)+hydraulic.transfer.pumFixMFlo[3].vol.dynBal.nPorts+2*hydraulic.transfer.pumFixMFlo[3].vol.dynBal.nPorts  +(if  not hydraulic.transfer.pumFixMFlo[4].vol.dynBal.use_mWat_flow then 1   else 0)+hydraulic.transfer.pumFixMFlo[4].vol.dynBal.nPorts+2*hydraulic.transfer.pumFixMFlo[4].vol.dynBal.nPorts  +(if  not hydraulic.transfer.pumFixMFlo[5].vol.dynBal.use_mWat_flow then 1   else 0)+hydraulic.transfer.pumFixMFlo[5].vol.dynBal.nPorts+2*hydraulic.transfer.pumFixMFlo[5].vol.dynBal.nPorts  +(if  not hydraulic.transfer.pumFixMFlo[6].vol.dynBal.use_mWat_flow then 1   else 0)+hydraulic.transfer.pumFixMFlo[6].vol.dynBal.nPorts+2*hydraulic.transfer.pumFixMFlo[6].vol.dynBal.nPorts  +(if  not hydraulic.transfer.pumFixMFlo[7].vol.dynBal.use_mWat_flow then 1   else 0)+hydraulic.transfer.pumFixMFlo[7].vol.dynBal.nPorts+2*hydraulic.transfer.pumFixMFlo[7].vol.dynBal.nPorts  +(if  not hydraulic.transfer.pumFixMFlo[8].vol.dynBal.use_mWat_flow then 1   else 0)+hydraulic.transfer.pumFixMFlo[8].vol.dynBal.nPorts+2*hydraulic.transfer.pumFixMFlo[8].vol.dynBal.nPorts  +(if  not hydraulic.transfer.pumFixMFlo[9].vol.dynBal.use_mWat_flow then 1   else 0)+hydraulic.transfer.pumFixMFlo[9].vol.dynBal.nPorts+2*hydraulic.transfer.pumFixMFlo[9].vol.dynBal.nPorts  +(if  not hydraulic.transfer.pumFixMFlo[10].vol.dynBal.use_mWat_flow then 1   else 0)+hydraulic.transfer.pumFixMFlo[10].vol.dynBal.nPorts+2*  hydraulic.transfer.pumFixMFlo[10].vol.dynBal.nPorts+(if  not hydraulic.distribution.stoDHW.layer[1].dynBal.use_mWat_flow   then 1 else 0)+hydraulic.distribution.stoDHW.layer[1].dynBal.nPorts+2*  hydraulic.distribution.stoDHW.layer[1].dynBal.nPorts+(if  not hydraulic.distribution.stoDHW.layer[2].dynBal.use_mWat_flow   then 1 else 0)+hydraulic.distribution.stoDHW.layer[2].dynBal.nPorts+2*  hydraulic.distribution.stoDHW.layer[2].dynBal.nPorts+(if  not hydraulic.distribution.stoDHW.layer[3].dynBal.use_mWat_flow   then 1 else 0)+hydraulic.distribution.stoDHW.layer[3].dynBal.nPorts+2*  hydraulic.distribution.stoDHW.layer[3].dynBal.nPorts+(if  not hydraulic.distribution.stoDHW.layer[4].dynBal.use_mWat_flow   then 1 else 0)+hydraulic.distribution.stoDHW.layer[4].dynBal.nPorts+2*  hydraulic.distribution.stoDHW.layer[4].dynBal.nPorts+(if  not hydraulic.distribution.stoDHW.layer_HE[1].dynBal.use_mWat_flow   then 1 else 0)+hydraulic.distribution.stoDHW.layer_HE[1].dynBal.nPorts+2*  hydraulic.distribution.stoDHW.layer_HE[1].dynBal.nPorts+(if  not   hydraulic.distribution.stoDHW.layer_HE[2].dynBal.use_mWat_flow then 1 else 0)+  hydraulic.distribution.stoDHW.layer_HE[2].dynBal.nPorts+2*hydraulic.distribution.stoDHW.layer_HE[2].dynBal.nPorts  +(if  not hydraulic.distribution.stoDHW.layer_HE[3].dynBal.use_mWat_flow then 1   else 0)+hydraulic.distribution.stoDHW.layer_HE[3].dynBal.nPorts+2*  hydraulic.distribution.stoDHW.layer_HE[3].dynBal.nPorts+(if  not   hydraulic.distribution.stoDHW.layer_HE[4].dynBal.use_mWat_flow then 1 else 0)+  hydraulic.distribution.stoDHW.layer_HE[4].dynBal.nPorts+2*hydraulic.distribution.stoDHW.layer_HE[4].dynBal.nPorts  +(if  not hydraulic.distribution.stoBuf.layer[1].dynBal.use_mWat_flow then 1   else 0)+hydraulic.distribution.stoBuf.layer[1].dynBal.nPorts+2*  hydraulic.distribution.stoBuf.layer[1].dynBal.nPorts+(if  not hydraulic.distribution.stoBuf.layer[2].dynBal.use_mWat_flow   then 1 else 0)+hydraulic.distribution.stoBuf.layer[2].dynBal.nPorts+2*  hydraulic.distribution.stoBuf.layer[2].dynBal.nPorts+(if  not hydraulic.distribution.stoBuf.layer[3].dynBal.use_mWat_flow   then 1 else 0)+hydraulic.distribution.stoBuf.layer[3].dynBal.nPorts+2*  hydraulic.distribution.stoBuf.layer[3].dynBal.nPorts+(if  not hydraulic.distribution.stoBuf.layer[4].dynBal.use_mWat_flow   then 1 else 0)+hydraulic.distribution.stoBuf.layer[4].dynBal.nPorts+2*  hydraulic.distribution.stoBuf.layer[4].dynBal.nPorts+(if  not hydraulic.distribution.stoBuf.layer_HE[1].dynBal.use_mWat_flow   then 1 else 0)+hydraulic.distribution.stoBuf.layer_HE[1].dynBal.nPorts+2*  hydraulic.distribution.stoBuf.layer_HE[1].dynBal.nPorts+(if  not   hydraulic.distribution.stoBuf.layer_HE[2].dynBal.use_mWat_flow then 1 else 0)+  hydraulic.distribution.stoBuf.layer_HE[2].dynBal.nPorts+2*hydraulic.distribution.stoBuf.layer_HE[2].dynBal.nPorts  +(if  not hydraulic.distribution.stoBuf.layer_HE[3].dynBal.use_mWat_flow then 1   else 0)+hydraulic.distribution.stoBuf.layer_HE[3].dynBal.nPorts+2*  hydraulic.distribution.stoBuf.layer_HE[3].dynBal.nPorts+(if  not   hydraulic.distribution.stoBuf.layer_HE[4].dynBal.use_mWat_flow then 1 else 0)+  hydraulic.distribution.stoBuf.layer_HE[4].dynBal.nPorts+2*hydraulic.distribution.stoBuf.layer_HE[4].dynBal.nPorts  +(if  not hydraulic.distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.use_mWat_flow   then 1 else 0)+hydraulic.distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.nPorts  +2*hydraulic.distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.nPorts  +(if  not hydraulic.transfer.rad[1].vol[1].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[1].vol[1].dynBal.nPorts+2*hydraulic.transfer.rad[1].vol[1].dynBal.nPorts  +(if  not hydraulic.transfer.rad[1].vol[2].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[1].vol[2].dynBal.nPorts+2*hydraulic.transfer.rad[1].vol[2].dynBal.nPorts  +(if  not hydraulic.transfer.rad[1].vol[3].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[1].vol[3].dynBal.nPorts+2*hydraulic.transfer.rad[1].vol[3].dynBal.nPorts  +(if  not hydraulic.transfer.rad[1].vol[4].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[1].vol[4].dynBal.nPorts+2*hydraulic.transfer.rad[1].vol[4].dynBal.nPorts  +(if  not hydraulic.transfer.rad[1].vol[5].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[1].vol[5].dynBal.nPorts+2*hydraulic.transfer.rad[1].vol[5].dynBal.nPorts  +(if  not hydraulic.transfer.rad[2].vol[1].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[2].vol[1].dynBal.nPorts+2*hydraulic.transfer.rad[2].vol[1].dynBal.nPorts  +(if  not hydraulic.transfer.rad[2].vol[2].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[2].vol[2].dynBal.nPorts+2*hydraulic.transfer.rad[2].vol[2].dynBal.nPorts  +(if  not hydraulic.transfer.rad[2].vol[3].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[2].vol[3].dynBal.nPorts+2*hydraulic.transfer.rad[2].vol[3].dynBal.nPorts  +(if  not hydraulic.transfer.rad[2].vol[4].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[2].vol[4].dynBal.nPorts+2*hydraulic.transfer.rad[2].vol[4].dynBal.nPorts  +(if  not hydraulic.transfer.rad[2].vol[5].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[2].vol[5].dynBal.nPorts+2*hydraulic.transfer.rad[2].vol[5].dynBal.nPorts  +(if  not hydraulic.transfer.rad[3].vol[1].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[3].vol[1].dynBal.nPorts+2*hydraulic.transfer.rad[3].vol[1].dynBal.nPorts  +(if  not hydraulic.transfer.rad[3].vol[2].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[3].vol[2].dynBal.nPorts+2*hydraulic.transfer.rad[3].vol[2].dynBal.nPorts  +(if  not hydraulic.transfer.rad[3].vol[3].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[3].vol[3].dynBal.nPorts+2*hydraulic.transfer.rad[3].vol[3].dynBal.nPorts  +(if  not hydraulic.transfer.rad[3].vol[4].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[3].vol[4].dynBal.nPorts+2*hydraulic.transfer.rad[3].vol[4].dynBal.nPorts  +(if  not hydraulic.transfer.rad[3].vol[5].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[3].vol[5].dynBal.nPorts+2*hydraulic.transfer.rad[3].vol[5].dynBal.nPorts  +(if  not hydraulic.transfer.rad[4].vol[1].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[4].vol[1].dynBal.nPorts+2*hydraulic.transfer.rad[4].vol[1].dynBal.nPorts  +(if  not hydraulic.transfer.rad[4].vol[2].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[4].vol[2].dynBal.nPorts+2*hydraulic.transfer.rad[4].vol[2].dynBal.nPorts  +(if  not hydraulic.transfer.rad[4].vol[3].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[4].vol[3].dynBal.nPorts+2*hydraulic.transfer.rad[4].vol[3].dynBal.nPorts  +(if  not hydraulic.transfer.rad[4].vol[4].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[4].vol[4].dynBal.nPorts+2*hydraulic.transfer.rad[4].vol[4].dynBal.nPorts  +(if  not hydraulic.transfer.rad[4].vol[5].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[4].vol[5].dynBal.nPorts+2*hydraulic.transfer.rad[4].vol[5].dynBal.nPorts  +(if  not hydraulic.transfer.rad[5].vol[1].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[5].vol[1].dynBal.nPorts+2*hydraulic.transfer.rad[5].vol[1].dynBal.nPorts  +(if  not hydraulic.transfer.rad[5].vol[2].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[5].vol[2].dynBal.nPorts+2*hydraulic.transfer.rad[5].vol[2].dynBal.nPorts  +(if  not hydraulic.transfer.rad[5].vol[3].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[5].vol[3].dynBal.nPorts+2*hydraulic.transfer.rad[5].vol[3].dynBal.nPorts  +(if  not hydraulic.transfer.rad[5].vol[4].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[5].vol[4].dynBal.nPorts+2*hydraulic.transfer.rad[5].vol[4].dynBal.nPorts  +(if  not hydraulic.transfer.rad[5].vol[5].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[5].vol[5].dynBal.nPorts+2*hydraulic.transfer.rad[5].vol[5].dynBal.nPorts  +(if  not hydraulic.transfer.rad[6].vol[1].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[6].vol[1].dynBal.nPorts+2*hydraulic.transfer.rad[6].vol[1].dynBal.nPorts  +(if  not hydraulic.transfer.rad[6].vol[2].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[6].vol[2].dynBal.nPorts+2*hydraulic.transfer.rad[6].vol[2].dynBal.nPorts  +(if  not hydraulic.transfer.rad[6].vol[3].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[6].vol[3].dynBal.nPorts+2*hydraulic.transfer.rad[6].vol[3].dynBal.nPorts  +(if  not hydraulic.transfer.rad[6].vol[4].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[6].vol[4].dynBal.nPorts+2*hydraulic.transfer.rad[6].vol[4].dynBal.nPorts  +(if  not hydraulic.transfer.rad[6].vol[5].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[6].vol[5].dynBal.nPorts+2*hydraulic.transfer.rad[6].vol[5].dynBal.nPorts  +(if  not hydraulic.transfer.rad[7].vol[1].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[7].vol[1].dynBal.nPorts+2*hydraulic.transfer.rad[7].vol[1].dynBal.nPorts  +(if  not hydraulic.transfer.rad[7].vol[2].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[7].vol[2].dynBal.nPorts+2*hydraulic.transfer.rad[7].vol[2].dynBal.nPorts  +(if  not hydraulic.transfer.rad[7].vol[3].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[7].vol[3].dynBal.nPorts+2*hydraulic.transfer.rad[7].vol[3].dynBal.nPorts  +(if  not hydraulic.transfer.rad[7].vol[4].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[7].vol[4].dynBal.nPorts+2*hydraulic.transfer.rad[7].vol[4].dynBal.nPorts  +(if  not hydraulic.transfer.rad[7].vol[5].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[7].vol[5].dynBal.nPorts+2*hydraulic.transfer.rad[7].vol[5].dynBal.nPorts  +(if  not hydraulic.transfer.rad[8].vol[1].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[8].vol[1].dynBal.nPorts+2*hydraulic.transfer.rad[8].vol[1].dynBal.nPorts  +(if  not hydraulic.transfer.rad[8].vol[2].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[8].vol[2].dynBal.nPorts+2*hydraulic.transfer.rad[8].vol[2].dynBal.nPorts  +(if  not hydraulic.transfer.rad[8].vol[3].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[8].vol[3].dynBal.nPorts+2*hydraulic.transfer.rad[8].vol[3].dynBal.nPorts  +(if  not hydraulic.transfer.rad[8].vol[4].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[8].vol[4].dynBal.nPorts+2*hydraulic.transfer.rad[8].vol[4].dynBal.nPorts  +(if  not hydraulic.transfer.rad[8].vol[5].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[8].vol[5].dynBal.nPorts+2*hydraulic.transfer.rad[8].vol[5].dynBal.nPorts  +(if  not hydraulic.transfer.rad[9].vol[1].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[9].vol[1].dynBal.nPorts+2*hydraulic.transfer.rad[9].vol[1].dynBal.nPorts  +(if  not hydraulic.transfer.rad[9].vol[2].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[9].vol[2].dynBal.nPorts+2*hydraulic.transfer.rad[9].vol[2].dynBal.nPorts  +(if  not hydraulic.transfer.rad[9].vol[3].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[9].vol[3].dynBal.nPorts+2*hydraulic.transfer.rad[9].vol[3].dynBal.nPorts  +(if  not hydraulic.transfer.rad[9].vol[4].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[9].vol[4].dynBal.nPorts+2*hydraulic.transfer.rad[9].vol[4].dynBal.nPorts  +(if  not hydraulic.transfer.rad[9].vol[5].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[9].vol[5].dynBal.nPorts+2*hydraulic.transfer.rad[9].vol[5].dynBal.nPorts  +(if  not hydraulic.transfer.rad[10].vol[1].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[10].vol[1].dynBal.nPorts+2*hydraulic.transfer.rad[10].vol[1].dynBal.nPorts  +(if  not hydraulic.transfer.rad[10].vol[2].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[10].vol[2].dynBal.nPorts+2*hydraulic.transfer.rad[10].vol[2].dynBal.nPorts  +(if  not hydraulic.transfer.rad[10].vol[3].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[10].vol[3].dynBal.nPorts+2*hydraulic.transfer.rad[10].vol[3].dynBal.nPorts  +(if  not hydraulic.transfer.rad[10].vol[4].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[10].vol[4].dynBal.nPorts+2*hydraulic.transfer.rad[10].vol[4].dynBal.nPorts  +(if  not hydraulic.transfer.rad[10].vol[5].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[10].vol[5].dynBal.nPorts+2*hydraulic.transfer.rad[10].vol[5].dynBal.nPorts  +systemParameters.nZones+systemParameters.nZones+systemParameters.nZones+  systemParameters.nZones+systemParameters.nZones+systemParameters.nZones+  systemParameters.nZones+systemParameters.nZones+hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n1  +hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n2  +hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n3  +2*(size(hydraulic.control.safCtr.operationalEnvelope.tableMerge, 1)+size(  hydraulic.control.safetyControl.tableUpp, 1))+size(hydraulic.control.safCtr.operationalEnvelope.tableMerge,   1)+size(hydraulic.control.safCtr.operationalEnvelope.tableMerge, 1)+size(  hydraulic.control.safCtr.operationalEnvelope.tableMerge, 1)+size(  hydraulic.control.safCtr.operationalEnvelope.tableMerge, 1)+2*size(  hydraulic.control.safCtr.operationalEnvelope.boundaryMap.tableMerge, 1)+2*size  (hydraulic.control.safetyControl.tableUpp, 1)+size(hydraulic.control.safCtr.operationalEnvelope.boundaryMap.tableMerge,   1)+size(hydraulic.control.safCtr.operationalEnvelope.boundaryMap.tableMerge, 1)  +size(hydraulic.control.safCtr.operationalEnvelope.boundaryMap.tableMerge, 1)+  size(hydraulic.control.safCtr.operationalEnvelope.boundaryMap.tableMerge, 1)+  hydraulic.transfer.parRad.nEle+hydraulic.transfer.parRad.nEle+hydraulic.transfer.parRad.nEle  +hydraulic.transfer.parRad.nEle+hydraulic.transfer.parRad.nEle+  hydraulic.transfer.parRad.nEle+hydraulic.transfer.parRad.nEle+hydraulic.transfer.parRad.nEle  +hydraulic.transfer.parRad.nEle+hydraulic.transfer.parRad.nEle+  hydraulic.transfer.parRad.nEle+hydraulic.transfer.parRad.nEle+hydraulic.transfer.parRad.nEle  +hydraulic.transfer.parRad.nEle+hydraulic.transfer.parRad.nEle+  hydraulic.transfer.parRad.nEle+hydraulic.transfer.parRad.nEle+hydraulic.transfer.parRad.nEle  +hydraulic.transfer.parRad.nEle+hydraulic.transfer.parRad.nEle
 scalar equations.
 However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
-  19426
+  19468
 Warning: Some connector variables are removed from the simulation problem,
 since they are not used in the model.
 Warning: Connector variables that are removed:
@@ -2647,7 +2654,7 @@ Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHP
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-The DAE has 19426 scalar unknowns and 19426 scalar equations.
+The DAE has 19468 scalar unknowns and 19468 scalar equations.
 After eliminating unused variables:
   building.thermOutside.T
  
@@ -2695,22 +2702,22 @@ The translated model contains large nonlinear systems of equations. The simulati
 Statistics
  
 Original Model
-  Number of components: 4415
-  Variables: 42477
+  Number of components: 4416
+  Variables: 42484
   Constants: 524 (524 scalars)
-  Parameters: 20561 (28634 scalars)
-  Unknowns: 21392 (19920 scalars)
+  Parameters: 20566 (28639 scalars)
+  Unknowns: 21394 (19962 scalars)
   Differentiated variables: 459 scalars
-  Equations: 16709
-  Nontrivial: 13634
+  Equations: 16717
+  Nontrivial: 13642
 Translated Model
-  Constants: 14590 scalars
+  Constants: 14595 scalars
   Free parameters: 3166 scalars
   Parameter depending: 13854 scalars
   Outputs: 38 scalars
   Continuous time states: 377 scalars
-  Time-varying variables: 4759 scalars
-  Alias variables: 12709 scalars
+  Time-varying variables: 4789 scalars
+  Alias variables: 12721 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,   2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4,   4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,   4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,   4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,   4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,   4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,   4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,   4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,   4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
@@ -3233,7 +3240,7 @@ Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHP
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-The model has the same number of unknowns and equations: 6843
+The model has the same number of unknowns and equations: 6881
 Check of BESMod.Examples.Retrofit.Case1TotalRetrofit successful.
 Warning: WARNINGS have been issued.
 Declaring variable: Boolean rCheck ;
@@ -3367,7 +3374,7 @@ Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHP
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-The DAE has 6843 scalar unknowns and 6843 scalar equations.
+The DAE has 6881 scalar unknowns and 6881 scalar equations.
 Redundant consistent initial conditions.
 Removed the following equations which are redundant and consistent: 
   if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
@@ -3407,22 +3414,22 @@ Warning:   assert(hydraulic.generation.heatPump.eva.preDro.homotopyInitializatio
 Statistics
  
 Original Model
-  Number of components: 1413
-  Variables: 13488
+  Number of components: 1425
+  Variables: 13546
   Constants: 231 (231 scalars)
-  Parameters: 6319 (8000 scalars)
-  Unknowns: 6938 (6983 scalars)
-  Differentiated variables: 133 scalars
-  Equations: 5833
-  Nontrivial: 4840
+  Parameters: 6348 (8030 scalars)
+  Unknowns: 6967 (7021 scalars)
+  Differentiated variables: 134 scalars
+  Equations: 5870
+  Nontrivial: 4873
 Translated Model
-  Constants: 5365 scalars
-  Free parameters: 1173 scalars
-  Parameter depending: 2793 scalars
-  Outputs: 43 scalars
-  Continuous time states: 104 scalars
-  Time-varying variables: 1668 scalars
-  Alias variables: 4215 scalars
+  Constants: 5392 scalars
+  Free parameters: 1177 scalars
+  Parameter depending: 2794 scalars
+  Outputs: 44 scalars
+  Continuous time states: 105 scalars
+  Time-varying variables: 1681 scalars
+  Alias variables: 4238 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 3, 3, 2, 2, 2, 2, 3, 2, 2, 4, 2, 2, 4, 3, 2, 2,   2, 2, 4, 3, 2, 2, 4, 3, 2, 2, 2, 2, 2, 2, 4, 3, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
@@ -3447,6 +3454,7 @@ Statically selected continuous time states
   building.intKPICalTraGain[1].integrator2.y
   building.intKPICalTraLoss2[1].integrator2.y
   building.intKPICalTraLoss[1].integrator2.y
+  building.roomControlCalculator[1].intDisCom.y
   building.thermalZone[1].ROM.extWallRC.thermCapExt[1].T
   building.thermalZone[1].ROM.floorRC.thermCapExt[1].T
   building.thermalZone[1].ROM.intWallRC.thermCapInt[1].T
@@ -3672,7 +3680,7 @@ Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHP
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-The model has the same number of unknowns and equations: 6843
+The model has the same number of unknowns and equations: 6881
 Check of BESMod.Examples.BAUSimStudy.Case1Standard successful.
 Warning: WARNINGS have been issued.
 Declaring variable: Boolean rCheck ;
@@ -3806,7 +3814,7 @@ Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHP
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-The DAE has 6843 scalar unknowns and 6843 scalar equations.
+The DAE has 6881 scalar unknowns and 6881 scalar equations.
 Redundant consistent initial conditions.
 Removed the following equations which are redundant and consistent: 
   if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
@@ -3846,22 +3854,22 @@ Warning:   assert(hydraulic.generation.heatPump.eva.preDro.homotopyInitializatio
 Statistics
  
 Original Model
-  Number of components: 1413
-  Variables: 13485
+  Number of components: 1425
+  Variables: 13543
   Constants: 231 (231 scalars)
-  Parameters: 6316 (7997 scalars)
-  Unknowns: 6938 (6983 scalars)
-  Differentiated variables: 133 scalars
-  Equations: 5833
-  Nontrivial: 4840
+  Parameters: 6345 (8027 scalars)
+  Unknowns: 6967 (7021 scalars)
+  Differentiated variables: 134 scalars
+  Equations: 5870
+  Nontrivial: 4873
 Translated Model
-  Constants: 5362 scalars
-  Free parameters: 1173 scalars
-  Parameter depending: 2793 scalars
-  Outputs: 43 scalars
-  Continuous time states: 104 scalars
-  Time-varying variables: 1668 scalars
-  Alias variables: 4215 scalars
+  Constants: 5389 scalars
+  Free parameters: 1177 scalars
+  Parameter depending: 2794 scalars
+  Outputs: 44 scalars
+  Continuous time states: 105 scalars
+  Time-varying variables: 1681 scalars
+  Alias variables: 4238 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 3, 3, 2, 2, 2, 2, 3, 2, 2, 4, 2, 2, 4, 3, 2, 2,   2, 2, 4, 3, 2, 2, 4, 3, 2, 2, 2, 2, 2, 2, 4, 3, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
@@ -3886,6 +3894,7 @@ Statically selected continuous time states
   building.intKPICalTraGain[1].integrator2.y
   building.intKPICalTraLoss2[1].integrator2.y
   building.intKPICalTraLoss[1].integrator2.y
+  building.roomControlCalculator[1].intDisCom.y
   building.thermalZone[1].ROM.extWallRC.thermCapExt[1].T
   building.thermalZone[1].ROM.floorRC.thermCapExt[1].T
   building.thermalZone[1].ROM.intWallRC.thermCapInt[1].T
@@ -3983,9 +3992,8 @@ Statically selected continuous time states
   hydraulic.transfer.vol.dynBal.U
  
 Warning: WARNINGS have been issued.
-Failed
-Not possible to open file "BESMod.Examples.BAUSimStudy.Case1Standard.mat": No such file or directory
- = false
+Finished
+ = true
 
     
 Declaring variable: Boolean rScript ;
@@ -4023,7 +4031,7 @@ hydraulic.control.setAndMeaSelSec.sigBusDistr.TStoBufBotMea (connect)
 hydraulic.control.sigBusDistr.TStoBufBotMea (connect)
 hydraulic.distribution.sigBusDistr.TStoBufBotMea (connect)
 input hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea (connect)
-The DAE has 4628 scalar unknowns and 4628 scalar equations.
+The DAE has 4666 scalar unknowns and 4666 scalar equations.
 After eliminating unused variables:
   hydraulic.control.buiAndDHWCtr.hysBui.TStoBot
   hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea
@@ -4034,12 +4042,12 @@ After eliminating unused variables:
  
 The model could not be deduced to be symbolically well-posed.
 The model has
-  4368+6*size(hydraulic.control.safCtr.operationalEnvelope.tableMerge, 1)+4*size(  hydraulic.control.safetyControl.tableUpp, 1)+6*size(hydraulic.control.safCtr.operationalEnvelope.boundaryMap.tableMerge,   1)+2*hydraulic.transfer.parRad.nEle+29*building.thermalZone[1].zoneParam.nOrientations  +2*building.thermalZone[1].ROM.volAir.dynBal.nPorts+building.thermalZone[1].humanSenHeaDependent.productHeatOutput.nu  +building.thermalZone[1].machinesSenHea.productHeatOutput.nu+building.thermalZone[1].lights.productHeatOutput.nu  +5*building.thermalZone[1].zoneParam.nOrientationsRoof+building.thermalZone[1].ventCont.optimalTemp.nin  +building.thermalZone[1].ventCont.optimalTemp.nout+building.thermalZone[1].ventCont.dEMA.nout  +building.thermalZone[1].ventCont.dEMA.ExpAVG.n+building.thermalZone[1].ventCont.dEMA.ExpAVG1.n  +max([size(userProfiles.tabIntGai.columns, 1); size(userProfiles.tabIntGai.offset,   1)])+DHW.calcmFlow.multiProduct.nu+DHW.pump.vol.dynBal.nPorts+max([4; size(  DHW.combiTimeTableDHWInput.offset, 1)])+13*systemParameters.nZones+2*  hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n1  +2*hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n2  +2*hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n3  +hydraulic.generation.heatPump.con.vol.dynBal.nPorts+2*hydraulic.generation.heatPump.eva.vol.dynBal.nPorts  +hydraulic.generation.pump.vol.dynBal.nPorts+hydraulic.generation.multiSum.nu+  hydraulic.generation.eleHea.vol.dynBal.nPorts+size(hydraulic.control.safCtr.operationalEnvelope.boundaryMap.uppCombiTable1Ds.columns,   1)+hydraulic.control.safCtr.operationalEnvelope.boundaryMap.nor1.nu+  hydraulic.control.safCtr.onOffController.orSetN.nu+hydraulic.control.anyGenDevIsOn.nu  +hydraulic.control.buiAndDHWCtr.maxSecHeaGen.nu+max([size(hydraulic.control.buiAndDHWCtr.TSetBuiSupSGReady.datRea.columns,   1); size(hydraulic.control.buiAndDHWCtr.TSetBuiSupSGReady.datRea.offset, 1)])  +hydraulic.transfer.rad[1].sumCon.nin+hydraulic.transfer.rad[1].sumRad.nin+  hydraulic.transfer.rad[1].vol[1].dynBal.nPorts+hydraulic.transfer.rad[1].vol[2].dynBal.nPorts  +hydraulic.transfer.rad[1].vol[3].dynBal.nPorts+hydraulic.transfer.rad[1].vol[4].dynBal.nPorts  +hydraulic.transfer.rad[1].vol[5].dynBal.nPorts+hydraulic.transfer.pumFixMFlo[1].vol.dynBal.nPorts
+  4403+6*size(hydraulic.control.safCtr.operationalEnvelope.tableMerge, 1)+4*size(  hydraulic.control.safetyControl.tableUpp, 1)+6*size(hydraulic.control.safCtr.operationalEnvelope.boundaryMap.tableMerge,   1)+2*hydraulic.transfer.parRad.nEle+29*building.thermalZone[1].zoneParam.nOrientations  +2*building.thermalZone[1].ROM.volAir.dynBal.nPorts+building.thermalZone[1].humanSenHeaDependent.productHeatOutput.nu  +building.thermalZone[1].machinesSenHea.productHeatOutput.nu+building.thermalZone[1].lights.productHeatOutput.nu  +5*building.thermalZone[1].zoneParam.nOrientationsRoof+building.thermalZone[1].ventCont.optimalTemp.nin  +building.thermalZone[1].ventCont.optimalTemp.nout+building.thermalZone[1].ventCont.dEMA.nout  +building.thermalZone[1].ventCont.dEMA.ExpAVG.n+building.thermalZone[1].ventCont.dEMA.ExpAVG1.n  +16*systemParameters.nZones+max([size(userProfiles.tabIntGai.columns, 1); size  (userProfiles.tabIntGai.offset, 1)])+DHW.calcmFlow.multiProduct.nu+  DHW.pump.vol.dynBal.nPorts+max([4; size(DHW.combiTimeTableDHWInput.offset, 1)])  +2*hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n1  +2*hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n2  +2*hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n3  +hydraulic.generation.heatPump.con.vol.dynBal.nPorts+2*hydraulic.generation.heatPump.eva.vol.dynBal.nPorts  +hydraulic.generation.pump.vol.dynBal.nPorts+hydraulic.generation.multiSum.nu+  hydraulic.generation.eleHea.vol.dynBal.nPorts+size(hydraulic.control.safCtr.operationalEnvelope.boundaryMap.uppCombiTable1Ds.columns,   1)+hydraulic.control.safCtr.operationalEnvelope.boundaryMap.nor1.nu+  hydraulic.control.safCtr.onOffController.orSetN.nu+hydraulic.control.anyGenDevIsOn.nu  +hydraulic.control.buiAndDHWCtr.maxSecHeaGen.nu+max([size(hydraulic.control.buiAndDHWCtr.TSetBuiSupSGReady.datRea.columns,   1); size(hydraulic.control.buiAndDHWCtr.TSetBuiSupSGReady.datRea.offset, 1)])  +hydraulic.transfer.rad[1].sumCon.nin+hydraulic.transfer.rad[1].sumRad.nin+  hydraulic.transfer.rad[1].vol[1].dynBal.nPorts+hydraulic.transfer.rad[1].vol[2].dynBal.nPorts  +hydraulic.transfer.rad[1].vol[3].dynBal.nPorts+hydraulic.transfer.rad[1].vol[4].dynBal.nPorts  +hydraulic.transfer.rad[1].vol[5].dynBal.nPorts+hydraulic.transfer.pumFixMFlo[1].vol.dynBal.nPorts
 scalar unknowns and
-  4372+max([size(userProfiles.tabIntGai.columns, 1); size(userProfiles.tabIntGai.offset,   1)])+(if DHW.bou_sink.use_Xi_in then 1 else (if DHW.bou_sink.use_X_in then 0   else 1))+(if  not DHW.bou_sink.use_p_in then 1 else 0)+2*DHW.bou_sink.nPorts+  (if  not DHW.bou_sink.use_h_in then 1 else 0)+(if DHW.bouSou.use_Xi_in then 1   else (if DHW.bouSou.use_X_in then 0 else 1))+(if  not DHW.bouSou.use_p_in   then 1 else 0)+(if  not DHW.bouSou.use_T_in then 1 else 0)+max([4; size(  DHW.combiTimeTableDHWInput.offset, 1)])+2*hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n1  +2*hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n2  +2*hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n3  +(if hydraulic.generation.bou_sinkAir.use_Xi_in then 2 else (if   hydraulic.generation.bou_sinkAir.use_X_in then 1 else 3))+(if  not   hydraulic.generation.bou_sinkAir.use_p_in then 1 else 0)+(if  not   hydraulic.generation.bou_sinkAir.use_h_in then 1 else 0)+(if hydraulic.generation.bouEva.use_Xi_in   then 2 else (if hydraulic.generation.bouEva.use_X_in then 1 else 3))+(if   hydraulic.generation.bouPum.use_Xi_in then 1 else (if hydraulic.generation.bouPum.use_X_in   then 0 else 1))+(if  not hydraulic.generation.bouPum.use_p_in then 1 else 0)+  (if  not hydraulic.generation.bouPum.use_T_in then 1 else 0)+size(  hydraulic.control.safCtr.operationalEnvelope.boundaryMap.uppCombiTable1Ds.columns,   1)+max([size(hydraulic.control.buiAndDHWCtr.TSetBuiSupSGReady.datRea.columns,   1); size(hydraulic.control.buiAndDHWCtr.TSetBuiSupSGReady.datRea.offset, 1)])  +(if weaDat.pAtmSou == IBPSA.BoundaryConditions.Types.DataSource.Parameter   then 1 else 0)+(if weaDat.TDewPoiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TDryBulSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TBlaSkySou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.relHumSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.opaSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.ceiHeiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.totSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winSpeSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winDirSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HInfHorSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HDifHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HGloHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HGloHor_HDifHor then 2 else 1)+19*building.thermalZone[1].zoneParam.nOrientations  +3*building.thermalZone[1].zoneParam.nOrientationsRoof+building.thermalZone[1].ventCont.optimalTemp.nout  +building.thermalZone[1].ventCont.dEMA.ExpAVG.n+building.thermalZone[1].ventCont.dEMA.ExpAVG1.n  +(if  not DHW.pump.vol.dynBal.use_mWat_flow then 1 else 0)+3*DHW.pump.vol.dynBal.nPorts  +(if  not hydraulic.generation.heatPump.con.vol.dynBal.use_mWat_flow then 1   else 0)+3*hydraulic.generation.heatPump.con.vol.dynBal.nPorts+(if  not   hydraulic.generation.heatPump.eva.vol.dynBal.use_mWat_flow then 1 else 0)+5*  hydraulic.generation.heatPump.eva.vol.dynBal.nPorts+(if  not hydraulic.generation.pump.vol.dynBal.use_mWat_flow   then 1 else 0)+3*hydraulic.generation.pump.vol.dynBal.nPorts+(if  not   hydraulic.generation.eleHea.vol.dynBal.use_mWat_flow then 1 else 0)+3*  hydraulic.generation.eleHea.vol.dynBal.nPorts+(if  not hydraulic.transfer.pumFixMFlo[1].vol.dynBal.use_mWat_flow   then 1 else 0)+3*hydraulic.transfer.pumFixMFlo[1].vol.dynBal.nPorts+(if  not   building.thermalZone[1].ROM.volAir.dynBal.use_mWat_flow then 1 else 0)+5*  building.thermalZone[1].ROM.volAir.dynBal.nPorts+(if  not hydraulic.transfer.rad[1].vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*hydraulic.transfer.rad[1].vol[1].dynBal.nPorts+(if  not   hydraulic.transfer.rad[1].vol[2].dynBal.use_mWat_flow then 1 else 0)+3*  hydraulic.transfer.rad[1].vol[2].dynBal.nPorts+(if  not hydraulic.transfer.rad[1].vol[3].dynBal.use_mWat_flow   then 1 else 0)+3*hydraulic.transfer.rad[1].vol[3].dynBal.nPorts+(if  not   hydraulic.transfer.rad[1].vol[4].dynBal.use_mWat_flow then 1 else 0)+3*  hydraulic.transfer.rad[1].vol[4].dynBal.nPorts+(if  not hydraulic.transfer.rad[1].vol[5].dynBal.use_mWat_flow   then 1 else 0)+3*hydraulic.transfer.rad[1].vol[5].dynBal.nPorts+7*  systemParameters.nZones+6*size(hydraulic.control.safCtr.operationalEnvelope.tableMerge,   1)+4*size(hydraulic.control.safetyControl.tableUpp, 1)+6*size(  hydraulic.control.safCtr.operationalEnvelope.boundaryMap.tableMerge, 1)+2*  hydraulic.transfer.parRad.nEle
+  4409+max([size(userProfiles.tabIntGai.columns, 1); size(userProfiles.tabIntGai.offset,   1)])+(if DHW.bou_sink.use_Xi_in then 1 else (if DHW.bou_sink.use_X_in then 0   else 1))+(if  not DHW.bou_sink.use_p_in then 1 else 0)+2*DHW.bou_sink.nPorts+  (if  not DHW.bou_sink.use_h_in then 1 else 0)+(if DHW.bouSou.use_Xi_in then 1   else (if DHW.bouSou.use_X_in then 0 else 1))+(if  not DHW.bouSou.use_p_in   then 1 else 0)+(if  not DHW.bouSou.use_T_in then 1 else 0)+max([4; size(  DHW.combiTimeTableDHWInput.offset, 1)])+2*hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n1  +2*hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n2  +2*hydraulic.generation.heatPump.innerCycle.PerformanceDataHPHeating.multiplex3_1.n3  +(if hydraulic.generation.bou_sinkAir.use_Xi_in then 2 else (if   hydraulic.generation.bou_sinkAir.use_X_in then 1 else 3))+(if  not   hydraulic.generation.bou_sinkAir.use_p_in then 1 else 0)+(if  not   hydraulic.generation.bou_sinkAir.use_h_in then 1 else 0)+(if hydraulic.generation.bouEva.use_Xi_in   then 2 else (if hydraulic.generation.bouEva.use_X_in then 1 else 3))+(if   hydraulic.generation.bouPum.use_Xi_in then 1 else (if hydraulic.generation.bouPum.use_X_in   then 0 else 1))+(if  not hydraulic.generation.bouPum.use_p_in then 1 else 0)+  (if  not hydraulic.generation.bouPum.use_T_in then 1 else 0)+size(  hydraulic.control.safCtr.operationalEnvelope.boundaryMap.uppCombiTable1Ds.columns,   1)+max([size(hydraulic.control.buiAndDHWCtr.TSetBuiSupSGReady.datRea.columns,   1); size(hydraulic.control.buiAndDHWCtr.TSetBuiSupSGReady.datRea.offset, 1)])  +(if weaDat.pAtmSou == IBPSA.BoundaryConditions.Types.DataSource.Parameter   then 1 else 0)+(if weaDat.TDewPoiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TDryBulSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TBlaSkySou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.relHumSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.opaSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.ceiHeiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.totSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winSpeSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winDirSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HInfHorSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HDifHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HGloHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HGloHor_HDifHor then 2 else 1)+19*building.thermalZone[1].zoneParam.nOrientations  +3*building.thermalZone[1].zoneParam.nOrientationsRoof+building.thermalZone[1].ventCont.optimalTemp.nout  +building.thermalZone[1].ventCont.dEMA.ExpAVG.n+building.thermalZone[1].ventCont.dEMA.ExpAVG1.n  +(if  not DHW.pump.vol.dynBal.use_mWat_flow then 1 else 0)+3*DHW.pump.vol.dynBal.nPorts  +(if  not hydraulic.generation.heatPump.con.vol.dynBal.use_mWat_flow then 1   else 0)+3*hydraulic.generation.heatPump.con.vol.dynBal.nPorts+(if  not   hydraulic.generation.heatPump.eva.vol.dynBal.use_mWat_flow then 1 else 0)+5*  hydraulic.generation.heatPump.eva.vol.dynBal.nPorts+(if  not hydraulic.generation.pump.vol.dynBal.use_mWat_flow   then 1 else 0)+3*hydraulic.generation.pump.vol.dynBal.nPorts+(if  not   hydraulic.generation.eleHea.vol.dynBal.use_mWat_flow then 1 else 0)+3*  hydraulic.generation.eleHea.vol.dynBal.nPorts+(if  not hydraulic.transfer.pumFixMFlo[1].vol.dynBal.use_mWat_flow   then 1 else 0)+3*hydraulic.transfer.pumFixMFlo[1].vol.dynBal.nPorts+(if  not   building.thermalZone[1].ROM.volAir.dynBal.use_mWat_flow then 1 else 0)+5*  building.thermalZone[1].ROM.volAir.dynBal.nPorts+(if  not hydraulic.transfer.rad[1].vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*hydraulic.transfer.rad[1].vol[1].dynBal.nPorts+(if  not   hydraulic.transfer.rad[1].vol[2].dynBal.use_mWat_flow then 1 else 0)+3*  hydraulic.transfer.rad[1].vol[2].dynBal.nPorts+(if  not hydraulic.transfer.rad[1].vol[3].dynBal.use_mWat_flow   then 1 else 0)+3*hydraulic.transfer.rad[1].vol[3].dynBal.nPorts+(if  not   hydraulic.transfer.rad[1].vol[4].dynBal.use_mWat_flow then 1 else 0)+3*  hydraulic.transfer.rad[1].vol[4].dynBal.nPorts+(if  not hydraulic.transfer.rad[1].vol[5].dynBal.use_mWat_flow   then 1 else 0)+3*hydraulic.transfer.rad[1].vol[5].dynBal.nPorts+8*  systemParameters.nZones+6*size(hydraulic.control.safCtr.operationalEnvelope.tableMerge,   1)+4*size(hydraulic.control.safetyControl.tableUpp, 1)+6*size(  hydraulic.control.safCtr.operationalEnvelope.boundaryMap.tableMerge, 1)+2*  hydraulic.transfer.parRad.nEle
 scalar equations.
 However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
-  4628
+  4666
 Warning: Some connector variables are removed from the simulation problem,
 since they are not used in the model.
 Warning: Connector variables that are removed:
@@ -4094,7 +4102,7 @@ hydraulic.control.setAndMeaSelSec.sigBusDistr.TStoBufBotMea (connect)
 hydraulic.control.sigBusDistr.TStoBufBotMea (connect)
 hydraulic.distribution.sigBusDistr.TStoBufBotMea (connect)
 input hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea (connect)
-The DAE has 4628 scalar unknowns and 4628 scalar equations.
+The DAE has 4666 scalar unknowns and 4666 scalar equations.
 After eliminating unused variables:
   hydraulic.control.buiAndDHWCtr.hysBui.TStoBot
   hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea
@@ -4148,22 +4156,22 @@ Warning:   assert(hydraulic.generation.heatPump.eva.preDro.homotopyInitializatio
 Statistics
  
 Original Model
-  Number of components: 953
-  Variables: 7827
+  Number of components: 965
+  Variables: 7885
   Constants: 143 (143 scalars)
-  Parameters: 3567 (5324 scalars)
-  Unknowns: 4117 (4701 scalars)
-  Differentiated variables: 63 scalars
-  Equations: 3716
-  Nontrivial: 3214
+  Parameters: 3596 (5354 scalars)
+  Unknowns: 4146 (4739 scalars)
+  Differentiated variables: 64 scalars
+  Equations: 3753
+  Nontrivial: 3247
 Translated Model
-  Constants: 3264 scalars
-  Free parameters: 997 scalars
-  Parameter depending: 1921 scalars
-  Outputs: 41 scalars
-  Continuous time states: 52 scalars
-  Time-varying variables: 1131 scalars
-  Alias variables: 2855 scalars
+  Constants: 3293 scalars
+  Free parameters: 1001 scalars
+  Parameter depending: 1922 scalars
+  Outputs: 42 scalars
+  Continuous time states: 53 scalars
+  Time-varying variables: 1144 scalars
+  Alias variables: 2876 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 4, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0}
@@ -4188,6 +4196,7 @@ Statically selected continuous time states
   building.intKPICalTraGain[1].integrator2.y
   building.intKPICalTraLoss2[1].integrator2.y
   building.intKPICalTraLoss[1].integrator2.y
+  building.roomControlCalculator[1].intDisCom.y
   building.thermalZone[1].ROM.extWallRC.thermCapExt[1].T
   building.thermalZone[1].ROM.floorRC.thermCapExt[1].T
   building.thermalZone[1].ROM.intWallRC.thermCapInt[1].T
@@ -4270,9 +4279,9 @@ Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHP
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-The model has the same number of unknowns and equations: 6289
+The model has the same number of unknowns and equations: 6327
 The model has the same number of unknowns and equations
-for the given numerical settings of parameters: 6289
+for the given numerical settings of parameters: 6327
 Check of BESMod.Examples.HeatPumpAndBoiler.Serial successful.
 Warning: WARNINGS have been issued.
 Declaring variable: Boolean rCheck ;
@@ -4315,7 +4324,7 @@ Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHP
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-The DAE has 6289 scalar unknowns and 6289 scalar equations.
+The DAE has 6327 scalar unknowns and 6327 scalar equations.
 Redundant consistent initial conditions.
 Removed the following equations which are redundant and consistent: 
   if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
@@ -4357,22 +4366,22 @@ Ignoring range
 Statistics
  
 Original Model
-  Number of components: 1271
-  Variables: 11665
+  Number of components: 1283
+  Variables: 11723
   Constants: 223 (224 scalars)
-  Parameters: 5200 (6918 scalars)
-  Unknowns: 6242 (6440 scalars)
-  Differentiated variables: 106 scalars
-  Equations: 5217
-  Nontrivial: 4341
+  Parameters: 5229 (6948 scalars)
+  Unknowns: 6271 (6478 scalars)
+  Differentiated variables: 107 scalars
+  Equations: 5254
+  Nontrivial: 4374
 Translated Model
-  Constants: 4809 scalars
-  Free parameters: 1144 scalars
-  Parameter depending: 2272 scalars
-  Outputs: 46 scalars
-  Continuous time states: 77 scalars
-  Time-varying variables: 1501 scalars
-  Alias variables: 3856 scalars
+  Constants: 4836 scalars
+  Free parameters: 1148 scalars
+  Parameter depending: 2273 scalars
+  Outputs: 47 scalars
+  Continuous time states: 78 scalars
+  Time-varying variables: 1514 scalars
+  Alias variables: 3879 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 4, 4, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0}
@@ -4399,6 +4408,7 @@ Statically selected continuous time states
   building.intKPICalTraLoss[1].integrator2.y
   building.intKPICalVentGain[1].integrator2.y
   building.intKPICalVentLoss[1].integrator2.y
+  building.roomControlCalculator[1].intDisCom.y
   building.thermalZone[1].ROM.extWallRC.thermCapExt[1].T
   building.thermalZone[1].ROM.floorRC.thermCapExt[1].T
   building.thermalZone[1].ROM.intWallRC.thermCapInt[1].T
@@ -4532,7 +4542,7 @@ Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHP
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-The model has the same number of unknowns and equations: 7134
+The model has the same number of unknowns and equations: 7172
 Check of BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW successful.
 Warning: WARNINGS have been issued.
 Declaring variable: Boolean rCheck ;
@@ -4603,7 +4613,7 @@ Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHP
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-The DAE has 7134 scalar unknowns and 7134 scalar equations.
+The DAE has 7172 scalar unknowns and 7172 scalar equations.
 Redundant consistent initial conditions.
 Removed the following equations which are redundant and consistent: 
   if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
@@ -4649,22 +4659,22 @@ Ignoring range
 Statistics
  
 Original Model
-  Number of components: 1457
-  Variables: 14003
+  Number of components: 1469
+  Variables: 14061
   Constants: 227 (228 scalars)
-  Parameters: 6575 (8302 scalars)
-  Unknowns: 7201 (7300 scalars)
-  Differentiated variables: 139 scalars
-  Equations: 5952
-  Nontrivial: 4973
+  Parameters: 6604 (8332 scalars)
+  Unknowns: 7230 (7338 scalars)
+  Differentiated variables: 140 scalars
+  Equations: 5989
+  Nontrivial: 5006
 Translated Model
-  Constants: 5434 scalars
-  Free parameters: 1237 scalars
-  Parameter depending: 2954 scalars
-  Outputs: 46 scalars
-  Continuous time states: 110 scalars
-  Time-varying variables: 1744 scalars
-  Alias variables: 4461 scalars
+  Constants: 5461 scalars
+  Free parameters: 1241 scalars
+  Parameter depending: 2955 scalars
+  Outputs: 47 scalars
+  Continuous time states: 111 scalars
+  Time-varying variables: 1757 scalars
+  Alias variables: 4484 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 3, 3, 2, 2, 2, 2, 3, 4, 2, 2, 4, 3, 2, 2, 4, 3,   2, 2, 2, 2, 2, 2, 2, 2, 4, 3, 4, 3, 2, 2, 2, 2, 4, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
@@ -4691,6 +4701,7 @@ Statically selected continuous time states
   building.intKPICalTraLoss[1].integrator2.y
   building.intKPICalVentGain[1].integrator2.y
   building.intKPICalVentLoss[1].integrator2.y
+  building.roomControlCalculator[1].intDisCom.y
   building.thermalZone[1].ROM.extWallRC.thermCapExt[1].T
   building.thermalZone[1].ROM.floorRC.thermCapExt[1].T
   building.thermalZone[1].ROM.intWallRC.thermCapInt[1].T
@@ -4920,7 +4931,7 @@ Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHP
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-The model has the same number of unknowns and equations: 6843
+The model has the same number of unknowns and equations: 6881
 Check of BESMod.Examples.Retrofit.Case1NoRetrofit successful.
 Warning: WARNINGS have been issued.
 Declaring variable: Boolean rCheck ;
@@ -5054,7 +5065,7 @@ Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHP
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-The DAE has 6843 scalar unknowns and 6843 scalar equations.
+The DAE has 6881 scalar unknowns and 6881 scalar equations.
 Redundant consistent initial conditions.
 Removed the following equations which are redundant and consistent: 
   if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
@@ -5094,22 +5105,22 @@ Warning:   assert(hydraulic.generation.heatPump.eva.preDro.homotopyInitializatio
 Statistics
  
 Original Model
-  Number of components: 1413
-  Variables: 13488
+  Number of components: 1425
+  Variables: 13546
   Constants: 231 (231 scalars)
-  Parameters: 6319 (8000 scalars)
-  Unknowns: 6938 (6983 scalars)
-  Differentiated variables: 133 scalars
-  Equations: 5833
-  Nontrivial: 4840
+  Parameters: 6348 (8030 scalars)
+  Unknowns: 6967 (7021 scalars)
+  Differentiated variables: 134 scalars
+  Equations: 5870
+  Nontrivial: 4873
 Translated Model
-  Constants: 5365 scalars
-  Free parameters: 1173 scalars
-  Parameter depending: 2793 scalars
-  Outputs: 43 scalars
-  Continuous time states: 104 scalars
-  Time-varying variables: 1668 scalars
-  Alias variables: 4215 scalars
+  Constants: 5392 scalars
+  Free parameters: 1177 scalars
+  Parameter depending: 2794 scalars
+  Outputs: 44 scalars
+  Continuous time states: 105 scalars
+  Time-varying variables: 1681 scalars
+  Alias variables: 4238 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 3, 3, 2, 2, 2, 2, 3, 2, 2, 4, 2, 2, 4, 3, 2, 2,   2, 2, 4, 3, 2, 2, 4, 3, 2, 2, 2, 2, 2, 2, 4, 3, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
@@ -5134,6 +5145,7 @@ Statically selected continuous time states
   building.intKPICalTraGain[1].integrator2.y
   building.intKPICalTraLoss2[1].integrator2.y
   building.intKPICalTraLoss[1].integrator2.y
+  building.roomControlCalculator[1].intDisCom.y
   building.thermalZone[1].ROM.extWallRC.thermCapExt[1].T
   building.thermalZone[1].ROM.floorRC.thermCapExt[1].T
   building.thermalZone[1].ROM.intWallRC.thermCapInt[1].T
@@ -5242,9 +5254,9 @@ savelog("BESMod.Examples.Retrofit.Case1NoRetrofit.translation.log"); = true
 
 rCheck = checkModel("BESMod.Examples.TEASERHeatLoadCalculation.Example");
 Check of BESMod.Examples.TEASERHeatLoadCalculation.Example:
-The model has the same number of unknowns and equations: 2544
+The model has the same number of unknowns and equations: 2580
 The model has the same number of unknowns and equations
-for the given numerical settings of parameters: 2544
+for the given numerical settings of parameters: 2580
 Check of BESMod.Examples.TEASERHeatLoadCalculation.Example successful.
 Declaring variable: Boolean rCheck ;
 
@@ -5260,7 +5272,7 @@ rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/TEASERHea
 
 simulateModel("BESMod.Examples.TEASERHeatLoadCalculation.Example", stopTime=172800, method="dassl", tolerance=1e-06, resultFile="BESMod.Examples.TEASERHeatLoadCalculation.Example");
 Translation of BESMod.Examples.TEASERHeatLoadCalculation.Example:
-The DAE has 2544 scalar unknowns and 2544 scalar equations.
+The DAE has 2580 scalar unknowns and 2580 scalar equations.
 Warning: The variable building.ABui=0 is not in range [0.1,1e+100].
 Ignoring range
 Warning: The variable building.hBui=0 is not in range [0.1,1e+100].
@@ -5271,22 +5283,22 @@ Ignoring range
 Statistics
  
 Original Model
-  Number of components: 422
-  Variables: 3106
+  Number of components: 433
+  Variables: 3157
   Constants: 77 (77 scalars)
-  Parameters: 1301 (1525 scalars)
-  Unknowns: 1728 (2544 scalars)
-  Differentiated variables: 20 scalars
-  Equations: 1684
-  Nontrivial: 1528
+  Parameters: 1325 (1550 scalars)
+  Unknowns: 1755 (2580 scalars)
+  Differentiated variables: 21 scalars
+  Equations: 1715
+  Nontrivial: 1555
 Translated Model
-  Constants: 879 scalars
-  Free parameters: 395 scalars
-  Parameter depending: 588 scalars
-  Outputs: 20 scalars
-  Continuous time states: 20 scalars
-  Time-varying variables: 712 scalars
-  Alias variables: 1572 scalars
+  Constants: 901 scalars
+  Free parameters: 399 scalars
+  Parameter depending: 589 scalars
+  Outputs: 21 scalars
+  Continuous time states: 21 scalars
+  Time-varying variables: 726 scalars
+  Alias variables: 1592 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {46, 4, 4}
   Sizes after manipulation of the linear systems: {10, 0, 0}
@@ -5306,6 +5318,7 @@ Statically selected continuous time states
   building.intKPICal[1].integrator2.y
   building.intKPICalTraGain2[1].integrator2.y
   building.intKPICalTraLoss2[1].integrator2.y
+  building.roomControlCalculator[1].intDisCom.y
   building.thermalZone[1].ROM.extWallRC.thermCapExt[1].T
   building.thermalZone[1].ROM.floorRC.thermCapExt[1].T
   building.thermalZone[1].ROM.intWallRC.thermCapInt[1].T
@@ -5337,9 +5350,9 @@ Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHP
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-The model has the same number of unknowns and equations: 7111
+The model has the same number of unknowns and equations: 7149
 The model has the same number of unknowns and equations
-for the given numerical settings of parameters: 7111
+for the given numerical settings of parameters: 7149
 Check of BESMod.Examples.ModelicaConferencePaper.TEASERBuilding successful.
 Warning: WARNINGS have been issued.
 Declaring variable: Boolean rCheck ;
@@ -5360,7 +5373,7 @@ Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHP
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-The DAE has 7111 scalar unknowns and 7111 scalar equations.
+The DAE has 7149 scalar unknowns and 7149 scalar equations.
 Redundant consistent initial conditions.
 Removed the following equations which are redundant and consistent: 
   electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.EAva    +electrical.distribution.batterySimple.EBou;
@@ -5400,22 +5413,22 @@ Warning:   assert(hydraulic.generation.heatPump.eva.preDro.homotopyInitializatio
 Statistics
  
 Original Model
-  Number of components: 1420
-  Variables: 13690
+  Number of components: 1432
+  Variables: 13748
   Constants: 289 (289 scalars)
-  Parameters: 6297 (8561 scalars)
-  Unknowns: 7104 (7338 scalars)
-  Differentiated variables: 113 scalars
-  Equations: 5976
-  Nontrivial: 4946
+  Parameters: 6326 (8591 scalars)
+  Unknowns: 7133 (7376 scalars)
+  Differentiated variables: 114 scalars
+  Equations: 6013
+  Nontrivial: 4979
 Translated Model
-  Constants: 5561 scalars
-  Free parameters: 1370 scalars
-  Parameter depending: 3086 scalars
-  Outputs: 41 scalars
-  Continuous time states: 84 scalars
-  Time-varying variables: 1784 scalars
-  Alias variables: 4387 scalars
+  Constants: 5586 scalars
+  Free parameters: 1374 scalars
+  Parameter depending: 3087 scalars
+  Outputs: 42 scalars
+  Continuous time states: 85 scalars
+  Time-varying variables: 1796 scalars
+  Alias variables: 4413 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 4, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0}
@@ -5435,6 +5448,7 @@ Statically selected continuous time states
   building.comCalHeaOpe[1].intDisCom.y
   building.comfortCalculatorCool[1].intDisCom.y
   building.comfortCalculatorHea[1].intDisCom.y
+  building.roomControlCalculator[1].intDisCom.y
   building.thermalZone[1].ROM.extWallRC.thermCapExt[1].T
   building.thermalZone[1].ROM.floorRC.thermCapExt[1].T
   building.thermalZone[1].ROM.intWallRC.thermCapInt[1].T
