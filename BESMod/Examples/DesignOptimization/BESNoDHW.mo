@@ -21,7 +21,6 @@ model BESNoDHW "Example to demonstrate usage without DHW"
             (y_nominal=0.8, redeclare
               AixLib.Fluid.HeatPumps.ModularReversible.Data.TableDataSDF.TableData3D.VCLibPy.VCLibVaporInjectionPhaseSeparatorPropane
               datTab),
-        safCtrPar(use_minFlowCtr=false),
         genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
         TBiv=parameterStudy.TBiv,
         redeclare

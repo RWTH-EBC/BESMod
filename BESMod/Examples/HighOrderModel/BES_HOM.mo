@@ -32,7 +32,6 @@ model BES_HOM
             (y_nominal=0.8, redeclare
               AixLib.Fluid.HeatPumps.ModularReversible.Data.TableDataSDF.TableData3D.VCLibPy.VCLibVaporInjectionPhaseSeparatorPropane
               datTab),
-        safCtrPar(use_minFlowCtr=false),
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater.DefaultElectricHeater
           parEleHea,

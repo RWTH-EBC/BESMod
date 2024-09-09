@@ -38,7 +38,6 @@ partial model PartialModelicaConferenceUseCase
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps.DefaultHP
           parHeaPum,
-        safCtrPar(use_minFlowCtr=false),
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater.DefaultElectricHeater
           parEleHea,

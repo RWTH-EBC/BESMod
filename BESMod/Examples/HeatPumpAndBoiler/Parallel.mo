@@ -14,7 +14,6 @@ model Parallel
             (y_nominal=0.8, redeclare
               AixLib.Fluid.HeatPumps.ModularReversible.Data.TableDataSDF.TableData3D.VCLibPy.VCLibVaporInjectionPhaseSeparatorPropane
               datTab),
-        safCtrPar(use_minFlowCtr=false),
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
           parTemSen,

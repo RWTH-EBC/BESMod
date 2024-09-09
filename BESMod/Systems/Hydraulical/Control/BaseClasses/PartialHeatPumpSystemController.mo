@@ -277,13 +277,6 @@ equation
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
 
-  connect(anyGenDevIsOn.u[2], sigBusGen.heaPumIsOn) annotation (Line(points={{-148.25,
-          0},{-148,0},{-148,6},{-168,6},{-168,-99},{-152,-99}}, color={255,0,255}),
-      Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
   connect(priGenPIDCtrl.ySet, sigBusGen.yHeaPumSet) annotation (Line(points={{
           118.8,90},{252,90},{252,-124},{-152,-124},{-152,-99}}, color={0,0,127}),
       Text(
@@ -297,6 +290,9 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  connect(anyGenDevIsOn.u[2], buiAndDHWCtr.priGren) annotation (Line(points={{
+          -148.25,0},{-148.25,6},{-112,6},{-112,27.5},{-118,27.5}}, color={255,
+          0,255}));
     annotation (Diagram(graphics={
         Rectangle(
           extent={{4,100},{136,36}},
