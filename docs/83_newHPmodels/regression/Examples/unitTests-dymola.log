@@ -3,14 +3,11 @@ Regression tests are only run for the following package:
 *** Error: BESMod_Examples_HighOrderModel_BES_HOM.txt: Errors during result verification.
            Absolute error = 5.638e-01 at t = 127872.0 for hydraulic.generation.sigBusGen.TGenOutMea
            Absolute error = 3.995e+01 at t = 127872.0 for electricalGrid.PElecLoa
-*** Error: BESMod_Examples_Retrofit_Case1PartialRetrofit.txt: Errors during result verification.
-           Absolute error = 3.350e+00 at t = 47520.0 for hydraulic.generation.sigBusGen.TGenOutMea
-           Absolute error = 7.806e+01 at t = 48384.0 for electricalGrid.PElecLoa
-*** Error: BESMod_Examples_DesignOptimization_BESNoDHW.txt: Errors during result verification.
-           Absolute error = 3.535e+03 at t = 0.0 for electricalGrid.PElecLoa
-Comparison files output by funnel are stored in the directory 'funnel_comp' of size 1.0 MB.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Examples_Retrofit_Case1PartialRetrofit.txt.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Examples_DesignOptimization_BESNoDHW.txt.
+Comparison files output by funnel are stored in the directory 'funnel_comp' of size 0.9 MB.
 Run 'python -c "import buildingspy.development.regressiontest as t; t.Tester(tool=\"dymola\").report()"'
 to access a summary of the comparison results.
 
-Script that runs unit tests had 0 warnings and 3 errors.
+Script that runs unit tests had 0 warnings and 1 errors.
 

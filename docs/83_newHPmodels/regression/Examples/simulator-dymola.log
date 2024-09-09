@@ -973,9 +973,9 @@ initial equations:
   weaDat.pAtmSel.p = building.roo.air.vol.dynBal.p_start;
   hydraulic.generation.bou_sinkAir.p = 101325.0;
   ventilation.generation.bouExh.p = ventilation.generation.threeWayValve_b.vol.dynBal.p_start;
-  electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
   electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
   electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
+  electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
  
 Sparse solver handling possible: false.
 Due to flag Advanced.SparseActivate=false.
@@ -3841,10 +3841,10 @@ Warning: The bus-input hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea 
 Bus-signal: TStoBufBotMea
 Use:  connect(hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea, hydraulic.control.buiAndDHWCtr.hysBui.TStoBot);
 Connected bus variables:
-hydraulic.distribution.sigBusDistr.TStoBufBotMea (connect) "Supply temperature of the lower layers of the storage. Does not have to be the lowest layer, depending on comfort even the top may be selected"
+hydraulic.control.setAndMeaSelPri.sigBusDistr.TStoBufBotMea (connect) "Supply temperature of the lower layers of the storage. Does not have to be the lowest layer, depending on comfort even the top may be selected"
+hydraulic.distribution.sigBusDistr.TStoBufBotMea (connect)
 hydraulic.control.setAndMeaSelSec.sigBusDistr.TStoBufBotMea (connect)
 hydraulic.control.sigBusDistr.TStoBufBotMea (connect)
-hydraulic.control.setAndMeaSelPri.sigBusDistr.TStoBufBotMea (connect)
 input hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea (connect)
 The DAE has 4681 scalar unknowns and 4681 scalar equations.
 After eliminating unused variables:
@@ -5150,9 +5150,9 @@ The redundancies involve
 initial equations: 
   hydraulic.generation.bou_sinkAir.p = 101325.0;
   ventilation.generation.bouExh.p = ventilation.generation.threeWayValve_b.vol.dynBal.p_start;
-  electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
   electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
   electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
+  electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
  
  
 Statistics
