@@ -356,7 +356,6 @@ equation
       thickness=0.5));
   connect(control.buiMeaBus, building.buiMeaBus) annotation (Line(
       points={{62.04,198.37},{62.04,206},{-16,206},{-16,88},{39,88},{39,77.62}},
-
       color={255,128,0},
       thickness=0.5));
   annotation (Icon(graphics,
