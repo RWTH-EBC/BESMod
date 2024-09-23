@@ -17,7 +17,8 @@ model TEASERThermalZone
   parameter Boolean use_verboseEnergyBalance=true   "=false to disable the integration of the verbose energy balance";
   parameter Modelica.Units.SI.TemperatureDifference dTComfort=2
     "Temperature difference to room set temperature at which the comfort is still acceptable. In DIN EN 15251, all temperatures below 22 °C - 2 K count as discomfort. Hence the default value. If your room set temperature is lower, consider using smaller values.";
-
+  parameter Boolean incElePro = false
+    "=false to not include electrical energy consumption in the electrical connectors";
   parameter Modelica.Fluid.Types.Dynamics energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial
     "Type of energy balance: dynamic (3 initialization options) or steady state"
     annotation (Dialog(tab="Dynamics"));
@@ -76,7 +77,7 @@ model TEASERThermalZone
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={30,-110})));
+        origin={30,-150})));
   BESMod.Utilities.KPIs.EnergyKPICalculator intKPICalVentGain[nZones](each final
             use_inpCon=true) if use_ventilation and use_verboseEnergyBalance
     annotation (Placement(transformation(
@@ -154,13 +155,8 @@ model TEASERThermalZone
   Modelica.Blocks.Math.MultiSum multiSum[nZones](each final nu=3) if use_verboseEnergyBalance annotation (Placement(transformation(extent={{-9,-9},
             {9,9}},
         rotation=180,
-        origin={69,-129})));
+        origin={69,-149})));
 
-  BESMod.Utilities.Electrical.ZeroLoad zeroLoad annotation (Placement(
-        transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=180,
-        origin={94,-96})));
   Modelica.Blocks.Routing.RealPassThrough realPassThroughIntGains[nZones,3]
     annotation (Placement(transformation(extent={{-100,0},{-80,20}})));
   Modelica.Blocks.Routing.RealPassThrough realPassThroughTDry[nZones]
@@ -185,6 +181,27 @@ model TEASERThermalZone
         TSetZone_nominal .+ dTComfort, each for_heating=true)
     "Comfort calculator operative room temperature for cooling"
     annotation (Placement(transformation(extent={{20,-70},{40,-50}})));
+  BESMod.Utilities.Electrical.RealToElecCon realToElecCon(use_souGen=false)
+                                                annotation (Placement(
+        transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={98,-120})));
+  Modelica.Blocks.Math.Gain gain(final k=if incElePro then 1 else 0)
+                                                               annotation (
+      Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={62,-120})));
+  Modelica.Blocks.Math.MultiSum multiSumEle(final k=fill(1, multiSumEle.nu),
+      final nu=2*nZones)  annotation (Placement(
+        transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={30,-120})));
+  BESMod.Utilities.KPIs.RoomControlCalculator roomControlCalculator[nZones](each
+      final for_heating=true, each final dTComBou=0)
+    annotation (Placement(transformation(extent={{50,-40},{70,-20}})));
 equation
 
   for i in 1:nZones loop
@@ -204,6 +221,13 @@ equation
         index=-1,
         extent={{-3,-6},{-3,-6}},
         horizontalAlignment=TextAlignment.Right));
+    connect(thermalZone[i].QIntGains_flow[2], multiSumEle.u[2*i-1]) annotation (Line(
+          points={{-42.7,33.6},{-42.7,0},{-28,0},{-28,-68},{-6,-68},{-6,-134},{12,
+            -134},{12,-120},{20,-120}}, color={0,0,127}));
+  connect(thermalZone[i].QIntGains_flow[3], multiSumEle.u[2*i]) annotation (Line(
+        points={{-42.7,34.8},{-42.7,0},{-28,0},{-28,-68},{-6,-68},{-6,-134},{12,
+            -134},{12,-120},{20,-120}},
+                                      color={0,0,127}));
     if use_ventilation then
       connect(portVent_in[i], thermalZone[i].ports[1]) annotation (Line(points={{100,38},
               {82,38},{82,10},{-2,10},{-2,22.08}},                 color={0,127,
@@ -256,7 +280,7 @@ equation
             {-41.8,-130}},                     color={0,0,127}));
   end if;
   connect(intKPICal.KPI, outBusDem.QIntGain) annotation (Line(
-      points={{17.8,-110},{8,-110},{8,-2},{98,-2}},
+      points={{17.8,-150},{8,-150},{8,-2},{98,-2}},
       color={135,135,135},
       thickness=0.5), Text(
       string="%second",
@@ -372,17 +396,12 @@ equation
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(multiSum.y, intKPICal.u)
-    annotation (Line(points={{58.47,-129},{54,-129},{54,-110},{41.8,-110}},
+    annotation (Line(points={{58.47,-149},{58.47,-150},{41.8,-150}},
                                                        color={0,0,127}));
-  connect(multiSum.u, thermalZone.QIntGains_flow) annotation (Line(points={{78,-129},
-          {86,-129},{86,-110},{56,-110},{56,4},{-28,4},{-28,10},{-32,10},{-32,8},
-          {-42.7,8},{-42.7,33.6}},
+  connect(multiSum.u, thermalZone.QIntGains_flow) annotation (Line(points={{78,-149},
+          {78,-152},{86,-152},{86,-134},{-6,-134},{-6,-68},{-28,-68},{-28,0},{-42.7,
+          0},{-42.7,33.6}},
         color={0,0,127}));
-  connect(zeroLoad.internalElectricalPin, internalElectricalPin) annotation (
-      Line(
-      points={{84,-96},{70,-96}},
-      color={0,0,0},
-      thickness=1));
   connect(realPassThroughIntGains.y, thermalZone.intGains) annotation (Line(
         points={{-79,10},{-50,10},{-50,4},{-31.6,4},{-31.6,17.76}}, color={0,0,
           127}));
@@ -400,7 +419,8 @@ equation
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
   connect(comCalHeaOpe.TZone, calTOpe.y) annotation (Line(points={{18,-20},{-32,
-          -20},{-32,-16},{-81,-16},{-81,30}}, color={0,0,127}));
+          -20},{-32,-10},{-86,-10},{-86,30},{-81,30}},
+                                              color={0,0,127}));
   connect(comCalCooOpe.TZone, calTOpe.y) annotation (Line(points={{18,-60},{10,
           -60},{10,0},{2,0},{2,2},{0,2},{0,6},{-46,6},{-46,28},{-52,28},{-52,44},
           {-88,44},{-88,30},{-81,30}}, color={0,0,127}));
@@ -424,6 +444,33 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  connect(gain.y,realToElecCon. PEleLoa) annotation (Line(points={{73,-120},{73,
+          -116},{86,-116}},             color={0,0,127}));
+  connect(multiSumEle.y, gain.u)
+    annotation (Line(points={{41.7,-120},{50,-120}}, color={0,0,127}));
+  connect(realToElecCon.internalElectricalPin, internalElectricalPin)
+    annotation (Line(
+      points={{108.2,-119.8},{114,-119.8},{114,-96},{70,-96}},
+      color={0,0,0},
+      thickness=1));
+
+  connect(roomControlCalculator.dTComSec, outBusDem.dTControlHea) annotation (
+      Line(points={{71,-30},{86,-30},{86,-16},{98,-16},{98,-2}}, color={0,0,127}),
+      Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(roomControlCalculator.TZone, thermalZone.TAir) annotation (Line(
+        points={{48,-30},{2,-30},{2,-20},{-32,-20},{-32,-10},{-54,-10},{-54,
+          76.8},{-42.7,76.8}}, color={0,0,127}));
+  connect(roomControlCalculator.TZoneSet, useProBus.TZoneSet) annotation (Line(
+        points={{48,-36},{42,-36},{42,102},{52,102},{52,101},{51,101}}, color={
+          0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
     annotation (Diagram(coordinateSystem(extent={{-100,-220},{100,100}})),
       Documentation(info="<html>
 <p>This model uses the reduced-order approach with the common TEASER output to model the building envelope. Relevant KPIs are calculated.</p>

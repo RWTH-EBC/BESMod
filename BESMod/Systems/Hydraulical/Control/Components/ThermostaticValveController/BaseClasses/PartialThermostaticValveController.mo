@@ -10,12 +10,13 @@ partial model PartialThermostaticValveController
     annotation (Placement(transformation(extent={{100,-20},{140,20}})));
   Modelica.Blocks.Interfaces.RealInput TZoneSet[nZones]
     annotation (Placement(transformation(extent={{-140,-80},{-100,-40}})));
+
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Rectangle(
           extent={{-100,100},{100,-100}},
           lineColor={0,0,0},
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
-          lineThickness=0.5)}),                                  Diagram(graphics,
+          lineThickness=0.5)}),                                  Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end PartialThermostaticValveController;
