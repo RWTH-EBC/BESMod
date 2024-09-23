@@ -1,50 +1,14 @@
 Regression tests are only run for the following package:
   BESMod.Examples
 *** Warning: BESMod.Examples.GasBoilerBuildingOnly: Translation statistics for simulation changed for number of continuous time states, but results are unchanged.
- Old = 41
+ Old = 43
  New = 42
-*** Warning: BESMod.Examples.HeatPumpAndBoiler.Serial: Translation statistics for simulation changed for number of continuous time states, but results are unchanged.
- Old = 77
- New = 78
-*** Warning: BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW: Translation statistics for simulation changed for number of continuous time states, but results are unchanged.
- Old = 110
- New = 111
-*** Warning: BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW: Translation statistics for simulation changed for number of continuous time states, but results are unchanged.
- Old = 144
- New = 145
-*** Warning: BESMod.Examples.Retrofit.Case1TotalRetrofit: Translation statistics for simulation changed for number of continuous time states, but results are unchanged.
- Old = 104
- New = 105
-*** Warning: BESMod.Examples.Retrofit.Case1NoRetrofit: Translation statistics for simulation changed for number of continuous time states, but results are unchanged.
- Old = 104
- New = 105
-*** Warning: BESMod.Examples.Retrofit.Case1PartialRetrofit: Translation statistics for simulation changed for number of continuous time states, but results are unchanged.
- Old = 104
- New = 105
-*** Warning: BESMod.Examples.DesignOptimization.BES: Translation statistics for simulation changed for number of continuous time states, but results are unchanged.
- Old = 71
- New = 72
-*** Warning: BESMod.Examples.DesignOptimization.BESNoDHW: Translation statistics for simulation changed for number of continuous time states, but results are unchanged.
- Old = 52
- New = 53
-*** Warning: BESMod.Examples.TEASERHeatLoadCalculation.Example: Translation statistics for simulation changed for number of continuous time states, but results are unchanged.
- Old = 20
- New = 21
-*** Warning: BESMod.Examples.SolarThermalSystem.SolarThermalAixLib: Translation statistics for simulation changed for number of continuous time states, but results are unchanged.
- Old = 237
- New = 238
-*** Warning: BESMod.Examples.SolarThermalSystem.SolarThermalBuildings: Translation statistics for simulation changed for number of continuous time states, but results are unchanged.
- Old = 239
- New = 240
-*** Warning: BESMod.Examples.BAUSimStudy.Case1Standard: Translation statistics for simulation changed for number of continuous time states, but results are unchanged.
- Old = 104
- New = 105
-*** Warning: BESMod.Examples.ModelicaConferencePaper.TEASERBuilding: Translation statistics for simulation changed for number of continuous time states, but results are unchanged.
- Old = 84
- New = 85
+*** Warning: BESMod.Examples.HeatPumpAndBoiler.Parallel: Translation statistics for simulation changed for number of continuous time states, but results are unchanged.
+ Old = 80
+ New = 79
 Comparison files output by funnel are stored in the directory 'funnel_comp' of size 1.0 MB.
 Run 'python -c "import buildingspy.development.regressiontest as t; t.Tester(tool=\"dymola\").report()"'
 to access a summary of the comparison results.
 
-Script that runs unit tests had 14 warnings and 0 errors.
+Script that runs unit tests had 2 warnings and 0 errors.
 
