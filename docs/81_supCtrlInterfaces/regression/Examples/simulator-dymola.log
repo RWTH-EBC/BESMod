@@ -719,10 +719,10 @@ In class Modelica.Units.SI.
   Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
 Used in base-class hydraulic.generation.boi.pressureDrop.PartialTwoPortInterface.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
-Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TConInMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TConInMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.nSet is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 The model has the same number of unknowns and equations: 6456
 The model has the same number of unknowns and equations
@@ -4017,11 +4017,11 @@ In class Modelica.Units.SI.
   Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
 Used in base-class hydraulic.generation.heatPump.eva.preDro.PartialTwoPortInterface.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
+Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.nSet is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TConInMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.TEvaOutMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowEvaMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
-Warning: The variable hydraulic.generation.heatPump.innerCycle.PerformanceDataHPCooling.sigBus.m_flowConMea is part of an expandable connector, and was only used outside of connect. That is not legal since we cannot determine its causality.
 Warning: The bus-input hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
 Bus-signal: TStoBufBotMea
 Use:  connect(hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea, hydraulic.control.buiAndDHWCtr.hysBui.TStoBot);
@@ -5400,9 +5400,9 @@ The redundancies involve
 initial equations: 
   hydraulic.generation.bou_sinkAir.p = 101325.0;
   ventilation.generation.bouExh.p = ventilation.generation.threeWayValve_b.vol.dynBal.p_start;
-  electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
-  electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
   electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
+  electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
+  electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
  
 Warning: The conditions of the following assert statements are always false:
 Warning:   assert(hydraulic.generation.heatPump.con.preDro.homotopyInitialization,     "In TEASERBuilding.hydraulic.generation.heatPump.con.preDro: The constant homotopyInitialization has been modified from its default value. This constant will be removed in future releases.",     AssertionLevel.warning);
