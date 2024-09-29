@@ -164,11 +164,6 @@ partial model PartialHeatPumpSystemController
     "Selection of set and measured value for secondary generation device"
     annotation (Placement(transformation(extent={{40,0},{60,20}})));
 
-  Modelica.Blocks.Sources.BooleanConstant conHea(k=true) "Constant heating"
-    annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=0,
-        origin={-210,-50})));
 equation
 
   connect(priGenPIDCtrl.isOn, sigBusGen.heaPumIsOn) annotation (Line(points={{105.2,
@@ -280,12 +275,6 @@ equation
   connect(priGenPIDCtrl.ySet, sigBusGen.yHeaPumSet) annotation (Line(points={{
           118.8,90},{252,90},{252,-124},{-152,-124},{-152,-99}}, color={0,0,127}),
       Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(conHea.y, sigBusGen.hea) annotation (Line(points={{-199,-50},{-184,
-          -50},{-184,-74},{-152,-74},{-152,-99}}, color={255,0,255}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},

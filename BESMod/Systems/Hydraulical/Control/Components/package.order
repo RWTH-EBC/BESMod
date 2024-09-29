@@ -4,6 +4,7 @@ SetTemperatureSGReady
 BivalentOnOffControllers
 BuildingSupplyTemperatureSetpoints
 DHWSetControl
+Defrost
 RelativeSpeedController
 SummerMode
 ThermostaticValveController

@@ -28,7 +28,7 @@ model PartialHeatPump "Generation with only the heat pump"
 
   replaceable parameter RecordsCollection.HeatPumps.Generic parHeaPum
     "Heat pump parameters"
-    annotation (
+    annotation (choicesAllMatching=true,
     Placement(transformation(extent={{-34,42},{-18,58}})));
   replaceable parameter
     AixLib.Fluid.HeatPumps.ModularReversible.Controls.Safety.Data.Wuellhorst2021
@@ -113,9 +113,17 @@ model PartialHeatPump "Generation with only the heat pump"
     "Constant soil temperature for ground source heat pumps"
     annotation(Dialog(group="Component choices", enable=use_airSource));
 
-  parameter Boolean use_rev=false
+  parameter Boolean use_rev=true
     "=true if the heat pump is reversible"
     annotation(Dialog(group="Component choices"));
+
+  replaceable BESMod.Systems.Hydraulical.Control.Components.Defrost.NoDefrost defCtrl if use_rev and use_airSource
+    constrainedby
+    BESMod.Systems.Hydraulical.Control.Components.Defrost.BaseClasses.PartialDefrost
+       "Defrost control"
+    annotation (choicesAllMatching=true,
+        Dialog(group="Component choices", enable=use_rev and use_airSource),
+        Placement(transformation(extent={{-98,12},{-82,28}})));
   replaceable model RefrigerantCycleHeatPumpCooling =
       AixLib.Fluid.Chillers.ModularReversible.RefrigerantCycle.BaseClasses.NoCooling
       constrainedby
@@ -141,6 +149,7 @@ model PartialHeatPump "Generation with only the heat pump"
   BESMod.Systems.Hydraulical.Generation.BaseClasses.ModularPropagable heatPump(
     redeclare package MediumCon = Medium,
     redeclare package MediumEva = MediumEva,
+    allowDifferentDeviceIdentifiers=true,
     final use_busConOnl=false,
     redeclare model RefrigerantCycleInertia = RefrigerantCycleInertia,
     final use_rev=use_rev,
@@ -296,6 +305,16 @@ model PartialHeatPump "Generation with only the heat pump"
         rotation=0,
         origin={-170,10})));
 
+  AixLib.Fluid.HeatPumps.ModularReversible.BaseClasses.RefrigerantMachineControlBus
+    sigBus "Bus with model outputs and possibly inputs"
+    annotation (Placement(transformation(extent={{-92,-60},{-52,-20}})));
+  Modelica.Blocks.Routing.RealPassThrough
+                                   reaPasThrRelHum
+    "Get relative humidity"                      annotation (Placement(
+        transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-170,-30})));
 equation
   connect(bouEva.ports[1], heatPump.port_a2) annotation (Line(points={{-80,50},{
           -70,50},{-70,35},{-51,35}},          color={0,127,255}));
@@ -388,21 +407,11 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(heaPumSigBusPasThr.vapComBus, heatPump.sigBus) annotation (Line(
-      points={{-50,90},{-72,90},{-72,-8},{-52,-8},{-52,0.175},{-47.325,0.175}},
-      color={255,204,51},
-      thickness=0.5));
   connect(KPIHeaPum.u, sigBusGen.heaPumIsOn) annotation (Line(points={{-122.2,-50},
           {-148,-50},{-148,98},{2,98}}, color={255,0,255}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
-  connect(heatPump.hea, sigBusGen.hea) annotation (Line(points={{-44.175,-1.925},
-          {-44.175,-16},{2,-16},{2,98}}, color={255,0,255}), Text(
-      string="%second",
-      index=1,
-      extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
   if parHeaPum.use_conCap then
     if use_airSource then
@@ -412,7 +421,7 @@ equation
       connect(constTAmb.y, heatPump.TConAmb) annotation (Line(points={{-159,10},{-108,
               10},{-108,-26},{-26,-26},{-26,-1.925},{-24.925,-1.925}}, color={0,0,127}));
     end if;
-  
+
   end if;
   if parHeaPum.use_evaCap then
     if use_airSource then
@@ -422,8 +431,54 @@ equation
       connect(constTAmb.y, heatPump.TEvaAmb) annotation (Line(points={{-159,10},{-108,
               10},{-108,-26},{-56.425,-26},{-56.425,-1.925}}, color={0,0,127}));
     end if;
-  
+
   end if;
+  connect(defCtrl.hea, heatPump.hea) annotation (Line(points={{-81.2,20},{-60,20},
+          {-60,-1.925},{-44.175,-1.925}}, color={255,0,255}));
+
+  connect(sigBus, heatPump.sigBus) annotation (Line(
+      points={{-72,-40},{-72,0.175},{-47.325,0.175}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%first",
+      index=-1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(heaPumSigBusPasThr.vapComBus, sigBus) annotation (Line(
+      points={{-50,90},{-66,90},{-66,0},{-72,0},{-72,-40}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(defCtrl.sigBus, sigBus) annotation (Line(
+      points={{-98.8,12.96},{-98.8,6},{-66,6},{-66,0},{-72,0},{-72,-40}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(reaPasThrRelHum.y, sigBus.relHum) annotation (Line(points={{-159,-30},
+          {-152,-30},{-152,-40},{-72,-40}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-3,-6},{-3,-6}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(reaPasThrRelHum.u, weaBus.relHum) annotation (Line(points={{-182,-30},
+          {-190,-30},{-190,110},{-100.895,110},{-100.895,80.11}}, color={0,0,127}),
+      Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(heatPump.QEva_flow, sigBus.QEva_flow) annotation (Line(points={{
+          -56.25,36.75},{-72,36.75},{-72,-40}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
   annotation (Line(
       points={{-52.775,-6.78},{-52.775,33.61},{-56,33.61},{-56,74}},
       color={255,204,51},
