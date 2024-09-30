@@ -296,6 +296,9 @@ equation
 
   connect(supCtrNSet.uLoc, priGenPIDCtrl.ySet) annotation (Line(points={{108,82},
           {104,82},{104,90},{98.8,90}}, color={0,0,127}));
+  connect(buiAndDHWCtr.priGren, anyGenDevIsOn.u[2]) annotation (Line(points={{
+          -118,27.3333},{-112,27.3333},{-112,4},{-150,4},{-150,0}}, color={255,
+          0,255}));
                                                               annotation (Diagram(graphics={
         Rectangle(
           extent={{4,100},{136,36}},
