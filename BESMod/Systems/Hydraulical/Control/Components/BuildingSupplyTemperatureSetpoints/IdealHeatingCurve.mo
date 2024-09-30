@@ -5,6 +5,13 @@ model IdealHeatingCurve "Ideal linear heating curve"
     annotation (Placement(transformation(extent={{-60,-80},{-40,-60}})));
   parameter Modelica.Units.SI.TemperatureDifference dTAddCon=0
     "Constant offset of ideal heating curve";
+  parameter Modelica.Units.SI.Temperature THeaThr=293.15 "Heating threshold temeperature";
+
+  replaceable function heaCur =
+    BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.BaseClasses.Functions.ConstantGradientHeatCurve
+    constrainedby BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.BaseClasses.Functions.PartialHeatingCurve
+    "Linearization approach"
+    annotation(choicesAllMatching=true);
 protected
   parameter Modelica.Units.SI.Temperature TSupMea_nominal=
     (TSup_nominal + TRet_nominal) / 2 "Nominal mean temperature";
@@ -12,8 +19,7 @@ protected
 
 equation
   if TOda < maxTZoneSet.yMax then
-    TSet = TSup_nominal + dTAddCon + (derQRel * (TSupMea_nominal - maxTZoneSet.yMax) *
-    1 / nHeaTra + (TSup_nominal - TRet_nominal) / 2 * derQRel) * (TOda - TOda_nominal);
+    TSet = heaCur(TOda, THeaThr, maxTZoneSet.yMax, TSup_nominal, TRet_nominal, TOda_nominal, nHeaTra);
   else
     // No heating required.
     TSet = maxTZoneSet.yMax + dTAddCon;
