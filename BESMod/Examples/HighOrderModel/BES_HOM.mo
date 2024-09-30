@@ -23,25 +23,18 @@ model BES_HOM
       redeclare BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater
         generation(
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
+        TBiv=parameterStudy.TBiv,
         redeclare
-          BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
-          parHeaPum(
-          genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
-          TBiv=parameterStudy.TBiv,
-          scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal/
-              parameterStudy.QHP_flow_biv,
-          dpCon_nominal=0,
-          dpEva_nominal=0,
-          use_refIne=false,
-          refIneFre_constant=0),
+          BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps.DefaultHP
+          parHeaPum,
+        redeclare model RefrigerantCycleHeatPumpHeating =
+            AixLib.Fluid.HeatPumps.ModularReversible.RefrigerantCycle.TableData3D
+            (y_nominal=0.8, redeclare
+              AixLib.Fluid.HeatPumps.ModularReversible.Data.TableDataSDF.TableData3D.VCLibPy.VCLibVaporInjectionPhaseSeparatorPropane
+              datTab),
         redeclare
-          BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
+          BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater.DefaultElectricHeater
           parEleHea,
-        redeclare model PerDataMainHP =
-            AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
-            QCon_flow_nominal=hydraulic.generation.parHeaPum.QPri_flow_nominal,
-            refrigerant="Propane",
-            flowsheet="VIPhaseSeparatorFlowsheet"),
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
           parTemSen),
@@ -56,10 +49,7 @@ model BES_HOM
             BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
-          parPIDHeaPum,
-        redeclare
-          BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultSafetyControl
-          safetyControl),
+          parPIDHeaPum),
       redeclare
         BESMod.Systems.Hydraulical.Distribution.DistributionTwoStorageParallel
         distribution(

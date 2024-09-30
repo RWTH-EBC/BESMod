@@ -41,7 +41,7 @@ model CombiStorage
     annotation (choicesAllMatching=true, Placement(transformation(extent={{82,56},
             {96,70}})));
 
-  AixLib.Fluid.Storage.BufferStorage bufSto(
+  AixLib.Fluid.Storage.StorageDetailed bufSto(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
     final p_start=p_start,
@@ -55,7 +55,7 @@ model CombiStorage
     final useHeatingCoil1=true,
     final useHeatingCoil2=true,
     final useHeatingRod=parameters.use_hr,
-    final TStart=T_start,
+    final TStart=fill(T_start, parameters.nLayer),
     redeclare
       BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.bufferData
       data(

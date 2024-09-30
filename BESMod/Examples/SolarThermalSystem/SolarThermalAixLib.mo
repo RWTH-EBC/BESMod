@@ -4,17 +4,20 @@ model SolarThermalAixLib "Solar thermal collector from AixLib"
       model hydGeneration =
         BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump (
         use_eleHea=false,
-        redeclare model PerDataMainHP =
-            AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (refrigerant=
-                "Propane", flowsheet="VIPhaseSeparatorFlowsheet"),
+        genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.Monovalent,
         redeclare
-          BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
-          parHeaPum(genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.Monovalent),
+          BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps.DefaultHP
+          parHeaPum,
+        redeclare model RefrigerantCycleHeatPumpHeating =
+            AixLib.Fluid.HeatPumps.ModularReversible.RefrigerantCycle.TableData3D
+            (y_nominal=0.8, redeclare
+              AixLib.Fluid.HeatPumps.ModularReversible.Data.TableDataSDF.TableData3D.VCLibPy.VCLibVaporInjectionPhaseSeparatorPropane
+              datTab),
         redeclare
-          BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
+          BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater.DefaultElectricHeater
           parEleHea,
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
-        redeclare package Medium_eva = AixLib.Media.Air,
+        redeclare package MediumEva = AixLib.Media.Air,
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
           parTemSen,

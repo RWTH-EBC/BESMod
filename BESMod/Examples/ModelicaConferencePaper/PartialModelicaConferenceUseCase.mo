@@ -3,48 +3,44 @@ partial model PartialModelicaConferenceUseCase
   "Partial model to be extended to replace single subsystems"
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.Electrical.ElectricalSystem electrical(
-      redeclare Systems.Electrical.Distribution.BatterySystemSimple distribution(
-          redeclare
+      redeclare Systems.Electrical.Distribution.BatterySystemSimple
+        distribution(redeclare
           BuildingSystems.Technologies.ElectricalStorages.Data.LithiumIon.LithiumIonTeslaPowerwall1
           batteryParameters),
       redeclare BESMod.Systems.Electrical.Generation.PVSystemMultiSub
         generation(
         redeclare model CellTemperature =
             AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround,
-
         redeclare AixLib.DataBase.SolarElectric.SchuecoSPV170SME1 pVParameters,
-
         lat=weaDat.lat,
         lon=weaDat.lon,
         alt=weaDat.alt,
         timZon=weaDat.timZon,
         ARoo=building.ARoo/2),
-      redeclare BESMod.Systems.Electrical.Transfer.NoElectricalTransfer transfer,
+      redeclare BESMod.Systems.Electrical.Transfer.NoElectricalTransfer
+        transfer,
       redeclare BESMod.Systems.Electrical.Control.NoControl control),
     redeclare BESMod.Systems.Control.DHWSuperheating control(TSetDHW=
           systemParameters.TSetDHW),
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
-      redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater generation(
+      redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater
+        generation(
         dTTra_nominal={10},
+        redeclare model RefrigerantCycleHeatPumpHeating =
+            AixLib.Fluid.HeatPumps.ModularReversible.RefrigerantCycle.TableData2D
+            (redeclare
+              AixLib.Fluid.HeatPumps.ModularReversible.Data.TableData2D.EN255.Vitocal350AWI114
+              datTab),
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
-        redeclare package Medium_eva = AixLib.Media.Air,
+        redeclare package MediumEva = AixLib.Media.Air,
+        TBiv=271.15,
         redeclare
-          BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
-          parHeaPum(
-          genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
-          TBiv=271.15,
-          scalingFactor=scalingFactorHP,
-          dpCon_nominal=0,
-          dpEva_nominal=0,
-          use_refIne=false,
-          refIneFre_constant=0),
+          BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps.DefaultHP
+          parHeaPum,
         redeclare
-          BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
+          BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater.DefaultElectricHeater
           parEleHea,
-        redeclare model PerDataMainHP =
-            AixLib.DataBase.HeatPump.PerformanceData.LookUpTable2D (dataTable=
-                AixLib.DataBase.HeatPump.EN255.Vitocal350AWI114()),
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
           parTemSen),
@@ -60,10 +56,7 @@ partial model PartialModelicaConferenceUseCase
             BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
-          parPIDHeaPum,
-        redeclare
-          BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultSafetyControl
-          safetyControl),
+          parPIDHeaPum),
       redeclare Systems.Hydraulical.Distribution.DistributionTwoStorageParallel
         distribution(
         redeclare
@@ -122,7 +115,5 @@ partial model PartialModelicaConferenceUseCase
       redeclare BESMod.Systems.Ventilation.Control.SummerPIDByPass control(
           use_bypass=false)));
 
- parameter Real scalingFactorHP=hydraulic.generation.parHeaPum.QPri_flow_nominal
-      /13000 "May be overwritten to avoid warnings and thus a fail in the CI";
 
 end PartialModelicaConferenceUseCase;

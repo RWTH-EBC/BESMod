@@ -1,18 +1,23 @@
 within BESMod.Systems.Hydraulical.Generation.Tests;
 model HeatPumpAndGasBoilerSeries
   "Test case for serial heat pump and gas boiler"
-  extends PartialTest(   redeclare
+  extends PartialTest(redeclare
       BESMod.Systems.Hydraulical.Generation.HeatPumpAndGasBoilerSerial
       generation(
-      redeclare model PerDataMainHP =
-          AixLib.DataBase.HeatPump.PerformanceData.LookUpTable2D (dataTable=
-              AixLib.DataBase.HeatPump.EN255.Vitocal350AWI114()),
-      redeclare BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
-        parHeaPum,
+      redeclare model RefrigerantCycleHeatPumpHeating =
+          AixLib.Fluid.HeatPumps.ModularReversible.RefrigerantCycle.TableData2D
+          (redeclare
+            AixLib.Fluid.HeatPumps.ModularReversible.Data.TableData2D.EN14511.Vitocal251A08
+            datTab),
       redeclare
-        BESMod.Systems.RecordsCollection.Movers.DefaultMover
-        parPum,
-      redeclare BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
+        AixLib.Fluid.HeatPumps.ModularReversible.Controls.Safety.Data.Wuellhorst2021
+        safCtrPar,
+      redeclare
+        BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps.DefaultHP
+        parHeaPum,
+      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
+      redeclare
+        BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
         parTemSen,
       redeclare AixLib.DataBase.Boiler.General.Boiler_Vitogas200F_11kW parBoi));
    extends Modelica.Icons.Example;

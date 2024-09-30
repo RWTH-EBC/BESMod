@@ -15,6 +15,4 @@ record ParametersToChange
     annotation(Evaluate=false);
   parameter Modelica.Units.SI.HeatFlowRate QHP_flow_cutOff=3000
     annotation (Evaluate=false);
-  parameter Modelica.Units.SI.HeatFlowRate QHP_flow_biv=4000
-    annotation (Evaluate=false);
 end ParametersToChange;

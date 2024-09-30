@@ -1,33 +1,25 @@
 within BESMod.Examples.HeatPumpAndBoiler;
 model Parallel
   "Bivalent Heat Pump Systems with parallel heat generation"
-  extends BaseClasses.PartialHybridSystem(
-    redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
-      redeclare Systems.Hydraulical.Generation.HeatPumpAndGasBoilerParallel
-        generation(
+  extends BaseClasses.PartialHybridSystem(redeclare
+      BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(redeclare
+        Systems.Hydraulical.Generation.HeatPumpAndGasBoilerParallel generation(
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
+        TBiv=parameterStudy.TBiv,
         redeclare
-          BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
-          parHeaPum(
-          genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
-          TBiv=parameterStudy.TBiv,
-          scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal/
-              parameterStudy.QHP_flow_biv,
-          dpCon_nominal=0,
-          dpEva_nominal=0,
-          use_refIne=false,
-          refIneFre_constant=0),
-        redeclare model PerDataMainHP =
-            AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
-            QCon_flow_nominal=hydraulic.generation.parHeaPum.QPri_flow_nominal,
-            refrigerant="Propane",
-            flowsheet="VIPhaseSeparatorFlowsheet"),
+          BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps.DefaultHP
+          parHeaPum,
+        redeclare model RefrigerantCycleHeatPumpHeating =
+            AixLib.Fluid.HeatPumps.ModularReversible.RefrigerantCycle.TableData3D
+            (y_nominal=0.8, redeclare
+              AixLib.Fluid.HeatPumps.ModularReversible.Data.TableDataSDF.TableData3D.VCLibPy.VCLibVaporInjectionPhaseSeparatorPropane
+              datTab),
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
           parTemSen,
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
-          parThrWayVal),
-      redeclare Systems.Hydraulical.Distribution.DistributionTwoStorageParallel
+          parThrWayVal), redeclare
+        Systems.Hydraulical.Distribution.DistributionTwoStorageParallel
         distribution(
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage

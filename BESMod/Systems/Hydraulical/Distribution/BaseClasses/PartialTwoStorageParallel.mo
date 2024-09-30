@@ -142,7 +142,7 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
         rotation=180,
         origin={0,-30})));
 
-  AixLib.Fluid.Storage.BufferStorage stoBuf(
+  AixLib.Fluid.Storage.StorageDetailed stoBuf(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
     final p_start=p_start,
@@ -155,7 +155,7 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
     final mHC2_flow_nominal=parStoBuf.mHC2_flow_nominal,
     final useHeatingCoil2=false,
     final useHeatingRod=parStoBuf.use_hr,
-    final TStart=T_start,
+    TStart=fill(T_start, parStoBuf.nLayer),
     redeclare final RecordsCollection.BufferStorage.bufferData data(
       final hTank=parStoBuf.h,
       hHC1Low=0,
@@ -196,7 +196,7 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
     final allowFlowReversal_HC2=allowFlowReversal) "Buffer storage"
     annotation (Placement(transformation(extent={{-50,0},{-18,40}})));
 
-  AixLib.Fluid.Storage.BufferStorage stoDHW(
+  AixLib.Fluid.Storage.StorageDetailed stoDHW(
     redeclare final package Medium = MediumDHW,
     final energyDynamics=energyDynamics,
     final p_start=p_start,
@@ -210,7 +210,7 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
     final useHeatingCoil1=true,
     final useHeatingCoil2=use_secHeaCoiDHWSto,
     final useHeatingRod=parStoDHW.use_hr,
-    final TStart=T_start,
+    TStart=fill(TDHW_nominal, parStoDHW.nLayer),
     redeclare final RecordsCollection.BufferStorage.bufferData data(
       final hTank=parStoDHW.h,
       hHC1Low=0,

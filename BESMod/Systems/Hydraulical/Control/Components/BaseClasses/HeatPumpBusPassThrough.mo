@@ -1,80 +1,81 @@
 within BESMod.Systems.Hydraulical.Control.Components.BaseClasses;
 model HeatPumpBusPassThrough
   Interfaces.GenerationControlBus sigBusGen
-    annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
-  AixLib.Controls.Interfaces.VapourCompressionMachineControlBus
-    vapourCompressionMachineControlBus
-    annotation (Placement(transformation(extent={{82,-22},{122,18}})));
-  Modelica.Blocks.Routing.RealPassThrough realPassThrough[4]
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
+    annotation (Placement(transformation(extent={{90,-10},{110,10}})));
+  AixLib.Fluid.HeatPumps.ModularReversible.BaseClasses.RefrigerantMachineControlBus
+    vapComBus
+    annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
+  Modelica.Blocks.Routing.RealPassThrough realPassThrough[3]
+    annotation (Placement(transformation(extent={{-10,0},{10,20}})));
   Modelica.Blocks.Routing.BooleanPassThrough booleanPassThrough
     annotation (Placement(transformation(extent={{-10,-40},{10,-20}})));
 equation
-  connect(booleanPassThrough.u, sigBusGen.heaPumIsOn) annotation (Line(points={{
-          -12,-30},{-86,-30},{-86,0},{-100,0}}, color={255,0,255}), Text(
+  connect(booleanPassThrough.y, sigBusGen.heaPumIsOn) annotation (Line(points={{11,-30},
+          {100,-30},{100,0}},                   color={255,0,255}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(booleanPassThrough.y, vapourCompressionMachineControlBus.onOffMea)
-    annotation (Line(points={{11,-30},{46,-30},{46,-26},{102,-26},{102,-2}},
+  connect(booleanPassThrough.u, vapComBus.onOffMea)
+    annotation (Line(points={{-12,-30},{-84,-30},{-84,0},{-100,0}},
         color={255,0,255}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(realPassThrough[1].u, sigBusGen.THeaPumIn) annotation (Line(points={{-12,
-          0},{-100,0}}, color={0,0,127}), Text(
+  connect(realPassThrough[1].y, sigBusGen.THeaPumIn) annotation (Line(points={{11,10},
+          {56,10},{56,0},{100,0}},
+                           color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(realPassThrough[1].y, vapourCompressionMachineControlBus.TConInMea)
-    annotation (Line(points={{11,0},{78,0},{78,-2},{102,-2}}, color={0,0,127}),
+  connect(realPassThrough[1].u, vapComBus.TConInMea)
+    annotation (Line(points={{-12,10},{-56,10},{-56,0},{-100,0}},
+                                                              color={0,0,127}),
       Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(realPassThrough[2].u, sigBusGen.THeaPumOut) annotation (Line(points={
-          {-12,0},{-100,0}}, color={0,0,127}), Text(
+  connect(realPassThrough[2].y, sigBusGen.THeaPumOut) annotation (Line(points={{11,10},
+          {56,10},{56,0},{100,0}},
+                            color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(realPassThrough[2].y, vapourCompressionMachineControlBus.TConOutMea)
-    annotation (Line(points={{11,0},{78,0},{78,-2},{102,-2}}, color={0,0,127}),
+  connect(realPassThrough[2].u, vapComBus.TConOutMea)
+    annotation (Line(points={{-12,10},{-56,10},{-56,0},{-100,0}},
+                                                              color={0,0,127}),
       Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(realPassThrough[3].y, vapourCompressionMachineControlBus.nSet)
-    annotation (Line(points={{11,0},{78,0},{78,-2},{102,-2}}, color={0,0,127}),
+  connect(realPassThrough[3].y, sigBusGen.THeaPumEvaIn) annotation (Line(points={{11,10},
+          {56,10},{56,0},{100,0}},
+                            color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(realPassThrough[3].u, vapComBus.TEvaInMea)
+    annotation (Line(points={{-12,10},{-56,10},{-56,0},{-100,0}},
+                                                              color={0,0,127}),
       Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(realPassThrough[3].u, sigBusGen.yHeaPumSet) annotation (Line(points={{
-          -12,0},{-100,0}}, color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
-  connect(realPassThrough[4].u, sigBusGen.THeaPumEvaIn) annotation (Line(
-        points={{-12,0},{-100,0}}, color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
-  connect(realPassThrough[4].y, vapourCompressionMachineControlBus.TEvaInMea)
-    annotation (Line(points={{11,0},{78,0},{78,-2},{102,-2}}, color={0,0,127}),
-      Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+                                        Text(
+        extent={{-150,138},{150,98}},
+        textString="%name",
+        textColor={0,0,255}),   Rectangle(
+        extent={{-100,-100},{100,100}},
+        lineColor={0,0,127},
+        fillColor={255,255,255},
+        fillPattern=FillPattern.Solid)}),                        Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end HeatPumpBusPassThrough;

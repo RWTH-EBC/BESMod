@@ -1,8 +1,4 @@
 AutoparameterBoiler
-BivalentHeatPumpBaseDataDefinition
-DefaultElectricHeater
-DefaultHP
-DefaultSolarThermal
-EletricHeaterBaseDataDefinition
-HeatPumpBaseDataDefinition
-SolarThermalBaseDataDefinition
+ElectricHeater
+HeatPumps
+SolarThermal
