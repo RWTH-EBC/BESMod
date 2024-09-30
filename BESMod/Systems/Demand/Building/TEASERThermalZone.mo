@@ -194,13 +194,13 @@ model TEASERThermalZone
         rotation=0,
         origin={62,-120})));
   Modelica.Blocks.Math.MultiSum multiSumEle(final k=fill(1, multiSumEle.nu),
-      final nu=2*nZones)  annotation (Placement(
+      nu=2*nZones)  annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={30,-120})));
-  BESMod.Utilities.KPIs.RoomControlCalculator roomControlCalculator[nZones](each
-      final for_heating=true, each final dTComBou=0)
+  BESMod.Utilities.KPIs.RoomControlCalculator roomControlCalculator[nZones](each final
+            for_heating=true, each final dTComBou=0)
     annotation (Placement(transformation(extent={{50,-40},{70,-20}})));
 equation
 
@@ -221,11 +221,11 @@ equation
         index=-1,
         extent={{-3,-6},{-3,-6}},
         horizontalAlignment=TextAlignment.Right));
-    connect(thermalZone[i].QIntGains_flow[2], multiSumEle.u[2*i-1]) annotation (Line(
-          points={{-42.7,33.6},{-42.7,0},{-28,0},{-28,-68},{-6,-68},{-6,-134},{12,
+    connect(thermalZone[i].QIntGains_flow[1], multiSumEle.u[2*i-1]) annotation (Line(
+          points={{-42.7,32.4},{-42.7,0},{-28,0},{-28,-68},{-6,-68},{-6,-134},{12,
             -134},{12,-120},{20,-120}}, color={0,0,127}));
-  connect(thermalZone[i].QIntGains_flow[3], multiSumEle.u[2*i]) annotation (Line(
-        points={{-42.7,34.8},{-42.7,0},{-28,0},{-28,-68},{-6,-68},{-6,-134},{12,
+    connect(thermalZone[i].QIntGains_flow[2], multiSumEle.u[2*i]) annotation (Line(
+        points={{-42.7,33.6},{-42.7,0},{-28,0},{-28,-68},{-6,-68},{-6,-134},{12,
             -134},{12,-120},{20,-120}},
                                       color={0,0,127}));
     if use_ventilation then
