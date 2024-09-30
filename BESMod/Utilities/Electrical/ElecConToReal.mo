@@ -20,6 +20,9 @@ equation
           lineColor={0,0,0},
           lineThickness=1,
           fillColor={255,255,255},
-          fillPattern=FillPattern.Solid)}),                      Diagram(graphics,
+          fillPattern=FillPattern.Solid), Text(
+          extent={{-100,-100},{98,-160}},
+          lineColor={0,0,0},
+          textString="%name")}),                                 Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end ElecConToReal;

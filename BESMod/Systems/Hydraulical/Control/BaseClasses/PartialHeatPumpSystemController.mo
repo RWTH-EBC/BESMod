@@ -6,6 +6,10 @@ partial model PartialHeatPumpSystemController
    parameter Components.BaseClasses.MeasuredValue meaValPriGen=BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue.GenerationSupplyTemperature
     "Control measurement value for primary device"
     annotation (Dialog(group="Heat Pump"));
+  parameter Utilities.SupervisoryControl.Types.SupervisoryControlType
+    supCtrlNSetTyp=BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Local
+    "Type of supervisory control for compressor speed"
+    annotation (Dialog(group="Heat Pump"));
   parameter Components.BaseClasses.MeasuredValue meaValSecGen
     "Control measurement value for secondary device"
     annotation (Dialog(group="Backup heater"));
@@ -22,7 +26,10 @@ partial model PartialHeatPumpSystemController
     supCtrDHWTyp=BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Local
     "Supervisory control approach for DHW supply temperature "
       annotation(Dialog(group="DHW control"));
-
+  parameter Utilities.SupervisoryControl.Types.SupervisoryControlType
+    supCtrlThrWayValTyp=BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Local
+    "Type of supervisory control for three way valve"
+    annotation (Dialog(tab="DHW control"));
 
   replaceable model BuildingHysteresis =
       BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.BaseClasses.PartialOnOffController
@@ -87,7 +94,7 @@ partial model PartialHeatPumpSystemController
     "PID parameters of heat pump"
     annotation (choicesAllMatching=true,
                 Dialog(group="Heat Pump"),
-                Placement(transformation(extent={{100,40},{120,60}})));
+                Placement(transformation(extent={{80,40},{100,60}})));
 
   replaceable
     BESMod.Systems.Hydraulical.Control.Components.RelativeSpeedController.PID
@@ -105,7 +112,7 @@ partial model PartialHeatPumpSystemController
     "Control of heat pump" annotation (
     Dialog(group="Heat Pump", tab="Advanced"),
     choicesAllMatching=true,
-    Placement(transformation(extent={{102,82},{118,98}})));
+    Placement(transformation(extent={{82,82},{98,98}})));
 
   Modelica.Blocks.Math.BooleanToReal booToRea(final realTrue=1, final realFalse=0)
     "Turn pump on if any device is on"
@@ -129,6 +136,7 @@ partial model PartialHeatPumpSystemController
     final nHeaTra=parTra.nHeaTra,
     final supCtrHeaCurTyp=supCtrHeaCurTyp,
     final supCtrDHWTyp=supCtrDHWTyp,
+    final supCtrlThrWayValTyp=supCtrlThrWayValTyp,
     redeclare final model SummerMode = SummerMode,
     redeclare final model DHWHysteresis = DHWHysteresis,
     redeclare final model BuildingHysteresis = BuildingHysteresis,
@@ -164,11 +172,15 @@ partial model PartialHeatPumpSystemController
     "Selection of set and measured value for secondary generation device"
     annotation (Placement(transformation(extent={{40,0},{60,20}})));
 
+  BESMod.Utilities.SupervisoryControl.SupervisoryControl supCtrNSet(final ctrlType=
+        supCtrlNSetTyp) "Supervisory control of compressor speed"
+    annotation (Placement(transformation(extent={{110,80},{130,100}})));
+
 equation
 
-  connect(priGenPIDCtrl.isOn, sigBusGen.heaPumIsOn) annotation (Line(points={{105.2,
-          80.4},{105.2,78},{106,78},{106,48},{260,48},{260,-114},{-152,-114},{-152,
-          -99}}, color={255,0,255}), Text(
+  connect(priGenPIDCtrl.isOn, sigBusGen.heaPumIsOn) annotation (Line(points={{85.2,
+          80.4},{85.2,62},{66,62},{66,-99},{-152,-99}},
+                 color={255,0,255}), Text(
       string="%second",
       index=1,
       extent={{-3,-6},{-3,-6}},
@@ -181,21 +193,22 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(buiAndDHWCtr.TZoneSet, useProBus.TZoneSet) annotation (Line(points={{
-          -204,35},{-238,35},{-238,103},{-119,103}}, color={0,0,127}), Text(
+  connect(buiAndDHWCtr.TZoneSet, useProBus.TZoneSet) annotation (Line(points={{-204,
+          32.3333},{-238,32.3333},{-238,103},{-119,103}},
+                                                     color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(buiAndDHWCtr.TZoneMea, buiMeaBus.TZoneMea) annotation (Line(points={{
-          -204,45},{-250,45},{-250,118},{64,118},{64,103},{65,103}}, color={0,0,
+  connect(buiAndDHWCtr.TZoneMea, buiMeaBus.TZoneMea) annotation (Line(points={{-204,39},
+          {-250,39},{-250,118},{64,118},{64,103},{65,103}},          color={0,0,
           127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(sigBusDistr, buiAndDHWCtr.sigBusDistr) annotation (Line(
-      points={{1,-100},{1,-116},{-250,-116},{-250,72.5},{-200,72.5}},
+      points={{1,-100},{1,-116},{-250,-116},{-250,57.3333},{-200,57.3333}},
       color={255,204,51},
       thickness=0.5), Text(
       string="%first",
@@ -203,34 +216,34 @@ equation
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(buiAndDHWCtr.sigBusHyd, sigBusHyd) annotation (Line(
-      points={{-185.6,80.25},{-185.6,112},{-186,112},{-186,118},{-28,118},{-28,
-          101}},
+      points={{-159.6,79.5},{-159.6,112},{-186,112},{-186,118},{-28,118},{-28,101}},
       color={255,204,51},
       thickness=0.5), Text(
       string="%second",
       index=1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(buiAndDHWCtr.TOda, weaBus.TDryBul) annotation (Line(points={{-204,55},{
-          -244,55},{-244,2.11},{-236.895,2.11}},
+  connect(buiAndDHWCtr.TOda, weaBus.TDryBul) annotation (Line(points={{-204,
+          45.6667},{-244,45.6667},{-244,2.11},{-236.895,2.11}},
                                        color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(buiAndDHWCtr.secGen, anyGenDevIsOn.u[1]) annotation (Line(points={{-118,
-          37.5},{-118,36},{-112,36},{-112,6},{-151.75,6},{-151.75,0}},
+  connect(buiAndDHWCtr.secGen, anyGenDevIsOn.u[1]) annotation (Line(points={{-118,34},
+          {-118,36},{-112,36},{-112,6},{-151.75,6},{-151.75,0}},
         color={255,0,255}));
   connect(setAndMeaSelPri.DHW, buiAndDHWCtr.DHW) annotation (Line(points={{39,76},
-          {28,76},{28,74},{-106,74},{-106,68},{-118,68}}, color={0,0,127}));
-  connect(buiAndDHWCtr.TDHWSet, setAndMeaSelPri.TDHWSet) annotation (Line(points={
-          {-118,75},{-118,74},{28,74},{28,78.8},{39,78.8}}, color={0,0,127}));
-  connect(setAndMeaSelPri.TBuiSet, buiAndDHWCtr.TBuiSet) annotation (Line(points={
-          {39,72.8},{38,72.8},{38,74},{-106,74},{-106,60},{-118,60}}, color={0,0,127}));
+          {28,76},{28,74},{-106,74},{-106,54.3333},{-118,54.3333}},
+                                                          color={0,0,127}));
+  connect(buiAndDHWCtr.TDHWSet, setAndMeaSelPri.TDHWSet) annotation (Line(points={{-118,59},
+          {-118,74},{28,74},{28,78.8},{39,78.8}},           color={0,0,127}));
+  connect(setAndMeaSelPri.TBuiSet, buiAndDHWCtr.TBuiSet) annotation (Line(points={{39,72.8},
+          {38,72.8},{38,74},{-106,74},{-106,49},{-118,49}},           color={0,0,127}));
   connect(setAndMeaSelPri.TSet, priGenPIDCtrl.TSet) annotation (Line(points={{61,76},
-          {94,76},{94,94.8},{100.4,94.8}}, color={0,0,127}));
+          {80.4,76},{80.4,94.8}},          color={0,0,127}));
   connect(setAndMeaSelPri.TMea, priGenPIDCtrl.TMea)
-    annotation (Line(points={{61,66},{110,66},{110,80.4}}, color={0,0,127}));
+    annotation (Line(points={{61,66},{90,66},{90,80.4}},   color={0,0,127}));
   connect(setAndMeaSelPri.sigBusGen, sigBusGen) annotation (Line(
       points={{40,61.8},{20,61.8},{20,62},{0,62},{0,-99},{-152,-99}},
       color={255,204,51},
@@ -247,14 +260,15 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(setAndMeaSelSec.TDHWSet, buiAndDHWCtr.TDHWSet) annotation (Line(points={
-          {39,18.8},{34,18.8},{34,16},{-28,16},{-28,74},{-120,74},{-120,75},{-118,
-          75}}, color={0,0,127}));
-  connect(setAndMeaSelSec.TBuiSet, buiAndDHWCtr.TBuiSet) annotation (Line(points={
-          {39,12.8},{4,12.8},{4,16},{-28,16},{-28,74},{-106,74},{-106,60},{-118,60}},
+  connect(setAndMeaSelSec.TDHWSet, buiAndDHWCtr.TDHWSet) annotation (Line(points={{39,18.8},
+          {34,18.8},{34,16},{-28,16},{-28,74},{-120,74},{-120,59},{-118,59}},
+                color={0,0,127}));
+  connect(setAndMeaSelSec.TBuiSet, buiAndDHWCtr.TBuiSet) annotation (Line(points={{39,12.8},
+          {4,12.8},{4,16},{-28,16},{-28,74},{-106,74},{-106,49},{-118,49}},
         color={0,0,127}));
   connect(setAndMeaSelSec.DHW, buiAndDHWCtr.DHW) annotation (Line(points={{39,16},
-          {-28,16},{-28,74},{-106,74},{-106,68},{-118,68}}, color={255,0,255}));
+          {-28,16},{-28,74},{-106,74},{-106,54.3333},{-118,54.3333}},
+                                                            color={255,0,255}));
   connect(setAndMeaSelSec.sigBusDistr, sigBusDistr) annotation (Line(
       points={{40,7.9},{40,6},{1,6},{1,-100}},
       color={255,204,51},
@@ -272,17 +286,17 @@ equation
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
 
-  connect(priGenPIDCtrl.ySet, sigBusGen.yHeaPumSet) annotation (Line(points={{
-          118.8,90},{252,90},{252,-124},{-152,-124},{-152,-99}}, color={0,0,127}),
+  connect(supCtrNSet.y, sigBusGen.yHeaPumSet) annotation (Line(points={{132,90},
+          {252,90},{252,-124},{-152,-124},{-152,-99}},           color={0,0,127}),
       Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(anyGenDevIsOn.u[2], buiAndDHWCtr.priGren) annotation (Line(points={{
-          -148.25,0},{-148.25,6},{-112,6},{-112,27.5},{-118,27.5}}, color={255,
-          0,255}));
-    annotation (Diagram(graphics={
+
+  connect(supCtrNSet.uLoc, priGenPIDCtrl.ySet) annotation (Line(points={{108,82},
+          {104,82},{104,90},{98.8,90}}, color={0,0,127}));
+                                                              annotation (Diagram(graphics={
         Rectangle(
           extent={{4,100},{136,36}},
           lineColor={28,108,200},
