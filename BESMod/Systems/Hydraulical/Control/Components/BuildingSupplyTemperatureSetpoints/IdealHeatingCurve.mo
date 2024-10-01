@@ -12,14 +12,9 @@ model IdealHeatingCurve "Ideal linear heating curve"
     constrainedby BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.BaseClasses.Functions.PartialHeatingCurve
     "Linearization approach"
     annotation(choicesAllMatching=true);
-protected
-  parameter Modelica.Units.SI.Temperature TSupMea_nominal=
-    (TSup_nominal + TRet_nominal) / 2 "Nominal mean temperature";
-  Real derQRel = - 1 / (maxTZoneSet.yMax - TOda_nominal);
-
 equation
   if TOda < maxTZoneSet.yMax then
-    TSet = heaCur(TOda, THeaThr, maxTZoneSet.yMax, TSup_nominal, TRet_nominal, TOda_nominal, nHeaTra);
+    TSet = heaCur(TOda, THeaThr, maxTZoneSet.yMax, TSup_nominal, TRet_nominal, TOda_nominal, nHeaTra) + dTAddCon;
   else
     // No heating required.
     TSet = maxTZoneSet.yMax + dTAddCon;
