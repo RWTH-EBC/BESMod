@@ -141,6 +141,26 @@ model RadiatorPressureBased "Pressure Based transfer system"
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={30,70})));
+  Modelica.Blocks.Sources.RealExpression senTRet[nParallelSup](final y(
+      final unit="K",
+      displayUnit="degC") = Medium.temperature(Medium.setState_phX(
+      portTra_out.p,
+      inStream(portTra_out.h_outflow),
+      inStream(portTra_out.Xi_outflow)))) "Real expression for return temperature"
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-30,-74})));
+  Modelica.Blocks.Sources.RealExpression senTSup[nParallelSup](final y(
+      final unit="K",
+      displayUnit="degC") = Medium.temperature(Medium.setState_phX(
+      portTra_in.p,
+      inStream(portTra_in.h_outflow),
+      inStream(portTra_in.Xi_outflow)))) "Real expression for supply temperature"
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-30,-54})));
 equation
   connect(rad.heatPortRad, heatPortRad) annotation (Line(points={{-5.08,-27.2},
           {40,-27.2},{40,-40},{100,-40}}, color={191,0,0}));
@@ -191,6 +211,18 @@ equation
       horizontalAlignment=TextAlignment.Right));
   connect(reaPasThrOpe.y, outBusTra.opening) annotation (Line(points={{30,59},{
           30,-32},{4,-32},{4,-90},{0,-90},{0,-104}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(senTSup.y, outBusTra.TSup) annotation (Line(points={{-19,-54},{0,-54},
+          {0,-104}},                   color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(senTRet.y, outBusTra.TRet) annotation (Line(points={{-19,-74},{0,-74},
+          {0,-104}},                   color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
