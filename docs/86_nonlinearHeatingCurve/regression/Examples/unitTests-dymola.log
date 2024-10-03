@@ -25,9 +25,8 @@ Regression tests are only run for the following package:
            Absolute error = 4.318e-01 at t = 77760.0 for hydraulic.generation.sigBusGen.TGenOutMea
            Absolute error = 1.321e+02 at t = 77760.0 for electricalGrid.PElecLoa
 *** Error: BESMod_Examples_DesignOptimization_BES.txt: Errors during result verification.
-           Absolute error = 5.397e+00 at t = 133056.0 for hydraulic.generation.sigBusGen.TGenOutMea
-           Absolute error = 1.051e+00 at t = 119232.0 for outputs.building.TZone[1]
-           Absolute error = 2.119e+03 at t = 138240.0 for electricalGrid.PElecLoa
+           Absolute error = 9.240e+00 at t = 171072.0 for hydraulic.generation.sigBusGen.TGenOutMea
+           Absolute error = 8.551e+02 at t = 171072.0 for electricalGrid.PElecLoa
 *** Error: BESMod_Examples_DesignOptimization_BESNoDHW.txt: Errors during result verification.
            Absolute error = 6.564e+01 at t = 155520.0 for electricalGrid.PElecLoa
 *** Error: BESMod_Examples_BAUSimStudy_Case1Standard.txt: Errors during result verification.
