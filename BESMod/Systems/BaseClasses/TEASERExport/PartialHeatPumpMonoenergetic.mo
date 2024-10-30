@@ -115,4 +115,6 @@ partial model PartialHeatPumpMonoenergetic
       redeclare BESMod.Systems.Ventilation.Control.SummerPIDByPass control(
           use_bypass=false)));
 
+  extends Modelica.Icons.Example;
+
 end PartialHeatPumpMonoenergetic;

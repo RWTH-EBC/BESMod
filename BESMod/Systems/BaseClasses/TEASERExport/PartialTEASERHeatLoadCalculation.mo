@@ -32,4 +32,6 @@ partial model PartialTEASERHeatLoadCalculation
     redeclare BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy
       parameterStudy);
 
+  extends Modelica.Icons.Example;
+
 end PartialTEASERHeatLoadCalculation;
