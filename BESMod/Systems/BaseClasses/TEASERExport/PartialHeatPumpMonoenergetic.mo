@@ -3,15 +3,15 @@ partial model PartialHeatPumpMonoenergetic
   "Partial monoenergetic heat pump model based on the example ModelicaConferencePaper"
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.Electrical.ElectricalSystem electrical(
-      redeclare Systems.Electrical.Distribution.BatterySystemSimple
-        distribution(redeclare
-          BuildingSystems.Technologies.ElectricalStorages.Data.LithiumIon.LithiumIonTeslaPowerwall1
-          batteryParameters),
+      redeclare BESMod.Systems.Electrical.Distribution.OwnConsumption
+        distribution,
       redeclare BESMod.Systems.Electrical.Generation.PVSystemMultiSub
         generation(
         redeclare model CellTemperature =
             AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround,
+
         redeclare AixLib.DataBase.SolarElectric.SchuecoSPV170SME1 pVParameters,
+
         lat=weaDat.lat,
         lon=weaDat.lon,
         alt=weaDat.alt,
