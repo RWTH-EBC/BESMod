@@ -10,7 +10,7 @@ model GasBoiler "Just a gas boiler"
   replaceable parameter BESMod.Systems.Hydraulical.Generation.RecordsCollection.AutoparameterBoiler
     parBoi constrainedby
     AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition(
-      Q_nom=max(11000, Q_flow_nominal[1]))
+      Q_nom=max(11000, Q_flow_nominal[1]/parBoi.eta[2,2]))
     "Parameters for Boiler"
     annotation(Placement(transformation(extent={{-58,44},{-42,60}})),
       choicesAllMatching=true, Dialog(group="Component data"));
