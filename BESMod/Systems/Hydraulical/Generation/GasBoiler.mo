@@ -1,7 +1,13 @@
 within BESMod.Systems.Hydraulical.Generation;
 model GasBoiler "Just a gas boiler"
-  extends BaseClasses.PartialGeneration(dp_nominal={boi.dp_nominal}, final
-      nParallelDem=1);
+  extends BaseClasses.PartialGeneration(dp_nominal={boi.dp_nominal},
+      Q_flow_design = {if use_old_design then QOld_flow_design[1] else Q_flow_nominal[1]},
+    dTTra_design={if use_old_design then dTTraOld_design[1] else dTTra_nominal[1]},
+    final nParallelDem=1);
+
+  parameter Boolean use_old_design=false
+    "If true, design parameters of the building with no retrofit (old state) are used"
+    annotation (Dialog(group="Design - Internal: Parameters are defined by the subsystem"));
 
   parameter Real etaTem[:,2]=[293.15,1.09; 303.15,1.08; 313.15,1.05; 323.15,1.;
       373.15,0.99] "Temperature based efficiency"
@@ -10,7 +16,7 @@ model GasBoiler "Just a gas boiler"
   replaceable parameter BESMod.Systems.Hydraulical.Generation.RecordsCollection.AutoparameterBoiler
     parBoi constrainedby
     AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition(
-      Q_nom=max(11000, Q_flow_nominal[1]/parBoi.eta[2,2]))
+      Q_nom=max(11000, Q_flow_design[1]/parBoi.eta[2,2]))
     "Parameters for Boiler"
     annotation(Placement(transformation(extent={{-58,44},{-42,60}})),
       choicesAllMatching=true, Dialog(group="Component data"));
@@ -27,8 +33,8 @@ model GasBoiler "Just a gas boiler"
   AixLib.Fluid.BoilerCHP.BoilerNoControl boi(
     redeclare package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
-    final m_flow_nominal=m_flow_nominal[1],
-    final m_flow_small=1E-4*abs(m_flow_nominal[1]),
+    final m_flow_nominal=m_flow_design[1],
+    final m_flow_small=1E-4*abs(m_flow_design[1]),
     final show_T=show_T,
     final tau=parTemSen.tau,
     final initType=parTemSen.initType,
@@ -62,7 +68,7 @@ model GasBoiler "Just a gas boiler"
     final use_inputFilter=parPum.use_inputFilter,
     final riseTime=parPum.riseTimeInpFilter,
     final y_start=1,
-    final m_flow_nominal=m_flow_nominal[1],
+    final m_flow_nominal=m_flow_design[1],
     final dp_nominal=dpDem_nominal[1] + dp_nominal[1])
                      annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
