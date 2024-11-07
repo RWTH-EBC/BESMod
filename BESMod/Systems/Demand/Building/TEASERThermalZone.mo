@@ -199,8 +199,8 @@ model TEASERThermalZone
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={30,-120})));
-  BESMod.Utilities.KPIs.RoomControlCalculator roomControlCalculator[nZones](each
-      final for_heating=true, each final dTComBou=0)
+  BESMod.Utilities.KPIs.RoomControlCalculator roomControlCalculator[nZones](each final
+            for_heating=true, each final dTComBou=0)
     annotation (Placement(transformation(extent={{50,-40},{70,-20}})));
 equation
 
@@ -412,8 +412,8 @@ equation
           36},{-48,76.8},{-42.7,76.8}}, color={0,0,127}));
   connect(calTOpe.u1, thermalZone.TRad) annotation (Line(points={{-58,24},{-50,
           24},{-50,69.6},{-42.7,69.6}}, color={0,0,127}));
-  connect(comCalHeaOpe.dTComSec, outBusDem.dTComHeaOpe) annotation (Line(points
-        ={{41,-20},{54,-20},{54,-2},{98,-2}}, color={0,0,127}), Text(
+  connect(comCalHeaOpe.dTComSec, outBusDem.dTComHeaOpe) annotation (Line(points=
+         {{41,-20},{54,-20},{54,-2},{98,-2}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
@@ -424,8 +424,8 @@ equation
   connect(comCalCooOpe.TZone, calTOpe.y) annotation (Line(points={{18,-60},{10,
           -60},{10,0},{2,0},{2,2},{0,2},{0,6},{-46,6},{-46,28},{-52,28},{-52,44},
           {-88,44},{-88,30},{-81,30}}, color={0,0,127}));
-  connect(comCalCooOpe.dTComSec, outBusDem.dTComCooOpe) annotation (Line(points
-        ={{41,-60},{78,-60},{78,-2},{98,-2}}, color={0,0,127}), Text(
+  connect(comCalCooOpe.dTComSec, outBusDem.dTComCooOpe) annotation (Line(points=
+         {{41,-60},{78,-60},{78,-2},{98,-2}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
