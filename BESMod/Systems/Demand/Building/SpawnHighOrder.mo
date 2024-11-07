@@ -160,16 +160,61 @@ equation
   end if
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
-    Documentation(info="<html>
-<p></span><span style=\"font-size: 8.25pt;\">This is the Spawn model corresponding to the High Order Model (HOM) contained in the AixLib library. The AixLib-HOM offers the possibility to select a specific amount of windows, outer doors and inner doors. The Spawn-HOM contains no inner doors, two outer doors and a specific amount of windows (see floor plans of the ground floor and the upper floor in the icon view).</p>
-<p></span><span style=\"font-size: 8.25pt;\">Dependent on the version of the Buidlings library, some errors may occur:</p>
+    Documentation(info="<html><p>
+  <span style=\"font-size: 8.25pt;\">This is the Spawn model
+  corresponding to the High Order Model (HOM) contained in the AixLib
+  library. The AixLib-HOM offers the possibility to select a specific
+  amount of windows, outer doors and inner doors. The Spawn-HOM
+  contains no inner doors, two outer doors and a specific amount of
+  windows (see floor plans of the ground floor and the upper floor in
+  the icon view).</span>
+</p>
+<p>
+  <span style=\"font-size: 8.25pt;\">Dependent on the version of the
+  Buidlings library, some errors may occur:</span>
+</p>
 <ol>
-<li></span><span style=\"font-size: 8.25pt;\">error: Compilation failed because Spawn needs a 64 bit system<br>solution: Set the flag &quot;Advanced.CompileWith64 = 2&quot; in the Commands</li>
-<li></span><span style=\"font-size: 8.25pt;\">error: Compilation/Simulation failed due to a missing PATH environment variable<br>solution: Follow the instructions in &quot;Buildings.ThermalZones.EnergyPlus_9_6_0.UsersGuide.Installation&quot;</li>
-<li></span><span style=\"font-size: 8.25pt;\">error: Integrator failed to start model<br>solution: Be aware of having no spaces in the Buildings library installation folder (full path), see </span><span style=\"font-size: 8.25pt;\"><a href=\"https://github.com/lbl-srg/modelica-buildings/issues/3993\">https://github.com/lbl-srg/modelica-buildings/issues/3993</a></span><span style=\"font-size: 8.25pt;\">.</li>
-<li></span><span style=\"font-size: 8.25pt;\">error: Simulation failed, e.g. room temperatures exceed the bounds due to divergence<br>solution 1: The timestep in the IDF-File needs to be increased (at least 6, better 12). This is already done for this model.<br>solution 2: The tolerance of the solver in dymola needs to be increased (e.g. 0.001), see </span><span style=\"font-size: 8.25pt;\"><a href=\"https://github.com/lbl-srg/modelica-buildings/issues/3994\">https://github.com/lbl-srg/modelica-buildings/issues/3994</a></span><span style=\"font-size: 8.25pt;\">.</li>
+  <li>
+    <span style=\"font-size: 8.25pt;\">error: Compilation failed because
+    Spawn needs a 64 bit system<br/>
+    solution: Set the flag \"Advanced.CompileWith64 = 2\" in the
+    Commands</span>
+  </li>
+  <li>
+    <span style=\"font-size: 8.25pt;\">error: Compilation/Simulation
+    failed due to a missing PATH environment variable<br/>
+    solution: Follow the instructions in
+    \"Buildings.ThermalZones.EnergyPlus_9_6_0.UsersGuide.Installation\"</span>
+  </li>
+  <li>
+    <span style=\"font-size: 8.25pt;\">error: Integrator failed to start
+    model<br/>
+    solution: Be aware of having no spaces in the Buildings library
+    installation folder (full path), see</span> <span style=
+    \"font-size: 8.25pt;\"><a href=
+    \"https://github.com/lbl-srg/modelica-buildings/issues/3993\">https://github.com/lbl-srg/modelica-buildings/issues/3993</a></span><span style=\"font-size: 8.25pt;\">.</span>
+  </li>
+  <li>
+    <span style=\"font-size: 8.25pt;\">error: Simulation failed, e.g.
+    room temperatures exceed the bounds due to divergence<br/>
+    solution 1: The timestep in the IDF-File needs to be increased (at
+    least 6, better 12). This is already done for this model.<br/>
+    solution 2: The tolerance of the solver in dymola needs to be
+    increased (e.g. 0.001), see</span> <span style=
+    \"font-size: 8.25pt;\"><a href=
+    \"https://github.com/lbl-srg/modelica-buildings/issues/3994\">https://github.com/lbl-srg/modelica-buildings/issues/3994</a></span><span style=\"font-size: 8.25pt;\">.</span>
+  </li>
 </ol>
-<p><br></span><span style=\"font-size: 8.25pt;\">Additionally, be aware of always using the same weather data in epw and in mos format when using Spawn because the building is simulated in EnergyPlus using the epw weather file. You can use the open source tool <a href=\"https://github.com/RWTH-EBC/AixWeather\">AixWeather</a></span><span style=\"font-size: 8.25pt;\"> to get the weather data in both formats.</p>
+<p>
+  <span style=\"font-size: 8.25pt;\"><br/></span><span style=
+  \"font-size: 8.25pt;\">Additionally, be aware of always using the same
+  weather data in epw and in mos format when using Spawn because the
+  building is simulated in EnergyPlus using the epw weather file. You
+  can use the open source tool <a href=
+  \"https://github.com/RWTH-EBC/AixWeather\">AixWeather</a></span>
+  <span style=\"font-size: 8.25pt;\">to get the weather data in both
+  formats.</span>
+</p>
 </html>"));
   connect(TZoneOpeMeaKelvin.y, TZoneOpeMea.Kelvin) annotation (Line(points={{
           66.7,-1},{70,-1},{70,18},{54,18},{54,26},{59.2,26}}, color={0,0,127}));
