@@ -95,8 +95,8 @@ equation
         points={{31.35,19.6},{31.35,22},{40,22},{40,3.2},{50.6,3.2}}, color={0,
           0,127}));
   connect(groundFloor.TZoneRadMea, TZoneOpeMeaKelvin[1:5].u2) annotation (Line(
-        points={{33.4,-75.76},{33.4,-76},{44,-76},{44,-5.2},{50.6,-5.2}}, color
-        ={0,0,127}));
+        points={{33.4,-75.76},{33.4,-76},{44,-76},{44,-5.2},{50.6,-5.2}}, color=
+         {0,0,127}));
   connect(upperFloor.TZoneRadMea, TZoneOpeMeaKelvin[6:10].u2) annotation (Line(
         points={{31.35,-7.76},{31.35,-8},{44,-8},{44,-5.2},{50.6,-5.2}}, color=
           {0,0,127}));
@@ -107,8 +107,8 @@ equation
         points={{18.8,60.75},{18,60.75},{18,60},{40,60},{40,3.2},{50.6,3.2}},
         color={0,0,127}));
   connect(attic_unheated.TZoneRadMea, TZoneOpeMeaKelvin[11].u2) annotation (
-      Line(points={{18.8,43.65},{18.8,42},{44,42},{44,-5.2},{50.6,-5.2}}, color
-        ={0,0,127}));
+      Line(points={{18.8,43.65},{18.8,42},{44,42},{44,-5.2},{50.6,-5.2}}, color=
+         {0,0,127}));
   connect(constVenRatAtt.y, attic_unheated.AirExchangePort) annotation (Line(
         points={{-69.2,44},{-20,44},{-20,52.05},{-15.12,52.05}}, color={0,0,127}));
   connect(weaBus, attic_unheated.weaBus) annotation (Line(
@@ -157,7 +157,11 @@ equation
     connect(useProBus.natVent[6:10], upperFloor.AirExchangePort) annotation (Line(
       points={{51,101},{-62,101},{-62,26.32},{-24.81,26.32}},
       color={0,0,127}));
-  end if
+  end if;
+  connect(TZoneOpeMeaKelvin.y, TZoneOpeMea.Kelvin) annotation (Line(points={{
+          66.7,-1},{70,-1},{70,18},{54,18},{54,26},{59.2,26}}, color={0,0,127}));
+  connect(TZoneOpeMea.Celsius, buiMeaBus.TZoneOpeMea) annotation (Line(points={
+          {68.4,26},{70,26},{70,88},{0,88},{0,99}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html><p>
@@ -216,8 +220,4 @@ equation
   formats.</span>
 </p>
 </html>"));
-  connect(TZoneOpeMeaKelvin.y, TZoneOpeMea.Kelvin) annotation (Line(points={{
-          66.7,-1},{70,-1},{70,18},{54,18},{54,26},{59.2,26}}, color={0,0,127}));
-  connect(TZoneOpeMea.Celsius, buiMeaBus.TZoneOpeMea) annotation (Line(points={
-          {68.4,26},{70,26},{70,88},{0,88},{0,99}}, color={0,0,127}));
 end SpawnHighOrder;
