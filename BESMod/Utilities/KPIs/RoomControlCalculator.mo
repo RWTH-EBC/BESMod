@@ -18,11 +18,10 @@ model RoomControlCalculator "Cacluate the room control quality in K*s"
     annotation (Placement(transformation(extent={{-26,-10},{-6,10}})));
   Modelica.Blocks.Sources.Constant const(k=dTComBou)
     annotation (Placement(transformation(extent={{-80,-40},{-60,-20}})));
-  Modelica.Blocks.Interfaces.RealOutput dTComSec(unit="K.s")
-                                                 "K*s discomfort"
+  Modelica.Blocks.Interfaces.RealOutput dTComSec(unit="K.s") "K*s discomfort"
     annotation (Placement(transformation(extent={{100,-10},{120,10}})));
   Modelica.Blocks.Interfaces.RealInput TZone(unit="K")
-                                             "Connector of Real input signal 1"
+    "Connector of Real input signal 1"
     annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));
 
   Modelica.Blocks.Interfaces.RealInput TZoneSet

@@ -10,7 +10,7 @@ partial expandable connector PartialKPIConnector "Partial emtpy KPI connector fo
           fillPattern=FillPattern.Solid), Text(
           extent={{-98,-100},{98,-140}},
           textColor={135,135,135},
-          textString="KPIs")}),
+          textString="%name%")}),
     Diagram(coordinateSystem(
         preserveAspectRatio=false,
         extent={{-100,-100},{100,100}},
