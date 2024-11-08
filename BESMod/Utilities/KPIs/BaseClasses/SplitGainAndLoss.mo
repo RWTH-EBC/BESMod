@@ -1,11 +1,13 @@
 within BESMod.Utilities.KPIs.BaseClasses;
 model SplitGainAndLoss
   "Model to split an energy input value into gain and loss"
-  Modelica.Blocks.Nonlinear.Limiter limLoss(final uMax=0, final uMin=-Modelica.Constants.inf)
+  Modelica.Blocks.Nonlinear.Limiter limLoss(final uMax=0, final uMin=-Modelica.Constants.inf,
+    strict=noEvents)
     "Only use negative values (loss)"
     annotation (Placement(transformation(extent={{-40,-40},{-20,-20}})));
   Modelica.Blocks.Nonlinear.Limiter limGain(final uMax=Modelica.Constants.inf,
-      final uMin=0)  "Only use positive values (gain)"
+      final uMin=0,
+    strict=noEvents) "Only use positive values (gain)"
     annotation (Placement(transformation(extent={{-40,20},{-20,40}})));
   Utilities.KPIs.EnergyKPICalculator gainKPI(final use_inpCon=true)
      annotation (Placement(transformation(
@@ -25,6 +27,7 @@ model SplitGainAndLoss
   Utilities.KPIs.BaseClasses.KPIIntegral loss "KPIs for loss" annotation (
       Placement(transformation(extent={{100,-40},{120,-20}}),
         iconTransformation(extent={{102,-60},{122,-40}})));
+  parameter Boolean noEvents=true "= true, if noEvent is used for limiter";
 equation
   connect(limGain.u, u) annotation (Line(points={{-42,30},{-94,30},{-94,0},{-120,
           0}}, color={0,0,127}));
@@ -55,5 +58,8 @@ equation
                               Text(
           extent={{-102,-70},{102,-166}},
           lineColor={0,0,0},
-          textString="%name%")}), Diagram(coordinateSystem(preserveAspectRatio=false)));
+          textString="%name%")}), Diagram(coordinateSystem(preserveAspectRatio=false)),
+    Documentation(info="<html>
+<p>Default of noEvents is true, as KPIs should only affect output values which don&apos;t feedback into system dynamics. If this model is used in a case where it&apos;s outputs affect the system, e.g. in controls, consider noEvents=false, which increases stability but also simulation time.</p>
+</html>"));
 end SplitGainAndLoss;
