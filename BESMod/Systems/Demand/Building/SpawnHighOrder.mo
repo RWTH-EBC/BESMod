@@ -1,13 +1,15 @@
-within BESMod.Systems.Demand.Building;
+ï»¿within BESMod.Systems.Demand.Building;
 model SpawnHighOrder "Spawn model of the AixLib High Order Model"
   extends BaseClasses.PartialDemand(
-    use_ventilation=true,
+    use_hydraulic = true,
+    use_ventilation = false,
     ARoo=129.95,
     hBui=10.2,
     ABui=249.02,
     hZone={2.6,2.6,2.6,2.6,2.6,2.6,2.6,2.6,2.6,2.6},
     AZone={23.07,12.94,15.35,12.94,18.72,23.07,12.94,15.35,12.94,18.72},
     nZones=10);
+  parameter Modelica.Units.SI.Height VZone[nZones + nZonesNonHeated]={59.98,33.63,39.9,33.63,48.67,59.98,33.63,39.9,33.63,48.67,199.99} "Volume of all (heated and unheated) zones" annotation(Dialog(group="Geometry"));
   parameter Integer nZonesNonHeated = 1 "Non heated rooms of the building";
   parameter Integer nZones = 10 "Heated rooms of the building";
   parameter Boolean useConstVentRate=false;
@@ -21,16 +23,16 @@ model SpawnHighOrder "Spawn model of the AixLib High Order Model"
     weaName=wea_name)
     annotation (Placement(transformation(extent={{-94,-10},{-74,10}})));
   Components.SpawnHighOrderOFD.GroundFloor groundFloor(redeclare package Medium =
-        MediumZone)
+        MediumZone, VZones=VZone[1:5])
     annotation (Placement(transformation(extent={{-24,-88},{32,-40}})));
   Components.SpawnHighOrderOFD.UpperFloor upperFloor(redeclare package Medium =
-        MediumZone)
+        MediumZone, VZones=VZone[6:10])
     annotation (Placement(transformation(extent={{-24,-20},{30,28}})));
   Modelica.Blocks.Math.Add TZoneOpeMeaKelvin[nZones + nZonesNonHeated](each k1=0.5,
       each k2=0.5) "Operative room temperature"
     annotation (Placement(transformation(extent={{52,-8},{66,6}})));
   Components.SpawnHighOrderOFD.Attic attic_unheated(redeclare package Medium =
-        MediumZone)
+        MediumZone, VZone=VZone[11])
     annotation (Placement(transformation(extent={{-14,36},{18,66}})));
   Modelica.Blocks.Sources.Constant constVenRatAtt(final k=1)
     "Constant ventilation rate of attic"
@@ -50,10 +52,10 @@ model SpawnHighOrder "Spawn model of the AixLib High Order Model"
     nZonesNonHeated]
     annotation (Placement(transformation(extent={{60,22},{68,30}})));
   Modelica.Blocks.Math.Division InternalGainsRadAreaSpecific[nZones]
-    "Spawn needs the internal gains in W/m²"
+    "Spawn needs the internal gains in W/mÂ²"
     annotation (Placement(transformation(extent={{64,-76},{54,-66}})));
   Modelica.Blocks.Math.Division InternalGainsConvAreaSpecific[nZones]
-    "Spawn needs the internal gains in W/m²"
+    "Spawn needs the internal gains in W/mÂ²"
     annotation (Placement(transformation(extent={{64,-58},{54,-48}})));
   Modelica.Blocks.Sources.Constant RoomArea[nZones](k=AZone)
     "Area of the rooms"
@@ -93,11 +95,6 @@ equation
   connect(portVent_out[6:10], upperFloor.portVent_out) annotation (Line(points={
           {100,-35.5},{78,-35.5},{78,-40},{46,-40},{46,-14},{30,-14},{30,2.08}},
         color={0,127,255}));
-  connect(groundFloor.TZoneMea, buiMeaBus.TZoneMea[1:5]) annotation (Line(
-        points={{33.4,-48.4},{40,-48.4},{40,88},{0,88},{0,99}}, color={0,0,127}));
-  connect(upperFloor.TZoneMea, buiMeaBus.TZoneMea[6:10]) annotation (Line(
-        points={{31.35,19.6},{31.35,22},{40,22},{40,88},{0,88},{0,99}}, color={0,
-          0,127}));
   connect(groundFloor.TZoneMea, TZoneOpeMeaKelvin[1:5].u1) annotation (Line(
         points={{33.4,-48.4},{40,-48.4},{40,3.2},{50.6,3.2}}, color={0,0,127}));
   connect(upperFloor.TZoneMea, TZoneOpeMeaKelvin[6:10].u1) annotation (Line(
@@ -109,9 +106,6 @@ equation
   connect(upperFloor.TZoneRadMea, TZoneOpeMeaKelvin[6:10].u2) annotation (Line(
         points={{31.35,-7.76},{31.35,-8},{44,-8},{44,-5.2},{50.6,-5.2}}, color={
           0,0,127}));
-  connect(attic_unheated.TZoneMea, buiMeaBus.TZoneMea[11]) annotation (Line(
-        points={{18.8,60.75},{22,60.75},{22,60},{26,60},{26,74},{0,74},{0,99}},
-                                                                color={0,0,127}));
   connect(attic_unheated.TZoneMea, TZoneOpeMeaKelvin[11].u1) annotation (Line(
         points={{18.8,60.75},{18,60.75},{18,60},{40,60},{40,3.2},{50.6,3.2}},
         color={0,0,127}));
@@ -176,6 +170,12 @@ equation
       points={{51,101},{-62,101},{-62,26.32},{-24.81,26.32}},
       color={0,0,127}));
   end if;
+  connect(groundFloor.TZoneMea, buiMeaBus.TZoneMea[1:5]) annotation (Line(
+        points={{33.4,-48.4},{40,-48.4},{40,82},{0,82},{0,99}}, color={0,0,127}));
+  connect(upperFloor.TZoneMea, buiMeaBus.TZoneMea[6:10]) annotation (Line(
+        points={{31.35,19.6},{40,19.6},{40,82},{0,82},{0,99}}, color={0,0,127}));
+  connect(attic_unheated.TZoneMea, buiMeaBus.TZoneMea[11]) annotation (Line(
+        points={{18.8,60.75},{40,60.75},{40,82},{0,82},{0,99}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html><p>

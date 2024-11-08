@@ -1,8 +1,10 @@
 within BESMod.Systems.Demand.Building.Components;
 package SpawnHighOrderOFD
   model GroundFloor "Spawn Groundfloor of the AixLib High Order OFD"
-    replaceable package Medium = IBPSA.Media.Air constrainedby Modelica.Media.Interfaces.PartialMedium "Medium in the component"
+    replaceable package Medium = IBPSA.Media.Air constrainedby
+      Modelica.Media.Interfaces.PartialMedium "Medium in the component"
         annotation (choicesAllMatching=true);
+    parameter Modelica.Units.SI.Volume VZones[5] = {0,0,0,0,0} "Volume of the zones";
     IBPSA.BoundaryConditions.WeatherData.Bus
         weaBus "Weather data bus" annotation (Placement(transformation(extent={{-70,78},
               {-28,122}}),         iconTransformation(extent={{-68,92},{-48,112}})));
@@ -75,8 +77,7 @@ package SpawnHighOrderOFD
     Modelica.Blocks.Interfaces.RealInput AirExchangePort[5]
       "1: LivingRoom_GF, 2: Hobby_GF, 3: Corridor, 4: WC_Storage_GF, 5: Kitchen_GF"
       annotation (Placement(transformation(extent={{-118,78},{-88,108}})));
-    Modelica.Blocks.Math.Gain Volume_flow[5](k={59.98/3600,33.63/3600,39.9/3600,33.63
-          /3600,48.67/3600})
+    Modelica.Blocks.Math.Gain Volume_flow[5](k=VZones ./ 3600)
       "Convert air exchange into volume flow for each zone"
       annotation (Placement(transformation(extent={{-82,88},{-74,96}})));
     Modelica.Blocks.Math.Product calcMassFlow_living1
@@ -434,8 +435,10 @@ package SpawnHighOrderOFD
   end GroundFloor;
 
   model UpperFloor "Spawn Groundfloor of the AixLib High Order OFD"
-      replaceable package Medium = IBPSA.Media.Air constrainedby Modelica.Media.Interfaces.PartialMedium "Medium in the component"
+    replaceable package Medium = IBPSA.Media.Air constrainedby
+      Modelica.Media.Interfaces.PartialMedium "Medium in the component"
         annotation (choicesAllMatching=true);
+    parameter Modelica.Units.SI.Volume VZones[5] = {0,0,0,0,0} "Volume of the zones";
     IBPSA.BoundaryConditions.WeatherData.Bus
         weaBus "Weather data bus" annotation (Placement(transformation(extent={{-70,78},
               {-28,122}}),         iconTransformation(extent={{-68,92},{-48,112}})));
@@ -475,14 +478,12 @@ package SpawnHighOrderOFD
       annotation (Placement(transformation(extent={{94,-100},{132,-62}}),
           iconTransformation(extent={{90,-64},{120,-34}})));
     Modelica.Fluid.Interfaces.FluidPort_a portVent_in[5](redeclare final
-        package
-        Medium =         Medium)
+        package Medium = Medium)
       "Inlet for the demand of ventilation"
       annotation (Placement(transformation(extent={{90,30},{110,50}}),
           iconTransformation(extent={{90,16},{110,36}})));
     Modelica.Fluid.Interfaces.FluidPort_b portVent_out[5](redeclare final
-        package
-        Medium =         Medium)
+        package Medium = Medium)
       "Outlet of the demand of Ventilation"
       annotation (Placement(transformation(extent={{92,-24},{112,-4}}),
           iconTransformation(extent={{90,-18},{110,2}})));
@@ -503,14 +504,13 @@ package SpawnHighOrderOFD
       m_flow_nominal=1)
       "Duct resistance (to decouple room and outside pressure)"
       annotation (Placement(transformation(extent={{-44,24},{-56,36}})));
-    Buildings.Fluid.Sources.Boundary_pT pAtm_bedroom6(redeclare package Medium =
-          Medium, nPorts=1) "Boundary condition"
+    Buildings.Fluid.Sources.Boundary_pT pAtm_bedroom6(redeclare package Medium
+        = Medium, nPorts=1) "Boundary condition"
       annotation (Placement(transformation(extent={{-90,24},{-80,34}})));
     Modelica.Blocks.Interfaces.RealInput AirExchangePort[5]
       "1: Bedroom_UF, 2: Children1_UF, 3: Corridor_UF, 4: Bath_UF, 5: Children2_UF"
       annotation (Placement(transformation(extent={{-118,78},{-88,108}})));
-    Modelica.Blocks.Math.Gain Volume_flow[5](k={59.98/3600,33.63/3600,39.9/3600,
-          33.63/3600,48.67/3600})
+    Modelica.Blocks.Math.Gain Volume_flow[5](k=VZones ./ 3600)
       "Convert air exchange into volume flow for each zone"
       annotation (Placement(transformation(extent={{-82,88},{-74,96}})));
     Modelica.Blocks.Math.Product calcMassFlow_bedroom6
@@ -539,8 +539,8 @@ package SpawnHighOrderOFD
       dp_nominal=100,
       m_flow_nominal=1) "Duct resistance (to decouple room and outside pressure)"
       annotation (Placement(transformation(extent={{58,28},{46,40}})));
-    Buildings.Fluid.Sources.Boundary_pT pAtm_children7(redeclare package Medium =
-          Medium, nPorts=1) "Boundary condition"
+    Buildings.Fluid.Sources.Boundary_pT pAtm_children7(redeclare package Medium
+        = Medium, nPorts=1) "Boundary condition"
       annotation (Placement(transformation(extent={{12,26},{22,36}})));
     Modelica.Blocks.Math.Product calcMassFlow_children7
       "calculate mass flow from volume flow and density"
@@ -569,8 +569,8 @@ package SpawnHighOrderOFD
       m_flow_nominal=1)
       "Duct resistance (to decouple room and outside pressure)"
       annotation (Placement(transformation(extent={{56,-26},{44,-14}})));
-    Buildings.Fluid.Sources.Boundary_pT pAtm_corridor8(redeclare package Medium =
-          Medium, nPorts=1) "Boundary condition"
+    Buildings.Fluid.Sources.Boundary_pT pAtm_corridor8(redeclare package Medium
+        = Medium, nPorts=1) "Boundary condition"
       annotation (Placement(transformation(extent={{16,-22},{26,-12}})));
     Modelica.Blocks.Sources.RealExpression
                                      air_density3(y=rho)
@@ -615,7 +615,8 @@ package SpawnHighOrderOFD
       dp_nominal=100,
       m_flow_nominal=1) "Duct resistance (to decouple room and outside pressure)"
       annotation (Placement(transformation(extent={{-40,-86},{-52,-74}})));
-    Buildings.Fluid.Sources.Boundary_pT pAtm_children10(redeclare package Medium =
+    Buildings.Fluid.Sources.Boundary_pT pAtm_children10(redeclare package
+        Medium =
           Medium, nPorts=1) "Boundary condition"
       annotation (Placement(transformation(extent={{-86,-88},{-76,-78}})));
   protected
@@ -863,9 +864,10 @@ package SpawnHighOrderOFD
   end UpperFloor;
 
   model Attic "Spawn Attic of the AixLib High Order OFD"
-      replaceable package Medium = IBPSA.Media.Air constrainedby
-      Modelica.Media.Interfaces.PartialMedium                                                            "Medium in the component"
+    replaceable package Medium = IBPSA.Media.Air constrainedby
+      Modelica.Media.Interfaces.PartialMedium "Medium in the component"
         annotation (choicesAllMatching=true);
+    parameter Modelica.Units.SI.Volume VZone = 0 "Volume of the zone";
     IBPSA.BoundaryConditions.WeatherData.Bus
         weaBus "Weather data bus" annotation (Placement(transformation(extent={{-70,78},
               {-28,122}}),         iconTransformation(extent={{-68,92},{-48,112}})));
@@ -900,7 +902,7 @@ package SpawnHighOrderOFD
       annotation (Placement(transformation(extent={{-64,-50},{-48,-34}})));
     Modelica.Blocks.Interfaces.RealInput AirExchangePort "Attic air exchange"
       annotation (Placement(transformation(extent={{-122,-8},{-92,22}})));
-    Modelica.Blocks.Math.Gain Volume_flow(k=199.99/3600)
+    Modelica.Blocks.Math.Gain Volume_flow(k=VZone/3600)
       "Convert air exchange into volume flow"
       annotation (Placement(transformation(extent={{-82,2},{-74,10}})));
     Modelica.Blocks.Math.Product calcMassFlow_attic
