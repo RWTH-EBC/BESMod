@@ -150,7 +150,8 @@ model TEASERThermalZone
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-90,-148})));
-  Modelica.Blocks.Sources.RealExpression QSol_flow[nZones](y=sum(thermalZone.simpleExternalShading.corrIrr))
+  Modelica.Blocks.Sources.RealExpression QSol_flow[nZones](y={sum(thermalZone[i].simpleExternalShading.corrIrr)
+        for i in 1:nZones})
     if use_verboseEnergyBalance "Solar heat flow rate"                                         annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
