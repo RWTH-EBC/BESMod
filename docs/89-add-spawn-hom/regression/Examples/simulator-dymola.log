@@ -1073,9 +1073,9 @@ The redundancies involve
 initial equations: 
   hydraulic.generation.bou_sinkAir.p = 101325.0;
   ventilation.generation.bouExh.p = ventilation.generation.threeWayValve_b.vol.dynBal.p_start;
+  electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
   electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
   electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
-  electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
  
  
 Statistics
@@ -2439,132 +2439,6 @@ savelog("BESMod.Examples.Retrofit.Case1PartialRetrofit.translation.log"); = true
 
 rCheck = checkModel("BESMod.Examples.HighOrderModel.BES_HOM_Spawn");
 Check of BESMod.Examples.HighOrderModel.BES_HOM_Spawn:
-Warning: Connect argument was not one of the valid forms, since building.groundFloor.zone_living1 is not a connector.
-Error: Use of undeclared variable zone_living1.heaPorRad
-In class BESMod.Systems.Demand.Building.Components.SpawnHighOrderOFD.GroundFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 3
-Used in component building.groundFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 25
-Errors found in: connect(building.groundFloor.heatPortRad[1], zone_living1.heaPorRad)
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 208
-Warning: Connect argument was not one of the valid forms, since building.groundFloor.zone_hobby2 is not a connector.
-Error: Use of undeclared variable zone_hobby2.heaPorRad
-In class BESMod.Systems.Demand.Building.Components.SpawnHighOrderOFD.GroundFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 3
-Used in component building.groundFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 25
-Errors found in: connect(building.groundFloor.heatPortRad[2], zone_hobby2.heaPorRad)
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 210
-Warning: Connect argument was not one of the valid forms, since building.groundFloor.zone_corridor3 is not a connector.
-Error: Use of undeclared variable zone_corridor3.heaPorRad
-In class BESMod.Systems.Demand.Building.Components.SpawnHighOrderOFD.GroundFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 3
-Used in component building.groundFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 25
-Errors found in: connect(building.groundFloor.heatPortRad[3], zone_corridor3.heaPorRad)
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 212
-Warning: Connect argument was not one of the valid forms, since building.groundFloor.zone_wcstorage4 is not a connector.
-Error: Use of undeclared variable zone_wcstorage4.heaPorRad
-In class BESMod.Systems.Demand.Building.Components.SpawnHighOrderOFD.GroundFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 3
-Used in component building.groundFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 25
-Errors found in: connect(building.groundFloor.heatPortRad[4], zone_wcstorage4.heaPorRad)
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 215
-Warning: Connect argument was not one of the valid forms, since building.groundFloor.zone_kitchen5 is not a connector.
-Error: Use of undeclared variable zone_kitchen5.heaPorRad
-In class BESMod.Systems.Demand.Building.Components.SpawnHighOrderOFD.GroundFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 3
-Used in component building.groundFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 25
-Errors found in: connect(building.groundFloor.heatPortRad[5], zone_kitchen5.heaPorRad)
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 218
-Warning: Connect argument was not one of the valid forms, since building.upperFloor.zone_bedroom6 is not a connector.
-Error: Use of undeclared variable zone_bedroom6.heaPorRad
-In class BESMod.Systems.Demand.Building.Components.SpawnHighOrderOFD.UpperFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 437
-Used in component building.upperFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 28
-Errors found in: connect(building.upperFloor.heatPortRad[1], zone_bedroom6.heaPorRad)
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 639
-Warning: Connect argument was not one of the valid forms, since building.upperFloor.zone_children7 is not a connector.
-Error: Use of undeclared variable zone_children7.heaPorRad
-In class BESMod.Systems.Demand.Building.Components.SpawnHighOrderOFD.UpperFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 437
-Used in component building.upperFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 28
-Errors found in: connect(building.upperFloor.heatPortRad[2], zone_children7.heaPorRad)
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 641
-Warning: Connect argument was not one of the valid forms, since building.upperFloor.zone_corridor8 is not a connector.
-Error: Use of undeclared variable zone_corridor8.heaPorRad
-In class BESMod.Systems.Demand.Building.Components.SpawnHighOrderOFD.UpperFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 437
-Used in component building.upperFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 28
-Errors found in: connect(building.upperFloor.heatPortRad[3], zone_corridor8.heaPorRad)
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 643
-Warning: Connect argument was not one of the valid forms, since building.upperFloor.zone_bath9 is not a connector.
-Error: Use of undeclared variable zone_bath9.heaPorRad
-In class BESMod.Systems.Demand.Building.Components.SpawnHighOrderOFD.UpperFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 437
-Used in component building.upperFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 28
-Errors found in: connect(building.upperFloor.heatPortRad[4], zone_bath9.heaPorRad)
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 645
-Warning: Connect argument was not one of the valid forms, since building.upperFloor.zone_children10 is not a connector.
-Error: Use of undeclared variable zone_children10.heaPorRad
-In class BESMod.Systems.Demand.Building.Components.SpawnHighOrderOFD.UpperFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 437
-Used in component building.upperFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 28
-Errors found in: connect(building.upperFloor.heatPortRad[5], zone_children10.heaPorRad)
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 648
-Error: Unknown function ThermodynamicState in  (function Modelica.Media.Interfaces.PartialSimpleMedium.setState_pTX).
-Errors found in: state = ThermodynamicState()
-  File: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line 5914
-Error: Unknown function ThermodynamicState in  (function Modelica.Media.Interfaces.PartialSimpleMedium.setState_phX).
-Errors found in: state = ThermodynamicState()
-  File: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line 5925
-Error: Unknown function IBPSA.Fluid.Movers.BaseClasses.Characteristics.flowParameters in DHW.pump.eff.per.pressure (model IBPSA.Fluid.Movers.FlowControlled_m_flow).
-Error: Unknown function ThermodynamicState in  (function IBPSA.Media.Air.setState_pTX).
-Error: Unknown function ThermodynamicState in  (function IBPSA.Media.Air.setState_pTX).
-Errors found in: state = (if size(X, 1) == 2 then ThermodynamicState() else ThermodynamicState())
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Media/Air.mo, line 633
-Error: Unknown function ThermodynamicState in  (function IBPSA.Media.Air.setState_phX).
-Error: Unknown function ThermodynamicState in  (function IBPSA.Media.Air.setState_phX).
-Errors found in: state = (if size(X, 1) == 2 then ThermodynamicState() else ThermodynamicState())
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Media/Air.mo, line 617
-Error: Unknown function ThermodynamicState in  (function IBPSA.Media.Air.setState_pTX).
-Error: Unknown function ThermodynamicState in  (function IBPSA.Media.Air.setState_pTX).
-Errors found in: state = (if size(X, 1) == 2 then ThermodynamicState() else ThermodynamicState())
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Media/Air.mo, line 633
-Error: Unknown function IBPSA.Fluid.Movers.BaseClasses.Characteristics.flowParameters in hydraulic.transfer.pumFixMFlo[1].eff.per.pressure (model IBPSA.Fluid.Movers.FlowControlled_m_flow).
-Error: Unknown function IBPSA.Fluid.Movers.BaseClasses.Characteristics.flowParameters in hydraulic.transfer.pumFixMFlo[2].eff.per.pressure (model IBPSA.Fluid.Movers.FlowControlled_m_flow).
-Error: Unknown function IBPSA.Fluid.Movers.BaseClasses.Characteristics.flowParameters in hydraulic.transfer.pumFixMFlo[3].eff.per.pressure (model IBPSA.Fluid.Movers.FlowControlled_m_flow).
-Error: Unknown function IBPSA.Fluid.Movers.BaseClasses.Characteristics.flowParameters in hydraulic.transfer.pumFixMFlo[4].eff.per.pressure (model IBPSA.Fluid.Movers.FlowControlled_m_flow).
-Error: Unknown function IBPSA.Fluid.Movers.BaseClasses.Characteristics.flowParameters in hydraulic.transfer.pumFixMFlo[5].eff.per.pressure (model IBPSA.Fluid.Movers.FlowControlled_m_flow).
-Error: Unknown function IBPSA.Fluid.Movers.BaseClasses.Characteristics.flowParameters in hydraulic.transfer.pumFixMFlo[6].eff.per.pressure (model IBPSA.Fluid.Movers.FlowControlled_m_flow).
-Error: Unknown function IBPSA.Fluid.Movers.BaseClasses.Characteristics.flowParameters in hydraulic.transfer.pumFixMFlo[7].eff.per.pressure (model IBPSA.Fluid.Movers.FlowControlled_m_flow).
-Error: Unknown function IBPSA.Fluid.Movers.BaseClasses.Characteristics.flowParameters in hydraulic.transfer.pumFixMFlo[8].eff.per.pressure (model IBPSA.Fluid.Movers.FlowControlled_m_flow).
-Error: Unknown function IBPSA.Fluid.Movers.BaseClasses.Characteristics.flowParameters in hydraulic.transfer.pumFixMFlo[9].eff.per.pressure (model IBPSA.Fluid.Movers.FlowControlled_m_flow).
-Error: Unknown function IBPSA.Fluid.Movers.BaseClasses.Characteristics.flowParameters in hydraulic.transfer.pumFixMFlo[10].eff.per.pressure (model IBPSA.Fluid.Movers.FlowControlled_m_flow).
-Error: Unknown function ThermodynamicState in  (function Modelica.Media.Interfaces.PartialSimpleMedium.setState_phX).
-Errors found in: state = ThermodynamicState()
-  File: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line 5925
-Warning: Non-literal value.
-In nominal attribute for hydraulic.generation.heatPump.port_a2.h_outflow.
-Ignoring nominal attribute.
-In class Modelica.Media.Interfaces.Types.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line 3921
-Used in base-class hydraulic.generation.heatPump.port_a2.FluidPort.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Interfaces.mo, line 25
-Warning: Non-literal value.
-In nominal attribute for hydraulic.generation.heatPump.port_b2.h_outflow.
-Ignoring nominal attribute.
-In class Modelica.Media.Interfaces.Types.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line 3921
-Used in base-class hydraulic.generation.heatPump.port_b2.FluidPort.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Interfaces.mo, line 45
 Warning: Non-literal value.
 In nominal attribute for hydraulic.generation.heatPump.con.preDro.m_flow.
 Ignoring nominal attribute.
@@ -2573,93 +2447,26 @@ In class Modelica.Units.SI.
 Used in base-class hydraulic.generation.heatPump.con.preDro.PartialTwoPortInterface.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
 Warning: Non-literal value.
-In nominal attribute for hydraulic.generation.heatPump.eva.port_a.h_outflow.
-Ignoring nominal attribute.
-In class Modelica.Media.Interfaces.Types.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line 3921
-Used in base-class hydraulic.generation.heatPump.eva.port_a.FluidPort.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Interfaces.mo, line 25
-Warning: Non-literal value.
-In nominal attribute for hydraulic.generation.heatPump.eva.port_b.h_outflow.
-Ignoring nominal attribute.
-In class Modelica.Media.Interfaces.Types.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line 3921
-Used in base-class hydraulic.generation.heatPump.eva.port_b.FluidPort.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Interfaces.mo, line 45
-Warning: Non-literal value.
-In nominal attribute for hydraulic.generation.heatPump.eva.vol.ports[1].h_outflow.
-Ignoring nominal attribute.
-In class Modelica.Media.Interfaces.Types.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line 3921
-Used in base-class hydraulic.generation.heatPump.eva.vol.ports.FluidPort.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Vessels.mo, line 711
-Warning: Non-literal value.
-In nominal attribute for hydraulic.generation.heatPump.eva.vol.ports[2].h_outflow.
-Ignoring nominal attribute.
-In class Modelica.Media.Interfaces.Types.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line 3921
-Used in base-class hydraulic.generation.heatPump.eva.vol.ports.FluidPort.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Vessels.mo, line 711
-Warning: Non-literal value.
-In nominal attribute for hydraulic.generation.heatPump.eva.preDro.port_a.h_outflow.
-Ignoring nominal attribute.
-In class Modelica.Media.Interfaces.Types.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line 3921
-Used in base-class hydraulic.generation.heatPump.eva.preDro.port_a.FluidPort.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Interfaces.mo, line 25
-Warning: Non-literal value.
-In nominal attribute for hydraulic.generation.heatPump.eva.preDro.port_b.h_outflow.
-Ignoring nominal attribute.
-In class Modelica.Media.Interfaces.Types.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line 3921
-Used in base-class hydraulic.generation.heatPump.eva.preDro.port_b.FluidPort.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Interfaces.mo, line 45
-Warning: Non-literal value.
 In nominal attribute for hydraulic.generation.heatPump.eva.preDro.m_flow.
 Ignoring nominal attribute.
 In class Modelica.Units.SI.
   Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
 Used in base-class hydraulic.generation.heatPump.eva.preDro.PartialTwoPortInterface.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
-Warning: Non-literal value.
-In nominal attribute for hydraulic.generation.heatPump.mEva_flow.port_a.h_outflow.
-Ignoring nominal attribute.
-In class Modelica.Media.Interfaces.Types.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line 3921
-Used in base-class hydraulic.generation.heatPump.mEva_flow.port_a.FluidPort.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Interfaces.mo, line 25
-Warning: Non-literal value.
-In nominal attribute for hydraulic.generation.heatPump.mEva_flow.port_b.h_outflow.
-Ignoring nominal attribute.
-In class Modelica.Media.Interfaces.Types.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line 3921
-Used in base-class hydraulic.generation.heatPump.mEva_flow.port_b.FluidPort.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Interfaces.mo, line 45
-Warning: Non-literal value.
-In nominal attribute for hydraulic.generation.heatPump.eva.vol.dynBal.hOut.
-Ignoring nominal attribute.
-In class Modelica.Blocks.Interfaces.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Blocks/Interfaces.mo, line 2
-Used in component hydraulic.generation.heatPump.eva.vol.dynBal.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/MixingVolumes/BaseClasses/PartialMixingVolume.mo, line 73
-Warning: Non-literal value.
-In nominal attribute for hydraulic.generation.heatPump.eva.vol.dynBal.ports[1].h_outflow.
-Ignoring nominal attribute.
-In class Modelica.Media.Interfaces.Types.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line 3921
-Used in base-class hydraulic.generation.heatPump.eva.vol.dynBal.ports.FluidPort.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Vessels.mo, line 711
-Warning: Non-literal value.
-In nominal attribute for hydraulic.generation.heatPump.eva.vol.dynBal.ports[2].h_outflow.
-Ignoring nominal attribute.
-In class Modelica.Media.Interfaces.Types.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line 3921
-Used in base-class hydraulic.generation.heatPump.eva.vol.dynBal.ports.FluidPort.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Vessels.mo, line 711
-The model contained invalid expressions.
-Check aborted.
+Adding zero equation for variables:
+ building.useProBus.natVent[11:end]
+ building.buiMeaBus.TZoneMea[12:end]
+The model has the same number of unknowns and equations: 13078
+The model could not be deduced to be symbolically well-posed.
+The model has
+  12336+20*hydraulic.transfer.parRad.nEle+4*building.groundFloor.zone_living1.nPorts  +4*building.groundFloor.zone_hobby2.nPorts+4*building.groundFloor.zone_kitchen5.nPorts  +4*building.groundFloor.zone_corridor3.nPorts+4*building.groundFloor.zone_wcstorage4.nPorts  +4*building.upperFloor.zone_bedroom6.nPorts+4*building.upperFloor.zone_children7.nPorts  +4*building.upperFloor.zone_children10.nPorts+4*building.upperFloor.zone_corridor8.nPorts  +4*building.upperFloor.zone_bath9.nPorts+4*building.attic_unheated.zone_attic.nPorts  +max([size(userProfiles.tabIntGai.columns, 1); size(userProfiles.tabIntGai.offset,   1)])+max([size(userProfiles.tabNatVen.columns, 1); size(userProfiles.tabNatVen.offset,   1)])+max([size(userProfiles.TSet.columns, 1); size(userProfiles.TSet.offset, 1)])  +DHW.calcmFlow.multiProduct.nu+DHW.pump.vol.dynBal.nPorts+max([4; size(  DHW.combiTimeTableDHWInput.offset, 1)])+14*systemParameters.nZones+  hydraulic.generation.heatPump.con.vol.dynBal.nPorts+2*hydraulic.generation.heatPump.eva.vol.dynBal.nPorts  +size(hydraulic.generation.heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns, 1)  +hydraulic.generation.heatPump.safCtr.opeEnv.bouMapHea.nor.nu+size(  hydraulic.generation.heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns, 1)+  hydraulic.generation.heatPump.safCtr.opeEnv.bouMapCoo.nor.nu+hydraulic.generation.pump.vol.dynBal.nPorts  +hydraulic.generation.multiSum.nu+hydraulic.generation.eleHea.vol.dynBal.nPorts  +hydraulic.control.anyGenDevIsOn.nu+hydraulic.control.buiAndDHWCtr.orDHW.nu+  hydraulic.control.buiAndDHWCtr.maxSecHeaGen.nu+hydraulic.control.buiAndDHWCtr.secGenOn.nu  +2*hydraulic.distribution.parStoDHW.nLayer+hydraulic.distribution.stoDHW.layer[1].dynBal.nPorts  +hydraulic.distribution.stoDHW.layer[2].dynBal.nPorts+hydraulic.distribution.stoDHW.layer[3].dynBal.nPorts  +hydraulic.distribution.stoDHW.layer[4].dynBal.nPorts+hydraulic.distribution.stoDHW.layer_HE[1].dynBal.nPorts  +hydraulic.distribution.stoDHW.layer_HE[2].dynBal.nPorts+hydraulic.distribution.stoDHW.layer_HE[3].dynBal.nPorts  +hydraulic.distribution.stoDHW.layer_HE[4].dynBal.nPorts+2*hydraulic.distribution.parStoBuf.nLayer  +hydraulic.distribution.stoBuf.layer[1].dynBal.nPorts+hydraulic.distribution.stoBuf.layer[2].dynBal.nPorts  +hydraulic.distribution.stoBuf.layer[3].dynBal.nPorts+hydraulic.distribution.stoBuf.layer[4].dynBal.nPorts  +hydraulic.distribution.stoBuf.layer_HE[1].dynBal.nPorts+hydraulic.distribution.stoBuf.layer_HE[2].dynBal.nPorts  +hydraulic.distribution.stoBuf.layer_HE[3].dynBal.nPorts+hydraulic.distribution.stoBuf.layer_HE[4].dynBal.nPorts  +hydraulic.distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.nPorts  +hydraulic.transfer.rad[1].sumCon.nin+hydraulic.transfer.rad[1].sumRad.nin+  hydraulic.transfer.rad[1].vol[1].dynBal.nPorts+hydraulic.transfer.rad[1].vol[2].dynBal.nPorts  +hydraulic.transfer.rad[1].vol[3].dynBal.nPorts+hydraulic.transfer.rad[1].vol[4].dynBal.nPorts  +hydraulic.transfer.rad[1].vol[5].dynBal.nPorts+hydraulic.transfer.rad[2].sumCon.nin  +hydraulic.transfer.rad[2].sumRad.nin+hydraulic.transfer.rad[2].vol[1].dynBal.nPorts  +hydraulic.transfer.rad[2].vol[2].dynBal.nPorts+hydraulic.transfer.rad[2].vol[3].dynBal.nPorts  +hydraulic.transfer.rad[2].vol[4].dynBal.nPorts+hydraulic.transfer.rad[2].vol[5].dynBal.nPorts  +hydraulic.transfer.rad[3].sumCon.nin+hydraulic.transfer.rad[3].sumRad.nin+  hydraulic.transfer.rad[3].vol[1].dynBal.nPorts+hydraulic.transfer.rad[3].vol[2].dynBal.nPorts  +hydraulic.transfer.rad[3].vol[3].dynBal.nPorts+hydraulic.transfer.rad[3].vol[4].dynBal.nPorts  +hydraulic.transfer.rad[3].vol[5].dynBal.nPorts+hydraulic.transfer.rad[4].sumCon.nin  +hydraulic.transfer.rad[4].sumRad.nin+hydraulic.transfer.rad[4].vol[1].dynBal.nPorts  +hydraulic.transfer.rad[4].vol[2].dynBal.nPorts+hydraulic.transfer.rad[4].vol[3].dynBal.nPorts  +hydraulic.transfer.rad[4].vol[4].dynBal.nPorts+hydraulic.transfer.rad[4].vol[5].dynBal.nPorts  +hydraulic.transfer.rad[5].sumCon.nin+hydraulic.transfer.rad[5].sumRad.nin+  hydraulic.transfer.rad[5].vol[1].dynBal.nPorts+hydraulic.transfer.rad[5].vol[2].dynBal.nPorts  +hydraulic.transfer.rad[5].vol[3].dynBal.nPorts+hydraulic.transfer.rad[5].vol[4].dynBal.nPorts  +hydraulic.transfer.rad[5].vol[5].dynBal.nPorts+hydraulic.transfer.rad[6].sumCon.nin  +hydraulic.transfer.rad[6].sumRad.nin+hydraulic.transfer.rad[6].vol[1].dynBal.nPorts  +hydraulic.transfer.rad[6].vol[2].dynBal.nPorts+hydraulic.transfer.rad[6].vol[3].dynBal.nPorts  +hydraulic.transfer.rad[6].vol[4].dynBal.nPorts+hydraulic.transfer.rad[6].vol[5].dynBal.nPorts  +hydraulic.transfer.rad[7].sumCon.nin+hydraulic.transfer.rad[7].sumRad.nin+  hydraulic.transfer.rad[7].vol[1].dynBal.nPorts+hydraulic.transfer.rad[7].vol[2].dynBal.nPorts  +hydraulic.transfer.rad[7].vol[3].dynBal.nPorts+hydraulic.transfer.rad[7].vol[4].dynBal.nPorts  +hydraulic.transfer.rad[7].vol[5].dynBal.nPorts+hydraulic.transfer.rad[8].sumCon.nin  +hydraulic.transfer.rad[8].sumRad.nin+hydraulic.transfer.rad[8].vol[1].dynBal.nPorts  +hydraulic.transfer.rad[8].vol[2].dynBal.nPorts+hydraulic.transfer.rad[8].vol[3].dynBal.nPorts  +hydraulic.transfer.rad[8].vol[4].dynBal.nPorts+hydraulic.transfer.rad[8].vol[5].dynBal.nPorts  +hydraulic.transfer.rad[9].sumCon.nin+hydraulic.transfer.rad[9].sumRad.nin+  hydraulic.transfer.rad[9].vol[1].dynBal.nPorts+hydraulic.transfer.rad[9].vol[2].dynBal.nPorts  +hydraulic.transfer.rad[9].vol[3].dynBal.nPorts+hydraulic.transfer.rad[9].vol[4].dynBal.nPorts  +hydraulic.transfer.rad[9].vol[5].dynBal.nPorts+hydraulic.transfer.rad[10].sumCon.nin  +hydraulic.transfer.rad[10].sumRad.nin+hydraulic.transfer.rad[10].vol[1].dynBal.nPorts  +hydraulic.transfer.rad[10].vol[2].dynBal.nPorts+hydraulic.transfer.rad[10].vol[3].dynBal.nPorts  +hydraulic.transfer.rad[10].vol[4].dynBal.nPorts+hydraulic.transfer.rad[10].vol[5].dynBal.nPorts  +hydraulic.transfer.pumFixMFlo[1].vol.dynBal.nPorts+hydraulic.transfer.pumFixMFlo[2].vol.dynBal.nPorts  +hydraulic.transfer.pumFixMFlo[3].vol.dynBal.nPorts+hydraulic.transfer.pumFixMFlo[4].vol.dynBal.nPorts  +hydraulic.transfer.pumFixMFlo[5].vol.dynBal.nPorts+hydraulic.transfer.pumFixMFlo[6].vol.dynBal.nPorts  +hydraulic.transfer.pumFixMFlo[7].vol.dynBal.nPorts+hydraulic.transfer.pumFixMFlo[8].vol.dynBal.nPorts  +hydraulic.transfer.pumFixMFlo[9].vol.dynBal.nPorts+hydraulic.transfer.pumFixMFlo[10].vol.dynBal.nPorts
+scalar unknowns and
+  11943+(if building.building.weaDat.pAtmSou == Buildings.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if building.building.weaDat.TDewPoiSou ==   Buildings.BoundaryConditions.Types.DataSource.Parameter then 1 else 0)+(if   building.building.weaDat.TDryBulSou == Buildings.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if building.building.weaDat.TBlaSkySou ==   Buildings.BoundaryConditions.Types.DataSource.Parameter then 1 else 0)+(if   building.building.weaDat.relHumSou == Buildings.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if building.building.weaDat.opaSkyCovSou ==   Buildings.BoundaryConditions.Types.DataSource.Parameter then 1 else 0)+(if   building.building.weaDat.ceiHeiSou == Buildings.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if building.building.weaDat.totSkyCovSou ==   Buildings.BoundaryConditions.Types.DataSource.Parameter then 1 else 0)+(if   building.building.weaDat.winSpeSou == Buildings.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if building.building.weaDat.winDirSou ==   Buildings.BoundaryConditions.Types.DataSource.Parameter then 1 else 0)+(if   building.building.weaDat.HInfHorSou == Buildings.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if building.building.weaDat.HSou == Buildings.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HDifHor then 2 else 1)+(if building.building.weaDat.HSou ==   Buildings.BoundaryConditions.Types.RadiationDataSource.Input_HDirNor_HGloHor   then 2 else 1)+(if building.building.weaDat.HSou == Buildings.BoundaryConditions.Types.RadiationDataSource.  Input_HGloHor_HDifHor then 2 else 1)+2*building.groundFloor.zone_living1.nPorts  +3*building.groundFloor.zone_living1.nPorts+2*building.groundFloor.zone_hobby2.nPorts  +3*building.groundFloor.zone_hobby2.nPorts+2*building.groundFloor.zone_kitchen5.nPorts  +3*building.groundFloor.zone_kitchen5.nPorts+2*building.groundFloor.zone_corridor3.nPorts  +3*building.groundFloor.zone_corridor3.nPorts+2*building.groundFloor.zone_wcstorage4.nPorts  +3*building.groundFloor.zone_wcstorage4.nPorts+(if  not building.groundFloor.freshAir_living1.x_pTphi.use_p_in   then 1 else 0)+(if  not building.groundFloor.freshAir_living1.use_m_flow_in   then 1 else 0)+3*building.groundFloor.freshAir_living1.nPorts+(if   building.groundFloor.pAtm_living1.use_Xi_in then 2 else (if building.groundFloor.pAtm_living1.use_X_in   then 1 else 3))+building.groundFloor.pAtm_living1.nPorts+(if  not   building.groundFloor.pAtm_living1.use_p_in then 1 else 0)+building.groundFloor.pAtm_living1.nPorts  +(if  not building.groundFloor.pAtm_living1.use_T_in then 1 else 0)+  building.groundFloor.pAtm_living1.nPorts+(if  not building.groundFloor.freshAir_hobby2.x_pTphi.use_p_in   then 1 else 0)+(if  not building.groundFloor.freshAir_hobby2.use_m_flow_in   then 1 else 0)+3*building.groundFloor.freshAir_hobby2.nPorts+(if   building.groundFloor.pAtm_hobby2.use_Xi_in then 2 else (if building.groundFloor.pAtm_hobby2.use_X_in   then 1 else 3))+building.groundFloor.pAtm_hobby2.nPorts+(if  not   building.groundFloor.pAtm_hobby2.use_p_in then 1 else 0)+building.groundFloor.pAtm_hobby2.nPorts  +(if  not building.groundFloor.pAtm_hobby2.use_T_in then 1 else 0)+  building.groundFloor.pAtm_hobby2.nPorts+(if  not building.groundFloor.freshAir_corridor3.x_pTphi.use_p_in   then 1 else 0)+(if  not building.groundFloor.freshAir_corridor3.use_m_flow_in   then 1 else 0)+3*building.groundFloor.freshAir_corridor3.nPorts+(if   building.groundFloor.pAtm_corridor3.use_Xi_in then 2 else (if building.groundFloor.pAtm_corridor3.use_X_in   then 1 else 3))+building.groundFloor.pAtm_corridor3.nPorts+(if  not   building.groundFloor.pAtm_corridor3.use_p_in then 1 else 0)+building.groundFloor.pAtm_corridor3.nPorts  +(if  not building.groundFloor.pAtm_corridor3.use_T_in then 1 else 0)+  building.groundFloor.pAtm_corridor3.nPorts+(if  not building.groundFloor.freshAir_wcstorage4.x_pTphi.use_p_in   then 1 else 0)+(if  not building.groundFloor.freshAir_wcstorage4.use_m_flow_in   then 1 else 0)+3*building.groundFloor.freshAir_wcstorage4.nPorts+(if   building.groundFloor.pAtm_wcstorage4.use_Xi_in then 2 else (if   building.groundFloor.pAtm_wcstorage4.use_X_in then 1 else 3))+building.groundFloor.pAtm_wcstorage4.nPorts  +(if  not building.groundFloor.pAtm_wcstorage4.use_p_in then 1 else 0)+  building.groundFloor.pAtm_wcstorage4.nPorts+(if  not building.groundFloor.pAtm_wcstorage4.use_T_in   then 1 else 0)+building.groundFloor.pAtm_wcstorage4.nPorts+(if  not   building.groundFloor.freshAir_kitchen5.x_pTphi.use_p_in then 1 else 0)+(if    not building.groundFloor.freshAir_kitchen5.use_m_flow_in then 1 else 0)+3*  building.groundFloor.freshAir_kitchen5.nPorts+(if building.groundFloor.pAtm_kitchen5.use_Xi_in   then 2 else (if building.groundFloor.pAtm_kitchen5.use_X_in then 1 else 3))+  building.groundFloor.pAtm_kitchen5.nPorts+(if  not building.groundFloor.pAtm_kitchen5.use_p_in   then 1 else 0)+building.groundFloor.pAtm_kitchen5.nPorts+(if  not   building.groundFloor.pAtm_kitchen5.use_T_in then 1 else 0)+building.groundFloor.pAtm_kitchen5.nPorts  +2*building.upperFloor.zone_bedroom6.nPorts+3*building.upperFloor.zone_bedroom6.nPorts  +2*building.upperFloor.zone_children7.nPorts+3*building.upperFloor.zone_children7.nPorts  +2*building.upperFloor.zone_children10.nPorts+3*building.upperFloor.zone_children10.nPorts  +2*building.upperFloor.zone_corridor8.nPorts+3*building.upperFloor.zone_corridor8.nPorts  +2*building.upperFloor.zone_bath9.nPorts+3*building.upperFloor.zone_bath9.nPorts  +(if  not building.upperFloor.freshAir_bedroom6.x_pTphi.use_p_in then 1 else 0)  +(if  not building.upperFloor.freshAir_bedroom6.use_m_flow_in then 1 else 0)+3  *building.upperFloor.freshAir_bedroom6.nPorts+(if building.upperFloor.pAtm_bedroom6.use_Xi_in   then 2 else (if building.upperFloor.pAtm_bedroom6.use_X_in then 1 else 3))+  building.upperFloor.pAtm_bedroom6.nPorts+(if  not building.upperFloor.pAtm_bedroom6.use_p_in   then 1 else 0)+building.upperFloor.pAtm_bedroom6.nPorts+(if  not   building.upperFloor.pAtm_bedroom6.use_T_in then 1 else 0)+building.upperFloor.pAtm_bedroom6.nPorts  +(if  not building.upperFloor.freshAir_children7.x_pTphi.use_p_in then 1 else 0)  +(if  not building.upperFloor.freshAir_children7.use_m_flow_in then 1 else 0)+3  *building.upperFloor.freshAir_children7.nPorts+(if building.upperFloor.pAtm_children7.use_Xi_in   then 2 else (if building.upperFloor.pAtm_children7.use_X_in then 1 else 3))+  building.upperFloor.pAtm_children7.nPorts+(if  not building.upperFloor.pAtm_children7.use_p_in   then 1 else 0)+building.upperFloor.pAtm_children7.nPorts+(if  not   building.upperFloor.pAtm_children7.use_T_in then 1 else 0)+building.upperFloor.pAtm_children7.nPorts  +(if  not building.upperFloor.freshAir_corridor8.x_pTphi.use_p_in then 1 else 0)  +(if  not building.upperFloor.freshAir_corridor8.use_m_flow_in then 1 else 0)+3  *building.upperFloor.freshAir_corridor8.nPorts+(if building.upperFloor.pAtm_corridor8.use_Xi_in   then 2 else (if building.upperFloor.pAtm_corridor8.use_X_in then 1 else 3))+  building.upperFloor.pAtm_corridor8.nPorts+(if  not building.upperFloor.pAtm_corridor8.use_p_in   then 1 else 0)+building.upperFloor.pAtm_corridor8.nPorts+(if  not   building.upperFloor.pAtm_corridor8.use_T_in then 1 else 0)+building.upperFloor.pAtm_corridor8.nPorts  +(if  not building.upperFloor.freshAir_bath9.x_pTphi.use_p_in then 1 else 0)+(  if  not building.upperFloor.freshAir_bath9.use_m_flow_in then 1 else 0)+3*  building.upperFloor.freshAir_bath9.nPorts+(if building.upperFloor.pAtm_bath9.use_Xi_in   then 2 else (if building.upperFloor.pAtm_bath9.use_X_in then 1 else 3))+  building.upperFloor.pAtm_bath9.nPorts+(if  not building.upperFloor.pAtm_bath9.use_p_in   then 1 else 0)+building.upperFloor.pAtm_bath9.nPorts+(if  not   building.upperFloor.pAtm_bath9.use_T_in then 1 else 0)+building.upperFloor.pAtm_bath9.nPorts  +(if  not building.upperFloor.freshAir_children10.x_pTphi.use_p_in then 1   else 0)+(if  not building.upperFloor.freshAir_children10.use_m_flow_in then 1   else 0)+3*building.upperFloor.freshAir_children10.nPorts+(if building.upperFloor.pAtm_children10.use_Xi_in   then 2 else (if building.upperFloor.pAtm_children10.use_X_in then 1 else 3))+  building.upperFloor.pAtm_children10.nPorts+(if  not building.upperFloor.pAtm_children10.use_p_in   then 1 else 0)+building.upperFloor.pAtm_children10.nPorts+(if  not   building.upperFloor.pAtm_children10.use_T_in then 1 else 0)+building.upperFloor.pAtm_children10.nPorts  +2*building.attic_unheated.zone_attic.nPorts+3*building.attic_unheated.zone_attic.nPorts  +(if  not building.attic_unheated.freshAir_attic.x_pTphi.use_p_in then 1 else 0)  +(if  not building.attic_unheated.freshAir_attic.use_m_flow_in then 1 else 0)+3  *building.attic_unheated.freshAir_attic.nPorts+(if building.attic_unheated.pAtm_attic.use_Xi_in   then 2 else (if building.attic_unheated.pAtm_attic.use_X_in then 1 else 3))+  building.attic_unheated.pAtm_attic.nPorts+(if  not building.attic_unheated.pAtm_attic.use_p_in   then 1 else 0)+building.attic_unheated.pAtm_attic.nPorts+(if  not   building.attic_unheated.pAtm_attic.use_T_in then 1 else 0)+building.attic_unheated.pAtm_attic.nPorts  +max([size(userProfiles.tabIntGai.columns, 1); size(userProfiles.tabIntGai.offset,   1)])+max([size(userProfiles.tabNatVen.columns, 1); size(userProfiles.tabNatVen.offset,   1)])+max([size(userProfiles.TSet.columns, 1); size(userProfiles.TSet.offset, 1)])  +(if DHW.bou_sink.use_Xi_in then 1 else (if DHW.bou_sink.use_X_in then 0 else 1))  +(if  not DHW.bou_sink.use_p_in then 1 else 0)+DHW.bou_sink.nPorts+(if  not   DHW.bou_sink.use_h_in then 1 else 0)+DHW.bou_sink.nPorts+(if DHW.bouSou.use_Xi_in   then 1 else (if DHW.bouSou.use_X_in then 0 else 1))+(if  not DHW.bouSou.use_p_in   then 1 else 0)+(if  not DHW.bouSou.use_T_in then 1 else 0)+max([4; size(  DHW.combiTimeTableDHWInput.offset, 1)])+(if hydraulic.generation.bou_sinkAir.use_Xi_in   then 2 else (if hydraulic.generation.bou_sinkAir.use_X_in then 1 else 3))+(  if  not hydraulic.generation.bou_sinkAir.use_p_in then 1 else 0)+(if  not   hydraulic.generation.bou_sinkAir.use_h_in then 1 else 0)+(if hydraulic.generation.bouEva.use_Xi_in   then 2 else (if hydraulic.generation.bouEva.use_X_in then 1 else 3))+(if   hydraulic.generation.bouPum.use_Xi_in then 1 else (if hydraulic.generation.bouPum.use_X_in   then 0 else 1))+(if  not hydraulic.generation.bouPum.use_p_in then 1 else 0)+  (if  not hydraulic.generation.bouPum.use_T_in then 1 else 0)+(if   hydraulic.distribution.stoDHW.use_TOut then 2*hydraulic.distribution.parStoDHW.nLayer   else 0)+(if hydraulic.distribution.stoBuf.use_TOut then 2*hydraulic.distribution.parStoBuf.nLayer   else 0)+(if hydraulic.distribution.bouPumBuf.use_Xi_in then 1 else (if   hydraulic.distribution.bouPumBuf.use_X_in then 0 else 1))+(if  not   hydraulic.distribution.bouPumBuf.use_p_in then 1 else 0)+(if  not   hydraulic.distribution.bouPumBuf.use_T_in then 1 else 0)+(if weaDat.pAtmSou   == IBPSA.BoundaryConditions.Types.DataSource.Parameter then 1 else 0)+(if   weaDat.TDewPoiSou == IBPSA.BoundaryConditions.Types.DataSource.Parameter then 1   else 0)+(if weaDat.TDryBulSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TBlaSkySou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.relHumSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.opaSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.ceiHeiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.totSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winSpeSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winDirSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HInfHorSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HDifHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HGloHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HGloHor_HDifHor then 2 else 1)+(if  not DHW.pump.vol.dynBal.use_mWat_flow   then 1 else 0)+DHW.pump.vol.dynBal.nPorts+2*DHW.pump.vol.dynBal.nPorts+(if    not hydraulic.generation.heatPump.con.vol.dynBal.use_mWat_flow then 1 else 0)  +hydraulic.generation.heatPump.con.vol.dynBal.nPorts+2*hydraulic.generation.heatPump.con.vol.dynBal.nPorts  +(if  not hydraulic.generation.heatPump.eva.vol.dynBal.use_mWat_flow then 1   else 0)+2*hydraulic.generation.heatPump.eva.vol.dynBal.nPorts+3*  hydraulic.generation.heatPump.eva.vol.dynBal.nPorts+size(hydraulic.generation.heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns,   1)+size(hydraulic.generation.heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns,   1)+(if  not hydraulic.generation.pump.vol.dynBal.use_mWat_flow then 1 else 0)  +hydraulic.generation.pump.vol.dynBal.nPorts+2*hydraulic.generation.pump.vol.dynBal.nPorts  +(if  not hydraulic.generation.eleHea.vol.dynBal.use_mWat_flow then 1 else 0)+  hydraulic.generation.eleHea.vol.dynBal.nPorts+2*hydraulic.generation.eleHea.vol.dynBal.nPorts  +(if  not hydraulic.transfer.pumFixMFlo[1].vol.dynBal.use_mWat_flow then 1   else 0)+hydraulic.transfer.pumFixMFlo[1].vol.dynBal.nPorts+2*hydraulic.transfer.pumFixMFlo[1].vol.dynBal.nPorts  +(if  not hydraulic.transfer.pumFixMFlo[2].vol.dynBal.use_mWat_flow then 1   else 0)+hydraulic.transfer.pumFixMFlo[2].vol.dynBal.nPorts+2*hydraulic.transfer.pumFixMFlo[2].vol.dynBal.nPorts  +(if  not hydraulic.transfer.pumFixMFlo[3].vol.dynBal.use_mWat_flow then 1   else 0)+hydraulic.transfer.pumFixMFlo[3].vol.dynBal.nPorts+2*hydraulic.transfer.pumFixMFlo[3].vol.dynBal.nPorts  +(if  not hydraulic.transfer.pumFixMFlo[4].vol.dynBal.use_mWat_flow then 1   else 0)+hydraulic.transfer.pumFixMFlo[4].vol.dynBal.nPorts+2*hydraulic.transfer.pumFixMFlo[4].vol.dynBal.nPorts  +(if  not hydraulic.transfer.pumFixMFlo[5].vol.dynBal.use_mWat_flow then 1   else 0)+hydraulic.transfer.pumFixMFlo[5].vol.dynBal.nPorts+2*hydraulic.transfer.pumFixMFlo[5].vol.dynBal.nPorts  +(if  not hydraulic.transfer.pumFixMFlo[6].vol.dynBal.use_mWat_flow then 1   else 0)+hydraulic.transfer.pumFixMFlo[6].vol.dynBal.nPorts+2*hydraulic.transfer.pumFixMFlo[6].vol.dynBal.nPorts  +(if  not hydraulic.transfer.pumFixMFlo[7].vol.dynBal.use_mWat_flow then 1   else 0)+hydraulic.transfer.pumFixMFlo[7].vol.dynBal.nPorts+2*hydraulic.transfer.pumFixMFlo[7].vol.dynBal.nPorts  +(if  not hydraulic.transfer.pumFixMFlo[8].vol.dynBal.use_mWat_flow then 1   else 0)+hydraulic.transfer.pumFixMFlo[8].vol.dynBal.nPorts+2*hydraulic.transfer.pumFixMFlo[8].vol.dynBal.nPorts  +(if  not hydraulic.transfer.pumFixMFlo[9].vol.dynBal.use_mWat_flow then 1   else 0)+hydraulic.transfer.pumFixMFlo[9].vol.dynBal.nPorts+2*hydraulic.transfer.pumFixMFlo[9].vol.dynBal.nPorts  +(if  not hydraulic.transfer.pumFixMFlo[10].vol.dynBal.use_mWat_flow then 1   else 0)+hydraulic.transfer.pumFixMFlo[10].vol.dynBal.nPorts+2*  hydraulic.transfer.pumFixMFlo[10].vol.dynBal.nPorts+(if  not hydraulic.distribution.stoDHW.layer[1].dynBal.use_mWat_flow   then 1 else 0)+hydraulic.distribution.stoDHW.layer[1].dynBal.nPorts+2*  hydraulic.distribution.stoDHW.layer[1].dynBal.nPorts+(if  not hydraulic.distribution.stoDHW.layer[2].dynBal.use_mWat_flow   then 1 else 0)+hydraulic.distribution.stoDHW.layer[2].dynBal.nPorts+2*  hydraulic.distribution.stoDHW.layer[2].dynBal.nPorts+(if  not hydraulic.distribution.stoDHW.layer[3].dynBal.use_mWat_flow   then 1 else 0)+hydraulic.distribution.stoDHW.layer[3].dynBal.nPorts+2*  hydraulic.distribution.stoDHW.layer[3].dynBal.nPorts+(if  not hydraulic.distribution.stoDHW.layer[4].dynBal.use_mWat_flow   then 1 else 0)+hydraulic.distribution.stoDHW.layer[4].dynBal.nPorts+2*  hydraulic.distribution.stoDHW.layer[4].dynBal.nPorts+(if  not hydraulic.distribution.stoDHW.layer_HE[1].dynBal.use_mWat_flow   then 1 else 0)+hydraulic.distribution.stoDHW.layer_HE[1].dynBal.nPorts+2*  hydraulic.distribution.stoDHW.layer_HE[1].dynBal.nPorts+(if  not   hydraulic.distribution.stoDHW.layer_HE[2].dynBal.use_mWat_flow then 1 else 0)+  hydraulic.distribution.stoDHW.layer_HE[2].dynBal.nPorts+2*hydraulic.distribution.stoDHW.layer_HE[2].dynBal.nPorts  +(if  not hydraulic.distribution.stoDHW.layer_HE[3].dynBal.use_mWat_flow then 1   else 0)+hydraulic.distribution.stoDHW.layer_HE[3].dynBal.nPorts+2*  hydraulic.distribution.stoDHW.layer_HE[3].dynBal.nPorts+(if  not   hydraulic.distribution.stoDHW.layer_HE[4].dynBal.use_mWat_flow then 1 else 0)+  hydraulic.distribution.stoDHW.layer_HE[4].dynBal.nPorts+2*hydraulic.distribution.stoDHW.layer_HE[4].dynBal.nPorts  +(if  not hydraulic.distribution.stoBuf.layer[1].dynBal.use_mWat_flow then 1   else 0)+hydraulic.distribution.stoBuf.layer[1].dynBal.nPorts+2*  hydraulic.distribution.stoBuf.layer[1].dynBal.nPorts+(if  not hydraulic.distribution.stoBuf.layer[2].dynBal.use_mWat_flow   then 1 else 0)+hydraulic.distribution.stoBuf.layer[2].dynBal.nPorts+2*  hydraulic.distribution.stoBuf.layer[2].dynBal.nPorts+(if  not hydraulic.distribution.stoBuf.layer[3].dynBal.use_mWat_flow   then 1 else 0)+hydraulic.distribution.stoBuf.layer[3].dynBal.nPorts+2*  hydraulic.distribution.stoBuf.layer[3].dynBal.nPorts+(if  not hydraulic.distribution.stoBuf.layer[4].dynBal.use_mWat_flow   then 1 else 0)+hydraulic.distribution.stoBuf.layer[4].dynBal.nPorts+2*  hydraulic.distribution.stoBuf.layer[4].dynBal.nPorts+(if  not hydraulic.distribution.stoBuf.layer_HE[1].dynBal.use_mWat_flow   then 1 else 0)+hydraulic.distribution.stoBuf.layer_HE[1].dynBal.nPorts+2*  hydraulic.distribution.stoBuf.layer_HE[1].dynBal.nPorts+(if  not   hydraulic.distribution.stoBuf.layer_HE[2].dynBal.use_mWat_flow then 1 else 0)+  hydraulic.distribution.stoBuf.layer_HE[2].dynBal.nPorts+2*hydraulic.distribution.stoBuf.layer_HE[2].dynBal.nPorts  +(if  not hydraulic.distribution.stoBuf.layer_HE[3].dynBal.use_mWat_flow then 1   else 0)+hydraulic.distribution.stoBuf.layer_HE[3].dynBal.nPorts+2*  hydraulic.distribution.stoBuf.layer_HE[3].dynBal.nPorts+(if  not   hydraulic.distribution.stoBuf.layer_HE[4].dynBal.use_mWat_flow then 1 else 0)+  hydraulic.distribution.stoBuf.layer_HE[4].dynBal.nPorts+2*hydraulic.distribution.stoBuf.layer_HE[4].dynBal.nPorts  +(if  not hydraulic.distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.use_mWat_flow   then 1 else 0)+hydraulic.distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.nPorts  +2*hydraulic.distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.nPorts  +(if  not hydraulic.transfer.rad[1].vol[1].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[1].vol[1].dynBal.nPorts+2*hydraulic.transfer.rad[1].vol[1].dynBal.nPorts  +(if  not hydraulic.transfer.rad[1].vol[2].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[1].vol[2].dynBal.nPorts+2*hydraulic.transfer.rad[1].vol[2].dynBal.nPorts  +(if  not hydraulic.transfer.rad[1].vol[3].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[1].vol[3].dynBal.nPorts+2*hydraulic.transfer.rad[1].vol[3].dynBal.nPorts  +(if  not hydraulic.transfer.rad[1].vol[4].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[1].vol[4].dynBal.nPorts+2*hydraulic.transfer.rad[1].vol[4].dynBal.nPorts  +(if  not hydraulic.transfer.rad[1].vol[5].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[1].vol[5].dynBal.nPorts+2*hydraulic.transfer.rad[1].vol[5].dynBal.nPorts  +(if  not hydraulic.transfer.rad[2].vol[1].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[2].vol[1].dynBal.nPorts+2*hydraulic.transfer.rad[2].vol[1].dynBal.nPorts  +(if  not hydraulic.transfer.rad[2].vol[2].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[2].vol[2].dynBal.nPorts+2*hydraulic.transfer.rad[2].vol[2].dynBal.nPorts  +(if  not hydraulic.transfer.rad[2].vol[3].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[2].vol[3].dynBal.nPorts+2*hydraulic.transfer.rad[2].vol[3].dynBal.nPorts  +(if  not hydraulic.transfer.rad[2].vol[4].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[2].vol[4].dynBal.nPorts+2*hydraulic.transfer.rad[2].vol[4].dynBal.nPorts  +(if  not hydraulic.transfer.rad[2].vol[5].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[2].vol[5].dynBal.nPorts+2*hydraulic.transfer.rad[2].vol[5].dynBal.nPorts  +(if  not hydraulic.transfer.rad[3].vol[1].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[3].vol[1].dynBal.nPorts+2*hydraulic.transfer.rad[3].vol[1].dynBal.nPorts  +(if  not hydraulic.transfer.rad[3].vol[2].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[3].vol[2].dynBal.nPorts+2*hydraulic.transfer.rad[3].vol[2].dynBal.nPorts  +(if  not hydraulic.transfer.rad[3].vol[3].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[3].vol[3].dynBal.nPorts+2*hydraulic.transfer.rad[3].vol[3].dynBal.nPorts  +(if  not hydraulic.transfer.rad[3].vol[4].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[3].vol[4].dynBal.nPorts+2*hydraulic.transfer.rad[3].vol[4].dynBal.nPorts  +(if  not hydraulic.transfer.rad[3].vol[5].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[3].vol[5].dynBal.nPorts+2*hydraulic.transfer.rad[3].vol[5].dynBal.nPorts  +(if  not hydraulic.transfer.rad[4].vol[1].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[4].vol[1].dynBal.nPorts+2*hydraulic.transfer.rad[4].vol[1].dynBal.nPorts  +(if  not hydraulic.transfer.rad[4].vol[2].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[4].vol[2].dynBal.nPorts+2*hydraulic.transfer.rad[4].vol[2].dynBal.nPorts  +(if  not hydraulic.transfer.rad[4].vol[3].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[4].vol[3].dynBal.nPorts+2*hydraulic.transfer.rad[4].vol[3].dynBal.nPorts  +(if  not hydraulic.transfer.rad[4].vol[4].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[4].vol[4].dynBal.nPorts+2*hydraulic.transfer.rad[4].vol[4].dynBal.nPorts  +(if  not hydraulic.transfer.rad[4].vol[5].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[4].vol[5].dynBal.nPorts+2*hydraulic.transfer.rad[4].vol[5].dynBal.nPorts  +(if  not hydraulic.transfer.rad[5].vol[1].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[5].vol[1].dynBal.nPorts+2*hydraulic.transfer.rad[5].vol[1].dynBal.nPorts  +(if  not hydraulic.transfer.rad[5].vol[2].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[5].vol[2].dynBal.nPorts+2*hydraulic.transfer.rad[5].vol[2].dynBal.nPorts  +(if  not hydraulic.transfer.rad[5].vol[3].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[5].vol[3].dynBal.nPorts+2*hydraulic.transfer.rad[5].vol[3].dynBal.nPorts  +(if  not hydraulic.transfer.rad[5].vol[4].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[5].vol[4].dynBal.nPorts+2*hydraulic.transfer.rad[5].vol[4].dynBal.nPorts  +(if  not hydraulic.transfer.rad[5].vol[5].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[5].vol[5].dynBal.nPorts+2*hydraulic.transfer.rad[5].vol[5].dynBal.nPorts  +(if  not hydraulic.transfer.rad[6].vol[1].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[6].vol[1].dynBal.nPorts+2*hydraulic.transfer.rad[6].vol[1].dynBal.nPorts  +(if  not hydraulic.transfer.rad[6].vol[2].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[6].vol[2].dynBal.nPorts+2*hydraulic.transfer.rad[6].vol[2].dynBal.nPorts  +(if  not hydraulic.transfer.rad[6].vol[3].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[6].vol[3].dynBal.nPorts+2*hydraulic.transfer.rad[6].vol[3].dynBal.nPorts  +(if  not hydraulic.transfer.rad[6].vol[4].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[6].vol[4].dynBal.nPorts+2*hydraulic.transfer.rad[6].vol[4].dynBal.nPorts  +(if  not hydraulic.transfer.rad[6].vol[5].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[6].vol[5].dynBal.nPorts+2*hydraulic.transfer.rad[6].vol[5].dynBal.nPorts  +(if  not hydraulic.transfer.rad[7].vol[1].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[7].vol[1].dynBal.nPorts+2*hydraulic.transfer.rad[7].vol[1].dynBal.nPorts  +(if  not hydraulic.transfer.rad[7].vol[2].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[7].vol[2].dynBal.nPorts+2*hydraulic.transfer.rad[7].vol[2].dynBal.nPorts  +(if  not hydraulic.transfer.rad[7].vol[3].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[7].vol[3].dynBal.nPorts+2*hydraulic.transfer.rad[7].vol[3].dynBal.nPorts  +(if  not hydraulic.transfer.rad[7].vol[4].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[7].vol[4].dynBal.nPorts+2*hydraulic.transfer.rad[7].vol[4].dynBal.nPorts  +(if  not hydraulic.transfer.rad[7].vol[5].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[7].vol[5].dynBal.nPorts+2*hydraulic.transfer.rad[7].vol[5].dynBal.nPorts  +(if  not hydraulic.transfer.rad[8].vol[1].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[8].vol[1].dynBal.nPorts+2*hydraulic.transfer.rad[8].vol[1].dynBal.nPorts  +(if  not hydraulic.transfer.rad[8].vol[2].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[8].vol[2].dynBal.nPorts+2*hydraulic.transfer.rad[8].vol[2].dynBal.nPorts  +(if  not hydraulic.transfer.rad[8].vol[3].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[8].vol[3].dynBal.nPorts+2*hydraulic.transfer.rad[8].vol[3].dynBal.nPorts  +(if  not hydraulic.transfer.rad[8].vol[4].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[8].vol[4].dynBal.nPorts+2*hydraulic.transfer.rad[8].vol[4].dynBal.nPorts  +(if  not hydraulic.transfer.rad[8].vol[5].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[8].vol[5].dynBal.nPorts+2*hydraulic.transfer.rad[8].vol[5].dynBal.nPorts  +(if  not hydraulic.transfer.rad[9].vol[1].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[9].vol[1].dynBal.nPorts+2*hydraulic.transfer.rad[9].vol[1].dynBal.nPorts  +(if  not hydraulic.transfer.rad[9].vol[2].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[9].vol[2].dynBal.nPorts+2*hydraulic.transfer.rad[9].vol[2].dynBal.nPorts  +(if  not hydraulic.transfer.rad[9].vol[3].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[9].vol[3].dynBal.nPorts+2*hydraulic.transfer.rad[9].vol[3].dynBal.nPorts  +(if  not hydraulic.transfer.rad[9].vol[4].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[9].vol[4].dynBal.nPorts+2*hydraulic.transfer.rad[9].vol[4].dynBal.nPorts  +(if  not hydraulic.transfer.rad[9].vol[5].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[9].vol[5].dynBal.nPorts+2*hydraulic.transfer.rad[9].vol[5].dynBal.nPorts  +(if  not hydraulic.transfer.rad[10].vol[1].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[10].vol[1].dynBal.nPorts+2*hydraulic.transfer.rad[10].vol[1].dynBal.nPorts  +(if  not hydraulic.transfer.rad[10].vol[2].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[10].vol[2].dynBal.nPorts+2*hydraulic.transfer.rad[10].vol[2].dynBal.nPorts  +(if  not hydraulic.transfer.rad[10].vol[3].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[10].vol[3].dynBal.nPorts+2*hydraulic.transfer.rad[10].vol[3].dynBal.nPorts  +(if  not hydraulic.transfer.rad[10].vol[4].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[10].vol[4].dynBal.nPorts+2*hydraulic.transfer.rad[10].vol[4].dynBal.nPorts  +(if  not hydraulic.transfer.rad[10].vol[5].dynBal.use_mWat_flow then 1 else 0)  +hydraulic.transfer.rad[10].vol[5].dynBal.nPorts+2*hydraulic.transfer.rad[10].vol[5].dynBal.nPorts  +systemParameters.nZones+systemParameters.nZones+systemParameters.nZones+  systemParameters.nZones+systemParameters.nZones+20*hydraulic.transfer.parRad.nEle
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  13078
+Check of BESMod.Examples.HighOrderModel.BES_HOM_Spawn successful.
 Warning: WARNINGS have been issued.
-Error: ERRORS have been issued.
 Declaring variable: Boolean rCheck ;
 
 Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Examples/HighOrderModel/BES_HOM_Spawn.mos\",", "BESMod.Examples.HighOrderModel.BES_HOM_Spawn.statistics.log");
@@ -2674,132 +2481,6 @@ rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/HighOrder
 
 simulateModel("BESMod.Examples.HighOrderModel.BES_HOM_Spawn", stopTime=172800, method="dassl", tolerance=1e-04, resultFile="BESMod.Examples.HighOrderModel.BES_HOM_Spawn");
 Translation of BESMod.Examples.HighOrderModel.BES_HOM_Spawn:
-Warning: Connect argument was not one of the valid forms, since building.groundFloor.zone_living1 is not a connector.
-Error: Use of undeclared variable zone_living1.heaPorRad
-In class BESMod.Systems.Demand.Building.Components.SpawnHighOrderOFD.GroundFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 3
-Used in component building.groundFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 25
-Errors found in: connect(building.groundFloor.heatPortRad[1], zone_living1.heaPorRad)
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 208
-Warning: Connect argument was not one of the valid forms, since building.groundFloor.zone_hobby2 is not a connector.
-Error: Use of undeclared variable zone_hobby2.heaPorRad
-In class BESMod.Systems.Demand.Building.Components.SpawnHighOrderOFD.GroundFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 3
-Used in component building.groundFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 25
-Errors found in: connect(building.groundFloor.heatPortRad[2], zone_hobby2.heaPorRad)
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 210
-Warning: Connect argument was not one of the valid forms, since building.groundFloor.zone_corridor3 is not a connector.
-Error: Use of undeclared variable zone_corridor3.heaPorRad
-In class BESMod.Systems.Demand.Building.Components.SpawnHighOrderOFD.GroundFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 3
-Used in component building.groundFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 25
-Errors found in: connect(building.groundFloor.heatPortRad[3], zone_corridor3.heaPorRad)
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 212
-Warning: Connect argument was not one of the valid forms, since building.groundFloor.zone_wcstorage4 is not a connector.
-Error: Use of undeclared variable zone_wcstorage4.heaPorRad
-In class BESMod.Systems.Demand.Building.Components.SpawnHighOrderOFD.GroundFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 3
-Used in component building.groundFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 25
-Errors found in: connect(building.groundFloor.heatPortRad[4], zone_wcstorage4.heaPorRad)
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 215
-Warning: Connect argument was not one of the valid forms, since building.groundFloor.zone_kitchen5 is not a connector.
-Error: Use of undeclared variable zone_kitchen5.heaPorRad
-In class BESMod.Systems.Demand.Building.Components.SpawnHighOrderOFD.GroundFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 3
-Used in component building.groundFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 25
-Errors found in: connect(building.groundFloor.heatPortRad[5], zone_kitchen5.heaPorRad)
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 218
-Warning: Connect argument was not one of the valid forms, since building.upperFloor.zone_bedroom6 is not a connector.
-Error: Use of undeclared variable zone_bedroom6.heaPorRad
-In class BESMod.Systems.Demand.Building.Components.SpawnHighOrderOFD.UpperFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 437
-Used in component building.upperFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 28
-Errors found in: connect(building.upperFloor.heatPortRad[1], zone_bedroom6.heaPorRad)
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 639
-Warning: Connect argument was not one of the valid forms, since building.upperFloor.zone_children7 is not a connector.
-Error: Use of undeclared variable zone_children7.heaPorRad
-In class BESMod.Systems.Demand.Building.Components.SpawnHighOrderOFD.UpperFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 437
-Used in component building.upperFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 28
-Errors found in: connect(building.upperFloor.heatPortRad[2], zone_children7.heaPorRad)
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 641
-Warning: Connect argument was not one of the valid forms, since building.upperFloor.zone_corridor8 is not a connector.
-Error: Use of undeclared variable zone_corridor8.heaPorRad
-In class BESMod.Systems.Demand.Building.Components.SpawnHighOrderOFD.UpperFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 437
-Used in component building.upperFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 28
-Errors found in: connect(building.upperFloor.heatPortRad[3], zone_corridor8.heaPorRad)
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 643
-Warning: Connect argument was not one of the valid forms, since building.upperFloor.zone_bath9 is not a connector.
-Error: Use of undeclared variable zone_bath9.heaPorRad
-In class BESMod.Systems.Demand.Building.Components.SpawnHighOrderOFD.UpperFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 437
-Used in component building.upperFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 28
-Errors found in: connect(building.upperFloor.heatPortRad[4], zone_bath9.heaPorRad)
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 645
-Warning: Connect argument was not one of the valid forms, since building.upperFloor.zone_children10 is not a connector.
-Error: Use of undeclared variable zone_children10.heaPorRad
-In class BESMod.Systems.Demand.Building.Components.SpawnHighOrderOFD.UpperFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 437
-Used in component building.upperFloor.
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 28
-Errors found in: connect(building.upperFloor.heatPortRad[5], zone_children10.heaPorRad)
-  File: /tmp/tmp-BESMod-1-tgzop9ef/BESMod/Systems/Demand/Building/Components/SpawnHighOrderOFD.mo, line 648
-Error: Unknown function ThermodynamicState in  (function Modelica.Media.Interfaces.PartialSimpleMedium.setState_pTX).
-Errors found in: state = ThermodynamicState()
-  File: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line 5914
-Error: Unknown function ThermodynamicState in  (function Modelica.Media.Interfaces.PartialSimpleMedium.setState_phX).
-Errors found in: state = ThermodynamicState()
-  File: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line 5925
-Error: Unknown function IBPSA.Fluid.Movers.BaseClasses.Characteristics.flowParameters in DHW.pump.eff.per.pressure (model IBPSA.Fluid.Movers.FlowControlled_m_flow).
-Error: Unknown function ThermodynamicState in  (function IBPSA.Media.Air.setState_pTX).
-Error: Unknown function ThermodynamicState in  (function IBPSA.Media.Air.setState_pTX).
-Errors found in: state = (if size(X, 1) == 2 then ThermodynamicState() else ThermodynamicState())
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Media/Air.mo, line 633
-Error: Unknown function ThermodynamicState in  (function IBPSA.Media.Air.setState_phX).
-Error: Unknown function ThermodynamicState in  (function IBPSA.Media.Air.setState_phX).
-Errors found in: state = (if size(X, 1) == 2 then ThermodynamicState() else ThermodynamicState())
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Media/Air.mo, line 617
-Error: Unknown function ThermodynamicState in  (function IBPSA.Media.Air.setState_pTX).
-Error: Unknown function ThermodynamicState in  (function IBPSA.Media.Air.setState_pTX).
-Errors found in: state = (if size(X, 1) == 2 then ThermodynamicState() else ThermodynamicState())
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Media/Air.mo, line 633
-Error: Unknown function IBPSA.Fluid.Movers.BaseClasses.Characteristics.flowParameters in hydraulic.transfer.pumFixMFlo[1].eff.per.pressure (model IBPSA.Fluid.Movers.FlowControlled_m_flow).
-Error: Unknown function IBPSA.Fluid.Movers.BaseClasses.Characteristics.flowParameters in hydraulic.transfer.pumFixMFlo[2].eff.per.pressure (model IBPSA.Fluid.Movers.FlowControlled_m_flow).
-Error: Unknown function IBPSA.Fluid.Movers.BaseClasses.Characteristics.flowParameters in hydraulic.transfer.pumFixMFlo[3].eff.per.pressure (model IBPSA.Fluid.Movers.FlowControlled_m_flow).
-Error: Unknown function IBPSA.Fluid.Movers.BaseClasses.Characteristics.flowParameters in hydraulic.transfer.pumFixMFlo[4].eff.per.pressure (model IBPSA.Fluid.Movers.FlowControlled_m_flow).
-Error: Unknown function IBPSA.Fluid.Movers.BaseClasses.Characteristics.flowParameters in hydraulic.transfer.pumFixMFlo[5].eff.per.pressure (model IBPSA.Fluid.Movers.FlowControlled_m_flow).
-Error: Unknown function IBPSA.Fluid.Movers.BaseClasses.Characteristics.flowParameters in hydraulic.transfer.pumFixMFlo[6].eff.per.pressure (model IBPSA.Fluid.Movers.FlowControlled_m_flow).
-Error: Unknown function IBPSA.Fluid.Movers.BaseClasses.Characteristics.flowParameters in hydraulic.transfer.pumFixMFlo[7].eff.per.pressure (model IBPSA.Fluid.Movers.FlowControlled_m_flow).
-Error: Unknown function IBPSA.Fluid.Movers.BaseClasses.Characteristics.flowParameters in hydraulic.transfer.pumFixMFlo[8].eff.per.pressure (model IBPSA.Fluid.Movers.FlowControlled_m_flow).
-Error: Unknown function IBPSA.Fluid.Movers.BaseClasses.Characteristics.flowParameters in hydraulic.transfer.pumFixMFlo[9].eff.per.pressure (model IBPSA.Fluid.Movers.FlowControlled_m_flow).
-Error: Unknown function IBPSA.Fluid.Movers.BaseClasses.Characteristics.flowParameters in hydraulic.transfer.pumFixMFlo[10].eff.per.pressure (model IBPSA.Fluid.Movers.FlowControlled_m_flow).
-Error: Unknown function ThermodynamicState in  (function Modelica.Media.Interfaces.PartialSimpleMedium.setState_phX).
-Errors found in: state = ThermodynamicState()
-  File: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line 5925
-Warning: Non-literal value.
-In nominal attribute for hydraulic.generation.heatPump.port_a2.h_outflow.
-Ignoring nominal attribute.
-In class Modelica.Media.Interfaces.Types.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line 3921
-Used in base-class hydraulic.generation.heatPump.port_a2.FluidPort.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Interfaces.mo, line 25
-Warning: Non-literal value.
-In nominal attribute for hydraulic.generation.heatPump.port_b2.h_outflow.
-Ignoring nominal attribute.
-In class Modelica.Media.Interfaces.Types.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line 3921
-Used in base-class hydraulic.generation.heatPump.port_b2.FluidPort.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Interfaces.mo, line 45
 Warning: Non-literal value.
 In nominal attribute for hydraulic.generation.heatPump.con.preDro.m_flow.
 Ignoring nominal attribute.
@@ -2808,96 +2489,236 @@ In class Modelica.Units.SI.
 Used in base-class hydraulic.generation.heatPump.con.preDro.PartialTwoPortInterface.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
 Warning: Non-literal value.
-In nominal attribute for hydraulic.generation.heatPump.eva.port_a.h_outflow.
-Ignoring nominal attribute.
-In class Modelica.Media.Interfaces.Types.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line 3921
-Used in base-class hydraulic.generation.heatPump.eva.port_a.FluidPort.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Interfaces.mo, line 25
-Warning: Non-literal value.
-In nominal attribute for hydraulic.generation.heatPump.eva.port_b.h_outflow.
-Ignoring nominal attribute.
-In class Modelica.Media.Interfaces.Types.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line 3921
-Used in base-class hydraulic.generation.heatPump.eva.port_b.FluidPort.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Interfaces.mo, line 45
-Warning: Non-literal value.
-In nominal attribute for hydraulic.generation.heatPump.eva.vol.ports[1].h_outflow.
-Ignoring nominal attribute.
-In class Modelica.Media.Interfaces.Types.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line 3921
-Used in base-class hydraulic.generation.heatPump.eva.vol.ports.FluidPort.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Vessels.mo, line 711
-Warning: Non-literal value.
-In nominal attribute for hydraulic.generation.heatPump.eva.vol.ports[2].h_outflow.
-Ignoring nominal attribute.
-In class Modelica.Media.Interfaces.Types.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line 3921
-Used in base-class hydraulic.generation.heatPump.eva.vol.ports.FluidPort.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Vessels.mo, line 711
-Warning: Non-literal value.
-In nominal attribute for hydraulic.generation.heatPump.eva.preDro.port_a.h_outflow.
-Ignoring nominal attribute.
-In class Modelica.Media.Interfaces.Types.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line 3921
-Used in base-class hydraulic.generation.heatPump.eva.preDro.port_a.FluidPort.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Interfaces.mo, line 25
-Warning: Non-literal value.
-In nominal attribute for hydraulic.generation.heatPump.eva.preDro.port_b.h_outflow.
-Ignoring nominal attribute.
-In class Modelica.Media.Interfaces.Types.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line 3921
-Used in base-class hydraulic.generation.heatPump.eva.preDro.port_b.FluidPort.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Interfaces.mo, line 45
-Warning: Non-literal value.
 In nominal attribute for hydraulic.generation.heatPump.eva.preDro.m_flow.
 Ignoring nominal attribute.
 In class Modelica.Units.SI.
   Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
 Used in base-class hydraulic.generation.heatPump.eva.preDro.PartialTwoPortInterface.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
-Warning: Non-literal value.
-In nominal attribute for hydraulic.generation.heatPump.mEva_flow.port_a.h_outflow.
-Ignoring nominal attribute.
-In class Modelica.Media.Interfaces.Types.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line 3921
-Used in base-class hydraulic.generation.heatPump.mEva_flow.port_a.FluidPort.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Interfaces.mo, line 25
-Warning: Non-literal value.
-In nominal attribute for hydraulic.generation.heatPump.mEva_flow.port_b.h_outflow.
-Ignoring nominal attribute.
-In class Modelica.Media.Interfaces.Types.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line 3921
-Used in base-class hydraulic.generation.heatPump.mEva_flow.port_b.FluidPort.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Interfaces.mo, line 45
-Warning: Non-literal value.
-In nominal attribute for hydraulic.generation.heatPump.eva.vol.dynBal.hOut.
-Ignoring nominal attribute.
-In class Modelica.Blocks.Interfaces.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Blocks/Interfaces.mo, line 2
-Used in component hydraulic.generation.heatPump.eva.vol.dynBal.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/MixingVolumes/BaseClasses/PartialMixingVolume.mo, line 73
-Warning: Non-literal value.
-In nominal attribute for hydraulic.generation.heatPump.eva.vol.dynBal.ports[1].h_outflow.
-Ignoring nominal attribute.
-In class Modelica.Media.Interfaces.Types.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line 3921
-Used in base-class hydraulic.generation.heatPump.eva.vol.dynBal.ports.FluidPort.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Vessels.mo, line 711
-Warning: Non-literal value.
-In nominal attribute for hydraulic.generation.heatPump.eva.vol.dynBal.ports[2].h_outflow.
-Ignoring nominal attribute.
-In class Modelica.Media.Interfaces.Types.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line 3921
-Used in base-class hydraulic.generation.heatPump.eva.vol.dynBal.ports.FluidPort.
-  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Vessels.mo, line 711
-The model contained invalid expressions.
-Translation aborted.
+The DAE has 13078 scalar unknowns and 13078 scalar equations.
+Redundant consistent initial conditions.
+Removed the following equations which are redundant and consistent: 
+  if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+      hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = hydraulic.generation.heatPump.eva.vol.dynBal.p_start;
+    end if;
+  else
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==       Modelica.Fluid.Types.Dynamics.SteadyStateInitial) then 
+      if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+        der(hydraulic.generation.heatPump.eva.vol.dynBal.medium.p) = 0;
+      end if;
+    end if;
+  end if;
+ 
+This required evaluation of 
+the interactive parameters 
+    hydraulic.generation.bou_sinkAir.p(start = 101325)
+ 
+The redundancies involve
+initial equations: 
+  hydraulic.generation.bou_sinkAir.p = 101325.0;
+ 
+ 
+Statistics
+ 
+Original Model
+  Number of components: 2783
+  Variables: 26514
+  Constants: 655 (655 scalars)
+  Parameters: 11357 (15798 scalars)
+  Unknowns: 14502 (13523 scalars)
+  Differentiated variables: 238 scalars
+  Equations: 11547
+  Nontrivial: 9154
+Translated Model
+  Constants: 10656 scalars
+  Free parameters: 2254 scalars
+  Parameter depending: 5389 scalars
+  Outputs: 38 scalars
+  Continuous time states: 156 scalars
+  Time-varying variables: 3277 scalars
+  Alias variables: 8400 scalars
+  Number of mixed real/discrete systems of equations: 0
+  Sizes of linear systems of equations: {4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,   2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,   2, 2, 2, 2, 2, 2, 2, 4}
+  Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0}
+  Sizes of nonlinear systems of equations: {12, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+  Sizes after manipulation of the nonlinear systems: {2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+  Number of numerical Jacobians: 0
+  Initialization problem
+    Number of mixed real/discrete systems of equations: 1
+    Sizes of nonlinear systems of equations: {11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 12, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,   1}
+    Sizes after manipulation of the nonlinear systems: {5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 2, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+    Number of numerical Jacobians: 0
+ 
+Selected continuous time states
+Statically selected continuous time states
+  building.attic_unheated.zone_attic.fmuZon.EGaiRad
+  building.attic_unheated.zone_attic.vol.m
+  building.attic_unheated.zone_attic.vol.medium.Xi[1]
+  building.attic_unheated.zone_attic.vol.U
+  building.groundFloor.zone_corridor3.fmuZon.EGaiRad
+  building.groundFloor.zone_corridor3.vol.m
+  building.groundFloor.zone_corridor3.vol.medium.Xi[1]
+  building.groundFloor.zone_corridor3.vol.U
+  building.groundFloor.zone_hobby2.fmuZon.EGaiRad
+  building.groundFloor.zone_hobby2.vol.m
+  building.groundFloor.zone_hobby2.vol.medium.Xi[1]
+  building.groundFloor.zone_hobby2.vol.U
+  building.groundFloor.zone_kitchen5.fmuZon.EGaiRad
+  building.groundFloor.zone_kitchen5.vol.m
+  building.groundFloor.zone_kitchen5.vol.medium.Xi[1]
+  building.groundFloor.zone_kitchen5.vol.U
+  building.groundFloor.zone_living1.fmuZon.EGaiRad
+  building.groundFloor.zone_living1.vol.m
+  building.groundFloor.zone_living1.vol.medium.Xi[1]
+  building.groundFloor.zone_living1.vol.U
+  building.groundFloor.zone_wcstorage4.fmuZon.EGaiRad
+  building.groundFloor.zone_wcstorage4.vol.m
+  building.groundFloor.zone_wcstorage4.vol.medium.Xi[1]
+  building.groundFloor.zone_wcstorage4.vol.U
+  building.upperFloor.zone_bath9.fmuZon.EGaiRad
+  building.upperFloor.zone_bath9.vol.m
+  building.upperFloor.zone_bath9.vol.medium.Xi[1]
+  building.upperFloor.zone_bath9.vol.U
+  building.upperFloor.zone_bedroom6.fmuZon.EGaiRad
+  building.upperFloor.zone_bedroom6.vol.m
+  building.upperFloor.zone_bedroom6.vol.medium.Xi[1]
+  building.upperFloor.zone_bedroom6.vol.U
+  building.upperFloor.zone_children7.fmuZon.EGaiRad
+  building.upperFloor.zone_children7.vol.m
+  building.upperFloor.zone_children7.vol.medium.Xi[1]
+  building.upperFloor.zone_children7.vol.U
+  building.upperFloor.zone_children10.fmuZon.EGaiRad
+  building.upperFloor.zone_children10.vol.m
+  building.upperFloor.zone_children10.vol.medium.Xi[1]
+  building.upperFloor.zone_children10.vol.U
+  building.upperFloor.zone_corridor8.fmuZon.EGaiRad
+  building.upperFloor.zone_corridor8.vol.m
+  building.upperFloor.zone_corridor8.vol.medium.Xi[1]
+  building.upperFloor.zone_corridor8.vol.U
+  DHW.integralKPICalculator.integrator2.y
+  DHW.pump.vol.dynBal.U
+  electrical.distribution.eneKPIGen.integrator2.y
+  electrical.distribution.eneKPILoa.integrator2.y
+  hydraulic.control.priGenPIDCtrl.intAbs.y
+  hydraulic.control.priGenPIDCtrl.intSqu.y
+  hydraulic.control.priGenPIDCtrl.PID.D.x
+  hydraulic.control.priGenPIDCtrl.PID.I.y
+  hydraulic.control.valCtrl.PI[1].I.y
+  hydraulic.control.valCtrl.PI[2].I.y
+  hydraulic.control.valCtrl.PI[3].I.y
+  hydraulic.control.valCtrl.PI[4].I.y
+  hydraulic.control.valCtrl.PI[5].I.y
+  hydraulic.control.valCtrl.PI[6].I.y
+  hydraulic.control.valCtrl.PI[7].I.y
+  hydraulic.control.valCtrl.PI[8].I.y
+  hydraulic.control.valCtrl.PI[9].I.y
+  hydraulic.control.valCtrl.PI[10].I.y
+  hydraulic.distribution.eneKPICalBuf.integrator2.y
+  hydraulic.distribution.eneKPICalDHW.integrator2.y
+  hydraulic.distribution.stoBuf.layer[1].dynBal.U
+  hydraulic.distribution.stoBuf.layer[2].dynBal.U
+  hydraulic.distribution.stoBuf.layer[3].dynBal.U
+  hydraulic.distribution.stoBuf.layer[4].dynBal.U
+  hydraulic.distribution.stoBuf.layer_HE[1].dynBal.U
+  hydraulic.distribution.stoBuf.layer_HE[2].dynBal.U
+  hydraulic.distribution.stoBuf.layer_HE[3].dynBal.U
+  hydraulic.distribution.stoBuf.layer_HE[4].dynBal.U
+  hydraulic.distribution.stoDHW.layer[1].dynBal.U
+  hydraulic.distribution.stoDHW.layer[2].dynBal.U
+  hydraulic.distribution.stoDHW.layer[3].dynBal.U
+  hydraulic.distribution.stoDHW.layer[4].dynBal.U
+  hydraulic.distribution.stoDHW.layer_HE[1].dynBal.U
+  hydraulic.distribution.stoDHW.layer_HE[2].dynBal.U
+  hydraulic.distribution.stoDHW.layer_HE[3].dynBal.U
+  hydraulic.distribution.stoDHW.layer_HE[4].dynBal.U
+  hydraulic.distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.U
+  hydraulic.generation.eleHea.vol.dynBal.U
+  hydraulic.generation.heatPump.con.vol.dynBal.U
+  hydraulic.generation.heatPump.eva.vol.dynBal.medium.Xi[1]
+  hydraulic.generation.heatPump.eva.vol.dynBal.U
+  hydraulic.generation.KPIEleHea.integrator1.y
+  hydraulic.generation.KPIEleHea.integrator3.y
+  hydraulic.generation.KPIHeaPum.integrator1.y
+  hydraulic.generation.KPIHeaPum.integrator3.y
+  hydraulic.generation.KPIPEleEleHea.integrator2.y
+  hydraulic.generation.KPIQEleHea_flow.integrator2.y
+  hydraulic.generation.KPIQHP.integrator2.y
+  hydraulic.generation.KPIWel.integrator2.y
+  hydraulic.generation.pump.vol.dynBal.U
+  hydraulic.generation.senTGenOut.T
+  hydraulic.transfer.intKPICalHeaFlo.integrator2.y
+  hydraulic.transfer.pumFixMFlo[1].vol.dynBal.U
+  hydraulic.transfer.pumFixMFlo[2].vol.dynBal.U
+  hydraulic.transfer.pumFixMFlo[3].vol.dynBal.U
+  hydraulic.transfer.pumFixMFlo[4].vol.dynBal.U
+  hydraulic.transfer.pumFixMFlo[5].vol.dynBal.U
+  hydraulic.transfer.pumFixMFlo[6].vol.dynBal.U
+  hydraulic.transfer.pumFixMFlo[7].vol.dynBal.U
+  hydraulic.transfer.pumFixMFlo[8].vol.dynBal.U
+  hydraulic.transfer.pumFixMFlo[9].vol.dynBal.U
+  hydraulic.transfer.pumFixMFlo[10].vol.dynBal.U
+  hydraulic.transfer.rad[1].vol[1].dynBal.U
+  hydraulic.transfer.rad[1].vol[2].dynBal.U
+  hydraulic.transfer.rad[1].vol[3].dynBal.U
+  hydraulic.transfer.rad[1].vol[4].dynBal.U
+  hydraulic.transfer.rad[1].vol[5].dynBal.U
+  hydraulic.transfer.rad[2].vol[1].dynBal.U
+  hydraulic.transfer.rad[2].vol[2].dynBal.U
+  hydraulic.transfer.rad[2].vol[3].dynBal.U
+  hydraulic.transfer.rad[2].vol[4].dynBal.U
+  hydraulic.transfer.rad[2].vol[5].dynBal.U
+  hydraulic.transfer.rad[3].vol[1].dynBal.U
+  hydraulic.transfer.rad[3].vol[2].dynBal.U
+  hydraulic.transfer.rad[3].vol[3].dynBal.U
+  hydraulic.transfer.rad[3].vol[4].dynBal.U
+  hydraulic.transfer.rad[3].vol[5].dynBal.U
+  hydraulic.transfer.rad[4].vol[1].dynBal.U
+  hydraulic.transfer.rad[4].vol[2].dynBal.U
+  hydraulic.transfer.rad[4].vol[3].dynBal.U
+  hydraulic.transfer.rad[4].vol[4].dynBal.U
+  hydraulic.transfer.rad[4].vol[5].dynBal.U
+  hydraulic.transfer.rad[5].vol[1].dynBal.U
+  hydraulic.transfer.rad[5].vol[2].dynBal.U
+  hydraulic.transfer.rad[5].vol[3].dynBal.U
+  hydraulic.transfer.rad[5].vol[4].dynBal.U
+  hydraulic.transfer.rad[5].vol[5].dynBal.U
+  hydraulic.transfer.rad[6].vol[1].dynBal.U
+  hydraulic.transfer.rad[6].vol[2].dynBal.U
+  hydraulic.transfer.rad[6].vol[3].dynBal.U
+  hydraulic.transfer.rad[6].vol[4].dynBal.U
+  hydraulic.transfer.rad[6].vol[5].dynBal.U
+  hydraulic.transfer.rad[7].vol[1].dynBal.U
+  hydraulic.transfer.rad[7].vol[2].dynBal.U
+  hydraulic.transfer.rad[7].vol[3].dynBal.U
+  hydraulic.transfer.rad[7].vol[4].dynBal.U
+  hydraulic.transfer.rad[7].vol[5].dynBal.U
+  hydraulic.transfer.rad[8].vol[1].dynBal.U
+  hydraulic.transfer.rad[8].vol[2].dynBal.U
+  hydraulic.transfer.rad[8].vol[3].dynBal.U
+  hydraulic.transfer.rad[8].vol[4].dynBal.U
+  hydraulic.transfer.rad[8].vol[5].dynBal.U
+  hydraulic.transfer.rad[9].vol[1].dynBal.U
+  hydraulic.transfer.rad[9].vol[2].dynBal.U
+  hydraulic.transfer.rad[9].vol[3].dynBal.U
+  hydraulic.transfer.rad[9].vol[4].dynBal.U
+  hydraulic.transfer.rad[9].vol[5].dynBal.U
+  hydraulic.transfer.rad[10].vol[1].dynBal.U
+  hydraulic.transfer.rad[10].vol[2].dynBal.U
+  hydraulic.transfer.rad[10].vol[3].dynBal.U
+  hydraulic.transfer.rad[10].vol[4].dynBal.U
+  hydraulic.transfer.rad[10].vol[5].dynBal.U
+ 
+Warning: Conflicting start values
+The iteration variable building.weaBus.TWetBul has been selected to have the guess value 293.15.
+However, the start value has been selected from a set of alias variables having conflicting start values of the same precedence.
+293.15, the start value of electrical.weaBus.TWetBul given as 293.15.
+291.15, the start value of weaDat.tWetBul_TDryBulXi.TWetBul given as 291.15.
 Warning: WARNINGS have been issued.
-Error: ERRORS have been issued.
+Failed
+Not possible to open file "BESMod.Examples.HighOrderModel.BES_HOM_Spawn.mat": No such file or directory
  = false
 
-Instantiation of ?:
     
 Declaring variable: Boolean rScript ;
 
@@ -3614,9 +3435,9 @@ Statistics
  
 Original Model
   Number of components: 2652
-  Variables: 30677
+  Variables: 30678
   Constants: 561 (561 scalars)
-  Parameters: 13845 (15234 scalars)
+  Parameters: 13846 (15235 scalars)
   Unknowns: 16271 (13754 scalars)
   Differentiated variables: 333 scalars
   Equations: 12670
@@ -3624,7 +3445,7 @@ Original Model
 Translated Model
   Constants: 10749 scalars
   Free parameters: 1591 scalars
-  Parameter depending: 5271 scalars
+  Parameter depending: 5272 scalars
   Outputs: 58 scalars
   Continuous time states: 236 scalars
   Time-varying variables: 3336 scalars
@@ -5339,10 +5160,10 @@ Warning: The bus-input hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea 
 Bus-signal: TStoBufBotMea
 Use:  connect(hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea, hydraulic.control.buiAndDHWCtr.hysBui.TStoBot);
 Connected bus variables:
-hydraulic.distribution.sigBusDistr.TStoBufBotMea (connect) "Supply temperature of the lower layers of the storage. Does not have to be the lowest layer, depending on comfort even the top may be selected"
+hydraulic.control.sigBusDistr.TStoBufBotMea (connect) "Supply temperature of the lower layers of the storage. Does not have to be the lowest layer, depending on comfort even the top may be selected"
+hydraulic.distribution.sigBusDistr.TStoBufBotMea (connect)
 hydraulic.control.setAndMeaSelPri.sigBusDistr.TStoBufBotMea (connect)
 hydraulic.control.setAndMeaSelSec.sigBusDistr.TStoBufBotMea (connect)
-hydraulic.control.sigBusDistr.TStoBufBotMea (connect)
 input hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea (connect)
 The DAE has 4792 scalar unknowns and 4792 scalar equations.
 After eliminating unused variables:
