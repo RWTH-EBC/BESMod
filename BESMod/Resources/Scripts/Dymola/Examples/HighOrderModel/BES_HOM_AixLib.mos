@@ -1,0 +1,8 @@
+
+simulateModel("BESMod.Examples.HighOrderModel.BES_HOM_AixLib", stopTime=172800, method="dassl", tolerance=1e-06, resultFile="BES_HOM_AixLib");
+
+createPlot(id=1, position={75, 70, 1210, 600}, y={"weaDat.weaBus.TDryBul"}, grid=true, subPlot=1, colors={{28,108,200}});
+createPlot(id=1, y={"hydraulic.generation.sigBusGen.TGenOutMea"}, grid=true, subPlot=2, colors={{238,46,47}});
+createPlot(id=1, y={"hydraulic.control.buiMeaBus.TZoneMea[1]", "hydraulic.control.buiMeaBus.TZoneMea[10]"}, grid=true, subPlot=3, colors={{28,108,200},{238,46,47}});
+createPlot(id=1, y={"electricalGrid.PElecGen","electricalGrid.PElecLoa"}, grid=true, subPlot=4, colors={{28,108,200},{238,46,47}});
+    
