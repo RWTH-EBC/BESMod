@@ -14,6 +14,7 @@ model BES_HOM_Spawn
   annotation (experiment(
       StopTime=172800,
       Interval=600,
+      Tolerance=1e-04,
       __Dymola_Algorithm="Dassl"),
    __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/HighOrderModel/BES_HOM_Spawn.mos"
         "Simulate and plot"));
