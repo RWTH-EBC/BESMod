@@ -65,6 +65,11 @@ model PartialHeatPump "Generation with only the heat pump"
   parameter Modelica.Units.SI.Temperature THeaTresh=293.15
     "Heating treshhold temperature for bivalent design"
     annotation (Dialog(group="Heat Pump System Design"));
+  parameter Modelica.Units.SI.Temperature TSupAtBiv = BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.BaseClasses.Functions.ConstantGradientHeatCurve(
+    TBiv, THeaTresh, 293.15, TSup_nominal[1], TSup_nominal[1] - 10, TOda_nominal, 1.24)
+    "Supply temperature at bivalence point for design"
+    annotation (Dialog(group="Heat Pump System Design"));
+
   parameter
     BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign
     genDesTyp "Type of generation system design" annotation (Dialog(
@@ -179,7 +184,7 @@ model PartialHeatPump "Generation with only the heat pump"
     final show_T=show_T,
     final QHea_flow_nominal=QPri_flow_nominal,
     QCoo_flow_nominal=QCoo_flow_nominal,
-    final TConHea_nominal=TSup_nominal[1],
+    final TConHea_nominal=if genDesTyp == BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.Monovalent then TSup_nominal[1] else TSupAtBiv,
     final TEvaHea_nominal=TBiv,
     final TConCoo_nominal=TConCoo_nominal,
     final TEvaCoo_nominal=TEvaCoo_nominal,
@@ -315,6 +320,8 @@ model PartialHeatPump "Generation with only the heat pump"
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-170,-30})));
+
+
 equation
   connect(bouEva.ports[1], heatPump.port_a2) annotation (Line(points={{-80,50},{
           -70,50},{-70,35},{-51,35}},          color={0,127,255}));
