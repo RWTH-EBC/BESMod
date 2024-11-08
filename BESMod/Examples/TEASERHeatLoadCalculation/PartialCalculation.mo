@@ -5,6 +5,7 @@ model PartialCalculation "Partial model with common interfaces"
     redeclare BESMod.Systems.RecordsCollection.ExampleSystemParameters
       systemParameters(
       QBui_flow_nominal=building.QRec_flow_nominal,
+      TSetZone_nominal={294.15},
       use_hydraulic=false,
       use_ventilation=false),
     redeclare BESMod.Systems.Control.NoControl control,

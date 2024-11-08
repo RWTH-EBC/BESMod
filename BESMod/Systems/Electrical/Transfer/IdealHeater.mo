@@ -6,7 +6,8 @@ model IdealHeater "Ideal heater as in reduced order model"
     "Time constant of the heating controller";
   Utilities.Electrical.RealToElecCon   realToElecCon(use_souGen=false)
     annotation (Placement(transformation(extent={{20,60},{40,80}})));
-  AixLib.Utilities.Sources.HeaterCooler.HeaterCoolerPI heaterCooler[nParallelDem](
+  Examples.TEASERHeatLoadCalculation.HeaterCoolerPIFraRad
+                                                       heaterCooler[nParallelDem](
     h_heater=Q_flow_nominal .* 1.5,
     each final l_heater=0,
     each final KR_heater=KR_heater,
@@ -15,6 +16,8 @@ model IdealHeater "Ideal heater as in reduced order model"
     each recOrSep=false,
     each Heater_on=true,
     each Cooler_on=false,
+    fraCooRad=0,
+    fraHeaRad=0.35,
     each final staOrDyn=false) "Heater Cooler with PI control"
     annotation (Placement(transformation(extent={{-62,0},{-20,40}})));
   Modelica.Blocks.Sources.BooleanConstant booCooAct[nParallelDem](each final k=
@@ -23,9 +26,6 @@ model IdealHeater "Ideal heater as in reduced order model"
   Modelica.Blocks.Sources.BooleanConstant booHeaAct[nParallelDem](each final k=
        true) "Heating active"
     annotation (Placement(transformation(extent={{-82,-80},{-62,-60}})));
-  Modelica.Thermal.HeatTransfer.Sources.FixedHeatFlow fixHeaFlo[nParallelDem](
-      each final Q_flow=0)
-    annotation (Placement(transformation(extent={{40,-40},{60,-20}})));
   Utilities.KPIs.EnergyKPICalculator heaKPI[nParallelDem](each final use_inpCon=
         true) "Heating power KPI" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -47,9 +47,6 @@ equation
   connect(heaterCooler.heatCoolRoom, heatPortCon) annotation (Line(points={{-22.1,
           12},{86,12},{86,38},{100,38}},
                                      color={191,0,0}));
-  connect(fixHeaFlo.port, heatPortRad)
-    annotation (Line(points={{60,-30},{80,-30},{80,-38},{100,-38}},
-                                                  color={191,0,0}));
   connect(heaterCooler.setPointHeat, transferControlBus.TZoneSet) annotation (
       Line(points={{-36.38,5.6},{-36.38,-10},{-90,-10},{-90,90},{1.77636e-15,90},
           {1.77636e-15,98}},
@@ -70,6 +67,9 @@ equation
           {0,28},{0,54},{-52,54},{-52,70},{-42,70}}, color={0,0,127}));
   connect(sum1.y, realToElecCon.PEleLoa) annotation (Line(points={{-19,70},{6,
           70},{6,74},{18,74}}, color={0,0,127}));
+  connect(heaterCooler.heaPorRad, heatPortRad) annotation (Line(points={{-22.1,
+          2},{-22.1,-8},{78,-8},{78,-30},{80,-30},{80,-38},{100,-38}}, color={
+          191,0,0}));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
