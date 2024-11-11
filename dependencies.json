@@ -16,7 +16,7 @@
     },
     "Buildings": {
       "url": "https://github.com/lbl-srg/modelica-buildings",
-      "commit": "471527a7fcd1597480149d2023de155fb0acb451",
+      "commit": "87857396286acc419e0a704fbe028650f8863f5d",
 	  "default_branch": "master",
       "mo": "Buildings//package.mo"
     },
