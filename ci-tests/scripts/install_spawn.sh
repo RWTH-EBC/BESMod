@@ -30,11 +30,18 @@ fi
 # Remove the downloaded tar file
 rm spawn_binaries.tar.gz
 
+# Ensure all extracted binaries have execute permissions
+echo "Setting execute permissions for Spawn binaries..."
+chmod +x "$destination_dir"/*
+
 # Set the SPAWNPATH environment variable to the destination directory
 export SPAWNPATH="$(pwd)/installed_dependencies/Buildings/Buildings/Resources/bin/spawn-0.5.0-ab07bde9bb/linux64/bin"
 
 # Add the SPAWNPATH to PATH temporarily for this session
 export PATH="${PATH}:${SPAWNPATH}"
 
+# Confirm the environment variables
+echo "SPAWNPATH is set to: $SPAWNPATH"
+echo "PATH is set to: $PATH"
+
 echo "Spawn binaries successfully installed at $destination_dir"
-echo "SPAWNPATH has been set to $SPAWNPATH"
