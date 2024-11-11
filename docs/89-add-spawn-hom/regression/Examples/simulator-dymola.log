@@ -1073,9 +1073,9 @@ The redundancies involve
 initial equations: 
   hydraulic.generation.bou_sinkAir.p = 101325.0;
   ventilation.generation.bouExh.p = ventilation.generation.threeWayValve_b.vol.dynBal.p_start;
-  electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
   electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
   electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
+  electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
  
  
 Statistics
@@ -2718,7 +2718,246 @@ Warning: WARNINGS have been issued.
 Failed
 Not possible to open file "BESMod.Examples.HighOrderModel.BES_HOM_Spawn.mat": No such file or directory
  = false
-
+getLastError() 
+ = "Translation of <a href=\"Modelica://BESMod.Examples.HighOrderModel.BES_HOM_Spawn\">BESMod.Examples.HighOrderModel.BES_HOM_Spawn</a>:
+Warning: Non-literal value.
+In nominal attribute for hydraulic.generation.heatPump.con.preDro.m_flow.
+Ignoring nominal attribute.
+In class <a href=\"Modelica://Modelica.Units.SI\">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class hydraulic.generation.heatPump.con.preDro.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for hydraulic.generation.heatPump.eva.preDro.m_flow.
+Ignoring nominal attribute.
+In class <a href=\"Modelica://Modelica.Units.SI\">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class hydraulic.generation.heatPump.eva.preDro.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+The DAE has 13078 scalar unknowns and 13078 scalar equations.
+Redundant consistent initial conditions.
+Removed the following equations which are redundant and consistent: 
+  if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+      hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = hydraulic.generation.heatPump.eva.vol.dynBal.p_start;
+    end if;
+  else
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==       Modelica.Fluid.Types.Dynamics.SteadyStateInitial) then 
+      if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+        der(hydraulic.generation.heatPump.eva.vol.dynBal.medium.p) = 0;
+      end if;
+    end if;
+  end if;
+ 
+This required evaluation of 
+the interactive parameters 
+    hydraulic.generation.bou_sinkAir.p(start = 101325)
+ 
+The redundancies involve
+initial equations: 
+  hydraulic.generation.bou_sinkAir.p = 101325.0;
+ 
+ 
+Statistics
+ 
+Original Model
+  Number of components: 2783
+  Variables: 26514
+  Constants: 655 (655 scalars)
+  Parameters: 11357 (15798 scalars)
+  Unknowns: 14502 (13523 scalars)
+  Differentiated variables: 238 scalars
+  Equations: 11547
+  Nontrivial: 9154
+Translated Model
+  Constants: 10656 scalars
+  Free parameters: 2254 scalars
+  Parameter depending: 5389 scalars
+  Outputs: 38 scalars
+  Continuous time states: 156 scalars
+  Time-varying variables: 3277 scalars
+  Alias variables: 8400 scalars
+  Number of mixed real/discrete systems of equations: 0
+  Sizes of linear systems of equations: {4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,   2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,   2, 2, 2, 2, 2, 2, 2, 4}
+  Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0}
+  Sizes of nonlinear systems of equations: {12, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+  Sizes after manipulation of the nonlinear systems: {2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+  Number of numerical Jacobians: 0
+  Initialization problem
+    Number of mixed real/discrete systems of equations: 1
+    Sizes of nonlinear systems of equations: {11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 12, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,   1}
+    Sizes after manipulation of the nonlinear systems: {5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 2, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+    Number of numerical Jacobians: 0
+ 
+Selected continuous time states
+Statically selected continuous time states
+  building.attic_unheated.zone_attic.fmuZon.EGaiRad
+  building.attic_unheated.zone_attic.vol.m
+  building.attic_unheated.zone_attic.vol.medium.Xi[1]
+  building.attic_unheated.zone_attic.vol.U
+  building.groundFloor.zone_corridor3.fmuZon.EGaiRad
+  building.groundFloor.zone_corridor3.vol.m
+  building.groundFloor.zone_corridor3.vol.medium.Xi[1]
+  building.groundFloor.zone_corridor3.vol.U
+  building.groundFloor.zone_hobby2.fmuZon.EGaiRad
+  building.groundFloor.zone_hobby2.vol.m
+  building.groundFloor.zone_hobby2.vol.medium.Xi[1]
+  building.groundFloor.zone_hobby2.vol.U
+  building.groundFloor.zone_kitchen5.fmuZon.EGaiRad
+  building.groundFloor.zone_kitchen5.vol.m
+  building.groundFloor.zone_kitchen5.vol.medium.Xi[1]
+  building.groundFloor.zone_kitchen5.vol.U
+  building.groundFloor.zone_living1.fmuZon.EGaiRad
+  building.groundFloor.zone_living1.vol.m
+  building.groundFloor.zone_living1.vol.medium.Xi[1]
+  building.groundFloor.zone_living1.vol.U
+  building.groundFloor.zone_wcstorage4.fmuZon.EGaiRad
+  building.groundFloor.zone_wcstorage4.vol.m
+  building.groundFloor.zone_wcstorage4.vol.medium.Xi[1]
+  building.groundFloor.zone_wcstorage4.vol.U
+  building.upperFloor.zone_bath9.fmuZon.EGaiRad
+  building.upperFloor.zone_bath9.vol.m
+  building.upperFloor.zone_bath9.vol.medium.Xi[1]
+  building.upperFloor.zone_bath9.vol.U
+  building.upperFloor.zone_bedroom6.fmuZon.EGaiRad
+  building.upperFloor.zone_bedroom6.vol.m
+  building.upperFloor.zone_bedroom6.vol.medium.Xi[1]
+  building.upperFloor.zone_bedroom6.vol.U
+  building.upperFloor.zone_children7.fmuZon.EGaiRad
+  building.upperFloor.zone_children7.vol.m
+  building.upperFloor.zone_children7.vol.medium.Xi[1]
+  building.upperFloor.zone_children7.vol.U
+  building.upperFloor.zone_children10.fmuZon.EGaiRad
+  building.upperFloor.zone_children10.vol.m
+  building.upperFloor.zone_children10.vol.medium.Xi[1]
+  building.upperFloor.zone_children10.vol.U
+  building.upperFloor.zone_corridor8.fmuZon.EGaiRad
+  building.upperFloor.zone_corridor8.vol.m
+  building.upperFloor.zone_corridor8.vol.medium.Xi[1]
+  building.upperFloor.zone_corridor8.vol.U
+  DHW.integralKPICalculator.integrator2.y
+  DHW.pump.vol.dynBal.U
+  electrical.distribution.eneKPIGen.integrator2.y
+  electrical.distribution.eneKPILoa.integrator2.y
+  hydraulic.control.priGenPIDCtrl.intAbs.y
+  hydraulic.control.priGenPIDCtrl.intSqu.y
+  hydraulic.control.priGenPIDCtrl.PID.D.x
+  hydraulic.control.priGenPIDCtrl.PID.I.y
+  hydraulic.control.valCtrl.PI[1].I.y
+  hydraulic.control.valCtrl.PI[2].I.y
+  hydraulic.control.valCtrl.PI[3].I.y
+  hydraulic.control.valCtrl.PI[4].I.y
+  hydraulic.control.valCtrl.PI[5].I.y
+  hydraulic.control.valCtrl.PI[6].I.y
+  hydraulic.control.valCtrl.PI[7].I.y
+  hydraulic.control.valCtrl.PI[8].I.y
+  hydraulic.control.valCtrl.PI[9].I.y
+  hydraulic.control.valCtrl.PI[10].I.y
+  hydraulic.distribution.eneKPICalBuf.integrator2.y
+  hydraulic.distribution.eneKPICalDHW.integrator2.y
+  hydraulic.distribution.stoBuf.layer[1].dynBal.U
+  hydraulic.distribution.stoBuf.layer[2].dynBal.U
+  hydraulic.distribution.stoBuf.layer[3].dynBal.U
+  hydraulic.distribution.stoBuf.layer[4].dynBal.U
+  hydraulic.distribution.stoBuf.layer_HE[1].dynBal.U
+  hydraulic.distribution.stoBuf.layer_HE[2].dynBal.U
+  hydraulic.distribution.stoBuf.layer_HE[3].dynBal.U
+  hydraulic.distribution.stoBuf.layer_HE[4].dynBal.U
+  hydraulic.distribution.stoDHW.layer[1].dynBal.U
+  hydraulic.distribution.stoDHW.layer[2].dynBal.U
+  hydraulic.distribution.stoDHW.layer[3].dynBal.U
+  hydraulic.distribution.stoDHW.layer[4].dynBal.U
+  hydraulic.distribution.stoDHW.layer_HE[1].dynBal.U
+  hydraulic.distribution.stoDHW.layer_HE[2].dynBal.U
+  hydraulic.distribution.stoDHW.layer_HE[3].dynBal.U
+  hydraulic.distribution.stoDHW.layer_HE[4].dynBal.U
+  hydraulic.distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.U
+  hydraulic.generation.eleHea.vol.dynBal.U
+  hydraulic.generation.heatPump.con.vol.dynBal.U
+  hydraulic.generation.heatPump.eva.vol.dynBal.medium.Xi[1]
+  hydraulic.generation.heatPump.eva.vol.dynBal.U
+  hydraulic.generation.KPIEleHea.integrator1.y
+  hydraulic.generation.KPIEleHea.integrator3.y
+  hydraulic.generation.KPIHeaPum.integrator1.y
+  hydraulic.generation.KPIHeaPum.integrator3.y
+  hydraulic.generation.KPIPEleEleHea.integrator2.y
+  hydraulic.generation.KPIQEleHea_flow.integrator2.y
+  hydraulic.generation.KPIQHP.integrator2.y
+  hydraulic.generation.KPIWel.integrator2.y
+  hydraulic.generation.pump.vol.dynBal.U
+  hydraulic.generation.senTGenOut.T
+  hydraulic.transfer.intKPICalHeaFlo.integrator2.y
+  hydraulic.transfer.pumFixMFlo[1].vol.dynBal.U
+  hydraulic.transfer.pumFixMFlo[2].vol.dynBal.U
+  hydraulic.transfer.pumFixMFlo[3].vol.dynBal.U
+  hydraulic.transfer.pumFixMFlo[4].vol.dynBal.U
+  hydraulic.transfer.pumFixMFlo[5].vol.dynBal.U
+  hydraulic.transfer.pumFixMFlo[6].vol.dynBal.U
+  hydraulic.transfer.pumFixMFlo[7].vol.dynBal.U
+  hydraulic.transfer.pumFixMFlo[8].vol.dynBal.U
+  hydraulic.transfer.pumFixMFlo[9].vol.dynBal.U
+  hydraulic.transfer.pumFixMFlo[10].vol.dynBal.U
+  hydraulic.transfer.rad[1].vol[1].dynBal.U
+  hydraulic.transfer.rad[1].vol[2].dynBal.U
+  hydraulic.transfer.rad[1].vol[3].dynBal.U
+  hydraulic.transfer.rad[1].vol[4].dynBal.U
+  hydraulic.transfer.rad[1].vol[5].dynBal.U
+  hydraulic.transfer.rad[2].vol[1].dynBal.U
+  hydraulic.transfer.rad[2].vol[2].dynBal.U
+  hydraulic.transfer.rad[2].vol[3].dynBal.U
+  hydraulic.transfer.rad[2].vol[4].dynBal.U
+  hydraulic.transfer.rad[2].vol[5].dynBal.U
+  hydraulic.transfer.rad[3].vol[1].dynBal.U
+  hydraulic.transfer.rad[3].vol[2].dynBal.U
+  hydraulic.transfer.rad[3].vol[3].dynBal.U
+  hydraulic.transfer.rad[3].vol[4].dynBal.U
+  hydraulic.transfer.rad[3].vol[5].dynBal.U
+  hydraulic.transfer.rad[4].vol[1].dynBal.U
+  hydraulic.transfer.rad[4].vol[2].dynBal.U
+  hydraulic.transfer.rad[4].vol[3].dynBal.U
+  hydraulic.transfer.rad[4].vol[4].dynBal.U
+  hydraulic.transfer.rad[4].vol[5].dynBal.U
+  hydraulic.transfer.rad[5].vol[1].dynBal.U
+  hydraulic.transfer.rad[5].vol[2].dynBal.U
+  hydraulic.transfer.rad[5].vol[3].dynBal.U
+  hydraulic.transfer.rad[5].vol[4].dynBal.U
+  hydraulic.transfer.rad[5].vol[5].dynBal.U
+  hydraulic.transfer.rad[6].vol[1].dynBal.U
+  hydraulic.transfer.rad[6].vol[2].dynBal.U
+  hydraulic.transfer.rad[6].vol[3].dynBal.U
+  hydraulic.transfer.rad[6].vol[4].dynBal.U
+  hydraulic.transfer.rad[6].vol[5].dynBal.U
+  hydraulic.transfer.rad[7].vol[1].dynBal.U
+  hydraulic.transfer.rad[7].vol[2].dynBal.U
+  hydraulic.transfer.rad[7].vol[3].dynBal.U
+  hydraulic.transfer.rad[7].vol[4].dynBal.U
+  hydraulic.transfer.rad[7].vol[5].dynBal.U
+  hydraulic.transfer.rad[8].vol[1].dynBal.U
+  hydraulic.transfer.rad[8].vol[2].dynBal.U
+  hydraulic.transfer.rad[8].vol[3].dynBal.U
+  hydraulic.transfer.rad[8].vol[4].dynBal.U
+  hydraulic.transfer.rad[8].vol[5].dynBal.U
+  hydraulic.transfer.rad[9].vol[1].dynBal.U
+  hydraulic.transfer.rad[9].vol[2].dynBal.U
+  hydraulic.transfer.rad[9].vol[3].dynBal.U
+  hydraulic.transfer.rad[9].vol[4].dynBal.U
+  hydraulic.transfer.rad[9].vol[5].dynBal.U
+  hydraulic.transfer.rad[10].vol[1].dynBal.U
+  hydraulic.transfer.rad[10].vol[2].dynBal.U
+  hydraulic.transfer.rad[10].vol[3].dynBal.U
+  hydraulic.transfer.rad[10].vol[4].dynBal.U
+  hydraulic.transfer.rad[10].vol[5].dynBal.U
+ 
+Warning: Conflicting start values
+The iteration variable building.weaBus.TWetBul has been selected to have the guess value 293.15.
+However, the start value has been selected from a set of alias variables having conflicting start values of the same precedence.
+293.15, the start value of electrical.weaBus.TWetBul given as 293.15.
+291.15, the start value of weaDat.tWetBul_TDryBulXi.TWetBul given as 291.15.
+Warning: WARNINGS have been issued.
+Failed
+Not possible to open file \"BESMod.Examples.HighOrderModel.BES_HOM_Spawn.mat\": No such file or directory
+getLastError() ,
+   0, 4, 17
     
 Declaring variable: Boolean rScript ;
 
@@ -5161,9 +5400,9 @@ Bus-signal: TStoBufBotMea
 Use:  connect(hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea, hydraulic.control.buiAndDHWCtr.hysBui.TStoBot);
 Connected bus variables:
 hydraulic.distribution.sigBusDistr.TStoBufBotMea (connect) "Supply temperature of the lower layers of the storage. Does not have to be the lowest layer, depending on comfort even the top may be selected"
+hydraulic.control.setAndMeaSelPri.sigBusDistr.TStoBufBotMea (connect)
 hydraulic.control.setAndMeaSelSec.sigBusDistr.TStoBufBotMea (connect)
 hydraulic.control.sigBusDistr.TStoBufBotMea (connect)
-hydraulic.control.setAndMeaSelPri.sigBusDistr.TStoBufBotMea (connect)
 input hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea (connect)
 The DAE has 4792 scalar unknowns and 4792 scalar equations.
 After eliminating unused variables:
