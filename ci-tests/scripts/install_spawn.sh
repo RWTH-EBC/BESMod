@@ -38,6 +38,3 @@ export PATH="${PATH}:${SPAWNPATH}"
 
 echo "Spawn binaries successfully installed at $destination_dir"
 echo "SPAWNPATH has been set to $SPAWNPATH"
-echo "Please add the following lines to your ~/.bashrc to make these changes permanent:"
-echo "export SPAWNPATH=\"$SPAWNPATH\""
-echo "export PATH=\"\$PATH:\$SPAWNPATH\""
