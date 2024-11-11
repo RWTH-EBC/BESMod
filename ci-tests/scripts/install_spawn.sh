@@ -34,6 +34,20 @@ rm spawn_binaries.tar.gz
 echo "Setting execute permissions for Spawn binaries..."
 chmod +x "$destination_dir"/*
 
+# Check the name of the binary and rename if necessary
+binary_path="$destination_dir/spawn-0.5.0-ab07bde9bb"
+if [ ! -f "$binary_path" ]; then
+  # Find the actual binary name in the directory
+  actual_binary_name=$(ls "$destination_dir" | grep 'spawn' | head -n 1)
+  if [ -n "$actual_binary_name" ]; then
+    echo "Renaming $actual_binary_name to spawn-0.5.0-ab07bde9bb"
+    mv "$destination_dir/$actual_binary_name" "$binary_path"
+  else
+    echo "Spawn binary not found in $destination_dir."
+    exit 1
+  fi
+fi
+
 # Set the SPAWNPATH environment variable to the destination directory
 export SPAWNPATH="$(pwd)/installed_dependencies/Buildings/Buildings/Resources/bin/spawn-0.5.0-ab07bde9bb/linux64/bin"
 
