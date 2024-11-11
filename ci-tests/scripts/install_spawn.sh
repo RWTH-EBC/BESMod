@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# Set the download URL and destination directory
-download_url="https://spawn.s3.amazonaws.com/builds/Spawn-light-0.4.3-7048a72798-win64.zip"
-destination_dir="installed_dependencies/Buildings/Buildings/Resources/bin"
+# Set the download URL and target subdirectory structure
+download_url="https://spawn.s3.amazonaws.com/custom/Spawn-light-0.5.0-ab07bde9bb-Linux.tar.gz"
+destination_dir="installed_dependencies/Buildings/Buildings/Resources/bin/spawn-0.5.0-ab07bde9bb/linux64/bin"
 
 # Create the destination directory if it doesn't exist
 mkdir -p "$destination_dir"
 
 # Download the Spawn binaries
 echo "Downloading Spawn binaries..."
-wget -q "$download_url" -O spawn_binaries.zip
+wget -q "$download_url" -O spawn_binaries.tar.gz
 
 # Check if the download was successful
 if [ $? -ne 0 ]; then
@@ -17,17 +17,27 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-# Unzip the Spawn binaries
-echo "Unzipping Spawn binaries..."
-unzip -q spawn_binaries.zip -d "$destination_dir"
+# Extract the Spawn binaries
+echo "Extracting Spawn binaries..."
+tar -xzf spawn_binaries.tar.gz -C "$destination_dir" --strip-components=2
 
-# Check if the unzip was successful
+# Check if the extraction was successful
 if [ $? -ne 0 ]; then
-  echo "Failed to unzip Spawn binaries. Please check the permissions and try again."
+  echo "Failed to extract Spawn binaries. Please check the permissions and try again."
   exit 1
 fi
 
-# Remove the downloaded zip file
-rm spawn_binaries.zip
+# Remove the downloaded tar file
+rm spawn_binaries.tar.gz
+
+# Set the SPAWNPATH environment variable to the destination directory
+export SPAWNPATH="$(pwd)/installed_dependencies/Buildings/Buildings/Resources/bin/spawn-0.5.0-ab07bde9bb/linux64/bin"
+
+# Add the SPAWNPATH to PATH temporarily for this session
+export PATH="${PATH}:${SPAWNPATH}"
 
 echo "Spawn binaries successfully installed at $destination_dir"
+echo "SPAWNPATH has been set to $SPAWNPATH"
+echo "Please add the following lines to your ~/.bashrc to make these changes permanent:"
+echo "export SPAWNPATH=\"$SPAWNPATH\""
+echo "export PATH=\"\$PATH:\$SPAWNPATH\""
