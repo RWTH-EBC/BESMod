@@ -34,6 +34,8 @@
   script:
     - apt-get install git-lfs -y
     - python install_dependencies.py full
+    - chmod +x ./ci-tests/scripts/install_spawn.sh
+    - ./ci-tests/scripts/install_spawn.sh
 
 .rules:push:
     rules:
