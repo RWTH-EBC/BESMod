@@ -31,7 +31,6 @@ partial model PartialHeatPumpMonoenergetic
               AixLib.Fluid.HeatPumps.ModularReversible.Data.TableData2D.EN255.Vitocal350AWI114
               datTab),
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
-        final use_old_design={NoRetrofitHydGen},
         redeclare package MediumEva = AixLib.Media.Air,
         TBiv=271.15,
         redeclare
@@ -58,7 +57,6 @@ partial model PartialHeatPumpMonoenergetic
           parPIDHeaPum),
       redeclare Systems.Hydraulical.Distribution.DistributionTwoStorageParallel
         distribution(
-        final use_old_design={NoRetrofitHydDis},
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
           parStoBuf(dTLoadingHC1=0),
@@ -70,7 +68,6 @@ partial model PartialHeatPumpMonoenergetic
       redeclare Systems.Hydraulical.Transfer.IdealValveRadiator transfer(
         dTTra_nominal=fill(10, hydraulic.transfer.nParallelDem),
         f_design=fill(1.2, hydraulic.transfer.nParallelDem),
-        final use_oldRad_design=NoRetrofitHydTra,
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
           parRad,
@@ -117,12 +114,5 @@ partial model PartialHeatPumpMonoenergetic
           use_bypass=false)));
 
   extends Modelica.Icons.Example;
-
-  parameter Boolean NoRetrofitHydTra[hydraulic.transfer.nParallelDem] = fill(false,hydraulic.transfer.nParallelDem)
-    "If true, hydraulic transfersystem uses QBuiNoRetrofit.";
-  parameter Boolean NoRetrofitHydDis = false
-    "If true, hydraulic distribution system uses QBuiNoRetrofit.";
-  parameter Boolean NoRetrofitHydGen = false
-    "If true, hydraulic generation system uses QBuiNoRetrofit.";
 
 end PartialHeatPumpMonoenergetic;

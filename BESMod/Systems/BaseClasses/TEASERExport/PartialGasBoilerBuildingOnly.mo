@@ -15,7 +15,6 @@ model PartialGasBoilerBuildingOnly
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare BESMod.Systems.Hydraulical.Generation.GasBoiler generation(
         dTTra_nominal={max(hydraulic.transfer.dTTra_nominal)},
-        final use_old_design=NoRetrofitHydGen,
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
           parTemSen,
@@ -34,7 +33,6 @@ model PartialGasBoilerBuildingOnly
         distribution(nParallelDem=1),
       redeclare BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased
         transfer(
-        final use_oldRad_design=NoRetrofitHydTra,
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
           parTra,
@@ -59,11 +57,6 @@ model PartialGasBoilerBuildingOnly
       use_elecHeating=false));
 
   extends Modelica.Icons.Example;
-
-  parameter Boolean NoRetrofitHydTra[hydraulic.transfer.nParallelDem] = fill(false,hydraulic.transfer.nParallelDem)
-    "If true, hydraulic transfersystem uses QBuiNoRetrofit.";
-  parameter Boolean NoRetrofitHydGen = false
-    "If true, hydraulic generation system uses QBuiNoRetrofit.";
 
   annotation (experiment(StopTime=172800,
      Interval=600,
