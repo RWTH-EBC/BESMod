@@ -1,6 +1,6 @@
 within BESMod.Systems.BaseClasses.TEASERExport;
 partial model PartialHeatPumpMonoenergetic
-  "Partial monoenergetic heat pump model based on the example ModelicaConferencePaper"
+  "Partial monoenergetic heat pump model based on the example ModelicaConferencePaper without a battery"
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.Electrical.ElectricalSystem electrical(
       redeclare BESMod.Systems.Electrical.Distribution.OwnConsumption

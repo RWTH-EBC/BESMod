@@ -13,6 +13,11 @@ model GasBoiler "Just a gas boiler"
       373.15,0.99] "Temperature based efficiency"
         annotation(Dialog(group="Component data"));
 
+  /* 
+  Boiler record needs nominal firing power which is estimated 
+  with the nominal boiler efficiency without temperatur based 
+  efficiency which is near 1 at high temperatures
+  */
   replaceable parameter BESMod.Systems.Hydraulical.Generation.RecordsCollection.AutoparameterBoiler
     parBoi constrainedby
     AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition(
