@@ -14,7 +14,7 @@ model PartialGasBoilerBuildingOnly
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare BESMod.Systems.Hydraulical.Generation.GasBoiler generation(
-        dTTra_nominal={10},
+        dTTra_nominal={max(hydraulic.transfer.dTTra_nominal)},
         final use_old_design=NoRetrofitHydGen,
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
