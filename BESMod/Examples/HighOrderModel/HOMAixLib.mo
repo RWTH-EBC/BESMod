@@ -1,5 +1,5 @@
 within BESMod.Examples.HighOrderModel;
-model BES_HOM_AixLib
+model HOMAixLib
   extends BESMod.Examples.HighOrderModel.BaseClasses.PartialBES_HOM(
     redeclare BESMod.Systems.Demand.Building.AixLibHighOrder building(
       energyDynamicsWalls=Modelica.Fluid.Types.Dynamics.FixedInitial,
@@ -23,4 +23,4 @@ model BES_HOM_AixLib
      Tolerance=1e-06),
    __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/HighOrderModel/BES_HOM_AixLib.mos"
         "Simulate and plot"));
-end BES_HOM_AixLib;
+end HOMAixLib;

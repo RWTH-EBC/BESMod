@@ -1,5 +1,5 @@
 within BESMod.Examples.HighOrderModel;
-model BES_HOM_Spawn
+model HOMSpawn
   extends BESMod.Examples.HighOrderModel.BaseClasses.PartialBES_HOM(
     redeclare Systems.Demand.Building.SpawnHighOrder         building(
       useConstVentRate=false, wea_name=systemParameters.filNamWea),
@@ -18,4 +18,4 @@ model BES_HOM_Spawn
       __Dymola_Algorithm="Dassl"),
    __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/HighOrderModel/BES_HOM_Spawn.mos"
         "Simulate and plot"));
-end BES_HOM_Spawn;
+end HOMSpawn;
