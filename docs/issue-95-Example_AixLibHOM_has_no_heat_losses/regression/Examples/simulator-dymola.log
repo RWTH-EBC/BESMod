@@ -4029,8 +4029,8 @@ Use:  connect(hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea, hydrauli
 Connected bus variables:
 hydraulic.control.setAndMeaSelPri.sigBusDistr.TStoBufBotMea (connect) "Supply temperature of the lower layers of the storage. Does not have to be the lowest layer, depending on comfort even the top may be selected"
 hydraulic.control.setAndMeaSelSec.sigBusDistr.TStoBufBotMea (connect)
-hydraulic.control.sigBusDistr.TStoBufBotMea (connect)
 hydraulic.distribution.sigBusDistr.TStoBufBotMea (connect)
+hydraulic.control.sigBusDistr.TStoBufBotMea (connect)
 input hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea (connect)
 The DAE has 5068 scalar unknowns and 5068 scalar equations.
 After eliminating unused variables:
