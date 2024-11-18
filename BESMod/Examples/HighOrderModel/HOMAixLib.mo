@@ -21,6 +21,6 @@ model HOMAixLib
   annotation (experiment(StopTime=172800,
      Interval=600,
      Tolerance=1e-06),
-   __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/HighOrderModel/BES_HOM_AixLib.mos"
+   __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/HighOrderModel/HOMAixLib.mos"
         "Simulate and plot"));
 end HOMAixLib;
