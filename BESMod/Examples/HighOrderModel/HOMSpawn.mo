@@ -16,6 +16,6 @@ model HOMSpawn
       Interval=600,
       Tolerance=1e-04,
       __Dymola_Algorithm="Dassl"),
-   __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/HighOrderModel/BES_HOM_Spawn.mos"
+   __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/HighOrderModel/HOMSpawn.mos"
         "Simulate and plot"));
 end HOMSpawn;
