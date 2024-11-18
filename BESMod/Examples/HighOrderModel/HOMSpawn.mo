@@ -14,8 +14,12 @@ model HOMSpawn
   annotation (experiment(
       StopTime=172800,
       Interval=600,
-      Tolerance=1e-04,
-      __Dymola_Algorithm="Dassl"),
+      Tolerance=1e-06,
+      __Dymola_Algorithm="Cvode"),
    __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/HighOrderModel/HOMSpawn.mos"
-        "Simulate and plot"));
+        "Simulate and plot"),
+    Documentation(info="<html>
+<p>This is the Example model with the Spawn model corresponding to the High Order Model (HOM) contained in the AixLib library.</p>
+<p>Further information and possible solutions for error messages can be found in the SpawnHighOrder model documentation.</p>
+</html>"));
 end HOMSpawn;

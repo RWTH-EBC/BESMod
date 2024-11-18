@@ -33,8 +33,10 @@ model CalcHeaDemHOMSpawn
   annotation (Documentation(info="<html>
 <p>This model calculates the heat demand for the Spawn model of the AixLib High Order model according to EN 12831.</p>
 <p>If you want to change the nominal outdoor air temperature, you have to adjust the outdoor air temperature in the epw file as well (see documentation of BESMod.Systems.Demand.Building.SpawnHighOrder). You can do this easily by using the search and replace function in Notepad.</p>
+<p>Further information and possible solutions for error messages can be found in the SpawnHighOrder model documentation.</p>
 </html>"), experiment(
       StopTime=25920000,
       Interval=600,
-      __Dymola_Algorithm="Dassl"));
+      Tolerance=1e-06,
+      __Dymola_Algorithm="Cvode"));
 end CalcHeaDemHOMSpawn;

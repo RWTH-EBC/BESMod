@@ -189,7 +189,7 @@ equation
 </p>
 <p>
   <span style=\"font-size: 8.25pt;\">Dependent on the version of the
-  Buidlings library, some errors may occur:</span>
+  Buildings library, some errors may occur:</span>
 </p>
 <ol>
   <li>
@@ -217,7 +217,8 @@ equation
     room temperatures exceed the bounds due to divergence<br/>
     solution 1: The timestep in the IDF-File needs to be increased (at
     least 6, better 12). This is already done for this model.<br/>
-    solution 2: The tolerance of the solver in dymola needs to be
+    solution 2: Change solver from Dassl to Cvode. However, if Dassl is
+    needed, the tolerance of the solver in dymola needs to be
     increased (e.g. 0.001), see</span> <span style=
     \"font-size: 8.25pt;\"><a href=
     \"https://github.com/lbl-srg/modelica-buildings/issues/3994\">https://github.com/lbl-srg/modelica-buildings/issues/3994</a></span><span style=\"font-size: 8.25pt;\">.</span>
