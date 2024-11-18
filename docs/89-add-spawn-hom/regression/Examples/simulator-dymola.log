@@ -1073,9 +1073,9 @@ The redundancies involve
 initial equations: 
   hydraulic.generation.bou_sinkAir.p = 101325.0;
   ventilation.generation.bouExh.p = ventilation.generation.threeWayValve_b.vol.dynBal.p_start;
-  electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
-  electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
   electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
+  electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
+  electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
  
  
 Statistics
@@ -3828,9 +3828,6 @@ savelog("BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW.translation.log");
 
 rCheck = checkModel("BESMod.Examples.HighOrderModel.HOMSpawn");
 Check of BESMod.Examples.HighOrderModel.HOMSpawn:
- 
-Warning: Command 'Simulate and plot' in model 'BESMod.Examples.HighOrderModel.HOMSpawn',
- specified file modelica://BESMod/Resources/Scripts/Dymola/Examples/HighOrderModel/BES_HOM_Spawn.mos which was not found.
 Warning: Non-literal value.
 In nominal attribute for hydraulic.generation.heatPump.con.preDro.m_flow.
 Ignoring nominal attribute.
