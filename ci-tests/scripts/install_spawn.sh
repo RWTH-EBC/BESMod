@@ -48,14 +48,4 @@ if [ ! -f "$binary_path" ]; then
   fi
 fi
 
-# Set the SPAWNPATH environment variable to the destination directory
-export SPAWNPATH="$(pwd)/installed_dependencies/Buildings/Buildings/Resources/bin/spawn-0.4.3-7048a72798/linux64/bin"
-
-# Add the SPAWNPATH to PATH temporarily for this session
-export PATH="${PATH}:${SPAWNPATH}"
-
-# Confirm the environment variables
-echo "SPAWNPATH is set to: $SPAWNPATH"
-echo "PATH is set to: $PATH"
-
 echo "Spawn binaries successfully installed at $destination_dir"
