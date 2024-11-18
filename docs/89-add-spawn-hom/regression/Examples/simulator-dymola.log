@@ -1073,9 +1073,9 @@ The redundancies involve
 initial equations: 
   hydraulic.generation.bou_sinkAir.p = 101325.0;
   ventilation.generation.bouExh.p = ventilation.generation.threeWayValve_b.vol.dynBal.p_start;
+  electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
   electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
   electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
-  electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
  
  
 Statistics
@@ -1998,9 +1998,9 @@ initial equations:
   weaDat.pAtmSel.p = building.roo.air.vol.dynBal.p_start;
   hydraulic.generation.bou_sinkAir.p = 101325.0;
   ventilation.generation.bouExh.p = ventilation.generation.threeWayValve_b.vol.dynBal.p_start;
-  electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
   electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
   electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
+  electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
  
 Sparse solver handling possible: false.
 Due to flag Advanced.SparseActivate=false.
@@ -2439,9 +2439,6 @@ savelog("BESMod.Examples.Retrofit.Case1PartialRetrofit.translation.log"); = true
 
 rCheck = checkModel("BESMod.Examples.HighOrderModel.HOMAixLib");
 Check of BESMod.Examples.HighOrderModel.HOMAixLib:
- 
-Warning: Command 'Simulate and plot' in model 'BESMod.Examples.HighOrderModel.HOMAixLib',
- specified file modelica://BESMod/Resources/Scripts/Dymola/Examples/HighOrderModel/BES_HOM_AixLib.mos which was not found.
 Warning: Non-literal value.
 In nominal attribute for hydraulic.generation.heatPump.con.preDro.m_flow.
 Ignoring nominal attribute.
@@ -4104,9 +4101,11 @@ However, the start value has been selected from a set of alias variables having 
 293.15, the start value of electrical.weaBus.TWetBul given as 293.15.
 291.15, the start value of weaDat.tWetBul_TDryBulXi.TWetBul given as 291.15.
 Warning: WARNINGS have been issued.
-Failed
-Not possible to open file "BESMod.Examples.HighOrderModel.HOMSpawn.mat": No such file or directory
- = false
+EnergyPlus Completed Successfully.
+ 
+Finished
+Warning: WARNINGS have been issued.
+ = true
 getLastError() 
  = "Translation of <a href=\"Modelica://BESMod.Examples.HighOrderModel.HOMSpawn\">BESMod.Examples.HighOrderModel.HOMSpawn</a>:
 Warning: Non-literal value.
@@ -4343,10 +4342,12 @@ However, the start value has been selected from a set of alias variables having 
 293.15, the start value of electrical.weaBus.TWetBul given as 293.15.
 291.15, the start value of weaDat.tWetBul_TDryBulXi.TWetBul given as 291.15.
 Warning: WARNINGS have been issued.
-Failed
-Not possible to open file \"BESMod.Examples.HighOrderModel.HOMSpawn.mat\": No such file or directory
+EnergyPlus Completed Successfully.
+ 
+Finished
+Warning: WARNINGS have been issued.
 getLastError() ,
-   0, 4, 17
+   0, 6, 16
     
 Declaring variable: Boolean rScript ;
 
