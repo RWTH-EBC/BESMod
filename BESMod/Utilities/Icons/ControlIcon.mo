@@ -47,5 +47,9 @@ partial model ControlIcon
           extent={{-100,-74},{104,-170}},
           lineColor={0,0,0},
           textString="%name%")}),Diagram(graphics,
-                                         coordinateSystem(preserveAspectRatio=false)));
+                                         coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<p>
+A partial model defining an icon for control blocks. 
+</p>
+</html>"));
 end ControlIcon;

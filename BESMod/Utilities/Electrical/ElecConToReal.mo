@@ -25,4 +25,11 @@ equation
           lineColor={0,0,0},
           textString="%name")}),                                 Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
+  annotation (Documentation(info="<html>
+<h4>Information</h4>
+<p>
+    Model for transferring electrical power values from an electrical connector interface to Real output signals. 
+    The model provides separate outputs for electrical load (PElecLoa) and generation (PElecGen).
+</p>
+</html>"));
 end ElecConToReal;

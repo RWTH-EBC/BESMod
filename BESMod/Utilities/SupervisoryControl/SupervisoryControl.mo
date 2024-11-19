@@ -76,5 +76,12 @@ equation
           extent={{2,-8},{18,8}}),
         Line(points={{-100,-80},{-40,-80},{-40,-80}},
           color={0,0,127})}),                                    Diagram(graphics,
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<p>Model for supervisory control implementation with three different modes:</p>
+<ul>
+<li>Internal: Uses internal supervisory control signal when activated</li>
+<li>External: Uses external supervisory control signal</li>
+<li>Local: Only uses local control signal</li>
+</ul>
+</html>"));
 end SupervisoryControl;

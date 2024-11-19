@@ -66,5 +66,16 @@ equation
     annotation (Line(points={{-79,-70},{-22,-70}}, color={0,0,127}));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<h4>Information</h4>
+<p>
+This model demonstrates different configurations of electrical power conversion from real signals to electrical connectors. It shows four different use cases:
+</p>
+<ul>
+<li>Load only conversion using <a href=\"modelica://BESMod.Utilities.Electrical.RealToElecCon\">RealToElecCon</a> with use_souGen=false</li>
+<li>Generation only conversion using <a href=\"modelica://BESMod.Utilities.Electrical.RealToElecCon\">RealToElecCon</a> with use_souLoa=false</li>
+<li>Both load and generation using <a href=\"modelica://BESMod.Utilities.Electrical.RealToElecCon\">RealToElecCon</a> with default settings</li>
+<li>Automatic splitting of power into load/generation using <a href=\"modelica://BESMod.Utilities.Electrical.RealToElecConSplit\">RealToElecConSplit</a></li>
+</ul>
+</html>"));
 end ConverterExample;

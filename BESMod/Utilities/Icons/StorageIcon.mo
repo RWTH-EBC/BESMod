@@ -39,5 +39,11 @@ partial model StorageIcon
           extent={{-100,-72},{104,-168}},
           lineColor={0,0,0},
           textString="%name%")}),Diagram(graphics,
-                                         coordinateSystem(preserveAspectRatio=false)));
+                                         coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+
+
+  <p>
+    A partial model defining a visual icon for storage components.
+  </p>
+</html>"));
 end StorageIcon;

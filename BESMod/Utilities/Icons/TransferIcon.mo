@@ -52,5 +52,8 @@ partial model TransferIcon
           extent={{-100,-76},{104,-172}},
           lineColor={0,0,0},
           textString="%name%")}),Diagram(graphics,
-                                         coordinateSystem(preserveAspectRatio=false)));
+                                         coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+A partial model defining an icon for heat transfer components. 
+
+</html>"));
 end TransferIcon;
