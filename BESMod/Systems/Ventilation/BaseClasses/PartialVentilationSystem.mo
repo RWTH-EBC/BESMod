@@ -237,4 +237,29 @@ equation
   annotation (Icon(
       graphics,              coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
+  annotation (Documentation(info="<html>
+<h4>Information</h4>
+<p>
+This is a partial model for ventilation systems in building energy simulation. 
+It serves as a base class that defines the basic structure and interfaces of a 
+ventilation system with the following main components:
+</p>
+<ul>
+<li>Generation system (<a href=\"modelica://BESMod.Systems.Ventilation.Generation.BaseClasses.PartialGeneration\">BESMod.Systems.Ventilation.Generation.BaseClasses.PartialGeneration</a>)</li>
+<li>Distribution system (<a href=\"modelica://BESMod.Systems.Ventilation.Distribution.BaseClasses.PartialDistribution\">BESMod.Systems.Ventilation.Distribution.BaseClasses.PartialDistribution</a>)</li>
+<li>Control system (<a href=\"modelica://BESMod.Systems.Ventilation.Control.BaseClasses.PartialControl\">BESMod.Systems.Ventilation.Control.BaseClasses.PartialControl</a>)</li>
+</ul>
+
+<h4>Important Parameters</h4>
+<ul>
+<li><code>ventilationSystemParameters</code>: Record containing system design parameters like:
+  <ul>
+    <li>Number of zones (nZones)</li>
+    <li>Nominal temperatures (TOda_nominal, TZone_nominal, TSup_nominal)</li>
+    <li>Nominal heat flows (Q_flow_nominal)</li>
+    <li>Ambient temperature (TAmb)</li>
+  </ul>
+</li>
+</ul>
+</html>"));
 end PartialVentilationSystem;

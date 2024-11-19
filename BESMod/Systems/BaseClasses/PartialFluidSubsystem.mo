@@ -26,4 +26,17 @@ protected
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
+  annotation (Documentation(info="<html>
+
+<p>This is a partial base class for fluid-based subsystems that extends the IBPSA fluid core components through <a href=\"modelica://IBPSA.Fluid.Interfaces.LumpedVolumeDeclarations\">IBPSA.Fluid.Interfaces.LumpedVolumeDeclarations</a>.</p>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li><code>use_openModelica</code>: Parameter to disable features not available in OpenModelica</li>
+  <li><code>allowFlowReversal</code>: If false, equations are simplified by assuming (but not enforcing) no flow reversal</li>
+  <li><code>show_T</code>: Enable computation of actual port temperatures</li>
+  <li><code>rho</code>: Density of the heat distribution system fluid [kg/m³]</li>
+  <li><code>cp</code>: Specific heat capacity of the heat distribution system fluid [J/(kg.K)]</li>
+</ul>
+</html>"));
 end PartialFluidSubsystem;

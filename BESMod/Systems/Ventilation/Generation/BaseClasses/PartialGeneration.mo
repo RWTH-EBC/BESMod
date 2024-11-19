@@ -30,5 +30,9 @@ partial model PartialGeneration
     annotation (Placement(transformation(extent={{60,-108},{80,-88}})));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<p>Base model for all ventilation generation systems. 
+</p>
+
+</html>"));
 end PartialGeneration;

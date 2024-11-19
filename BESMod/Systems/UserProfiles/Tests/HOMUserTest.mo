@@ -7,4 +7,8 @@ model HOMUserTest "Test case for the HOM user profiles"
         TSetProfile));
   extends Modelica.Icons.Example;
 
+  annotation (Documentation(info="<html>
+<p>Test case for the HOM (Higher Order Model) user profiles, 
+implementing ventilation and temperature setpoint profiles.</p>
+</html>"));
 end HOMUserTest;

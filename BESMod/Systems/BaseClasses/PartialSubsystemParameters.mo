@@ -80,4 +80,35 @@ model PartialSubsystemParameters "Model for a partial subsystem"
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
+  annotation (Documentation(info="<html>
+<p>Base model for subsystem parameters in building energy systems. 
+Contains parameters for mass flows, temperatures, heat flows and other physical quantities 
+needed to define both supply and demand sides of the subsystem.</p>
+
+<h4>Important Parameters</h4>
+<ul>
+    <li>Supply side parameters:
+        <ul>
+            <li><code>nParallelSup</code>: Number of parallel supply systems</li>
+            <li><code>TSup_nominal</code>: Nominal supply temperatures</li>
+        </ul>
+    </li>
+    <li>Demand side parameters:
+        <ul>
+            <li><code>nParallelDem</code>: Number of parallel demand systems</li>
+            <li><code>m_flow_nominal</code>: Nominal mass flow rates</li>
+            <li><code>Q_flow_nominal</code>: Nominal heat flow rates</li>
+            <li><code>dTTra_nominal</code>: Nominal temperature differences for heat transfer</li>
+            <li><code>dp_nominal</code>: Nominal pressure differences</li>
+        </ul>
+    </li>
+    <li>Design and loss parameters:
+        <ul>
+            <li><code>f_design</code>: Oversizing factors, e.g. due to heat losses</li>
+            <li><code>QLoss_flow_nominal</code>: Nominal heat losses</li>
+            <li><code>dTLoss_nominal</code>: Temperature differences due to heat losses</li>
+        </ul>
+    </li>
+</ul>
+</html>"));
 end PartialSubsystemParameters;

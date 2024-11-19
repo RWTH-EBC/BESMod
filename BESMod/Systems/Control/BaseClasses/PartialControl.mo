@@ -25,5 +25,22 @@ partial model PartialControl "Model for a partial HEMS control"
           extent={{44,88},{72,114}})));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<p>
+This is a partial model defining a Home Energy Management System (HEMS) control interface. 
+It serves as a base class for implementing specific control strategies.
+</p>
+
+<h4>Connectors</h4>
+<p>
+<ul>
+<li><code>sigBusHyd</code>: Control bus for hydraulic system (<a href=\"modelica://BESMod.Systems.Hydraulical.Interfaces.SystemControlBus\">BESMod.Systems.Hydraulical.Interfaces.SystemControlBus</a>)</li>
+<li><code>sigBusVen</code>: Control bus for ventilation system (<a href=\"modelica://BESMod.Systems.Ventilation.Interfaces.SystemControlBus\">BESMod.Systems.Ventilation.Interfaces.SystemControlBus</a>)</li>
+<li><code>sigBusEle</code>: Control bus for electrical system (<a href=\"modelica://BESMod.Systems.Electrical.Interfaces.SystemControlBus\">BESMod.Systems.Electrical.Interfaces.SystemControlBus</a>)</li>
+<li><code>outBusCtrl</code>: Central control output bus, disabled when use_openModelica=true (<a href=\"modelica://BESMod.Systems.Interfaces.ControlOutputs\">BESMod.Systems.Interfaces.ControlOutputs</a>)</li>
+<li><code>useProBus</code>: User profiles bus (<a href=\"modelica://BESMod.Systems.Interfaces.UseProBus\">BESMod.Systems.Interfaces.UseProBus</a>)</li>
+<li><code>buiMeaBus</code>: Building measurements bus (<a href=\"modelica://BESMod.Systems.Interfaces.BuiMeaBus\">BESMod.Systems.Interfaces.BuiMeaBus</a>)</li>
+</ul>
+</p>
+</html>"));
 end PartialControl;

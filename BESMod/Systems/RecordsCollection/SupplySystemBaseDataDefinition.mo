@@ -31,4 +31,10 @@ record SupplySystemBaseDataDefinition
   parameter Modelica.Units.SI.Area ARoo "Roof area of building"
     annotation (Dialog(group="Geometry"));
 
+  annotation (Documentation(info="<html>
+<p>
+Record that defines base geometric and thermodynamic parameters of a supply system and 
+building.
+</p>
+</html>"));
 end SupplySystemBaseDataDefinition;

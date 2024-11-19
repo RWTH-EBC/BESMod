@@ -259,4 +259,26 @@ equation
           -110},{0,-110}}, color={0,0,127}));
   connect(add.u1, fanFlow.P) annotation (Line(points={{0,-98},{-20,-98},{-20,
           -96},{-87,-96},{-87,51}}, color={0,0,127}));
+  annotation (Documentation(info="<html>
+<p>Model of a ventilation system with heat recovery using a constant effectiveness heat exchanger. 
+The system contains supply and extract fans with controllers, and bypass option using three-way valves. 
+The system is controlled to maintain desired ventilation rates while recovering heat between exhaust and 
+supply air streams.</p>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li><code>parameters</code>: Heat exchanger parameters including pressure drop and effectiveness</li>
+  <li><code>fanData</code>: Fan configuration parameters</li>
+  <li><code>threeWayValveParas</code>: Parameters for bypass valves</li>
+  <li><code>tempSensorData</code>: Temperature sensor configuration</li>
+</ul>
+
+<h4>Main Components</h4>
+<ul>
+  <li>Heat exchanger: Constant effectiveness heat recovery unit (<a href=\"modelica://IBPSA.Fluid.HeatExchangers.ConstantEffectiveness\">IBPSA.Fluid.HeatExchangers.ConstantEffectiveness</a>)</li>
+  <li>Fans: Speed controlled supply and extract fans (<a href=\"modelica://IBPSA.Fluid.Movers.Preconfigured.SpeedControlled_y\">IBPSA.Fluid.Movers.Preconfigured.SpeedControlled_y</a>)</li>
+  <li>Valves: Two three-way valves for bypass control (<a href=\"modelica://IBPSA.Fluid.Actuators.Valves.ThreeWayLinear\">IBPSA.Fluid.Actuators.Valves.ThreeWayLinear</a>)</li>
+  <li>Sensors: Temperature sensors at exhaust inlet and supply outlet</li>
+</ul>
+</html>"));
 end ControlledDomesticVentilation;

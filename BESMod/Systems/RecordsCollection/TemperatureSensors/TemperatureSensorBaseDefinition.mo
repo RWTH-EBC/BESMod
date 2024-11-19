@@ -17,4 +17,9 @@ partial record TemperatureSensorBaseDefinition
 annotation (Icon(graphics,
                  coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
       coordinateSystem(preserveAspectRatio=false)));
+  annotation (Documentation(info="<html>
+<p>
+Base record that defines common parameters for temperature sensors in the BESMod library. 
+</p>
+</html>"));
 end TemperatureSensorBaseDefinition;

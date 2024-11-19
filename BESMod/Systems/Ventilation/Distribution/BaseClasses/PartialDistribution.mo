@@ -35,5 +35,9 @@ partial model PartialDistribution
     annotation (Placement(transformation(extent={{60,-108},{80,-88}})));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<p>
+Base distribution model for ventilation systems. 
+</p>
+</html>"));
 end PartialDistribution;

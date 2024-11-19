@@ -51,4 +51,12 @@ equation
       horizontalAlignment=TextAlignment.Right));
   connect(minMaxSet.yMin, summerByPass.TZoneSet) annotation (Line(points={{-57,-46},
           {-35.2,-46},{-35.2,-4}}, color={0,0,127}));
+  annotation (Documentation(info="<html>
+<p>Model for controlling a heat exchanger bypass in summer conditions. 
+The bypass is controlled based on outdoor temperature and zone temperature 
+measurements/setpoints. 
+If enabled, the bypass control is handled by 
+<a href=\"modelica://BESMod.Systems.Ventilation.Control.Components.SummerByPass\">BESMod.Systems.Ventilation.Control.Components.SummerByPass</a> 
+component. If disabled, a constant 0 signal is used.</p>
+</html>"));
 end SummerPIDByPass;

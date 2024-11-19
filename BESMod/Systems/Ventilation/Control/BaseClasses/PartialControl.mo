@@ -38,5 +38,13 @@ partial model PartialControl
 
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<p>
+  This is a partial control model for ventilation systems, 
+serving as a base class that provides common interfaces and parameters 
+for ventilation control implementations. 
+It extends from the control icon model and defines essential bus connectors for 
+communication between different system components.
+</p>
+</html>"));
 end PartialControl;

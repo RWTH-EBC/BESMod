@@ -14,4 +14,18 @@ record DefaultThreeWayValve
     R=50,
     delta0=0.01,
     deltaM=0.02);
+  annotation (Documentation(info="<html>
+<p>
+Default parameter settings for a three-way valve. 
+This model uses flow characteristics based on valve authority and fixed 
+parameters for initialization and dynamics.
+</p>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li><code>valveAutho</code> = 0.5: Valve authority</li>
+</ul>
+</body>
+</html>
+</html>"));
 end DefaultThreeWayValve;

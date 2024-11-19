@@ -41,4 +41,24 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  annotation (Documentation(info="<html>
+<h4>Information</h4>
+<p>Test model for a controlled domestic ventilation system with heat recovery. 
+The model extends from <a href=\"modelica://BESMod.Systems.Ventilation.Generation.Tests.PartialTest\">PartialTest</a> 
+and uses a <a href=\"modelica://BESMod.Systems.Ventilation.Generation.ControlledDomesticVentilation\">ControlledDomesticVentilation</a> system.
+</p>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li>Heat exchanger pressure drop (dpHex_nominal): 100 Pa</li>
+  <li>Three-way valves: Equal percentage linear characteristics</li>
+  <li>Components configured using default records for:
+    <ul>
+      <li>Three-way valve parameters</li> 
+      <li>Fan data</li>
+      <li>Temperature sensors</li>
+    </ul>
+  </li>
+</ul>
+</html>"));
 end ControlledDomesticVentilation;

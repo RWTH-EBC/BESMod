@@ -57,4 +57,29 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  annotation (Documentation(info="<html>
+<p>
+A user profile model providing internal gains based on TEASER 
+(Tool for Energy Analysis and Simulation for Efficient Retrofit) and temperature setpoints 
+with an optional setback period. 
+</p>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li><code>fileNameIntGains</code>: Path to text file containing internal gains profiles</li>
+  <li><code>gain[3]</code>: Multiplier for internal gains (can be used to enable/disable individual gains)</li>
+  <li><code>dTSetBack</code>: Temperature reduction during setback period [K]</li>
+  <li><code>startTimeSetBack</code>: Start time of setback period [s]</li>
+  <li><code>hoursSetBack</code>: Duration of setback period [h] (max 24)</li>
+</ul>
+
+<h4>Outputs</h4>
+<p>
+The model provides the following outputs via the useProBus connector:
+</p>
+<ul>
+  <li>Internal gains profiles (3 components) from TEASER</li>
+  <li>Zone temperature setpoints including setback</li>
+</ul>
+</html>"));
 end TEASERProfiles;
