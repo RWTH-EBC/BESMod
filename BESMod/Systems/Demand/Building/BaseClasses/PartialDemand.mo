@@ -8,18 +8,25 @@ partial model PartialDemand "Partial demand model for HPS"
   parameter Modelica.Units.SI.Temperature TSetZone_nominal[nZones]=fill(293.15,
       nZones) "Nominal room set temerature"
     annotation (Dialog(group="Temperature demand"));
-  parameter Modelica.Units.SI.Area AZone[nZones] "Area of zones/rooms"
+  parameter Modelica.Units.SI.Area AZone[nZones](each min=0.1)
+    "Area of zones/rooms"
     annotation (Dialog(group="Geometry"));
-  parameter Modelica.Units.SI.Height hZone[nZones] "Height of zones"
+  parameter Modelica.Units.SI.Height hZone[nZones](each min=0.1)
+    "Height of zones"
     annotation (Dialog(group="Geometry"));
-  parameter Modelica.Units.SI.Area ABui "Ground area of building"
+  parameter Modelica.Units.SI.Area ABui(min=0.1)
+    "Ground area of building"
     annotation (Dialog(group="Geometry"));
-  parameter Modelica.Units.SI.Height hBui "Height of building"
+  parameter Modelica.Units.SI.Height hBui(min=0.1)
+    "Height of building"
     annotation (Dialog(group="Geometry"));
-  parameter Modelica.Units.SI.Area ARoo "Roof area of building"
+  parameter Modelica.Units.SI.Area ARoo(min=0.1)
+    "Roof area of building"
     annotation (Dialog(group="Geometry"));
   parameter Boolean use_hydraulic=true "=false to disable hydraulic supply";
   parameter Boolean use_ventilation=true "=false to disable ventilation supply";
+  parameter Modelica.Units.SI.Temperature TOda_nominal "Nominal outdoor air temperature"
+   annotation(Dialog(group="Design - Top Down: Parameters are given by the parent system"));
 
   replaceable package MediumZone = IBPSA.Media.Air constrainedby
     Modelica.Media.Interfaces.PartialMedium annotation (choices(
@@ -63,6 +70,17 @@ partial model PartialDemand "Partial demand model for HPS"
           extent={{-20,78},{20,120}})));
   Electrical.Interfaces.InternalElectricalPinOut internalElectricalPin
     annotation (Placement(transformation(extent={{60,-106},{80,-86}})));
+  parameter Modelica.Units.SI.Density rho=MediumZone.density(sta_nominal)
+    "Density of medium / fluid in heat distribution system"
+    annotation (Dialog(tab="Assumptions", group="General"));
+  parameter Modelica.Units.SI.SpecificHeatCapacity cp=
+      MediumZone.specificHeatCapacityCp(sta_nominal)
+    "Specific heat capacaity of medium / fluid in heat distribution system"
+    annotation (Dialog(tab="Assumptions", group="General"));
+
+protected
+  parameter MediumZone.ThermodynamicState sta_nominal=MediumZone.setState_pTX(
+      T=MediumZone.T_default, p=MediumZone.p_default, X=MediumZone.X_default) "Nominal / default state of medium";
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));

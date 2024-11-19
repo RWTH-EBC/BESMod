@@ -3,23 +3,26 @@ model SolarThermalBuildings
   "HPS which is supported by a solar thermal collector"
   extends BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS(redeclare
       model hydGeneration =
-        BESMod.Systems.Hydraulical.Generation.SolarThermalBivHPBuiLib (
-        redeclare model PerDataMainHP =
-            AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (refrigerant=
-                "Propane", flowsheet="VIPhaseSeparatorFlowsheet"),
+        BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump
+        (
+        use_eleHea=false,
+        genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.Monovalent,
         redeclare
-          BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
-          heatPumpParameters(genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentParallel),
-
+          BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps.DefaultHP
+          parHeaPum,
+        redeclare model RefrigerantCycleHeatPumpHeating =
+            AixLib.Fluid.HeatPumps.ModularReversible.RefrigerantCycle.TableData3D
+            (y_nominal=0.8, redeclare
+              AixLib.Fluid.HeatPumps.ModularReversible.Data.TableDataSDF.TableData3D.VCLibPy.VCLibVaporInjectionPhaseSeparatorPropane
+              datTab),
         redeclare
-          BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-          heatingRodParameters,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
-
-        redeclare package Medium_eva = AixLib.Media.Air,
+          BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater.DefaultElectricHeater
+          parEleHea,
+        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
+        redeclare package MediumEva = AixLib.Media.Air,
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
-          temperatureSensorData,
+          parTemSen,
         redeclare BESMod.Examples.SolarThermalSystem.SolarCollector
           solarThermalParas(
           final A=parameterStudy.A,
@@ -27,8 +30,13 @@ model SolarThermalBuildings
           final c1=parameterStudy.c1,
           final c2=parameterStudy.c2),
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover
-          pumpSTData));
+          parPumSolThe));
 
   extends Modelica.Icons.Example;
-
+  annotation (
+    experiment(StopTime=172800,
+     Interval=600,
+     Tolerance=1e-06),
+   __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/SolarThermalSystem/SolarThermalBuildings.mos"
+        "Simulate and plot"));
 end SolarThermalBuildings;

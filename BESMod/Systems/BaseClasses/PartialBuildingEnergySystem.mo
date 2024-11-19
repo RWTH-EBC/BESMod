@@ -41,6 +41,7 @@ partial model PartialBuildingEnergySystem "Partial BES"
     BESMod.Systems.Demand.Building.BaseClasses.PartialDemand(
       redeclare final package MediumZone = MediumZone,
       final nZones=systemParameters.nZones,
+      final TOda_nominal=systemParameters.TOda_nominal,
       final TSetZone_nominal=systemParameters.TSetZone_nominal,
       final use_hydraulic=systemParameters.use_hydraulic,
       final use_ventilation=systemParameters.use_ventilation,
@@ -58,6 +59,7 @@ partial model PartialBuildingEnergySystem "Partial BES"
     Demand.DHW.BaseClasses.PartialDHW(
     redeclare final package Medium = MediumDHW,
     final TDHW_nominal=systemParameters.TSetDHW,
+    final dpDHW_nominal=hydraulic.distribution.dpDHW_nominal,
     final TDHWCold_nominal=systemParameters.TDHWWaterCold,
     final subsystemDisabled=not systemParameters.use_dhw)
                                               annotation (choicesAllMatching=true, Placement(
@@ -94,8 +96,10 @@ partial model PartialBuildingEnergySystem "Partial BES"
       hydraulicSystemParameters(
       final nZones=systemParameters.nZones,
       final Q_flow_nominal=systemParameters.QBui_flow_nominal,
+      final QOld_flow_design=systemParameters.QBuiOld_flow_design,
       final TOda_nominal=systemParameters.TOda_nominal,
       final TSup_nominal=systemParameters.THydSup_nominal,
+      final TSupOld_design=systemParameters.THydSupOld_design,
       final TZone_nominal=systemParameters.TSetZone_nominal,
       final TAmb=systemParameters.TAmbHyd,
       final AZone=building.AZone,
@@ -124,6 +128,7 @@ partial model PartialBuildingEnergySystem "Partial BES"
       ventilationSystemParameters(
       final nZones=systemParameters.nZones,
       final Q_flow_nominal=systemParameters.QBui_flow_nominal,
+      final QOld_flow_design=systemParameters.QBuiOld_flow_design,
       final TOda_nominal=systemParameters.TOda_nominal,
       final TSup_nominal=systemParameters.TVenSup_nominal,
       final TZone_nominal=systemParameters.TSetZone_nominal,
@@ -344,6 +349,15 @@ equation
           -41.0824,118.857}},
       color={0,0,0},
       thickness=1));
+  connect(control.useProBus, userProfiles.useProBus) annotation (Line(
+      points={{16.82,198.37},{16.82,206},{-214,206},{-214,150.775},{-225.167,
+          150.775}},
+      color={0,127,0},
+      thickness=0.5));
+  connect(control.buiMeaBus, building.buiMeaBus) annotation (Line(
+      points={{62.04,198.37},{62.04,206},{-16,206},{-16,88},{39,88},{39,77.62}},
+      color={255,128,0},
+      thickness=0.5));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false, extent={{-280,
             -140},{280,200}})),

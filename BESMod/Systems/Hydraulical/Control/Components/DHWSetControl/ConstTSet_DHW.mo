@@ -2,15 +2,15 @@ within BESMod.Systems.Hydraulical.Control.Components.DHWSetControl;
 model ConstTSet_DHW "Constant DHW set temperature"
   extends BaseClasses.PartialTSet_DHW_Control;
 
-  Modelica.Blocks.Sources.Constant const(final k=T_DHW)
+  Modelica.Blocks.Sources.Constant const(final k=TSetDHW_nominal)
     annotation (Placement(transformation(extent={{-18,-22},{28,24}})));
 
   Modelica.Blocks.Sources.BooleanConstant
                                    booleanConstant(final k=false)
     annotation (Placement(transformation(extent={{38,-66},{60,-48}})));
 equation
-  connect(const.y, TSet_DHW) annotation (Line(points={{30.3,1},{68.15,1},{68.15,
-          0},{110,0}}, color={0,0,127}));
+  connect(const.y, TSetDHW) annotation (Line(points={{30.3,1},{68.15,1},{68.15,0},
+          {110,0}}, color={0,0,127}));
   connect(booleanConstant.y, y) annotation (Line(points={{61.1,-57},{86.15,-57},
           {86.15,-58},{110,-58}}, color={255,0,255}));
   annotation (Icon(graphics={

@@ -2,6 +2,7 @@ within BESMod.Systems.Hydraulical.Distribution;
 model BuildingOnly "Only loads building"
   extends BaseClasses.PartialDistribution(
     use_dhw=false,
+    final dpDHW_nominal=0,
     final fFullSto=0,
     final QDHWBefSto_flow_nominal=Modelica.Constants.eps,
     final VStoDHW=0,

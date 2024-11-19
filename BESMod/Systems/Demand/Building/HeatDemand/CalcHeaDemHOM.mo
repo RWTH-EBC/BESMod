@@ -14,14 +14,14 @@ model CalcHeaDemHOM
 
   extends PartialCalcHeatingDemand(
     redeclare BESMod.Systems.UserProfiles.AixLibHighOrderProfiles heaDemSce(
-        redeclare AixLib.DataBase.Profiles.Ventilation2perDayMean05perH venPro,
-        redeclare AixLib.DataBase.Profiles.SetTemperaturesVentilation2perDay
+      redeclare AixLib.DataBase.Profiles.Ventilation2perDayMean05perH venPro,
+      redeclare AixLib.DataBase.Profiles.SetTemperaturesVentilation2perDay
         TSetProfile,
       gain=0),
     TN_heater=1,
     KR_heater=10000,
     h_heater=fill(100000, building.nZones),
-    redeclare Examples.UseCaseHighOrderModel.HOMSystem systemParameters(
+    redeclare Examples.HighOrderModel.HOMSystem systemParameters(
       TOda_nominal=261.15,
       TSetZone_nominal(each displayUnit="K") = {293.15,293.15,288.15,293.15,
         293.15,293.15,293.15,288.15,297.15,293.15},

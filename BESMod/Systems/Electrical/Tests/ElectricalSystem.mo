@@ -25,7 +25,6 @@ model ElectricalSystem
     redeclare Generation.PVSystemMultiSub generation(
       redeclare model CellTemperature =
           AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround,
-
       redeclare AixLib.DataBase.SolarElectric.SchuecoSPV170SME1 pVParameters,
       lat=weaDat.lat,
       lon=weaDat.lon,
@@ -44,7 +43,7 @@ model ElectricalSystem
     annotation (Placement(transformation(extent={{-70,24},{-50,44}})));
   IBPSA.BoundaryConditions.WeatherData.ReaderTMY3 weaDat(filNam=
         ModelicaServices.ExternalReferences.loadResource(
-        "modelica://BESMod/Resources/TRY2015_522361130393_Jahr_City_Potsdam.mos"))
+        "modelica://BESMod/Resources/WeatherData/TRY2015_522361130393_Jahr_City_Potsdam.mos"))
     annotation (Placement(transformation(extent={{-100,68},{-72,96}})));
   BESMod.Utilities.Electrical.ElecConToReal elecConToReal(reverse=true)
     annotation (Placement(transformation(extent={{64,-12},{88,14}})));

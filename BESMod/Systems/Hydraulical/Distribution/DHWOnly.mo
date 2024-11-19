@@ -3,6 +3,7 @@ model DHWOnly "only loads DHW"
   extends BaseClasses.PartialDistribution(
     final VStoDHW=0,
     final fFullSto=0,
+    final dpDHW_nominal=0,
     final QDHWStoLoss_flow=0,
     final designType=BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.NoStorage,
     nParallelDem=1,

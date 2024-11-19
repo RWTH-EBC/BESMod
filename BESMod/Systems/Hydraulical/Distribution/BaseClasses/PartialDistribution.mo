@@ -4,7 +4,8 @@ partial model PartialDistribution
   extends BESMod.Utilities.Icons.StorageIcon;
   extends BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters(final
       dp_nominal=dpDem_nominal,
-      TSup_nominal=TDem_nominal .+ dTLoss_nominal .+ dTTra_nominal);
+      TSup_nominal=TDem_nominal .+ dTLoss_nominal .+ dTTra_nominal,
+      TSupOld_design=TDemOld_design .+ dTLoss_nominal .+ dTTraOld_design);
   extends PartialDHWParameters;
   replaceable package MediumDHW =
       Modelica.Media.Interfaces.PartialMedium
@@ -16,23 +17,37 @@ partial model PartialDistribution
   parameter Boolean use_dhw=true "=false to disable DHW";
   parameter Modelica.Units.SI.MassFlowRate mSup_flow_nominal[nParallelSup](each min=Modelica.Constants.eps)
     "Nominal mass flow rate of system supplying the distribution" annotation (
-      Dialog(group=
-          "Design - Top Down: Parameters are given by the parent system"));
+      Dialog(group="Design - Top Down: Parameters are given by the parent system"));
+  parameter Modelica.Units.SI.MassFlowRate mSupOld_flow_design[nParallelSup](each min=Modelica.Constants.eps) = mSup_flow_nominal
+    "Old design mass flow rate of system supplying the distribution" annotation (
+      Dialog(group="Design - Top Down: Parameters are given by the parent system"));
+  parameter Modelica.Units.SI.MassFlowRate mSup_flow_design[nParallelSup](each min=Modelica.Constants.eps) = mSup_flow_nominal
+    "Design mass flow rate of system supplying the distribution" annotation (
+      Dialog(group="Design - Top Down: Parameters are given by the parent system"));
   parameter Modelica.Units.SI.MassFlowRate mDem_flow_nominal[nParallelDem](each min=Modelica.Constants.eps)
     "Nominal mass flow rate of demand system of the distribution" annotation (
-      Dialog(group=
-          "Design - Top Down: Parameters are given by the parent system"));
+      Dialog(group="Design - Top Down: Parameters are given by the parent system"));
+  parameter Modelica.Units.SI.MassFlowRate mDemOld_flow_design[nParallelDem](each min=Modelica.Constants.eps) = mDem_flow_nominal
+    "Old design mass flow rate of demand system of the distribution" annotation (
+      Dialog(group="Design - Top Down: Parameters are given by the parent system"));
+  parameter Modelica.Units.SI.MassFlowRate mDem_flow_design[nParallelDem](each min=Modelica.Constants.eps) = mDem_flow_nominal
+    "Design mass flow rate of demand system of the distribution" annotation (
+      Dialog(group="Design - Top Down: Parameters are given by the parent system"));
   parameter Modelica.Units.SI.TemperatureDifference dTTraDHW_nominal
     "Nominal temperature difference to transfer heat to the DHW storage"
     annotation (Dialog(group="DHW Demand"));
   parameter Modelica.Units.SI.PressureDifference dpSup_nominal[nParallelSup]
     "Nominal pressure loss of resistances connected to the supply system of the distribution"
-    annotation (Dialog(group=
-          "Design - Bottom Up: Parameters are defined by the subsystem"));
+    annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
+  parameter Modelica.Units.SI.PressureDifference dpSupOld_design[nParallelSup]=dpSup_nominal
+    "Old design pressure loss of resistances connected to the supply system of the distribution"
+    annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
   parameter Modelica.Units.SI.PressureDifference dpDem_nominal[nParallelDem]
     "Nominal pressure loss of resistances connected to the demand system of the distribution"
-    annotation (Dialog(group=
-          "Design - Bottom Up: Parameters are defined by the subsystem"));
+    annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
+  parameter Modelica.Units.SI.PressureDifference dpDemOld_design[nParallelDem] = dpDem_nominal
+    "Old design pressure loss of resistances connected to the demand system of the distribution"
+    annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
 
   Modelica.Fluid.Interfaces.FluidPort_a portGen_in[nParallelSup](redeclare
       final package Medium = MediumGen) "Inlet from the generation" annotation (

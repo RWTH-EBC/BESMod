@@ -1,0 +1,34 @@
+# You can adjust the sequence of the stages to your needs:
+stages:
+    - Ref_Check
+    - open_PR
+    - create_html_whitelist
+    - create_model_whitelist
+    - create_example_whitelist
+    - HTML_Check
+    - Style_check
+    - model_check
+    - simulate
+    - RegressionTest
+    - plot_ref
+    - prepare
+    - prepare_pages
+    - deploy
+
+variables:
+    Github_Repository: RWTH-EBC/BESMod
+    CREATE_PAGES_ON_FAILURE: true
+
+include:
+    - 'ci-tests/scripts/deploy/ci_pr_interact_comment_file.gitlab-ci.yml'  
+    - 'ci-tests/scripts/deploy/prepare_pages.gitlab-ci.yml'  
+    - 'ci-tests/scripts/syntax_tests/html_check.gitlab-ci.yml'  
+    - 'ci-tests/scripts/syntax_tests/naming_guideline.gitlab-ci.yml'  
+    - 'ci-tests/scripts/syntax_tests/style_check.gitlab-ci.yml'  
+    - 'ci-tests/scripts/unit_tests/check_OM_model.gitlab-ci.yml'  
+    - 'ci-tests/scripts/unit_tests/check_model.gitlab-ci.yml'  
+    - 'ci-tests/scripts/unit_tests/regression_test.gitlab-ci.yml'  
+    - 'ci-tests/scripts/unit_tests/simulate_OM_model.gitlab-ci.yml'  
+    - 'ci-tests/scripts/unit_tests/simulate_model.gitlab-ci.yml'  
+    - project: 'EBC/EBC_all/gitlab_ci/templates'
+      file: 'pages/gh-pages.gitlab-ci.yml'

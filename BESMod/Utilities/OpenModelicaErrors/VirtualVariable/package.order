@@ -1,6 +1,6 @@
-SomeConnector
 Bus
+BusWithVar
+SomeConnector
 Subsystem
 SystemShouldWork
 SystemWorks
-BusWithVar

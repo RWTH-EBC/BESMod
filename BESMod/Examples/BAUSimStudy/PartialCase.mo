@@ -2,95 +2,87 @@ within BESMod.Examples.BAUSimStudy;
 partial model PartialCase
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
-    redeclare Systems.Demand.Building.TEASERThermalZone building(redeclare
-        BESMod.Systems.Demand.Building.RecordsCollection.RefAachen oneZoneParam(
-          heaLoadFacGrd=0, heaLoadFacOut=0)),
+    redeclare Systems.Demand.Building.TEASERThermalZone building(
+      hBui=sum(building.zoneParam.VAir)^(1/3),
+      ABui=sum(building.zoneParam.VAir)^(2/3),
+      ARoo=sum(building.zoneParam.ARoof),
+      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial),
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
-      redeclare Systems.Hydraulical.Generation.HeatPumpAndHeatingRod generation(
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
-        redeclare package Medium_eva = AixLib.Media.Air,
+      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
+      redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater
+        generation(
+        redeclare model RefrigerantCycleHeatPumpHeating =
+            AixLib.Fluid.HeatPumps.ModularReversible.RefrigerantCycle.TableData3D
+            (y_nominal=0.8, redeclare
+              AixLib.Fluid.HeatPumps.ModularReversible.Data.TableDataSDF.TableData3D.VCLibPy.VCLibVaporInjectionPhaseSeparatorPropane
+              datTab),
+        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
+        genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
+
+        TBiv=TBiv,
         redeclare
-          BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
-          heatPumpParameters(
-          genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
-          TBiv=TBiv,
-          scalingFactor=hydraulic.generation.heatPumpParameters.QPri_flow_nominal
-              /5000,
-          dpCon_nominal=0,
-          dpEva_nominal=0,
-          use_refIne=false,
-          refIneFre_constant=0),
+          BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps.DefaultHP
+          parHeaPum,
         redeclare
-          BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-          heatingRodParameters,
-        redeclare model PerDataMainHP =
-            AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
-            QCon_flow_nominal=hydraulic.generation.heatPumpParameters.QPri_flow_nominal,
-            refrigerant="Propane",
-            flowsheet="VIPhaseSeparatorFlowsheet"),
+          BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater.DefaultElectricHeater
+          parEleHea,
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
-          temperatureSensorData),
-      redeclare Systems.Hydraulical.Control.ConstHys_PI_ConOut_HPSController
-        control(
+          parTemSen),
+      redeclare Systems.Hydraulical.Control.MonoenergeticHeatPumpSystem control(
         redeclare
           BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
-          thermostaticValveController,
+          valCtrl,
+        dTHysBui=10,
+        dTHysDHW=10,
+        redeclare model DHWHysteresis =
+            BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
+
+        redeclare model BuildingHysteresis =
+            BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
+
         redeclare
-          BESMod.Systems.Hydraulical.Control.RecordsCollection.ThermostaticValveDataDefinition
-          thermostaticValveParameters,
-        redeclare
-          BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultBivHPControl
-          bivalentControlData(TBiv=TBiv),
-        redeclare
-          Systems.Hydraulical.Control.Components.DHWSetControl.ConstTSet_DHW
-          TSet_DHW,
-        redeclare
-          BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultSafetyControl
-          safetyControl),
+          BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
+          parPIDHeaPum),
       redeclare
         BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedDirectLoading
         distribution(
-        QHRAftBuf_flow_nominal=0,
-        use_heatingRodAfterBuffer=false,
+        QHeaAftBuf_flow_nominal=0,
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
-          temperatureSensorData,
+          parTemSen,
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
-          threeWayValveParameters,
+          parThrWayVal,
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorage
-          bufParameters(
-          use_QLos=true,
-          QLosPerDay=1.5,
-          T_m=338.15),
+          parStoBuf(use_QLos=true, T_m=338.15),
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorage
-          dhwParameters(
+          parStoDHW(
           dTLoadingHC1=10,
           use_QLos=true,
-          QLosPerDay=1.5,
           T_m=65 + 273.15),
         redeclare
-          BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHR
-          heatingRodAftBufParameters),
+          BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater.DefaultElectricHeater
+          parEleHeaAftBuf),
       redeclare BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased
         transfer(
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
-          radParameters,
+          parRad,
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
-          transferDataBaseDefinition,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData)),
-    redeclare Systems.Demand.DHW.DHW DHW(
+          parTra,
+        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum)),
+    redeclare Systems.Demand.DHW.StandardProfiles DHW(
+      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
-      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover pumpData,
+      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
         calcmFlow),
     redeclare Systems.UserProfiles.TEASERProfiles userProfiles,
-    redeclare BESParameters systemParameters,
+    redeclare BESParameters systemParameters(QBui_flow_nominal=building.QRec_flow_nominal),
     redeclare BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy
       parameterStudy,
     redeclare final package MediumDHW = AixLib.Media.Water,
@@ -101,7 +93,7 @@ partial model PartialCase
   parameter Modelica.Units.SI.Temperature TBiv=271.15
     "Nominal bivalence temperature. = TOda_nominal for monovalent systems.";
   annotation (experiment(
-      StopTime=31536000,
+      StopTime=172800,
       Interval=600,
       __Dymola_Algorithm="Dassl"));
 end PartialCase;

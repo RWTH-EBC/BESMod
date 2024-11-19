@@ -1,0 +1,116 @@
+# Variables
+# dym_image_name : registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola_2022-miniconda
+# ci_stage_simulate: simulate
+# ci_stage_create_exampel_whitelist: create_example_whitelist
+# arg_changed : --dym-options DYM_SIM --filter-whitelist-flag  --changed-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
+# arg_push: --dym-options DYM_SIM --filter-whitelist-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
+# library: BESMod
+# ci_check_commit ci_simulate
+# modelicapyci_test_validate_module: ModelicaPyCI.unittest.validatetest
+# packages_per_job: {'Examples': 'Examples', 'Systems': 'Systems', 'Other': 'Tutorial Utilities'}
+# arg_wh: --dym-options DYM_SIM --create-whitelist-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --additional-libraries-to-load  --packages Examples Tutorial Utilities Systems --library BESMod 
+# bot_update_model_whitelist_commit: CI message from ebc-aixlib-bot. Update file whitelist-simulate_file. Please pull the new files before push again.
+# whitelist_model_file: dymola_simulate_whitelist.txt
+# ci_create_model_whitelist_commit: ci_create_example_whitelist
+# result_dir : ci-tests/result
+# expire_in_time: 7h
+# xvfb_flag : xvfb-run -n 77
+# config_ci_exit_file : ci-tests/Configfiles/exit.sh
+
+include: 'ci-tests/scripts/utilities.yml'
+
+stages:
+    - simulate
+    - create_example_whitelist
+
+
+.simulate_model_job:push:
+    image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola_2022-miniconda
+    stage: simulate
+    before_script:
+        - !reference [.activate_python_and_install_requirements, script]
+        - !reference [.custom_install_additional_modelica_libraries, script]
+    script:
+        - xvfb-run -n 77 python -m ModelicaPyCI.unittest.validatetest  --dym-options DYM_SIM --filter-whitelist-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
+    artifacts:
+        when: on_failure
+        paths:
+            - ci-tests/result/
+        expire_in: 7h
+    rules:
+        - if: $CI_COMMIT_MESSAGE  =~ /ci_simulate/ && $CI_PIPELINE_SOURCE == "push"
+          when: always
+        - !reference [.rules:push , rules]
+
+.simulate_model_job:changed:
+    image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola_2022-miniconda
+    stage: simulate
+    before_script:
+        - !reference [.activate_python_and_install_requirements, script]
+        - !reference [.custom_install_additional_modelica_libraries, script]
+    script:
+        - xvfb-run -n 77 python -m ModelicaPyCI.unittest.validatetest --dym-options DYM_SIM --filter-whitelist-flag  --changed-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
+    artifacts:
+        when: on_failure
+        paths:
+            - ci-tests/result/
+        expire_in: 7h
+    rules:
+        - !reference [.rules:changed , rules]
+
+Simulate_BESMod_Examples:push:
+    variables:
+        lib_package: Examples
+    extends: .simulate_model_job:push
+
+Simulate_BESMod_Systems:push:
+    variables:
+        lib_package: Systems
+    extends: .simulate_model_job:push
+
+Simulate_BESMod_Other:push:
+    variables:
+        lib_package: Tutorial Utilities
+    extends: .simulate_model_job:push
+
+
+
+Simulate_BESMod_Examples:changed:
+    variables:
+        lib_package: Examples
+    extends: .simulate_model_job:changed
+
+Simulate_BESMod_Systems:changed:
+    variables:
+        lib_package: Systems
+    extends: .simulate_model_job:changed
+
+Simulate_BESMod_Other:changed:
+    variables:
+        lib_package: Tutorial Utilities
+    extends: .simulate_model_job:changed
+
+
+simulate_whitelist_job:
+    image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola_2022-miniconda
+    stage:  create_example_whitelist
+    before_script:
+        - !reference [.activate_python_and_install_requirements, script]
+        - !reference [.custom_install_additional_modelica_libraries, script]
+        - !reference [.github_ssh_auth, script]
+    script:
+        - xvfb-run -n 77 python -m ModelicaPyCI.unittest.validatetest --dym-options DYM_SIM --create-whitelist-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --additional-libraries-to-load  --packages Examples Tutorial Utilities Systems --library BESMod 
+    after_script:
+        - if ! cat ci-tests/Configfiles/exit.sh | grep "FAIL"; then
+            exit 0;
+          fi
+        - message="CI message from ebc-aixlib-bot. Update file whitelist-simulate_file. Please pull the new files before push again."
+        - files_to_push="dymola_simulate_whitelist.txt"
+        - !reference [.git_push, script]
+    artifacts:
+        paths:
+            - ci-tests/result/
+        expire_in: 7h
+    rules:
+        - if: $CI_COMMIT_MESSAGE =~ /ci_create_example_whitelist/ && $CI_PIPELINE_SOURCE == "push"
+          when: always

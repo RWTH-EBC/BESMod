@@ -1,5 +1,8 @@
-CountTimeDiscomfort
 ComfortCalculator
+CountTimeDiscomfort
 DeviceKPICalculator
 EnergyKPICalculator
+RoomControlCalculator
+ZoneEnergyBalance
+ZoneTemperature
 BaseClasses

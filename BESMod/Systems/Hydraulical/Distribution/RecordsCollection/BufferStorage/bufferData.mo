@@ -1,7 +1,6 @@
 within BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage;
 record bufferData "Simpler design for this repo"
-  extends AixLib.DataBase.Storage.BufferStorageBaseDataDefinition(
-    pipeHC1=AixLib.DataBase.Pipes.Copper.Copper_22x1(),
+  extends AixLib.DataBase.Storage.StorageDetailedBaseDataDefinition(
     roughness=2.5e-5,
     lengthHC1=floor((hHC1Up - hHC1Low)/(dTank*0.8*tan(0.17453292519943)))*cos(0.17453292519943)*dTank*0.8,
     cWall=cIns,

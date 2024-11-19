@@ -20,8 +20,7 @@ model ComfortCalculator "Cacluate the discomort in K*s"
     annotation (Placement(transformation(extent={{-26,-16},{-6,4}})));
   Modelica.Blocks.Sources.Constant const(k=TComBou)
     annotation (Placement(transformation(extent={{-66,-30},{-46,-10}})));
-  Modelica.Blocks.Interfaces.RealOutput dTComSec(unit="K.s")
-                                                 "K*s discomfort"
+  Modelica.Blocks.Interfaces.RealOutput dTComSec(unit="K.s") "K*s discomfort"
     annotation (Placement(transformation(extent={{100,-10},{120,10}})));
   Modelica.Blocks.Interfaces.RealInput TZone(unit="K")
                                              "Connector of Real input signal 1"
@@ -40,6 +39,6 @@ equation
     annotation (Line(points={{-5,-6},{0,-6},{0,-4},{6,-4}}, color={0,0,127}));
   annotation (
     Documentation(info="<html>
-<p>Calculate the comfort during either heating or cooling period. Based on EN 16798-1, which defines a 2 K bandwith around a set temperature of 22 &deg;C.</p>
+<p>Calculate the comfort during either heating or cooling period. Based on EN 15251, which defines a 2 K bandwith around a set temperature of 22 &deg;C.</p>
 </html>"));
 end ComfortCalculator;

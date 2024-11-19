@@ -33,8 +33,7 @@ To install all dependencies, you need python installed (>= 3.7).
 If you don't have python or don't want to install it, just clone the required libraries manually. 
 You can extract the relevant information from the `dependencies.cfg` script.
 
-Using the script, it's just:
-
+To install, open a command line interface in the folder of BESMod and run:
 ```python
 python install_dependencies.py full
 ```
@@ -71,7 +70,7 @@ Furthermore, you are welcome to contribute via [Pull Requests](https://github.co
 
 # How to cite BESMod
 
-URL to proceedings: https://2022.american.conference.modelica.org/documents/NA_Modelica_2022_Proceedings.pdf
+[Paper about BESMod at the Modelica Conference 2022](https://2022.american.conference.modelica.org/documents/01_papers/02_full/1_Wullhorst.pdf) 
 DOI:  10.3384/ECP211869
 
 ```

@@ -35,7 +35,13 @@ equation
           {-76,-80},{-76,-40},{-70,-40}}, color={0,0,127}));
     annotation (Line(points={{-120,40},{-74,40}}, color={0,0,127}),
                 Line(points={{-120,-40},{-74,-40}}, color={0,0,127}),
-              Icon(coordinateSystem(preserveAspectRatio=false), graphics={Line(
+              Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+          Rectangle(
+          extent={{100,100},{-100,-100}},
+          lineColor={0,0,0},
+          lineThickness=0.5,
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),                                 Line(
           points={{-86,0},{-1,0},{84,0}},
           color={0,140,72},
           thickness=1,
@@ -45,6 +51,9 @@ equation
           lineColor={0,0,0},
           lineThickness=1,
           fillColor={0,140,72},
-          fillPattern=FillPattern.Solid)}),                      Diagram(graphics,
+          fillPattern=FillPattern.Solid), Text(
+          extent={{-98,-100},{100,-160}},
+          lineColor={0,0,0},
+          textString="%name")}),                                 Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end RealToElecCon;
