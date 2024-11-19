@@ -13,4 +13,12 @@ model Case1Standard
       __Dymola_Algorithm="Dassl"),
    __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/BAUSimStudy/Case1Standard.mos"
         "Simulate and plot"));
+  annotation (Documentation(info="<html>
+<h4>Information</h4>
+<p>
+This model represents the standard case (Case 1) of a building energy simulation study. It extends from 
+<a href=\"modelica://BESMod.Examples.BAUSimStudy.PartialCase\">BESMod.Examples.BAUSimStudy.PartialCase</a> 
+and uses parameters for a non-retrofitted single dwelling house from 1918.
+</p>
+</html>"));
 end Case1Standard;

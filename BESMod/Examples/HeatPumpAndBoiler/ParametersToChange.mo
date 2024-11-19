@@ -16,4 +16,13 @@ record ParametersToChange
     annotation (Evaluate=false);
   parameter Modelica.Units.SI.HeatFlowRate QHP_flow_biv=4000
     annotation (Evaluate=false);
+  annotation (Documentation(info="<html>
+<h4>Information</h4>
+<p>
+Record that contains parameters related to the heat pump and boiler system design.
+</p>
+<p>
+All parameters have <code>Evaluate=false</code> since they are meant to be changed during parameter studies.
+</p>
+</html>"));
 end ParametersToChange;

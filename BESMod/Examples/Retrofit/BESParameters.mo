@@ -13,4 +13,10 @@ record BESParameters
     final nZones=1,
     final use_ventilation=false);
 
+  annotation (Documentation(info="<html>
+<h4>Information</h4>
+<p>
+Record for Building Energy System (BES) parameters used in retrofit examples.
+</p>
+</html>"));
 end BESParameters;

@@ -36,9 +36,38 @@ model AfterBufferWithoutDHW
 
   extends Modelica.Icons.Example;
 
+
   annotation (experiment(StopTime=172800,
      Interval=600,
      Tolerance=1e-06),
    __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/HeatPumpAndBoiler/AfterBufferWithoutDHW.mos"
-        "Simulate and plot"));
+        "Simulate and plot"), Documentation(info="<html>
+<h4>Information</h4>
+<p>This model represents a bivalent heat pump system with a boiler integration after the buffer tank. The system does not include domestic hot water (DHW) support by the boiler. It extends from a partial hybrid system base class.</p>
+
+<h4>System Configuration</h4>
+<p>The hydraulic system consists of:</p>
+<ul>
+  <li>Heat pump generation system with:
+    <ul>
+      <li>Bivalent parallel operation with boiler</li>
+      <li>Vapor injection heat pump using propane refrigerant</li>
+      <li>Performance based on 3D table data</li>
+    </ul>
+  </li>
+  <li>Distribution system with:
+    <ul>
+      <li>Detailed buffer storage with direct loading</li>
+      <li>Three-way valve control</li>
+      <li>Boiler integration after buffer storage</li>
+    </ul>
+  </li>
+</ul>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li><code>TBiv</code>: Bivalent temperature point</li>
+  <li><code>VPerQFlow</code>: Storage volume per heat flow rate</li>
+</ul>
+</html>"));
 end AfterBufferWithoutDHW;

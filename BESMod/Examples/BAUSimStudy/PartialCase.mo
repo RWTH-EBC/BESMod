@@ -92,8 +92,36 @@ partial model PartialCase
 
   parameter Modelica.Units.SI.Temperature TBiv=271.15
     "Nominal bivalence temperature. = TOda_nominal for monovalent systems.";
+
   annotation (experiment(
       StopTime=172800,
       Interval=600,
-      __Dymola_Algorithm="Dassl"));
+      __Dymola_Algorithm="Dassl"), Documentation(info="<html>
+<h4>Information</h4>
+<p>This is a partial case model for building energy system simulations. It extends a partial building energy system with specific subsystems for electrical, thermal, hydraulic and control components. The model includes:</p>
+<ul>
+  <li>Direct grid connection for electrical system</li>
+  <li>TEASER thermal zone building model</li>
+  <li>No control system</li>
+  <li>Hydraulic system with:
+    <ul>
+      <li>Bivalent parallel heat pump and electric heater</li>
+      <li>Two storage system with detailed loading</li>
+      <li>Radiator-based heat transfer</li>
+    </ul>
+  </li>
+  <li>DHW system with standard profiles</li>
+  <li>TEASER user profiles</li>
+  <li>No ventilation system</li>
+</ul>
+
+<h4>Related Models</h4>
+<ul>
+  <li><a href=\"modelica://BESMod.Systems.BaseClasses.PartialBuildingEnergySystem\">BESMod.Systems.BaseClasses.PartialBuildingEnergySystem</a></li>
+  <li><a href=\"modelica://BESMod.Systems.Electrical.DirectGridConnectionSystem\">BESMod.Systems.Electrical.DirectGridConnectionSystem</a></li>
+  <li><a href=\"modelica://BESMod.Systems.Demand.Building.TEASERThermalZone\">BESMod.Systems.Demand.Building.TEASERThermalZone</a></li>
+  <li><a href=\"modelica://BESMod.Systems.Hydraulical.HydraulicSystem\">BESMod.Systems.Hydraulical.HydraulicSystem</a></li>
+  <li><a href=\"modelica://BESMod.Systems.Demand.DHW.StandardProfiles\">BESMod.Systems.Demand.DHW.StandardProfiles</a></li>
+</ul>
+</html>"));
 end PartialCase;

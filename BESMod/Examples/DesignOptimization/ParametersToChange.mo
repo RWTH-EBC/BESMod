@@ -15,4 +15,8 @@ record ParametersToChange
     annotation(Evaluate=false);
   parameter Modelica.Units.SI.HeatFlowRate QHP_flow_cutOff=3000
     annotation (Evaluate=false);
+  annotation (Documentation(info="<html>
+<h4>Information</h4>
+<p>This record defines parameters for design optimization of building energy systems.</p>
+</html>"));
 end ParametersToChange;

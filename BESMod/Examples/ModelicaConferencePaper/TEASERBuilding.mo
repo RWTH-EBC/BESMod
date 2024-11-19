@@ -20,7 +20,16 @@ annotation(experiment(StopTime=172800,
      Interval=600,
      Tolerance=1e-06),
    __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/ModelicaConferencePaper/TEASERBuilding.mos"
-        "Simulate and plot"),
-   __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/ModelicaConferencePaper/TEASERBuilding.mos"
-        "Simulate and plot"));
+        "Simulate and plot"), Documentation(info="<html>
+<h4>Information</h4>
+<p>
+This model represents a TEASER building model example. It uses a single thermal zone configuration with parameters based on a reference building in Aachen.
+</p>
+<h4>Model Components</h4>
+<ul>
+  <li>Building: <a href=\"modelica://BESMod.Systems.Demand.Building.TEASERThermalZone\">TEASERThermalZone</a></li>
+  <li>User Profiles: <a href=\"modelica://BESMod.Systems.UserProfiles.TEASERProfiles\">TEASERProfiles</a></li>
+  <li>Building Parameters: <a href=\"modelica://BESMod.Systems.Demand.Building.RecordsCollection.RefAachen\">RefAachen</a></li>
+</ul>
+</html>"));
 end TEASERBuilding;

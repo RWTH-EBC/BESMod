@@ -59,9 +59,34 @@ package BaseClasses "Contains partial example case"
       redeclare final package MediumHyd = AixLib.Media.Water,
       redeclare BESMod.Systems.Ventilation.NoVentilation ventilation);
 
-    annotation (experiment(
-        StopTime=172800,
-        Interval=600,
-        __Dymola_Algorithm="Dassl"));
+
   end PartialHybridSystem;
+  annotation (Documentation(info="<html>
+<h4>Information</h4>
+<p>This package contains a partial example case for a hybrid building energy system. The main model <code>PartialHybridSystem</code> defines a bivalent heat pump system that combines a heat pump with a backup boiler. The model extends <a href=\"modelica://BESMod.Systems.BaseClasses.PartialBuildingEnergySystem\">BESMod.Systems.BaseClasses.PartialBuildingEnergySystem</a> and includes:</p>
+
+<ul>
+  <li>Direct grid connection for electrical system</li>
+  <li>TEASER thermal zone building model with Aachen reference parameters</li>
+  <li>Hybrid heat pump hydraulic system with PI-controlled thermostatic valves</li>
+  <li>Standard DHW profile system</li>
+  <li>TEASER user profiles</li>
+  <li>No ventilation system</li>
+</ul>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li><code>TBiv</code> - Bivalent temperature point for heat pump operation</li>
+  <li><code>TCutOff</code> - Heat pump cut-off temperature</li>
+  <li><code>dTHysBui</code> - Building temperature hysteresis (5K)</li>
+  <li><code>dTHysDHW</code> - DHW temperature hysteresis (5K)</li>
+</ul>
+
+<h4>Related Models</h4>
+<ul>
+  <li><a href=\"modelica://BESMod.Systems.Hydraulical.HydraulicSystem\">BESMod.Systems.Hydraulical.HydraulicSystem</a></li>
+  <li><a href=\"modelica://BESMod.Systems.Demand.Building.TEASERThermalZone\">BESMod.Systems.Demand.Building.TEASERThermalZone</a></li>
+  <li><a href=\"modelica://BESMod.Systems.Hydraulical.Control.HybridHeatPumpSystem\">BESMod.Systems.Hydraulical.Control.HybridHeatPumpSystem</a></li>
+</ul>
+</html>"));
 end BaseClasses;

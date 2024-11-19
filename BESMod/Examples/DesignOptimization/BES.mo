@@ -99,7 +99,34 @@ model BES
 
   extends Modelica.Icons.Example;
 
-  annotation (experiment(StopTime=172800,
+  annotation (Documentation(info="<html>
+<h4>Information</h4>
+<p>This model represents a complete building energy system (BES) setup for design optimization. It extends the PartialBuildingEnergySystem base class and includes an electrical system with direct grid connection, a thermal zone building model based on TEASER, and a hydraulic system with heat pump and electric heater.</p>
+
+<h4>System Components</h4>
+<ul>
+  <li>Electrical: <a href=\"modelica://BESMod.Systems.Electrical.DirectGridConnectionSystem\">DirectGridConnectionSystem</a></li>
+  <li>Building: <a href=\"modelica://BESMod.Systems.Demand.Building.TEASERThermalZone\">TEASERThermalZone</a> with reference parameters for Aachen</li>
+  <li>Control: <a href=\"modelica://BESMod.Systems.Control.NoControl\">NoControl</a></li>
+  <li>Hydraulic: <a href=\"modelica://BESMod.Systems.Hydraulical.HydraulicSystem\">HydraulicSystem</a>
+    <ul>
+      <li>Generation: Bivalent heat pump with electric heater</li>
+      <li>Distribution: Two storage system in parallel (buffer and DHW)</li>
+      <li>Transfer: Ideal valve radiator system</li>
+    </ul>
+  </li>
+  <li>DHW: Standard domestic hot water system with M-Profile</li>
+  <li>Ventilation: No ventilation system</li>
+</ul>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li>TBiv: Bivalent temperature point for heat pump operation</li>
+  <li>TCutOff: Cut-off temperature for heat pump</li>
+  <li>QHP_flow_cutOff: Heat pump power at cut-off temperature</li>
+  <li>VPerQFlow: Storage volume per nominal heat flow rate</li>
+</ul>
+</html>"),experiment(StopTime=172800,
      Interval=600,
      Tolerance=1e-06),
    __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/DesignOptimization/BES.mos"

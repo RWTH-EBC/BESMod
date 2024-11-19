@@ -91,5 +91,11 @@ model BES_HOM
      Interval=600,
      Tolerance=1e-06),
    __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/HighOrderModel/BES_HOM.mos"
-        "Simulate and plot"));
+        "Simulate and plot"), Documentation(info="<html>
+  <h4>Information</h4>
+  <p>High order building energy system model extending <a href=\"modelica://BESMod.Systems.BaseClasses.PartialBuildingEnergySystem\">BESMod.Systems.BaseClasses.PartialBuildingEnergySystem</a>. The model consists of an electrical, building, control, hydraulic, DHW and ventilation system.</p>
+
+  <p>The building is modeled using AixLib high order approach with EnEV2009 heavy walls and simple window model. The hydraulic system features a heat pump with electric heater backup in a monoenergetic configuration, two storage tanks in parallel (buffer and DHW), and radiator heating system.</p>
+
+</html>"));
 end BES_HOM;

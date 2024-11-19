@@ -95,8 +95,23 @@ partial model PartialCase
     "If true, hydraulic distribution system uses QBuiNoRetrofit.";
   parameter Boolean NoRetrofitHydGen = false
     "If true, hydraulic generation system uses QBuiNoRetrofit.";
-  annotation (experiment(
-      StopTime=31536000,
-      Interval=600,
-      __Dymola_Algorithm="Dassl"));
+  annotation (Documentation(info="<html>
+<h4>Information</h4>
+This partial model serves as a base class for retrofit case studies in building energy systems. It configures:
+
+<ul>
+<li>A direct grid electrical system (<a href=\"modelica://BESMod.Systems.Electrical.DirectGridConnectionSystem\">BESMod.Systems.Electrical.DirectGridConnectionSystem</a>)</li>
+<li>A TEASER thermal zone building model (<a href=\"modelica://BESMod.Systems.Demand.Building.TEASERThermalZone\">BESMod.Systems.Demand.Building.TEASERThermalZone</a>)</li>
+<li>A hydraulic system with heat pump and electric heater (<a href=\"modelica://BESMod.Systems.Hydraulical.HydraulicSystem\">BESMod.Systems.Hydraulical.HydraulicSystem</a>)</li>
+<li>Standard DHW profiles (<a href=\"modelica://BESMod.Systems.Demand.DHW.StandardProfiles\">BESMod.Systems.Demand.DHW.StandardProfiles</a>)</li>
+</ul>
+
+<h4>Important Parameters</h4>
+<ul>
+<li>NoRetrofitHydTra: Boolean flag to use non-retrofitted heating load for transfer system sizing</li>
+<li>NoRetrofitHydDis: Boolean flag to use non-retrofitted heating load for distribution system sizing</li>
+<li>NoRetrofitHydGen: Boolean flag to use non-retrofitted heating load for generation system sizing</li>
+<li>Heat pump bivalence temperature: 271.15 K (-2°C)</li>
+</ul>
+</html>"));
 end PartialCase;
