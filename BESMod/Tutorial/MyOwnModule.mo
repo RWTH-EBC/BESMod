@@ -35,4 +35,22 @@ equation
           -16},{4,-16}},  color={0,0,127}));
   connect(realPassThrough.y, y) annotation (Line(points={{27,-16},{42,-16},{42,0},
           {110,0}}, color={0,0,127}));
+  annotation (Documentation(info="<html>
+<h4>Information</h4>
+<p>This module extends <a href=\"modelica://BESMod.Tutorial.BaseClasses.PartialModule\">BESMod.Tutorial.BaseClasses.PartialModule</a> and generates a sine signal with an optional limiter.</p>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li><code>use_lim</code>: Boolean parameter to enable/disable the limiter</li>
+  <li><code>myComponentParameters</code>: Record of type <a href=\"modelica://BESMod.Tutorial.RecordsCollection.MyComponentBaseDataDefinition\">BESMod.Tutorial.RecordsCollection.MyComponentBaseDataDefinition</a> containing:
+    <ul>
+      <li>amplitude: Amplitude of sine wave (constrained to yMax)</li>
+      <li>f: Frequency of sine wave</li>
+      <li>phase: Phase shift of sine wave</li>
+      <li>offset: Vertical offset of sine wave</li>
+      <li>startTime: Start time of sine wave</li>
+    </ul>
+  </li>
+</ul>
+</html>"));
 end MyOwnModule;
