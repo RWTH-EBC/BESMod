@@ -11,5 +11,16 @@ model Example "Simple example"
      Interval=600,
      Tolerance=1e-06),
    __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/TEASERHeatLoadCalculation/Example.mos"
-        "Simulate and plot"));
+        "Simulate and plot"), Documentation(info="<html>
+<h4>Information</h4>
+<p>Simple example model for the heat load calculation. 
+Extends from <a href=\"modelica://BESMod.Examples.TEASERHeatLoadCalculation.PartialCalculation\">BESMod.Examples.TEASERHeatLoadCalculation.PartialCalculation</a> 
+and uses a single dwelling building model that represents a retrofitted 1983 building.</p>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li>dTSetBack = 3 K (Night setback temperature difference)</li>
+  <li>energyDynamics = FixedInitial (Fixed initialization for energy balance)</li>
+</ul>
+</html>"));
 end Example;

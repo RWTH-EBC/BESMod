@@ -10,4 +10,8 @@ record SolarThermalDesignOptimization
   parameter Real c1=2                   "Loss coefficient c1";
   parameter Real c2=0.005                 "Loss coefficient c2";
   annotation(Evaluate=false);
+  annotation (Documentation(info="<html>
+<h4>Information</h4>
+<p>Record that defines parameters for optimization of a solar thermal system design.</p>
+</html>"));
 end SolarThermalDesignOptimization;
