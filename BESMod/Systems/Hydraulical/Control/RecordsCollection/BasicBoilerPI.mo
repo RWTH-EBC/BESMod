@@ -10,4 +10,7 @@ record BasicBoilerPI "Currently used PI values for a boiler"
     yOff=0,
     yMax=1,
     yMin=0.3);
+  annotation (Documentation(info="<html>
+<p>Default PI controller parameter set for boiler control.</p>
+</html>"));
 end BasicBoilerPI;

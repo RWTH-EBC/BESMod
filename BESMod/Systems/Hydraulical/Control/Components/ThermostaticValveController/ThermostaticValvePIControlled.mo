@@ -37,5 +37,12 @@ equation
         Line(points={{-80,-80},{-80,-20},{-80,-20},{52,80}},
                                                            color={0,0,127})}),
                                                                  Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<p>
+This model implements a PI controller for thermostatic valves to 
+control room temperatures. 
+The PI control outputs are limited between a minimum leakage opening 
+and a maximum opening of 1.
+</p>
+</html>"));
 end ThermostaticValvePIControlled;

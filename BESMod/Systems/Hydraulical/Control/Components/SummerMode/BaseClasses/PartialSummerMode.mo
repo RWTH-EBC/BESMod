@@ -7,4 +7,9 @@ partial model PartialSummerMode "Partial summer mode model"
     annotation (Placement(transformation(extent={{100,-10},{120,10}})));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
+  annotation (Documentation(info="<html>
+<p>Partial model defining a basic interface for summer mode determination. 
+The model takes outdoor air temperature as input and provides a 
+boolean output signal indicating if summer mode is active.</p>
+</html>"));
 end PartialSummerMode;

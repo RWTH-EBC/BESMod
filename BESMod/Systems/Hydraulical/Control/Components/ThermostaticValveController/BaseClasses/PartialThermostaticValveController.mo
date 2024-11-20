@@ -18,5 +18,13 @@ partial model PartialThermostaticValveController
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
           lineThickness=0.5)}),                                  Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<p>
+This is the base class model for thermostatic valve controllers. 
+It defines basic interface requirements and parameters that should 
+be implemented by any extending model. 
+The model defines inputs for measured and setpoint zone temperatures and 
+outputs valve opening positions.
+</p>
+</html>"));
 end PartialThermostaticValveController;

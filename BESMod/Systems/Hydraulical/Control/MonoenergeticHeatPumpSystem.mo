@@ -32,4 +32,15 @@ equation
   connect(buiAndDHWCtr.priGren, priGenPIDCtrl.setOn) annotation (Line(points={{
           -118,27.5},{-100,27.5},{-100,30},{-10,30},{-10,78},{-8,78},{-8,90},{
           100.4,90}}, color={255,0,255}));
+  annotation (Documentation(info="<html>
+<p>This model implements a monoenergetic heat pump system controller 
+with an on/off electric heater as backup/second generator. 
+</p>
+<p>The model implements the following key connections:</p>
+<ul>
+  <li>Secondary generator control signal is switched between setpoint and zero based on demand</li>
+  <li>Primary generator operation is controlled via PID controller</li>
+  <li>Building and DHW controller provides switching signals for both generators</li>
+</ul>
+</html>"));
 end MonoenergeticHeatPumpSystem;

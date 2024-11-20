@@ -111,4 +111,22 @@ equation
   connect(buiAndDHWCtr.priGren, priGenPIDCtrl.setOn) annotation (Line(points={{
           -118,27.5},{-118,26},{74,26},{74,74},{96,74},{96,90},{100.4,90}},
         color={255,0,255}));
+  annotation (Documentation(info="<html>
+<p>
+A controller for hybrid heat pump systems with a PID controlled boiler. 
+The model includes control logic for switching between the 
+heat pump (primary device) and boiler (secondary device) based on 
+bivalence and cutoff temperatures. 
+The boiler can be placed either in the generation or 
+distribution system.
+</p>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li><code>TBiv</code>: Bivalence temperature - Temperature threshold that determines when the boiler starts operation</li>
+  <li><code>TCutOff</code>: Cutoff temperature - Temperature at which heat pump operation is disabled</li>
+  <li><code>boiInGeneration</code>: Boolean parameter to specify if boiler is placed in generation (true) or distribution (false) system</li>
+  <li><code>parPIDBoi</code>: PID control parameters for the boiler</li>
+</ul>
+</html>"));
 end HybridHeatPumpSystem;

@@ -30,5 +30,14 @@ partial record HeatPumpSafetyControl
 
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<h4>Information</h4>
+<p>
+This record contains control parameters for safe heat pump operation 
+including minimum runtime, minimum lock time, maximum cycles per hour, 
+and operational envelope settings.
+It is implemented as a partial record, meaning it must be extended 
+by other records to be used.
+</p>
+</html>"));
 end HeatPumpSafetyControl;
