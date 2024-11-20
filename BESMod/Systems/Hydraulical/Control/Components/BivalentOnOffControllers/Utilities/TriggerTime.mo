@@ -11,5 +11,10 @@ algorithm
   end when;
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<p>A block to record the time when a condition becomes true. 
+When a rising edge is detected at the Boolean input <code>u</code>, 
+the block outputs the current simulation time to the Real output <code>y</code>.</p>
+
+</html>"));
 end TriggerTime;

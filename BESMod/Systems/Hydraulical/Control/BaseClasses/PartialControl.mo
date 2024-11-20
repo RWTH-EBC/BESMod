@@ -86,5 +86,21 @@ equation
           fillColor={175,175,175},
           fillPattern=FillPattern.Solid)}),                      Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false, extent={{-240,-100},{240,
-            100}})));
+            100}})), Documentation(info="<html>
+<p>
+Partial control model for a hydraulic system that serves as a base class 
+for implementing hydraulic control systems. 
+The model includes bus connectors for interfacing with generation, distribution, and 
+transfer subsystems, as well as connections for weather data, building measurements and user preferences.
+</p>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li><code>use_dhw</code>: Boolean parameter to enable/disable domestic hot water functionality</li>
+  <li><code>use_openModelica</code>: Boolean parameter to disable certain features not supported in OpenModelica</li>
+  <li><code>parGen</code>: Parameters for generation subsystem from record <a href=\"modelica://BESMod.Systems.RecordsCollection.SubsystemControlBaseDataDefinition\">BESMod.Systems.RecordsCollection.SubsystemControlBaseDataDefinition</a></li>
+  <li><code>parDis</code>: Parameters for distribution subsystem from record <a href=\"modelica://BESMod.Systems.Hydraulical.Distribution.RecordsCollection.DistributionControlBaseDataDefinition\">BESMod.Systems.Hydraulical.Distribution.RecordsCollection.DistributionControlBaseDataDefinition</a></li>
+  <li><code>parTra</code>: Parameters for transfer subsystem from record <a href=\"modelica://BESMod.Systems.Hydraulical.Transfer.RecordsCollection.TransferControlBaseDataDefinition\">BESMod.Systems.Hydraulical.Transfer.RecordsCollection.TransferControlBaseDataDefinition</a></li>
+</ul>
+</html>"));
 end PartialControl;

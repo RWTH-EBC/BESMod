@@ -14,4 +14,8 @@ model ParallelBivalentControl
       ySecGenSet(start=0)));
 
   extends Modelica.Icons.Example;
+  annotation (Documentation(info="<html>
+<p>Example model for parallel bivalent operation control of two heat generators.
+</p>
+</html>"));
 end ParallelBivalentControl;

@@ -108,5 +108,29 @@ equation
           extent={{20,-50},{94,-84}},
           lineColor={28,108,200},
           textString="Internal
-(see equations)")}));
+(see equations)")}), Documentation(info="<html>
+<p>
+This model implements a part-parallel bivalent control strategy for monovalent heat pump systems 
+with a secondary heat generator (usually an electric heater). 
+The control determines when to activate the heat pump and/or secondary generator based on 
+outdoor temperature conditions. I
+</p>
+
+<p>The operation modes are:</p>
+<ul>
+  <li>T_oda < T_cutOff: Only secondary generator active</li>
+  <li>T_cutOff < T_oda < T_biv: Both generators active in parallel</li>
+  <li>T_oda > T_biv: Only heat pump active</li>
+</ul>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li>TCutOff - Cut-off temperature below which only secondary generator operates</li>
+  <li>TBiv - Bivalence temperature marking transition between parallel/monovalent operation</li>
+  <li>TOda_nominal - Nominal outdoor temperature for system design</li>
+  <li>TRoom - Room set temperature</li>
+  <li>QDem_flow_nominal - Nominal heat demand</li>
+  <li>QHP_flow_cutOff - Heat pump capacity at cut-off temperature</li>
+</ul>
+</html>"));
 end PartParallelBivalent;

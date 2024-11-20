@@ -92,5 +92,26 @@ algorithm
           rotation=90),         Text(
             extent={{-87,-84},{84,-54}},
             lineColor={0,0,0},
-          textString="uLow, uHigh=f(h_max, h_min, time)")}));
+          textString="uLow, uHigh=f(h_max, h_min, time)")}), Documentation(info="<html>
+<p>This model implements a bivalent on/off controller with a floating hysteresis approach.
+</p>
+<p>The hysteresis value floats between a maximum and minimum value based on the operation time. 
+The controller manages two heat generators (primary and secondary) based on storage tank temperatures 
+relative to the supply temperature setpoint and the floating hysteresis band.</p>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li><code>Hysteresis_max</code>: Maximum hysteresis temperature difference (default: dTHys)</li>
+  <li><code>Hysteresis_min</code>: Minimum hysteresis temperature difference (default: 10K)</li>
+  <li><code>time_factor</code>: Time constant that influences how quickly the floating hysteresis reaches its average value (default: 20s)</li>
+  <li><code>dtEleHea</code>: Time delay before activating secondary generator when conditions are met (default: 1200s)</li>
+</ul>
+
+<h4>Control Logic</h4>
+<ul>
+  <li>Primary generator activates when upper storage temperature falls below (TSupSet - Hysteresis_floating/2)</li>
+  <li>Both generators deactivate when lower storage temperature exceeds (TSupSet + Hysteresis_floating/2)</li>
+  <li>Secondary generator activates if temperature remains low for longer than dtEleHea while primary generator is running</li>
+</ul>
+</html>"));
 end FloatingHysteresis;

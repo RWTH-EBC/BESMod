@@ -32,8 +32,8 @@ equation
         Text(
           extent={{70,-80},{94,-100}},
           textString="time"),
-        Line(points={{-90,-70},{82,-70}}, color={95,95,95})}), Documentation(
-        info="<html>
-<p>This class creates a constant DHW set temperature.</p>
+        Line(points={{-90,-70},{82,-70}}, color={95,95,95})}), Documentation(info="<html>
+<p>This model provides a constant domestic hot water (DHW) set temperature.
+ It uses a constant block to output the nominal DHW temperature setpoint.</p>
 </html>"));
 end ConstTSet_DHW;

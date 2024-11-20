@@ -56,5 +56,14 @@ equation
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)),
-    experiment(StopTime=86400, Interval=1));
+    experiment(StopTime=86400, Interval=1), Documentation(info="<html>
+<p>This is an example model that demonstrates and compares three different bivalent on/off controllers 
+for electric heating systems:</p>
+<ul>
+  <li><a href=\"modelica://BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater\">BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater</a>: Controller with constant hysteresis and minimum runtime</li>
+  <li><a href=\"modelica://BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.DegreeMinuteController\">BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.DegreeMinuteController</a>: Controller using degree-minute integral control</li>
+  <li><a href=\"modelica://BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.FloatingHysteresis\">BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.FloatingHysteresis</a>: Controller with variable hysteresis band</li>
+</ul>
+<p>The model applies a sinusoidal temperature signal to test the behavior of each controller type.</p>
+</html>"));
 end OnOffControllerTest;

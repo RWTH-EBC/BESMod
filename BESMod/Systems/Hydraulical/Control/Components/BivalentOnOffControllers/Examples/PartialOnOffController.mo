@@ -33,5 +33,9 @@ equation
     experiment(
       StopTime=3600,
       Interval=1,
-      __Dymola_Algorithm="Dassl"));
+      __Dymola_Algorithm="Dassl"), Documentation(info="<html>
+<p>Partial model for testing an on/off controller with hysteresis behavior. 
+The controller receives a storage temperature signal that oscillates with a pulse function 
+around a setpoint value. Additionally, an outdoor temperature ramp signal is included.</p>
+</html>"));
 end PartialOnOffController;

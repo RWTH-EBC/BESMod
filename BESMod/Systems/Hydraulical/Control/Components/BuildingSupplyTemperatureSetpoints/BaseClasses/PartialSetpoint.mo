@@ -29,5 +29,11 @@ partial model PartialSetpoint
           extent={{-100,230},{100,30}},
           lineColor={0,0,0},
           textString="%name")}),                                 Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<p>
+Partial model defining the basic structure for calculating heating supply temperature setpoints. 
+The model is the abstract base class for any heating temperature setpoints calculations and provides 
+the interfaces and parameters commonly used.
+</p>
+</html>"));
 end PartialSetpoint;

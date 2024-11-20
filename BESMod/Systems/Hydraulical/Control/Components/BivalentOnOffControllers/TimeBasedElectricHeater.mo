@@ -112,5 +112,17 @@ equation
             extent={{-63,-88},{-38,-71}},
             lineColor={0,0,0},
             textString="uLow"),Line(points={{-69,10},{-60,10}}, color={160,
-          160,164})}));
+          160,164})}), Documentation(info="<html>
+<p>Controller for a bivalent system with time-based auxiliary electric heater. 
+The controller has two hysteresis - one for the main heat generator and one for the auxiliary electric heater. 
+The auxiliary heater is activated when the temperature drops below the lower threshold for longer 
+than a specified time period.</p>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li><code>dtEleHea</code>: Time delay in seconds before activating auxiliary heater when temperature is below threshold (default: 1800s)</li>
+  <li><code>addSetDelTimEleHea</code>: Incremental output increase of electric heater as percentage when activated (default/max: 100%)</li>
+  <li><code>dTHys</code>: Temperature hysteresis bandwidth</li>
+</ul>
+</html>"));
 end TimeBasedElectricHeater;

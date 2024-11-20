@@ -48,5 +48,25 @@ partial model PartialOnOffController "Partial model for an on off controller"
           fillPattern=FillPattern.Solid,
           lineThickness=0.5)}), Diagram(graphics,
                                         coordinateSystem(preserveAspectRatio=
-            false)));
+            false)), Documentation(info="<html>
+
+
+<p>
+This partial model serves as a base class for implementing on-off controllers in bivalent heating systems. 
+It provides the basic interface and parameters needed for controlling a primary and secondary heat generator 
+based on storage temperatures and setpoints.
+</p>
+
+<h4>Important Parameters</h4>
+<ul>
+<li><code>dTHys</code>: Temperature hysteresis for the on-off control [K]</li>
+</ul>
+
+<h5>Outputs:</h5>
+<ul>
+<li><code>priGenOn</code>: Control signal for primary generator (Boolean)</li>
+<li><code>secGenOn</code>: Control signal for secondary/auxiliary generator (Boolean)</li>
+<li><code>ySecGenSet</code>: Setpoint for auxiliary generator [default=1]</li>
+</ul>
+</html>"));
 end PartialOnOffController;

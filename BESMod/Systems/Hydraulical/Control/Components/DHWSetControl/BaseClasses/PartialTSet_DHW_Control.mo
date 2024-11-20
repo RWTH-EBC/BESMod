@@ -22,5 +22,10 @@ partial model PartialTSet_DHW_Control "Model to output the dhw set temperature"
           lineColor={28,108,200},
           lineThickness=1,
           textString="%name")}),                                 Diagram(graphics,
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<p>Partial model for domestic hot water (DHW) set temperature control.</p>
+<p>This model provides the basic structure to output a DHW set temperature and a 
+boolean signal for auxiliary heating. It is meant to be extended by other models 
+implementing specific control strategies.</p>
+</html>"));
 end PartialTSet_DHW_Control;

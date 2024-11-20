@@ -134,5 +134,23 @@ equation
         lineColor={0,0,127},
         fillColor={255,255,255},
         fillPattern=FillPattern.Solid)}),                        Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<p>
+Model to select the measured value and add to the set value accordingly based on 
+whether DHW loading is active or not. 
+The model handles switching between building heating and domestic hot water (DHW) temperatures. 
+It adds appropriate temperature differences between subsystems (transfer, distribution, generation) 
+depending on the selected measurement point.
+</p>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li><code>meaVal</code>: Type of measurement to use in control (<a href=\"modelica://BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue\">BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue</a>)</li>
+  <li><code>use_dhw</code>: Enable/disable DHW functionality</li>
+  <li><code>dTTraToDis_nominal</code>: Nominal temperature difference between transfer and distribution system</li>
+  <li><code>dTDisToGen_nominal</code>: Nominal temperature difference between distribution and generation system</li>
+  <li><code>dTDHWToGen_nominal</code>: Nominal temperature difference between DHW and generation system</li>
+  <li><code>dTHysDHW</code>: DHW hysteresis to ensure control completes DHW charging quickly</li>
+</ul>
+</html>"));
 end SetAndMeasuredValueSelector;
