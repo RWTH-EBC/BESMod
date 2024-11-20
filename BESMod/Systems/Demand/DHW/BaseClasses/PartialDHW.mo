@@ -43,4 +43,25 @@ equation
   annotation (Icon(
       graphics,                                 coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
+  annotation (Documentation(info="<html>
+<h4>Information</h4>
+<p>Partial model for domestic hot water (DHW) generation system. 
+This model defines the base parameters 
+and interfaces for domestic hot water preparation. 
+</p>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li><code>mDHW_flow_nominal</code>: Nominal mass flow rate [kg/s]</li>
+  <li><code>TDHW_nominal</code>: Nominal DHW temperature [K]</li>
+  <li><code>TDHWCold_nominal</code>: Nominal temperature of cold city water [K]</li>
+  <li><code>VDHWDay</code>: Daily volume of DHW tapping [m³]</li>
+  <li><code>tCrit</code>: Time for critical period based on EN 15450 [s]</li>
+  <li><code>QCrit</code>: Energy demand during critical period [kWh]</li>
+</ul>
+
+<h4>References</h4>
+<ul>
+  <li>EN 15450: Heating systems in buildings - Design of heat pump heating systems</li>
+</ul></html>"));
 end PartialDHW;

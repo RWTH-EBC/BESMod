@@ -19,4 +19,16 @@ record ProfileS "Profile S"
         86400,0,0,10,10],
     VDHWDay=43.5e-3);
 
+  annotation (Documentation(info="<html>
+<p>
+Profile S implements a small daily domestic hot water draw-off pattern. 
+</p>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li>QCrit = 0.945: Critical heat demand [kWh]</li>
+  <li>tCrit = 3600: Critical time period [s]</li>
+  <li>VDHWDay = 43.5e-3: Daily hot water volume [m³/day]</li>
+</ul>
+</html>"));
 end ProfileS;

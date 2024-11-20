@@ -26,4 +26,28 @@ partial model HighOrderModelParameters
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
+  annotation (Documentation(info="<html>
+<p>
+This is a partial model containing parameters for high order building models from AixLib. 
+It includes parameters for different building thermal insulation regulations (TIR).
+</p>
+
+<h4>Important Parameters</h4>
+<ul>
+<li><code>TIR</code>: Thermal Insulation Regulation level (1=EnEV_2009, 2=EnEV_2002, 3=WSchV_1995, 4=WSchV_1984)</li>
+<li><code>n50</code>: Air exchange rate at 50 Pa pressure difference (1/h). Values depend on TIR:
+  <ul>
+    <li>3.0 1/h for EnEV_2009 and EnEV_2002 </li>
+    <li>4.0 1/h for WSchV_1995</li>
+    <li>6.0 1/h for WSchV_1984</li>
+  </ul>
+</li>
+<li><code>UValOutDoors</code>: Thermal transmission coefficient of door [W/(m²·K)]
+  <ul>
+    <li>1.8 W/(m²·K) for EnEV_2009</li>
+    <li>2.9 W/(m²·K) for other regulations</li>
+  </ul>
+</li>
+</ul>
+</html>"));
 end HighOrderModelParameters;

@@ -108,4 +108,19 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  annotation (Documentation(info="<html>
+<h4>Information</h4>
+This model is a partial class implementing a hot water system module with basic 
+models for fluid flow and controls. 
+It provides the basic functionality needed for 
+domestic hot water generation, including:
+
+<ul>
+<li>Pump control based on mass flow rate</li>
+<li>Cold water source and sink models</li> 
+<li>Tapping profile implementation</li>
+<li>Temperature control</li>
+<li>Energy KPI calculation</li>
+</ul>
+</html>"));
 end PartialDHWWithBasics;

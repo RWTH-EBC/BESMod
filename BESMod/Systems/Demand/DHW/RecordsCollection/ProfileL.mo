@@ -32,4 +32,18 @@ record ProfileL "Profile L"
         0.166666667,10,10; 76221,0,0,10,10; 77400,0,0,10,10; 77400,0.105,0.05,
         25,25; 77521,0,0.05,10,10; 77521,0,0,10,10; 86400,0,0,10,10],
     VDHWDay=248.517e-3);
+  annotation (Documentation(info="<html>
+<p>This record defines Profile L according to EN 16147 
+for domestic hot water (DHW) draw profiles.</p>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li>QCrit = 4.445 kWh (Critical heat demand)</li>
+  <li>tCrit = 3600 s (Critical time period)</li>
+  <li>VDHWDay = 248.517 liters (Daily DHW volume)</li>
+</ul>
+
+<h4>References</h4>
+<p>EN 16147 - Heat pumps with electrically driven compressors - Testing, performance rating and requirements for marking of domestic hot water units</p>
+</html>"));
 end ProfileL;

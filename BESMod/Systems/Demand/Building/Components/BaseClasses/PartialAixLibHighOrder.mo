@@ -53,4 +53,12 @@ partial model PartialAixLibHighOrder
           extent={{-84,-70},{-124,-30}})));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
+  annotation (Documentation(info="<html>
+<p>
+This is a partial model that serves as a base class for 
+high-order building models using the AixLib library. 
+It provides basic interfaces and parameters needed for multi-zone 
+building models with optional ventilation.
+</p>
+</html>"));
 end PartialAixLibHighOrder;

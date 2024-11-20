@@ -9,4 +9,13 @@ equation
         color={0,0,127}));
   connect(m_flow_in, mDHWTapped.u) annotation (Line(points={{-120,60},{-92,60},
           {-92,34},{-64,34}}, color={0,0,127}));
+  annotation (Documentation(info="<html>
+<p>Dynamic way to calculate mass flow equivalent by integrating 
+tapped volume over time. 
+</p>
+<p>
+Contains an integrator block <code>mDHWTapped</code> to integrate the DHW 
+tapping mass flow rate input <code>m_flow_in</code>.
+</p>
+</html>"));
 end calcmFlowEquDynamic;

@@ -31,4 +31,17 @@ record ProfileM "Profile M"
         10,10; 77400,0,0,10,10; 77400,1.4,0.1,40,40; 77802,0,0.1,10,10; 77802,0,
         0,10,10; 86400,0,0,10,10],
     VDHWDay=123.417e-3);
+  annotation (Documentation(info="<html>
+<p>Profile M represents a predefined domestic hot water load profile </p>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li>QCrit = 2.24 (Critical heat flow rate)</li>
+  <li>tCrit = 3600s (Critical time period)</li>
+  <li>VDHWDay = 123.417 liters (Daily hot water volume)</li>
+</ul>
+
+<h4>References</h4>
+<p>This profile is based on the EN 16147 standard for domestic hot water heat pumps testing, representing a medium load profile.</p>
+</html>"));
 end ProfileM;

@@ -177,5 +177,9 @@ equation
       horizontalAlignment=TextAlignment.Right));
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<p>This is a high order building model based on the AixLib library. 
+It models a multi-zone building with detailed consideration of solar radiation, 
+thermal dynamics of walls, and both mechanical and natural ventilation.</p>
+</html>"));
 end AixLibHighOrder;
