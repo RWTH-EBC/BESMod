@@ -34,4 +34,10 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  annotation (Documentation(info="<html>
+<p>Test model for a two-storage system with direct loading 
+(buffer and DHW storage). The storage tanks can be loaded directly 
+from a heat pump and include electric backup heaters.</p>
+<p>The model uses a pulse signal with period=100 to control the three-way valve position.</p>
+</html>"));
 end TestDirectLoading;

@@ -23,4 +23,10 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  annotation (Documentation(info="<html>
+<p>Test model for a hydraulic distribution system with two parallel 
+storage tanks (buffer storage and DHW storage) with a 
+three-way-valve for flow distribution.</p>
+<p>The three-way valve is controlled by a pulse signal with a period of 100s.</p>
+</html>"));
 end TestSimpleStorages;

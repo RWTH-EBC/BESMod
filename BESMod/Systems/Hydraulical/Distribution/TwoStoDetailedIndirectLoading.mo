@@ -25,4 +25,20 @@ equation
                                                       color={0,127,255}));
   connect(bouPumBuf.ports[2], portBui_in[1]) annotation (Line(points={{52,20},{52,
           28},{84,28},{84,40},{100,40}}, color={0,127,255}));
+  annotation (Documentation(info="<html>
+<p>Model of a hydraulic distribution system with two detailed 
+storage tanks connected in parallel with heaters. 
+The space heating circuit is indirectly loaded through a heating 
+coil in the buffer storage.</p>
+
+<p>The model extends <a href=\"modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallelWithHeaters\">PartialTwoStorageParallelWithHeaters</a>
+and adds a pressure boundary for the transfer circuit since the generation circuit is not directly connected.</p>
+
+<h4>Structure</h4>
+<ul>
+<li>Buffer storage with integrated heating coil for space heating</li>
+<li>Three-way valve for distribution between buffer and DHW storage</li> 
+<li>Pressure boundary component for the transfer circuit</li>
+</ul>
+</html>"));
 end TwoStoDetailedIndirectLoading;

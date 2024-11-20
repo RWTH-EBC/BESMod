@@ -143,5 +143,19 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  annotation (Diagram(coordinateSystem(extent={{-100,-180},{100,140}})));
+  annotation (Diagram(coordinateSystem(extent={{-100,-180},{100,140}})), Documentation(info="<html>
+<p>This is a partial model for a two storage hydraulic distribution 
+system with additional heaters. 
+The model adds the possibility to include either an electric 
+heater or a boiler after the buffer storage.</p>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li><code>QHeaAftBuf_flow_nominal</code>: Nominal heat flow rate of heater after DHW storage</li>
+  <li><code>heaAftBufTyp</code>: Type of heater after the buffer storage (No/ElectricHeater/Boiler)</li>
+  <li><code>parEleHeaAftBuf</code>: Parameters for electric heater after buffer storage</li>
+  <li><code>etaTem</code>: Temperature based efficiency table for boiler [Temperature (K), Efficiency]</li>
+  <li><code>parBoi</code>: Parameter record for boiler configuration</li>
+</ul>
+</html>"));
 end PartialTwoStorageParallelWithHeaters;

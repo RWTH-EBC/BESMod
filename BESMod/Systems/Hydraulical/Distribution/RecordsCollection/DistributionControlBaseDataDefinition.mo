@@ -6,4 +6,11 @@ record DistributionControlBaseDataDefinition
     "Nominal temperature difference to transfer heat to DHW"
     annotation (Dialog(group="DHW Demand"));
 
+  annotation (Documentation(info="<html>
+<p>Record that extends base parameters for DHW system control and design. 
+Combines general subsystem control parameters from
+<a href=\"modelica://BESMod.Systems.RecordsCollection.SubsystemControlBaseDataDefinition\">BESMod.Systems.RecordsCollection.SubsystemControlBaseDataDefinition</a> 
+and DHW design parameters from <a href=\"modelica://BESMod.Systems.Hydraulical.RecordsCollection.DHWDesignParameters\">BESMod.Systems.Hydraulical.RecordsCollection.DHWDesignParameters</a>.
+</p>
+</html>"));
 end DistributionControlBaseDataDefinition;

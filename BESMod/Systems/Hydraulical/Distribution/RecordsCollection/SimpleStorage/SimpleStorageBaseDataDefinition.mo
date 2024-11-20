@@ -18,4 +18,11 @@ partial record SimpleStorageBaseDataDefinition
   parameter Modelica.Units.SI.RelativePressureCoefficient beta;
   parameter Real kappa;
 
+  annotation (Documentation(info="<html>
+<p>
+This is a partial record that contains the base data definition 
+for a simple storage model. 
+It extends from <a href=\"modelica://BESMod.Systems.Hydraulical.Distribution.RecordsCollection.PartialStorageBaseDataDefinition\">PartialStorageBaseDataDefinition</a> with a fixed heat connection 1 (use_HC1=true).
+</p>
+</html>"));
 end SimpleStorageBaseDataDefinition;

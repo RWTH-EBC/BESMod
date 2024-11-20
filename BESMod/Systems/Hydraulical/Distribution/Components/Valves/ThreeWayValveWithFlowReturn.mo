@@ -112,5 +112,12 @@ equation
           lineThickness=0.5,
           fillColor={28,108,200},
           fillPattern=FillPattern.Solid)}),                      Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<p>
+Model for a three way valve used to control flow mixing between 
+space heating and domestic hot water loading branches. 
+The model contains two parallel return lines from both consumers 
+(DHW and space heating) to the generation system.
+</p>
+</html>"));
 end ThreeWayValveWithFlowReturn;

@@ -203,4 +203,21 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  annotation (Documentation(info="<html>
+<p>This model represents a combined storage tank for heating, 
+domestic hot water (DHW) and solar thermal assistance. 
+The storage tank contains two internal heat exchangers:
+</p>
+<ul>
+  <li>Heat exchanger 1: For DHW preparation</li>
+  <li>Heat exchanger 2: For space heating</li>
+</ul>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li>parameters: Record containing storage configuration (volume, insulation, heat exchangers etc.)</li>
+  <li>n: Number of storage layers for discretization</li>
+  <li>use_hr: True to enable electric heating rod</li>
+</ul>
+</html>"));
 end CombiStorage;
