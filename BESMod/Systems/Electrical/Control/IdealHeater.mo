@@ -19,5 +19,10 @@ equation
       horizontalAlignment=TextAlignment.Left));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<p>This is a control model for an ideal heater that passes through zone 
+setpoint temperature signals, as the actual control is located in the 
+AixLib ideal heater model in the transfer system.
+</p>
+</html>"));
 end IdealHeater;

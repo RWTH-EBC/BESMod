@@ -200,5 +200,18 @@ equation
           extent={{-98,-134},{106,-230}},
           lineColor={0,0,0},
           textString="%name%")}),                                Diagram(
-        coordinateSystem(preserveAspectRatio=false, extent={{-180,-140},{160,140}})));
+        coordinateSystem(preserveAspectRatio=false, extent={{-180,-140},{160,140}})), Documentation(info="<html>
+<p>Partial model for an electrical system consisting of electrical 
+generation, distribution, transfer and control components. 
+The model is structured to handle both internal and external 
+electrical loads.</p>
+<h4>Model Structure</h4>
+<p>The model consists of the following main components:</p>
+<ul>
+  <li>Generation: <a href=\"modelica://BESMod.Systems.Electrical.Generation.BaseClasses.PartialGeneration\">BESMod.Systems.Electrical.Generation.BaseClasses.PartialGeneration</a></li>
+  <li>Distribution: <a href=\"modelica://BESMod.Systems.Electrical.Distribution.BaseClasses.PartialDistribution\">BESMod.Systems.Electrical.Distribution.BaseClasses.PartialDistribution</a></li>  
+  <li>Transfer: <a href=\"modelica://BESMod.Systems.Electrical.Transfer.BaseClasses.PartialTransfer\">BESMod.Systems.Electrical.Transfer.BaseClasses.PartialTransfer</a></li>
+  <li>Control: <a href=\"modelica://BESMod.Systems.Electrical.Control.BaseClasses.PartialControl\">BESMod.Systems.Electrical.Control.BaseClasses.PartialControl</a></li>
+</ul>
+</html>"));
 end PartialElectricalSystem;

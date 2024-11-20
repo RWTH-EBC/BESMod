@@ -78,14 +78,25 @@ equation
     experiment(
       StopTime=86400,
       Interval=900,
-      __Dymola_Algorithm="Dassl"),
-    __Dymola_experimentSetupOutput,
-    __Dymola_experimentFlags(
-      Advanced(
-        EvaluateAlsoTop=true,
-        GenerateVariableDependencies=false,
-        OutputModelicaCode=false),
-      Evaluate=true,
-      OutputCPUtime=false,
-      OutputFlatModelica=false));
+      __Dymola_Algorithm="Dassl"), Documentation(info="<html>
+<h4>Information</h4>
+<p>Test model for electrical system containing PV generation and battery storage without transfer. 
+The system consists of:</p>
+<ul>
+  <li>PV system using Schueco SPV170SME1 modules with ground mounting</li>
+  <li>Tesla Powerwall 1 battery storage</li>
+  <li>Simple electrical distribution</li>
+  <li>No electrical transfer system</li>
+  <li>No control system</li>
+</ul>
+
+<h4>Important Parameters</h4>
+<p>The model uses following key components:</p>
+<ul>
+  <li>PV parameters: <a href=\"modelica://AixLib.DataBase.SolarElectric.SchuecoSPV170SME1\">AixLib.DataBase.SolarElectric.SchuecoSPV170SME1</a></li>
+  <li>Battery parameters: <a href=\"modelica://BuildingSystems.Technologies.ElectricalStorages.Data.LithiumIon.LithiumIonTeslaPowerwall1\">BuildingSystems.Technologies.ElectricalStorages.Data.LithiumIon.LithiumIonTeslaPowerwall1</a></li>
+  <li>Cell temperature model: <a href=\"modelica://AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround\">AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround</a></li>
+  <li>Weather data: TRY2015 for Potsdam, Germany</li>
+</ul>
+</html>"));
 end ElectricalSystem;

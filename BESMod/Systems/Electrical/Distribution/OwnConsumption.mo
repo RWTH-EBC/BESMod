@@ -66,5 +66,15 @@ equation
       thickness=1));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<p>Electric distribution system model for direct grid 
+connection with own consumption. 
+</p>
+<p>
+The model calculates the energy balance between generation and load. 
+Generated electricity can be consumed directly (own consumption) and 
+excess generation is fed into the grid. 
+If generation is insufficient, additional electricity is drawn 
+from the grid.</p>
+</html>"));
 end OwnConsumption;

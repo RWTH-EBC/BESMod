@@ -151,5 +151,16 @@ partial model PartialGeneration
           lineThickness=1,
           fillColor={0,0,0},
           fillPattern=FillPattern.Solid)}),                      Diagram(graphics,
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<p>Basic model with interfaces for electrical generation package. 
+This partial model is a base class for electrical generation models.</p>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li><code>use_openModelica</code> - Boolean parameter to disable features not available in OpenModelica</li>
+  <li><code>numGenUnits</code> - Number of generation units (e.g. PV modules)</li>
+  <li><code>f_design</code> - Array of over/undersizing factors relative to maximum capacity (default: 0.8)</li> 
+  <li><code>ARoo</code> - Roof area of building in m²</li>
+</ul>
+</html>"));
 end PartialGeneration;

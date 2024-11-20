@@ -21,5 +21,11 @@ equation
     annotation (Line(points={{62,-38},{100,-38}}, color={191,0,0}));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+
+<p>This model represents a transfer system with no electrical power transfer. 
+It connects a zero load to the internal electrical pin. 
+Additionally, it uses fixed zero heat flow sources for both convective and radiative heat ports.
+</p>
+</html>"));
 end NoElectricalTransfer;

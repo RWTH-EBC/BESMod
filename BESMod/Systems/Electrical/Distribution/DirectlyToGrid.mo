@@ -21,5 +21,13 @@ equation
       thickness=1));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<h4>Information</h4>
+<p>
+This model represents a direct grid connection for electrical systems with no own consumption. 
+It sums up the electrical power flows of all subsystems (nSubSys). 
+The summed power is directly fed to/from the grid via the 
+external electrical pin connection.
+</p>
+</html>"));
 end DirectlyToGrid;

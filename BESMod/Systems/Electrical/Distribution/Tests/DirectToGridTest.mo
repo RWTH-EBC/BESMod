@@ -20,14 +20,9 @@ equation
     experiment(
       StopTime=86400,
       Interval=900,
-      __Dymola_Algorithm="Dassl"),
-    __Dymola_experimentSetupOutput,
-    __Dymola_experimentFlags(
-      Advanced(
-        EvaluateAlsoTop=true,
-        GenerateVariableDependencies=false,
-        OutputModelicaCode=false),
-      Evaluate=true,
-      OutputCPUtime=false,
-      OutputFlatModelica=false));
+      __Dymola_Algorithm="Dassl"),Documentation(info="<html>
+<p>Test model for the
+ <a href=\"modelica://BESMod.Systems.Electrical.Distribution.DirectlyToGrid\">BESMod.Systems.Electrical.Distribution.DirectlyToGrid</a> 
+electrical distribution model.</p>
+</html>"));
 end DirectToGridTest;

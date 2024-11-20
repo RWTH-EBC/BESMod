@@ -117,5 +117,16 @@ equation
           fillColor={0,0,0},
           fillPattern=FillPattern.Solid,
           lineColor={0,0,0})}),                                  Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<p>Partial model for electrical distribution systems. 
+This model serves as a base class for specific distribution 
+implementations, handling the electrical connections between 
+multiple subsystems and the grid.</p>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li><code>use_openModelica</code>: Boolean flag to disable features not compatible with OpenModelica</li>
+  <li><code>nSubSys</code>: Number of subsystems with electrical load/generation (minimum 2)</li>
+</ul>
+</html>"));
 end PartialDistribution;
