@@ -118,10 +118,30 @@ partial record PartialStorageBaseDataDefinition
  annotation (Icon(graphics,
                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)),
-    Documentation(info="<html><p>
-  <img src=
-  \"modelica://BESMod/Resources/Images/equations/heatTraNLayerWall.png\"
-  alt=\"1\">
+    Documentation(info="<html>
+<p>
+Record to calculate storage parameters based on typically known parameters
+or practical ones.
+Using the energy label according to EU Regulation, the heat loss per day is 
+estimated. With this value, the insulation is iteratively calculated using the following
+heat transfer equation:
+<img src=
+\"modelica://BESMod/Resources/Images/equations/heatTraNLayerWall.png\"
+alt=\"1\">
+</p>
+<h4>References</h4>
+<p>
+<ul>
+<li>
+DELEGATED REGULATION (EU) 812/2013 of 18 February 2013 supplementing Directive 2010/30/EU 
+with regard to the energy labelling of water heaters, 
+hot water storage tanks and packages of water heater and solar device
+</li>
+  <li>
+  BESTPAR: TOWARDS MINIMAL EFFORT IN BUILDING ENERGY SYSTEM SIMULATION PARAMETERIZATION, 
+  <a href=\"https://doi.org/10.26868/29761662.2022.82>https://doi.org/10.26868/29761662.2022.82</a>
+</li>
+</ul>
 </p>
 </html>"));
 end PartialStorageBaseDataDefinition;
