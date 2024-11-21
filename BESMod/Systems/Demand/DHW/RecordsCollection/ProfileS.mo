@@ -28,7 +28,7 @@ Profile S implements a small daily domestic hot water draw-off pattern.
 <ul>
   <li>QCrit = 0.945: Critical heat demand [kWh]</li>
   <li>tCrit = 3600: Critical time period [s]</li>
-  <li>VDHWDay = 43.5e-3: Daily hot water volume [m³/day]</li>
+  <li>VDHWDay = 43.5e-3: Daily hot water volume [m^3/day]</li>
 </ul>
 </html>"));
 end ProfileS;

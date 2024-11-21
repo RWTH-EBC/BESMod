@@ -19,9 +19,9 @@ It pre-configures the parameters for stable room temperature control.</p>
 <ul>
   <li><code>timeInt = 500</code>: Integration time constant [s]</li>
   <li><code>P = 1</code>: Proportional gain [-]</li>
-  <li><code>yMax = 328.15</code>: Maximum output temperature (55°C) [K]</li>
-  <li><code>yOff = 293.15</code>: Output offset (20°C) [K]</li>
-  <li><code>yMin = 293.15</code>: Minimum output temperature (20°C) [K]</li>
+  <li><code>yMax = 328.15</code>: Maximum output temperature (55 degC) [K]</li>
+  <li><code>yOff = 293.15</code>: Output offset (20 degC) [K]</li>
+  <li><code>yMin = 293.15</code>: Minimum output temperature (20 degC) [K]</li>
 </ul>
 </html>"));
 end SmartThermostatPI;

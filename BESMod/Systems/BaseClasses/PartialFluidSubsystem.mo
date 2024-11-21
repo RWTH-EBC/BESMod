@@ -35,7 +35,7 @@ protected
   <li><code>use_openModelica</code>: Parameter to disable features not available in OpenModelica</li>
   <li><code>allowFlowReversal</code>: If false, equations are simplified by assuming (but not enforcing) no flow reversal</li>
   <li><code>show_T</code>: Enable computation of actual port temperatures</li>
-  <li><code>rho</code>: Density of the heat distribution system fluid [kg/m³]</li>
+  <li><code>rho</code>: Density of the heat distribution system fluid [kg/m^3]</li>
   <li><code>cp</code>: Specific heat capacity of the heat distribution system fluid [J/(kg.K)]</li>
 </ul>
 </html>"));

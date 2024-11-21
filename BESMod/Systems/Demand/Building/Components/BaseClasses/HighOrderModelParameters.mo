@@ -42,10 +42,10 @@ It includes parameters for different building thermal insulation regulations (TI
     <li>6.0 1/h for WSchV_1984</li>
   </ul>
 </li>
-<li><code>UValOutDoors</code>: Thermal transmission coefficient of door [W/(m²·K)]
+<li><code>UValOutDoors</code>: Thermal transmission coefficient of door [W/(m^2 * K)]
   <ul>
-    <li>1.8 W/(m²·K) for EnEV_2009</li>
-    <li>2.9 W/(m²·K) for other regulations</li>
+    <li>1.8 W/(m^2 * K) for EnEV_2009</li>
+    <li>2.9 W/(m^2 * K) for other regulations</li>
   </ul>
 </li>
 </ul>

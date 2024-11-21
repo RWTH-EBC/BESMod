@@ -96,11 +96,11 @@ It defines the basic building parameters and interfaces for thermal, ventilation
   <li>TSetZone_nominal: Nominal temperature setpoints for each zone [K]</li>
   <li>Geometry parameters:
     <ul>
-      <li>AZone: Area of each zone [m²]</li>
+      <li>AZone: Area of each zone [m^2]</li>
       <li>hZone: Height of each zone [m]</li>
-      <li>ABui: Ground area of building [m²]</li>
+      <li>ABui: Ground area of building [m^2]</li>
       <li>hBui: Building height [m]</li>
-      <li>ARoo: Roof area [m²]</li>
+      <li>ARoo: Roof area [m^2]</li>
     </ul>
   </li>
   <li>use_hydraulic: Enable/disable hydraulic supply system</li>

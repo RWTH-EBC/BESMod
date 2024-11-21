@@ -1,6 +1,6 @@
 within BESMod.Systems.Electrical.Interfaces;
 connector ExternalElectricalPin
-  "Simplified electrical pin for power flow to the electricity grid"
+  "Simplified electrical pin for power flow outputs to the electricity grid"
   extends BESMod.Systems.Electrical.Interfaces.BaseClasses.ElectricalPinOut;
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Rectangle(

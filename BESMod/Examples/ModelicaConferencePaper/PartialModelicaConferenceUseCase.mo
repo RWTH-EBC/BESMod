@@ -130,7 +130,7 @@ partial model PartialModelicaConferenceUseCase
 
 <h4>Important Parameters</h4>
 <ul>
-<li>Heat pump bivalence temperature: -2°C (271.15 K)</li>
+<li>Heat pump bivalence temperature: -2 degC (271.15 K)</li>
 <li>DHW setpoint temperature: Defined in systemParameters.TSetDHW</li>
 <li>PV array area: Half of building roof area (building.ARoo/2)</li>
 <li>Ventilation air exchange rate: 0.5/h</li>

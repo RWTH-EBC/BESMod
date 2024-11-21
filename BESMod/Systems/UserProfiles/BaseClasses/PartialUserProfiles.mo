@@ -34,7 +34,7 @@ and comfort preferences in different thermal zones.
 <h4>Important Parameters</h4>
 <ul>
 <li><code>nZones</code> (Integer): Number of thermal zones to transfer heat to</li>
-<li><code>TSetZone_nominal</code> (Temperature vector): Nominal temperature setpoints for each zone, defaults to 293.15 K (20°C) for all zones</li>
+<li><code>TSetZone_nominal</code> (Temperature vector): Nominal temperature setpoints for each zone, defaults to 293.15 K (20 degC) for all zones</li>
 </ul>
 </html>"));
 end PartialUserProfiles;

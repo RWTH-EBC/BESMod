@@ -23,7 +23,7 @@ to automatically configure a pump/fan for the BES Library based on nominal opera
 <ul>
 <li><code>m_flow_nominal</code>: Nominal mass flow rate [kg/s]</li>
 <li><code>dp_nominal</code>: Nominal pressure difference [Pa]</li>
-<li><code>rho</code>: Density of fluid in use [kg/m³]</li>
+<li><code>rho</code>: Density of fluid in use [kg/m^3]</li>
 <li><code>V_flowCurve</code>: Relative volume flow curve points around nominal point [-]</li>
 <li><code>dpCurve</code>: Relative pressure difference curve points around nominal point [-]</li>
 </ul>

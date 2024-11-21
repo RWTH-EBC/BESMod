@@ -46,7 +46,7 @@ equation
   annotation (Documentation(info="<html>
 <p>Test model for a serial heat pump and gas boiler system. 
 The heat pump is a Vitocal 251-A (8 kW) modular reversible heat pump with 
-safety controls parametrized according to Wüllhorst (2021). 
+safety controls parametrized according to Wuellhorst (2021). 
 The gas boiler is a Vitogas 200-F with 11 kW nominal capacity.</p>
 </html>"));
 end HeatPumpAndGasBoilerSeries;

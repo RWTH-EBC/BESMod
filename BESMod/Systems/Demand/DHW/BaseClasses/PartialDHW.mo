@@ -55,7 +55,7 @@ and interfaces for domestic hot water preparation.
   <li><code>mDHW_flow_nominal</code>: Nominal mass flow rate [kg/s]</li>
   <li><code>TDHW_nominal</code>: Nominal DHW temperature [K]</li>
   <li><code>TDHWCold_nominal</code>: Nominal temperature of cold city water [K]</li>
-  <li><code>VDHWDay</code>: Daily volume of DHW tapping [m³]</li>
+  <li><code>VDHWDay</code>: Daily volume of DHW tapping [m^3]</li>
   <li><code>tCrit</code>: Time for critical period based on EN 15450 [s]</li>
   <li><code>QCrit</code>: Energy demand during critical period [kWh]</li>
 </ul>

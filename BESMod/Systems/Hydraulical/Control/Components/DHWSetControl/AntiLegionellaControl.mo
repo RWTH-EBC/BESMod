@@ -174,7 +174,7 @@ equation
           extent={{-14,0},{72,-36}},
           lineColor={238,46,47},
           lineThickness=0.5,
-          textString=DynamicSelect("%TLegMin K", String(TLegMin-273.15)+ "°C")),
+          textString=DynamicSelect("%TLegMin K", String(TLegMin-273.15)+ " degC")),
         Text(
           extent={{-94,0},{56,-154}},
           lineColor={28,108,200},

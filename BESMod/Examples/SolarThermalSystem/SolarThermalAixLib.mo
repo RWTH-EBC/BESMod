@@ -43,10 +43,10 @@ The solar thermal collector parameters can be adjusted through the parameterStud
 
 <h4>Important Parameters</h4>
 <ul>
-  <li>A: Collector area [m²]</li>
+  <li>A: Collector area [m^2]</li>
   <li>eta_zero: Zero-loss efficiency [-]</li>
-  <li>c1: First order heat loss coefficient [W/(m²K)]</li>
-  <li>c2: Second order heat loss coefficient [W/(m²K²)]</li>
+  <li>c1: First order heat loss coefficient [W/(m^2K)]</li>
+  <li>c2: Second order heat loss coefficient [W/(m^2K^2)]</li>
 </ul>
 
 <h4>Model Dependencies</h4>

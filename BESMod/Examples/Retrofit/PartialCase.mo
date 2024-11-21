@@ -111,7 +111,7 @@ This partial model serves as a base class for retrofit case studies in building 
 <li>NoRetrofitHydTra: Boolean flag to use non-retrofitted heating load for transfer system sizing</li>
 <li>NoRetrofitHydDis: Boolean flag to use non-retrofitted heating load for distribution system sizing</li>
 <li>NoRetrofitHydGen: Boolean flag to use non-retrofitted heating load for generation system sizing</li>
-<li>Heat pump bivalence temperature: 271.15 K (-2°C)</li>
+<li>Heat pump bivalence temperature: 271.15 K (-2 degC)</li>
 </ul>
 </html>"));
 end PartialCase;

@@ -4,7 +4,7 @@ type GenerationDesign = enumeration(
     BivalentAlternativ "Bivalent alternativ",
     BivalentParallel "Bivalent parallel",
     BivalentPartParallel "Bivalent partly parallel")
-  "Choose between different design options for primary generation";
+  "Choose between different design options for primary generation"
   annotation (Documentation(info="<html>
 <h4>Information</h4>
 <p>

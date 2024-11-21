@@ -59,9 +59,9 @@ equation
 
 <h4>Important Parameters</h4>
 <ul>
-<li>Convective heat gains: 80/48 W/m²</li>
-<li>Radiative heat gains: 120/48 W/m²</li> 
-<li>Latent heat gains: 0 W/m²</li>
+<li>Convective heat gains: 80/48 W/m^2</li>
+<li>Radiative heat gains: 120/48 W/m^2</li> 
+<li>Latent heat gains: 0 W/m^2</li>
 <li>Shading control: 0 (no shading)</li>
 </ul>
 

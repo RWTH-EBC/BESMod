@@ -81,11 +81,11 @@ equation
 <h4>Important Parameters</h4>
 <ul>
   <li>Medium: Replaceable medium package (defaults to IBPSA.Media.Air)</li>
-  <li>m_flow_nominal: Nominal mass flow rate based on room volume (150m³) and air changes</li>
+  <li>m_flow_nominal: Nominal mass flow rate based on room volume (150m^3) and air changes</li>
   <li>Q_flow_nominal: Nominal heating/cooling power</li>
   <li>TOda_nominal: Nominal outdoor temperature</li>
   <li>TDem_nominal: Nominal zone temperature setpoint</li>
-  <li>V: Room volume (150m³ with 2.6m height)</li>
+  <li>V: Room volume (150m^3 with 2.6m height)</li>
 </ul>
 
 </html>"));

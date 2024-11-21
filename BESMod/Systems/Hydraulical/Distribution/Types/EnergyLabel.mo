@@ -8,10 +8,10 @@ type EnergyLabel = enumeration(
     E "E",
     F "F",
     G "G")
-  "Determines the quality of insualtion of the storage tank";
+  "Determines the quality of insualtion of the storage tank"
   annotation (Documentation(info="<html>
-This is an enumerator type that specifies different energy 
+<p>This is an enumerator type that specifies different energy 
 efficiency labels, commonly used to classify energy efficiency 
 of storage tanks or other hydraulic components. 
-The labels range from A+ (most efficient) to G (least efficient). TODO: Add doc with reference?
+The labels range from A+ (most efficient) to G (least efficient).  TODO: Add doc with reference in record</p>
 </html>"));

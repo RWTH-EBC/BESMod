@@ -1,4 +1,4 @@
-within BESMod.Systems.Hydraulical.Generation;
+ï»¿within BESMod.Systems.Hydraulical.Generation;
 model DetailedSolarThermalWithHeatPump
   "Detailed solar thermal model with monoenergetic heat pump"
   extends HeatPumpAndElectricHeater(
@@ -171,8 +171,8 @@ equation
           textString="Solar Thermal"), Rectangle(
           extent={{94,-198},{-218,-136}},
           lineColor={0,0,0},
-          lineThickness=1)}));
-  annotation (Documentation(info="<html>
+          lineThickness=1)}),
+              Documentation(info="<html>
 <p>
 This model implements a detailed solar thermal system coupled with a monoenergetic heat pump. 
 The solar thermal collector is modeled according to the EN12975 standard and can be connected in series configuration.
@@ -185,8 +185,8 @@ The model extends <a href=\"modelica://BESMod.Systems.Hydraulical.Generation.Hea
   <li>parPumSolThe: Parameters for the solar thermal pump</li>
   <li>Collector specifications:
     <ul>
-      <li>Azimuth angle: 0° (South-facing)</li>
-      <li>Tilt angle: 30°</li>
+      <li>Azimuth angle: 0Â° (South-facing)</li>
+      <li>Tilt angle: 30Â°</li>
       <li>Ground reflectance: 0.2</li>
       <li>Configuration: Series connection</li>
     </ul>
@@ -203,8 +203,8 @@ The model extends <a href=\"modelica://BESMod.Systems.Hydraulical.Generation.Hea
 <h4>Control Features</h4>
 <ul>
   <li>Hysteresis control for solar pump operation based on direct normal irradiance</li>
-  <li>ON: DNI > 100 W/m²</li>
-  <li>OFF: DNI < 10 W/m²</li>
+  <li>ON: DNI > 100 W/m^2</li>
+  <li>OFF: DNI < 10 W/m^2</li>
 </ul>
 </html>"));
 end DetailedSolarThermalWithHeatPump;

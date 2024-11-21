@@ -160,7 +160,7 @@ This partial model is a base class for electrical generation models.</p>
   <li><code>use_openModelica</code> - Boolean parameter to disable features not available in OpenModelica</li>
   <li><code>numGenUnits</code> - Number of generation units (e.g. PV modules)</li>
   <li><code>f_design</code> - Array of over/undersizing factors relative to maximum capacity (default: 0.8)</li> 
-  <li><code>ARoo</code> - Roof area of building in m²</li>
+  <li><code>ARoo</code> - Roof area of building in m^2</li>
 </ul>
 </html>"));
 end PartialGeneration;
