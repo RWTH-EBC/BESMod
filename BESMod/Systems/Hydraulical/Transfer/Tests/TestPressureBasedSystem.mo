@@ -15,4 +15,10 @@ model TestPressureBasedSystem
         parRad));
   extends Modelica.Icons.Example;
 
+  annotation (Documentation(info="<html>
+<p>
+This model tests the <a href=\"modelica://BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased\">BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased</a> 
+transfer model with standard steel radiator parameters.
+</p>
+</html>"));
 end TestPressureBasedSystem;

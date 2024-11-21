@@ -9,4 +9,9 @@ record DefaultUFHData "For a well insulated retrofit building"
     k_top=fill(4.47, nZones),
     is_groundFloor=fill(true, nZones),
     area=fill(0, nZones));
+  annotation (Documentation(info="<html>
+<p>Default parameters for an underfloor heating system suitable 
+for well-insulated retrofit buildings. 
+</p>
+</html>"));
 end DefaultUFHData;

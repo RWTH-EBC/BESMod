@@ -92,5 +92,10 @@ partial model PartialTransfer "Partial transfer model for BES"
     annotation (Placement(transformation(extent={{62,-108},{82,-88}})));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+This is a partial transfer module serves as a base class 
+for modeling heat transfer systems in buildings. 
+It defines fluid ports for the transfer system and 
+heat ports for radiative and convective heat transfer with room air.
+</html>"));
 end PartialTransfer;
