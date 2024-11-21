@@ -1,3 +1,10 @@
+within BESMod.Systems.Hydraulical.Transfer.Types;
+type HydraulicResistanceType = enumeration(
+    Fittings "Fittings only",
+    Thermostat "Thermostatic valve",
+    CheckValve "Check valve / gravity brake / mixing valve",
+    FittingAndThermostat "Fittings + Thermostatic valve",
+    FittingAndThermostatAndCheckValve "Fittings + Thermostatic valve + Check valve")
   annotation (Documentation(info="<html>
 <p>Enumeration defining different types of hydraulic resistances 
 that can be present in hydronic systems.</p>
@@ -11,10 +18,3 @@ that can be present in hydronic systems.</p>
 <li><code>FittingAndThermostatAndCheckValve</code>: Combines resistance of fittings, thermostatic valve and check valve</li>
 </ul>
 </html>"));
-within BESMod.Systems.Hydraulical.Transfer.Types;
-type HydraulicResistanceType = enumeration(
-    Fittings "Fittings only",
-    Thermostat "Thermostatic valve",
-    CheckValve "Check valve / gravity brake / mixing valve",
-    FittingAndThermostat "Fittings + Thermostatic valve",
-    FittingAndThermostatAndCheckValve "Fittings + Thermostatic valve + Check valve");

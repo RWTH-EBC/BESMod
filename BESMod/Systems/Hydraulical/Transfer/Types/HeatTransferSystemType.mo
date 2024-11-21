@@ -5,7 +5,7 @@ type HeatTransferSystemType = enumeration(
     CastRadiator,
     PanelRadiators,
     Convectors)
-  "Type of the heating system for calculating volume of distribution and transfer system";
+  "Type of the heating system for calculating volume of distribution and transfer system"
   annotation (Documentation(info="<html>
 <p>
 Enumeration type for defining different heat transfer systems in buildings. 
