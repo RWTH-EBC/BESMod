@@ -46,4 +46,21 @@ equation
       index=1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
+  annotation (Documentation(info="<html>
+<p>
+This model implements a parallel connection between a heat pump and a gas boiler. 
+The system uses a three-way valve to switch between the heat sources based on control signals.
+</p>
+<p>
+The model extends <a href=\"modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPumpAndGasBoiler\">
+PartialHeatPumpAndGasBoiler</a> with parallel configuration functionality.
+</p>
+
+<h4>Components</h4>
+<ul>
+<li>Three-way valve with flow return (<a href=\"modelica://BESMod.Systems.Distribution.Components.Valves.ThreeWayValveWithFlowReturn\">BESMod.Systems.Distribution.Components.Valves.ThreeWayValveWithFlowReturn</a>)</li>
+<li>Heat pump and gas boiler with parallel hydraulic connection</li>
+</ul>
+
+</html>"));
 end HeatPumpAndGasBoilerParallel;

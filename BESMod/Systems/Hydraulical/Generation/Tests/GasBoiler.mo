@@ -27,4 +27,12 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  annotation (Documentation(info="<html>
+<p>Test model for a gas boiler system <a href=\"modelica://BESMod.Systems.Hydraulical.Generation.GasBoiler\">BESMod.Systems.Hydraulical.Generation.GasBoiler</a>.
+This tests uses the Viessmann Vitogas 200-F 11kW boiler as heat generator.</p>
+
+<h4>Control</h4>
+<p>The model uses a pulse signal with a period of 1800s to control both 
+the boiler setpoint temperature and pump operation through the control bus.</p>
+</html>"));
 end GasBoiler;

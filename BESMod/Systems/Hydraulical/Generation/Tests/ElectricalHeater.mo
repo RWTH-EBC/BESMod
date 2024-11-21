@@ -17,4 +17,17 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  annotation (Documentation(info="<html>
+<p>
+  Test model for an electrical heater system. 
+  The model uses an electrical heater as generation system with default parameter 
+  settings for the pump and the electrical heater itself.
+</p>
+
+<h4>Control</h4>
+<p>
+  The model uses a constant control signal (value = 1) connected to the generation control bus 
+variable <code>uEleHea</code> for the electrical heater operation.
+</p>
+</html>"));
 end ElectricalHeater;

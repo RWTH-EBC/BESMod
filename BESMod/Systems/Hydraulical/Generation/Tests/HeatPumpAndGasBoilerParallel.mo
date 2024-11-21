@@ -55,4 +55,10 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  annotation (Documentation(info="<html>
+<p>This model represents a test case for a parallel heat pump and gas boiler system. 
+It extends from a partial test model and uses a heat pump model based on Vitocal 251-A 
+with an 8kW nominal power according to EN14511 test data. 
+The model includes safety controls parameterized for the Wuellhorst 2021 dataset.</p>
+</html>"));
 end HeatPumpAndGasBoilerParallel;

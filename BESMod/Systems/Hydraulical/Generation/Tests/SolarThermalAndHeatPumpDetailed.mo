@@ -51,4 +51,7 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  annotation (Documentation(info="<html>
+<p>Test model for a combined solar thermal collector with a heat pump system.</p>
+</html>"));
 end SolarThermalAndHeatPumpDetailed;

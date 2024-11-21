@@ -47,4 +47,10 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  annotation (Documentation(info="<html>
+<p>Test model for a heat generation system combining a heat pump with 
+an electric heater as backup. The heat pump is a reversible modular 
+heat pump using the Vitocal 251-A 08 parametrization based on EN14511 measurement data. 
+The safety control parameters are taken from Wüllhorst 2021.</p>
+</html>"));
 end HeatPumpAndElectricHeater;

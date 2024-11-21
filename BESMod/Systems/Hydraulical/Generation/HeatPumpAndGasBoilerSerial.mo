@@ -17,4 +17,10 @@ equation
       color={255,204,51},
       thickness=0.5),
               Diagram(coordinateSystem(extent={{-180,-140},{100,100}})));
+  annotation (Documentation(info="<html>
+<p>Model for heating system with serial arrangement of heat pump and boiler. 
+The heat pump is the primary heat generator and can be boosted by the boiler connected in 
+series for higher temperatures.</p>
+<p>Extends <a href=\"modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPumpAndGasBoiler\">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPumpAndGasBoiler</a></p>
+</html>"));
 end HeatPumpAndGasBoilerSerial;

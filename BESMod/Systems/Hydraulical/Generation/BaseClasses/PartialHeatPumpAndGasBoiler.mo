@@ -77,4 +77,22 @@ equation
       color={255,204,51},
       thickness=0.5),
               Diagram(coordinateSystem(extent={{-180,-140},{100,100}})));
+  annotation (Documentation(info="<html>
+<p>Partial model for a bivalent-parallel generation system combining a heat pump 
+with a gas boiler. 
+The model extends the <a href=\"modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump\">PartialHeatPump</a> base class.</p>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li><code>etaTem</code>: Matrix of temperature-dependent efficiencies. First column contains temperatures [K], second column contains corresponding efficiency factors.</li>
+  <li><code>parBoi</code>: Boiler parameters record inheriting from <a href=\"modelica://AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition\">BoilerTwoPointBaseDataDefinition</a></li>
+  <li><code>Q_nom</code>: Nominal heating power, automatically sized to at least 11 kW or secondary nominal heat flow rate</li>
+</ul>
+
+<h4>Components</h4>
+<ul>
+  <li>Heat pump (inherited from base class)</li>
+  <li>Gas boiler (<a href=\"modelica://AixLib.Fluid.BoilerCHP.BoilerNoControl\">AixLib.Fluid.BoilerCHP.BoilerNoControl</a>)</li>
+</ul>
+</html>"));
 end PartialHeatPumpAndGasBoiler;

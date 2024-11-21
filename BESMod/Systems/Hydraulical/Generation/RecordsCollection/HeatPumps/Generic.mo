@@ -33,7 +33,11 @@ partial record Generic
   parameter Modelica.Units.SI.ThermalConductance GEvaIns=0
     "Inner thermal conductance for evaporator heat loss calculations"
     annotation(Dialog(enable=use_evaCap));
-  annotation (Icon(graphics,
-                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
-        coordinateSystem(preserveAspectRatio=false)));
+  annotation (Documentation(info="<html>
+<h4>Information</h4>
+<p>Generic parameter record for heat pumps. 
+Contains basic parameters describing the condenser and evaporator behavior 
+including pressure drops, heat transfer time constants, and optional heat loss calculations 
+using a capacitor model approach.</p>
+</html>"));
 end Generic;

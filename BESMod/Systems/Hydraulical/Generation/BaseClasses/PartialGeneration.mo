@@ -42,5 +42,16 @@ partial model PartialGeneration "Partial generation model for HPS"
     annotation (Placement(transformation(extent={{62,-110},{82,-90}})));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<p>Partial generation model for hydraulic generation subsystems in building energy systems. 
+Extends <a href=\"modelica://BESMod.Utilities.Icons.GenerationIcon\">BESMod.Utilities.Icons.GenerationIcon</a> and 
+<a href=\"modelica://BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters\">BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters</a>.</p>
+
+<p>The model provides basic parameters and interfaces for heat generation systems including:</p>
+<ul>
+  <li>Fluid ports for supply and return</li>
+  <li>Weather bus connection</li>
+  <li>Control bus interface</li>
+  <li>Electrical interface</li>
+</ul></html>"));
 end PartialGeneration;
