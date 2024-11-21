@@ -491,4 +491,13 @@ equation
       color={255,204,51},
       thickness=0.5),
               Diagram(coordinateSystem(extent={{-180,-140},{100,100}})));
+  annotation (Documentation(info="<html>
+<p>This is a partial model for a heat pump generation system in the BESMod library. 
+It includes the modular reversible heat pump model from the AixLib library.
+See <a href=\"modelica://AixLib.Fluid.HeatPumps.ModularReversible.UsersGuide>AixLib.Fluid.HeatPumps.ModularReversible.UsersGuide</a> for more information on the model.
+</p>
+<p>
+Furthermore, basic KPIs and connections are provided to enable various heat pump generation modules.
+</p>
+</html>"));
 end PartialHeatPump;

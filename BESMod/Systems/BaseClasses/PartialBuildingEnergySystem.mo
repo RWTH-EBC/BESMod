@@ -363,4 +363,30 @@ equation
             -140},{280,200}})),
                           Diagram(coordinateSystem(preserveAspectRatio=false,
           extent={{-280,-140},{280,200}})));
+  annotation (Documentation(info="<html><h4>Information</h4>
+<p>This is a partial model for typical building energy systems. 
+It defines replaceable components for various subsystems such as the 
+building demand, domestic hot water (DHW), electrical system, hydraulic system, 
+and ventilation system. The model also includes user profiles, 
+control, weather data reader, and system outputs.</p>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li><code>use_openModelica</code>: Flag to disable features not available in OpenModelica.</li>
+  <li><code>systemParameters</code>: Parameters relevant for the entire energy system.</li>
+  <li><code>parameterStudy</code>: Parameters changed in the study or analysis.</li>
+</ul>
+
+<h4>Used subsystemes</h4>
+<ul>
+  <li><a href=\"modelica://BESMod.Systems.RecordsCollection.SystemParametersBaseDataDefinition\">BESMod.Systems.RecordsCollection.SystemParametersBaseDataDefinition</a></li>
+  <li><a href=\"modelica://BESMod.Systems.RecordsCollection.ParameterStudy.ParameterStudyBaseDefinition\">BESMod.Systems.RecordsCollection.ParameterStudy.ParameterStudyBaseDefinition</a></li>
+  <li><a href=\"modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand\">BESMod.Systems.Demand.Building.BaseClasses.PartialDemand</a></li>
+  <li><a href=\"modelica://BESMod.Systems.UserProfiles.BaseClasses.PartialUserProfiles\">BESMod.Systems.UserProfiles.BaseClasses.PartialUserProfiles</a></li>
+  <li><a href=\"modelica://BESMod.Systems.Demand.DHW.BaseClasses.PartialDHW\">BESMod.Systems.Demand.DHW.BaseClasses.PartialDHW</a></li>
+  <li><a href=\"modelica://BESMod.Systems.Electrical.BaseClasses.PartialElectricalSystem\">BESMod.Systems.Electrical.BaseClasses.PartialElectricalSystem</a></li>
+  <li><a href=\"modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem\">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a></li>
+  <li><a href=\"modelica://BESMod.Systems.Ventilation.BaseClasses.PartialVentilationSystem\">BESMod.Systems.Ventilation.BaseClasses.PartialVentilationSystem</a></li>
+  <li><a href=\"modelica://BESMod.Control.BaseClasses.PartialControl\">BESMod.Control.BaseClasses.PartialControl</a></li>
+</ul></html>"));
 end PartialBuildingEnergySystem;

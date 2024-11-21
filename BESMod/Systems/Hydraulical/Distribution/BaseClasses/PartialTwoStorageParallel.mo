@@ -454,4 +454,9 @@ equation
       Line(points={{-60,-70},{-56,-70},{-56,-44},{-66,-44},{-66,42},{-56,42},{-56,
           62},{-60,62},{-60,62.4}}, color={0,127,255}));
   annotation (Diagram(coordinateSystem(extent={{-100,-180},{100,140}})));
+  annotation (Documentation(info="<html><h4>Information</h4>
+<p>This is a partial model hydraulic distribution system with two storage tanks connected in parallel. 
+This model includes several replaceable components and parameters for buffer storage, 
+domestic hot water (DHW) storage, temperature sensors, and a three-way valve.</p>
+</html>"));
 end PartialTwoStorageParallel;
