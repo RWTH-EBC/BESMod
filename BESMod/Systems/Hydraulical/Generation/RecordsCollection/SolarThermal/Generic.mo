@@ -27,5 +27,11 @@ partial record Generic
 
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<h4>Information</h4>
+<p>
+This is a partial record containing the basic parameters required for a solar thermal collector model. 
+The record defines the main efficiency parameters, collector geometry, and flow characteristics.
+</p>
+</html>"));
 end Generic;

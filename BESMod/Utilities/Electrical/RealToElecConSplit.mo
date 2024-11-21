@@ -45,5 +45,11 @@ equation
           extent={{-100,-100},{98,-160}},
           lineColor={0,0,0},
           textString="%name")}),                                 Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<h4>Information</h4>
+<p>A model to transfer signals from a real interface to an electrical connector 
+by automatically splitting between generation and load. 
+The model takes a real input signal for electrical power and splits it into generation 
+(positive values) and load (negative values) using limiters.</p>
+</html>"));
 end RealToElecConSplit;

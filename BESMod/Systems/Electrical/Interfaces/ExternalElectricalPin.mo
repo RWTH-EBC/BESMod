@@ -16,4 +16,11 @@ connector ExternalElectricalPin
                                             Diagram(graphics,
                                                     coordinateSystem(
           preserveAspectRatio=false)));
+  annotation (Documentation(info="<html>
+<p>
+Simplified electrical pin connector for power flow outputs to the electricity grid. 
+This connector extends from <a href=\"modelica://BESMod.Systems.Electrical.Interfaces.BaseClasses.ElectricalPinOut\">
+BESMod.Systems.Electrical.Interfaces.BaseClasses.ElectricalPinOut</a>.
+</p>
+</html>"));
 end ExternalElectricalPin;

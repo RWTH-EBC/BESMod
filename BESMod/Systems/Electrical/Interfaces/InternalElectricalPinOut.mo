@@ -16,4 +16,9 @@ connector InternalElectricalPinOut
                                             Diagram(graphics,
                                                     coordinateSystem(
           preserveAspectRatio=false)));
+  annotation (Documentation(info="<html>
+<p>Simplified electrical pin connector representing power flow outputs within the building energy system. 
+This connector extends <a href=\"modelica://BESMod.Systems.Electrical.Interfaces.BaseClasses.ElectricalPinOut\">
+BESMod.Systems.Electrical.Interfaces.BaseClasses.ElectricalPinOut</a>.</p>
+</html>"));
 end InternalElectricalPinOut;
