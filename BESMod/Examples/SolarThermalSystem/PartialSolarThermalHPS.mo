@@ -63,4 +63,28 @@ partial model PartialSolarThermalHPS
     BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration
      annotation (choicesAllMatching=true);
 
+  annotation (Documentation(info="<html>
+<p>
+This is a partial model for a building energy system featuring a heat pump system (HPS) 
+supported by a solar thermal collector. .
+</p>
+
+<p>
+The model includes:
+</p>
+<ul>
+<li>Direct grid electrical system</li>
+<li>TEASER thermal zone building model</li>
+<li>No control system</li>
+<li>Hydraulic system with:
+  <ul>
+    <li>Monoenergetic heat pump control</li>
+    <li>Combined storage distribution</li>
+    <li>Pressure-based radiator transfer</li>
+  </ul>
+</li>
+<li>Standard DHW profiles</li>
+<li>No ventilation</li>
+</ul>
+</html>"));
 end PartialSolarThermalHPS;

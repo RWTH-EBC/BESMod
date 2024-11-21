@@ -39,5 +39,11 @@ partial record ThreeWayValve
     "= true, use m_flow = f(dp) else dp = f(m_flow)";
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info=<html>
+<h4>Information</h4>
+<p>This record is a partial record that contains parameters for 
+configuring a three-way valve model. 
+It automatically calculates pressure losses based on the given valve authority.
+</p>
+</html>);
 end ThreeWayValve;
