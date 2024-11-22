@@ -16,16 +16,16 @@ model TestPressureBasedSystemWithReliefValve
         parRad));
   extends Modelica.Icons.Example;
 
-  annotation (Documentation(info="<html>
-<p>
-Test model to validate a pressure-based heating system with a relief valve. 
-Tests  <a href=\"modelica://BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased\">BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased</a> 
-transfer system with a relief valve enabled.
-</p>
-Key settings:
+  annotation (Documentation(info="<html><p>
+  Test model to validate a pressure-based heating system with a relief
+  valve. Tests <a href=
+  \"modelica://BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased\">
+  BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased</a>
+  transfer system with a relief valve enabled.
+</p>Key settings:
 <ul>
-<li>use_preRelVal = true (Relief valve enabled)</li>
+  <li>use_preRelVal = true (Relief valve enabled)
+  </li>
 </ul>
-</p>
 </html>"));
 end TestPressureBasedSystemWithReliefValve;

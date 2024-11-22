@@ -46,31 +46,45 @@ model AfterBufferWithDHW
      Interval=600,
      Tolerance=1e-06),
    __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/HeatPumpAndBoiler/AfterBufferWithDHW.mos"
-        "Simulate and plot"), Documentation(info="<html>
-<h4>Information</h4>
+        "Simulate and plot"), Documentation(info="<html><h4>
+  Information
+</h4>
 <p>
-This model represents a bivalent heat pump system with boiler integration after the buffer tank including domestic hot water (DHW) support. It extends the <a href=\"modelica://BESMod.Examples.HeatPumpAndBoiler.BaseClasses.PartialHybridSystem\">PartialHybridSystem</a> base class.
+  This model represents a bivalent heat pump system with boiler
+  integration after the buffer tank including domestic hot water (DHW)
+  support. It extends the <a href=
+  \"modelica://BESMod.Examples.HeatPumpAndBoiler.BaseClasses.PartialHybridSystem\">
+  PartialHybridSystem</a> base class.
 </p>
-
-<h4>System Description</h4>
+<h4>
+  System Description
+</h4>
 <p>
-Key components:
+  Key components:
+</p>
 <ul>
-  <li>Heat pump with vapor injection phase separator using propane refrigerant</li>
-  <li>Boiler integrated after buffer storage tank</li>
-  <li>Two storage system with buffer tank and DHW storage</li>
-  <li>Bivalent-parallel configuration for heat generation</li>
+  <li>Heat pump with vapor injection phase separator using propane
+  refrigerant
+  </li>
+  <li>Boiler integrated after buffer storage tank
+  </li>
+  <li>Two storage system with buffer tank and DHW storage
+  </li>
+  <li>Bivalent-parallel configuration for heat generation
+  </li>
 </ul>
-</p>
-
-<h4>Important Parameters</h4>
-<p>
+<h4>
+  Important Parameters
+</h4>
 <ul>
-  <li>TBiv: Bivalence temperature for heat pump operation</li>
-  <li>VPerQFlow: Buffer storage volume per nominal heat flow rate</li>
-  <li>dTLoadingHC1: Temperature difference for DHW loading (10K)</li>
-  <li>dTBoiDHWLoa: Temperature difference for boiler DHW loading (10K)</li>
+  <li>TBiv: Bivalence temperature for heat pump operation
+  </li>
+  <li>VPerQFlow: Buffer storage volume per nominal heat flow rate
+  </li>
+  <li>dTLoadingHC1: Temperature difference for DHW loading (10K)
+  </li>
+  <li>dTBoiDHWLoa: Temperature difference for boiler DHW loading (10K)
+  </li>
 </ul>
-</p>
 </html>"));
 end AfterBufferWithDHW;
