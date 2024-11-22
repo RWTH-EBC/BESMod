@@ -12,8 +12,8 @@ algorithm
   parameters. The gradient is calculated using nominal supply
   temperature <code>TSup_nominal</code>, nominal outdoor temperature
   <code>TOda_nominal</code>, nominal return temperature
-  <code>TRet_nominal and heating threshold temperature
-  <code>THeaThr</code>.</code>
+  <code>TRet_nominal</code> and heating threshold temperature
+  <code>THeaThr</code>.
 </p>
 <h4>
   Mathematical Description
