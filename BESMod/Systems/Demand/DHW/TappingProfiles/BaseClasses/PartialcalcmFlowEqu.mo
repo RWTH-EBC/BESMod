@@ -62,26 +62,38 @@ equation
           110,80},{110,80}}, color={0,0,127}));
   connect(dTSet.y, multiProduct.u[4]) annotation (Line(points={{-21,-70},{28,-70},
           {28,77.375},{42,77.375}},       color={0,0,127}));
-  annotation (Documentation(info="<html>
-<p>Base model for calculating mass flow for domestic hot water based on 
-set temperature and actual temperature using an equalized temperature signal. 
+  annotation (Documentation(info="<html><p>
+  Base model for calculating mass flow for domestic hot water based on
+  set temperature and actual temperature using an equalized temperature
+  signal.
 </p>
-
-<h4>Model Structure</h4>
-<p>The model calculates mass flows using:
+<h4>
+  Model Structure
+</h4>
+<p>
+  The model calculates mass flows using:
+</p>
 <ul>
-  <li>Temperature differences between set point and cold water</li>
-  <li>Actual temperature differences in the system</li>
-  <li>A limiter to keep ratios between 0 and 1</li>
-  <li>Heat flow error calculation using specific heat capacity</li>
+  <li>Temperature differences between set point and cold water
+  </li>
+  <li>Actual temperature differences in the system
+  </li>
+  <li>A limiter to keep ratios between 0 and 1
+  </li>
+  <li>Heat flow error calculation using specific heat capacity
+  </li>
 </ul>
-</p>
-
-
-<h4>Outputs</h4>
+<h4>
+  Outputs
+</h4>
 <ul>
-  <li><code>m_flow_out</code>: Calculated mass flow rate considering temperature differences [kg/s]</li> 
-  <li><code>Q_flowERROR</code>: Error in heat flow rate calculation [W]</li>
+  <li>
+    <code>m_flow_out</code>: Calculated mass flow rate considering
+    temperature differences [kg/s]
+  </li>
+  <li>
+    <code>Q_flowERROR</code>: Error in heat flow rate calculation [W]
+  </li>
 </ul>
 </html>"));
 end PartialcalcmFlowEqu;

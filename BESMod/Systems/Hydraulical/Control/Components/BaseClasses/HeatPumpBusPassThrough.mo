@@ -77,21 +77,27 @@ equation
         lineColor={0,0,127},
         fillColor={255,255,255},
         fillPattern=FillPattern.Solid)}),                        Diagram(
-        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
-<p>
-Model to connect the generation bus interface to the refrigerant machine bus. 
-It transfers all data between 
-<a href=\"modelica://BESMod.Systems.Hydraulical.Control.Components.BaseClasses.Interfaces.GenerationControlBus\">BESMod.Systems.Hydraulical.Control.Components.BaseClasses.Interfaces.GenerationControlBus</a> and 
-<a href=\"modelica://AixLib.Fluid.HeatPumps.ModularReversible.BaseClasses.RefrigerantMachineControlBus\">AixLib.Fluid.HeatPumps.ModularReversible.BaseClasses.RefrigerantMachineControlBus</a>.
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html><p>
+  Model to connect the generation bus interface to the refrigerant
+  machine bus. It transfers all data between <a href=
+  \"modelica://BESMod.Systems.Hydraulical.Control.Components.BaseClasses.Interfaces.GenerationControlBus\">
+  BESMod.Systems.Hydraulical.Control.Components.BaseClasses.Interfaces.GenerationControlBus</a>
+  and <a href=
+  \"modelica://AixLib.Fluid.HeatPumps.ModularReversible.BaseClasses.RefrigerantMachineControlBus\">
+  AixLib.Fluid.HeatPumps.ModularReversible.BaseClasses.RefrigerantMachineControlBus</a>.
 </p>
 <p>
-The model passes through the following signals:
+  The model passes through the following signals:
+</p>
 <ul>
-  <li>Heat pump on/off status</li>
-  <li>Condenser inlet temperature</li>
-  <li>Condenser outlet temperature</li> 
-  <li>Evaporator inlet temperature</li>
+  <li>Heat pump on/off status
+  </li>
+  <li>Condenser inlet temperature
+  </li>
+  <li>Condenser outlet temperature
+  </li>
+  <li>Evaporator inlet temperature
+  </li>
 </ul>
-</p>
 </html>"));
 end HeatPumpBusPassThrough;

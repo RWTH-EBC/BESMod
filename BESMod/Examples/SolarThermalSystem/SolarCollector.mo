@@ -7,9 +7,11 @@ record SolarCollector "Custom values used for example"
     spacing(displayUnit="mm") = 0.02,
     dPipe(displayUnit="mm") = 0.012);
 
-  annotation (Documentation(info="<html>
-<h4>Information</h4>
-<p>Solar collector parameter record for a example system</p>
-</ul>
+  annotation (Documentation(info="<html><h4>
+  Information
+</h4>
+<p>
+  Solar collector parameter record for a example system
+</p>
 </html>"));
 end SolarCollector;
