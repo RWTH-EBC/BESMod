@@ -32,7 +32,7 @@
 
 .custom_install_additional_modelica_libraries:
   script:
-    - apt-get install git-lfs -y
+    - apt-get update && apt-get install git-lfs -y
     - python install_dependencies.py full
 
 .rules:push:
