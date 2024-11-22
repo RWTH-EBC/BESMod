@@ -101,6 +101,9 @@ model AixLibHighOrderOFD "High order OFD"
   Modelica.Blocks.Sources.Constant constVenRatAtt(final k=1)
     "Constant ventilation rate of attic"
     annotation (Placement(transformation(extent={{-80,8},{-60,28}})));
+  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a thermOutside annotation (
+      Placement(transformation(extent={{-108,90},{-88,110}}),
+        iconTransformation(extent={{-108,90},{-88,110}})));
 equation
     // Romm Temperatures
 
@@ -168,6 +171,8 @@ equation
   connect(constVenRatAtt.y, wholeHouseBuildingEnvelope.AirExchangePort[11])
     annotation (Line(points={{-59,18},{-56,18},{-56,46.5455},{-48.7,46.5455}},
         color={0,0,127}));
+  connect(thermOutside, wholeHouseBuildingEnvelope.thermOutside) annotation (
+      Line(points={{-98,100},{-73,100},{-73,72},{-44.94,72}}, color={191,0,0}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end AixLibHighOrderOFD;
