@@ -6,8 +6,7 @@ protected
     TSup_nominal - TRet_nominal)/2) / (THeaThr - TOda_nominal);
 algorithm
   TSup := TSup_nominal - graTSupAtTOda_nominal * (TOda - TOda_nominal);
-  annotation (Documentation(info="<html>
-<p>
+  annotation (Documentation(info="<html><p>
   A simple heating curve with a constant gradient based on nominal
   parameters. The gradient is calculated using nominal supply
   temperature <code>TSup_nominal</code>, nominal outdoor temperature
