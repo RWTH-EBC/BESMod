@@ -1,6 +1,6 @@
 within BESMod.Examples.HighOrderModel;
 model HOMSpawn
-  extends BESMod.Examples.HighOrderModel.BaseClasses.PartialBES_HOM(
+  extends BESMod.Examples.HighOrderModel.PartialHOM(
     redeclare Systems.Demand.Building.SpawnHighOrder         building(
       useConstVentRate=false, wea_name=systemParameters.filNamWea),
       systemParameters(
