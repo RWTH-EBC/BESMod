@@ -1,5 +1,5 @@
 # Variables
-# dym_image_name: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-miniconda
+# dym_image_name: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-micromamba
 # ci_stage_model_check: model_check
 # ci_stage_create_whitelist: create_model_whitelist
 # library: BESMod
@@ -26,7 +26,7 @@ stages:
 
 
 .check_model_job:push:
-    image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-miniconda
+    image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-micromamba
     stage: model_check
     before_script:
         - !reference [.activate_python_and_install_requirements, script]
@@ -44,7 +44,7 @@ stages:
         - !reference [.rules:push , rules]
 
 .check_model_job:changed:
-    image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-miniconda
+    image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-micromamba
     stage: model_check
     before_script:
         - !reference [.activate_python_and_install_requirements, script]
@@ -92,7 +92,7 @@ Check_BESMod_Other:changed:
 
 
 check_whitelist_job:
-    image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-miniconda
+    image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-micromamba
     stage: create_model_whitelist
     before_script:
         - !reference [.activate_python_and_install_requirements, script]

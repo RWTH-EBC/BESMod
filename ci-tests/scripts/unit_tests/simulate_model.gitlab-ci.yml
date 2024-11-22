@@ -1,5 +1,5 @@
 # Variables
-# dym_image_name : registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-miniconda
+# dym_image_name : registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-micromamba
 # ci_stage_simulate: simulate
 # ci_stage_create_exampel_whitelist: create_example_whitelist
 # arg_changed : --dym-options DYM_SIM --filter-whitelist-flag  --changed-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --additional-libraries-to-load  --packages $lib_package --library BESMod 
@@ -25,7 +25,7 @@ stages:
 
 
 .simulate_model_job:push:
-    image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-miniconda
+    image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-micromamba
     stage: simulate
     before_script:
         - !reference [.activate_python_and_install_requirements, script]
@@ -43,7 +43,7 @@ stages:
         - !reference [.rules:push , rules]
 
 .simulate_model_job:changed:
-    image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-miniconda
+    image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-micromamba
     stage: simulate
     before_script:
         - !reference [.activate_python_and_install_requirements, script]
@@ -92,7 +92,7 @@ Simulate_BESMod_Other:changed:
 
 
 simulate_whitelist_job:
-    image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-miniconda
+    image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-micromamba
     stage:  create_example_whitelist
     before_script:
         - !reference [.activate_python_and_install_requirements, script]

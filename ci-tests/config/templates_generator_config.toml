@@ -1,4 +1,4 @@
-dymola_image = "registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-miniconda"
+dymola_image = "registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-micromamba"
 open_modelica_image = "registry.git.rwth-aachen.de/ebc/ebc_intern/openmodelica-docker:main"
 page = "https://rwth-ebc.github.io/BESMod"
 github_repository = "RWTH-EBC/BESMod"
