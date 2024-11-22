@@ -1,4 +1,4 @@
-within BESMod.Examples.HighOrderModel;
+within BESMod.Examples.HighOrderModel.BaseClasses;
 partial model PartialHOM
   "Partial model to be extended to replace building model"
   extends BESMod.Systems.BaseClasses.PartialBuildingEnergySystem(

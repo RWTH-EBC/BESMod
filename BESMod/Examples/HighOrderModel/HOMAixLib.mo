@@ -1,6 +1,6 @@
 within BESMod.Examples.HighOrderModel;
 model HOMAixLib
-  extends BESMod.Examples.HighOrderModel.PartialHOM(
+  extends BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM(
     redeclare BESMod.Systems.Demand.Building.AixLibHighOrder building(
       energyDynamicsWalls=Modelica.Fluid.Types.Dynamics.FixedInitial,
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
