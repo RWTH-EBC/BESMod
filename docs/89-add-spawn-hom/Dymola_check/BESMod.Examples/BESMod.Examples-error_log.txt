@@ -1,0 +1,106 @@
+
+Error in model:  BESMod.Examples.HighOrderModel.HOMAixLib 
+Check of <a href="Modelica://BESMod.Examples.HighOrderModel.HOMAixLib">BESMod.Examples.HighOrderModel.HOMAixLib</a>:
+Error: Use of undeclared variable GroundReflection
+In class <a href="Modelica://BESMod.Systems.Demand.Building.AixLibHighOrder">BESMod.Systems.Demand.Building.AixLibHighOrder</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/AixLibHighOrder.mo, line 2
+Used in component <a href="Modelica://BESMod.Examples.HighOrderModel.HOMAixLib#$building.RadOnTiltedSurf:GroundReflection">building.RadOnTiltedSurf.GroundReflection</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/RadOnTiltedSurf_LiuWeaBus.mo, line 8
+In value attribute for building.RadOnTiltedSurf[1].GroundReflection.
+Modifier applied in class <a href="Modelica://BESMod.Systems.Demand.Building.AixLibHighOrder">BESMod.Systems.Demand.Building.AixLibHighOrder</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/AixLibHighOrder.mo, line 2
+Modifier applied for component <a href="Modelica://BESMod.Examples.HighOrderModel.HOMAixLib#$building.RadOnTiltedSurf:GroundReflection">building.RadOnTiltedSurf.GroundReflection</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/RadOnTiltedSurf_LiuWeaBus.mo, line 8
+Variable found in class <a href="Modelica://BESMod.Examples.HighOrderModel.HOMAixLib">BESMod.Examples.HighOrderModel.HOMAixLib</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HighOrderModel/HOMAixLib.mo, line 2
+Variable found in component <a href="Modelica://BESMod.Examples.HighOrderModel.HOMAixLib#$building:RadOnTiltedSurf">building.RadOnTiltedSurf</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/AixLibHighOrder.mo, line 56
+Error: Use of undeclared variable GroundReflection
+In class <a href="Modelica://BESMod.Systems.Demand.Building.AixLibHighOrder">BESMod.Systems.Demand.Building.AixLibHighOrder</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/AixLibHighOrder.mo, line 2
+Used in component <a href="Modelica://BESMod.Examples.HighOrderModel.HOMAixLib#$building.RadOnTiltedSurf:GroundReflection">building.RadOnTiltedSurf.GroundReflection</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/RadOnTiltedSurf_LiuWeaBus.mo, line 8
+In value attribute for building.RadOnTiltedSurf[2].GroundReflection.
+Modifier applied in class <a href="Modelica://BESMod.Systems.Demand.Building.AixLibHighOrder">BESMod.Systems.Demand.Building.AixLibHighOrder</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/AixLibHighOrder.mo, line 2
+Modifier applied for component <a href="Modelica://BESMod.Examples.HighOrderModel.HOMAixLib#$building.RadOnTiltedSurf:GroundReflection">building.RadOnTiltedSurf.GroundReflection</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/RadOnTiltedSurf_LiuWeaBus.mo, line 8
+Variable found in class <a href="Modelica://BESMod.Examples.HighOrderModel.HOMAixLib">BESMod.Examples.HighOrderModel.HOMAixLib</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HighOrderModel/HOMAixLib.mo, line 2
+Variable found in component <a href="Modelica://BESMod.Examples.HighOrderModel.HOMAixLib#$building:RadOnTiltedSurf">building.RadOnTiltedSurf</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/AixLibHighOrder.mo, line 56
+Error: Use of undeclared variable GroundReflection
+In class <a href="Modelica://BESMod.Systems.Demand.Building.AixLibHighOrder">BESMod.Systems.Demand.Building.AixLibHighOrder</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/AixLibHighOrder.mo, line 2
+Used in component <a href="Modelica://BESMod.Examples.HighOrderModel.HOMAixLib#$building.RadOnTiltedSurf:GroundReflection">building.RadOnTiltedSurf.GroundReflection</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/RadOnTiltedSurf_LiuWeaBus.mo, line 8
+In value attribute for building.RadOnTiltedSurf[3].GroundReflection.
+Modifier applied in class <a href="Modelica://BESMod.Systems.Demand.Building.AixLibHighOrder">BESMod.Systems.Demand.Building.AixLibHighOrder</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/AixLibHighOrder.mo, line 2
+Modifier applied for component <a href="Modelica://BESMod.Examples.HighOrderModel.HOMAixLib#$building.RadOnTiltedSurf:GroundReflection">building.RadOnTiltedSurf.GroundReflection</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/RadOnTiltedSurf_LiuWeaBus.mo, line 8
+Variable found in class <a href="Modelica://BESMod.Examples.HighOrderModel.HOMAixLib">BESMod.Examples.HighOrderModel.HOMAixLib</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HighOrderModel/HOMAixLib.mo, line 2
+Variable found in component <a href="Modelica://BESMod.Examples.HighOrderModel.HOMAixLib#$building:RadOnTiltedSurf">building.RadOnTiltedSurf</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/AixLibHighOrder.mo, line 56
+Error: Use of undeclared variable GroundReflection
+In class <a href="Modelica://BESMod.Systems.Demand.Building.AixLibHighOrder">BESMod.Systems.Demand.Building.AixLibHighOrder</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/AixLibHighOrder.mo, line 2
+Used in component <a href="Modelica://BESMod.Examples.HighOrderModel.HOMAixLib#$building.RadOnTiltedSurf:GroundReflection">building.RadOnTiltedSurf.GroundReflection</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/RadOnTiltedSurf_LiuWeaBus.mo, line 8
+In value attribute for building.RadOnTiltedSurf[4].GroundReflection.
+Modifier applied in class <a href="Modelica://BESMod.Systems.Demand.Building.AixLibHighOrder">BESMod.Systems.Demand.Building.AixLibHighOrder</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/AixLibHighOrder.mo, line 2
+Modifier applied for component <a href="Modelica://BESMod.Examples.HighOrderModel.HOMAixLib#$building.RadOnTiltedSurf:GroundReflection">building.RadOnTiltedSurf.GroundReflection</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/RadOnTiltedSurf_LiuWeaBus.mo, line 8
+Variable found in class <a href="Modelica://BESMod.Examples.HighOrderModel.HOMAixLib">BESMod.Examples.HighOrderModel.HOMAixLib</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HighOrderModel/HOMAixLib.mo, line 2
+Variable found in component <a href="Modelica://BESMod.Examples.HighOrderModel.HOMAixLib#$building:RadOnTiltedSurf">building.RadOnTiltedSurf</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/AixLibHighOrder.mo, line 56
+Error: Use of undeclared variable GroundReflection
+In class <a href="Modelica://BESMod.Systems.Demand.Building.AixLibHighOrder">BESMod.Systems.Demand.Building.AixLibHighOrder</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/AixLibHighOrder.mo, line 2
+Used in component <a href="Modelica://BESMod.Examples.HighOrderModel.HOMAixLib#$building.RadOnTiltedSurf:GroundReflection">building.RadOnTiltedSurf.GroundReflection</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/RadOnTiltedSurf_LiuWeaBus.mo, line 8
+In value attribute for building.RadOnTiltedSurf[5].GroundReflection.
+Modifier applied in class <a href="Modelica://BESMod.Systems.Demand.Building.AixLibHighOrder">BESMod.Systems.Demand.Building.AixLibHighOrder</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/AixLibHighOrder.mo, line 2
+Modifier applied for component <a href="Modelica://BESMod.Examples.HighOrderModel.HOMAixLib#$building.RadOnTiltedSurf:GroundReflection">building.RadOnTiltedSurf.GroundReflection</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/RadOnTiltedSurf_LiuWeaBus.mo, line 8
+Variable found in class <a href="Modelica://BESMod.Examples.HighOrderModel.HOMAixLib">BESMod.Examples.HighOrderModel.HOMAixLib</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HighOrderModel/HOMAixLib.mo, line 2
+Variable found in component <a href="Modelica://BESMod.Examples.HighOrderModel.HOMAixLib#$building:RadOnTiltedSurf">building.RadOnTiltedSurf</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/AixLibHighOrder.mo, line 56
+Error: Use of undeclared variable GroundReflection
+In class <a href="Modelica://BESMod.Systems.Demand.Building.AixLibHighOrder">BESMod.Systems.Demand.Building.AixLibHighOrder</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/AixLibHighOrder.mo, line 2
+Used in component <a href="Modelica://BESMod.Examples.HighOrderModel.HOMAixLib#$building.RadOnTiltedSurf:GroundReflection">building.RadOnTiltedSurf.GroundReflection</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/RadOnTiltedSurf_LiuWeaBus.mo, line 8
+In value attribute for building.RadOnTiltedSurf[6].GroundReflection.
+Modifier applied in class <a href="Modelica://BESMod.Systems.Demand.Building.AixLibHighOrder">BESMod.Systems.Demand.Building.AixLibHighOrder</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/AixLibHighOrder.mo, line 2
+Modifier applied for component <a href="Modelica://BESMod.Examples.HighOrderModel.HOMAixLib#$building.RadOnTiltedSurf:GroundReflection">building.RadOnTiltedSurf.GroundReflection</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/RadOnTiltedSurf_LiuWeaBus.mo, line 8
+Variable found in class <a href="Modelica://BESMod.Examples.HighOrderModel.HOMAixLib">BESMod.Examples.HighOrderModel.HOMAixLib</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HighOrderModel/HOMAixLib.mo, line 2
+Variable found in component <a href="Modelica://BESMod.Examples.HighOrderModel.HOMAixLib#$building:RadOnTiltedSurf">building.RadOnTiltedSurf</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/AixLibHighOrder.mo, line 56
+Warning: Non-literal value.
+In nominal attribute for hydraulic.generation.heatPump.con.preDro.m_flow.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class hydraulic.generation.heatPump.con.preDro.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Non-literal value.
+In nominal attribute for hydraulic.generation.heatPump.eva.preDro.m_flow.
+Ignoring nominal attribute.
+In class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>.
+  Near file: /opt/dymola-2022-x86_64/Modelica/Library/Modelica 4.0.0/Units.mo, line 237
+Used in base-class hydraulic.generation.heatPump.eva.preDro.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+The model contained invalid expressions.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
