@@ -504,8 +504,8 @@ package SpawnHighOrderOFD
       m_flow_nominal=1)
       "Duct resistance (to decouple room and outside pressure)"
       annotation (Placement(transformation(extent={{-44,24},{-56,36}})));
-    Buildings.Fluid.Sources.Boundary_pT pAtm_bedroom6(redeclare package Medium
-        = Medium, nPorts=1) "Boundary condition"
+    Buildings.Fluid.Sources.Boundary_pT pAtm_bedroom6(redeclare package Medium =
+          Medium, nPorts=1) "Boundary condition"
       annotation (Placement(transformation(extent={{-90,24},{-80,34}})));
     Modelica.Blocks.Interfaces.RealInput AirExchangePort[5]
       "1: Bedroom_UF, 2: Children1_UF, 3: Corridor_UF, 4: Bath_UF, 5: Children2_UF"
@@ -539,8 +539,8 @@ package SpawnHighOrderOFD
       dp_nominal=100,
       m_flow_nominal=1) "Duct resistance (to decouple room and outside pressure)"
       annotation (Placement(transformation(extent={{58,28},{46,40}})));
-    Buildings.Fluid.Sources.Boundary_pT pAtm_children7(redeclare package Medium
-        = Medium, nPorts=1) "Boundary condition"
+    Buildings.Fluid.Sources.Boundary_pT pAtm_children7(redeclare package Medium =
+          Medium, nPorts=1) "Boundary condition"
       annotation (Placement(transformation(extent={{12,26},{22,36}})));
     Modelica.Blocks.Math.Product calcMassFlow_children7
       "calculate mass flow from volume flow and density"
@@ -569,8 +569,8 @@ package SpawnHighOrderOFD
       m_flow_nominal=1)
       "Duct resistance (to decouple room and outside pressure)"
       annotation (Placement(transformation(extent={{56,-26},{44,-14}})));
-    Buildings.Fluid.Sources.Boundary_pT pAtm_corridor8(redeclare package Medium
-        = Medium, nPorts=1) "Boundary condition"
+    Buildings.Fluid.Sources.Boundary_pT pAtm_corridor8(redeclare package Medium =
+          Medium, nPorts=1) "Boundary condition"
       annotation (Placement(transformation(extent={{16,-22},{26,-12}})));
     Modelica.Blocks.Sources.RealExpression
                                      air_density3(y=rho)
