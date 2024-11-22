@@ -4,7 +4,7 @@ package SpawnHighOrderOFD
     replaceable package Medium = IBPSA.Media.Air constrainedby
       Modelica.Media.Interfaces.PartialMedium "Medium in the component"
         annotation (choicesAllMatching=true);
-    parameter Modelica.Units.SI.Volume VZones[5] = {0,0,0,0,0} "Volume of the zones";
+    parameter Modelica.Units.SI.Volume VZones[5] = {59.98,33.63,39.9,33.63,48.67} "Volume of the zones";
     IBPSA.BoundaryConditions.WeatherData.Bus
         weaBus "Weather data bus" annotation (Placement(transformation(extent={{-70,78},
               {-28,122}}),         iconTransformation(extent={{-68,92},{-48,112}})));
@@ -438,7 +438,7 @@ package SpawnHighOrderOFD
     replaceable package Medium = IBPSA.Media.Air constrainedby
       Modelica.Media.Interfaces.PartialMedium "Medium in the component"
         annotation (choicesAllMatching=true);
-    parameter Modelica.Units.SI.Volume VZones[5] = {0,0,0,0,0} "Volume of the zones";
+    parameter Modelica.Units.SI.Volume VZones[5] = {59.98,33.63,39.9,33.63,48.67} "Volume of the zones";
     IBPSA.BoundaryConditions.WeatherData.Bus
         weaBus "Weather data bus" annotation (Placement(transformation(extent={{-70,78},
               {-28,122}}),         iconTransformation(extent={{-68,92},{-48,112}})));
@@ -867,7 +867,7 @@ package SpawnHighOrderOFD
     replaceable package Medium = IBPSA.Media.Air constrainedby
       Modelica.Media.Interfaces.PartialMedium "Medium in the component"
         annotation (choicesAllMatching=true);
-    parameter Modelica.Units.SI.Volume VZone = 0 "Volume of the zone";
+    parameter Modelica.Units.SI.Volume VZone = 199.99 "Volume of the zone";
     IBPSA.BoundaryConditions.WeatherData.Bus
         weaBus "Weather data bus" annotation (Placement(transformation(extent={{-70,78},
               {-28,122}}),         iconTransformation(extent={{-68,92},{-48,112}})));
