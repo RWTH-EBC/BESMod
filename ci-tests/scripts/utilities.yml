@@ -23,7 +23,7 @@
 .activate_python_and_install_requirements:
   script:
     - export PIP_CACHE_DIR="/opt/cache/pip"
-    - micromamba activate base || echo "micromamba base is not installed, can't activate it"
+    - eval "$(micromamba shell hook --shell bash)" && micromamba activate base || echo "micromamba base is not installed, can't activate it"
     - pip install --upgrade pip && pip install natsort toml pandas mako requests
     - export PYTHONIOENCODING=utf-8
     - pip install git+https://github.com/FWuellhorst/BuildingsPy.git@issue253_coverage
