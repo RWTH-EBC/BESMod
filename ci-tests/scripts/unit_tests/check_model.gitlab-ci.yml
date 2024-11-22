@@ -1,5 +1,5 @@
 # Variables
-# dym_image_name: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola_2022-miniconda
+# dym_image_name: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-miniconda
 # ci_stage_model_check: model_check
 # ci_stage_create_whitelist: create_model_whitelist
 # library: BESMod
@@ -9,12 +9,12 @@
 # result_dir: ci-tests/result
 # expire_in_time: 7h
 # ci_create_model_whitelist_commit: ci_create_model_whitelist
-# arg_changed: --dym-options DYM_CHECK --filter-whitelist-flag  --changed-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
-# arg_push: --dym-options DYM_CHECK --filter-whitelist-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
+# arg_changed: --dym-options DYM_CHECK --filter-whitelist-flag  --changed-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --additional-libraries-to-load  --packages $lib_package --library BESMod 
+# arg_push: --dym-options DYM_CHECK --filter-whitelist-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --additional-libraries-to-load  --packages $lib_package --library BESMod 
 # config_ci_exit_file: ci-tests/Configfiles/exit.sh
 # bot_update_model_whitelist_commit: CI message from ebc-aixlib-bot. Update file whitelist-check_file. Please pull the new files before push again.
 # whitelist_model_file: dymola_check_whitelist.txt
-# arg_wh: --dym-options DYM_CHECK --create-whitelist-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --additional-libraries-to-load  --packages Examples Tutorial Utilities Systems --library BESMod 
+# arg_wh: --dym-options DYM_CHECK --create-whitelist-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --additional-libraries-to-load  --packages Examples Tutorial Utilities Systems --library BESMod 
 # packages_per_job: {'Examples': 'Examples', 'Systems': 'Systems', 'Other': 'Tutorial Utilities'}
 # modelicapyci_config_structure_module: ModelicaPyCI.structure.config_structure
 
@@ -26,13 +26,13 @@ stages:
 
 
 .check_model_job:push:
-    image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola_2022-miniconda
+    image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-miniconda
     stage: model_check
     before_script:
         - !reference [.activate_python_and_install_requirements, script]
         - !reference [.custom_install_additional_modelica_libraries, script]
     script:
-        - xvfb-run -n 77 python -m ModelicaPyCI.unittest.validatetest --dym-options DYM_CHECK --filter-whitelist-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
+        - xvfb-run -n 77 python -m ModelicaPyCI.unittest.validatetest --dym-options DYM_CHECK --filter-whitelist-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --additional-libraries-to-load  --packages $lib_package --library BESMod 
     artifacts:
         when: on_failure
         paths:
@@ -44,13 +44,13 @@ stages:
         - !reference [.rules:push , rules]
 
 .check_model_job:changed:
-    image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola_2022-miniconda
+    image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-miniconda
     stage: model_check
     before_script:
         - !reference [.activate_python_and_install_requirements, script]
         - !reference [.custom_install_additional_modelica_libraries, script]
     script:
-        - xvfb-run -n 77 python -m ModelicaPyCI.unittest.validatetest --dym-options DYM_CHECK --filter-whitelist-flag  --changed-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --additional-libraries-to-load  --packages $lib_package --library BESMod 
+        - xvfb-run -n 77 python -m ModelicaPyCI.unittest.validatetest --dym-options DYM_CHECK --filter-whitelist-flag  --changed-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --additional-libraries-to-load  --packages $lib_package --library BESMod 
     artifacts:
         when: on_failure
         paths:
@@ -92,7 +92,7 @@ Check_BESMod_Other:changed:
 
 
 check_whitelist_job:
-    image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola_2022-miniconda
+    image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-miniconda
     stage: create_model_whitelist
     before_script:
         - !reference [.activate_python_and_install_requirements, script]
@@ -100,7 +100,7 @@ check_whitelist_job:
         - !reference [.github_ssh_auth, script]
 
     script:
-        - xvfb-run -n 77 python -m ModelicaPyCI.unittest.validatetest --dym-options DYM_CHECK --create-whitelist-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --additional-libraries-to-load  --packages Examples Tutorial Utilities Systems --library BESMod 
+        - xvfb-run -n 77 python -m ModelicaPyCI.unittest.validatetest --dym-options DYM_CHECK --create-whitelist-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --additional-libraries-to-load  --packages Examples Tutorial Utilities Systems --library BESMod 
     after_script:
         - if ! cat ci-tests/Configfiles/exit.sh | grep "FAIL"; then
             exit 0;

@@ -7,20 +7,20 @@
 python -m ModelicaPyCI.syntax.html_tidy --filter-whitelist-flag  --correct-view-flag  --log-flag  --whitelist-library IBPSA --library BESMod --packages Examples Tutorial Utilities Systems 
 python -m ModelicaPyCI.syntax.html_tidy --filter-whitelist-flag  --correct-view-flag  --log-flag  --whitelist-library IBPSA --library BESMod --packages Examples Tutorial Utilities Systems 
 
-python -m ModelicaPyCI.syntax.style_checking --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --library BESMod 
-python -m ModelicaPyCI.syntax.style_checking --changed-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --library BESMod 
+python -m ModelicaPyCI.syntax.style_checking --startup-mos startup.mos --min-number-of-unused-licences 5 --library BESMod 
+python -m ModelicaPyCI.syntax.style_checking --changed-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --library BESMod 
 
 python -m ModelicaPyCI.syntax.naming_guideline --changed-flag  --main-branch main --config ci-tests/naming_guideline.toml --library BESMod 
 
 :: Check & Simulate BESMod Examples on PR
-python -m ModelicaPyCI.unittest.validatetest --dym-options DYM_SIM DYM_CHECK --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --additional-libraries-to-load  --library BESMod  --packages Examples
+python -m ModelicaPyCI.unittest.validatetest --dym-options DYM_SIM DYM_CHECK --startup-mos startup.mos --min-number-of-unused-licences 5 --additional-libraries-to-load  --library BESMod  --packages Examples
 :: Check & Simulate BESMod Examples on push
-python -m ModelicaPyCI.unittest.validatetest --dym-options DYM_SIM DYM_CHECK --changed-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --additional-libraries-to-load  --library BESMod  --packages Examples
+python -m ModelicaPyCI.unittest.validatetest --dym-options DYM_SIM DYM_CHECK --changed-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --additional-libraries-to-load  --library BESMod  --packages Examples
 :: Check & Simulate BESMod Systems on PR
-python -m ModelicaPyCI.unittest.validatetest --dym-options DYM_SIM DYM_CHECK --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --additional-libraries-to-load  --library BESMod  --packages Systems
+python -m ModelicaPyCI.unittest.validatetest --dym-options DYM_SIM DYM_CHECK --startup-mos startup.mos --min-number-of-unused-licences 5 --additional-libraries-to-load  --library BESMod  --packages Systems
 :: Check & Simulate BESMod Systems on push
-python -m ModelicaPyCI.unittest.validatetest --dym-options DYM_SIM DYM_CHECK --changed-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --additional-libraries-to-load  --library BESMod  --packages Systems
+python -m ModelicaPyCI.unittest.validatetest --dym-options DYM_SIM DYM_CHECK --changed-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --additional-libraries-to-load  --library BESMod  --packages Systems
 :: Check & Simulate BESMod Tutorial Utilities on PR
-python -m ModelicaPyCI.unittest.validatetest --dym-options DYM_SIM DYM_CHECK --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --additional-libraries-to-load  --library BESMod  --packages Tutorial Utilities
+python -m ModelicaPyCI.unittest.validatetest --dym-options DYM_SIM DYM_CHECK --startup-mos startup.mos --min-number-of-unused-licences 5 --additional-libraries-to-load  --library BESMod  --packages Tutorial Utilities
 :: Check & Simulate BESMod Tutorial Utilities on push
-python -m ModelicaPyCI.unittest.validatetest --dym-options DYM_SIM DYM_CHECK --changed-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --dymola-version 2022 --additional-libraries-to-load  --library BESMod  --packages Tutorial Utilities
+python -m ModelicaPyCI.unittest.validatetest --dym-options DYM_SIM DYM_CHECK --changed-flag  --startup-mos startup.mos --min-number-of-unused-licences 5 --additional-libraries-to-load  --library BESMod  --packages Tutorial Utilities

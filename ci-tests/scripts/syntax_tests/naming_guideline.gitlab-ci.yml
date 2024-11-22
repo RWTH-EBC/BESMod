@@ -1,5 +1,5 @@
 # Variables
-# image_name : registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola_2022-miniconda
+# image_name : registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-miniconda
 # ci_stage_style_check : Style_check
 # modelicapyci_syntax_naming_guideline : ModelicaPyCI.syntax.naming_guideline
 # library : BESMod
@@ -13,7 +13,7 @@ stages:
 
 
 NamingGuideline:BESMod:push:
-    image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola_2022-miniconda
+    image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-miniconda
     stage: Style_check
     before_script:
         - !reference [.activate_python_and_install_requirements, script]
