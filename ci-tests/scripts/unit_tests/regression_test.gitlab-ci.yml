@@ -1,5 +1,5 @@
 # Variables
-# dym_image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-micromamba-alternative
+# dym_image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-micromamba
 # ci_stage_regression_test: RegressionTest
 # ci_stage_ref_check :Ref_Check
 # ci_stage_plot_ref : plot_ref
@@ -37,7 +37,7 @@ stages:
 
 
 .Regressiontest:push:
-    image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-micromamba-alternative
+    image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-micromamba
     stage: RegressionTest
     before_script:
         - !reference [.activate_python_and_install_requirements, script]
@@ -64,7 +64,7 @@ stages:
           when: always
 
 .Regressiontest:changed:
-    image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-micromamba-alternative
+    image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-micromamba
     stage: RegressionTest
     before_script:
         - !reference [.activate_python_and_install_requirements, script]
