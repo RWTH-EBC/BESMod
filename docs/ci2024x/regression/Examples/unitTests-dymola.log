@@ -1,0 +1,33 @@
+Regression tests are only run for the following package:
+  BESMod.Examples
+*** Warning: Mismatched displayUnit in 'RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/ModelicaConferencePaper/BuildingsLibraryRoom.mos");'.
+
+*** Warning: Mismatched displayUnit in 'RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/SolarThermalSystem/SolarThermalBuildings.mos");'.
+
+*** Warning: BESMod.Examples.HighOrderModel.BES_HOM: Translation statistics for initialization changed for nonlinear, but results are unchanged.
+ Old = 5, 5, 5, 5, 5, 5, 5, 2, 5, 5, 2, 0, 0, 8, 7, 8, 7, 8, 9, 8, 9, 8, 9, 1, 1, 1, 1,   1, 1, 1, 1, 1, 1, 1
+ New = 5, 5, 5, 5, 5, 5, 5, 2, 5, 5, 3, 8, 7, 8, 7, 8, 9, 8, 9, 8, 9, 1, 1, 1, 1, 1, 1,   1, 1, 1, 1, 1
+*** Warning: BESMod.Examples.HeatPumpAndBoiler.Serial: Translation statistics for initialization changed for nonlinear, but results are unchanged.
+ Old = 0, 0, 5, 7, 2, 0, 0, 1, 1
+ New = 0, 0, 5, 7, 3, 1, 1
+*** Warning: BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW: Translation statistics for initialization changed for nonlinear, but results are unchanged.
+ Old = 0, 0, 5, 7, 3, 3, 1, 1
+ New = 0, 0, 5, 7, 3, 2, 1, 1
+*** Warning: BESMod.Examples.DesignOptimization.BES: Translation statistics for initialization changed for nonlinear, but results are unchanged.
+ Old = 5, 7, 2, 0, 0, 1, 1
+ New = 5, 7, 3, 1, 1
+*** Warning: BESMod.Examples.SolarThermalSystem.SolarThermalBuildings: Translation statistics for initialization changed for nonlinear, but results are unchanged.
+ Old = 5, 7, 1, 1, 2, 1
+ New = 5, 7, 1, 0, 1, 1, 1
+*** Warning: BESMod.Examples.ModelicaConferencePaper.TEASERBuilding: Translation statistics for initialization changed for nonlinear, but results are unchanged.
+ Old = 5, 7, 2, 0, 0, 1, 1, 1, 0, 1, 1, 1
+ New = 5, 7, 3, 1, 0, 1, 1, 0, 1, 1, 1
+*** Warning: BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom: Translation statistics for initialization changed for nonlinear, but results are unchanged.
+ Old = 5, 14, 2, 0, 0, 1, 1, 1, 0, 1, 1, 1
+ New = 5, 14, 3, 1, 0, 1, 1, 0, 1, 1, 1
+Comparison files output by funnel are stored in the directory 'funnel_comp' of size 0.9 MB.
+Run 'python -c "import buildingspy.development.regressiontest as t; t.Tester(tool=\"dymola\").report()"'
+to access a summary of the comparison results.
+
+Script that runs unit tests had 9 warnings and 0 errors.
+
