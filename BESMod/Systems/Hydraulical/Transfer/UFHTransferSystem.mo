@@ -104,8 +104,8 @@ model UFHTransferSystem
     choicesAllMatching=true,
     Placement(transformation(extent={{-100,-98},{-80,-78}})));
   Modelica.Blocks.Sources.RealExpression senTRet[nParallelSup](final y(
-      final unit="K",
-      displayUnit="degC") = Medium.temperature(Medium.setState_phX(
+      each final unit="K",
+      each displayUnit="degC") = Medium.temperature(Medium.setState_phX(
       portTra_out.p,
       inStream(portTra_out.h_outflow),
       inStream(portTra_out.Xi_outflow)))) "Real expression for return temperature"
@@ -114,8 +114,8 @@ model UFHTransferSystem
         rotation=0,
         origin={-60,-74})));
   Modelica.Blocks.Sources.RealExpression senTSup[nParallelSup](final y(
-      final unit="K",
-      displayUnit="degC") = Medium.temperature(Medium.setState_phX(
+      each final unit="K",
+      each displayUnit="degC") = Medium.temperature(Medium.setState_phX(
       portTra_in.p,
       inStream(portTra_in.h_outflow),
       inStream(portTra_in.Xi_outflow)))) "Real expression for supply temperature"
