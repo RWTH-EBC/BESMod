@@ -32,8 +32,12 @@
 
 .custom_install_additional_modelica_libraries:
   script:
-    - apt-get update && apt-get install git-lfs -y
+    - apt-get update && apt-get install git-lfs wget -y
     - python install_dependencies.py full
+    - chmod +x ./ci-tests/scripts/install_spawn.sh
+    - ./ci-tests/scripts/install_spawn.sh
+    - export SPAWNPATH="$(pwd)/installed_dependencies/Buildings/Buildings/Resources/bin/spawn-0.4.3-7048a72798/linux64/bin"
+    - export PATH="${PATH}:${SPAWNPATH}"
 
 .rules:push:
     rules:
