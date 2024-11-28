@@ -1,5 +1,5 @@
 # Variables
-# image_name : registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola_2022-miniconda
+# image_name : registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-micromamba
 # ci_stage_html_check : HTML_Check
 # ci_stage_html_whitelist : create_html_whitelist
 # ci_stage_open_PR : open_PR
@@ -17,7 +17,7 @@
 
 include: 'ci-tests/scripts/utilities.yml'
 
-image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola_2022-miniconda
+image: registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-micromamba
 stages:
     - HTML_Check
     - create_html_whitelist
