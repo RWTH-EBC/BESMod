@@ -1,7 +1,7 @@
 last-generated=2024-11-15
 statistics-initialization=
 {
-  "nonlinear": "5, 5, 5, 5, 5, 5, 5, 2, 5, 5, 2, 0, 0, 8, 7, 8, 7, 8, 9, 8, 9, 8, 9, 1, 1, 1, 1,   1, 1, 1, 1, 1, 1, 1",
+  "nonlinear": "5, 5, 5, 5, 5, 5, 5, 2, 5, 5, 3, 8, 7, 8, 7, 8, 9, 8, 9, 8, 9, 1, 1, 1, 1, 1, 1,   1, 1, 1, 1, 1",
   "numerical Jacobians": "0"
 }
 statistics-simulation=
