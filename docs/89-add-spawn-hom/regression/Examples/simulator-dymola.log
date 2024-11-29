@@ -782,9 +782,9 @@ The redundancies involve
 initial equations: 
   hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
   ventilation.generation.threeWayValve_b.res1.port_b.p = ventilation.generation.threeWayValve_b.vol.dynBal.p_start;
-  electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
   electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
   electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
+  electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
  
  
 Statistics
@@ -1573,9 +1573,9 @@ initial equations:
   building.roo.air.vol.dynBal.medium.p = building.roo.air.vol.dynBal.p_start;
   hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
   ventilation.generation.threeWayValve_b.res1.port_b.p = ventilation.generation.threeWayValve_b.vol.dynBal.p_start;
-  electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
   electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
   electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
+  electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
  
  
 Statistics
@@ -3218,12 +3218,12 @@ Warning: Component nZones(min = << Empty >>),
  
   For element nZones found at
  
-  File: /tmp/tmp-BESMod-2-uo_k6r4h/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 14
+  File: /tmp/tmp-BESMod-2-0rk8g9yi/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 14
   Conflict with element from
-  File: /tmp/tmp-BESMod-2-uo_k6r4h/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line 7
+  File: /tmp/tmp-BESMod-2-0rk8g9yi/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line 7
  Component context: building
   Component declared as SpawnHighOrder building in BESMod.Systems.Demand.Building
-  File: /tmp/tmp-BESMod-2-uo_k6r4h/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
+  File: /tmp/tmp-BESMod-2-0rk8g9yi/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
 Adding zero equation for variables:
  building.useProBus.natVent[11:end]
  building.buiMeaBus.TZoneMea[12:end]
@@ -3260,12 +3260,12 @@ Warning: Component nZones(min = << Empty >>),
  
   For element nZones found at
  
-  File: /tmp/tmp-BESMod-2-uo_k6r4h/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 14
+  File: /tmp/tmp-BESMod-2-0rk8g9yi/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 14
   Conflict with element from
-  File: /tmp/tmp-BESMod-2-uo_k6r4h/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line 7
+  File: /tmp/tmp-BESMod-2-0rk8g9yi/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line 7
  Component context: building
   Component declared as SpawnHighOrder building in BESMod.Systems.Demand.Building
-  File: /tmp/tmp-BESMod-2-uo_k6r4h/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
+  File: /tmp/tmp-BESMod-2-0rk8g9yi/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
 The DAE has 13085 scalar unknowns and 13085 scalar equations.
 Redundant consistent initial conditions.
 Removed the following equations which are redundant and consistent: 
@@ -3500,12 +3500,12 @@ Warning: Component nZones(min = &lt;&lt; Empty &gt;&gt;),
  
   For element nZones found at
  
-  File: /tmp/tmp-BESMod-2-uo_k6r4h/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line <a href=\"Modelica://BESMod.Systems.Demand.Building.SpawnHighOrder#text:13\">14</a>
+  File: /tmp/tmp-BESMod-2-0rk8g9yi/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line <a href=\"Modelica://BESMod.Systems.Demand.Building.SpawnHighOrder#text:13\">14</a>
   Conflict with element from
-  File: /tmp/tmp-BESMod-2-uo_k6r4h/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line <a href=\"Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6\">7</a>
+  File: /tmp/tmp-BESMod-2-0rk8g9yi/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line <a href=\"Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6\">7</a>
  Component context: building
   Component declared as SpawnHighOrder building in <a href=\"Modelica://BESMod.Systems.Demand.Building\">BESMod.Systems.Demand.Building</a>
-  File: /tmp/tmp-BESMod-2-uo_k6r4h/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
+  File: /tmp/tmp-BESMod-2-0rk8g9yi/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
 The DAE has 13085 scalar unknowns and 13085 scalar equations.
 Redundant consistent initial conditions.
 Removed the following equations which are redundant and consistent: 
