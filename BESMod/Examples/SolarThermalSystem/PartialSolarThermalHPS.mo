@@ -25,10 +25,7 @@ partial model PartialSolarThermalHPS
             BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
-          parPIDHeaPum,
-        redeclare
-          BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultSafetyControl
-          safetyControl),
+          parPIDHeaPum),
       redeclare BESMod.Systems.Hydraulical.Distribution.CombiStorage distribution(
           redeclare BESMod.Examples.SolarThermalSystem.CombiStorage parameters(
           V=parameterStudy.V,

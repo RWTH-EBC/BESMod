@@ -99,6 +99,26 @@ model IdealValveRadiator
     Dialog(group="Component data"),
     choicesAllMatching=true,
     Placement(transformation(extent={{-70,-98},{-50,-78}})));
+  Modelica.Blocks.Sources.RealExpression senTSup[nParallelSup](final y(
+      each final unit="K",
+      each displayUnit="degC") = Medium.temperature(Medium.setState_phX(
+      portTra_in.p,
+      inStream(portTra_in.h_outflow),
+      inStream(portTra_in.Xi_outflow)))) "Real expression for supply temperature"
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-90,10})));
+  Modelica.Blocks.Sources.RealExpression senTRet[nParallelSup](final y(
+      each final unit="K",
+      each displayUnit="degC") = Medium.temperature(Medium.setState_phX(
+      portTra_out.p,
+      inStream(portTra_out.h_outflow),
+      inStream(portTra_out.Xi_outflow)))) "Real expression for return temperature"
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-90,-10})));
 equation
   connect(rad.heatPortRad, heatPortRad) annotation (Line(points={{-2.8,-32},{40,
           -32},{40,-40},{100,-40}},       color={191,0,0}));
@@ -147,4 +167,16 @@ equation
   connect(reaPasThrOpe.y, gain.u)
     annotation (Line(points={{-1.9984e-15,59},{-1.9984e-15,50},{10,50},{10,42}},
                                                              color={0,0,127}));
+  connect(senTSup.y, outBusTra.TSup) annotation (Line(points={{-79,10},{-56,10},
+          {-56,-50},{0,-50},{0,-104}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(senTRet.y, outBusTra.TRet) annotation (Line(points={{-79,-10},{-56,-10},
+          {-56,-50},{0,-50},{0,-104}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
 end IdealValveRadiator;

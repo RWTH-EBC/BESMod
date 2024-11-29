@@ -1,6 +1,13 @@
 within BESMod.Systems.Hydraulical.Generation;
 model HeatPump "Monovalent heat pump"
-  extends BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump;
+  extends BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump(
+    final QSec_flow_nominal=0,
+    final QGenBiv_flow_nominal=Q_flow_design[1]*(TBiv - THeaTresh)/(
+        TOda_nominal - THeaTresh),
+    THeaTresh=293.15,
+    QPriAtTOdaNom_flow_nominal=0,
+    genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.Monovalent,
+    TBiv=TOda_nominal);
 
 equation
   connect(senTGenOut.port_a, heatPump.port_b1) annotation (Line(points={{60,80},{

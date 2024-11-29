@@ -4,4 +4,12 @@ type MeasuredValue = enumeration(
                               "Supply temperature of generation system",
     DistributionTemperature
                           "Temperature in distribution")
-  "Select possible measurements for control";
+  "Select possible measurements for control" annotation (Icon(graphics={
+                                        Text(
+        extent={{-150,138},{150,98}},
+        textString="%name",
+        textColor={0,0,255}),   Rectangle(
+        extent={{-100,-100},{100,100}},
+        lineColor={0,0,127},
+        fillColor={255,255,255},
+        fillPattern=FillPattern.Solid)}));

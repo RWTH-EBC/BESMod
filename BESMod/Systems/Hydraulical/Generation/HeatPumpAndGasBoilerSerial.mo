@@ -7,7 +7,7 @@ model HeatPumpAndGasBoilerSerial "serial arrangement of heatpump and boiler"
 equation
 
   connect(boi.port_a, heatPump.port_b1) annotation (Line(points={{20,50},{14,50},
-          {14,37},{-30.5,37}}, color={0,127,255}));
+          {14,35},{-30,35}},   color={0,127,255}));
   connect(boi.port_b, senTGenOut.port_a) annotation (Line(points={{40,50},{54,50},
           {54,80},{60,80}}, color={0,127,255}));
   connect(portGen_in[1], heatPump.port_a1) annotation (Line(points={{100,-2},{

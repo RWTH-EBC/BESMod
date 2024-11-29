@@ -1,17 +1,24 @@
 within BESMod.Systems.Hydraulical.Generation.Tests;
 model HeatPumpAndElectricHeater "Test for HeatPumpAndElectricHeater"
-  extends PartialTest(   redeclare
+  extends PartialTest(redeclare
       BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater
       generation(
       use_eleHea=true,
-      redeclare model PerDataMainHP =
-          AixLib.DataBase.HeatPump.PerformanceData.LookUpTable2D (dataTable=
-              AixLib.DataBase.HeatPump.EN255.Vitocal350AWI114()),
-      redeclare BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
+      redeclare model RefrigerantCycleHeatPumpHeating =
+          AixLib.Fluid.HeatPumps.ModularReversible.RefrigerantCycle.TableData2D
+          (redeclare
+            AixLib.Fluid.HeatPumps.ModularReversible.Data.TableData2D.EN14511.Vitocal251A08
+            datTab),
+      redeclare
+        AixLib.Fluid.HeatPumps.ModularReversible.Controls.Safety.Data.Wuellhorst2021
+        safCtrPar,
+      redeclare
+        BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps.DefaultHP
         parHeaPum,
       redeclare BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
         parTemSen,
-      redeclare BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
+      redeclare
+        BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater.DefaultElectricHeater
         parEleHea));
    extends Modelica.Icons.Example;
 

@@ -2,3 +2,5 @@ KPIDevice
 KPIIcon
 KPIIntegral
 PartialKPIConnector
+SplitGainAndLoss
+ZoneEnergyBalanceBus

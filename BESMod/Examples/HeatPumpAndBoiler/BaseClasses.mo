@@ -32,9 +32,6 @@ package BaseClasses "Contains partial example case"
             parPIDHeaPum,
           TBiv=parameterStudy.TBiv,
           boiInGeneration=true,
-          redeclare
-            BESMod.Systems.Hydraulical.Control.RecordsCollection.DefaultSafetyControl
-            safetyControl,
           TCutOff=parameterStudy.TCutOff,
           redeclare
             BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicBoilerPI

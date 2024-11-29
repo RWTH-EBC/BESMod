@@ -17,7 +17,8 @@ model TEASERThermalZone
   parameter Boolean use_verboseEnergyBalance=true   "=false to disable the integration of the verbose energy balance";
   parameter Modelica.Units.SI.TemperatureDifference dTComfort=2
     "Temperature difference to room set temperature at which the comfort is still acceptable. In DIN EN 15251, all temperatures below 22 °C - 2 K count as discomfort. Hence the default value. If your room set temperature is lower, consider using smaller values.";
-
+  parameter Boolean incElePro = false
+    "=false to not include electrical energy consumption in the electrical connectors";
   parameter Modelica.Fluid.Types.Dynamics energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial
     "Type of energy balance: dynamic (3 initialization options) or steady state"
     annotation (Dialog(tab="Dynamics"));
@@ -46,128 +47,46 @@ model TEASERThermalZone
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={74,60})));
+        origin={70,80})));
 
   Modelica.Blocks.Sources.Constant constVentRate[nZones](final k=ventRate)
                                          annotation (Placement(transformation(
           extent={{-10,-10},{10,10}}, rotation=180,
-        origin={74,30})));
+        origin={70,20})));
 
-  BESMod.Utilities.KPIs.EnergyKPICalculator intKPICalTraGain[nZones](each final
-            use_inpCon=true) if use_hydraulic and use_verboseEnergyBalance
-    annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=0,
-        origin={-30,-102})));
-  BESMod.Utilities.KPIs.EnergyKPICalculator intKPICalTraLoss[nZones](each final
-            use_inpCon=true) if use_hydraulic and use_verboseEnergyBalance
-    annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=0,
-        origin={-30,-130})));
-  Modelica.Blocks.Nonlinear.Limiter limUp[nZones](each final uMax=
-        Modelica.Constants.inf, each final uMin=0) if use_hydraulic and use_verboseEnergyBalance
-    annotation (Placement(transformation(extent={{-80,-110},{-60,-90}})));
-  Modelica.Blocks.Nonlinear.Limiter limDown[nZones](each final uMax=
-       0, each final uMin=-Modelica.Constants.inf) if use_hydraulic and use_verboseEnergyBalance
-    annotation (Placement(transformation(extent={{-80,-140},{-60,-120}})));
-  BESMod.Utilities.KPIs.EnergyKPICalculator intKPICal[nZones](each final
-      use_inpCon=true) if use_verboseEnergyBalance annotation (Placement(
-        transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=180,
-        origin={30,-110})));
-  BESMod.Utilities.KPIs.EnergyKPICalculator intKPICalVentGain[nZones](each final
-            use_inpCon=true) if use_ventilation and use_verboseEnergyBalance
-    annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=180,
-        origin={30,-182})));
   Modelica.Blocks.Sources.RealExpression QVent[nZones](y=
         portVent_in.m_flow.*inStream(portVent_in.h_outflow) .+ portVent_out.m_flow
         .*portVent_out.h_outflow) if use_ventilation and use_verboseEnergyBalance
     "Internal gains"                                               annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
-        rotation=180,
-        origin={90,-196})));
-  BESMod.Utilities.KPIs.EnergyKPICalculator intKPICalVentLoss[nZones](each final
-            use_inpCon=true) if use_ventilation and use_verboseEnergyBalance
-    annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=180,
-        origin={30,-206})));
-  Modelica.Blocks.Nonlinear.Limiter limVentUp[nZones](each final
-      uMax=Modelica.Constants.inf, each final uMin=0)
-    if use_ventilation and use_verboseEnergyBalance
-    annotation (Placement(transformation(extent={{-9,-9},{9,9}},
-        rotation=180,
-        origin={63,-185})));
-  Modelica.Blocks.Nonlinear.Limiter limVentDown[nZones](each final
-      uMax=0, each final uMin=-Modelica.Constants.inf)
-    if use_ventilation and use_verboseEnergyBalance
-    annotation (Placement(transformation(extent={{-9,-9},{9,9}},
-        rotation=180,
-        origin={63,-205})));
-  BESMod.Utilities.KPIs.EnergyKPICalculator intKPICalTraGain2[nZones](each final
-            use_inpCon=true) if use_verboseEnergyBalance annotation (Placement(
-        transformation(
-        extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={-30,-156})));
+        origin={-90,-216})));
   Modelica.Blocks.Sources.RealExpression QAirExc[nZones](y=
         thermalZone.airExc.Q_flow) if use_verboseEnergyBalance "Internal gains"                annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={-90,-166})));
-  BESMod.Utilities.KPIs.EnergyKPICalculator intKPICalTraLoss2[nZones](each final
-            use_inpCon=true) if use_verboseEnergyBalance annotation (Placement(
-        transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=0,
-        origin={-30,-186})));
-  Modelica.Blocks.Nonlinear.Limiter limAirExcUp[nZones](each final
-      uMax=Modelica.Constants.inf, each final uMin=0)
-                                                     if use_verboseEnergyBalance
-    annotation (Placement(transformation(extent={{-70,-166},{-50,-146}})));
-  Modelica.Blocks.Nonlinear.Limiter limAixExDown[nZones](
-      each final uMax=0, each final uMin=-Modelica.Constants.inf)
-                                                                 if use_verboseEnergyBalance
-    annotation (Placement(transformation(extent={{-70,-196},{-50,-176}})));
-  Modelica.Thermal.HeatTransfer.Sensors.HeatFlowSensor heatFlowSensorRad[
-    nZones]
-    annotation (Placement(transformation(extent={{-82,-70},{-62,-50}})));
+        origin={-90,-160})));
+  Modelica.Thermal.HeatTransfer.Sensors.HeatFlowSensor heaFloSenRad[nZones]
+    "Measure radiative heat flow"
+    annotation (Placement(transformation(extent={{-80,-70},{-60,-50}})));
   Modelica.Thermal.HeatTransfer.Sensors.HeatFlowSensor heatFlowSensorConv[
     nZones]
-    annotation (Placement(transformation(extent={{-86,50},{-66,70}})));
+    annotation (Placement(transformation(extent={{-80,40},{-60,60}})));
   Modelica.Blocks.Math.Add          addTra
-                                         [nZones]
-    if use_hydraulic and use_verboseEnergyBalance
-    annotation (Placement(transformation(extent={{-60,-80},{-40,-60}})));
-  BESMod.Utilities.KPIs.ComfortCalculator comfortCalculatorCool[nZones](TComBou=
-       TSetZone_nominal .+ dTComfort, each for_heating=false)
-    annotation (Placement(transformation(extent={{-20,-60},{0,-40}})));
-  BESMod.Utilities.KPIs.ComfortCalculator comfortCalculatorHea[nZones](TComBou=
-        TSetZone_nominal .- dTComfort, each for_heating=true)
-    annotation (Placement(transformation(extent={{-20,-20},{0,0}})));
-  Modelica.Blocks.Math.MultiSum multiSum[nZones](each final nu=3) if use_verboseEnergyBalance annotation (Placement(transformation(extent={{-9,-9},
-            {9,9}},
-        rotation=180,
-        origin={69,-129})));
+                                         [nZones] if use_verboseEnergyBalance
+    annotation (Placement(transformation(extent={{-10,10},{10,-10}},
+        rotation=0,
+        origin={-90,-198})));
 
-  BESMod.Utilities.Electrical.ZeroLoad zeroLoad annotation (Placement(
-        transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=180,
-        origin={94,-96})));
   Modelica.Blocks.Routing.RealPassThrough realPassThroughIntGains[nZones,3]
     annotation (Placement(transformation(extent={{-100,0},{-80,20}})));
   Modelica.Blocks.Routing.RealPassThrough realPassThroughTDry[nZones]
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={114,62})));
+        origin={70,50})));
   Modelica.Blocks.Math.Add calTOpe[nZones](
     each final k1=0.5,
     each final k2=0.5,
@@ -176,20 +95,73 @@ model TEASERThermalZone
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={-70,30})));
-  Utilities.KPIs.ComfortCalculator comCalHeaOpe[nZones](TComBou=
-        TSetZone_nominal .- dTComfort, each for_heating=true)
-    "Comfort calculator operative room temperature for heating"
-    annotation (Placement(transformation(extent={{20,-30},{40,-10}})));
-  Utilities.KPIs.ComfortCalculator comCalCooOpe[nZones](TComBou=
-        TSetZone_nominal .+ dTComfort, each for_heating=true)
-    "Comfort calculator operative room temperature for cooling"
-    annotation (Placement(transformation(extent={{20,-70},{40,-50}})));
+        origin={-70,80})));
+  BESMod.Utilities.Electrical.RealToElecCon realToElecCon(use_souGen=false)
+                                                annotation (Placement(
+        transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={82,-148})));
+  Modelica.Blocks.Math.Gain gain(final k=if incElePro then 1 else 0)
+                                                               annotation (
+      Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={68,-120})));
+  Modelica.Blocks.Math.MultiSum multiSumEle(final k=fill(1, multiSumEle.nu),
+      nu=2*nZones)  annotation (Placement(
+        transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={30,-120})));
+  Utilities.KPIs.ZoneEnergyBalance zoneEneBal[nZones](each final
+      with_ventilation=use_ventilation)
+    if use_verboseEnergyBalance "Zone energy balance"
+    annotation (Placement(transformation(extent={{-60,-200},{-22,-140}})));
+  Modelica.Blocks.Sources.RealExpression QExtWall_flow[nZones](y=thermalZone.ROM.extWall.Q_flow)
+    if use_verboseEnergyBalance "External wall heat flow rate" annotation (
+      Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-90,-110})));
+  Utilities.KPIs.ZoneTemperature zonTem[nZones](each final dTComfort=dTComfort,
+      final TSetZone_nominal=TSetZone_nominal)
+    "Zone temperature KPIs for air temperature"
+    annotation (Placement(transformation(extent={{0,-50},{20,-30}})));
+  Utilities.KPIs.ZoneTemperature zonTemOpe[nZones](each final dTComfort=
+        dTComfort, final TSetZone_nominal=TSetZone_nominal)
+    "Zone temperature KPIs for operative temperature"
+    annotation (Placement(transformation(extent={{0,-80},{20,-60}})));
+  Modelica.Blocks.Sources.RealExpression QRoof_flow[nZones](y=thermalZone.ROM.roof.Q_flow)
+    if use_verboseEnergyBalance "Roof heat flow rate" annotation (Placement(
+        transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-90,-120})));
+  Modelica.Blocks.Sources.RealExpression QFloor_flow[nZones](y=thermalZone.ROM.floor.Q_flow)
+    if use_verboseEnergyBalance "Floor heat flow rate" annotation (Placement(
+        transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-90,-134})));
+  Modelica.Blocks.Sources.RealExpression QWin_flow[nZones](y=thermalZone.ROM.window.Q_flow)
+    if use_verboseEnergyBalance "Window heat flow rate"                                        annotation (
+      Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-90,-148})));
+  Modelica.Blocks.Sources.RealExpression QSol_flow[nZones](y={sum(thermalZone[i].simpleExternalShading.corrIrr)
+        for i in 1:nZones})
+    if use_verboseEnergyBalance "Solar heat flow rate"                                         annotation (
+      Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-90,-174})));
 equation
 
   for i in 1:nZones loop
     connect(weaBus.TDryBul, realPassThroughTDry[i].u) annotation (Line(
-        points={{-46.895,98.11},{-46.895,96},{134,96},{134,62},{126,62}},
+        points={{-46.895,98.11},{-6,98.11},{-6,98},{90,98},{90,50},{82,50}},
         color={255,204,51},
         thickness=0.5), Text(
         string="%first",
@@ -204,6 +176,12 @@ equation
         index=-1,
         extent={{-3,-6},{-3,-6}},
         horizontalAlignment=TextAlignment.Right));
+    connect(thermalZone[i].QIntGains_flow[1], multiSumEle.u[2*i-1]) annotation (Line(
+          points={{-42.7,33.6},{-42.7,32},{-120,32},{-120,-88},{-26,-88},{-26,
+            -120},{20,-120}},           color={0,0,127}));
+  connect(thermalZone[i].QIntGains_flow[2], multiSumEle.u[2*i]) annotation (Line(
+        points={{-42.7,34.8},{-42.7,32},{-120,32},{-120,-88},{-26,-88},{-26,
+            -120},{20,-120}},         color={0,0,127}));
     if use_ventilation then
       connect(portVent_in[i], thermalZone[i].ports[1]) annotation (Line(points={{100,38},
               {82,38},{82,10},{-2,10},{-2,22.08}},                 color={0,127,
@@ -220,210 +198,171 @@ equation
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   end for;
-  connect(constTSetRoom.y, thermalZone.TSetCool) annotation (Line(points={{63,60},
-          {48,60},{48,62.4},{33.52,62.4}},color={0,0,127}));
-  connect(constTSetRoom.y, thermalZone.TSetHeat) annotation (Line(points={{63,60},
-          {48,60},{48,52.32},{33.52,52.32}},color={0,0,127}));
+  connect(constTSetRoom.y, thermalZone.TSetCool) annotation (Line(points={{59,80},
+          {48,80},{48,62.4},{33.52,62.4}},color={0,0,127}));
+  connect(constTSetRoom.y, thermalZone.TSetHeat) annotation (Line(points={{59,80},
+          {48,80},{48,62},{42,62},{42,52.32},{33.52,52.32}},
+                                            color={0,0,127}));
 
-  connect(constVentRate.y, thermalZone.ventRate) annotation (Line(points={{63,30},
-          {48,30},{48,32.88},{33.52,32.88}},color={0,0,127}));
-
-  // KPIs
-  if use_hydraulic then
-    connect(intKPICalTraGain.KPI, outBusDem.QTraGain) annotation (
-      Line(
-      points={{-17.8,-102},{8,-102},{8,-2},{98,-2}},
-      color={135,135,135},
-      thickness=0.5), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-    connect(intKPICalTraLoss.KPI, outBusDem.QTraLoss) annotation (
-      Line(
-      points={{-17.8,-130},{8,-130},{8,-156},{116,-156},{116,-2},{98,-2}},
-      color={135,135,135},
-      thickness=0.5), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-
-    connect(limUp.y, intKPICalTraGain.u)
-    annotation (Line(points={{-59,-100},{-59,-102},{-41.8,-102}},
-                                                      color={0,0,127}));
-    connect(limDown.y, intKPICalTraLoss.u) annotation (Line(points={{-59,-130},
-            {-41.8,-130}},                     color={0,0,127}));
-  end if;
-  connect(intKPICal.KPI, outBusDem.QIntGain) annotation (Line(
-      points={{17.8,-110},{8,-110},{8,-2},{98,-2}},
-      color={135,135,135},
-      thickness=0.5), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(limAirExcUp.y, intKPICalTraGain2.u)
-    annotation (Line(points={{-49,-156},{-41.8,-156}},  color={0,0,127}));
-  connect(limAixExDown.y, intKPICalTraLoss2.u) annotation (Line(points={{-49,
-          -186},{-41.8,-186}},                          color={0,0,127}));
-  connect(QAirExc.y, limAirExcUp.u) annotation (Line(points={{-79,-166},{-79,
-          -162},{-72,-162},{-72,-156}},
-                                 color={0,0,127}));
-  connect(QAirExc.y, limAixExDown.u) annotation (Line(points={{-79,-166},{-74,
-          -166},{-74,-186},{-72,-186}},
-                       color={0,0,127}));
-  connect(intKPICalTraGain2.KPI, outBusDem.QAirExcGain) annotation (
-     Line(
-      points={{-17.8,-156},{116,-156},{116,-18},{84,-18},{84,-2},{98,-2}},
-      color={135,135,135},
-      thickness=0.5), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(intKPICalTraLoss2.KPI, outBusDem.QAirExcLoss) annotation (
-     Line(
-      points={{-17.8,-186},{8,-186},{8,-2},{98,-2}},
-      color={135,135,135},
-      thickness=0.5), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  if use_ventilation then
-   connect(limVentUp.y, intKPICalVentGain.u) annotation (Line(points={{53.1,
-            -185},{53.1,-182},{41.8,-182}},  color={0,0,127}));
-   connect(limVentDown.y, intKPICalVentLoss.u) annotation (Line(points={{53.1,
-            -205},{53.1,-206},{41.8,-206}},           color={0,0,127}));
-   connect(QVent.y, limVentUp.u) annotation (Line(points={{79,-196},{73.8,-196},
-            {73.8,-185}},color={0,0,127}));
-   connect(QVent.y, limVentDown.u) annotation (Line(points={{79,-196},{79,-202},
-            {73.8,-202},{73.8,-205}},
-                    color={0,0,127}));
-   connect(intKPICalVentGain.KPI, outBusDem.QVentGain) annotation (
-    Line(
-    points={{17.8,-182},{8,-182},{8,-2},{98,-2}},
-    color={135,135,135},
-    thickness=0.5), Text(
-    string="%second",
-    index=1,
-    extent={{6,3},{6,3}},
-    horizontalAlignment=TextAlignment.Left));
-   connect(intKPICalVentLoss.KPI, outBusDem.QVentLoss) annotation (
-    Line(
-    points={{17.8,-206},{14,-206},{14,-192},{116,-192},{116,-74},{84,-74},{84,
-            -2},{98,-2}},
-    color={135,135,135},
-    thickness=0.5), Text(
-    string="%second",
-    index=1,
-    extent={{6,3},{6,3}},
-    horizontalAlignment=TextAlignment.Left));
-  end if;
+  connect(constVentRate.y, thermalZone.ventRate) annotation (Line(points={{59,20},
+          {42,20},{42,32.88},{33.52,32.88}},color={0,0,127}));
 
   connect(thermalZone.intGainsConv, heatFlowSensorConv.port_b) annotation (Line(
-        points={{-39.74,49.44},{-39.74,48},{-52,48},{-52,60},{-66,60}}, color={
+        points={{-39.74,49.44},{-49.87,49.44},{-49.87,50},{-60,50}},    color={
           191,0,0}));
   connect(heatPortCon, heatFlowSensorConv.port_a)
-    annotation (Line(points={{-100,60},{-86,60}}, color={191,0,0}));
-  connect(heatPortRad, heatFlowSensorRad.port_a)
-    annotation (Line(points={{-100,-60},{-82,-60}}, color={191,0,0}));
-  connect(heatFlowSensorRad.port_b, thermalZone.intGainsRad) annotation (Line(
-        points={{-62,-60},{-48,-60},{-48,48},{-50,48},{-50,60.24},{-39.74,60.24}},
+    annotation (Line(points={{-100,60},{-84,60},{-84,50},{-80,50}},
+                                                  color={191,0,0}));
+  connect(heatPortRad, heaFloSenRad.port_a)
+    annotation (Line(points={{-100,-60},{-80,-60}}, color={191,0,0}));
+  connect(heaFloSenRad.port_b, thermalZone.intGainsRad) annotation (Line(points
+        ={{-60,-60},{-52,-60},{-52,60},{-46,60},{-46,60.24},{-39.74,60.24}},
         color={191,0,0}));
-  connect(addTra.y, limUp.u) annotation (Line(points={{-39,-70},{-36,-70},{-36,
-          -84},{-88,-84},{-88,-100},{-82,-100}},
-                      color={0,0,127}));
-  connect(addTra.y, limDown.u) annotation (Line(points={{-39,-70},{-26,-70},{
-          -26,-80},{-96,-80},{-96,-130},{-82,-130}},
-                           color={0,0,127}));
-  connect(heatFlowSensorRad.Q_flow, addTra.u2)
-    annotation (Line(points={{-72,-71},{-72,-76},{-62,-76}}, color={0,0,127}));
-  connect(heatFlowSensorConv.Q_flow, addTra.u1) annotation (Line(points={{-76,49},
-          {-76,-46},{-114,-46},{-114,-64},{-62,-64}},            color={0,0,127}));
+  connect(heaFloSenRad.Q_flow, addTra.u2) annotation (Line(points={{-70,-71},{
+          -70,-98},{-112,-98},{-112,-192},{-102,-192}}, color={0,0,127}));
+  connect(heatFlowSensorConv.Q_flow, addTra.u1) annotation (Line(points={{-70,39},
+          {-70,-46},{-114,-46},{-114,-204},{-102,-204}},         color={0,0,127}));
   connect(thermalZone.TAir, outBusDem.TZone) annotation (Line(points={{-42.7,
-          76.8},{-48,76.8},{-48,-2},{98,-2}}, color={0,0,127}), Text(
+          76.8},{-46,76.8},{-46,76},{-48,76},{-48,-2},{98,-2}},
+                                              color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(thermalZone.TAir, comfortCalculatorHea.TZone) annotation (Line(points={{-42.7,
-          76.8},{-48,76.8},{-48,-10},{-22,-10}},        color={0,0,127}));
-  connect(thermalZone.TAir, comfortCalculatorCool.TZone) annotation (Line(
-        points={{-42.7,76.8},{-48,76.8},{-48,-10},{-28,-10},{-28,-50},{-22,-50}},
-                                                              color={0,0,127}));
-  connect(comfortCalculatorCool.dTComSec, outBusDem.dTComCoo) annotation (Line(
-        points={{1,-50},{6,-50},{6,-2},{98,-2}},    color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(comfortCalculatorHea.dTComSec, outBusDem.dTComHea) annotation (Line(
-        points={{1,-10},{0,-10},{0,-2},{98,-2}},    color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
   connect(thermalZone.TAir, buiMeaBus.TZoneMea) annotation (Line(points={{-42.7,
-          76.8},{-48,76.8},{-48,92},{0,92},{0,99}}, color={0,0,127}), Text(
+          76.8},{-48,76.8},{-48,88},{0,88},{0,99}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(multiSum.y, intKPICal.u)
-    annotation (Line(points={{58.47,-129},{54,-129},{54,-110},{41.8,-110}},
-                                                       color={0,0,127}));
-  connect(multiSum.u, thermalZone.QIntGains_flow) annotation (Line(points={{78,-129},
-          {86,-129},{86,-110},{56,-110},{56,4},{-28,4},{-28,10},{-32,10},{-32,8},
-          {-42.7,8},{-42.7,33.6}},
-        color={0,0,127}));
-  connect(zeroLoad.internalElectricalPin, internalElectricalPin) annotation (
-      Line(
-      points={{84,-96},{70,-96}},
-      color={0,0,0},
-      thickness=1));
   connect(realPassThroughIntGains.y, thermalZone.intGains) annotation (Line(
-        points={{-79,10},{-50,10},{-50,4},{-31.6,4},{-31.6,17.76}}, color={0,0,
+        points={{-79,10},{-32,10},{-32,14},{-31.6,14},{-31.6,17.76}},
+                                                                    color={0,0,
           127}));
-  connect(realPassThroughTDry.y, thermalZone.ventTemp) annotation (Line(points=
-          {{103,62},{102,62},{102,74},{52,74},{52,42.24},{33.52,42.24}}, color=
+  connect(realPassThroughTDry.y, thermalZone.ventTemp) annotation (Line(points={{59,50},
+          {42,50},{42,42.24},{33.52,42.24}},                             color=
           {0,0,127}));
-  connect(calTOpe.u2, thermalZone.TAir) annotation (Line(points={{-58,36},{-48,
-          36},{-48,76.8},{-42.7,76.8}}, color={0,0,127}));
-  connect(calTOpe.u1, thermalZone.TRad) annotation (Line(points={{-58,24},{-50,
-          24},{-50,69.6},{-42.7,69.6}}, color={0,0,127}));
-  connect(comCalHeaOpe.dTComSec, outBusDem.dTComHeaOpe) annotation (Line(points
-        ={{41,-20},{54,-20},{54,-2},{98,-2}}, color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(comCalHeaOpe.TZone, calTOpe.y) annotation (Line(points={{18,-20},{-32,
-          -20},{-32,-16},{-81,-16},{-81,30}}, color={0,0,127}));
-  connect(comCalCooOpe.TZone, calTOpe.y) annotation (Line(points={{18,-60},{10,
-          -60},{10,0},{2,0},{2,2},{0,2},{0,6},{-46,6},{-46,28},{-52,28},{-52,44},
-          {-88,44},{-88,30},{-81,30}}, color={0,0,127}));
-  connect(comCalCooOpe.dTComSec, outBusDem.dTComCooOpe) annotation (Line(points
-        ={{41,-60},{78,-60},{78,-2},{98,-2}}, color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(calTOpe.y, buiMeaBus.TZoneOpeMea) annotation (Line(points={{-81,30},{
-          -88,30},{-88,92},{0,92},{0,99}},
+  connect(calTOpe.u2, thermalZone.TAir) annotation (Line(points={{-58,86},{-48,
+          86},{-48,76.8},{-42.7,76.8}}, color={0,0,127}));
+  connect(calTOpe.u1, thermalZone.TRad) annotation (Line(points={{-58,74},{-52,
+          74},{-52,69.6},{-42.7,69.6}}, color={0,0,127}));
+  connect(calTOpe.y, buiMeaBus.TZoneOpeMea) annotation (Line(points={{-81,80},{
+          -122,80},{-122,110},{0,110},{0,99}},
         color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(calTOpe.y, outBusDem.TZoneOpe) annotation (Line(points={{-81,30},{-88,
-          30},{-88,44},{-52,44},{-52,28},{-46,28},{-46,6},{0,6},{0,2},{2,2},{2,
-          0},{54,0},{54,-2},{98,-2}}, color={0,0,127}), Text(
+  connect(calTOpe.y, outBusDem.TZoneOpe) annotation (Line(points={{-81,80},{
+          -122,80},{-122,28},{-44,28},{-44,8},{-18,8},{-18,-2},{98,-2}},
+                                      color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  connect(gain.y,realToElecCon. PEleLoa) annotation (Line(points={{79,-120},{84,
+          -120},{84,-134},{62,-134},{62,-144},{70,-144}},
+                                        color={0,0,127}));
+  connect(multiSumEle.y, gain.u)
+    annotation (Line(points={{41.7,-120},{56,-120}}, color={0,0,127}));
+  connect(realToElecCon.internalElectricalPin, internalElectricalPin)
+    annotation (Line(
+      points={{92.2,-147.8},{96,-147.8},{96,-96},{70,-96}},
+      color={0,0,0},
+      thickness=1));
+
+  connect(zoneEneBal.QAirExc_flow, QAirExc.y)
+    annotation (Line(points={{-63.8,-164},{-70,-164},{-70,-160},{-79,-160}},
+                                                       color={0,0,127}));
+  connect(QVent.y, zoneEneBal.QVen_flow) annotation (Line(points={{-79,-216},{-79,
+          -200},{-63.8,-200}}, color={0,0,127}));
+  connect(addTra.y, zoneEneBal.QTra_flow) annotation (Line(points={{-79,-198},{-79,
+          -194},{-63.8,-194}},                                   color={0,0,127}));
+  connect(zoneEneBal.zoneEneBal, outBusDem.eneBal) annotation (Line(
+      points={{-21.62,-170},{-14,-170},{-14,-2},{98,-2}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(zonTem.dTComCoo, outBusDem.dTComCoo) annotation (Line(points={{21,
+          -44.8},{24,-44.8},{24,-2},{98,-2}},
+                                       color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-3,6},{-3,6}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(zonTemOpe.dTComCoo, outBusDem.dTComCooOpe) annotation (Line(points={{21,
+          -74.8},{50,-74.8},{50,-74},{80,-74},{80,-2},{98,-2}},
+                                         color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(zonTem.dTComHea, outBusDem.dTComHea) annotation (Line(points={{21,-35},
+          {78,-35},{78,-2},{98,-2}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-3,6},{-3,6}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(zonTemOpe.dTComHea, outBusDem.dTComHeaOpe) annotation (Line(points={{21,-65},
+          {80,-65},{80,-2},{98,-2}},                       color={0,0,127}),
+      Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(zonTemOpe.dTCtrl, outBusDem.dTCtrlHeaOpe) annotation (Line(points={{21,-70},
+          {80,-70},{80,-2},{98,-2}},                          color={0,0,127}),
+      Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(zonTem.dTCtrl, outBusDem.dTCtrl) annotation (Line(points={{21,-40},{
+          80,-40},{80,-2},{98,-2}},            color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(zonTemOpe.TZone, calTOpe.y) annotation (Line(points={{-2,-65},{-2,-66},
+          {-50,-66},{-50,-40},{-122,-40},{-122,80},{-81,80}}, color={0,0,127}));
+  connect(thermalZone.TAir, zonTem.TZone) annotation (Line(points={{-42.7,76.8},
+          {-44,76.8},{-44,76},{-48,76},{-48,-35},{-2,-35}}, color={0,0,127}));
+  connect(zonTem.TZoneSet, useProBus.TZoneSet) annotation (Line(points={{-2,-45},
+          {-2,-46},{-14,-46},{-14,6},{50,6},{50,76},{51,76},{51,101}},
+                                                                     color={0,0,
+          127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(zonTemOpe.TZoneSet, useProBus.TZoneSet) annotation (Line(points={{-2,-75},
+          {-2,-76},{-14,-76},{-14,6},{50,6},{50,76},{51,76},{51,101}},
+                 color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(QExtWall_flow.y, zoneEneBal.QExtWall_flow) annotation (Line(points={{-79,
+          -110},{-72,-110},{-72,-140},{-63.8,-140}}, color={0,0,127}));
+  connect(zoneEneBal.QRoof_flow, QRoof_flow.y) annotation (Line(points={{-63.8,-146},
+          {-74,-146},{-74,-120},{-79,-120}}, color={0,0,127}));
+  connect(QFloor_flow.y, zoneEneBal.QFloor_flow) annotation (Line(points={{-79,-134},
+          {-76,-134},{-76,-152},{-63.8,-152}}, color={0,0,127}));
+  connect(zoneEneBal.QWin_flow, QWin_flow.y) annotation (Line(points={{-63.8,-158},
+          {-74,-158},{-74,-148},{-79,-148}}, color={0,0,127}));
+  connect(QSol_flow.y, zoneEneBal.QSol_flow) annotation (Line(points={{-79,-174},
+          {-72,-174},{-72,-170},{-63.8,-170}}, color={0,0,127}));
+  connect(thermalZone.QIntGains_flow[1], zoneEneBal.QLig_flow) annotation (Line(
+        points={{-42.7,32.4},{-120,32.4},{-120,-176},{-63.8,-176}}, color={0,0,127}));
+  connect(thermalZone.QIntGains_flow[3], zoneEneBal.QPer_flow) annotation (Line(
+        points={{-42.7,34.8},{-40,34.8},{-40,32},{-120,32},{-120,-182},{-63.8,
+          -182}},                                                   color={0,0,127}));
+  connect(thermalZone.QIntGains_flow[2], zoneEneBal.QMac_flow) annotation (Line(
+        points={{-42.7,33.6},{-40,33.6},{-40,32},{-120,32},{-120,-188},{-63.8,
+          -188}},                                                   color={0,0,127}));
     annotation (Diagram(coordinateSystem(extent={{-100,-220},{100,100}})),
       Documentation(info="<html>
 <p>This model uses the reduced-order approach with the common TEASER output to model the building envelope. Relevant KPIs are calculated.</p>

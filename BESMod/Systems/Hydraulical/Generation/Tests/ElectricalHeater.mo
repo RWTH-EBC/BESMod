@@ -3,7 +3,7 @@ model ElectricalHeater
   extends PartialTest(redeclare
       BESMod.Systems.Hydraulical.Generation.ElectricalHeater generation(
         redeclare
-        BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
+        BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater.DefaultElectricHeater
         parEleHea));
   extends Modelica.Icons.Example;
 

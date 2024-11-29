@@ -10,13 +10,13 @@
   "optional": {
     "AixLib": {
       "url": "https://github.com/RWTH-EBC/AixLib",
-      "commit": "c32721d85b83a6952eb70c80af24fc19d347dc64",
-	  "default_branch": "development",
+      "commit": "fcf8bd30a526e7a423f444ad244a518164bda76e",
+	  "default_branch": "main",
       "mo": "AixLib//package.mo"
     },
     "Buildings": {
       "url": "https://github.com/lbl-srg/modelica-buildings",
-      "commit": "87857396286acc419e0a704fbe028650f8863f5d",
+      "commit": "471527a7fcd1597480149d2023de155fb0acb451",
 	  "default_branch": "master",
       "mo": "Buildings//package.mo"
     },

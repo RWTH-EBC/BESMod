@@ -19,7 +19,6 @@ partial model PartialTest
     TDem_nominal=fill(systemParameters.THydSup_nominal[1], generation.nParallelDem),
     TAmb=systemParameters.TAmbHyd,
     dpDemOld_design=fill(0, generation.nParallelDem)) annotation (
-      choicesAllMatching=true, Placement(transformation(extent={{-50,-44},{24,28}})));
 
   IBPSA.Fluid.MixingVolumes.MixingVolume vol[generation.nParallelDem](
     redeclare final package Medium = IBPSA.Media.Water,

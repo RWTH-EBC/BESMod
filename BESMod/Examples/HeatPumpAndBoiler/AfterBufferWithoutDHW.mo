@@ -1,30 +1,23 @@
 within BESMod.Examples.HeatPumpAndBoiler;
 model AfterBufferWithoutDHW
   "Bivalent Heat Pump System with boiler integration after buffer tank without DHW support"
-  extends BaseClasses.PartialHybridSystem(
-    redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
-      redeclare Systems.Hydraulical.Generation.HeatPump
-        generation(
+  extends BaseClasses.PartialHybridSystem(redeclare
+      BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
+      redeclare Systems.Hydraulical.Generation.HeatPump generation(
         redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
+        TBiv=parameterStudy.TBiv,
         redeclare
-          BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
-          parHeaPum(
-          genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
-          TBiv=parameterStudy.TBiv,
-          scalingFactor=hydraulic.generation.parHeaPum.QPri_flow_nominal/
-              parameterStudy.QHP_flow_biv,
-          dpCon_nominal=0,
-          dpEva_nominal=0,
-          use_refIne=false,
-          refIneFre_constant=0),
-        redeclare model PerDataMainHP =
-            AixLib.DataBase.HeatPump.PerformanceData.VCLibMap (
-            QCon_flow_nominal=hydraulic.generation.parHeaPum.QPri_flow_nominal,
-            refrigerant="Propane",
-            flowsheet="VIPhaseSeparatorFlowsheet"),
+          BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps.DefaultHP
+          parHeaPum,
+        redeclare model RefrigerantCycleHeatPumpHeating =
+            AixLib.Fluid.HeatPumps.ModularReversible.RefrigerantCycle.TableData3D
+            (y_nominal=0.8, redeclare
+              AixLib.Fluid.HeatPumps.ModularReversible.Data.TableDataSDF.TableData3D.VCLibPy.VCLibVaporInjectionPhaseSeparatorPropane
+              datTab),
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
-          parTemSen),
+          parTemSen,
+        genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel),
       control(boiInGeneration=false),
       redeclare Systems.Hydraulical.Distribution.TwoStoDetailedDirectLoading
         distribution(

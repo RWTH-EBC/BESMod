@@ -106,7 +106,7 @@ model TwoStoragesBoilerWithDHW
       parameters=parThrWayValBoi)
     "Three way valve to swith the boiler between DHW and building"
     annotation (Placement(transformation(extent={{20,-14},{40,6}})));
-  AixLib.Fluid.Storage.BufferStorage hydSep(
+  AixLib.Fluid.Storage.StorageDetailed hydSep(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
     final p_start=p_start,
@@ -120,7 +120,7 @@ model TwoStoragesBoilerWithDHW
     final useHeatingCoil1=false,
     final useHeatingCoil2=false,
     final useHeatingRod=false,
-    final TStart=T_start,
+    final TStart=fill(T_start, parHydSep.nLayer),
     redeclare final
       BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.bufferData
       data(

@@ -23,19 +23,15 @@ parameter
 parameter
     AixLib.Fluid.HeatExchangers.ActiveWalls.BaseClasses.HeatCapacityPerArea cDown;
 
-  parameter Integer calcMethod=2 "Calculation method for convective heat transfer coefficient at surface"
-    annotation (Dialog(group="Heat convection",
-        descriptionLabel=true), choices(
-        choice=1 "EN ISO 6946 Appendix A >>Flat Surfaces<<",
-        choice=2 "By Bernd Glueck",
-        choice=3 "Custom hCon (constant)",
-        radioButtons=true));
+  parameter AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface calcMethod=AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.Bernd_Glueck "Calculation method for convective heat transfer coefficient" annotation (
+    Dialog(descriptionLabel=true),
+    Evaluate=true);
 
   parameter Modelica.Units.SI.CoefficientOfHeatTransfer hCon_const=2.5
     "Constant heat transfer coefficient" annotation (Dialog(
       group="Heat convection",
       descriptionLabel=true,
-      enable=if calcMethod == 3 then true else false));
+      enable=if calcMethod == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.Custom_hCon then true else false));
 
   Modelica.Fluid.Vessels.ClosedVolume vol(
     redeclare package Medium = Medium,
@@ -65,7 +61,7 @@ parameter
     final A=A_floor,
     final calcMethod=calcMethod,
     final hCon_const=hCon_const,
-    surfaceOrientation=if isFloor then 2 else 1) annotation (Placement(
+    surfaceOrientation=if isFloor then AixLib.ThermalZones.HighOrder.Components.Types.InsideSurfaceOrientation.floor else AixLib.ThermalZones.HighOrder.Components.Types.InsideSurfaceOrientation.vertical_wall) annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,

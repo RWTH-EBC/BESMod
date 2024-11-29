@@ -3,15 +3,22 @@ model SolarThermalAndHeatPumpDetailed "Test for SolarThermalAndHeatPumpDetailed"
   extends PartialTest(redeclare
       BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump
       generation(
-      redeclare model PerDataMainHP =
-          AixLib.DataBase.HeatPump.PerformanceData.LookUpTable2D (dataTable=
-              AixLib.DataBase.HeatPump.EN14511.Vitocal200AWO201()),
-      redeclare BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultHP
+      redeclare model RefrigerantCycleHeatPumpHeating =
+          AixLib.Fluid.HeatPumps.ModularReversible.RefrigerantCycle.TableData2D
+          (redeclare
+            AixLib.Fluid.HeatPumps.ModularReversible.Data.TableData2D.EN14511.Vitocal251A08
+            datTab),
+      redeclare
+        AixLib.Fluid.HeatPumps.ModularReversible.Controls.Safety.Data.Wuellhorst2021
+        safCtrPar,
+      redeclare
+        BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps.DefaultHP
         parHeaPum,
-      redeclare BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
+      redeclare
+        BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
         parTemSen,
       redeclare
-        BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultSolarThermal
+        BESMod.Systems.Hydraulical.Generation.RecordsCollection.SolarThermal.DefaultSolarThermal
         solarThermalParas,
       redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPumSolThe,
       redeclare BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater

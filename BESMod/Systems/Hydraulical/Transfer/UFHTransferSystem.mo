@@ -25,7 +25,7 @@ model UFHTransferSystem
     each final dis=5,
     final A=UFHParameters.area,
     each final T0=T_start,
-    each calcMethod=1) "Underfloor heating" annotation (Placement(
+    each calcMethod=AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.ASHRAE140_2017) "Underfloor heating" annotation (Placement(
         transformation(
         extent={{-29.5,-10.5},{29.5,10.5}},
         rotation=270,
@@ -103,6 +103,26 @@ model UFHTransferSystem
     Dialog(group="Component data"),
     choicesAllMatching=true,
     Placement(transformation(extent={{-100,-98},{-80,-78}})));
+  Modelica.Blocks.Sources.RealExpression senTRet[nParallelSup](final y(
+      each final unit="K",
+      each displayUnit="degC") = Medium.temperature(Medium.setState_phX(
+      portTra_out.p,
+      inStream(portTra_out.h_outflow),
+      inStream(portTra_out.Xi_outflow)))) "Real expression for return temperature"
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-60,-74})));
+  Modelica.Blocks.Sources.RealExpression senTSup[nParallelSup](final y(
+      each final unit="K",
+      each displayUnit="degC") = Medium.temperature(Medium.setState_phX(
+      portTra_in.p,
+      inStream(portTra_in.h_outflow),
+      inStream(portTra_in.Xi_outflow)))) "Real expression for supply temperature"
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-60,-54})));
 protected
   parameter
     BESMod.Systems.Hydraulical.Components.UFH.ActiveWallBaseDataDefinition
@@ -192,6 +212,19 @@ equation
   connect(reaPasThrOpe.y, outBusTra.opening) annotation (Line(points={{
           -1.9984e-15,59},{38,59},{38,-82},{0,-82},{0,-104}}, color={0,0,127}),
       Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(senTSup.y, outBusTra.TSup) annotation (Line(points={{-49,-54},{0,-54},
+          {0,-104}},                   color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(senTRet.y, outBusTra.TRet) annotation (Line(points={{-49,-74},{-50,
+          -74},{-50,-90},{0,-90},{0,-104}},
+                                       color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},

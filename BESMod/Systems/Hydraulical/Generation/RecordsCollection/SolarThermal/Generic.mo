@@ -1,5 +1,5 @@
-within BESMod.Systems.Hydraulical.Generation.RecordsCollection;
-partial record SolarThermalBaseDataDefinition
+within BESMod.Systems.Hydraulical.Generation.RecordsCollection.SolarThermal;
+partial record Generic
   extends Modelica.Icons.Record;
   parameter Modelica.Units.SI.Efficiency eta_zero=0.75
     "Conversion factor/Efficiency at Q = 0";
@@ -28,4 +28,4 @@ partial record SolarThermalBaseDataDefinition
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
-end SolarThermalBaseDataDefinition;
+end Generic;

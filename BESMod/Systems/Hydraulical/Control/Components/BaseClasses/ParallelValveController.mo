@@ -19,7 +19,15 @@ equation
   else
     uThrWayVal = 0.5;
   end if;
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+                                        Text(
+        extent={{-150,138},{150,98}},
+        textString="%name",
+        textColor={0,0,255}),   Rectangle(
+        extent={{-100,-100},{100,100}},
+        lineColor={0,0,127},
+        fillColor={255,255,255},
+        fillPattern=FillPattern.Solid)}),                        Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>

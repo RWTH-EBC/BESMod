@@ -1,9 +1,13 @@
 within BESMod.Systems.Hydraulical.Generation;
 model HeatPumpAndElectricHeater "Heat pump with an electric heater in series"
   extends BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump(
+    genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentParallel,
   dp_nominal={heatPump.dpCon_nominal +dpEleHea_nominal},
   multiSum(nu=if use_eleHea then 2 else 1));
-
+  replaceable parameter RecordsCollection.ElectricHeater.Generic parEleHea
+    "Electric heater parameters" annotation (
+    choicesAllMatching=true,
+    Placement(transformation(extent={{24,64},{36,76}})));
   parameter Boolean use_eleHea=true "=false to disable the electric heater"
    annotation(Dialog(group="Component choices"));
 
@@ -18,7 +22,7 @@ model HeatPumpAndElectricHeater "Heat pump with an electric heater in series"
     final energyDynamics=energyDynamics,
     final p_start=p_start,
     final T_start=T_start,
-    final Q_flow_nominal=parHeaPum.QSec_flow_nominal,
+    final Q_flow_nominal=QSec_flow_nominal,
     final V=parEleHea.V_hr,
     final eta=parEleHea.eta,
     use_countNumSwi=false) if use_eleHea "Electric heater"
@@ -27,12 +31,7 @@ model HeatPumpAndElectricHeater "Heat pump with an electric heater in series"
       Medium = Medium, allowFlowReversal=allowFlowReversal) if not use_eleHea
     "Pass through if electric heater is not used"
     annotation (Placement(transformation(extent={{20,20},{40,40}})));
-  replaceable parameter RecordsCollection.EletricHeaterBaseDataDefinition parEleHea
-    "Electric heater parameters"
-                             annotation (
-    Dialog(group="Component data"),
-    choicesAllMatching=true,
-    Placement(transformation(extent={{24,64},{36,76}})));
+
   Utilities.KPIs.DeviceKPICalculator KPIEleHea(
     use_reaInp=true,
     calc_singleOnTime=true,
@@ -58,9 +57,9 @@ equation
   connect(eleHea.port_b, senTGenOut.port_a) annotation (Line(points={{40,50},{54,50},
           {54,80},{60,80}}, color={0,127,255}));
   connect(pasThrMedEleHea.port_a, heatPump.port_b1) annotation (Line(points={{20,30},
-          {10,30},{10,50},{-30,50},{-30,38},{-30.5,38},{-30.5,37}},     color={0,
+          {10,30},{10,50},{-30,50},{-30,38},{-30,38},{-30,35}},         color={0,
           127,255}));
-  connect(heatPump.port_b1, eleHea.port_a) annotation (Line(points={{-30.5,37},{-30.5,
+  connect(heatPump.port_b1, eleHea.port_a) annotation (Line(points={{-30,35},{-30,
           36},{-30,36},{-30,50},{20,50}}, color={0,127,255}));
   connect(eleHea.u, sigBusGen.uEleHea) annotation (Line(points={{18,56},{2,56},{2,
           98}}, color={0,0,127}), Text(

@@ -101,6 +101,9 @@ model AixLibHighOrderOFD "High order OFD"
   Modelica.Blocks.Sources.Constant constVenRatAtt(final k=1)
     "Constant ventilation rate of attic"
     annotation (Placement(transformation(extent={{-80,8},{-60,28}})));
+  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a thermOutside annotation (
+      Placement(transformation(extent={{-108,90},{-88,110}}),
+        iconTransformation(extent={{-108,90},{-88,110}})));
 equation
     // Romm Temperatures
 
@@ -124,9 +127,6 @@ equation
           191,0,0}));
   connect(wholeHouseBuildingEnvelope.WindSpeedPort, WindSpeedPort) annotation (
       Line(points={{-48.7,55.2},{-72,55.2},{-72,62},{-106,62}}, color={0,0,127}));
-  connect(wholeHouseBuildingEnvelope.thermOutside, thermOutside) annotation (
-      Line(points={{-44,70.88},{-60,70.88},{-60,100},{-100,100}},
-                                                               color={191,0,0}));
 
   connect(wholeHouseBuildingEnvelope.West, West) annotation (Line(points={{52.82,
           -5.28},{76,-5.28},{76,-38},{108,-38}}, color={255,128,0}));
@@ -171,6 +171,8 @@ equation
   connect(constVenRatAtt.y, wholeHouseBuildingEnvelope.AirExchangePort[11])
     annotation (Line(points={{-59,18},{-56,18},{-56,46.5455},{-48.7,46.5455}},
         color={0,0,127}));
+  connect(thermOutside, wholeHouseBuildingEnvelope.thermOutside) annotation (
+      Line(points={{-98,100},{-73,100},{-73,72},{-44.94,72}}, color={191,0,0}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end AixLibHighOrderOFD;

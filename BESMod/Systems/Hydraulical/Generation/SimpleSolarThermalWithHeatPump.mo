@@ -9,10 +9,10 @@ model SimpleSolarThermalWithHeatPump
     final dp_nominal={heatPump.dpCon_nominal +dpEleHea_nominal, dpST_nominal});
 
   replaceable parameter
-    BESMod.Systems.Hydraulical.Generation.RecordsCollection.SolarThermalBaseDataDefinition
+    BESMod.Systems.Hydraulical.Generation.RecordsCollection.SolarThermal.Generic
     parSolThe constrainedby
-    BESMod.Systems.Hydraulical.Generation.RecordsCollection.SolarThermalBaseDataDefinition(
-     final c_p=cp) "Parameters for solar thermal system" annotation (
+    BESMod.Systems.Hydraulical.Generation.RecordsCollection.SolarThermal.Generic(
+      final c_p=cp) "Parameters for solar thermal system" annotation (
     Dialog(group="Component data"),
     choicesAllMatching=true,
     Placement(transformation(extent={{-86,-62},{-66,-42}})));
