@@ -2,7 +2,9 @@ within BESMod.Systems.Hydraulical.Generation;
 model GasBoiler "Just a gas boiler"
   extends BaseClasses.PartialGeneration(dp_nominal={boi.dp_nominal}, final
       nParallelDem=1);
-
+  parameter Modelica.Units.SI.PressureDifference dpPipFit_nominal
+    "Nominal pressure drop between inlet and outlet for pipes and fittings"
+    annotation (Dialog(tab="Pressure Drops"));
   parameter Real etaTem[:,2]=[293.15,1.09; 303.15,1.08; 313.15,1.05; 323.15,1.;
       373.15,0.99] "Temperature based efficiency"
         annotation(Dialog(group="Component data"));
@@ -31,6 +33,8 @@ model GasBoiler "Just a gas boiler"
     final transferHeat=parTemSen.transferHeat,
     final TAmb=parTemSen.TAmb,
     final tauHeaTra=parTemSen.tauHeaTra,
+    dp_nominal=boi.m_flow_nominal^parBoi.a/(boi.rho_default^parBoi.n) +
+        dpPipFit_nominal,
     final rho_default=rho,
     final p_start=p_start,
     final T_start=T_start,
@@ -104,6 +108,6 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(portGen_in[1], boi.port_a) annotation (Line(points={{100,-2},{42,-2},
-          {42,-46},{-66,-46},{-66,10}}, color={0,127,255}));
+  connect(portGen_in[1], boi.port_a) annotation (Line(points={{100,-2},{14,-2},
+          {14,-16},{-66,-16},{-66,10}}, color={0,127,255}));
 end GasBoiler;

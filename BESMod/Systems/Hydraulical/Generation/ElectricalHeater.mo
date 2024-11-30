@@ -3,7 +3,9 @@ model ElectricalHeater "Only heat using an electric heater"
   extends BaseClasses.PartialGeneration(
     final dTLoss_nominal=fill(0, nParallelDem),
     dp_nominal={hea.dp_nominal}, final nParallelDem=1);
-
+  parameter Modelica.Units.SI.PressureDifference dpPipFit_nominal
+    "Nominal pressure drop between inlet and outlet for pipes and fittings"
+    annotation (Dialog(tab="Pressure Drops"));
 
   AixLib.Fluid.HeatExchangers.HeatingRod hea(
     redeclare package Medium = Medium,
@@ -11,7 +13,7 @@ model ElectricalHeater "Only heat using an electric heater"
     final m_flow_nominal=m_flow_nominal[1],
     final m_flow_small=1E-4*abs(m_flow_nominal[1]),
     final show_T=show_T,
-    final dp_nominal=parEleHea.dp_nominal,
+    final dp_nominal=parEleHea.dp_nominal + dpPipFit_nominal,
     final tau=30,
     final energyDynamics=energyDynamics,
     final p_start=p_start,
@@ -93,6 +95,6 @@ equation
       horizontalAlignment=TextAlignment.Left));
   connect(hea.port_b, portGen_out[1]) annotation (Line(points={{-32,26},{-32,40},
           {20,40},{20,80},{100,80}}, color={0,127,255}));
-  connect(portGen_in[1], hea.port_a) annotation (Line(points={{100,-2},{84,-2},
-          {84,-4},{56,-4},{56,-24},{-32,-24},{-32,-6}}, color={0,127,255}));
+  connect(portGen_in[1], hea.port_a) annotation (Line(points={{100,-2},{78,-2},
+          {78,-20},{-32,-20},{-32,-6}}, color={0,127,255}));
 end ElectricalHeater;

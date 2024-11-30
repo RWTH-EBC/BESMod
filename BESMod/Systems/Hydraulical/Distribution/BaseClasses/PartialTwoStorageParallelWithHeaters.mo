@@ -12,15 +12,16 @@ partial model PartialTwoStorageParallelWithHeaters
 
   replaceable parameter
     BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater.DefaultElectricHeater
-    parEleHeaAftBuf if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.ElectricHeater
+    parEleHeaAftBuf(iconName="Heater")
+                    if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.ElectricHeater
     "Parameters for electric heater after buffer storage" annotation (
     Dialog(group="Component data", enable=heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.ElectricHeater),
-
     choicesAllMatching=true,
     Placement(transformation(
         extent={{-6,-6},{6,6}},
         rotation=0,
         origin={50,150})));
+
   parameter Real etaTem[:,2]=[293.15,1.09; 303.15,1.08; 313.15,1.05; 323.15,1.; 373.15,
       0.99] if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.Boiler
       "Temperature based efficiency"
@@ -115,8 +116,9 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(boi.u_rel, sigBusDistr.yBoi) annotation (Line(points={{43,127},{0,127},{
-          0,101}}, color={0,0,127}), Text(
+  connect(boi.u_rel, sigBusDistr.yBoi) annotation (Line(points={{43,127},{8,127},
+          {8,120},{0,120},{0,101}},
+                   color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
@@ -146,6 +148,4 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(pumpTra.port_a, portBui_in[1])
-    annotation (Line(points={{80,40},{100,40}}, color={0,127,255}));
 end PartialTwoStorageParallelWithHeaters;

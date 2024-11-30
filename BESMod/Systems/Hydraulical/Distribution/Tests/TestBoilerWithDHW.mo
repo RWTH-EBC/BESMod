@@ -14,9 +14,9 @@ model TestBoilerWithDHW "Test two storages boiler with DHW"
       redeclare
         BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.DefaultDetailedStorage
         parStoDHW,
-      redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
       redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
-        parThrWayValBoi));
+        parThrWayValBoi,
+      redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPumGen));
   extends Modelica.Icons.Example;
 
   Modelica.Blocks.Sources.Pulse        pulse(period=100) annotation (

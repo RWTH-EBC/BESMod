@@ -2,13 +2,15 @@ within BESMod.Systems.Hydraulical.Distribution.Tests;
 model TestSimpleStorages
   extends PartialTest(redeclare
       BESMod.Systems.Hydraulical.Distribution.DistributionTwoStorageParallel
-      distribution(redeclare
-        BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
-        parStoBuf(dTLoadingHC1=5), redeclare
+      distribution(                redeclare
         BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
         parStoDHW(dTLoadingHC1=5),
       redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
-        parThrWayVal));
+        parThrWayVal,
+      redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPumTra,
+                   redeclare
+        BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
+        parStoBuf(dTLoadingHC1=5)));
   extends Modelica.Icons.Example;
 
   Modelica.Blocks.Sources.Pulse        pulse(       period=100) annotation (

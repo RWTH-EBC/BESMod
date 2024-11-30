@@ -18,6 +18,7 @@ model AfterBufferWithDHW
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
           parTemSen,
         genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel),
+
       control(boiInGeneration=false),
       redeclare Systems.Hydraulical.Distribution.TwoStoragesBoilerWithDHW
         distribution(
@@ -33,7 +34,7 @@ model AfterBufferWithDHW
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
           parThrWayVal,
         dTBoiDHWLoa=10,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
+        redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPumGen,
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
           parThrWayValBoi,
         redeclare

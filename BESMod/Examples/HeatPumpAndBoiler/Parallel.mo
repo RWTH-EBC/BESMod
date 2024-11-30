@@ -28,7 +28,8 @@ model Parallel
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
           parStoDHW(dTLoadingHC1=10),
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
-          parThrWayVal)));
+          parThrWayVal,
+        redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPumGen)));
 
   extends Modelica.Icons.Example;
 

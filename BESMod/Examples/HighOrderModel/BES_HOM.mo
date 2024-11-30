@@ -21,19 +21,12 @@ model BES_HOM
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater
-        generation(
-<<<<<<< HEAD
-        redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
-=======
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
+        generation,
         TBiv=parameterStudy.TBiv,
->>>>>>> main
-        redeclare
-          BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps.DefaultHP
-          parHeaPum,
         redeclare model RefrigerantCycleHeatPumpHeating =
-            AixLib.Fluid.HeatPumps.ModularReversible.RefrigerantCycle.TableData3D
-            (y_nominal=0.8, redeclare
+
+          AixLib.Fluid.HeatPumps.ModularReversible.RefrigerantCycle.TableData3D
+          (  y_nominal=0.8, redeclare
               AixLib.Fluid.HeatPumps.ModularReversible.Data.TableDataSDF.TableData3D.VCLibPy.VCLibVaporInjectionPhaseSeparatorPropane
               datTab),
         redeclare
@@ -48,9 +41,11 @@ model BES_HOM
           BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
           valCtrl,
         redeclare model DHWHysteresis =
-            BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
+
+          BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
         redeclare model BuildingHysteresis =
-            BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
+
+          BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
           parPIDHeaPum),
@@ -59,12 +54,12 @@ model BES_HOM
         distribution(
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
-          parStoBuf(VPerQ_flow=parameterStudy.VPerQFlow, dTLoadingHC1=0),
-        redeclare
-          BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
           parStoDHW(dTLoadingHC1=10),
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
-          parThrWayVal),
+          parThrWayVal,
+        redeclare
+          BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
+          parStoBuf(VPerQ_flow=parameterStudy.VPerQFlow, dTLoadingHC1=0)),
       redeclare BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator transfer(
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
@@ -72,23 +67,14 @@ model BES_HOM
         redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
-          parTra)),
+          parTra));
     redeclare BESMod.Systems.Demand.DHW.StandardProfiles DHW(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
       redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
-        calcmFlow),
-    redeclare BESMod.Systems.UserProfiles.AixLibHighOrderProfiles userProfiles(
-        redeclare AixLib.DataBase.Profiles.Ventilation2perDayMean05perH venPro,
-        redeclare AixLib.DataBase.Profiles.SetTemperaturesVentilation2perDay
-        TSetProfile),
-    redeclare HOMSystem systemParameters,
-    redeclare DesignOptimization.ParametersToChange parameterStudy,
-    redeclare final package MediumDHW = AixLib.Media.Water,
-    redeclare final package MediumZone = AixLib.Media.Air,
-    redeclare final package MediumHyd = AixLib.Media.Water,
-    redeclare BESMod.Systems.Ventilation.NoVentilation ventilation);
+        calcmFlow), Error, Error;
+    redeclare HOMSystem systemParameters, Error, Error, Error, Error, Error;
 
   extends Modelica.Icons.Example;
   annotation (experiment(StopTime=172800,

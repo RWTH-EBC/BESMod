@@ -1,6 +1,7 @@
 within BESMod.Systems.Hydraulical.Transfer;
 model UFHTransferSystem
   extends BaseClasses.PartialTransfer(
+    dpSup_nominal={parTra.dpPumpHeaCir_nominal},
     nHeaTra=1,
     final nParallelSup=1,
     final dp_nominal=parTra.dp_nominal);

@@ -7,11 +7,15 @@ model HeatPump "Monovalent heat pump"
     THeaTresh=293.15,
     QPriAtTOdaNom_flow_nominal=0,
     genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.Monovalent,
-    TBiv=TOda_nominal);
+    TBiv=TOda_nominal,
+    resGen(final dp_nominal=dpPipFit_nominal));
+  parameter Modelica.Units.SI.PressureDifference dpPipFit_nominal
+    "Nominal pressure drop forbetween inlet and outlet for pipes and fittings"
+    annotation (Dialog(tab="Pressure Drops"));
 
 equation
-  connect(senTGenOut.port_a, heatPump.port_b1) annotation (Line(points={{60,80},{
-          32,80},{32,44},{-30.5,44},{-30.5,37}}, color={0,127,255}));
-  connect(heatPump.port_a1, portGen_in[1])  annotation (Line(points={{-30.5,-7},
-          {-30.5,-2},{100,-2}},          color={0,127,255}));
+  connect(senTGenOut.port_a, heatPump.port_b1) annotation (Line(points={{60,80},
+          {32,80},{32,44},{-30,44},{-30,35}},    color={0,127,255}));
+  connect(resGen.port_a, heatPump.port_a1) annotation (Line(points={{60,-2},{28,
+          -2},{28,-18},{-30,-18},{-30,0}}, color={0,127,255}));
 end HeatPump;

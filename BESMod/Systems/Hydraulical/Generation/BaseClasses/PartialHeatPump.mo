@@ -39,11 +39,6 @@ model PartialHeatPump "Generation with only the heat pump"
     "=true if the heat pump is reversible"
     annotation(Dialog(group="Component choices"));
   replaceable parameter
-    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition parPum
-    "Parameters for pump" annotation (
-    choicesAllMatching=true,
-    Placement(transformation(extent={{42,-56},{56,-44}})));
-  replaceable parameter
     BESMod.Systems.RecordsCollection.TemperatureSensors.TemperatureSensorBaseDefinition
     parTemSen constrainedby
     BESMod.Systems.RecordsCollection.TemperatureSensors.TemperatureSensorBaseDefinition(
@@ -51,7 +46,7 @@ model PartialHeatPump "Generation with only the heat pump"
               "Parameters for temperature sensors"
                                              annotation (
     choicesAllMatching=true,
-    Placement(transformation(extent={{62,104},{76,118}})));
+    Placement(transformation(extent={{62,44},{76,58}})));
   replaceable model RefrigerantCycleInertia =
       AixLib.Fluid.HeatPumps.ModularReversible.RefrigerantCycle.Inertias.NoInertia
       "Model approach for internal heat pump intertia"
@@ -119,14 +114,6 @@ model PartialHeatPump "Generation with only the heat pump"
   parameter Modelica.Media.Interfaces.Types.Temperature TSoilConst=273.15 + 10
     "Constant soil temperature for ground source heat pumps"
     annotation(Dialog(group="Component choices", enable=use_airSource));
-
-  replaceable parameter
-    BESMod.Systems.RecordsCollection.TemperatureSensors.TemperatureSensorBaseDefinition
-    parTemSen "Parameters for temperature sensors"
-                                             annotation (
-    Dialog(group="Component data"),
-    choicesAllMatching=true,
-    Placement(transformation(extent={{62,104},{76,118}})));
 
   replaceable BESMod.Systems.Hydraulical.Control.Components.Defrost.NoDefrost defCtrl if use_rev and use_airSource
     constrainedby
@@ -300,6 +287,15 @@ model PartialHeatPump "Generation with only the heat pump"
         origin={-170,-30})));
 
 
+  IBPSA.Fluid.FixedResistances.PressureDrop resGen(
+    redeclare final package Medium = Medium,
+    final allowFlowReversal=allowFlowReversal,
+    final m_flow_nominal=m_flow_design[1],
+    final show_T=show_T,
+    final from_dp=false,
+    final linearized=false,
+    final deltaM=0.3) "Pressure drop model depending on the configuration"
+    annotation (Placement(transformation(extent={{60,-12},{80,8}})));
 equation
   connect(bouEva.ports[1], heatPump.port_a2) annotation (Line(points={{-80,50},{
           -70,50},{-70,35},{-51,35}},          color={0,127,255}));
@@ -323,14 +319,6 @@ equation
       thickness=1));
   connect(multiSum.y, realToElecCon.PEleLoa)
     annotation (Line(points={{122.98,-82},{112,-82}}, color={0,0,127}));
-  connect(multiSum.u[1], reaExpPEleHeaPum.y) annotation (Line(points={{136,-82},
-          {144,-82},{144,-150},{-154,-150},{-154,-70},{-159,-70}},
-                                                           color={0,0,127}),
-      Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
 
   connect(switch.u1, weaBus.TDryBul) annotation (Line(points={{-142,58},{-144,58},
           {-144,80.11},{-100.895,80.11}},
@@ -372,10 +360,8 @@ equation
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
 
-  connect(pump.P, multiSum.u[1]) annotation (Line(points={{-1,-61},{-10,-61},{-10,
-          -116},{148,-116},{148,-80.95},{136,-80.95}}, color={0,0,127}));
-  connect(heatPump.P, multiSum.u[2]) annotation (Line(points={{-40.5,36.75},{-40.5,
-          40},{152,40},{152,-83.05},{136,-83.05}}, color={0,0,127}));
+  connect(heatPump.P, multiSum.u[1]) annotation (Line(points={{-40.5,36.75},{-40.5,
+          40},{152,40},{152,-82},{136,-82}},       color={0,0,127}));
   connect(KPIWel.u, heatPump.P) annotation (Line(points={{-141.8,-30},{-150,-30},
           {-150,36.75},{-40.5,36.75}},                   color={0,0,127}));
   connect(KPIQHP.u, heatPump.QCon_flow) annotation (Line(points={{-141.8,-70},{-188,
@@ -461,6 +447,8 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
+  connect(portGen_in[1], resGen.port_b)
+    annotation (Line(points={{100,-2},{80,-2}}, color={0,127,255}));
   annotation (Line(
       points={{-52.775,-6.78},{-52.775,33.61},{-56,33.61},{-56,74}},
       color={255,204,51},

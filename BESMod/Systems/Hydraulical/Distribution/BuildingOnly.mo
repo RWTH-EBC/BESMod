@@ -1,6 +1,7 @@
 within BESMod.Systems.Hydraulical.Distribution;
 model BuildingOnly "Only loads building"
   extends BaseClasses.PartialDistribution(
+    final nParallelDem=1,
     final dpOld_design=dp_nominal,
     final dp_design=dp_nominal,
     dTTra_design=dTTra_nominal,
@@ -92,13 +93,13 @@ equation
       horizontalAlignment=TextAlignment.Left));
   connect(portGen_in[1], portBui_out[1])
     annotation (Line(points={{-100,80},{100,80}}, color={0,127,255}));
-  connect(bouPum.ports[1],pump. port_a)
+  connect(bouPum.ports[1],pump.port_a)
     annotation (Line(points={{-10,20},{-10,40},{-20,40}}, color={0,127,255}));
   connect(pump.port_b, portGen_out[1])
     annotation (Line(points={{-40,40},{-100,40}}, color={0,127,255}));
   connect(pump.port_a, portBui_in[1])
     annotation (Line(points={{-20,40},{100,40}}, color={0,127,255}));
-  connect(pump.y, sigBusDistr.uPump) annotation (Line(points={{-30,52},{-30,101},
+  connect(pump.y, sigBusDistr.uPumGen) annotation (Line(points={{-30,52},{-30,101},
           {0,101}}, color={0,0,127}), Text(
       string="%second",
       index=1,

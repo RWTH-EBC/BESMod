@@ -27,22 +27,10 @@ partial model PartialModelicaConferenceUseCase
       redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater
         generation(
         dTTra_nominal={10},
-<<<<<<< HEAD
-        redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
-        redeclare package Medium_eva = AixLib.Media.Air,
-=======
-        redeclare model RefrigerantCycleHeatPumpHeating =
-            AixLib.Fluid.HeatPumps.ModularReversible.RefrigerantCycle.TableData2D
-            (redeclare
-              AixLib.Fluid.HeatPumps.ModularReversible.Data.TableData2D.EN255.Vitocal350AWI114
-              datTab),
+        redeclare package Medium_eva = AixLib.Media.Air),
         redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare package MediumEva = AixLib.Media.Air,
         TBiv=271.15,
->>>>>>> main
-        redeclare
-          BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps.DefaultHP
-          parHeaPum,
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater.DefaultElectricHeater
           parEleHea,
@@ -56,9 +44,11 @@ partial model PartialModelicaConferenceUseCase
           valCtrl,
         supCtrDHWTyp=BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Internal,
         redeclare model DHWHysteresis =
-            BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
+
+          BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
         redeclare model BuildingHysteresis =
-            BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
+
+          BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
           parPIDHeaPum),
@@ -66,12 +56,12 @@ partial model PartialModelicaConferenceUseCase
         distribution(
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
-          parStoBuf(dTLoadingHC1=0),
-        redeclare
-          BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
           parStoDHW(dTLoadingHC1=10),
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
-          parThrWayVal),
+          parThrWayVal,
+        redeclare
+          BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
+          parStoBuf(dTLoadingHC1=0)),
       redeclare Systems.Hydraulical.Transfer.IdealValveRadiator transfer(
         dTTra_nominal=fill(10, hydraulic.transfer.nParallelDem),
         f_design=fill(1.2, hydraulic.transfer.nParallelDem),
@@ -81,44 +71,22 @@ partial model PartialModelicaConferenceUseCase
         redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
-          parTra)),
+          parTra));
     redeclare Systems.Demand.DHW.StandardProfiles DHW(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare final BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM
         DHWProfile,
       redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
-        calcmFlow),
-    redeclare BESMod.Examples.ModelicaConferencePaper.BESModSystemParas
-      systemParameters(use_elecHeating=false),
+        calcmFlow), Error;
     redeclare BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy
-      parameterStudy,
-    redeclare final package MediumDHW = IBPSA.Media.Water,
-    redeclare final package MediumZone = IBPSA.Media.Air,
-    redeclare final package MediumHyd = IBPSA.Media.Water,
-    redeclare BESMod.Systems.Ventilation.VentilationSystem ventilation(
-      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
-      redeclare
-        BESMod.Systems.Ventilation.Generation.ControlledDomesticVentilation
-        generation(
-        m_flow_nominal={sum(building.AZone .* building.hZone .* 0.5 ./ 3600 .*
-            1.225)},
+      parameterStudy, Error, Error, Error, Error, Error;
         redeclare
           BESMod.Systems.Ventilation.Generation.RecordsCollection.DummyHeatExchangerRecovery
-          parameters,
-        redeclare IBPSA.Fluid.Actuators.Valves.ThreeWayLinear threeWayValve_b,
-        redeclare IBPSA.Fluid.Actuators.Valves.ThreeWayLinear threeWayValve_a,
-        redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
-          threeWayValveParas,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DPVar fanData,
-        redeclare
-          BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
-          tempSensorData),
+          parameters, Error, Error, Error, Error, Error;
       redeclare BESMod.Systems.Ventilation.Distribution.SimpleDistribution
         distribution(m_flow_nominal=building.AZone .* building.hZone .* 0.5 ./
-            3600 .* 1.225),
-      redeclare BESMod.Systems.Ventilation.Control.SummerPIDByPass control(
-          use_bypass=false)));
+            3600 .* 1.225), Error;
 
 
 end PartialModelicaConferenceUseCase;

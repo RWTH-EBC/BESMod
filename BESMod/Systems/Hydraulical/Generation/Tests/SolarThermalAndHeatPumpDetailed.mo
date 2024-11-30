@@ -21,7 +21,8 @@ model SolarThermalAndHeatPumpDetailed "Test for SolarThermalAndHeatPumpDetailed"
         BESMod.Systems.Hydraulical.Generation.RecordsCollection.SolarThermal.DefaultSolarThermal
         solarThermalParas,
       redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPumSolThe,
-      redeclare BESMod.Systems.Hydraulical.Generation.RecordsCollection.DefaultElectricHeater
+      redeclare
+        BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater.DefaultElectricHeater
         parEleHea));
   extends Modelica.Icons.Example;
 
