@@ -71,6 +71,11 @@ model AixLibHighOrder "High order building model from AixLib library"
         origin={-50,-50})));
   Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{24,-108},{44,-88}})));
+  Modelica.Thermal.HeatTransfer.Sources.PrescribedTemperature
+    outdoorTemperature annotation (Placement(transformation(
+        extent={{-7,-7},{7,7}},
+        rotation=270,
+        origin={-45,51})));
 equation
   connect(convRadToCombPort.portConv, heatPortCon) annotation (Line(points={{-60,-7},
           {-72,-7},{-72,-6},{-104,-6},{-104,46},{-86,46},{-86,60},{-100,60}},
@@ -176,6 +181,16 @@ equation
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
 
+  connect(weaBus.TDryBul, outdoorTemperature.T) annotation (Line(
+      points={{-46.895,98.11},{-45,98.11},{-45,59.4}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%first",
+      index=-1,
+      extent={{-3,6},{-3,6}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(outdoorTemperature.port, HOMBuiEnv.thermOutside)
+    annotation (Line(points={{-45,44},{-45,34},{-21.4,34}}, color={191,0,0}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end AixLibHighOrder;
