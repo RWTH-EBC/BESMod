@@ -1,6 +1,6 @@
 within BESMod.Systems.Electrical.Interfaces;
 connector InternalElectricalPinOut
-  "Simplified electrical pin for power flow only within the building energy system"
+  "Simplified electrical pin for power flow outputs only within the building energy system"
   extends BESMod.Systems.Electrical.Interfaces.BaseClasses.ElectricalPinOut;
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Rectangle(
@@ -16,4 +16,9 @@ connector InternalElectricalPinOut
                                             Diagram(graphics,
                                                     coordinateSystem(
           preserveAspectRatio=false)));
+  annotation (Documentation(info="<html>
+<p>Simplified electrical pin connector representing power flow outputs within the building energy system. 
+This connector extends <a href=\"modelica://BESMod.Systems.Electrical.Interfaces.BaseClasses.ElectricalPinOut\">
+BESMod.Systems.Electrical.Interfaces.BaseClasses.ElectricalPinOut</a>.</p>
+</html>"));
 end InternalElectricalPinOut;

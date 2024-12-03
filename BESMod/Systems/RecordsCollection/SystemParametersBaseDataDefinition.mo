@@ -78,4 +78,49 @@ record SystemParametersBaseDataDefinition
   annotation (defaultComponentName = "baseParameterAssumptions", Icon(graphics,
                                                                       coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
+  annotation (Documentation(info="<html>
+<p>This record contains the basic parameters used globally in all BESMod systems. 
+It defines temperature levels, heat demand characteristics, and system configuration parameters 
+for building energy system simulations.</p>
+
+<h4>Important Parameters</h4>
+<h5>Heat Demand</h5>
+<ul>
+  <li><code>nZones</code>: Number of building zones (default: 1)</li>
+  <li><code>QBui_flow_nominal</code>: Nominal heating load per zone [W]</li>
+</ul>
+
+<h5>Temperature Levels</h5>
+<ul>
+  <li><code>TOda_nominal</code>: Nominal outdoor air temperature [K]</li>
+  <li><code>TSetZone_nominal</code>: Nominal zone setpoint temperatures [K]</li>
+  <li><code>THydSup_nominal</code>: Nominal hydraulic supply temperatures [K]</li>
+  <li><code>TVenSup_nominal</code>: Nominal ventilation supply temperatures [K]</li>
+  <li><code>TEleSup_nominal</code>: Nominal electrical heating supply temperatures [K]</li>
+  <li><code>TSetDHW</code>: DHW setpoint temperature [K]</li>
+  <li><code>TDHWWaterCold</code>: Cold water inlet temperature [K]</li>
+  <li><code>TAmbHyd</code>: Ambient temperature for hydraulic system [K]</li>
+  <li><code>TAmbVen</code>: Ambient temperature for ventilation system [K]</li>
+  <li><code>TAmbEle</code>: Ambient temperature for electrical system [K]</li>
+</ul>
+
+<h5>System Configuration</h5>
+<ul>
+  <li><code>use_hydraulic</code>: Enable/disable hydraulic subsystem</li>
+  <li><code>use_ventilation</code>: Enable/disable ventilation subsystem</li>
+  <li><code>use_dhw</code>: Enable/disable DHW subsystem</li>
+  <li><code>use_elecHeating</code>: Enable/disable electrical heating</li>
+</ul>
+
+<h5>Retrofit Parameters</h5>
+<ul>
+  <li><code>QBuiOld_flow_design</code>: Design heating load before retrofit [W]</li>
+  <li><code>THydSupOld_design</code>: Design hydraulic supply temperatures before retrofit [K]</li>
+</ul>
+
+<h5>Weather Data</h5>
+<ul>
+  <li><code>filNamWea</code>: Weather data file name</li>
+</ul>
+</html>"));
 end SystemParametersBaseDataDefinition;

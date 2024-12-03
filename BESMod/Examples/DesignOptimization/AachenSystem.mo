@@ -10,4 +10,8 @@ record AachenSystem
     THydSup_nominal={328.15},
     TOda_nominal=265.35);
 
+  annotation (Documentation(info="<html>
+<h4>Information</h4>
+<p>This record extends <a href=\"modelica://BESMod.Systems.RecordsCollection.SystemParametersBaseDataDefinition\">BESMod.Systems.RecordsCollection.SystemParametersBaseDataDefinition</a> and defines parameters for a building energy system in Aachen, Germany. The model represents a single-zone building without ventilation and electric heating.</p>
+</html>"));
 end AachenSystem;

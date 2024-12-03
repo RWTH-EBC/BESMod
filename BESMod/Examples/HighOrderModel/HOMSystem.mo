@@ -10,4 +10,8 @@ record HOMSystem
     THydSup_nominal=fill(328.15,nZones),
     TOda_nominal=265.35);
 
+  annotation (Documentation(info="<html>
+<h4>Information</h4>
+<p>Record for a high-order building model consisting of 10 thermal zones.</p>
+</html>"));
 end HOMSystem;

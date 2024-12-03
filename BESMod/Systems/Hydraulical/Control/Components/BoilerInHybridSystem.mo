@@ -73,5 +73,51 @@ equation
   connect(or2.y, secGenOn)
     annotation (Line(points={{93,0},{110,0}}, color={255,0,255}));
   annotation (Diagram(coordinateSystem(extent={{-100,-100},{100,100}})), Icon(
-        coordinateSystem(extent={{-100,-100},{80,100}})));
+        coordinateSystem(extent={{-100,-100},{80,100}})), Documentation(info="<html><p>
+  Model for controlling the boiler operation in a hybrid system with
+  primary and secondary generator. The model decides when to operate
+  the boiler based on outdoor temperature conditions and primary
+  generator status.
+</p>
+<h4>
+  Important Parameters
+</h4>
+<ul>
+  <li>
+    <code>TBiv</code>: Bivalence temperature - Temperature threshold
+    below which secondary heating is allowed
+  </li>
+  <li>
+    <code>TCutOff</code>: Cut-off temperature - Temperature threshold
+    below which boiler operation is always enabled
+  </li>
+</ul>
+<h4>
+  Control Logic
+</h4>
+<p>
+  The boiler is turned on if any of these conditions are met:
+</p>
+<ul>
+  <li>Outdoor temperature is below cut-off temperature (TCutOff)
+  </li>
+  <li>All of the following conditions are true:
+    <ul>
+      <li>Outdoor temperature is below bivalence temperature (TBiv)
+      </li>
+      <li>Secondary generator use is requested
+      </li>
+      <li>Either:
+        <ul>
+          <li>Primary generator is blocked due to safety issues, or
+          </li>
+          <li>Primary generator is running at maximum capacity
+          (&gt;85-90% load)
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+</html>"));
 end BoilerInHybridSystem;

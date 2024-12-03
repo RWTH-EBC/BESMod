@@ -8,14 +8,8 @@ model NoElectricalTransfer
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)),
-    experiment(StopTime=3600, __Dymola_Algorithm="Dassl"),
-    __Dymola_experimentSetupOutput,
-    __Dymola_experimentFlags(
-      Advanced(
-        EvaluateAlsoTop=true,
-        GenerateVariableDependencies=false,
-        OutputModelicaCode=false),
-      Evaluate=true,
-      OutputCPUtime=false,
-      OutputFlatModelica=false));
+    experiment(StopTime=3600, __Dymola_Algorithm="Dassl"), Documentation(info="<html>
+<p>Test model for the <a href=\"modelica://BESMod.Systems.Electrical.Transfer.NoElectricalTransfer\">BESMod.Systems.Electrical.Transfer.NoElectricalTransfer</a> component. 
+<\p>
+</html>"));
 end NoElectricalTransfer;

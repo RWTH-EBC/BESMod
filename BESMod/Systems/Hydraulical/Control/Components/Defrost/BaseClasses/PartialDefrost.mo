@@ -17,5 +17,9 @@ partial model PartialDefrost "Partial model for defrost control"
           extent={{-76,102},{66,66}},
           lineColor={28,108,200},
           textString="%name%")}),                                Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<p>Partial model that serves as a base class for defrost control implementations of heat pumps. 
+The model includes a signal bus containing the most relevant information 
+for heat pump frosting calculation and provides a boolean output for heating mode operation.</p>
+</html>"));
 end PartialDefrost;

@@ -34,5 +34,15 @@ equation
           lineColor={192,192,192},
           fillColor={192,192,192},
           fillPattern=FillPattern.Solid)}),                      Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<p>A thermostatic valve controller implementing a P-control strategy. 
+The valve opening is determined based on the deviation between 
+the zone set temperature and measured temperature. 
+</p>
+<ul>
+  <li><code>Kvs[nZones]</code>: Kv value at full valve opening (=1)</li>
+  <li><code>Kv_setT[nZones]</code>: Kv value when set temperature equals measured temperature</li>
+  <li><code>P[nZones]</code>: Temperature deviation at which valve is fully closed</li>
+</ul>
+</html>"));
 end ThermostaticValvePControlled;

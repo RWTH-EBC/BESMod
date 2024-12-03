@@ -65,4 +65,28 @@ equation
     end for;
 
     annotation (experiment(StopTime=2592000, __Dymola_Algorithm="Dassl"));
+  annotation (Documentation(info="<html>
+
+<p>Partial model for testing ventilation generation systems. 
+</p>
+
+<p>The model includes:</p>
+<ul>
+  <li>Weather data reader using TMY3 format</li>
+  <li>Replaceable ventilation generation system</li>
+  <li>Mixing volumes representing building air volume</li>
+  <li>Fixed temperature boundary condition</li>
+</ul>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li>Medium: Replaceable medium package (defaults to IBPSA.Media.Air)</li>
+  <li>m_flow_nominal: Nominal mass flow rate based on room volume (150m^3) and air changes</li>
+  <li>Q_flow_nominal: Nominal heating/cooling power</li>
+  <li>TOda_nominal: Nominal outdoor temperature</li>
+  <li>TDem_nominal: Nominal zone temperature setpoint</li>
+  <li>V: Room volume (150m^3 with 2.6m height)</li>
+</ul>
+
+</html>"));
 end PartialTest;

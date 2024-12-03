@@ -45,4 +45,12 @@ record BufferStorageBaseDataDefinition
       enable=use_HC2));
 
 
+  annotation (Documentation(info="<html>
+<p>
+Record that defines the basic parameters for a buffer storage tank. 
+It includes parameters for an optional electric heater and a second 
+heating coil (HC2) geometry (lengthHC2), fluid velocity (vHC2_nominal), and heat 
+transfer coefficient (hConHC2).
+</p>
+</html>"));
 end BufferStorageBaseDataDefinition;

@@ -24,4 +24,17 @@ partial model PartialUserProfiles
       Diagram(graphics,
               coordinateSystem(preserveAspectRatio=false, extent={{-120,-120},
             {120,120}})));
+  annotation (Documentation(info="<html>
+<p>
+Partial model serving as a base class for user profiles. 
+This model provides basic parameters and interfaces for modeling occupant behavior 
+and comfort preferences in different thermal zones.
+</p>
+
+<h4>Important Parameters</h4>
+<ul>
+<li><code>nZones</code> (Integer): Number of thermal zones to transfer heat to</li>
+<li><code>TSetZone_nominal</code> (Temperature vector): Nominal temperature setpoints for each zone, defaults to 293.15 K (20 degC) for all zones</li>
+</ul>
+</html>"));
 end PartialUserProfiles;

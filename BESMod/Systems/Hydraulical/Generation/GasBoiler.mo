@@ -148,4 +148,19 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
+  annotation (Documentation(info="<html>
+<p>
+This model represents a gas boiler with external control. 
+It uses the <a href=\"modelica://AixLib.Fluid.BoilerCHP.BoilerNoControl\">AixLib.Fluid.BoilerCHP.BoilerNoControl</a> 
+as core component.
+</p>
+
+<h4>Important Parameters</h4>
+<ul>
+<li>etaTem: Temperature-dependent efficiency curve defined as table data [Temperature in K, Efficiency]</li>
+<li>parBoi: Parameter record containing boiler specifications, must have minimum nominal power of max(11000, Q_flow_nominal[1])</li>
+<li>parTemSen: Parameter record for temperature sensor configuration</li>
+<li>parPum: Parameter record for pump configuration</li>
+</ul>
+</html>"));
 end GasBoiler;

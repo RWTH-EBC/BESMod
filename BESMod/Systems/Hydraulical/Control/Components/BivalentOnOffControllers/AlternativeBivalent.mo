@@ -52,4 +52,21 @@ equation
     annotation (Line(points={{110,-80},{88.6,-80}}, color={0,0,127}));
   connect(greaterEqualT_biv2.y, or3.u) annotation (Line(points={{81,-50},{82,
           -50},{82,-70},{74.8,-70},{74.8,-80}}, color={255,0,255}));
+  annotation (Documentation(info="<html>
+<p>Alternative bivalent control strategy for controlling primary and secondary heat generators 
+based on outdoor temperature and storage temperatures. 
+</p>
+
+<p>The primary generator is activated when:</p>
+<ul>
+  <li>The outdoor temperature is above the bivalent temperature (T_biv)</li>
+  <li>AND the storage requires heating (determined by hysteresis)</li>
+</ul>
+
+<p>The secondary generator is activated when:</p>
+<ul>
+  <li>The outdoor temperature is below the bivalent temperature</li>
+  <li>AND the storage requires heating (determined by hysteresis)</li>
+</ul>
+</html>"));
 end AlternativeBivalent;

@@ -41,4 +41,18 @@ equation
       points={{40,-90},{56,-90},{56,-84},{70,-84},{70,-98}},
       color={0,0,0},
       thickness=1));
+  annotation (Documentation(info="<html>
+<h4>Information</h4>
+<p>Most basic distribution model for ventilation systems. 
+This model extends from <a href=\"modelica://BESMod.Systems.Ventilation.Distribution.BaseClasses.PartialDistribution\">PartialDistribution</a> 
+and implements a simple distribution system with fixed pressure drops in supply and exhaust lines.</p>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li>dp_nominal: Nominal pressure drop (default set to 100 Pa)</li>
+  <li>f_design: Design factor (set to 1)</li>
+  <li>nParallelSup: Number of parallel supplies (set to 1)</li>
+  <li>m_flow_nominal: Nominal mass flow rate</li>
+</ul>
+</html>"));
 end SimpleDistribution;

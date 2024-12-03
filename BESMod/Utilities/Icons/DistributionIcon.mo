@@ -53,5 +53,7 @@ partial model DistributionIcon
           fillColor={238,46,47},
           fillPattern=FillPattern.Solid)}),
                                  Diagram(graphics,
-                                         coordinateSystem(preserveAspectRatio=false)));
+                                         coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+This is a partial model that defines the graphical icon for distribution systems in the BESMod library. 
+</html>"));
 end DistributionIcon;

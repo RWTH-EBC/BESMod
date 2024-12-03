@@ -93,4 +93,14 @@ equation
 
   connect(bou1.ports[1], vol.ports[3]) annotation (Line(points={{-60,-30},{-54,
           -30},{-54,-4},{-58,-4},{-58,11.3333},{-60,11.3333}}, color={0,127,255}));
+  annotation (Documentation(info="<html>
+<p>Partial model for testing different transfer systems implementations. 
+The model contains a basic setup with:</p>
+<ul>
+  <li>A replaceable transfer system extending from <a href=\"modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialTransfer\">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialTransfer</a></li>
+  <li>A water mixing volume connected to the transfer system</li>
+  <li>A prescribed temperature boundary condition simulating room temperature with sinusoidal variation</li>
+  <li>Control bus connection for transfer system control signals</li>
+</ul>
+</html>"));
 end PartialTest;

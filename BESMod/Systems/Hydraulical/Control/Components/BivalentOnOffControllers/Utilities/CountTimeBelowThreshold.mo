@@ -11,5 +11,9 @@ algorithm
   end when;
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<p>Block that stores the last time instance when the boolean input signal rises 
+from false to true. The output y equals this time instance. This can be useful 
+for tracking when certain conditions last occurred in a control system.</p>
+</html>"));
 end CountTimeBelowThreshold;

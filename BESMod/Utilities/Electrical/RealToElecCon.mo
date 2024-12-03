@@ -55,5 +55,16 @@ equation
           extent={{-98,-100},{100,-160}},
           lineColor={0,0,0},
           textString="%name")}),                                 Diagram(graphics,
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<h4>Information</h4>
+<p>Model for transferring real power inputs to the electrical connectors. 
+The model provides an interface between real-valued electrical power signals and an 
+internal electrical connector system.</p>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li><code>use_souLoa</code> (default=true): Activates the real interface for electrical loads</li>
+  <li><code>use_souGen</code> (default=true): Activates the real interface for electrical generation</li>
+</ul>
+</html>"));
 end RealToElecCon;

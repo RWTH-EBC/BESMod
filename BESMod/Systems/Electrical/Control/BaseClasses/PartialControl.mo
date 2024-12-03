@@ -83,5 +83,10 @@ partial model PartialControl "Partial electrical control model"
           fillColor={175,175,175},
           fillPattern=FillPattern.Solid)}),                      Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false, extent={{-240,-100},{240,
-            100}})));
+            100}})), Documentation(info="<html>
+<p>A partial model serving as a base class for electrical control systems. 
+The control system has defined interfaces to the 
+generation, distribution, and transfer subsystems as well as to the 
+building measurement and use profiles.</p>
+</html>"));
 end PartialControl;

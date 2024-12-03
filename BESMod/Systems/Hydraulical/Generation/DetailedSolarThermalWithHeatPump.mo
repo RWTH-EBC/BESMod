@@ -1,4 +1,4 @@
-within BESMod.Systems.Hydraulical.Generation;
+﻿within BESMod.Systems.Hydraulical.Generation;
 model DetailedSolarThermalWithHeatPump
   "Detailed solar thermal model with monoenergetic heat pump"
   extends HeatPumpAndElectricHeater(
@@ -171,5 +171,40 @@ equation
           textString="Solar Thermal"), Rectangle(
           extent={{94,-198},{-218,-136}},
           lineColor={0,0,0},
-          lineThickness=1)}));
+          lineThickness=1)}),
+              Documentation(info="<html>
+<p>
+This model implements a detailed solar thermal system coupled with a monoenergetic heat pump. 
+The solar thermal collector is modeled according to the EN12975 standard and can be connected in series configuration.
+The model extends <a href=\"modelica://BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater\">BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater</a>.
+</p>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li>solarThermalParas: Solar thermal parameters record containing collector specifications</li>
+  <li>parPumSolThe: Parameters for the solar thermal pump</li>
+  <li>Collector specifications:
+    <ul>
+      <li>Azimuth angle: 0° (South-facing)</li>
+      <li>Tilt angle: 30°</li>
+      <li>Ground reflectance: 0.2</li>
+      <li>Configuration: Series connection</li>
+    </ul>
+  </li>
+</ul>
+
+<h4>Key Components</h4>
+<ul>
+  <li>EN12975 solar collector model from <a href=\"modelica://Buildings.Fluid.SolarCollectors.EN12975\">Buildings.Fluid.SolarCollectors.EN12975</a></li>
+  <li>Speed-controlled pump from <a href=\"modelica://IBPSA.Fluid.Movers.Preconfigured.SpeedControlled_y\">IBPSA.Fluid.Movers.Preconfigured.SpeedControlled_y</a></li>
+  <li>Heat pump system inherited from base class</li>
+</ul>
+
+<h4>Control Features</h4>
+<ul>
+  <li>Hysteresis control for solar pump operation based on direct normal irradiance</li>
+  <li>ON: DNI > 100 W/m^2</li>
+  <li>OFF: DNI < 10 W/m^2</li>
+</ul>
+</html>"));
 end DetailedSolarThermalWithHeatPump;

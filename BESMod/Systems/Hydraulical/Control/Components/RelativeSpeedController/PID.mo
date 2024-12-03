@@ -59,4 +59,8 @@ equation
           -54,-54}}, color={255,0,255}));
   connect(isOn, and1.u2) annotation (Line(points={{-60,-120},{-60,-62},{-54,-62}},
         color={255,0,255}));
+  annotation (Documentation(info="<html>
+<p>PID controller for inverter controlled devices with anti-windup compensation. 
+The controller can be turned on/off using a boolean input signal.</p>
+</html>"));
 end PID;

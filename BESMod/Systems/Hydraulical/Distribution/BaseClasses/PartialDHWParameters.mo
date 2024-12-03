@@ -32,5 +32,32 @@ model PartialDHWParameters
 
  annotation (Icon(graphics,
                   coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<p>
+This model defines parameters for a Domestic Hot Water (DHW) system 
+based on EN 15450. It serves as a partial model with three 
+different DHW design types:
+</p>
+<ul>
+  <li>No Storage</li>
+  <li>Partial Storage</li> 
+  <li>Full Storage</li>
+</ul>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li><code>mDHW_flow_nominal</code> - Nominal mass flow rate</li>
+  <li><code>QDHW_flow_nominal</code> - Nominal heat flow rate to DHW</li>
+  <li><code>QDHWBefSto_flow_nominal</code> - Nominal heat flow rate before storage</li>
+  <li><code>TDHW_nominal</code> - Nominal DHW temperature</li>
+  <li><code>VDHWDay</code> - Daily volume of DHW tapping</li>
+  <li><code>VStoDHW</code> - Volume of DHW storage (when storage is used)</li>
+  <li><code>tCrit</code> - Critical period time based on EN 15450 (when storage is used)</li>
+</ul>
+
+<h4>References</h4>
+<ul>
+  <li>EN 15450 - Heating systems in buildings - Design of heat pump heating systems</li>
+</ul>
+</html>"));
 end PartialDHWParameters;

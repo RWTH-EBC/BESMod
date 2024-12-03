@@ -13,4 +13,9 @@ partial record Generic
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
+  annotation (Documentation(info="<html>
+<p>
+Partial record defining base parameters for electric heater generation models in building energy systems.
+</p>
+</html>"));
 end Generic;

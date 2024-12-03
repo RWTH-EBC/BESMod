@@ -253,4 +253,11 @@ equation
   connect(threeWayValveWithFlowReturn.portBui_a, stoBuf.fluidportBottom1)
     annotation (Line(points={{-60,74},{-56,74},{-56,-10},{-39.4,-10},{-39.4,-0.4}},
         color={0,127,255}));
+  annotation (Documentation(info="<html>
+<p>This model is a hydraulic distribution system with two storages 
+(buffer and DHW) and a boiler after the buffer storage. 
+The boiler can charge both storages but prioritizes DHW. 
+The hydraulic separator decouples the generation and consumption 
+circuits.</p>
+</html>"));
 end TwoStoragesBoilerWithDHW;

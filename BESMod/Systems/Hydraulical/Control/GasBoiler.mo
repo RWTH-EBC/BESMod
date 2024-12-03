@@ -62,8 +62,8 @@ model GasBoiler "PI Control of gas boiler"
         origin={-90,90})));
   Modelica.Blocks.Math.Add add_dT_LoadingDHW if use_dhw
     annotation (Placement(transformation(extent={{-60,80},{-40,60}})));
-  Modelica.Blocks.Sources.BooleanConstant booleanConstant(k=false)
-    if not use_dhw annotation (Placement(transformation(
+  Modelica.Blocks.Sources.BooleanConstant booleanConstant(k=false) if
+       not use_dhw annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,
         origin={-30,-10})));
@@ -201,4 +201,23 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
+  annotation (Documentation(info="<html>
+<p>This model implements a PI control strategy for a gas boiler 
+system with optional domestic hot water (DHW) support. 
+The control includes:</p>
+<ul>
+  <li>Weather-compensated supply temperature control via heating curve</li>
+  <li>On/off control for building heating with hysteresis</li>
+  <li>On/off control for DHW charging with hysteresis</li>
+  <li>PID control of boiler temperature</li>
+  <li>Three-way valve control for DHW priority</li>
+</ul>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li>dTHysBui - Hysteresis temperature difference for building demand control</li>
+  <li>dTHysDHW - Hysteresis temperature difference for DHW demand control</li>
+  <li>parPID - Parameter record containing all PID control parameters</li>
+</ul>
+</html>"));
 end GasBoiler;

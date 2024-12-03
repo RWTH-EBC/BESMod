@@ -35,4 +35,12 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  annotation (Documentation(info="<html>
+<h4>Information</h4>
+<p>Test model for an indirect loading distribution system with two 
+detailed storage tanks (buffer and DHW). 
+This model tests <a href=\"modelica://BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedIndirectLoading\">BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedIndirectLoading</a> distribution system.</p>
+<p>The model includes a pulse generator with period=100 that controls the 
+three-way valve position through the signal bus.</p>
+</html>"));
 end TestIndirectLoading;

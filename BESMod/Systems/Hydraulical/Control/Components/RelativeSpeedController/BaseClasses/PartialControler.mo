@@ -64,5 +64,16 @@ equation
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
           lineThickness=0.5)}), Diagram(graphics,
-    coordinateSystem(preserveAspectRatio=false)));
+    coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<p>
+This is a partial controller model that serves as a base class for relative speed controllers. 
+It includes basic controller functionality with temperature feedback and error calculation. 
+The model provides both Integral Absolute Error (IAE) and Integral Square Error (ISE) as performance metrics.
+</p>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li><code>yMax</code>: Upper limit of controller output (default = 1)</li>
+</ul>
+</html>"));
 end PartialControler;

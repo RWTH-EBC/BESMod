@@ -62,5 +62,26 @@ partial record TransferDataBaseDefinition "Data record for hydraulic heat transf
 
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<p>This record contains parameters to define a hydraulic heat 
+transfer system, including building properties, volume calculations, 
+pressure drops, radiator characteristics, valve settings 
+and pump specifications.</p>
+
+<h4>Important Parameters</h4>
+<ul>
+<li>nZones: Number of heated zones in the building</li>
+<li>Q_flow_nominal: Nominal heat flow rate per zone</li>
+<li>traType: Heat transfer system type</li>
+<li>pressureDropPerLen: Maximum allowed pressure drop per meter in heat distribution system</li>
+<li>valveAutho: Valve authority (typical value: 0.5)</li>
+<li>use_hydrBalAutom: Enable automatic hydraulic balancing</li>
+</ul>
+
+<h4>References</h4>
+<ul>
+<li>Babusch (2009) - Referenced for surcharge factors for hydraulic resistances in piping networks</li>
+<li>Taschenbuch f�r HEIZUNG + KLIMATECHNIK 2019 - Referenced for pressure drop calculations</li>
+</ul>
+</html>"));
 end TransferDataBaseDefinition;

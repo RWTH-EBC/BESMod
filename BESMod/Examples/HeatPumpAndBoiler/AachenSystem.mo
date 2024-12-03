@@ -10,4 +10,8 @@ record AachenSystem
     THydSup_nominal={328.15},
     TOda_nominal=265.35);
 
+  annotation (Documentation(info="<html>
+<h4>Information</h4>
+<p>Define parameters for a heating system model of a building in Aachen, Germany.</p>
+</html>"));
 end AachenSystem;

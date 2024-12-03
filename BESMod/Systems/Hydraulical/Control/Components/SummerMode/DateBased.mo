@@ -14,4 +14,12 @@ equation
    sumMod = false;
   end if;
 
+  annotation (Documentation(info="<html>
+<p>Model for summer/winter mode control based on calendar dates. 
+Summer mode is activated between the configurable start and end time 
+during the year. 
+Default values are May 1st (start) and October 1st (end). 
+The model uses UNIX timestamps in seconds for date comparison, 
+with start of the year (January 1st) as reference point.</p>
+</html>"));
 end DateBased;

@@ -20,4 +20,8 @@ record bufferData "Simpler design for this repo"
     hUpperPortDemand=hTank,
     hLowerPortDemand=0);
 
+  annotation (Documentation(info="<html>
+<p>Record for simplified buffer storage data extending from 
+The model implements a standard buffer storage tank with fixed geometric parameters.</p>
+</html>"));
 end bufferData;

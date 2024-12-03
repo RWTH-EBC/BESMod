@@ -25,5 +25,11 @@ equation
           extent={{-100,-100},{98,-160}},
           lineColor={0,0,0},
           textString="%name")}),                                 Diagram(graphics,
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<h4>Information</h4>
+<p>
+Model that sums up multiple electrical input power values (generation and load) into a single output. 
+The number of inputs can be defined via the <code>nPorts</code> parameter.
+</p>
+</html>"));
 end MultiSumElec;

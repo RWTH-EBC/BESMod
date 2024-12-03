@@ -95,5 +95,10 @@ equation
   end if;
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<p>This is a partial model for hydraulic distribution systems in 
+building energy systems. 
+The model implements interfaces for generation, transfer and domestic hot water (DHW).
+</p>
+</html>"));
 end PartialDistribution;

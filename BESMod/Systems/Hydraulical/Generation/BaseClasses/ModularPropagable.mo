@@ -66,7 +66,14 @@ equation
           visible=not use_busConOnl and use_rev,
           textString="hea")}),
     Diagram(coordinateSystem(extent={{-140,-160},{140,160}})),
-    Documentation(revisions="
+    Documentation(info="<html>
+<p>This model is a near exact copy of 
+<a href=\"AixLib.Fluid.HeatPumps.ModularReversible.Modular\">AixLib.Fluid.HeatPumps.ModularReversible.Modular</a>, 
+but enabling the propagation of the refrigerant modules with a constrainedby 
+clause and final modifiers. See 
+<a href=\"BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump\">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+for an exemplary usage.</p>
+</html>"), revisions="
 <html>
 <ul>
   <li>
@@ -75,12 +82,5 @@ equation
     \"https://github.com/RWTH-EBC/BESMod/issues/82\">#82</a>)
   </li>
 </ul>
-</html>", info="<html>
-<p>This model is a near exact copy of 
-<a href=\"AixLib.Fluid.HeatPumps.ModularReversible.Modular\">AixLib.Fluid.HeatPumps.ModularReversible.Modular</a>, 
-but enabling the propagation of the refrigerant modules with a constrainedby 
-clause and final modifiers. See 
-<a href=\"BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump\">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
-for an exemplary usage.</p>
-</html>"));
+</html>");
 end ModularPropagable;

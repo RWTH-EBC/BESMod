@@ -70,5 +70,15 @@ partial model PartialTransfer "Partial model for transfer subsystems"
           extent={{10,-32},{92,-80}},
           lineColor={238,46,47},
           textString="Q̇")}),                                   Diagram(graphics,
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<p>This is a partial model that serves as a base class for transfer subsystems. 
+It defines the basic structure and interfaces required for heat transfer between systems.</p>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li><code>use_openModelica</code> (default=false): Flag to disable features not available in OpenModelica</li>
+  <li><code>nParallelDem</code> (min=1): Number of parallel demand systems</li>
+  <li><code>Q_flow_nominal[nParallelDem]</code> (each min=eps): Nominal heat flow rates for each parallel system</li>
+</ul>
+</html>"));
 end PartialTransfer;

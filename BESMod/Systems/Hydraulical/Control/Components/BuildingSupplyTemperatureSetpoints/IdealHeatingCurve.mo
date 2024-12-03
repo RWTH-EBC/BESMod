@@ -21,4 +21,9 @@ equation
   end if;
   connect(maxTZoneSet.u, TZoneSet) annotation (Line(points={{-60,-70},{-84,-70},{-84,
           -80},{-120,-80}}, color={0,0,127}));
+  annotation (Documentation(info="<html>
+<p>Model for an ideal linear heating curve that calculates the supply temperature 
+setpoint based on outdoor temperature. 
+The heating curve is disabled when outdoor temperature exceeds the maximum zone setpoint temperature.</p>
+</html>"));
 end IdealHeatingCurve;

@@ -91,5 +91,10 @@ equation
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)),
-    experiment(StopTime=1000, __Dymola_Algorithm="Dassl"));
+    experiment(StopTime=1000, __Dymola_Algorithm="Dassl"), Documentation(info="<html>
+<p>Test model for a three way valve with flow return paths. 
+The model tests the valve behavior by controlling the valve 
+position with a pulse signal while having a sawtooth mass 
+flow input for the pump.</p>
+</html>"));
 end TestThreeWayValve;

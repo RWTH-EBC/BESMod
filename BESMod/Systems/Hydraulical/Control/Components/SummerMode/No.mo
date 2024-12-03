@@ -7,4 +7,8 @@ model No "No summer mode approach"
 equation
   connect(noSumMod.y, sumMod)
     annotation (Line(points={{11,0},{110,0}}, color={255,0,255}));
+  annotation (Documentation(info="<html>
+<p>Simple model which sets summer mode to false. 
+</p>
+</html>"));
 end No;

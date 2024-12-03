@@ -49,4 +49,7 @@ equation
     annotation (Line(points={{-100,40},{100,40}}, color={0,127,255}));
   connect(portGen_in[1], portBui_out[1])
     annotation (Line(points={{-100,80},{100,80}}, color={0,127,255}));
+  annotation (Documentation(info="<html>
+<p>Generation system directly supplys the building with heat without using storage tanks and no creation of DHW.</p>
+</html>"));
 end BuildingOnly;

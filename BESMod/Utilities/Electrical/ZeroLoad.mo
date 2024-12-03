@@ -15,5 +15,7 @@ equation
           extent={{-92,-52},{92,60}},
           lineColor={0,0,0},
           textString="0 W")}),                                   Diagram(graphics,
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<p>Zero Load model that can be used if an electrical system is disabled. Sets both load and generation power to 0 W.</p>
+</html>"));
 end ZeroLoad;

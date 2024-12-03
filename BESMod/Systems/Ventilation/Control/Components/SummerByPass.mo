@@ -70,4 +70,27 @@ equation
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
+  annotation (Documentation(info="<html>
+<p>
+Model for summer bypass control of a ventilation system. 
+The bypass is activated in summer (between specified start and end days) 
+when the outdoor temperature is lower than the measured indoor temperature. 
+The bypass degree is controlled by a PI controller which aims to reach the temperature setpoint.
+</p>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li><code>day_summer_start</code>: Day when summer period starts (default: May 1st)</li>
+  <li><code>day_summer_end</code>: Day when summer period ends (default: September 30th)</li>
+  <li><code>k</code>: Controller gain (default: 1)</li>
+  <li><code>Ti</code>: Integrator time constant in seconds (default: 120s)</li>
+</ul>
+
+<h4>Main Components</h4>
+<ul>
+  <li>PI controller from <a href=\"modelica://IBPSA.Controls.Continuous.LimPID\">IBPSA.Controls.Continuous.LimPID</a></li>
+  <li>Summer/winter mode switching based on day of year</li>
+  <li>Temperature comparison between outdoor and indoor air</li>
+</ul>
+</html>"));
 end SummerByPass;

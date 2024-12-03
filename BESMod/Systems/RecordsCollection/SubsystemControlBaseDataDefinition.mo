@@ -39,4 +39,7 @@ record SubsystemControlBaseDataDefinition
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
+  annotation (Documentation(info="<html>
+  <p>Record used to include data of each subsystem into the control of the subsystem.</p>
+</html>"));
 end SubsystemControlBaseDataDefinition;

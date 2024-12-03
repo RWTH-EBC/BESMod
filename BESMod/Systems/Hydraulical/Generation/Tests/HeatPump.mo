@@ -43,4 +43,9 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  annotation (Documentation(info="<html>
+<p>Test case model for a heat pump system. 
+Extends from PartialTest and uses a modular reversible heat pump model from the AixLib library
+ with table data according to EN14511 standard for a Vitocal 251-A08 heat pump.</p>
+</html>"));
 end HeatPump;

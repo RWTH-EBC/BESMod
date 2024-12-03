@@ -163,5 +163,15 @@ equation
           lineThickness=1), Text(
           extent={{-188,-122},{-124,-140}},
           textColor={0,0,0},
-          textString="Solar Thermal")}));
+          textString="Solar Thermal")}), Documentation(info="<html>
+This model implements a simple solar thermal collector system combined with a monoenergetic heat pump. 
+The system consists of:
+<ul>
+  <li>A solar thermal collector from the <a href=\"modelica://AixLib.Fluid.Solar.Thermal.SolarThermal\">AixLib.Fluid.Solar.Thermal.AixLib</a> library</li>
+  <li>A speed-controlled pump for the solar thermal circuit using <a href=\"modelica://IBPSA.Fluid.Movers.Preconfigured.SpeedControlled_y\">IBPSA.Fluid.Movers.Preconfigured.SpeedControlled_y</a></li>
+  <li>Heat pump and electric heater inherited from <a href=\"modelica://BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater\">BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater</a></li>
+</ul>
+<h4>Control</h4>
+The solar thermal pump runs continuously at full speed (control signal = 1).
+</html>"));
 end SimpleSolarThermalWithHeatPump;

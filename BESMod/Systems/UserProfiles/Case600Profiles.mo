@@ -53,4 +53,21 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  annotation (Documentation(info="<html>
+<p>This model implements the user profiles for Case600FF. 
+<\p>
+
+<h4>Important Parameters</h4>
+<ul>
+<li>Convective heat gains: 80/48 W/m^2</li>
+<li>Radiative heat gains: 120/48 W/m^2</li> 
+<li>Latent heat gains: 0 W/m^2</li>
+<li>Shading control: 0 (no shading)</li>
+</ul>
+
+<h4>References</h4>
+<ul>
+<li>ANSI/ASHRAE Standard 140-2017, Standard Method of Test for the Evaluation of Building Energy Analysis Computer Programs</li>
+</ul>
+</html>"));
 end Case600Profiles;

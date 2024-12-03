@@ -31,4 +31,26 @@ model PartialCalculation "Partial model with common interfaces"
     redeclare BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy
       parameterStudy);
 
+  annotation (Documentation(info="<html>
+<h4>Information</h4>
+<p>Partial model with common interfaces to enable heat load calculation for TEASER examples. 
+This model extends the <a href=\"modelica://BESMod.Systems.BaseClasses.PartialBuildingEnergySystem\">PartialBuildingEnergySystem</a> with standard components for simple heat load simulation scenarios.</p>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li>QBui_flow_nominal: Nominal heat flow rate of the building (automatically set from building model)</li>
+  <li>use_hydraulic: Set to false (no hydraulic system used)</li>
+  <li>use_ventilation: Set to false (no ventilation system used)</li>
+</ul>
+
+<h4>Components</h4>
+<ul>
+  <li>Building: <a href=\"modelica://BESMod.Systems.Demand.Building.TEASERThermalZone\">TEASERThermalZone</a></li>
+  <li>User Profiles: <a href=\"modelica://BESMod.Systems.UserProfiles.TEASERProfiles\">TEASERProfiles</a></li>
+  <li>Control: <a href=\"modelica://BESMod.Systems.Control.NoControl\">NoControl</a></li>
+  <li>Electrical System: Ideal heater configuration with direct grid connection</li>
+  <li>DHW: Standard profiles without actual DHW demand</li>
+  <li>Hydraulic/Ventilation: Disabled placeholder components</li>
+</ul>
+</html>"));
 end PartialCalculation;

@@ -31,5 +31,23 @@ equation
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)),
-    experiment(StopTime=10, __Dymola_Algorithm="Dassl"));
+    experiment(StopTime=10, __Dymola_Algorithm="Dassl"), Documentation(info="<html>
+<p>Example model demonstrating different types of supervisory control implementations. 
+The model includes three instances of supervisory control:
+</p>
+<ul>
+    <li>Local control (locCtrl): Basic control without supervisory intervention</li>
+    <li>Internal control (intCtrl): Control with internally implemented supervisory logic</li>  
+    <li>External control (extCtrl): Control with externally provided supervisory signals</li>
+</ul>
+
+<p>Each controller receives a local control signal from a pulse source. 
+The internal and external controllers additionally receive supervisory control 
+signals that can override the local control when activated.</p>
+
+<h4>See also</h4>
+<p>
+<a href=\"modelica://BESMod.Utilities.SupervisoryControl.SupervisoryControl\">BESMod.Utilities.SupervisoryControl.SupervisoryControl</a>
+</p>
+</html>"));
 end SupervisoryControlExample;

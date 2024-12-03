@@ -15,5 +15,15 @@ equation
    y = u > threshold;
   end if;
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<p>
+This model determines if summer mode is activated based on the current 
+simulation time and an input signal. 
+</p>
+<p>
+The output y is true for winter mode 
+(before summer start or after summer end) and depends on the 
+input comparison with threshold during summer period.
+</p>
+</html>"));
 end SummerTimeConstraint;

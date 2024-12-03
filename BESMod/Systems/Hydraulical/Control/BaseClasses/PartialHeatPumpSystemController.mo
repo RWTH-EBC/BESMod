@@ -317,5 +317,18 @@ equation
           extent={{2,-22},{106,-42}},
           lineColor={162,29,33},
           lineThickness=1,
-          textString="Auxilliary Heater Control")}));
+          textString="Auxilliary Heater Control")}), Documentation(info="<html>
+This is a partial model for controlling a heat pump system with a backup heater. 
+The model provides:
+
+<ul>
+    <li>Building heating control via PID and hysteresis</li>
+    <li>DHW temperature control</li>
+    <li>Summer mode capability</li>
+    <li>Optional SG-Ready functionality</li>
+    <li>Control for primary (heat pump) and secondary (backup) heat generators</li>
+    <li>Pump control based on generator operation</li>
+</ul>
+
+</html>"));
 end PartialHeatPumpSystemController;

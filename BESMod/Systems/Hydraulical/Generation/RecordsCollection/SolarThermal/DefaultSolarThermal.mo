@@ -9,4 +9,7 @@ record DefaultSolarThermal "DummyParameters"
     volPip=5e-3,
     m_flow_nominal=0.1);
 
+  annotation (Documentation(info="<html>
+<p>Record containing default parameters for a basic solar thermal system model.</p>
+</html>"));
 end DefaultSolarThermal;

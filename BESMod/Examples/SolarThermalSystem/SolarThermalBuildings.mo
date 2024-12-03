@@ -38,5 +38,29 @@ model SolarThermalBuildings
      Interval=600,
      Tolerance=1e-06),
    __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/SolarThermalSystem/SolarThermalBuildings.mos"
-        "Simulate and plot"));
+        "Simulate and plot"), Documentation(info="<html>
+<h4>Information</h4>
+<p>Model of a heat pump system (HPS) supported by a solar thermal collector. 
+This model extends a partial model for solar thermal heat pump systems and 
+uses a detailed solar thermal system with heat pump for the hydraulic generation subsystem.
+</p>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li>Solar collector parameters (configurable via parameterStudy record):
+    <ul>
+      <li>A - Collector area </li>
+      <li>eta_zero - Peak collector efficiency</li>
+      <li>c1 - Linear heat loss coefficient</li>
+      <li>c2 - Quadratic heat loss coefficient</li> 
+    </ul>
+  </li>
+</ul>
+
+<p>Uses components from:</p>
+<ul>
+  <li><a href=\"modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump\">BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump</a></li>
+  <li><a href=\"modelica://AixLib.Fluid.HeatPumps.ModularReversible.RefrigerantCycle.TableData3D\">AixLib.Fluid.HeatPumps.ModularReversible.RefrigerantCycle.TableData3D</a></li>
+</ul>
+</html>"));
 end SolarThermalBuildings;

@@ -227,4 +227,26 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  annotation (Documentation(info="<html>
+<h4>Information</h4>
+<p>
+Pressure-based transfer system with radiators according to EN442-2. 
+The model can be used for single or multiple radiator circuits 
+with thermostatic radiator valves. 
+A pump circulates the heating water through the radiators. 
+Optionally, a pressure relief valve can be used to allow mass flow 
+when all valves are closed.
+</p>
+
+<h4>Important Parameters</h4>
+<ul>
+<li><code>use_preRelVal</code>: Enable/disable pressure relief valve</li>
+<li><code>perPreRelValOpens</code>: Opening threshold of relief valve as percentage of nominal pressure</li>
+<li><code>parTra</code>: Transfer system parameters (pressures drops, valve characteristics)</li>
+<li><code>parPum</code>: Pump parameters</li>
+<li><code>parRad</code>: Radiator parameters according to EN442-2 (number of elements, radiative fraction)</li>
+<li><code>use_oldRad_design</code>: Use radiator design for non-retrofitted state</li>
+</ul>
+
+</html>"));
 end RadiatorPressureBased;

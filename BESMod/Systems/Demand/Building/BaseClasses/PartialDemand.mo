@@ -83,5 +83,39 @@ protected
       T=MediumZone.T_default, p=MediumZone.p_default, X=MediumZone.X_default) "Nominal / default state of medium";
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<h4>Information</h4>
+<p>
+This is a partial model that serves as a base class for building envelope models. 
+It defines the basic building parameters and interfaces for thermal, ventilation and electrical connections.
+</p>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li>nZones: Number of thermal zones/rooms in the building</li>
+  <li>TSetZone_nominal: Nominal temperature setpoints for each zone [K]</li>
+  <li>Geometry parameters:
+    <ul>
+      <li>AZone: Area of each zone [m^2]</li>
+      <li>hZone: Height of each zone [m]</li>
+      <li>ABui: Ground area of building [m^2]</li>
+      <li>hBui: Building height [m]</li>
+      <li>ARoo: Roof area [m^2]</li>
+    </ul>
+  </li>
+  <li>use_hydraulic: Enable/disable hydraulic supply system</li>
+  <li>use_ventilation: Enable/disable ventilation system</li>
+  <li>TOda_nominal: Design outdoor air temperature [K]</li>
+</ul>
+
+<h4>Connectors</h4>
+<ul>
+  <li>heatPortCon: Convective heat ports for each zone</li>
+  <li>heatPortRad: Radiative heat ports for each zone</li>
+  <li>portVent_in/out: Ventilation air ports (if enabled)</li>
+  <li>weaBus: Weather data connection</li>
+  <li>buiMeaBus: Building measurements bus</li>
+  <li>internalElectricalPin: Electrical system connection</li>
+</ul>
+</html>"));
 end PartialDemand;

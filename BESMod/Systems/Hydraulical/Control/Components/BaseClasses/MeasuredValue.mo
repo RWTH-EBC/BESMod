@@ -13,3 +13,11 @@ type MeasuredValue = enumeration(
         lineColor={0,0,127},
         fillColor={255,255,255},
         fillPattern=FillPattern.Solid)}));
+  annotation (Documentation(info="<html>
+<h4>Information</h4>
+<p>Enumeration type defining possible temperature measurements used for control:</p>
+<ul>
+  <li><code>GenerationSupplyTemperature</code>: Supply temperature of generation system</li>
+  <li><code>DistributionTemperature</code>: Temperature in distribution</li>
+</ul>
+</html>"));

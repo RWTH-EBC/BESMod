@@ -23,5 +23,7 @@ partial model BuildingIcon
           lineColor={0,0,0},
           textString="%name%")}),
                                 Diagram(graphics,
-                                        coordinateSystem(preserveAspectRatio=false)));
+                                        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+This is a partial model that defines an icon for building-related models in Modelica. 
+</html>"));
 end BuildingIcon;

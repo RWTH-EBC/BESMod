@@ -23,14 +23,9 @@ equation
     experiment(
       StopTime=86400,
       Interval=900,
-      __Dymola_Algorithm="Dassl"),
-    __Dymola_experimentSetupOutput,
-    __Dymola_experimentFlags(
-      Advanced(
-        EvaluateAlsoTop=true,
-        GenerateVariableDependencies=false,
-        OutputModelicaCode=false),
-      Evaluate=true,
-      OutputCPUtime=false,
-      OutputFlatModelica=false));
+      __Dymola_Algorithm="Dassl"), Documentation(info="<html>
+<h4>Information</h4>
+<p>Simple test model for a battery system with one battery.
+Test is for a Tesla Powerwall 1 lithium-ion battery.</p>
+</html>"));
 end BatterySystemSimple;

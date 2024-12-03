@@ -20,4 +20,7 @@ equation
       points={{40,-90},{56,-90},{56,-84},{70,-84},{70,-98}},
       color={0,0,0},
       thickness=1));
+  annotation (Documentation(info="<html>
+<p>This class is meant to be selected, when no ventilation is needed.</p>
+</html>"));
 end NoVentilation;

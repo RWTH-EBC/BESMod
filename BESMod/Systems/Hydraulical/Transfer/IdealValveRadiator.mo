@@ -179,4 +179,17 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  annotation (Documentation(info="<html>
+This model represents a hydronic heating system with radiators 
+and ideal thermostatic valves. 
+It uses radiators according to the EN 442-2 standard.
+
+The model includes:
+<ul>
+  <li>Radiators with configurable number of elements</li>
+  <li>Fixed hydraulic resistances for supply lines and radiators</li>
+  <li>Flow-controlled pumps</li>
+  <li>Support for multiple parallel demand zones</li>
+</ul>
+</html>"));
 end IdealValveRadiator;

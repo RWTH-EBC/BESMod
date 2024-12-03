@@ -12,4 +12,7 @@ equation
           extent={{-68,-50},{80,48}},
           lineColor={0,0,0},
           textString="=1")}));
+  annotation (Documentation(info="<html>
+<p>Simple defrost model which disables defrost by always enabling heating mode.</p>
+</html>"));
 end NoDefrost;

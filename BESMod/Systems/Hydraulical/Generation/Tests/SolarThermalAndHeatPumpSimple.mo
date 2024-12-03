@@ -53,4 +53,9 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  annotation (Documentation(info="<html>
+<p>Test model for a combined solar thermal and heat pump system using a simple control strategy.
+The model extends the partial test model and uses a modular heat pump from AixLib combined 
+with a solar thermal collector.</p>
+</html>"));
 end SolarThermalAndHeatPumpSimple;

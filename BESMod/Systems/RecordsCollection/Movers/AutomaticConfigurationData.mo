@@ -13,4 +13,19 @@ record AutomaticConfigurationData
   parameter Modelica.Units.SI.Density rho "Density of fluid in use";
    parameter Real V_flowCurve[:]={0,0.99,1,1.01,1.02}   "Relative V_flow curve to be used";
    parameter Real dpCurve[:]={1.02,1.01,1,0.99,0}     "Relative dp curve to be used";
+  annotation (Documentation(info="<html>
+<p>
+This record extends <a href=\"modelica://AixLib.Fluid.Movers.Data.Generic\">AixLib.Fluid.Movers.Data.Generic</a> 
+to automatically configure a pump/fan for the BES Library based on nominal operating points.
+</p>
+
+<h4>Important Parameters</h4>
+<ul>
+<li><code>m_flow_nominal</code>: Nominal mass flow rate [kg/s]</li>
+<li><code>dp_nominal</code>: Nominal pressure difference [Pa]</li>
+<li><code>rho</code>: Density of fluid in use [kg/m^3]</li>
+<li><code>V_flowCurve</code>: Relative volume flow curve points around nominal point [-]</li>
+<li><code>dpCurve</code>: Relative pressure difference curve points around nominal point [-]</li>
+</ul>
+</html>"));
 end AutomaticConfigurationData;

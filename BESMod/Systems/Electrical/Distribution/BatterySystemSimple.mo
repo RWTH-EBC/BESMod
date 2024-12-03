@@ -66,5 +66,17 @@ equation
          {{50,-18},{50,16.8},{24.84,16.8}}, color={0,0,127}));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<p>Simple battery model acting as an electrical distribution system. 
+The model uses a simplified battery model with SOC tracking and 
+interfaces with other system components through electrical connectors 
+that are converted to real signals.</p>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li><code>SOC_start_bat</code>: Initial state of charge of the battery (default: 0.2)</li>
+  <li><code>nBat</code>: Number of batteries in the system</li>
+  <li><code>batteryParameters</code>: Replaceable record containing battery specifications, must extend <a href=\"modelica://BuildingSystems.Technologies.ElectricalStorages.Data.BaseClasses.ElectricBatteryGeneral\">BuildingSystems.Technologies.ElectricalStorages.Data.BaseClasses.ElectricBatteryGeneral</a></li>
+</ul>
+</html>"));
 end BatterySystemSimple;

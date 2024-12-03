@@ -37,4 +37,13 @@ equation
     annotation (Line(points={{66,0},{59,0}}, color={255,0,255}));
   connect(not2.y, sumMod)
     annotation (Line(points={{89,0},{110,0}}, color={255,0,255}));
+  annotation (Documentation(info="<html>
+<p>This model implements a summer mode control strategy based on both 
+outdoor temperature threshold and calendar dates. 
+The summer mode is activated when either:</p>
+<ul>
+  <li>The outdoor temperature exceeds the heating threshold temperature (with hysteresis)</li>
+  <li>The current time falls between the defined summer start and end dates</li>
+</ul>
+</html>"));
 end HeatingThresholdAndDateBased;

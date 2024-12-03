@@ -29,4 +29,21 @@ package RecordsCollection
       phase=1.5707963267949,
       f=1);
   end PhaseShift90;
+  annotation (Documentation(info="<html>
+<h4>Information</h4>
+<p>
+This package contains record definitions for sine wave parameterization used in the 
+<a href=\"modelica://BESMod.Tutorial\">BESMod.Tutorial</a> package.
+</p>
+
+<p>
+The base record <code>MyComponentBaseDataDefinition</code> defines the fundamental parameters needed
+to describe a sine wave signal. Two predefined parameter sets are available:
+</p>
+
+<ul>
+<li><code>DefaultSineWave</code>: Standard 1 Hz sine wave without phase shift or offset</li>
+<li><code>PhaseShift90</code>: 1 Hz sine wave with 90� phase shift</li>
+</ul>
+</html>"));
 end RecordsCollection;

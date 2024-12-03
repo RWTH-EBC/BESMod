@@ -56,18 +56,11 @@ equation
           {68,70},{68,64},{60,64}},          color={0,0,127}));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(
-        coordinateSystem(preserveAspectRatio=false)),
-    experiment(
-      StopTime=86400,
-      Interval=900,
-      __Dymola_Algorithm="Dassl"),
-    __Dymola_experimentSetupOutput,
-    __Dymola_experimentFlags(
-      Advanced(
-        EvaluateAlsoTop=true,
-        GenerateVariableDependencies=false,
-        OutputModelicaCode=false),
-      Evaluate=true,
-      OutputCPUtime=false,
-      OutputFlatModelica=false));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<p>Partial test model for electrical power distribution systems. 
+The model includes simulated electrical generation and load 
+profiles using sinusoidal signals with a 24-hour period (86400 seconds). 
+The model connects real power signals to electrical connectors and 
+provides monitoring of grid power flow.</p>
+</html>"));
 end PartialTest;

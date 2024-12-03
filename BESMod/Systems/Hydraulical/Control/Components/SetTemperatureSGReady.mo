@@ -60,5 +60,18 @@ equation
   connect(conIntSig2.y, internalSignal.u) annotation (Line(points={{-39,-72},{-32,
           -72},{-32,-50},{-22,-50}}, color={255,127,0}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<p>Model for adjusting temperature setpoints according to SG-Ready signals. 
+The model takes a base temperature setpoint and modifies it based on the current SG-Ready state. 
+SG-Ready is a smart grid protocol with 4 operating states:</p>
+<ul>
+  <li>State 1: Off/Blocked operation</li>
+  <li>State 2: Normal operation (no modification)</li>
+  <li>State 3: Recommended on (+TAddSta3)</li>
+  <li>State 4: Forced on (+TAddSta4)</li>
+</ul>
+
+<p>Can either use external SG-Ready signals or read signals from a file. Related models:</p>
+
+</html>"));
 end SetTemperatureSGReady;

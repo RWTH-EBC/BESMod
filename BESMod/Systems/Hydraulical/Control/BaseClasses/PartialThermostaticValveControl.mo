@@ -65,5 +65,16 @@ equation
           extent={{76,-100},{180,-120}},
           lineColor={162,29,33},
           lineThickness=1,
-          textString="Thermostatic Valve")}));
+          textString="Thermostatic Valve")}), Documentation(info="<html>
+<p>Partial model providing base functionality for thermostatic valve control.</p>
+
+<h4>Structure</h4>
+<p>The model contains:</p>
+<ul>
+  <li>A supervisory control array for possible override of local control</li>
+  <li>Conditional connections for either operative or air temperature measurement from building bus</li>
+  <li>Temperature setpoint connection from profiles bus</li>
+  <li>Signal routing for valve opening to transfer bus</li>
+</ul>
+</html>"));
 end PartialThermostaticValveControl;

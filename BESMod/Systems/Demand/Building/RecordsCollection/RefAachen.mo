@@ -90,4 +90,7 @@ record RefAachen "Reference Building for Aachen"
     withIdealThresholds = false,
     TThresholdHeater = 288.15,
     TThresholdCooler = 295.15);
+  annotation (Documentation(info="<html>
+<p>Reference Building for Aachen, which sets the building paramters to the values shown in the table below.</p>
+</html>"));
 end RefAachen;

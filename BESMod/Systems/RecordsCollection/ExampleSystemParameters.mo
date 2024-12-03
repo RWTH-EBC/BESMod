@@ -7,4 +7,10 @@ record ExampleSystemParameters
     use_ventilation=true,
     TOda_nominal=261.15);
 
+  annotation (Documentation(info="<html>
+<p>
+Record that extends <a href=\"modelica://BESMod.Systems.RecordsCollection.SystemParametersBaseDataDefinition\">
+SystemParametersBaseDataDefinition</a> with specific parameter values for an example system configuration.
+</p>
+</html>"));
 end ExampleSystemParameters;

@@ -163,4 +163,18 @@ equation
       horizontalAlignment=TextAlignment.Left));
   connect(hea.port_b, portGen_out[1]) annotation (Line(points={{-32,26},{-32,40},
           {20,40},{20,80},{100,80}}, color={0,127,255}));
+  annotation (Documentation(info="<html>
+<p>Model of a modulating electrical heater with pump for use in heating systems. 
+The heating rod provides heat based on a control signal. 
+A circulation pump ensures flow through the heating rod when it is active. 
+When the heating rod is off, the pump is deactivated and a bypass is used to maintain 
+flow in the rest of the system.</p>
+
+<h4>Key Components</h4>
+<ul>
+  <li>hea: <a href=\"modelica://AixLib.Fluid.HeatExchangers.HeatingRod\">AixLib.Fluid.HeatExchangers.HeatingRod</a></li>
+  <li>pump: <a href=\"modelica://IBPSA.Fluid.Movers.Preconfigured.SpeedControlled_y\">IBPSA.Fluid.Movers.Preconfigured.SpeedControlled_y</a></li>
+  <li>parEleHea: <a href=\"modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater.Generic\">BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater.Generic</a></li>
+</ul>
+</html>"));
 end ElectricalHeater;

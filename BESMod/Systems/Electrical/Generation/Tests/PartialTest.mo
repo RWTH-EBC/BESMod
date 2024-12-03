@@ -24,17 +24,12 @@ equation
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)),
-    experiment(
-      StopTime=86400,
-      Interval=900,
-      __Dymola_Algorithm="Dassl"),
-    __Dymola_experimentSetupOutput,
-    __Dymola_experimentFlags(
-      Advanced(
-        EvaluateAlsoTop=true,
-        GenerateVariableDependencies=false,
-        OutputModelicaCode=false),
-      Evaluate=true,
-      OutputCPUtime=false,
-      OutputFlatModelica=false));
+     Documentation(info="<html>
+
+<p>
+Partial model to test electrical generation systems. 
+It provides the basic structure for testing different generation models 
+by connecting them to weather data and electrical outputs.
+</p>
+</html>"));
 end PartialTest;

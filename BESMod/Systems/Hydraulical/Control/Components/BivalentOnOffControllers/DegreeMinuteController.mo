@@ -47,7 +47,7 @@ equation
   annotation (Icon(graphics={Text(
           extent={{-44,58},{40,-60}},
           lineColor={0,0,0},
-          textString="°C
+          textString=" degC
 _______
 
  minute")}), Documentation(info="<html>

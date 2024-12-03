@@ -11,14 +11,12 @@ model TestNoGeneration
     experiment(
       StopTime=86400,
       Interval=900,
-      __Dymola_Algorithm="Dassl"),
-    __Dymola_experimentSetupOutput,
-    __Dymola_experimentFlags(
-      Advanced(
-        EvaluateAlsoTop=true,
-        GenerateVariableDependencies=false,
-        OutputModelicaCode=false),
-      Evaluate=true,
-      OutputCPUtime=false,
-      OutputFlatModelica=false));
+      __Dymola_Algorithm="Dassl"), Documentation(info="<html>
+
+<h4>Information</h4>
+<p>Test model 
+using the <a href=\"modelica://BESMod.Systems.Electrical.Generation.NoGeneration\">BESMod.Systems.Electrical.Generation.NoGeneration</a> model. 
+This model represents the case where no electrical generation system is present.</p>
+
+</html>"));
 end TestNoGeneration;

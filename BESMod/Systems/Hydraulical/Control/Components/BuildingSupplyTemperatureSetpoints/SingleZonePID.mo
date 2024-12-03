@@ -29,4 +29,8 @@ equation
           {-120,-80}}, color={0,0,127}));
   connect(PI.u_m, TZoneMea[1]) annotation (Line(points={{0,-12},{0,-32},{-70,-32},
           {-70,80},{-120,80}}, color={0,0,127}));
+  annotation (Documentation(info="<html>
+<p>Single zone PID controller that sets the building supply temperature based on 
+room temperature deviation. The controller is limited to exactly one zone.</p>
+</html>"));
 end SingleZonePID;

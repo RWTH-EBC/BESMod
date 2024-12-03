@@ -45,4 +45,15 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  annotation (Documentation(info="<html>
+<p>Test model for a hydraulic distribution system consisting of a 
+boiler connected to a buffer storage tank and a 
+domestic hot water (DHW) storage tank.</p>
+
+<h4>Test Signals</h4>
+<ul>
+  <li>Three way valve control: Pulse signal with period 100s</li>
+  <li>Boiler control: Daily pulse signal (period 86400s) with 10% width, starting at t=3600s</li>
+</ul>
+</html>"));
 end TestBoilerWithDHW;

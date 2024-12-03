@@ -265,4 +265,7 @@ equation
       horizontalAlignment=TextAlignment.Left));
   connect(bouPumBuf.ports[1], stoBuf.port_a_consumer) annotation (Line(
         points={{10,20},{10,32},{49,32},{49,40}}, color={0,127,255}));
+  annotation (Documentation(info="<html>
+<p>This distribution system consists of one storage tank for the building heat demand and another storage tank for the production of DHW. The storage tanks are built in parallel and connected with a three way valve.</p>
+</html>"));
 end DistributionTwoStorageParallel;

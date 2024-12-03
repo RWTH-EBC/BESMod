@@ -175,4 +175,15 @@ equation
       Line(points={{-98,100},{-73,100},{-73,72},{-44.94,72}}, color={191,0,0}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
+  annotation (Documentation(info="<html>
+<p>Model to implement a high-order model of an 
+one-family dwelling (OFD) using AixLib building models.</p>
+
+<p>The building consists of:</p>
+<ul>
+<li>Ground floor: Living room, hobby room, corridor, WC/storage, kitchen</li>
+<li>Upper floor: Bedroom, two children's rooms, corridor, bathroom</li>
+<li>Non-heated attic</li>
+</ul>
+</html>"));
 end AixLibHighOrderOFD;

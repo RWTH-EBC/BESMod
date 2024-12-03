@@ -20,4 +20,10 @@ record TransferControlBaseDataDefinition
           "Design - Top Down: Parameters are given by the parent system"));
 
   parameter Real nHeaTra "Exponent of heat transfer system";
+  annotation (Documentation(info="<html>
+<h4>Information</h4>
+<p>
+Record defining base data for transfer system control in building energy systems. 
+</p>
+</html>"));
 end TransferControlBaseDataDefinition;

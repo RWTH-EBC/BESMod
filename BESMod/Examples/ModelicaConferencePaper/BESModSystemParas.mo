@@ -9,4 +9,9 @@ record BESModSystemParas "Case studies system parameters"
     THydSup_nominal={328.15},
     TOda_nominal=265.35);
 
+  annotation (Documentation(info="<html>
+<h4>Information</h4>
+<p>BESModSystemParas is a record containing system parameters for building energy system case studies.</p>
+
+</html>"));
 end BESModSystemParas;

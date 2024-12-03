@@ -174,8 +174,9 @@ equation
           {32,20.8},{32,26},{39,26},{39,24}}, color={0,127,255}));
   connect(res1.port_b, fanTra.port_a) annotation (Line(points={{52,24},{56,24},{
           56,18},{62,18}}, color={0,127,255}));
-  annotation (experiment(
-      StopTime=864000,
-      Interval=600,
-      __Dymola_Algorithm="Dassl"));
+  annotation (Documentation(info="<html>
+This model is a test model for hydraulic distribution systems 
+in BES (Building Energy Systems). 
+It provides a partial template for testing different distribution systems.
+</html>"));
 end PartialTest;

@@ -72,5 +72,23 @@ equation
           70},{6,74},{18,74}}, color={0,0,127}));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+
+<p>
+This model represents an ideal heater implementation. 
+It uses a PI-controlled heater from <a href=\"modelica://AixLib.Utilities.Sources.HeaterCooler.HeaterCoolerPI\">AixLib.Utilities.Sources.HeaterCooler.HeaterCoolerPI</a>.
+</p>
+<p>
+The model converts heating power demand to electrical power consumption using an ideal conversion. 
+Cooling is disabled and only heating operation is possible. 
+The heater uses PI control to maintain the zone temperature setpoint.
+</p>
+
+<h4>Important Parameters</h4>
+<ul>
+<li><code>KR_heater</code> (default: 1000) - Proportional gain of the heating PI controller</li>
+<li><code>TN_heater</code> (default: 1 s) - Integral time constant of the heating PI controller</li>
+<li><code>Q_flow_nominal</code> - Nominal heating power, used to determine maximum heater capacity (1.5 times nominal power)</li>
+</ul>
+</html>"));
 end IdealHeater;

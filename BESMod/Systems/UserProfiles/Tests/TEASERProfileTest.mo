@@ -4,4 +4,10 @@ model TEASERProfileTest
       userProfiles);
   extends Modelica.Icons.Example;
 
+  annotation (Documentation(info="<html>
+<p>
+Test model for the TEASER user profiles model used in building energy simulation. 
+Uses <a href=\"modelica://BESMod.Systems.UserProfiles.TEASERProfiles\">BESMod.Systems.UserProfiles.TEASERProfiles</a> model for the user profiles.
+</p>
+</html>"));
 end TEASERProfileTest;

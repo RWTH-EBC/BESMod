@@ -8,5 +8,9 @@ model Constant "Constant supply temperature"
 
 equation
   connect(const.y, TSet)
-    annotation (Line(points={{81,0},{94,0},{94,0},{110,0}}, color={0,0,127}));
+    annotation (Line(points={{81,0},{94,0},{94,0},{110,0}}, color={0,0,127}), Documentation(info="<html>
+<p>Model to generate a constant building supply temperature setpoint. 
+The constant supply temperature is set through a parameter input and remains 
+constant throughout the entire simulation time.</p>
+</html>"));
 end Constant;

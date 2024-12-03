@@ -12,5 +12,9 @@ partial record MoverBaseDataDefinition
 
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)), Documentation(info="<html>
+<p>
+Partial record that specifies base parameters for movers.
+</p>
+</html>"));
 end MoverBaseDataDefinition;

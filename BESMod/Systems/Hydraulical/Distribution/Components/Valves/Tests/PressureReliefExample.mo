@@ -91,5 +91,14 @@ equation
           {-70,30},{-60,30}}, color={0,127,255}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
-    experiment(StopTime=3, __Dymola_Algorithm="Dassl"));
+    experiment(StopTime=3, __Dymola_Algorithm="Dassl"), Documentation(info="<html>
+<p>
+Example model showing the functionality of a pressure relief valve 
+in a simple hydraulic circuit. 
+The circuit consists of a speed-controlled pump, 
+a pressure relief valve, a fixed resistance, and a two-way valve. 
+When the two-way valve closes, the pressure relief valve 
+opens to protect the system from excessive pressure.
+</p>
+</html>"));
 end PressureReliefExample;

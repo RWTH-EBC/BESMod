@@ -33,5 +33,24 @@ model Serial "Bivalent Heat Pump Systems with serial heat generation"
      Interval=600,
      Tolerance=1e-06),
    __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/HeatPumpAndBoiler/Serial.mos"
-        "Simulate and plot"));
+        "Simulate and plot"), Documentation(info="<html>
+<h4>Information</h4>
+<p>
+This model represents a bivalent heating system with serial arrangement of a heat pump and gas boiler. The system uses modular components for modeling the heating supply system with two storages in parallel arrangement for both buffer and domestic hot water storage.
+</p>
+
+<h4>Important Parameters</h4>
+<ul>
+<li>TBiv: Bivalence temperature for heat pump operation</li>
+<li>VPerQFlow: Storage volume per nominal heat flow for buffer storage dimensioning</li>
+<li>dTLoadingHC1: Temperature difference for DHW loading (10K)</li>
+</ul>
+
+<p>Key components:</p>
+<ul>
+<li>Heat pump model using <a href=\"modelica://AixLib.Fluid.HeatPumps.ModularReversible.RefrigerantCycle.TableData3D\">AixLib table-based heat pump</a> with vapor injection</li>
+<li>Two storage system: Buffer storage and DHW storage arranged in parallel</li>
+
+</ul>
+</html>"));
 end Serial;

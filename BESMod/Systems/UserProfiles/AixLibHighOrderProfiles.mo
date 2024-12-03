@@ -129,4 +129,21 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  annotation (Documentation(info="<html>
+<p>This model provides user profiles for the high order building model in the AixLib. 
+It implements three types of profiles:</p>
+<ul>
+  <li>Internal gains from a text file</li>
+  <li>Natural ventilation schedule</li>
+  <li>Temperature setpoints</li>
+</ul>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li><code>fileNameIntGains</code>: File path to internal gains profiles</li>
+  <li><code>venPro</code>: Replaceable ventilation profile extending <a href=\"modelica://AixLib.DataBase.Profiles.ProfileBaseDataDefinition\">AixLib.DataBase.Profiles.ProfileBaseDataDefinition</a></li>
+  <li><code>TSetProfile</code>: Replaceable temperature setpoint profile extending <a href=\"modelica://AixLib.DataBase.Profiles.ProfileBaseDataDefinition\">AixLib.DataBase.Profiles.ProfileBaseDataDefinition</a></li>
+  <li><code>gain</code>: Multiplier for internal gains (can be used to disable gains by setting to 0)</li>
+</ul>
+</html>"));
 end AixLibHighOrderProfiles;

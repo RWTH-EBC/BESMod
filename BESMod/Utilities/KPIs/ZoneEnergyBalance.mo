@@ -219,5 +219,40 @@ equation
           extent={{-104,182},{100,86}},
           lineColor={0,0,0},
           textString="%name%")}), Diagram(coordinateSystem(preserveAspectRatio=false, extent={
-            {-100,-200},{100,200}})));
+            {-100,-200},{100,200}})), Documentation(info="<html>
+<p>Model for calculating energy key performance indicators (KPIs) for a single thermal zone. 
+The model splits energy flows through different building components (walls, roof, floor, windows) and 
+systems (ventilation, heating/cooling) into gains and losses. 
+It also accounts for internal gains from lights, people, machines and solar radiation.
+</p>
+
+<h4>Structure</h4>
+<p>The model contains several instances of <a href=\"modelica://BESMod.Utilities.KPIs.BaseClasses.SplitGainAndLoss\">BESMod.Utilities.KPIs.BaseClasses.SplitGainAndLoss</a> 
+for splitting energy flows into gains and losses for:</p>
+<ul>
+<li>External walls</li>
+<li>Roof</li>
+<li>Floor</li>
+<li>Windows</li>
+<li>Air exchange</li>
+<li>Transfer systems (heating/cooling)</li>
+<li>Ventilation system (optional)</li>
+</ul>
+
+<p>Internal gains are calculated using <a href=\"modelica://BESMod.Utilities.KPIs.EnergyKPICalculator\">BESMod.Utilities.KPIs.EnergyKPICalculator</a> for:</p>
+<ul>
+<li>Lighting</li>
+<li>People</li>
+<li>Machines</li>
+<li>Solar gains</li>
+</ul>
+
+<h4>Important Parameters</h4>
+<ul>
+<li><code>with_ventilation</code> (boolean): Enable/disable ventilation system calculations. Default: true</li>
+</ul>
+
+<h4>Interfaces</h4>
+<p>The model has Real inputs for heat flows through all components (in W) and outputs the calculated KPIs through a <code>zoneEneBal</code> bus connector of type <a href=\"modelica://BESMod.Utilities.KPIs.BaseClasses.ZoneEnergyBalanceBus\">ZoneEnergyBalanceBus</a>.</p>
+</html>"));
 end ZoneEnergyBalance;

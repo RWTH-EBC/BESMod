@@ -14,4 +14,12 @@ record DHWDesignParameters
   parameter Real QCrit "Energy demand in kWh during critical period. Based on EN 15450" annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem", enable=designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage));
 
 
+  annotation (Documentation(info="<html>
+<p>Record containing design parameters for domestic hot water (DHW) 
+systems compliant with EN 15450. Can be used for both storage and 
+instantaneous DHW systems.</p>
+
+<h4>References</h4>
+<p>EN 15450 - Heating systems in buildings - Design of heat pump heating systems</p>
+</html>"));
 end DHWDesignParameters;

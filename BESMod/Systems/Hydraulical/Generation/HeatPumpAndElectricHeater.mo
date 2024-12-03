@@ -91,4 +91,24 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  annotation (Documentation(info="<html>
+<p>This model represents a heat pump system with an electric heater connected in series. 
+The electric heater can be disabled by setting <code>use_eleHea=false</code>. 
+The model extends the base partial heat pump model 
+<a href=\"modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump\">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a> 
+and is configured for bivalent parallel design.</p>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li><code>parEleHea</code>: Parameters for electric heater (efficiency, volume, pressure drop etc.)</li>
+  <li><code>use_eleHea</code>: Boolean to enable/disable electric heater</li>
+  <li><code>dp_nominal</code>: Nominal pressure drops (sum of heat pump condenser and electric heater)</li>
+</ul>
+
+<h4>Key Components</h4>
+<ul>
+  <li>Electric heater: <a href=\"modelica://AixLib.Fluid.HeatExchangers.HeatingRod\">AixLib.Fluid.HeatExchangers.HeatingRod</a> component</li>
+  <li>Heat Pump inherited from base class</li>
+</ul>
+</html>"));
 end HeatPumpAndElectricHeater;

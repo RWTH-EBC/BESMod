@@ -91,4 +91,13 @@ model BESNoDHW "Example to demonstrate usage without DHW"
      Tolerance=1e-06),
    __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/DesignOptimization/BESNoDHW.mos"
         "Simulate and plot"));
+  annotation (Documentation(info="<html>
+  <h4>Information</h4>
+  <p>
+    This model demonstrates a building energy system without domestic hot water (DHW).
+    It uses a bivalent parallel heat pump system with an electric heater as backup.
+    The heat distribution is building-only with ideal valve radiators. 
+    The control system is monoergetic with thermostatically controlled valves.
+  </p>
+</html>"));
 end BESNoDHW;

@@ -24,5 +24,8 @@ equation
       Ellipse(lineColor={0,0,127},
         fillColor={255,255,255},
         fillPattern=FillPattern.Solid,
-        extent={{25.0,-10.0},{45.0,10.0}})}));
+        extent={{25.0,-10.0},{45.0,10.0}})}), Documentation(info="<html>
+<p>On-off controller model that converts a boolean input signal into a real output signal. 
+The output is either <code>yMax</code> (when input is true) or 0 (when input is false).</p>
+</html>"));
 end OnOff;

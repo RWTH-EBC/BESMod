@@ -532,4 +532,17 @@ equation
           extent={{42,146},{100,154}},
           textColor={0,140,72},
           textString="External Control")}));
+  annotation (Documentation(info="<html>
+<p>This control model is for both building and domestic hot water (DHW) systems. 
+It includes hysteresis control, supply temperature setpoints, and summer mode handling. 
+The model supports SG Ready functionality for adjusting setpoints based on external signals, 
+as well as various options to override signals using supervisory control-</p>
+
+<h4>Used models</h4>
+<ul>
+  <li><a href=\"modelica://BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.BaseClasses.PartialOnOffController\">BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.BaseClasses.PartialOnOffController</a></li>
+  <li><a href=\"modelica://BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.BaseClasses.PartialSetpoint\">BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.BaseClasses.PartialSetpoint</a></li>
+  <li><a href=\"modelica://BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.BaseClasses.PartialTSet_DHW_Control\">BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.BaseClasses.PartialTSet_DHW_Control</a></li>
+  <li><a href=\"modelica://BESMod.Systems.Hydraulical.Control.Components.SummerMode.BaseClasses.PartialSummerMode\">BESMod.Systems.Hydraulical.Control.Components.SummerMode.BaseClasses.PartialSummerMode</a></li>
+</ul></html>"));
 end BuildingAndDHWControl;

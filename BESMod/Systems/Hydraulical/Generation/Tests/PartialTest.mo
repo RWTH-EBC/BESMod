@@ -76,5 +76,29 @@ equation
   annotation (experiment(
       StopTime=864000,
       Interval=600,
-      __Dymola_Algorithm="Dassl"));
+      __Dymola_Algorithm="Dassl"), Documentation(info="<html><p>
+  This partial model implements a basic test setup for hydraulic
+  generation systems. It provides a testing environment with weather
+  data, control bus interface, and basic boundary conditions. The model
+  uses a replaceable generation model from <a href=
+  \"modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration\">
+  BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration</a>.
+</p>
+<h4>
+  Structure
+</h4>
+<p>
+  The model contains:
+</p>
+<ul>
+  <li>A replaceable generation system
+  </li>
+  <li>Mixing volumes as hydraulic loads
+  </li>
+  <li>Fixed temperature boundary conditions
+  </li>
+  <li>Weather data reader for ambient conditions
+  </li>
+</ul>
+</html>"));
 end PartialTest;

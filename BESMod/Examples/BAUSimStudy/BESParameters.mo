@@ -12,4 +12,8 @@ record BESParameters
     final nZones=1,
     final use_ventilation=false);
 
+  annotation (Documentation(info="<html>
+<h4>Information</h4>
+<p>This record contains basic parameters for building energy system simulations in the BauSIM case study.</p>
+</html>"));
 end BESParameters;

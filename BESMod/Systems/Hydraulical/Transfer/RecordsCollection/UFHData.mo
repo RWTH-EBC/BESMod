@@ -16,4 +16,12 @@ partial record UFHData
   parameter Modelica.Units.SI.Temperature T_floor
     "Fixed temperature at floor (soil)";
 
+  annotation (Documentation(info="<html>
+<p>Partial record defining the core parameters of an underfloor 
+heating system. This record is used as base class for more 
+specialized underfloor heating configurations. 
+It is a collection of parameters that define the geometric and 
+thermodynamic properties of the underfloor heating system in 
+multiple zones.</p>
+</html>"));
 end UFHData;

@@ -61,5 +61,18 @@ model GasBoilerBuildingOnly
      Interval=600,
      Tolerance=1e-06),
    __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/GasBoilerBuildingOnly.mos"
-        "Simulate and plot"));
+        "Simulate and plot"), Documentation(info="<html>
+  <h4>Information</h4>
+  <p>
+    This model represents a building energy system featuring a gas boiler for space heating. The building model uses the TEASER thermal zone representation of a building located in Aachen, Germany. The system only models space heating without ventilation, domestic hot water or electrical heating.
+  </p>
+
+  <h4>Key Components</h4>
+  <ul>
+    <li>Generation: <a href=\"modelica://BESMod.Systems.Hydraulical.Generation.GasBoiler\">Gas Boiler</a></li>
+    <li>Distribution: <a href=\"modelica://BESMod.Systems.Hydraulical.Distribution.BuildingOnly\">Building Only Distribution</a></li>
+    <li>Heat Transfer: <a href=\"modelica://BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased\">Pressure-based Radiator</a></li>
+    <li>Building Model: <a href=\"modelica://BESMod.Systems.Demand.Building.TEASERThermalZone\">TEASER Thermal Zone</a></li>
+  </ul>
+</html>"));
 end GasBoilerBuildingOnly;

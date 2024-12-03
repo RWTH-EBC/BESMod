@@ -17,14 +17,8 @@ model PVSystemMultiSub
     experiment(
       StopTime=86400,
       Interval=900,
-      __Dymola_Algorithm="Dassl"),
-    __Dymola_experimentSetupOutput,
-    __Dymola_experimentFlags(
-      Advanced(
-        EvaluateAlsoTop=true,
-        GenerateVariableDependencies=false,
-        OutputModelicaCode=false),
-      Evaluate=true,
-      OutputCPUtime=false,
-      OutputFlatModelica=false));
+      __Dymola_Algorithm="Dassl"), Documentation(info="<html>
+<p>Test model for a photovoltaic system with multiple submodules. 
+</p>
+</html>"));
 end PVSystemMultiSub;
