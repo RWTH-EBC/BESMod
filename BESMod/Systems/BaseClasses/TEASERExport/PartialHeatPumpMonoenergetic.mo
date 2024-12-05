@@ -2,6 +2,7 @@ within BESMod.Systems.BaseClasses.TEASERExport;
 partial model PartialHeatPumpMonoenergetic
   "Partial monoenergetic heat pump model based on the example ModelicaConferencePaper without a battery"
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
+    redeclare BESMod.Systems.UserProfiles.TEASERProfiles userProfiles,
     redeclare BESMod.Systems.Electrical.ElectricalSystem electrical(
       redeclare BESMod.Systems.Electrical.Distribution.OwnConsumption
         distribution,
@@ -82,8 +83,12 @@ partial model PartialHeatPumpMonoenergetic
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
         calcmFlow),
-    redeclare BESMod.Examples.ModelicaConferencePaper.BESModSystemParas
-      systemParameters(use_elecHeating=false),
+    redeclare BESMod.Systems.RecordsCollection.ExampleSystemParameters
+      systemParameters(
+          use_hydraulic=true,
+          use_ventilation=true,
+          use_elecHeating=false,
+          QBui_flow_nominal=building.QRec_flow_nominal),
     redeclare BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy
       parameterStudy,
     redeclare final package MediumDHW = IBPSA.Media.Water,

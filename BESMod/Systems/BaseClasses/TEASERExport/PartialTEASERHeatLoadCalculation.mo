@@ -1,6 +1,6 @@
 within BESMod.Systems.BaseClasses.TEASERExport;
 partial model PartialTEASERHeatLoadCalculation
-  "Partial model for TEASER heat load calculation based on the examples TEASERHeatLoadCalculation"
+  "Partial model for TEASER heat load calculation based on Examples.TEASERHeatLoadCalculation.PartialCalculation"
   extends BESMod.Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.UserProfiles.TEASERProfiles userProfiles,
     redeclare BESMod.Systems.RecordsCollection.ExampleSystemParameters

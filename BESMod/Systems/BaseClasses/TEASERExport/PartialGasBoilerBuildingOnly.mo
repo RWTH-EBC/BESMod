@@ -3,12 +3,6 @@ model PartialGasBoilerBuildingOnly
   "based on the example GasBoilerBuildingOnly"
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
-    redeclare replaceable BESMod.Systems.Demand.Building.TEASERThermalZone building(
-      hBui=sum(building.zoneParam.VAir)^(1/3),
-      ABui=sum(building.zoneParam.VAir)^(2/3),
-      ARoo=sum(building.zoneParam.ARoof),
-      redeclare BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
-        oneZoneParam),
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Ventilation.NoVentilation ventilation,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
@@ -50,11 +44,10 @@ model PartialGasBoilerBuildingOnly
       parameterStudy,
     redeclare BESMod.Systems.RecordsCollection.ExampleSystemParameters
       systemParameters(
-      QBui_flow_nominal=building.QRec_flow_nominal,
-      THydSup_nominal=fill(338.15,systemParameters.nZones),
-      use_ventilation=false,
-      use_dhw=false,
-      use_elecHeating=false));
+        QBui_flow_nominal=building.QRec_flow_nominal,
+        use_ventilation=false,
+        use_dhw=false,
+        use_elecHeating=false));
 
   extends Modelica.Icons.Example;
 
