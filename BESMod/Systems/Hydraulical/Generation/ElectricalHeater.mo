@@ -1,19 +1,20 @@
 within BESMod.Systems.Hydraulical.Generation;
 model ElectricalHeater "Only heat using an electric heater"
   extends BaseClasses.PartialGeneration(
-    final dTLoss_nominal=fill(0, nParallelDem),
-    dp_nominal={hea.dp_nominal}, final nParallelDem=1);
-  parameter Modelica.Units.SI.PressureDifference dpPipFit_nominal
-    "Nominal pressure drop between inlet and outlet for pipes and fittings"
-    annotation (Dialog(tab="Pressure Drops"));
-
+    dp_design={hea.dp_nominal + resGen.dp_nominal},
+    final dTLoss_nominal=fill(0, nParallelDem),    final nParallelDem=1);
+  parameter Modelica.Units.SI.Length lengthPip=4 "Length of all pipes"
+    annotation (Dialog(tab="Pressure losses"));
+  parameter Real facFit=4*facPerBend
+    "Factor to take into account resistance of bendsm, fittings etc."
+    annotation (Dialog(tab="Pressure losses"));
   AixLib.Fluid.HeatExchangers.HeatingRod hea(
     redeclare package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
-    final m_flow_nominal=m_flow_nominal[1],
+    final m_flow_nominal=m_flow_design[1],
     final m_flow_small=1E-4*abs(m_flow_nominal[1]),
     final show_T=show_T,
-    final dp_nominal=parEleHea.dp_nominal + dpPipFit_nominal,
+    final dp_nominal=parEleHea.dp_nominal,
     final tau=30,
     final energyDynamics=energyDynamics,
     final p_start=p_start,
@@ -46,6 +47,22 @@ model ElectricalHeater "Only heat using an electric heater"
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-30,70})));
+  IBPSA.Fluid.FixedResistances.HydraulicDiameter
+                                            resGen(
+    redeclare final package Medium = Medium,
+    final allowFlowReversal=allowFlowReversal,
+    final m_flow_nominal=m_flow_design[1],
+    final show_T=show_T,
+    final from_dp=false,
+    final linearized=false,
+    final dh=dPip_design[1],
+    final length=lengthPip,
+    final ReC=ReC,
+    final v_nominal=v_design[1],
+    final roughness=roughness,
+    final fac=facFit)          "Pressure drop model depending on the configuration"
+    annotation (Placement(transformation(extent={{20,-20},{40,0}})));
+
 equation
 
   connect(hea.Pel, outBusGen.PelHR) annotation (Line(points={{-41.6,27.6},{-41.6,
@@ -95,6 +112,8 @@ equation
       horizontalAlignment=TextAlignment.Left));
   connect(hea.port_b, portGen_out[1]) annotation (Line(points={{-32,26},{-32,40},
           {20,40},{20,80},{100,80}}, color={0,127,255}));
-  connect(portGen_in[1], hea.port_a) annotation (Line(points={{100,-2},{78,-2},
-          {78,-20},{-32,-20},{-32,-6}}, color={0,127,255}));
+  connect(resGen.port_b, portGen_in[1]) annotation (Line(points={{40,-10},{84,-10},
+          {84,-2},{100,-2}}, color={0,127,255}));
+  connect(resGen.port_a, hea.port_a) annotation (Line(points={{20,-10},{-32,-10},
+          {-32,-6}},         color={0,127,255}));
 end ElectricalHeater;

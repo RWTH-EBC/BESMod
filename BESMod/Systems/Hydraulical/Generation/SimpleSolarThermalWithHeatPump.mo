@@ -7,7 +7,11 @@ model SimpleSolarThermalWithHeatPump
         44.9 then 8 else 5,parSolThe.dTMax},
     final nParallelDem=2,
     final dp_nominal={heatPump.dpCon_nominal +dpEleHea_nominal, dpST_nominal});
-
+  parameter Modelica.Units.SI.Length lengthPipSolThe=30 "Length of all pipes to and from solar thermal"
+    annotation (Dialog(tab="Pressure losses", group="Solar Thermal"));
+  parameter Real facFitSolThe=8*facPerBend
+    "Factor to take into account resistance of bends, fittings etc. for solar thermal"
+    annotation (Dialog(tab="Pressure losses", group="Solar Thermal"));
   replaceable parameter
     BESMod.Systems.Hydraulical.Generation.RecordsCollection.SolarThermal.Generic
     parSolThe constrainedby
@@ -58,14 +62,29 @@ model SimpleSolarThermalWithHeatPump
   Modelica.Blocks.Sources.RealExpression reaExpSolTheTHot(y=solThe.senTHot.T)
     annotation (Placement(transformation(extent={{-100,-100},{-80,-80}})));
 
+  IBPSA.Fluid.FixedResistances.HydraulicDiameter resSolThe(
+    redeclare final package Medium = Medium,
+    final allowFlowReversal=allowFlowReversal,
+    final m_flow_nominal=m_flow_design[2],
+    final show_T=show_T,
+    final from_dp=false,
+    final linearized=false,
+    final dh=dPip_design[2],
+    length=lengthPipSolThe,
+    final ReC=ReC,
+    final v_nominal=v_design[2],
+    final roughness=roughness,
+    fac=facFitSolThe)          "Pressure drop model for solar thermal pipes"
+    annotation (Placement(transformation(extent={{20,-150},{40,-130}})));
 protected
   parameter Modelica.Units.SI.PressureDifference dpST_nominal=parSolThe.m_flow_nominal
       ^2*parSolThe.pressureDropCoeff/(rho^2)
     "Pressure drop at nominal mass flow rate";
 equation
 
-  connect(solThe.port_b, portGen_out[2]) annotation (Line(points={{-40,-148},{-202,
-          -148},{-202,124},{106,124},{106,82},{108,82},{108,82.5},{100,82.5}},
+  connect(solThe.port_b, portGen_out[2]) annotation (Line(points={{-40,-148},{
+          -48,-148},{-48,-168},{56,-168},{56,-36},{106,-36},{106,82},{108,82},{
+          108,82.5},{100,82.5}},
         color={0,127,255}));
   connect(reaExpSolTheTCol.y, outBusGen.TSolCol_in) annotation (Line(points={{-79,
           -136},{-68,-136},{-68,-124},{0,-124},{0,-100}},     color={0,0,127}),
@@ -103,8 +122,10 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(portGen_in[2], solThe.port_a) annotation (Line(points={{100,0.5},{96,
-          0.5},{96,-148},{-20,-148}}, color={0,127,255}));
+  connect(resSolThe.port_a, solThe.port_a) annotation (Line(points={{20,-140},{
+          -14,-140},{-14,-148},{-20,-148}}, color={0,127,255}));
+  connect(resSolThe.port_b, portGen_in[2]) annotation (Line(points={{40,-140},{
+          48,-140},{48,-32},{100,-32},{100,0.5}}, color={0,127,255}));
   annotation (Diagram(coordinateSystem(extent={{-200,-180},{100,100}}),
         graphics={Rectangle(
           extent={{100,-180},{-200,-118}},

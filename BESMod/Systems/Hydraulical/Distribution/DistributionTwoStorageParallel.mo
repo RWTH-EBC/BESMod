@@ -1,7 +1,7 @@
 within BESMod.Systems.Hydraulical.Distribution;
 model DistributionTwoStorageParallel
   "Simple buffer and DHW storage models with three way valve"
-  extends BaseClasses.PartialDistribution(
+  extends BaseClasses.PartialThreeWayValve(
     dp_nominal={0},
     final dpDHW_nominal=0,
     final VStoDHW=parStoDHW.V,
@@ -10,17 +10,8 @@ model DistributionTwoStorageParallel
     final dTTraDHW_nominal=parStoDHW.dTLoadingHC1,
     final dTTra_nominal={parStoBuf.dTLoadingHC1},
     final QLoss_flow_nominal=f_design .* Q_flow_nominal .- Q_flow_nominal,
-    final TSup_nominal=TDem_nominal .+ dTLoss_nominal .+ dTTra_nominal,
-    dTLoss_nominal=fill(0, nParallelDem),
-    final m_flow_nominal=mDem_flow_nominal,
-    nParallelSup=1,
-    final nParallelDem=1);
-  parameter Modelica.Units.SI.PressureDifference dpValBufSto_nominal
-    "Nominal pressure drop between valve and buffer storage"
-    annotation (Dialog(tab="Pressure Drops"));
-  parameter Modelica.Units.SI.PressureDifference dpValDHWSto_nominal
-    "Nominal pressure drop between valve and DHW storage"
-    annotation (Dialog(tab="Pressure Drops"));
+    dTLoss_nominal=fill(0, nParallelDem));
+
   replaceable parameter
     BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.SimpleStorageBaseDataDefinition
     parStoBuf(iconName="Buffer")
@@ -33,7 +24,7 @@ model DistributionTwoStorageParallel
     final T_m=TDem_nominal[1],
     final QHC1_flow_nominal=Q_flow_nominal[1],
     final mHC1_flow_nominal=mSup_flow_nominal[1]) annotation (
-      choicesAllMatching=true, Placement(transformation(extent={{2,122},{16,136}})));
+      choicesAllMatching=true, Placement(transformation(extent={{82,142},{96,156}})));
   replaceable parameter
     BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.SimpleStorageBaseDataDefinition
     parStoDHW(iconName="DHW")
@@ -48,25 +39,8 @@ model DistributionTwoStorageParallel
         final VPerQ_flow=0,
         final T_m=TDHW_nominal,
         final mHC1_flow_nominal=mSup_flow_nominal[1])                                          annotation (
-      choicesAllMatching=true, Placement(transformation(extent={{82,122},{96,136}})));
-  replaceable parameter BESMod.Systems.RecordsCollection.Valves.ThreeWayValve
-    parThrWayVal(iconName="3WayValve")
-                 constrainedby
-    BESMod.Systems.RecordsCollection.Valves.ThreeWayValve(
-    final dp_nominal={resValToBufSto.dp_nominal,resValToDHWSto.dp_nominal},
-    final m_flow_nominal=mSup_flow_nominal[1],
-    final fraK=1,
-    use_inputFilter=false) annotation (Placement(transformation(extent={{-78,122},
-            {-64,136}})),choicesAllMatching=true);
+      choicesAllMatching=true, Placement(transformation(extent={{62,142},{76,156}})));
 
-  replaceable parameter
-    BESMod.Systems.RecordsCollection.Movers.SpeedControlled parPumGen(iconName="PumpGen")
-    constrainedby
-    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
-    "Parameters for pump for supply system (generation)"
-                                               annotation (
-    choicesAllMatching=true,
-    Placement(transformation(extent={{-98,122},{-84,136}})));
   replaceable parameter
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition parPumTra(iconName="Pump Tra")
     constrainedby
@@ -74,7 +48,7 @@ model DistributionTwoStorageParallel
     "Parameters for pump for demand system (transfer)"
                                            annotation (
     choicesAllMatching=true,
-    Placement(transformation(extent={{22,122},{36,136}})));
+    Placement(transformation(extent={{44,164},{56,176}})));
 
   AixLib.Fluid.Storage.StorageSimple stoDHW(
     redeclare final package Medium = MediumDHW,
@@ -98,13 +72,13 @@ model DistributionTwoStorageParallel
     final m_flow_small_layer=1E-4*abs(stoDHW.m_flow_nominal_layer),
     final m_flow_small_layer_HE=1E-4*abs(stoDHW.m_flow_nominal_HE))
     "The DHW storage (TWWS) for domestic hot water demand"
-    annotation (Placement(transformation(extent={{64,-68},{38,-28}})));
+    annotation (Placement(transformation(extent={{12,-72},{-14,-32}})));
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixTemBuf(final T=
         parStoBuf.TAmb) "Constant ambient temperature of storage" annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={90,60})));
+        origin={50,50})));
   AixLib.Fluid.Storage.StorageSimple stoBuf(
     redeclare package Medium = Medium,
     final n=parStoBuf.nLayer,
@@ -128,53 +102,22 @@ model DistributionTwoStorageParallel
     final m_flow_small_layer=1E-4*abs(stoBuf.m_flow_nominal_layer),
     final m_flow_small_layer_HE=1E-4*abs(stoBuf.m_flow_nominal_HE))
     "The buffer storage (PS) for the building"
-    annotation (Placement(transformation(extent={{64,30},{38,70}})));
-  Components.Valves.ThreeWayValveWithFlowReturn
-                                            threeWayValveWithFlowReturn(
-    redeclare package Medium = MediumGen,
-    final energyDynamics=energyDynamics,
-    final p_start=p_start,
-    final T_start=T_start,
-    final X_start=X_start,
-    final C_start=C_start,
-    final C_nominal=C_nominal,
-    final mSenFac=mSenFac,
-    redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve parameters=parThrWayVal)
-    annotation (Placement(transformation(extent={{-40,60},{-20,80}})));
+    annotation (Placement(transformation(extent={{16,32},{-10,72}})));
 
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixTemDHW(final T=
         parStoDHW.TAmb) "Constant ambient temperature of storage"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={90,-50})));
+        origin={50,-52})));
 
   Utilities.KPIs.EnergyKPICalculator eneKPICalBuf(use_inpCon=false, y=fixTemBuf.port.Q_flow)
-    annotation (Placement(transformation(extent={{-80,-80},{-60,-60}})));
+    annotation (Placement(transformation(extent={{-40,-170},{-20,-150}})));
   Utilities.KPIs.EnergyKPICalculator eneKPICalDHW(use_inpCon=false, y=fixTemDHW.port.Q_flow)
-    annotation (Placement(transformation(extent={{-80,-110},{-60,-90}})));
-  IBPSA.Fluid.FixedResistances.PressureDrop resValToBufSto(
-    redeclare final package Medium = MediumGen,
-    final allowFlowReversal=allowFlowReversal,
-    final m_flow_nominal=mSup_flow_nominal[1],
-    final show_T=show_T,
-    final from_dp=false,
-    final dp_nominal=dpValBufSto_nominal,
-    final linearized=false,
-    final deltaM=0.3)
-    "Pressure drop due to resistances between valve and buffer storage"
-    annotation (Placement(transformation(extent={{0,60},{20,80}})));
-  IBPSA.Fluid.FixedResistances.PressureDrop resValToDHWSto(
-    redeclare final package Medium = MediumGen,
-    final allowFlowReversal=allowFlowReversal,
-    final m_flow_nominal=mSup_flow_nominal[1],
-    final show_T=show_T,
-    final from_dp=false,
-    final dp_nominal=dpValDHWSto_nominal,
-    final linearized=false,
-    final deltaM=0.3)
-    "Pressure drop due to resistances between valve and DHW storage"
-    annotation (Placement(transformation(extent={{0,-40},{20,-20}})));
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={30,-160})));
+
   IBPSA.Fluid.Sources.Boundary_pT bouPumTra(
     redeclare package Medium = Medium,
     final p=p_start,
@@ -185,15 +128,6 @@ model DistributionTwoStorageParallel
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={50,-10})));
-  IBPSA.Fluid.Sources.Boundary_pT bouPum(
-    redeclare package Medium = Medium,
-    final p=p_start,
-    final T=T_start,
-    nPorts=1)       "Pressure boundary for pump" annotation (Placement(
-        transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=180,
-        origin={-30,30})));
 
   BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredDPControlled
     pumTra(
@@ -215,27 +149,7 @@ model DistributionTwoStorageParallel
         extent={{-10,10},{10,-10}},
         rotation=180,
         origin={70,10})));
-  BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredDPControlled
-    pumGen(
-    redeclare final package Medium = Medium,
-    final energyDynamics=energyDynamics,
-    final p_start=p_start,
-    final T_start=T_start,
-    final allowFlowReversal=allowFlowReversal,
-    final m_flow_nominal=mSup_flow_nominal[1],
-    final dp_nominal=dpSup_nominal[1] + (parThrWayVal.dpValve_nominal + max(
-        parThrWayVal.dp_nominal)),
-    final externalCtrlTyp=parPumGen.externalCtrlTyp,
-    final ctrlType=parPumGen.ctrlType,
-    final dpVarBase_nominal=parPumGen.dpVarBase_nominal,
-    final addPowerToMedium=parPumGen.addPowerToMedium,
-    final use_inputFilter=parPumGen.use_inputFilter,
-    final riseTime=parPumGen.riseTimeInpFilter,
-    final y_start=1) "Pump for supply system (generation)" annotation (
-      Placement(transformation(
-        extent={{-10,10},{10,-10}},
-        rotation=180,
-        origin={-70,40})));
+
   BESMod.Utilities.Electrical.RealToElecCon realToElecCon(use_souGen=false)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -245,51 +159,32 @@ model DistributionTwoStorageParallel
   Modelica.Blocks.Math.MultiSum multiSum(nu=2)
     annotation (Placement(transformation(extent={{-78,-138},{-58,-118}})));
 
+
+
 equation
-  connect(fixTemBuf.port, stoBuf.heatPort) annotation (Line(points={{80,60},{68,
-          60},{68,50},{61.4,50}},     color={191,0,0}));
-  connect(stoBuf.port_b_consumer, portBui_out[1]) annotation (Line(points={{51,70},
-          {50,70},{50,80},{100,80}},     color={0,127,255}));
-  connect(stoDHW.port_b_consumer, portDHW_out) annotation (Line(points={{51,-28},
-          {51,-20},{100,-20},{100,-22}},     color={0,127,255}));
+  connect(fixTemBuf.port, stoBuf.heatPort) annotation (Line(points={{40,50},{22,
+          50},{22,52},{13.4,52}},     color={191,0,0}));
+  connect(stoBuf.port_b_consumer, portBui_out[1]) annotation (Line(points={{3,72},{
+          74,72},{74,80},{100,80}},      color={0,127,255}));
+  connect(stoDHW.port_b_consumer, portDHW_out) annotation (Line(points={{-1,-32},
+          {-1,-30},{84,-30},{84,-22},{100,-22}},
+                                             color={0,127,255}));
   connect(portDHW_in, stoDHW.port_a_consumer) annotation (Line(points={{100,-82},
-          {51,-82},{51,-68}},               color={0,127,255}));
-  connect(fixTemDHW.port, stoDHW.heatPort) annotation (Line(points={{80,-50},{80,
-          -48},{61.4,-48}},              color={191,0,0}));
-  connect(stoBuf.port_b_heatGenerator, threeWayValveWithFlowReturn.portBui_a)
-    annotation (Line(points={{40.08,34},{-8,34},{-8,74},{-20,74}},
-        color={0,127,255}));
-  connect(stoDHW.port_b_heatGenerator, threeWayValveWithFlowReturn.portDHW_a)
-    annotation (Line(points={{40.08,-64},{-12,-64},{-12,62},{-20,62},{-20,62.4}},
-                                                                    color={0,127,
-          255}));
-  connect(portGen_in[1], threeWayValveWithFlowReturn.portGen_a) annotation (
-      Line(points={{-100,80},{-48,80},{-48,74.4},{-40,74.4}}, color={0,127,255}));
-  connect(threeWayValveWithFlowReturn.uBuf, sigBusDistr.uThrWayVal) annotation (
-     Line(points={{-30,82},{-30,100},{0,100},{0,101}},               color={0,0,
-          127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(threeWayValveWithFlowReturn.portBui_b, resValToBufSto.port_a)
-    annotation (Line(points={{-20,78},{-4,78},{-4,70},{0,70}}, color={0,127,255}));
-  connect(stoBuf.port_a_heatGenerator, resValToBufSto.port_b) annotation (Line(
-        points={{40.08,67.6},{40.08,70},{20,70}}, color={0,127,255}));
-  connect(threeWayValveWithFlowReturn.portDHW_b, resValToDHWSto.port_a)
-    annotation (Line(points={{-20,66.4},{-20,66},{-10,66},{-10,-30},{0,-30}},
-        color={0,127,255}));
+          {-1,-82},{-1,-72}},               color={0,127,255}));
+  connect(fixTemDHW.port, stoDHW.heatPort) annotation (Line(points={{40,-52},{9.4,
+          -52}},                         color={191,0,0}));
   connect(stoDHW.port_a_heatGenerator, resValToDHWSto.port_b) annotation (Line(
-        points={{40.08,-30.4},{30.04,-30.4},{30.04,-30},{20,-30}}, color={0,127,
+        points={{-11.92,-34.4},{-11.92,-34},{-26,-34},{-26,128},{6,128},{6,140},
+          {0,140}},                                                color={0,127,
           255}));
-  connect(eneKPICalDHW.KPI, outBusDist.QDHWLos_flow) annotation (Line(points={{-57.8,
-          -100},{0,-100}},              color={135,135,135}), Text(
+  connect(eneKPICalDHW.KPI, outBusDist.QDHWLos_flow) annotation (Line(points={{17.8,
+          -160},{0,-160},{0,-100}},     color={135,135,135}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(eneKPICalBuf.KPI, outBusDist.QBufLos_flow) annotation (Line(points={{-57.8,
-          -70},{0,-70},{0,-100}},       color={135,135,135}), Text(
+  connect(eneKPICalBuf.KPI, outBusDist.QBufLos_flow) annotation (Line(points={{-17.8,
+          -160},{0,-160},{0,-100}},     color={135,135,135}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
@@ -302,7 +197,7 @@ equation
   connect(pumTra.port_a, portBui_in[1]) annotation (Line(points={{80,10},{90,10},
           {90,40},{100,40}}, color={0,127,255}));
   connect(pumTra.port_b, stoBuf.port_a_consumer) annotation (Line(points={{60,10},
-          {50,10},{50,30},{51,30}}, color={0,127,255}));
+          {3,10},{3,32}},           color={0,127,255}));
   connect(bouPumTra.ports[1], pumTra.port_a) annotation (Line(points={{60,-10},{
           86,-10},{86,10},{80,10}},
                                color={0,127,255}));
@@ -312,52 +207,60 @@ equation
       index=1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(pumGen.y, sigBusDistr.uPumGen) annotation (Line(points={{-70,52},{-70,
+  connect(pumGen.y, sigBusDistr.uPumGen) annotation (Line(points={{-68,120},{-68,
           101},{0,101}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
   connect(pumGen.port_b, portGen_out[1])
-    annotation (Line(points={{-80,40},{-100,40}}, color={0,127,255}));
-  connect(bouPum.ports[1], pumGen.port_a) annotation (Line(points={{-40,30},{-50,
-          30},{-50,40},{-60,40}}, color={0,127,255}));
-  connect(pumGen.port_a, threeWayValveWithFlowReturn.portGen_b) annotation (
-      Line(points={{-60,40},{-50,40},{-50,66.4},{-40,66.4}}, color={0,127,255}));
+    annotation (Line(points={{-80,110},{-90,110},{-90,40},{-100,40}},
+                                                  color={0,127,255}));
   connect(multiSum.y, realToElecCon.PEleLoa) annotation (Line(points={{-56.3,-128},
           {-48,-128},{-48,-124},{-40,-124}},
                                           color={0,0,127}));
-  connect(pumGen.P, multiSum.u[1]) annotation (Line(points={{-81,46},{-86,46},{-86,
-          22},{-102,22},{-102,-129.75},{-78,-129.75}}, color={0,0,127}));
-  connect(pumTra.P, multiSum.u[2]) annotation (Line(points={{59,16},{40,16},{40,
-          20},{-16,20},{-16,-16},{-88,-16},{-88,-126.25},{-78,-126.25}}, color={
+  connect(pumGen.P, multiSum.u[1]) annotation (Line(points={{-74,109},{-86,109},
+          {-86,22},{-102,22},{-102,-129.75},{-78,-129.75}},
+                                                       color={0,0,127}));
+  connect(pumTra.P, multiSum.u[2]) annotation (Line(points={{59,16},{-88,16},{-88,
+          -126.25},{-78,-126.25}},                                       color={
           0,0,127}));
   connect(stoBuf.TLayer[parStoBuf.nLayer], sigBusDistr.TStoBufTopMea)
-    annotation (Line(points={{62.245,55.9},{66,55.9},{66,101},{0,101}}, color={0,
+    annotation (Line(points={{14.245,57.9},{24,57.9},{24,101},{0,101}}, color={0,
           0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(stoBuf.TLayer[1], sigBusDistr.TStoBufBotMea) annotation (Line(points={
-          {62.245,55.9},{66,55.9},{66,101},{0,101}}, color={0,0,127}), Text(
+  connect(stoBuf.TLayer[1], sigBusDistr.TStoBufBotMea) annotation (Line(points={{14.245,
+          57.9},{24,57.9},{24,101},{0,101}},         color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(stoDHW.TLayer[1], sigBusDistr.TStoDHWBotMea) annotation (Line(points={
-          {62.245,-42.1},{74,-42.1},{74,-30},{116,-30},{116,101},{0,101}},
+  connect(stoDHW.TLayer[1], sigBusDistr.TStoDHWBotMea) annotation (Line(points={{10.245,
+          -46.1},{10.245,-28},{24,-28},{24,102},{0,102},{0,101}},
         color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
   connect(stoDHW.TLayer[parStoDHW.nLayer], sigBusDistr.TStoDHWTopMea)
-    annotation (Line(points={{62.245,-42.1},{74,-42.1},{74,-30},{116,-30},{116,101},
+    annotation (Line(points={{10.245,-46.1},{10.245,-28},{24,-28},{24,102},{0,102},
           {0,101}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  annotation (Diagram(coordinateSystem(extent={{-100,-140},{100,140}})));
+
+
+  connect(stoBuf.port_a_heatGenerator, resValToBufSto.port_b) annotation (Line(
+        points={{-7.92,69.6},{-18,69.6},{-18,86},{16,86},{16,160},{0,160}},
+        color={0,127,255}));
+  connect(threeWayValveWithFlowReturn.portBui_a, stoBuf.port_b_heatGenerator)
+    annotation (Line(points={{-40,154},{-32,154},{-32,36},{-7.92,36}}, color={0,
+          127,255}));
+  connect(stoDHW.port_b_heatGenerator, threeWayValveWithFlowReturn.portDHW_a)
+    annotation (Line(points={{-11.92,-68},{-36,-68},{-36,142.4},{-40,142.4}},
+        color={0,127,255}));
 end DistributionTwoStorageParallel;

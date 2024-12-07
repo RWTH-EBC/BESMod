@@ -23,25 +23,37 @@ model PartialSubsystemParameters "Model for a partial subsystem"
   parameter Modelica.Units.SI.MassFlowRate m_flow_nominal[nParallelDem](each
       min=Modelica.Constants.eps) "Nominal mass flow rate" annotation (Dialog(
         group="Design - Bottom Up: Parameters are defined by the subsystem"));
-  parameter Modelica.Units.SI.MassFlowRate mOld_flow_design[nParallelDem](each
-      min=Modelica.Constants.eps)=m_flow_nominal "Old design mass flow rate of old design" annotation (Dialog(
-        group="Design - Bottom Up: Parameters are defined by the subsystem"));
 
-  parameter Modelica.Units.SI.PressureDifference dp_nominal[nParallelDem]
-    "Nominal pressure difference at m_flow_nominal" annotation (Dialog(group=
-          "Design - Bottom Up: Parameters are defined by the subsystem"));
+  parameter Modelica.Units.SI.MassFlowRate mOld_flow_design[nParallelDem](each
+      min=Modelica.Constants.eps)=m_flow_nominal "Design mass flow rate of old design" annotation (Dialog(
+        group="Design - Bottom Up: Parameters are defined by the subsystem"));
+  /*  parameter Modelica.Units.SI.PressureDifference dpOld_design[nParallelDem] =
+    dp_design .* (mOld_flow_design ./ m_flow_design).^2
+    "Old design pressure difference at mOld_flow_design"
+    annotation (Dialog(tab="Pressure losses",
+    group="Design - Internal: Parameters are defined by the subsystem"));
+  */
+  parameter Modelica.Units.SI.PressureDifference dp_design[nParallelDem]
+    "Design pressure difference at m_flow_design"
+         annotation (Dialog(tab="Pressure losses",
+    group="Design - Bottom Up: Parameters are defined by the subsystem"));
+  parameter Modelica.Units.SI.PressureDifference dp_nominal[nParallelDem] =
+    dp_design .* (m_flow_nominal ./ m_flow_design).^2
+    "Nominal pressure difference at m_flow_nominal"
+    annotation (Dialog(tab="Pressure losses",
+    group="Design - Internal: Parameters are defined by the subsystem"));
 
   parameter Modelica.Units.SI.TemperatureDifference dTLoss_nominal[nParallelDem]=
      fill(0, nParallelDem) "Nominal temperature difference due to heat losses"
-    annotation (Dialog(group=
+    annotation (Dialog(tab="Heat Losses", group=
           "Design - Bottom Up: Parameters are defined by the subsystem"));
   parameter Real f_design[nParallelDem]=fill(1, nParallelDem)
-    "Factor for oversizing due to heat losses"
+    "Factor for oversizing, e.g. due to heat losses"
     annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
   parameter Modelica.Units.SI.HeatFlowRate QLoss_flow_nominal[nParallelDem]=
       f_design .* Q_flow_nominal .- Q_flow_nominal
-    "Nominal heat flow rate due to heat losses" annotation (Dialog(group=
-          "Design - Bottom Up: Parameters are defined by the subsystem"));
+    "Nominal heat flow rate due to heat losses"
+    annotation (Dialog(tab="Heat Losses", group="Design - Bottom Up: Parameters are defined by the subsystem"));
 
   parameter Modelica.Units.SI.HeatFlowRate Q_flow_nominal[nParallelDem](each min=Modelica.Constants.eps)
     "Nominal heat flow rate" annotation (Dialog(group=
@@ -73,13 +85,10 @@ model PartialSubsystemParameters "Model for a partial subsystem"
   parameter Modelica.Units.SI.TemperatureDifference dTTra_design[nParallelDem] = dTTra_nominal
     "Nominal design temperature difference for heat transfer" annotation (Dialog(group=
          "Design - Internal: Parameters are defined by the subsystem"));
-  parameter Modelica.Units.SI.PressureDifference dp_design[nParallelDem] = dp_nominal
-    "Design pressure difference at m_flow_design" annotation (Dialog(group=
-          "Design - Internal: Parameters are defined by the subsystem"));
-  parameter Modelica.Units.SI.PressureDifference dpOld_design[nParallelDem] = dp_nominal
-    "Old design pressure difference at mOld_flow_design" annotation (Dialog(group=
-          "Design - Internal: Parameters are defined by the subsystem"));
-  annotation (Icon(graphics,
+
+    annotation (Dialog(group=
+          "Design - Internal: Parameters are defined by the subsystem"),
+              Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(graphics,
         coordinateSystem(preserveAspectRatio=false)));
 end PartialSubsystemParameters;

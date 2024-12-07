@@ -2,27 +2,38 @@ within BESMod.Systems.Hydraulical.Generation;
 model HeatPumpAndGasBoilerParallel
   "Parallel connection of heat pump and gas boiler"
   extends BaseClasses.PartialHeatPumpAndGasBoiler(
-    final use_old_design=fill(false, nParallelDem), resGen(final dp_nominal=
-          dpValIn),
-    boi(dp_nominal=boi.m_flow_nominal^parBoi.a/(boi.rho_default^parBoi.n) +
-          dpValBoi));
-  parameter Modelica.Units.SI.PressureDifference dpValIn
-    "Nominal pressure drop between inlet and three way valve"
-    annotation (Dialog(tab="Pressure Drops"));
-  parameter Modelica.Units.SI.PressureDifference dpValOut
-    "Nominal pressure drop between outlet and three way valve joining"
-    annotation (Dialog(tab="Pressure Drops"));
-  parameter Modelica.Units.SI.PressureDifference dpValHeaPum
-    "Nominal pressure drop between three way valve and heat pump"
-    annotation (Dialog(tab="Pressure Drops"));
-  parameter Modelica.Units.SI.PressureDifference dpValBoi
-    "Nominal pressure drop between three way valve and boiler"
-    annotation (Dialog(tab="Pressure Drops"));
-
+    dp_design={resGen.dp_nominal + resGenOut.dp_nominal + parThrWayVal.dpValve_nominal
+         + max(parThrWayVal.dp_nominal)},
+    final use_old_design=fill(false, nParallelDem), resGen(final length=
+          lengthPipValIn, final fac=facFitValIn));
+  parameter Modelica.Units.SI.Length lengthPipValIn=3.5
+    "Length of all pipes between inlet and three way valve"
+    annotation (Dialog(tab="Pressure losses"));
+  parameter Real facFitValIn=facPerBend*1
+    "Factor for resistance due to bends, fittings etc. between inlet and three way valve"
+    annotation (Dialog(tab="Pressure losses"));
+  parameter Modelica.Units.SI.Length lengthPipValBoi=1.5 "Length of all pipes between three way valve and boiler"
+    annotation (Dialog(tab="Pressure losses"));
+  parameter Real facFitValBoi=2*facPerBend
+    "Factor for resistance due to bends, fittings etc. between three way valve and boiler"
+    annotation (Dialog(tab="Pressure losses"));
+  parameter Modelica.Units.SI.Length lengthPipValHeaPum=1.5 "Length of all pipes between three way valve and heat pump"
+    annotation (Dialog(tab="Pressure losses"));
+  parameter Real facFitValHeaPum=2*facPerBend
+    "Factor for resistance due to bends, fittings etc. between three way valve and heat pump"
+    annotation (Dialog(tab="Pressure losses"));
+  parameter Modelica.Units.SI.Length lengthPipValOut=3.5
+    "Length of the pipe between outlet and three way valve"
+    annotation (Dialog(tab="Pressure losses"));
+  parameter Real facFitValOut=facPerBend*1
+    "Factor for resistance due to bends, fittings etc. between outlet and three way valve"
+    annotation (Dialog(tab="Pressure losses"));
   replaceable parameter BESMod.Systems.RecordsCollection.Valves.ThreeWayValve
     parThrWayVal constrainedby
     BESMod.Systems.RecordsCollection.Valves.ThreeWayValve(
-    final dp_nominal={parHeaPum.dpCon_nominal,boi.dp_nominal},
+    final dp_nominal={
+      parHeaPum.dpCon_nominal + resValHeaPum.dp_nominal,
+      boi.dp_nominal + resValBoi.dp_nominal},
     final m_flow_nominal=2*m_flow_nominal[1],
     final fraK=1) "Parameters for three-way-valve" annotation (Placement(
         transformation(extent={{24,-38},{38,-24}})),
@@ -43,36 +54,76 @@ model HeatPumpAndGasBoilerParallel
     "Three-way-valve to either run heat pump or gas boiler"
     annotation (Placement(transformation(extent={{40,20},{20,0}})));
 
-  IBPSA.Fluid.FixedResistances.PressureDrop resGenOut(
-    final dp_nominal=dpValOut,
+  IBPSA.Fluid.FixedResistances.HydraulicDiameter resGenOut(
+    length=lengthPipValOut,
+    fac=facFitValOut,
     redeclare final package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=m_flow_design[1],
     final show_T=show_T,
     final from_dp=false,
     final linearized=false,
-    final deltaM=0.3)
-    "Pressure drop model between outlet and three way valve joining"
+    final dh=dPip_design[1],
+    final ReC=ReC,
+    final v_nominal=v_design[1],
+    final roughness=roughness) "Pressure drop for valve to outlet"
     annotation (Placement(transformation(extent={{60,10},{80,30}})));
+
+  IBPSA.Fluid.FixedResistances.HydraulicDiameter resValBoi(
+    length=lengthPipValBoi,
+    fac=facFitValBoi,
+    redeclare final package Medium = Medium,
+    final allowFlowReversal=allowFlowReversal,
+    final m_flow_nominal=mBoi_flow_nominal,
+    final show_T=show_T,
+    final from_dp=false,
+    final linearized=false,
+    final dh=dPip[1],
+    final ReC=ReC,
+    final v_nominal=v_design[1],
+    final roughness=roughness) "Pressure drop for valve to boiler"
+    annotation (Placement(transformation(extent={{20,20},{40,40}})));
+  IBPSA.Fluid.FixedResistances.HydraulicDiameter resValHeaPum(
+    length=lengthPipValHeaPum,
+    fac=facFitValHeaPum,
+    redeclare final package Medium = Medium,
+    final allowFlowReversal=allowFlowReversal,
+    final m_flow_nominal=m_flow_design[1],
+    final show_T=show_T,
+    final from_dp=false,
+    final linearized=false,
+    final dh=dPip_design[1],
+    final ReC=ReC,
+    final v_nominal=v_design[1],
+    final roughness=roughness) "Pressure drop for valve to heat pump"
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={-10,-20})));
 equation
-  connect(thrWayVal.portDHW_a, boi.port_b) annotation (Line(points={{20,17.6},{8,17.6},
-          {8,26},{44,26},{44,50},{40,50}}, color={0,127,255}));
   connect(thrWayVal.portDHW_b, boi.port_a) annotation (Line(points={{20,13.6},{20,
           14},{6,14},{6,50},{20,50}}, color={0,127,255}));
   connect(heatPump.port_b1, thrWayVal.portBui_a) annotation (Line(points={{-30,35},
-          {-30,42},{-6,42},{-6,6},{20,6}},   color={0,127,255}));
-  connect(thrWayVal.portBui_b, heatPump.port_a1) annotation (Line(points={{20,2},{
-          -6,2},{-6,0},{-30,0}},     color={0,127,255}));
+          {-30,44},{-6,44},{-6,6},{20,6}},   color={0,127,255}));
   connect(thrWayVal.uBuf, sigBusGen.uPriOrSecGen) annotation (Line(points={{30,-2},
           {30,-16},{2,-16},{2,98}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(resGen.port_a, thrWayVal.portGen_a) annotation (Line(points={{60,-2},{
-          50,-2},{50,5.6},{40,5.6}}, color={0,127,255}));
-  connect(resGenOut.port_a, thrWayVal.portGen_b) annotation (Line(points={{60,
-          20},{46,20},{46,13.6},{40,13.6}}, color={0,127,255}));
+  connect(resGen.port_a, thrWayVal.portGen_a) annotation (Line(points={{60,-10},
+          {50,-10},{50,5.6},{40,5.6}},
+                                     color={0,127,255}));
+  connect(thrWayVal.portGen_b, resGenOut.port_a) annotation (Line(points={{40,13.6},
+          {52,13.6},{52,20},{60,20}}, color={0,127,255}));
   connect(resGenOut.port_b, senTGenOut.port_a) annotation (Line(points={{80,20},
-          {88,20},{88,30},{52,30},{52,80},{60,80}}, color={0,127,255}));
+          {86,20},{86,34},{50,34},{50,80},{60,80}}, color={0,127,255}));
+  connect(resValBoi.port_b, boi.port_b) annotation (Line(points={{40,30},{44,30},
+          {44,50},{40,50}}, color={0,127,255}));
+  connect(resValBoi.port_a, thrWayVal.portDHW_a) annotation (Line(points={{20,30},
+          {16,30},{16,17.6},{20,17.6}}, color={0,127,255}));
+  connect(resValHeaPum.port_b, heatPump.port_a1)
+    annotation (Line(points={{-20,-20},{-30,-20},{-30,0}}, color={0,127,255}));
+  connect(resValHeaPum.port_a, thrWayVal.portBui_b) annotation (Line(points={{0,
+          -20},{10,-20},{10,2},{20,2}}, color={0,127,255}));
 end HeatPumpAndGasBoilerParallel;

@@ -32,14 +32,14 @@ model TwoStoragesBoilerWithDHW
     AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition(
       Q_nom=max(11000, Q_flow_nominal[1]))
     "Parameters for Boiler"
-    annotation(Placement(transformation(extent={{24,164},{36,176}})),
+    annotation(Placement(transformation(extent={{84,124},{96,136}})),
       choicesAllMatching=true, Dialog(group="Component data"));
   replaceable parameter BESMod.Systems.RecordsCollection.Movers.DPVar parPum(iconName="Pump Boi")
     constrainedby
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition annotation (
     Dialog(group="Component data"),
     choicesAllMatching=true,
-    Placement(transformation(extent={{24,124},{36,136}})));
+    Placement(transformation(extent={{44,124},{56,136}})));
   replaceable parameter BESMod.Systems.RecordsCollection.Valves.ThreeWayValve parThrWayValBoi(iconName=
         "BoiWayValve")
     constrainedby BESMod.Systems.RecordsCollection.Valves.ThreeWayValve(
@@ -49,7 +49,7 @@ model TwoStoragesBoilerWithDHW
     use_inputFilter=false) "Parameters for three way valve of boiler" annotation (
     Dialog(group="Component data"),
     choicesAllMatching=true,
-    Placement(transformation(extent={{24,144},{36,156}})));
+    Placement(transformation(extent={{64,124},{76,136}})));
   replaceable parameter
     BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition
     parHydSep(iconName="HydSep")
@@ -74,7 +74,7 @@ model TwoStoragesBoilerWithDHW
     final mHC2_flow_nominal=9999999,
     redeclare final AixLib.DataBase.Pipes.Copper.Copper_10x0_6 pipeHC2)
     "Parameters for hydraulic separator" annotation (choicesAllMatching=true,
-      Placement(transformation(extent={{44,144},{56,156}})));
+      Placement(transformation(extent={{24,164},{36,176}})));
   AixLib.Fluid.BoilerCHP.BoilerNoControl boi(
     redeclare package Medium = Medium,
     final allowFlowReversal=true,

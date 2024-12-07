@@ -1,7 +1,7 @@
 within BESMod.Systems.Hydraulical.Distribution.BaseClasses;
 partial model PartialTwoStorageParallelWithHeaters
   "Partial two storage model with heaters"
-  extends BaseClasses.PartialTwoStorageParallel(
+  extends PartialTwoStorageParallel(
     final use_secHeaCoiDHWSto=false);
   parameter Modelica.Units.SI.HeatFlowRate QHeaAftBuf_flow_nominal=0
     "Nominal heat flow rate of heater after DHW storage"
@@ -9,6 +9,10 @@ partial model PartialTwoStorageParallelWithHeaters
   parameter BESMod.Systems.Hydraulical.Distribution.Types.HeaterType heaAftBufTyp=BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.No
     "Type of heater after the buffer storage"
     annotation(Dialog(group="Component choices"));
+  parameter Real etaTem[:,2]=[293.15,1.09; 303.15,1.08; 313.15,1.05; 323.15,1.; 373.15,
+      0.99] if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.Boiler
+      "Temperature based efficiency"
+        annotation(Dialog(group="Component data", enable=heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.Boiler));
 
   replaceable parameter
     BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater.DefaultElectricHeater
@@ -20,12 +24,8 @@ partial model PartialTwoStorageParallelWithHeaters
     Placement(transformation(
         extent={{-6,-6},{6,6}},
         rotation=0,
-        origin={50,150})));
+        origin={90,130})));
 
-  parameter Real etaTem[:,2]=[293.15,1.09; 303.15,1.08; 313.15,1.05; 323.15,1.; 373.15,
-      0.99] if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.Boiler
-      "Temperature based efficiency"
-        annotation(Dialog(group="Component data", enable=heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.Boiler));
 
     replaceable parameter BESMod.Systems.Hydraulical.Generation.RecordsCollection.AutoparameterBoiler
     parBoi if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.Boiler

@@ -8,14 +8,17 @@ model HeatPump "Monovalent heat pump"
     QPriAtTOdaNom_flow_nominal=0,
     genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.Monovalent,
     TBiv=TOda_nominal,
-    resGen(final dp_nominal=dpPipFit_nominal));
-  parameter Modelica.Units.SI.PressureDifference dpPipFit_nominal
-    "Nominal pressure drop forbetween inlet and outlet for pipes and fittings"
-    annotation (Dialog(tab="Pressure Drops"));
-
+    resGen(
+      final length=lengthPip,
+      final fac=facFit));
+  parameter Modelica.Units.SI.Length lengthPip=8 "Length of all pipes"
+    annotation (Dialog(tab="Pressure losses"));
+  parameter Real facFit=4*facPerBend
+    "Factor to take into account resistance of bends, fittings etc."
+    annotation (Dialog(tab="Pressure losses"));
 equation
   connect(senTGenOut.port_a, heatPump.port_b1) annotation (Line(points={{60,80},
           {32,80},{32,44},{-30,44},{-30,35}},    color={0,127,255}));
-  connect(resGen.port_a, heatPump.port_a1) annotation (Line(points={{60,-2},{28,
-          -2},{28,-18},{-30,-18},{-30,0}}, color={0,127,255}));
+  connect(resGen.port_a, heatPump.port_a1) annotation (Line(points={{60,-10},{28,
+          -10},{28,-18},{-30,-18},{-30,0}},color={0,127,255}));
 end HeatPump;

@@ -1,10 +1,12 @@
 within BESMod.Systems.Hydraulical.Generation;
 model GasBoiler "Just a gas boiler"
-  extends BaseClasses.PartialGeneration(dp_nominal={boi.dp_nominal}, final
-      nParallelDem=1);
-  parameter Modelica.Units.SI.PressureDifference dpPipFit_nominal
-    "Nominal pressure drop between inlet and outlet for pipes and fittings"
-    annotation (Dialog(tab="Pressure Drops"));
+  extends BaseClasses.PartialGeneration(dp_design={boi.dp_nominal + resGen.dp_nominal},
+  final nParallelDem=1);
+  parameter Modelica.Units.SI.Length lengthPip=4 "Length of all pipes"
+    annotation (Dialog(tab="Pressure losses"));
+  parameter Real facFit=4*facPerBend
+    "Factor to take into account resistance of bendsm, fittings etc."
+    annotation (Dialog(tab="Pressure losses"));
   parameter Real etaTem[:,2]=[293.15,1.09; 303.15,1.08; 313.15,1.05; 323.15,1.;
       373.15,0.99] "Temperature based efficiency"
         annotation(Dialog(group="Component data"));
@@ -25,7 +27,7 @@ model GasBoiler "Just a gas boiler"
   AixLib.Fluid.BoilerCHP.BoilerNoControl boi(
     redeclare package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
-    final m_flow_nominal=m_flow_nominal[1],
+    final m_flow_nominal=m_flow_design[1],
     final m_flow_small=1E-4*abs(m_flow_nominal[1]),
     final show_T=show_T,
     final tau=parTemSen.tau,
@@ -33,8 +35,6 @@ model GasBoiler "Just a gas boiler"
     final transferHeat=parTemSen.transferHeat,
     final TAmb=parTemSen.TAmb,
     final tauHeaTra=parTemSen.tauHeaTra,
-    dp_nominal=boi.m_flow_nominal^parBoi.a/(boi.rho_default^parBoi.n) +
-        dpPipFit_nominal,
     final rho_default=rho,
     final p_start=p_start,
     final T_start=T_start,
@@ -59,6 +59,21 @@ model GasBoiler "Just a gas boiler"
     calc_numSwi=true) "Boiler KPIs"
     annotation (Placement(transformation(extent={{-60,-80},{-40,-60}})));
 
+  IBPSA.Fluid.FixedResistances.HydraulicDiameter
+                                            resGen(
+    redeclare final package Medium = Medium,
+    final allowFlowReversal=allowFlowReversal,
+    final m_flow_nominal=m_flow_design[1],
+    final show_T=show_T,
+    final from_dp=false,
+    final linearized=false,
+    final dh=dPip_design[1],
+    final length=lengthPip,
+    final ReC=ReC,
+    final v_nominal=v_design[1],
+    final roughness=roughness,
+    final fac=facFit)          "Pressure drop model depending on the configuration"
+    annotation (Placement(transformation(extent={{20,-40},{0,-20}})));
 initial algorithm
   assert(parBoi.Q_nom >= Q_flow_nominal[1], "Nominal heat flow rate
   of boiler is smaller than nominal heat demand", AssertionLevel.warning);
@@ -108,6 +123,8 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(portGen_in[1], boi.port_a) annotation (Line(points={{100,-2},{14,-2},
-          {14,-16},{-66,-16},{-66,10}}, color={0,127,255}));
+  connect(resGen.port_a, portGen_in[1]) annotation (Line(points={{20,-30},{52,
+          -30},{52,-2},{100,-2}}, color={0,127,255}));
+  connect(resGen.port_b, boi.port_a)
+    annotation (Line(points={{0,-30},{-66,-30},{-66,10}}, color={0,127,255}));
 end GasBoiler;

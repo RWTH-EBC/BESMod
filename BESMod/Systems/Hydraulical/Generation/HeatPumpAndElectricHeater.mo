@@ -1,13 +1,17 @@
 within BESMod.Systems.Hydraulical.Generation;
 model HeatPumpAndElectricHeater "Heat pump with an electric heater in series"
   extends BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump(
+    dp_design={heatPump.dpCon_nominal + dpEleHea_nominal + resGen.dp_nominal},
     genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentParallel,
-  dp_nominal={heatPump.dpCon_nominal +dpEleHea_nominal},
   multiSum(nu=if use_eleHea then 2 else 1),
-    resGen(final dp_nominal=dpPipFit_nominal));
-  parameter Modelica.Units.SI.PressureDifference dpPipFit_nominal
-    "Nominal pressure drop between inlet and outlet for pipes and fittings"
-    annotation (Dialog(tab="Pressure Drops"));
+    resGen(
+      final length=lengthPip,
+      final fac=facFit));
+  parameter Modelica.Units.SI.Length lengthPip=8 "Length of all pipes"
+    annotation (Dialog(tab="Pressure losses"));
+  parameter Real facFit=4*facPerBend
+    "Factor to take into account resistance of bends, fittings etc."
+    annotation (Dialog(tab="Pressure losses"));
   parameter Boolean use_eleHea=true "=false to disable the electric heater"
    annotation(Dialog(group="Component choices"));
 
@@ -60,10 +64,11 @@ equation
   connect(eleHea.port_b, senTGenOut.port_a) annotation (Line(points={{40,50},{54,50},
           {54,80},{60,80}}, color={0,127,255}));
   connect(pasThrMedEleHea.port_a, heatPump.port_b1) annotation (Line(points={{20,30},
-          {10,30},{10,50},{-30,50},{-30,38},{-30,38},{-30,35}},         color={0,
+          {10,30},{10,44},{-30,44},{-30,35}},                           color={0,
           127,255}));
-  connect(heatPump.port_b1, eleHea.port_a) annotation (Line(points={{-30,35},{-30,
-          36},{-30,36},{-30,50},{20,50}}, color={0,127,255}));
+  connect(heatPump.port_b1, eleHea.port_a) annotation (Line(points={{-30,35},{
+          -30,44},{10,44},{10,50},{20,50}},
+                                          color={0,127,255}));
   connect(eleHea.u, sigBusGen.uEleHea) annotation (Line(points={{18,56},{2,56},{2,
           98}}, color={0,0,127}), Text(
       string="%second",
@@ -94,6 +99,6 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(resGen.port_a, heatPump.port_a1) annotation (Line(points={{60,-2},{30,
-          -2},{30,-18},{-30,-18},{-30,0}}, color={0,127,255}));
+  connect(resGen.port_a, heatPump.port_a1) annotation (Line(points={{60,-10},{30,
+          -10},{30,-18},{-30,-18},{-30,0}},color={0,127,255}));
 end HeatPumpAndElectricHeater;

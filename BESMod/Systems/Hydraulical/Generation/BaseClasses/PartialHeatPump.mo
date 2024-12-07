@@ -1,6 +1,7 @@
 within BESMod.Systems.Hydraulical.Generation.BaseClasses;
 model PartialHeatPump "Generation with only the heat pump"
   extends BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration(
+    dp_design={heatPump.dpCon_nominal + resGen.dp_nominal},
     final QLoss_flow_nominal=f_design .* Q_flow_nominal .- Q_flow_nominal,
     final dTLoss_nominal=fill(0, nParallelDem),
     Q_flow_design = {if use_old_design[i] then QOld_flow_design[i] else Q_flow_nominal[i] for i in 1:nParallelDem},
@@ -9,7 +10,6 @@ model PartialHeatPump "Generation with only the heat pump"
     dTTraOld_design={if TDemOld_design[i] > 273.15 + 55 then 10 elseif TDemOld_design[
         i] > 44.9 + 273.15 then 8 else 5 for i in 1:nParallelDem},
     dTTra_design={if use_old_design[i] then dTTraOld_design[i] else dTTra_nominal[i] for i in 1:nParallelDem},
-    dp_nominal={heatPump.dpCon_nominal},
       nParallelDem=1);
 
   replaceable model RefrigerantCycleHeatPumpHeating =
@@ -29,12 +29,12 @@ model PartialHeatPump "Generation with only the heat pump"
   replaceable parameter RecordsCollection.HeatPumps.Generic parHeaPum
     "Heat pump parameters"
     annotation (choicesAllMatching=true,
-    Placement(transformation(extent={{-34,42},{-18,58}})));
+    Placement(transformation(extent={{-36,62},{-22,76}})));
   replaceable parameter
     AixLib.Fluid.HeatPumps.ModularReversible.Controls.Safety.Data.Wuellhorst2021
     safCtrPar "Safety control parameters" annotation (
     choicesAllMatching=true,
-    Placement(transformation(extent={{-58,44},{-42,58}})));
+    Placement(transformation(extent={{-58,62},{-42,76}})));
   parameter Boolean use_rev=true
     "=true if the heat pump is reversible"
     annotation(Dialog(group="Component choices"));
@@ -232,13 +232,13 @@ model PartialHeatPump "Generation with only the heat pump"
   IBPSA.Fluid.Sensors.TemperatureTwoPort senTGenOut(
     redeclare final package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
-    m_flow_nominal=m_flow_nominal[1],
-    tau=parTemSen.tau,
-    initType=parTemSen.initType,
-    T_start=T_start,
+    final m_flow_nominal=m_flow_nominal[1],
+    final tau=parTemSen.tau,
+    final initType=parTemSen.initType,
+    final T_start=T_start,
     final transferHeat=parTemSen.transferHeat,
-    TAmb=parTemSen.TAmb,
-    tauHeaTra=parTemSen.tauHeaTra) "Temperature at supply (generation outlet)"
+    final TAmb=parTemSen.TAmb,
+    final tauHeaTra=parTemSen.tauHeaTra) "Temperature at supply (generation outlet)"
     annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,
@@ -287,18 +287,24 @@ model PartialHeatPump "Generation with only the heat pump"
         origin={-170,-30})));
 
 
-  IBPSA.Fluid.FixedResistances.PressureDrop resGen(
+  IBPSA.Fluid.FixedResistances.HydraulicDiameter
+                                            resGen(
     redeclare final package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=m_flow_design[1],
     final show_T=show_T,
     final from_dp=false,
     final linearized=false,
-    final deltaM=0.3) "Pressure drop model depending on the configuration"
-    annotation (Placement(transformation(extent={{60,-12},{80,8}})));
+    final dh=dPip_design[1],
+    final ReC=ReC,
+    final v_nominal=v_design[1],
+    final roughness=roughness)
+    "Pressure drop model depending on the configuration"
+    annotation (Placement(transformation(extent={{60,-20},{80,0}})));
+
 equation
-  connect(bouEva.ports[1], heatPump.port_a2) annotation (Line(points={{-80,50},{
-          -70,50},{-70,35},{-51,35}},          color={0,127,255}));
+  connect(bouEva.ports[1], heatPump.port_a2) annotation (Line(points={{-80,50},
+          {-50,50},{-50,35},{-51,35}},         color={0,127,255}));
   connect(heatPump.port_b2, bou_sinkAir.ports[1]) annotation (Line(
       points={{-51,7.10543e-15},{-51,-10},{-80,-10}},
       color={0,127,255}));
@@ -362,10 +368,11 @@ equation
 
   connect(heatPump.P, multiSum.u[1]) annotation (Line(points={{-40.5,36.75},{-40.5,
           40},{152,40},{152,-82},{136,-82}},       color={0,0,127}));
-  connect(KPIWel.u, heatPump.P) annotation (Line(points={{-141.8,-30},{-150,-30},
-          {-150,36.75},{-40.5,36.75}},                   color={0,0,127}));
-  connect(KPIQHP.u, heatPump.QCon_flow) annotation (Line(points={{-141.8,-70},{-188,
-          -70},{-188,108},{-8,108},{-8,36},{-24.75,36},{-24.75,36.75}}, color={0,
+  connect(KPIWel.u, heatPump.P) annotation (Line(points={{-141.8,-30},{-148,-30},
+          {-148,40},{-40,40},{-40,36.75},{-40.5,36.75}}, color={0,0,127}));
+  connect(KPIQHP.u, heatPump.QCon_flow) annotation (Line(points={{-141.8,-70},{
+          -188,-70},{-188,108},{-10,108},{-10,50},{-24.75,50},{-24.75,36.75}},
+                                                                        color={0,
           0,127}));
   connect(heaPumSigBusPasThr.sigBusGen, sigBusGen) annotation (Line(
       points={{-30,90},{-24,90},{-24,98},{2,98}},
@@ -383,26 +390,31 @@ equation
       horizontalAlignment=TextAlignment.Right));
   if parHeaPum.use_conCap then
     if use_airSource then
-      connect(heatPump.TConAmb, weaBus.TDryBul) annotation (Line(points={{-24.925,-1.925},
-            {-24.925,-26},{-100.895,-26},{-100.895,80.11}}, color={0,0,127}));
+      connect(heatPump.TConAmb, weaBus.TDryBul) annotation (Line(points={{-24.925,
+              -1.925},{-24.925,-26},{-108,-26},{-108,80},{-100.895,80},{
+              -100.895,80.11}},                             color={0,0,127}));
     else
-      connect(constTAmb.y, heatPump.TConAmb) annotation (Line(points={{-159,10},{-108,
-              10},{-108,-26},{-26,-26},{-26,-1.925},{-24.925,-1.925}}, color={0,0,127}));
+      connect(constTAmb.y, heatPump.TConAmb) annotation (Line(points={{-159,10},
+              {-108,10},{-108,-26},{-26,-26},{-26,-1.925},{-24.925,-1.925}},
+                                                                       color={0,0,127}));
     end if;
 
   end if;
   if parHeaPum.use_evaCap then
     if use_airSource then
-      connect(heatPump.TEvaAmb, weaBus.TDryBul) annotation (Line(points={{-56.425,-1.925},
-            {-56.425,-26},{-100.895,-26},{-100.895,80.11}}, color={0,0,127}));
+      connect(heatPump.TEvaAmb, weaBus.TDryBul) annotation (Line(points={{-56.425,
+              -1.925},{-56.425,-26},{-108,-26},{-108,84},{-100.895,84},{
+              -100.895,80.11}},                             color={0,0,127}));
     else
-      connect(constTAmb.y, heatPump.TEvaAmb) annotation (Line(points={{-159,10},{-108,
-              10},{-108,-26},{-56.425,-26},{-56.425,-1.925}}, color={0,0,127}));
+      connect(constTAmb.y, heatPump.TEvaAmb) annotation (Line(points={{-159,10},
+              {-108,10},{-108,-26},{-56.425,-26},{-56.425,-1.925}},
+                                                              color={0,0,127}));
     end if;
 
   end if;
-  connect(defCtrl.hea, heatPump.hea) annotation (Line(points={{-81.2,20},{-60,20},
-          {-60,-1.925},{-44.175,-1.925}}, color={255,0,255}));
+  connect(defCtrl.hea, heatPump.hea) annotation (Line(points={{-81.2,20},{-60,
+          20},{-60,-6},{-44,-6},{-44,-1.925},{-44.175,-1.925}},
+                                          color={255,0,255}));
 
   connect(sigBus, heatPump.sigBus) annotation (Line(
       points={{-72,-40},{-72,0.175},{-47.325,0.175}},
@@ -441,14 +453,16 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(heatPump.QEva_flow, sigBus.QEva_flow) annotation (Line(points={{
-          -56.25,36.75},{-72,36.75},{-72,-40}}, color={0,0,127}), Text(
+  connect(heatPump.QEva_flow, sigBus.QEva_flow) annotation (Line(points={{-56.25,
+          36.75},{-56,36.75},{-56,40},{-72,40},{-72,-40}},
+                                                color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(portGen_in[1], resGen.port_b)
-    annotation (Line(points={{100,-2},{80,-2}}, color={0,127,255}));
+    annotation (Line(points={{100,-2},{90,-2},{90,-10},{80,-10}},
+                                                color={0,127,255}));
   annotation (Line(
       points={{-52.775,-6.78},{-52.775,33.61},{-56,33.61},{-56,74}},
       color={255,204,51},

@@ -2,7 +2,8 @@ within BESMod.Systems.Ventilation.Generation.BaseClasses;
 partial model PartialGeneration
   "Base model for all ventilation generation systems"
   extends BESMod.Utilities.Icons.GenerationIcon;
-  extends BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters;
+  extends BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters(
+      final useRoundPipes=false, v_design=fill(2, nParallelDem));
   parameter Modelica.Units.SI.PressureDifference dpDem_nominal[nParallelDem]
     "Nominal pressure loss of resistances in the demand system of the generation"
     annotation (Dialog(group=

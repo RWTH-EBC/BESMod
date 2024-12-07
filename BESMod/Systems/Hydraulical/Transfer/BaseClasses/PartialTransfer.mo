@@ -2,17 +2,19 @@ within BESMod.Systems.Hydraulical.Transfer.BaseClasses;
 partial model PartialTransfer "Partial transfer model for BES"
   extends BESMod.Utilities.Icons.TransferIcon;
   extends BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters(
+    final useRoundPipes=true,
+    v_design=fill(0.5,nParallelDem),
     TSup_nominal=fill(max(TTra_nominal),nParallelSup),
     TSupOld_design=fill(max(TTraOld_design),nParallelSup),
-      dTTra_nominal={if TTra_nominal[i] > 64.9 + 273.15 then 15 elseif
-        TTra_nominal[i] > 44.9 + 273.15 then 10 else 7 for i in 1:nParallelDem},
-      m_flow_nominal=Q_flow_nominal ./ (dTTra_nominal .* 4184),
-      mOld_flow_design=QOld_flow_design ./ (dTTraOld_design .* 4184),
-      dTTra_design={if TTra_design[i] > 64.9 + 273.15 then 15 elseif
-        TTra_design[i] > 44.9 + 273.15 then 10 else 7 for i in 1:nParallelDem},
-      dTTraOld_design={if TTraOld_design[i] > 64.9 + 273.15 then 15 elseif
-        TTraOld_design[i] > 44.9 + 273.15 then 10 else 7 for i in 1:nParallelDem},
-      m_flow_design=Q_flow_design ./ (dTTra_design .* 4184));
+    dTTra_nominal={if TTra_nominal[i] > 64.9 + 273.15 then 15 elseif
+      TTra_nominal[i] > 44.9 + 273.15 then 10 else 7 for i in 1:nParallelDem},
+    dTTra_design={if TTra_design[i] > 64.9 + 273.15 then 15 elseif
+      TTra_design[i] > 44.9 + 273.15 then 10 else 7 for i in 1:nParallelDem},
+    dTTraOld_design={if TTraOld_design[i] > 64.9 + 273.15 then 15 elseif
+      TTraOld_design[i] > 44.9 + 273.15 then 10 else 7 for i in 1:nParallelDem},
+    mOld_flow_design=QOld_flow_design ./ (dTTraOld_design .* 4184),
+    m_flow_nominal=Q_flow_nominal ./ (dTTra_nominal .* 4184),
+    m_flow_design=Q_flow_design ./ (dTTra_design .* 4184));
 
   parameter Modelica.Units.SI.HeatFlowRate QSup_flow_nominal[nParallelSup]=fill(sum(
       Q_flow_nominal .* f_design), nParallelSup)
@@ -30,23 +32,14 @@ partial model PartialTransfer "Partial transfer model for BES"
   parameter Modelica.Units.SI.Temperature TTra_design[nParallelDem]=TTra_nominal
       "Nominal design supply temperature to transfer systems"
    annotation(Dialog(group="Design - Internal: Parameters are defined by the subsystem"));
-  parameter Modelica.Units.SI.MassFlowRate mSup_flow_nominal[nParallelSup]=fill(sum(
-      m_flow_nominal), nParallelSup)
-   "Nominal mass flow rate of the supply ports to the transfer system" annotation (Dialog(
-        group="Design - Bottom Up: Parameters are defined by the subsystem"));
-  parameter Modelica.Units.SI.MassFlowRate mSupOld_flow_design[nParallelSup]=fill(sum(
-      mOld_flow_design), nParallelSup)
-   "Old design mass flow rate of the supply ports to the transfer system" annotation (Dialog(
+  parameter Modelica.Units.SI.MassFlowRate mSup_flow_design[nParallelSup]=fill(sum(
+      m_flow_design), nParallelSup)
+   "Design mass flow rate of the supply ports to the transfer system" annotation (Dialog(
         group="Design - Bottom Up: Parameters are defined by the subsystem"));
 
-  parameter Modelica.Units.SI.PressureDifference dpSup_nominal[nParallelSup]
+  parameter Modelica.Units.SI.PressureDifference dpSup_design[nParallelSup]
     "Nominal pressure loss to design the distribution system"
-    annotation (Dialog(group=
-          "Design - Bottom Up: Parameters are defined by the subsystem"));
-  parameter Modelica.Units.SI.PressureDifference dpSupOld_design[nParallelSup]=
-      dpSup_nominal
-    "Old design pressure loss to design the distribution system"
-    annotation (Dialog(group=
+    annotation (Dialog(tab="Pressure losses", group=
           "Design - Bottom Up: Parameters are defined by the subsystem"));
 
   parameter Modelica.Units.SI.Area AZone[nParallelDem](each min=0.1)
@@ -68,6 +61,7 @@ partial model PartialTransfer "Partial transfer model for BES"
   parameter Real nHeaTra "Exponent of heat transfer system"
     annotation (Dialog(
         group="Design - Bottom Up: Parameters are defined by the subsystem"));
+
   Modelica.Fluid.Interfaces.FluidPort_b portTra_out[nParallelSup](redeclare
       final package Medium = Medium) "Outlet of the transfer system"
     annotation (Placement(transformation(extent={{-110,-52},{-90,-32}}),

@@ -29,7 +29,7 @@ partial model PartialHeatPumpSystemController
   parameter Utilities.SupervisoryControl.Types.SupervisoryControlType
     supCtrlThrWayValTyp=BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Local
     "Type of supervisory control for three way valve"
-    annotation (Dialog(tab="DHW control"));
+    annotation (Dialog(group="DHW control"));
 
   replaceable model BuildingHysteresis =
       BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.BaseClasses.PartialOnOffController
@@ -110,7 +110,7 @@ partial model PartialHeatPumpSystemController
     final Nd=parPIDHeaPum.Nd)                                                                                                             constrainedby
     BESMod.Systems.Hydraulical.Control.Components.RelativeSpeedController.BaseClasses.PartialControler
     "Control of heat pump" annotation (
-    Dialog(group="Heat Pump", tab="Advanced"),
+    Dialog(group="Heat Pump"),
     choicesAllMatching=true,
     Placement(transformation(extent={{82,82},{98,98}})));
 
@@ -296,8 +296,8 @@ equation
 
   connect(supCtrNSet.uLoc, priGenPIDCtrl.ySet) annotation (Line(points={{108,82},
           {104,82},{104,90},{98.8,90}}, color={0,0,127}));
-  connect(buiAndDHWCtr.priGren, anyGenDevIsOn.u[2]) annotation (Line(points={{
-          -118,27.3333},{-112,27.3333},{-112,4},{-150,4},{-150,0}}, color={255,
+  connect(buiAndDHWCtr.priGren, anyGenDevIsOn.u[2]) annotation (Line(points={{-118,
+          27.3333},{-112,27.3333},{-112,4},{-148.25,4},{-148.25,0}},color={255,
           0,255}));
                                                               annotation (Diagram(graphics={
         Rectangle(

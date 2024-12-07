@@ -3,6 +3,8 @@ partial model PartialDistribution
   "Partial distribution model for HPS"
   extends BESMod.Utilities.Icons.StorageIcon;
   extends BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters(
+      final useRoundPipes=true,
+      v_design=fill(0.7,nParallelDem),
       TSup_nominal=TDem_nominal .+ dTLoss_nominal .+ dTTra_nominal,
       TSupOld_design=TDemOld_design .+ dTLoss_nominal .+ dTTraOld_design);
   extends PartialDHWParameters;

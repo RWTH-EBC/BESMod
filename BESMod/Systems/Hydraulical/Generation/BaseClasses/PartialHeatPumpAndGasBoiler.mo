@@ -1,13 +1,16 @@
 within BESMod.Systems.Hydraulical.Generation.BaseClasses;
 model PartialHeatPumpAndGasBoiler "Partial heat pump and boiler"
   extends BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump(genDesTyp
-      =BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
-      dp_nominal={heatPump.dpCon_nominal + boi.dp_nominal});
+      =BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel);
   parameter Real etaTem[:,2]=[293.15,1.09; 303.15,1.08; 313.15,1.05; 323.15,1.; 373.15,
       0.99] "Temperature based efficiency";
-
+  parameter Modelica.Units.SI.MassFlowRate mBoi_flow_nominal=
+    boi.Q_nom / dTBoi_nominal / cp "Nominal mass flow rate of boiler";
+  parameter Modelica.Units.SI.TemperatureDifference dTBoi_nominal=10
+    "Nominal boiler temperature difference";
   replaceable parameter BESMod.Systems.Hydraulical.Generation.RecordsCollection.AutoparameterBoiler
-    parBoi constrainedby AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition(
+    parBoi constrainedby
+    AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition(
       Q_nom=max(11000, QSec_flow_nominal))
     "Parameters for Boiler"
     annotation(Placement(transformation(extent={{22,62},{38,78}})),
@@ -16,7 +19,7 @@ model PartialHeatPumpAndGasBoiler "Partial heat pump and boiler"
   AixLib.Fluid.BoilerCHP.BoilerNoControl boi(
     redeclare package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
-    final m_flow_nominal=m_flow_nominal[1],
+    final m_flow_nominal=mBoi_flow_nominal,
     final m_flow_small=1E-4*abs(m_flow_nominal[1]),
     final show_T=show_T,
     final tau=parTemSen.tau,

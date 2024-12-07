@@ -1,20 +1,10 @@
 within BESMod.Systems.Hydraulical.Transfer;
 model UFHTransferSystem
-  extends BaseClasses.PartialTransfer(
-    dpSup_nominal={parTra.dpPumpHeaCir_nominal},
-    nHeaTra=1,
-    final nParallelSup=1,
-    final dp_nominal=parTra.dp_nominal);
-
-  IBPSA.Fluid.FixedResistances.PressureDrop res[nParallelDem](
-    redeclare package Medium = Medium,
-    each final dp_nominal=parTra.dpHeaDistr_nominal,
-    final m_flow_nominal=m_flow_nominal) "Hydraulic resistance of supply"
-    annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=0,
-        origin={-70,50})));
-
+  extends BaseClasses.PartialWithPipingLosses(dp_nominal=dpPipSca_design .+
+        dpUFH_design,
+    nHeaTra=1);
+  final parameter Modelica.Units.SI.PressureDifference dpUFH_design[nParallelDem]=ufh.pressureDrop.tubeLength.*ufh.pressureDrop.m.*m_flow_design.^ufh.pressureDrop.n
+    "Pressure drop as calculated in UFH model";
   Modelica.Blocks.Math.Gain gain[nParallelDem](k=m_flow_nominal)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -28,9 +18,9 @@ model UFHTransferSystem
     each final T0=T_start,
     each calcMethod=AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.ASHRAE140_2017) "Underfloor heating" annotation (Placement(
         transformation(
-        extent={{-29.5,-10.5},{29.5,10.5}},
+        extent={{-20,-10},{20,10}},
         rotation=270,
-        origin={9.5,9.5})));
+        origin={10,0})));
 
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixTemp[nParallelDem](
       each final T=UFHParameters.T_floor) "Fixed floor temperature" annotation (
@@ -71,10 +61,10 @@ model UFHTransferSystem
     each final C_start=C_start,
     each final C_nominal=C_nominal,
     each final allowFlowReversal=allowFlowReversal,
-    final m_flow_nominal=m_flow_nominal,
+    final m_flow_nominal=m_flow_design,
     final m_flow_small=1E-4*abs(m_flow_nominal),
     each final show_T=show_T,
-    final dp_nominal=dp_nominal,
+    final dp_nominal=dp_design,
     each final addPowerToMedium=parPum.addPowerToMedium,
     each final tau=parPum.tau,
     each final use_inputFilter=false,
@@ -82,7 +72,7 @@ model UFHTransferSystem
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={-30,50})));
+        origin={-10,40})));
   replaceable parameter
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
     parPum annotation (choicesAllMatching=true, Placement(transformation(extent={{-98,78},
@@ -93,17 +83,6 @@ model UFHTransferSystem
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={0,70})));
-  replaceable parameter RecordsCollection.TransferDataBaseDefinition parTra
-    constrainedby RecordsCollection.TransferDataBaseDefinition(
-    final Q_flow_nominal=Q_flow_nominal .* f_design,
-    final nZones=nParallelDem,
-    final AFloor=ABui,
-    final heiBui=hBui,
-    mRad_flow_nominal=m_flow_nominal,
-    mHeaCir_flow_nominal=mSup_flow_nominal[1]) "Transfer parameters" annotation (
-    Dialog(group="Component data"),
-    choicesAllMatching=true,
-    Placement(transformation(extent={{-100,-98},{-80,-78}})));
   Modelica.Blocks.Sources.RealExpression senTRet[nParallelSup](final y(
       each final unit="K",
       each displayUnit="degC") = Medium.temperature(Medium.setState_phX(
@@ -146,10 +125,11 @@ protected
 equation
 
   for i in 1:nParallelDem loop
-    connect(res[i].port_a, portTra_in[1]) annotation (Line(points={{-80,50},{
-            -86,50},{-86,38},{-100,38}}, color={0,127,255}));
-    connect(ufh[i].port_b, portTra_out[1]) annotation (Line(points={{7.75,-20},
-            {6,-20},{6,-42},{-100,-42}}, color={0,127,255}));
+    connect(res[i].port_a, portTra_in[1]) annotation (Line(points={{-60,40},{-86,
+            40},{-86,38},{-100,38}},     color={0,127,255}));
+    connect(ufh[i].port_b, portTra_out[1]) annotation (Line(points={{8.33333,-20},
+            {8.33333,-32},{8,-32},{8,-42},{-100,-42}},
+                                         color={0,127,255}));
   if UFHParameters.is_groundFloor[i] then
       connect(fixHeaFlo[i].port, heaCap[i].port) annotation (Line(points={{-82,
               -20},{-64,-20},{-64,-6}}, color={191,0,0}));
@@ -169,13 +149,14 @@ equation
   end if;
   end for;
 
-  connect(ufh.thermConv, heatPortCon) annotation (Line(points={{21.75,5.37},{
-          21.75,4},{86,4},{86,40},{100,40}}, color={191,0,0}));
-  connect(ufh.starRad, heatPortRad) annotation (Line(points={{21.05,13.04},{
-          21.05,12},{98,12},{98,-26},{86,-26},{86,-40},{100,-40}}, color={0,0,0}));
+  connect(ufh.thermConv, heatPortCon) annotation (Line(points={{21.6667,-2.8},{
+          100,-2.8},{100,26},{86,26},{86,40},{100,40}},
+                                             color={191,0,0}));
+  connect(ufh.starRad, heatPortRad) annotation (Line(points={{21,2.4},{102,2.4},
+          {102,-26},{86,-26},{86,-40},{100,-40}},                  color={0,0,0}));
 
-  connect(heaFloSen.port_b, ufh.ThermDown) annotation (Line(points={{-20,-10},{
-          -8,-10},{-8,7.14},{-2.05,7.14}}, color={191,0,0}));
+  connect(heaFloSen.port_b, ufh.ThermDown) annotation (Line(points={{-20,-10},{-12,
+          -10},{-12,-1.6},{-1,-1.6}},      color={191,0,0}));
 
   connect(gain.u, traControlBus.opening) annotation (Line(points={{-30,92},{-30,
           100},{-14,100},{-14,86},{0,86},{0,100}},
@@ -187,11 +168,12 @@ equation
   connect(heaFloSen.Q_flow, integralKPICalculator.u) annotation (Line(points={{
           -30,-21},{-30,-56},{-48,-56},{-48,-70},{-41.8,-70}}, color={0,0,127}));
   connect(res.port_b, pumpFix_m_flow.port_a)
-    annotation (Line(points={{-60,50},{-40,50}}, color={0,127,255}));
-  connect(pumpFix_m_flow.port_b, ufh.port_a) annotation (Line(points={{-20,50},
-          {7.75,50},{7.75,39}}, color={0,127,255}));
-  connect(gain.y, pumpFix_m_flow.m_flow_in) annotation (Line(points={{-30,69},{
-          -30,62}},                 color={0,0,127}));
+    annotation (Line(points={{-40,40},{-34,40},{-34,40},{-20,40}},
+                                                 color={0,127,255}));
+  connect(pumpFix_m_flow.port_b, ufh.port_a) annotation (Line(points={{0,40},{8.33333,
+          40},{8.33333,20}},    color={0,127,255}));
+  connect(gain.y, pumpFix_m_flow.m_flow_in) annotation (Line(points={{-30,69},{-30,
+          62},{-10,62},{-10,52}},   color={0,0,127}));
   connect(zeroLoad.internalElectricalPin, internalElectricalPin) annotation (
       Line(
       points={{52,-98},{72,-98}},
