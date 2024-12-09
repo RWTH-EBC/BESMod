@@ -2,15 +2,9 @@ Regression tests are only run for the following package:
   BESMod.Examples
 *** Warning: Mismatched displayUnit in 'RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/HighOrderModel/HOMAixLib.mos");'.
 
-*** Error: BESMod_Examples_HighOrderModel_HOMSpawn.txt: Errors during result verification.
-           Absolute error = 8.939e+00 at t = 25920.0 for hydraulic.generation.sigBusGen.TGenOutMea
-           Absolute error = 6.988e+02 at t = 25920.0 for electricalGrid.PElecLoa
-*** Warning: BESMod.Examples.HighOrderModel.HOMSpawn: Translation statistics for initialization and results changed for nonlinear.
- Old = 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 2, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
- New = 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 Comparison files output by funnel are stored in the directory 'funnel_comp' of size 1.0 MB.
 Run 'python -c "import buildingspy.development.regressiontest as t; t.Tester(tool=\"dymola\").report()"'
 to access a summary of the comparison results.
 
-Script that runs unit tests had 2 warnings and 1 errors.
+Script that runs unit tests had 2 warnings and 0 errors.
 
