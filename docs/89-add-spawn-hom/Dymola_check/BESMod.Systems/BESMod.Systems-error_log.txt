@@ -1,7 +1,7 @@
 
 Error in model:  BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemHOMAixLib 
 Check of <a href="Modelica://BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemHOMAixLib">BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemHOMAixLib</a>
-Error: Class or component 'GroundReflection' not found in AixLibHighOrder building
+Error: Class or component 'DiffWeatherDataTime' not found in AixLibHighOrder building
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/HeatDemand/CalcHeaDemHOMAixLib.mo, line 29
  Component context: building
   Component declared as AixLibHighOrder building in <a href="Modelica://BESMod.Systems.Demand.Building">BESMod.Systems.Demand.Building</a>
