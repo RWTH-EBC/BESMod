@@ -48,7 +48,7 @@
     },
     "model": "BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW",
     "simulation": {
-      "elapsed_time": 8.1,
+      "elapsed_time": 8.3,
       "final_time": 172800,
       "jacobians": 4664,
       "start_time": 0,
@@ -111,9 +111,9 @@
     },
     "model": "BESMod.Examples.HighOrderModel.HOMAixLib",
     "simulation": {
-      "elapsed_time": 91.3,
+      "elapsed_time": 27.8845,
       "final_time": 172800,
-      "jacobians": 5646,
+      "jacobians": 554,
       "start_time": 0,
       "state_events": 296,
       "success": true
@@ -168,7 +168,7 @@
     },
     "model": "BESMod.Examples.Retrofit.Case1TotalRetrofit",
     "simulation": {
-      "elapsed_time": 1.2,
+      "elapsed_time": 1.13,
       "final_time": 86400,
       "jacobians": 2100,
       "start_time": 0,
@@ -243,7 +243,7 @@
     },
     "model": "BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom",
     "simulation": {
-      "elapsed_time": 18.8,
+      "elapsed_time": 18.4,
       "final_time": 864000,
       "jacobians": 21941,
       "start_time": 0,
@@ -363,7 +363,7 @@
     },
     "model": "BESMod.Examples.HighOrderModel.HOMSpawn",
     "simulation": {
-      "elapsed_time": 11.0729,
+      "elapsed_time": 10.761,
       "final_time": 172800,
       "jacobians": 1167,
       "start_time": 0,
@@ -420,7 +420,7 @@
     },
     "model": "BESMod.Examples.BAUSimStudy.Case1Standard",
     "simulation": {
-      "elapsed_time": 5.5,
+      "elapsed_time": 6.19,
       "final_time": 172800,
       "jacobians": 4252,
       "start_time": 0,
@@ -477,7 +477,7 @@
     },
     "model": "BESMod.Examples.DesignOptimization.BES",
     "simulation": {
-      "elapsed_time": 3.12,
+      "elapsed_time": 2.7,
       "final_time": 172800,
       "jacobians": 3306,
       "start_time": 0,
@@ -534,7 +534,7 @@
     },
     "model": "BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW",
     "simulation": {
-      "elapsed_time": 5.62,
+      "elapsed_time": 5.4,
       "final_time": 172800,
       "jacobians": 4487,
       "start_time": 0,
@@ -591,7 +591,7 @@
     },
     "model": "BESMod.Examples.Retrofit.Case1PartialRetrofit",
     "simulation": {
-      "elapsed_time": 1.27,
+      "elapsed_time": 1.12,
       "final_time": 86400,
       "jacobians": 2245,
       "start_time": 0,
@@ -648,7 +648,7 @@
     },
     "model": "BESMod.Examples.Retrofit.Case1NoRetrofit",
     "simulation": {
-      "elapsed_time": 2.88,
+      "elapsed_time": 3.49,
       "final_time": 86400,
       "jacobians": 2254,
       "start_time": 0,
@@ -705,7 +705,7 @@
     },
     "model": "BESMod.Examples.DesignOptimization.BESNoDHW",
     "simulation": {
-      "elapsed_time": 1.69,
+      "elapsed_time": 1.8,
       "final_time": 172800,
       "jacobians": 2632,
       "start_time": 0,
@@ -762,7 +762,7 @@
     },
     "model": "BESMod.Examples.SolarThermalSystem.SolarThermalAixLib",
     "simulation": {
-      "elapsed_time": 16.6,
+      "elapsed_time": 18,
       "final_time": 172800,
       "jacobians": 3489,
       "start_time": 0,
@@ -819,7 +819,7 @@
     },
     "model": "BESMod.Examples.HeatPumpAndBoiler.Parallel",
     "simulation": {
-      "elapsed_time": 6.38,
+      "elapsed_time": 6.41,
       "final_time": 172800,
       "jacobians": 7535,
       "start_time": 0,
@@ -894,7 +894,7 @@
     },
     "model": "BESMod.Examples.ModelicaConferencePaper.TEASERBuilding",
     "simulation": {
-      "elapsed_time": 27.9,
+      "elapsed_time": 26.9,
       "final_time": 864000,
       "jacobians": 20093,
       "start_time": 0,
@@ -945,7 +945,7 @@
     },
     "model": "BESMod.Examples.TEASERHeatLoadCalculation.Example",
     "simulation": {
-      "elapsed_time": 0.258,
+      "elapsed_time": 0.243,
       "final_time": 172800,
       "jacobians": 1012,
       "start_time": 0,
@@ -1002,7 +1002,7 @@
     },
     "model": "BESMod.Examples.SolarThermalSystem.SolarThermalBuildings",
     "simulation": {
-      "elapsed_time": 19.2,
+      "elapsed_time": 18.1,
       "final_time": 172800,
       "jacobians": 3590,
       "start_time": 0,
@@ -1059,7 +1059,7 @@
     },
     "model": "BESMod.Examples.HeatPumpAndBoiler.Serial",
     "simulation": {
-      "elapsed_time": 4.38,
+      "elapsed_time": 4.4,
       "final_time": 172800,
       "jacobians": 5014,
       "start_time": 0,
