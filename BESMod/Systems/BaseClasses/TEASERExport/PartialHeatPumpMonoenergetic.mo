@@ -1,6 +1,6 @@
 within BESMod.Systems.BaseClasses.TEASERExport;
 partial model PartialHeatPumpMonoenergetic
-  "Partial monoenergetic heat pump model based on the example ModelicaConferencePaper without a battery"
+  "Partial model for TEASER export with monoenergetic heat pump"
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.UserProfiles.TEASERProfiles userProfiles,
     redeclare BESMod.Systems.Electrical.ElectricalSystem electrical(
@@ -120,4 +120,34 @@ partial model PartialHeatPumpMonoenergetic
 
   extends Modelica.Icons.Example;
 
+  annotation (Documentation(info="<html>
+<h4>Information</h4>
+<p>This is a partial model representing a monoenergetic heat pump system for the TEASER export example <code>HeatPumpMonoenergetic</code>. It implements the following subsystems:</p>
+
+<ul>
+<li>Electrical system with PV generation</li>
+<li>Heat pump based hydraulic system with electric backup heater and thermal storage</li>
+<li>Domestic hot water system with standard tapping profile</li>
+<li>Ventilation system with heat recovery</li>
+<li>Control system for DHW superheating</li>
+<li>Building: <a href=\"modelica://BESMod.Systems.Demand.Building.TEASERThermalZone\">TEASERThermalZone</a> (Automatically set by TEASER)</li>
+<li>User Profiles: <a href=\"modelica://BESMod.Systems.UserProfiles.TEASERProfiles\">TEASERProfiles</a> (Automatically set by TEASER)</li>
+</ul>
+
+<h4>Important Parameters</h4>
+<ul>
+<li>Heat pump bivalence temperature: -2 degC (271.15 K)</li>
+<li>DHW setpoint temperature: Defined in systemParameters.TSetDHW</li>
+<li>PV array area: Half of building roof area (building.ARoo/2)</li>
+<li>Ventilation air exchange rate: 0.5/h</li>
+<li>Storage loading temperature differences:
+  <ul>
+    <li>Buffer storage: 0 K</li>
+    <li>DHW storage: 10 K</li>
+  </ul>
+</li>
+<li><a href=\"modelica://AixLib.Fluid.HeatPumps.ModularReversible.Data.TableData2D.EN255.Vitocal350AWI114\">Heat pump performance data (Vitocal 350 A)</a></li>
+<li><a href=\"modelica://AixLib.DataBase.SolarElectric.SchuecoSPV170SME1\">PV module data (Schueco SPV 170SME1)</a></li>
+</ul>
+</html>"));
 end PartialHeatPumpMonoenergetic;

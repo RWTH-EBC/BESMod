@@ -1,6 +1,6 @@
 within BESMod.Systems.BaseClasses.TEASERExport;
 partial model PartialTEASERHeatLoadCalculation
-  "Partial model for TEASER heat load calculation based on Examples.TEASERHeatLoadCalculation.PartialCalculation"
+  "Partial model for TEASER export heat load calculation"
   extends BESMod.Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.UserProfiles.TEASERProfiles userProfiles,
     redeclare BESMod.Systems.RecordsCollection.ExampleSystemParameters
@@ -34,4 +34,26 @@ partial model PartialTEASERHeatLoadCalculation
 
   extends Modelica.Icons.Example;
 
+  annotation (Documentation(info="<html>
+<h4>Information</h4>
+<p>Partial model with common interfaces to enable heat load calculation with the TEASER export example <code>TEASERHeatLoadCalculation</code>. 
+This model extends the <a href=\"modelica://BESMod.Systems.BaseClasses.PartialBuildingEnergySystem\">PartialBuildingEnergySystem</a> with standard components for simple heat load simulation scenarios.</p>
+
+<h4>Important Parameters</h4>
+<ul>
+  <li>QBui_flow_nominal: Nominal heat flow rate of the building (automatically set from building model)</li>
+  <li>use_hydraulic: Set to false (no hydraulic system used)</li>
+  <li>use_ventilation: Set to false (no ventilation system used)</li>
+</ul>
+
+<h4>Components</h4>
+<ul>
+  <li>Building: <a href=\"modelica://BESMod.Systems.Demand.Building.TEASERThermalZone\">TEASERThermalZone</a> (Automatically set by TEASER)</li>
+  <li>User Profiles: <a href=\"modelica://BESMod.Systems.UserProfiles.TEASERProfiles\">TEASERProfiles</a> (Automatically set by TEASER)</li>
+  <li>Control: <a href=\"modelica://BESMod.Systems.Control.NoControl\">NoControl</a></li>
+  <li>Electrical System: Ideal heater configuration with direct grid connection</li>
+  <li>DHW: Standard profiles without actual DHW demand</li>
+  <li>Hydraulic/Ventilation: Disabled placeholder components</li>
+</ul>
+</html>"));
 end PartialTEASERHeatLoadCalculation;

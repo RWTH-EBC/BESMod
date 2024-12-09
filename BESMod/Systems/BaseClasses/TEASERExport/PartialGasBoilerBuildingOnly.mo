@@ -1,6 +1,6 @@
 within BESMod.Systems.BaseClasses.TEASERExport;
-model PartialGasBoilerBuildingOnly
-  "based on the example GasBoilerBuildingOnly"
+partial model PartialGasBoilerBuildingOnly
+  "Partial model for TEASER export with gas boiler"
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
     redeclare BESMod.Systems.Control.NoControl control,
@@ -55,5 +55,20 @@ model PartialGasBoilerBuildingOnly
      Interval=600,
      Tolerance=1e-06),
    __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/GasBoilerBuildingOnly.mos"
-        "Simulate and plot"));
+        "Simulate and plot"),
+    Documentation(info="<html>
+  <h4>Information</h4>
+  <p>
+    This is a partial model representing a gas boiler system for the TEASER export example <code>GasBoilerBuildingOnly</code>. The system only models space heating without ventilation, domestic hot water or electrical heating.
+  </p>
+
+  <h4>Key Components</h4>
+  <ul>
+    <li>Generation: <a href=\"modelica://BESMod.Systems.Hydraulical.Generation.GasBoiler\">Gas Boiler</a></li>
+    <li>Distribution: <a href=\"modelica://BESMod.Systems.Hydraulical.Distribution.BuildingOnly\">Building Only Distribution</a></li>
+    <li>Heat Transfer: <a href=\"modelica://BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased\">Pressure-based Radiator</a></li>
+    <li>Building: <a href=\"modelica://BESMod.Systems.Demand.Building.TEASERThermalZone\">TEASERThermalZone</a> (Automatically set by TEASER)</li>
+    <li>User Profiles: <a href=\"modelica://BESMod.Systems.UserProfiles.TEASERProfiles\">TEASERProfiles</a> (Automatically set by TEASER)</li>
+  </ul>
+</html>"));
 end PartialGasBoilerBuildingOnly;
