@@ -32,10 +32,9 @@ model CalcHeaDemHOMSpawn
 
   annotation (Documentation(info="<html>
 <p>This model calculates the heat demand for the Spawn model of the AixLib High Order model according to EN 12831.</p>
-<p>If you want to change the nominal outdoor air temperature, you have to adjust the outdoor air temperature in the epw file as well (see documentation of BESMod.Systems.Demand.Building.SpawnHighOrder). You can do this easily by using the search and replace function in Notepad.</p>
-<p>Further information and possible solutions for error messages can be found in the SpawnHighOrder model documentation
-(<a href=\"modelica://BESMod.Systems.Demand.Building.SpawnHighOrder\">BESMod.Systems.Demand.Building.SpawnHighOrder</a>).
-</p>
+<p>If you want to change the nominal outdoor air temperature, you have to adjust the outdoor air temperature in the epw file as well (see documentation of <a href=\"modelica://BESMod.Systems.Demand.Building.SpawnHighOrder\">BESMod.Systems.Demand.Building.SpawnHighOrder</a>).
+You can do this easily by using the search and replace function in Notepad or by running the python script <code>BESMod/Resources/Spawn/HeatLoad_Tamb_Replacement.py</code>.</p>
+<p>Further information and possible solutions for error messages can be found in the SpawnHighOrder model documentation (<a href=\"modelica://BESMod.Systems.Demand.Building.SpawnHighOrder\">BESMod.Systems.Demand.Building.SpawnHighOrder</a>). </p>
 </html>"), experiment(
       StopTime=25920000,
       Interval=600,

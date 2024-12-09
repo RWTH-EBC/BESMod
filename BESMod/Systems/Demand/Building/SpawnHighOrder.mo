@@ -30,16 +30,15 @@ model SpawnHighOrder "Spawn model of the AixLib High Order Model"
       package Medium =
         MediumZone, VZones=VZone[6:10])
     annotation (Placement(transformation(extent={{-24,-20},{30,28}})));
-  BESMod.Systems.Demand.Building.Components.SpawnHighOrderOFD.Attic attic_unheated(redeclare
-      package Medium =
-        MediumZone, VZone=VZone[11])
+  BESMod.Systems.Demand.Building.Components.SpawnHighOrderOFD.Attic attic(
+      redeclare package Medium = MediumZone, VZone=VZone[11])
     annotation (Placement(transformation(extent={{-14,36},{18,66}})));
   Modelica.Blocks.Sources.Constant constVenRatAtt(final k=1)
     "Constant ventilation rate of attic"
     annotation (Placement(transformation(extent={{-86,36},{-70,52}})));
-  Modelica.Blocks.Math.Gain InternalGainsConvRatio[nZones](each k=0.6)
+  Modelica.Blocks.Math.Gain intGainConvRatio[nZones](each k=0.6)
     annotation (Placement(transformation(extent={{80,-58},{70,-48}})));
-  Modelica.Blocks.Math.Gain InternalGainsRadRatio[nZones](each k=0.4)
+  Modelica.Blocks.Math.Gain intGainRadRatio[nZones](each k=0.4)
     annotation (Placement(transformation(extent={{80,-76},{70,-66}})));
   BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{30,-108},{50,-88}})));
@@ -48,13 +47,13 @@ model SpawnHighOrder "Spawn model of the AixLib High Order Model"
                                       annotation (Placement(transformation(
           extent={{10,-10},{-10,10}}, rotation=180,
         origin={-84,-30})));
-  Modelica.Blocks.Math.Division InternalGainsRadAreaSpecific[nZones]
+  Modelica.Blocks.Math.Division intGainRadAreaSpec[nZones]
     "Spawn needs the internal gains in W/m²"
     annotation (Placement(transformation(extent={{64,-76},{54,-66}})));
-  Modelica.Blocks.Math.Division InternalGainsConvAreaSpecific[nZones]
+  Modelica.Blocks.Math.Division intGainConvAreaSpec[nZones]
     "Spawn needs the internal gains in W/m²"
     annotation (Placement(transformation(extent={{64,-58},{54,-48}})));
-  Modelica.Blocks.Sources.Constant RoomArea[nZones](k=AZone)
+  Modelica.Blocks.Sources.Constant roomArea[nZones](k=AZone)
     "Area of the rooms"
     annotation (Placement(transformation(extent={{102,-66},{92,-56}})));
 equation
@@ -92,9 +91,9 @@ equation
   connect(portVent_out[6:10], upperFloor.portVent_out) annotation (Line(points={{100,
           -35.5},{100,-32},{46,-32},{46,6},{30,6},{30,5.44}},
         color={0,127,255}));
-  connect(constVenRatAtt.y, attic_unheated.AirExchangePort) annotation (Line(
-        points={{-69.2,44},{-20,44},{-20,52.05},{-15.12,52.05}}, color={0,0,127}));
-  connect(weaBus, attic_unheated.weaBus) annotation (Line(
+  connect(constVenRatAtt.y, attic.AirExchangePort) annotation (Line(points={{-69.2,
+          44},{-20,44},{-20,52.05},{-15.12,52.05}}, color={0,0,127}));
+  connect(weaBus, attic.weaBus) annotation (Line(
       points={{-47,98},{-47,96},{-48,96},{-48,70},{-7.28,70},{-7.28,66.3}},
       color={255,204,51},
       thickness=0.5), Text(
@@ -102,12 +101,10 @@ equation
       index=-1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(useProBus.intGains, InternalGainsConvRatio.u) annotation (Line(
-      points={{51,101},{84,101},{84,-53},{81,-53}},
-      color={0,0,127}));
-  connect(useProBus.intGains, InternalGainsRadRatio.u) annotation (Line(
-      points={{51,101},{86,101},{86,-71},{81,-71}},
-      color={0,0,127}));
+  connect(useProBus.intGains, intGainConvRatio.u) annotation (Line(points={{51,101},
+          {84,101},{84,-53},{81,-53}}, color={0,0,127}));
+  connect(useProBus.intGains, intGainRadRatio.u) annotation (Line(points={{51,101},
+          {86,101},{86,-71},{81,-71}}, color={0,0,127}));
   connect(zeroLoad.internalElectricalPin, internalElectricalPin) annotation (
       Line(
       points={{50,-98},{54,-98},{54,-80},{70,-80},{70,-96}},
@@ -117,24 +114,24 @@ equation
         points={{-73,-30},{-66,-30},{-66,-41.68},{-24.84,-41.68}}, color={0,0,127}));
   connect(constVentRate[6:10].y, upperFloor.AirExchangePort) annotation (Line(
         points={{-73,-30},{-66,-30},{-66,26.32},{-24.81,26.32}}, color={0,0,127}));
-  connect(InternalGainsConvRatio.y, InternalGainsConvAreaSpecific.u1)
+  connect(intGainConvRatio.y, intGainConvAreaSpec.u1)
     annotation (Line(points={{69.5,-53},{65,-53},{65,-50}}, color={0,0,127}));
-  connect(InternalGainsRadRatio.y, InternalGainsRadAreaSpecific.u1)
+  connect(intGainRadRatio.y, intGainRadAreaSpec.u1)
     annotation (Line(points={{69.5,-71},{65,-71},{65,-68}}, color={0,0,127}));
-  connect(RoomArea.y, InternalGainsConvAreaSpecific.u2) annotation (Line(points=
+  connect(roomArea.y, intGainConvAreaSpec.u2) annotation (Line(points=
          {{91.5,-61},{84,-61},{84,-62},{65,-62},{65,-56}}, color={0,0,127}));
-  connect(RoomArea.y, InternalGainsRadAreaSpecific.u2) annotation (Line(points={
+  connect(roomArea.y, intGainRadAreaSpec.u2) annotation (Line(points={
           {91.5,-61},{88,-61},{88,-80},{65,-80},{65,-74}}, color={0,0,127}));
-  connect(InternalGainsRadAreaSpecific[1:5].y, groundFloor.IntGainsRad)
+  connect(intGainRadAreaSpec[1:5].y, groundFloor.IntGainsRad)
     annotation (Line(points={{53.5,-71},{52,-71},{52,-86},{26,-86},{26,-98},{-50,
           -98},{-50,-70},{-25.4,-70}}, color={0,0,127}));
-  connect(InternalGainsRadAreaSpecific[6:10].y, upperFloor.IntGainsRad)
+  connect(intGainRadAreaSpec[6:10].y, upperFloor.IntGainsRad)
     annotation (Line(points={{53.5,-71},{52,-71},{52,-86},{26,-86},{26,-98},{-50,
           -98},{-50,-2},{-25.35,-2}}, color={0,0,127}));
-  connect(InternalGainsConvAreaSpecific[1:5].y, groundFloor.IntGainsConv)
+  connect(intGainConvAreaSpec[1:5].y, groundFloor.IntGainsConv)
     annotation (Line(points={{53.5,-53},{50,-53},{50,-84},{24,-84},{24,-96},{-44,
           -96},{-44,-59.44},{-25.96,-59.44}},                    color={0,0,127}));
-  connect(InternalGainsConvAreaSpecific[6:10].y, upperFloor.IntGainsConv)
+  connect(intGainConvAreaSpec[6:10].y, upperFloor.IntGainsConv)
     annotation (Line(points={{53.5,-53},{50,-53},{50,-84},{24,-84},{24,-96},{-44,
           -96},{-44,8},{-34,8},{-34,8.56},{-25.89,8.56}},
         color={0,0,127}));
@@ -152,20 +149,20 @@ equation
   connect(upperFloor.TZoneMea, buiMeaBus.TZoneMea[6:10]) annotation (Line(
         points={{31.35,21.04},{40,21.04},{40,82},{0,82},{0,99}},
                                                                color={0,0,127}));
-  connect(attic_unheated.TZoneMea, buiMeaBus.TZoneMea[11]) annotation (Line(
-        points={{18.8,60.75},{40,60.75},{40,82},{0,82},{0,99}}, color={0,0,127}));
+  connect(attic.TZoneMea, buiMeaBus.TZoneMea[11]) annotation (Line(points={{18.8,
+          60.75},{40,60.75},{40,82},{0,82},{0,99}}, color={0,0,127}));
   connect(groundFloor.TZoneOpeMea, buiMeaBus.TZoneOpeMea[1:5]) annotation (Line(
         points={{33.96,-69.52},{44,-69.52},{44,84},{0,84},{0,99}}, color={0,0,127}));
   connect(upperFloor.TZoneOpeMea, buiMeaBus.TZoneOpeMea[6:10]) annotation (Line(
         points={{31.89,-1.52},{44,-1.52},{44,84},{0,84},{0,99}}, color={0,0,127}));
-  connect(attic_unheated.TZoneOpeMea, buiMeaBus.TZoneOpeMea[11]) annotation (
-      Line(points={{18.8,52.35},{44,52.35},{44,84},{0,84},{0,99}}, color={0,0,127}));
+  connect(attic.TZoneOpeMea, buiMeaBus.TZoneOpeMea[11]) annotation (Line(points=
+         {{18.8,52.35},{44,52.35},{44,84},{0,84},{0,99}}, color={0,0,127}));
   connect(groundFloor.TZoneRadMea, buiMeaBus.TZoneRadMea[1:5]) annotation (Line(
         points={{33.96,-78.16},{46,-78.16},{46,86},{0,86},{0,99}}, color={0,0,127}));
   connect(upperFloor.TZoneRadMea, buiMeaBus.TZoneRadMea[6:10]) annotation (Line(
         points={{31.89,-11.12},{46,-11.12},{46,86},{0,86},{0,99}}, color={0,0,127}));
-  connect(attic_unheated.TZoneRadMea, buiMeaBus.TZoneRadMea[11]) annotation (
-      Line(points={{18.8,43.65},{46,43.65},{46,86},{0,86},{0,99}}, color={0,0,127}));
+  connect(attic.TZoneRadMea, buiMeaBus.TZoneRadMea[11]) annotation (Line(points=
+         {{18.8,43.65},{46,43.65},{46,86},{0,86},{0,99}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html><p>
