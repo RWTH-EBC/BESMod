@@ -31,7 +31,7 @@ model IdealHeater "Ideal heater as in reduced order model"
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={0,-40})));
-  Modelica.Blocks.Math.Sum sum1
+  Modelica.Blocks.Math.Sum sum1(nin=nParallelDem)
     annotation (Placement(transformation(extent={{-40,60},{-20,80}})));
 equation
   connect(realToElecCon.internalElectricalPin, internalElectricalPin)
