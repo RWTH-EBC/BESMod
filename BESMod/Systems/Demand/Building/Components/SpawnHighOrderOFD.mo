@@ -36,24 +36,28 @@ package SpawnHighOrderOFD
       annotation (Placement(transformation(extent={{-110,-60},{-90,-40}})));
     Modelica.Blocks.Interfaces.RealOutput TZoneMea[5](each final unit="K",
         each final displayUnit="degC") "Measured room air temperature"
-      annotation (Placement(transformation(extent={{96,66},{134,104}}),
-          iconTransformation(extent={{90,50},{120,80}})));
+      annotation (Placement(transformation(extent={{96,60},{134,98}}),
+          iconTransformation(extent={{90,62},{120,92}})));
+    Modelica.Blocks.Interfaces.RealOutput TZoneOpeMea[5](each final unit="K",
+        each final displayUnit="degC") "Measured room operative temperature"
+      annotation (Placement(transformation(extent={{94,-68},{132,-30}}),
+          iconTransformation(extent={{92,-38},{122,-8}})));
     Modelica.Blocks.Interfaces.RealOutput TZoneRadMea[5](each final unit="K",
-        each final displayUnit="degC") "Measured radiative temperature"
+        each final displayUnit="degC") "Measured room radiative temperature"
       annotation (Placement(transformation(extent={{94,-100},{132,-62}}),
-          iconTransformation(extent={{90,-64},{120,-34}})));
+          iconTransformation(extent={{92,-74},{122,-44}})));
     Modelica.Fluid.Interfaces.FluidPort_a portVent_in[5](redeclare final
         package
         Medium =         Medium)
       "Inlet for the demand of ventilation"
-      annotation (Placement(transformation(extent={{90,30},{110,50}}),
-          iconTransformation(extent={{90,16},{110,36}})));
+      annotation (Placement(transformation(extent={{90,34},{110,54}}),
+          iconTransformation(extent={{90,34},{110,54}})));
     Modelica.Fluid.Interfaces.FluidPort_b portVent_out[5](redeclare final
         package
         Medium =         Medium)
       "Outlet of the demand of Ventilation"
       annotation (Placement(transformation(extent={{92,-24},{112,-4}}),
-          iconTransformation(extent={{90,-18},{110,2}})));
+          iconTransformation(extent={{90,-2},{110,18}})));
     Modelica.Blocks.Sources.Constant qgai_flow_latent(k=0) "No latent gains"
       annotation (Placement(transformation(extent={{-90,2},{-80,12}})));
     Buildings.Fluid.Sources.MassFlowSource_WeatherData freshAir_living1(
@@ -188,6 +192,9 @@ package SpawnHighOrderOFD
     Buildings.Fluid.Sources.Boundary_pT pAtm_kitchen5(redeclare package Medium =
           Medium, nPorts=1) "Boundary condition"
       annotation (Placement(transformation(extent={{-86,-88},{-76,-78}})));
+    Modelica.Blocks.Math.Add CalcTZoneOpeMea[5](each k1=0.5, each k2=0.5)
+      "Calculate room operative temperature"
+      annotation (Placement(transformation(extent={{96,6},{110,20}})));
   protected
     Modelica.Blocks.Interfaces.RealOutput TDryBul(
       final unit="K",
@@ -227,15 +234,15 @@ package SpawnHighOrderOFD
     connect(heatPortCon[5], zone_kitchen5.heaPorAir) annotation (Line(points={{-102,
             68},{-72,68},{-72,-40},{-40,-40}}, color={191,0,0}));
     connect(zone_living1.TAir, TZoneMea[1]) annotation (Line(points={{-25.3,76.6},
-            {-4,76.6},{-4,96},{90,96},{90,77.4},{115,77.4}}, color={0,0,127}));
+            {-4,76.6},{-4,96},{90,96},{90,71.4},{115,71.4}}, color={0,0,127}));
     connect(zone_hobby2.TAir, TZoneMea[2]) annotation (Line(points={{72.7,76.6},{90,
-            76.6},{90,81.2},{115,81.2}}, color={0,0,127}));
+            76.6},{90,75.2},{115,75.2}}, color={0,0,127}));
     connect(zone_corridor3.TAir, TZoneMea[3]) annotation (Line(points={{72.7,24.6},
-            {90,24.6},{90,85},{115,85}}, color={0,0,127}));
+            {90,24.6},{90,79},{115,79}}, color={0,0,127}));
     connect(zone_wcstorage4.TAir, TZoneMea[4]) annotation (Line(points={{72.7,-27.4},
-            {72.7,-28},{90,-28},{90,88.8},{115,88.8}}, color={0,0,127}));
+            {72.7,-28},{90,-28},{90,82.8},{115,82.8}}, color={0,0,127}));
     connect(zone_kitchen5.TAir, TZoneMea[5]) annotation (Line(points={{-25.3,-27.4},
-            {-4,-27.4},{-4,96},{90,96},{90,92.6},{115,92.6}}, color={0,0,127}));
+            {-4,-27.4},{-4,96},{90,96},{90,86.6},{115,86.6}}, color={0,0,127}));
     connect(zone_living1.TRad, TZoneRadMea[1]) annotation (Line(points={{-25.3,73.8},
             {-12,73.8},{-12,-88.6},{113,-88.6}}, color={0,0,127}));
     connect(zone_hobby2.TRad, TZoneRadMea[2]) annotation (Line(points={{72.7,73.8},
@@ -275,8 +282,8 @@ package SpawnHighOrderOFD
         points={{-49,100},{-50,100},{-50,84},{-66,84},{-66,41.1},{-56,41.1}},
         color={255,204,51},
         thickness=0.5));
-    connect(portVent_in[1], zone_living1.ports[3]) annotation (Line(points={{100,36},
-            {-39.65,36},{-39.65,50.63}}, color={0,127,255}));
+    connect(portVent_in[1], zone_living1.ports[3]) annotation (Line(points={{100,40},
+            {-39.65,40},{-39.65,50.63}}, color={0,127,255}));
     connect(portVent_out[1], zone_living1.ports[4]) annotation (Line(points={{102,-18},
             {-24,-18},{-24,44},{-38.95,44},{-38.95,50.63}},      color={0,127,255}));
     connect(IntGainsRad[1], zone_living1.qGai_flow[1]) annotation (Line(points={{-105,
@@ -317,8 +324,8 @@ package SpawnHighOrderOFD
         points={{-49,100},{-49,82},{38,82},{38,45.1},{44,45.1}},
         color={255,204,51},
         thickness=0.5));
-    connect(portVent_in[2], zone_hobby2.ports[3]) annotation (Line(points={{100,38},
-            {58.35,38},{58.35,50.63}}, color={0,127,255}));
+    connect(portVent_in[2], zone_hobby2.ports[3]) annotation (Line(points={{100,42},
+            {58.35,42},{58.35,50.63}}, color={0,127,255}));
     connect(portVent_out[2], zone_hobby2.ports[4]) annotation (Line(points={{102,-16},
             {80,-16},{80,40},{59.05,40},{59.05,50.63}}, color={0,127,255}));
     connect(Volume_flow[3].y, calcMassFlow_corridor3.u1) annotation (Line(points={
@@ -333,8 +340,8 @@ package SpawnHighOrderOFD
           points={{57.65,-1.37},{56,-1.37},{56,-20}}, color={0,127,255}));
     connect(duc_corridor3.port_b, pAtm_corridor3.ports[1])
       annotation (Line(points={{44,-20},{44,-17},{26,-17}}, color={0,127,255}));
-    connect(portVent_in[3], zone_corridor3.ports[3]) annotation (Line(points={{100,
-            40},{76,40},{76,-6},{58.35,-6},{58.35,-1.37}}, color={0,127,255}));
+    connect(portVent_in[3], zone_corridor3.ports[3]) annotation (Line(points={{100,44},
+            {76,44},{76,-6},{58.35,-6},{58.35,-1.37}},     color={0,127,255}));
     connect(portVent_out[3], zone_corridor3.ports[4]) annotation (Line(points={{102,
             -14},{59.05,-14},{59.05,-1.37}}, color={0,127,255}));
     connect(weaBus, freshAir_corridor3.weaBus) annotation (Line(
@@ -353,8 +360,8 @@ package SpawnHighOrderOFD
           points={{57.65,-53.37},{57.65,-62},{56,-62},{56,-70}}, color={0,127,255}));
     connect(duc_wcstorage4.port_b, pAtm_wcstorage4.ports[1]) annotation (Line(
           points={{44,-70},{42,-70},{42,-73},{20,-73}}, color={0,127,255}));
-    connect(portVent_in[4], zone_wcstorage4.ports[3]) annotation (Line(points={{100,42},
-            {76,42},{76,-12},{80,-12},{80,-52},{76,-52},{76,-56},{58.35,-56},{58.35,
+    connect(portVent_in[4], zone_wcstorage4.ports[3]) annotation (Line(points={{100,46},
+            {76,46},{76,-12},{80,-12},{80,-52},{76,-52},{76,-56},{58.35,-56},{58.35,
             -53.37}},       color={0,127,255}));
     connect(portVent_out[4], zone_wcstorage4.ports[4]) annotation (Line(points={{102,-12},
             {80,-12},{80,-54},{76,-54},{76,-58},{59.05,-58},{59.05,-53.37}},
@@ -378,8 +385,8 @@ package SpawnHighOrderOFD
             127,255}));
     connect(duc_kitchen5.port_b, pAtm_kitchen5.ports[1]) annotation (Line(points={
             {-52,-80},{-54,-80},{-54,-83},{-76,-83}}, color={0,127,255}));
-    connect(portVent_in[5], zone_kitchen5.ports[3]) annotation (Line(points={{100,44},
-            {76,44},{76,-12},{80,-12},{80,-52},{82,-52},{82,-90},{-30,-90},{-30,-80},
+    connect(portVent_in[5], zone_kitchen5.ports[3]) annotation (Line(points={{100,48},
+            {76,48},{76,-12},{80,-12},{80,-52},{82,-52},{82,-90},{-30,-90},{-30,-80},
             {-32,-80},{-32,-68},{-39.65,-68},{-39.65,-53.37}},      color={0,127,255}));
     connect(portVent_out[5], zone_kitchen5.ports[4]) annotation (Line(points={{102,-10},
             {80,-10},{80,-54},{82,-54},{82,-90},{-30,-90},{-30,-80},{-32,-80},{-32,
@@ -388,6 +395,31 @@ package SpawnHighOrderOFD
         points={{-49,100},{-49,84},{-66,84},{-66,-68.9},{-54,-68.9}},
         color={255,204,51},
         thickness=0.5));
+    connect(zone_living1.TAir, CalcTZoneOpeMea[1].u1) annotation (Line(points={{-25.3,
+            76.6},{-4,76.6},{-4,96},{90,96},{90,17.2},{94.6,17.2}}, color={0,0,127}));
+    connect(zone_living1.TRad, CalcTZoneOpeMea[1].u2) annotation (Line(points={{-25.3,
+            73.8},{-12,73.8},{-12,-88},{86,-88},{86,8},{90,8},{90,8.8},{94.6,8.8}},
+          color={0,0,127}));
+    connect(zone_hobby2.TAir, CalcTZoneOpeMea[2].u1) annotation (Line(points={{72.7,
+            76.6},{88,76.6},{88,17.2},{94.6,17.2}}, color={0,0,127}));
+    connect(zone_hobby2.TRad, CalcTZoneOpeMea[2].u2) annotation (Line(points={{72.7,
+            73.8},{72.7,74},{86,74},{86,8.8},{94.6,8.8}}, color={0,0,127}));
+    connect(zone_corridor3.TAir, CalcTZoneOpeMea[3].u1) annotation (Line(points={{
+            72.7,24.6},{72.7,24},{88,24},{88,17.2},{94.6,17.2}}, color={0,0,127}));
+    connect(zone_corridor3.TRad, CalcTZoneOpeMea[3].u2) annotation (Line(points={{
+            72.7,21.8},{86,21.8},{86,8.8},{94.6,8.8}}, color={0,0,127}));
+    connect(zone_wcstorage4.TAir, CalcTZoneOpeMea[4].u1) annotation (Line(points={
+            {72.7,-27.4},{72.7,-28},{88,-28},{88,17.2},{94.6,17.2}}, color={0,0,127}));
+    connect(zone_wcstorage4.TRad, CalcTZoneOpeMea[4].u2) annotation (Line(points={
+            {72.7,-30.2},{86,-30.2},{86,8.8},{94.6,8.8}}, color={0,0,127}));
+    connect(zone_kitchen5.TAir, CalcTZoneOpeMea[5].u1) annotation (Line(points={{-25.3,
+            -27.4},{-4,-27.4},{-4,96},{90,96},{90,86},{88,86},{88,17.2},{94.6,17.2}},
+          color={0,0,127}));
+    connect(zone_kitchen5.TRad, CalcTZoneOpeMea[5].u2) annotation (Line(points={{-25.3,
+            -30.2},{-12,-30.2},{-12,-88},{86,-88},{86,8.8},{94.6,8.8}}, color={0,0,
+            127}));
+    connect(CalcTZoneOpeMea.y, TZoneOpeMea) annotation (Line(points={{110.7,13},{118,
+            13},{118,-26},{92,-26},{92,-49},{113,-49}}, color={0,0,127}));
     annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
               {100,100}}), graphics={
           Bitmap(extent={{-100,-100},{100,100}}, fileName=
@@ -472,21 +504,25 @@ package SpawnHighOrderOFD
     Modelica.Blocks.Interfaces.RealOutput TZoneMea[5](each final unit="K",
         each final displayUnit="degC") "Measured room air temperature"
       annotation (Placement(transformation(extent={{96,66},{134,104}}),
-          iconTransformation(extent={{90,50},{120,80}})));
+          iconTransformation(extent={{90,56},{120,86}})));
+    Modelica.Blocks.Interfaces.RealOutput TZoneOpeMea[5](each final unit="K",
+        each final displayUnit="degC") "Measured room operative temperature"
+      annotation (Placement(transformation(extent={{94,-68},{132,-30}}),
+          iconTransformation(extent={{92,-38},{122,-8}})));
     Modelica.Blocks.Interfaces.RealOutput TZoneRadMea[5](each final unit="K",
-        each final displayUnit="degC") "Measured radiative temperature"
+        each final displayUnit="degC") "Measured room radiative temperature"
       annotation (Placement(transformation(extent={{94,-100},{132,-62}}),
-          iconTransformation(extent={{90,-64},{120,-34}})));
+          iconTransformation(extent={{92,-78},{122,-48}})));
     Modelica.Fluid.Interfaces.FluidPort_a portVent_in[5](redeclare final
         package Medium = Medium)
       "Inlet for the demand of ventilation"
       annotation (Placement(transformation(extent={{90,30},{110,50}}),
-          iconTransformation(extent={{90,16},{110,36}})));
+          iconTransformation(extent={{90,30},{110,50}})));
     Modelica.Fluid.Interfaces.FluidPort_b portVent_out[5](redeclare final
         package Medium = Medium)
       "Outlet of the demand of Ventilation"
       annotation (Placement(transformation(extent={{92,-24},{112,-4}}),
-          iconTransformation(extent={{90,-18},{110,2}})));
+          iconTransformation(extent={{90,-4},{110,16}})));
     Modelica.Blocks.Sources.Constant qgai_flow_latent(k=0) "No latent gains"
       annotation (Placement(transformation(extent={{-90,2},{-80,12}})));
     Buildings.Fluid.Sources.MassFlowSource_WeatherData freshAir_bedroom6(
@@ -619,6 +655,9 @@ package SpawnHighOrderOFD
         Medium =
           Medium, nPorts=1) "Boundary condition"
       annotation (Placement(transformation(extent={{-86,-88},{-76,-78}})));
+    Modelica.Blocks.Math.Add CalcTZoneOpeMea[5](each k1=0.5, each k2=0.5)
+      "Calculate room operative temperature"
+      annotation (Placement(transformation(extent={{96,6},{110,20}})));
   protected
     Modelica.Blocks.Interfaces.RealOutput TDryBul(
       final unit="K",
@@ -817,6 +856,31 @@ package SpawnHighOrderOFD
         points={{-49,100},{-49,84},{-66,84},{-66,-68.9},{-54,-68.9}},
         color={255,204,51},
         thickness=0.5));
+    connect(zone_bedroom6.TAir, CalcTZoneOpeMea[1].u1) annotation (Line(points={{-25.3,
+            76.6},{-4,76.6},{-4,96},{90,96},{90,17.2},{94.6,17.2}}, color={0,0,127}));
+    connect(zone_bedroom6.TRad, CalcTZoneOpeMea[1].u2) annotation (Line(points={{-25.3,
+            73.8},{-12,73.8},{-12,-88},{86,-88},{86,8},{90,8},{90,8.8},{94.6,8.8}},
+          color={0,0,127}));
+    connect(zone_children7.TAir, CalcTZoneOpeMea[2].u1) annotation (Line(points={{72.7,
+            76.6},{88,76.6},{88,17.2},{94.6,17.2}}, color={0,0,127}));
+    connect(zone_children7.TRad, CalcTZoneOpeMea[2].u2) annotation (Line(points={{72.7,
+            73.8},{72.7,74},{86,74},{86,8.8},{94.6,8.8}}, color={0,0,127}));
+    connect(zone_corridor8.TAir, CalcTZoneOpeMea[3].u1) annotation (Line(points={{
+            72.7,24.6},{72.7,24},{88,24},{88,17.2},{94.6,17.2}}, color={0,0,127}));
+    connect(zone_corridor8.TRad, CalcTZoneOpeMea[3].u2) annotation (Line(points={{
+            72.7,21.8},{86,21.8},{86,8.8},{94.6,8.8}}, color={0,0,127}));
+    connect(zone_bath9.TAir, CalcTZoneOpeMea[4].u1) annotation (Line(points={
+            {72.7,-27.4},{72.7,-28},{88,-28},{88,17.2},{94.6,17.2}}, color={0,0,127}));
+    connect(zone_bath9.TRad, CalcTZoneOpeMea[4].u2) annotation (Line(points={
+            {72.7,-30.2},{86,-30.2},{86,8.8},{94.6,8.8}}, color={0,0,127}));
+    connect(zone_children10.TAir, CalcTZoneOpeMea[5].u1) annotation (Line(points={{-25.3,
+            -27.4},{-4,-27.4},{-4,96},{90,96},{90,86},{88,86},{88,17.2},{94.6,17.2}},
+          color={0,0,127}));
+    connect(zone_children10.TRad, CalcTZoneOpeMea[5].u2) annotation (Line(points={{-25.3,
+            -30.2},{-12,-30.2},{-12,-88},{86,-88},{86,8.8},{94.6,8.8}}, color={0,0,
+            127}));
+    connect(CalcTZoneOpeMea.y, TZoneOpeMea) annotation (Line(points={{110.7,13},{118,
+            13},{118,-26},{92,-26},{92,-49},{113,-49}}, color={0,0,127}));
     annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
               {100,100}}), graphics={
           Bitmap(extent={{-100,-100},{100,100}}, fileName=
@@ -879,8 +943,13 @@ package SpawnHighOrderOFD
               displayUnit="degC") "Measured room air temperature" annotation (
         Placement(transformation(extent={{96,66},{134,104}}), iconTransformation(
             extent={{90,50},{120,80}})));
+    Modelica.Blocks.Interfaces.RealOutput TZoneOpeMea(each final unit="K", each final
+              displayUnit="degC") "Measured room operative temperature"
+                                                                  annotation (
+        Placement(transformation(extent={{96,2},{134,40}}),   iconTransformation(
+            extent={{90,-6},{120,24}})));
     Modelica.Blocks.Interfaces.RealOutput TZoneRadMea(each final unit="K", each final
-              displayUnit="degC") "Measured radiative temperature" annotation (
+              displayUnit="degC") "Measured room radiative temperature" annotation (
         Placement(transformation(extent={{94,-100},{132,-62}}),
           iconTransformation(extent={{90,-64},{120,-34}})));
     Buildings.Fluid.Sources.MassFlowSource_WeatherData freshAir_attic(
@@ -913,6 +982,9 @@ package SpawnHighOrderOFD
       annotation (Placement(transformation(extent={{-98,-22},{-80,-6}})));
     Modelica.Blocks.Sources.Constant qgain[3](k={0,0,0}) "No internal gains "
       annotation (Placement(transformation(extent={{-36,26},{-22,40}})));
+    Modelica.Blocks.Math.Add CalcTZoneOpeMea(k1=0.5, k2=0.5)
+      "Calculate room operative temperature"
+      annotation (Placement(transformation(extent={{60,10},{80,30}})));
   protected
     Modelica.Blocks.Interfaces.RealOutput TDryBul(
       final unit="K",
@@ -928,10 +1000,10 @@ package SpawnHighOrderOFD
     connect(weaBus.TDryBul, TDryBul);
     rho = Medium.density(Medium.setState_pTX(
       pAtm, TDryBul, X));
-    connect(zone_attic.TAir, TZoneMea) annotation (Line(points={{22.7,20.6},{88,
-            20.6},{88,85},{115,85}}, color={0,0,127}));
-    connect(zone_attic.TRad, TZoneRadMea) annotation (Line(points={{22.7,17.8},
-            {22.7,18},{88,18},{88,-81},{113,-81}}, color={0,0,127}));
+    connect(zone_attic.TAir, TZoneMea) annotation (Line(points={{22.7,20.6},{32,20.6},
+            {32,85},{115,85}},       color={0,0,127}));
+    connect(zone_attic.TRad, TZoneRadMea) annotation (Line(points={{22.7,17.8},{22.7,
+            18},{32,18},{32,-81},{113,-81}},       color={0,0,127}));
     connect(AirExchangePort, Volume_flow.u) annotation (Line(points={{-107,7},{-94.9,
             7},{-94.9,6},{-82.8,6}},   color={0,0,127}));
     connect(air_density.y, calcMassFlow_attic.u2)
@@ -952,6 +1024,12 @@ package SpawnHighOrderOFD
         thickness=0.5));
     connect(qgain.y, zone_attic.qGai_flow) annotation (Line(points={{-21.3,33},{-12,
             33},{-12,15},{-7.4,15}}, color={0,0,127}));
+    connect(CalcTZoneOpeMea.y, TZoneOpeMea)
+      annotation (Line(points={{81,20},{81,21},{115,21}}, color={0,0,127}));
+    connect(zone_attic.TAir, CalcTZoneOpeMea.u1) annotation (Line(points={{22.7,20.6},
+            {32,20.6},{32,26},{58,26}}, color={0,0,127}));
+    connect(zone_attic.TRad, CalcTZoneOpeMea.u2) annotation (Line(points={{22.7,17.8},
+            {22.7,18},{32,18},{32,14},{58,14}}, color={0,0,127}));
     annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
               {100,100}}), graphics={
           Polygon(

@@ -1,7 +1,7 @@
 within BESMod.Examples.HighOrderModel;
 model HOMSpawn
   extends BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM(
-    redeclare Systems.Demand.Building.SpawnHighOrder         building(
+    redeclare BESMod.Systems.Demand.Building.SpawnHighOrder         building(
       useConstVentRate=false, wea_name=systemParameters.filNamWea),
       systemParameters(
       QBui_flow_nominal={832.063,514.782,366.72,721.233,688.894,864.215,580.23,
@@ -19,7 +19,9 @@ model HOMSpawn
    __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/HighOrderModel/HOMSpawn.mos"
         "Simulate and plot"),
     Documentation(info="<html>
-<p>This is the Example model with the Spawn model corresponding to the High Order Model (HOM) contained in the AixLib library.</p>
-<p>Further information and possible solutions for error messages can be found in the SpawnHighOrder model documentation.</p>
-</html>"));
+    <p>This is the Example model with the Spawn model corresponding to the High Order Model (HOM) contained in the AixLib library.
+    <p>Further information and possible solutions for error messages can be found in the SpawnHighOrder model documentation
+    (<a href=\"modelica://BESMod.Systems.Demand.Building.SpawnHighOrder\">BESMod.Systems.Demand.Building.SpawnHighOrder</a>).
+    </p>
+    </html>"));
 end HOMSpawn;

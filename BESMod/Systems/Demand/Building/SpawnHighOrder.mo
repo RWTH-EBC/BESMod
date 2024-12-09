@@ -1,6 +1,6 @@
 ﻿within BESMod.Systems.Demand.Building;
 model SpawnHighOrder "Spawn model of the AixLib High Order Model"
-  extends BaseClasses.PartialDemand(
+  extends BESMod.Systems.Demand.Building.BaseClasses.PartialDemand(
     use_hydraulic = true,
     use_ventilation = false,
     ARoo=129.95,
@@ -15,23 +15,23 @@ model SpawnHighOrder "Spawn model of the AixLib High Order Model"
   parameter Boolean useConstVentRate=false;
   parameter Real ventRate[nZones]=fill(0, nZones) if useConstVentRate "Constant mechanical ventilation rate" annotation (Dialog(enable=useConstVentRate));
   parameter String idf_name=Modelica.Utilities.Files.loadResource("modelica://BESMod/Resources/Spawn/AixLib_HOM_in_EnergyPlus.idf")        "Name of the IDF file";
-  parameter String epw_name=Modelica.Utilities.Files.loadResource("modelica://BESMod/Resources/Spawn/Potsdam_TRY2015_normal.epw")        "Name of the weather file, in .epw format and with .epw extension";
-  parameter String wea_name=Modelica.Utilities.Files.loadResource("modelica://BESMod/Resources/Spawn/Potsdam_TRY2015_normal.mos")        "Name of the weather file, in .mos format and with .mos extension";
+  parameter String epw_name=Modelica.Utilities.Files.loadResource("modelica://BESMod/Resources/Spawn/Potsdam_TRY2015_normal.epw")        "Name of the weather file (.epw format)";
+  parameter String wea_name=Modelica.Utilities.Files.loadResource("modelica://BESMod/Resources/Spawn/Potsdam_TRY2015_normal.mos")        "Name of the weather file (.mos format)";
   inner Buildings.ThermalZones.EnergyPlus_9_6_0.Building building(
     idfName=idf_name,
     epwName=epw_name,
     weaName=wea_name)
     annotation (Placement(transformation(extent={{-94,-10},{-74,10}})));
-  Components.SpawnHighOrderOFD.GroundFloor groundFloor(redeclare package Medium =
+  BESMod.Systems.Demand.Building.Components.SpawnHighOrderOFD.GroundFloor groundFloor(redeclare
+      package Medium =
         MediumZone, VZones=VZone[1:5])
     annotation (Placement(transformation(extent={{-24,-88},{32,-40}})));
-  Components.SpawnHighOrderOFD.UpperFloor upperFloor(redeclare package Medium =
+  BESMod.Systems.Demand.Building.Components.SpawnHighOrderOFD.UpperFloor upperFloor(redeclare
+      package Medium =
         MediumZone, VZones=VZone[6:10])
     annotation (Placement(transformation(extent={{-24,-20},{30,28}})));
-  Modelica.Blocks.Math.Add TZoneOpeMeaKelvin[nZones + nZonesNonHeated](each k1=0.5,
-      each k2=0.5) "Operative room temperature"
-    annotation (Placement(transformation(extent={{52,-8},{66,6}})));
-  Components.SpawnHighOrderOFD.Attic attic_unheated(redeclare package Medium =
+  BESMod.Systems.Demand.Building.Components.SpawnHighOrderOFD.Attic attic_unheated(redeclare
+      package Medium =
         MediumZone, VZone=VZone[11])
     annotation (Placement(transformation(extent={{-14,36},{18,66}})));
   Modelica.Blocks.Sources.Constant constVenRatAtt(final k=1)
@@ -41,16 +41,13 @@ model SpawnHighOrder "Spawn model of the AixLib High Order Model"
     annotation (Placement(transformation(extent={{80,-58},{70,-48}})));
   Modelica.Blocks.Math.Gain InternalGainsRadRatio[nZones](each k=0.4)
     annotation (Placement(transformation(extent={{80,-76},{70,-66}})));
-  Utilities.Electrical.ZeroLoad zeroLoad
+  BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{30,-108},{50,-88}})));
   Modelica.Blocks.Sources.Constant constVentRate[nZones](final k=ventRate)
     if useConstVentRate "Only used when \"useConstVentRate = true\""
                                       annotation (Placement(transformation(
           extent={{10,-10},{-10,10}}, rotation=180,
         origin={-84,-30})));
-  Modelica.Thermal.HeatTransfer.Celsius.FromKelvin TZoneOpeMea[nZones +
-    nZonesNonHeated]
-    annotation (Placement(transformation(extent={{60,22},{68,30}})));
   Modelica.Blocks.Math.Division InternalGainsRadAreaSpecific[nZones]
     "Spawn needs the internal gains in W/m²"
     annotation (Placement(transformation(extent={{64,-76},{54,-66}})));
@@ -87,31 +84,14 @@ equation
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
   connect(portVent_in[1:5], groundFloor.portVent_in) annotation (Line(points={{100,
-          37.5},{42,37.5},{42,-57.76},{32,-57.76}}, color={0,127,255}));
+          37.5},{42,37.5},{42,-53.44},{32,-53.44}}, color={0,127,255}));
   connect(portVent_in[6:10], upperFloor.portVent_in) annotation (Line(points={{100,
-          42.5},{42,42.5},{42,10.24},{30,10.24}}, color={0,127,255}));
-  connect(portVent_out[1:5], groundFloor.portVent_out) annotation (Line(points={
-          {100,-40.5},{46,-40.5},{46,-65.92},{32,-65.92}}, color={0,127,255}));
-  connect(portVent_out[6:10], upperFloor.portVent_out) annotation (Line(points={
-          {100,-35.5},{78,-35.5},{78,-40},{46,-40},{46,-14},{30,-14},{30,2.08}},
+          42.5},{42,42.5},{42,13.6},{30,13.6}},   color={0,127,255}));
+  connect(portVent_out[1:5], groundFloor.portVent_out) annotation (Line(points={{100,
+          -40.5},{46,-40.5},{46,-62.08},{32,-62.08}},      color={0,127,255}));
+  connect(portVent_out[6:10], upperFloor.portVent_out) annotation (Line(points={{100,
+          -35.5},{100,-32},{46,-32},{46,6},{30,6},{30,5.44}},
         color={0,127,255}));
-  connect(groundFloor.TZoneMea, TZoneOpeMeaKelvin[1:5].u1) annotation (Line(
-        points={{33.4,-48.4},{40,-48.4},{40,3.2},{50.6,3.2}}, color={0,0,127}));
-  connect(upperFloor.TZoneMea, TZoneOpeMeaKelvin[6:10].u1) annotation (Line(
-        points={{31.35,19.6},{31.35,22},{40,22},{40,3.2},{50.6,3.2}}, color={0,0,
-          127}));
-  connect(groundFloor.TZoneRadMea, TZoneOpeMeaKelvin[1:5].u2) annotation (Line(
-        points={{33.4,-75.76},{33.4,-76},{44,-76},{44,-5.2},{50.6,-5.2}}, color=
-         {0,0,127}));
-  connect(upperFloor.TZoneRadMea, TZoneOpeMeaKelvin[6:10].u2) annotation (Line(
-        points={{31.35,-7.76},{31.35,-8},{44,-8},{44,-5.2},{50.6,-5.2}}, color={
-          0,0,127}));
-  connect(attic_unheated.TZoneMea, TZoneOpeMeaKelvin[11].u1) annotation (Line(
-        points={{18.8,60.75},{18,60.75},{18,60},{40,60},{40,3.2},{50.6,3.2}},
-        color={0,0,127}));
-  connect(attic_unheated.TZoneRadMea, TZoneOpeMeaKelvin[11].u2) annotation (
-      Line(points={{18.8,43.65},{18.8,42},{44,42},{44,-5.2},{50.6,-5.2}}, color=
-         {0,0,127}));
   connect(constVenRatAtt.y, attic_unheated.AirExchangePort) annotation (Line(
         points={{-69.2,44},{-20,44},{-20,52.05},{-15.12,52.05}}, color={0,0,127}));
   connect(weaBus, attic_unheated.weaBus) annotation (Line(
@@ -137,10 +117,6 @@ equation
         points={{-73,-30},{-66,-30},{-66,-41.68},{-24.84,-41.68}}, color={0,0,127}));
   connect(constVentRate[6:10].y, upperFloor.AirExchangePort) annotation (Line(
         points={{-73,-30},{-66,-30},{-66,26.32},{-24.81,26.32}}, color={0,0,127}));
-  connect(TZoneOpeMeaKelvin.y, TZoneOpeMea.Kelvin) annotation (Line(points={{66.7,
-          -1},{70,-1},{70,18},{54,18},{54,26},{59.2,26}}, color={0,0,127}));
-  connect(TZoneOpeMea.Celsius, buiMeaBus.TZoneOpeMea) annotation (Line(points={{
-          68.4,26},{70,26},{70,88},{0,88},{0,99}}, color={0,0,127}));
   connect(InternalGainsConvRatio.y, InternalGainsConvAreaSpecific.u1)
     annotation (Line(points={{69.5,-53},{65,-53},{65,-50}}, color={0,0,127}));
   connect(InternalGainsRadRatio.y, InternalGainsRadAreaSpecific.u1)
@@ -150,17 +126,17 @@ equation
   connect(RoomArea.y, InternalGainsRadAreaSpecific.u2) annotation (Line(points={
           {91.5,-61},{88,-61},{88,-80},{65,-80},{65,-74}}, color={0,0,127}));
   connect(InternalGainsRadAreaSpecific[1:5].y, groundFloor.IntGainsRad)
-    annotation (Line(points={{53.5,-71},{48,-71},{48,-86},{26,-86},{26,-98},{-50,
+    annotation (Line(points={{53.5,-71},{52,-71},{52,-86},{26,-86},{26,-98},{-50,
           -98},{-50,-70},{-25.4,-70}}, color={0,0,127}));
   connect(InternalGainsRadAreaSpecific[6:10].y, upperFloor.IntGainsRad)
-    annotation (Line(points={{53.5,-71},{48,-71},{48,-86},{26,-86},{26,-98},{-50,
+    annotation (Line(points={{53.5,-71},{52,-71},{52,-86},{26,-86},{26,-98},{-50,
           -98},{-50,-2},{-25.35,-2}}, color={0,0,127}));
   connect(InternalGainsConvAreaSpecific[1:5].y, groundFloor.IntGainsConv)
-    annotation (Line(points={{53.5,-53},{50,-53},{50,-70},{46,-70},{46,-84},{24,
-          -84},{24,-96},{-44,-96},{-44,-59.44},{-25.96,-59.44}}, color={0,0,127}));
+    annotation (Line(points={{53.5,-53},{50,-53},{50,-84},{24,-84},{24,-96},{-44,
+          -96},{-44,-59.44},{-25.96,-59.44}},                    color={0,0,127}));
   connect(InternalGainsConvAreaSpecific[6:10].y, upperFloor.IntGainsConv)
-    annotation (Line(points={{53.5,-53},{50,-53},{50,-70},{46,-70},{46,-84},{24,
-          -84},{24,-96},{-44,-96},{-44,8},{-34,8},{-34,8.56},{-25.89,8.56}},
+    annotation (Line(points={{53.5,-53},{50,-53},{50,-84},{24,-84},{24,-96},{-44,
+          -96},{-44,8},{-34,8},{-34,8.56},{-25.89,8.56}},
         color={0,0,127}));
   if not useConstVentRate then
     connect(useProBus.natVent[1:5], groundFloor.AirExchangePort) annotation (Line(
@@ -171,11 +147,25 @@ equation
       color={0,0,127}));
   end if;
   connect(groundFloor.TZoneMea, buiMeaBus.TZoneMea[1:5]) annotation (Line(
-        points={{33.4,-48.4},{40,-48.4},{40,82},{0,82},{0,99}}, color={0,0,127}));
+        points={{33.4,-45.52},{40,-45.52},{40,82},{0,82},{0,99}},
+                                                                color={0,0,127}));
   connect(upperFloor.TZoneMea, buiMeaBus.TZoneMea[6:10]) annotation (Line(
-        points={{31.35,19.6},{40,19.6},{40,82},{0,82},{0,99}}, color={0,0,127}));
+        points={{31.35,21.04},{40,21.04},{40,82},{0,82},{0,99}},
+                                                               color={0,0,127}));
   connect(attic_unheated.TZoneMea, buiMeaBus.TZoneMea[11]) annotation (Line(
         points={{18.8,60.75},{40,60.75},{40,82},{0,82},{0,99}}, color={0,0,127}));
+  connect(groundFloor.TZoneOpeMea, buiMeaBus.TZoneOpeMea[1:5]) annotation (Line(
+        points={{33.96,-69.52},{44,-69.52},{44,84},{0,84},{0,99}}, color={0,0,127}));
+  connect(upperFloor.TZoneOpeMea, buiMeaBus.TZoneOpeMea[6:10]) annotation (Line(
+        points={{31.89,-1.52},{44,-1.52},{44,84},{0,84},{0,99}}, color={0,0,127}));
+  connect(attic_unheated.TZoneOpeMea, buiMeaBus.TZoneOpeMea[11]) annotation (
+      Line(points={{18.8,52.35},{44,52.35},{44,84},{0,84},{0,99}}, color={0,0,127}));
+  connect(groundFloor.TZoneRadMea, buiMeaBus.TZoneRadMea[1:5]) annotation (Line(
+        points={{33.96,-78.16},{46,-78.16},{46,86},{0,86},{0,99}}, color={0,0,127}));
+  connect(upperFloor.TZoneRadMea, buiMeaBus.TZoneRadMea[6:10]) annotation (Line(
+        points={{31.89,-11.12},{46,-11.12},{46,86},{0,86},{0,99}}, color={0,0,127}));
+  connect(attic_unheated.TZoneRadMea, buiMeaBus.TZoneRadMea[11]) annotation (
+      Line(points={{18.8,43.65},{46,43.65},{46,86},{0,86},{0,99}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html><p>
