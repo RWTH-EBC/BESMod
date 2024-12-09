@@ -1,6 +1,7 @@
 TEASERThermalZone
 BuildingsRoomCase600FF
 AixLibHighOrder
+SpawnHighOrder
 Components
 BaseClasses
 RecordsCollection

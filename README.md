@@ -68,6 +68,11 @@ You are invited to contribute to the development of **BESMod**.
 Issues can be reported using this site's [Issues section](https://github.com/RWTH-EBC/BESMod/issues).
 Furthermore, you are welcome to contribute via [Pull Requests](https://github.com/RWTH-EBC/BESMod/pulls).
 
+If you want to update the CI templates, get MoCITempGen locally, change the tomls under ci-tests\config and run:
+```bash
+python path_to_\MoCITempGen\ci_templates_build.py --update-templates --templates-toml-file path_to_BESMod\ci-tests\config\templates_generator_config.toml --ci-toml-file path_to_BESMod\ci-tests\config\modelica_py_ci_config.toml
+```
+
 # How to cite BESMod
 
 [Paper about BESMod at the Modelica Conference 2022](https://2022.american.conference.modelica.org/documents/01_papers/02_full/1_Wullhorst.pdf) 

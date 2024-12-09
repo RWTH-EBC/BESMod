@@ -6,7 +6,7 @@ partial model PartialDemand "Partial demand model for HPS"
     are not available in open modelica" annotation(Dialog(tab="Advanced"));
   parameter Integer nZones(min=1) "Number of zones /rooms";
   parameter Modelica.Units.SI.Temperature TSetZone_nominal[nZones]=fill(293.15,
-      nZones) "Nominal room set temerature"
+      nZones) "Nominal room set temperature"
     annotation (Dialog(group="Temperature demand"));
   parameter Modelica.Units.SI.Area AZone[nZones](each min=0.1)
     "Area of zones/rooms"

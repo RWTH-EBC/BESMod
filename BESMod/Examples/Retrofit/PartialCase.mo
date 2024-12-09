@@ -95,8 +95,4 @@ partial model PartialCase
     "If true, hydraulic distribution system uses QBuiNoRetrofit.";
   parameter Boolean NoRetrofitHydGen = false
     "If true, hydraulic generation system uses QBuiNoRetrofit.";
-  annotation (experiment(
-      StopTime=31536000,
-      Interval=600,
-      __Dymola_Algorithm="Dassl"));
 end PartialCase;
