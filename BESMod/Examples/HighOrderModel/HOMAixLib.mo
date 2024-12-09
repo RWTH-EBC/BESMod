@@ -5,8 +5,6 @@ model HOMAixLib
       energyDynamicsWalls=Modelica.Fluid.Types.Dynamics.FixedInitial,
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       useConstVentRate=false,
-      TimeCorrection=0,
-      DiffWeatherDataTime=Modelica.Units.Conversions.to_hour(weaDat.timZon),
       redeclare AixLib.DataBase.Walls.Collections.OFD.EnEV2009Heavy wallTypes,
       redeclare model WindowModel =
           AixLib.ThermalZones.HighOrder.Components.WindowsDoors.WindowSimple,
@@ -18,9 +16,11 @@ model HOMAixLib
         HOMBuiEnv));
 
   extends Modelica.Icons.Example;
-  annotation (experiment(StopTime=172800,
-     Interval=600,
-     Tolerance=1e-06),
+  annotation (experiment(
+      StopTime=172800,
+      Interval=600,
+      Tolerance=1e-06,
+      __Dymola_Algorithm="Cvode"),
    __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/HighOrderModel/HOMAixLib.mos"
         "Simulate and plot"));
 end HOMAixLib;
