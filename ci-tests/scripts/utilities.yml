@@ -1,5 +1,5 @@
 # Variables
-# conda_environment: myenv
+# activate_python_environment: eval "$(micromamba shell hook --shell bash)" && micromamba activate base
 # modelica_py_ci_url: https://github.com/RWTH-EBC/ModelicaPyCI.git
 # ci_toml_path: ci-tests/config/modelica_py_ci_config.toml
 # commit_string: $CI_COMMIT_MESSAGE  !~ /ci_update_ref/   && $CI_COMMIT_MESSAGE  !~ /ci_show_ref/ && $CI_COMMIT_MESSAGE  !~ /ci_dif_ref/ && $CI_COMMIT_MESSAGE  !~ /ci_create_model_whitelist/ && $CI_COMMIT_MESSAGE  !~ /ci_create_html_whitelist/ && $CI_COMMIT_MESSAGE  !~ /ci_create_example_whitelist/ && $CI_COMMIT_MESSAGE  !~ /ci_simulate/ && $CI_COMMIT_MESSAGE  !~ /ci_om_simulate/ && $CI_COMMIT_MESSAGE  !~ /ci_check/ && $CI_COMMIT_MESSAGE  !~ /ci_om_check/ && $CI_COMMIT_MESSAGE  !~ /ci_regression_test/ && $CI_COMMIT_MESSAGE  !~ /ci_html/ && $CI_COMMIT_MESSAGE  !~ /ci_setting/ && $CI_COMMIT_MESSAGE  !~ /ci_style_check/ && $CI_COMMIT_MESSAGE  !~ /ci_trigger_ibpsa/ && $CI_COMMIT_MESSAGE  !~ /ci_merge_except/ && $CI_COMMIT_MESSAGE  !~ /ci_correct_html/ && $CI_COMMIT_MESSAGE  !~ /ci_build_structure/ && $CI_COMMIT_MESSAGE  !~ /ci_build_whitelist/ && $CI_COMMIT_MESSAGE  !~ /ci_reference_check/ && $CI_COMMIT_MESSAGE  !~ /ci_check_naming/
@@ -23,7 +23,7 @@
 .activate_python_and_install_requirements:
   script:
     - export PIP_CACHE_DIR="/opt/cache/pip"
-    - source activate myenv || echo "myenv is not installed, can't activate it"
+    - eval "$(micromamba shell hook --shell bash)" && micromamba activate base || echo "Could not activate python environment"
     - pip install --upgrade pip && pip install natsort toml pandas mako requests
     - export PYTHONIOENCODING=utf-8
     - pip install git+https://github.com/FWuellhorst/BuildingsPy.git@issue253_coverage
@@ -32,7 +32,7 @@
 
 .custom_install_additional_modelica_libraries:
   script:
-    - apt-get install git-lfs -y
+    - apt-get update && apt-get install git-lfs wget -y
     - python install_dependencies.py full
     - chmod +x ./ci-tests/scripts/install_spawn.sh
     - ./ci-tests/scripts/install_spawn.sh

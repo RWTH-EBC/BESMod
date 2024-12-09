@@ -30,7 +30,7 @@ model CalcHeaDemHOMAixLib
       useConstVentRate=true,
       ventRate={0.5,0.5,0,0.5,0.5,0.5,0.5,0,0.5,0.5},
       DiffWeatherDataTime=Modelica.Units.Conversions.to_hour(weaDat.timZon),
-      GroundReflection=0.2,
+      GroundReflectance=0.2,
       T0_air=293.15,
       TWalls_start=292.15,
       redeclare AixLib.DataBase.Walls.Collections.OFD.EnEV2009Heavy wallTypes,
