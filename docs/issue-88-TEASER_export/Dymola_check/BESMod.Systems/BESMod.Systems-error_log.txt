@@ -1,90 +1,4 @@
 
-Error in model:  BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly 
-Check of <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly">BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly</a>
-Error: Detected when expanding building.QRec_flow_nominal did not find record element QRec_flow_nominal at expansion, probably caused by heterogeneous arrays.
-Warning: Failed to expand the variable systemParameters.QBui_flow_nominal
-and its definition equation:
-building.QRec_flow_nominal
-Error: For variable systemParameters.QBui_flow_nominal
- declared in class <a href="Modelica://BESMod.Systems.RecordsCollection.SystemParametersBaseDataDefinition">BESMod.Systems.RecordsCollection.SystemParametersBaseDataDefinition</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/RecordsCollection/SystemParametersBaseDataDefinition.mo at line <a href="Modelica://BESMod.Systems.RecordsCollection.SystemParametersBaseDataDefinition#text:7">8</a>, and used in component <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#$systemParameters:SystemParametersBaseDataDefinition">systemParameters.SystemParametersBaseDataDefinition</a>.
-Type inconsistent definition equation:
-  systemParameters.QBui_flow_nominal = building.QRec_flow_nominal;
-Error: Could not find member QRec_flow_nominal in record expression building.
-Warning: Failed to expand the variable systemParameters.QBuiOld_flow_design
-and its definition equation:
-systemParameters.QBui_flow_nominal
-Warning: Failed to expand the variable hydraulic.hydraulicSystemParameters.QOld_flow_design
-and its definition equation:
-systemParameters.QBuiOld_flow_design
-Warning: Failed to expand the variable hydraulic.transfer.QOld_flow_design
-and its definition equation:
-hydraulic.hydraulicSystemParameters.QOld_flow_design
-Warning: Failed to expand the variable hydraulic.transfer.f_design
-and its definition equation:
-fill(1, hydraulic.transfer.nParallelDem)
-Warning: Failed to expand the variable hydraulic.transfer.QSupOld_flow_design
-and its definition equation:
-fill(sum(hydraulic.transfer.QOld_flow_design.*hydraulic.transfer.f_design),   hydraulic.transfer.nParallelSup)
-Warning: Failed to expand the variable hydraulic.distribution.QOld_flow_design
-and its definition equation:
-hydraulic.transfer.QSupOld_flow_design
-Warning: Failed to expand the variable hydraulic.generation.f_design
-and its definition equation:
-fill(1, hydraulic.generation.nParallelDem)
-Warning: Failed to expand the variable hydraulic.generation.QOld_flow_design
-and its definition equation:
-array(sum(hydraulic.distribution.QOld_flow_design)*hydraulic.generation.f_design  [i]+hydraulic.distribution.QDHWBefSto_flow_nominal for i in 1:hydraulic.generation.nParallelDem)
-Warning: Failed to expand the variable hydraulic.generation.Q_flow_nominal
-and its definition equation:
-array(sum(hydraulic.distribution.Q_flow_nominal)*hydraulic.generation.f_design[i]  +hydraulic.distribution.QDHWBefSto_flow_nominal for i in 1:hydraulic.generation.nParallelDem)
-Warning: Failed to expand the variable hydraulic.generation.Q_flow_design
-and its definition equation:
-{(if hydraulic.generation.use_old_design then hydraulic.generation.QOld_flow_design  [1] else hydraulic.generation.Q_flow_nominal[1])}
-Warning: Failed to expand the variable hydraulic.generation.m_flow_design
-and its definition equation:
-hydraulic.generation.Q_flow_design.*hydraulic.generation.f_design./  hydraulic.generation.dTTra_design./4184
-Warning: Failed to expand the variable hydraulic.generation.boi.m_flow_nominal
-and its definition equation:
-hydraulic.generation.m_flow_design[1]
-In nominal attribute for hydraulic.generation.boi.pressureDrop.m_flow.
-Modifier applied in class <a href="Modelica://AixLib.Fluid.BaseClasses.PartialResistance">AixLib.Fluid.BaseClasses.PartialResistance</a>.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/FixedResistances/PressureDrop.mo, line <a href="Modelica://AixLib.Fluid.BaseClasses.PartialResistance#text:3">4</a>
-Modifier applied for component <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#$hydraulic.generation.boi.pressureDrop:m_flow">hydraulic.generation.boi.pressureDrop.m_flow</a>.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/PartialTwoPortInterface.mo, line 20
-Variable found in class <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly">BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialGasBoilerBuildingOnly.mo, line 2
-Variable found in base-class hydraulic.generation.boi.pressureDrop.PartialTwoPortInterface.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
-Ignoring nominal attribute.
-Warning: Failed to expand the variable hydraulic.transfer.use_oldRad_design
-and its definition equation:
-array((if hydraulic.transfer.QOld_flow_design[i] == hydraulic.transfer.Q_flow_nominal  [i] then false else true) for i in 1:hydraulic.transfer.nParallelDem)
-Warning: Failed to expand the variable hydraulic.transfer.TTra_design
-and its definition equation:
-array((if hydraulic.transfer.use_oldRad_design[i] then hydraulic.transfer.TTraOld_design  [i] else hydraulic.transfer.TTra_nominal[i]) for i in 1:hydraulic.transfer.nParallelDem)
-Check is assuming: building.ABui = 0.1
-Check is assuming: building.hBui = 0.1
-Warning: The bus-input hydraulic.control.buiMeaBus.TZoneMea[1] lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
-Bus-signal: TZoneMea[1]
-Use: <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$hydraulic.control:heatingCurve,buiMeaBus"> connect(hydraulic.control.buiMeaBus.TZoneMea[1], hydraulic.control.heatingCurve.TZoneMea[1])</a>;
-Connected bus variables:
-<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#$hydraulic.buiMeaBus:TZoneMea">hydraulic.buiMeaBus.TZoneMea[1]</a> (connect)
-<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#$electrical.control.buiMeaBus:TZoneMea">electrical.control.buiMeaBus.TZoneMea[1]</a> (connect)
-<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#$electrical.buiMeaBus:TZoneMea">electrical.buiMeaBus.TZoneMea[1]</a> (connect)
-<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#$building.buiMeaBus:TZoneMea">building.buiMeaBus.TZoneMea[1]</a> (connect)
-<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#$control.buiMeaBus:TZoneMea">control.buiMeaBus.TZoneMea[1]</a> (connect)
-input <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#$hydraulic.control.buiMeaBus:TZoneMea">hydraulic.control.buiMeaBus.TZoneMea[1]</a> (connect)
-Error: For variable systemParameters.QBui_flow_nominal
- declared in class <a href="Modelica://BESMod.Systems.RecordsCollection.SystemParametersBaseDataDefinition">BESMod.Systems.RecordsCollection.SystemParametersBaseDataDefinition</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/RecordsCollection/SystemParametersBaseDataDefinition.mo at line <a href="Modelica://BESMod.Systems.RecordsCollection.SystemParametersBaseDataDefinition#text:7">8</a>, and used in component <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#$systemParameters:SystemParametersBaseDataDefinition">systemParameters.SystemParametersBaseDataDefinition</a>.
-Type inconsistent definition equation:
-  systemParameters.QBui_flow_nominal = building.QRec_flow_nominal;
-Error: Could not find member QRec_flow_nominal in record expression building.
-Basic type inconsistencies detected.
-Check aborted.
-Warning: WARNINGS have been issued.
-Error: ERRORS have been issued.
-
-
 Error in model:  BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic 
 Check of <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic">BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic</a>
 Check is assuming: building.AZone = fill(0.1, 1)
@@ -194,16 +108,102 @@ Bus-signal: TZoneMea[1]
 Use: <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$ventilation.control:minMaxMea,buiMeaBus"> connect(ventilation.control.buiMeaBus.TZoneMea[1], ventilation.control.minMaxMea.u[1])</a>;
 Use: <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$hydraulic.control:buiAndDHWCtr,buiMeaBus"> connect(hydraulic.control.buiMeaBus.TZoneMea[1], hydraulic.control.buiAndDHWCtr.TZoneMea[1])</a>;
 Connected bus variables:
-<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$control.buiMeaBus:TZoneMea">control.buiMeaBus.TZoneMea[1]</a> (connect)
-<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$building.buiMeaBus:TZoneMea">building.buiMeaBus.TZoneMea[1]</a> (connect)
-<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$hydraulic.buiMeaBus:TZoneMea">hydraulic.buiMeaBus.TZoneMea[1]</a> (connect)
-<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$ventilation.buiMeaBus:TZoneMea">ventilation.buiMeaBus.TZoneMea[1]</a> (connect)
-<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$electrical.buiMeaBus:TZoneMea">electrical.buiMeaBus.TZoneMea[1]</a> (connect)
 <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$electrical.control.buiMeaBus:TZoneMea">electrical.control.buiMeaBus.TZoneMea[1]</a> (connect)
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$hydraulic.buiMeaBus:TZoneMea">hydraulic.buiMeaBus.TZoneMea[1]</a> (connect)
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$control.buiMeaBus:TZoneMea">control.buiMeaBus.TZoneMea[1]</a> (connect)
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$electrical.buiMeaBus:TZoneMea">electrical.buiMeaBus.TZoneMea[1]</a> (connect)
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$ventilation.buiMeaBus:TZoneMea">ventilation.buiMeaBus.TZoneMea[1]</a> (connect)
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$building.buiMeaBus:TZoneMea">building.buiMeaBus.TZoneMea[1]</a> (connect)
 input <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$ventilation.control.buiMeaBus:TZoneMea">ventilation.control.buiMeaBus.TZoneMea[1]</a> (connect)
 input <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$hydraulic.control.buiMeaBus:TZoneMea">hydraulic.control.buiMeaBus.TZoneMea[1]</a> (connect)
 Error: For variable systemParameters.QBui_flow_nominal
  declared in class <a href="Modelica://BESMod.Systems.RecordsCollection.SystemParametersBaseDataDefinition">BESMod.Systems.RecordsCollection.SystemParametersBaseDataDefinition</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/RecordsCollection/SystemParametersBaseDataDefinition.mo at line <a href="Modelica://BESMod.Systems.RecordsCollection.SystemParametersBaseDataDefinition#text:7">8</a>, and used in component <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$systemParameters:SystemParametersBaseDataDefinition">systemParameters.SystemParametersBaseDataDefinition</a>.
+Type inconsistent definition equation:
+  systemParameters.QBui_flow_nominal = building.QRec_flow_nominal;
+Error: Could not find member QRec_flow_nominal in record expression building.
+Basic type inconsistencies detected.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly 
+Check of <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly">BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly</a>
+Error: Detected when expanding building.QRec_flow_nominal did not find record element QRec_flow_nominal at expansion, probably caused by heterogeneous arrays.
+Warning: Failed to expand the variable systemParameters.QBui_flow_nominal
+and its definition equation:
+building.QRec_flow_nominal
+Error: For variable systemParameters.QBui_flow_nominal
+ declared in class <a href="Modelica://BESMod.Systems.RecordsCollection.SystemParametersBaseDataDefinition">BESMod.Systems.RecordsCollection.SystemParametersBaseDataDefinition</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/RecordsCollection/SystemParametersBaseDataDefinition.mo at line <a href="Modelica://BESMod.Systems.RecordsCollection.SystemParametersBaseDataDefinition#text:7">8</a>, and used in component <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#$systemParameters:SystemParametersBaseDataDefinition">systemParameters.SystemParametersBaseDataDefinition</a>.
+Type inconsistent definition equation:
+  systemParameters.QBui_flow_nominal = building.QRec_flow_nominal;
+Error: Could not find member QRec_flow_nominal in record expression building.
+Warning: Failed to expand the variable systemParameters.QBuiOld_flow_design
+and its definition equation:
+systemParameters.QBui_flow_nominal
+Warning: Failed to expand the variable hydraulic.hydraulicSystemParameters.QOld_flow_design
+and its definition equation:
+systemParameters.QBuiOld_flow_design
+Warning: Failed to expand the variable hydraulic.transfer.QOld_flow_design
+and its definition equation:
+hydraulic.hydraulicSystemParameters.QOld_flow_design
+Warning: Failed to expand the variable hydraulic.transfer.f_design
+and its definition equation:
+fill(1, hydraulic.transfer.nParallelDem)
+Warning: Failed to expand the variable hydraulic.transfer.QSupOld_flow_design
+and its definition equation:
+fill(sum(hydraulic.transfer.QOld_flow_design.*hydraulic.transfer.f_design),   hydraulic.transfer.nParallelSup)
+Warning: Failed to expand the variable hydraulic.distribution.QOld_flow_design
+and its definition equation:
+hydraulic.transfer.QSupOld_flow_design
+Warning: Failed to expand the variable hydraulic.generation.f_design
+and its definition equation:
+fill(1, hydraulic.generation.nParallelDem)
+Warning: Failed to expand the variable hydraulic.generation.QOld_flow_design
+and its definition equation:
+array(sum(hydraulic.distribution.QOld_flow_design)*hydraulic.generation.f_design  [i]+hydraulic.distribution.QDHWBefSto_flow_nominal for i in 1:hydraulic.generation.nParallelDem)
+Warning: Failed to expand the variable hydraulic.generation.Q_flow_nominal
+and its definition equation:
+array(sum(hydraulic.distribution.Q_flow_nominal)*hydraulic.generation.f_design[i]  +hydraulic.distribution.QDHWBefSto_flow_nominal for i in 1:hydraulic.generation.nParallelDem)
+Warning: Failed to expand the variable hydraulic.generation.Q_flow_design
+and its definition equation:
+{(if hydraulic.generation.use_old_design then hydraulic.generation.QOld_flow_design  [1] else hydraulic.generation.Q_flow_nominal[1])}
+Warning: Failed to expand the variable hydraulic.generation.m_flow_design
+and its definition equation:
+hydraulic.generation.Q_flow_design.*hydraulic.generation.f_design./  hydraulic.generation.dTTra_design./4184
+Warning: Failed to expand the variable hydraulic.generation.boi.m_flow_nominal
+and its definition equation:
+hydraulic.generation.m_flow_design[1]
+In nominal attribute for hydraulic.generation.boi.pressureDrop.m_flow.
+Modifier applied in class <a href="Modelica://AixLib.Fluid.BaseClasses.PartialResistance">AixLib.Fluid.BaseClasses.PartialResistance</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/FixedResistances/PressureDrop.mo, line <a href="Modelica://AixLib.Fluid.BaseClasses.PartialResistance#text:3">4</a>
+Modifier applied for component <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#$hydraulic.generation.boi.pressureDrop:m_flow">hydraulic.generation.boi.pressureDrop.m_flow</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/PartialTwoPortInterface.mo, line 20
+Variable found in class <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly">BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialGasBoilerBuildingOnly.mo, line 2
+Variable found in base-class hydraulic.generation.boi.pressureDrop.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BaseClasses/PartialResistance.mo, line 3
+Ignoring nominal attribute.
+Warning: Failed to expand the variable hydraulic.transfer.use_oldRad_design
+and its definition equation:
+array((if hydraulic.transfer.QOld_flow_design[i] == hydraulic.transfer.Q_flow_nominal  [i] then false else true) for i in 1:hydraulic.transfer.nParallelDem)
+Warning: Failed to expand the variable hydraulic.transfer.TTra_design
+and its definition equation:
+array((if hydraulic.transfer.use_oldRad_design[i] then hydraulic.transfer.TTraOld_design  [i] else hydraulic.transfer.TTra_nominal[i]) for i in 1:hydraulic.transfer.nParallelDem)
+Check is assuming: building.ABui = 0.1
+Check is assuming: building.hBui = 0.1
+Warning: The bus-input hydraulic.control.buiMeaBus.TZoneMea[1] lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
+Bus-signal: TZoneMea[1]
+Use: <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$hydraulic.control:heatingCurve,buiMeaBus"> connect(hydraulic.control.buiMeaBus.TZoneMea[1], hydraulic.control.heatingCurve.TZoneMea[1])</a>;
+Connected bus variables:
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#$hydraulic.buiMeaBus:TZoneMea">hydraulic.buiMeaBus.TZoneMea[1]</a> (connect)
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#$electrical.control.buiMeaBus:TZoneMea">electrical.control.buiMeaBus.TZoneMea[1]</a> (connect)
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#$electrical.buiMeaBus:TZoneMea">electrical.buiMeaBus.TZoneMea[1]</a> (connect)
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#$control.buiMeaBus:TZoneMea">control.buiMeaBus.TZoneMea[1]</a> (connect)
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#$building.buiMeaBus:TZoneMea">building.buiMeaBus.TZoneMea[1]</a> (connect)
+input <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#$hydraulic.control.buiMeaBus:TZoneMea">hydraulic.control.buiMeaBus.TZoneMea[1]</a> (connect)
+Error: For variable systemParameters.QBui_flow_nominal
+ declared in class <a href="Modelica://BESMod.Systems.RecordsCollection.SystemParametersBaseDataDefinition">BESMod.Systems.RecordsCollection.SystemParametersBaseDataDefinition</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/RecordsCollection/SystemParametersBaseDataDefinition.mo at line <a href="Modelica://BESMod.Systems.RecordsCollection.SystemParametersBaseDataDefinition#text:7">8</a>, and used in component <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#$systemParameters:SystemParametersBaseDataDefinition">systemParameters.SystemParametersBaseDataDefinition</a>.
 Type inconsistent definition equation:
   systemParameters.QBui_flow_nominal = building.QRec_flow_nominal;
 Error: Could not find member QRec_flow_nominal in record expression building.
