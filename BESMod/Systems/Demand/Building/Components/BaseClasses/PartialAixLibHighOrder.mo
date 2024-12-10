@@ -1,7 +1,8 @@
 within BESMod.Systems.Demand.Building.Components.BaseClasses;
 partial model PartialAixLibHighOrder
     extends BESMod.Utilities.Icons.BuildingIcon;
-    extends BESMod.Systems.Demand.Building.Components.BaseClasses.HighOrderModelParameters;
+    extends
+    BESMod.Systems.Demand.Building.Components.BaseClasses.HighOrderModelParameters;
 
   parameter Integer nZones(min=1) "Number of zones /rooms";
   parameter Boolean use_ventilation=true "=false to disable ventilation supply";
@@ -51,6 +52,14 @@ partial model PartialAixLibHighOrder
   Modelica.Blocks.Interfaces.RealOutput TZoneMea[nZones](each final unit="K", each final displayUnit="degC") annotation (Placement(
         transformation(extent={{-86,-76},{-132,-30}}), iconTransformation(
           extent={{-84,-70},{-124,-30}})));
+  Modelica.Thermal.HeatTransfer.Sensors.TemperatureSensor temperatureSensor[
+    nZones] annotation (Placement(transformation(extent={{-80,-10},{-60,10}})));
+equation
+  connect(temperatureSensor.port, heatingToRooms1.conv)
+    annotation (Line(points={{-80,0},{-88,0},{-88,0.05},{-97.95,0.05}},
+                                               color={191,0,0}));
+  connect(temperatureSensor.T, TZoneMea) annotation (Line(points={{-59,0},{-56,0},
+          {-56,-53},{-109,-53}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end PartialAixLibHighOrder;
