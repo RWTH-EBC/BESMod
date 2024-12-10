@@ -29,7 +29,6 @@ model CalcHeaDemHOMAixLib
     redeclare AixLibHighOrder building(
       useConstVentRate=true,
       ventRate={0.5,0.5,0,0.5,0.5,0.5,0.5,0,0.5,0.5},
-      DiffWeatherDataTime=Modelica.Units.Conversions.to_hour(weaDat.timZon),
       GroundReflectance=0.2,
       T0_air=293.15,
       TWalls_start=292.15,

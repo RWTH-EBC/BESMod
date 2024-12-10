@@ -35,10 +35,10 @@ def main():
     print("-" * 30)
     
     # Get city name
-    city_name = input("Enter city name (e.g., Berlin): ")
+    city_name = input("Enter new city name (e.g., Berlin): ")
     
     # Get new temperature value
-    new_temp = input("Enter new temperature value (e.g., -7.0): ")
+    new_temp = input("Enter new outdoor air temperature value in °C (e.g., -7.0): ")
     
     print("\nProcessing...")
     
