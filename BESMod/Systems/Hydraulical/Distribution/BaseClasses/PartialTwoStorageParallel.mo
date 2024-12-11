@@ -45,7 +45,7 @@ partial model PartialTwoStorageParallel "Partial model to later extent"
     final dp_nominal={dpBufHCSto_nominal,dpDHWHCSto_nominal},
     final m_flow_nominal=mSup_flow_design[1],
     final fraK=1,
-    use_inputFilter=false) "Parameters for three way valve" annotation (
+    use_strokeTime=false) "Parameters for three way valve" annotation (
     Dialog(group="Component data"),
     choicesAllMatching=true,
     Placement(transformation(extent={{-78,102},{-62,118}})));

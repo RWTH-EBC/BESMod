@@ -38,7 +38,7 @@ Modelica.Blocks.Math.UnitConversions.From_degC fromDegC
       dpDHW_nominal else 100,
     final addPowerToMedium=parPum.addPowerToMedium,
     final tau=parPum.tau,
-    final use_inputFilter=parPum.use_inputFilter,
+    final use_riseTime=parPum.use_riseTime,
     final riseTime=parPum.riseTimeInpFilter)                 annotation (Placement(transformation(
         extent={{-9.5,9.5},{9.5,-9.5}},
         rotation=180,

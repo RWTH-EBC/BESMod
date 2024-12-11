@@ -41,7 +41,7 @@ model TestThreeWayValve
     final dp_nominal=2*(threeWayValveWithFlowReturn.parameters.dpValve_nominal
            + threeWayValveWithFlowReturn.parameters.dpFixed_nominal[1]) + dpRes,
     final addPowerToMedium=false,
-    final use_inputFilter=false)
+    final use_strokeTime=false)
                      annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=270,

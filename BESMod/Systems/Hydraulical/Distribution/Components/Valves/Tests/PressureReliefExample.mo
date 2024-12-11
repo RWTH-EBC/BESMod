@@ -8,7 +8,7 @@ model PressureReliefExample
     m_flow_nominal=m_flow_nominal,
     dpFullOpen_nominal=dp_nominal*1.4,
     dpThreshold_nominal=dp_nominal*1.1,
-    use_inputFilter=false,
+    use_strokeTime=false,
     dpValve_nominal=dp_nominal)              if use_relVal
                                           annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -27,7 +27,7 @@ model PressureReliefExample
     final m_flow_nominal=m_flow_nominal,
     each final CvData=IBPSA.Fluid.Types.CvTypes.OpPoint,
     final dpValve_nominal=dp_nominal/2,
-    each final use_inputFilter=false,
+    each final use_strokeTime=false,
     final dpFixed_nominal=0)                                annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -37,7 +37,7 @@ model PressureReliefExample
     redeclare package Medium = Medium,
     final m_flow_nominal=m_flow_nominal,
     final dp_nominal=dp_nominal,
-    final use_inputFilter=false,
+    final use_riseTime=false,
     final y_start=1)                                    annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},

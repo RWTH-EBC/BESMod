@@ -46,7 +46,7 @@ partial model PartialTest
     each final addPowerToMedium=false,
     each final nominalValuesDefineDefaultPressureCurve=true,
     each final tau=1,
-    each final use_inputFilter=false,
+    each final use_riseTime=false,
     each final init=Modelica.Blocks.Types.Init.InitialOutput) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
@@ -83,7 +83,7 @@ partial model PartialTest
     final addPowerToMedium=false,
     final nominalValuesDefineDefaultPressureCurve=true,
     final tau=1,
-    final use_inputFilter=false,
+    final use_use_riseTime=false,
     final init=Modelica.Blocks.Types.Init.InitialOutput) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
@@ -113,7 +113,7 @@ partial model PartialTest
     each final addPowerToMedium=false,
     each final nominalValuesDefineDefaultPressureCurve=true,
     each final tau=1,
-    each final use_inputFilter=false,
+    each final use_use_riseTime=false,
     each final init=Modelica.Blocks.Types.Init.InitialOutput) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
