@@ -3,7 +3,10 @@ partial model PartialHeatPumpMonoenergetic
   "Partial model for TEASER export with monoenergetic heat pump"
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.UserProfiles.TEASERProfiles userProfiles,
-    redeclare replaceable BESMod.Systems.Demand.Building.TEASERThermalZone building,
+    redeclare replaceable BESMod.Systems.Demand.Building.TEASERThermalZone building(
+      hBui=0.1,
+      ABui=0.1,
+      ARoo=0.1),
     redeclare BESMod.Systems.Electrical.ElectricalSystem electrical(
       redeclare BESMod.Systems.Electrical.Distribution.OwnConsumption
         distribution,
