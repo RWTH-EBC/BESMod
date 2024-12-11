@@ -1,4 +1,125 @@
 
+Error in model:  BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly 
+Check of <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly">BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly</a>
+The model has
+  3097+2*hydraulic.transfer.parRad.nEle+29*building.thermalZone[1].zoneParam.nOrientations    +2*building.thermalZone[1].ROM.volAir.dynBal.nPorts+building.thermalZone[1].humanSenHeaDependent.productHeatOutput.nu    +building.thermalZone[1].machinesSenHea.productHeatOutput.nu+    building.thermalZone[1].lights.productHeatOutput.nu+5*building.thermalZone[1].zoneParam.nOrientationsRoof    +building.thermalZone[1].ventCont.optimalTemp.nin+building.thermalZone[1].ventCont.optimalTemp.nout    +building.thermalZone[1].ventCont.dEMA.nout+building.thermalZone[1].ventCont.dEMA.ExpAVG.n    +building.thermalZone[1].ventCont.dEMA.ExpAVG1.n+building.multiSumEle.nu+max    ([size(userProfiles.tabIntGai.columns, 1); size(userProfiles.tabIntGai.offset,     1)])+DHW.pump.vol.dynBal.nPorts+max([
+  [4]; size(DHW.combiTimeTableDHWInput.offset, 1)])+12*systemParameters.nZones+    hydraulic.generation.boi.vol.dynBal.nPorts+hydraulic.generation.pump.vol.dynBal.nPorts    +hydraulic.transfer.rad[1].vol[1].dynBal.nPorts+hydraulic.transfer.rad[1].vol[2].dynBal.nPorts    +hydraulic.transfer.rad[1].vol[3].dynBal.nPorts+hydraulic.transfer.rad[1].vol[4].dynBal.nPorts    +hydraulic.transfer.rad[1].vol[5].dynBal.nPorts+hydraulic.transfer.rad[1].sumCon.nin    +hydraulic.transfer.rad[1].sumRad.nin+hydraulic.transfer.vol.dynBal.nPorts+    hydraulic.transfer.pump.vol.dynBal.nPorts
+scalar unknowns and
+  3065+max([size(userProfiles.tabIntGai.columns, 1); size(userProfiles.tabIntGai.offset,     1)])+(if DHW.bou_sink.use_Xi_in then 1 else (if DHW.bou_sink.use_X_in then 0     else 1))+(if  not DHW.bou_sink.use_p_in then 1 else 0)+2*DHW.bou_sink.nPorts    +(if  not DHW.bou_sink.use_h_in then 1 else 0)+(if DHW.bouSou.use_Xi_in     then 1 else (if DHW.bouSou.use_X_in then 0 else 1))+(if  not     DHW.bouSou.use_p_in then 1 else 0)+(if  not DHW.bouSou.use_T_in then 1 else 0)    +max([
+  [4]; size(DHW.combiTimeTableDHWInput.offset, 1)])+(if hydraulic.generation.bou1.use_Xi_in     then 1 else (if hydraulic.generation.bou1.use_X_in then 0 else 1))+(if      not hydraulic.generation.bou1.use_p_in then 1 else 0)+2*hydraulic.generation.bou1.nPorts    +(if  not hydraulic.generation.bou1.use_T_in then 1 else 0)+(if     weaDat.pAtmSou == IBPSA.BoundaryConditions.Types.DataSource.Parameter then 1     else 0)+(if weaDat.TDewPoiSou == IBPSA.BoundaryConditions.Types.DataSource.    Parameter then 1 else 0)+(if weaDat.TDryBulSou == IBPSA.BoundaryConditions.Types.DataSource.    Parameter then 1 else 0)+(if weaDat.TBlaSkySou == IBPSA.BoundaryConditions.Types.DataSource.    Parameter then 1 else 0)+(if weaDat.relHumSou == IBPSA.BoundaryConditions.Types.DataSource.    Parameter then 1 else 0)+(if weaDat.opaSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.    Parameter then 1 else 0)+(if weaDat.ceiHeiSou == IBPSA.BoundaryConditions.Types.DataSource.    Parameter then 1 else 0)+(if weaDat.totSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.    Parameter then 1 else 0)+(if weaDat.winSpeSou == IBPSA.BoundaryConditions.Types.DataSource.    Parameter then 1 else 0)+(if weaDat.winDirSou == IBPSA.BoundaryConditions.Types.DataSource.    Parameter then 1 else 0)+(if weaDat.HInfHorSou == IBPSA.BoundaryConditions.Types.DataSource.    Parameter then 1 else 0)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.    Input_HDirNor_HDifHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.    Input_HDirNor_HGloHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.    Input_HGloHor_HDifHor then 2 else 1)+19*building.thermalZone[1].zoneParam.nOrientations    +(if  not building.thermalZone[1].eqAirTempWall.TGroundFromInput then 1     else 0)+(if  not building.thermalZone[1].eqAirTempRoof.TGroundFromInput     then 1 else 0)+3*building.thermalZone[1].zoneParam.nOrientationsRoof+    building.thermalZone[1].ventCont.optimalTemp.nout+building.thermalZone[1].ventCont.dEMA.ExpAVG.n    +building.thermalZone[1].ventCont.dEMA.ExpAVG1.n+(if  not DHW.pump.vol.dynBal.use_mWat_flow     then 1 else 0)+3*DHW.pump.vol.dynBal.nPorts+(if  not hydraulic.generation.boi.vol.dynBal.use_mWat_flow     then 1 else 0)+3*hydraulic.generation.boi.vol.dynBal.nPorts+(if  not     hydraulic.generation.pump.vol.dynBal.use_mWat_flow then 1 else 0)+3*    hydraulic.generation.pump.vol.dynBal.nPorts+(if  not hydraulic.transfer.rad[1].vol[1].dynBal.use_mWat_flow     then 1 else 0)+3*hydraulic.transfer.rad[1].vol[1].dynBal.nPorts+(if  not     hydraulic.transfer.rad[1].vol[2].dynBal.use_mWat_flow then 1 else 0)+3*    hydraulic.transfer.rad[1].vol[2].dynBal.nPorts+(if  not hydraulic.transfer.rad[1].vol[3].dynBal.use_mWat_flow     then 1 else 0)+3*hydraulic.transfer.rad[1].vol[3].dynBal.nPorts+(if  not     hydraulic.transfer.rad[1].vol[4].dynBal.use_mWat_flow then 1 else 0)+3*    hydraulic.transfer.rad[1].vol[4].dynBal.nPorts+(if  not hydraulic.transfer.rad[1].vol[5].dynBal.use_mWat_flow     then 1 else 0)+3*hydraulic.transfer.rad[1].vol[5].dynBal.nPorts+(if  not     hydraulic.transfer.vol.dynBal.use_mWat_flow then 1 else 0)+3*    hydraulic.transfer.vol.dynBal.nPorts+(if  not hydraulic.transfer.pump.vol.dynBal.use_mWat_flow     then 1 else 0)+3*hydraulic.transfer.pump.vol.dynBal.nPorts+(if  not     building.thermalZone[1].ROM.volAir.dynBal.use_mWat_flow then 1 else 0)+5*    building.thermalZone[1].ROM.volAir.dynBal.nPorts+6*systemParameters.nZones+2    *hydraulic.transfer.parRad.nEle
+scalar equations.
+DAE with 3256 unknown scalars and 3256 scalar equations.
+
+Check of <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly">BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly</a> successful.
+Translation of <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly">BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly</a>
+Error:  model <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly">BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly</a> is partial.
+The DAE has 3205 scalar unknowns and 3205 scalar equations.
+Warning: The variable hydraulic.generation.pump.preSou.m_flow_small=2.58646e+52 is not in range [-100000,100000].
+Ignoring range
+Warning: The variable hydraulic.transfer.pump.preSou.m_flow_small=2.58646e+52 is not in range [-100000,100000].
+Ignoring range
+
+Statistics
+
+Original Model
+  Number of components: 728
+  Variables: 6480
+  Constants: 101 (101 scalars)
+  Parameters: 3050 (4463 scalars)
+  Unknowns: 3329 (3256 scalars)
+  Differentiated variables: 65 scalars
+  Equations: 2801
+  Nontrivial: 2381
+Translated Model
+  Constants: 3328 scalars
+  Free parameters: 453 scalars
+  Parameter depending: 1198 scalars
+  Outputs: 56 scalars
+  Continuous time states: 54 scalars
+  Time-varying variables: 778 scalars
+  Alias variables: 2063 scalars
+  Number of mixed real/discrete systems of equations: 0
+  Sizes of linear systems of equations: {2, 2, 2, 2, 2, 4, 4, 4}
+  Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0}
+  Sizes of nonlinear systems of equations: {11, 59, 3, 1, 1, 1, 1, 1, 1, 1}
+  Sizes after manipulation of the nonlinear systems: {1, 6, 1, 0, 1, 0, 1, 0, 1, 1}
+  Number of numerical Jacobians: 0
+  Initialization problem
+    Sizes of nonlinear systems of equations: {11, 70, 11, 1, 1}
+    Sizes after manipulation of the nonlinear systems: {5, 7, 1, 0, 1}
+    Sizes of simplified homotopy nonlinear systems of equations: {11, 1}
+    Sizes after manipulation of the simplified homotopy nonlinear systems: {1, 0}
+    Number of numerical Jacobians: 0
+
+Selected continuous time states
+Statically selected continuous time states
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#text$building.thermalZone.ROM.extWallRC.thermCapExt:T">building.thermalZone[1].ROM.extWallRC.thermCapExt[1].T</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#text$building.thermalZone.ROM.floorRC.thermCapExt:T">building.thermalZone[1].ROM.floorRC.thermCapExt[1].T</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#text$building.thermalZone.ROM.intWallRC.thermCapInt:T">building.thermalZone[1].ROM.intWallRC.thermCapInt[1].T</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#text$building.thermalZone.ROM.roofRC.thermCapExt:T">building.thermalZone[1].ROM.roofRC.thermCapExt[1].T</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#text$building.thermalZone.ROM.volAir.dynBal:m">building.thermalZone[1].ROM.volAir.dynBal.m</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$building.thermalZone[1].ROM.volAir.dynBal:medium.Xi[1]">building.thermalZone[1].ROM.volAir.dynBal.medium.Xi[1]</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#text$building.thermalZone.ROM.volAir.dynBal:U">building.thermalZone[1].ROM.volAir.dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#text$building.thermalZone.ventCont.dEMA.ExpAVG:x">building.thermalZone[1].ventCont.dEMA.ExpAVG.x[1]</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#text$building.thermalZone.ventCont.dEMA.ExpAVG1:x">building.thermalZone[1].ventCont.dEMA.ExpAVG1.x[1]</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$building.zoneEneBal[1].airExc.gainKPI:integrator2.y">building.zoneEneBal[1].airExc.gainKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$building.zoneEneBal[1].airExc.lossKPI:integrator2.y">building.zoneEneBal[1].airExc.lossKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$building.zoneEneBal[1].extWall.gainKPI:integrator2.y">building.zoneEneBal[1].extWall.gainKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$building.zoneEneBal[1].extWall.lossKPI:integrator2.y">building.zoneEneBal[1].extWall.lossKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$building.zoneEneBal[1].floor.gainKPI:integrator2.y">building.zoneEneBal[1].floor.gainKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$building.zoneEneBal[1].floor.lossKPI:integrator2.y">building.zoneEneBal[1].floor.lossKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$building.zoneEneBal[1].intGaiLight:integrator2.y">building.zoneEneBal[1].intGaiLight.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$building.zoneEneBal[1].intGaiMac:integrator2.y">building.zoneEneBal[1].intGaiMac.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$building.zoneEneBal[1].intGaiPer:integrator2.y">building.zoneEneBal[1].intGaiPer.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$building.zoneEneBal[1].roof.gainKPI:integrator2.y">building.zoneEneBal[1].roof.gainKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$building.zoneEneBal[1].roof.lossKPI:integrator2.y">building.zoneEneBal[1].roof.lossKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$building.zoneEneBal[1].sol:integrator2.y">building.zoneEneBal[1].sol.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$building.zoneEneBal[1].tra.gainKPI:integrator2.y">building.zoneEneBal[1].tra.gainKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$building.zoneEneBal[1].tra.lossKPI:integrator2.y">building.zoneEneBal[1].tra.lossKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$building.zoneEneBal[1].win.gainKPI:integrator2.y">building.zoneEneBal[1].win.gainKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$building.zoneEneBal[1].win.lossKPI:integrator2.y">building.zoneEneBal[1].win.lossKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$building.zonTem[1].calCtrl:intDisCom.y">building.zonTem[1].calCtrl.intDisCom.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$building.zonTem[1].comCool:intDisCom.y">building.zonTem[1].comCool.intDisCom.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$building.zonTem[1].comHea:intDisCom.y">building.zonTem[1].comHea.intDisCom.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$building.zonTemOpe[1].calCtrl:intDisCom.y">building.zonTemOpe[1].calCtrl.intDisCom.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$building.zonTemOpe[1].comCool:intDisCom.y">building.zonTemOpe[1].comCool.intDisCom.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$building.zonTemOpe[1].comHea:intDisCom.y">building.zonTemOpe[1].comHea.intDisCom.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$DHW.integralKPICalculator:integrator2.y">DHW.integralKPICalculator.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#text$DHW.pump.vol.dynBal:U">DHW.pump.vol.dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$electrical.distribution.eneKPIGen:integrator2.y">electrical.distribution.eneKPIGen.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$electrical.distribution.eneKPILoa:integrator2.y">electrical.distribution.eneKPILoa.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$hydraulic.control.PIDCtrl:intAbs.y">hydraulic.control.PIDCtrl.intAbs.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$hydraulic.control.PIDCtrl:intSqu.y">hydraulic.control.PIDCtrl.intSqu.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#text$hydraulic.control.PIDCtrl.PID.D:x">hydraulic.control.PIDCtrl.PID.D.x</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$hydraulic.control.PIDCtrl.PID:I.y">hydraulic.control.PIDCtrl.PID.I.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$hydraulic.control.valCtrl.PI[1]:I.y">hydraulic.control.valCtrl.PI[1].I.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$hydraulic.generation.boi:senTCold.T">hydraulic.generation.boi.senTCold.T</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$hydraulic.generation.boi:senTHot.T">hydraulic.generation.boi.senTHot.T</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#text$hydraulic.generation.boi.vol.dynBal:U">hydraulic.generation.boi.vol.dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$hydraulic.generation.KPIBoi:integrator1.y">hydraulic.generation.KPIBoi.integrator1.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$hydraulic.generation.KPIBoi:integrator3.y">hydraulic.generation.KPIBoi.integrator3.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#diagram$hydraulic.generation.KPIQBoi:integrator2.y">hydraulic.generation.KPIQBoi.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#text$hydraulic.generation.pump.vol.dynBal:U">hydraulic.generation.pump.vol.dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#text$hydraulic.transfer.pump.vol.dynBal:U">hydraulic.transfer.pump.vol.dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#text$hydraulic.transfer.rad.vol.dynBal:U">hydraulic.transfer.rad[1].vol[1].dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#text$hydraulic.transfer.rad.vol.dynBal:U">hydraulic.transfer.rad[1].vol[2].dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#text$hydraulic.transfer.rad.vol.dynBal:U">hydraulic.transfer.rad[1].vol[3].dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#text$hydraulic.transfer.rad.vol.dynBal:U">hydraulic.transfer.rad[1].vol[4].dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#text$hydraulic.transfer.rad.vol.dynBal:U">hydraulic.transfer.rad[1].vol[5].dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#text$hydraulic.transfer.vol.dynBal:U">hydraulic.transfer.vol.dynBal.U</a>
+Warning: Conflicting start values
+The iteration variable <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#$building.weaBus:TWetBul">building.weaBus.TWetBul</a> has been selected to have the guess value 291.15.
+However, the start value has been selected from a set of alias variables having conflicting start values of the same precedence.
+291.15, the start value of <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#$weaDat.tWetBul_TDryBulXi:TWetBul">weaDat.tWetBul_TDryBulXi.TWetBul</a> given as 291.15. At level 3. Original start-value at level 3.
+293.15, the start value of <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#$electrical.weaBus:TWetBul">electrical.weaBus.TWetBul</a> given as 293.15. At level 3. Original start-value at level 3.
+Error detected when generating code.
+Translation aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+Error: Simulations failed for:
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly">BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly</a>
+
+
 Error in model:  BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic 
 Check of <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic">BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic</a>
 Warning: The quantity of electrical.generation.pVSystem[1].weaBus.TDryBul is "ThermodynamicTemperature" and the quantity of electrical.generation.pVSystem[1].cellTemperature.T_a is "Temp_C".
@@ -35,22 +156,329 @@ has unit K
 Warning: The unit issue reported appeared in the equation
   electrical.generation.pVSystem[2].cellTemperature.T_c = (if noEvent(  electrical.generation.pVSystem[2].cellTemperature.radTil &gt;= _GlobalScope.Modelica.Constants.eps)   then electrical.generation.pVSystem[2].cellTemperature.radTil*exp((-2.81)-  0.0455*electrical.generation.pVSystem[2].cellTemperature.winVel)+  electrical.generation.pVSystem[2].cellTemperature.T_a else electrical.generation.pVSystem[2].cellTemperature.T_a);
 Found in class <a href="Modelica://AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround">AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/BaseClasses/CellTemperatureMountingContactToGround.mo at line <a href="Modelica://AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround#text:12">13</a>, and used in component <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$electrical.generation.pVSystem:cellTemperature">electrical.generation.pVSystem[2].cellTemperature</a>.
-Warning: The variable building.ABui=0 is not in range [0.1, DBL_MAX].
-Warning: The variable building.hBui=0 is not in range [0.1, DBL_MAX].
-Warning: The variable hydraulic.transfer.ABui=0 is not in range [0.1, DBL_MAX].
-Warning: The variable hydraulic.transfer.hBui=0 is not in range [0.1, DBL_MAX].
-Warning: The variable hydraulic.transfer.parTra.dpHeaDistr_nominal=0 is not in range [1e-15, DBL_MAX].
-Check of class aborted.
+The model has
+  6486+2*hydraulic.transfer.parRad.nEle+29*building.thermalZone[1].zoneParam.nOrientations    +2*building.thermalZone[1].ROM.volAir.dynBal.nPorts+building.thermalZone[1].humanSenHeaDependent.productHeatOutput.nu    +building.thermalZone[1].machinesSenHea.productHeatOutput.nu+    building.thermalZone[1].lights.productHeatOutput.nu+5*building.thermalZone[1].zoneParam.nOrientationsRoof    +building.thermalZone[1].ventCont.optimalTemp.nin+building.thermalZone[1].ventCont.optimalTemp.nout    +building.thermalZone[1].ventCont.dEMA.nout+building.thermalZone[1].ventCont.dEMA.ExpAVG.n    +building.thermalZone[1].ventCont.dEMA.ExpAVG1.n+building.multiSumEle.nu+max    ([size(userProfiles.tabIntGai.columns, 1); size(userProfiles.tabIntGai.offset,     1)])+25*systemParameters.nZones+DHW.calcmFlow.multiProduct.nu+    DHW.pump.vol.dynBal.nPorts+max([
+  [4]; size(DHW.combiTimeTableDHWInput.offset, 1)])+electrical.generation.sumOfPower.nin    +hydraulic.generation.heatPump.con.vol.dynBal.nPorts+2*hydraulic.generation.heatPump.eva.vol.dynBal.nPorts    +size(hydraulic.generation.heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns, 1)    +hydraulic.generation.heatPump.safCtr.opeEnv.bouMapHea.nor.nu+size(    hydraulic.generation.heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns, 1)+    hydraulic.generation.heatPump.safCtr.opeEnv.bouMapCoo.nor.nu+    hydraulic.generation.pump.vol.dynBal.nPorts+hydraulic.generation.multiSum.nu    +hydraulic.generation.eleHea.vol.dynBal.nPorts+hydraulic.control.anyGenDevIsOn.nu    +hydraulic.control.buiAndDHWCtr.orDHW.nu+hydraulic.control.buiAndDHWCtr.maxSecHeaGen.nu    +hydraulic.control.buiAndDHWCtr.secGenOn.nu+2*hydraulic.distribution.parStoDHW.nLayer    +hydraulic.distribution.stoDHW.layer[1].dynBal.nPorts+hydraulic.distribution.stoDHW.layer[2].dynBal.nPorts    +hydraulic.distribution.stoDHW.layer[3].dynBal.nPorts+hydraulic.distribution.stoDHW.layer[4].dynBal.nPorts    +hydraulic.distribution.stoDHW.layer_HE[1].dynBal.nPorts+hydraulic.distribution.stoDHW.layer_HE[2].dynBal.nPorts    +hydraulic.distribution.stoDHW.layer_HE[3].dynBal.nPorts+hydraulic.distribution.stoDHW.layer_HE[4].dynBal.nPorts    +2*hydraulic.distribution.parStoBuf.nLayer+hydraulic.distribution.stoBuf.layer[1].dynBal.nPorts    +hydraulic.distribution.stoBuf.layer[2].dynBal.nPorts+hydraulic.distribution.stoBuf.layer[3].dynBal.nPorts    +hydraulic.distribution.stoBuf.layer[4].dynBal.nPorts+hydraulic.distribution.stoBuf.layer_HE[1].dynBal.nPorts    +hydraulic.distribution.stoBuf.layer_HE[2].dynBal.nPorts+hydraulic.distribution.stoBuf.layer_HE[3].dynBal.nPorts    +hydraulic.distribution.stoBuf.layer_HE[4].dynBal.nPorts+hydraulic.distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.nPorts    +hydraulic.transfer.rad[1].sumCon.nin+hydraulic.transfer.rad[1].sumRad.nin+    hydraulic.transfer.rad[1].vol[1].dynBal.nPorts+hydraulic.transfer.rad[1].vol[2].dynBal.nPorts    +hydraulic.transfer.rad[1].vol[3].dynBal.nPorts+hydraulic.transfer.rad[1].vol[4].dynBal.nPorts    +hydraulic.transfer.rad[1].vol[5].dynBal.nPorts+hydraulic.transfer.pumFixMFlo[1].vol.dynBal.nPorts    +2*ventilation.generation.fanFlow.vol.dynBal.nPorts+2*ventilation.generation.fanRet.vol.dynBal.nPorts    +2*ventilation.generation.threeWayValve_b.vol.dynBal.nPorts+2*    ventilation.generation.threeWayValve_a.vol.dynBal.nPorts
+scalar unknowns and
+  6325+max([size(userProfiles.tabIntGai.columns, 1); size(userProfiles.tabIntGai.offset,     1)])+(if DHW.bou_sink.use_Xi_in then 1 else (if DHW.bou_sink.use_X_in then 0     else 1))+(if  not DHW.bou_sink.use_p_in then 1 else 0)+2*DHW.bou_sink.nPorts    +(if  not DHW.bou_sink.use_h_in then 1 else 0)+(if DHW.bouSou.use_Xi_in     then 1 else (if DHW.bouSou.use_X_in then 0 else 1))+(if  not     DHW.bouSou.use_p_in then 1 else 0)+(if  not DHW.bouSou.use_T_in then 1 else 0)    +max([
+  [4]; size(DHW.combiTimeTableDHWInput.offset, 1)])+(if hydraulic.generation.bou_sinkAir.use_Xi_in     then 2 else (if hydraulic.generation.bou_sinkAir.use_X_in then 1 else 3))+(    if  not hydraulic.generation.bou_sinkAir.use_p_in then 1 else 0)+(if  not     hydraulic.generation.bou_sinkAir.use_h_in then 1 else 0)+(if     hydraulic.generation.bouEva.use_Xi_in then 2 else (if hydraulic.generation.bouEva.use_X_in     then 1 else 3))+(if hydraulic.generation.bouPum.use_Xi_in then 1 else (if     hydraulic.generation.bouPum.use_X_in then 0 else 1))+(if  not     hydraulic.generation.bouPum.use_p_in then 1 else 0)+(if  not     hydraulic.generation.bouPum.use_T_in then 1 else 0)+(if hydraulic.distribution.stoDHW.use_TOut     then 2*hydraulic.distribution.parStoDHW.nLayer else 0)+(if hydraulic.distribution.stoBuf.use_TOut     then 2*hydraulic.distribution.parStoBuf.nLayer else 0)+(if hydraulic.distribution.bouPumBuf.use_Xi_in     then 1 else (if hydraulic.distribution.bouPumBuf.use_X_in then 0 else 1))+(    if  not hydraulic.distribution.bouPumBuf.use_p_in then 1 else 0)+(if  not     hydraulic.distribution.bouPumBuf.use_T_in then 1 else 0)+(if     ventilation.generation.bouSup.use_Xi_in then 2 else (if ventilation.generation.bouSup.use_X_in     then 1 else 3))+3*ventilation.generation.bouSup.nPorts+(if ventilation.generation.bouExh.use_Xi_in     then 2 else (if ventilation.generation.bouExh.use_X_in then 1 else 3))+3*    ventilation.generation.bouExh.nPorts+(if  not ventilation.generation.bouExh.use_p_in     then 1 else 0)+(if  not ventilation.generation.bouExh.use_T_in then 1 else 0)    +(if weaDat.pAtmSou == IBPSA.BoundaryConditions.Types.DataSource.Parameter     then 1 else 0)+(if weaDat.TDewPoiSou == IBPSA.BoundaryConditions.Types.DataSource.    Parameter then 1 else 0)+(if weaDat.TDryBulSou == IBPSA.BoundaryConditions.Types.DataSource.    Parameter then 1 else 0)+(if weaDat.TBlaSkySou == IBPSA.BoundaryConditions.Types.DataSource.    Parameter then 1 else 0)+(if weaDat.relHumSou == IBPSA.BoundaryConditions.Types.DataSource.    Parameter then 1 else 0)+(if weaDat.opaSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.    Parameter then 1 else 0)+(if weaDat.ceiHeiSou == IBPSA.BoundaryConditions.Types.DataSource.    Parameter then 1 else 0)+(if weaDat.totSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.    Parameter then 1 else 0)+(if weaDat.winSpeSou == IBPSA.BoundaryConditions.Types.DataSource.    Parameter then 1 else 0)+(if weaDat.winDirSou == IBPSA.BoundaryConditions.Types.DataSource.    Parameter then 1 else 0)+(if weaDat.HInfHorSou == IBPSA.BoundaryConditions.Types.DataSource.    Parameter then 1 else 0)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.    Input_HDirNor_HDifHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.    Input_HDirNor_HGloHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.    Input_HGloHor_HDifHor then 2 else 1)+19*building.thermalZone[1].zoneParam.nOrientations    +(if  not building.thermalZone[1].eqAirTempWall.TGroundFromInput then 1     else 0)+(if  not building.thermalZone[1].eqAirTempRoof.TGroundFromInput     then 1 else 0)+3*building.thermalZone[1].zoneParam.nOrientationsRoof+    building.thermalZone[1].ventCont.optimalTemp.nout+building.thermalZone[1].ventCont.dEMA.ExpAVG.n    +building.thermalZone[1].ventCont.dEMA.ExpAVG1.n+(if  not DHW.pump.vol.dynBal.use_mWat_flow     then 1 else 0)+3*DHW.pump.vol.dynBal.nPorts+(if  not hydraulic.generation.heatPump.con.vol.dynBal.use_mWat_flow     then 1 else 0)+3*hydraulic.generation.heatPump.con.vol.dynBal.nPorts+(if      not hydraulic.generation.heatPump.eva.vol.dynBal.use_mWat_flow then 1 else 0)    +5*hydraulic.generation.heatPump.eva.vol.dynBal.nPorts+size(hydraulic.generation.heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns,     1)+size(hydraulic.generation.heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns,     1)+(if  not hydraulic.generation.pump.vol.dynBal.use_mWat_flow then 1 else 0)    +3*hydraulic.generation.pump.vol.dynBal.nPorts+(if  not hydraulic.generation.eleHea.vol.dynBal.use_mWat_flow     then 1 else 0)+3*hydraulic.generation.eleHea.vol.dynBal.nPorts+(if  not     hydraulic.transfer.pumFixMFlo[1].vol.dynBal.use_mWat_flow then 1 else 0)+3*    hydraulic.transfer.pumFixMFlo[1].vol.dynBal.nPorts+(if  not ventilation.generation.fanFlow.vol.dynBal.use_mWat_flow     then 1 else 0)+5*ventilation.generation.fanFlow.vol.dynBal.nPorts+(if  not     ventilation.generation.fanRet.vol.dynBal.use_mWat_flow then 1 else 0)+5*    ventilation.generation.fanRet.vol.dynBal.nPorts+(if  not building.thermalZone[1].ROM.volAir.dynBal.use_mWat_flow     then 1 else 0)+5*building.thermalZone[1].ROM.volAir.dynBal.nPorts+(if  not     hydraulic.distribution.stoDHW.layer[1].dynBal.use_mWat_flow then 1 else 0)+3    *hydraulic.distribution.stoDHW.layer[1].dynBal.nPorts+(if  not     hydraulic.distribution.stoDHW.layer[2].dynBal.use_mWat_flow then 1 else 0)+3    *hydraulic.distribution.stoDHW.layer[2].dynBal.nPorts+(if  not     hydraulic.distribution.stoDHW.layer[3].dynBal.use_mWat_flow then 1 else 0)+3    *hydraulic.distribution.stoDHW.layer[3].dynBal.nPorts+(if  not     hydraulic.distribution.stoDHW.layer[4].dynBal.use_mWat_flow then 1 else 0)+3    *hydraulic.distribution.stoDHW.layer[4].dynBal.nPorts+(if  not     hydraulic.distribution.stoDHW.layer_HE[1].dynBal.use_mWat_flow then 1 else 0)    +3*hydraulic.distribution.stoDHW.layer_HE[1].dynBal.nPorts+(if  not     hydraulic.distribution.stoDHW.layer_HE[2].dynBal.use_mWat_flow then 1 else 0)    +3*hydraulic.distribution.stoDHW.layer_HE[2].dynBal.nPorts+(if  not     hydraulic.distribution.stoDHW.layer_HE[3].dynBal.use_mWat_flow then 1 else 0)    +3*hydraulic.distribution.stoDHW.layer_HE[3].dynBal.nPorts+(if  not     hydraulic.distribution.stoDHW.layer_HE[4].dynBal.use_mWat_flow then 1 else 0)    +3*hydraulic.distribution.stoDHW.layer_HE[4].dynBal.nPorts+(if  not     hydraulic.distribution.stoBuf.layer[1].dynBal.use_mWat_flow then 1 else 0)+3    *hydraulic.distribution.stoBuf.layer[1].dynBal.nPorts+(if  not     hydraulic.distribution.stoBuf.layer[2].dynBal.use_mWat_flow then 1 else 0)+3    *hydraulic.distribution.stoBuf.layer[2].dynBal.nPorts+(if  not     hydraulic.distribution.stoBuf.layer[3].dynBal.use_mWat_flow then 1 else 0)+3    *hydraulic.distribution.stoBuf.layer[3].dynBal.nPorts+(if  not     hydraulic.distribution.stoBuf.layer[4].dynBal.use_mWat_flow then 1 else 0)+3    *hydraulic.distribution.stoBuf.layer[4].dynBal.nPorts+(if  not     hydraulic.distribution.stoBuf.layer_HE[1].dynBal.use_mWat_flow then 1 else 0)    +3*hydraulic.distribution.stoBuf.layer_HE[1].dynBal.nPorts+(if  not     hydraulic.distribution.stoBuf.layer_HE[2].dynBal.use_mWat_flow then 1 else 0)    +3*hydraulic.distribution.stoBuf.layer_HE[2].dynBal.nPorts+(if  not     hydraulic.distribution.stoBuf.layer_HE[3].dynBal.use_mWat_flow then 1 else 0)    +3*hydraulic.distribution.stoBuf.layer_HE[3].dynBal.nPorts+(if  not     hydraulic.distribution.stoBuf.layer_HE[4].dynBal.use_mWat_flow then 1 else 0)    +3*hydraulic.distribution.stoBuf.layer_HE[4].dynBal.nPorts+(if  not     hydraulic.distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.use_mWat_flow     then 1 else 0)+3*hydraulic.distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.nPorts    +(if  not hydraulic.transfer.rad[1].vol[1].dynBal.use_mWat_flow then 1 else 0)    +3*hydraulic.transfer.rad[1].vol[1].dynBal.nPorts+(if  not hydraulic.transfer.rad[1].vol[2].dynBal.use_mWat_flow     then 1 else 0)+3*hydraulic.transfer.rad[1].vol[2].dynBal.nPorts+(if  not     hydraulic.transfer.rad[1].vol[3].dynBal.use_mWat_flow then 1 else 0)+3*    hydraulic.transfer.rad[1].vol[3].dynBal.nPorts+(if  not hydraulic.transfer.rad[1].vol[4].dynBal.use_mWat_flow     then 1 else 0)+3*hydraulic.transfer.rad[1].vol[4].dynBal.nPorts+(if  not     hydraulic.transfer.rad[1].vol[5].dynBal.use_mWat_flow then 1 else 0)+3*    hydraulic.transfer.rad[1].vol[5].dynBal.nPorts+(if  not ventilation.generation.threeWayValve_b.vol.dynBal.use_mWat_flow     then 1 else 0)+5*ventilation.generation.threeWayValve_b.vol.dynBal.nPorts+(    if  not ventilation.generation.threeWayValve_a.vol.dynBal.use_mWat_flow     then 1 else 0)+5*ventilation.generation.threeWayValve_a.vol.dynBal.nPorts+17    *systemParameters.nZones+2*hydraulic.transfer.parRad.nEle
+scalar equations.
+DAE with 6941 unknown scalars and 6941 scalar equations.
+
+Check of <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic">BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic</a> successful.
 Warning: WARNINGS have been issued.
+Translation of <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic">BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic</a>
+Error:  model <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic">BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic</a> is partial.
+Warning: The quantity of electrical.generation.pVSystem[1].weaBus.TDryBul is "ThermodynamicTemperature" and the quantity of electrical.generation.pVSystem[1].cellTemperature.T_a is "Temp_C".
+In <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$electrical.generation.pVSystem[1]:Bus.TDryBul,lTemperature.T_a">connect(electrical.generation.pVSystem[1].weaBus.TDryBul, electrical.generation.pVSystem[1].cellTemperature.T_a);
+</a>Found in class <a href="Modelica://AixLib.Electrical.PVSystem.PVSystem">AixLib.Electrical.PVSystem.PVSystem</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/PVSystem.mo at line <a href="Modelica://AixLib.Electrical.PVSystem.PVSystem#text:131">132</a>, and used in component <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$electrical.generation:pVSystem">electrical.generation.pVSystem[1]</a>.
+Variable <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$electrical.generation:pVSystem[1].weaBus">electrical.generation.pVSystem[1].weaBus.TDryBul</a> was declared in class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/BoundaryConditions/WeatherData/Bus.mo at line 5, and used in component <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$electrical.generation.pVSystem:weaBus">electrical.generation.pVSystem[1].weaBus</a>.
+Variable <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$electrical.generation.pVSystem[1]:cellTemperature.T_a">electrical.generation.pVSystem[1].cellTemperature.T_a</a> was declared in class <a href="Modelica://Modelica.Blocks.Interfaces">Modelica.Blocks.Interfaces</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/BaseClasses/PartialCellTemperature.mo at line 21, and used in component <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$electrical.generation.pVSystem.cellTemperature:PartialCellTemperature">electrical.generation.pVSystem.cellTemperature.PartialCellTemperature</a>.
+Warning: The quantity of electrical.generation.pVSystem[2].weaBus.TDryBul is "ThermodynamicTemperature" and the quantity of electrical.generation.pVSystem[2].cellTemperature.T_a is "Temp_C".
+In <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$electrical.generation.pVSystem[2]:Bus.TDryBul,lTemperature.T_a">connect(electrical.generation.pVSystem[2].weaBus.TDryBul, electrical.generation.pVSystem[2].cellTemperature.T_a);
+</a>Found in class <a href="Modelica://AixLib.Electrical.PVSystem.PVSystem">AixLib.Electrical.PVSystem.PVSystem</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/PVSystem.mo at line <a href="Modelica://AixLib.Electrical.PVSystem.PVSystem#text:131">132</a>, and used in component <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$electrical.generation:pVSystem">electrical.generation.pVSystem[2]</a>.
+Variable <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$electrical.generation:pVSystem[2].weaBus">electrical.generation.pVSystem[2].weaBus.TDryBul</a> was declared in class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/BoundaryConditions/WeatherData/Bus.mo at line 5, and used in component <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$electrical.generation.pVSystem:weaBus">electrical.generation.pVSystem[2].weaBus</a>.
+Variable <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$electrical.generation.pVSystem[2]:cellTemperature.T_a">electrical.generation.pVSystem[2].cellTemperature.T_a</a> was declared in class <a href="Modelica://Modelica.Blocks.Interfaces">Modelica.Blocks.Interfaces</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/BaseClasses/PartialCellTemperature.mo at line 21, and used in component <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$electrical.generation.pVSystem.cellTemperature:PartialCellTemperature">electrical.generation.pVSystem.cellTemperature.PartialCellTemperature</a>.
+Warning: Incompatible units.
+Warning: Incompatible units in
+  electrical.generation.pVSystem[1].cellTemperature.radTil*exp((-2.81)-0.0455*  electrical.generation.pVSystem[1].cellTemperature.winVel)+electrical.generation.pVSystem[1].cellTemperature.T_a
+The part
+  electrical.generation.pVSystem[1].cellTemperature.radTil*exp((-2.81)-0.0455*  electrical.generation.pVSystem[1].cellTemperature.winVel)
+has unit kg/s3
+The part
+  electrical.generation.pVSystem[1].cellTemperature.T_a
+has unit K
+Warning: The unit issue reported appeared in the equation
+  electrical.generation.pVSystem[1].cellTemperature.T_c = (if noEvent(  electrical.generation.pVSystem[1].cellTemperature.radTil &gt;= 1E-15) then   electrical.generation.pVSystem[1].cellTemperature.radTil*exp((-2.81)-0.0455*  electrical.generation.pVSystem[1].cellTemperature.winVel)+electrical.generation.pVSystem[1].cellTemperature.T_a   else electrical.generation.pVSystem[1].cellTemperature.T_a);
+Found in class <a href="Modelica://AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround">AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/BaseClasses/CellTemperatureMountingContactToGround.mo at line <a href="Modelica://AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround#text:12">13</a>, and used in component <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$electrical.generation.pVSystem:cellTemperature">electrical.generation.pVSystem[1].cellTemperature</a>.
+Warning: Incompatible units.
+Warning: Incompatible units in
+  electrical.generation.pVSystem[2].cellTemperature.radTil*exp((-2.81)-0.0455*  electrical.generation.pVSystem[2].cellTemperature.winVel)+electrical.generation.pVSystem[2].cellTemperature.T_a
+The part
+  electrical.generation.pVSystem[2].cellTemperature.radTil*exp((-2.81)-0.0455*  electrical.generation.pVSystem[2].cellTemperature.winVel)
+has unit kg/s3
+The part
+  electrical.generation.pVSystem[2].cellTemperature.T_a
+has unit K
+Warning: The unit issue reported appeared in the equation
+  electrical.generation.pVSystem[2].cellTemperature.T_c = (if noEvent(  electrical.generation.pVSystem[2].cellTemperature.radTil &gt;= 1E-15) then   electrical.generation.pVSystem[2].cellTemperature.radTil*exp((-2.81)-0.0455*  electrical.generation.pVSystem[2].cellTemperature.winVel)+electrical.generation.pVSystem[2].cellTemperature.T_a   else electrical.generation.pVSystem[2].cellTemperature.T_a);
+Found in class <a href="Modelica://AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround">AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/BaseClasses/CellTemperatureMountingContactToGround.mo at line <a href="Modelica://AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround#text:12">13</a>, and used in component <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$electrical.generation.pVSystem:cellTemperature">electrical.generation.pVSystem[2].cellTemperature</a>.
+The DAE has 6714 scalar unknowns and 6714 scalar equations.
+Redundant consistent initial conditions.
+Removed the following equations which are redundant and consistent: 
+  ventilation.generation.p_start = ventilation.p_start;
+  if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+      hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = hydraulic.generation.heatPump.eva.vol.dynBal.p_start;
+    end if;
+  else
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==       Modelica.Fluid.Types.Dynamics.SteadyStateInitial) then 
+      if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+        der(hydraulic.generation.heatPump.eva.vol.dynBal.medium.p) = 0;
+      end if;
+    end if;
+  end if;
+
+This required evaluation of 
+the interactive parameters 
+    hydraulic.generation.bou_sinkAir.p(start = 101325)
+    ventilation.generation.bouExh.p(start = 101325)
+    ventilation.p_start(start = 101325)
+
+The redundancies involve
+initial equations: 
+  hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
+  ventilation.generation.threeWayValve_b.res1.port_b.p = ventilation.generation.threeWayValve_b.vol.dynBal.p_start;
+
+Warning: The variable hydraulic.generation.heatPump.m1_flow_small=1.55188e+52 is not in range [0,100000].
+Ignoring range
+Warning: The variable hydraulic.generation.pump.preSou.m_flow_small=3.10376e+52 is not in range [-100000,100000].
+Ignoring range
+Warning: The variable hydraulic.transfer.pumFixMFlo[1].preSou.m_flow_start=1.29323e+56 is not in range [-100000,100000].
+Ignoring range
+Warning: The variable hydraulic.transfer.pumFixMFlo[1].preSou.m_flow_small=1.29323e+52 is not in range [-100000,100000].
+Ignoring range
+Warning: The variable ventilation.generation.hex.m1_flow_small=1.70139e+52 is not in range [0,100000].
+Ignoring range
+Warning: The variable ventilation.generation.hex.m2_flow_small=1.70139e+52 is not in range [0,100000].
+Ignoring range
+Warning: The variable ventilation.generation.fanFlow.preSou.m_flow_small=3.40278e+52 is not in range [-100000,100000].
+Ignoring range
+Warning: The variable ventilation.generation.fanRet.preSou.m_flow_small=3.40278e+52 is not in range [-100000,100000].
+Ignoring range
+
+Statistics
+
+Original Model
+  Number of components: 1434
+  Variables: 13840
+  Constants: 255 (255 scalars)
+  Parameters: 6498 (8443 scalars)
+  Unknowns: 7087 (6941 scalars)
+  Differentiated variables: 125 scalars
+  Equations: 5883
+  Nontrivial: 4854
+Translated Model
+  Constants: 5957 scalars
+  Free parameters: 960 scalars
+  Parameter depending: 2731 scalars
+  Outputs: 80 scalars
+  Continuous time states: 96 scalars
+  Time-varying variables: 1597 scalars
+  Alias variables: 4394 scalars
+  Number of mixed real/discrete systems of equations: 0
+  Sizes of linear systems of equations: {2, 2, 2, 2, 2, 4, 4}
+  Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0}
+  Sizes of nonlinear systems of equations: {14, 5, 1, 59, 1, 1, 3, 4, 3, 1, 1, 1, 1, 1, 1, 1, 1}
+  Sizes after manipulation of the nonlinear systems: {2, 1, 1, 6, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1}
+  Number of numerical Jacobians: 0
+  Initialization problem
+    Sizes of nonlinear systems of equations: {11, 70, 14, 5, 1, 1, 1, 3, 1, 4, 1, 1}
+    Sizes after manipulation of the nonlinear systems: {5, 7, 3, 1, 0, 1, 0, 1, 0, 1, 1, 1}
+    Sizes of simplified homotopy nonlinear systems of equations: {5, 1, 3, 1}
+    Sizes after manipulation of the simplified homotopy nonlinear systems: {1, 0, 1, 0}
+    Number of numerical Jacobians: 0
+
+Selected continuous time states
+Statically selected continuous time states
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$building.thermalZone.ROM.extWallRC.thermCapExt:T">building.thermalZone[1].ROM.extWallRC.thermCapExt[1].T</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$building.thermalZone.ROM.floorRC.thermCapExt:T">building.thermalZone[1].ROM.floorRC.thermCapExt[1].T</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$building.thermalZone.ROM.intWallRC.thermCapInt:T">building.thermalZone[1].ROM.intWallRC.thermCapInt[1].T</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$building.thermalZone.ROM.roofRC.thermCapExt:T">building.thermalZone[1].ROM.roofRC.thermCapExt[1].T</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$building.thermalZone.ROM.volAir.dynBal:m">building.thermalZone[1].ROM.volAir.dynBal.m</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$building.thermalZone[1].ROM.volAir.dynBal:medium.Xi[1]">building.thermalZone[1].ROM.volAir.dynBal.medium.Xi[1]</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$building.thermalZone.ROM.volAir.dynBal:U">building.thermalZone[1].ROM.volAir.dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$building.thermalZone.ventCont.dEMA.ExpAVG:x">building.thermalZone[1].ventCont.dEMA.ExpAVG.x[1]</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$building.thermalZone.ventCont.dEMA.ExpAVG1:x">building.thermalZone[1].ventCont.dEMA.ExpAVG1.x[1]</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$building.zoneEneBal[1].airExc.gainKPI:integrator2.y">building.zoneEneBal[1].airExc.gainKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$building.zoneEneBal[1].airExc.lossKPI:integrator2.y">building.zoneEneBal[1].airExc.lossKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$building.zoneEneBal[1].extWall.gainKPI:integrator2.y">building.zoneEneBal[1].extWall.gainKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$building.zoneEneBal[1].extWall.lossKPI:integrator2.y">building.zoneEneBal[1].extWall.lossKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$building.zoneEneBal[1].floor.gainKPI:integrator2.y">building.zoneEneBal[1].floor.gainKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$building.zoneEneBal[1].floor.lossKPI:integrator2.y">building.zoneEneBal[1].floor.lossKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$building.zoneEneBal[1].intGaiLight:integrator2.y">building.zoneEneBal[1].intGaiLight.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$building.zoneEneBal[1].intGaiMac:integrator2.y">building.zoneEneBal[1].intGaiMac.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$building.zoneEneBal[1].intGaiPer:integrator2.y">building.zoneEneBal[1].intGaiPer.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$building.zoneEneBal[1].roof.gainKPI:integrator2.y">building.zoneEneBal[1].roof.gainKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$building.zoneEneBal[1].roof.lossKPI:integrator2.y">building.zoneEneBal[1].roof.lossKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$building.zoneEneBal[1].sol:integrator2.y">building.zoneEneBal[1].sol.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$building.zoneEneBal[1].tra.gainKPI:integrator2.y">building.zoneEneBal[1].tra.gainKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$building.zoneEneBal[1].tra.lossKPI:integrator2.y">building.zoneEneBal[1].tra.lossKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$building.zoneEneBal[1].ven.gainKPI:integrator2.y">building.zoneEneBal[1].ven.gainKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$building.zoneEneBal[1].ven.lossKPI:integrator2.y">building.zoneEneBal[1].ven.lossKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$building.zoneEneBal[1].win.gainKPI:integrator2.y">building.zoneEneBal[1].win.gainKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$building.zoneEneBal[1].win.lossKPI:integrator2.y">building.zoneEneBal[1].win.lossKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$building.zonTem[1].calCtrl:intDisCom.y">building.zonTem[1].calCtrl.intDisCom.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$building.zonTem[1].comCool:intDisCom.y">building.zonTem[1].comCool.intDisCom.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$building.zonTem[1].comHea:intDisCom.y">building.zonTem[1].comHea.intDisCom.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$building.zonTemOpe[1].calCtrl:intDisCom.y">building.zonTemOpe[1].calCtrl.intDisCom.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$building.zonTemOpe[1].comCool:intDisCom.y">building.zonTemOpe[1].comCool.intDisCom.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$building.zonTemOpe[1].comHea:intDisCom.y">building.zonTemOpe[1].comHea.intDisCom.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$DHW.integralKPICalculator:integrator2.y">DHW.integralKPICalculator.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$DHW.pump.vol.dynBal:U">DHW.pump.vol.dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$electrical.distribution.eneKPIGen:integrator2.y">electrical.distribution.eneKPIGen.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$electrical.distribution.eneKPILoa:integrator2.y">electrical.distribution.eneKPILoa.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$electrical.generation.intKPICalPElePV:integrator2.y">electrical.generation.intKPICalPElePV.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$hydraulic.control.priGenPIDCtrl:intAbs.y">hydraulic.control.priGenPIDCtrl.intAbs.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$hydraulic.control.priGenPIDCtrl:intSqu.y">hydraulic.control.priGenPIDCtrl.intSqu.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$hydraulic.control.priGenPIDCtrl.PID.D:x">hydraulic.control.priGenPIDCtrl.PID.D.x</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$hydraulic.control.priGenPIDCtrl.PID:I.y">hydraulic.control.priGenPIDCtrl.PID.I.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$hydraulic.control.valCtrl.PI[1]:I.y">hydraulic.control.valCtrl.PI[1].I.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$hydraulic.distribution.eneKPICalBuf:integrator2.y">hydraulic.distribution.eneKPICalBuf.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$hydraulic.distribution.eneKPICalDHW:integrator2.y">hydraulic.distribution.eneKPICalDHW.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$hydraulic.distribution.stoBuf.layer.dynBal:U">hydraulic.distribution.stoBuf.layer[1].dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$hydraulic.distribution.stoBuf.layer.dynBal:U">hydraulic.distribution.stoBuf.layer[2].dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$hydraulic.distribution.stoBuf.layer.dynBal:U">hydraulic.distribution.stoBuf.layer[3].dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$hydraulic.distribution.stoBuf.layer.dynBal:U">hydraulic.distribution.stoBuf.layer[4].dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$hydraulic.distribution.stoBuf.layer_HE.dynBal:U">hydraulic.distribution.stoBuf.layer_HE[1].dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$hydraulic.distribution.stoBuf.layer_HE.dynBal:U">hydraulic.distribution.stoBuf.layer_HE[2].dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$hydraulic.distribution.stoBuf.layer_HE.dynBal:U">hydraulic.distribution.stoBuf.layer_HE[3].dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$hydraulic.distribution.stoBuf.layer_HE.dynBal:U">hydraulic.distribution.stoBuf.layer_HE[4].dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$hydraulic.distribution.stoDHW.layer.dynBal:U">hydraulic.distribution.stoDHW.layer[1].dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$hydraulic.distribution.stoDHW.layer.dynBal:U">hydraulic.distribution.stoDHW.layer[2].dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$hydraulic.distribution.stoDHW.layer.dynBal:U">hydraulic.distribution.stoDHW.layer[3].dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$hydraulic.distribution.stoDHW.layer.dynBal:U">hydraulic.distribution.stoDHW.layer[4].dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$hydraulic.distribution.stoDHW.layer_HE.dynBal:U">hydraulic.distribution.stoDHW.layer_HE[1].dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$hydraulic.distribution.stoDHW.layer_HE.dynBal:U">hydraulic.distribution.stoDHW.layer_HE[2].dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$hydraulic.distribution.stoDHW.layer_HE.dynBal:U">hydraulic.distribution.stoDHW.layer_HE[3].dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$hydraulic.distribution.stoDHW.layer_HE.dynBal:U">hydraulic.distribution.stoDHW.layer_HE[4].dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$hydraulic.distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal:U">hydraulic.distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$hydraulic.generation.eleHea.vol.dynBal:U">hydraulic.generation.eleHea.vol.dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$hydraulic.generation.heatPump.con.vol.dynBal:U">hydraulic.generation.heatPump.con.vol.dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$hydraulic.generation.heatPump.eva.vol.dynBal:medium.Xi[1]">hydraulic.generation.heatPump.eva.vol.dynBal.medium.Xi[1]</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$hydraulic.generation.heatPump.eva.vol.dynBal:U">hydraulic.generation.heatPump.eva.vol.dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$hydraulic.generation.KPIEleHea:integrator1.y">hydraulic.generation.KPIEleHea.integrator1.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$hydraulic.generation.KPIEleHea:integrator3.y">hydraulic.generation.KPIEleHea.integrator3.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$hydraulic.generation.KPIHeaPum:integrator1.y">hydraulic.generation.KPIHeaPum.integrator1.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$hydraulic.generation.KPIHeaPum:integrator3.y">hydraulic.generation.KPIHeaPum.integrator3.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$hydraulic.generation.KPIPEleEleHea:integrator2.y">hydraulic.generation.KPIPEleEleHea.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$hydraulic.generation.KPIQEleHea_flow:integrator2.y">hydraulic.generation.KPIQEleHea_flow.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$hydraulic.generation.KPIQHP:integrator2.y">hydraulic.generation.KPIQHP.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$hydraulic.generation.KPIWel:integrator2.y">hydraulic.generation.KPIWel.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$hydraulic.generation.pump.vol.dynBal:U">hydraulic.generation.pump.vol.dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$hydraulic.generation:senTGenOut.T">hydraulic.generation.senTGenOut.T</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$hydraulic.transfer.intKPICalHeaFlo:integrator2.y">hydraulic.transfer.intKPICalHeaFlo.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$hydraulic.transfer.pumFixMFlo.vol.dynBal:U">hydraulic.transfer.pumFixMFlo[1].vol.dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$hydraulic.transfer.rad.vol.dynBal:U">hydraulic.transfer.rad[1].vol[1].dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$hydraulic.transfer.rad.vol.dynBal:U">hydraulic.transfer.rad[1].vol[2].dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$hydraulic.transfer.rad.vol.dynBal:U">hydraulic.transfer.rad[1].vol[3].dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$hydraulic.transfer.rad.vol.dynBal:U">hydraulic.transfer.rad[1].vol[4].dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$hydraulic.transfer.rad.vol.dynBal:U">hydraulic.transfer.rad[1].vol[5].dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$ventilation.generation.fanFlow.vol.dynBal:m">ventilation.generation.fanFlow.vol.dynBal.m</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$ventilation.generation.fanFlow.vol.dynBal:medium.Xi[1]">ventilation.generation.fanFlow.vol.dynBal.medium.Xi[1]</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$ventilation.generation.fanFlow.vol.dynBal:U">ventilation.generation.fanFlow.vol.dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$ventilation.generation.fanRet.vol.dynBal:m">ventilation.generation.fanRet.vol.dynBal.m</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$ventilation.generation.fanRet.vol.dynBal:medium.Xi[1]">ventilation.generation.fanRet.vol.dynBal.medium.Xi[1]</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$ventilation.generation.fanRet.vol.dynBal:U">ventilation.generation.fanRet.vol.dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$ventilation.generation:TExhIn.T">ventilation.generation.TExhIn.T</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$ventilation.generation.threeWayValve_a.vol.dynBal:m">ventilation.generation.threeWayValve_a.vol.dynBal.m</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$ventilation.generation.threeWayValve_a.vol.dynBal:medium.Xi[1]">ventilation.generation.threeWayValve_a.vol.dynBal.medium.Xi[1]</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$ventilation.generation.threeWayValve_a.vol.dynBal:U">ventilation.generation.threeWayValve_a.vol.dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$ventilation.generation.threeWayValve_b.vol.dynBal:medium.Xi[1]">ventilation.generation.threeWayValve_b.vol.dynBal.medium.Xi[1]</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$ventilation.generation.threeWayValve_b.vol.dynBal:U">ventilation.generation.threeWayValve_b.vol.dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$ventilation.generation:TSup.T">ventilation.generation.TSup.T</a>
+Warning: Conflicting start values
+The iteration variable <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$building.weaBus:TWetBul">building.weaBus.TWetBul</a> has been selected to have the guess value 291.15.
+However, the start value has been selected from a set of alias variables having conflicting start values of the same precedence.
+291.15, the start value of <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$weaDat.tWetBul_TDryBulXi:TWetBul">weaDat.tWetBul_TDryBulXi.TWetBul</a> given as 291.15. At level 3. Original start-value at level 3.
+293.15, the start value of <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$electrical.weaBus:TWetBul">electrical.weaBus.TWetBul</a> given as 293.15. At level 3. Original start-value at level 3.
+Error detected when generating code.
+Translation aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+Error: Simulations failed for:
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic">BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic</a>
 
 
-Error in model:  BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly 
-Check of <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly">BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly</a>
-Warning: The variable building.ABui=0 is not in range [0.1, DBL_MAX].
-Warning: The variable building.hBui=0 is not in range [0.1, DBL_MAX].
-Warning: The variable hydraulic.transfer.ABui=0 is not in range [0.1, DBL_MAX].
-Warning: The variable hydraulic.transfer.hBui=0 is not in range [0.1, DBL_MAX].
-Warning: The variable hydraulic.transfer.parTra.dpHeaDistr_nominal=0 is not in range [1e-15, DBL_MAX].
-Check of class aborted.
+Error in model:  BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation 
+Check of <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation">BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation</a>
+The model has
+  1918+29*building.thermalZone[1].zoneParam.nOrientations+2*building.thermalZone[1].ROM.volAir.dynBal.nPorts    +building.thermalZone[1].humanSenHeaDependent.productHeatOutput.nu+    building.thermalZone[1].machinesSenHea.productHeatOutput.nu+building.thermalZone[1].lights.productHeatOutput.nu    +5*building.thermalZone[1].zoneParam.nOrientationsRoof+building.thermalZone[1].ventCont.optimalTemp.nin    +building.thermalZone[1].ventCont.optimalTemp.nout+building.thermalZone[1].ventCont.dEMA.nout    +building.thermalZone[1].ventCont.dEMA.ExpAVG.n+building.thermalZone[1].ventCont.dEMA.ExpAVG1.n    +building.multiSumEle.nu+max([size(userProfiles.tabIntGai.columns, 1); size(    userProfiles.tabIntGai.offset, 1)])+electrical.transfer.sum1.nin
+scalar unknowns and
+  1934+max([size(userProfiles.tabIntGai.columns, 1); size(userProfiles.tabIntGai.offset,     1)])+(if weaDat.pAtmSou == IBPSA.BoundaryConditions.Types.DataSource.    Parameter then 1 else 0)+(if weaDat.TDewPoiSou == IBPSA.BoundaryConditions.Types.DataSource.    Parameter then 1 else 0)+(if weaDat.TDryBulSou == IBPSA.BoundaryConditions.Types.DataSource.    Parameter then 1 else 0)+(if weaDat.TBlaSkySou == IBPSA.BoundaryConditions.Types.DataSource.    Parameter then 1 else 0)+(if weaDat.relHumSou == IBPSA.BoundaryConditions.Types.DataSource.    Parameter then 1 else 0)+(if weaDat.opaSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.    Parameter then 1 else 0)+(if weaDat.ceiHeiSou == IBPSA.BoundaryConditions.Types.DataSource.    Parameter then 1 else 0)+(if weaDat.totSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.    Parameter then 1 else 0)+(if weaDat.winSpeSou == IBPSA.BoundaryConditions.Types.DataSource.    Parameter then 1 else 0)+(if weaDat.winDirSou == IBPSA.BoundaryConditions.Types.DataSource.    Parameter then 1 else 0)+(if weaDat.HInfHorSou == IBPSA.BoundaryConditions.Types.DataSource.    Parameter then 1 else 0)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.    Input_HDirNor_HDifHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.    Input_HDirNor_HGloHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.    Input_HGloHor_HDifHor then 2 else 1)+19*building.thermalZone[1].zoneParam.nOrientations    +(if  not building.thermalZone[1].eqAirTempWall.TGroundFromInput then 1     else 0)+(if  not building.thermalZone[1].eqAirTempRoof.TGroundFromInput     then 1 else 0)+3*building.thermalZone[1].zoneParam.nOrientationsRoof+    building.thermalZone[1].ventCont.optimalTemp.nout+building.thermalZone[1].ventCont.dEMA.ExpAVG.n    +building.thermalZone[1].ventCont.dEMA.ExpAVG1.n+(if  not building.thermalZone[1].ROM.volAir.dynBal.use_mWat_flow     then 1 else 0)+5*building.thermalZone[1].ROM.volAir.dynBal.nPorts
+scalar equations.
+DAE with 1971 unknown scalars and 1971 scalar equations.
+
+Check of <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation">BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation</a> successful.
+Translation of <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation">BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation</a>
+Error:  model <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation">BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation</a> is partial.
+The DAE has 1971 scalar unknowns and 1971 scalar equations.
+
+Statistics
+
+Original Model
+  Number of components: 407
+  Variables: 3212
+  Constants: 45 (45 scalars)
+  Parameters: 1389 (1466 scalars)
+  Unknowns: 1778 (1971 scalars)
+  Differentiated variables: 35 scalars
+  Equations: 1547
+  Nontrivial: 1388
+Translated Model
+  Constants: 878 scalars
+  Free parameters: 379 scalars
+  Parameter depending: 470 scalars
+  Outputs: 48 scalars
+  Continuous time states: 35 scalars
+  Time-varying variables: 496 scalars
+  Alias variables: 1259 scalars
+  Number of mixed real/discrete systems of equations: 0
+  Sizes of linear systems of equations: {46, 4, 4}
+  Sizes after manipulation of the linear systems: {10, 0, 0}
+  Sizes of nonlinear systems of equations: {3, 1, 1, 1, 1, 1, 1}
+  Sizes after manipulation of the nonlinear systems: {1, 0, 1, 0, 1, 0, 1}
+  Number of numerical Jacobians: 0
+  Initialization problem
+    Sizes of linear systems of equations: {57}
+    Sizes after manipulation of the linear systems: {7}
+
+Selected continuous time states
+Statically selected continuous time states
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#text$building.thermalZone.ROM.extWallRC.thermCapExt:T">building.thermalZone[1].ROM.extWallRC.thermCapExt[1].T</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#text$building.thermalZone.ROM.floorRC.thermCapExt:T">building.thermalZone[1].ROM.floorRC.thermCapExt[1].T</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#text$building.thermalZone.ROM.intWallRC.thermCapInt:T">building.thermalZone[1].ROM.intWallRC.thermCapInt[1].T</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#text$building.thermalZone.ROM.roofRC.thermCapExt:T">building.thermalZone[1].ROM.roofRC.thermCapExt[1].T</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#text$building.thermalZone.ROM.volAir.dynBal:m">building.thermalZone[1].ROM.volAir.dynBal.m</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#diagram$building.thermalZone[1].ROM.volAir.dynBal:medium.Xi[1]">building.thermalZone[1].ROM.volAir.dynBal.medium.Xi[1]</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#text$building.thermalZone.ROM.volAir.dynBal:U">building.thermalZone[1].ROM.volAir.dynBal.U</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#text$building.thermalZone.ventCont.dEMA.ExpAVG:x">building.thermalZone[1].ventCont.dEMA.ExpAVG.x[1]</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#text$building.thermalZone.ventCont.dEMA.ExpAVG1:x">building.thermalZone[1].ventCont.dEMA.ExpAVG1.x[1]</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#diagram$building.zoneEneBal[1].airExc.gainKPI:integrator2.y">building.zoneEneBal[1].airExc.gainKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#diagram$building.zoneEneBal[1].airExc.lossKPI:integrator2.y">building.zoneEneBal[1].airExc.lossKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#diagram$building.zoneEneBal[1].extWall.gainKPI:integrator2.y">building.zoneEneBal[1].extWall.gainKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#diagram$building.zoneEneBal[1].extWall.lossKPI:integrator2.y">building.zoneEneBal[1].extWall.lossKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#diagram$building.zoneEneBal[1].floor.gainKPI:integrator2.y">building.zoneEneBal[1].floor.gainKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#diagram$building.zoneEneBal[1].floor.lossKPI:integrator2.y">building.zoneEneBal[1].floor.lossKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#diagram$building.zoneEneBal[1].intGaiLight:integrator2.y">building.zoneEneBal[1].intGaiLight.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#diagram$building.zoneEneBal[1].intGaiMac:integrator2.y">building.zoneEneBal[1].intGaiMac.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#diagram$building.zoneEneBal[1].intGaiPer:integrator2.y">building.zoneEneBal[1].intGaiPer.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#diagram$building.zoneEneBal[1].roof.gainKPI:integrator2.y">building.zoneEneBal[1].roof.gainKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#diagram$building.zoneEneBal[1].roof.lossKPI:integrator2.y">building.zoneEneBal[1].roof.lossKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#diagram$building.zoneEneBal[1].sol:integrator2.y">building.zoneEneBal[1].sol.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#diagram$building.zoneEneBal[1].tra.gainKPI:integrator2.y">building.zoneEneBal[1].tra.gainKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#diagram$building.zoneEneBal[1].tra.lossKPI:integrator2.y">building.zoneEneBal[1].tra.lossKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#diagram$building.zoneEneBal[1].win.gainKPI:integrator2.y">building.zoneEneBal[1].win.gainKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#diagram$building.zoneEneBal[1].win.lossKPI:integrator2.y">building.zoneEneBal[1].win.lossKPI.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#diagram$building.zonTem[1].calCtrl:intDisCom.y">building.zonTem[1].calCtrl.intDisCom.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#diagram$building.zonTem[1].comCool:intDisCom.y">building.zonTem[1].comCool.intDisCom.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#diagram$building.zonTem[1].comHea:intDisCom.y">building.zonTem[1].comHea.intDisCom.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#diagram$building.zonTemOpe[1].calCtrl:intDisCom.y">building.zonTemOpe[1].calCtrl.intDisCom.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#diagram$building.zonTemOpe[1].comCool:intDisCom.y">building.zonTemOpe[1].comCool.intDisCom.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#diagram$building.zonTemOpe[1].comHea:intDisCom.y">building.zonTemOpe[1].comHea.intDisCom.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#diagram$electrical.distribution.eneKPIGen:integrator2.y">electrical.distribution.eneKPIGen.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#diagram$electrical.distribution.eneKPILoa:integrator2.y">electrical.distribution.eneKPILoa.integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#diagram$electrical.transfer.heaKPI[1]:integrator2.y">electrical.transfer.heaKPI[1].integrator2.y</a>
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#diagram$electrical.transfer.heaterCooler[1].pITempHeat.PI:I.y">electrical.transfer.heaterCooler[1].pITempHeat.PI.I.y</a>
+Warning: Conflicting start values
+The iteration variable <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#$building.weaBus:TWetBul">building.weaBus.TWetBul</a> has been selected to have the guess value 291.15.
+However, the start value has been selected from a set of alias variables having conflicting start values of the same precedence.
+291.15, the start value of <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#$weaDat.tWetBul_TDryBulXi:TWetBul">weaDat.tWetBul_TDryBulXi.TWetBul</a> given as 291.15. At level 3. Original start-value at level 3.
+293.15, the start value of <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#$electrical.weaBus:TWetBul">electrical.weaBus.TWetBul</a> given as 293.15. At level 3. Original start-value at level 3.
+Error detected when generating code.
+Translation aborted.
 Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+Error: Simulations failed for:
+<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation">BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation</a>
 
