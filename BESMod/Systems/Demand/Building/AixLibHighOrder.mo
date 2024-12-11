@@ -19,9 +19,7 @@ model AixLibHighOrder "High order building model from AixLib library"
   parameter Boolean useConstVentRate;
   parameter Real ventRate[nZones]=fill(0, nZones) if useConstVentRate "Constant mechanical ventilation rate" annotation (Dialog(enable=useConstVentRate));
   parameter Modelica.Units.SI.Temperature TSoil=281.65     "Temperature of soil";
-  parameter Real TimeCorrection=0 "for TRY = 0.5, for TMY = 0";
-  parameter Modelica.Units.NonSI.Time_hour DiffWeatherDataTime=1 "difference between local time and UTC, e.g. +1 for MET";
-  parameter Real GroundReflection = 0.2 "ground reflection coefficient";
+  parameter Real GroundReflectance = 0.2 "ground reflectance coefficient";
 
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature preTSoi(T=TSoil)
     "Prescribed soil temperature"
@@ -47,19 +45,6 @@ model AixLibHighOrder "High order building model from AixLib library"
       choicesAllMatching=true, Placement(transformation(extent={{-22,-36},{38,34}})));
 
 
-  Components.SunWithWeaBus
-                  Sun(
-    TimeCorrection=TimeCorrection,
-    DiffWeatherDataTime=DiffWeatherDataTime) annotation (Placement(
-        transformation(extent={{-22,42},{2,64}})));
-  Components.RadOnTiltedSurf_LiuWeaBus
-                     RadOnTiltedSurf[SOD.nSurfaces](
-    each GroundReflection=GroundReflection,
-    Azimut=SOD.Azimut,
-    Tilt=SOD.Tilt,
-    each WeatherFormat=1) annotation(Placement(transformation(extent={{18,42},{42,
-            64}})));
-
   Modelica.Blocks.Sources.Constant constVentRate[nZones](final k=ventRate)
     if useConstVentRate               annotation (Placement(transformation(
           extent={{10,-10},{-10,10}}, rotation=180,
@@ -76,6 +61,12 @@ model AixLibHighOrder "High order building model from AixLib library"
         extent={{-7,-7},{7,7}},
         rotation=270,
         origin={-45,51})));
+  Components.RadOnTitledSurfaceIBPSA radOnTitledSurfaceAdaptor[SOD.nSurfaces](
+    final til=SOD.Tilt .* Modelica.Constants.pi ./ 180,
+    each final rho=GroundReflectance,
+    final azi=SOD.Azimut .* Modelica.Constants.pi ./ 180)
+    "Adapt weather bus to HOM "
+    annotation (Placement(transformation(extent={{0,40},{20,60}})));
 equation
   connect(convRadToCombPort.portConv, heatPortCon) annotation (Line(points={{-60,-7},
           {-72,-7},{-72,-6},{-104,-6},{-104,46},{-86,46},{-86,60},{-100,60}},
@@ -94,45 +85,13 @@ equation
 
         // Connecting n RadOnTiltedSurf
   for i in 1:SOD.nSurfaces loop
-    connect(Sun.OutDayAngleSun, RadOnTiltedSurf[i].InDayAngleSun)       annotation (
-      Line(points={{0.8,53.66},{0.8,50.69},{20.52,50.69}},        color={0,0,127}));
-    connect(Sun.OutHourAngleSun, RadOnTiltedSurf[i].InHourAngleSun) annotation (
-      Line(points={{0.8,50.14},{10.66,50.14},{10.66,48.49},{20.52,48.49}},
-                                                                  color={0,0,127}));
-    connect(Sun.OutDeclinationSun, RadOnTiltedSurf[i].InDeclinationSun) annotation (Line(points={{0.8,
-            46.84},{2,46.84},{2,46.29},{20.52,46.29}},
-        color={0,0,127}));
-    connect(RadOnTiltedSurf[i].weaBus, weaBus) annotation (Line(
-      points={{23.04,64.22},{23.04,76},{-47,76},{-47,98}},
+    connect(weaBus, radOnTitledSurfaceAdaptor[i].weaBus) annotation (Line(
+      points={{-47,98},{-47,76},{-26,76},{-26,50},{-0.2,50}},
       color={255,204,51},
-      thickness=0.5), Text(
-      string="%second",
-      index=1,
-      extent={{-3,6},{-3,6}},
-      horizontalAlignment=TextAlignment.Right));
+      thickness=0.5));
   end for;
 
-  connect(HOMBuiEnv.SolarRadiationPort_RoofN, RadOnTiltedSurf[5].OutTotalRadTilted)
-    annotation (Line(points={{40.4,30.5},{52,30.5},{52,57.4},{40.8,57.4}},
-                                                                       color={255,
-          128,0}));
-  connect(HOMBuiEnv.SolarRadiationPort_RoofS, RadOnTiltedSurf[6].OutTotalRadTilted)
-    annotation (Line(points={{40.4,21.4},{52,21.4},{52,57.4},{40.8,57.4}},
-                                                                       color={255,
-          128,0}));
-  connect(HOMBuiEnv.North, RadOnTiltedSurf[1].OutTotalRadTilted) annotation (
-      Line(points={{40.4,13},{52,13},{52,57.4},{40.8,57.4}},
-                                                         color={255,128,0}));
-  connect(HOMBuiEnv.East, RadOnTiltedSurf[2].OutTotalRadTilted) annotation (
-      Line(points={{40.4,3.9},{52,3.9},{52,57.4},{40.8,57.4}},
-                                                           color={255,128,0}));
-  connect(HOMBuiEnv.South, RadOnTiltedSurf[3].OutTotalRadTilted) annotation (
-      Line(points={{40.4,-5.2},{52,-5.2},{52,57.4},{40.8,57.4}},
-                                                             color={255,128,0}));
-  connect(HOMBuiEnv.West, RadOnTiltedSurf[4].OutTotalRadTilted) annotation (
-      Line(points={{40.4,-14.3},{52,-14.3},{52,57.4},{40.8,57.4}},
-                                                               color={255,128,0}));
-  connect(weaBus.winSpe, HOMBuiEnv.WindSpeedPort) annotation (Line(
+connect(weaBus.winSpe, HOMBuiEnv.WindSpeedPort) annotation (Line(
       points={{-46.895,98.11},{-50,98.11},{-50,76},{-64,76},{-64,22},{-36,22},{
           -36,20.7},{-23.8,20.7}},
       color={255,204,51},
@@ -172,14 +131,6 @@ equation
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   end if;
-  connect(Sun.weaBus, weaBus) annotation (Line(
-      points={{-16.96,64.22},{-16.96,76},{-47,76},{-47,98}},
-      color={255,204,51},
-      thickness=0.5), Text(
-      string="%second",
-      index=1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
 
   connect(weaBus.TDryBul, outdoorTemperature.T) annotation (Line(
       points={{-46.895,98.11},{-45,98.11},{-45,59.4}},
@@ -191,6 +142,25 @@ equation
       horizontalAlignment=TextAlignment.Right));
   connect(outdoorTemperature.port, HOMBuiEnv.thermOutside)
     annotation (Line(points={{-45,44},{-45,34},{-21.4,34}}, color={191,0,0}));
+
+  connect(radOnTitledSurfaceAdaptor[1].radOnTiltedSurf, HOMBuiEnv.North) annotation (Line(points={{21,49.9},
+          {52,49.9},{52,13},{40.4,13}},
+                                      color={255,128,0}));
+  connect(radOnTitledSurfaceAdaptor[2].radOnTiltedSurf, HOMBuiEnv.East) annotation (Line(points={{21,49.9},
+          {52,49.9},{52,3.9},{40.4,3.9}},
+                                       color={255,128,0}));
+  connect(radOnTitledSurfaceAdaptor[3].radOnTiltedSurf, HOMBuiEnv.South) annotation (Line(points={{21,49.9},
+          {52,49.9},{52,-5.2},{40.4,-5.2}},
+                                          color={255,128,0}));
+  connect(radOnTitledSurfaceAdaptor[4].radOnTiltedSurf, HOMBuiEnv.West) annotation (Line(points={{21,49.9},
+          {52,49.9},{52,-14.3},{40.4,-14.3}},
+                                           color={255,128,0}));
+  connect(radOnTitledSurfaceAdaptor[5].radOnTiltedSurf, HOMBuiEnv.SolarRadiationPort_RoofN) annotation (
+      Line(points={{21,49.9},{52,49.9},{52,30.5},{40.4,30.5}},
+                                                           color={255,128,0}));
+  connect(radOnTitledSurfaceAdaptor[6].radOnTiltedSurf, HOMBuiEnv.SolarRadiationPort_RoofS) annotation (
+      Line(points={{21,49.9},{52,49.9},{52,21.4},{40.4,21.4}},
+                                                           color={255,128,0}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end AixLibHighOrder;

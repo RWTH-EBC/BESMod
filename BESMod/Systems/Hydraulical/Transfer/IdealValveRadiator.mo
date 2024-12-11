@@ -73,7 +73,7 @@ model IdealValveRadiator
     final dp_nominal=dp_nominal,
     each final addPowerToMedium=parPum.addPowerToMedium,
     each final tau=parPum.tau,
-    each final use_inputFilter=false,
+    each final use_riseTime=false,
     final m_flow_start=m_flow_nominal) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,

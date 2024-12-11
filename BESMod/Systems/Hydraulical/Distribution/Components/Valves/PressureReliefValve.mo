@@ -9,8 +9,8 @@ model PressureReliefValve
     final m_flow_nominal=m_flow_nominal,
     show_T=show_T,
     final dpValve_nominal=dpValve_nominal,
-    final use_inputFilter=use_inputFilter,
-    final riseTime(displayUnit="s") = riseTime,
+    final use_strokeTime=use_strokeTime,
+    final strokeTime(displayUnit="s") = strokeTime,
     final init=init,
     y_start=y_start,
     final dpFixed_nominal=0,
@@ -18,21 +18,21 @@ model PressureReliefValve
   parameter Real facDpValve_nominal(min=0, max=1) = 0.5 "Factor to design dpValve_nominal";
   parameter Real l=0.001 "Valve leakage, l=Kv(y=0)/Kv(y=1)";
 
-  parameter Boolean use_inputFilter=true "= true, if opening is filtered with a 2nd order CriticalDamping filter" annotation (Dialog(tab="Dynamics", group="Filtered opening"));
-  parameter Modelica.Units.SI.Time riseTime=10 "Rise time of the filter (time to reach 99.6 % of an opening step)" annotation (Dialog(
+  parameter Boolean use_strokeTime=true "= true, if opening is filtered with a 2nd order CriticalDamping filter" annotation (Dialog(tab="Dynamics", group="Filtered opening"));
+  parameter Modelica.Units.SI.Time strokeTime=10 "Rise time of the filter (time to reach 99.6 % of an opening step)" annotation (Dialog(
       tab="Dynamics",
       group="Filtered opening",
-      enable=use_inputFilter));
+      enable=use_strokeTime));
   parameter Modelica.Units.SI.PressureDifference dpValve_nominal = facDpValve_nominal*(dpFullOpen_nominal - dpThreshold_nominal) + dpThreshold_nominal;
 
   parameter Modelica.Blocks.Types.Init init=Modelica.Blocks.Types.Init.InitialOutput "Type of initialization (no init/steady state/initial state/initial output)" annotation (Dialog(
       tab="Dynamics",
       group="Filtered opening",
-      enable=use_inputFilter));
+      enable=use_strokeTime));
   parameter Real y_start=1 "Initial value of output" annotation (Dialog(
       tab="Dynamics",
       group="Filtered opening",
-      enable=use_inputFilter));
+      enable=use_strokeTime));
   Modelica.Blocks.Nonlinear.Limiter limiter(final uMax=1, final uMin=0.01)
                                                             annotation (Placement(transformation(extent={{-10,-10},
             {10,10}},

@@ -57,7 +57,7 @@ model ElectricalHeater "Only heat using an electric heater"
     final dp_nominal=dpDem_nominal[1] + dp_nominal[1],
     final addPowerToMedium=parPum.addPowerToMedium,
     final tau=parPum.tau,
-    final use_inputFilter=parPum.use_inputFilter,
+    final use_riseTime=parPum.use_riseTime,
     final riseTime=parPum.riseTimeInpFilter,
     final y_start=1) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},

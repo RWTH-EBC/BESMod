@@ -4,11 +4,11 @@ partial model PartialThermostaticValveController
  parameter Real leakageOpening = 0.0001
     "may be useful for simulation stability. Always check the influence it has on your results";
 
-  Modelica.Blocks.Interfaces.RealInput TZoneMea[nZones]
+  Modelica.Blocks.Interfaces.RealInput TZoneMea[nZones](each final unit="K", each final displayUnit="degC")
     annotation (Placement(transformation(extent={{-140,40},{-100,80}})));
   Modelica.Blocks.Interfaces.RealOutput opening[nZones]
     annotation (Placement(transformation(extent={{100,-20},{140,20}})));
-  Modelica.Blocks.Interfaces.RealInput TZoneSet[nZones]
+  Modelica.Blocks.Interfaces.RealInput TZoneSet[nZones](each final unit="K", each final displayUnit="degC")
     annotation (Placement(transformation(extent={{-140,-80},{-100,-40}})));
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
