@@ -53,8 +53,6 @@ partial model PartialGasBoilerBuildingOnly
         use_dhw=false,
         use_elecHeating=false));
 
-  extends Modelica.Icons.Example;
-
   annotation (experiment(StopTime=172800,
      Interval=600,
      Tolerance=1e-06),

@@ -122,8 +122,6 @@ partial model PartialHeatPumpMonoenergetic
       redeclare BESMod.Systems.Ventilation.Control.SummerPIDByPass control(
           use_bypass=false)));
 
-  extends Modelica.Icons.Example;
-
   annotation (Documentation(info="<html>
 <h4>Information</h4>
 <p>This is a partial model representing a monoenergetic heat pump system for the TEASER export example <code>HeatPumpMonoenergetic</code>. It implements the following subsystems:</p>

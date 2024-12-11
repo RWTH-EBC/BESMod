@@ -35,8 +35,6 @@ partial model PartialTEASERHeatLoadCalculation
     redeclare BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy
       parameterStudy);
 
-  extends Modelica.Icons.Example;
-
   annotation (Documentation(info="<html>
 <h4>Information</h4>
 <p>Partial model with common interfaces to enable heat load calculation with the TEASER export example <code>TEASERHeatLoadCalculation</code>. 
