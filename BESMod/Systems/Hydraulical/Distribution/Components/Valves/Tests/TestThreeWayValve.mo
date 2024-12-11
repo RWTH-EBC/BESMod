@@ -32,7 +32,7 @@ model TestThreeWayValve
       dp_nominal={dpValve_nominal, dpValve_nominal},
       dpFixed_nominal={0,0},
       fraK=1,
-      riseTime=50))
+      strokeTime=50))
     annotation (Placement(transformation(extent={{-46,-40},{24,20}})));
   IBPSA.Fluid.Movers.Preconfigured.FlowControlled_m_flow
                                         pumpHP(
@@ -41,7 +41,7 @@ model TestThreeWayValve
     final dp_nominal=2*(threeWayValveWithFlowReturn.parameters.dpValve_nominal
            + threeWayValveWithFlowReturn.parameters.dpFixed_nominal[1]) + dpRes,
     final addPowerToMedium=false,
-    final use_strokeTime=false)
+    final use_riseTime=false)
                      annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=270,
