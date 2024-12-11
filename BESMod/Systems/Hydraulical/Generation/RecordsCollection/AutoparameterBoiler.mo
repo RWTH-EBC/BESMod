@@ -11,7 +11,7 @@ record AutoparameterBoiler "Boiler with automated sizing"
 <p>Automated sizing based on Vitogas 200-F (11-60kW and 72-144kW) and Vitocrossal 200 (82-311kW). </p>
 <p>These boilers have the same Q_min of 30 &percnt; of Q_nom. 
 The pressure drop coefficent was estimatet with a linear regression for small powers and constant values for medium and high power boliers.
-The volume was estimated with a linear regression over the total power range. (See AixLib/Resources/AutoparameterBoiler.xlsx)
+The volume was estimated with a linear regression over the total power range. (See BESMod/Resources/Data/AutoparameterBoiler.xlsx)
 Efficency is set to the constant Vitogas 200-F \"Norm-Nutzungsgrad nach DIN 4702-8 TV 75/RV 60 °C\" which is combined with a return temperature based efficency in the boiler model. 
 </p>
 </html>"));
