@@ -40,6 +40,7 @@ partial model PartialGasBoilerBuildingOnly
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.PassThrough calcmFlow),
     redeclare BESMod.Systems.UserProfiles.TEASERProfiles userProfiles,
+    redeclare replaceable BESMod.Systems.Demand.Building.TEASERThermalZone building,
     redeclare BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy
       parameterStudy,
     redeclare BESMod.Systems.RecordsCollection.ExampleSystemParameters
