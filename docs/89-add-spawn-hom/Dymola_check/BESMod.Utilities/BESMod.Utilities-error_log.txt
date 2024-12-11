@@ -1,4 +1,91 @@
 
+Error in model:  BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.Partial 
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.Partial">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.Partial</a>
+Error: Class or component 'use_inputFilter' not found in FlowControlled_m_flow pump
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/DHW/BaseClasses/PartialDHWWithBasics.mo, line 28
+ Component context: DHW.pump
+  Component declared as FlowControlled_m_flow pump in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Demand.DHW.BaseClasses.PartialDHWWithBasics">BESMod.Systems.Demand.DHW.BaseClasses.PartialDHWWithBasics</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/DHW/StandardProfiles.mo, line 3
+Error: Class or component 'use_inputFilter' not found in SpeedControlled_y pump
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/ElectricalHeater.mo, line 49
+ Component context: hydraulic.generation.pump
+  Component declared as SpeedControlled_y pump in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.ElectricalHeater">BESMod.Systems.Hydraulical.Generation.ElectricalHeater</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/BaseClasses/PartialEstimation.mo, line 19
+Error: Class or component 'use_inputFilter' not found in FlowControlled_m_flow pumpFix_m_flow
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/UFHTransferSystem.mo, line 64
+ Component context: hydraulic.transfer.pumpFix_m_flow
+  Component declared as FlowControlled_m_flow pumpFix_m_flow in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem">BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/UnderfloorHeating/Partial.mo, line 11
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Utilities.TimeConstantEstimation.Radiator.ConstantSupply 
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.ConstantSupply">BESMod.Utilities.TimeConstantEstimation.Radiator.ConstantSupply</a>
+Error: Class or component 'use_inputFilter' not found in FlowControlled_m_flow pump
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/DHW/BaseClasses/PartialDHWWithBasics.mo, line 28
+ Component context: DHW.pump
+  Component declared as FlowControlled_m_flow pump in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Demand.DHW.BaseClasses.PartialDHWWithBasics">BESMod.Systems.Demand.DHW.BaseClasses.PartialDHWWithBasics</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/DHW/StandardProfiles.mo, line 3
+Error: Class or component 'use_inputFilter' not found in SpeedControlled_y pump
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/ElectricalHeater.mo, line 49
+ Component context: hydraulic.generation.pump
+  Component declared as SpeedControlled_y pump in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.ElectricalHeater">BESMod.Systems.Hydraulical.Generation.ElectricalHeater</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/BaseClasses/PartialEstimation.mo, line 19
+Error: Class or component 'use_inputFilter' not found in TwoWayLinear val
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/BaseClasses/CustomRadiator.mo, line 71
+ Component context: hydraulic.transfer.val
+  Component declared as TwoWayLinear val in <a href="Modelica://IBPSA.Fluid.Actuators.Valves">IBPSA.Fluid.Actuators.Valves</a>
+  Attempted modification in <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator">BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/Radiator/Partial.mo, line 13
+Error: Class or component 'use_inputFilter' not found in SpeedControlled_y pump
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/BaseClasses/CustomRadiator.mo, line 100
+ Component context: hydraulic.transfer.pump
+  Component declared as SpeedControlled_y pump in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
+  Attempted modification in <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator">BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/Radiator/Partial.mo, line 13
+Error: Class or component 'use_inputFilter' not found in TwoWayEqualPercentage val
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/Components/Valves/PressureReliefValve.mo, line 6
+ Component context: hydraulic.transfer.pressureReliefValve.val
+  Component declared as TwoWayEqualPercentage val in <a href="Modelica://IBPSA.Fluid.Actuators.Valves">IBPSA.Fluid.Actuators.Valves</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.Components.Valves.PressureReliefValve">BESMod.Systems.Hydraulical.Distribution.Components.Valves.PressureReliefValve</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/BaseClasses/CustomRadiator.mo, line 126
+Error: Class or component 'riseTime' not found in TwoWayEqualPercentage val
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/Components/Valves/PressureReliefValve.mo, line 6
+ Component context: hydraulic.transfer.pressureReliefValve.val
+  Component declared as TwoWayEqualPercentage val in <a href="Modelica://IBPSA.Fluid.Actuators.Valves">IBPSA.Fluid.Actuators.Valves</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.Components.Valves.PressureReliefValve">BESMod.Systems.Hydraulical.Distribution.Components.Valves.PressureReliefValve</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/BaseClasses/CustomRadiator.mo, line 126
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve 
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve</a>
+Error: Class or component 'use_inputFilter' not found in FlowControlled_m_flow pump
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/DHW/BaseClasses/PartialDHWWithBasics.mo, line 28
+ Component context: DHW.pump
+  Component declared as FlowControlled_m_flow pump in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Demand.DHW.BaseClasses.PartialDHWWithBasics">BESMod.Systems.Demand.DHW.BaseClasses.PartialDHWWithBasics</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/DHW/StandardProfiles.mo, line 3
+Error: Class or component 'use_inputFilter' not found in SpeedControlled_y pump
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/ElectricalHeater.mo, line 49
+ Component context: hydraulic.generation.pump
+  Component declared as SpeedControlled_y pump in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.ElectricalHeater">BESMod.Systems.Hydraulical.Generation.ElectricalHeater</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/BaseClasses/PartialEstimation.mo, line 19
+Error: Class or component 'use_inputFilter' not found in FlowControlled_m_flow pumpFix_m_flow
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/UFHTransferSystem.mo, line 64
+ Component context: hydraulic.transfer.pumpFix_m_flow
+  Component declared as FlowControlled_m_flow pumpFix_m_flow in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem">BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/UnderfloorHeating/Partial.mo, line 11
+Error: ERRORS have been issued.
+
+
 Error in model:  BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator 
 Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator">BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator</a>
 Component type specifier TransferDataBaseDefinition is a partial type
@@ -94,6 +181,46 @@ Error: Class or component 'riseTime' not found in TwoWayEqualPercentage val
 Error: ERRORS have been issued.
 
 
+Error in model:  BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply 
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply</a>
+Error: Class or component 'use_inputFilter' not found in FlowControlled_m_flow pump
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/DHW/BaseClasses/PartialDHWWithBasics.mo, line 28
+ Component context: DHW.pump
+  Component declared as FlowControlled_m_flow pump in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Demand.DHW.BaseClasses.PartialDHWWithBasics">BESMod.Systems.Demand.DHW.BaseClasses.PartialDHWWithBasics</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/DHW/StandardProfiles.mo, line 3
+Error: Class or component 'use_inputFilter' not found in SpeedControlled_y pump
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/ElectricalHeater.mo, line 49
+ Component context: hydraulic.generation.pump
+  Component declared as SpeedControlled_y pump in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.ElectricalHeater">BESMod.Systems.Hydraulical.Generation.ElectricalHeater</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/BaseClasses/PartialEstimation.mo, line 19
+Error: Class or component 'use_inputFilter' not found in FlowControlled_m_flow pumpFix_m_flow
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/UFHTransferSystem.mo, line 64
+ Component context: hydraulic.transfer.pumpFix_m_flow
+  Component declared as FlowControlled_m_flow pumpFix_m_flow in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem">BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/UnderfloorHeating/Partial.mo, line 11
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Utilities.TimeConstantEstimation.BaseClasses.PartialEstimation 
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.BaseClasses.PartialEstimation">BESMod.Utilities.TimeConstantEstimation.BaseClasses.PartialEstimation</a>
+Error: Class or component 'use_inputFilter' not found in FlowControlled_m_flow pump
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/DHW/BaseClasses/PartialDHWWithBasics.mo, line 28
+ Component context: DHW.pump
+  Component declared as FlowControlled_m_flow pump in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Demand.DHW.BaseClasses.PartialDHWWithBasics">BESMod.Systems.Demand.DHW.BaseClasses.PartialDHWWithBasics</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/DHW/StandardProfiles.mo, line 3
+Error: Class or component 'use_inputFilter' not found in SpeedControlled_y pump
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/ElectricalHeater.mo, line 49
+ Component context: hydraulic.generation.pump
+  Component declared as SpeedControlled_y pump in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.ElectricalHeater">BESMod.Systems.Hydraulical.Generation.ElectricalHeater</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/BaseClasses/PartialEstimation.mo, line 19
+Error: ERRORS have been issued.
+
+
 Error in model:  BESMod.Utilities.TimeConstantEstimation.Radiator.Partial 
 Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.Partial">BESMod.Utilities.TimeConstantEstimation.Radiator.Partial</a>
 Error: Class or component 'use_inputFilter' not found in FlowControlled_m_flow pump
@@ -132,110 +259,6 @@ Error: Class or component 'riseTime' not found in TwoWayEqualPercentage val
   Component declared as TwoWayEqualPercentage val in <a href="Modelica://IBPSA.Fluid.Actuators.Valves">IBPSA.Fluid.Actuators.Valves</a>
   Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.Components.Valves.PressureReliefValve">BESMod.Systems.Hydraulical.Distribution.Components.Valves.PressureReliefValve</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/BaseClasses/CustomRadiator.mo, line 126
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat 
-Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat</a>
-Error: Class or component 'use_inputFilter' not found in FlowControlled_m_flow pump
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/DHW/BaseClasses/PartialDHWWithBasics.mo, line 28
- Component context: DHW.pump
-  Component declared as FlowControlled_m_flow pump in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Demand.DHW.BaseClasses.PartialDHWWithBasics">BESMod.Systems.Demand.DHW.BaseClasses.PartialDHWWithBasics</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/DHW/StandardProfiles.mo, line 3
-Error: Class or component 'use_inputFilter' not found in SpeedControlled_y pump
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/ElectricalHeater.mo, line 49
- Component context: hydraulic.generation.pump
-  Component declared as SpeedControlled_y pump in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.ElectricalHeater">BESMod.Systems.Hydraulical.Generation.ElectricalHeater</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/BaseClasses/PartialEstimation.mo, line 19
-Error: Class or component 'use_inputFilter' not found in FlowControlled_m_flow pumpFix_m_flow
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/UFHTransferSystem.mo, line 64
- Component context: hydraulic.transfer.pumpFix_m_flow
-  Component declared as FlowControlled_m_flow pumpFix_m_flow in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem">BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/UnderfloorHeating/Partial.mo, line 11
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.Partial 
-Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.Partial">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.Partial</a>
-Error: Class or component 'use_inputFilter' not found in FlowControlled_m_flow pump
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/DHW/BaseClasses/PartialDHWWithBasics.mo, line 28
- Component context: DHW.pump
-  Component declared as FlowControlled_m_flow pump in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Demand.DHW.BaseClasses.PartialDHWWithBasics">BESMod.Systems.Demand.DHW.BaseClasses.PartialDHWWithBasics</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/DHW/StandardProfiles.mo, line 3
-Error: Class or component 'use_inputFilter' not found in SpeedControlled_y pump
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/ElectricalHeater.mo, line 49
- Component context: hydraulic.generation.pump
-  Component declared as SpeedControlled_y pump in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.ElectricalHeater">BESMod.Systems.Hydraulical.Generation.ElectricalHeater</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/BaseClasses/PartialEstimation.mo, line 19
-Error: Class or component 'use_inputFilter' not found in FlowControlled_m_flow pumpFix_m_flow
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/UFHTransferSystem.mo, line 64
- Component context: hydraulic.transfer.pumpFix_m_flow
-  Component declared as FlowControlled_m_flow pumpFix_m_flow in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem">BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/UnderfloorHeating/Partial.mo, line 11
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Utilities.TimeConstantEstimation.Radiator.ConstantSupply 
-Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.ConstantSupply">BESMod.Utilities.TimeConstantEstimation.Radiator.ConstantSupply</a>
-Error: Class or component 'use_inputFilter' not found in FlowControlled_m_flow pump
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/DHW/BaseClasses/PartialDHWWithBasics.mo, line 28
- Component context: DHW.pump
-  Component declared as FlowControlled_m_flow pump in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Demand.DHW.BaseClasses.PartialDHWWithBasics">BESMod.Systems.Demand.DHW.BaseClasses.PartialDHWWithBasics</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/DHW/StandardProfiles.mo, line 3
-Error: Class or component 'use_inputFilter' not found in SpeedControlled_y pump
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/ElectricalHeater.mo, line 49
- Component context: hydraulic.generation.pump
-  Component declared as SpeedControlled_y pump in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.ElectricalHeater">BESMod.Systems.Hydraulical.Generation.ElectricalHeater</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/BaseClasses/PartialEstimation.mo, line 19
-Error: Class or component 'use_inputFilter' not found in TwoWayLinear val
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/BaseClasses/CustomRadiator.mo, line 71
- Component context: hydraulic.transfer.val
-  Component declared as TwoWayLinear val in <a href="Modelica://IBPSA.Fluid.Actuators.Valves">IBPSA.Fluid.Actuators.Valves</a>
-  Attempted modification in <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator">BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/Radiator/Partial.mo, line 13
-Error: Class or component 'use_inputFilter' not found in SpeedControlled_y pump
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/BaseClasses/CustomRadiator.mo, line 100
- Component context: hydraulic.transfer.pump
-  Component declared as SpeedControlled_y pump in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
-  Attempted modification in <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator">BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/Radiator/Partial.mo, line 13
-Error: Class or component 'use_inputFilter' not found in TwoWayEqualPercentage val
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/Components/Valves/PressureReliefValve.mo, line 6
- Component context: hydraulic.transfer.pressureReliefValve.val
-  Component declared as TwoWayEqualPercentage val in <a href="Modelica://IBPSA.Fluid.Actuators.Valves">IBPSA.Fluid.Actuators.Valves</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.Components.Valves.PressureReliefValve">BESMod.Systems.Hydraulical.Distribution.Components.Valves.PressureReliefValve</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/BaseClasses/CustomRadiator.mo, line 126
-Error: Class or component 'riseTime' not found in TwoWayEqualPercentage val
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/Components/Valves/PressureReliefValve.mo, line 6
- Component context: hydraulic.transfer.pressureReliefValve.val
-  Component declared as TwoWayEqualPercentage val in <a href="Modelica://IBPSA.Fluid.Actuators.Valves">IBPSA.Fluid.Actuators.Valves</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.Components.Valves.PressureReliefValve">BESMod.Systems.Hydraulical.Distribution.Components.Valves.PressureReliefValve</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/BaseClasses/CustomRadiator.mo, line 126
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Utilities.TimeConstantEstimation.BaseClasses.PartialEstimation 
-Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.BaseClasses.PartialEstimation">BESMod.Utilities.TimeConstantEstimation.BaseClasses.PartialEstimation</a>
-Error: Class or component 'use_inputFilter' not found in FlowControlled_m_flow pump
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/DHW/BaseClasses/PartialDHWWithBasics.mo, line 28
- Component context: DHW.pump
-  Component declared as FlowControlled_m_flow pump in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Demand.DHW.BaseClasses.PartialDHWWithBasics">BESMod.Systems.Demand.DHW.BaseClasses.PartialDHWWithBasics</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/DHW/StandardProfiles.mo, line 3
-Error: Class or component 'use_inputFilter' not found in SpeedControlled_y pump
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/ElectricalHeater.mo, line 49
- Component context: hydraulic.generation.pump
-  Component declared as SpeedControlled_y pump in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.ElectricalHeater">BESMod.Systems.Hydraulical.Generation.ElectricalHeater</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/BaseClasses/PartialEstimation.mo, line 19
 Error: ERRORS have been issued.
 
 
@@ -280,31 +303,8 @@ Error: Class or component 'riseTime' not found in TwoWayEqualPercentage val
 Error: ERRORS have been issued.
 
 
-Error in model:  BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply 
-Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply</a>
-Error: Class or component 'use_inputFilter' not found in FlowControlled_m_flow pump
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/DHW/BaseClasses/PartialDHWWithBasics.mo, line 28
- Component context: DHW.pump
-  Component declared as FlowControlled_m_flow pump in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Demand.DHW.BaseClasses.PartialDHWWithBasics">BESMod.Systems.Demand.DHW.BaseClasses.PartialDHWWithBasics</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/DHW/StandardProfiles.mo, line 3
-Error: Class or component 'use_inputFilter' not found in SpeedControlled_y pump
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/ElectricalHeater.mo, line 49
- Component context: hydraulic.generation.pump
-  Component declared as SpeedControlled_y pump in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.ElectricalHeater">BESMod.Systems.Hydraulical.Generation.ElectricalHeater</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/BaseClasses/PartialEstimation.mo, line 19
-Error: Class or component 'use_inputFilter' not found in FlowControlled_m_flow pumpFix_m_flow
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/UFHTransferSystem.mo, line 64
- Component context: hydraulic.transfer.pumpFix_m_flow
-  Component declared as FlowControlled_m_flow pumpFix_m_flow in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem">BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/UnderfloorHeating/Partial.mo, line 11
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve 
-Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve</a>
+Error in model:  BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat 
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat</a>
 Error: Class or component 'use_inputFilter' not found in FlowControlled_m_flow pump
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/DHW/BaseClasses/PartialDHWWithBasics.mo, line 28
  Component context: DHW.pump
