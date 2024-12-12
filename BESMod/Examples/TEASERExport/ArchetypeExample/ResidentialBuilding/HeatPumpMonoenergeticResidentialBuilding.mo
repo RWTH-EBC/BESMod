@@ -17,6 +17,8 @@ model HeatPumpMonoenergeticResidentialBuilding
         QBuiOld_flow_design=systemParameters.QBui_flow_nominal,
         THydSupOld_design=systemParameters.THydSup_nominal));
 
+  extends Modelica.Icons.Example;
+
 annotation(experiment(StopTime=172800,
      Interval=600,
      Tolerance=1e-06),

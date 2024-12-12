@@ -12,6 +12,8 @@ model TEASERHeatLoadCalculationResidentialBuilding
                      TSetZone_nominal={294.15},
                      TOda_nominal=262.65));
 
+  extends Modelica.Icons.Example;
+
   annotation (
     experiment(StopTime=172800,
      Interval=600,

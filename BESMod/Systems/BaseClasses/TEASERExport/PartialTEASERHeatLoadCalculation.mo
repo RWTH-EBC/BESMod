@@ -28,11 +28,12 @@ partial model PartialTEASERHeatLoadCalculation
       redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.PassThrough calcmFlow,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.NoDHW DHWProfile),
-    redeclare replaceable BESMod.Systems.Demand.Building.TEASERThermalZone building,
+    redeclare replaceable BESMod.Systems.Demand.Building.TEASERThermalZone building(
+      hBui=0.1,
+      ABui=0.1,
+      ARoo=0.1),
     redeclare BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy
       parameterStudy);
-
-  extends Modelica.Icons.Example;
 
   annotation (Documentation(info="<html>
 <h4>Information</h4>

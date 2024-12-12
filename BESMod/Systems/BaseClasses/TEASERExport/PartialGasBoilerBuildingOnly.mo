@@ -40,6 +40,10 @@ partial model PartialGasBoilerBuildingOnly
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.PassThrough calcmFlow),
     redeclare BESMod.Systems.UserProfiles.TEASERProfiles userProfiles,
+    redeclare replaceable BESMod.Systems.Demand.Building.TEASERThermalZone building(
+      hBui=0.1,
+      ABui=0.1,
+      ARoo=0.1),
     redeclare BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy
       parameterStudy,
     redeclare BESMod.Systems.RecordsCollection.ExampleSystemParameters
@@ -48,8 +52,6 @@ partial model PartialGasBoilerBuildingOnly
         use_ventilation=false,
         use_dhw=false,
         use_elecHeating=false));
-
-  extends Modelica.Icons.Example;
 
   annotation (experiment(StopTime=172800,
      Interval=600,

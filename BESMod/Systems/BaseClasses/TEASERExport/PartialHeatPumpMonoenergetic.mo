@@ -3,6 +3,10 @@ partial model PartialHeatPumpMonoenergetic
   "Partial model for TEASER export with monoenergetic heat pump"
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.UserProfiles.TEASERProfiles userProfiles,
+    redeclare replaceable BESMod.Systems.Demand.Building.TEASERThermalZone building(
+      hBui=0.1,
+      ABui=0.1,
+      ARoo=0.1),
     redeclare BESMod.Systems.Electrical.ElectricalSystem electrical(
       redeclare BESMod.Systems.Electrical.Distribution.OwnConsumption
         distribution,
@@ -117,8 +121,6 @@ partial model PartialHeatPumpMonoenergetic
             3600 .* 1.225),
       redeclare BESMod.Systems.Ventilation.Control.SummerPIDByPass control(
           use_bypass=false)));
-
-  extends Modelica.Icons.Example;
 
   annotation (Documentation(info="<html>
 <h4>Information</h4>
