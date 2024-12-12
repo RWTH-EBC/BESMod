@@ -61,7 +61,7 @@ partial model PartialTest
     final addPowerToMedium=false,
     final nominalValuesDefineDefaultPressureCurve=true,
     final tau=1,
-    final use_inputFilter=false,
+    final use_riseTime=false,
     final init=Modelica.Blocks.Types.Init.InitialOutput) "Emulate DHW system"
                                                          annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},

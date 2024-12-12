@@ -5,6 +5,6 @@ record DPVar "Controlled according to dpVar"
     ctrlType=AixLib.Fluid.Movers.DpControlledMovers.Types.CtrlType.dpVar,
     tau=1,
     riseTimeInpFilter=30,
-    use_inputFilter=false,
+    use_riseTime=false,
     addPowerToMedium=false);
 end DPVar;

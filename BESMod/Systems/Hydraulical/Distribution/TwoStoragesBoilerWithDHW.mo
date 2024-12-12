@@ -46,7 +46,7 @@ model TwoStoragesBoilerWithDHW
     final m_flow_nominal=m_flow_nominal[1],
     final dp_nominal={0,sum(stoDHW.heatingCoil2.pipe.res.dp_nominal)},
     final fraK=1,
-    use_inputFilter=false) "Parameters for three way valve of boiler" annotation (
+    use_strokeTime=false) "Parameters for three way valve of boiler" annotation (
     Dialog(group="Component data"),
     choicesAllMatching=true,
     Placement(transformation(extent={{64,124},{76,136}})));
@@ -171,6 +171,7 @@ model TwoStoragesBoilerWithDHW
     final allowFlowReversal=allowFlowReversal,
     final show_T=show_T,
     final m_flow_nominal=m_flow_nominal[1],
+    final use_riseTime=parPum.use_riseTime,
     final dp_nominal=boi.dp_nominal + (parThrWayValBoi.dpValve_nominal + max(
         parThrWayValBoi.dp_nominal)),
     final addPowerToMedium=parPumGen.addPowerToMedium,

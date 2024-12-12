@@ -2,7 +2,7 @@
   "required": {
     "IBPSA": {
       "url": "https://github.com/ibpsa/modelica-ibpsa",
-      "commit": "3fad3f62ccb411b2ef84f11fcfdf13f2c6c53e41",
+      "commit": "65029b0b2b5e4f37304706f42b0b8baff3c4375e",
 	  "default_branch": "master",
       "mo": "IBPSA//package.mo"
     }

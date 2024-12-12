@@ -59,9 +59,5 @@ package BaseClasses "Contains partial example case"
       redeclare final package MediumHyd = AixLib.Media.Water,
       redeclare BESMod.Systems.Ventilation.NoVentilation ventilation);
 
-    annotation (experiment(
-        StopTime=172800,
-        Interval=600,
-        __Dymola_Algorithm="Dassl"));
   end PartialHybridSystem;
 end BaseClasses;

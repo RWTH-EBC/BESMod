@@ -19,7 +19,6 @@ partial model PartialCase
               datTab),
         redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
         genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
-
         TBiv=TBiv,
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps.DefaultHP
@@ -38,10 +37,8 @@ partial model PartialCase
         dTHysDHW=10,
         redeclare model DHWHysteresis =
             BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
-
         redeclare model BuildingHysteresis =
             BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
-
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
           parPIDHeaPum),
@@ -92,8 +89,4 @@ partial model PartialCase
 
   parameter Modelica.Units.SI.Temperature TBiv=271.15
     "Nominal bivalence temperature. = TOda_nominal for monovalent systems.";
-  annotation (experiment(
-      StopTime=172800,
-      Interval=600,
-      __Dymola_Algorithm="Dassl"));
 end PartialCase;

@@ -73,7 +73,7 @@ model RadiatorPressureBased "Pressure Based transfer system"
     each final show_T=show_T,
     each final CvData=IBPSA.Fluid.Types.CvTypes.OpPoint,
     final dpValve_nominal=valveAutho .* (val.dpFixed_nominal .+ rad.dp_nominal) ./ (1 .- valveAutho),
-    each final use_inputFilter=false,
+    each final use_strokeTime=false,
     final dpFixed_nominal=if use_hydrBalAutom then max(dpPipSca_design .+ rad.dp_nominal) .- (dpPipSca_design .+ rad.dp_nominal)
        else fill(0, nParallelDem),
     each final l=leakageOpening)        annotation (Placement(transformation(
