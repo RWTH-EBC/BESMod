@@ -24,10 +24,9 @@ model TEASERThermalZone
     annotation (Dialog(tab="Dynamics"));
   parameter Modelica.Units.SI.Temperature T_start=293.15
     "Start value of temperature" annotation (Dialog(tab="Initialization"));
+  parameter Boolean use_absIntGai=false "=true to use absolute internal gains from user-profiles, e.g. from real data. Only supported for single zone";
   final parameter Modelica.Units.SI.HeatFlowRate QRec_flow_nominal[nZones]= {
-        (zoneParam[i].heaLoadFacOut +
-          zoneParam[i].VAir * (0.5 - zoneParam[i].baseACH) / 3600 * cp * rho) *
-          (TSetZone_nominal[i] - TOda_nominal) +
+        zoneParam[i].heaLoadFacOut * (TSetZone_nominal[i] - TOda_nominal) +
         zoneParam[i].heaLoadFacGrd*(TSetZone_nominal[i] - zoneParam[i].TSoil)
         for i in 1:nZones}
     "Nominal heat flow rate according to record at TOda_nominal";
@@ -109,7 +108,7 @@ model TEASERThermalZone
         rotation=0,
         origin={68,-120})));
   Modelica.Blocks.Math.MultiSum multiSumEle(final k=fill(1, multiSumEle.nu),
-      nu=2*nZones)  annotation (Placement(
+      nu=if use_absIntGai then 4*nZones else 2*nZones)  annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -157,6 +156,21 @@ model TEASERThermalZone
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-90,-174})));
+  Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow preAbsHeaGaiRad(
+      final T_ref=293.15, final alpha=0) if use_absIntGai
+    "Add absolute radiative heat gain" annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-90,-10})));
+  Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow preAbsHeaGaiCon(
+      final T_ref=293.15, final alpha=0) if use_absIntGai
+    "Add absolute radiative heat gain" annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-90,-30})));
+
+initial equation
+  assert(use_absIntGai and nZones == 1, "use_absIntGai is only supported for single zones");
 equation
 
   for i in 1:nZones loop
@@ -177,11 +191,11 @@ equation
         extent={{-3,-6},{-3,-6}},
         horizontalAlignment=TextAlignment.Right));
     connect(thermalZone[i].QIntGains_flow[1], multiSumEle.u[2*i-1]) annotation (Line(
-          points={{-42.7,33.6},{-42.7,32},{-120,32},{-120,-88},{-26,-88},{-26,
-            -120},{20,-120}},           color={0,0,127}));
-  connect(thermalZone[i].QIntGains_flow[2], multiSumEle.u[2*i]) annotation (Line(
-        points={{-42.7,34.8},{-42.7,32},{-120,32},{-120,-88},{-26,-88},{-26,
-            -120},{20,-120}},         color={0,0,127}));
+        points={{-42.7,32.4},{-42.7,32},{-120,32},{-120,-88},{-26,-88},{-26,-120},
+          {20,-120}},                 color={0,0,127}));
+    connect(thermalZone[i].QIntGains_flow[2], multiSumEle.u[2*i]) annotation (Line(
+        points={{-42.7,33.6},{-42.7,32},{-120,32},{-120,-88},{-26,-88},{-26,-120},
+            {20,-120}},               color={0,0,127}));
     if use_ventilation then
       connect(portVent_in[i], thermalZone[i].ports[1]) annotation (Line(points={{100,38},
               {82,38},{82,10},{-2,10},{-2,22.08}},                 color={0,127,
@@ -198,6 +212,14 @@ equation
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   end for;
+  if use_absIntGai then
+    connect(useProBus.absIntGaiRad, multiSumEle.u[4]) annotation (Line(
+        points={{51,101},{51,0},{-28,0},{-28,-68},{-6,-68},{-6,-134},{12,-134},{
+          12,-120},{20,-120}},        color={0,0,127}));
+    connect(useProBus.absIntGaiConv, multiSumEle.u[3]) annotation (Line(
+      points={{51,101},{51,0},{-28,0},{-28,-68},{-6,-68},{-6,-134},{12,-134},{12,
+          -120},{20,-120}},           color={0,0,127}));
+  end if;
   connect(constTSetRoom.y, thermalZone.TSetCool) annotation (Line(points={{59,80},
           {48,80},{48,62.4},{33.52,62.4}},color={0,0,127}));
   connect(constTSetRoom.y, thermalZone.TSetHeat) annotation (Line(points={{59,80},
@@ -363,6 +385,25 @@ equation
   connect(thermalZone.QIntGains_flow[2], zoneEneBal.QMac_flow) annotation (Line(
         points={{-42.7,33.6},{-40,33.6},{-40,32},{-120,32},{-120,-188},{-63.8,
           -188}},                                                   color={0,0,127}));
+  connect(preAbsHeaGaiRad.Q_flow, useProBus.absIntGaiRad) annotation (Line(points={{-100,
+          -10},{-124,-10},{-124,101},{51,101}},
+        color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(preAbsHeaGaiCon.Q_flow, useProBus.absIntGaiConv) annotation (Line(points={{-100,
+          -30},{-128,-30},{-128,101},{51,101}},         color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(preAbsHeaGaiCon.port, thermalZone[1].intGainsConv) annotation (Line(points={{-80,-30},
+          {-50,-30},{-50,50},{-54,50},{-54,49.44},{-39.74,49.44}},
+                               color={191,0,0}));
+  connect(preAbsHeaGaiRad.port, thermalZone[1].intGainsRad) annotation (Line(points={{-80,-10},
+          {-52,-10},{-52,60.24},{-39.74,60.24}},
+                   color={191,0,0}));
     annotation (Diagram(coordinateSystem(extent={{-100,-220},{100,100}})),
       Documentation(info="<html>
 <p>This model uses the reduced-order approach with the common TEASER output to model the building envelope. Relevant KPIs are calculated.</p>
