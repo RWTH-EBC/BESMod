@@ -3,7 +3,8 @@ partial model PartialDistribution
   "Base distribution model for ventilation systems"
     extends BESMod.Utilities.Icons.DistributionIcon;
 
-    extends BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters;
+    extends BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters(
+      TSup_nominal=fill(max(TDem_nominal) + max(dTLoss_nominal),nParallelSup));
 
   Modelica.Fluid.Interfaces.FluidPort_a portExh_in[nParallelDem](
       redeclare final package Medium = Medium)

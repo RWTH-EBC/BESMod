@@ -2,6 +2,15 @@ within BESMod.Systems.Hydraulical.Distribution;
 model DistributionTwoStorageParallel
   "Buffer storage and DHW storage"
   extends BaseClasses.PartialDistribution(
+    Q_flow_design={if use_old_design[i] then QOld_flow_design[i] else
+        Q_flow_nominal[i] for i in 1:nParallelDem},
+    m_flow_design={if use_old_design[i] then mOld_flow_design[i] else
+        m_flow_nominal[i] for i in 1:nParallelDem},
+    mSup_flow_design={if use_old_design[i] then mSupOld_flow_design[i] else
+        mSup_flow_nominal[i] for i in 1:nParallelSup},
+    mDem_flow_design={if use_old_design[i] then mDemOld_flow_design[i] else
+        mDem_flow_nominal[i] for i in 1:nParallelDem},
+    final mOld_flow_design=mDemOld_flow_design,
     final dpDHW_nominal=0,
     final VStoDHW=parStoDHW.V,
     final QDHWStoLoss_flow=parStoDHW.QLoss_flow,
@@ -17,6 +26,10 @@ model DistributionTwoStorageParallel
     final m_flow_nominal=mDem_flow_nominal,
       nParallelSup=1,
     final nParallelDem=1);
+
+  parameter Boolean use_old_design[nParallelDem]=fill(false, nParallelDem)
+    "If true, design parameters of the building with no retrofit (old state) are used"
+    annotation (Dialog(group="Design - Internal: Parameters are defined by the subsystem"));
 
   AixLib.Fluid.Storage.StorageSimple stoDHW(
     redeclare final package Medium = MediumDHW,
@@ -61,8 +74,8 @@ model DistributionTwoStorageParallel
     final V_HE=parStoBuf.V_HE,
     final beta=parStoBuf.beta,
     final kappa=parStoBuf.kappa,
-    final m_flow_nominal_layer=m_flow_nominal[1],
-    final m_flow_nominal_HE=mSup_flow_nominal[1],
+    final m_flow_nominal_layer=m_flow_design[1],
+    final m_flow_nominal_HE=mSup_flow_design[1],
     final energyDynamics=energyDynamics,
     T_start=fill(T_start, parStoBuf.nLayer),
     final p_start=p_start,
@@ -107,13 +120,13 @@ model DistributionTwoStorageParallel
     BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.SimpleStorageBaseDataDefinition
     parStoBuf constrainedby
     BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.SimpleStorageBaseDataDefinition(
-        final Q_flow_nominal=Q_flow_nominal[1]*f_design[1],
+        final Q_flow_nominal=Q_flow_design[1]*f_design[1],
         final rho=rho,
         final c_p=cp,
         final TAmb=TAmb,
         final T_m=TDem_nominal[1],
-        final QHC1_flow_nominal=Q_flow_nominal[1],
-        final mHC1_flow_nominal=mSup_flow_nominal[1])                    annotation (
+        final QHC1_flow_nominal=Q_flow_design[1],
+        final mHC1_flow_nominal=mSup_flow_design[1])                    annotation (
       choicesAllMatching=true, Placement(transformation(extent={{84,56},{98,70}})));
   replaceable parameter
     BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.SimpleStorageBaseDataDefinition
@@ -127,7 +140,7 @@ model DistributionTwoStorageParallel
         final Q_flow_nominal=0,
         final VPerQ_flow=0,
         final T_m=TDHW_nominal,
-        final mHC1_flow_nominal=mSup_flow_nominal[1])                                          annotation (
+        final mHC1_flow_nominal=mSup_flow_design[1])                                          annotation (
       choicesAllMatching=true, Placement(transformation(extent={{82,-58},{98,-42}})));
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixTemDHW(final T=
         parStoDHW.TAmb) "Constant ambient temperature of storage"
@@ -146,14 +159,14 @@ model DistributionTwoStorageParallel
     parThrWayVal constrainedby
     BESMod.Systems.RecordsCollection.Valves.ThreeWayValve(
     final dp_nominal={resBui.dp_nominal,  resDHW.dp_nominal},
-    final m_flow_nominal=mSup_flow_nominal[1],
+    final m_flow_nominal=mSup_flow_design[1],
     final fraK=1,
     use_strokeTime=false) annotation (Placement(
         transformation(extent={{-60,2},{-40,22}})), choicesAllMatching=true);
   IBPSA.Fluid.FixedResistances.PressureDrop resBui(
     redeclare final package Medium = MediumGen,
     final allowFlowReversal=allowFlowReversal,
-    final m_flow_nominal=mSup_flow_nominal[1],
+    final m_flow_nominal=mSup_flow_design[1],
     final show_T=show_T,
     final from_dp=false,
     final dp_nominal=1000,

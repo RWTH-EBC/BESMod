@@ -32,7 +32,7 @@ partial model PartialVentilationSystem
     final show_T=show_T,
     final rho=rho,
     final cp=cp,
-    dpDem_nominal=distribution.dp_nominal,
+    dpDem_nominal=fill(max(distribution.dp_nominal),generation.nParallelDem),
     final use_openModelica=use_openModelica)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{26,-56},
             {80,-2}})));
@@ -46,8 +46,7 @@ partial model PartialVentilationSystem
     final nParallelDem=ventilationSystemParameters.nZones,
     final Q_flow_nominal=ventilationSystemParameters.Q_flow_nominal,
     TOda_nominal=ventilationSystemParameters.TOda_nominal,
-    final TDem_nominal=ventilationSystemParameters.TZone_nominal,
-    final TSup_nominal=ventilationSystemParameters.TSup_nominal,
+    final TDem_nominal=ventilationSystemParameters.TSup_nominal,
     final TAmb=ventilationSystemParameters.TAmb,
     final energyDynamics=energyDynamics,
     final massDynamics=massDynamics,
