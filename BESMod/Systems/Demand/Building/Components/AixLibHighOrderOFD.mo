@@ -106,8 +106,8 @@ model AixLibHighOrderOFD "High order OFD"
         iconTransformation(extent={{-108,90},{-88,110}})));
 equation
     // Romm Temperatures
-
-  TZoneMea[1]=wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.airload.heatPort.T;
+  /*
+  TZoneMea[1]= wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.airload.heatPort.T;
   TZoneMea[2]=wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.airload.heatPort.T;
   TZoneMea[3]=wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.airload.heatPort.T;
   TZoneMea[4]=wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.airload.heatPort.T;
@@ -117,7 +117,7 @@ equation
   TZoneMea[8]=wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.airload.heatPort.T;
   TZoneMea[9]=wholeHouseBuildingEnvelope.upperFloor_Building.Bath.airload.heatPort.T;
   TZoneMea[10]=wholeHouseBuildingEnvelope.upperFloor_Building.Children2.airload.heatPort.T;
-
+  */
 
   connect(wholeHouseBuildingEnvelope.groPlateUp, wholeHouseBuildingEnvelope.groFloDown)
     annotation (Line(points={{-44,-28.8},{-54,-28.8},{-54,-15.36},{-44,-15.36}},

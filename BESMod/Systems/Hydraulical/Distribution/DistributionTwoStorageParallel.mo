@@ -161,7 +161,7 @@ model DistributionTwoStorageParallel
     final dp_nominal={resBui.dp_nominal,  resDHW.dp_nominal},
     final m_flow_nominal=mSup_flow_design[1],
     final fraK=1,
-    use_inputFilter=false) annotation (Placement(
+    use_strokeTime=false) annotation (Placement(
         transformation(extent={{-60,2},{-40,22}})), choicesAllMatching=true);
   IBPSA.Fluid.FixedResistances.PressureDrop resBui(
     redeclare final package Medium = MediumGen,
