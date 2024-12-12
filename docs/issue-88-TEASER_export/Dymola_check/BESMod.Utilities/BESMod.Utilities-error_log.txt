@@ -1,0 +1,247 @@
+
+Error in model:  BESMod.Utilities.TimeConstantEstimation.Radiator.HeatingCurve 
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.HeatingCurve">BESMod.Utilities.TimeConstantEstimation.Radiator.HeatingCurve</a>
+The model has the same number of unknowns and equations: 4073
+The model has the same number of unknowns and equations
+for the given numerical settings of parameters: 4073
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.HeatingCurve">BESMod.Utilities.TimeConstantEstimation.Radiator.HeatingCurve</a> successful.
+Translation of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.HeatingCurve">BESMod.Utilities.TimeConstantEstimation.Radiator.HeatingCurve</a>
+The DAE has 4073 scalar unknowns and 4073 scalar equations.
+Warning: The initial conditions are not fully specified.
+Dymola has selected default initial conditions.
+Warning: Assuming fixed start value for the continuous states:
+    building.thermalZone[1].ROM.volAir.dynBal.m(start = 483.48248*      building.thermalZone[1].ROM.volAir.rho_start)
+    building.thermalZone[1].ROM.volAir.dynBal.medium.Xi[](each start =       building.thermalZone[1].ROM.volAir.dynBal.X_start[1])
+    building.thermalZone[1].ROM.volAir.dynBal.U(start = 483.48248*(      building.thermalZone[1].ROM.volAir.dynBal.rho_start*(smooth(5, 1006.0*((      building.thermalZone[1].ROM.volAir.dynBal.T_start-273.15)*(1-      building.thermalZone[1].ROM.volAir.dynBal.X_start[1]))+(2501014.5+1860*(      building.thermalZone[1].ROM.volAir.dynBal.T_start-273.15))*      building.thermalZone[1].ROM.volAir.dynBal.X_start[1])-84437.5)))
+
+Error: The conditions of the following assert statements are always false:
+Error:   assert(building.use_absIntGai and building.nZones == 1, "use_absIntGai is only supported for single zones");
+    The variable building.use_absIntGai = false, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone">BESMod.Systems.Demand.Building.TEASERThermalZone</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone#text:26">27</a>, and used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.HeatingCurve#:building">building</a>.
+    The variable building.nZones = 1, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand">BESMod.Systems.Demand.Building.BaseClasses.PartialDemand</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6">7</a>, and used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.HeatingCurve#$building:PartialDemand">building.PartialDemand</a>.
+Translation aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+Error: Simulations failed for:
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.HeatingCurve">BESMod.Utilities.TimeConstantEstimation.Radiator.HeatingCurve</a>
+
+
+Error in model:  BESMod.Utilities.TimeConstantEstimation.Radiator.SmartThermostat 
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.SmartThermostat">BESMod.Utilities.TimeConstantEstimation.Radiator.SmartThermostat</a>
+The model has the same number of unknowns and equations: 4071
+The model has the same number of unknowns and equations
+for the given numerical settings of parameters: 4071
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.SmartThermostat">BESMod.Utilities.TimeConstantEstimation.Radiator.SmartThermostat</a> successful.
+Translation of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.SmartThermostat">BESMod.Utilities.TimeConstantEstimation.Radiator.SmartThermostat</a>
+The DAE has 4071 scalar unknowns and 4071 scalar equations.
+Warning: The initial conditions are not fully specified.
+Dymola has selected default initial conditions.
+Warning: Assuming fixed start value for the continuous states:
+    building.thermalZone[1].ROM.volAir.dynBal.m(start = 483.48248*      building.thermalZone[1].ROM.volAir.rho_start)
+    building.thermalZone[1].ROM.volAir.dynBal.medium.Xi[](each start =       building.thermalZone[1].ROM.volAir.dynBal.X_start[1])
+    building.thermalZone[1].ROM.volAir.dynBal.U(start = 483.48248*(      building.thermalZone[1].ROM.volAir.dynBal.rho_start*(smooth(5, 1006.0*((      building.thermalZone[1].ROM.volAir.dynBal.T_start-273.15)*(1-      building.thermalZone[1].ROM.volAir.dynBal.X_start[1]))+(2501014.5+1860*(      building.thermalZone[1].ROM.volAir.dynBal.T_start-273.15))*      building.thermalZone[1].ROM.volAir.dynBal.X_start[1])-84437.5)))
+
+Error: The conditions of the following assert statements are always false:
+Error:   assert(building.use_absIntGai and building.nZones == 1, "use_absIntGai is only supported for single zones");
+    The variable building.use_absIntGai = false, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone">BESMod.Systems.Demand.Building.TEASERThermalZone</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone#text:26">27</a>, and used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.SmartThermostat#:building">building</a>.
+    The variable building.nZones = 1, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand">BESMod.Systems.Demand.Building.BaseClasses.PartialDemand</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6">7</a>, and used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.SmartThermostat#$building:PartialDemand">building.PartialDemand</a>.
+Translation aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+Error: Simulations failed for:
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.SmartThermostat">BESMod.Utilities.TimeConstantEstimation.Radiator.SmartThermostat</a>
+
+
+Error in model:  BESMod.Utilities.TimeConstantEstimation.Radiator.ConstantSupply 
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.ConstantSupply">BESMod.Utilities.TimeConstantEstimation.Radiator.ConstantSupply</a>
+Warning: Automatically introducing 'each' in definition equation for variable:
+  hydraulic.transfer.rad[1].use_dynamicFraRad
+Additional warnings of this type will not be written.
+The model has the same number of unknowns and equations: 4104
+The model has the same number of unknowns and equations
+for the given numerical settings of parameters: 4104
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.ConstantSupply">BESMod.Utilities.TimeConstantEstimation.Radiator.ConstantSupply</a> successful.
+Warning: WARNINGS have been issued.
+Translation of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.ConstantSupply">BESMod.Utilities.TimeConstantEstimation.Radiator.ConstantSupply</a>
+Warning: Automatically introducing 'each' in definition equation for variable:
+  hydraulic.transfer.rad[1].use_dynamicFraRad
+Additional warnings of this type will not be written.
+The DAE has 4104 scalar unknowns and 4104 scalar equations.
+Warning: The initial conditions are not fully specified.
+Dymola has selected default initial conditions.
+Warning: Assuming fixed start value for the continuous states:
+    building.thermalZone[1].ROM.volAir.dynBal.m(start = 483.48248*      building.thermalZone[1].ROM.volAir.rho_start)
+    building.thermalZone[1].ROM.volAir.dynBal.medium.Xi[](each start =       building.thermalZone[1].ROM.volAir.dynBal.X_start[1])
+    building.thermalZone[1].ROM.volAir.dynBal.U(start = 483.48248*(      building.thermalZone[1].ROM.volAir.dynBal.rho_start*(smooth(5, 1006.0*((      building.thermalZone[1].ROM.volAir.dynBal.T_start-273.15)*(1-      building.thermalZone[1].ROM.volAir.dynBal.X_start[1]))+(2501014.5+1860*(      building.thermalZone[1].ROM.volAir.dynBal.T_start-273.15))*      building.thermalZone[1].ROM.volAir.dynBal.X_start[1])-84437.5)))
+
+Error: The conditions of the following assert statements are always false:
+Error:   assert(building.use_absIntGai and building.nZones == 1, "use_absIntGai is only supported for single zones");
+    The variable building.use_absIntGai = false, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone">BESMod.Systems.Demand.Building.TEASERThermalZone</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone#text:26">27</a>, and used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.ConstantSupply#:building">building</a>.
+    The variable building.nZones = 1, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand">BESMod.Systems.Demand.Building.BaseClasses.PartialDemand</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6">7</a>, and used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.ConstantSupply#$building:PartialDemand">building.PartialDemand</a>.
+Translation aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+Error: Simulations failed for:
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.ConstantSupply">BESMod.Utilities.TimeConstantEstimation.Radiator.ConstantSupply</a>
+
+
+Error in model:  BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat 
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat</a>
+Note: 
+Your model is using an outer "system" component but
+an inner "system" component is not defined.
+For simulation drag Modelica.Fluid.System into your model
+to specify system properties.
+
+The model has the same number of unknowns and equations: 4557
+The model has the same number of unknowns and equations
+for the given numerical settings of parameters: 4557
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat</a> successful.
+Translation of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat</a>
+Note: 
+Your model is using an outer "system" component but
+an inner "system" component is not defined.
+For simulation drag Modelica.Fluid.System into your model
+to specify system properties.
+
+The DAE has 4557 scalar unknowns and 4557 scalar equations.
+Warning: The initial conditions are not fully specified.
+Dymola has selected default initial conditions.
+Warning: Assuming fixed start value for the continuous states:
+    building.thermalZone[1].ROM.volAir.dynBal.m(start = 483.48248*      building.thermalZone[1].ROM.volAir.rho_start)
+    building.thermalZone[1].ROM.volAir.dynBal.medium.Xi[](each start =       building.thermalZone[1].ROM.volAir.dynBal.X_start[1])
+    building.thermalZone[1].ROM.volAir.dynBal.U(start = 483.48248*(      building.thermalZone[1].ROM.volAir.dynBal.rho_start*(smooth(5, 1006.0*((      building.thermalZone[1].ROM.volAir.dynBal.T_start-273.15)*(1-      building.thermalZone[1].ROM.volAir.dynBal.X_start[1]))+(2501014.5+1860*(      building.thermalZone[1].ROM.volAir.dynBal.T_start-273.15))*      building.thermalZone[1].ROM.volAir.dynBal.X_start[1])-84437.5)))
+    hydraulic.transfer.heaCap[1].T(start = 293.15)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[1].panel_Segment1.heatCapacitor.T      (start = hydraulic.transfer.ufh[1].panelHeatingSegment[1].panel_Segment1.T0)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[1].panel_Segment2.heatCapacitor.T      (start = hydraulic.transfer.ufh[1].panelHeatingSegment[1].panel_Segment2.T0)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[1].vol.medium.T(start =       hydraulic.transfer.ufh[1].panelHeatingSegment[1].vol.T_start)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[2].panel_Segment1.heatCapacitor.T      (start = hydraulic.transfer.ufh[1].panelHeatingSegment[2].panel_Segment1.T0)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[2].panel_Segment2.heatCapacitor.T      (start = hydraulic.transfer.ufh[1].panelHeatingSegment[2].panel_Segment2.T0)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[2].vol.medium.T(start =       hydraulic.transfer.ufh[1].panelHeatingSegment[2].vol.T_start)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[3].panel_Segment1.heatCapacitor.T      (start = hydraulic.transfer.ufh[1].panelHeatingSegment[3].panel_Segment1.T0)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[3].panel_Segment2.heatCapacitor.T      (start = hydraulic.transfer.ufh[1].panelHeatingSegment[3].panel_Segment2.T0)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[3].vol.medium.T(start =       hydraulic.transfer.ufh[1].panelHeatingSegment[3].vol.T_start)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[4].panel_Segment1.heatCapacitor.T      (start = hydraulic.transfer.ufh[1].panelHeatingSegment[4].panel_Segment1.T0)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[4].panel_Segment2.heatCapacitor.T      (start = hydraulic.transfer.ufh[1].panelHeatingSegment[4].panel_Segment2.T0)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[4].vol.medium.T(start =       hydraulic.transfer.ufh[1].panelHeatingSegment[4].vol.T_start)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[5].panel_Segment1.heatCapacitor.T      (start = hydraulic.transfer.ufh[1].panelHeatingSegment[5].panel_Segment1.T0)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[5].panel_Segment2.heatCapacitor.T      (start = hydraulic.transfer.ufh[1].panelHeatingSegment[5].panel_Segment2.T0)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[5].vol.medium.T(start =       hydraulic.transfer.ufh[1].panelHeatingSegment[5].vol.T_start)
+
+Error: The conditions of the following assert statements are always false:
+Error:   assert(building.use_absIntGai and building.nZones == 1, "use_absIntGai is only supported for single zones");
+    The variable building.use_absIntGai = false, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone">BESMod.Systems.Demand.Building.TEASERThermalZone</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone#text:26">27</a>, and used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#:building">building</a>.
+    The variable building.nZones = 1, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand">BESMod.Systems.Demand.Building.BaseClasses.PartialDemand</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6">7</a>, and used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#$building:PartialDemand">building.PartialDemand</a>.
+Translation aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+Error: Simulations failed for:
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat</a>
+
+
+Error in model:  BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply 
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply</a>
+Note: 
+Your model is using an outer "system" component but
+an inner "system" component is not defined.
+For simulation drag Modelica.Fluid.System into your model
+to specify system properties.
+
+The model has the same number of unknowns and equations: 4522
+The model has the same number of unknowns and equations
+for the given numerical settings of parameters: 4522
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply</a> successful.
+Translation of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply</a>
+Note: 
+Your model is using an outer "system" component but
+an inner "system" component is not defined.
+For simulation drag Modelica.Fluid.System into your model
+to specify system properties.
+
+The DAE has 4522 scalar unknowns and 4522 scalar equations.
+Warning: The initial conditions are not fully specified.
+Dymola has selected default initial conditions.
+Warning: Assuming fixed start value for the continuous states:
+    building.thermalZone[1].ROM.volAir.dynBal.m(start = 483.48248*      building.thermalZone[1].ROM.volAir.rho_start)
+    building.thermalZone[1].ROM.volAir.dynBal.medium.Xi[](each start =       building.thermalZone[1].ROM.volAir.dynBal.X_start[1])
+    building.thermalZone[1].ROM.volAir.dynBal.U(start = 483.48248*(      building.thermalZone[1].ROM.volAir.dynBal.rho_start*(smooth(5, 1006.0*((      building.thermalZone[1].ROM.volAir.dynBal.T_start-273.15)*(1-      building.thermalZone[1].ROM.volAir.dynBal.X_start[1]))+(2501014.5+1860*(      building.thermalZone[1].ROM.volAir.dynBal.T_start-273.15))*      building.thermalZone[1].ROM.volAir.dynBal.X_start[1])-84437.5)))
+    hydraulic.transfer.heaCap[1].T(start = 293.15)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[1].panel_Segment1.heatCapacitor.T      (start = hydraulic.transfer.ufh[1].panelHeatingSegment[1].panel_Segment1.T0)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[1].panel_Segment2.heatCapacitor.T      (start = hydraulic.transfer.ufh[1].panelHeatingSegment[1].panel_Segment2.T0)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[1].vol.medium.T(start =       hydraulic.transfer.ufh[1].panelHeatingSegment[1].vol.T_start)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[2].panel_Segment1.heatCapacitor.T      (start = hydraulic.transfer.ufh[1].panelHeatingSegment[2].panel_Segment1.T0)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[2].panel_Segment2.heatCapacitor.T      (start = hydraulic.transfer.ufh[1].panelHeatingSegment[2].panel_Segment2.T0)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[2].vol.medium.T(start =       hydraulic.transfer.ufh[1].panelHeatingSegment[2].vol.T_start)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[3].panel_Segment1.heatCapacitor.T      (start = hydraulic.transfer.ufh[1].panelHeatingSegment[3].panel_Segment1.T0)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[3].panel_Segment2.heatCapacitor.T      (start = hydraulic.transfer.ufh[1].panelHeatingSegment[3].panel_Segment2.T0)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[3].vol.medium.T(start =       hydraulic.transfer.ufh[1].panelHeatingSegment[3].vol.T_start)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[4].panel_Segment1.heatCapacitor.T      (start = hydraulic.transfer.ufh[1].panelHeatingSegment[4].panel_Segment1.T0)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[4].panel_Segment2.heatCapacitor.T      (start = hydraulic.transfer.ufh[1].panelHeatingSegment[4].panel_Segment2.T0)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[4].vol.medium.T(start =       hydraulic.transfer.ufh[1].panelHeatingSegment[4].vol.T_start)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[5].panel_Segment1.heatCapacitor.T      (start = hydraulic.transfer.ufh[1].panelHeatingSegment[5].panel_Segment1.T0)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[5].panel_Segment2.heatCapacitor.T      (start = hydraulic.transfer.ufh[1].panelHeatingSegment[5].panel_Segment2.T0)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[5].vol.medium.T(start =       hydraulic.transfer.ufh[1].panelHeatingSegment[5].vol.T_start)
+
+Error: The conditions of the following assert statements are always false:
+Error:   assert(building.use_absIntGai and building.nZones == 1, "use_absIntGai is only supported for single zones");
+    The variable building.use_absIntGai = false, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone">BESMod.Systems.Demand.Building.TEASERThermalZone</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone#text:26">27</a>, and used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#:building">building</a>.
+    The variable building.nZones = 1, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand">BESMod.Systems.Demand.Building.BaseClasses.PartialDemand</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6">7</a>, and used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#$building:PartialDemand">building.PartialDemand</a>.
+Translation aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+Error: Simulations failed for:
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply</a>
+
+
+Error in model:  BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve 
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve</a>
+Note: 
+Your model is using an outer "system" component but
+an inner "system" component is not defined.
+For simulation drag Modelica.Fluid.System into your model
+to specify system properties.
+
+The model has the same number of unknowns and equations: 4524
+The model has the same number of unknowns and equations
+for the given numerical settings of parameters: 4524
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve</a> successful.
+Translation of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve</a>
+Note: 
+Your model is using an outer "system" component but
+an inner "system" component is not defined.
+For simulation drag Modelica.Fluid.System into your model
+to specify system properties.
+
+The DAE has 4524 scalar unknowns and 4524 scalar equations.
+Warning: The initial conditions are not fully specified.
+Dymola has selected default initial conditions.
+Warning: Assuming fixed start value for the continuous states:
+    building.thermalZone[1].ROM.volAir.dynBal.m(start = 483.48248*      building.thermalZone[1].ROM.volAir.rho_start)
+    building.thermalZone[1].ROM.volAir.dynBal.medium.Xi[](each start =       building.thermalZone[1].ROM.volAir.dynBal.X_start[1])
+    building.thermalZone[1].ROM.volAir.dynBal.U(start = 483.48248*(      building.thermalZone[1].ROM.volAir.dynBal.rho_start*(smooth(5, 1006.0*((      building.thermalZone[1].ROM.volAir.dynBal.T_start-273.15)*(1-      building.thermalZone[1].ROM.volAir.dynBal.X_start[1]))+(2501014.5+1860*(      building.thermalZone[1].ROM.volAir.dynBal.T_start-273.15))*      building.thermalZone[1].ROM.volAir.dynBal.X_start[1])-84437.5)))
+    hydraulic.transfer.heaCap[1].T(start = 293.15)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[1].panel_Segment1.heatCapacitor.T      (start = hydraulic.transfer.ufh[1].panelHeatingSegment[1].panel_Segment1.T0)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[1].panel_Segment2.heatCapacitor.T      (start = hydraulic.transfer.ufh[1].panelHeatingSegment[1].panel_Segment2.T0)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[1].vol.medium.T(start =       hydraulic.transfer.ufh[1].panelHeatingSegment[1].vol.T_start)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[2].panel_Segment1.heatCapacitor.T      (start = hydraulic.transfer.ufh[1].panelHeatingSegment[2].panel_Segment1.T0)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[2].panel_Segment2.heatCapacitor.T      (start = hydraulic.transfer.ufh[1].panelHeatingSegment[2].panel_Segment2.T0)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[2].vol.medium.T(start =       hydraulic.transfer.ufh[1].panelHeatingSegment[2].vol.T_start)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[3].panel_Segment1.heatCapacitor.T      (start = hydraulic.transfer.ufh[1].panelHeatingSegment[3].panel_Segment1.T0)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[3].panel_Segment2.heatCapacitor.T      (start = hydraulic.transfer.ufh[1].panelHeatingSegment[3].panel_Segment2.T0)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[3].vol.medium.T(start =       hydraulic.transfer.ufh[1].panelHeatingSegment[3].vol.T_start)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[4].panel_Segment1.heatCapacitor.T      (start = hydraulic.transfer.ufh[1].panelHeatingSegment[4].panel_Segment1.T0)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[4].panel_Segment2.heatCapacitor.T      (start = hydraulic.transfer.ufh[1].panelHeatingSegment[4].panel_Segment2.T0)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[4].vol.medium.T(start =       hydraulic.transfer.ufh[1].panelHeatingSegment[4].vol.T_start)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[5].panel_Segment1.heatCapacitor.T      (start = hydraulic.transfer.ufh[1].panelHeatingSegment[5].panel_Segment1.T0)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[5].panel_Segment2.heatCapacitor.T      (start = hydraulic.transfer.ufh[1].panelHeatingSegment[5].panel_Segment2.T0)
+    hydraulic.transfer.ufh[1].panelHeatingSegment[5].vol.medium.T(start =       hydraulic.transfer.ufh[1].panelHeatingSegment[5].vol.T_start)
+
+Error: The conditions of the following assert statements are always false:
+Error:   assert(building.use_absIntGai and building.nZones == 1, "use_absIntGai is only supported for single zones");
+    The variable building.use_absIntGai = false, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone">BESMod.Systems.Demand.Building.TEASERThermalZone</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone#text:26">27</a>, and used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#:building">building</a>.
+    The variable building.nZones = 1, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand">BESMod.Systems.Demand.Building.BaseClasses.PartialDemand</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6">7</a>, and used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#$building:PartialDemand">building.PartialDemand</a>.
+Translation aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+Error: Simulations failed for:
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve</a>
+

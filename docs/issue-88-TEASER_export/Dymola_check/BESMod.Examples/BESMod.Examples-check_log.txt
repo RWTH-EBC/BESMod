@@ -1,0 +1,830 @@
+
+Error in model:  BESMod.Examples.Retrofit.Case1TotalRetrofit 
+Check of <a href="Modelica://BESMod.Examples.Retrofit.Case1TotalRetrofit">BESMod.Examples.Retrofit.Case1TotalRetrofit</a>
+The model has the same number of unknowns and equations: 7283
+Check of <a href="Modelica://BESMod.Examples.Retrofit.Case1TotalRetrofit">BESMod.Examples.Retrofit.Case1TotalRetrofit</a> successful.
+Translation of <a href="Modelica://BESMod.Examples.Retrofit.Case1TotalRetrofit">BESMod.Examples.Retrofit.Case1TotalRetrofit</a>
+The DAE has 7283 scalar unknowns and 7283 scalar equations.
+Redundant consistent initial conditions.
+Removed the following equations which are redundant and consistent: 
+  if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+      hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = hydraulic.generation.heatPump.eva.vol.dynBal.p_start;
+    end if;
+  else
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==       Modelica.Fluid.Types.Dynamics.SteadyStateInitial) then 
+      if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+        der(hydraulic.generation.heatPump.eva.vol.dynBal.medium.p) = 0;
+      end if;
+    end if;
+  end if;
+
+This required evaluation of 
+the interactive parameters 
+    hydraulic.generation.bou_sinkAir.p(start = 101325)
+
+The redundancies involve
+initial equations: 
+  hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
+
+Error: The conditions of the following assert statements are always false:
+Error:   assert(building.use_absIntGai and building.nZones == 1, "use_absIntGai is only supported for single zones");
+    The variable building.use_absIntGai = false, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone">BESMod.Systems.Demand.Building.TEASERThermalZone</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone#text:26">27</a>, and used in component <a href="Modelica://BESMod.Examples.Retrofit.Case1TotalRetrofit#:building">building</a>.
+    The variable building.nZones = 1, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand">BESMod.Systems.Demand.Building.BaseClasses.PartialDemand</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6">7</a>, and used in component <a href="Modelica://BESMod.Examples.Retrofit.Case1TotalRetrofit#$building:PartialDemand">building.PartialDemand</a>.
+Translation aborted.
+Error: ERRORS have been issued.
+Error: Simulations failed for:
+<a href="Modelica://BESMod.Examples.Retrofit.Case1TotalRetrofit">BESMod.Examples.Retrofit.Case1TotalRetrofit</a>
+
+
+Error in model:  BESMod.Examples.DesignOptimization.BESNoDHW 
+Check of <a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW">BESMod.Examples.DesignOptimization.BESNoDHW</a>
+Warning: The bus-input hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
+Bus-signal: TStoBufBotMea
+Use: <a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#diagram$hydraulic.control.buiAndDHWCtr:hysBui,sigBusDistr"> connect(hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea, hydraulic.control.buiAndDHWCtr.hysBui.TStoBot)</a>;
+Connected bus variables:
+<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#$hydraulic.control.sigBusDistr:TStoBufBotMea">hydraulic.control.sigBusDistr.TStoBufBotMea</a> (connect) "Supply temperature of the lower layers of the storage. Does not have to be the lowest layer, depending on comfort even the top may be selected"
+<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#$hydraulic.control.setAndMeaSelPri.sigBusDistr:TStoBufBotMea">hydraulic.control.setAndMeaSelPri.sigBusDistr.TStoBufBotMea</a> (connect)
+<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#$hydraulic.control.setAndMeaSelSec.sigBusDistr:TStoBufBotMea">hydraulic.control.setAndMeaSelSec.sigBusDistr.TStoBufBotMea</a> (connect)
+<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#$hydraulic.distribution.sigBusDistr:TStoBufBotMea">hydraulic.distribution.sigBusDistr.TStoBufBotMea</a> (connect)
+input <a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#$hydraulic.control.buiAndDHWCtr.sigBusDistr:TStoBufBotMea">hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea</a> (connect)
+The DAE has 5068 scalar unknowns and 5068 scalar equations.
+After eliminating unused variables:
+<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#diagram$hydraulic.control.buiAndDHWCtr:hysBui.TStoBot">hydraulic.control.buiAndDHWCtr.hysBui.TStoBot</a>
+<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#diagram$hydraulic.control:buiAndDHWCtr.sigBusDistr">hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea</a>
+<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#diagram$hydraulic.control:setAndMeaSelPri.sigBusDistr">hydraulic.control.setAndMeaSelPri.sigBusDistr.TStoBufBotMea</a>
+<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#diagram$hydraulic.control:setAndMeaSelSec.sigBusDistr">hydraulic.control.setAndMeaSelSec.sigBusDistr.TStoBufBotMea</a>
+<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#diagram$hydraulic:control.sigBusDistr">hydraulic.control.sigBusDistr.TStoBufBotMea</a>
+<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#diagram$hydraulic:distribution.sigBusDistr">hydraulic.distribution.sigBusDistr.TStoBufBotMea</a>
+The model could not be deduced to be symbolically well-posed.
+The model has
+  4843+2*hydraulic.transfer.parRad.nEle+29*building.thermalZone[1].zoneParam.nOrientations  +2*building.thermalZone[1].ROM.volAir.dynBal.nPorts+building.thermalZone[1].humanSenHeaDependent.productHeatOutput.nu  +building.thermalZone[1].machinesSenHea.productHeatOutput.nu+building.thermalZone[1].lights.productHeatOutput.nu  +5*building.thermalZone[1].zoneParam.nOrientationsRoof+building.thermalZone[1].ventCont.optimalTemp.nin  +building.thermalZone[1].ventCont.optimalTemp.nout+building.thermalZone[1].ventCont.dEMA.nout  +building.thermalZone[1].ventCont.dEMA.ExpAVG.n+building.thermalZone[1].ventCont.dEMA.ExpAVG1.n  +building.multiSumEle.nu+max([size(userProfiles.tabIntGai.columns, 1); size(  userProfiles.tabIntGai.offset, 1)])+DHW.calcmFlow.multiProduct.nu+  DHW.pump.vol.dynBal.nPorts+max([
+[4]; size(DHW.combiTimeTableDHWInput.offset, 1)])+14*systemParameters.nZones+  hydraulic.generation.heatPump.con.vol.dynBal.nPorts+2*hydraulic.generation.heatPump.eva.vol.dynBal.nPorts  +size(hydraulic.generation.heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns, 1)  +hydraulic.generation.heatPump.safCtr.opeEnv.bouMapHea.nor.nu+size(  hydraulic.generation.heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns, 1)+  hydraulic.generation.heatPump.safCtr.opeEnv.bouMapCoo.nor.nu+hydraulic.generation.pump.vol.dynBal.nPorts  +hydraulic.generation.multiSum.nu+hydraulic.generation.eleHea.vol.dynBal.nPorts  +hydraulic.control.anyGenDevIsOn.nu+hydraulic.control.buiAndDHWCtr.maxSecHeaGen.nu  +max([size(hydraulic.control.buiAndDHWCtr.TSetBuiSupSGReady.datRea.columns, 1);   size(hydraulic.control.buiAndDHWCtr.TSetBuiSupSGReady.datRea.offset, 1)])+  hydraulic.transfer.rad[1].sumCon.nin+hydraulic.transfer.rad[1].sumRad.nin+  hydraulic.transfer.rad[1].vol[1].dynBal.nPorts+hydraulic.transfer.rad[1].vol[2].dynBal.nPorts  +hydraulic.transfer.rad[1].vol[3].dynBal.nPorts+hydraulic.transfer.rad[1].vol[4].dynBal.nPorts  +hydraulic.transfer.rad[1].vol[5].dynBal.nPorts+hydraulic.transfer.pumFixMFlo[1].vol.dynBal.nPorts
+scalar unknowns and
+  4846+max([size(userProfiles.tabIntGai.columns, 1); size(userProfiles.tabIntGai.offset,   1)])+(if DHW.bou_sink.use_Xi_in then 1 else (if DHW.bou_sink.use_X_in then 0   else 1))+(if  not DHW.bou_sink.use_p_in then 1 else 0)+2*DHW.bou_sink.nPorts+  (if  not DHW.bou_sink.use_h_in then 1 else 0)+(if DHW.bouSou.use_Xi_in then 1   else (if DHW.bouSou.use_X_in then 0 else 1))+(if  not DHW.bouSou.use_p_in   then 1 else 0)+(if  not DHW.bouSou.use_T_in then 1 else 0)+max([
+[4]; size(DHW.combiTimeTableDHWInput.offset, 1)])+(if hydraulic.generation.bou_sinkAir.use_Xi_in   then 2 else (if hydraulic.generation.bou_sinkAir.use_X_in then 1 else 3))+(  if  not hydraulic.generation.bou_sinkAir.use_p_in then 1 else 0)+(if  not   hydraulic.generation.bou_sinkAir.use_h_in then 1 else 0)+(if hydraulic.generation.bouEva.use_Xi_in   then 2 else (if hydraulic.generation.bouEva.use_X_in then 1 else 3))+(if   hydraulic.generation.bouPum.use_Xi_in then 1 else (if hydraulic.generation.bouPum.use_X_in   then 0 else 1))+(if  not hydraulic.generation.bouPum.use_p_in then 1 else 0)+  (if  not hydraulic.generation.bouPum.use_T_in then 1 else 0)+max([size(  hydraulic.control.buiAndDHWCtr.TSetBuiSupSGReady.datRea.columns, 1); size(  hydraulic.control.buiAndDHWCtr.TSetBuiSupSGReady.datRea.offset, 1)])+(if   weaDat.pAtmSou == IBPSA.BoundaryConditions.Types.DataSource.Parameter then 1   else 0)+(if weaDat.TDewPoiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TDryBulSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TBlaSkySou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.relHumSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.opaSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.ceiHeiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.totSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winSpeSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winDirSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HInfHorSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HDifHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HGloHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HGloHor_HDifHor then 2 else 1)+19*building.thermalZone[1].zoneParam.nOrientations  +(if  not building.thermalZone[1].eqAirTempWall.TGroundFromInput then 1 else 0)  +(if  not building.thermalZone[1].eqAirTempRoof.TGroundFromInput then 1 else 0)  +3*building.thermalZone[1].zoneParam.nOrientationsRoof+building.thermalZone[1].ventCont.optimalTemp.nout  +building.thermalZone[1].ventCont.dEMA.ExpAVG.n+building.thermalZone[1].ventCont.dEMA.ExpAVG1.n  +(if  not DHW.pump.vol.dynBal.use_mWat_flow then 1 else 0)+3*DHW.pump.vol.dynBal.nPorts  +(if  not hydraulic.generation.heatPump.con.vol.dynBal.use_mWat_flow then 1   else 0)+3*hydraulic.generation.heatPump.con.vol.dynBal.nPorts+(if  not   hydraulic.generation.heatPump.eva.vol.dynBal.use_mWat_flow then 1 else 0)+5*  hydraulic.generation.heatPump.eva.vol.dynBal.nPorts+size(hydraulic.generation.heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns,   1)+size(hydraulic.generation.heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns,   1)+(if  not hydraulic.generation.pump.vol.dynBal.use_mWat_flow then 1 else 0)  +3*hydraulic.generation.pump.vol.dynBal.nPorts+(if  not hydraulic.generation.eleHea.vol.dynBal.use_mWat_flow   then 1 else 0)+3*hydraulic.generation.eleHea.vol.dynBal.nPorts+(if  not   hydraulic.transfer.pumFixMFlo[1].vol.dynBal.use_mWat_flow then 1 else 0)+3*  hydraulic.transfer.pumFixMFlo[1].vol.dynBal.nPorts+(if  not building.thermalZone[1].ROM.volAir.dynBal.use_mWat_flow   then 1 else 0)+5*building.thermalZone[1].ROM.volAir.dynBal.nPorts+(if  not   hydraulic.transfer.rad[1].vol[1].dynBal.use_mWat_flow then 1 else 0)+3*  hydraulic.transfer.rad[1].vol[1].dynBal.nPorts+(if  not hydraulic.transfer.rad[1].vol[2].dynBal.use_mWat_flow   then 1 else 0)+3*hydraulic.transfer.rad[1].vol[2].dynBal.nPorts+(if  not   hydraulic.transfer.rad[1].vol[3].dynBal.use_mWat_flow then 1 else 0)+3*  hydraulic.transfer.rad[1].vol[3].dynBal.nPorts+(if  not hydraulic.transfer.rad[1].vol[4].dynBal.use_mWat_flow   then 1 else 0)+3*hydraulic.transfer.rad[1].vol[4].dynBal.nPorts+(if  not   hydraulic.transfer.rad[1].vol[5].dynBal.use_mWat_flow then 1 else 0)+3*  hydraulic.transfer.rad[1].vol[5].dynBal.nPorts+8*systemParameters.nZones+2*  hydraulic.transfer.parRad.nEle
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  5068
+Warning: Some connector variables are removed from the simulation problem,
+since they are not used in the model.
+Warning: Connector variables that are removed:
+<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#diagram$hydraulic.control.buiAndDHWCtr.hysBui:TStoBot">hydraulic.control.buiAndDHWCtr.hysBui.TStoBot</a>
+Expandable connector variables that are removed:
+<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#diagram$hydraulic.control.buiAndDHWCtr.sigBusDistr:TStoBufBotMea">hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea</a>
+<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#diagram$hydraulic.control.setAndMeaSelPri.sigBusDistr:TStoBufBotMea">hydraulic.control.setAndMeaSelPri.sigBusDistr.TStoBufBotMea</a>
+<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#diagram$hydraulic.control.setAndMeaSelSec.sigBusDistr:TStoBufBotMea">hydraulic.control.setAndMeaSelSec.sigBusDistr.TStoBufBotMea</a>
+<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#diagram$hydraulic.control.sigBusDistr:TStoBufBotMea">hydraulic.control.sigBusDistr.TStoBufBotMea</a>
+<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#diagram$hydraulic.distribution.sigBusDistr:TStoBufBotMea">hydraulic.distribution.sigBusDistr.TStoBufBotMea</a>
+Check of <a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW">BESMod.Examples.DesignOptimization.BESNoDHW</a> successful.
+Warning: WARNINGS have been issued.
+Translation of <a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW">BESMod.Examples.DesignOptimization.BESNoDHW</a>
+Warning: The bus-input hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
+Bus-signal: TStoBufBotMea
+Use: <a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#diagram$hydraulic.control.buiAndDHWCtr:hysBui,sigBusDistr"> connect(hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea, hydraulic.control.buiAndDHWCtr.hysBui.TStoBot)</a>;
+Connected bus variables:
+<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#$hydraulic.distribution.sigBusDistr:TStoBufBotMea">hydraulic.distribution.sigBusDistr.TStoBufBotMea</a> (connect) "Supply temperature of the lower layers of the storage. Does not have to be the lowest layer, depending on comfort even the top may be selected"
+<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#$hydraulic.control.setAndMeaSelSec.sigBusDistr:TStoBufBotMea">hydraulic.control.setAndMeaSelSec.sigBusDistr.TStoBufBotMea</a> (connect)
+<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#$hydraulic.control.setAndMeaSelPri.sigBusDistr:TStoBufBotMea">hydraulic.control.setAndMeaSelPri.sigBusDistr.TStoBufBotMea</a> (connect)
+<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#$hydraulic.control.sigBusDistr:TStoBufBotMea">hydraulic.control.sigBusDistr.TStoBufBotMea</a> (connect)
+input <a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#$hydraulic.control.buiAndDHWCtr.sigBusDistr:TStoBufBotMea">hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea</a> (connect)
+The DAE has 5068 scalar unknowns and 5068 scalar equations.
+After eliminating unused variables:
+<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#diagram$hydraulic.control.buiAndDHWCtr:hysBui.TStoBot">hydraulic.control.buiAndDHWCtr.hysBui.TStoBot</a>
+<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#diagram$hydraulic.control:buiAndDHWCtr.sigBusDistr">hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea</a>
+<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#diagram$hydraulic.control:setAndMeaSelPri.sigBusDistr">hydraulic.control.setAndMeaSelPri.sigBusDistr.TStoBufBotMea</a>
+<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#diagram$hydraulic.control:setAndMeaSelSec.sigBusDistr">hydraulic.control.setAndMeaSelSec.sigBusDistr.TStoBufBotMea</a>
+<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#diagram$hydraulic:control.sigBusDistr">hydraulic.control.sigBusDistr.TStoBufBotMea</a>
+<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#diagram$hydraulic:distribution.sigBusDistr">hydraulic.distribution.sigBusDistr.TStoBufBotMea</a>
+Warning: Some connector variables are removed from the simulation problem,
+since they are not used in the model.
+Warning: Connector variables that are removed:
+<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#diagram$hydraulic.control.buiAndDHWCtr.hysBui:TStoBot">hydraulic.control.buiAndDHWCtr.hysBui.TStoBot</a>
+Expandable connector variables that are removed:
+<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#diagram$hydraulic.control.buiAndDHWCtr.sigBusDistr:TStoBufBotMea">hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea</a>
+<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#diagram$hydraulic.control.setAndMeaSelPri.sigBusDistr:TStoBufBotMea">hydraulic.control.setAndMeaSelPri.sigBusDistr.TStoBufBotMea</a>
+<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#diagram$hydraulic.control.setAndMeaSelSec.sigBusDistr:TStoBufBotMea">hydraulic.control.setAndMeaSelSec.sigBusDistr.TStoBufBotMea</a>
+<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#diagram$hydraulic.control.sigBusDistr:TStoBufBotMea">hydraulic.control.sigBusDistr.TStoBufBotMea</a>
+<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#diagram$hydraulic.distribution.sigBusDistr:TStoBufBotMea">hydraulic.distribution.sigBusDistr.TStoBufBotMea</a>
+Redundant consistent initial conditions.
+Removed the following equations which are redundant and consistent: 
+  if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+      hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = hydraulic.generation.heatPump.eva.vol.dynBal.p_start;
+    end if;
+  else
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==       Modelica.Fluid.Types.Dynamics.SteadyStateInitial) then 
+      if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+        der(hydraulic.generation.heatPump.eva.vol.dynBal.medium.p) = 0;
+      end if;
+    end if;
+  end if;
+
+This required evaluation of 
+the interactive parameters 
+    hydraulic.generation.bou_sinkAir.p(start = 101325)
+
+The redundancies involve
+initial equations: 
+  hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
+
+Error: The conditions of the following assert statements are always false:
+Error:   assert(building.use_absIntGai and building.nZones == 1, "use_absIntGai is only supported for single zones");
+    The variable building.use_absIntGai = false, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone">BESMod.Systems.Demand.Building.TEASERThermalZone</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone#text:26">27</a>, and used in component <a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#:building">building</a>.
+    The variable building.nZones = 1, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand">BESMod.Systems.Demand.Building.BaseClasses.PartialDemand</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6">7</a>, and used in component <a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#$building:PartialDemand">building.PartialDemand</a>.
+Translation aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+Error: Simulations failed for:
+<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW">BESMod.Examples.DesignOptimization.BESNoDHW</a>
+
+
+Error in model:  BESMod.Examples.Retrofit.Case1PartialRetrofit 
+Check of <a href="Modelica://BESMod.Examples.Retrofit.Case1PartialRetrofit">BESMod.Examples.Retrofit.Case1PartialRetrofit</a>
+The model has the same number of unknowns and equations: 7283
+Check of <a href="Modelica://BESMod.Examples.Retrofit.Case1PartialRetrofit">BESMod.Examples.Retrofit.Case1PartialRetrofit</a> successful.
+Translation of <a href="Modelica://BESMod.Examples.Retrofit.Case1PartialRetrofit">BESMod.Examples.Retrofit.Case1PartialRetrofit</a>
+The DAE has 7283 scalar unknowns and 7283 scalar equations.
+Redundant consistent initial conditions.
+Removed the following equations which are redundant and consistent: 
+  if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+      hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = hydraulic.generation.heatPump.eva.vol.dynBal.p_start;
+    end if;
+  else
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==       Modelica.Fluid.Types.Dynamics.SteadyStateInitial) then 
+      if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+        der(hydraulic.generation.heatPump.eva.vol.dynBal.medium.p) = 0;
+      end if;
+    end if;
+  end if;
+
+This required evaluation of 
+the interactive parameters 
+    hydraulic.generation.bou_sinkAir.p(start = 101325)
+
+The redundancies involve
+initial equations: 
+  hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
+
+Error: The conditions of the following assert statements are always false:
+Error:   assert(building.use_absIntGai and building.nZones == 1, "use_absIntGai is only supported for single zones");
+    The variable building.use_absIntGai = false, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone">BESMod.Systems.Demand.Building.TEASERThermalZone</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone#text:26">27</a>, and used in component <a href="Modelica://BESMod.Examples.Retrofit.Case1PartialRetrofit#:building">building</a>.
+    The variable building.nZones = 1, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand">BESMod.Systems.Demand.Building.BaseClasses.PartialDemand</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6">7</a>, and used in component <a href="Modelica://BESMod.Examples.Retrofit.Case1PartialRetrofit#$building:PartialDemand">building.PartialDemand</a>.
+Translation aborted.
+Error: ERRORS have been issued.
+Error: Simulations failed for:
+<a href="Modelica://BESMod.Examples.Retrofit.Case1PartialRetrofit">BESMod.Examples.Retrofit.Case1PartialRetrofit</a>
+
+
+Error in model:  BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW 
+Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW</a>
+The model has the same number of unknowns and equations: 9132
+Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW</a> successful.
+Translation of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW</a>
+The DAE has 9132 scalar unknowns and 9132 scalar equations.
+Redundant consistent initial conditions.
+Removed the following equations which are redundant and consistent: 
+  if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+      hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = hydraulic.generation.heatPump.eva.vol.dynBal.p_start;
+    end if;
+  else
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==       Modelica.Fluid.Types.Dynamics.SteadyStateInitial) then 
+      if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+        der(hydraulic.generation.heatPump.eva.vol.dynBal.medium.p) = 0;
+      end if;
+    end if;
+  end if;
+
+This required evaluation of 
+the interactive parameters 
+    hydraulic.generation.bou_sinkAir.p(start = 101325)
+
+The redundancies involve
+initial equations: 
+  hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
+
+Error: The conditions of the following assert statements are always false:
+Error:   assert(building.use_absIntGai and building.nZones == 1, "use_absIntGai is only supported for single zones");
+    The variable building.use_absIntGai = false, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone">BESMod.Systems.Demand.Building.TEASERThermalZone</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone#text:26">27</a>, and used in component <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW#:building">building</a>.
+    The variable building.nZones = 1, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand">BESMod.Systems.Demand.Building.BaseClasses.PartialDemand</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6">7</a>, and used in component <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW#$building:PartialDemand">building.PartialDemand</a>.
+Translation aborted.
+Error: ERRORS have been issued.
+Error: Simulations failed for:
+<a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW</a>
+
+
+Error in model:  BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW 
+Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW</a>
+The model has the same number of unknowns and equations: 7584
+Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW</a> successful.
+Translation of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW</a>
+The DAE has 7584 scalar unknowns and 7584 scalar equations.
+Redundant consistent initial conditions.
+Removed the following equations which are redundant and consistent: 
+  if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+      hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = hydraulic.generation.heatPump.eva.vol.dynBal.p_start;
+    end if;
+  else
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==       Modelica.Fluid.Types.Dynamics.SteadyStateInitial) then 
+      if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+        der(hydraulic.generation.heatPump.eva.vol.dynBal.medium.p) = 0;
+      end if;
+    end if;
+  end if;
+
+This required evaluation of 
+the interactive parameters 
+    hydraulic.generation.bou_sinkAir.p(start = 101325)
+
+The redundancies involve
+initial equations: 
+  hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
+
+Error: The conditions of the following assert statements are always false:
+Error:   assert(building.use_absIntGai and building.nZones == 1, "use_absIntGai is only supported for single zones");
+    The variable building.use_absIntGai = false, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone">BESMod.Systems.Demand.Building.TEASERThermalZone</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone#text:26">27</a>, and used in component <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW#:building">building</a>.
+    The variable building.nZones = 1, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand">BESMod.Systems.Demand.Building.BaseClasses.PartialDemand</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6">7</a>, and used in component <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW#$building:PartialDemand">building.PartialDemand</a>.
+Translation aborted.
+Error: ERRORS have been issued.
+Error: Simulations failed for:
+<a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW</a>
+
+
+Error in model:  BESMod.Examples.TEASERHeatLoadCalculation.Example 
+Check of <a href="Modelica://BESMod.Examples.TEASERHeatLoadCalculation.Example">BESMod.Examples.TEASERHeatLoadCalculation.Example</a>
+The model has the same number of unknowns and equations: 2922
+The model has the same number of unknowns and equations
+for the given numerical settings of parameters: 2922
+Check of <a href="Modelica://BESMod.Examples.TEASERHeatLoadCalculation.Example">BESMod.Examples.TEASERHeatLoadCalculation.Example</a> successful.
+Translation of <a href="Modelica://BESMod.Examples.TEASERHeatLoadCalculation.Example">BESMod.Examples.TEASERHeatLoadCalculation.Example</a>
+The DAE has 2922 scalar unknowns and 2922 scalar equations.
+Error: The conditions of the following assert statements are always false:
+Error:   assert(building.use_absIntGai and building.nZones == 1, "use_absIntGai is only supported for single zones");
+    The variable building.use_absIntGai = false, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone">BESMod.Systems.Demand.Building.TEASERThermalZone</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone#text:26">27</a>, and used in component <a href="Modelica://BESMod.Examples.TEASERHeatLoadCalculation.Example#:building">building</a>.
+    The variable building.nZones = 1, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand">BESMod.Systems.Demand.Building.BaseClasses.PartialDemand</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6">7</a>, and used in component <a href="Modelica://BESMod.Examples.TEASERHeatLoadCalculation.Example#$building:PartialDemand">building.PartialDemand</a>.
+Translation aborted.
+Error: ERRORS have been issued.
+Error: Simulations failed for:
+<a href="Modelica://BESMod.Examples.TEASERHeatLoadCalculation.Example">BESMod.Examples.TEASERHeatLoadCalculation.Example</a>
+
+
+Error in model:  BESMod.Examples.HeatPumpAndBoiler.Serial 
+Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Serial">BESMod.Examples.HeatPumpAndBoiler.Serial</a>
+The model has the same number of unknowns and equations: 6755
+The model has the same number of unknowns and equations
+for the given numerical settings of parameters: 6755
+Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Serial">BESMod.Examples.HeatPumpAndBoiler.Serial</a> successful.
+Translation of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Serial">BESMod.Examples.HeatPumpAndBoiler.Serial</a>
+The DAE has 6755 scalar unknowns and 6755 scalar equations.
+Redundant consistent initial conditions.
+Removed the following equations which are redundant and consistent: 
+  if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+      hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = hydraulic.generation.heatPump.eva.vol.dynBal.p_start;
+    end if;
+  else
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==       Modelica.Fluid.Types.Dynamics.SteadyStateInitial) then 
+      if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+        der(hydraulic.generation.heatPump.eva.vol.dynBal.medium.p) = 0;
+      end if;
+    end if;
+  end if;
+
+This required evaluation of 
+the interactive parameters 
+    hydraulic.generation.bou_sinkAir.p(start = 101325)
+
+The redundancies involve
+initial equations: 
+  hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
+
+Error: The conditions of the following assert statements are always false:
+Error:   assert(building.use_absIntGai and building.nZones == 1, "use_absIntGai is only supported for single zones");
+    The variable building.use_absIntGai = false, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone">BESMod.Systems.Demand.Building.TEASERThermalZone</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone#text:26">27</a>, and used in component <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Serial#:building">building</a>.
+    The variable building.nZones = 1, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand">BESMod.Systems.Demand.Building.BaseClasses.PartialDemand</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6">7</a>, and used in component <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Serial#$building:PartialDemand">building.PartialDemand</a>.
+Translation aborted.
+Error: ERRORS have been issued.
+Error: Simulations failed for:
+<a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Serial">BESMod.Examples.HeatPumpAndBoiler.Serial</a>
+
+
+Error in model:  BESMod.Examples.SolarThermalSystem.SolarThermalAixLib 
+Check of <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib">BESMod.Examples.SolarThermalSystem.SolarThermalAixLib</a>
+The model has the same number of unknowns and equations: 13234
+Check of <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib">BESMod.Examples.SolarThermalSystem.SolarThermalAixLib</a> successful.
+Translation of <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib">BESMod.Examples.SolarThermalSystem.SolarThermalAixLib</a>
+The DAE has 13234 scalar unknowns and 13234 scalar equations.
+Redundant consistent initial conditions.
+Removed the following equations which are redundant and consistent: 
+  if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+      hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = hydraulic.generation.heatPump.eva.vol.dynBal.p_start;
+    end if;
+  else
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==       Modelica.Fluid.Types.Dynamics.SteadyStateInitial) then 
+      if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+        der(hydraulic.generation.heatPump.eva.vol.dynBal.medium.p) = 0;
+      end if;
+    end if;
+  end if;
+
+This required evaluation of 
+the interactive parameters 
+    hydraulic.generation.bou_sinkAir.p(start = 101325)
+
+The redundancies involve
+initial equations: 
+  hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
+
+Error: The conditions of the following assert statements are always false:
+Error:   assert(building.use_absIntGai and building.nZones == 1, "use_absIntGai is only supported for single zones");
+    The variable building.use_absIntGai = false, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone">BESMod.Systems.Demand.Building.TEASERThermalZone</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone#text:26">27</a>, and used in component <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib#:building">building</a>.
+    The variable building.nZones = 1, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand">BESMod.Systems.Demand.Building.BaseClasses.PartialDemand</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6">7</a>, and used in component <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib#$building:PartialDemand">building.PartialDemand</a>.
+Translation aborted.
+Error: ERRORS have been issued.
+Error: Simulations failed for:
+<a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib">BESMod.Examples.SolarThermalSystem.SolarThermalAixLib</a>
+
+
+Error in model:  BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding 
+Check of <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding">BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding</a>
+The model has the same number of unknowns and equations: 2718
+The model has the same number of unknowns and equations
+for the given numerical settings of parameters: 2718
+Check of <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding">BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding</a> successful.
+Translation of <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding">BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding</a>
+The DAE has 2718 scalar unknowns and 2718 scalar equations.
+Error: The conditions of the following assert statements are always false:
+Error:   assert(building.use_absIntGai and building.nZones == 1, "use_absIntGai is only supported for single zones");
+    The variable building.use_absIntGai = false, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone">BESMod.Systems.Demand.Building.TEASERThermalZone</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone#text:26">27</a>, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding#$building:TEASERThermalZone">building.TEASERThermalZone</a>.
+    The variable building.nZones = 1, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand">BESMod.Systems.Demand.Building.BaseClasses.PartialDemand</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6">7</a>, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding#$building:PartialDemand">building.PartialDemand</a>.
+Translation aborted.
+Error: ERRORS have been issued.
+Error: Simulations failed for:
+<a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding">BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding</a>
+
+
+Error in model:  BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding 
+Check of <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding">BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding</a>
+The model has the same number of unknowns and equations: 3952
+The model has the same number of unknowns and equations
+for the given numerical settings of parameters: 3952
+Check of <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding">BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding</a> successful.
+Translation of <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding">BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding</a>
+The DAE has 3952 scalar unknowns and 3952 scalar equations.
+Error: The conditions of the following assert statements are always false:
+Error:   assert(building.use_absIntGai and building.nZones == 1, "use_absIntGai is only supported for single zones");
+    The variable building.use_absIntGai = false, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone">BESMod.Systems.Demand.Building.TEASERThermalZone</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone#text:26">27</a>, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding#$building:TEASERThermalZone">building.TEASERThermalZone</a>.
+    The variable building.nZones = 1, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand">BESMod.Systems.Demand.Building.BaseClasses.PartialDemand</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6">7</a>, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding#$building:PartialDemand">building.PartialDemand</a>.
+Translation aborted.
+Error: ERRORS have been issued.
+Error: Simulations failed for:
+<a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding">BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding</a>
+
+
+Error in model:  BESMod.Examples.DesignOptimization.BES 
+Check of <a href="Modelica://BESMod.Examples.DesignOptimization.BES">BESMod.Examples.DesignOptimization.BES</a>
+The model has the same number of unknowns and equations: 6377
+The model has the same number of unknowns and equations
+for the given numerical settings of parameters: 6377
+Check of <a href="Modelica://BESMod.Examples.DesignOptimization.BES">BESMod.Examples.DesignOptimization.BES</a> successful.
+Translation of <a href="Modelica://BESMod.Examples.DesignOptimization.BES">BESMod.Examples.DesignOptimization.BES</a>
+The DAE has 6377 scalar unknowns and 6377 scalar equations.
+Redundant consistent initial conditions.
+Removed the following equations which are redundant and consistent: 
+  if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+      hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = hydraulic.generation.heatPump.eva.vol.dynBal.p_start;
+    end if;
+  else
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==       Modelica.Fluid.Types.Dynamics.SteadyStateInitial) then 
+      if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+        der(hydraulic.generation.heatPump.eva.vol.dynBal.medium.p) = 0;
+      end if;
+    end if;
+  end if;
+
+This required evaluation of 
+the interactive parameters 
+    hydraulic.generation.bou_sinkAir.p(start = 101325)
+
+The redundancies involve
+initial equations: 
+  hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
+
+Error: The conditions of the following assert statements are always false:
+Error:   assert(building.use_absIntGai and building.nZones == 1, "use_absIntGai is only supported for single zones");
+    The variable building.use_absIntGai = false, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone">BESMod.Systems.Demand.Building.TEASERThermalZone</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone#text:26">27</a>, and used in component <a href="Modelica://BESMod.Examples.DesignOptimization.BES#:building">building</a>.
+    The variable building.nZones = 1, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand">BESMod.Systems.Demand.Building.BaseClasses.PartialDemand</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6">7</a>, and used in component <a href="Modelica://BESMod.Examples.DesignOptimization.BES#$building:PartialDemand">building.PartialDemand</a>.
+Translation aborted.
+Error: ERRORS have been issued.
+Error: Simulations failed for:
+<a href="Modelica://BESMod.Examples.DesignOptimization.BES">BESMod.Examples.DesignOptimization.BES</a>
+
+
+Error in model:  BESMod.Examples.Retrofit.Case1NoRetrofit 
+Check of <a href="Modelica://BESMod.Examples.Retrofit.Case1NoRetrofit">BESMod.Examples.Retrofit.Case1NoRetrofit</a>
+The model has the same number of unknowns and equations: 7283
+Check of <a href="Modelica://BESMod.Examples.Retrofit.Case1NoRetrofit">BESMod.Examples.Retrofit.Case1NoRetrofit</a> successful.
+Translation of <a href="Modelica://BESMod.Examples.Retrofit.Case1NoRetrofit">BESMod.Examples.Retrofit.Case1NoRetrofit</a>
+The DAE has 7283 scalar unknowns and 7283 scalar equations.
+Redundant consistent initial conditions.
+Removed the following equations which are redundant and consistent: 
+  if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+      hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = hydraulic.generation.heatPump.eva.vol.dynBal.p_start;
+    end if;
+  else
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==       Modelica.Fluid.Types.Dynamics.SteadyStateInitial) then 
+      if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+        der(hydraulic.generation.heatPump.eva.vol.dynBal.medium.p) = 0;
+      end if;
+    end if;
+  end if;
+
+This required evaluation of 
+the interactive parameters 
+    hydraulic.generation.bou_sinkAir.p(start = 101325)
+
+The redundancies involve
+initial equations: 
+  hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
+
+Error: The conditions of the following assert statements are always false:
+Error:   assert(building.use_absIntGai and building.nZones == 1, "use_absIntGai is only supported for single zones");
+    The variable building.use_absIntGai = false, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone">BESMod.Systems.Demand.Building.TEASERThermalZone</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone#text:26">27</a>, and used in component <a href="Modelica://BESMod.Examples.Retrofit.Case1NoRetrofit#:building">building</a>.
+    The variable building.nZones = 1, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand">BESMod.Systems.Demand.Building.BaseClasses.PartialDemand</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6">7</a>, and used in component <a href="Modelica://BESMod.Examples.Retrofit.Case1NoRetrofit#$building:PartialDemand">building.PartialDemand</a>.
+Translation aborted.
+Error: ERRORS have been issued.
+Error: Simulations failed for:
+<a href="Modelica://BESMod.Examples.Retrofit.Case1NoRetrofit">BESMod.Examples.Retrofit.Case1NoRetrofit</a>
+
+
+Error in model:  BESMod.Examples.BAUSimStudy.Case1Standard 
+Check of <a href="Modelica://BESMod.Examples.BAUSimStudy.Case1Standard">BESMod.Examples.BAUSimStudy.Case1Standard</a>
+The model has the same number of unknowns and equations: 7283
+Check of <a href="Modelica://BESMod.Examples.BAUSimStudy.Case1Standard">BESMod.Examples.BAUSimStudy.Case1Standard</a> successful.
+Translation of <a href="Modelica://BESMod.Examples.BAUSimStudy.Case1Standard">BESMod.Examples.BAUSimStudy.Case1Standard</a>
+The DAE has 7283 scalar unknowns and 7283 scalar equations.
+Redundant consistent initial conditions.
+Removed the following equations which are redundant and consistent: 
+  if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+      hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = hydraulic.generation.heatPump.eva.vol.dynBal.p_start;
+    end if;
+  else
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==       Modelica.Fluid.Types.Dynamics.SteadyStateInitial) then 
+      if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+        der(hydraulic.generation.heatPump.eva.vol.dynBal.medium.p) = 0;
+      end if;
+    end if;
+  end if;
+
+This required evaluation of 
+the interactive parameters 
+    hydraulic.generation.bou_sinkAir.p(start = 101325)
+
+The redundancies involve
+initial equations: 
+  hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
+
+Error: The conditions of the following assert statements are always false:
+Error:   assert(building.use_absIntGai and building.nZones == 1, "use_absIntGai is only supported for single zones");
+    The variable building.use_absIntGai = false, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone">BESMod.Systems.Demand.Building.TEASERThermalZone</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone#text:26">27</a>, and used in component <a href="Modelica://BESMod.Examples.BAUSimStudy.Case1Standard#:building">building</a>.
+    The variable building.nZones = 1, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand">BESMod.Systems.Demand.Building.BaseClasses.PartialDemand</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6">7</a>, and used in component <a href="Modelica://BESMod.Examples.BAUSimStudy.Case1Standard#$building:PartialDemand">building.PartialDemand</a>.
+Translation aborted.
+Error: ERRORS have been issued.
+Error: Simulations failed for:
+<a href="Modelica://BESMod.Examples.BAUSimStudy.Case1Standard">BESMod.Examples.BAUSimStudy.Case1Standard</a>
+
+
+Error in model:  BESMod.Examples.ModelicaConferencePaper.TEASERBuilding 
+Check of <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding">BESMod.Examples.ModelicaConferencePaper.TEASERBuilding</a>
+Warning: The quantity of electrical.generation.pVSystem[1].weaBus.TDryBul is "ThermodynamicTemperature" and the quantity of electrical.generation.pVSystem[1].cellTemperature.T_a is "Temp_C".
+In <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#diagram$electrical.generation.pVSystem[1]:Bus.TDryBul,lTemperature.T_a">connect(electrical.generation.pVSystem[1].weaBus.TDryBul, electrical.generation.pVSystem[1].cellTemperature.T_a);
+</a>Found in class <a href="Modelica://AixLib.Electrical.PVSystem.PVSystem">AixLib.Electrical.PVSystem.PVSystem</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/PVSystem.mo at line <a href="Modelica://AixLib.Electrical.PVSystem.PVSystem#text:131">132</a>, and used in component <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#$electrical.generation:pVSystem">electrical.generation.pVSystem[1]</a>.
+Variable <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#diagram$electrical.generation:pVSystem[1].weaBus">electrical.generation.pVSystem[1].weaBus.TDryBul</a> was declared in class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/BoundaryConditions/WeatherData/Bus.mo at line 5, and used in component <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#$electrical.generation.pVSystem:weaBus">electrical.generation.pVSystem[1].weaBus</a>.
+Variable <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#diagram$electrical.generation.pVSystem[1]:cellTemperature.T_a">electrical.generation.pVSystem[1].cellTemperature.T_a</a> was declared in class <a href="Modelica://Modelica.Blocks.Interfaces">Modelica.Blocks.Interfaces</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/BaseClasses/PartialCellTemperature.mo at line 21, and used in component <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#$electrical.generation.pVSystem.cellTemperature:PartialCellTemperature">electrical.generation.pVSystem.cellTemperature.PartialCellTemperature</a>.
+Warning: The quantity of electrical.generation.pVSystem[2].weaBus.TDryBul is "ThermodynamicTemperature" and the quantity of electrical.generation.pVSystem[2].cellTemperature.T_a is "Temp_C".
+In <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#diagram$electrical.generation.pVSystem[2]:Bus.TDryBul,lTemperature.T_a">connect(electrical.generation.pVSystem[2].weaBus.TDryBul, electrical.generation.pVSystem[2].cellTemperature.T_a);
+</a>Found in class <a href="Modelica://AixLib.Electrical.PVSystem.PVSystem">AixLib.Electrical.PVSystem.PVSystem</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/PVSystem.mo at line <a href="Modelica://AixLib.Electrical.PVSystem.PVSystem#text:131">132</a>, and used in component <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#$electrical.generation:pVSystem">electrical.generation.pVSystem[2]</a>.
+Variable <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#diagram$electrical.generation:pVSystem[2].weaBus">electrical.generation.pVSystem[2].weaBus.TDryBul</a> was declared in class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/BoundaryConditions/WeatherData/Bus.mo at line 5, and used in component <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#$electrical.generation.pVSystem:weaBus">electrical.generation.pVSystem[2].weaBus</a>.
+Variable <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#diagram$electrical.generation.pVSystem[2]:cellTemperature.T_a">electrical.generation.pVSystem[2].cellTemperature.T_a</a> was declared in class <a href="Modelica://Modelica.Blocks.Interfaces">Modelica.Blocks.Interfaces</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/BaseClasses/PartialCellTemperature.mo at line 21, and used in component <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#$electrical.generation.pVSystem.cellTemperature:PartialCellTemperature">electrical.generation.pVSystem.cellTemperature.PartialCellTemperature</a>.
+Warning: Incompatible units.
+Warning: Incompatible units in
+  electrical.generation.pVSystem[1].cellTemperature.radTil*exp((-2.81)-0.0455*  electrical.generation.pVSystem[1].cellTemperature.winVel)+electrical.generation.pVSystem[1].cellTemperature.T_a
+The part
+  electrical.generation.pVSystem[1].cellTemperature.radTil*exp((-2.81)-0.0455*  electrical.generation.pVSystem[1].cellTemperature.winVel)
+has unit kg/s3
+The part
+  electrical.generation.pVSystem[1].cellTemperature.T_a
+has unit K
+Warning: The unit issue reported appeared in the equation
+  electrical.generation.pVSystem[1].cellTemperature.T_c = (if noEvent(  electrical.generation.pVSystem[1].cellTemperature.radTil &gt;= _GlobalScope.Modelica.Constants.eps)   then electrical.generation.pVSystem[1].cellTemperature.radTil*exp((-2.81)-  0.0455*electrical.generation.pVSystem[1].cellTemperature.winVel)+  electrical.generation.pVSystem[1].cellTemperature.T_a else electrical.generation.pVSystem[1].cellTemperature.T_a);
+Found in class <a href="Modelica://AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround">AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/BaseClasses/CellTemperatureMountingContactToGround.mo at line <a href="Modelica://AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround#text:12">13</a>, and used in component <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#$electrical.generation.pVSystem:cellTemperature">electrical.generation.pVSystem[1].cellTemperature</a>.
+Warning: Incompatible units.
+Warning: Incompatible units in
+  electrical.generation.pVSystem[2].cellTemperature.radTil*exp((-2.81)-0.0455*  electrical.generation.pVSystem[2].cellTemperature.winVel)+electrical.generation.pVSystem[2].cellTemperature.T_a
+The part
+  electrical.generation.pVSystem[2].cellTemperature.radTil*exp((-2.81)-0.0455*  electrical.generation.pVSystem[2].cellTemperature.winVel)
+has unit kg/s3
+The part
+  electrical.generation.pVSystem[2].cellTemperature.T_a
+has unit K
+Warning: The unit issue reported appeared in the equation
+  electrical.generation.pVSystem[2].cellTemperature.T_c = (if noEvent(  electrical.generation.pVSystem[2].cellTemperature.radTil &gt;= _GlobalScope.Modelica.Constants.eps)   then electrical.generation.pVSystem[2].cellTemperature.radTil*exp((-2.81)-  0.0455*electrical.generation.pVSystem[2].cellTemperature.winVel)+  electrical.generation.pVSystem[2].cellTemperature.T_a else electrical.generation.pVSystem[2].cellTemperature.T_a);
+Found in class <a href="Modelica://AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround">AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/BaseClasses/CellTemperatureMountingContactToGround.mo at line <a href="Modelica://AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround#text:12">13</a>, and used in component <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#$electrical.generation.pVSystem:cellTemperature">electrical.generation.pVSystem[2].cellTemperature</a>.
+The model has the same number of unknowns and equations: 7323
+The model has the same number of unknowns and equations
+for the given numerical settings of parameters: 7323
+Check of <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding">BESMod.Examples.ModelicaConferencePaper.TEASERBuilding</a> successful.
+Warning: WARNINGS have been issued.
+Translation of <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding">BESMod.Examples.ModelicaConferencePaper.TEASERBuilding</a>
+Warning: The quantity of electrical.generation.pVSystem[1].weaBus.TDryBul is "ThermodynamicTemperature" and the quantity of electrical.generation.pVSystem[1].cellTemperature.T_a is "Temp_C".
+In <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#diagram$electrical.generation.pVSystem[1]:Bus.TDryBul,lTemperature.T_a">connect(electrical.generation.pVSystem[1].weaBus.TDryBul, electrical.generation.pVSystem[1].cellTemperature.T_a);
+</a>Found in class <a href="Modelica://AixLib.Electrical.PVSystem.PVSystem">AixLib.Electrical.PVSystem.PVSystem</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/PVSystem.mo at line <a href="Modelica://AixLib.Electrical.PVSystem.PVSystem#text:131">132</a>, and used in component <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#$electrical.generation:pVSystem">electrical.generation.pVSystem[1]</a>.
+Variable <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#diagram$electrical.generation:pVSystem[1].weaBus">electrical.generation.pVSystem[1].weaBus.TDryBul</a> was declared in class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/BoundaryConditions/WeatherData/Bus.mo at line 5, and used in component <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#$electrical.generation.pVSystem:weaBus">electrical.generation.pVSystem[1].weaBus</a>.
+Variable <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#diagram$electrical.generation.pVSystem[1]:cellTemperature.T_a">electrical.generation.pVSystem[1].cellTemperature.T_a</a> was declared in class <a href="Modelica://Modelica.Blocks.Interfaces">Modelica.Blocks.Interfaces</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/BaseClasses/PartialCellTemperature.mo at line 21, and used in component <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#$electrical.generation.pVSystem.cellTemperature:PartialCellTemperature">electrical.generation.pVSystem.cellTemperature.PartialCellTemperature</a>.
+Warning: The quantity of electrical.generation.pVSystem[2].weaBus.TDryBul is "ThermodynamicTemperature" and the quantity of electrical.generation.pVSystem[2].cellTemperature.T_a is "Temp_C".
+In <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#diagram$electrical.generation.pVSystem[2]:Bus.TDryBul,lTemperature.T_a">connect(electrical.generation.pVSystem[2].weaBus.TDryBul, electrical.generation.pVSystem[2].cellTemperature.T_a);
+</a>Found in class <a href="Modelica://AixLib.Electrical.PVSystem.PVSystem">AixLib.Electrical.PVSystem.PVSystem</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/PVSystem.mo at line <a href="Modelica://AixLib.Electrical.PVSystem.PVSystem#text:131">132</a>, and used in component <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#$electrical.generation:pVSystem">electrical.generation.pVSystem[2]</a>.
+Variable <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#diagram$electrical.generation:pVSystem[2].weaBus">electrical.generation.pVSystem[2].weaBus.TDryBul</a> was declared in class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/BoundaryConditions/WeatherData/Bus.mo at line 5, and used in component <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#$electrical.generation.pVSystem:weaBus">electrical.generation.pVSystem[2].weaBus</a>.
+Variable <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#diagram$electrical.generation.pVSystem[2]:cellTemperature.T_a">electrical.generation.pVSystem[2].cellTemperature.T_a</a> was declared in class <a href="Modelica://Modelica.Blocks.Interfaces">Modelica.Blocks.Interfaces</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/BaseClasses/PartialCellTemperature.mo at line 21, and used in component <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#$electrical.generation.pVSystem.cellTemperature:PartialCellTemperature">electrical.generation.pVSystem.cellTemperature.PartialCellTemperature</a>.
+Warning: Incompatible units.
+Warning: Incompatible units in
+  electrical.generation.pVSystem[1].cellTemperature.radTil*exp((-2.81)-0.0455*  electrical.generation.pVSystem[1].cellTemperature.winVel)+electrical.generation.pVSystem[1].cellTemperature.T_a
+The part
+  electrical.generation.pVSystem[1].cellTemperature.radTil*exp((-2.81)-0.0455*  electrical.generation.pVSystem[1].cellTemperature.winVel)
+has unit kg/s3
+The part
+  electrical.generation.pVSystem[1].cellTemperature.T_a
+has unit K
+Warning: The unit issue reported appeared in the equation
+  electrical.generation.pVSystem[1].cellTemperature.T_c = (if noEvent(  electrical.generation.pVSystem[1].cellTemperature.radTil &gt;= 1E-15) then   electrical.generation.pVSystem[1].cellTemperature.radTil*exp((-2.81)-0.0455*  electrical.generation.pVSystem[1].cellTemperature.winVel)+electrical.generation.pVSystem[1].cellTemperature.T_a   else electrical.generation.pVSystem[1].cellTemperature.T_a);
+Found in class <a href="Modelica://AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround">AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/BaseClasses/CellTemperatureMountingContactToGround.mo at line <a href="Modelica://AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround#text:12">13</a>, and used in component <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#$electrical.generation.pVSystem:cellTemperature">electrical.generation.pVSystem[1].cellTemperature</a>.
+Warning: Incompatible units.
+Warning: Incompatible units in
+  electrical.generation.pVSystem[2].cellTemperature.radTil*exp((-2.81)-0.0455*  electrical.generation.pVSystem[2].cellTemperature.winVel)+electrical.generation.pVSystem[2].cellTemperature.T_a
+The part
+  electrical.generation.pVSystem[2].cellTemperature.radTil*exp((-2.81)-0.0455*  electrical.generation.pVSystem[2].cellTemperature.winVel)
+has unit kg/s3
+The part
+  electrical.generation.pVSystem[2].cellTemperature.T_a
+has unit K
+Warning: The unit issue reported appeared in the equation
+  electrical.generation.pVSystem[2].cellTemperature.T_c = (if noEvent(  electrical.generation.pVSystem[2].cellTemperature.radTil &gt;= 1E-15) then   electrical.generation.pVSystem[2].cellTemperature.radTil*exp((-2.81)-0.0455*  electrical.generation.pVSystem[2].cellTemperature.winVel)+electrical.generation.pVSystem[2].cellTemperature.T_a   else electrical.generation.pVSystem[2].cellTemperature.T_a);
+Found in class <a href="Modelica://AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround">AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/BaseClasses/CellTemperatureMountingContactToGround.mo at line <a href="Modelica://AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround#text:12">13</a>, and used in component <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#$electrical.generation.pVSystem:cellTemperature">electrical.generation.pVSystem[2].cellTemperature</a>.
+The DAE has 7323 scalar unknowns and 7323 scalar equations.
+Redundant consistent initial conditions.
+Removed the following equations which are redundant and consistent: 
+  electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.EAva    +electrical.distribution.batterySimple.EBou;
+  ventilation.generation.p_start = ventilation.p_start;
+  if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+      hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = hydraulic.generation.heatPump.eva.vol.dynBal.p_start;
+    end if;
+  else
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==       Modelica.Fluid.Types.Dynamics.SteadyStateInitial) then 
+      if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+        der(hydraulic.generation.heatPump.eva.vol.dynBal.medium.p) = 0;
+      end if;
+    end if;
+  end if;
+
+This required evaluation of 
+the interactive parameters 
+    hydraulic.generation.bou_sinkAir.p(start = 101325)
+    ventilation.generation.bouExh.p(start = 101325)
+    ventilation.p_start(start = 101325)
+
+The redundancies involve
+initial equations: 
+  hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
+  ventilation.generation.threeWayValve_b.res1.port_b.p = ventilation.generation.threeWayValve_b.vol.dynBal.p_start;
+  electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
+  electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
+  electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
+
+Error: The conditions of the following assert statements are always false:
+Error:   assert(building.use_absIntGai and building.nZones == 1, "use_absIntGai is only supported for single zones");
+    The variable building.use_absIntGai = false, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone">BESMod.Systems.Demand.Building.TEASERThermalZone</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone#text:26">27</a>, and used in component <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#:building">building</a>.
+    The variable building.nZones = 1, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand">BESMod.Systems.Demand.Building.BaseClasses.PartialDemand</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6">7</a>, and used in component <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#$building:PartialDemand">building.PartialDemand</a>.
+Translation aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+Error: Simulations failed for:
+<a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding">BESMod.Examples.ModelicaConferencePaper.TEASERBuilding</a>
+
+
+Error in model:  BESMod.Examples.HeatPumpAndBoiler.Parallel 
+Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Parallel">BESMod.Examples.HeatPumpAndBoiler.Parallel</a>
+The model has the same number of unknowns and equations: 6884
+The model has the same number of unknowns and equations
+for the given numerical settings of parameters: 6884
+Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Parallel">BESMod.Examples.HeatPumpAndBoiler.Parallel</a> successful.
+Translation of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Parallel">BESMod.Examples.HeatPumpAndBoiler.Parallel</a>
+The DAE has 6884 scalar unknowns and 6884 scalar equations.
+Redundant consistent initial conditions.
+Removed the following equations which are redundant and consistent: 
+  if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+      hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = hydraulic.generation.heatPump.eva.vol.dynBal.p_start;
+    end if;
+  else
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==       Modelica.Fluid.Types.Dynamics.SteadyStateInitial) then 
+      if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+        der(hydraulic.generation.heatPump.eva.vol.dynBal.medium.p) = 0;
+      end if;
+    end if;
+  end if;
+
+This required evaluation of 
+the interactive parameters 
+    hydraulic.generation.bou_sinkAir.p(start = 101325)
+
+The redundancies involve
+initial equations: 
+  hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
+
+Error: The conditions of the following assert statements are always false:
+Error:   assert(building.use_absIntGai and building.nZones == 1, "use_absIntGai is only supported for single zones");
+    The variable building.use_absIntGai = false, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone">BESMod.Systems.Demand.Building.TEASERThermalZone</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone#text:26">27</a>, and used in component <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Parallel#:building">building</a>.
+    The variable building.nZones = 1, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand">BESMod.Systems.Demand.Building.BaseClasses.PartialDemand</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6">7</a>, and used in component <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Parallel#$building:PartialDemand">building.PartialDemand</a>.
+Translation aborted.
+Error: ERRORS have been issued.
+Error: Simulations failed for:
+<a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Parallel">BESMod.Examples.HeatPumpAndBoiler.Parallel</a>
+
+
+Error in model:  BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding 
+Check of <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding">BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding</a>
+Warning: The quantity of electrical.generation.pVSystem[1].weaBus.TDryBul is "ThermodynamicTemperature" and the quantity of electrical.generation.pVSystem[1].cellTemperature.T_a is "Temp_C".
+In <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#diagram$electrical.generation.pVSystem[1]:Bus.TDryBul,lTemperature.T_a">connect(electrical.generation.pVSystem[1].weaBus.TDryBul, electrical.generation.pVSystem[1].cellTemperature.T_a);
+</a>Found in class <a href="Modelica://AixLib.Electrical.PVSystem.PVSystem">AixLib.Electrical.PVSystem.PVSystem</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/PVSystem.mo at line <a href="Modelica://AixLib.Electrical.PVSystem.PVSystem#text:131">132</a>, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#$electrical.generation:pVSystem">electrical.generation.pVSystem[1]</a>.
+Variable <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#diagram$electrical.generation:pVSystem[1].weaBus">electrical.generation.pVSystem[1].weaBus.TDryBul</a> was declared in class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/BoundaryConditions/WeatherData/Bus.mo at line 5, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#$electrical.generation.pVSystem:weaBus">electrical.generation.pVSystem[1].weaBus</a>.
+Variable <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#diagram$electrical.generation.pVSystem[1]:cellTemperature.T_a">electrical.generation.pVSystem[1].cellTemperature.T_a</a> was declared in class <a href="Modelica://Modelica.Blocks.Interfaces">Modelica.Blocks.Interfaces</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/BaseClasses/PartialCellTemperature.mo at line 21, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#$electrical.generation.pVSystem.cellTemperature:PartialCellTemperature">electrical.generation.pVSystem.cellTemperature.PartialCellTemperature</a>.
+Warning: The quantity of electrical.generation.pVSystem[2].weaBus.TDryBul is "ThermodynamicTemperature" and the quantity of electrical.generation.pVSystem[2].cellTemperature.T_a is "Temp_C".
+In <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#diagram$electrical.generation.pVSystem[2]:Bus.TDryBul,lTemperature.T_a">connect(electrical.generation.pVSystem[2].weaBus.TDryBul, electrical.generation.pVSystem[2].cellTemperature.T_a);
+</a>Found in class <a href="Modelica://AixLib.Electrical.PVSystem.PVSystem">AixLib.Electrical.PVSystem.PVSystem</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/PVSystem.mo at line <a href="Modelica://AixLib.Electrical.PVSystem.PVSystem#text:131">132</a>, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#$electrical.generation:pVSystem">electrical.generation.pVSystem[2]</a>.
+Variable <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#diagram$electrical.generation:pVSystem[2].weaBus">electrical.generation.pVSystem[2].weaBus.TDryBul</a> was declared in class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/BoundaryConditions/WeatherData/Bus.mo at line 5, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#$electrical.generation.pVSystem:weaBus">electrical.generation.pVSystem[2].weaBus</a>.
+Variable <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#diagram$electrical.generation.pVSystem[2]:cellTemperature.T_a">electrical.generation.pVSystem[2].cellTemperature.T_a</a> was declared in class <a href="Modelica://Modelica.Blocks.Interfaces">Modelica.Blocks.Interfaces</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/BaseClasses/PartialCellTemperature.mo at line 21, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#$electrical.generation.pVSystem.cellTemperature:PartialCellTemperature">electrical.generation.pVSystem.cellTemperature.PartialCellTemperature</a>.
+Warning: Incompatible units.
+Warning: Incompatible units in
+  electrical.generation.pVSystem[1].cellTemperature.radTil*exp((-2.81)-0.0455*  electrical.generation.pVSystem[1].cellTemperature.winVel)+electrical.generation.pVSystem[1].cellTemperature.T_a
+The part
+  electrical.generation.pVSystem[1].cellTemperature.radTil*exp((-2.81)-0.0455*  electrical.generation.pVSystem[1].cellTemperature.winVel)
+has unit kg/s3
+The part
+  electrical.generation.pVSystem[1].cellTemperature.T_a
+has unit K
+Warning: The unit issue reported appeared in the equation
+  electrical.generation.pVSystem[1].cellTemperature.T_c = (if noEvent(  electrical.generation.pVSystem[1].cellTemperature.radTil &gt;= _GlobalScope.Modelica.Constants.eps)   then electrical.generation.pVSystem[1].cellTemperature.radTil*exp((-2.81)-  0.0455*electrical.generation.pVSystem[1].cellTemperature.winVel)+  electrical.generation.pVSystem[1].cellTemperature.T_a else electrical.generation.pVSystem[1].cellTemperature.T_a);
+Found in class <a href="Modelica://AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround">AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/BaseClasses/CellTemperatureMountingContactToGround.mo at line <a href="Modelica://AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround#text:12">13</a>, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#$electrical.generation.pVSystem:cellTemperature">electrical.generation.pVSystem[1].cellTemperature</a>.
+Warning: Incompatible units.
+Warning: Incompatible units in
+  electrical.generation.pVSystem[2].cellTemperature.radTil*exp((-2.81)-0.0455*  electrical.generation.pVSystem[2].cellTemperature.winVel)+electrical.generation.pVSystem[2].cellTemperature.T_a
+The part
+  electrical.generation.pVSystem[2].cellTemperature.radTil*exp((-2.81)-0.0455*  electrical.generation.pVSystem[2].cellTemperature.winVel)
+has unit kg/s3
+The part
+  electrical.generation.pVSystem[2].cellTemperature.T_a
+has unit K
+Warning: The unit issue reported appeared in the equation
+  electrical.generation.pVSystem[2].cellTemperature.T_c = (if noEvent(  electrical.generation.pVSystem[2].cellTemperature.radTil &gt;= _GlobalScope.Modelica.Constants.eps)   then electrical.generation.pVSystem[2].cellTemperature.radTil*exp((-2.81)-  0.0455*electrical.generation.pVSystem[2].cellTemperature.winVel)+  electrical.generation.pVSystem[2].cellTemperature.T_a else electrical.generation.pVSystem[2].cellTemperature.T_a);
+Found in class <a href="Modelica://AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround">AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/BaseClasses/CellTemperatureMountingContactToGround.mo at line <a href="Modelica://AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround#text:12">13</a>, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#$electrical.generation.pVSystem:cellTemperature">electrical.generation.pVSystem[2].cellTemperature</a>.
+The model has the same number of unknowns and equations: 7093
+The model has the same number of unknowns and equations
+for the given numerical settings of parameters: 7093
+Check of <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding">BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding</a> successful.
+Warning: WARNINGS have been issued.
+Translation of <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding">BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding</a>
+Warning: The quantity of electrical.generation.pVSystem[1].weaBus.TDryBul is "ThermodynamicTemperature" and the quantity of electrical.generation.pVSystem[1].cellTemperature.T_a is "Temp_C".
+In <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#diagram$electrical.generation.pVSystem[1]:Bus.TDryBul,lTemperature.T_a">connect(electrical.generation.pVSystem[1].weaBus.TDryBul, electrical.generation.pVSystem[1].cellTemperature.T_a);
+</a>Found in class <a href="Modelica://AixLib.Electrical.PVSystem.PVSystem">AixLib.Electrical.PVSystem.PVSystem</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/PVSystem.mo at line <a href="Modelica://AixLib.Electrical.PVSystem.PVSystem#text:131">132</a>, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#$electrical.generation:pVSystem">electrical.generation.pVSystem[1]</a>.
+Variable <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#diagram$electrical.generation:pVSystem[1].weaBus">electrical.generation.pVSystem[1].weaBus.TDryBul</a> was declared in class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/BoundaryConditions/WeatherData/Bus.mo at line 5, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#$electrical.generation.pVSystem:weaBus">electrical.generation.pVSystem[1].weaBus</a>.
+Variable <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#diagram$electrical.generation.pVSystem[1]:cellTemperature.T_a">electrical.generation.pVSystem[1].cellTemperature.T_a</a> was declared in class <a href="Modelica://Modelica.Blocks.Interfaces">Modelica.Blocks.Interfaces</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/BaseClasses/PartialCellTemperature.mo at line 21, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#$electrical.generation.pVSystem.cellTemperature:PartialCellTemperature">electrical.generation.pVSystem.cellTemperature.PartialCellTemperature</a>.
+Warning: The quantity of electrical.generation.pVSystem[2].weaBus.TDryBul is "ThermodynamicTemperature" and the quantity of electrical.generation.pVSystem[2].cellTemperature.T_a is "Temp_C".
+In <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#diagram$electrical.generation.pVSystem[2]:Bus.TDryBul,lTemperature.T_a">connect(electrical.generation.pVSystem[2].weaBus.TDryBul, electrical.generation.pVSystem[2].cellTemperature.T_a);
+</a>Found in class <a href="Modelica://AixLib.Electrical.PVSystem.PVSystem">AixLib.Electrical.PVSystem.PVSystem</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/PVSystem.mo at line <a href="Modelica://AixLib.Electrical.PVSystem.PVSystem#text:131">132</a>, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#$electrical.generation:pVSystem">electrical.generation.pVSystem[2]</a>.
+Variable <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#diagram$electrical.generation:pVSystem[2].weaBus">electrical.generation.pVSystem[2].weaBus.TDryBul</a> was declared in class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/BoundaryConditions/WeatherData/Bus.mo at line 5, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#$electrical.generation.pVSystem:weaBus">electrical.generation.pVSystem[2].weaBus</a>.
+Variable <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#diagram$electrical.generation.pVSystem[2]:cellTemperature.T_a">electrical.generation.pVSystem[2].cellTemperature.T_a</a> was declared in class <a href="Modelica://Modelica.Blocks.Interfaces">Modelica.Blocks.Interfaces</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/BaseClasses/PartialCellTemperature.mo at line 21, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#$electrical.generation.pVSystem.cellTemperature:PartialCellTemperature">electrical.generation.pVSystem.cellTemperature.PartialCellTemperature</a>.
+Warning: Incompatible units.
+Warning: Incompatible units in
+  electrical.generation.pVSystem[1].cellTemperature.radTil*exp((-2.81)-0.0455*  electrical.generation.pVSystem[1].cellTemperature.winVel)+electrical.generation.pVSystem[1].cellTemperature.T_a
+The part
+  electrical.generation.pVSystem[1].cellTemperature.radTil*exp((-2.81)-0.0455*  electrical.generation.pVSystem[1].cellTemperature.winVel)
+has unit kg/s3
+The part
+  electrical.generation.pVSystem[1].cellTemperature.T_a
+has unit K
+Warning: The unit issue reported appeared in the equation
+  electrical.generation.pVSystem[1].cellTemperature.T_c = (if noEvent(  electrical.generation.pVSystem[1].cellTemperature.radTil &gt;= 1E-15) then   electrical.generation.pVSystem[1].cellTemperature.radTil*exp((-2.81)-0.0455*  electrical.generation.pVSystem[1].cellTemperature.winVel)+electrical.generation.pVSystem[1].cellTemperature.T_a   else electrical.generation.pVSystem[1].cellTemperature.T_a);
+Found in class <a href="Modelica://AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround">AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/BaseClasses/CellTemperatureMountingContactToGround.mo at line <a href="Modelica://AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround#text:12">13</a>, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#$electrical.generation.pVSystem:cellTemperature">electrical.generation.pVSystem[1].cellTemperature</a>.
+Warning: Incompatible units.
+Warning: Incompatible units in
+  electrical.generation.pVSystem[2].cellTemperature.radTil*exp((-2.81)-0.0455*  electrical.generation.pVSystem[2].cellTemperature.winVel)+electrical.generation.pVSystem[2].cellTemperature.T_a
+The part
+  electrical.generation.pVSystem[2].cellTemperature.radTil*exp((-2.81)-0.0455*  electrical.generation.pVSystem[2].cellTemperature.winVel)
+has unit kg/s3
+The part
+  electrical.generation.pVSystem[2].cellTemperature.T_a
+has unit K
+Warning: The unit issue reported appeared in the equation
+  electrical.generation.pVSystem[2].cellTemperature.T_c = (if noEvent(  electrical.generation.pVSystem[2].cellTemperature.radTil &gt;= 1E-15) then   electrical.generation.pVSystem[2].cellTemperature.radTil*exp((-2.81)-0.0455*  electrical.generation.pVSystem[2].cellTemperature.winVel)+electrical.generation.pVSystem[2].cellTemperature.T_a   else electrical.generation.pVSystem[2].cellTemperature.T_a);
+Found in class <a href="Modelica://AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround">AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/BaseClasses/CellTemperatureMountingContactToGround.mo at line <a href="Modelica://AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround#text:12">13</a>, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#$electrical.generation.pVSystem:cellTemperature">electrical.generation.pVSystem[2].cellTemperature</a>.
+The DAE has 7093 scalar unknowns and 7093 scalar equations.
+Redundant consistent initial conditions.
+Removed the following equations which are redundant and consistent: 
+  ventilation.generation.p_start = ventilation.p_start;
+  if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+      hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = hydraulic.generation.heatPump.eva.vol.dynBal.p_start;
+    end if;
+  else
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==       Modelica.Fluid.Types.Dynamics.SteadyStateInitial) then 
+      if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+        der(hydraulic.generation.heatPump.eva.vol.dynBal.medium.p) = 0;
+      end if;
+    end if;
+  end if;
+
+This required evaluation of 
+the interactive parameters 
+    hydraulic.generation.bou_sinkAir.p(start = 101325)
+    ventilation.generation.bouExh.p(start = 101325)
+    ventilation.p_start(start = 101325)
+
+The redundancies involve
+initial equations: 
+  hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
+  ventilation.generation.threeWayValve_b.res1.port_b.p = ventilation.generation.threeWayValve_b.vol.dynBal.p_start;
+
+Error: The conditions of the following assert statements are always false:
+Error:   assert(building.use_absIntGai and building.nZones == 1, "use_absIntGai is only supported for single zones");
+    The variable building.use_absIntGai = false, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone">BESMod.Systems.Demand.Building.TEASERThermalZone</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone#text:26">27</a>, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#$building:TEASERThermalZone">building.TEASERThermalZone</a>.
+    The variable building.nZones = 1, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand">BESMod.Systems.Demand.Building.BaseClasses.PartialDemand</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6">7</a>, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#$building:PartialDemand">building.PartialDemand</a>.
+Translation aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+Error: Simulations failed for:
+<a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding">BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding</a>
+
+
+Error in model:  BESMod.Examples.SolarThermalSystem.SolarThermalBuildings 
+Check of <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings">BESMod.Examples.SolarThermalSystem.SolarThermalBuildings</a>
+The model has the same number of unknowns and equations: 13700
+Check of <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings">BESMod.Examples.SolarThermalSystem.SolarThermalBuildings</a> successful.
+Translation of <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings">BESMod.Examples.SolarThermalSystem.SolarThermalBuildings</a>
+The DAE has 13700 scalar unknowns and 13700 scalar equations.
+Redundant consistent initial conditions.
+Removed the following equations which are redundant and consistent: 
+  if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+      hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = hydraulic.generation.heatPump.eva.vol.dynBal.p_start;
+    end if;
+  else
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==       Modelica.Fluid.Types.Dynamics.SteadyStateInitial) then 
+      if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+        der(hydraulic.generation.heatPump.eva.vol.dynBal.medium.p) = 0;
+      end if;
+    end if;
+  end if;
+
+This required evaluation of 
+the interactive parameters 
+    hydraulic.generation.bou_sinkAir.p(start = 101325)
+
+The redundancies involve
+initial equations: 
+  hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
+
+Error: The conditions of the following assert statements are always false:
+Error:   assert(building.use_absIntGai and building.nZones == 1, "use_absIntGai is only supported for single zones");
+    The variable building.use_absIntGai = false, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone">BESMod.Systems.Demand.Building.TEASERThermalZone</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone#text:26">27</a>, and used in component <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings#:building">building</a>.
+    The variable building.nZones = 1, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand">BESMod.Systems.Demand.Building.BaseClasses.PartialDemand</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6">7</a>, and used in component <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings#$building:PartialDemand">building.PartialDemand</a>.
+Translation aborted.
+Error: ERRORS have been issued.
+Error: Simulations failed for:
+<a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings">BESMod.Examples.SolarThermalSystem.SolarThermalBuildings</a>
+
+
+Error in model:  BESMod.Examples.GasBoilerBuildingOnly 
+Check of <a href="Modelica://BESMod.Examples.GasBoilerBuildingOnly">BESMod.Examples.GasBoilerBuildingOnly</a>
+The model has the same number of unknowns and equations: 4156
+The model has the same number of unknowns and equations
+for the given numerical settings of parameters: 4156
+Check of <a href="Modelica://BESMod.Examples.GasBoilerBuildingOnly">BESMod.Examples.GasBoilerBuildingOnly</a> successful.
+Translation of <a href="Modelica://BESMod.Examples.GasBoilerBuildingOnly">BESMod.Examples.GasBoilerBuildingOnly</a>
+The DAE has 4156 scalar unknowns and 4156 scalar equations.
+Error: The conditions of the following assert statements are always false:
+Error:   assert(building.use_absIntGai and building.nZones == 1, "use_absIntGai is only supported for single zones");
+    The variable building.use_absIntGai = false, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone">BESMod.Systems.Demand.Building.TEASERThermalZone</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERThermalZone.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.TEASERThermalZone#text:26">27</a>, and used in component <a href="Modelica://BESMod.Examples.GasBoilerBuildingOnly#:building">building</a>.
+    The variable building.nZones = 1, was declared in class <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand">BESMod.Systems.Demand.Building.BaseClasses.PartialDemand</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6">7</a>, and used in component <a href="Modelica://BESMod.Examples.GasBoilerBuildingOnly#$building:PartialDemand">building.PartialDemand</a>.
+Translation aborted.
+Error: ERRORS have been issued.
+Error: Simulations failed for:
+<a href="Modelica://BESMod.Examples.GasBoilerBuildingOnly">BESMod.Examples.GasBoilerBuildingOnly</a>
+
