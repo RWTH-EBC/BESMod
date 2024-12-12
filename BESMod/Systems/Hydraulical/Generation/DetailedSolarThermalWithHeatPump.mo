@@ -72,7 +72,7 @@ model DetailedSolarThermalWithHeatPump
     final dp_nominal=dpST_nominal + dpDem_nominal[2],
       final addPowerToMedium=parPumSolThe.addPowerToMedium,
     final tau=parPumSolThe.tau,
-    final use_inputFilter=parPumSolThe.use_inputFilter,
+    final use_riseTime=parPumSolThe.use_riseTime,
     final riseTime=parPumSolThe.riseTimeInpFilter,
     final y_start=1) "Solar thermal pump" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},

@@ -70,7 +70,7 @@ model GasBoiler "Just a gas boiler"
     final show_T=show_T,
     final addPowerToMedium=parPum.addPowerToMedium,
     final tau=parPum.tau,
-    final use_inputFilter=parPum.use_inputFilter,
+    final use_riseTime=parPum.use_riseTime,
     final riseTime=parPum.riseTimeInpFilter,
     final y_start=1,
     final m_flow_nominal=m_flow_design[1],

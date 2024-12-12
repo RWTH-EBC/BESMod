@@ -75,7 +75,7 @@ model CustomRadiator "Custom radiator with radiative fractions"
     each final show_T=show_T,
     each final CvData=IBPSA.Fluid.Types.CvTypes.OpPoint,
     final dpValve_nominal=parTra.dpHeaSysValve_nominal,
-    each final use_inputFilter=false,
+    each final use_strokeTime=false,
     final dpFixed_nominal=parTra.dpHeaSysPreValve_nominal,
     each final l=parTra.leakageOpening) annotation (Placement(transformation(
         extent={{-10,-11},{10,11}},
@@ -108,7 +108,7 @@ model CustomRadiator "Custom radiator with radiative fractions"
     final dp_nominal=parTra.dpPumpHeaCir_nominal + dpSup_nominal[1],
     final addPowerToMedium=parPum.addPowerToMedium,
     final tau=parPum.tau,
-    final use_inputFilter=parPum.use_inputFilter,
+    final use_riseTime=parPum.use_riseTime,
     final riseTime=parPum.riseTimeInpFilter,
     final y_start=1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},

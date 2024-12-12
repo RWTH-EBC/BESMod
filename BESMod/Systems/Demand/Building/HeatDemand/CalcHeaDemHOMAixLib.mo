@@ -1,5 +1,5 @@
 within BESMod.Systems.Demand.Building.HeatDemand;
-model CalcHeaDemHOM
+model CalcHeaDemHOMAixLib
   "Calculate the heat demand for a high order model from AixLib library"
   extends Modelica.Icons.Example;
   parameter Integer TIR=1 "Thermal Insulation Regulation" annotation (Dialog(
@@ -29,8 +29,7 @@ model CalcHeaDemHOM
     redeclare AixLibHighOrder building(
       useConstVentRate=true,
       ventRate={0.5,0.5,0,0.5,0.5,0.5,0.5,0,0.5,0.5},
-      DiffWeatherDataTime=Modelica.Units.Conversions.to_hour(weaDat.timZon),
-      GroundReflection=0.2,
+      GroundReflectance=0.2,
       T0_air=293.15,
       TWalls_start=292.15,
       redeclare AixLib.DataBase.Walls.Collections.OFD.EnEV2009Heavy wallTypes,
@@ -52,4 +51,4 @@ model CalcHeaDemHOM
       StopTime=25920000,
       Interval=3600,
       __Dymola_Algorithm="Dassl"));
-end CalcHeaDemHOM;
+end CalcHeaDemHOMAixLib;

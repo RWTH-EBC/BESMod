@@ -26,9 +26,9 @@ partial record ThreeWayValve
 
   parameter Modelica.Units.SI.Time tau
     "Time constant at nominal flow for dynamic energy and momentum balance";
-  parameter Boolean use_inputFilter
+  parameter Boolean use_strokeTime
     "= true, if opening is filtered with a 2nd order CriticalDamping filter";
-  parameter Modelica.Units.SI.Time riseTime
+  parameter Modelica.Units.SI.Time strokeTime
     "Rise time of the filter (time to reach 99.6 % of an opening step)";
   parameter Integer order=2 "Order of filter";
   parameter Modelica.Blocks.Types.Init init
