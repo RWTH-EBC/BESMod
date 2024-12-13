@@ -71,8 +71,6 @@ partial model PartialHeatPumpMonoenergetic
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
           parThrWayVal),
       redeclare Systems.Hydraulical.Transfer.IdealValveRadiator transfer(
-        dTTra_nominal=fill(10, hydraulic.transfer.nParallelDem),
-        f_design=fill(1.2, hydraulic.transfer.nParallelDem),
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
           parRad,
