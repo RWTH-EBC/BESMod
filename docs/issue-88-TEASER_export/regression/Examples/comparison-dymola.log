@@ -48,7 +48,7 @@
     },
     "model": "BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW",
     "simulation": {
-      "elapsed_time": 7.99,
+      "elapsed_time": 8.64,
       "final_time": 172800,
       "jacobians": 4651,
       "start_time": 0,
@@ -111,7 +111,7 @@
     },
     "model": "BESMod.Examples.HighOrderModel.HOMAixLib",
     "simulation": {
-      "elapsed_time": 41.2142,
+      "elapsed_time": 41.3994,
       "final_time": 172800,
       "jacobians": 554,
       "start_time": 0,
@@ -129,20 +129,20 @@
         "funnel_comp/BESMod.Examples.Retrofit.Case1TotalRetrofit.mat_electricalGrid.PElecGen",
         "funnel_comp/BESMod.Examples.Retrofit.Case1TotalRetrofit.mat_electricalGrid.PElecLoa"
       ],
-      "success_rate": 1.0,
+      "success_rate": 0.4,
       "t_err_max": [
         0.0,
+        80352.0,
+        84672.0,
         0.0,
-        0.0,
-        0.0,
-        0.0
+        2592.0
       ],
       "test_passed": [
         1,
+        0,
+        0,
         1,
-        1,
-        1,
-        1
+        0
       ],
       "var_groups": [
         0,
@@ -160,19 +160,19 @@
       ],
       "warnings": [
         null,
+        "Absolute error = 2.554e+01 at t = 80352.0 for hydraulic.generation.sigBusGen.TGenOutMea",
+        "Absolute error = 4.162e-01 at t = 84672.0 for outputs.building.TZone[1]",
         null,
-        null,
-        null,
-        null
+        "Absolute error = 1.380e+03 at t = 2592.0 for electricalGrid.PElecLoa"
       ]
     },
     "model": "BESMod.Examples.Retrofit.Case1TotalRetrofit",
     "simulation": {
-      "elapsed_time": 1.07,
+      "elapsed_time": 0.991,
       "final_time": 86400,
-      "jacobians": 2100,
+      "jacobians": 2044,
       "start_time": 0,
-      "state_events": 89,
+      "state_events": 81,
       "success": true
     }
   },
@@ -185,18 +185,18 @@
         "funnel_comp/BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding.mat_electricalGrid.PElecGen",
         "funnel_comp/BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding.mat_electricalGrid.PElecLoa"
       ],
-      "success_rate": 1.0,
+      "success_rate": 0.75,
       "t_err_max": [
         0.0,
         0.0,
         0.0,
-        0.0
+        12096.0
       ],
       "test_passed": [
         1,
         1,
         1,
-        1
+        0
       ],
       "var_groups": [
         0,
@@ -214,16 +214,16 @@
         null,
         null,
         null,
-        null
+        "Absolute error = 7.163e+02 at t = 12096.0 for electricalGrid.PElecLoa"
       ]
     },
     "model": "BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding",
     "simulation": {
-      "elapsed_time": 0.097,
+      "elapsed_time": 0.102,
       "final_time": 172800,
-      "jacobians": 894,
+      "jacobians": 914,
       "start_time": 0,
-      "state_events": 15,
+      "state_events": 16,
       "success": true
     }
   },
@@ -294,7 +294,7 @@
     },
     "model": "BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom",
     "simulation": {
-      "elapsed_time": 18.6,
+      "elapsed_time": 18.4,
       "final_time": 864000,
       "jacobians": 21941,
       "start_time": 0,
@@ -312,20 +312,20 @@
         "funnel_comp/BESMod.Examples.GasBoilerBuildingOnly.mat_electricalGrid.PElecGen",
         "funnel_comp/BESMod.Examples.GasBoilerBuildingOnly.mat_electricalGrid.PElecLoa"
       ],
-      "success_rate": 1.0,
+      "success_rate": 0.6,
       "t_err_max": [
         0.0,
         0.0,
+        122688.0,
         0.0,
-        0.0,
-        0.0
+        150336.0
       ],
       "test_passed": [
         1,
         1,
+        0,
         1,
-        1,
-        1
+        0
       ],
       "var_groups": [
         0,
@@ -344,18 +344,18 @@
       "warnings": [
         null,
         null,
+        "Absolute error = 7.171e-01 at t = 122688.0 for outputs.building.TZone[1]",
         null,
-        null,
-        null
+        "Absolute error = 1.246e+00 at t = 150336.0 for electricalGrid.PElecLoa"
       ]
     },
     "model": "BESMod.Examples.GasBoilerBuildingOnly",
     "simulation": {
-      "elapsed_time": 1.16,
+      "elapsed_time": 1.17,
       "final_time": 172800,
-      "jacobians": 1808,
+      "jacobians": 1815,
       "start_time": 0,
-      "state_events": 17,
+      "state_events": 18,
       "success": true
     }
   },
@@ -414,7 +414,7 @@
     },
     "model": "BESMod.Examples.HighOrderModel.HOMSpawn",
     "simulation": {
-      "elapsed_time": 25.9139,
+      "elapsed_time": 24.5242,
       "final_time": 172800,
       "jacobians": 1167,
       "start_time": 0,
@@ -432,20 +432,20 @@
         "funnel_comp/BESMod.Examples.BAUSimStudy.Case1Standard.mat_electricalGrid.PElecGen",
         "funnel_comp/BESMod.Examples.BAUSimStudy.Case1Standard.mat_electricalGrid.PElecLoa"
       ],
-      "success_rate": 1.0,
+      "success_rate": 0.4,
       "t_err_max": [
         0.0,
+        50112.0,
+        50112.0,
         0.0,
-        0.0,
-        0.0,
-        0.0
+        50112.0
       ],
       "test_passed": [
         1,
+        0,
+        0,
         1,
-        1,
-        1,
-        1
+        0
       ],
       "var_groups": [
         0,
@@ -463,17 +463,17 @@
       ],
       "warnings": [
         null,
+        "Absolute error = 2.107e+01 at t = 50112.0 for hydraulic.generation.sigBusGen.TGenOutMea",
+        "Absolute error = 3.066e-01 at t = 50112.0 for outputs.building.TZone[1]",
         null,
-        null,
-        null,
-        null
+        "Absolute error = 2.796e+03 at t = 50112.0 for electricalGrid.PElecLoa"
       ]
     },
     "model": "BESMod.Examples.BAUSimStudy.Case1Standard",
     "simulation": {
-      "elapsed_time": 5.39,
+      "elapsed_time": 5.09,
       "final_time": 172800,
-      "jacobians": 4252,
+      "jacobians": 4316,
       "start_time": 0,
       "state_events": 213,
       "success": true
@@ -528,7 +528,7 @@
     },
     "model": "BESMod.Examples.DesignOptimization.BES",
     "simulation": {
-      "elapsed_time": 2.93,
+      "elapsed_time": 2.94,
       "final_time": 172800,
       "jacobians": 3306,
       "start_time": 0,
@@ -585,7 +585,7 @@
     },
     "model": "BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW",
     "simulation": {
-      "elapsed_time": 5.99,
+      "elapsed_time": 6.69,
       "final_time": 172800,
       "jacobians": 4493,
       "start_time": 0,
@@ -642,7 +642,7 @@
     },
     "model": "BESMod.Examples.Retrofit.Case1PartialRetrofit",
     "simulation": {
-      "elapsed_time": 1.1,
+      "elapsed_time": 1.22,
       "final_time": 86400,
       "jacobians": 2245,
       "start_time": 0,
@@ -660,20 +660,20 @@
         "funnel_comp/BESMod.Examples.Retrofit.Case1NoRetrofit.mat_electricalGrid.PElecGen",
         "funnel_comp/BESMod.Examples.Retrofit.Case1NoRetrofit.mat_electricalGrid.PElecLoa"
       ],
-      "success_rate": 1.0,
+      "success_rate": 0.4,
       "t_err_max": [
         0.0,
+        47520.00000000001,
+        82080.0,
         0.0,
-        0.0,
-        0.0,
-        0.0
+        25056.0
       ],
       "test_passed": [
         1,
+        0,
+        0,
         1,
-        1,
-        1,
-        1
+        0
       ],
       "var_groups": [
         0,
@@ -691,19 +691,19 @@
       ],
       "warnings": [
         null,
+        "Absolute error = 1.372e+01 at t = 47520.00000000001 for hydraulic.generation.sigBusGen.TGenOutMea",
+        "Absolute error = 2.525e-01 at t = 82080.0 for outputs.building.TZone[1]",
         null,
-        null,
-        null,
-        null
+        "Absolute error = 1.508e+04 at t = 25056.0 for electricalGrid.PElecLoa"
       ]
     },
     "model": "BESMod.Examples.Retrofit.Case1NoRetrofit",
     "simulation": {
-      "elapsed_time": 2.83,
+      "elapsed_time": 2.9,
       "final_time": 86400,
-      "jacobians": 2254,
+      "jacobians": 2373,
       "start_time": 0,
-      "state_events": 102,
+      "state_events": 109,
       "success": true
     }
   },
@@ -756,7 +756,7 @@
     },
     "model": "BESMod.Examples.DesignOptimization.BESNoDHW",
     "simulation": {
-      "elapsed_time": 2.56,
+      "elapsed_time": 1.93,
       "final_time": 172800,
       "jacobians": 2632,
       "start_time": 0,
@@ -777,26 +777,26 @@
         "funnel_comp/BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding.mat_ventilation.generation.weaBus.TDryBul",
         "funnel_comp/BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding.mat_building.buiMeaBus.TZoneMea[1]"
       ],
-      "success_rate": 1.0,
+      "success_rate": 0.25,
       "t_err_max": [
         0.0,
+        22464.0,
+        60479.99999999999,
+        44928.0,
+        65664.0,
+        131328.0,
         0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0
+        131328.0
       ],
       "test_passed": [
         1,
+        0,
+        0,
+        0,
+        0,
+        0,
         1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1
+        0
       ],
       "var_groups": [
         0,
@@ -820,22 +820,22 @@
       ],
       "warnings": [
         null,
+        "Absolute error = 1.816e+04 at t = 22464.0 for electrical.distribution.OutputDistr.PEleLoa.value",
+        "Absolute error = 1.163e+01 at t = 60479.99999999999 for hydraulic.distribution.sigBusDistr.TStoDHWTopMea",
+        "Absolute error = 5.793e+00 at t = 44928.0 for hydraulic.distribution.sigBusDistr.TStoBufTopMea",
+        "Absolute error = 1.529e+01 at t = 65664.0 for hydraulic.generation.sigBusGen.TGenOutMea",
+        "Absolute error = 1.421e+00 at t = 131328.0 for ventilation.generation.TSup.T",
         null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
+        "Absolute error = 1.844e+00 at t = 131328.0 for building.buiMeaBus.TZoneMea[1]"
       ]
     },
     "model": "BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding",
     "simulation": {
-      "elapsed_time": 4.18,
+      "elapsed_time": 5.72,
       "final_time": 172800,
-      "jacobians": 4745,
+      "jacobians": 4832,
       "start_time": 0,
-      "state_events": 263,
+      "state_events": 274,
       "success": true
     }
   },
@@ -888,7 +888,7 @@
     },
     "model": "BESMod.Examples.SolarThermalSystem.SolarThermalAixLib",
     "simulation": {
-      "elapsed_time": 16.5,
+      "elapsed_time": 16.9,
       "final_time": 172800,
       "jacobians": 3489,
       "start_time": 0,
@@ -945,7 +945,7 @@
     },
     "model": "BESMod.Examples.HeatPumpAndBoiler.Parallel",
     "simulation": {
-      "elapsed_time": 6.6,
+      "elapsed_time": 6.31,
       "final_time": 172800,
       "jacobians": 7571,
       "start_time": 0,
@@ -963,20 +963,20 @@
         "funnel_comp/BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding.mat_electricalGrid.PElecGen",
         "funnel_comp/BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding.mat_electricalGrid.PElecLoa"
       ],
-      "success_rate": 1.0,
+      "success_rate": 0.6,
       "t_err_max": [
         0.0,
         0.0,
+        172800.0,
         0.0,
-        0.0,
-        0.0
+        3456.0
       ],
       "test_passed": [
         1,
         1,
+        0,
         1,
-        1,
-        1
+        0
       ],
       "var_groups": [
         0,
@@ -995,16 +995,16 @@
       "warnings": [
         null,
         null,
+        "Absolute error = 6.607e-01 at t = 172800.0 for outputs.building.TZone[1]",
         null,
-        null,
-        null
+        "Absolute error = 1.847e+00 at t = 3456.0 for electricalGrid.PElecLoa"
       ]
     },
     "model": "BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding",
     "simulation": {
-      "elapsed_time": 1.1,
+      "elapsed_time": 1.02,
       "final_time": 172800,
-      "jacobians": 1764,
+      "jacobians": 1769,
       "start_time": 0,
       "state_events": 14,
       "success": true
@@ -1077,7 +1077,7 @@
     },
     "model": "BESMod.Examples.ModelicaConferencePaper.TEASERBuilding",
     "simulation": {
-      "elapsed_time": 27.9,
+      "elapsed_time": 27.4,
       "final_time": 864000,
       "jacobians": 20093,
       "start_time": 0,
@@ -1094,18 +1094,18 @@
         "funnel_comp/BESMod.Examples.TEASERHeatLoadCalculation.Example.mat_electricalGrid.PElecGen",
         "funnel_comp/BESMod.Examples.TEASERHeatLoadCalculation.Example.mat_electricalGrid.PElecLoa"
       ],
-      "success_rate": 1.0,
+      "success_rate": 0.5,
       "t_err_max": [
         0.0,
+        24192.0,
         0.0,
-        0.0,
-        0.0
+        3456.0
       ],
       "test_passed": [
         1,
+        0,
         1,
-        1,
-        1
+        0
       ],
       "var_groups": [
         0,
@@ -1121,18 +1121,18 @@
       ],
       "warnings": [
         null,
+        "Absolute error = 1.289e+00 at t = 24192.0 for outputs.building.TZone[1]",
         null,
-        null,
-        null
+        "Absolute error = 1.895e+03 at t = 3456.0 for electricalGrid.PElecLoa"
       ]
     },
     "model": "BESMod.Examples.TEASERHeatLoadCalculation.Example",
     "simulation": {
-      "elapsed_time": 0.373,
+      "elapsed_time": 0.314,
       "final_time": 172800,
-      "jacobians": 1012,
+      "jacobians": 1082,
       "start_time": 0,
-      "state_events": 19,
+      "state_events": 22,
       "success": true
     }
   },
@@ -1185,7 +1185,7 @@
     },
     "model": "BESMod.Examples.SolarThermalSystem.SolarThermalBuildings",
     "simulation": {
-      "elapsed_time": 17.7,
+      "elapsed_time": 17.6,
       "final_time": 172800,
       "jacobians": 3590,
       "start_time": 0,
@@ -1242,7 +1242,7 @@
     },
     "model": "BESMod.Examples.HeatPumpAndBoiler.Serial",
     "simulation": {
-      "elapsed_time": 4.49,
+      "elapsed_time": 4.18,
       "final_time": 172800,
       "jacobians": 4981,
       "start_time": 0,

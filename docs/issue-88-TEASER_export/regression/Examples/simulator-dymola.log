@@ -47,17 +47,17 @@ Statistics
  
 Original Model
   Number of components: 1508
-  Variables: 14465
+  Variables: 14466
   Constants: 226 (226 scalars)
-  Parameters: 6589 (8112 scalars)
+  Parameters: 6590 (8113 scalars)
   Unknowns: 7650 (7423 scalars)
   Differentiated variables: 142 scalars
-  Equations: 6124
-  Nontrivial: 5105
+  Equations: 6129
+  Nontrivial: 5110
 Translated Model
-  Constants: 6043 scalars
-  Free parameters: 806 scalars
-  Parameter depending: 2458 scalars
+  Constants: 6034 scalars
+  Free parameters: 811 scalars
+  Parameter depending: 2463 scalars
   Outputs: 69 scalars
   Continuous time states: 113 scalars
   Time-varying variables: 1750 scalars
@@ -231,17 +231,17 @@ Statistics
  
 Original Model
   Number of components: 825
-  Variables: 7504
+  Variables: 7505
   Constants: 132 (132 scalars)
-  Parameters: 3184 (4743 scalars)
+  Parameters: 3185 (4744 scalars)
   Unknowns: 4188 (4207 scalars)
   Differentiated variables: 65 scalars
-  Equations: 3244
-  Nontrivial: 2797
+  Equations: 3249
+  Nontrivial: 2802
 Translated Model
-  Constants: 3507 scalars
-  Free parameters: 522 scalars
-  Parameter depending: 1339 scalars
+  Constants: 3498 scalars
+  Free parameters: 527 scalars
+  Parameter depending: 1344 scalars
   Outputs: 56 scalars
   Continuous time states: 54 scalars
   Time-varying variables: 1074 scalars
@@ -442,9 +442,9 @@ initial equations:
   building.roo.air.vol.dynBal.medium.p = building.roo.air.vol.dynBal.p_start;
   hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
   ventilation.generation.threeWayValve_b.res1.port_b.p = ventilation.generation.threeWayValve_b.vol.dynBal.p_start;
-  electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
-  electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
   electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
+  electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
+  electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
  
  
 Statistics
@@ -651,15 +651,15 @@ Statistics
  
 Original Model
   Number of components: 485
-  Variables: 4004
+  Variables: 4005
   Constants: 69 (69 scalars)
-  Parameters: 1497 (1682 scalars)
+  Parameters: 1498 (1683 scalars)
   Unknowns: 2438 (2718 scalars)
   Differentiated variables: 35 scalars
-  Equations: 1883
-  Nontrivial: 1703
+  Equations: 1888
+  Nontrivial: 1708
 Translated Model
-  Constants: 1006 scalars
+  Constants: 1007 scalars
   Free parameters: 523 scalars
   Parameter depending: 496 scalars
   Outputs: 48 scalars
@@ -1249,15 +1249,15 @@ Statistics
  
 Original Model
   Number of components: 1874
-  Variables: 19222
+  Variables: 19223
   Constants: 291 (292 scalars)
-  Parameters: 8927 (10571 scalars)
+  Parameters: 8928 (10572 scalars)
   Unknowns: 10004 (9357 scalars)
   Differentiated variables: 196 scalars
-  Equations: 7825
-  Nontrivial: 6445
+  Equations: 7830
+  Nontrivial: 6450
 Translated Model
-  Constants: 7737 scalars
+  Constants: 7738 scalars
   Free parameters: 1019 scalars
   Parameter depending: 3285 scalars
   Outputs: 72 scalars
@@ -1455,16 +1455,16 @@ Warning: Component nZones(min = << Empty >>),
  
   For element nZones found at
  
-  File: /tmp/tmp-BESMod-1-awubydwg/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 14
+  File: /tmp/tmp-BESMod-1-wzkxn_g2/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 14
   Conflict with element from
-  File: /tmp/tmp-BESMod-1-awubydwg/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line 7
+  File: /tmp/tmp-BESMod-1-wzkxn_g2/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line 7
  Component context: building
   Component declared as SpawnHighOrder building in BESMod.Systems.Demand.Building
-  File: /tmp/tmp-BESMod-1-awubydwg/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
+  File: /tmp/tmp-BESMod-1-wzkxn_g2/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
 Adding zero equation for variables:
  building.useProBus.natVent[11:end]
  building.buiMeaBus.TZoneMea[12:end]
- hydraulic.control.buiMeaBus.TZoneOpeMea[12:end]
+ electrical.control.buiMeaBus.TZoneOpeMea[12:end]
  hydraulic.control.buiMeaBus.TZoneRadMea[12:end]
 The model has the same number of unknowns and equations: 13248
 The model could not be deduced to be symbolically well-posed.
@@ -1499,12 +1499,12 @@ Warning: Component nZones(min = << Empty >>),
  
   For element nZones found at
  
-  File: /tmp/tmp-BESMod-1-awubydwg/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 14
+  File: /tmp/tmp-BESMod-1-wzkxn_g2/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 14
   Conflict with element from
-  File: /tmp/tmp-BESMod-1-awubydwg/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line 7
+  File: /tmp/tmp-BESMod-1-wzkxn_g2/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line 7
  Component context: building
   Component declared as SpawnHighOrder building in BESMod.Systems.Demand.Building
-  File: /tmp/tmp-BESMod-1-awubydwg/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
+  File: /tmp/tmp-BESMod-1-wzkxn_g2/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
 The DAE has 13248 scalar unknowns and 13248 scalar equations.
 Redundant consistent initial conditions.
 Removed the following equations which are redundant and consistent: 
@@ -1734,12 +1734,12 @@ Warning: Component nZones(min = &lt;&lt; Empty &gt;&gt;),
  
   For element nZones found at
  
-  File: /tmp/tmp-BESMod-1-awubydwg/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line <a href=\"Modelica://BESMod.Systems.Demand.Building.SpawnHighOrder#text:13\">14</a>
+  File: /tmp/tmp-BESMod-1-wzkxn_g2/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line <a href=\"Modelica://BESMod.Systems.Demand.Building.SpawnHighOrder#text:13\">14</a>
   Conflict with element from
-  File: /tmp/tmp-BESMod-1-awubydwg/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line <a href=\"Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6\">7</a>
+  File: /tmp/tmp-BESMod-1-wzkxn_g2/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line <a href=\"Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6\">7</a>
  Component context: building
   Component declared as SpawnHighOrder building in <a href=\"Modelica://BESMod.Systems.Demand.Building\">BESMod.Systems.Demand.Building</a>
-  File: /tmp/tmp-BESMod-1-awubydwg/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
+  File: /tmp/tmp-BESMod-1-wzkxn_g2/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
 The DAE has 13248 scalar unknowns and 13248 scalar equations.
 Redundant consistent initial conditions.
 Removed the following equations which are redundant and consistent: 
@@ -2013,17 +2013,17 @@ Statistics
  
 Original Model
   Number of components: 1508
-  Variables: 14463
+  Variables: 14464
   Constants: 226 (226 scalars)
-  Parameters: 6587 (8110 scalars)
+  Parameters: 6588 (8111 scalars)
   Unknowns: 7650 (7423 scalars)
   Differentiated variables: 142 scalars
-  Equations: 6124
-  Nontrivial: 5105
+  Equations: 6129
+  Nontrivial: 5110
 Translated Model
-  Constants: 6044 scalars
-  Free parameters: 806 scalars
-  Parameter depending: 2455 scalars
+  Constants: 6035 scalars
+  Free parameters: 811 scalars
+  Parameter depending: 2460 scalars
   Outputs: 69 scalars
   Continuous time states: 113 scalars
   Time-varying variables: 1750 scalars
@@ -2217,15 +2217,15 @@ Statistics
  
 Original Model
   Number of components: 1508
-  Variables: 14465
+  Variables: 14466
   Constants: 226 (226 scalars)
-  Parameters: 6589 (8112 scalars)
+  Parameters: 6590 (8113 scalars)
   Unknowns: 7650 (7423 scalars)
   Differentiated variables: 142 scalars
-  Equations: 6124
-  Nontrivial: 5105
+  Equations: 6129
+  Nontrivial: 5110
 Translated Model
-  Constants: 6013 scalars
+  Constants: 6014 scalars
   Free parameters: 814 scalars
   Parameter depending: 2473 scalars
   Outputs: 69 scalars
@@ -2427,15 +2427,15 @@ Statistics
  
 Original Model
   Number of components: 1553
-  Variables: 14992
+  Variables: 14993
   Constants: 223 (224 scalars)
-  Parameters: 6850 (8419 scalars)
+  Parameters: 6851 (8420 scalars)
   Unknowns: 7919 (7750 scalars)
   Differentiated variables: 148 scalars
-  Equations: 6251
-  Nontrivial: 5246
+  Equations: 6256
+  Nontrivial: 5251
 Translated Model
-  Constants: 6156 scalars
+  Constants: 6157 scalars
   Free parameters: 870 scalars
   Parameter depending: 2596 scalars
   Outputs: 72 scalars
@@ -2638,15 +2638,15 @@ Statistics
  
 Original Model
   Number of components: 1300
-  Variables: 11976
+  Variables: 11977
   Constants: 217 (217 scalars)
-  Parameters: 5177 (6694 scalars)
+  Parameters: 5178 (6695 scalars)
   Unknowns: 6582 (6500 scalars)
   Differentiated variables: 108 scalars
-  Equations: 5296
-  Nontrivial: 4410
+  Equations: 5301
+  Nontrivial: 4415
 Translated Model
-  Constants: 5083 scalars
+  Constants: 5084 scalars
   Free parameters: 710 scalars
   Parameter depending: 1960 scalars
   Outputs: 71 scalars
@@ -2802,15 +2802,15 @@ Statistics
  
 Original Model
   Number of components: 2644
-  Variables: 30152
+  Variables: 30153
   Constants: 533 (533 scalars)
-  Parameters: 13698 (15107 scalars)
+  Parameters: 13699 (15108 scalars)
   Unknowns: 15921 (13556 scalars)
   Differentiated variables: 339 scalars
-  Equations: 12541
-  Nontrivial: 9903
+  Equations: 12546
+  Nontrivial: 9908
 Translated Model
-  Constants: 11670 scalars
+  Constants: 11671 scalars
   Free parameters: 1224 scalars
   Parameter depending: 4614 scalars
   Outputs: 85 scalars
@@ -3153,9 +3153,9 @@ Bus-signal: TStoBufBotMea
 Use:  connect(hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea, hydraulic.control.buiAndDHWCtr.hysBui.TStoBot);
 Connected bus variables:
 hydraulic.control.setAndMeaSelPri.sigBusDistr.TStoBufBotMea (connect) "Supply temperature of the lower layers of the storage. Does not have to be the lowest layer, depending on comfort even the top may be selected"
+hydraulic.control.setAndMeaSelSec.sigBusDistr.TStoBufBotMea (connect)
 hydraulic.control.sigBusDistr.TStoBufBotMea (connect)
 hydraulic.distribution.sigBusDistr.TStoBufBotMea (connect)
-hydraulic.control.setAndMeaSelSec.sigBusDistr.TStoBufBotMea (connect)
 input hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea (connect)
 The DAE has 5068 scalar unknowns and 5068 scalar equations.
 After eliminating unused variables:
@@ -3202,15 +3202,15 @@ Statistics
  
 Original Model
   Number of components: 1048
-  Variables: 8812
+  Variables: 8813
   Constants: 142 (142 scalars)
-  Parameters: 3841 (5434 scalars)
+  Parameters: 3842 (5435 scalars)
   Unknowns: 4829 (5141 scalars)
   Differentiated variables: 72 scalars
-  Equations: 4009
-  Nontrivial: 3481
+  Equations: 4014
+  Nontrivial: 3486
 Translated Model
-  Constants: 3995 scalars
+  Constants: 3996 scalars
   Free parameters: 629 scalars
   Parameter depending: 1616 scalars
   Outputs: 67 scalars
@@ -3356,15 +3356,15 @@ Statistics
  
 Original Model
   Number of components: 1388
-  Variables: 13067
+  Variables: 13068
   Constants: 226 (227 scalars)
-  Parameters: 5689 (7249 scalars)
+  Parameters: 5690 (7250 scalars)
   Unknowns: 7152 (7044 scalars)
   Differentiated variables: 117 scalars
-  Equations: 5640
-  Nontrivial: 4714
+  Equations: 5645
+  Nontrivial: 4719
 Translated Model
-  Constants: 5508 scalars
+  Constants: 5509 scalars
   Free parameters: 801 scalars
   Parameter depending: 2117 scalars
   Outputs: 72 scalars
@@ -3538,17 +3538,17 @@ Statistics
  
 Original Model
   Number of components: 1508
-  Variables: 14465
+  Variables: 14466
   Constants: 226 (226 scalars)
-  Parameters: 6589 (8112 scalars)
+  Parameters: 6590 (8113 scalars)
   Unknowns: 7650 (7423 scalars)
   Differentiated variables: 142 scalars
-  Equations: 6124
-  Nontrivial: 5105
+  Equations: 6129
+  Nontrivial: 5110
 Translated Model
-  Constants: 6043 scalars
-  Free parameters: 806 scalars
-  Parameter depending: 2458 scalars
+  Constants: 6034 scalars
+  Free parameters: 811 scalars
+  Parameter depending: 2463 scalars
   Outputs: 69 scalars
   Continuous time states: 113 scalars
   Time-varying variables: 1750 scalars
@@ -3816,17 +3816,17 @@ Statistics
  
 Original Model
   Number of components: 1428
-  Variables: 14175
+  Variables: 14176
   Constants: 270 (270 scalars)
-  Parameters: 6418 (8471 scalars)
+  Parameters: 6419 (8472 scalars)
   Unknowns: 7487 (7320 scalars)
   Differentiated variables: 107 scalars
-  Equations: 5958
-  Nontrivial: 4926
+  Equations: 5963
+  Nontrivial: 4931
 Translated Model
-  Constants: 5877 scalars
-  Free parameters: 1071 scalars
-  Parameter depending: 2758 scalars
+  Constants: 5871 scalars
+  Free parameters: 1075 scalars
+  Parameter depending: 2761 scalars
   Outputs: 44 scalars
   Continuous time states: 78 scalars
   Time-varying variables: 1782 scalars
@@ -3960,17 +3960,17 @@ Statistics
  
 Original Model
   Number of components: 806
-  Variables: 7267
+  Variables: 7268
   Constants: 124 (124 scalars)
-  Parameters: 3154 (4675 scalars)
+  Parameters: 3155 (4676 scalars)
   Unknowns: 3989 (4003 scalars)
   Differentiated variables: 65 scalars
-  Equations: 3139
-  Nontrivial: 2698
+  Equations: 3144
+  Nontrivial: 2703
 Translated Model
-  Constants: 3436 scalars
-  Free parameters: 601 scalars
-  Parameter depending: 1228 scalars
+  Constants: 3430 scalars
+  Free parameters: 605 scalars
+  Parameter depending: 1231 scalars
   Outputs: 56 scalars
   Continuous time states: 54 scalars
   Time-varying variables: 1016 scalars
@@ -4169,24 +4169,24 @@ The redundancies involve
 initial equations: 
   hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
   ventilation.generation.threeWayValve_b.res1.port_b.p = ventilation.generation.threeWayValve_b.vol.dynBal.p_start;
+  electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
   electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
   electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
-  electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
  
  
 Statistics
  
 Original Model
   Number of components: 1453
-  Variables: 14474
+  Variables: 14475
   Constants: 279 (279 scalars)
-  Parameters: 6491 (8587 scalars)
+  Parameters: 6492 (8588 scalars)
   Unknowns: 7704 (7550 scalars)
   Differentiated variables: 111 scalars
-  Equations: 6081
-  Nontrivial: 5033
+  Equations: 6086
+  Nontrivial: 5038
 Translated Model
-  Constants: 5913 scalars
+  Constants: 5914 scalars
   Free parameters: 1002 scalars
   Parameter depending: 2936 scalars
   Outputs: 45 scalars
@@ -4354,15 +4354,15 @@ Statistics
  
 Original Model
   Number of components: 1367
-  Variables: 12661
+  Variables: 12662
   Constants: 219 (220 scalars)
-  Parameters: 5478 (7038 scalars)
+  Parameters: 5479 (7039 scalars)
   Unknowns: 6964 (6906 scalars)
   Differentiated variables: 115 scalars
-  Equations: 5518
-  Nontrivial: 4616
+  Equations: 5523
+  Nontrivial: 4621
 Translated Model
-  Constants: 5370 scalars
+  Constants: 5371 scalars
   Free parameters: 777 scalars
   Parameter depending: 2045 scalars
   Outputs: 72 scalars
@@ -4525,15 +4525,15 @@ Statistics
  
 Original Model
   Number of components: 2714
-  Variables: 30993
+  Variables: 30994
   Constants: 560 (560 scalars)
-  Parameters: 13968 (15355 scalars)
+  Parameters: 13969 (15356 scalars)
   Unknowns: 16465 (14030 scalars)
   Differentiated variables: 345 scalars
-  Equations: 12883
-  Nontrivial: 10157
+  Equations: 12888
+  Nontrivial: 10162
 Translated Model
-  Constants: 11908 scalars
+  Constants: 11909 scalars
   Free parameters: 1243 scalars
   Parameter depending: 4596 scalars
   Outputs: 83 scalars
@@ -4850,15 +4850,15 @@ Statistics
  
 Original Model
   Number of components: 504
-  Variables: 4241
+  Variables: 4242
   Constants: 77 (77 scalars)
-  Parameters: 1527 (1750 scalars)
+  Parameters: 1528 (1751 scalars)
   Unknowns: 2637 (2922 scalars)
   Differentiated variables: 35 scalars
-  Equations: 1988
-  Nontrivial: 1802
+  Equations: 1993
+  Nontrivial: 1807
 Translated Model
-  Constants: 1054 scalars
+  Constants: 1055 scalars
   Free parameters: 449 scalars
   Parameter depending: 618 scalars
   Outputs: 48 scalars
