@@ -170,7 +170,7 @@ model TEASERThermalZone
         origin={-90,-30})));
 
 initial equation
-  assert(use_absIntGai and nZones == 1, "use_absIntGai is only supported for single zones");
+  assert(if use_absIntGai then nZones == 1 else true, "use_absIntGai is only supported for single zones");
 equation
 
   for i in 1:nZones loop
@@ -237,8 +237,8 @@ equation
                                                   color={191,0,0}));
   connect(heatPortRad, heaFloSenRad.port_a)
     annotation (Line(points={{-100,-60},{-80,-60}}, color={191,0,0}));
-  connect(heaFloSenRad.port_b, thermalZone.intGainsRad) annotation (Line(points
-        ={{-60,-60},{-52,-60},{-52,60},{-46,60},{-46,60.24},{-39.74,60.24}},
+  connect(heaFloSenRad.port_b, thermalZone.intGainsRad) annotation (Line(points=
+         {{-60,-60},{-52,-60},{-52,60},{-46,60},{-46,60.24},{-39.74,60.24}},
         color={191,0,0}));
   connect(heaFloSenRad.Q_flow, addTra.u2) annotation (Line(points={{-70,-71},{
           -70,-98},{-112,-98},{-112,-192},{-102,-192}}, color={0,0,127}));
