@@ -20,7 +20,7 @@ model GasBoilerBuildingOnlyResidentialBuilding
      Interval=600,
      Tolerance=1e-06),
    __Dymola_Commands(file=
-        "modelica://BESMod/Resources/Scripts/Dymola/Examples/TEASERExport/GasBoilerBuildingOnlyResidentialBuilding.mos"
+        "modelica://BESMod/Resources/Scripts/Dymola/Examples/TEASERExport/ArchetypeExample/ResidentialBuilding/GasBoilerBuildingOnlyResidentialBuilding.mos"
         "Simulate and plot"));
 
 end GasBoilerBuildingOnlyResidentialBuilding;

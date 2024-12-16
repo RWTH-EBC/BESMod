@@ -23,6 +23,6 @@ annotation(experiment(StopTime=172800,
      Interval=600,
      Tolerance=1e-06),
    __Dymola_Commands(file=
-        "modelica://BESMod/Resources/Scripts/Dymola/Examples/TEASERExport/ArchetypExample/ResidentialBuilding/HeatPumpMonoenergeticResidentialBuilding.mos"
+        "modelica://BESMod/Resources/Scripts/Dymola/Examples/TEASERExport/ArchetypeExample/ResidentialBuilding/HeatPumpMonoenergeticResidentialBuilding.mos"
         "Simulate and plot"));
 end HeatPumpMonoenergeticResidentialBuilding;
