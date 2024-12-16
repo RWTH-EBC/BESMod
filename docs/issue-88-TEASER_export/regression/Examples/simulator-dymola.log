@@ -442,9 +442,9 @@ initial equations:
   building.roo.air.vol.dynBal.medium.p = building.roo.air.vol.dynBal.p_start;
   hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
   ventilation.generation.threeWayValve_b.res1.port_b.p = ventilation.generation.threeWayValve_b.vol.dynBal.p_start;
+  electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
   electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
   electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
-  electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
  
  
 Statistics
@@ -633,7 +633,7 @@ for the given numerical settings of parameters: 2718
 Check of BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding successful.
 Declaring variable: Boolean rCheck ;
 
-Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Examples/TEASERExport/ArchetypExample/ResidentialBuilding/TEASERHeatLoadCalculationResidentialBuilding.mos\",", "BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding.statistics.log");
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Examples/TEASERExport/ArchetypeExample/ResidentialBuilding/TEASERHeatLoadCalculationResidentialBuilding.mos\",", "BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding.statistics.log");
 Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding\",", "BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding.statistics.log");
 Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding.statistics.log");
 Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding\\\");\",", "BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding.statistics.log");
@@ -641,7 +641,7 @@ Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BES
 Modelica.Utilities.Streams.print("      },", "BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding.statistics.log");
 
 
-rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/TEASERExport/ArchetypExample/ResidentialBuilding/TEASERHeatLoadCalculationResidentialBuilding.mos");
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/TEASERExport/ArchetypeExample/ResidentialBuilding/TEASERHeatLoadCalculationResidentialBuilding.mos");
 
 simulateModel("BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding", stopTime=172800, method="dassl", tolerance=1e-06, resultFile="BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding");
 Translation of BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding
@@ -1455,12 +1455,12 @@ Warning: Component nZones(min = << Empty >>),
  
   For element nZones found at
  
-  File: /tmp/tmp-BESMod-1-awwq_1kv/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 14
+  File: /tmp/tmp-BESMod-1-nn29t9dg/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 14
   Conflict with element from
-  File: /tmp/tmp-BESMod-1-awwq_1kv/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line 7
+  File: /tmp/tmp-BESMod-1-nn29t9dg/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line 7
  Component context: building
   Component declared as SpawnHighOrder building in BESMod.Systems.Demand.Building
-  File: /tmp/tmp-BESMod-1-awwq_1kv/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
+  File: /tmp/tmp-BESMod-1-nn29t9dg/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
 Adding zero equation for variables:
  building.useProBus.natVent[11:end]
  building.buiMeaBus.TZoneMea[12:end]
@@ -1499,12 +1499,12 @@ Warning: Component nZones(min = << Empty >>),
  
   For element nZones found at
  
-  File: /tmp/tmp-BESMod-1-awwq_1kv/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 14
+  File: /tmp/tmp-BESMod-1-nn29t9dg/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 14
   Conflict with element from
-  File: /tmp/tmp-BESMod-1-awwq_1kv/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line 7
+  File: /tmp/tmp-BESMod-1-nn29t9dg/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line 7
  Component context: building
   Component declared as SpawnHighOrder building in BESMod.Systems.Demand.Building
-  File: /tmp/tmp-BESMod-1-awwq_1kv/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
+  File: /tmp/tmp-BESMod-1-nn29t9dg/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
 The DAE has 13248 scalar unknowns and 13248 scalar equations.
 Redundant consistent initial conditions.
 Removed the following equations which are redundant and consistent: 
@@ -1734,12 +1734,12 @@ Warning: Component nZones(min = &lt;&lt; Empty &gt;&gt;),
  
   For element nZones found at
  
-  File: /tmp/tmp-BESMod-1-awwq_1kv/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line <a href=\"Modelica://BESMod.Systems.Demand.Building.SpawnHighOrder#text:13\">14</a>
+  File: /tmp/tmp-BESMod-1-nn29t9dg/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line <a href=\"Modelica://BESMod.Systems.Demand.Building.SpawnHighOrder#text:13\">14</a>
   Conflict with element from
-  File: /tmp/tmp-BESMod-1-awwq_1kv/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line <a href=\"Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6\">7</a>
+  File: /tmp/tmp-BESMod-1-nn29t9dg/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line <a href=\"Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6\">7</a>
  Component context: building
   Component declared as SpawnHighOrder building in <a href=\"Modelica://BESMod.Systems.Demand.Building\">BESMod.Systems.Demand.Building</a>
-  File: /tmp/tmp-BESMod-1-awwq_1kv/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
+  File: /tmp/tmp-BESMod-1-nn29t9dg/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
 The DAE has 13248 scalar unknowns and 13248 scalar equations.
 Redundant consistent initial conditions.
 Removed the following equations which are redundant and consistent: 
@@ -3099,10 +3099,10 @@ Warning: The bus-input hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea 
 Bus-signal: TStoBufBotMea
 Use:  connect(hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea, hydraulic.control.buiAndDHWCtr.hysBui.TStoBot);
 Connected bus variables:
-hydraulic.control.setAndMeaSelPri.sigBusDistr.TStoBufBotMea (connect) "Supply temperature of the lower layers of the storage. Does not have to be the lowest layer, depending on comfort even the top may be selected"
-hydraulic.control.sigBusDistr.TStoBufBotMea (connect)
-hydraulic.distribution.sigBusDistr.TStoBufBotMea (connect)
+hydraulic.distribution.sigBusDistr.TStoBufBotMea (connect) "Supply temperature of the lower layers of the storage. Does not have to be the lowest layer, depending on comfort even the top may be selected"
 hydraulic.control.setAndMeaSelSec.sigBusDistr.TStoBufBotMea (connect)
+hydraulic.control.sigBusDistr.TStoBufBotMea (connect)
+hydraulic.control.setAndMeaSelPri.sigBusDistr.TStoBufBotMea (connect)
 input hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea (connect)
 The DAE has 5068 scalar unknowns and 5068 scalar equations.
 After eliminating unused variables:
@@ -3739,7 +3739,7 @@ Check of BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatP
 Warning: WARNINGS have been issued.
 Declaring variable: Boolean rCheck ;
 
-Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Examples/TEASERExport/ArchetypExample/ResidentialBuilding/HeatPumpMonoenergeticResidentialBuilding.mos\",", "BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding.statistics.log");
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Examples/TEASERExport/ArchetypeExample/ResidentialBuilding/HeatPumpMonoenergeticResidentialBuilding.mos\",", "BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding.statistics.log");
 Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding\",", "BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding.statistics.log");
 Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding.statistics.log");
 Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding\\\");\",", "BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding.statistics.log");
@@ -3747,7 +3747,7 @@ Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BES
 Modelica.Utilities.Streams.print("      },", "BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding.statistics.log");
 
 
-rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/TEASERExport/ArchetypExample/ResidentialBuilding/HeatPumpMonoenergeticResidentialBuilding.mos");
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/TEASERExport/ArchetypeExample/ResidentialBuilding/HeatPumpMonoenergeticResidentialBuilding.mos");
 simulateModel("BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding", stopTime=172800, method="dassl", tolerance=1e-06, resultFile="BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding");
 Translation of BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding
 Warning: The quantity of electrical.generation.pVSystem[1].weaBus.TDryBul is "ThermodynamicTemperature" and the quantity of electrical.generation.pVSystem[1].cellTemperature.T_a is "Temp_C".
@@ -3936,16 +3936,13 @@ savelog("BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatP
 
 rCheck = checkModel("BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding");
 Check of BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding
- 
-Warning: Command 'Simulate and plot' in model 'BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding',
- specified file modelica://BESMod/Resources/Scripts/Dymola/Examples/TEASERExport/GasBoilerBuildingOnlyResidentialBuilding.mos which was not found.
 The model has the same number of unknowns and equations: 3952
 The model has the same number of unknowns and equations
 for the given numerical settings of parameters: 3952
 Check of BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding successful.
 Declaring variable: Boolean rCheck ;
 
-Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Examples/TEASERExport/ArchetypExample/ResidentialBuilding/GasBoilerBuildingOnlyResidentialBuilding.mos\",", "BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding.statistics.log");
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Examples/TEASERExport/ArchetypeExample/ResidentialBuilding/GasBoilerBuildingOnlyResidentialBuilding.mos\",", "BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding.statistics.log");
 Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding\",", "BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding.statistics.log");
 Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding.statistics.log");
 Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding\\\");\",", "BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding.statistics.log");
@@ -3953,7 +3950,7 @@ Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BES
 Modelica.Utilities.Streams.print("      },", "BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding.statistics.log");
 
 
-rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/TEASERExport/ArchetypExample/ResidentialBuilding/GasBoilerBuildingOnlyResidentialBuilding.mos");
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/TEASERExport/ArchetypeExample/ResidentialBuilding/GasBoilerBuildingOnlyResidentialBuilding.mos");
 
 simulateModel("BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding", stopTime=172800, method="dassl", tolerance=1e-06, resultFile="BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding");
 Translation of BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding
@@ -4172,9 +4169,9 @@ The redundancies involve
 initial equations: 
   hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
   ventilation.generation.threeWayValve_b.res1.port_b.p = ventilation.generation.threeWayValve_b.vol.dynBal.p_start;
+  electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
   electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
   electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
-  electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
  
  
 Statistics
