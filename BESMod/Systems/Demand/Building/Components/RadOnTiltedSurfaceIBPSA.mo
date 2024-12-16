@@ -1,5 +1,5 @@
 within BESMod.Systems.Demand.Building.Components;
-model RadOnTitledSurfaceIBPSA
+model RadOnTiltedSurfaceIBPSA
   "Connect weather bus from IBPSA to HOM approach"
   parameter Modelica.Units.SI.Angle til "Surface tilt";
   parameter Real rho=0.2 "Ground reflectance";
@@ -40,4 +40,4 @@ equation
       horizontalAlignment=TextAlignment.Right));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
-end RadOnTitledSurfaceIBPSA;
+end RadOnTiltedSurfaceIBPSA;
