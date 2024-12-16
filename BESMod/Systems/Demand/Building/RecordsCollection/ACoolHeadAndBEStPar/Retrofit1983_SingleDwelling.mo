@@ -83,7 +83,7 @@ record Retrofit1983_SingleDwelling
     HeaterOn = false,
     hCool = 0,
     lCool = -3362.8545215039794,
-    heaLoadFacOut = 101.585380796127,
+    heaLoadFacOut = 101.585380796127 + (VAir*(0.5 - baseACH)/3600*1014.54*1.2),
     heaLoadFacGrd = 16.0174765754165,
     KRCool = 10000,
     TNCool = 1,

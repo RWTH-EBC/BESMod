@@ -82,7 +82,7 @@ record B1960_standard_SingleDwelling "B1960_standard_SingleDwelling"
     HeaterOn = false,
     hCool = 0,
     lCool = -14452.454546292447,
-    heaLoadFacOut = 417.4713836351744,
+    heaLoadFacOut = 417.4713836351744 + (VAir*(0.5 - baseACH)/3600*1014.54*1.2),
     heaLoadFacGrd = 156.1957528524095,
     KRCool = 10000,
     TNCool = 1,
