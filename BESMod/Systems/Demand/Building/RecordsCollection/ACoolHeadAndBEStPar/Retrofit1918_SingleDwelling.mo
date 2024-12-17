@@ -82,7 +82,7 @@ record Retrofit1918_SingleDwelling "Case 1 retrofit from BEStPar"
     HeaterOn = false,
     hCool = 0,
     lCool = -4473.482346425267,
-    heaLoadFacOut = 134.33381091345322,
+    heaLoadFacOut = 134.33381091345322 + (VAir*(0.5 - baseACH)/3600*1014.54*1.2),
     heaLoadFacGrd = 24.971485313537734,
     KRCool = 10000,
     TNCool = 1,

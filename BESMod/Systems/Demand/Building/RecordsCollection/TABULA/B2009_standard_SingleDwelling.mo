@@ -82,7 +82,7 @@ record B2009_standard_SingleDwelling "B2009_standard_SingleDwelling"
     HeaterOn = false,
     hCool = 0,
     lCool = -4945.722160398982,
-    heaLoadFacOut = 149.23722222213283,
+    heaLoadFacOut = 149.23722222213283 + (VAir*(0.5 - baseACH)/3600*1014.54*1.2),
     heaLoadFacGrd = 24.30443561296167,
     KRCool = 10000,
     TNCool = 1,

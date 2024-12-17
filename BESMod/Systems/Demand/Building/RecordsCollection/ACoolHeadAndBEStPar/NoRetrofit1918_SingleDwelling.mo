@@ -83,7 +83,7 @@ record NoRetrofit1918_SingleDwelling
     HeaterOn = false,
     hCool = 0,
     lCool = -17426.160522476486,
-    heaLoadFacOut = 523.0659171555374,
+    heaLoadFacOut = 523.0659171555374 + (VAir*(0.5 - baseACH)/3600*1014.54*1.2),
     heaLoadFacGrd = 98.2930247856132,
     KRCool = 10000,
     TNCool = 1,

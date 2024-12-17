@@ -82,7 +82,7 @@ record B1950_retrofit_SingleDwelling "B1950_retrofit_SingleDwelling"
     HeaterOn = false,
     hCool = 0,
     lCool = -4335.552040100903,
-    heaLoadFacOut = 130.1727346688655,
+    heaLoadFacOut = 130.1727346688655 + (VAir*(0.5 - baseACH)/3600*1014.54*1.2),
     heaLoadFacGrd = 24.289218671029502,
     KRCool = 10000,
     TNCool = 1,

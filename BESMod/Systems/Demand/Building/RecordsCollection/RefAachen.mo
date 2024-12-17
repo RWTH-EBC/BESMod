@@ -82,7 +82,7 @@ record RefAachen "Reference Building for Aachen"
     HeaterOn = false,
     hCool = 0,
     lCool = -10987.666680836159,
-    heaLoadFacOut = 332.360230262213,
+    heaLoadFacOut=332.360230262213 + (VAir*(0.5 - baseACH)/3600*1014.54*1.2),
     heaLoadFacGrd = 50.30561606362036,
     KRCool = 10000,
     TNCool = 1,
