@@ -113,7 +113,7 @@ model IdealValveRadiator
       each final unit="K",
       each displayUnit="degC") = Medium.temperature(Medium.setState_phX(
       portTra_out.p,
-      inStream(portTra_out.h_outflow),
+      actualStream(portTra_out.h_outflow),
       inStream(portTra_out.Xi_outflow)))) "Real expression for return temperature"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
