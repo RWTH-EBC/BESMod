@@ -82,7 +82,7 @@ record B1859_standard_SingleDwelling "B1859_standard_SingleDwelling"
     HeaterOn = false,
     hCool = 0,
     lCool = -28309.0369830377,
-    heaLoadFacOut = 827.2389113803055,
+    heaLoadFacOut = 827.2389113803055 + (VAir*(0.5 - baseACH)/3600*1014.54*1.2),
     heaLoadFacGrd = 262.48454555256063,
     KRCool = 10000,
     TNCool = 1,

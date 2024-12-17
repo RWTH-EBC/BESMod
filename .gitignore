@@ -29,6 +29,7 @@ venv
 .pytest_cache
 htmlcov
 .coverage
+.unitTests-dymola.log
 
 installed_dependencies/*
 startup.mos

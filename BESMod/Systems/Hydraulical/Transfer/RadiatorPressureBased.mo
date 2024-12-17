@@ -9,7 +9,7 @@ model RadiatorPressureBased "Pressure Based transfer system"
     Q_flow_design={if use_oldRad_design[i] then QOld_flow_design[i] else Q_flow_nominal[i] for i in 1:nParallelDem},
     TTra_design={if use_oldRad_design[i] then TTraOld_design[i] else TTra_nominal[i] for i in 1:nParallelDem});
 
-  parameter Boolean use_oldRad_design[nParallelDem]=fill(false, nParallelDem)
+  parameter Boolean use_oldRad_design[nParallelDem]={not QOld_flow_design[i]==Q_flow_nominal[i] for i in 1:nParallelDem}
     "If true, radiator design of the building with no retrofit (old state) is used"
     annotation (Dialog(group="Design - Internal: Parameters are defined by the subsystem"));
 
@@ -134,7 +134,7 @@ model RadiatorPressureBased "Pressure Based transfer system"
       each final unit="K",
       each displayUnit="degC") = Medium.temperature(Medium.setState_phX(
       portTra_out.p,
-      inStream(portTra_out.h_outflow),
+      actualStream(portTra_out.h_outflow),
       inStream(portTra_out.Xi_outflow)))) "Real expression for return temperature"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},

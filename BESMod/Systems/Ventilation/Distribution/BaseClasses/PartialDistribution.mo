@@ -4,7 +4,9 @@ partial model PartialDistribution
     extends BESMod.Utilities.Icons.DistributionIcon;
 
     extends BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters(
-      final useRoundPipes=false, v_design=fill(2, nParallelDem));
+      final useRoundPipes=false, 
+      v_design=fill(2, nParallelDem),
+      TSup_nominal=fill(max(TDem_nominal) + max(dTLoss_nominal),nParallelSup));
 
   Modelica.Fluid.Interfaces.FluidPort_a portExh_in[nParallelDem](
       redeclare final package Medium = Medium)

@@ -82,7 +82,7 @@ record B1994_retrofit_SingleDwelling "B1994_retrofit_SingleDwelling"
     HeaterOn = false,
     hCool = 0,
     lCool = -4767.996027530474,
-    heaLoadFacOut = 145.02246693791852,
+    heaLoadFacOut = 145.02246693791852 + (VAir*(0.5 - baseACH)/3600*1014.54*1.2),
     heaLoadFacGrd = 18.182440788154498,
     KRCool = 10000,
     TNCool = 1,

@@ -3,6 +3,15 @@ model DistributionTwoStorageParallel
   "Simple buffer and DHW storage models with three way valve"
   extends BaseClasses.PartialThreeWayValve(
     dp_nominal={0},
+    Q_flow_design={if use_old_design[i] then QOld_flow_design[i] else
+        Q_flow_nominal[i] for i in 1:nParallelDem},
+    m_flow_design={if use_old_design[i] then mOld_flow_design[i] else
+        m_flow_nominal[i] for i in 1:nParallelDem},
+    mSup_flow_design={if use_old_design[i] then mSupOld_flow_design[i] else
+        mSup_flow_nominal[i] for i in 1:nParallelSup},
+    mDem_flow_design={if use_old_design[i] then mDemOld_flow_design[i] else
+        mDem_flow_nominal[i] for i in 1:nParallelDem},
+    final mOld_flow_design=mDemOld_flow_design,
     final dpDHW_nominal=0,
     final VStoDHW=parStoDHW.V,
     final QDHWStoLoss_flow=parStoDHW.QLoss_flow,
@@ -12,6 +21,9 @@ model DistributionTwoStorageParallel
     final QLoss_flow_nominal=f_design .* Q_flow_nominal .- Q_flow_nominal,
     dTLoss_nominal=fill(0, nParallelDem));
 
+  parameter Boolean use_old_design[nParallelDem]=fill(false, nParallelDem)
+    "If true, design parameters of the building with no retrofit (old state) are used"
+    annotation (Dialog(group="Design - Internal: Parameters are defined by the subsystem"));
   replaceable parameter
     BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.SimpleStorageBaseDataDefinition
     parStoBuf(iconName="Buffer")
@@ -93,8 +105,8 @@ model DistributionTwoStorageParallel
     final V_HE=parStoBuf.V_HE,
     final beta=parStoBuf.beta,
     final kappa=parStoBuf.kappa,
-    final m_flow_nominal_layer=m_flow_nominal[1],
-    final m_flow_nominal_HE=mSup_flow_nominal[1],
+    final m_flow_nominal_layer=m_flow_design[1],
+    final m_flow_nominal_HE=mSup_flow_design[1],
     use_TOut=true,
     final energyDynamics=energyDynamics,
     T_start=fill(T_start, parStoBuf.nLayer),
