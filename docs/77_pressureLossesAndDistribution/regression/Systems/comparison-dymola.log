@@ -1,0 +1,179 @@
+﻿[
+  {
+    "comparison": {
+      "file_name": "BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.mat",
+      "funnel_dirs": [],
+      "success_rate": 0,
+      "t_err_max": [],
+      "test_passed": [],
+      "var_groups": [],
+      "variables": [],
+      "warnings": []
+    },
+    "model": "BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating",
+    "simulation": {
+      "elapsed_time": 0.0153341,
+      "final_time": 36000,
+      "jacobians": 6,
+      "start_time": 0,
+      "state_events": 0,
+      "success": true
+    }
+  },
+  {
+    "comparison": {
+      "file_name": "BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat",
+      "funnel_dirs": [
+        "funnel_comp/BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat_pumDPConst.m_flow_nominal",
+        "funnel_comp/BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat_pumDPConst.port_a.m_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat_pumDPVar.port_a.m_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat_pumDPTotal.port_a.m_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat_pumDPVarOnOff.port_a.m_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat_pumSpeed.dpControlled_dp1.m_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat_pumDPConst.P",
+        "funnel_comp/BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat_pumDPVar.P",
+        "funnel_comp/BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat_pumDPTotal.P",
+        "funnel_comp/BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat_pumDPVarOnOff.P",
+        "funnel_comp/BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat_pumSpeed.P"
+      ],
+      "success_rate": 0.2727272727272727,
+      "t_err_max": [
+        0.0,
+        0.0,
+        2160.0,
+        0.0,
+        3312.0,
+        2700.0,
+        0.0,
+        2412.0,
+        0.0,
+        2412.0,
+        2700.0
+      ],
+      "test_passed": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "var_groups": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "variables": [
+        "pumDPConst.m_flow_nominal",
+        "pumDPConst.port_a.m_flow",
+        "pumDPVar.port_a.m_flow",
+        "pumDPTotal.port_a.m_flow",
+        "pumDPVarOnOff.port_a.m_flow",
+        "pumSpeed.dpControlled_dp1.m_flow",
+        "pumDPConst.P",
+        "pumDPVar.P",
+        "pumDPTotal.P",
+        "pumDPVarOnOff.P",
+        "pumSpeed.P"
+      ],
+      "warnings": [
+        null,
+        null,
+        "Absolute error = 1.051e-04 at t = 2160.0 for pumDPVar.port_a.m_flow",
+        null,
+        "Absolute error = 4.275e-01 at t = 3312.0 for pumDPVarOnOff.port_a.m_flow",
+        "Absolute error = 2.774e-03 at t = 2700.0 for pumSpeed.dpControlled_dp1.m_flow",
+        "Absolute error = 6.158e-03 at t = 0.0 for pumDPConst.P",
+        "Absolute error = 5.244e-01 at t = 2412.0 for pumDPVar.P",
+        "Absolute error = 8.340e-03 at t = 0.0 for pumDPTotal.P",
+        "Absolute error = 7.732e+01 at t = 2412.0 for pumDPVarOnOff.P",
+        "Absolute error = 5.808e+00 at t = 2700.0 for pumSpeed.P"
+      ]
+    },
+    "model": "BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions",
+    "simulation": {
+      "elapsed_time": 0.0211,
+      "final_time": 3600,
+      "jacobians": 184,
+      "start_time": 0,
+      "state_events": 0,
+      "success": true
+    }
+  },
+  {
+    "comparison": {
+      "file_name": "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.mat",
+      "funnel_dirs": [],
+      "success_rate": 0,
+      "t_err_max": [],
+      "test_passed": [],
+      "var_groups": [],
+      "variables": [],
+      "warnings": []
+    },
+    "model": "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem",
+    "simulation": {
+      "elapsed_time": 0.00903797,
+      "final_time": 12000,
+      "jacobians": 5,
+      "start_time": 0,
+      "state_events": 0,
+      "success": true
+    }
+  },
+  {
+    "comparison": {
+      "file_name": "BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.mat",
+      "funnel_dirs": [],
+      "success_rate": 0,
+      "t_err_max": [],
+      "test_passed": [],
+      "var_groups": [],
+      "variables": [],
+      "warnings": []
+    },
+    "model": "BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem",
+    "simulation": {
+      "elapsed_time": 0.0110562,
+      "final_time": 12000,
+      "jacobians": 7,
+      "start_time": 0,
+      "state_events": 0,
+      "success": true
+    }
+  },
+  {
+    "comparison": {
+      "file_name": "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.mat",
+      "funnel_dirs": [],
+      "success_rate": 0,
+      "t_err_max": [],
+      "test_passed": [],
+      "var_groups": [],
+      "variables": [],
+      "warnings": []
+    },
+    "model": "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve",
+    "simulation": {
+      "elapsed_time": 0.012176,
+      "final_time": 12000,
+      "jacobians": 13,
+      "start_time": 0,
+      "state_events": 1,
+      "success": true
+    }
+  }
+]
