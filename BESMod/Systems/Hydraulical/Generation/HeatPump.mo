@@ -10,10 +10,10 @@ model HeatPump "Monovalent heat pump"
     TBiv=TOda_nominal,
     resGen(
       final length=lengthPip,
-      final fac=facFit));
+      final resCoe=resCoe));
   parameter Modelica.Units.SI.Length lengthPip=8 "Length of all pipes"
     annotation (Dialog(tab="Pressure losses"));
-  parameter Real facFit=4*facPerBend
+  parameter Real resCoe=4*facPerBend
     "Factor to take into account resistance of bends, fittings etc."
     annotation (Dialog(tab="Pressure losses"));
 equation

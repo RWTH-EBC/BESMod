@@ -5,10 +5,10 @@ model HeatPumpAndGasBoilerSerial "serial arrangement of heatpump and boiler"
     dp_design={heatPump.dpCon_nominal + boi.dp_nominal + resGen.dp_nominal},
     final use_old_design=fill(false, nParallelDem), resGen(
       final length=lengthPip,
-      final fac=facFit));
+      final resCoe=resCoe));
   parameter Modelica.Units.SI.Length lengthPip=8 "Length of all pipes"
     annotation (Dialog(tab="Pressure losses"));
-  parameter Real facFit=4*facPerBend
+  parameter Real resCoe=4*facPerBend
     "Factor to take into account resistance of bends, fittings etc."
     annotation (Dialog(tab="Pressure losses"));
 equation

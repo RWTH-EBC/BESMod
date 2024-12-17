@@ -15,5 +15,6 @@ partial record UFHData
   parameter Modelica.Units.SI.Diameter diameter "Pipe diameter";
   parameter Modelica.Units.SI.Temperature T_floor
     "Fixed temperature at floor (soil)";
-
+  parameter Real dpExp "Pressure drop exponent";
+  parameter Real dpCoe "Pressure drop coefficient";
 end UFHData;

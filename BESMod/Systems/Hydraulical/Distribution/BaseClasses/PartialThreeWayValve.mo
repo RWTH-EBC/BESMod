@@ -29,13 +29,13 @@ partial model PartialThreeWayValve "Partial model to later extent"
   parameter Modelica.Units.SI.Length lengthPipValDHWSto=0.8
     "Length of all pipes between valve to DHW storage and back"
     annotation (Dialog(tab="Pressure losses"));
-  parameter Real facFitValDHWSto=facPerBend*2
+  parameter Real resCoeValDHWSto=facPerBend*2
     "Factor for resistance due to bends, fittings etc. between valve to DHW storage and back"
     annotation (Dialog(tab="Pressure losses"));
   parameter Modelica.Units.SI.Length lengthPipValBufSto=0.8
     "Length of all pipes between valve to buffer storage and back"
     annotation (Dialog(tab="Pressure losses"));
-  parameter Real facFitValBufSto=facPerBend*2
+  parameter Real resCoeValBufSto=facPerBend*2
     "Factor for resistance due to bends, fittings etc. between valve to buffer storage and back"
     annotation (Dialog(tab="Pressure losses"));
   replaceable parameter BESMod.Systems.RecordsCollection.Valves.ThreeWayValve parThrWayVal(iconName=
@@ -107,7 +107,7 @@ partial model PartialThreeWayValve "Partial model to later extent"
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-80,120})));
-  IBPSA.Fluid.FixedResistances.HydraulicDiameter resValToBufSto(
+  BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter resValToBufSto(
     redeclare final package Medium = MediumGen,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=mSup_flow_design[1],
@@ -116,13 +116,13 @@ partial model PartialThreeWayValve "Partial model to later extent"
     final linearized=false,
     final dh=dPip_design[1],
     final length=lengthPipValBufSto,
-    final fac=facFitValBufSto,
+    final resCoe=resCoeValBufSto,
     final ReC=ReC,
     final v_nominal=v_design[1],
     final roughness=roughness)
     "Pressure drop due to resistances between valve+pump and buffer storage"
     annotation (Placement(transformation(extent={{-20,150},{0,170}})));
-  IBPSA.Fluid.FixedResistances.HydraulicDiameter resValToDHWSto(
+  BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter resValToDHWSto(
     redeclare final package Medium = MediumGen,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=mSup_flow_design[1],
@@ -131,7 +131,7 @@ partial model PartialThreeWayValve "Partial model to later extent"
     final linearized=false,
     final dh=dPip_design[1],
     final length=lengthPipValDHWSto,
-    final fac=facFitValDHWSto,
+    final resCoe=resCoeValDHWSto,
     final ReC=ReC,
     final v_nominal=v_design[1],
     final roughness=roughness)

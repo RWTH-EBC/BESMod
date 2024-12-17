@@ -5,7 +5,7 @@ model ElectricalHeater "Only heat using an electric heater"
     final dTLoss_nominal=fill(0, nParallelDem),    final nParallelDem=1);
   parameter Modelica.Units.SI.Length lengthPip=4 "Length of all pipes"
     annotation (Dialog(tab="Pressure losses"));
-  parameter Real facFit=4*facPerBend
+  parameter Real resCoe=4*facPerBend
     "Factor to take into account resistance of bendsm, fittings etc."
     annotation (Dialog(tab="Pressure losses"));
   AixLib.Fluid.HeatExchangers.HeatingRod hea(
@@ -47,7 +47,7 @@ model ElectricalHeater "Only heat using an electric heater"
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-30,70})));
-  IBPSA.Fluid.FixedResistances.HydraulicDiameter
+  BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter
                                             resGen(
     redeclare final package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
@@ -60,7 +60,7 @@ model ElectricalHeater "Only heat using an electric heater"
     final ReC=ReC,
     final v_nominal=v_design[1],
     final roughness=roughness,
-    final fac=facFit)          "Pressure drop model depending on the configuration"
+    final resCoe=resCoe)          "Pressure drop model depending on the configuration"
     annotation (Placement(transformation(extent={{20,-20},{40,0}})));
 
 equation

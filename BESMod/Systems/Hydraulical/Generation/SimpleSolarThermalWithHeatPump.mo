@@ -6,10 +6,10 @@ model SimpleSolarThermalWithHeatPump
     dTTra_nominal={if TDem_nominal[1] > 273.15 + 55 then 10 elseif TDem_nominal[1] >
         44.9 then 8 else 5,parSolThe.dTMax},
     final nParallelDem=2,
-    final dp_nominal={heatPump.dpCon_nominal +dpEleHea_nominal, dpST_nominal});
+    dp_design={heatPump.dpCon_nominal + dpEleHea_nominal + resGen.dp_nominal, dpST_nominal});
   parameter Modelica.Units.SI.Length lengthPipSolThe=30 "Length of all pipes to and from solar thermal"
     annotation (Dialog(tab="Pressure losses", group="Solar Thermal"));
-  parameter Real facFitSolThe=8*facPerBend
+  parameter Real resCoeSolThe=8*facPerBend
     "Factor to take into account resistance of bends, fittings etc. for solar thermal"
     annotation (Dialog(tab="Pressure losses", group="Solar Thermal"));
   replaceable parameter
@@ -62,7 +62,7 @@ model SimpleSolarThermalWithHeatPump
   Modelica.Blocks.Sources.RealExpression reaExpSolTheTHot(y=solThe.senTHot.T)
     annotation (Placement(transformation(extent={{-100,-100},{-80,-80}})));
 
-  IBPSA.Fluid.FixedResistances.HydraulicDiameter resSolThe(
+  BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter resSolThe(
     redeclare final package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=m_flow_design[2],
@@ -74,7 +74,7 @@ model SimpleSolarThermalWithHeatPump
     final ReC=ReC,
     final v_nominal=v_design[2],
     final roughness=roughness,
-    fac=facFitSolThe)          "Pressure drop model for solar thermal pipes"
+    resCoe=resCoeSolThe)          "Pressure drop model for solar thermal pipes"
     annotation (Placement(transformation(extent={{20,-150},{40,-130}})));
 protected
   parameter Modelica.Units.SI.PressureDifference dpST_nominal=parSolThe.m_flow_nominal

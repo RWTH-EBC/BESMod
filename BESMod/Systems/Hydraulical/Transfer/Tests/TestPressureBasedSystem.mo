@@ -5,12 +5,11 @@ model TestPressureBasedSystem
       BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased
       transfer(
       redeclare
-        BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
-        parTra,
-      redeclare
         BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
         parRad), pumDis(each ctrlType=AixLib.Fluid.Movers.DpControlledMovers.Types.CtrlType.dpVar));
   extends Modelica.Icons.Example;
 
-  annotation (experiment(StopTime=3600, __Dymola_Algorithm="Dassl"));
+  annotation (experiment(StopTime=12000, Tolerance=1e-06, Interval=100),
+     __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestPressureBasedSystem.mos"
+          "Simulate and plot"));
 end TestPressureBasedSystem;

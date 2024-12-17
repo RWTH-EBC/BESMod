@@ -1,11 +1,11 @@
 within BESMod.Systems.Hydraulical.Transfer;
 model UFHTransferSystem
-  extends BaseClasses.PartialWithPipingLosses(dp_nominal=dpPipSca_design .+
+  extends BaseClasses.PartialWithPipingLosses(dp_design=dpPipSca_design .+
         dpUFH_design,
     nHeaTra=1);
   final parameter Modelica.Units.SI.PressureDifference dpUFH_design[nParallelDem]=ufh.pressureDrop.tubeLength.*ufh.pressureDrop.m.*m_flow_design.^ufh.pressureDrop.n
     "Pressure drop as calculated in UFH model";
-  Modelica.Blocks.Math.Gain gain[nParallelDem](k=m_flow_nominal)
+  Modelica.Blocks.Math.Gain gain[nParallelDem](k=m_flow_design)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
@@ -118,8 +118,8 @@ protected
       eps=0.9,
       C_ActivatedElement=UFHParameters.C_ActivatedElement[i],
       c_top_ratio=UFHParameters.c_top_ratio[i],
-      PressureDropExponent=0,
-      PressureDropCoefficient=0,
+      PressureDropExponent=UFHParameters.dpExp,
+      PressureDropCoefficient=UFHParameters.dpCoe,
       diameter=UFHParameters.diameter) for i in 1:nParallelDem};
 
 equation
@@ -213,6 +213,7 @@ equation
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
   annotation (Documentation(info="<html>
-<p>According to https://www.energie-lexikon.info/heizkoerperexponent.html, the heating transfer exponent of underfloor heating systems is between 1 and 1.1.</p>
+<p><br>According to https://www.energie-lexikon.info/heizkoerperexponent.html, the heating transfer exponent of underfloor heating systems is between 1 and 1.1.</p>
+<p>TODO: In the test, the heat flow rate does not match design conditions.</p>
 </html>"));
 end UFHTransferSystem;

@@ -6,10 +6,10 @@ model HeatPumpAndElectricHeater "Heat pump with an electric heater in series"
   multiSum(nu=if use_eleHea then 2 else 1),
     resGen(
       final length=lengthPip,
-      final fac=facFit));
+      final resCoe=resCoe));
   parameter Modelica.Units.SI.Length lengthPip=8 "Length of all pipes"
     annotation (Dialog(tab="Pressure losses"));
-  parameter Real facFit=4*facPerBend
+  parameter Real resCoe=4*facPerBend
     "Factor to take into account resistance of bends, fittings etc."
     annotation (Dialog(tab="Pressure losses"));
   parameter Boolean use_eleHea=true "=false to disable the electric heater"

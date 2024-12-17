@@ -1,0 +1,2 @@
+simulateModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating", stopTime=36000, method="CVode", tolerance=1e-06, resultFile="TestUnderfloorHeating");
+createPlot(id=2, position={75, 70, 1210, 240}, y={"deltaQ_flow_design[1].y"}, grid=true, subPlot=1, colors={{28,108,200}});

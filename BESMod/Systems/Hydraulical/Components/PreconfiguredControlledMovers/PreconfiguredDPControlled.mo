@@ -24,21 +24,19 @@ model PreconfiguredDPControlled
   parameter Boolean addPowerToMedium=false
     "Set to false to avoid any power (=heat and flow work) being added to medium (may give simpler equations)";
   // Classes used to implement the filtered speed
-  parameter Boolean use_inputFilter=true
-    "= true, if speed is filtered with a 2nd order CriticalDamping filter"
-    annotation(Dialog(tab="Dynamics", group="Filtered speed"));
+  parameter Boolean use_riseTime=false
+    "Set to true to continuously change motor speed"
+    annotation(Dialog(tab="Dynamics", group="Motor speed"));
+
   parameter Modelica.Units.SI.Time riseTime=30
     "Rise time of the filter (time to reach 99.6 % of the speed)" annotation (
       Dialog(
       tab="Dynamics",
-      group="Filtered speed",
-      enable=use_inputFilter));
-  parameter Modelica.Blocks.Types.Init init=Modelica.Blocks.Types.Init.InitialOutput
-    "Type of initialization (no init/steady state/initial state/initial output)"
-    annotation(Dialog(tab="Dynamics", group="Filtered speed",enable=use_inputFilter));
+      group="Motor speed",
+      enable=use_riseTime));
 
   parameter Real y_start=0 "Initial value of speed"
-    annotation(Dialog(tab="Dynamics", group="Filtered speed",enable=use_inputFilter));
+    annotation(Dialog(tab="Dynamics", group="Motor speed",enable=use_riseTime));
 
   parameter Modelica.Blocks.Types.Smoothness smoothness=Modelica.Blocks.Types.Smoothness.LinearSegments
     "Smoothness of table interpolation" annotation (Dialog(tab="Advanced"));
@@ -99,7 +97,7 @@ model PreconfiguredDPControlled
     final T_start=T_start,
     final allowFlowReversal=allowFlowReversal,
     final addPowerToMedium=addPowerToMedium,
-    final use_inputFilter=use_inputFilter,
+    use_riseTime=use_riseTime,
     final riseTime=riseTime,
     final m_flow_nominal=m_flow_nominal,
     final energyDynamics=Modelica.Fluid.Types.Dynamics.SteadyState,
@@ -111,7 +109,7 @@ model PreconfiguredDPControlled
     final T_start=T_start,
     final allowFlowReversal=allowFlowReversal,
     final addPowerToMedium=addPowerToMedium,
-    final use_inputFilter=use_inputFilter,
+    final use_riseTime=use_riseTime,
     final riseTime=riseTime,
     final y_start=y_start,
     final m_flow_nominal=m_flow_nominal,

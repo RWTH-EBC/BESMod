@@ -67,7 +67,7 @@ partial model PartialTest
     each final externalCtrlTyp=BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.Types.ExternalControlType.speed,
     each final ctrlType=AixLib.Fluid.Movers.DpControlledMovers.Types.CtrlType.dpVar,
     each final addPowerToMedium=false,
-    each final use_inputFilter=false,
+    each final use_riseTime=false,
     each final y_start=1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,

@@ -20,7 +20,8 @@ model RadiatorPressureBased "Pressure Based transfer system"
       annotation(Dialog(group="Component choices", enable=use_preRelVal));
 
   // Valves
-  parameter Real valveAutho[nParallelDem](each min=0.2, each max=0.8, each unit="1")
+  parameter Real valveAutho[nParallelDem](each min=0.2, each max=0.8, each unit="1")=
+    fill(0.5, nParallelDem)
     "Assumed valve authority (typical value: 0.5)"
      annotation(Dialog(group="Thermostatic Valve"));
   parameter Boolean use_hydrBalAutom = true
@@ -103,10 +104,10 @@ model RadiatorPressureBased "Pressure Based transfer system"
   Distribution.Components.Valves.PressureReliefValve pressureReliefValve(
     redeclare final package Medium = Medium,
     m_flow_nominal=mSup_flow_design[1],
-    final dpFullOpen_nominal=dpSup_nominal[1],
-    final dpThreshold_nominal=perPreRelValOpens*dpSup_nominal[1],
-    final facDpValve_nominal=parTra.valveAutho[1],
-    final l=parTra.leakageOpening) if use_preRelVal annotation (Placement(
+    final dpFullOpen_nominal=dpSup_design[1],
+    final dpThreshold_nominal=perPreRelValOpens*dpSup_design[1],
+    final facDpValve_nominal=valveAutho[1],
+    final l=leakageOpening) if use_preRelVal annotation (Placement(
         transformation(
         extent={{10,-10},{-10,10}},
         rotation=90,
@@ -213,4 +214,7 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  annotation (Documentation(info="<html>
+<p>TODO: In the test with pressure relief valve, mass flow rates do not match</p>
+</html>"));
 end RadiatorPressureBased;

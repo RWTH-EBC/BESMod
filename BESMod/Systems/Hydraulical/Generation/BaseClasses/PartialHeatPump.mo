@@ -287,7 +287,7 @@ model PartialHeatPump "Generation with only the heat pump"
         origin={-170,-30})));
 
 
-  IBPSA.Fluid.FixedResistances.HydraulicDiameter
+  BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter
                                             resGen(
     redeclare final package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,

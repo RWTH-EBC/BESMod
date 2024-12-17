@@ -6,7 +6,7 @@ model GasBoiler "Just a gas boiler"
     final nParallelDem=1);
   parameter Modelica.Units.SI.Length lengthPip=4 "Length of all pipes"
     annotation (Dialog(tab="Pressure losses"));
-  parameter Real facFit=4*facPerBend
+  parameter Real resCoe=4*facPerBend
     "Factor to take into account resistance of bendsm, fittings etc."
     annotation (Dialog(tab="Pressure losses"));
   parameter Boolean use_old_design=false
@@ -70,7 +70,7 @@ model GasBoiler "Just a gas boiler"
     calc_numSwi=true) "Boiler KPIs"
     annotation (Placement(transformation(extent={{-60,-80},{-40,-60}})));
 
-  IBPSA.Fluid.FixedResistances.HydraulicDiameter
+  BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter
                                             resGen(
     redeclare final package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
@@ -83,7 +83,7 @@ model GasBoiler "Just a gas boiler"
     final ReC=ReC,
     final v_nominal=v_design[1],
     final roughness=roughness,
-    final fac=facFit)          "Pressure drop model depending on the configuration"
+    final resCoe=resCoe)          "Pressure drop model depending on the configuration"
     annotation (Placement(transformation(extent={{20,-40},{0,-20}})));
 initial algorithm
   assert(parBoi.Q_nom >= Q_flow_nominal[1], "Nominal heat flow rate

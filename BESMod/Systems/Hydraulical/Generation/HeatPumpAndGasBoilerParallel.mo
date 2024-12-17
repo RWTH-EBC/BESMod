@@ -5,29 +5,34 @@ model HeatPumpAndGasBoilerParallel
     dp_design={resGen.dp_nominal + resGenOut.dp_nominal + parThrWayVal.dpValve_nominal
          + max(parThrWayVal.dp_nominal)},
     final use_old_design=fill(false, nParallelDem), resGen(final length=
-          lengthPipValIn, final fac=facFitValIn));
+          lengthPipValIn, final resCoe=resCoeValIn));
   parameter Modelica.Units.SI.Length lengthPipValIn=3.5
     "Length of all pipes between inlet and three way valve"
     annotation (Dialog(tab="Pressure losses"));
-  parameter Real facFitValIn=facPerBend*1
+  parameter Real resCoeValIn=facPerBend*1
     "Factor for resistance due to bends, fittings etc. between inlet and three way valve"
     annotation (Dialog(tab="Pressure losses"));
   parameter Modelica.Units.SI.Length lengthPipValBoi=1.5 "Length of all pipes between three way valve and boiler"
     annotation (Dialog(tab="Pressure losses"));
-  parameter Real facFitValBoi=2*facPerBend
+  parameter Real resCoeValBoi=2*facPerBend
     "Factor for resistance due to bends, fittings etc. between three way valve and boiler"
     annotation (Dialog(tab="Pressure losses"));
   parameter Modelica.Units.SI.Length lengthPipValHeaPum=1.5 "Length of all pipes between three way valve and heat pump"
     annotation (Dialog(tab="Pressure losses"));
-  parameter Real facFitValHeaPum=2*facPerBend
+  parameter Real resCoeValHeaPum=2*facPerBend
     "Factor for resistance due to bends, fittings etc. between three way valve and heat pump"
     annotation (Dialog(tab="Pressure losses"));
   parameter Modelica.Units.SI.Length lengthPipValOut=3.5
     "Length of the pipe between outlet and three way valve"
     annotation (Dialog(tab="Pressure losses"));
-  parameter Real facFitValOut=facPerBend*1
+  parameter Real resCoeValOut=facPerBend*1
     "Factor for resistance due to bends, fittings etc. between outlet and three way valve"
     annotation (Dialog(tab="Pressure losses"));
+  parameter Modelica.Units.SI.Length dPipBoi_design=
+     sqrt(4*mBoi_flow_nominal/rho/v_design[1]/Modelica.Constants.pi)
+      "Hydraulic diameter of pipes"
+    annotation(Dialog(tab="Pressure losses",
+      group="Design - Internal: Parameters are defined by the subsystem"));
   replaceable parameter BESMod.Systems.RecordsCollection.Valves.ThreeWayValve
     parThrWayVal constrainedby
     BESMod.Systems.RecordsCollection.Valves.ThreeWayValve(
@@ -54,9 +59,9 @@ model HeatPumpAndGasBoilerParallel
     "Three-way-valve to either run heat pump or gas boiler"
     annotation (Placement(transformation(extent={{40,20},{20,0}})));
 
-  IBPSA.Fluid.FixedResistances.HydraulicDiameter resGenOut(
+  BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter resGenOut(
     length=lengthPipValOut,
-    fac=facFitValOut,
+    resCoe=resCoeValOut,
     redeclare final package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=m_flow_design[1],
@@ -69,23 +74,23 @@ model HeatPumpAndGasBoilerParallel
     final roughness=roughness) "Pressure drop for valve to outlet"
     annotation (Placement(transformation(extent={{60,10},{80,30}})));
 
-  IBPSA.Fluid.FixedResistances.HydraulicDiameter resValBoi(
+  BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter resValBoi(
     length=lengthPipValBoi,
-    fac=facFitValBoi,
+    resCoe=resCoeValBoi,
     redeclare final package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=mBoi_flow_nominal,
     final show_T=show_T,
     final from_dp=false,
     final linearized=false,
-    final dh=dPip[1],
+    final dh=dPipBoi_design,
     final ReC=ReC,
     final v_nominal=v_design[1],
     final roughness=roughness) "Pressure drop for valve to boiler"
     annotation (Placement(transformation(extent={{20,20},{40,40}})));
-  IBPSA.Fluid.FixedResistances.HydraulicDiameter resValHeaPum(
+  BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter resValHeaPum(
     length=lengthPipValHeaPum,
-    fac=facFitValHeaPum,
+    resCoe=resCoeValHeaPum,
     redeclare final package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=m_flow_design[1],

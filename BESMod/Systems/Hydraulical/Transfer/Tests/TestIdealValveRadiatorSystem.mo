@@ -6,10 +6,10 @@ model TestIdealValveRadiatorSystem
       transfer(redeclare
         BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
         parRad,
-      redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
-      redeclare
-        BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
-        parTra));
+      redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum));
   extends Modelica.Icons.Example;
 
+  annotation (experiment(StopTime=12000, Tolerance=1e-06, Interval=100),
+     __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestIdealValveRadiatorSystem.mos"
+          "Simulate and plot"));
 end TestIdealValveRadiatorSystem;
