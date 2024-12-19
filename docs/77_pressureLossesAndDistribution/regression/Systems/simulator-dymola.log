@@ -1,6 +1,117 @@
  = true
 
 
+rCheck = checkModel("BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater");
+Check of BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater
+The model has the same number of unknowns and equations: 1369
+The model could not be deduced to be symbolically well-posed.
+The model has
+  1349+generation.heatPump.con.vol.dynBal.nPorts+2*generation.heatPump.eva.vol.dynBal.nPorts  +size(generation.heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns, 1)+  generation.heatPump.safCtr.opeEnv.bouMapHea.nor.nu+size(generation.heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns,   1)+generation.heatPump.safCtr.opeEnv.bouMapCoo.nor.nu+generation.multiSum.nu+  generation.eleHea.vol.dynBal.nPorts+vol[1].dynBal.nPorts
+scalar unknowns and
+  1318+(if weaDat.pAtmSou == IBPSA.BoundaryConditions.Types.DataSource.Parameter   then 1 else 0)+(if weaDat.TDewPoiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TDryBulSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TBlaSkySou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.relHumSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.opaSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.ceiHeiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.totSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winSpeSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winDirSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HInfHorSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HDifHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HGloHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HGloHor_HDifHor then 2 else 1)+(if generation.bou_sinkAir.use_Xi_in   then 2 else (if generation.bou_sinkAir.use_X_in then 1 else 3))+(if  not   generation.bou_sinkAir.use_p_in then 1 else 0)+(if  not generation.bou_sinkAir.use_h_in   then 1 else 0)+(if generation.bouEva.use_Xi_in then 2 else (if   generation.bouEva.use_X_in then 1 else 3))+(if bouTra[1].use_Xi_in then 1   else (if bouTra[1].use_X_in then 0 else 1))+(if  not bouTra[1].use_p_in then 1   else 0)+(if  not bouTra[1].use_T_in then 1 else 0)+(if  not generation.heatPump.con.vol.dynBal.use_mWat_flow   then 1 else 0)+3*generation.heatPump.con.vol.dynBal.nPorts+(if  not   generation.heatPump.eva.vol.dynBal.use_mWat_flow then 1 else 0)+5*  generation.heatPump.eva.vol.dynBal.nPorts+size(generation.heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns,   1)+size(generation.heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns, 1)+(if    not generation.eleHea.vol.dynBal.use_mWat_flow then 1 else 0)+3*  generation.eleHea.vol.dynBal.nPorts+(if  not vol[1].dynBal.use_mWat_flow then 1   else 0)+3*vol[1].dynBal.nPorts+(if  not pumDis[1].dpControlled_dp.vol.steBal.use_mWat_flow   then 1 else 0)
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  1369
+Check of BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater successful.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/HeatPumpAndElectricHeater.mos\",", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater\",", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater\\\");\",", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/HeatPumpAndElectricHeater.mos");
+simulateModel("BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater");
+Translation of BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater
+The DAE has 1369 scalar unknowns and 1369 scalar equations.
+Redundant consistent initial conditions.
+Removed the following equations which are redundant and consistent: 
+  if (vol[1].dynBal.energyDynamics == Modelica.Fluid.Types.Dynamics.FixedInitial)     then 
+    vol[1].dynBal.medium.T = vol[1].dynBal.T_start;
+  else
+    if (vol[1].dynBal.energyDynamics == Modelica.Fluid.Types.Dynamics.      SteadyStateInitial) then 
+      der(vol[1].dynBal.medium.T) = 0;
+    end if;
+  end if;
+  if (generation.heatPump.eva.vol.dynBal.massDynamics == Modelica.Fluid.Types.Dynamics.    FixedInitial) then 
+    if (generation.heatPump.eva.vol.dynBal.initialize_p) then 
+      generation.heatPump.eva.vol.dynBal.medium.p = generation.heatPump.eva.vol.dynBal.p_start;
+    end if;
+  else
+    if (generation.heatPump.eva.vol.dynBal.massDynamics == Modelica.Fluid.Types.Dynamics.      SteadyStateInitial) then 
+      if (generation.heatPump.eva.vol.dynBal.initialize_p) then 
+        der(generation.heatPump.eva.vol.dynBal.medium.p) = 0;
+      end if;
+    end if;
+  end if;
+ 
+This required evaluation of 
+the interactive parameters 
+    generation.bou_sinkAir.p(start = 101325)
+ 
+The redundancies involve
+initial equations: 
+  generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
+  320.15 = 320.15;
+ 
+ 
+Statistics
+ 
+Original Model
+  Number of components: 350
+  Variables: 2712
+  Constants: 51 (51 scalars)
+  Parameters: 1380 (1961 scalars)
+  Unknowns: 1281 (1408 scalars)
+  Differentiated variables: 18 scalars
+  Equations: 1276
+  Nontrivial: 1089
+Translated Model
+  Constants: 1178 scalars
+  Free parameters: 330 scalars
+  Parameter depending: 825 scalars
+  Outputs: 7 scalars
+  Continuous time states: 13 scalars
+  Time-varying variables: 220 scalars
+  Alias variables: 867 scalars
+  Number of mixed real/discrete systems of equations: 0
+  Sizes of linear systems of equations: { }
+  Sizes after manipulation of the linear systems: { }
+  Sizes of nonlinear systems of equations: {3}
+  Sizes after manipulation of the nonlinear systems: {1}
+  Number of numerical Jacobians: 0
+  Initialization problem
+    Sizes of nonlinear systems of equations: {9, 1}
+    Sizes after manipulation of the nonlinear systems: {1, 1}
+    Number of numerical Jacobians: 0
+ 
+Selected continuous time states
+Statically selected continuous time states
+generation.eleHea.vol.dynBal.U
+generation.heatPump.con.vol.dynBal.U
+generation.heatPump.eva.vol.dynBal.medium.Xi[1]
+generation.heatPump.eva.vol.dynBal.U
+generation.KPIEleHea.integrator1.y
+generation.KPIEleHea.integrator3.y
+generation.KPIHeaPum.integrator1.y
+generation.KPIHeaPum.integrator3.y
+generation.KPIPEleEleHea.integrator2.y
+generation.KPIQEleHea_flow.integrator2.y
+generation.KPIQHP.integrator2.y
+generation.KPIWel.integrator2.y
+generation.senTGenOut.T
+Finished
+Finished
+ = true
+
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.translation.log"); = true
+
+
 rCheck = checkModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating");
 Check of BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating
 Note: 
@@ -77,8 +188,8 @@ Translated Model
   Parameter depending: 596 scalars
   Outputs: 1 scalars
   Continuous time states: 18 scalars
-  Time-varying variables: 266 scalars
-  Alias variables: 522 scalars
+  Time-varying variables: 265 scalars
+  Alias variables: 523 scalars
   Assumed default initial conditions: 16
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: { }
@@ -119,6 +230,120 @@ Finished
 Declaring variable: Boolean rScript ;
 
 savelog("BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel");
+Check of BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel
+The model has the same number of unknowns and equations: 1560
+The model could not be deduced to be symbolically well-posed.
+The model has
+  1538+generation.heatPump.con.vol.dynBal.nPorts+2*generation.heatPump.eva.vol.dynBal.nPorts  +size(generation.heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns, 1)+  generation.heatPump.safCtr.opeEnv.bouMapHea.nor.nu+size(generation.heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns,   1)+generation.heatPump.safCtr.opeEnv.bouMapCoo.nor.nu+generation.multiSum.nu+  generation.boi.vol.dynBal.nPorts+generation.thrWayVal.threWayValFlow.vol.dynBal.nPorts  +vol[1].dynBal.nPorts
+scalar unknowns and
+  1499+(if weaDat.pAtmSou == IBPSA.BoundaryConditions.Types.DataSource.Parameter   then 1 else 0)+(if weaDat.TDewPoiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TDryBulSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TBlaSkySou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.relHumSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.opaSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.ceiHeiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.totSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winSpeSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winDirSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HInfHorSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HDifHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HGloHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HGloHor_HDifHor then 2 else 1)+(if generation.bou_sinkAir.use_Xi_in   then 2 else (if generation.bou_sinkAir.use_X_in then 1 else 3))+(if  not   generation.bou_sinkAir.use_p_in then 1 else 0)+(if  not generation.bou_sinkAir.use_h_in   then 1 else 0)+(if generation.bouEva.use_Xi_in then 2 else (if   generation.bouEva.use_X_in then 1 else 3))+(if bouTra[1].use_Xi_in then 1   else (if bouTra[1].use_X_in then 0 else 1))+(if  not bouTra[1].use_p_in then 1   else 0)+(if  not bouTra[1].use_T_in then 1 else 0)+(if  not generation.heatPump.con.vol.dynBal.use_mWat_flow   then 1 else 0)+3*generation.heatPump.con.vol.dynBal.nPorts+(if  not   generation.heatPump.eva.vol.dynBal.use_mWat_flow then 1 else 0)+5*  generation.heatPump.eva.vol.dynBal.nPorts+size(generation.heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns,   1)+size(generation.heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns, 1)+(if    not generation.boi.vol.dynBal.use_mWat_flow then 1 else 0)+3*generation.boi.vol.dynBal.nPorts  +(if  not vol[1].dynBal.use_mWat_flow then 1 else 0)+3*vol[1].dynBal.nPorts+(  if  not generation.thrWayVal.threWayValFlow.vol.dynBal.use_mWat_flow then 1   else 0)+3*generation.thrWayVal.threWayValFlow.vol.dynBal.nPorts+(if  not   pumDis[1].dpControlled_dp.vol.steBal.use_mWat_flow then 1 else 0)
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  1560
+Check of BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel successful.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/HeatPumpAndGasBoilerParallel.mos\",", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel\",", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel\\\");\",", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/HeatPumpAndGasBoilerParallel.mos");
+simulateModel("BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel");
+Translation of BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel
+The DAE has 1560 scalar unknowns and 1560 scalar equations.
+Redundant consistent initial conditions.
+Removed the following equations which are redundant and consistent: 
+  if (vol[1].dynBal.energyDynamics == Modelica.Fluid.Types.Dynamics.FixedInitial)     then 
+    vol[1].dynBal.medium.T = vol[1].dynBal.T_start;
+  else
+    if (vol[1].dynBal.energyDynamics == Modelica.Fluid.Types.Dynamics.      SteadyStateInitial) then 
+      der(vol[1].dynBal.medium.T) = 0;
+    end if;
+  end if;
+  if (generation.heatPump.eva.vol.dynBal.massDynamics == Modelica.Fluid.Types.Dynamics.    FixedInitial) then 
+    if (generation.heatPump.eva.vol.dynBal.initialize_p) then 
+      generation.heatPump.eva.vol.dynBal.medium.p = generation.heatPump.eva.vol.dynBal.p_start;
+    end if;
+  else
+    if (generation.heatPump.eva.vol.dynBal.massDynamics == Modelica.Fluid.Types.Dynamics.      SteadyStateInitial) then 
+      if (generation.heatPump.eva.vol.dynBal.initialize_p) then 
+        der(generation.heatPump.eva.vol.dynBal.medium.p) = 0;
+      end if;
+    end if;
+  end if;
+ 
+This required evaluation of 
+the interactive parameters 
+    generation.bou_sinkAir.p(start = 101325)
+ 
+The redundancies involve
+initial equations: 
+  generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
+  320.15 = 320.15;
+ 
+ 
+Statistics
+ 
+Original Model
+  Number of components: 381
+  Variables: 3360
+  Constants: 60 (60 scalars)
+  Parameters: 1747 (2367 scalars)
+  Unknowns: 1553 (1608 scalars)
+  Differentiated variables: 21 scalars
+  Equations: 1466
+  Nontrivial: 1250
+Translated Model
+  Constants: 1466 scalars
+  Free parameters: 376 scalars
+  Parameter depending: 875 scalars
+  Outputs: 9 scalars
+  Continuous time states: 14 scalars
+  Time-varying variables: 330 scalars
+  Alias variables: 988 scalars
+  Number of mixed real/discrete systems of equations: 0
+  Sizes of linear systems of equations: {4}
+  Sizes after manipulation of the linear systems: {0}
+  Sizes of nonlinear systems of equations: {18, 3, 1}
+  Sizes after manipulation of the nonlinear systems: {2, 1, 1}
+  Number of numerical Jacobians: 0
+  Initialization problem
+    Sizes of nonlinear systems of equations: {18, 1, 1}
+    Sizes after manipulation of the nonlinear systems: {2, 0, 1}
+    Sizes of simplified homotopy nonlinear systems of equations: {18, 1}
+    Sizes after manipulation of the simplified homotopy nonlinear systems: {2, 0}
+    Number of numerical Jacobians: 0
+ 
+Selected continuous time states
+Statically selected continuous time states
+generation.boi.senTCold.T
+generation.boi.senTHot.T
+generation.boi.vol.dynBal.U
+generation.heatPump.con.vol.dynBal.U
+generation.heatPump.eva.vol.dynBal.medium.Xi[1]
+generation.heatPump.eva.vol.dynBal.U
+generation.KPIBoi.integrator2.y
+generation.KPIBoiFue.integrator2.y
+generation.KPIHeaPum.integrator1.y
+generation.KPIHeaPum.integrator3.y
+generation.KPIQHP.integrator2.y
+generation.KPIWel.integrator2.y
+generation.senTGenOut.T
+generation.thrWayVal.threWayValFlow.vol.dynBal.U
+Finished
+Finished
+ = true
+
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.translation.log"); = true
 
 
 rCheck = checkModel("BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions");
@@ -200,6 +425,129 @@ Declaring variable: Boolean rScript ;
 savelog("BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.translation.log"); = true
 
 
+rCheck = checkModel("BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump");
+Check of BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump
+The model has the same number of unknowns and equations: 1694
+The model could not be deduced to be symbolically well-posed.
+The model has
+  1670+generation.heatPump.con.vol.dynBal.nPorts+2*generation.heatPump.eva.vol.dynBal.nPorts  +size(generation.heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns, 1)+  generation.heatPump.safCtr.opeEnv.bouMapHea.nor.nu+size(generation.heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns,   1)+generation.heatPump.safCtr.opeEnv.bouMapCoo.nor.nu+generation.multiSum.nu+  generation.eleHea.vol.dynBal.nPorts+generation.solThe.vol.dynBal.nPorts+  vol[1].dynBal.nPorts+vol[2].dynBal.nPorts
+scalar unknowns and
+  1625+(if weaDat.pAtmSou == IBPSA.BoundaryConditions.Types.DataSource.Parameter   then 1 else 0)+(if weaDat.TDewPoiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TDryBulSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TBlaSkySou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.relHumSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.opaSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.ceiHeiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.totSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winSpeSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winDirSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HInfHorSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HDifHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HGloHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HGloHor_HDifHor then 2 else 1)+(if generation.bou_sinkAir.use_Xi_in   then 2 else (if generation.bou_sinkAir.use_X_in then 1 else 3))+(if  not   generation.bou_sinkAir.use_p_in then 1 else 0)+(if  not generation.bou_sinkAir.use_h_in   then 1 else 0)+(if generation.bouEva.use_Xi_in then 2 else (if   generation.bouEva.use_X_in then 1 else 3))+(if bouTra[1].use_Xi_in then 1   else (if bouTra[1].use_X_in then 0 else 1))+(if  not bouTra[1].use_p_in then 1   else 0)+(if  not bouTra[1].use_T_in then 1 else 0)+(if bouTra[2].use_Xi_in   then 1 else (if bouTra[2].use_X_in then 0 else 1))+(if  not bouTra[2].use_p_in   then 1 else 0)+(if  not bouTra[2].use_T_in then 1 else 0)+(if  not   generation.heatPump.con.vol.dynBal.use_mWat_flow then 1 else 0)+3*  generation.heatPump.con.vol.dynBal.nPorts+(if  not generation.heatPump.eva.vol.dynBal.use_mWat_flow   then 1 else 0)+5*generation.heatPump.eva.vol.dynBal.nPorts+size(  generation.heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns, 1)+size(  generation.heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns, 1)+(if  not   generation.eleHea.vol.dynBal.use_mWat_flow then 1 else 0)+3*generation.eleHea.vol.dynBal.nPorts  +(if  not generation.solThe.vol.dynBal.use_mWat_flow then 1 else 0)+3*  generation.solThe.vol.dynBal.nPorts+(if  not vol[1].dynBal.use_mWat_flow then 1   else 0)+3*vol[1].dynBal.nPorts+(if  not vol[2].dynBal.use_mWat_flow then 1   else 0)+3*vol[2].dynBal.nPorts+(if  not pumDis[1].dpControlled_dp.vol.steBal.use_mWat_flow   then 1 else 0)+(if  not pumDis[2].dpControlled_dp.vol.steBal.use_mWat_flow   then 1 else 0)
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  1694
+Check of BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump successful.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/SimpleSolarThermalWithHeatPump.mos\",", "BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump\",", "BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump\\\");\",", "BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/SimpleSolarThermalWithHeatPump.mos");
+simulateModel("BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump");
+Translation of BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump
+The DAE has 1694 scalar unknowns and 1694 scalar equations.
+Redundant consistent initial conditions.
+Removed the following equations which are redundant and consistent: 
+  if (vol[1].dynBal.energyDynamics == Modelica.Fluid.Types.Dynamics.FixedInitial)     then 
+    vol[1].dynBal.medium.T = vol[1].dynBal.T_start;
+  else
+    if (vol[1].dynBal.energyDynamics == Modelica.Fluid.Types.Dynamics.      SteadyStateInitial) then 
+      der(vol[1].dynBal.medium.T) = 0;
+    end if;
+  end if;
+  if (generation.heatPump.eva.vol.dynBal.massDynamics == Modelica.Fluid.Types.Dynamics.    FixedInitial) then 
+    if (generation.heatPump.eva.vol.dynBal.initialize_p) then 
+      generation.heatPump.eva.vol.dynBal.medium.p = generation.heatPump.eva.vol.dynBal.p_start;
+    end if;
+  else
+    if (generation.heatPump.eva.vol.dynBal.massDynamics == Modelica.Fluid.Types.Dynamics.      SteadyStateInitial) then 
+      if (generation.heatPump.eva.vol.dynBal.initialize_p) then 
+        der(generation.heatPump.eva.vol.dynBal.medium.p) = 0;
+      end if;
+    end if;
+  end if;
+  if (vol[2].dynBal.energyDynamics == Modelica.Fluid.Types.Dynamics.FixedInitial)     then 
+    vol[2].dynBal.medium.T = vol[2].dynBal.T_start;
+  else
+    if (vol[2].dynBal.energyDynamics == Modelica.Fluid.Types.Dynamics.      SteadyStateInitial) then 
+      der(vol[2].dynBal.medium.T) = 0;
+    end if;
+  end if;
+ 
+This required evaluation of 
+the interactive parameters 
+    generation.bou_sinkAir.p(start = 101325)
+ 
+The redundancies involve
+initial equations: 
+  generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
+  320.15 = 320.15;
+  vol[2].dynBal.medium.T = vol[2].dynBal.T_start;
+ 
+ 
+Statistics
+ 
+Original Model
+  Number of components: 443
+  Variables: 3676
+  Constants: 69 (69 scalars)
+  Parameters: 1883 (2616 scalars)
+  Unknowns: 1724 (1754 scalars)
+  Differentiated variables: 25 scalars
+  Equations: 1646
+  Nontrivial: 1385
+Translated Model
+  Constants: 1619 scalars
+  Free parameters: 378 scalars
+  Parameter depending: 1101 scalars
+  Outputs: 7 scalars
+  Continuous time states: 17 scalars
+  Time-varying variables: 256 scalars
+  Alias variables: 1085 scalars
+  Number of mixed real/discrete systems of equations: 0
+  Sizes of linear systems of equations: { }
+  Sizes after manipulation of the linear systems: { }
+  Sizes of nonlinear systems of equations: {3}
+  Sizes after manipulation of the nonlinear systems: {1}
+  Number of numerical Jacobians: 0
+  Initialization problem
+    Sizes of nonlinear systems of equations: {9, 8, 1, 1}
+    Sizes after manipulation of the nonlinear systems: {1, 2, 1, 1}
+    Number of numerical Jacobians: 0
+ 
+Selected continuous time states
+Statically selected continuous time states
+generation.eleHea.vol.dynBal.U
+generation.heatPump.con.vol.dynBal.U
+generation.heatPump.eva.vol.dynBal.medium.Xi[1]
+generation.heatPump.eva.vol.dynBal.U
+generation.KPIEleHea.integrator1.y
+generation.KPIEleHea.integrator3.y
+generation.KPIHeaPum.integrator1.y
+generation.KPIHeaPum.integrator3.y
+generation.KPIPEleEleHea.integrator2.y
+generation.KPIQEleHea_flow.integrator2.y
+generation.KPIQHP.integrator2.y
+generation.KPIWel.integrator2.y
+generation.KPIWel1.integrator2.y
+generation.senTGenOut.T
+generation.solThe.senTCold.T
+generation.solThe.senTHot.T
+generation.solThe.vol.dynBal.U
+Finished
+Finished
+ = true
+
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.translation.log"); = true
+
+
 rCheck = checkModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem");
 Check of BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem
 The model has the same number of unknowns and equations: 679
@@ -244,8 +592,8 @@ Translated Model
   Parameter depending: 296 scalars
   Outputs: 1 scalars
   Continuous time states: 7 scalars
-  Time-varying variables: 152 scalars
-  Alias variables: 357 scalars
+  Time-varying variables: 151 scalars
+  Alias variables: 358 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0}
@@ -275,6 +623,309 @@ Finished
 Declaring variable: Boolean rScript ;
 
 savelog("BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries");
+Check of BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries
+The model has the same number of unknowns and equations: 1397
+The model could not be deduced to be symbolically well-posed.
+The model has
+  1378+generation.heatPump.con.vol.dynBal.nPorts+2*generation.heatPump.eva.vol.dynBal.nPorts  +size(generation.heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns, 1)+  generation.heatPump.safCtr.opeEnv.bouMapHea.nor.nu+size(generation.heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns,   1)+generation.heatPump.safCtr.opeEnv.bouMapCoo.nor.nu+generation.multiSum.nu+  generation.boi.vol.dynBal.nPorts+vol[1].dynBal.nPorts
+scalar unknowns and
+  1346+(if weaDat.pAtmSou == IBPSA.BoundaryConditions.Types.DataSource.Parameter   then 1 else 0)+(if weaDat.TDewPoiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TDryBulSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TBlaSkySou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.relHumSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.opaSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.ceiHeiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.totSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winSpeSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winDirSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HInfHorSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HDifHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HGloHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HGloHor_HDifHor then 2 else 1)+(if generation.bou_sinkAir.use_Xi_in   then 2 else (if generation.bou_sinkAir.use_X_in then 1 else 3))+(if  not   generation.bou_sinkAir.use_p_in then 1 else 0)+(if  not generation.bou_sinkAir.use_h_in   then 1 else 0)+(if generation.bouEva.use_Xi_in then 2 else (if   generation.bouEva.use_X_in then 1 else 3))+(if bouTra[1].use_Xi_in then 1   else (if bouTra[1].use_X_in then 0 else 1))+(if  not bouTra[1].use_p_in then 1   else 0)+(if  not bouTra[1].use_T_in then 1 else 0)+(if  not generation.heatPump.con.vol.dynBal.use_mWat_flow   then 1 else 0)+3*generation.heatPump.con.vol.dynBal.nPorts+(if  not   generation.heatPump.eva.vol.dynBal.use_mWat_flow then 1 else 0)+5*  generation.heatPump.eva.vol.dynBal.nPorts+size(generation.heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns,   1)+size(generation.heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns, 1)+(if    not generation.boi.vol.dynBal.use_mWat_flow then 1 else 0)+3*generation.boi.vol.dynBal.nPorts  +(if  not vol[1].dynBal.use_mWat_flow then 1 else 0)+3*vol[1].dynBal.nPorts+(  if  not pumDis[1].dpControlled_dp.vol.steBal.use_mWat_flow then 1 else 0)
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  1397
+Check of BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries successful.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/HeatPumpAndGasBoilerSeries.mos\",", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries\",", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries\\\");\",", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/HeatPumpAndGasBoilerSeries.mos");
+simulateModel("BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries");
+Translation of BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries
+The DAE has 1397 scalar unknowns and 1397 scalar equations.
+Redundant consistent initial conditions.
+Removed the following equations which are redundant and consistent: 
+  if (vol[1].dynBal.energyDynamics == Modelica.Fluid.Types.Dynamics.FixedInitial)     then 
+    vol[1].dynBal.medium.T = vol[1].dynBal.T_start;
+  else
+    if (vol[1].dynBal.energyDynamics == Modelica.Fluid.Types.Dynamics.      SteadyStateInitial) then 
+      der(vol[1].dynBal.medium.T) = 0;
+    end if;
+  end if;
+  if (generation.heatPump.eva.vol.dynBal.massDynamics == Modelica.Fluid.Types.Dynamics.    FixedInitial) then 
+    if (generation.heatPump.eva.vol.dynBal.initialize_p) then 
+      generation.heatPump.eva.vol.dynBal.medium.p = generation.heatPump.eva.vol.dynBal.p_start;
+    end if;
+  else
+    if (generation.heatPump.eva.vol.dynBal.massDynamics == Modelica.Fluid.Types.Dynamics.      SteadyStateInitial) then 
+      if (generation.heatPump.eva.vol.dynBal.initialize_p) then 
+        der(generation.heatPump.eva.vol.dynBal.medium.p) = 0;
+      end if;
+    end if;
+  end if;
+ 
+This required evaluation of 
+the interactive parameters 
+    generation.bou_sinkAir.p(start = 101325)
+ 
+The redundancies involve
+initial equations: 
+  generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
+  320.15 = 320.15;
+ 
+ 
+Statistics
+ 
+Original Model
+  Number of components: 350
+  Variables: 2796
+  Constants: 50 (50 scalars)
+  Parameters: 1424 (2044 scalars)
+  Unknowns: 1322 (1436 scalars)
+  Differentiated variables: 19 scalars
+  Equations: 1304
+  Nontrivial: 1115
+Translated Model
+  Constants: 1214 scalars
+  Free parameters: 337 scalars
+  Parameter depending: 869 scalars
+  Outputs: 8 scalars
+  Continuous time states: 13 scalars
+  Time-varying variables: 232 scalars
+  Alias variables: 878 scalars
+  Number of mixed real/discrete systems of equations: 0
+  Sizes of linear systems of equations: {4}
+  Sizes after manipulation of the linear systems: {0}
+  Sizes of nonlinear systems of equations: {3}
+  Sizes after manipulation of the nonlinear systems: {1}
+  Number of numerical Jacobians: 0
+  Initialization problem
+    Sizes of nonlinear systems of equations: {9, 1}
+    Sizes after manipulation of the nonlinear systems: {1, 1}
+    Number of numerical Jacobians: 0
+ 
+Selected continuous time states
+Statically selected continuous time states
+generation.boi.internalCapacity.T
+generation.boi.senTCold.T
+generation.boi.senTHot.T
+generation.heatPump.con.vol.dynBal.U
+generation.heatPump.eva.vol.dynBal.medium.Xi[1]
+generation.heatPump.eva.vol.dynBal.U
+generation.KPIBoi.integrator2.y
+generation.KPIBoiFue.integrator2.y
+generation.KPIHeaPum.integrator1.y
+generation.KPIHeaPum.integrator3.y
+generation.KPIQHP.integrator2.y
+generation.KPIWel.integrator2.y
+generation.senTGenOut.T
+Finished
+Finished
+ = true
+
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater");
+Check of BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater
+The model has the same number of unknowns and equations: 549
+The model could not be deduced to be symbolically well-posed.
+The model has
+  545+generation.hea.vol.dynBal.nPorts+vol[1].dynBal.nPorts
+scalar unknowns and
+  526+(if weaDat.pAtmSou == IBPSA.BoundaryConditions.Types.DataSource.Parameter   then 1 else 0)+(if weaDat.TDewPoiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TDryBulSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TBlaSkySou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.relHumSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.opaSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.ceiHeiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.totSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winSpeSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winDirSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HInfHorSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HDifHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HGloHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HGloHor_HDifHor then 2 else 1)+(if bouTra[1].use_Xi_in then 1 else (if   bouTra[1].use_X_in then 0 else 1))+(if  not bouTra[1].use_p_in then 1 else 0)+  (if  not bouTra[1].use_T_in then 1 else 0)+(if  not generation.hea.vol.dynBal.use_mWat_flow   then 1 else 0)+3*generation.hea.vol.dynBal.nPorts+(if  not vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*vol[1].dynBal.nPorts+(if  not pumDis[1].dpControlled_dp.vol.steBal.use_mWat_flow   then 1 else 0)
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  549
+Check of BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater successful.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/ElectricalHeater.mos\",", "BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater\",", "BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater\\\");\",", "BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/ElectricalHeater.mos");
+simulateModel("BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater");
+Translation of BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater
+The DAE has 549 scalar unknowns and 549 scalar equations.
+Redundant consistent initial conditions.
+Removed the following equations which are redundant and consistent: 
+  if (vol[1].dynBal.energyDynamics == Modelica.Fluid.Types.Dynamics.FixedInitial)     then 
+    vol[1].dynBal.medium.T = vol[1].dynBal.T_start;
+  else
+    if (vol[1].dynBal.energyDynamics == Modelica.Fluid.Types.Dynamics.      SteadyStateInitial) then 
+      der(vol[1].dynBal.medium.T) = 0;
+    end if;
+  end if;
+ 
+The redundancies involve
+initial equations: 
+  vol[1].dynBal.medium.T = vol[1].dynBal.T_start;
+ 
+ 
+Statistics
+ 
+Original Model
+  Number of components: 161
+  Variables: 1345
+  Constants: 37 (37 scalars)
+  Parameters: 686 (839 scalars)
+  Unknowns: 622 (570 scalars)
+  Differentiated variables: 7 scalars
+  Equations: 587
+  Nontrivial: 492
+Translated Model
+  Constants: 592 scalars
+  Free parameters: 93 scalars
+  Parameter depending: 305 scalars
+  Outputs: 2 scalars
+  Continuous time states: 4 scalars
+  Time-varying variables: 110 scalars
+  Alias variables: 346 scalars
+  Number of mixed real/discrete systems of equations: 0
+  Sizes of linear systems of equations: { }
+  Sizes after manipulation of the linear systems: { }
+  Sizes of nonlinear systems of equations: {3}
+  Sizes after manipulation of the nonlinear systems: {1}
+  Number of numerical Jacobians: 0
+  Initialization problem
+    Sizes of nonlinear systems of equations: {8, 1}
+    Sizes after manipulation of the nonlinear systems: {1, 1}
+    Number of numerical Jacobians: 0
+ 
+Selected continuous time states
+Statically selected continuous time states
+generation.hea.vol.dynBal.U
+generation.KPIEleHea.integrator1.y
+generation.KPIEleHea.integrator3.y
+generation.KPIQEleHea.integrator2.y
+Finished
+Finished
+ = true
+
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Generation.Tests.HeatPump");
+Check of BESMod.Systems.Hydraulical.Generation.Tests.HeatPump
+The model has the same number of unknowns and equations: 1234
+The model could not be deduced to be symbolically well-posed.
+The model has
+  1217+generation.heatPump.con.vol.dynBal.nPorts+2*generation.heatPump.eva.vol.dynBal.nPorts  +size(generation.heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns, 1)+  generation.heatPump.safCtr.opeEnv.bouMapHea.nor.nu+size(generation.heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns,   1)+generation.heatPump.safCtr.opeEnv.bouMapCoo.nor.nu+generation.multiSum.nu+  vol[1].dynBal.nPorts
+scalar unknowns and
+  1190+(if weaDat.pAtmSou == IBPSA.BoundaryConditions.Types.DataSource.Parameter   then 1 else 0)+(if weaDat.TDewPoiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TDryBulSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TBlaSkySou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.relHumSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.opaSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.ceiHeiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.totSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winSpeSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winDirSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HInfHorSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HDifHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HGloHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HGloHor_HDifHor then 2 else 1)+(if generation.bou_sinkAir.use_Xi_in   then 2 else (if generation.bou_sinkAir.use_X_in then 1 else 3))+(if  not   generation.bou_sinkAir.use_p_in then 1 else 0)+(if  not generation.bou_sinkAir.use_h_in   then 1 else 0)+(if generation.bouEva.use_Xi_in then 2 else (if   generation.bouEva.use_X_in then 1 else 3))+(if bouTra[1].use_Xi_in then 1   else (if bouTra[1].use_X_in then 0 else 1))+(if  not bouTra[1].use_p_in then 1   else 0)+(if  not bouTra[1].use_T_in then 1 else 0)+(if  not generation.heatPump.con.vol.dynBal.use_mWat_flow   then 1 else 0)+3*generation.heatPump.con.vol.dynBal.nPorts+(if  not   generation.heatPump.eva.vol.dynBal.use_mWat_flow then 1 else 0)+5*  generation.heatPump.eva.vol.dynBal.nPorts+size(generation.heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns,   1)+size(generation.heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns, 1)+(if    not vol[1].dynBal.use_mWat_flow then 1 else 0)+3*vol[1].dynBal.nPorts+(if    not pumDis[1].dpControlled_dp.vol.steBal.use_mWat_flow then 1 else 0)
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  1234
+Check of BESMod.Systems.Hydraulical.Generation.Tests.HeatPump successful.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/HeatPump.mos\",", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Generation.Tests.HeatPump\",", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Generation.Tests.HeatPump\\\");\",", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/HeatPump.mos");
+simulateModel("BESMod.Systems.Hydraulical.Generation.Tests.HeatPump", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Generation.Tests.HeatPump");
+Translation of BESMod.Systems.Hydraulical.Generation.Tests.HeatPump
+The DAE has 1234 scalar unknowns and 1234 scalar equations.
+Redundant consistent initial conditions.
+Removed the following equations which are redundant and consistent: 
+  if (vol[1].dynBal.energyDynamics == Modelica.Fluid.Types.Dynamics.FixedInitial)     then 
+    vol[1].dynBal.medium.T = vol[1].dynBal.T_start;
+  else
+    if (vol[1].dynBal.energyDynamics == Modelica.Fluid.Types.Dynamics.      SteadyStateInitial) then 
+      der(vol[1].dynBal.medium.T) = 0;
+    end if;
+  end if;
+  if (generation.heatPump.eva.vol.dynBal.massDynamics == Modelica.Fluid.Types.Dynamics.    FixedInitial) then 
+    if (generation.heatPump.eva.vol.dynBal.initialize_p) then 
+      generation.heatPump.eva.vol.dynBal.medium.p = generation.heatPump.eva.vol.dynBal.p_start;
+    end if;
+  else
+    if (generation.heatPump.eva.vol.dynBal.massDynamics == Modelica.Fluid.Types.Dynamics.      SteadyStateInitial) then 
+      if (generation.heatPump.eva.vol.dynBal.initialize_p) then 
+        der(generation.heatPump.eva.vol.dynBal.medium.p) = 0;
+      end if;
+    end if;
+  end if;
+ 
+This required evaluation of 
+the interactive parameters 
+    generation.bou_sinkAir.p(start = 101325)
+ 
+The redundancies involve
+initial equations: 
+  generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
+  320.15 = 320.15;
+ 
+ 
+Statistics
+ 
+Original Model
+  Number of components: 314
+  Variables: 2401
+  Constants: 45 (45 scalars)
+  Parameters: 1233 (1819 scalars)
+  Unknowns: 1123 (1269 scalars)
+  Differentiated variables: 12 scalars
+  Equations: 1134
+  Nontrivial: 976
+Translated Model
+  Constants: 1036 scalars
+  Free parameters: 309 scalars
+  Parameter depending: 807 scalars
+  Outputs: 6 scalars
+  Continuous time states: 8 scalars
+  Time-varying variables: 198 scalars
+  Alias variables: 783 scalars
+  Number of mixed real/discrete systems of equations: 0
+  Sizes of linear systems of equations: { }
+  Sizes after manipulation of the linear systems: { }
+  Sizes of nonlinear systems of equations: {3}
+  Sizes after manipulation of the nonlinear systems: {1}
+  Number of numerical Jacobians: 0
+  Initialization problem
+    Sizes of nonlinear systems of equations: {7, 1}
+    Sizes after manipulation of the nonlinear systems: {1, 1}
+    Number of numerical Jacobians: 0
+ 
+Selected continuous time states
+Statically selected continuous time states
+generation.heatPump.con.vol.dynBal.U
+generation.heatPump.eva.vol.dynBal.medium.Xi[1]
+generation.heatPump.eva.vol.dynBal.U
+generation.KPIHeaPum.integrator1.y
+generation.KPIHeaPum.integrator3.y
+generation.KPIQHP.integrator2.y
+generation.KPIWel.integrator2.y
+generation.senTGenOut.T
+Finished
+Finished
+ = true
+
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.translation.log"); = true
 
 
 rCheck = checkModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem");
@@ -321,8 +972,8 @@ Translated Model
   Parameter depending: 444 scalars
   Outputs: 1 scalars
   Continuous time states: 7 scalars
-  Time-varying variables: 162 scalars
-  Alias variables: 373 scalars
+  Time-varying variables: 161 scalars
+  Alias variables: 374 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0}
@@ -401,8 +1052,8 @@ Translated Model
   Parameter depending: 316 scalars
   Outputs: 1 scalars
   Continuous time states: 9 scalars
-  Time-varying variables: 176 scalars
-  Alias variables: 376 scalars
+  Time-varying variables: 175 scalars
+  Alias variables: 377 scalars
   Assumed default initial conditions: 1
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2}
@@ -435,4 +1086,217 @@ Finished
 
 Declaring variable: Boolean rScript ;
 
-savelog("BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.translation.log");
+savelog("BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler");
+Check of BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler
+The model has the same number of unknowns and equations: 593
+The model could not be deduced to be symbolically well-posed.
+The model has
+  589+generation.boi.vol.dynBal.nPorts+vol[1].dynBal.nPorts
+scalar unknowns and
+  570+(if weaDat.pAtmSou == IBPSA.BoundaryConditions.Types.DataSource.Parameter   then 1 else 0)+(if weaDat.TDewPoiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TDryBulSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TBlaSkySou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.relHumSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.opaSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.ceiHeiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.totSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winSpeSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winDirSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HInfHorSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HDifHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HGloHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HGloHor_HDifHor then 2 else 1)+(if bouTra[1].use_Xi_in then 1 else (if   bouTra[1].use_X_in then 0 else 1))+(if  not bouTra[1].use_p_in then 1 else 0)+  (if  not bouTra[1].use_T_in then 1 else 0)+(if  not generation.boi.vol.dynBal.use_mWat_flow   then 1 else 0)+3*generation.boi.vol.dynBal.nPorts+(if  not vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*vol[1].dynBal.nPorts+(if  not pumDis[1].dpControlled_dp.vol.steBal.use_mWat_flow   then 1 else 0)
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  593
+Check of BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler successful.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/GasBoiler.mos\",", "BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler\",", "BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler\\\");\",", "BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/GasBoiler.mos");
+simulateModel("BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler");
+Translation of BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler
+The DAE has 593 scalar unknowns and 593 scalar equations.
+Redundant consistent initial conditions.
+Removed the following equations which are redundant and consistent: 
+  if (vol[1].dynBal.energyDynamics == Modelica.Fluid.Types.Dynamics.FixedInitial)     then 
+    vol[1].dynBal.medium.T = vol[1].dynBal.T_start;
+  else
+    if (vol[1].dynBal.energyDynamics == Modelica.Fluid.Types.Dynamics.      SteadyStateInitial) then 
+      der(vol[1].dynBal.medium.T) = 0;
+    end if;
+  end if;
+ 
+The redundancies involve
+initial equations: 
+  vol[1].dynBal.medium.T = vol[1].dynBal.T_start;
+ 
+ 
+Statistics
+ 
+Original Model
+  Number of components: 166
+  Variables: 1468
+  Constants: 36 (36 scalars)
+  Parameters: 755 (948 scalars)
+  Unknowns: 677 (614 scalars)
+  Differentiated variables: 10 scalars
+  Equations: 636
+  Nontrivial: 540
+Translated Model
+  Constants: 661 scalars
+  Free parameters: 106 scalars
+  Parameter depending: 340 scalars
+  Outputs: 3 scalars
+  Continuous time states: 6 scalars
+  Time-varying variables: 123 scalars
+  Alias variables: 368 scalars
+  Number of mixed real/discrete systems of equations: 0
+  Sizes of linear systems of equations: {5}
+  Sizes after manipulation of the linear systems: {0}
+  Sizes of nonlinear systems of equations: {3}
+  Sizes after manipulation of the nonlinear systems: {1}
+  Number of numerical Jacobians: 0
+  Initialization problem
+    Sizes of nonlinear systems of equations: {8, 1, 1}
+    Sizes after manipulation of the nonlinear systems: {2, 0, 1}
+    Number of numerical Jacobians: 0
+ 
+Selected continuous time states
+Statically selected continuous time states
+generation.boi.senTCold.T
+generation.boi.senTHot.T
+generation.boi.vol.dynBal.U
+generation.KPIBoi.integrator1.y
+generation.KPIBoi.integrator3.y
+generation.KPIQBoi.integrator2.y
+Finished
+Finished
+ = true
+
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump");
+Check of BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump
+The model has the same number of unknowns and equations: 2157
+The model could not be deduced to be symbolically well-posed.
+The model has
+  2095+6*generation.solCol.nSeg+generation.heatPump.con.vol.dynBal.nPorts+2*  generation.heatPump.eva.vol.dynBal.nPorts+size(generation.heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns,   1)+generation.heatPump.safCtr.opeEnv.bouMapHea.nor.nu+size(generation.heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns,   1)+generation.heatPump.safCtr.opeEnv.bouMapCoo.nor.nu+generation.multiSum.nu+  generation.eleHea.vol.dynBal.nPorts+generation.solCol.vol[1].dynBal.nPorts+  generation.solCol.vol[2].dynBal.nPorts+generation.solCol.vol[3].dynBal.nPorts+  generation.solCol.vol[4].dynBal.nPorts+generation.solCol.vol[5].dynBal.nPorts+  vol[1].dynBal.nPorts+vol[2].dynBal.nPorts
+scalar unknowns and
+  2038+(if weaDat.pAtmSou == IBPSA.BoundaryConditions.Types.DataSource.Parameter   then 1 else 0)+(if weaDat.TDewPoiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TDryBulSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TBlaSkySou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.relHumSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.opaSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.ceiHeiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.totSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winSpeSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winDirSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HInfHorSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HDifHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HGloHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HGloHor_HDifHor then 2 else 1)+(if generation.bou_sinkAir.use_Xi_in   then 2 else (if generation.bou_sinkAir.use_X_in then 1 else 3))+(if  not   generation.bou_sinkAir.use_p_in then 1 else 0)+(if  not generation.bou_sinkAir.use_h_in   then 1 else 0)+(if generation.bouEva.use_Xi_in then 2 else (if   generation.bouEva.use_X_in then 1 else 3))+2*(if  not generation.solCol.use_shaCoe_in   then 1 else 0)+4*generation.solCol.nSeg+(if bouTra[1].use_Xi_in then 1 else (  if bouTra[1].use_X_in then 0 else 1))+(if  not bouTra[1].use_p_in then 1 else 0)  +(if  not bouTra[1].use_T_in then 1 else 0)+(if bouTra[2].use_Xi_in then 1   else (if bouTra[2].use_X_in then 0 else 1))+(if  not bouTra[2].use_p_in then 1   else 0)+(if  not bouTra[2].use_T_in then 1 else 0)+(if  not generation.heatPump.con.vol.dynBal.use_mWat_flow   then 1 else 0)+3*generation.heatPump.con.vol.dynBal.nPorts+(if  not   generation.heatPump.eva.vol.dynBal.use_mWat_flow then 1 else 0)+5*  generation.heatPump.eva.vol.dynBal.nPorts+size(generation.heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns,   1)+size(generation.heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns, 1)+(if    not generation.eleHea.vol.dynBal.use_mWat_flow then 1 else 0)+3*  generation.eleHea.vol.dynBal.nPorts+(if  not generation.solCol.vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*generation.solCol.vol[1].dynBal.nPorts+(if  not   generation.solCol.vol[2].dynBal.use_mWat_flow then 1 else 0)+3*  generation.solCol.vol[2].dynBal.nPorts+(if  not generation.solCol.vol[3].dynBal.use_mWat_flow   then 1 else 0)+3*generation.solCol.vol[3].dynBal.nPorts+(if  not   generation.solCol.vol[4].dynBal.use_mWat_flow then 1 else 0)+3*  generation.solCol.vol[4].dynBal.nPorts+(if  not generation.solCol.vol[5].dynBal.use_mWat_flow   then 1 else 0)+3*generation.solCol.vol[5].dynBal.nPorts+(if  not   vol[1].dynBal.use_mWat_flow then 1 else 0)+3*vol[1].dynBal.nPorts+(if  not   vol[2].dynBal.use_mWat_flow then 1 else 0)+3*vol[2].dynBal.nPorts+(if  not   pumDis[1].dpControlled_dp.vol.steBal.use_mWat_flow then 1 else 0)+(if  not   pumDis[2].dpControlled_dp.vol.steBal.use_mWat_flow then 1 else 0)
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  2157
+Check of BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump successful.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/DetailedSolarThermalWithHeatPump.mos\",", "BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump\",", "BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump\\\");\",", "BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/DetailedSolarThermalWithHeatPump.mos");
+simulateModel("BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump");
+Translation of BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump
+The DAE has 2157 scalar unknowns and 2157 scalar equations.
+Redundant consistent initial conditions.
+Removed the following equations which are redundant and consistent: 
+  if (vol[1].dynBal.energyDynamics == Modelica.Fluid.Types.Dynamics.FixedInitial)     then 
+    vol[1].dynBal.medium.T = vol[1].dynBal.T_start;
+  else
+    if (vol[1].dynBal.energyDynamics == Modelica.Fluid.Types.Dynamics.      SteadyStateInitial) then 
+      der(vol[1].dynBal.medium.T) = 0;
+    end if;
+  end if;
+  if (generation.heatPump.eva.vol.dynBal.massDynamics == Modelica.Fluid.Types.Dynamics.    FixedInitial) then 
+    if (generation.heatPump.eva.vol.dynBal.initialize_p) then 
+      generation.heatPump.eva.vol.dynBal.medium.p = generation.heatPump.eva.vol.dynBal.p_start;
+    end if;
+  else
+    if (generation.heatPump.eva.vol.dynBal.massDynamics == Modelica.Fluid.Types.Dynamics.      SteadyStateInitial) then 
+      if (generation.heatPump.eva.vol.dynBal.initialize_p) then 
+        der(generation.heatPump.eva.vol.dynBal.medium.p) = 0;
+      end if;
+    end if;
+  end if;
+  if (vol[2].dynBal.energyDynamics == Modelica.Fluid.Types.Dynamics.FixedInitial)     then 
+    vol[2].dynBal.medium.T = vol[2].dynBal.T_start;
+  else
+    if (vol[2].dynBal.energyDynamics == Modelica.Fluid.Types.Dynamics.      SteadyStateInitial) then 
+      der(vol[2].dynBal.medium.T) = 0;
+    end if;
+  end if;
+ 
+This required evaluation of 
+the interactive parameters 
+    generation.bou_sinkAir.p(start = 101325)
+ 
+The redundancies involve
+initial equations: 
+  generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
+  320.15 = 320.15;
+  vol[2].dynBal.medium.T = vol[2].dynBal.T_start;
+ 
+ 
+Statistics
+ 
+Original Model
+  Number of components: 510
+  Variables: 4505
+  Constants: 96 (96 scalars)
+  Parameters: 2148 (2859 scalars)
+  Unknowns: 2261 (2225 scalars)
+  Differentiated variables: 31 scalars
+  Equations: 1980
+  Nontrivial: 1632
+Translated Model
+  Constants: 1859 scalars
+  Free parameters: 391 scalars
+  Parameter depending: 1176 scalars
+  Outputs: 7 scalars
+  Continuous time states: 19 scalars
+  Time-varying variables: 365 scalars
+  Alias variables: 1389 scalars
+  Number of mixed real/discrete systems of equations: 0
+  Sizes of linear systems of equations: { }
+  Sizes after manipulation of the linear systems: { }
+  Sizes of nonlinear systems of equations: {3}
+  Sizes after manipulation of the nonlinear systems: {1}
+  Number of numerical Jacobians: 0
+  Initialization problem
+    Sizes of nonlinear systems of equations: {9, 8, 1, 1}
+    Sizes after manipulation of the nonlinear systems: {1, 1, 1, 1}
+    Number of numerical Jacobians: 0
+ 
+Selected continuous time states
+Statically selected continuous time states
+generation.eleHea.vol.dynBal.U
+generation.heatPump.con.vol.dynBal.U
+generation.heatPump.eva.vol.dynBal.medium.Xi[1]
+generation.heatPump.eva.vol.dynBal.U
+generation.KPIEleHea.integrator1.y
+generation.KPIEleHea.integrator3.y
+generation.KPIHeaPum.integrator1.y
+generation.KPIHeaPum.integrator3.y
+generation.KPIPEleEleHea.integrator2.y
+generation.KPIQEleHea_flow.integrator2.y
+generation.KPIQHP.integrator2.y
+generation.KPIQSol.integrator2.y
+generation.KPIWel.integrator2.y
+generation.senTGenOut.T
+generation.solCol.vol[1].dynBal.U
+generation.solCol.vol[2].dynBal.U
+generation.solCol.vol[3].dynBal.U
+generation.solCol.vol[4].dynBal.U
+generation.solCol.vol[5].dynBal.U
+Finished
+Finished
+ = true
+
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.translation.log");

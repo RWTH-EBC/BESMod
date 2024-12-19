@@ -1,6 +1,27 @@
 ﻿[
   {
     "comparison": {
+      "file_name": "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.mat",
+      "funnel_dirs": [],
+      "success_rate": 0,
+      "t_err_max": [],
+      "test_passed": [],
+      "var_groups": [],
+      "variables": [],
+      "warnings": []
+    },
+    "model": "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel",
+    "simulation": {
+      "elapsed_time": 0.0256741,
+      "final_time": 3600,
+      "jacobians": 26,
+      "start_time": 0,
+      "state_events": 3,
+      "success": true
+    }
+  },
+  {
+    "comparison": {
       "file_name": "BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.mat",
       "funnel_dirs": [],
       "success_rate": 0,
@@ -12,11 +33,32 @@
     },
     "model": "BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating",
     "simulation": {
-      "elapsed_time": 0.0153341,
+      "elapsed_time": 0.0165191,
       "final_time": 36000,
       "jacobians": 6,
       "start_time": 0,
       "state_events": 0,
+      "success": true
+    }
+  },
+  {
+    "comparison": {
+      "file_name": "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.mat",
+      "funnel_dirs": [],
+      "success_rate": 0,
+      "t_err_max": [],
+      "test_passed": [],
+      "var_groups": [],
+      "variables": [],
+      "warnings": []
+    },
+    "model": "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater",
+    "simulation": {
+      "elapsed_time": 0.013015,
+      "final_time": 3600,
+      "jacobians": 21,
+      "start_time": 0,
+      "state_events": 7,
       "success": true
     }
   },
@@ -105,11 +147,32 @@
     },
     "model": "BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions",
     "simulation": {
-      "elapsed_time": 0.0211,
+      "elapsed_time": 0.0344,
       "final_time": 3600,
       "jacobians": 184,
       "start_time": 0,
       "state_events": 0,
+      "success": true
+    }
+  },
+  {
+    "comparison": {
+      "file_name": "BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.mat",
+      "funnel_dirs": [],
+      "success_rate": 0,
+      "t_err_max": [],
+      "test_passed": [],
+      "var_groups": [],
+      "variables": [],
+      "warnings": []
+    },
+    "model": "BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump",
+    "simulation": {
+      "elapsed_time": 0.0176032,
+      "final_time": 3600,
+      "jacobians": 21,
+      "start_time": 0,
+      "state_events": 7,
       "success": true
     }
   },
@@ -126,11 +189,74 @@
     },
     "model": "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem",
     "simulation": {
-      "elapsed_time": 0.00903797,
+      "elapsed_time": 0.0130579,
       "final_time": 12000,
       "jacobians": 5,
       "start_time": 0,
       "state_events": 0,
+      "success": true
+    }
+  },
+  {
+    "comparison": {
+      "file_name": "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries.mat",
+      "funnel_dirs": [],
+      "success_rate": 0,
+      "t_err_max": [],
+      "test_passed": [],
+      "var_groups": [],
+      "variables": [],
+      "warnings": []
+    },
+    "model": "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries",
+    "simulation": {
+      "elapsed_time": 0.019191,
+      "final_time": 3600,
+      "jacobians": 18,
+      "start_time": 0,
+      "state_events": 7,
+      "success": true
+    }
+  },
+  {
+    "comparison": {
+      "file_name": "BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.mat",
+      "funnel_dirs": [],
+      "success_rate": 0,
+      "t_err_max": [],
+      "test_passed": [],
+      "var_groups": [],
+      "variables": [],
+      "warnings": []
+    },
+    "model": "BESMod.Systems.Hydraulical.Generation.Tests.HeatPump",
+    "simulation": {
+      "elapsed_time": 0.0115201,
+      "final_time": 3600,
+      "jacobians": 21,
+      "start_time": 0,
+      "state_events": 7,
+      "success": true
+    }
+  },
+  {
+    "comparison": {
+      "file_name": "BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater.mat",
+      "funnel_dirs": [],
+      "success_rate": 0,
+      "t_err_max": [],
+      "test_passed": [],
+      "var_groups": [],
+      "variables": [],
+      "warnings": []
+    },
+    "model": "BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater",
+    "simulation": {
+      "elapsed_time": 0.012507,
+      "final_time": 3600,
+      "jacobians": 24,
+      "start_time": 0,
+      "state_events": 5,
       "success": true
     }
   },
@@ -147,7 +273,7 @@
     },
     "model": "BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem",
     "simulation": {
-      "elapsed_time": 0.0110562,
+      "elapsed_time": 0.0117531,
       "final_time": 12000,
       "jacobians": 7,
       "start_time": 0,
@@ -168,11 +294,53 @@
     },
     "model": "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve",
     "simulation": {
-      "elapsed_time": 0.012176,
+      "elapsed_time": 0.011512,
       "final_time": 12000,
       "jacobians": 13,
       "start_time": 0,
       "state_events": 1,
+      "success": true
+    }
+  },
+  {
+    "comparison": {
+      "file_name": "BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.mat",
+      "funnel_dirs": [],
+      "success_rate": 0,
+      "t_err_max": [],
+      "test_passed": [],
+      "var_groups": [],
+      "variables": [],
+      "warnings": []
+    },
+    "model": "BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump",
+    "simulation": {
+      "elapsed_time": 0.0164881,
+      "final_time": 3600,
+      "jacobians": 21,
+      "start_time": 0,
+      "state_events": 7,
+      "success": true
+    }
+  },
+  {
+    "comparison": {
+      "file_name": "BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.mat",
+      "funnel_dirs": [],
+      "success_rate": 0,
+      "t_err_max": [],
+      "test_passed": [],
+      "var_groups": [],
+      "variables": [],
+      "warnings": []
+    },
+    "model": "BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler",
+    "simulation": {
+      "elapsed_time": 0.0107498,
+      "final_time": 3600,
+      "jacobians": 25,
+      "start_time": 0,
+      "state_events": 5,
       "success": true
     }
   }

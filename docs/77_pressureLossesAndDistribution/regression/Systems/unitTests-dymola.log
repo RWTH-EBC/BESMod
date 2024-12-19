@@ -16,6 +16,14 @@ Regression tests are only run for the following package:
 *** Warning: BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions: Translation statistics for simulation and results changed for number of continuous time states.
  Old = 20
  New = 10
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Systems_Hydraulical_Generation_Tests_SimpleSolarThermalWithHeatPump.txt.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Systems_Hydraulical_Generation_Tests_ElectricalHeater.txt.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Systems_Hydraulical_Generation_Tests_GasBoiler.txt.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Systems_Hydraulical_Generation_Tests_HeatPumpAndElectricHeater.txt.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Systems_Hydraulical_Generation_Tests_HeatPumpAndGasBoilerSeries.txt.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Systems_Hydraulical_Generation_Tests_HeatPump.txt.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Systems_Hydraulical_Generation_Tests_DetailedSolarThermalWithHeatPump.txt.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Systems_Hydraulical_Generation_Tests_HeatPumpAndGasBoilerParallel.txt.
 Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Systems_Hydraulical_Transfer_Tests_TestPressureBasedSystem.txt.
 Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Systems_Hydraulical_Transfer_Tests_TestIdealValveRadiatorSystem.txt.
 Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Systems_Hydraulical_Transfer_Tests_TestPressureBasedSystemWithReliefValve.txt.
