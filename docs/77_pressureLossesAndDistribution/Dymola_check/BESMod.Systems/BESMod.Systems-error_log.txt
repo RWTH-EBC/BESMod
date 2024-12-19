@@ -1,88 +1,11 @@
 
-Error in model:  BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly 
-Check of <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly">BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly</a>
-Error: Component type specifier BESMod.Systems.RecordsCollection.Movers.DefaultMover not found
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialGasBoilerBuildingOnly.mo, line <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#text:38">39</a>
- Component context: DHW.parPum
-  Component declared as BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly">BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly</a>
-Error: Class or component 'parPum' not found in StandardProfiles DHW
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialGasBoilerBuildingOnly.mo, line 37
- Component context: DHW
-  Component declared as StandardProfiles DHW in <a href="Modelica://BESMod.Systems.Demand.DHW">BESMod.Systems.Demand.DHW</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly">BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialGasBoilerBuildingOnly.mo, line 2
-Error: Class or component 'dpSup_nominal' not found in PartialTransfer transfer
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
- Component context: hydraulic.transfer
-  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/PartialBuildingEnergySystem.mo, line 87
-Error: Class or component 'dpSupOld_design' not found in PartialTransfer transfer
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
- Component context: hydraulic.transfer
-  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/PartialBuildingEnergySystem.mo, line 87
-Error: Class or component 'dpSup_nominal' not found in PartialTransfer transfer
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
- Component context: hydraulic.transfer
-  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/PartialBuildingEnergySystem.mo, line 87
-Error: Class or component 'dpSupOld_design' not found in PartialTransfer transfer
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
- Component context: hydraulic.transfer
-  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/PartialBuildingEnergySystem.mo, line 87
-Error: Class or component 'parPum' not found in GasBoiler generation
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialGasBoilerBuildingOnly.mo, line 10
- Component context: hydraulic.generation
-  Component declared as GasBoiler generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly">BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialGasBoilerBuildingOnly.mo, line 2
-Error: Overriding final modifier for nParallelDem
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BuildingOnly.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BuildingOnly.BaseClasses.PartialDistribution#text:2">4</a>
-Overriding found at:
- Component context: BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly.Systems.BaseClasses.PartialBuildingEnergySystem.hydraulic.distribution.nParallelDem
-  Component declared as BESMod.Systems.Hydraulical.HydraulicSystem hydraulic in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly.Systems.BaseClasses.PartialBuildingEnergySystem">BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly.Systems.BaseClasses.PartialBuildingEnergySystem</a>
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialGasBoilerBuildingOnly.mo, line <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly.Systems.BaseClasses.PartialBuildingEnergySystem.hydraulic.distribution#text">27</a>
-Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
-Error: Class or component 'dpOld_design' not found in PartialDistribution
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BuildingOnly.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution#text:2">3</a>
-  Context: <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BuildingOnly">BESMod.Systems.Hydraulical.Distribution.BuildingOnly</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialGasBoilerBuildingOnly.mo, line 27
-Error: Class or component 'use_inputFilter' not found in PreconfiguredDPControlled pump
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BuildingOnly.mo, line 41
- Component context: hydraulic.distribution.pump
-  Component declared as PreconfiguredDPControlled pump in <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BuildingOnly">BESMod.Systems.Hydraulical.Distribution.BuildingOnly</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialGasBoilerBuildingOnly.mo, line 27
-Error: Class or component 'dpSup_nominal' not found in PartialTransfer transfer
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
- Component context: hydraulic.transfer
-  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/HydraulicSystem.mo, line 3
-Error: Class or component 'dpSupOld_design' not found in PartialTransfer transfer
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
- Component context: hydraulic.transfer
-  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/HydraulicSystem.mo, line 3
-Error: Class or component 'parTra' not found in RadiatorPressureBased transfer
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialGasBoilerBuildingOnly.mo, line 29
- Component context: hydraulic.transfer
-  Component declared as RadiatorPressureBased transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer">BESMod.Systems.Hydraulical.Transfer</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly">BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialGasBoilerBuildingOnly.mo, line 2
-Error: Class or component 'parPum' not found in RadiatorPressureBased transfer
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialGasBoilerBuildingOnly.mo, line 29
- Component context: hydraulic.transfer
-  Component declared as RadiatorPressureBased transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer">BESMod.Systems.Hydraulical.Transfer</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly">BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialGasBoilerBuildingOnly.mo, line 2
+Error in model:  BESMod.Systems.Ventilation.NoVentilation 
+Check of <a href="Modelica://BESMod.Systems.Ventilation.NoVentilation">BESMod.Systems.Ventilation.NoVentilation</a>
+Check is assuming: ventilationSystemParameters.nZones = 1
+Error: The following parameters don't have any value:
+<a href="Modelica://BESMod.Systems.Ventilation.NoVentilation#text$distribution:dp_design">distribution.dp_design[]</a>
+<a href="Modelica://BESMod.Systems.Ventilation.NoVentilation#text$generation:dp_design">generation.dp_design[]</a>
+The model has the same number of unknowns and equations: 56
 Error: ERRORS have been issued.
 
 
@@ -195,12 +118,6 @@ Component type specifier BaseProperties is a partial type
   File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
  Component context: pumTra.dpControlled_dp1.vol.dynBal.medium
   Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
-Error: Class or component 'use_inputFilter' not found in PreconfiguredDPControlled pumTra
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line 244
- Component context: pumTra
-  Component declared as PreconfiguredDPControlled pumTra in <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallelWithHeaters.mo, line 4
 Component type specifier MoverBaseDataDefinition is a partial type
   It must be redeclared before being used.
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel#text:263">264</a>
@@ -219,6 +136,172 @@ Component type specifier BaseProperties is a partial type
 Error: ERRORS have been issued.
 
 
+Error in model:  BESMod.Systems.Ventilation.VentilationSystem 
+Check of <a href="Modelica://BESMod.Systems.Ventilation.VentilationSystem">BESMod.Systems.Ventilation.VentilationSystem</a>
+Component type specifier PartialGeneration is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Ventilation/BaseClasses/PartialVentilationSystem.mo, line <a href="Modelica://BESMod.Systems.Ventilation.BaseClasses.PartialVentilationSystem#text:12">13</a>
+ Component context: generation
+  Component declared as PartialGeneration generation in <a href="Modelica://BESMod.Systems.Ventilation.Generation.BaseClasses">BESMod.Systems.Ventilation.Generation.BaseClasses</a>
+Component type specifier PartialDistribution is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Ventilation/BaseClasses/PartialVentilationSystem.mo, line <a href="Modelica://BESMod.Systems.Ventilation.BaseClasses.PartialVentilationSystem#text:39">40</a>
+ Component context: distribution
+  Component declared as PartialDistribution distribution in <a href="Modelica://BESMod.Systems.Ventilation.Distribution.BaseClasses">BESMod.Systems.Ventilation.Distribution.BaseClasses</a>
+Component type specifier PartialControl is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Ventilation/BaseClasses/PartialVentilationSystem.mo, line <a href="Modelica://BESMod.Systems.Ventilation.BaseClasses.PartialVentilationSystem#text:65">66</a>
+ Component context: control
+  Component declared as PartialControl control in <a href="Modelica://BESMod.Systems.Ventilation.Control.BaseClasses">BESMod.Systems.Ventilation.Control.BaseClasses</a>
+Check is assuming: generation.nParallelDem = 1
+Check is assuming: ventilationSystemParameters.nZones = 1
+Check is assuming: distribution.nParallelSup = 1
+The model has 36 scalar unknowns and 20 scalar equations.
+Error: The following parameters don't have any value:
+<a href="Modelica://BESMod.Systems.Ventilation.VentilationSystem#text$distribution:dp_design">distribution.dp_design[]</a>
+<a href="Modelica://BESMod.Systems.Ventilation.VentilationSystem#text$generation:dp_design">generation.dp_design[]</a>
+DAE with 38 unknown scalars and 20 scalar equations.
+
+Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Ventilation.VentilationSystem#:control">control</a>.
+Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Ventilation.VentilationSystem#:distribution">distribution</a>.
+Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Ventilation.VentilationSystem#:generation">generation</a>.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation 
+Check of <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation">BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation</a>
+Error: Component type specifier BESMod.Systems.RecordsCollection.Movers.DefaultMover not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialTEASERHeatLoadCalculation.mo, line <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#text:27">28</a>
+ Component context: DHW.parPum
+  Component declared as BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation">BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation</a>
+Error: Class or component 'parPum' not found in StandardProfiles DHW
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialTEASERHeatLoadCalculation.mo, line 27
+ Component context: DHW
+  Component declared as StandardProfiles DHW in <a href="Modelica://BESMod.Systems.Demand.DHW">BESMod.Systems.Demand.DHW</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation">BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialTEASERHeatLoadCalculation.mo, line 2
+Error: Class or component 'dpSup_nominal' not found in PartialTransfer transfer
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
+ Component context: hydraulic.transfer
+  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/PartialBuildingEnergySystem.mo, line 87
+Error: Class or component 'dpSupOld_design' not found in PartialTransfer transfer
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
+ Component context: hydraulic.transfer
+  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/PartialBuildingEnergySystem.mo, line 87
+Error: Class or component 'dpSup_nominal' not found in PartialTransfer transfer
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
+ Component context: hydraulic.transfer
+  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/PartialBuildingEnergySystem.mo, line 87
+Error: Class or component 'dpSupOld_design' not found in PartialTransfer transfer
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
+ Component context: hydraulic.transfer
+  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/PartialBuildingEnergySystem.mo, line 87
+Error: Overriding final modifier for nParallelDem
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BuildingOnly.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BuildingOnly.BaseClasses.PartialDistribution#text:2">4</a>
+Overriding found at:
+ Component context: BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation.BESMod.Systems.BaseClasses.PartialBuildingEnergySystem.hydraulic.distribution.nParallelDem
+  Component declared as BESMod.Systems.Hydraulical.HydraulicSystem hydraulic in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation.BESMod.Systems.BaseClasses.PartialBuildingEnergySystem">BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation.BESMod.Systems.BaseClasses.PartialBuildingEnergySystem</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialTEASERHeatLoadCalculation.mo, line <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation.BESMod.Systems.BaseClasses.PartialBuildingEnergySystem.hydraulic.distribution#text">17</a>
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Error: Class or component 'dpSup_nominal' not found in PartialTransfer transfer
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
+ Component context: hydraulic.transfer
+  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/HydraulicSystem.mo, line 3
+Error: Class or component 'dpSupOld_design' not found in PartialTransfer transfer
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
+ Component context: hydraulic.transfer
+  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/HydraulicSystem.mo, line 3
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly 
+Check of <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly">BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly</a>
+Error: Component type specifier BESMod.Systems.RecordsCollection.Movers.DefaultMover not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialGasBoilerBuildingOnly.mo, line <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#text:38">39</a>
+ Component context: DHW.parPum
+  Component declared as BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly">BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly</a>
+Error: Class or component 'parPum' not found in StandardProfiles DHW
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialGasBoilerBuildingOnly.mo, line 37
+ Component context: DHW
+  Component declared as StandardProfiles DHW in <a href="Modelica://BESMod.Systems.Demand.DHW">BESMod.Systems.Demand.DHW</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly">BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialGasBoilerBuildingOnly.mo, line 2
+Error: Class or component 'dpSup_nominal' not found in PartialTransfer transfer
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
+ Component context: hydraulic.transfer
+  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/PartialBuildingEnergySystem.mo, line 87
+Error: Class or component 'dpSupOld_design' not found in PartialTransfer transfer
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
+ Component context: hydraulic.transfer
+  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/PartialBuildingEnergySystem.mo, line 87
+Error: Class or component 'dpSup_nominal' not found in PartialTransfer transfer
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
+ Component context: hydraulic.transfer
+  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/PartialBuildingEnergySystem.mo, line 87
+Error: Class or component 'dpSupOld_design' not found in PartialTransfer transfer
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
+ Component context: hydraulic.transfer
+  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/PartialBuildingEnergySystem.mo, line 87
+Error: Class or component 'parPum' not found in GasBoiler generation
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialGasBoilerBuildingOnly.mo, line 10
+ Component context: hydraulic.generation
+  Component declared as GasBoiler generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly">BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialGasBoilerBuildingOnly.mo, line 2
+Error: Overriding final modifier for nParallelDem
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BuildingOnly.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BuildingOnly.BaseClasses.PartialDistribution#text:2">4</a>
+Overriding found at:
+ Component context: BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly.Systems.BaseClasses.PartialBuildingEnergySystem.hydraulic.distribution.nParallelDem
+  Component declared as BESMod.Systems.Hydraulical.HydraulicSystem hydraulic in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly.Systems.BaseClasses.PartialBuildingEnergySystem">BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly.Systems.BaseClasses.PartialBuildingEnergySystem</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialGasBoilerBuildingOnly.mo, line <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly.Systems.BaseClasses.PartialBuildingEnergySystem.hydraulic.distribution#text">27</a>
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Error: Class or component 'dpSup_nominal' not found in PartialTransfer transfer
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
+ Component context: hydraulic.transfer
+  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/HydraulicSystem.mo, line 3
+Error: Class or component 'dpSupOld_design' not found in PartialTransfer transfer
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
+ Component context: hydraulic.transfer
+  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/HydraulicSystem.mo, line 3
+Error: Class or component 'parTra' not found in RadiatorPressureBased transfer
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialGasBoilerBuildingOnly.mo, line 29
+ Component context: hydraulic.transfer
+  Component declared as RadiatorPressureBased transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer">BESMod.Systems.Hydraulical.Transfer</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly">BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialGasBoilerBuildingOnly.mo, line 2
+Error: Class or component 'parPum' not found in RadiatorPressureBased transfer
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialGasBoilerBuildingOnly.mo, line 29
+ Component context: hydraulic.transfer
+  Component declared as RadiatorPressureBased transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer">BESMod.Systems.Hydraulical.Transfer</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly">BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialGasBoilerBuildingOnly.mo, line 2
+Error: ERRORS have been issued.
+
+
 Error in model:  BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve 
 Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve</a>
 Error: Class or component 'use_inputFilter' not found in ThreeWayValve parThrWayVal
@@ -233,79 +316,6 @@ Error: Class or component 'use_inputFilter' not found in PreconfiguredDPControll
   Component declared as PreconfiguredDPControlled pumGen in <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers</a>
   Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line 2
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem 
-Check of <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>
-Error: Class or component 'dpSup_nominal' not found in PartialTransfer transfer
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
- Component context: transfer
-  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 2
-Error: Class or component 'dpSupOld_design' not found in PartialTransfer transfer
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
- Component context: transfer
-  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 2
-Error: Class or component 'dpSup_nominal' not found in PartialTransfer transfer
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
- Component context: transfer
-  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 2
-Error: Class or component 'dpSupOld_design' not found in PartialTransfer transfer
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
- Component context: transfer
-  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 2
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Systems.Hydraulical.Distribution.Tests.TestIndirectLoading 
-Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.Tests.TestIndirectLoading">BESMod.Systems.Hydraulical.Distribution.Tests.TestIndirectLoading</a>
-Error: Overriding final modifier for dpDem_nominal
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve.BaseClasses.PartialDistribution#text:11">13</a>
-Overriding found at:
-  Context: <a href="Modelica://BaseClasses.PartialDistribution.dpDem_nominal">BaseClasses.PartialDistribution.dpDem_nominal</a>
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/Tests/PartialTest.mo, line <a href="Modelica://BaseClasses.PartialDistribution#text:17">22</a>
-Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
-Error: Overriding final modifier for dpSup_nominal
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve.BaseClasses.PartialDistribution#text:12">14</a>
-Overriding found at:
-  Context: <a href="Modelica://BaseClasses.PartialDistribution.dpSup_nominal">BaseClasses.PartialDistribution.dpSup_nominal</a>
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/Tests/PartialTest.mo, line <a href="Modelica://BaseClasses.PartialDistribution#text:16">21</a>
-Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
-Error: Class or component 'use_inputFilter' not found in DefaultThreeWayValve parThrWayVal
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/Tests/TestIndirectLoading.mo, line 11
- Component context: distribution.parThrWayVal
-  Component declared as DefaultThreeWayValve parThrWayVal in <a href="Modelica://BESMod.Systems.RecordsCollection.Valves">BESMod.Systems.RecordsCollection.Valves</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line 4
-Definition missing in <a href="Modelica://ThreeWayValve">ThreeWayValve</a>.
-Error: Component type specifier MoverBaseDataDefinition is a partial type.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve#text:53">54</a>
- Component context: distribution.parPumGen
-  Component declared as BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition parPumGen in <a href="Modelica://BESMod.Systems.RecordsCollection.Movers">BESMod.Systems.RecordsCollection.Movers</a>
-Error: Class or component 'use_inputFilter' not found in PreconfiguredDPControlled pumGen
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line 90
- Component context: distribution.pumGen
-  Component declared as PreconfiguredDPControlled pumGen in <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line 4
-Error: Class or component 'use_inputFilter' not found in PreconfiguredDPControlled pumTra
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line 244
- Component context: distribution.pumTra
-  Component declared as PreconfiguredDPControlled pumTra in <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallelWithHeaters.mo, line 4
-Error: Component type specifier MoverBaseDataDefinition is a partial type.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel#text:263">264</a>
- Component context: distribution.parPumTra
-  Component declared as BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition parPumTra in <a href="Modelica://BESMod.Systems.RecordsCollection.Movers">BESMod.Systems.RecordsCollection.Movers</a>
 Error: ERRORS have been issued.
 
 
@@ -409,22 +419,78 @@ Component type specifier BaseProperties is a partial type
   File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
  Component context: pumTra.dpControlled_dp1.vol.dynBal.medium
   Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
-Error: Class or component 'use_inputFilter' not found in PreconfiguredDPControlled pumTra
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/DistributionTwoStorageParallel.mo, line 145
- Component context: pumTra
-  Component declared as PreconfiguredDPControlled pumTra in <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.DistributionTwoStorageParallel">BESMod.Systems.Hydraulical.Distribution.DistributionTwoStorageParallel</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/DistributionTwoStorageParallel.mo, line 2
 Error: ERRORS have been issued.
 
 
-Error in model:  BESMod.Systems.Ventilation.NoVentilation 
-Check of <a href="Modelica://BESMod.Systems.Ventilation.NoVentilation">BESMod.Systems.Ventilation.NoVentilation</a>
-Check is assuming: ventilationSystemParameters.nZones = 1
-Error: The following parameters don't have any value:
-<a href="Modelica://BESMod.Systems.Ventilation.NoVentilation#text$distribution:dp_design">distribution.dp_design[]</a>
-<a href="Modelica://BESMod.Systems.Ventilation.NoVentilation#text$generation:dp_design">generation.dp_design[]</a>
-The model has the same number of unknowns and equations: 56
+Error in model:  BESMod.Systems.Hydraulical.Distribution.CombiStorage 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.CombiStorage">BESMod.Systems.Hydraulical.Distribution.CombiStorage</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: bufSto.layer.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: bufSto.heatingCoil1.pipe.vol_b.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: bufSto.heatingCoil1.pipe.vol_a.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: bufSto.heatingCoil2.pipe.vol_b.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: bufSto.heatingCoil2.pipe.vol_a.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: pump.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Sources/BaseClasses/PartialSource.mo, line <a href="Modelica://IBPSA.Fluid.Sources.BaseClasses.PartialSource#text:36">37</a>
+ Component context: bouPum.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: pumpSec.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Error: Class or component 'use_inputFilter' not found in SpeedControlled_y pumpSec
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/CombiStorage.mo, line 145
+ Component context: pumpSec
+  Component declared as SpeedControlled_y pumpSec in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.CombiStorage">BESMod.Systems.Hydraulical.Distribution.CombiStorage</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/CombiStorage.mo, line 2
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Sources/BaseClasses/PartialSource.mo, line <a href="Modelica://IBPSA.Fluid.Sources.BaseClasses.PartialSource#text:36">37</a>
+ Component context: bouPumSec.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier MoverBaseDataDefinition is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/CombiStorage.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.CombiStorage#text:172">173</a>
+ Component context: parPum
+  Component declared as MoverBaseDataDefinition parPum in <a href="Modelica://BESMod.Systems.RecordsCollection.Movers">BESMod.Systems.RecordsCollection.Movers</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: pumpTra.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Error: Class or component 'use_inputFilter' not found in SpeedControlled_y pumpTra
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/CombiStorage.mo, line 188
+ Component context: pumpTra
+  Component declared as SpeedControlled_y pumpTra in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.CombiStorage">BESMod.Systems.Hydraulical.Distribution.CombiStorage</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/CombiStorage.mo, line 2
 Error: ERRORS have been issued.
 
 
@@ -444,71 +510,117 @@ However, exploiting the given numerical settings of parameters gives the same nu
 Error: ERRORS have been issued.
 
 
-Error in model:  BESMod.Systems.Hydraulical.Distribution.BuildingOnly 
-Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BuildingOnly">BESMod.Systems.Hydraulical.Distribution.BuildingOnly</a>
-Error: Class or component 'dpOld_design' not found in PartialDistribution
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BuildingOnly.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution#text:2">3</a>
-  Context: <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BuildingOnly">BESMod.Systems.Hydraulical.Distribution.BuildingOnly</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BuildingOnly.mo, line 2
-Component type specifier BaseProperties is a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
- Component context: pump.dpControlled_dp.vol.dynBal.medium
-  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
-Component type specifier BaseProperties is a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
- Component context: pump.dpControlled_dp1.vol.dynBal.medium
-  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
-Error: Class or component 'use_inputFilter' not found in PreconfiguredDPControlled pump
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BuildingOnly.mo, line 41
- Component context: pump
-  Component declared as PreconfiguredDPControlled pump in <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BuildingOnly">BESMod.Systems.Hydraulical.Distribution.BuildingOnly</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BuildingOnly.mo, line 2
-Component type specifier BaseProperties is a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Sources/BaseClasses/PartialSource.mo, line <a href="Modelica://IBPSA.Fluid.Sources.BaseClasses.PartialSource#text:36">37</a>
- Component context: bouPum.medium
-  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
-Component type specifier MoverBaseDataDefinition is a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BuildingOnly.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BuildingOnly#text:68">69</a>
- Component context: parPum
-  Component declared as MoverBaseDataDefinition parPum in <a href="Modelica://BESMod.Systems.RecordsCollection.Movers">BESMod.Systems.RecordsCollection.Movers</a>
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Systems.Ventilation.VentilationSystem 
-Check of <a href="Modelica://BESMod.Systems.Ventilation.VentilationSystem">BESMod.Systems.Ventilation.VentilationSystem</a>
-Component type specifier PartialGeneration is a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Ventilation/BaseClasses/PartialVentilationSystem.mo, line <a href="Modelica://BESMod.Systems.Ventilation.BaseClasses.PartialVentilationSystem#text:12">13</a>
- Component context: generation
-  Component declared as PartialGeneration generation in <a href="Modelica://BESMod.Systems.Ventilation.Generation.BaseClasses">BESMod.Systems.Ventilation.Generation.BaseClasses</a>
-Component type specifier PartialDistribution is a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Ventilation/BaseClasses/PartialVentilationSystem.mo, line <a href="Modelica://BESMod.Systems.Ventilation.BaseClasses.PartialVentilationSystem#text:39">40</a>
- Component context: distribution
-  Component declared as PartialDistribution distribution in <a href="Modelica://BESMod.Systems.Ventilation.Distribution.BaseClasses">BESMod.Systems.Ventilation.Distribution.BaseClasses</a>
-Component type specifier PartialControl is a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Ventilation/BaseClasses/PartialVentilationSystem.mo, line <a href="Modelica://BESMod.Systems.Ventilation.BaseClasses.PartialVentilationSystem#text:65">66</a>
- Component context: control
-  Component declared as PartialControl control in <a href="Modelica://BESMod.Systems.Ventilation.Control.BaseClasses">BESMod.Systems.Ventilation.Control.BaseClasses</a>
-Check is assuming: generation.nParallelDem = 1
-Check is assuming: ventilationSystemParameters.nZones = 1
-Check is assuming: distribution.nParallelSup = 1
-The model has 36 scalar unknowns and 20 scalar equations.
-Error: The following parameters don't have any value:
-<a href="Modelica://BESMod.Systems.Ventilation.VentilationSystem#text$distribution:dp_design">distribution.dp_design[]</a>
-<a href="Modelica://BESMod.Systems.Ventilation.VentilationSystem#text$generation:dp_design">generation.dp_design[]</a>
-DAE with 38 unknown scalars and 20 scalar equations.
-
-Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Ventilation.VentilationSystem#:control">control</a>.
-Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Ventilation.VentilationSystem#:distribution">distribution</a>.
-Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Ventilation.VentilationSystem#:generation">generation</a>.
+Error in model:  BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic 
+Check of <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic">BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic</a>
+Error: Component type specifier BESMod.Systems.RecordsCollection.Movers.DefaultMover not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text:84">85</a>
+ Component context: DHW.parPum
+  Component declared as BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic">BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic</a>
+Error: Class or component 'parPum' not found in StandardProfiles DHW
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 81
+ Component context: DHW
+  Component declared as StandardProfiles DHW in <a href="Modelica://BESMod.Systems.Demand.DHW">BESMod.Systems.Demand.DHW</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic">BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 2
+Error: Class or component 'dpSup_nominal' not found in PartialTransfer transfer
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
+ Component context: hydraulic.transfer
+  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/PartialBuildingEnergySystem.mo, line 87
+Error: Class or component 'dpSupOld_design' not found in PartialTransfer transfer
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
+ Component context: hydraulic.transfer
+  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/PartialBuildingEnergySystem.mo, line 87
+Error: Class or component 'dpSup_nominal' not found in PartialTransfer transfer
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
+ Component context: hydraulic.transfer
+  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/PartialBuildingEnergySystem.mo, line 87
+Error: Class or component 'dpSupOld_design' not found in PartialTransfer transfer
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
+ Component context: hydraulic.transfer
+  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/PartialBuildingEnergySystem.mo, line 87
+Error: Class or component 'parPum' not found in HeatPumpAndElectricHeater generation
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 31
+ Component context: hydraulic.generation
+  Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic">BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 2
+Error: Overriding final modifier for mOld_flow_design
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve.BaseClasses.PartialDistribution#text:10">12</a>
+Overriding found at:
+  Context: <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.DistributionTwoStorageParallel.BaseClasses.PartialThreeWayValve.mOld_flow_design">BESMod.Systems.Hydraulical.Distribution.DistributionTwoStorageParallel.BaseClasses.PartialThreeWayValve.mOld_flow_design</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/DistributionTwoStorageParallel.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.DistributionTwoStorageParallel.BaseClasses.PartialThreeWayValve#text:11">14</a>
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Error: Overriding final modifier for dpDem_nominal
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve.BaseClasses.PartialDistribution#text:11">13</a>
+Overriding found at:
+  Context: <a href="Modelica://Distribution.BaseClasses.PartialDistribution.dpDem_nominal">Distribution.BaseClasses.PartialDistribution.dpDem_nominal</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line <a href="Modelica://Distribution.BaseClasses.PartialDistribution#text:38">149</a>
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Error: Overriding final modifier for dpSup_nominal
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve.BaseClasses.PartialDistribution#text:12">14</a>
+Overriding found at:
+  Context: <a href="Modelica://Distribution.BaseClasses.PartialDistribution.dpSup_nominal">Distribution.BaseClasses.PartialDistribution.dpSup_nominal</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line <a href="Modelica://Distribution.BaseClasses.PartialDistribution#text:36">147</a>
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Error: Class or component 'use_inputFilter' not found in DefaultThreeWayValve parThrWayVal
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 72
+ Component context: hydraulic.distribution.parThrWayVal
+  Component declared as DefaultThreeWayValve parThrWayVal in <a href="Modelica://BESMod.Systems.RecordsCollection.Valves">BESMod.Systems.RecordsCollection.Valves</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/DistributionTwoStorageParallel.mo, line 4
+Definition missing in <a href="Modelica://ThreeWayValve">ThreeWayValve</a>.
+Error: Class or component 'use_inputFilter' not found in PreconfiguredDPControlled pumGen
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line 90
+ Component context: hydraulic.distribution.pumGen
+  Component declared as PreconfiguredDPControlled pumGen in <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/DistributionTwoStorageParallel.mo, line 4
+Error: Class or component 'dpSup_nominal' not found in PartialTransfer transfer
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
+ Component context: hydraulic.transfer
+  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/HydraulicSystem.mo, line 3
+Error: Class or component 'dpSupOld_design' not found in PartialTransfer transfer
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
+ Component context: hydraulic.transfer
+  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/HydraulicSystem.mo, line 3
+Error: Component type specifier BESMod.Systems.RecordsCollection.Movers.DefaultMover not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text:76">77</a>
+ Component context: hydraulic.transfer.parPum
+  Component declared as BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic">BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic</a>
+Error: Class or component 'parPum' not found in IdealValveRadiator transfer
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 73
+ Component context: hydraulic.transfer
+  Component declared as IdealValveRadiator transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer">BESMod.Systems.Hydraulical.Transfer</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic">BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 2
+Error: Class or component 'parTra' not found in IdealValveRadiator transfer
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 73
+ Component context: hydraulic.transfer
+  Component declared as IdealValveRadiator transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer">BESMod.Systems.Hydraulical.Transfer</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic">BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 2
+Error: Component type specifier BESMod.Systems.RecordsCollection.Movers.DefaultMover not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text:112">113</a>
+ Component context: ventilation.generation.fanData
+  Component declared as BESMod.Systems.RecordsCollection.Movers.DefaultMover fanData in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic">BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic</a>
+Error: Class or component 'fanData' not found in ControlledDomesticVentilation generation
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 103
+ Component context: ventilation.generation
+  Component declared as ControlledDomesticVentilation generation in <a href="Modelica://BESMod.Systems.Ventilation.Generation">BESMod.Systems.Ventilation.Generation</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic">BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 2
 Error: ERRORS have been issued.
 
 
@@ -621,12 +733,6 @@ Component type specifier BaseProperties is a partial type
   File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
  Component context: pumTra.dpControlled_dp1.vol.dynBal.medium
   Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
-Error: Class or component 'use_inputFilter' not found in PreconfiguredDPControlled pumTra
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line 244
- Component context: pumTra
-  Component declared as PreconfiguredDPControlled pumTra in <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/TwoStoragesBoilerWithDHW.mo, line 4
 Component type specifier MoverBaseDataDefinition is a partial type
   It must be redeclared before being used.
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel#text:263">264</a>
@@ -652,171 +758,154 @@ Component type specifier BaseProperties is a partial type
   File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
  Component context: hydSep.layer.dynBal.medium
   Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Error: Multiple modifier for use_riseTime.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/TwoStoragesBoilerWithDHW.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.TwoStoragesBoilerWithDHW#text:165">166</a>
+  Context: <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.TwoStoragesBoilerWithDHW.pumBoi">BESMod.Systems.Hydraulical.Distribution.TwoStoragesBoilerWithDHW.pumBoi</a>
 Component type specifier BaseProperties is a partial type
   It must be redeclared before being used.
   File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
  Component context: pumBoi.vol.dynBal.medium
   Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
-Error: Class or component 'use_inputFilter' not found in SpeedControlled_y pumBoi
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/TwoStoragesBoilerWithDHW.mo, line 166
- Component context: pumBoi
-  Component declared as SpeedControlled_y pumBoi in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.TwoStoragesBoilerWithDHW">BESMod.Systems.Hydraulical.Distribution.TwoStoragesBoilerWithDHW</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/TwoStoragesBoilerWithDHW.mo, line 2
 Error: ERRORS have been issued.
 
 
-Error in model:  BESMod.Systems.Hydraulical.Distribution.CombiStorage 
-Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.CombiStorage">BESMod.Systems.Hydraulical.Distribution.CombiStorage</a>
-Component type specifier BaseProperties is a partial type
+Error in model:  BESMod.Systems.Hydraulical.HydraulicSystem 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.HydraulicSystem">BESMod.Systems.Hydraulical.HydraulicSystem</a>
+Component type specifier PartialGeneration is a partial type
   It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
- Component context: bufSto.layer.dynBal.medium
-  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
-Component type specifier BaseProperties is a partial type
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem#text:19">20</a>
+ Component context: generation
+  Component declared as PartialGeneration generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses">BESMod.Systems.Hydraulical.Generation.BaseClasses</a>
+Component type specifier PartialControl is a partial type
   It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
- Component context: bufSto.heatingCoil1.pipe.vol_b.dynBal.medium
-  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
-Component type specifier BaseProperties is a partial type
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem#text:46">47</a>
+ Component context: control
+  Component declared as PartialControl control in <a href="Modelica://BESMod.Systems.Hydraulical.Control.BaseClasses">BESMod.Systems.Hydraulical.Control.BaseClasses</a>
+Component type specifier PartialDistribution is a partial type
   It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
- Component context: bufSto.heatingCoil1.pipe.vol_a.dynBal.medium
-  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
-Component type specifier BaseProperties is a partial type
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem#text:104">105</a>
+ Component context: distribution
+  Component declared as PartialDistribution distribution in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses">BESMod.Systems.Hydraulical.Distribution.BaseClasses</a>
+Error: Class or component 'dpSup_nominal' not found in PartialTransfer transfer
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
+ Component context: transfer
+  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/HydraulicSystem.mo, line 3
+Error: Class or component 'dpSupOld_design' not found in PartialTransfer transfer
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
+ Component context: transfer
+  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/HydraulicSystem.mo, line 3
+Error: Class or component 'dpSup_nominal' not found in PartialTransfer transfer
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
+ Component context: transfer
+  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/HydraulicSystem.mo, line 3
+Error: Class or component 'dpSupOld_design' not found in PartialTransfer transfer
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
+ Component context: transfer
+  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/HydraulicSystem.mo, line 3
+Component type specifier PartialTransfer is a partial type
   It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
- Component context: bufSto.heatingCoil2.pipe.vol_b.dynBal.medium
-  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
-Component type specifier BaseProperties is a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
- Component context: bufSto.heatingCoil2.pipe.vol_a.dynBal.medium
-  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
-Component type specifier BaseProperties is a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
- Component context: pump.vol.dynBal.medium
-  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
-Error: Class or component 'use_inputFilter' not found in SpeedControlled_y pump
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/CombiStorage.mo, line 119
- Component context: pump
-  Component declared as SpeedControlled_y pump in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.CombiStorage">BESMod.Systems.Hydraulical.Distribution.CombiStorage</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/CombiStorage.mo, line 2
-Component type specifier BaseProperties is a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Sources/BaseClasses/PartialSource.mo, line <a href="Modelica://IBPSA.Fluid.Sources.BaseClasses.PartialSource#text:36">37</a>
- Component context: bouPum.medium
-  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
-Component type specifier BaseProperties is a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
- Component context: pumpSec.vol.dynBal.medium
-  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
-Error: Class or component 'use_inputFilter' not found in SpeedControlled_y pumpSec
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/CombiStorage.mo, line 145
- Component context: pumpSec
-  Component declared as SpeedControlled_y pumpSec in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.CombiStorage">BESMod.Systems.Hydraulical.Distribution.CombiStorage</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/CombiStorage.mo, line 2
-Component type specifier BaseProperties is a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Sources/BaseClasses/PartialSource.mo, line <a href="Modelica://IBPSA.Fluid.Sources.BaseClasses.PartialSource#text:36">37</a>
- Component context: bouPumSec.medium
-  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
-Component type specifier MoverBaseDataDefinition is a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/CombiStorage.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.CombiStorage#text:172">173</a>
- Component context: parPum
-  Component declared as MoverBaseDataDefinition parPum in <a href="Modelica://BESMod.Systems.RecordsCollection.Movers">BESMod.Systems.RecordsCollection.Movers</a>
-Component type specifier BaseProperties is a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
- Component context: pumpTra.vol.dynBal.medium
-  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
-Error: Class or component 'use_inputFilter' not found in SpeedControlled_y pumpTra
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/CombiStorage.mo, line 188
- Component context: pumpTra
-  Component declared as SpeedControlled_y pumpTra in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.CombiStorage">BESMod.Systems.Hydraulical.Distribution.CombiStorage</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/CombiStorage.mo, line 2
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem#text:154">155</a>
+ Component context: transfer
+  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
 Error: ERRORS have been issued.
 
 
-Error in model:  BESMod.Systems.BaseClasses.PartialBuildingEnergySystem 
-Check of <a href="Modelica://BESMod.Systems.BaseClasses.PartialBuildingEnergySystem">BESMod.Systems.BaseClasses.PartialBuildingEnergySystem</a>
-Error: Class or component 'dpSup_nominal' not found in PartialTransfer transfer
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
- Component context: hydraulic.transfer
-  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/PartialBuildingEnergySystem.mo, line 87
-Error: Class or component 'dpSupOld_design' not found in PartialTransfer transfer
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
- Component context: hydraulic.transfer
-  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/PartialBuildingEnergySystem.mo, line 87
-Error: Class or component 'dpSup_nominal' not found in PartialTransfer transfer
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
- Component context: hydraulic.transfer
-  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/PartialBuildingEnergySystem.mo, line 87
-Error: Class or component 'dpSupOld_design' not found in PartialTransfer transfer
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
- Component context: hydraulic.transfer
-  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/PartialBuildingEnergySystem.mo, line 87
-Error: Class or component 'dpSup_nominal' not found in PartialTransfer transfer
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
- Component context: hydraulic.transfer
-  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/PartialBuildingEnergySystem.mo, line 87
-Error: Class or component 'dpSupOld_design' not found in PartialTransfer transfer
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
- Component context: hydraulic.transfer
-  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/PartialBuildingEnergySystem.mo, line 87
-Error: Class or component 'dpSup_nominal' not found in PartialTransfer transfer
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
- Component context: hydraulic.transfer
-  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/PartialBuildingEnergySystem.mo, line 87
-Error: Class or component 'dpSupOld_design' not found in PartialTransfer transfer
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
- Component context: hydraulic.transfer
-  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/PartialBuildingEnergySystem.mo, line 87
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallelWithHeaters 
-Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallelWithHeaters">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallelWithHeaters</a>
-Error: Class or component 'use_inputFilter' not found in ThreeWayValve parThrWayVal
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line 41
- Component context: parThrWayVal
-  Component declared as ThreeWayValve parThrWayVal in <a href="Modelica://BESMod.Systems.RecordsCollection.Valves">BESMod.Systems.RecordsCollection.Valves</a>
+Error in model:  BESMod.Systems.Hydraulical.Distribution.Tests.TestBoilerWithDHW 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.Tests.TestBoilerWithDHW">BESMod.Systems.Hydraulical.Distribution.Tests.TestBoilerWithDHW</a>
+Error: Overriding final modifier for dpDem_nominal
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve.BaseClasses.PartialDistribution#text:11">13</a>
+Overriding found at:
+  Context: <a href="Modelica://BaseClasses.PartialDistribution.dpDem_nominal">BaseClasses.PartialDistribution.dpDem_nominal</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/Tests/PartialTest.mo, line <a href="Modelica://BaseClasses.PartialDistribution#text:17">22</a>
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Error: Overriding final modifier for dpSup_nominal
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve.BaseClasses.PartialDistribution#text:12">14</a>
+Overriding found at:
+  Context: <a href="Modelica://BaseClasses.PartialDistribution.dpSup_nominal">BaseClasses.PartialDistribution.dpSup_nominal</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/Tests/PartialTest.mo, line <a href="Modelica://BaseClasses.PartialDistribution#text:16">21</a>
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Error: Class or component 'use_inputFilter' not found in DefaultThreeWayValve parThrWayVal
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/Tests/TestBoilerWithDHW.mo, line 10
+ Component context: distribution.parThrWayVal
+  Component declared as DefaultThreeWayValve parThrWayVal in <a href="Modelica://BESMod.Systems.RecordsCollection.Valves">BESMod.Systems.RecordsCollection.Valves</a>
   Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line 4
+Definition missing in <a href="Modelica://ThreeWayValve">ThreeWayValve</a>.
 Error: Class or component 'use_inputFilter' not found in PreconfiguredDPControlled pumGen
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line 90
- Component context: pumGen
+ Component context: distribution.pumGen
   Component declared as PreconfiguredDPControlled pumGen in <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers</a>
   Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line 4
-Error: Class or component 'use_inputFilter' not found in PreconfiguredDPControlled pumTra
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line 244
- Component context: pumTra
-  Component declared as PreconfiguredDPControlled pumTra in <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallelWithHeaters.mo, line 4
+Error: Component type specifier MoverBaseDataDefinition is a partial type.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel#text:263">264</a>
+ Component context: distribution.parPumTra
+  Component declared as BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition parPumTra in <a href="Modelica://BESMod.Systems.RecordsCollection.Movers">BESMod.Systems.RecordsCollection.Movers</a>
+Error: Multiple modifier for use_riseTime.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/TwoStoragesBoilerWithDHW.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.TwoStoragesBoilerWithDHW#text:165">166</a>
+  Context: <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.TwoStoragesBoilerWithDHW.pumBoi">BESMod.Systems.Hydraulical.Distribution.TwoStoragesBoilerWithDHW.pumBoi</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Distribution.Tests.TestDirectLoading 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.Tests.TestDirectLoading">BESMod.Systems.Hydraulical.Distribution.Tests.TestDirectLoading</a>
+Error: Overriding final modifier for dpDem_nominal
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve.BaseClasses.PartialDistribution#text:11">13</a>
+Overriding found at:
+  Context: <a href="Modelica://BaseClasses.PartialDistribution.dpDem_nominal">BaseClasses.PartialDistribution.dpDem_nominal</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/Tests/PartialTest.mo, line <a href="Modelica://BaseClasses.PartialDistribution#text:17">22</a>
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Error: Overriding final modifier for dpSup_nominal
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve.BaseClasses.PartialDistribution#text:12">14</a>
+Overriding found at:
+  Context: <a href="Modelica://BaseClasses.PartialDistribution.dpSup_nominal">BaseClasses.PartialDistribution.dpSup_nominal</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/Tests/PartialTest.mo, line <a href="Modelica://BaseClasses.PartialDistribution#text:16">21</a>
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Error: Class or component 'use_inputFilter' not found in DefaultThreeWayValve parThrWayVal
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/Tests/TestDirectLoading.mo, line 11
+ Component context: distribution.parThrWayVal
+  Component declared as DefaultThreeWayValve parThrWayVal in <a href="Modelica://BESMod.Systems.RecordsCollection.Valves">BESMod.Systems.RecordsCollection.Valves</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line 4
+Definition missing in <a href="Modelica://ThreeWayValve">ThreeWayValve</a>.
+Error: Component type specifier MoverBaseDataDefinition is a partial type.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve#text:53">54</a>
+ Component context: distribution.parPumGen
+  Component declared as BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition parPumGen in <a href="Modelica://BESMod.Systems.RecordsCollection.Movers">BESMod.Systems.RecordsCollection.Movers</a>
+Error: Class or component 'use_inputFilter' not found in PreconfiguredDPControlled pumGen
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line 90
+ Component context: distribution.pumGen
+  Component declared as PreconfiguredDPControlled pumGen in <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line 4
+Error: Component type specifier MoverBaseDataDefinition is a partial type.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel#text:263">264</a>
+ Component context: distribution.parPumTra
+  Component declared as BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition parPumTra in <a href="Modelica://BESMod.Systems.RecordsCollection.Movers">BESMod.Systems.RecordsCollection.Movers</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Ventilation.Generation.Tests.ControlledDomesticVentilation 
+Check of <a href="Modelica://BESMod.Systems.Ventilation.Generation.Tests.ControlledDomesticVentilation">BESMod.Systems.Ventilation.Generation.Tests.ControlledDomesticVentilation</a>
+Error: The following parameter doesn't have any value:
+  <a href="Modelica://BESMod.Systems.Ventilation.Generation.Tests.ControlledDomesticVentilation#text$generation:dp_design">generation.dp_design[]</a>
+The model has the same number of unknowns and equations: 1059
+The model could not be deduced to be symbolically well-posed.
+The model has
+  1035+2*(generation.fanFlow.vol.dynBal.nPorts+generation.fanRet.vol.dynBal.nPorts  +generation.threeWayValve_b.vol.dynBal.nPorts+generation.threeWayValve_a.vol.dynBal.nPorts  +vol[1].dynBal.nPorts)
+scalar unknowns and
+  976+(if weaDat.pAtmSou == IBPSA.BoundaryConditions.Types.DataSource.Parameter   then 1 else 0)+(if weaDat.TDewPoiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TDryBulSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TBlaSkySou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.relHumSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.opaSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.ceiHeiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.totSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winSpeSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winDirSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HInfHorSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HDifHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HGloHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HGloHor_HDifHor then 2 else 1)+(if generation.bouSup.use_Xi_in then 2   else (if generation.bouSup.use_X_in then 1 else 3))+3*generation.bouSup.nPorts  +(if generation.bouExh.use_Xi_in then 2 else (if generation.bouExh.use_X_in   then 1 else 3))+3*generation.bouExh.nPorts+(if  not generation.bouExh.use_p_in   then 1 else 0)+(if  not generation.bouExh.use_T_in then 1 else 0)+(if  not   generation.fanFlow.vol.dynBal.use_mWat_flow then 1 else 0)+5*generation.fanFlow.vol.dynBal.nPorts  +(if  not generation.fanRet.vol.dynBal.use_mWat_flow then 1 else 0)+5*  generation.fanRet.vol.dynBal.nPorts+(if  not vol[1].dynBal.use_mWat_flow then 1   else 0)+5*vol[1].dynBal.nPorts+(if  not generation.threeWayValve_b.vol.dynBal.use_mWat_flow   then 1 else 0)+5*generation.threeWayValve_b.vol.dynBal.nPorts+(if  not   generation.threeWayValve_a.vol.dynBal.use_mWat_flow then 1 else 0)+5*  generation.threeWayValve_a.vol.dynBal.nPorts
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  1059
 Error: ERRORS have been issued.
 
 
@@ -929,12 +1018,6 @@ Component type specifier BaseProperties is a partial type
   File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
  Component context: pumTra.dpControlled_dp1.vol.dynBal.medium
   Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
-Error: Class or component 'use_inputFilter' not found in PreconfiguredDPControlled pumTra
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line 244
- Component context: pumTra
-  Component declared as PreconfiguredDPControlled pumTra in <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallelWithHeaters.mo, line 4
 Component type specifier MoverBaseDataDefinition is a partial type
   It must be redeclared before being used.
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel#text:263">264</a>
@@ -948,93 +1031,20 @@ Component type specifier BaseProperties is a partial type
 Error: ERRORS have been issued.
 
 
-Error in model:  BESMod.Systems.Hydraulical.Distribution.Tests.TestBoilerWithDHW 
-Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.Tests.TestBoilerWithDHW">BESMod.Systems.Hydraulical.Distribution.Tests.TestBoilerWithDHW</a>
-Error: Overriding final modifier for dpDem_nominal
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve.BaseClasses.PartialDistribution#text:11">13</a>
-Overriding found at:
-  Context: <a href="Modelica://BaseClasses.PartialDistribution.dpDem_nominal">BaseClasses.PartialDistribution.dpDem_nominal</a>
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/Tests/PartialTest.mo, line <a href="Modelica://BaseClasses.PartialDistribution#text:17">22</a>
-Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
-Error: Overriding final modifier for dpSup_nominal
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve.BaseClasses.PartialDistribution#text:12">14</a>
-Overriding found at:
-  Context: <a href="Modelica://BaseClasses.PartialDistribution.dpSup_nominal">BaseClasses.PartialDistribution.dpSup_nominal</a>
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/Tests/PartialTest.mo, line <a href="Modelica://BaseClasses.PartialDistribution#text:16">21</a>
-Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
-Error: Class or component 'use_inputFilter' not found in DefaultThreeWayValve parThrWayVal
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/Tests/TestBoilerWithDHW.mo, line 10
- Component context: distribution.parThrWayVal
-  Component declared as DefaultThreeWayValve parThrWayVal in <a href="Modelica://BESMod.Systems.RecordsCollection.Valves">BESMod.Systems.RecordsCollection.Valves</a>
+Error in model:  BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallelWithHeaters 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallelWithHeaters">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallelWithHeaters</a>
+Error: Class or component 'use_inputFilter' not found in ThreeWayValve parThrWayVal
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line 41
+ Component context: parThrWayVal
+  Component declared as ThreeWayValve parThrWayVal in <a href="Modelica://BESMod.Systems.RecordsCollection.Valves">BESMod.Systems.RecordsCollection.Valves</a>
   Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line 4
-Definition missing in <a href="Modelica://ThreeWayValve">ThreeWayValve</a>.
 Error: Class or component 'use_inputFilter' not found in PreconfiguredDPControlled pumGen
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line 90
- Component context: distribution.pumGen
+ Component context: pumGen
   Component declared as PreconfiguredDPControlled pumGen in <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers</a>
   Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line 4
-Error: Class or component 'use_inputFilter' not found in PreconfiguredDPControlled pumTra
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line 244
- Component context: distribution.pumTra
-  Component declared as PreconfiguredDPControlled pumTra in <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/TwoStoragesBoilerWithDHW.mo, line 4
-Error: Component type specifier MoverBaseDataDefinition is a partial type.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel#text:263">264</a>
- Component context: distribution.parPumTra
-  Component declared as BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition parPumTra in <a href="Modelica://BESMod.Systems.RecordsCollection.Movers">BESMod.Systems.RecordsCollection.Movers</a>
-Error: Class or component 'use_inputFilter' not found in SpeedControlled_y pumBoi
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/TwoStoragesBoilerWithDHW.mo, line 166
- Component context: distribution.pumBoi
-  Component declared as SpeedControlled_y pumBoi in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.TwoStoragesBoilerWithDHW">BESMod.Systems.Hydraulical.Distribution.TwoStoragesBoilerWithDHW</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/Tests/TestBoilerWithDHW.mo, line 5
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Systems.Hydraulical.Distribution.Tests.TestDirectLoading 
-Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.Tests.TestDirectLoading">BESMod.Systems.Hydraulical.Distribution.Tests.TestDirectLoading</a>
-Error: Overriding final modifier for dpDem_nominal
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve.BaseClasses.PartialDistribution#text:11">13</a>
-Overriding found at:
-  Context: <a href="Modelica://BaseClasses.PartialDistribution.dpDem_nominal">BaseClasses.PartialDistribution.dpDem_nominal</a>
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/Tests/PartialTest.mo, line <a href="Modelica://BaseClasses.PartialDistribution#text:17">22</a>
-Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
-Error: Overriding final modifier for dpSup_nominal
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve.BaseClasses.PartialDistribution#text:12">14</a>
-Overriding found at:
-  Context: <a href="Modelica://BaseClasses.PartialDistribution.dpSup_nominal">BaseClasses.PartialDistribution.dpSup_nominal</a>
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/Tests/PartialTest.mo, line <a href="Modelica://BaseClasses.PartialDistribution#text:16">21</a>
-Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
-Error: Class or component 'use_inputFilter' not found in DefaultThreeWayValve parThrWayVal
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/Tests/TestDirectLoading.mo, line 11
- Component context: distribution.parThrWayVal
-  Component declared as DefaultThreeWayValve parThrWayVal in <a href="Modelica://BESMod.Systems.RecordsCollection.Valves">BESMod.Systems.RecordsCollection.Valves</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line 4
-Definition missing in <a href="Modelica://ThreeWayValve">ThreeWayValve</a>.
-Error: Component type specifier MoverBaseDataDefinition is a partial type.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve#text:53">54</a>
- Component context: distribution.parPumGen
-  Component declared as BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition parPumGen in <a href="Modelica://BESMod.Systems.RecordsCollection.Movers">BESMod.Systems.RecordsCollection.Movers</a>
-Error: Class or component 'use_inputFilter' not found in PreconfiguredDPControlled pumGen
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line 90
- Component context: distribution.pumGen
-  Component declared as PreconfiguredDPControlled pumGen in <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line 4
-Error: Class or component 'use_inputFilter' not found in PreconfiguredDPControlled pumTra
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line 244
- Component context: distribution.pumTra
-  Component declared as PreconfiguredDPControlled pumTra in <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallelWithHeaters.mo, line 4
-Error: Component type specifier MoverBaseDataDefinition is a partial type.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel#text:263">264</a>
- Component context: distribution.parPumTra
-  Component declared as BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition parPumTra in <a href="Modelica://BESMod.Systems.RecordsCollection.Movers">BESMod.Systems.RecordsCollection.Movers</a>
 Error: ERRORS have been issued.
 
 
@@ -1075,23 +1085,11 @@ Error: Class or component 'use_inputFilter' not found in PreconfiguredDPControll
   Component declared as PreconfiguredDPControlled pumGen in <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers</a>
   Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/DistributionTwoStorageParallel.mo, line 4
-Error: Class or component 'use_inputFilter' not found in PreconfiguredDPControlled pumTra
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/DistributionTwoStorageParallel.mo, line 145
- Component context: distribution.pumTra
-  Component declared as PreconfiguredDPControlled pumTra in <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.DistributionTwoStorageParallel">BESMod.Systems.Hydraulical.Distribution.DistributionTwoStorageParallel</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/Tests/TestSimpleStorages.mo, line 5
 Error: ERRORS have been issued.
 
 
 Error in model:  BESMod.Systems.Hydraulical.Distribution.Tests.TestCombiStorage 
 Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.Tests.TestCombiStorage">BESMod.Systems.Hydraulical.Distribution.Tests.TestCombiStorage</a>
-Error: Class or component 'use_inputFilter' not found in SpeedControlled_y pump
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/CombiStorage.mo, line 119
- Component context: distribution.pump
-  Component declared as SpeedControlled_y pump in <a href="Modelica://IBPSA.Fluid.Movers.Preconfigured">IBPSA.Fluid.Movers.Preconfigured</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.CombiStorage">BESMod.Systems.Hydraulical.Distribution.CombiStorage</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/Tests/TestCombiStorage.mo, line 5
 Error: Class or component 'use_inputFilter' not found in SpeedControlled_y pumpSec
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/CombiStorage.mo, line 145
  Component context: distribution.pumpSec
@@ -1111,70 +1109,8 @@ Error: Class or component 'use_inputFilter' not found in SpeedControlled_y pumpT
 Error: ERRORS have been issued.
 
 
-Error in model:  BESMod.Systems.RecordsCollection.Movers.SpeedControlled 
-Check of <a href="Modelica://BESMod.Systems.RecordsCollection.Movers.SpeedControlled">BESMod.Systems.RecordsCollection.Movers.SpeedControlled</a>
-Error: Class or component 'use_inputFilter' not found in MoverBaseDataDefinition
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/RecordsCollection/Movers/SpeedControlled.mo, line <a href="Modelica://BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition#text:2">3</a>
-  Context: <a href="Modelica://BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition">BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.RecordsCollection.Movers.SpeedControlled">BESMod.Systems.RecordsCollection.Movers.SpeedControlled</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/RecordsCollection/Movers/SpeedControlled.mo, line 2
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Systems.Ventilation.Generation.Tests.ControlledDomesticVentilation 
-Check of <a href="Modelica://BESMod.Systems.Ventilation.Generation.Tests.ControlledDomesticVentilation">BESMod.Systems.Ventilation.Generation.Tests.ControlledDomesticVentilation</a>
-Error: The following parameter doesn't have any value:
-  <a href="Modelica://BESMod.Systems.Ventilation.Generation.Tests.ControlledDomesticVentilation#text$generation:dp_design">generation.dp_design[]</a>
-The model has the same number of unknowns and equations: 1059
-The model could not be deduced to be symbolically well-posed.
-The model has
-  1035+2*(generation.fanFlow.vol.dynBal.nPorts+generation.fanRet.vol.dynBal.nPorts  +generation.threeWayValve_b.vol.dynBal.nPorts+generation.threeWayValve_a.vol.dynBal.nPorts  +vol[1].dynBal.nPorts)
-scalar unknowns and
-  976+(if weaDat.pAtmSou == IBPSA.BoundaryConditions.Types.DataSource.Parameter   then 1 else 0)+(if weaDat.TDewPoiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TDryBulSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TBlaSkySou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.relHumSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.opaSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.ceiHeiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.totSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winSpeSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winDirSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HInfHorSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HDifHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HGloHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HGloHor_HDifHor then 2 else 1)+(if generation.bouSup.use_Xi_in then 2   else (if generation.bouSup.use_X_in then 1 else 3))+3*generation.bouSup.nPorts  +(if generation.bouExh.use_Xi_in then 2 else (if generation.bouExh.use_X_in   then 1 else 3))+3*generation.bouExh.nPorts+(if  not generation.bouExh.use_p_in   then 1 else 0)+(if  not generation.bouExh.use_T_in then 1 else 0)+(if  not   generation.fanFlow.vol.dynBal.use_mWat_flow then 1 else 0)+5*generation.fanFlow.vol.dynBal.nPorts  +(if  not generation.fanRet.vol.dynBal.use_mWat_flow then 1 else 0)+5*  generation.fanRet.vol.dynBal.nPorts+(if  not vol[1].dynBal.use_mWat_flow then 1   else 0)+5*vol[1].dynBal.nPorts+(if  not generation.threeWayValve_b.vol.dynBal.use_mWat_flow   then 1 else 0)+5*generation.threeWayValve_b.vol.dynBal.nPorts+(if  not   generation.threeWayValve_a.vol.dynBal.use_mWat_flow then 1 else 0)+5*  generation.threeWayValve_a.vol.dynBal.nPorts
-scalar equations.
-However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
-  1059
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Systems.Hydraulical.Distribution.Tests.TestOnlyBuilding 
-Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.Tests.TestOnlyBuilding">BESMod.Systems.Hydraulical.Distribution.Tests.TestOnlyBuilding</a>
-Error: Class or component 'dpOld_design' not found in PartialDistribution
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BuildingOnly.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution#text:2">3</a>
-  Context: <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BuildingOnly">BESMod.Systems.Hydraulical.Distribution.BuildingOnly</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/Tests/TestOnlyBuilding.mo, line 5
-Error: Class or component 'use_inputFilter' not found in PreconfiguredDPControlled pump
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BuildingOnly.mo, line 41
- Component context: distribution.pump
-  Component declared as PreconfiguredDPControlled pump in <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BuildingOnly">BESMod.Systems.Hydraulical.Distribution.BuildingOnly</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/Tests/TestOnlyBuilding.mo, line 5
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Systems.RecordsCollection.Movers.DPConst 
-Check of <a href="Modelica://BESMod.Systems.RecordsCollection.Movers.DPConst">BESMod.Systems.RecordsCollection.Movers.DPConst</a>
-Error: Class or component 'use_inputFilter' not found in MoverBaseDataDefinition
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/RecordsCollection/Movers/DPConst.mo, line <a href="Modelica://BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition#text:2">3</a>
-  Context: <a href="Modelica://BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition">BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.RecordsCollection.Movers.DPConst">BESMod.Systems.RecordsCollection.Movers.DPConst</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/RecordsCollection/Movers/DPConst.mo, line 2
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic 
-Check of <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic">BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic</a>
-Error: Component type specifier BESMod.Systems.RecordsCollection.Movers.DefaultMover not found
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text:84">85</a>
- Component context: DHW.parPum
-  Component declared as BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic">BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic</a>
-Error: Class or component 'parPum' not found in StandardProfiles DHW
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 81
- Component context: DHW
-  Component declared as StandardProfiles DHW in <a href="Modelica://BESMod.Systems.Demand.DHW">BESMod.Systems.Demand.DHW</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic">BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 2
+Error in model:  BESMod.Systems.BaseClasses.PartialBuildingEnergySystem 
+Check of <a href="Modelica://BESMod.Systems.BaseClasses.PartialBuildingEnergySystem">BESMod.Systems.BaseClasses.PartialBuildingEnergySystem</a>
 Error: Class or component 'dpSup_nominal' not found in PartialTransfer transfer
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
  Component context: hydraulic.transfer
@@ -1199,205 +1135,59 @@ Error: Class or component 'dpSupOld_design' not found in PartialTransfer transfe
   Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
   Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/PartialBuildingEnergySystem.mo, line 87
-Error: Class or component 'parPum' not found in HeatPumpAndElectricHeater generation
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 31
- Component context: hydraulic.generation
-  Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic">BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 2
-Error: Overriding final modifier for mOld_flow_design
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve.BaseClasses.PartialDistribution#text:10">12</a>
-Overriding found at:
-  Context: <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.DistributionTwoStorageParallel.BaseClasses.PartialThreeWayValve.mOld_flow_design">BESMod.Systems.Hydraulical.Distribution.DistributionTwoStorageParallel.BaseClasses.PartialThreeWayValve.mOld_flow_design</a>
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/DistributionTwoStorageParallel.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.DistributionTwoStorageParallel.BaseClasses.PartialThreeWayValve#text:11">14</a>
-Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
-Error: Overriding final modifier for dpDem_nominal
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve.BaseClasses.PartialDistribution#text:11">13</a>
-Overriding found at:
-  Context: <a href="Modelica://Distribution.BaseClasses.PartialDistribution.dpDem_nominal">Distribution.BaseClasses.PartialDistribution.dpDem_nominal</a>
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line <a href="Modelica://Distribution.BaseClasses.PartialDistribution#text:38">149</a>
-Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
-Error: Overriding final modifier for dpSup_nominal
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve.BaseClasses.PartialDistribution#text:12">14</a>
-Overriding found at:
-  Context: <a href="Modelica://Distribution.BaseClasses.PartialDistribution.dpSup_nominal">Distribution.BaseClasses.PartialDistribution.dpSup_nominal</a>
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line <a href="Modelica://Distribution.BaseClasses.PartialDistribution#text:36">147</a>
-Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
-Error: Class or component 'use_inputFilter' not found in DefaultThreeWayValve parThrWayVal
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 72
- Component context: hydraulic.distribution.parThrWayVal
-  Component declared as DefaultThreeWayValve parThrWayVal in <a href="Modelica://BESMod.Systems.RecordsCollection.Valves">BESMod.Systems.RecordsCollection.Valves</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/DistributionTwoStorageParallel.mo, line 4
-Definition missing in <a href="Modelica://ThreeWayValve">ThreeWayValve</a>.
-Error: Class or component 'use_inputFilter' not found in PreconfiguredDPControlled pumGen
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line 90
- Component context: hydraulic.distribution.pumGen
-  Component declared as PreconfiguredDPControlled pumGen in <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/DistributionTwoStorageParallel.mo, line 4
-Error: Class or component 'use_inputFilter' not found in PreconfiguredDPControlled pumTra
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/DistributionTwoStorageParallel.mo, line 145
- Component context: hydraulic.distribution.pumTra
-  Component declared as PreconfiguredDPControlled pumTra in <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.DistributionTwoStorageParallel">BESMod.Systems.Hydraulical.Distribution.DistributionTwoStorageParallel</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 64
 Error: Class or component 'dpSup_nominal' not found in PartialTransfer transfer
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
  Component context: hydraulic.transfer
   Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
   Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/HydraulicSystem.mo, line 3
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/PartialBuildingEnergySystem.mo, line 87
 Error: Class or component 'dpSupOld_design' not found in PartialTransfer transfer
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
  Component context: hydraulic.transfer
   Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
   Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/HydraulicSystem.mo, line 3
-Error: Component type specifier BESMod.Systems.RecordsCollection.Movers.DefaultMover not found
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text:76">77</a>
- Component context: hydraulic.transfer.parPum
-  Component declared as BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic">BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic</a>
-Error: Class or component 'parPum' not found in IdealValveRadiator transfer
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 73
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/PartialBuildingEnergySystem.mo, line 87
+Error: Class or component 'dpSup_nominal' not found in PartialTransfer transfer
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
  Component context: hydraulic.transfer
-  Component declared as IdealValveRadiator transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer">BESMod.Systems.Hydraulical.Transfer</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic">BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 2
-Error: Class or component 'parTra' not found in IdealValveRadiator transfer
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 73
+  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/PartialBuildingEnergySystem.mo, line 87
+Error: Class or component 'dpSupOld_design' not found in PartialTransfer transfer
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
  Component context: hydraulic.transfer
-  Component declared as IdealValveRadiator transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer">BESMod.Systems.Hydraulical.Transfer</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic">BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 2
-Error: Component type specifier BESMod.Systems.RecordsCollection.Movers.DefaultMover not found
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text:112">113</a>
- Component context: ventilation.generation.fanData
-  Component declared as BESMod.Systems.RecordsCollection.Movers.DefaultMover fanData in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic">BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic</a>
-Error: Class or component 'fanData' not found in ControlledDomesticVentilation generation
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 103
- Component context: ventilation.generation
-  Component declared as ControlledDomesticVentilation generation in <a href="Modelica://BESMod.Systems.Ventilation.Generation">BESMod.Systems.Ventilation.Generation</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic">BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 2
+  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/PartialBuildingEnergySystem.mo, line 87
 Error: ERRORS have been issued.
 
 
-Error in model:  BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation 
-Check of <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation">BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation</a>
-Error: Component type specifier BESMod.Systems.RecordsCollection.Movers.DefaultMover not found
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialTEASERHeatLoadCalculation.mo, line <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation#text:27">28</a>
- Component context: DHW.parPum
-  Component declared as BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation">BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation</a>
-Error: Class or component 'parPum' not found in StandardProfiles DHW
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialTEASERHeatLoadCalculation.mo, line 27
- Component context: DHW
-  Component declared as StandardProfiles DHW in <a href="Modelica://BESMod.Systems.Demand.DHW">BESMod.Systems.Demand.DHW</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation">BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialTEASERHeatLoadCalculation.mo, line 2
-Error: Class or component 'dpSup_nominal' not found in PartialTransfer transfer
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
- Component context: hydraulic.transfer
-  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/PartialBuildingEnergySystem.mo, line 87
-Error: Class or component 'dpSupOld_design' not found in PartialTransfer transfer
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
- Component context: hydraulic.transfer
-  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/PartialBuildingEnergySystem.mo, line 87
-Error: Class or component 'dpSup_nominal' not found in PartialTransfer transfer
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
- Component context: hydraulic.transfer
-  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/PartialBuildingEnergySystem.mo, line 87
-Error: Class or component 'dpSupOld_design' not found in PartialTransfer transfer
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
- Component context: hydraulic.transfer
-  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/PartialBuildingEnergySystem.mo, line 87
-Error: Overriding final modifier for nParallelDem
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BuildingOnly.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BuildingOnly.BaseClasses.PartialDistribution#text:2">4</a>
-Overriding found at:
- Component context: BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation.BESMod.Systems.BaseClasses.PartialBuildingEnergySystem.hydraulic.distribution.nParallelDem
-  Component declared as BESMod.Systems.Hydraulical.HydraulicSystem hydraulic in <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation.BESMod.Systems.BaseClasses.PartialBuildingEnergySystem">BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation.BESMod.Systems.BaseClasses.PartialBuildingEnergySystem</a>
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialTEASERHeatLoadCalculation.mo, line <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation.BESMod.Systems.BaseClasses.PartialBuildingEnergySystem.hydraulic.distribution#text">17</a>
-Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
-Error: Class or component 'dpOld_design' not found in PartialDistribution
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BuildingOnly.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution#text:2">3</a>
-  Context: <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BuildingOnly">BESMod.Systems.Hydraulical.Distribution.BuildingOnly</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialTEASERHeatLoadCalculation.mo, line 17
-Error: Class or component 'use_inputFilter' not found in PreconfiguredDPControlled pump
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BuildingOnly.mo, line 41
- Component context: hydraulic.distribution.pump
-  Component declared as PreconfiguredDPControlled pump in <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BuildingOnly">BESMod.Systems.Hydraulical.Distribution.BuildingOnly</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialTEASERHeatLoadCalculation.mo, line 17
-Error: Class or component 'dpSup_nominal' not found in PartialTransfer transfer
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
- Component context: hydraulic.transfer
-  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/HydraulicSystem.mo, line 3
-Error: Class or component 'dpSupOld_design' not found in PartialTransfer transfer
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
- Component context: hydraulic.transfer
-  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/HydraulicSystem.mo, line 3
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Systems.Hydraulical.HydraulicSystem 
-Check of <a href="Modelica://BESMod.Systems.Hydraulical.HydraulicSystem">BESMod.Systems.Hydraulical.HydraulicSystem</a>
-Component type specifier PartialGeneration is a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem#text:19">20</a>
- Component context: generation
-  Component declared as PartialGeneration generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses">BESMod.Systems.Hydraulical.Generation.BaseClasses</a>
-Component type specifier PartialControl is a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem#text:46">47</a>
- Component context: control
-  Component declared as PartialControl control in <a href="Modelica://BESMod.Systems.Hydraulical.Control.BaseClasses">BESMod.Systems.Hydraulical.Control.BaseClasses</a>
-Component type specifier PartialDistribution is a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem#text:104">105</a>
- Component context: distribution
-  Component declared as PartialDistribution distribution in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses">BESMod.Systems.Hydraulical.Distribution.BaseClasses</a>
+Error in model:  BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>
 Error: Class or component 'dpSup_nominal' not found in PartialTransfer transfer
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
  Component context: transfer
   Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
   Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/HydraulicSystem.mo, line 3
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 2
 Error: Class or component 'dpSupOld_design' not found in PartialTransfer transfer
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
  Component context: transfer
   Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
   Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/HydraulicSystem.mo, line 3
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 2
 Error: Class or component 'dpSup_nominal' not found in PartialTransfer transfer
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
  Component context: transfer
   Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
   Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/HydraulicSystem.mo, line 3
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 2
 Error: Class or component 'dpSupOld_design' not found in PartialTransfer transfer
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 155
  Component context: transfer
   Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
   Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem">BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/HydraulicSystem.mo, line 3
-Component type specifier PartialTransfer is a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem#text:154">155</a>
- Component context: transfer
-  Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line 2
 Error: ERRORS have been issued.
 
 
@@ -1415,11 +1205,43 @@ Error: Class or component 'use_inputFilter' not found in PreconfiguredDPControll
   Component declared as PreconfiguredDPControlled pumGen in <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers</a>
   Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line 4
-Error: Class or component 'use_inputFilter' not found in PreconfiguredDPControlled pumTra
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line 244
- Component context: pumTra
-  Component declared as PreconfiguredDPControlled pumTra in <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line 2
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Distribution.Tests.TestIndirectLoading 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.Tests.TestIndirectLoading">BESMod.Systems.Hydraulical.Distribution.Tests.TestIndirectLoading</a>
+Error: Overriding final modifier for dpDem_nominal
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve.BaseClasses.PartialDistribution#text:11">13</a>
+Overriding found at:
+  Context: <a href="Modelica://BaseClasses.PartialDistribution.dpDem_nominal">BaseClasses.PartialDistribution.dpDem_nominal</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/Tests/PartialTest.mo, line <a href="Modelica://BaseClasses.PartialDistribution#text:17">22</a>
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Error: Overriding final modifier for dpSup_nominal
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve.BaseClasses.PartialDistribution#text:12">14</a>
+Overriding found at:
+  Context: <a href="Modelica://BaseClasses.PartialDistribution.dpSup_nominal">BaseClasses.PartialDistribution.dpSup_nominal</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/Tests/PartialTest.mo, line <a href="Modelica://BaseClasses.PartialDistribution#text:16">21</a>
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Error: Class or component 'use_inputFilter' not found in DefaultThreeWayValve parThrWayVal
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/Tests/TestIndirectLoading.mo, line 11
+ Component context: distribution.parThrWayVal
+  Component declared as DefaultThreeWayValve parThrWayVal in <a href="Modelica://BESMod.Systems.RecordsCollection.Valves">BESMod.Systems.RecordsCollection.Valves</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line 4
+Definition missing in <a href="Modelica://ThreeWayValve">ThreeWayValve</a>.
+Error: Component type specifier MoverBaseDataDefinition is a partial type.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve#text:53">54</a>
+ Component context: distribution.parPumGen
+  Component declared as BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition parPumGen in <a href="Modelica://BESMod.Systems.RecordsCollection.Movers">BESMod.Systems.RecordsCollection.Movers</a>
+Error: Class or component 'use_inputFilter' not found in PreconfiguredDPControlled pumGen
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line 90
+ Component context: distribution.pumGen
+  Component declared as PreconfiguredDPControlled pumGen in <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line 4
+Error: Component type specifier MoverBaseDataDefinition is a partial type.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel#text:263">264</a>
+ Component context: distribution.parPumTra
+  Component declared as BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition parPumTra in <a href="Modelica://BESMod.Systems.RecordsCollection.Movers">BESMod.Systems.RecordsCollection.Movers</a>
 Error: ERRORS have been issued.
 
