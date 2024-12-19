@@ -127,8 +127,8 @@ model CombiStorage
     final dp_nominal=dpDem_nominal[1] + dp_nominal[1],
     final addPowerToMedium=parPum.addPowerToMedium,
     final tau=parPum.tau,
-    final use_inputFilter=parPum.use_inputFilter,
-    final riseTime=parPum.riseTimeInpFilter,
+    final use_riseTime=parPum.use_riseTime,
+    final riseTime=parPum.riseTime,
     final y_start=1) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=180,
@@ -154,7 +154,7 @@ model CombiStorage
     final addPowerToMedium=parPum.addPowerToMedium,
     final tau=parPum.tau,
     final use_inputFilter=parPum.use_inputFilter,
-    final riseTime=parPum.riseTimeInpFilter,
+    final riseTime=parPum.riseTime,
     final y_start=1) "Pump for secondary generation device, e.g. solar thermal"
     annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
@@ -197,7 +197,7 @@ model CombiStorage
     final addPowerToMedium=parPum.addPowerToMedium,
     final tau=parPum.tau,
     final use_inputFilter=parPum.use_inputFilter,
-    final riseTime=parPum.riseTimeInpFilter,
+    final riseTime=parPum.riseTime,
     final y_start=1) "Pump to transfer system" annotation (Placement(
         transformation(
         extent={{-10,10},{10,-10}},

@@ -76,8 +76,8 @@ partial model PartialTest
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-58,42})));
-  Modelica.Blocks.Sources.RealExpression deltaQ_flow_design[transfer.nParallelDem](
-     y=transfer.Q_flow_design .- fixTZone.port.Q_flow)
+  Modelica.Blocks.Sources.RealExpression Q_flow[transfer.nParallelDem](y=
+        fixTZone.port.Q_flow)
     "Difference between trajectory and nominal heat flow rate"
     annotation (Placement(transformation(extent={{60,80},{80,100}})));
 equation
@@ -111,4 +111,7 @@ equation
     annotation (Line(points={{-59,32},{-59,16},{-70,16}}, color={0,127,255}));
   connect(vol.ports[2], transfer.portTra_in) annotation (Line(points={{-57,32},
           {-42,32},{-42,23},{-32,23}}, color={0,127,255}));
+  annotation (Documentation(info="<html>
+<p>This test sets the nominal zone and supply temperature to check if heat and mass flow rates as well as pressure drops are match the design conditions.</p>
+</html>"));
 end PartialTest;

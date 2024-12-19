@@ -10,5 +10,11 @@ model TestUnderfloorHeating
   extends Modelica.Icons.Example;
   annotation (experiment(StopTime=36000, Tolerance=1e-06, Interval=100),
      __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestUnderfloorHeating.mos"
-          "Simulate and plot"));
+          "Simulate and plot"),
+    Documentation(info="<html>
+<p>
+  Test for 
+  <a href=\"modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem\">BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem</a>.
+</p>
+</html>"));
 end TestUnderfloorHeating;

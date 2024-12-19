@@ -5,7 +5,7 @@ partial record MoverBaseDataDefinition
     "Set to false to avoid any power (=heat and flow work) being added to medium (may give simpler equations)";
   parameter Boolean use_riseTime
     "= true, if speed is filtered with a 2nd order CriticalDamping filter";
-  parameter Modelica.Units.SI.Time riseTimeInpFilter
+  parameter Modelica.Units.SI.Time riseTime
     "Rise time of the filter (time to reach 99.6 % of the speed)";
   parameter Modelica.Units.SI.Time tau
     "Time constant of fluid volume for nominal flow, used if energy or mass balance is dynamic";

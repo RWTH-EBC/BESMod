@@ -109,7 +109,7 @@ model CustomRadiator "Custom radiator with radiative fractions"
     final addPowerToMedium=parPum.addPowerToMedium,
     final tau=parPum.tau,
     final use_riseTime=parPum.use_riseTime,
-    final riseTime=parPum.riseTimeInpFilter,
+    final riseTime=parPum.riseTime,
     final y_start=1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,

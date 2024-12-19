@@ -41,8 +41,9 @@ model ElectricalHeater "Only heat using an electric heater"
     calc_totalOnTime=true,
     calc_numSwi=true) "Electric heater KPIs"
     annotation (Placement(transformation(extent={{-60,-100},{-40,-80}})));
-  Modelica.Blocks.Sources.RealExpression reaExpTOut(y=hea.vol.T)
-                                                   annotation (Placement(
+  Modelica.Blocks.Sources.RealExpression reaExpTOut(y(
+      final unit="K",
+      displayUnit="degC")=hea.vol.T)               annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,

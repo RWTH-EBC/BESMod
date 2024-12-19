@@ -8,7 +8,7 @@ model PreconfiguredDPControlled
 
   parameter Modelica.Units.SI.MassFlowRate m_flow_nominal
     "Nominal mass flow rate";
-  parameter Modelica.Units.SI.PressureDifference dp_nominal "Nominal pressure raise, used to normalized the filter if use_inputFilter=true,
+  parameter Modelica.Units.SI.PressureDifference dp_nominal "Nominal pressure raise, used to normalized the filter if use_riseTime=true,
         to set default values of constantHead and heads, and
         and for default pressure curve if not specified in record per";
   parameter PreconfiguredControlledMovers.Types.ExternalControlType externalCtrlTyp=
@@ -237,19 +237,19 @@ equation
           color={0,0,0},
           smooth=Smooth.None),
         Rectangle(
-          visible=use_inputFilter,
+          visible=use_riseTime,
           extent={{-32,40},{34,100}},
           lineColor={0,0,0},
           fillColor={135,135,135},
           fillPattern=FillPattern.Solid),
         Ellipse(
-          visible=use_inputFilter,
+          visible=use_riseTime,
           extent={{-32,100},{34,40}},
           lineColor={0,0,0},
           fillColor={135,135,135},
           fillPattern=FillPattern.Solid),
         Text(
-          visible=use_inputFilter,
+          visible=use_riseTime,
           extent={{-20,92},{22,46}},
           lineColor={0,0,0},
           fillColor={135,135,135},

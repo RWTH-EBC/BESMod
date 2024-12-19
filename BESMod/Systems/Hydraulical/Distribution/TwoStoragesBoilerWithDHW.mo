@@ -176,8 +176,8 @@ model TwoStoragesBoilerWithDHW
         parThrWayValBoi.dp_nominal)),
     final addPowerToMedium=parPumGen.addPowerToMedium,
     final tau=parPumGen.tau,
-    final use_inputFilter=parPumGen.use_inputFilter,
-    final riseTime=parPumGen.riseTimeInpFilter,
+    final use_riseTime=parPumGen.use_riseTime,
+    final riseTime=parPumGen.riseTime,
     final y_start=1) "Pump in supply line of boiler" annotation (Placement(
         transformation(
         extent={{10,10},{-10,-10}},

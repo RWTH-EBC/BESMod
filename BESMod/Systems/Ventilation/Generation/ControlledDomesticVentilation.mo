@@ -38,7 +38,7 @@ model ControlledDomesticVentilation
      final addPowerToMedium=fanData.addPowerToMedium,
     final tau=fanData.tau,
     final use_riseTime=fanData.use_riseTime,
-    final riseTime=fanData.riseTimeInpFilter,
+    final riseTime=fanData.riseTime,
     final y_start=1) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=180,
@@ -82,7 +82,7 @@ model ControlledDomesticVentilation
     final addPowerToMedium=fanData.addPowerToMedium,
     final tau=fanData.tau,
     final use_riseTime=fanData.use_riseTime,
-    final riseTime=fanData.riseTimeInpFilter,
+    final riseTime=fanData.riseTime,
     final y_start=1) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=0,

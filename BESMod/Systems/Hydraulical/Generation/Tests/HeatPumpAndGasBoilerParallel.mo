@@ -11,46 +11,60 @@ model HeatPumpAndGasBoilerParallel
             datTab),
       redeclare
         AixLib.Fluid.HeatPumps.ModularReversible.Controls.Safety.Data.Wuellhorst2021
-        safCtrPar,
+        safCtrPar(minOffTime=200),
       redeclare
         BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps.DefaultHP
         parHeaPum,
       redeclare BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
         parTemSen,
+      mBoi_flow_nominal=generation.m_flow_design[1],
       redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
         parThrWayVal));
    extends Modelica.Icons.Example;
 
-  Modelica.Blocks.Sources.Pulse        pulse(period=1800)
-    annotation (Placement(transformation(extent={{-40,80},{-20,100}})));
-  Modelica.Blocks.Sources.Constant constThrWayValGen(k=0.5) "Constant source"
-    annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
+  Modelica.Blocks.Sources.Pulse        pulse1(period=600, startTime=300)
+    annotation (Placement(transformation(extent={{-10,10},{10,-10}},
         rotation=180,
-        origin={70,88})));
+        origin={50,80})));
 equation
-  connect(pulse.y, genControlBus.yHeaPumSet) annotation (Line(points={{-19,90},
-          {-14,90},{-14,98},{10,98},{10,74}}, color={0,0,127}), Text(
+  connect(pulse.y, genControlBus.uPriOrSecGen) annotation (Line(points={{-19,70},
+          {-14,70},{-14,74},{10,74}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(pulse.y, genControlBus.uPump) annotation (Line(points={{-19,90},{-14,
-          90},{-14,98},{10,98},{10,74}}, color={0,0,127}), Text(
+  connect(pulse.y, genControlBus.yHeaPumSet) annotation (Line(points={{-19,70},
+          {-14,70},{-14,74},{10,74}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(constThrWayValGen.y, genControlBus.uBoiOrHeaPum) annotation (Line(
-        points={{59,88},{36,88},{36,74},{10,74}}, color={0,0,127}), Text(
+  connect(pulse1.y, genControlBus.yBoi) annotation (Line(points={{39,80},{34,80},
+          {34,74},{10,74}}, color={0,0,127}), Text(
       string="%second",
       index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(pulse.y, genControlBus.yBoi) annotation (Line(points={{-19,90},{-14,90},
-          {-14,98},{10,98},{10,74}}, color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  annotation (experiment(StopTime=3600, Tolerance=1e-06, Interval=100),
+     __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/HeatPumpAndGasBoilerParallel.mos"
+          "Simulate and plot"),
+    Documentation(info="<html>
+<p>
+  Test for  
+  <a href=\"modelica://BESMod.Systems.Hydraulical.Generation.HeatPumpAndGasBoilerParallel\">BESMod.Systems.Hydraulical.Generation.HeatPumpAndGasBoilerParallel</a>.
+</p>
+<p>
+The system is designed at outdoor air temperature as bivalence temperature. 
+As the system is part parallel and both devices operate, the system supplies twice the heat demand.
+Thus, both operate with 50 percent part load. As the boilers heat flow rate
+depends on the part load, the nominal conditions is not met exactly.
+</p>
+<p>
+Furthermore, as the set compressor speed <code>yHeaPumSet</code> actuates faster 
+than the internal safety control, the device sometimes runs longer than set. 
+Search for <code>yMea</code> in results to see the actual compressor 
+speed applied.
+</p>
+
+</html>"));
 end HeatPumpAndGasBoilerParallel;

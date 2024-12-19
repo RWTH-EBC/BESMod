@@ -253,8 +253,8 @@ partial model PartialTwoStorageParallel
     final ctrlType=parPumTra.ctrlType,
     final dpVarBase_nominal=parPumTra.dpVarBase_nominal,
     final addPowerToMedium=parPumTra.addPowerToMedium,
-    final use_inputFilter=parPumTra.use_inputFilter,
-    final riseTime=parPumTra.riseTimeInpFilter,
+    final use_riseTime=parPumTra.use_riseTime,
+    final riseTime=parPumTra.riseTime,
     final y_start=1) "Pump for demand system (transfer)" annotation (Placement(
         transformation(
         extent={{-10,10},{10,-10}},

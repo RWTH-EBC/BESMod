@@ -5,5 +5,5 @@ HeatPumpAndGasBoilerParallel
 HeatPumpAndGasBoilerSeries
 HeatPumpAndElectricHeater
 PartialTest
-SolarThermalAndHeatPumpDetailed
-SolarThermalAndHeatPumpSimple
+DetailedSolarThermalWithHeatPump
+SimpleSolarThermalWithHeatPump

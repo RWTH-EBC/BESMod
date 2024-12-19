@@ -2,7 +2,8 @@ within BESMod.Systems.Hydraulical.Generation;
 model DetailedSolarThermalWithHeatPump
   "Detailed solar thermal model with monoenergetic heat pump"
   extends HeatPumpAndElectricHeater(
-    dp_design={heatPump.dpCon_nominal + dpEleHea_nominal + resGen.dp_nominal, dpST_nominal},
+    m_flow_design={Q_flow_design[1]*f_design[1]/dTTra_design[1]/4184,solCol.m_flow_nominal},
+    dp_design={heatPump.dpCon_nominal + dpEleHea_nominal + resGen.dp_nominal, solCol.dp_nominal +resSolThe.dp_nominal},
     m_flow_nominal={Q_flow_nominal[1]*f_design[1]/dTTra_nominal[1]/4184,
         solarThermalParas.m_flow_nominal},
     redeclare package Medium = IBPSA.Media.Water,
@@ -22,13 +23,7 @@ model DetailedSolarThermalWithHeatPump
       final c_p=cp) annotation (
     Dialog(group="Component data"),
     choicesAllMatching=true,
-    Placement(transformation(extent={{-86,-62},{-66,-42}})));
-  replaceable parameter
-    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition parPumSolThe
-    "Parameters for solar thermal pump" annotation (
-    Dialog(group="Component data"),
-    choicesAllMatching=true,
-    Placement(transformation(extent={{-80,-158},{-66,-144}})));
+    Placement(transformation(extent={{-198,-178},{-182,-164}})));
   Buildings.Fluid.SolarCollectors.EN12975 solCol(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
@@ -85,10 +80,7 @@ model DetailedSolarThermalWithHeatPump
     final roughness=roughness,
     resCoe=resCoeSolThe)          "Pressure drop model for solar thermal pipes"
     annotation (Placement(transformation(extent={{20,-180},{40,-160}})));
-protected
-  parameter Modelica.Units.SI.PressureDifference dpST_nominal=solarThermalParas.m_flow_nominal
-      ^2*solarThermalParas.pressureDropCoeff/(rho^2)
-    "Pressure drop at nominal mass flow rate";
+
 equation
 
   connect(solCol.port_b, portGen_out[2]) annotation (Line(points={{-40,-170},{

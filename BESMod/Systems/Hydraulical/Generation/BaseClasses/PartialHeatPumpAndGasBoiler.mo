@@ -19,7 +19,7 @@ model PartialHeatPumpAndGasBoiler "Partial heat pump and boiler"
   AixLib.Fluid.BoilerCHP.BoilerNoControl boi(
     redeclare package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
-    final m_flow_nominal=mBoi_flow_nominal,
+    m_flow_nominal=mBoi_flow_nominal,
     final m_flow_small=1E-4*abs(m_flow_nominal[1]),
     final show_T=show_T,
     final tau=parTemSen.tau,

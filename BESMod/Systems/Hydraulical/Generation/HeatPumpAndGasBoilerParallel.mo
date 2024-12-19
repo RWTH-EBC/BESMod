@@ -38,8 +38,8 @@ model HeatPumpAndGasBoilerParallel
     BESMod.Systems.RecordsCollection.Valves.ThreeWayValve(
     final dp_nominal={
       parHeaPum.dpCon_nominal + resValHeaPum.dp_nominal,
-      boi.dp_nominal + resValBoi.dp_nominal},
-    final m_flow_nominal=2*m_flow_nominal[1],
+      dpBoiTotSca},
+    final m_flow_nominal=m_flow_design[1],
     final fraK=1) "Parameters for three-way-valve" annotation (Placement(
         transformation(extent={{24,-38},{38,-24}})),
                                                   choicesAllMatching=true,
@@ -105,6 +105,12 @@ model HeatPumpAndGasBoilerParallel
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-10,-20})));
+
+protected
+  parameter Modelica.Units.SI.PressureDifference dpBoiTotSca =
+    (boi.dp_nominal + resValBoi.dp_nominal) * (m_flow_design[1] / mBoi_flow_nominal)^2
+    "Total pressure drop of boiler circuit scaled to m_flow_design";
+
 equation
   connect(thrWayVal.portDHW_b, boi.port_a) annotation (Line(points={{20,13.6},{20,
           14},{6,14},{6,50},{20,50}}, color={0,127,255}));

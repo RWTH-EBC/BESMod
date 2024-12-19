@@ -2,12 +2,11 @@ within BESMod.Systems.Hydraulical.Distribution;
 model BuildingOnly "Only loads building"
   extends BaseClasses.PartialDistribution(
     final nParallelDem=1,
-    final dpOld_design=dp_nominal,
-    final dp_design=dp_nominal,
+    final dp_nominal=dp_design,
     dTTra_design=dTTra_nominal,
     final m_flow_design=m_flow_nominal,
     final Q_flow_design=Q_flow_nominal,
-    dp_nominal=fill(0, nParallelDem),
+    dp_design=fill(0, nParallelDem),
     use_dhw=false,
     final dpDHW_nominal=0,
     final fFullSto=0,
@@ -50,8 +49,8 @@ model BuildingOnly "Only loads building"
     final ctrlType=parPum.ctrlType,
     final dpVarBase_nominal=parPum.dpVarBase_nominal,
     final addPowerToMedium=parPum.addPowerToMedium,
-    final use_inputFilter=parPum.use_inputFilter,
-    final riseTime=parPum.riseTimeInpFilter,
+    final use_riseTime=parPum.use_riseTime,
+    final riseTime=parPum.riseTime,
     final y_start=1) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=180,

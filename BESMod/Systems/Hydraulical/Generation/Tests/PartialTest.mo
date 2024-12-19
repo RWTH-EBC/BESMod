@@ -9,7 +9,9 @@ partial model PartialTest
     annotation (Placement(transformation(extent={{-10,54},{30,94}})));
 
   IBPSA.BoundaryConditions.WeatherData.ReaderTMY3 weaDat(final filNam=
-        systemParameters.filNamWea)
+        systemParameters.filNamWea,
+    TDryBulSou=IBPSA.BoundaryConditions.Types.DataSource.Parameter,
+    TDryBul=systemParameters.TOda_nominal)
     "Weather data reader"
     annotation (Placement(transformation(extent={{-80,60},{-60,80}})));
   IBPSA.Fluid.Sources.Boundary_pT bouTra[generation.nParallelDem](
@@ -21,22 +23,15 @@ partial model PartialTest
         rotation=180,
         origin={92,4})));
 
-  Modelica.Blocks.Sources.Constant constOn[generation.nParallelSup](each final
-      k=1)
-    annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=0,
-        origin={30,-72})));
-  replaceable BaseClasses.PartialGeneration generation
-  constrainedby
-    BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration(
+  replaceable BaseClasses.PartialGeneration generation constrainedby
+    BaseClasses.PartialGeneration(
     redeclare package Medium = IBPSA.Media.Water,
     energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
-    dTTra_nominal=fill(10, generation.nParallelDem),
-    m_flow_nominal=fill(0.317, generation.nParallelDem),
     Q_flow_nominal=fill(sum(systemParameters.QBui_flow_nominal), generation.nParallelDem),
+
     TOda_nominal=systemParameters.TOda_nominal,
     TDem_nominal=fill(systemParameters.THydSup_nominal[1], generation.nParallelDem),
+
     TAmb=systemParameters.TAmbHyd)
     annotation (Placement(transformation(extent={{-36,-40},{16,18}})));
   IBPSA.Fluid.MixingVolumes.MixingVolume vol[generation.nParallelDem](
@@ -44,7 +39,7 @@ partial model PartialTest
     each final energyDynamics=generation.energyDynamics,
     each final massDynamics=generation.massDynamics,
     each final p_start=generation.p_start,
-    each final T_start=systemParameters.THydSup_nominal[1],
+    T_start=fixedTemperature.T,
     each final X_start=generation.X_start,
     each final C_start=generation.C_start,
     each final C_nominal=generation.C_nominal,
@@ -62,9 +57,9 @@ partial model PartialTest
     generation.nParallelDem](
     redeclare final package Medium = IBPSA.Media.Water,
     each final energyDynamics=generation.energyDynamics,
-    final m_flow_nominal=generation.m_flow_nominal,
-    final dp_nominal=generation.dp_nominal,
-    each final externalCtrlTyp=BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.Types.ExternalControlType.speed,
+    final m_flow_nominal=generation.m_flow_design,
+    final dp_nominal=generation.dp_design,
+    each final externalCtrlTyp=BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.Types.ExternalControlType.internal,
     each final ctrlType=AixLib.Fluid.Movers.DpControlledMovers.Types.CtrlType.dpVar,
     each final addPowerToMedium=false,
     each final use_riseTime=false,
@@ -73,9 +68,13 @@ partial model PartialTest
         rotation=180,
         origin={50,-10})));
 
-  Modelica.Thermal.HeatTransfer.Sources.FixedHeatFlow fixedHeatFlow[generation.nParallelDem](each
-      Q_flow=-systemParameters.QBui_flow_nominal[1])
+  Modelica.Thermal.HeatTransfer.Sources.FixedTemperature
+                                                      fixedTemperature
+                                                                   [generation.nParallelDem](T=
+        generation.TSup_nominal .- generation.dTTra_design)
     annotation (Placement(transformation(extent={{32,36},{52,56}})));
+  Modelica.Blocks.Sources.Pulse        pulse(period=600)
+    annotation (Placement(transformation(extent={{-40,60},{-20,80}})));
 equation
   connect(generation.sigBusGen, genControlBus) annotation (Line(
       points={{-9.48,17.42},{-9.48,50},{10,50},{10,74}},
@@ -98,13 +97,11 @@ equation
       color={255,204,51},
       thickness=0.5));
 
-  connect(constOn.y, pumDis.y)
-    annotation (Line(points={{41,-72},{50,-72},{50,-22}}, color={0,0,127}));
   connect(pumDis.port_a, bouTra.ports[1]) annotation (Line(points={{60,-10},{70,-10},
           {70,4},{82,4}}, color={0,127,255}));
   connect(generation.portGen_in, pumDis.port_b) annotation (Line(points={{16,0.6},
           {28,0.6},{28,-10},{40,-10}}, color={0,127,255}));
-  connect(fixedHeatFlow.port, vol.heatPort)
+  connect(fixedTemperature.port, vol.heatPort)
     annotation (Line(points={{52,46},{64,46}}, color={191,0,0}));
                    annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},

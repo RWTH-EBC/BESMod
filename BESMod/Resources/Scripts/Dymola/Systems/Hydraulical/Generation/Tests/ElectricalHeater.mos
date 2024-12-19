@@ -1,0 +1,5 @@
+simulateModel("BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="ElectricalHeater");
+createPlot(id=2, position={75, 70, 700, 500}, y={"genControlBus.TGenOutMea", "generation.TSup_nominal[1]"}, grid=true, subPlot=1, colors={{28,108,200}, {28,200,108}});
+createPlot(id=2, position={75, 70, 700, 500}, y={"fixedTemperature[1].port.Q_flow", "generation.Q_flow_design[1]"}, grid=true, subPlot=2, colors={{28,108,200}, {28,200,108}});
+createPlot(id=2, position={75, 70, 700, 500}, y={"pumDis[1].port_a.m_flow", "generation.m_flow_design[1]"}, grid=true, subPlot=3, colors={{28,108,200}, {28,200,108}});
+createPlot(id=2, position={75, 70, 700, 500}, y={"pumDis[1].dpControlled_dp.dp_actual", "generation.dp_design[1]"}, grid=true, subPlot=4, colors={{28,108,200}, {28,200,108}});
