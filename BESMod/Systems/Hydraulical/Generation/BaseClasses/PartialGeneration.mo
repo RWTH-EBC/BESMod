@@ -1,7 +1,7 @@
 within BESMod.Systems.Hydraulical.Generation.BaseClasses;
 partial model PartialGeneration "Partial generation model for HPS"
   extends BESMod.Utilities.Icons.GenerationIcon;
-  extends BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters(
+  extends BESMod.Systems.BaseClasses.PartialSingleSideFluidSubsystemWithParameters(
     final useRoundPipes=true,
     v_design=fill(0.7,nParallelDem),
     final TSup_nominal=TDem_nominal .+ dTLoss_nominal,

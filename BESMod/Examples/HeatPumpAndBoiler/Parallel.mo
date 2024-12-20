@@ -19,7 +19,7 @@ model Parallel
           parTemSen,
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
           parThrWayVal), redeclare
-        Systems.Hydraulical.Distribution.DistributionTwoStorageParallel
+        Systems.Hydraulical.Distribution.SimpleTwoStorageParallel
         distribution(
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage

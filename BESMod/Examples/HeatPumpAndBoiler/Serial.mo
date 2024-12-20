@@ -16,7 +16,7 @@ model Serial "Bivalent Heat Pump Systems with serial heat generation"
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
           parTemSen), redeclare
-        Systems.Hydraulical.Distribution.DistributionTwoStorageParallel
+        Systems.Hydraulical.Distribution.SimpleTwoStorageParallel
         distribution(
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage

@@ -1,7 +1,6 @@
 within BESMod.Systems.Hydraulical.Distribution;
 model DHWOnly "Only loads DHW"
   extends BaseClasses.PartialDistribution(
-    dp_nominal=fill(0, nParallelDem),
     final VStoDHW=0,
     final fFullSto=0,
     final dpDHW_nominal=0,
@@ -12,7 +11,6 @@ model DHWOnly "Only loads DHW"
     final QLoss_flow_nominal=f_design .* Q_flow_nominal .- Q_flow_nominal,
     final f_design=fill(1, nParallelDem),
     final dTLoss_nominal=fill(0, nParallelDem),
-    final m_flow_nominal=mSup_flow_nominal,
     final TSup_nominal=TDem_nominal .+ dTLoss_nominal .+ dTTra_nominal,
     redeclare package MediumGen = Medium,
     redeclare package MediumDHW = Medium,

@@ -1,12 +1,12 @@
 BuildingOnly
 CombiStorage
-DistributionTwoStorageParallel
 DHWOnly
+SimpleTwoStorageParallel
 TwoStoDetailedDirectLoading
 TwoStoDetailedIndirectLoading
 TwoStoragesBoilerWithDHW
 Components
 RecordsCollection
 Tests
-BaseClasses
 Types
+BaseClasses

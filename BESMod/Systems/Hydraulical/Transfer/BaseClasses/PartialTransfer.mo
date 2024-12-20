@@ -1,7 +1,7 @@
 within BESMod.Systems.Hydraulical.Transfer.BaseClasses;
 partial model PartialTransfer "Partial transfer model for BES"
   extends BESMod.Utilities.Icons.TransferIcon;
-  extends BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters(
+  extends BESMod.Systems.BaseClasses.PartialSingleSideFluidSubsystemWithParameters(
     final useRoundPipes=true,
     v_design=fill(0.5,nParallelDem),
     TSup_nominal=fill(max(TTra_nominal),nParallelSup),
@@ -25,22 +25,42 @@ partial model PartialTransfer "Partial transfer model for BES"
     "Old design heat flow rate at supply ports to transfer system" annotation (Dialog(group=
           "Design - Bottom Up: Parameters are defined by the subsystem"));
 
-  parameter Modelica.Units.SI.Temperature TTra_nominal[nParallelDem] "Nominal supply temperature to transfer systems"
+  parameter Modelica.Units.SI.Temperature TTra_nominal[nParallelDem]
+    "Nominal supply temperature to transfer systems"
    annotation(Dialog(group="Design - Top Down: Parameters are given by the parent system"));
-  parameter Modelica.Units.SI.Temperature TTraOld_design[nParallelDem] "Old design nominal supply temperature to transfer systems"
+  parameter Modelica.Units.SI.Temperature TTraOld_design[nParallelDem]
+    "Old design nominal supply temperature to transfer systems"
    annotation(Dialog(group="Design - Top Down: Parameters are given by the parent system"));
   parameter Modelica.Units.SI.Temperature TTra_design[nParallelDem]=TTra_nominal
       "Nominal design supply temperature to transfer systems"
    annotation(Dialog(group="Design - Internal: Parameters are defined by the subsystem"));
+
+  parameter Modelica.Units.SI.MassFlowRate mSup_flow_nominal[nParallelSup]=fill(sum(
+      m_flow_nominal), nParallelSup)
+   "Nominal mass flow rate of the supply ports to the transfer system"
+   annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
   parameter Modelica.Units.SI.MassFlowRate mSup_flow_design[nParallelSup]=fill(sum(
       m_flow_design), nParallelSup)
-   "Design mass flow rate of the supply ports to the transfer system" annotation (Dialog(
-        group="Design - Bottom Up: Parameters are defined by the subsystem"));
+   "Design mass flow rate of the supply ports to the transfer system"
+   annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
+  parameter Modelica.Units.SI.MassFlowRate mSupOld_flow_design[nParallelSup]=fill(sum(
+      mOld_flow_design), nParallelSup)
+   "Old design mass flow rate of the supply ports to the transfer system"
+   annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
 
-  parameter Modelica.Units.SI.PressureDifference dpSup_design[nParallelSup]
+  parameter Modelica.Units.SI.PressureDifference dpSup_nominal[nParallelSup]
     "Nominal pressure loss to design the distribution system"
     annotation (Dialog(tab="Pressure losses", group=
           "Design - Bottom Up: Parameters are defined by the subsystem"));
+  parameter Modelica.Units.SI.PressureDifference dpSup_design[nParallelSup]
+    "Design pressure loss to design the distribution system"
+    annotation (Dialog(tab="Pressure losses", group=
+          "Design - Bottom Up: Parameters are defined by the subsystem"));
+  parameter Modelica.Units.SI.PressureDifference dpSupOld_design[nParallelSup]
+    "Old design pressure loss to design the distribution system"
+    annotation (Dialog(tab="Pressure losses", group=
+          "Design - Bottom Up: Parameters are defined by the subsystem"));
+
 
   parameter Modelica.Units.SI.Area AZone[nParallelDem](each min=0.1)
      "Area of zones/rooms"

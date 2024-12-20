@@ -3,15 +3,22 @@ model TwoStoragesBoilerWithDHW
   "Two storages with a boiler after buffer and with DHW support"
   extends
     BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel(
+    final dpBufToDem_design=0,
     final QHC2_flow_nominal=parBoi.Q_nom,
-    final mHC2_flow_nominal=pumBoi.m_flow_nominal,
+    final mHC2_flow_nominal=mBoi_flow_nominal,
     final dTLoadingHC2=dTBoiDHWLoa,
-    stoBuf(final useHeatingCoil1=false),
-    final dpBufHCSto_nominal=0,
+    stoBuf(final m2_flow_nominal=mBoi_flow_nominal,
+           final useHeatingCoil1=false),
+    final dpBufHCSto_design=0,
     final dTLoaHCBuf=0,
     final use_secHeaCoiDHWSto=true,
-    stoDHW(nHC2Up=parStoDHW.nLayer, nHC2Low=1),
-    final use_old_design=fill(false, nParallelDem));
+    stoDHW(nHC2Up=parStoDHW.nLayer, nHC2Low=1));
+
+  parameter Modelica.Units.SI.MassFlowRate mBoi_flow_nominal=
+    boi.Q_nom / dTBoi_nominal / cp "Nominal mass flow rate of boiler";
+  parameter Modelica.Units.SI.TemperatureDifference dTBoi_nominal=10
+    "Nominal boiler temperature difference";
+
   parameter Modelica.Units.SI.TemperatureDifference dTBoiDHWLoa = 5
     "Temperature difference for DHW storage loading with the boiler"
     annotation(Dialog(group="Component data"));
@@ -28,22 +35,24 @@ model TwoStoragesBoilerWithDHW
     "Nominal pressure drop between boiler valve and hydraulic sepearator"
     annotation (Dialog(tab="Pressure Drops"));
   replaceable parameter BESMod.Systems.Hydraulical.Generation.RecordsCollection.AutoparameterBoiler
-    parBoi constrainedby
+    parBoi(Q_nom=max(11000, Q_flow_design[1]))
+           constrainedby
     AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition(
       Q_nom=max(11000, Q_flow_nominal[1]))
     "Parameters for Boiler"
     annotation(Placement(transformation(extent={{84,124},{96,136}})),
       choicesAllMatching=true, Dialog(group="Component data"));
-  replaceable parameter BESMod.Systems.RecordsCollection.Movers.DPVar parPum(iconName="Pump Boi")
+  replaceable parameter BESMod.Systems.RecordsCollection.Movers.DPVar parPumBoi(iconName="Pump Boi")
     constrainedby
-    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition annotation (
+    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
+    "Boiler pump parameters" annotation (
     Dialog(group="Component data"),
     choicesAllMatching=true,
     Placement(transformation(extent={{44,124},{56,136}})));
   replaceable parameter BESMod.Systems.RecordsCollection.Valves.ThreeWayValve parThrWayValBoi(iconName=
         "BoiWayValve")
     constrainedby BESMod.Systems.RecordsCollection.Valves.ThreeWayValve(
-    final m_flow_nominal=m_flow_nominal[1],
+    final m_flow_nominal=mBoi_flow_nominal,
     final dp_nominal={0,sum(stoDHW.heatingCoil2.pipe.res.dp_nominal)},
     final fraK=1,
     use_strokeTime=false) "Parameters for three way valve of boiler" annotation (
@@ -78,10 +87,9 @@ model TwoStoragesBoilerWithDHW
   AixLib.Fluid.BoilerCHP.BoilerNoControl boi(
     redeclare package Medium = Medium,
     final allowFlowReversal=true,
-    final m_flow_nominal=m_flow_nominal[1],
-    final m_flow_small=1E-4*abs(m_flow_nominal[1]),
+    final m_flow_nominal=mBoi_flow_nominal,
+    final m_flow_small=1E-4*abs(mBoi_flow_nominal),
     final show_T=show_T,
-    final dp_nominal=m_flow_nominal[1]^2*boi.a/(rho^2),
     final rho_default=rho,
     final p_start=p_start,
     final T_start=T_start,
@@ -122,8 +130,8 @@ model TwoStoragesBoilerWithDHW
     final mSenFac=1,
     redeclare package MediumHC1 = IBPSA.Media.Water,
     redeclare package MediumHC2 = IBPSA.Media.Water,
-    final m1_flow_nominal=m_flow_nominal[1],
-    final m2_flow_nominal=m_flow_nominal[1],
+    final m1_flow_nominal=mBoi_flow_nominal,
+    final m2_flow_nominal=mDem_flow_design[1],
     final mHC1_flow_nominal=parStoBuf.mHC1_flow_nominal,
     final mHC2_flow_nominal=parStoBuf.mHC2_flow_nominal,
     final useHeatingCoil1=false,
@@ -170,16 +178,14 @@ model TwoStoragesBoilerWithDHW
     final T_start=T_start,
     final allowFlowReversal=allowFlowReversal,
     final show_T=show_T,
-    final m_flow_nominal=m_flow_nominal[1],
-    final use_riseTime=parPum.use_riseTime,
+    final m_flow_nominal=mBoi_flow_nominal,
     final dp_nominal=boi.dp_nominal + (parThrWayValBoi.dpValve_nominal + max(
         parThrWayValBoi.dp_nominal)),
-    final addPowerToMedium=parPumGen.addPowerToMedium,
-    final tau=parPumGen.tau,
-    final use_riseTime=parPumGen.use_riseTime,
-    final riseTime=parPumGen.riseTime,
-    final y_start=1) "Pump in supply line of boiler" annotation (Placement(
-        transformation(
+    final addPowerToMedium=parPumBoi.addPowerToMedium,
+    final tau=parPumBoi.tau,
+    final use_riseTime=parPumBoi.use_riseTime,
+    final riseTime=parPumBoi.riseTime) "Pump in supply line of boiler"
+    annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,
         origin={-16,60})));
@@ -197,7 +203,7 @@ model TwoStoragesBoilerWithDHW
   IBPSA.Fluid.FixedResistances.PressureDrop resBufStoToBoiVal(
     redeclare final package Medium = MediumGen,
     final allowFlowReversal=allowFlowReversal,
-    final m_flow_nominal=mSup_flow_nominal[1],
+    final m_flow_nominal=mBoi_flow_nominal,
     final show_T=show_T,
     final from_dp=false,
     final dp_nominal=dpBufStoBoiVal_nominal,
@@ -208,7 +214,7 @@ model TwoStoragesBoilerWithDHW
   IBPSA.Fluid.FixedResistances.PressureDrop resBoiValHydSep(
     redeclare final package Medium = MediumGen,
     final allowFlowReversal=allowFlowReversal,
-    final m_flow_nominal=mSup_flow_nominal[1],
+    final m_flow_nominal=mBoi_flow_nominal,
     final show_T=show_T,
     final from_dp=false,
     final dp_nominal=dpBoiValHydSep_nominal,
@@ -219,7 +225,7 @@ model TwoStoragesBoilerWithDHW
   IBPSA.Fluid.FixedResistances.PressureDrop resBoiValDHWSto(
     redeclare final package Medium = MediumGen,
     final allowFlowReversal=allowFlowReversal,
-    final m_flow_nominal=mSup_flow_nominal[1],
+    final m_flow_nominal=mBoi_flow_nominal,
     final show_T=show_T,
     final from_dp=false,
     final dp_nominal=dpBoiValDHWSto_nominal,
@@ -286,7 +292,7 @@ equation
           -10},{-39.4,-0.4}},
         color={0,127,255}));
   connect(pumTra.port_b, hydSep.fluidportBottom2) annotation (Line(points={{60,40},
-          {60,28},{86,28},{86,-4},{74.3,-4},{74.3,-0.1}},                color=
+          {56,40},{56,28},{86,28},{86,-4},{74.3,-4},{74.3,-0.1}},        color=
           {0,127,255}));
   connect(stoBuf.fluidportTop1, resValToBufSto.port_b) annotation (Line(points={
           {-39.6,40.2},{-39.6,88},{16,88},{16,160},{0,160}}, color={0,127,255}));

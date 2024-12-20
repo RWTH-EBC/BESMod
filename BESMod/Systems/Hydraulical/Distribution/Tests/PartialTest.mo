@@ -8,9 +8,15 @@ partial model PartialTest
     redeclare package Medium = Medium,
     energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
     Q_flow_nominal=fill(sum(systemParameters.QBui_flow_nominal), distribution.nParallelDem),
+
     TOda_nominal=systemParameters.TOda_nominal,
     TDem_nominal=fill(systemParameters.THydSup_nominal[1], distribution.nParallelDem),
+
     TAmb=systemParameters.TAmbHyd,
+    mDemOld_flow_design=resTra.m_flow_nominal,
+    dpDemOld_design=resTra.dp_nominal,
+    mSupOld_flow_design=resGen.m_flow_nominal,
+    dpSupOld_design=resGen.dp_nominal,
     mDHW_flow_nominal=0.1,
     QDHW_flow_nominal=2000,
     TDHW_nominal=systemParameters.TSetDHW,
@@ -41,7 +47,7 @@ partial model PartialTest
   Modelica.Blocks.Sources.Sine m_flow[distribution.nParallelDem](
     each amplitude=0.1,
     each f=1/1800,
-    each offset=0.2) annotation (Placement(transformation(
+    each offset=0.1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={80,-30})));
@@ -121,7 +127,7 @@ equation
   connect(resTra.port_b, distribution.portBui_in) annotation (Line(points={{50.5,
           20.5},{50.5,18},{26,18},{26,21.8},{18,21.8}}, color={0,127,255}));
   connect(distribution.portGen_in, resGen.port_b) annotation (Line(points={{-38,
-          32.6},{-50,32.6},{-50,52},{-69.5,52},{-69.5,39.5}}, color={0,127,255}));
+          32.6},{-50,32.6},{-50,48},{-69.5,48},{-69.5,39.5}}, color={0,127,255}));
   connect(distribution.portGen_out, resGen.port_a) annotation (Line(points={{-38,
           21.8},{-50,21.8},{-50,12},{-69.5,12},{-69.5,20.5}}, color={0,127,255}));
   connect(bouDHW.ports[1], pumDHW.port_a)
@@ -130,5 +136,7 @@ equation
   annotation (experiment(
       StopTime=3600,
       Interval=600,
-      __Dymola_Algorithm="Dassl"));
+      __Dymola_Algorithm="Dassl"), Documentation(info="<html>
+<p>This partial tests defines boundary conditions to test different distribution systems at design condition.</p>
+</html>"));
 end PartialTest;

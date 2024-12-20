@@ -4,8 +4,9 @@ model PartialDHWParameters
     "Nominal mass flow rate" annotation (Dialog(group=
           "Design - Top Down: Parameters are given by the parent system"));
   parameter Modelica.Units.SI.PressureDifference dpDHW_nominal=0
-    "Nominal pressure drop of DHW" annotation (Dialog(group=
-          "Design - Bottom Up: Parameters are defined by the subsystem"));
+    "Nominal pressure drop of DHW"
+    annotation (Dialog(tab="Pressure losses",
+      group="Design - Bottom Up: Parameters are defined by the subsystem"));
   parameter Modelica.Units.SI.HeatFlowRate QDHW_flow_nominal(min=Modelica.Constants.eps)
     "Nominal heat flow rate to DHW" annotation (Dialog(group="Design - Top Down: Parameters are given by the parent system"));
   parameter Modelica.Units.SI.HeatFlowRate QDHWBefSto_flow_nominal(min=Modelica.Constants.eps) = max(Modelica.Constants.eps, if designType==BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.NoStorage then QDHW_flow_nominal elseif designType==BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage then (((QCrit - (VStoDHW * 4184 * 1000 / 3600000) * (TDHW_nominal - 313.15)) / (tCrit/3600)) * 1000 + QDHWStoLoss_flow) elseif designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage then (VStoDHW * 4184 * 1000 / 3600000 / tCrit) * (TDHW_nominal - TDHWCold_nominal) else Modelica.Constants.eps)

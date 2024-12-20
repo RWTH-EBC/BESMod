@@ -2,12 +2,35 @@ within BESMod.Systems.Hydraulical.Distribution.BaseClasses;
 partial model PartialDistribution
   "Partial distribution model for HPS"
   extends BESMod.Utilities.Icons.StorageIcon;
-  extends BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters(
-      final useRoundPipes=true,
-      v_design=fill(0.7,nParallelDem),
-      TSup_nominal=TDem_nominal .+ dTLoss_nominal .+ dTTra_nominal,
-      TSupOld_design=TDemOld_design .+ dTLoss_nominal .+ dTTraOld_design);
+  extends BESMod.Systems.BaseClasses.PartialTwoSideFluidSubsystemWithParameters(
+    Q_flow_design={if use_oldHeat_design[i] then QOld_flow_design[i] else
+        Q_flow_nominal[i] for i in 1:nParallelDem},
+    mSup_flow_design={if use_oldSupPump_design[i] then mSupOld_flow_design[i] else
+        mSup_flow_nominal[i] for i in 1:nParallelSup},
+    dpSup_design={if use_oldSupPump_design[i] then dpSupOld_design[i] else
+        dpSup_nominal[i] for i in 1:nParallelSup},
+    mDem_flow_design={if use_oldDemPump_design[i] then mDemOld_flow_design[i] else
+        mDem_flow_nominal[i] for i in 1:nParallelDem},
+    dpDem_design={if use_oldDemPump_design[i] then dpDemOld_design[i] else
+        dpDem_nominal[i] for i in 1:nParallelDem},
+    final useRoundPipes=true,
+    vSup_design=fill(0.7,nParallelDem),
+    vDem_design=fill(0.5,nParallelDem),
+    TSup_nominal=TDem_nominal .+ dTLoss_nominal .+ dTTra_nominal,
+    TSupOld_design=TDemOld_design .+ dTLoss_nominal .+ dTTraOld_design);
   extends PartialDHWParameters;
+  parameter Boolean use_dhw=true "=false to disable DHW";
+
+  parameter Boolean use_oldHeat_design[nParallelDem]=fill(false, nParallelDem)
+    "If true, design heat flow rates of the demand system with no retrofit (old state) are used"
+    annotation (Dialog(group="Design - Internal: Parameters are defined by the subsystem"));
+  parameter Boolean use_oldDemPump_design[nParallelDem]=fill(false, nParallelDem)
+    "If true, design parameters of the demand system with no retrofit (old state) for pumps are used"
+    annotation (Dialog(group="Design - Internal: Parameters are defined by the subsystem"));
+  parameter Boolean use_oldSupPump_design[nParallelDem]=fill(false, nParallelDem)
+    "If true, design parameters of the supply system with no retrofit (old state) for pumps are used"
+    annotation (Dialog(group="Design - Internal: Parameters are defined by the subsystem"));
+
   replaceable package MediumDHW =
       Modelica.Media.Interfaces.PartialMedium
     annotation (choicesAllMatching=true);
@@ -15,40 +38,6 @@ partial model PartialDistribution
   replaceable package MediumGen =
       Modelica.Media.Interfaces.PartialMedium
     annotation (choicesAllMatching=true);
-  parameter Boolean use_dhw=true "=false to disable DHW";
-  parameter Modelica.Units.SI.MassFlowRate mSup_flow_nominal[nParallelSup](each min=Modelica.Constants.eps)
-    "Nominal mass flow rate of system supplying the distribution" annotation (
-      Dialog(group="Design - Top Down: Parameters are given by the parent system"));
-  parameter Modelica.Units.SI.MassFlowRate mSupOld_flow_design[nParallelSup](each min=Modelica.Constants.eps) = mSup_flow_nominal
-    "Old design mass flow rate of system supplying the distribution" annotation (
-      Dialog(group="Design - Top Down: Parameters are given by the parent system"));
-  parameter Modelica.Units.SI.MassFlowRate mSup_flow_design[nParallelSup](each min=Modelica.Constants.eps) = mSup_flow_nominal
-    "Design mass flow rate of system supplying the distribution" annotation (
-      Dialog(group="Design - Top Down: Parameters are given by the parent system"));
-  parameter Modelica.Units.SI.MassFlowRate mDem_flow_nominal[nParallelDem](each min=Modelica.Constants.eps)
-    "Nominal mass flow rate of demand system of the distribution" annotation (
-      Dialog(group="Design - Top Down: Parameters are given by the parent system"));
-  parameter Modelica.Units.SI.MassFlowRate mDemOld_flow_design[nParallelDem](each min=Modelica.Constants.eps) = mDem_flow_nominal
-    "Old design mass flow rate of demand system of the distribution" annotation (
-      Dialog(group="Design - Top Down: Parameters are given by the parent system"));
-  parameter Modelica.Units.SI.MassFlowRate mDem_flow_design[nParallelDem](each min=Modelica.Constants.eps) = mDem_flow_nominal
-    "Design mass flow rate of demand system of the distribution" annotation (
-      Dialog(group="Design - Top Down: Parameters are given by the parent system"));
-  parameter Modelica.Units.SI.TemperatureDifference dTTraDHW_nominal
-    "Nominal temperature difference to transfer heat to the DHW storage"
-    annotation (Dialog(group="DHW Demand"));
-  parameter Modelica.Units.SI.PressureDifference dpSup_nominal[nParallelSup]
-    "Nominal pressure loss of resistances connected to the supply system of the distribution"
-    annotation (Dialog(group="Design - Top Down: Parameters are given by the parent system"));
-  parameter Modelica.Units.SI.PressureDifference dpSupOld_design[nParallelSup]=dpSup_nominal
-    "Old design pressure loss of resistances connected to the supply system of the distribution"
-    annotation (Dialog(group="Design - Top Down: Parameters are given by the parent system"));
-  parameter Modelica.Units.SI.PressureDifference dpDem_nominal[nParallelDem]
-    "Nominal pressure loss of resistances connected to the demand system of the distribution"
-    annotation (Dialog(group="Design - Top Down: Parameters are given by the parent system"));
-  parameter Modelica.Units.SI.PressureDifference dpDemOld_design[nParallelDem] = dpDem_nominal
-    "Old design pressure loss of resistances connected to the demand system of the distribution"
-    annotation (Dialog(group="Design - Top Down: Parameters are given by the parent system"));
 
   Modelica.Fluid.Interfaces.FluidPort_a portGen_in[nParallelSup](redeclare
       final package Medium = MediumGen) "Inlet from the generation" annotation (

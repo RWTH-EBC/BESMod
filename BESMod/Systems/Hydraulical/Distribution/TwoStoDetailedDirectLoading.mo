@@ -2,7 +2,7 @@ within BESMod.Systems.Hydraulical.Distribution;
 model TwoStoDetailedDirectLoading "Two detailed storages, direct loading of space heating"
   extends BaseClasses.PartialTwoStorageParallelWithHeaters(
     stoBuf(final useHeatingCoil1=false),
-    final dpBufHCSto_nominal=0,
+    final dpBufHCSto_design=0,
     final dTLoaHCBuf=0);
 
 equation

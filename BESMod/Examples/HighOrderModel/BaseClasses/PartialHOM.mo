@@ -36,7 +36,7 @@ partial model PartialHOM
           BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
           parPIDHeaPum),
       redeclare
-        BESMod.Systems.Hydraulical.Distribution.DistributionTwoStorageParallel
+        BESMod.Systems.Hydraulical.Distribution.SimpleTwoStorageParallel
         distribution(
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage

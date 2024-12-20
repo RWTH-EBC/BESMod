@@ -1,17 +1,7 @@
 within BESMod.Systems.Hydraulical.Distribution;
-model DistributionTwoStorageParallel
+model SimpleTwoStorageParallel
   "Simple buffer and DHW storage models with three way valve"
   extends BaseClasses.PartialThreeWayValve(
-    dp_nominal={0},
-    Q_flow_design={if use_old_design[i] then QOld_flow_design[i] else
-        Q_flow_nominal[i] for i in 1:nParallelDem},
-    m_flow_design={if use_old_design[i] then mOld_flow_design[i] else
-        m_flow_nominal[i] for i in 1:nParallelDem},
-    mSup_flow_design={if use_old_design[i] then mSupOld_flow_design[i] else
-        mSup_flow_nominal[i] for i in 1:nParallelSup},
-    mDem_flow_design={if use_old_design[i] then mDemOld_flow_design[i] else
-        mDem_flow_nominal[i] for i in 1:nParallelDem},
-    final mOld_flow_design=mDemOld_flow_design,
     final dpDHW_nominal=0,
     final VStoDHW=parStoDHW.V,
     final QDHWStoLoss_flow=parStoDHW.QLoss_flow,
@@ -21,9 +11,6 @@ model DistributionTwoStorageParallel
     final QLoss_flow_nominal=f_design .* Q_flow_nominal .- Q_flow_nominal,
     dTLoss_nominal=fill(0, nParallelDem));
 
-  parameter Boolean use_old_design[nParallelDem]=fill(false, nParallelDem)
-    "If true, design parameters of the building with no retrofit (old state) are used"
-    annotation (Dialog(group="Design - Internal: Parameters are defined by the subsystem"));
   replaceable parameter
     BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.SimpleStorageBaseDataDefinition
     parStoBuf(iconName="Buffer")
@@ -77,7 +64,7 @@ model DistributionTwoStorageParallel
     final beta=parStoDHW.beta,
     final kappa=parStoDHW.kappa,
     final m_flow_nominal_layer=mDHW_flow_nominal,
-    final m_flow_nominal_HE=mSup_flow_nominal[1],
+    final m_flow_nominal_HE=mSup_flow_design[1],
     final energyDynamics=energyDynamics,
     T_start=fill(TDHW_nominal, parStoDHW.nLayer),
     final p_start=p_start,
@@ -105,7 +92,7 @@ model DistributionTwoStorageParallel
     final V_HE=parStoBuf.V_HE,
     final beta=parStoBuf.beta,
     final kappa=parStoBuf.kappa,
-    final m_flow_nominal_layer=m_flow_design[1],
+    final m_flow_nominal_layer=mDem_flow_design[1],
     final m_flow_nominal_HE=mSup_flow_design[1],
     use_TOut=true,
     final energyDynamics=energyDynamics,
@@ -149,7 +136,7 @@ model DistributionTwoStorageParallel
     final T_start=T_start,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=mDem_flow_design[1],
-    final dp_nominal=dpDem_nominal[1],
+    final dp_nominal=dpDem_design[1],
     final externalCtrlTyp=parPumTra.externalCtrlTyp,
     final ctrlType=parPumTra.ctrlType,
     final dpVarBase_nominal=parPumTra.dpVarBase_nominal,
@@ -275,4 +262,4 @@ equation
   connect(stoDHW.port_b_heatGenerator, threeWayValveWithFlowReturn.portDHW_a)
     annotation (Line(points={{-11.92,-68},{-36,-68},{-36,142.4},{-40,142.4}},
         color={0,127,255}));
-end DistributionTwoStorageParallel;
+end SimpleTwoStorageParallel;

@@ -1,30 +1,16 @@
 within BESMod.Systems.Hydraulical.Distribution.BaseClasses;
 partial model PartialThreeWayValve "Partial model to later extent"
   extends BaseClasses.PartialDistribution(
-    Q_flow_design={if use_old_design[i] then QOld_flow_design[i] else
-        Q_flow_nominal[i] for i in 1:nParallelDem},
-    m_flow_design={if use_old_design[i] then mOld_flow_design[i] else
-        m_flow_nominal[i] for i in 1:nParallelDem},
-    mSup_flow_design={if use_old_design[i] then mSupOld_flow_design[i] else
-        mSup_flow_nominal[i] for i in 1:nParallelSup},
-    mDem_flow_design={if use_old_design[i] then mDemOld_flow_design[i] else
-        mDem_flow_nominal[i] for i in 1:nParallelDem},
-    final mOld_flow_design=mDemOld_flow_design,
-    final dpDem_nominal={0},
     final dpSup_nominal={parThrWayVal.dpValve_nominal + max(parThrWayVal.dp_nominal)},
-    final m_flow_nominal=mDem_flow_nominal,
     designType=BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage,
     final TSup_nominal=TDem_nominal .+ dTLoss_nominal .+ dTTra_nominal,
     final nParallelSup=1,
     final nParallelDem=1);
 
-  parameter Boolean use_old_design[nParallelDem]=fill(false, nParallelDem)
-    "If true, design parameters of the building with no retrofit (old state) are used"
-    annotation (Dialog(group="Design - Internal: Parameters are defined by the subsystem"));
-  parameter Modelica.Units.SI.PressureDifference dpBufHCSto_nominal
-    "Nominal pressure difference for possible buffer storage heating coil";
-  final parameter Modelica.Units.SI.PressureDifference dpDHWHCSto_nominal
-    "Nominal pressure difference for DHW storage heating coil";
+  parameter Modelica.Units.SI.PressureDifference dpBufHCSto_design
+    "Design pressure difference for possible buffer storage heating coil";
+  final parameter Modelica.Units.SI.PressureDifference dpDHWHCSto_design
+    "Design pressure difference for DHW storage heating coil";
 
   parameter Modelica.Units.SI.Length lengthPipValDHWSto=0.8
     "Length of all pipes between valve to DHW storage and back"
@@ -38,15 +24,14 @@ partial model PartialThreeWayValve "Partial model to later extent"
   parameter Real resCoeValBufSto=facPerBend*2
     "Factor for resistance due to bends, fittings etc. between valve to buffer storage and back"
     annotation (Dialog(tab="Pressure losses"));
-  replaceable parameter BESMod.Systems.RecordsCollection.Valves.ThreeWayValve parThrWayVal(iconName=
-        "3WayValve")
-    constrainedby BESMod.Systems.RecordsCollection.Valves.ThreeWayValve(
-    final dp_nominal={
-      dpBufHCSto_nominal + resValToBufSto.dp_nominal,
-      dpDHWHCSto_nominal + resValToDHWSto.dp_nominal},
+  replaceable parameter BESMod.Systems.RecordsCollection.Valves.ThreeWayValve
+    parThrWayVal(iconName="3WayValve") constrainedby
+    BESMod.Systems.RecordsCollection.Valves.ThreeWayValve(
+    final dp_nominal={dpBufHCSto_design + resValToBufSto.dp_nominal,
+        dpDHWHCSto_design + resValToDHWSto.dp_nominal},
     final m_flow_nominal=mSup_flow_design[1],
     final fraK=1,
-    use_inputFilter=false) "Parameters for three way valve" annotation (
+    use_strokeTime=false) "Parameters for three way valve" annotation (
     Dialog(group="Component data"),
     choicesAllMatching=true,
     Placement(transformation(extent={{64,164},{76,176}})));
@@ -94,13 +79,13 @@ partial model PartialThreeWayValve "Partial model to later extent"
     final T_start=T_start,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=mSup_flow_design[1],
-    final dp_nominal=dpSup_nominal[1] + (parThrWayVal.dpValve_nominal + max(
+    final dp_nominal=dpSup_design[1] + (parThrWayVal.dpValve_nominal + max(
         parThrWayVal.dp_nominal)),
     final externalCtrlTyp=parPumGen.externalCtrlTyp,
     final ctrlType=parPumGen.ctrlType,
     final dpVarBase_nominal=parPumGen.dpVarBase_nominal,
     final addPowerToMedium=parPumGen.addPowerToMedium,
-    final use_inputFilter=parPumGen.use_inputFilter,
+    final use_riseTime=parPumGen.use_riseTime,
     final riseTime=parPumGen.riseTime,
     final y_start=1) "Pump for supply system (generation)" annotation (
       Placement(transformation(
@@ -114,11 +99,11 @@ partial model PartialThreeWayValve "Partial model to later extent"
     final show_T=show_T,
     final from_dp=false,
     final linearized=false,
-    final dh=dPip_design[1],
+    final dh=dPipSup_design[1],
     final length=lengthPipValBufSto,
     final resCoe=resCoeValBufSto,
     final ReC=ReC,
-    final v_nominal=v_design[1],
+    final v_nominal=vSup_design[1],
     final roughness=roughness)
     "Pressure drop due to resistances between valve+pump and buffer storage"
     annotation (Placement(transformation(extent={{-20,150},{0,170}})));
@@ -129,11 +114,11 @@ partial model PartialThreeWayValve "Partial model to later extent"
     final show_T=show_T,
     final from_dp=false,
     final linearized=false,
-    final dh=dPip_design[1],
+    final dh=dPipSup_design[1],
     final length=lengthPipValDHWSto,
     final resCoe=resCoeValDHWSto,
     final ReC=ReC,
-    final v_nominal=v_design[1],
+    final v_nominal=vSup_design[1],
     final roughness=roughness)
     "Pressure drop due to resistances between valve+pump and DHW storage"
     annotation (Placement(transformation(extent={{-20,130},{0,150}})));

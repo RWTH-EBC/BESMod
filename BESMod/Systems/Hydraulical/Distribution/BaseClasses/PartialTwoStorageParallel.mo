@@ -6,7 +6,9 @@ partial model PartialTwoStorageParallel
     final dTTra_nominal={parStoBuf.dTLoadingHC1},
     final VStoDHW=parStoDHW.V,
     final QDHWStoLoss_flow=parStoDHW.QLoss_flow);
-
+  parameter Modelica.Units.SI.PressureDifference dpBufToDem_design
+    "Design pressure difference of components on demand side for pump sizing"
+     annotation(Dialog(tab="Pressure losses"));
   parameter Modelica.Units.SI.TemperatureDifference dTLoaHCBuf
     "Temperature difference for loading of heating coil in buffer storage"
       annotation(Dialog(group="Component data"));
@@ -92,7 +94,7 @@ partial model PartialTwoStorageParallel
     redeclare package MediumHC1 = MediumGen,
     redeclare package MediumHC2 = MediumGen,
     final m1_flow_nominal=mSup_flow_design[1],
-    final m2_flow_nominal=m_flow_design[1],
+    m2_flow_nominal=mDem_flow_design[1],
     final mHC1_flow_nominal=parStoBuf.mHC1_flow_nominal,
     final mHC2_flow_nominal=parStoBuf.mHC2_flow_nominal,
     final useHeatingCoil2=false,
@@ -201,7 +203,7 @@ partial model PartialTwoStorageParallel
   IBPSA.Fluid.Sensors.TemperatureTwoPort senTBuiSup(
     redeclare final package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
-    m_flow_nominal=m_flow_nominal[1],
+    m_flow_nominal=mDem_flow_nominal[1],
     tau=parTemSen.tau,
     initType=parTemSen.initType,
     T_start=T_start,
@@ -248,7 +250,7 @@ partial model PartialTwoStorageParallel
     final T_start=T_start,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=mDem_flow_design[1],
-    final dp_nominal=dpDem_nominal[1],
+    final dp_nominal=dpDem_design[1] + dpBufToDem_design,
     final externalCtrlTyp=parPumTra.externalCtrlTyp,
     final ctrlType=parPumTra.ctrlType,
     final dpVarBase_nominal=parPumTra.dpVarBase_nominal,

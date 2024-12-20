@@ -1,9 +1,9 @@
+DetailedSolarThermalWithHeatPump
 ElectricalHeater
 GasBoiler
 HeatPump
+HeatPumpAndElectricHeater
 HeatPumpAndGasBoilerParallel
 HeatPumpAndGasBoilerSeries
-HeatPumpAndElectricHeater
 PartialTest
-DetailedSolarThermalWithHeatPump
 SimpleSolarThermalWithHeatPump

@@ -1,7 +1,7 @@
 within BESMod.Systems.Hydraulical.Distribution.Tests;
 model TestSimpleStorages
   extends PartialTest(redeclare
-      BESMod.Systems.Hydraulical.Distribution.DistributionTwoStorageParallel
+      BESMod.Systems.Hydraulical.Distribution.SimpleTwoStorageParallel
       distribution(                redeclare
         BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
         parStoDHW(dTLoadingHC1=5),

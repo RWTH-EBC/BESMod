@@ -2,11 +2,7 @@ within BESMod.Systems.Hydraulical.Distribution;
 model BuildingOnly "Only loads building"
   extends BaseClasses.PartialDistribution(
     final nParallelDem=1,
-    final dp_nominal=dp_design,
     dTTra_design=dTTra_nominal,
-    final m_flow_design=m_flow_nominal,
-    final Q_flow_design=Q_flow_nominal,
-    dp_design=fill(0, nParallelDem),
     use_dhw=false,
     final dpDHW_nominal=0,
     final fFullSto=0,
@@ -22,13 +18,14 @@ model BuildingOnly "Only loads building"
     final QLoss_flow_nominal=f_design .* Q_flow_nominal .- Q_flow_nominal,
     final f_design=fill(1, nParallelDem),
     final dTLoss_nominal=fill(0, nParallelDem),
-    final m_flow_nominal=mSup_flow_nominal,
     final TSup_nominal=TDem_nominal .+ dTLoss_nominal .+ dTTra_nominal,
     redeclare package MediumGen = Medium,
     redeclare package MediumDHW = Medium,
     final dTTra_nominal=fill(0, nParallelDem));
 
-  Modelica.Blocks.Sources.RealExpression reaExpTStoBufTopMea(y=
+  Modelica.Blocks.Sources.RealExpression reaExpTStoBufTopMea(y(
+      final unit="K",
+      displayUnit="degC")=
         Medium.temperature(Medium.setState_phX(
         portGen_in[1].p,
         inStream(portGen_in[1].h_outflow),
@@ -43,7 +40,7 @@ model BuildingOnly "Only loads building"
     final p_start=p_start,
     final T_start=T_start,
     final allowFlowReversal=allowFlowReversal,
-    final m_flow_nominal=m_flow_design[1],
+    final m_flow_nominal=mSup_flow_design[1],
     final dp_nominal=dpDemSca_nominal + dpSup_nominal[1],
     final externalCtrlTyp=parPum.externalCtrlTyp,
     final ctrlType=parPum.ctrlType,
@@ -70,12 +67,12 @@ model BuildingOnly "Only loads building"
     Dialog(group="Component data"),
     choicesAllMatching=true,
     Placement(transformation(extent={{-58,6},{-44,18}})));
-  Utilities.Electrical.RealToElecCon        realToElecCon(use_souGen=false)
+  Utilities.Electrical.RealToElecCon realToElecCon(use_souGen=false)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={50,-50})));
-  // k = mPkt / dp^0.5
+protected
   parameter Modelica.Units.SI.PressureDifference dpDemSca_nominal = dpDem_nominal[1] * (mSup_flow_design[1] / mDem_flow_design[1])^2
     "Scaled nominal pressure difference";
 initial algorithm

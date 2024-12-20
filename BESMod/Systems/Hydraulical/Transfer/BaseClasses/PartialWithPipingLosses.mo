@@ -4,7 +4,10 @@ partial model PartialWithPipingLosses
   extends PartialTransfer(
     dPip_design=sqrt(4*mOld_flow_design ./ rho ./ v_design ./ Modelica.Constants.pi),
     dpSup_design={(mSup_flow_design[1]/sum({sqrt(m_flow_design[i]^2/dp_design[i]) for i in 1:nParallelDem})) ^2},
+    dpSupOld_design={(mSupOld_flow_design[1]/sum({sqrt(mOld_flow_design[i]^2/dpOld_design[i]) for i in 1:nParallelDem})) ^2},
+    dpSup_nominal={(mSup_flow_nominal[1]/sum({sqrt(m_flow_nominal[i]^2/dp_nominal[i]) for i in 1:nParallelDem})) ^2},
     final nParallelSup=1);
+
   // Pressure
   parameter BESMod.Systems.Hydraulical.Transfer.Types.HydraulicResistanceType typeOfHydRes=BESMod.Systems.Hydraulical.Transfer.Types.HydraulicResistanceType.
        FittingAndThermostatAndCheckValve
@@ -40,13 +43,6 @@ protected
     "Pipe pressure losses scaled to design flow rate of radiators";
 
 annotation (Documentation(info="<html>
-  <p>
-  This partial model adds the pressure losses through piping in the building 
-  from the distribution to the transfer units (e.g. radiators).
-  </p>
-  <p>
-  As a default assumption, the pipes are always desinged on the 
-  old heat load, as pipes in walls are typically never replaced.
-  </p>
+<p>This partial model adds the pressure losses through piping in the building from the distribution pump to the transfer units (e.g. radiators). </p><p>As a default assumption, the pipes are always desinged on the old heat load, as pipes in walls are typically never replaced. </p><p>It was a design choice to keep the piping which distributes water from the pump in the distrubution in the transfer system (even though it may be interpreted as distribution) as this piping heavily depends on the number of zones and building parameters. Furthermore, an automatic hydraulic balance requires less top-down and bottom-up parameters if all relevent pressure losses are inside the transfer system. </p>
 </html>"));
 end PartialWithPipingLosses;

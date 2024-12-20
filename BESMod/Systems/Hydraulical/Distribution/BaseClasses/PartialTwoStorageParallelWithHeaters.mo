@@ -2,7 +2,12 @@ within BESMod.Systems.Hydraulical.Distribution.BaseClasses;
 partial model PartialTwoStorageParallelWithHeaters
   "Partial two storage model with heaters"
   extends PartialTwoStorageParallel(
+    dpBufToDem_design=
+      if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.Boiler then dpBoi_design
+      elseif heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.ElectricHeater then parEleHeaAftBuf.dp_nominal
+      else 0,
     final use_secHeaCoiDHWSto=false);
+
   parameter Modelica.Units.SI.HeatFlowRate QHeaAftBuf_flow_nominal=0
     "Nominal heat flow rate of heater after DHW storage"
     annotation (Dialog(group="Component data", enable=heaAftBufTyp <> BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.No));
@@ -17,7 +22,8 @@ partial model PartialTwoStorageParallelWithHeaters
   replaceable parameter
     BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater.DefaultElectricHeater
     parEleHeaAftBuf(iconName="Heater")
-                    if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.ElectricHeater
+    constrainedby
+    BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater.Generic
     "Parameters for electric heater after buffer storage" annotation (
     Dialog(group="Component data", enable=heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.ElectricHeater),
     choicesAllMatching=true,
@@ -27,20 +33,24 @@ partial model PartialTwoStorageParallelWithHeaters
         origin={90,130})));
 
 
-    replaceable parameter BESMod.Systems.Hydraulical.Generation.RecordsCollection.AutoparameterBoiler
-    parBoi if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.Boiler
+  replaceable parameter
+    BESMod.Systems.Hydraulical.Generation.RecordsCollection.AutoparameterBoiler
+      parBoi
     constrainedby
     AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition(
       Q_nom=max(11000, QHeaAftBuf_flow_nominal))
     "Parameters for Boiler"
     annotation(Placement(transformation(extent={{24,164},{36,176}})),
-      choicesAllMatching=true, Dialog(group="Component data"));
+      choicesAllMatching=true,
+      Dialog(
+        group="Component data",
+        enable=heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.Boiler));
 
   BESMod.Systems.Hydraulical.Components.ElectricHeaterWithSecurityControl hea(
     redeclare package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
-    final m_flow_nominal=m_flow_design[1],
-    final m_flow_small=1E-4*abs(m_flow_design[1]),
+    final m_flow_nominal=mDem_flow_design[1],
+    final m_flow_small=1E-4*abs(mDem_flow_design[1]),
     final show_T=show_T,
     final dp_nominal=parEleHeaAftBuf.dp_nominal,
     final tau=30,
@@ -49,7 +59,8 @@ partial model PartialTwoStorageParallelWithHeaters
     final T_start=T_start,
     final Q_flow_nominal=QHeaAftBuf_flow_nominal,
     final V=parEleHeaAftBuf.V_hr,
-    final eta=parEleHeaAftBuf.eta) if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.ElectricHeater
+    final eta=parEleHeaAftBuf.eta)
+      if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.ElectricHeater
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -70,7 +81,7 @@ partial model PartialTwoStorageParallelWithHeaters
   AixLib.Fluid.BoilerCHP.BoilerNoControl boi(
     redeclare package Medium = AixLib.Media.Water,
     final allowFlowReversal=true,
-    final m_flow_nominal=m_flow_design[1],
+    final m_flow_nominal=mDem_flow_design[1],
     final m_flow_small=1E-4*abs(m_flow_design[1]),
     final show_T=show_T,
     final tau=parTemSen.tau,
@@ -78,6 +89,7 @@ partial model PartialTwoStorageParallelWithHeaters
     final transferHeat=parTemSen.transferHeat,
     final TAmb=parTemSen.TAmb,
     final tauHeaTra=parTemSen.tauHeaTra,
+    final dp_nominal=dpBoi_design,
     final rho_default=rho,
     final p_start=p_start,
     final T_start=T_start,
@@ -87,8 +99,9 @@ partial model PartialTwoStorageParallelWithHeaters
     final Q_nom=parBoi.Q_nom,
     final V=parBoi.volume,
     final etaTempBased=[293.15,1.09; 303.15,1.08; 313.15,1.05; 323.15,1.; 373.15,0.99],
-    final paramBoiler=parBoi) if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.Boiler
-                              "Boiler with external control"
+    final paramBoiler=parBoi)
+      if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.Boiler
+        "Boiler with external control"
     annotation (Placement(transformation(extent={{40,110},{60,130}})));
 
   Utilities.KPIs.EnergyKPICalculator KPIBoi(use_inpCon=false, y=boi.thermalPower)
@@ -103,6 +116,11 @@ partial model PartialTwoStorageParallelWithHeaters
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={30,-170})));
+protected
+  parameter Modelica.Units.SI.PressureDifference dpBoi_design=
+    parBoi.a*(mDem_flow_design[1]/rho)^parBoi.n
+    "Design pressure difference of boiler, re-calculated as component is conditional";
+
 equation
   connect(eneKPICalAftBufEleHea.KPI, outBusDist.PEleHeaAftBuf) annotation (Line(
         points={{17.8,-130},{0,-130},{0,-100}}, color={135,135,135}), Text(
