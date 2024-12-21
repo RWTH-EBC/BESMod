@@ -14,7 +14,7 @@ partial model PartialDistribution
     dpDem_design={if use_oldDemPump_design[i] then dpDemOld_design[i] else
         dpDem_nominal[i] for i in 1:nParallelDem},
     final useRoundPipes=true,
-    vSup_design=fill(0.7,nParallelDem),
+    vSup_design=fill(0.7,nParallelSup),
     vDem_design=fill(0.5,nParallelDem),
     TSup_nominal=TDem_nominal .+ dTLoss_nominal .+ dTTra_nominal,
     TSupOld_design=TDemOld_design .+ dTLoss_nominal .+ dTTraOld_design);
@@ -27,7 +27,7 @@ partial model PartialDistribution
   parameter Boolean use_oldDemPump_design[nParallelDem]=fill(false, nParallelDem)
     "If true, design parameters of the demand system with no retrofit (old state) for pumps are used"
     annotation (Dialog(group="Design - Internal: Parameters are defined by the subsystem"));
-  parameter Boolean use_oldSupPump_design[nParallelDem]=fill(false, nParallelDem)
+  parameter Boolean use_oldSupPump_design[nParallelSup]=fill(false, nParallelSup)
     "If true, design parameters of the supply system with no retrofit (old state) for pumps are used"
     annotation (Dialog(group="Design - Internal: Parameters are defined by the subsystem"));
 

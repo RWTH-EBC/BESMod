@@ -28,12 +28,11 @@ partial model PartialTest
     redeclare package Medium = IBPSA.Media.Water,
     energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
     Q_flow_nominal=fill(sum(systemParameters.QBui_flow_nominal), generation.nParallelDem),
-
     TOda_nominal=systemParameters.TOda_nominal,
     TDem_nominal=fill(systemParameters.THydSup_nominal[1], generation.nParallelDem),
-
     TAmb=systemParameters.TAmbHyd)
     annotation (Placement(transformation(extent={{-36,-40},{16,18}})));
+
   IBPSA.Fluid.MixingVolumes.MixingVolume vol[generation.nParallelDem](
     redeclare final package Medium = IBPSA.Media.Water,
     each final energyDynamics=generation.energyDynamics,

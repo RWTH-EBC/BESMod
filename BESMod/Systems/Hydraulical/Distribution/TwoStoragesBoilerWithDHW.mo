@@ -25,15 +25,34 @@ model TwoStoragesBoilerWithDHW
   parameter Real etaTem[:,2]=[293.15,1.09; 303.15,1.08; 313.15,1.05; 323.15,1.; 373.15,
       0.99] "Temperature based efficiency"
         annotation(Dialog(group="Component data"));
-  parameter Modelica.Units.SI.PressureDifference dpBufStoBoiVal_nominal
-    "Nominal pressure drop between boiler valve and buffer storage"
-    annotation (Dialog(tab="Pressure Drops"));
-  parameter Modelica.Units.SI.PressureDifference dpBoiValDHWSto_nominal
-    "Nominal pressure drop between boiler valve and DHW storage"
-    annotation (Dialog(tab="Pressure Drops"));
-   parameter Modelica.Units.SI.PressureDifference dpBoiValHydSep_nominal
-    "Nominal pressure drop between boiler valve and hydraulic sepearator"
-    annotation (Dialog(tab="Pressure Drops"));
+  parameter Modelica.Units.SI.Velocity vBoi_design=vSup_design[1]
+    "Nominal fluid velocity, used to design pipes"
+    annotation(Dialog(tab="Pressure losses",
+      group="Design - Internal: Parameters are defined by the subsystem"));
+  parameter Modelica.Units.SI.Length dPipBoi_design=
+     sqrt(4*mBoi_flow_nominal/rho/vBoi_design/Modelica.Constants.pi)
+      "Hydraulic diameter of pipes"
+    annotation(Dialog(tab="Pressure losses",
+      group="Design - Internal: Parameters are defined by the subsystem"));
+  parameter Modelica.Units.SI.Length lengthPipBoiValDHW=6
+    "Length of all pipes between boiler valve to DHW storage and back"
+    annotation (Dialog(tab="Pressure losses"));
+  parameter Real resCoeBoiValDHW=facPerBend*4
+    "Factor for resistance due to bends, fittings etc. between boiler valve to DHW storage and back"
+    annotation (Dialog(tab="Pressure losses"));
+  parameter Modelica.Units.SI.Length lengthPipBoiValHydSep=0.8
+    "Length of all pipes in boiler valve and hydraulic separator circuit"
+    annotation (Dialog(tab="Pressure losses"));
+  parameter Real resCoeBoiValHydSep=facPerBend*2
+    "Factor for resistance due to bends, fittings etc. between boiler valve and hydraulic separator"
+    annotation (Dialog(tab="Pressure losses"));
+  parameter Modelica.Units.SI.Length lengthPipBoiToBoiVal=0.8
+    "Length of all pipes in boiler valve and boiler"
+    annotation (Dialog(tab="Pressure losses"));
+  parameter Real resCoeBoiToBoiVal=facPerBend*2
+    "Factor for resistance due to bends, fittings etc. between boiler valve and boiler"
+    annotation (Dialog(tab="Pressure losses"));
+
   replaceable parameter BESMod.Systems.Hydraulical.Generation.RecordsCollection.AutoparameterBoiler
     parBoi(Q_nom=max(11000, Q_flow_design[1]))
            constrainedby
@@ -42,28 +61,27 @@ model TwoStoragesBoilerWithDHW
     "Parameters for Boiler"
     annotation(Placement(transformation(extent={{84,124},{96,136}})),
       choicesAllMatching=true, Dialog(group="Component data"));
-  replaceable parameter BESMod.Systems.RecordsCollection.Movers.DPVar parPumBoi(iconName="Pump Boi")
+  replaceable parameter BESMod.Systems.RecordsCollection.Movers.DPVar parPumBoi
     constrainedby
-    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
+    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition(iconName="Pump Boi")
     "Boiler pump parameters" annotation (
     Dialog(group="Component data"),
     choicesAllMatching=true,
     Placement(transformation(extent={{44,124},{56,136}})));
-  replaceable parameter BESMod.Systems.RecordsCollection.Valves.ThreeWayValve parThrWayValBoi(iconName=
-        "BoiWayValve")
+  replaceable parameter BESMod.Systems.RecordsCollection.Valves.ThreeWayValve parThrWayValBoi
     constrainedby BESMod.Systems.RecordsCollection.Valves.ThreeWayValve(
     final m_flow_nominal=mBoi_flow_nominal,
-    final dp_nominal={0,sum(stoDHW.heatingCoil2.pipe.res.dp_nominal)},
+    iconName="BoiWayValve",
+    final dp_nominal={resBoiValHydSep.dp_nominal, resBoiValDHW.dp_nominal + sum(stoDHW.heatingCoil2.pipe.res.dp_nominal)},
     final fraK=1,
     use_strokeTime=false) "Parameters for three way valve of boiler" annotation (
     Dialog(group="Component data"),
     choicesAllMatching=true,
     Placement(transformation(extent={{64,124},{76,136}})));
   replaceable parameter
-    BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition
-    parHydSep(iconName="HydSep")
-              constrainedby
-    RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition(
+    BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.HydraulicSeparator
+    parHydSep constrainedby RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition(
+    iconName="HydSep",
     final Q_flow_nominal=Q_flow_nominal[1]*f_design[1],
     final rho=rho,
     final c_p=cp,
@@ -107,7 +125,9 @@ model TwoStoragesBoilerWithDHW
     final paramBoiler=parBoi,
     T_out(unit="K", displayUnit="degC"))
     "Boiler with no control"
-    annotation (Placement(transformation(extent={{30,50},{48,70}})));
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={150,20})));
 
   BESMod.Systems.Hydraulical.Distribution.Components.Valves.ThreeWayValveWithFlowReturn
     thrWayValBoiDHW(
@@ -122,7 +142,9 @@ model TwoStoragesBoilerWithDHW
     redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
       parameters=parThrWayValBoi)
     "Three way valve to swith the boiler between DHW and building"
-    annotation (Placement(transformation(extent={{20,-14},{40,6}})));
+    annotation (Placement(transformation(extent={{-10,10},{10,-10}},
+        rotation=180,
+        origin={70,10})));
   AixLib.Fluid.Storage.StorageDetailed hydSep(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
@@ -168,8 +190,8 @@ model TwoStoragesBoilerWithDHW
         AixLib.Fluid.Storage.BaseClasses.HeatTransferBuoyancyWetter,
     final allowFlowReversal_layers=allowFlowReversal,
     final allowFlowReversal_HC1=allowFlowReversal,
-    final allowFlowReversal_HC2=allowFlowReversal) "Hydraulic seperator"
-    annotation (Placement(transformation(extent={{64,0},{80,20}})));
+    final allowFlowReversal_HC2=allowFlowReversal) "Hydraulic separator"
+    annotation (Placement(transformation(extent={{40,2},{24,22}})));
 
   IBPSA.Fluid.Movers.Preconfigured.SpeedControlled_y pumBoi(
     redeclare final package Medium = Medium,
@@ -179,8 +201,8 @@ model TwoStoragesBoilerWithDHW
     final allowFlowReversal=allowFlowReversal,
     final show_T=show_T,
     final m_flow_nominal=mBoi_flow_nominal,
-    final dp_nominal=boi.dp_nominal + (parThrWayValBoi.dpValve_nominal + max(
-        parThrWayValBoi.dp_nominal)),
+    final dp_nominal=resBoiToBoiVal.dp_nominal + boi.dp_nominal + (
+        parThrWayValBoi.dpValve_nominal + max(parThrWayValBoi.dp_nominal)),
     final addPowerToMedium=parPumBoi.addPowerToMedium,
     final tau=parPumBoi.tau,
     final use_riseTime=parPumBoi.use_riseTime,
@@ -188,7 +210,7 @@ model TwoStoragesBoilerWithDHW
     annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,
-        origin={-16,60})));
+        origin={112,0})));
 
   Utilities.KPIs.EnergyKPICalculator KPIBoi1(use_inpCon=false, y=boi.thermalPower)
     "Boiler heat flow KPI"
@@ -200,48 +222,62 @@ model TwoStoragesBoilerWithDHW
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={30,-140})));
-  IBPSA.Fluid.FixedResistances.PressureDrop resBufStoToBoiVal(
+  BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter resBoiToBoiVal(
     redeclare final package Medium = MediumGen,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=mBoi_flow_nominal,
     final show_T=show_T,
     final from_dp=false,
-    final dp_nominal=dpBufStoBoiVal_nominal,
     final linearized=false,
-    final deltaM=0.3)
+    final dh=dPipBoi_design,
+    final length=lengthPipBoiToBoiVal,
+    final ReC=ReC,
+    final v_nominal=vBoi_design,
+    final roughness=roughness,
+    final resCoe=resCoeBoiToBoiVal)
     "Pressure drop due to resistances between boiler valve and buffer storage"
-    annotation (Placement(transformation(extent={{4,50},{24,70}})));
-  IBPSA.Fluid.FixedResistances.PressureDrop resBoiValHydSep(
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={110,20})));
+  BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter resBoiValHydSep(
     redeclare final package Medium = MediumGen,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=mBoi_flow_nominal,
     final show_T=show_T,
+    final dh=dPipBoi_design,
+    final length=lengthPipBoiValHydSep,
+    final ReC=ReC,
+    final v_nominal=vBoi_design,
     final from_dp=false,
-    final dp_nominal=dpBoiValHydSep_nominal,
     final linearized=false,
-    final deltaM=0.3)
+    final roughness=roughness,
+    final resCoe=resCoeBoiValHydSep)
     "Pressure drop due to resistances between boiler valve and hydraulic sepearator"
-    annotation (Placement(transformation(extent={{50,-20},{70,0}})));
-  IBPSA.Fluid.FixedResistances.PressureDrop resBoiValDHWSto(
+    annotation (Placement(transformation(extent={{0,-20},{20,0}})));
+  BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter resBoiValDHW(
     redeclare final package Medium = MediumGen,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=mBoi_flow_nominal,
+    final dh=dPipBoi_design,
+    final length=lengthPipBoiValDHW,
+    final ReC=ReC,
+    final v_nominal=vBoi_design,
     final show_T=show_T,
     final from_dp=false,
-    final dp_nominal=dpBoiValDHWSto_nominal,
     final linearized=false,
-    final deltaM=0.3)
+    final roughness=roughness,
+    final resCoe=resCoeBoiValDHW)
     "Pressure drop due to resistances between boiler valve and DHW storage"
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={50,-50})));
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={-10,-84})));
 initial algorithm
   assert(use_dhw, "This system can only be simulated with use_dhw=true", AssertionLevel.error);
 equation
-  connect(boi.port_b, thrWayValBoiDHW.portGen_a) annotation (Line(points={{48,60},
-          {50,60},{50,42},{18,42},{18,0},{20,0},{20,0.4}},       color={0,127,255}));
-  connect(thrWayValBoiDHW.uBuf, sigBusDistr.uThrWayVal) annotation (Line(points={{30,8},{
-          30,48},{0,48},{0,101}},                            color={0,0,127}),
+  connect(thrWayValBoiDHW.uBuf, sigBusDistr.uThrWayVal) annotation (Line(points={{70,22},
+          {70,32},{0,32},{0,101}},                           color={0,0,127}),
       Text(
       string="%second",
       index=1,
@@ -249,14 +285,8 @@ equation
       horizontalAlignment=TextAlignment.Left));
   connect(senTBuiSup.port_b, portBui_out[1]) annotation (Line(points={{86,80},{96,
           80},{96,80},{100,80}},    color={0,127,255}));
-  connect(thrWayValBoiDHW.portGen_b, stoBuf.fluidportBottom2) annotation (Line(
-        points={{20,-7.6},{18,-7.6},{18,-8},{-30,-8},{-30,-0.2},{-29.4,-0.2}},
-                                                                        color={0,127,
-          255}));
-  connect(stoBuf.fluidportTop2, pumBoi.port_a) annotation (Line(points={{-29,40.2},
-          {-26,40.2},{-26,60}},               color={0,127,255}));
-  connect(hydSep.fluidportTop2, senTBuiSup.port_a) annotation (Line(points={{74.5,
-          20.1},{74.5,24},{54,24},{54,80},{66,80}}, color={0,127,255}));
+  connect(hydSep.fluidportTop2, senTBuiSup.port_a) annotation (Line(points={{29.5,
+          22.1},{29.5,80},{66,80}},                 color={0,127,255}));
   connect(eneKPICalAftBufBoi.KPI, outBusDist.PBoiAftBuf) annotation (Line(points={{17.8,
           -140},{0,-140},{0,-100}},       color={135,135,135}), Text(
       string="%second",
@@ -270,47 +300,57 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(boi.T_out, sigBusDistr.TBoiOut) annotation (Line(points={{45.48,63.2},{45.48,
-          66},{50,66},{50,74},{28,74},{28,101},{0,101}},
-                                                   color={0,0,127}), Text(
+  connect(boi.T_out, sigBusDistr.TBoiOut) annotation (Line(points={{142.8,16.8},
+          {126,16.8},{126,101},{0,101}},           color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(boi.u_rel, sigBusDistr.yBoi) annotation (Line(points={{32.7,67},{32.7,66},
-          {28,66},{28,102},{16,102},{16,101},{0,101}},
-                                   color={0,0,127}), Text(
+  connect(boi.u_rel, sigBusDistr.yBoi) annotation (Line(points={{157,13},{166,13},
+          {166,101},{0,101}},      color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(stoDHW.portHC2Out, thrWayValBoiDHW.portDHW_a) annotation (Line(points={{-50.2,
-          -61.4},{-50.2,-62},{-54,-62},{-54,-72},{42,-72},{42,-11.6},{40,-11.6}},
+          -61.4},{-52,-61.4},{-52,-76},{52,-76},{52,2.4},{60,2.4}},
         color={0,127,255}));
   connect(threeWayValveWithFlowReturn.portBui_a, stoBuf.fluidportBottom1)
-    annotation (Line(points={{-40,154},{12,154},{12,92},{-54,92},{-54,-10},{-39.4,
+    annotation (Line(points={{-40,154},{12,154},{12,86},{-54,86},{-54,-10},{-39.4,
           -10},{-39.4,-0.4}},
         color={0,127,255}));
-  connect(pumTra.port_b, hydSep.fluidportBottom2) annotation (Line(points={{60,40},
-          {56,40},{56,28},{86,28},{86,-4},{74.3,-4},{74.3,-0.1}},        color=
-          {0,127,255}));
   connect(stoBuf.fluidportTop1, resValToBufSto.port_b) annotation (Line(points={
           {-39.6,40.2},{-39.6,88},{16,88},{16,160},{0,160}}, color={0,127,255}));
-  connect(resBufStoToBoiVal.port_b, boi.port_a)
-    annotation (Line(points={{24,60},{30,60}}, color={0,127,255}));
-  connect(resBufStoToBoiVal.port_a, pumBoi.port_b)
-    annotation (Line(points={{4,60},{-6,60}}, color={0,127,255}));
-  connect(thrWayValBoiDHW.portDHW_b, resBoiValDHWSto.port_a) annotation (Line(
-        points={{40,-7.6},{46,-7.6},{46,-34},{50,-34},{50,-40}}, color={0,127,
-          255}));
-  connect(resBoiValDHWSto.port_b, stoDHW.portHC2In) annotation (Line(points={{
-          50,-60},{50,-78},{-56,-78},{-56,-68},{-58,-68},{-58,-55},{-50.2,-55}},
-        color={0,127,255}));
+  connect(thrWayValBoiDHW.portDHW_b, resBoiValDHW.port_a) annotation (Line(
+        points={{60,6.4},{56,6.4},{56,-84},{0,-84}}, color={0,127,255}));
+  connect(resBoiValDHW.port_b, stoDHW.portHC2In) annotation (Line(points={{-20,-84},
+          {-58,-84},{-58,-55},{-50.2,-55}}, color={0,127,255}));
   connect(thrWayValBoiDHW.portBui_b, hydSep.fluidportTop1) annotation (Line(
-        points={{40,4},{44,4},{44,22},{69.2,22},{69.2,20.1}}, color={0,127,255}));
+        points={{60,18},{56,18},{56,28},{34.8,28},{34.8,22.1}},
+                                                              color={0,127,255}));
   connect(resBoiValHydSep.port_a, thrWayValBoiDHW.portBui_a) annotation (Line(
-        points={{50,-10},{48,-10},{48,0},{40,0}}, color={0,127,255}));
+        points={{0,-10},{-4,-10},{-4,-18},{50,-18},{50,14},{60,14}},
+                                                  color={0,127,255}));
   connect(resBoiValHydSep.port_b, hydSep.fluidportBottom1) annotation (Line(
-        points={{70,-10},{72,-10},{72,-2},{69.3,-2},{69.3,-0.2}}, color={0,127,
+        points={{20,-10},{34.7,-10},{34.7,1.8}},                  color={0,127,
           255}));
+  connect(pumTra.port_b, stoBuf.fluidportBottom2) annotation (Line(points={{60,40},
+          {48,40},{48,48},{-12,48},{-12,-4},{-29.4,-4},{-29.4,-0.2}}, color={0,127,
+          255}));
+  connect(thrWayValBoiDHW.portGen_b, pumBoi.port_a) annotation (Line(points={{80,6.4},
+          {92,6.4},{92,1.72085e-15},{102,1.72085e-15}},    color={0,127,255}));
+  connect(stoBuf.fluidportTop2, hydSep.fluidportBottom2) annotation (Line(
+        points={{-29,40.2},{-30,40.2},{-30,44},{18,44},{18,-2},{30,-2},{30,0},{29.7,
+          0},{29.7,1.9}}, color={0,127,255}));
+  connect(boi.u_rel, pumBoi.y) annotation (Line(points={{157,13},{166,13},{166,4},
+          {128,4},{128,12},{112,12}},
+                              color={0,0,127}));
+  connect(pumBoi.port_b, boi.port_a)
+    annotation (Line(points={{122,-7.21645e-16},{168,-7.21645e-16},{168,20},{160,
+          20}},                                  color={0,127,255}));
+  connect(resBoiToBoiVal.port_a, boi.port_b)
+    annotation (Line(points={{120,20},{140,20}}, color={0,127,255}));
+  connect(resBoiToBoiVal.port_b, thrWayValBoiDHW.portGen_a) annotation (Line(
+        points={{100,20},{86,20},{86,14.4},{80,14.4}}, color={0,127,255}));
+  annotation (Diagram(coordinateSystem(extent={{-100,-180},{180,180}})));
 end TwoStoragesBoilerWithDHW;

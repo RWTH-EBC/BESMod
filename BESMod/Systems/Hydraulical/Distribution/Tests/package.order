@@ -1,8 +1,7 @@
-PartialTest
-TestBoilerWithDHW
-TestCombiStorage
-TestDirectLoading
-TestIndirectLoading
-TestOnlyBuilding
-TestOnlyDHW
-TestSimpleStorages
+BuildingOnly
+CombiStorage
+SimpleTwoStorageParallel
+TwoStoDetailedDirectLoading
+TwoStoDetailedIndirectLoading
+TwoStoragesBoilerWithDHW
+BaseClasses

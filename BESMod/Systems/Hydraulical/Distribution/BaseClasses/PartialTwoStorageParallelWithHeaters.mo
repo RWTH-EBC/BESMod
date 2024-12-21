@@ -6,7 +6,8 @@ partial model PartialTwoStorageParallelWithHeaters
       if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.Boiler then dpBoi_design
       elseif heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.ElectricHeater then parEleHeaAftBuf.dp_nominal
       else 0,
-    final use_secHeaCoiDHWSto=false);
+    final use_secHeaCoiDHWSto=false,
+    multiSum(nu=if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.ElectricHeater then 5 else 4));
 
   parameter Modelica.Units.SI.HeatFlowRate QHeaAftBuf_flow_nominal=0
     "Nominal heat flow rate of heater after DHW storage"
@@ -166,4 +167,6 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
+  connect(hea.Pel, multiSum.u[5]) annotation (Line(points={{61,96},{76,96},{76,102},
+          {-126,102},{-126,-111},{-58,-111}}, color={0,0,127}));
 end PartialTwoStorageParallelWithHeaters;

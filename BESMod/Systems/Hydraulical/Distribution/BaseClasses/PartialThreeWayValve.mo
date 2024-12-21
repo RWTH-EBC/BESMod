@@ -1,7 +1,6 @@
 within BESMod.Systems.Hydraulical.Distribution.BaseClasses;
 partial model PartialThreeWayValve "Partial model to later extent"
   extends BaseClasses.PartialDistribution(
-    final dpSup_nominal={parThrWayVal.dpValve_nominal + max(parThrWayVal.dp_nominal)},
     designType=BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage,
     final TSup_nominal=TDem_nominal .+ dTLoss_nominal .+ dTTra_nominal,
     final nParallelSup=1,
@@ -9,7 +8,7 @@ partial model PartialThreeWayValve "Partial model to later extent"
 
   parameter Modelica.Units.SI.PressureDifference dpBufHCSto_design
     "Design pressure difference for possible buffer storage heating coil";
-  final parameter Modelica.Units.SI.PressureDifference dpDHWHCSto_design
+  parameter Modelica.Units.SI.PressureDifference dpDHWHCSto_design
     "Design pressure difference for DHW storage heating coil";
 
   parameter Modelica.Units.SI.Length lengthPipValDHWSto=0.8
@@ -25,8 +24,9 @@ partial model PartialThreeWayValve "Partial model to later extent"
     "Factor for resistance due to bends, fittings etc. between valve to buffer storage and back"
     annotation (Dialog(tab="Pressure losses"));
   replaceable parameter BESMod.Systems.RecordsCollection.Valves.ThreeWayValve
-    parThrWayVal(iconName="3WayValve") constrainedby
+    parThrWayVal constrainedby
     BESMod.Systems.RecordsCollection.Valves.ThreeWayValve(
+    iconName="3WayValve",
     final dp_nominal={dpBufHCSto_design + resValToBufSto.dp_nominal,
         dpDHWHCSto_design + resValToDHWSto.dp_nominal},
     final m_flow_nominal=mSup_flow_design[1],
@@ -36,12 +36,14 @@ partial model PartialThreeWayValve "Partial model to later extent"
     choicesAllMatching=true,
     Placement(transformation(extent={{64,164},{76,176}})));
   replaceable parameter
-    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition parPumGen(iconName="Pump Gen")
+    BESMod.Systems.RecordsCollection.Movers.DPVar parPumGen constrainedby
+    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition(iconName=
+        "Pump Gen", externalCtrlTyp=BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.Types.ExternalControlType.onOff)
     "Parameters for pump feeding supply system (generation)" annotation (
     Dialog(group="Component data"),
     choicesAllMatching=true,
     Placement(transformation(extent={{84,164},{96,176}})));
-  Components.Valves.ThreeWayValveWithFlowReturn threeWayValveWithFlowReturn(
+  BESMod.Systems.Hydraulical.Distribution.Components.Valves.ThreeWayValveWithFlowReturn threeWayValveWithFlowReturn(
     redeclare package Medium = MediumGen,
     final energyDynamics=energyDynamics,
     final p_start=p_start,
@@ -161,5 +163,11 @@ equation
   connect(threeWayValveWithFlowReturn.portDHW_b, resValToDHWSto.port_a)
     annotation (Line(points={{-40,146.4},{-32,146.4},{-32,140},{-20,140}},
         color={0,127,255}));
+  connect(pumGen.on, sigBusDistr.pumGenOn) annotation (Line(points={{-68,125},{-60,
+          125},{-60,120},{0,120},{0,101}}, color={255,0,255}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
   annotation (Diagram(coordinateSystem(extent={{-100,-180},{100,180}})));
 end PartialThreeWayValve;

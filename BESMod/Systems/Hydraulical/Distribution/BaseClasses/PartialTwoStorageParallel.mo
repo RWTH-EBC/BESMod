@@ -2,6 +2,7 @@ within BESMod.Systems.Hydraulical.Distribution.BaseClasses;
 partial model PartialTwoStorageParallel
   "Partial model to later extent"
   extends BaseClasses.PartialThreeWayValve(
+    final dpDHWHCSto_design=sum(stoDHW.heatingCoil1.pipe.res.dp_nominal),
     final dTTraDHW_nominal=parStoDHW.dTLoadingHC1,
     final dTTra_nominal={parStoBuf.dTLoadingHC1},
     final VStoDHW=parStoDHW.V,
@@ -15,15 +16,17 @@ partial model PartialTwoStorageParallel
 
   replaceable parameter
     BESMod.Systems.RecordsCollection.TemperatureSensors.TemperatureSensorBaseDefinition
-    parTemSen(iconName="T-Sensors")
+    parTemSen
+    constrainedby
+    BESMod.Systems.RecordsCollection.TemperatureSensors.TemperatureSensorBaseDefinition(              iconName="T-Sensors")
     annotation (Dialog(group="Component data"), choicesAllMatching=true,
     Placement(transformation(extent={{44,164},{56,176}})));
 
   replaceable parameter
-    RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition parStoBuf(iconName=
-        "Buffer")
+    BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition parStoBuf
     constrainedby
-    RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition(
+    BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition(
+    iconName="Buffer",
     final Q_flow_nominal=Q_flow_design[1]*f_design[1],
     final rho=rho,
     final c_p=cp,
@@ -45,10 +48,10 @@ partial model PartialTwoStorageParallel
     Placement(transformation(extent={{44,144},{56,156}})));
 
   replaceable parameter
-    RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition parStoDHW(iconName=
-        "DHW")
+    BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition parStoDHW
     if use_dhw constrainedby
-    RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition(
+    BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition(
+    iconName="DHW",
     final Q_flow_nominal=0,
     final VPerQ_flow=0,
     final rho=rho,
@@ -70,6 +73,15 @@ partial model PartialTwoStorageParallel
     Dialog(group="Component data"),
     choicesAllMatching=true,
     Placement(transformation(extent={{64,144},{76,156}})));
+
+  replaceable parameter
+    BESMod.Systems.RecordsCollection.Movers.DPVar parPumTra
+    constrainedby
+    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition(iconName="Pump Tra")
+    "Parameters for pump feeding transfer system"
+      annotation (
+        choicesAllMatching=true,
+        Placement(transformation(extent={{84,144},{96,156}})));
 
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixTemBuf(final T=
         parStoBuf.TAmb) "Constant ambient temperature of storage" annotation (
@@ -195,9 +207,9 @@ partial model PartialTwoStorageParallel
     final allowFlowReversal_HC2=allowFlowReversal) if use_dhw "DHW storage"
     annotation (Placement(transformation(extent={{-50,-70},{-18,-30}})));
 
-  Utilities.KPIs.EnergyKPICalculator eneKPICalBuf(use_inpCon=false, y=fixTemBuf.port.Q_flow)
+  BESMod.Utilities.KPIs.EnergyKPICalculator eneKPICalBuf(use_inpCon=false, y=fixTemBuf.port.Q_flow)
     annotation (Placement(transformation(extent={{-80,-160},{-60,-140}})));
-  Utilities.KPIs.EnergyKPICalculator eneKPICalDHW(final use_inpCon=false, y=
+  BESMod.Utilities.KPIs.EnergyKPICalculator eneKPICalDHW(final use_inpCon=false, y=
         fixTemDHW.port.Q_flow)
     annotation (Placement(transformation(extent={{-100,-140},{-80,-120}})));
   IBPSA.Fluid.Sensors.TemperatureTwoPort senTBuiSup(
@@ -215,30 +227,30 @@ partial model PartialTwoStorageParallel
         rotation=180,
         origin={76,80})));
 
-  Utilities.KPIs.EnergyKPICalculator eneKPICalDHWHeaRod(use_inpCon=false, y=
+  BESMod.Utilities.KPIs.EnergyKPICalculator eneKPICalDHWHeaRod(use_inpCon=false, y=
         QHRStoDHWPre_flow.Q_flow) if parStoDHW.use_hr     annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-50,-170})));
-  Utilities.KPIs.EnergyKPICalculator eneKPICalBufHeaRod(use_inpCon=false, y=
+  BESMod.Utilities.KPIs.EnergyKPICalculator eneKPICalBufHeaRod(use_inpCon=false, y=
         QHRStoBufPre_flow.Q_flow) if parStoBuf.use_hr
     annotation (Placement(transformation(extent={{-100,-180},{-80,-160}})));
 
-  Modelica.Blocks.Math.MultiSum multiSum(nu=2)                           annotation (Placement(
+  Modelica.Blocks.Math.MultiSum multiSum(nu=4)                           annotation (Placement(
         transformation(
         extent={{-9,-9},{9,9}},
         rotation=0,
         origin={-49,-111})));
-  Utilities.Electrical.RealToElecCon        realToElecCon(use_souGen=false)
+  BESMod.Utilities.Electrical.RealToElecCon        realToElecCon(use_souGen=false)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={30,-110})));
-  Components.ConditionalPrescibedHeater heaRodBuf(Q_flow_nominal=parStoBuf.QHR_flow_nominal,
+  BESMod.Systems.Hydraulical.Distribution.Components.ConditionalPrescibedHeater heaRodBuf(Q_flow_nominal=parStoBuf.QHR_flow_nominal,
       useHeater=parStoBuf.use_hr) "Heating rod in buffer storage"
     annotation (Placement(transformation(extent={{-90,10},{-70,30}})));
-  Components.ConditionalPrescibedHeater heaRodparStoDHW(Q_flow_nominal=
+  BESMod.Systems.Hydraulical.Distribution.Components.ConditionalPrescibedHeater heaRodparStoDHW(Q_flow_nominal=
         parStoDHW.QHR_flow_nominal, useHeater=parStoDHW.use_hr)
     "Heating rod in DHW storage"
     annotation (Placement(transformation(extent={{-90,-60},{-70,-40}})));
@@ -262,17 +274,6 @@ partial model PartialTwoStorageParallel
         extent={{-10,10},{10,-10}},
         rotation=180,
         origin={70,40})));
-  replaceable parameter
-    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition parPumTra(
-    iconName="Pump Tra",
-    externalCtrlTyp=BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.Types.ExternalControlType.speed,
-    ctrlType=AixLib.Fluid.Movers.DpControlledMovers.Types.CtrlType.dpVar)
-    constrainedby
-    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
-    "Parameters for pump feeding transfer system"
-                                           annotation (
-    choicesAllMatching=true,
-    Placement(transformation(extent={{84,144},{96,156}})));
 
 protected
   parameter Boolean use_secHeaCoiDHWSto
@@ -382,10 +383,11 @@ equation
     annotation (Line(points={{-70,-50},{-50,-50}}, color={191,0,0}));
   connect(heaRodBuf.port, stoBuf.heatingRod)
     annotation (Line(points={{-70,20},{-50,20}}, color={191,0,0}));
-  connect(heaRodparStoDHW.PEleHea, multiSum.u[1]) annotation (Line(points={{-69,
-          -57},{-66,-57},{-66,-112.575},{-58,-112.575}}, color={0,0,127}));
-  connect(heaRodBuf.PEleHea, multiSum.u[2]) annotation (Line(points={{-69,13},{-64,
-          13},{-64,-108},{-58,-108},{-58,-109.425}}, color={0,0,127}));
+  connect(heaRodparStoDHW.PEleHea, multiSum.u[1]) annotation (Line(points={{-69,-57},
+          {-66,-57},{-66,-113.363},{-58,-113.363}},      color={0,0,127}));
+  connect(heaRodBuf.PEleHea, multiSum.u[2]) annotation (Line(points={{-69,13},{
+          -64,13},{-64,-108},{-58,-108},{-58,-111.787}},
+                                                     color={0,0,127}));
   connect(pumTra.y, sigBusDistr.uPumTra) annotation (Line(points={{70,52},{70,101},
           {0,101}}, color={0,0,127}), Text(
       string="%second",
@@ -394,5 +396,22 @@ equation
       horizontalAlignment=TextAlignment.Right));
   connect(pumTra.port_a, portBui_in[1])
     annotation (Line(points={{80,40},{100,40}}, color={0,127,255}));
+  connect(resValToDHWSto.port_b, stoDHW.portHC1In) annotation (Line(points={{0,140},
+          {12,140},{12,108},{-58,108},{-58,-38.6},{-50.4,-38.6}}, color={0,127,255}));
+  connect(stoDHW.portHC1Out, threeWayValveWithFlowReturn.portDHW_a) annotation (
+     Line(points={{-50.2,-44.8},{-62,-44.8},{-62,110},{-36,110},{-36,142.4},{-40,
+          142.4}}, color={0,127,255}));
+  connect(pumTra.on, sigBusDistr.pumTraOn) annotation (Line(points={{75,52},{75,
+          60},{70,60},{70,101},{0,101}}, color={255,0,255}), Text(
+      string="%second",
+      index=1,
+      extent={{-3,6},{-3,6}},
+      horizontalAlignment=TextAlignment.Right));
+
+  connect(multiSum.u[3], pumGen.P) annotation (Line(points={{-58,-110.213},{-70,
+          -110.213},{-70,-110},{-126,-110},{-126,102},{-74,102},{-74,109}},
+        color={0,0,127}));
+  connect(pumTra.P, multiSum.u[4]) annotation (Line(points={{59,46},{72,46},{72,
+          102},{-126,102},{-126,-108.637},{-58,-108.637}}, color={0,0,127}));
   annotation (Diagram(coordinateSystem(extent={{-100,-180},{100,180}})));
 end PartialTwoStorageParallel;

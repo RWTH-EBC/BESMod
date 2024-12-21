@@ -1,6 +1,5 @@
 BuildingOnly
 CombiStorage
-DHWOnly
 SimpleTwoStorageParallel
 TwoStoDetailedDirectLoading
 TwoStoDetailedIndirectLoading

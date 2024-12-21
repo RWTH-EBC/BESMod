@@ -1,0 +1,21 @@
+simulateModel("BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="TwoStoDetailedIndirectLoading");
+createPlot(
+	id=2, position={75, 70, 700, 500}, 
+	y={"resTra[1].m_flow", "resTra[1].m_flow_nominal", "resGen[1].m_flow", "resGen[1].m_flow_nominal"}, 
+	grid=true, subPlot=1, 
+	patterns={LinePattern.Solid, LinePattern.Dash, LinePattern.Solid, LinePattern.Dash}, 
+	colors={{28,108,200}, {28,200,108}, {28,108,200}, {28,200,108}}
+);
+createPlot(
+	id=2, position={75, 70, 700, 500}, 
+	y={"distribution.pumTra.dpControlled_dp.dp_actual", "distribution.pumTra.dpControlled_dp.dp_nominal", "distribution.pumGen.dpControlled_dp.dp_actual", "distribution.pumGen.dpControlled_dp.dp_nominal"}, 
+	grid=true, subPlot=2, 
+	patterns={LinePattern.Solid, LinePattern.Dash, LinePattern.Solid, LinePattern.Dash}, 
+	colors={{28,108,200}, {28,200,108}, {28,108,200}, {28,200,108}}
+);
+createPlot(
+	id=2, position={75, 70, 700, 500}, 
+	y={"fixTSup[1].T", "distribution.senTBuiSup.T"}, 
+	grid=true, subPlot=3, 
+	colors={{28,108,200}, {28,200,108}}
+);

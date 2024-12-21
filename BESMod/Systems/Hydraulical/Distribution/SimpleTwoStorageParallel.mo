@@ -2,7 +2,9 @@ within BESMod.Systems.Hydraulical.Distribution;
 model SimpleTwoStorageParallel
   "Simple buffer and DHW storage models with three way valve"
   extends BaseClasses.PartialThreeWayValve(
+    final dpBufHCSto_design=0,
     final dpDHW_nominal=0,
+    final dpDHWHCSto_design=0,
     final VStoDHW=parStoDHW.V,
     final QDHWStoLoss_flow=parStoDHW.QLoss_flow,
     designType=BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage,
@@ -218,9 +220,8 @@ equation
   connect(multiSum.y, realToElecCon.PEleLoa) annotation (Line(points={{-56.3,-128},
           {-48,-128},{-48,-124},{-40,-124}},
                                           color={0,0,127}));
-  connect(pumGen.P, multiSum.u[1]) annotation (Line(points={{-74,109},{-86,109},
-          {-86,22},{-102,22},{-102,-129.75},{-78,-129.75}},
-                                                       color={0,0,127}));
+  connect(pumGen.P, multiSum.u[1]) annotation (Line(points={{-74,109},{-74,16},
+          {-88,16},{-88,-129.75},{-78,-129.75}},       color={0,0,127}));
   connect(pumTra.P, multiSum.u[2]) annotation (Line(points={{59,16},{-88,16},{-88,
           -126.25},{-78,-126.25}},                                       color={
           0,0,127}));

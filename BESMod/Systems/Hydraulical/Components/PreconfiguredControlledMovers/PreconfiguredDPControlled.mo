@@ -101,9 +101,9 @@ model PreconfiguredDPControlled
     final riseTime=riseTime,
     final m_flow_nominal=m_flow_nominal,
     final energyDynamics=Modelica.Fluid.Types.Dynamics.SteadyState,
-    final dp_nominal=dp_nominal) if useDPCtrl
+    final dp_nominal=dp_nominal) if useDPCtrl "dp controlled Pump"
     annotation (Placement(transformation(extent={{40,-10},{60,10}})));
-  IBPSA.Fluid.Movers.Preconfigured.SpeedControlled_y dpControlled_dp1(
+  IBPSA.Fluid.Movers.Preconfigured.SpeedControlled_y speedControlled_y(
     redeclare final package Medium = Medium,
     final p_start=p_start,
     final T_start=T_start,
@@ -114,7 +114,7 @@ model PreconfiguredDPControlled
     final y_start=y_start,
     final m_flow_nominal=m_flow_nominal,
     final energyDynamics=Modelica.Fluid.Types.Dynamics.SteadyState,
-    final dp_nominal=dp_nominal) if not useDPCtrl
+    final dp_nominal=dp_nominal) if not useDPCtrl "Direct speed control pump"
     annotation (Placement(transformation(extent={{-20,20},{0,40}})));
   Modelica.Blocks.Interfaces.RealInput y if not useDPCtrl
                                          "Constant normalized rotational speed"
@@ -167,20 +167,20 @@ equation
   connect(ctrl.u[1], div.y)
     annotation (Line(points={{-2,-30},{-19,-30}},
                                                 color={0,0,127}));
-  connect(dpControlled_dp1.y, y) annotation (Line(points={{-10,42},{-10,60},{0,60},
-          {0,120}},      color={0,0,127}));
+  connect(speedControlled_y.y, y) annotation (Line(points={{-10,42},{-10,60},{0,
+          60},{0,120}}, color={0,0,127}));
   connect(dpControlled_dp.port_b, port_b)
     annotation (Line(points={{60,0},{100,0}}, color={0,127,255}));
   connect(dpControlled_dp.port_a, port_a)
     annotation (Line(points={{40,0},{-100,0}}, color={0,127,255}));
-  connect(dpControlled_dp1.port_a, port_a) annotation (Line(points={{-20,30},{-40,
-          30},{-40,0},{-100,0}}, color={0,127,255}));
-  connect(dpControlled_dp1.port_b, port_b) annotation (Line(points={{0,30},{86,30},
-          {86,0},{100,0}}, color={0,127,255}));
+  connect(speedControlled_y.port_a, port_a) annotation (Line(points={{-20,30},{
+          -40,30},{-40,0},{-100,0}}, color={0,127,255}));
+  connect(speedControlled_y.port_b, port_b) annotation (Line(points={{0,30},{86,
+          30},{86,0},{100,0}}, color={0,127,255}));
   connect(swi.y, dpControlled_dp.dp_in) annotation (Line(points={{61,-50},{74,-50},
           {74,-20},{28,-20},{28,18},{50,18},{50,12}}, color={0,0,127}));
-  connect(P, dpControlled_dp1.P) annotation (Line(points={{110,60},{70,60},{70,39},
-          {1,39}}, color={0,0,127}));
+  connect(P, speedControlled_y.P) annotation (Line(points={{110,60},{70,60},{70,
+          39},{1,39}}, color={0,0,127}));
   connect(P, dpControlled_dp.P) annotation (Line(points={{110,60},{70,60},{70,9},
           {61,9}}, color={0,0,127}));
   connect(booCon.y, swi.u2) annotation (Line(points={{-39,-70},{-32,-70},{-32,
