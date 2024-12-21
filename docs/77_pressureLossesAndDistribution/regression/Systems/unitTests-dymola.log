@@ -1,13 +1,13 @@
 Regression tests are only run for the following package:
   BESMod.Systems
-*** Warning: Unspecified initial conditions in 'RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestUnderfloorHeating.mos");'.
-
 *** Warning: Unspecified initial conditions in 'RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestPressureBasedSystemWithReliefValve.mos");'.
+
+*** Warning: Unspecified initial conditions in 'RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestUnderfloorHeating.mos");'.
 
 *** Error: BESMod_Systems_Hydraulical_Components_PreconfiguredControlledMovers_PreconfiguredOptions.txt: Errors during result verification.
            Absolute error = 1.051e-04 at t = 2160.0 for pumDPVar.port_a.m_flow
            Absolute error = 4.275e-01 at t = 3312.0 for pumDPVarOnOff.port_a.m_flow
-           Absolute error = 2.774e-03 at t = 2700.0 for pumSpeed.dpControlled_dp1.m_flow
+           Absolute error = 2.774e-03 at t = 2700.0 for pumSpeed.speedControlled_y.m_flow
            Absolute error = 6.158e-03 at t = 0.0 for pumDPConst.P
            Absolute error = 5.244e-01 at t = 2412.0 for pumDPVar.P
            Absolute error = 8.340e-03 at t = 0.0 for pumDPTotal.P
@@ -16,19 +16,13 @@ Regression tests are only run for the following package:
 *** Warning: BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions: Translation statistics for simulation and results changed for number of continuous time states.
  Old = 20
  New = 10
-Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Systems_Hydraulical_Generation_Tests_SimpleSolarThermalWithHeatPump.txt.
-Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Systems_Hydraulical_Generation_Tests_ElectricalHeater.txt.
-Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Systems_Hydraulical_Generation_Tests_GasBoiler.txt.
-Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Systems_Hydraulical_Generation_Tests_HeatPumpAndElectricHeater.txt.
-Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Systems_Hydraulical_Generation_Tests_HeatPumpAndGasBoilerSeries.txt.
-Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Systems_Hydraulical_Generation_Tests_HeatPump.txt.
-Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Systems_Hydraulical_Generation_Tests_DetailedSolarThermalWithHeatPump.txt.
-Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Systems_Hydraulical_Generation_Tests_HeatPumpAndGasBoilerParallel.txt.
-Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Systems_Hydraulical_Transfer_Tests_TestPressureBasedSystem.txt.
-Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Systems_Hydraulical_Transfer_Tests_TestIdealValveRadiatorSystem.txt.
-Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Systems_Hydraulical_Transfer_Tests_TestPressureBasedSystemWithReliefValve.txt.
-Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Systems_Hydraulical_Transfer_Tests_TestUnderfloorHeating.txt.
-Comparison files output by funnel are stored in the directory 'funnel_comp' of size 0.1 MB.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Systems_Hydraulical_Distribution_Tests_TwoStoragesBoilerWithDHW.txt.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Systems_Hydraulical_Distribution_Tests_TwoStoDetailedIndirectLoading.txt.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Systems_Hydraulical_Distribution_Tests_TwoStoDetailedDirectLoading.txt.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Systems_Hydraulical_Distribution_Tests_BuildingOnly.txt.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Systems_Hydraulical_Distribution_Tests_SimpleTwoStorageParallel.txt.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Systems_Hydraulical_Distribution_Tests_CombiStorage.txt.
+Comparison files output by funnel are stored in the directory 'funnel_comp' of size 0.4 MB.
 Run 'python -c "import buildingspy.development.regressiontest as t; t.Tester(tool=\"dymola\").report()"'
 to access a summary of the comparison results.
 

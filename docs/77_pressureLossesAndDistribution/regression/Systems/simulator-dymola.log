@@ -62,15 +62,15 @@ Statistics
  
 Original Model
   Number of components: 350
-  Variables: 2712
+  Variables: 2713
   Constants: 51 (51 scalars)
-  Parameters: 1380 (1961 scalars)
+  Parameters: 1381 (1962 scalars)
   Unknowns: 1281 (1408 scalars)
   Differentiated variables: 18 scalars
   Equations: 1276
   Nontrivial: 1089
 Translated Model
-  Constants: 1178 scalars
+  Constants: 1179 scalars
   Free parameters: 330 scalars
   Parameter depending: 825 scalars
   Outputs: 7 scalars
@@ -112,124 +112,148 @@ Declaring variable: Boolean rScript ;
 savelog("BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.translation.log"); = true
 
 
-rCheck = checkModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating");
-Check of BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating
-Note: 
-Your model is using an outer "system" component but
-an inner "system" component is not defined.
-For simulation drag Modelica.Fluid.System into your model
-to specify system properties.
- 
-The model has the same number of unknowns and equations: 1144
+rCheck = checkModel("BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly");
+Check of BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly
+The model has the same number of unknowns and equations: 410
 The model could not be deduced to be symbolically well-posed.
 The model has
-  990+15*(transfer.ufh[1].panelHeatingSegment[1].vol.nPorts+transfer.ufh[1].panelHeatingSegment[2].vol.nPorts  +transfer.ufh[1].panelHeatingSegment[3].vol.nPorts+transfer.ufh[1].panelHeatingSegment[4].vol.nPorts  +transfer.ufh[1].panelHeatingSegment[5].vol.nPorts)+transfer.pumpFix_m_flow[1].vol.dynBal.nPorts  +vol[1].dynBal.nPorts
+  404+pumDHW.vol.dynBal.nPorts+volSup[1].dynBal.nPorts+volDem[1].dynBal.nPorts
 scalar unknowns and
-  949+(if  not transfer.ufh[1].panelHeatingSegment[1].vol.use_portsData then 4*  transfer.ufh[1].panelHeatingSegment[1].vol.nPorts else 0)+13*transfer.ufh[1].panelHeatingSegment[1].vol.nPorts  +(if  not transfer.ufh[1].panelHeatingSegment[1].twoStar_RadEx.use_A_in then 1   else 0)+(if  not transfer.ufh[1].panelHeatingSegment[2].vol.use_portsData   then 4*transfer.ufh[1].panelHeatingSegment[2].vol.nPorts else 0)+13*  transfer.ufh[1].panelHeatingSegment[2].vol.nPorts+(if  not transfer.ufh[1].panelHeatingSegment[2].twoStar_RadEx.use_A_in   then 1 else 0)+(if  not transfer.ufh[1].panelHeatingSegment[3].vol.use_portsData   then 4*transfer.ufh[1].panelHeatingSegment[3].vol.nPorts else 0)+13*  transfer.ufh[1].panelHeatingSegment[3].vol.nPorts+(if  not transfer.ufh[1].panelHeatingSegment[3].twoStar_RadEx.use_A_in   then 1 else 0)+(if  not transfer.ufh[1].panelHeatingSegment[4].vol.use_portsData   then 4*transfer.ufh[1].panelHeatingSegment[4].vol.nPorts else 0)+13*  transfer.ufh[1].panelHeatingSegment[4].vol.nPorts+(if  not transfer.ufh[1].panelHeatingSegment[4].twoStar_RadEx.use_A_in   then 1 else 0)+(if  not transfer.ufh[1].panelHeatingSegment[5].vol.use_portsData   then 4*transfer.ufh[1].panelHeatingSegment[5].vol.nPorts else 0)+13*  transfer.ufh[1].panelHeatingSegment[5].vol.nPorts+(if  not transfer.ufh[1].panelHeatingSegment[5].twoStar_RadEx.use_A_in   then 1 else 0)+(if bou1[1].use_Xi_in then 1 else (if bou1[1].use_X_in then 0   else 1))+(if  not bou1[1].use_p_in then 1 else 0)+2*bou1[1].nPorts+(if  not   bou1[1].use_T_in then 1 else 0)+(if  not transfer.pumpFix_m_flow[1].vol.dynBal.use_mWat_flow   then 1 else 0)+3*transfer.pumpFix_m_flow[1].vol.dynBal.nPorts+(if  not   vol[1].dynBal.use_mWat_flow then 1 else 0)+3*vol[1].dynBal.nPorts+(if  not   pumDis[1].dpControlled_dp.vol.steBal.use_mWat_flow then 1 else 0)
+  382+(if distribution.bouPum.use_Xi_in then 1 else (if distribution.bouPum.use_X_in   then 0 else 1))+(if  not distribution.bouPum.use_p_in then 1 else 0)+(if    not distribution.bouPum.use_T_in then 1 else 0)+(if bouDHW.use_Xi_in then 1   else (if bouDHW.use_X_in then 0 else 1))+(if  not bouDHW.use_p_in then 1   else 0)+(if  not bouDHW.use_T_in then 1 else 0)+(if  not pumDHW.vol.dynBal.use_mWat_flow   then 1 else 0)+3*pumDHW.vol.dynBal.nPorts+(if  not volSup[1].dynBal.use_mWat_flow   then 1 else 0)+3*volSup[1].dynBal.nPorts+(if  not volDem[1].dynBal.use_mWat_flow   then 1 else 0)+3*volDem[1].dynBal.nPorts+(if  not distribution.pump.dpControlled_dp.vol.steBal.use_mWat_flow   then 1 else 0)
 scalar equations.
 However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
-  1144
-Check of BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating successful.
+  410
+Check of BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly successful.
 Declaring variable: Boolean rCheck ;
 
-Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestUnderfloorHeating.mos\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.statistics.log");
-Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.statistics.log");
-Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.statistics.log");
-Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating\\\");\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.statistics.log");
-Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.statistics.log");
-Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.statistics.log");
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Distribution/Tests/BuildingOnly.mos\",", "BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly\",", "BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly\\\");\",", "BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly.statistics.log");
 
 
-rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestUnderfloorHeating.mos");
-simulateModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating", stopTime=36000, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating");
-Translation of BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating
-Note: 
-Your model is using an outer "system" component but
-an inner "system" component is not defined.
-For simulation drag Modelica.Fluid.System into your model
-to specify system properties.
- 
-The DAE has 1144 scalar unknowns and 1144 scalar equations.
-Warning: The initial conditions are not fully specified.
-Dymola has selected default initial conditions.
-Warning: Assuming fixed start value for the continuous states:
-    transfer.heaCap[1].T(start = 293.15)
-    transfer.ufh[1].panelHeatingSegment[1].panel_Segment1.heatCapacitor.T(start       = transfer.ufh[1].panelHeatingSegment[1].panel_Segment1.T0)
-    transfer.ufh[1].panelHeatingSegment[1].panel_Segment2.heatCapacitor.T(start       = transfer.ufh[1].panelHeatingSegment[1].panel_Segment2.T0)
-    transfer.ufh[1].panelHeatingSegment[1].vol.medium.T(start = transfer.ufh[1].panelHeatingSegment[1].vol.T_start)
-    transfer.ufh[1].panelHeatingSegment[2].panel_Segment1.heatCapacitor.T(start       = transfer.ufh[1].panelHeatingSegment[2].panel_Segment1.T0)
-    transfer.ufh[1].panelHeatingSegment[2].panel_Segment2.heatCapacitor.T(start       = transfer.ufh[1].panelHeatingSegment[2].panel_Segment2.T0)
-    transfer.ufh[1].panelHeatingSegment[2].vol.medium.T(start = transfer.ufh[1].panelHeatingSegment[2].vol.T_start)
-    transfer.ufh[1].panelHeatingSegment[3].panel_Segment1.heatCapacitor.T(start       = transfer.ufh[1].panelHeatingSegment[3].panel_Segment1.T0)
-    transfer.ufh[1].panelHeatingSegment[3].panel_Segment2.heatCapacitor.T(start       = transfer.ufh[1].panelHeatingSegment[3].panel_Segment2.T0)
-    transfer.ufh[1].panelHeatingSegment[3].vol.medium.T(start = transfer.ufh[1].panelHeatingSegment[3].vol.T_start)
-    transfer.ufh[1].panelHeatingSegment[4].panel_Segment1.heatCapacitor.T(start       = transfer.ufh[1].panelHeatingSegment[4].panel_Segment1.T0)
-    transfer.ufh[1].panelHeatingSegment[4].panel_Segment2.heatCapacitor.T(start       = transfer.ufh[1].panelHeatingSegment[4].panel_Segment2.T0)
-    transfer.ufh[1].panelHeatingSegment[4].vol.medium.T(start = transfer.ufh[1].panelHeatingSegment[4].vol.T_start)
-    transfer.ufh[1].panelHeatingSegment[5].panel_Segment1.heatCapacitor.T(start       = transfer.ufh[1].panelHeatingSegment[5].panel_Segment1.T0)
-    transfer.ufh[1].panelHeatingSegment[5].panel_Segment2.heatCapacitor.T(start       = transfer.ufh[1].panelHeatingSegment[5].panel_Segment2.T0)
-    transfer.ufh[1].panelHeatingSegment[5].vol.medium.T(start = transfer.ufh[1].panelHeatingSegment[5].vol.T_start)
- 
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Distribution/Tests/BuildingOnly.mos");
+simulateModel("BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly");
+Translation of BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly
+The DAE has 410 scalar unknowns and 410 scalar equations.
  
 Statistics
  
 Original Model
-  Number of components: 231
-  Variables: 2492
-  Constants: 23 (23 scalars)
-  Parameters: 1138 (1398 scalars)
-  Unknowns: 1331 (1181 scalars)
-  Differentiated variables: 31 scalars
-  Equations: 1068
-  Nontrivial: 872
+  Number of components: 132
+  Variables: 1339
+  Constants: 25 (25 scalars)
+  Parameters: 746 (1119 scalars)
+  Unknowns: 568 (438 scalars)
+  Differentiated variables: 6 scalars
+  Equations: 494
+  Nontrivial: 388
 Translated Model
-  Constants: 1047 scalars
-  Free parameters: 171 scalars
-  Parameter depending: 596 scalars
+  Constants: 685 scalars
+  Free parameters: 96 scalars
+  Parameter depending: 515 scalars
   Outputs: 1 scalars
-  Continuous time states: 18 scalars
-  Time-varying variables: 265 scalars
-  Alias variables: 523 scalars
-  Assumed default initial conditions: 16
+  Continuous time states: 1 scalars
+  Time-varying variables: 29 scalars
+  Alias variables: 257 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: { }
   Sizes after manipulation of the linear systems: { }
-  Sizes of nonlinear systems of equations: {6, 6, 6, 6, 6, 1, 1}
-  Sizes after manipulation of the nonlinear systems: {1, 1, 1, 1, 1, 1, 1}
+  Sizes of nonlinear systems of equations: {1}
+  Sizes after manipulation of the nonlinear systems: {1}
   Number of numerical Jacobians: 0
   Initialization problem
-    Sizes of nonlinear systems of equations: {1, 1}
-    Sizes after manipulation of the nonlinear systems: {1, 1}
+    Sizes of nonlinear systems of equations: {8, 1, 1}
+    Sizes after manipulation of the nonlinear systems: {1, 1, 1}
     Number of numerical Jacobians: 0
  
 Selected continuous time states
 Statically selected continuous time states
-transfer.heaCap[1].T
-transfer.integralKPICalculator[1].integrator2.y
-transfer.pumpFix_m_flow[1].vol.dynBal.U
-transfer.ufh[1].panelHeatingSegment[1].panel_Segment1.heatCapacitor.T
-transfer.ufh[1].panelHeatingSegment[1].panel_Segment2.heatCapacitor.T
-transfer.ufh[1].panelHeatingSegment[1].vol.medium.T
-transfer.ufh[1].panelHeatingSegment[2].panel_Segment1.heatCapacitor.T
-transfer.ufh[1].panelHeatingSegment[2].panel_Segment2.heatCapacitor.T
-transfer.ufh[1].panelHeatingSegment[2].vol.medium.T
-transfer.ufh[1].panelHeatingSegment[3].panel_Segment1.heatCapacitor.T
-transfer.ufh[1].panelHeatingSegment[3].panel_Segment2.heatCapacitor.T
-transfer.ufh[1].panelHeatingSegment[3].vol.medium.T
-transfer.ufh[1].panelHeatingSegment[4].panel_Segment1.heatCapacitor.T
-transfer.ufh[1].panelHeatingSegment[4].panel_Segment2.heatCapacitor.T
-transfer.ufh[1].panelHeatingSegment[4].vol.medium.T
-transfer.ufh[1].panelHeatingSegment[5].panel_Segment1.heatCapacitor.T
-transfer.ufh[1].panelHeatingSegment[5].panel_Segment2.heatCapacitor.T
-transfer.ufh[1].panelHeatingSegment[5].vol.medium.T
+pumDHW.vol.dynBal.U
 Finished
-Warning: WARNINGS have been issued.
 Finished
  = true
 
 Declaring variable: Boolean rScript ;
 
-savelog("BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.translation.log"); = true
+savelog("BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem");
+Check of BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem
+The model has the same number of unknowns and equations: 692
+The model could not be deduced to be symbolically well-posed.
+The model has
+  658+2*transfer.parRad.nEle+transfer.rad[1].sumCon.nin+transfer.rad[1].sumRad.nin  +transfer.rad[1].vol[1].dynBal.nPorts+transfer.rad[1].vol[2].dynBal.nPorts+  transfer.rad[1].vol[3].dynBal.nPorts+transfer.rad[1].vol[4].dynBal.nPorts+  transfer.rad[1].vol[5].dynBal.nPorts+transfer.pumFixMFlo[1].vol.dynBal.nPorts+  vol[1].dynBal.nPorts
+scalar unknowns and
+  627+(if bou1[1].use_Xi_in then 1 else (if bou1[1].use_X_in then 0 else 1))+(if    not bou1[1].use_p_in then 1 else 0)+2*bou1[1].nPorts+(if  not   bou1[1].use_T_in then 1 else 0)+(if  not transfer.pumFixMFlo[1].vol.dynBal.use_mWat_flow   then 1 else 0)+3*transfer.pumFixMFlo[1].vol.dynBal.nPorts+(if  not   vol[1].dynBal.use_mWat_flow then 1 else 0)+3*vol[1].dynBal.nPorts+(if  not   transfer.rad[1].vol[1].dynBal.use_mWat_flow then 1 else 0)+3*transfer.rad[1].vol[1].dynBal.nPorts  +(if  not transfer.rad[1].vol[2].dynBal.use_mWat_flow then 1 else 0)+3*  transfer.rad[1].vol[2].dynBal.nPorts+(if  not transfer.rad[1].vol[3].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad[1].vol[3].dynBal.nPorts+(if  not   transfer.rad[1].vol[4].dynBal.use_mWat_flow then 1 else 0)+3*transfer.rad[1].vol[4].dynBal.nPorts  +(if  not transfer.rad[1].vol[5].dynBal.use_mWat_flow then 1 else 0)+3*  transfer.rad[1].vol[5].dynBal.nPorts+(if  not pumDis[1].dpControlled_dp.vol.steBal.use_mWat_flow   then 1 else 0)+2*transfer.parRad.nEle
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  692
+Check of BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem successful.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestIdealValveRadiatorSystem.mos\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem\\\");\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestIdealValveRadiatorSystem.mos");
+simulateModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem", stopTime=12000, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem");
+Translation of BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem
+The DAE has 692 scalar unknowns and 692 scalar equations.
+ 
+Statistics
+ 
+Original Model
+  Number of components: 200
+  Variables: 1976
+  Constants: 40 (40 scalars)
+  Parameters: 1011 (1269 scalars)
+  Unknowns: 925 (729 scalars)
+  Differentiated variables: 15 scalars
+  Equations: 753
+  Nontrivial: 570
+Translated Model
+  Constants: 968 scalars
+  Free parameters: 91 scalars
+  Parameter depending: 444 scalars
+  Outputs: 1 scalars
+  Continuous time states: 7 scalars
+  Time-varying variables: 161 scalars
+  Alias variables: 374 scalars
+  Number of mixed real/discrete systems of equations: 0
+  Sizes of linear systems of equations: {2, 2, 2, 2, 2}
+  Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0}
+  Sizes of nonlinear systems of equations: {1, 1}
+  Sizes after manipulation of the nonlinear systems: {1, 1}
+  Number of numerical Jacobians: 0
+  Initialization problem
+    Sizes of nonlinear systems of equations: {11, 1, 1}
+    Sizes after manipulation of the nonlinear systems: {5, 1, 1}
+    Number of numerical Jacobians: 0
+ 
+Selected continuous time states
+Statically selected continuous time states
+transfer.intKPICalHeaFlo.integrator2.y
+transfer.pumFixMFlo[1].vol.dynBal.U
+transfer.rad[1].vol[1].dynBal.U
+transfer.rad[1].vol[2].dynBal.U
+transfer.rad[1].vol[3].dynBal.U
+transfer.rad[1].vol[4].dynBal.U
+transfer.rad[1].vol[5].dynBal.U
+Finished
+Finished
+ = true
+
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.translation.log"); = true
 
 
 rCheck = checkModel("BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel");
@@ -293,15 +317,15 @@ Statistics
  
 Original Model
   Number of components: 381
-  Variables: 3360
+  Variables: 3361
   Constants: 60 (60 scalars)
-  Parameters: 1747 (2367 scalars)
+  Parameters: 1748 (2368 scalars)
   Unknowns: 1553 (1608 scalars)
   Differentiated variables: 21 scalars
   Equations: 1466
   Nontrivial: 1250
 Translated Model
-  Constants: 1466 scalars
+  Constants: 1467 scalars
   Free parameters: 376 scalars
   Parameter depending: 875 scalars
   Outputs: 9 scalars
@@ -353,7 +377,7 @@ The model could not be deduced to be symbolically well-posed.
 The model has
   813
 scalar unknowns and
-  758+(if sou.use_Xi_in then 1 else (if sou.use_X_in then 0 else 1))+(if  not   sou.use_p_in then 1 else 0)+2*sou.nPorts+(if  not sou.use_T_in then 1 else 0)+  (if sou1.use_Xi_in then 1 else (if sou1.use_X_in then 0 else 1))+(if  not   sou1.use_p_in then 1 else 0)+2*sou1.nPorts+(if  not sou1.use_T_in then 1 else 0)  +(if sou2.use_Xi_in then 1 else (if sou2.use_X_in then 0 else 1))+(if  not   sou2.use_p_in then 1 else 0)+2*sou2.nPorts+(if  not sou2.use_T_in then 1 else 0)  +(if sou3.use_Xi_in then 1 else (if sou3.use_X_in then 0 else 1))+(if  not   sou3.use_p_in then 1 else 0)+2*sou3.nPorts+(if  not sou3.use_T_in then 1 else 0)  +(if sou4.use_Xi_in then 1 else (if sou4.use_X_in then 0 else 1))+(if  not   sou4.use_p_in then 1 else 0)+2*sou4.nPorts+(if  not sou4.use_T_in then 1 else 0)  +(if sin.use_Xi_in then 1 else (if sin.use_X_in then 0 else 1))+(if  not   sin.use_p_in then 1 else 0)+2*sin.nPorts+(if  not sin.use_T_in then 1 else 0)+  (if sin1.use_Xi_in then 1 else (if sin1.use_X_in then 0 else 1))+(if  not   sin1.use_p_in then 1 else 0)+2*sin1.nPorts+(if  not sin1.use_T_in then 1 else 0)  +(if sin2.use_Xi_in then 1 else (if sin2.use_X_in then 0 else 1))+(if  not   sin2.use_p_in then 1 else 0)+2*sin2.nPorts+(if  not sin2.use_T_in then 1 else 0)  +(if sin3.use_Xi_in then 1 else (if sin3.use_X_in then 0 else 1))+(if  not   sin3.use_p_in then 1 else 0)+2*sin3.nPorts+(if  not sin3.use_T_in then 1 else 0)  +(if sin4.use_Xi_in then 1 else (if sin4.use_X_in then 0 else 1))+(if  not   sin4.use_p_in then 1 else 0)+2*sin4.nPorts+(if  not sin4.use_T_in then 1 else 0)  +(if  not pumDPConst.dpControlled_dp.vol.steBal.use_mWat_flow then 1 else 0)+(  if  not pumDPVar.dpControlled_dp.vol.steBal.use_mWat_flow then 1 else 0)+(if    not pumDPTotal.dpControlled_dp.vol.steBal.use_mWat_flow then 1 else 0)+(if    not pumDPVarOnOff.dpControlled_dp.vol.steBal.use_mWat_flow then 1 else 0)+(  if  not pumSpeed.dpControlled_dp1.vol.steBal.use_mWat_flow then 1 else 0)
+  758+(if sou.use_Xi_in then 1 else (if sou.use_X_in then 0 else 1))+(if  not   sou.use_p_in then 1 else 0)+2*sou.nPorts+(if  not sou.use_T_in then 1 else 0)+  (if sou1.use_Xi_in then 1 else (if sou1.use_X_in then 0 else 1))+(if  not   sou1.use_p_in then 1 else 0)+2*sou1.nPorts+(if  not sou1.use_T_in then 1 else 0)  +(if sou2.use_Xi_in then 1 else (if sou2.use_X_in then 0 else 1))+(if  not   sou2.use_p_in then 1 else 0)+2*sou2.nPorts+(if  not sou2.use_T_in then 1 else 0)  +(if sou3.use_Xi_in then 1 else (if sou3.use_X_in then 0 else 1))+(if  not   sou3.use_p_in then 1 else 0)+2*sou3.nPorts+(if  not sou3.use_T_in then 1 else 0)  +(if sou4.use_Xi_in then 1 else (if sou4.use_X_in then 0 else 1))+(if  not   sou4.use_p_in then 1 else 0)+2*sou4.nPorts+(if  not sou4.use_T_in then 1 else 0)  +(if sin.use_Xi_in then 1 else (if sin.use_X_in then 0 else 1))+(if  not   sin.use_p_in then 1 else 0)+2*sin.nPorts+(if  not sin.use_T_in then 1 else 0)+  (if sin1.use_Xi_in then 1 else (if sin1.use_X_in then 0 else 1))+(if  not   sin1.use_p_in then 1 else 0)+2*sin1.nPorts+(if  not sin1.use_T_in then 1 else 0)  +(if sin2.use_Xi_in then 1 else (if sin2.use_X_in then 0 else 1))+(if  not   sin2.use_p_in then 1 else 0)+2*sin2.nPorts+(if  not sin2.use_T_in then 1 else 0)  +(if sin3.use_Xi_in then 1 else (if sin3.use_X_in then 0 else 1))+(if  not   sin3.use_p_in then 1 else 0)+2*sin3.nPorts+(if  not sin3.use_T_in then 1 else 0)  +(if sin4.use_Xi_in then 1 else (if sin4.use_X_in then 0 else 1))+(if  not   sin4.use_p_in then 1 else 0)+2*sin4.nPorts+(if  not sin4.use_T_in then 1 else 0)  +(if  not pumDPConst.dpControlled_dp.vol.steBal.use_mWat_flow then 1 else 0)+(  if  not pumDPVar.dpControlled_dp.vol.steBal.use_mWat_flow then 1 else 0)+(if    not pumDPTotal.dpControlled_dp.vol.steBal.use_mWat_flow then 1 else 0)+(if    not pumDPVarOnOff.dpControlled_dp.vol.steBal.use_mWat_flow then 1 else 0)+(  if  not pumSpeed.speedControlled_y.vol.steBal.use_mWat_flow then 1 else 0)
 scalar equations.
 However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
   813
@@ -494,15 +518,15 @@ Statistics
  
 Original Model
   Number of components: 443
-  Variables: 3676
+  Variables: 3677
   Constants: 69 (69 scalars)
-  Parameters: 1883 (2616 scalars)
+  Parameters: 1884 (2618 scalars)
   Unknowns: 1724 (1754 scalars)
   Differentiated variables: 25 scalars
   Equations: 1646
   Nontrivial: 1385
 Translated Model
-  Constants: 1619 scalars
+  Constants: 1621 scalars
   Free parameters: 378 scalars
   Parameter depending: 1101 scalars
   Outputs: 7 scalars
@@ -548,67 +572,75 @@ Declaring variable: Boolean rScript ;
 savelog("BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.translation.log"); = true
 
 
-rCheck = checkModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem");
-Check of BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem
-The model has the same number of unknowns and equations: 679
+rCheck = checkModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve");
+Check of BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve
+The model has the same number of unknowns and equations: 717
 The model could not be deduced to be symbolically well-posed.
 The model has
-  643+2*transfer.parRad.nEle+transfer.rad[1].vol[1].dynBal.nPorts+transfer.rad[1].vol[2].dynBal.nPorts  +transfer.rad[1].vol[3].dynBal.nPorts+transfer.rad[1].vol[4].dynBal.nPorts+  transfer.rad[1].vol[5].dynBal.nPorts+transfer.rad[1].sumCon.nin+  transfer.rad[1].sumRad.nin+transfer.volSup.dynBal.nPorts+transfer.volRet.dynBal.nPorts  +vol[1].dynBal.nPorts
+  681+2*transfer.parRad.nEle+transfer.rad[1].vol[1].dynBal.nPorts+transfer.rad[1].vol[2].dynBal.nPorts  +transfer.rad[1].vol[3].dynBal.nPorts+transfer.rad[1].vol[4].dynBal.nPorts+  transfer.rad[1].vol[5].dynBal.nPorts+transfer.rad[1].sumCon.nin+  transfer.rad[1].sumRad.nin+transfer.volSup.dynBal.nPorts+transfer.volRet.dynBal.nPorts  +vol[1].dynBal.nPorts
 scalar unknowns and
-  607+(if bou1[1].use_Xi_in then 1 else (if bou1[1].use_X_in then 0 else 1))+(if    not bou1[1].use_p_in then 1 else 0)+2*bou1[1].nPorts+(if  not   bou1[1].use_T_in then 1 else 0)+(if  not transfer.rad[1].vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad[1].vol[1].dynBal.nPorts+(if  not   transfer.rad[1].vol[2].dynBal.use_mWat_flow then 1 else 0)+3*transfer.rad[1].vol[2].dynBal.nPorts  +(if  not transfer.rad[1].vol[3].dynBal.use_mWat_flow then 1 else 0)+3*  transfer.rad[1].vol[3].dynBal.nPorts+(if  not transfer.rad[1].vol[4].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad[1].vol[4].dynBal.nPorts+(if  not   transfer.rad[1].vol[5].dynBal.use_mWat_flow then 1 else 0)+3*transfer.rad[1].vol[5].dynBal.nPorts  +(if  not transfer.volSup.dynBal.use_mWat_flow then 1 else 0)+3*  transfer.volSup.dynBal.nPorts+(if  not transfer.volRet.dynBal.use_mWat_flow   then 1 else 0)+3*transfer.volRet.dynBal.nPorts+(if  not vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*vol[1].dynBal.nPorts+(if  not pumDis[1].dpControlled_dp.vol.steBal.use_mWat_flow   then 1 else 0)+2*transfer.parRad.nEle
+  645+(if bou1[1].use_Xi_in then 1 else (if bou1[1].use_X_in then 0 else 1))+(if    not bou1[1].use_p_in then 1 else 0)+2*bou1[1].nPorts+(if  not   bou1[1].use_T_in then 1 else 0)+(if  not transfer.rad[1].vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad[1].vol[1].dynBal.nPorts+(if  not   transfer.rad[1].vol[2].dynBal.use_mWat_flow then 1 else 0)+3*transfer.rad[1].vol[2].dynBal.nPorts  +(if  not transfer.rad[1].vol[3].dynBal.use_mWat_flow then 1 else 0)+3*  transfer.rad[1].vol[3].dynBal.nPorts+(if  not transfer.rad[1].vol[4].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad[1].vol[4].dynBal.nPorts+(if  not   transfer.rad[1].vol[5].dynBal.use_mWat_flow then 1 else 0)+3*transfer.rad[1].vol[5].dynBal.nPorts  +(if  not transfer.volSup.dynBal.use_mWat_flow then 1 else 0)+3*  transfer.volSup.dynBal.nPorts+(if  not transfer.volRet.dynBal.use_mWat_flow   then 1 else 0)+3*transfer.volRet.dynBal.nPorts+(if  not vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*vol[1].dynBal.nPorts+(if  not pumDis[1].dpControlled_dp.vol.steBal.use_mWat_flow   then 1 else 0)+2*transfer.parRad.nEle
 scalar equations.
 However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
-  679
-Check of BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem successful.
+  717
+Check of BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve successful.
 Declaring variable: Boolean rCheck ;
 
-Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestPressureBasedSystem.mos\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.statistics.log");
-Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.statistics.log");
-Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.statistics.log");
-Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem\\\");\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.statistics.log");
-Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.statistics.log");
-Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.statistics.log");
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestPressureBasedSystemWithReliefValve.mos\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve\\\");\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.statistics.log");
 
 
-rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestPressureBasedSystem.mos");
-simulateModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem", stopTime=12000, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem");
-Translation of BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem
-The DAE has 679 scalar unknowns and 679 scalar equations.
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestPressureBasedSystemWithReliefValve.mos");
+simulateModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve", stopTime=12000, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve");
+Translation of BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve
+The DAE has 717 scalar unknowns and 717 scalar equations.
+Warning: The initial conditions are not fully specified.
+Dymola has selected default initial conditions.
+Warning: Assuming fixed start value for the continuous states:
+    transfer.pressureReliefValve.firstOrder.y(start = transfer.pressureReliefValve.firstOrder.y_start)
+ 
  
 Statistics
  
 Original Model
-  Number of components: 176
-  Variables: 1896
-  Constants: 44 (44 scalars)
-  Parameters: 924 (1044 scalars)
-  Unknowns: 928 (712 scalars)
-  Differentiated variables: 16 scalars
-  Equations: 733
-  Nontrivial: 545
+  Number of components: 186
+  Variables: 2014
+  Constants: 45 (45 scalars)
+  Parameters: 995 (1115 scalars)
+  Unknowns: 974 (754 scalars)
+  Differentiated variables: 18 scalars
+  Equations: 769
+  Nontrivial: 577
 Translated Model
-  Constants: 914 scalars
-  Free parameters: 81 scalars
-  Parameter depending: 296 scalars
+  Constants: 954 scalars
+  Free parameters: 92 scalars
+  Parameter depending: 316 scalars
   Outputs: 1 scalars
-  Continuous time states: 7 scalars
-  Time-varying variables: 151 scalars
-  Alias variables: 358 scalars
+  Continuous time states: 9 scalars
+  Time-varying variables: 175 scalars
+  Alias variables: 377 scalars
+  Assumed default initial conditions: 1
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0}
-  Sizes of nonlinear systems of equations: {9, 1}
-  Sizes after manipulation of the nonlinear systems: {1, 1}
+  Sizes of nonlinear systems of equations: {12, 1}
+  Sizes after manipulation of the nonlinear systems: {2, 1}
   Number of numerical Jacobians: 0
   Initialization problem
-    Sizes of nonlinear systems of equations: {11, 9, 1, 1}
-    Sizes after manipulation of the nonlinear systems: {5, 1, 0, 1}
-    Sizes of simplified homotopy nonlinear systems of equations: {9, 1}
-    Sizes after manipulation of the simplified homotopy nonlinear systems: {1, 0}
+    Sizes of nonlinear systems of equations: {11, 12, 1, 1}
+    Sizes after manipulation of the nonlinear systems: {5, 2, 0, 1}
+    Sizes of simplified homotopy nonlinear systems of equations: {12, 1}
+    Sizes after manipulation of the simplified homotopy nonlinear systems: {2, 0}
     Number of numerical Jacobians: 0
  
 Selected continuous time states
 Statically selected continuous time states
+transfer.pressureReliefValve.firstOrder.y
+transfer.pressureReliefValve.val.actPos.y
 transfer.rad[1].vol[1].dynBal.U
 transfer.rad[1].vol[2].dynBal.U
 transfer.rad[1].vol[3].dynBal.U
@@ -617,12 +649,103 @@ transfer.rad[1].vol[5].dynBal.U
 transfer.volRet.dynBal.U
 transfer.volSup.dynBal.U
 Finished
+Warning: WARNINGS have been issued.
 Finished
  = true
 
 Declaring variable: Boolean rScript ;
 
-savelog("BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.translation.log"); = true
+savelog("BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel");
+Check of BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel
+The model has the same number of unknowns and equations: 1733
+The model could not be deduced to be symbolically well-posed.
+The model has
+  1674+distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.nPorts+  distribution.stoDHW.layer[1].dynBal.nPorts+distribution.stoDHW.layer[2].dynBal.nPorts  +distribution.stoDHW.layer[3].dynBal.nPorts+distribution.stoDHW.layer[4].dynBal.nPorts  +distribution.stoDHW.layer_HE[1].dynBal.nPorts+distribution.stoDHW.layer_HE[2].dynBal.nPorts  +distribution.stoDHW.layer_HE[3].dynBal.nPorts+distribution.stoDHW.layer_HE[4].dynBal.nPorts  +2*distribution.parStoDHW.nLayer+distribution.stoBuf.layer[1].dynBal.nPorts+  distribution.stoBuf.layer[2].dynBal.nPorts+distribution.stoBuf.layer[3].dynBal.nPorts  +distribution.stoBuf.layer[4].dynBal.nPorts+distribution.stoBuf.layer_HE[1].dynBal.nPorts  +distribution.stoBuf.layer_HE[2].dynBal.nPorts+distribution.stoBuf.layer_HE[3].dynBal.nPorts  +distribution.stoBuf.layer_HE[4].dynBal.nPorts+2*distribution.parStoBuf.nLayer  +distribution.multiSum.nu+pumDHW.vol.dynBal.nPorts+volSup[1].dynBal.nPorts+  volDem[1].dynBal.nPorts
+scalar unknowns and
+  1559+(if distribution.bouPum.use_Xi_in then 1 else (if distribution.bouPum.use_X_in   then 0 else 1))+(if  not distribution.bouPum.use_p_in then 1 else 0)+2*  distribution.bouPum.nPorts+(if  not distribution.bouPum.use_T_in then 1 else 0)  +(if distribution.stoDHW.use_TOut then 2*distribution.parStoDHW.nLayer else 0)  +(if distribution.stoBuf.use_TOut then 2*distribution.parStoBuf.nLayer else 0)  +(if distribution.bouPumTra.use_Xi_in then 1 else (if distribution.bouPumTra.use_X_in   then 0 else 1))+(if  not distribution.bouPumTra.use_p_in then 1 else 0)+2*  distribution.bouPumTra.nPorts+(if  not distribution.bouPumTra.use_T_in then 1   else 0)+(if bouDHW.use_Xi_in then 1 else (if bouDHW.use_X_in then 0 else 1))+  (if  not bouDHW.use_p_in then 1 else 0)+(if  not bouDHW.use_T_in then 1 else 0)  +(if  not distribution.stoDHW.layer[1].dynBal.use_mWat_flow then 1 else 0)+3*  distribution.stoDHW.layer[1].dynBal.nPorts+(if  not distribution.stoDHW.layer[2].dynBal.use_mWat_flow   then 1 else 0)+3*distribution.stoDHW.layer[2].dynBal.nPorts+(if  not   distribution.stoDHW.layer[3].dynBal.use_mWat_flow then 1 else 0)+3*  distribution.stoDHW.layer[3].dynBal.nPorts+(if  not distribution.stoDHW.layer[4].dynBal.use_mWat_flow   then 1 else 0)+3*distribution.stoDHW.layer[4].dynBal.nPorts+(if  not   distribution.stoDHW.layer_HE[1].dynBal.use_mWat_flow then 1 else 0)+3*  distribution.stoDHW.layer_HE[1].dynBal.nPorts+(if  not distribution.stoDHW.layer_HE[2].dynBal.use_mWat_flow   then 1 else 0)+3*distribution.stoDHW.layer_HE[2].dynBal.nPorts+(if  not   distribution.stoDHW.layer_HE[3].dynBal.use_mWat_flow then 1 else 0)+3*  distribution.stoDHW.layer_HE[3].dynBal.nPorts+(if  not distribution.stoDHW.layer_HE[4].dynBal.use_mWat_flow   then 1 else 0)+3*distribution.stoDHW.layer_HE[4].dynBal.nPorts+(if  not   distribution.stoBuf.layer[1].dynBal.use_mWat_flow then 1 else 0)+3*  distribution.stoBuf.layer[1].dynBal.nPorts+(if  not distribution.stoBuf.layer[2].dynBal.use_mWat_flow   then 1 else 0)+3*distribution.stoBuf.layer[2].dynBal.nPorts+(if  not   distribution.stoBuf.layer[3].dynBal.use_mWat_flow then 1 else 0)+3*  distribution.stoBuf.layer[3].dynBal.nPorts+(if  not distribution.stoBuf.layer[4].dynBal.use_mWat_flow   then 1 else 0)+3*distribution.stoBuf.layer[4].dynBal.nPorts+(if  not   distribution.stoBuf.layer_HE[1].dynBal.use_mWat_flow then 1 else 0)+3*  distribution.stoBuf.layer_HE[1].dynBal.nPorts+(if  not distribution.stoBuf.layer_HE[2].dynBal.use_mWat_flow   then 1 else 0)+3*distribution.stoBuf.layer_HE[2].dynBal.nPorts+(if  not   distribution.stoBuf.layer_HE[3].dynBal.use_mWat_flow then 1 else 0)+3*  distribution.stoBuf.layer_HE[3].dynBal.nPorts+(if  not distribution.stoBuf.layer_HE[4].dynBal.use_mWat_flow   then 1 else 0)+3*distribution.stoBuf.layer_HE[4].dynBal.nPorts+(if  not   pumDHW.vol.dynBal.use_mWat_flow then 1 else 0)+3*pumDHW.vol.dynBal.nPorts+(if    not volSup[1].dynBal.use_mWat_flow then 1 else 0)+3*volSup[1].dynBal.nPorts+(  if  not volDem[1].dynBal.use_mWat_flow then 1 else 0)+3*volDem[1].dynBal.nPorts  +(if  not distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.use_mWat_flow   then 1 else 0)+3*distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.nPorts  +(if  not distribution.pumGen.dpControlled_dp.vol.steBal.use_mWat_flow then 1   else 0)+(if  not distribution.pumTra.dpControlled_dp.vol.steBal.use_mWat_flow   then 1 else 0)
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  1733
+Check of BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel successful.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Distribution/Tests/SimpleTwoStorageParallel.mos\",", "BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel\",", "BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel\\\");\",", "BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Distribution/Tests/SimpleTwoStorageParallel.mos");
+simulateModel("BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel");
+Translation of BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel
+The DAE has 1733 scalar unknowns and 1733 scalar equations.
+ 
+Statistics
+ 
+Original Model
+  Number of components: 406
+  Variables: 4836
+  Constants: 106 (106 scalars)
+  Parameters: 2325 (2765 scalars)
+  Unknowns: 2405 (1827 scalars)
+  Differentiated variables: 42 scalars
+  Equations: 1885
+  Nontrivial: 1403
+Translated Model
+  Constants: 1923 scalars
+  Free parameters: 209 scalars
+  Parameter depending: 1068 scalars
+  Outputs: 6 scalars
+  Continuous time states: 20 scalars
+  Time-varying variables: 347 scalars
+  Alias variables: 1151 scalars
+  Number of mixed real/discrete systems of equations: 0
+  Sizes of linear systems of equations: { }
+  Sizes after manipulation of the linear systems: { }
+  Sizes of nonlinear systems of equations: {13, 1, 1}
+  Sizes after manipulation of the nonlinear systems: {2, 1, 1}
+  Number of numerical Jacobians: 0
+  Initialization problem
+    Sizes of nonlinear systems of equations: {4, 1, 13, 1, 1}
+    Sizes after manipulation of the nonlinear systems: {1, 1, 3, 1, 1}
+    Sizes of simplified homotopy nonlinear systems of equations: {13}
+    Sizes after manipulation of the simplified homotopy nonlinear systems: {3}
+    Number of numerical Jacobians: 0
+ 
+Selected continuous time states
+Statically selected continuous time states
+distribution.eneKPICalBuf.integrator2.y
+distribution.eneKPICalDHW.integrator2.y
+distribution.stoBuf.layer[1].dynBal.U
+distribution.stoBuf.layer[2].dynBal.U
+distribution.stoBuf.layer[3].dynBal.U
+distribution.stoBuf.layer[4].dynBal.U
+distribution.stoBuf.layer_HE[1].dynBal.U
+distribution.stoBuf.layer_HE[2].dynBal.U
+distribution.stoBuf.layer_HE[3].dynBal.U
+distribution.stoBuf.layer_HE[4].dynBal.U
+distribution.stoDHW.layer[1].dynBal.U
+distribution.stoDHW.layer[2].dynBal.U
+distribution.stoDHW.layer[3].dynBal.U
+distribution.stoDHW.layer[4].dynBal.U
+distribution.stoDHW.layer_HE[1].dynBal.U
+distribution.stoDHW.layer_HE[2].dynBal.U
+distribution.stoDHW.layer_HE[3].dynBal.U
+distribution.stoDHW.layer_HE[4].dynBal.U
+distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.U
+pumDHW.vol.dynBal.U
+Finished
+Finished
+ = true
+
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.translation.log"); = true
 
 
 rCheck = checkModel("BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries");
@@ -686,15 +809,15 @@ Statistics
  
 Original Model
   Number of components: 350
-  Variables: 2796
+  Variables: 2797
   Constants: 50 (50 scalars)
-  Parameters: 1424 (2044 scalars)
+  Parameters: 1425 (2045 scalars)
   Unknowns: 1322 (1436 scalars)
   Differentiated variables: 19 scalars
   Equations: 1304
   Nontrivial: 1115
 Translated Model
-  Constants: 1214 scalars
+  Constants: 1215 scalars
   Free parameters: 337 scalars
   Parameter depending: 869 scalars
   Outputs: 8 scalars
@@ -734,6 +857,285 @@ Finished
 Declaring variable: Boolean rScript ;
 
 savelog("BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW");
+Check of BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW
+The model has the same number of unknowns and equations: 4316
+Check of BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW successful.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Distribution/Tests/TwoStoragesBoilerWithDHW.mos\",", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW\",", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW\\\");\",", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Distribution/Tests/TwoStoragesBoilerWithDHW.mos");
+simulateModel("BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW");
+Translation of BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW
+The DAE has 4316 scalar unknowns and 4316 scalar equations.
+ 
+Statistics
+ 
+Original Model
+  Number of components: 967
+  Variables: 12027
+  Constants: 188 (188 scalars)
+  Parameters: 6126 (6686 scalars)
+  Unknowns: 5713 (4488 scalars)
+  Differentiated variables: 130 scalars
+  Equations: 4434
+  Nontrivial: 3435
+Translated Model
+  Constants: 4473 scalars
+  Free parameters: 506 scalars
+  Parameter depending: 2487 scalars
+  Outputs: 9 scalars
+  Continuous time states: 92 scalars
+  Time-varying variables: 1040 scalars
+  Alias variables: 2856 scalars
+  Number of mixed real/discrete systems of equations: 0
+  Sizes of linear systems of equations: {2, 4, 3, 3, 2, 2, 2, 4, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 3, 3, 2, 2, 2, 2, 2,   2, 4, 2, 2, 15, 4, 3, 2, 2, 2, 2, 2, 2, 4, 3, 4, 3, 3, 2, 2, 2, 2, 2}
+  Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+  Sizes of nonlinear systems of equations: {20, 22, 6, 6, 6, 6, 6, 6, 6, 6, 1, 1}
+  Sizes after manipulation of the nonlinear systems: {2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+  Number of numerical Jacobians: 0
+  Initialization problem
+    Sizes of nonlinear systems of equations: {6, 1, 1, 20, 1, 22, 1, 1, 1, 1}
+    Sizes after manipulation of the nonlinear systems: {1, 0, 1, 3, 0, 3, 0, 0, 1, 1}
+    Sizes of simplified homotopy nonlinear systems of equations: {20, 1, 22, 1, 1}
+    Sizes after manipulation of the simplified homotopy nonlinear systems: {3, 0, 3, 0, 0}
+    Number of numerical Jacobians: 0
+ 
+Sparse solvers enabled: false
+Enabled for integrator Jacobian: false
+Model sparse and large enough: true.
+Sparse solvers are available for dassl, lsodar, cvode, ida, radau, esdirk*, sdirk*.
+Enable sparse solvers by setting Advanced.Translation.SparseActivate.
+Selected continuous time states
+Statically selected continuous time states
+distribution.boi.senTCold.T
+distribution.boi.senTHot.T
+distribution.boi.vol.dynBal.U
+distribution.eneKPICalAftBufBoi.integrator2.y
+distribution.eneKPICalBuf.integrator2.y
+distribution.eneKPICalDHW.integrator2.y
+distribution.hydSep.bottomCover.loadIns.T
+distribution.hydSep.bottomCover.loadWall.T
+distribution.hydSep.layer[1].dynBal.U
+distribution.hydSep.layer[2].dynBal.U
+distribution.hydSep.layer[3].dynBal.U
+distribution.hydSep.layer[4].dynBal.U
+distribution.hydSep.storageMantle[1].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.hydSep.storageMantle[1].Wall.CylindricLoad1.heatCapacitor.T
+distribution.hydSep.storageMantle[2].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.hydSep.storageMantle[2].Wall.CylindricLoad1.heatCapacitor.T
+distribution.hydSep.storageMantle[3].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.hydSep.storageMantle[3].Wall.CylindricLoad1.heatCapacitor.T
+distribution.hydSep.storageMantle[4].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.hydSep.storageMantle[4].Wall.CylindricLoad1.heatCapacitor.T
+distribution.hydSep.topCover.loadIns.T
+distribution.hydSep.topCover.loadWall.T
+distribution.KPIBoi1.integrator2.y
+distribution.pumBoi.vol.dynBal.U
+distribution.senTBuiSup.T
+distribution.stoBuf.bottomCover.loadIns.T
+distribution.stoBuf.bottomCover.loadWall.T
+distribution.stoBuf.layer[1].dynBal.U
+distribution.stoBuf.layer[2].dynBal.U
+distribution.stoBuf.layer[3].dynBal.U
+distribution.stoBuf.layer[4].dynBal.U
+distribution.stoBuf.storageMantle[1].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.stoBuf.storageMantle[1].Wall.CylindricLoad1.heatCapacitor.T
+distribution.stoBuf.storageMantle[2].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.stoBuf.storageMantle[2].Wall.CylindricLoad1.heatCapacitor.T
+distribution.stoBuf.storageMantle[3].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.stoBuf.storageMantle[3].Wall.CylindricLoad1.heatCapacitor.T
+distribution.stoBuf.storageMantle[4].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.stoBuf.storageMantle[4].Wall.CylindricLoad1.heatCapacitor.T
+distribution.stoBuf.topCover.loadIns.T
+distribution.stoBuf.topCover.loadWall.T
+distribution.stoDHW.bottomCover.loadIns.T
+distribution.stoDHW.bottomCover.loadWall.T
+distribution.stoDHW.heatingCoil1.pipe[1].del.x
+distribution.stoDHW.heatingCoil1.pipe[1].timDel.x
+distribution.stoDHW.heatingCoil1.pipe[1].vol_a.dynBal.U
+distribution.stoDHW.heatingCoil1.pipe[1].vol_b.dynBal.U
+distribution.stoDHW.heatingCoil1.pipe[2].del.x
+distribution.stoDHW.heatingCoil1.pipe[2].timDel.x
+distribution.stoDHW.heatingCoil1.pipe[2].vol_a.dynBal.U
+distribution.stoDHW.heatingCoil1.pipe[2].vol_b.dynBal.U
+distribution.stoDHW.heatingCoil1.pipe[3].del.x
+distribution.stoDHW.heatingCoil1.pipe[3].timDel.x
+distribution.stoDHW.heatingCoil1.pipe[3].vol_a.dynBal.U
+distribution.stoDHW.heatingCoil1.pipe[3].vol_b.dynBal.U
+distribution.stoDHW.heatingCoil1.pipe[4].del.x
+distribution.stoDHW.heatingCoil1.pipe[4].timDel.x
+distribution.stoDHW.heatingCoil1.pipe[4].vol_a.dynBal.U
+distribution.stoDHW.heatingCoil1.pipe[4].vol_b.dynBal.U
+distribution.stoDHW.heatingCoil2.pipe[1].del.x
+distribution.stoDHW.heatingCoil2.pipe[1].timDel.x
+distribution.stoDHW.heatingCoil2.pipe[1].vol_a.dynBal.U
+distribution.stoDHW.heatingCoil2.pipe[1].vol_b.dynBal.U
+distribution.stoDHW.heatingCoil2.pipe[2].del.x
+distribution.stoDHW.heatingCoil2.pipe[2].timDel.x
+distribution.stoDHW.heatingCoil2.pipe[2].vol_a.dynBal.U
+distribution.stoDHW.heatingCoil2.pipe[2].vol_b.dynBal.U
+distribution.stoDHW.heatingCoil2.pipe[3].del.x
+distribution.stoDHW.heatingCoil2.pipe[3].timDel.x
+distribution.stoDHW.heatingCoil2.pipe[3].vol_a.dynBal.U
+distribution.stoDHW.heatingCoil2.pipe[3].vol_b.dynBal.U
+distribution.stoDHW.heatingCoil2.pipe[4].del.x
+distribution.stoDHW.heatingCoil2.pipe[4].timDel.x
+distribution.stoDHW.heatingCoil2.pipe[4].vol_a.dynBal.U
+distribution.stoDHW.heatingCoil2.pipe[4].vol_b.dynBal.U
+distribution.stoDHW.layer[1].dynBal.U
+distribution.stoDHW.layer[2].dynBal.U
+distribution.stoDHW.layer[3].dynBal.U
+distribution.stoDHW.layer[4].dynBal.U
+distribution.stoDHW.storageMantle[1].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.stoDHW.storageMantle[1].Wall.CylindricLoad1.heatCapacitor.T
+distribution.stoDHW.storageMantle[2].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.stoDHW.storageMantle[2].Wall.CylindricLoad1.heatCapacitor.T
+distribution.stoDHW.storageMantle[3].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.stoDHW.storageMantle[3].Wall.CylindricLoad1.heatCapacitor.T
+distribution.stoDHW.storageMantle[4].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.stoDHW.storageMantle[4].Wall.CylindricLoad1.heatCapacitor.T
+distribution.stoDHW.topCover.loadIns.T
+distribution.stoDHW.topCover.loadWall.T
+distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.U
+distribution.thrWayValBoiDHW.threWayValFlow.vol.dynBal.U
+pumDHW.vol.dynBal.U
+Finished
+Finished
+ = true
+
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating");
+Check of BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating
+Note: 
+Your model is using an outer "system" component but
+an inner "system" component is not defined.
+For simulation drag Modelica.Fluid.System into your model
+to specify system properties.
+ 
+The model has the same number of unknowns and equations: 1144
+The model could not be deduced to be symbolically well-posed.
+The model has
+  990+15*(transfer.ufh[1].panelHeatingSegment[1].vol.nPorts+transfer.ufh[1].panelHeatingSegment[2].vol.nPorts  +transfer.ufh[1].panelHeatingSegment[3].vol.nPorts+transfer.ufh[1].panelHeatingSegment[4].vol.nPorts  +transfer.ufh[1].panelHeatingSegment[5].vol.nPorts)+transfer.pumpFix_m_flow[1].vol.dynBal.nPorts  +vol[1].dynBal.nPorts
+scalar unknowns and
+  949+(if  not transfer.ufh[1].panelHeatingSegment[1].vol.use_portsData then 4*  transfer.ufh[1].panelHeatingSegment[1].vol.nPorts else 0)+13*transfer.ufh[1].panelHeatingSegment[1].vol.nPorts  +(if  not transfer.ufh[1].panelHeatingSegment[1].twoStar_RadEx.use_A_in then 1   else 0)+(if  not transfer.ufh[1].panelHeatingSegment[2].vol.use_portsData   then 4*transfer.ufh[1].panelHeatingSegment[2].vol.nPorts else 0)+13*  transfer.ufh[1].panelHeatingSegment[2].vol.nPorts+(if  not transfer.ufh[1].panelHeatingSegment[2].twoStar_RadEx.use_A_in   then 1 else 0)+(if  not transfer.ufh[1].panelHeatingSegment[3].vol.use_portsData   then 4*transfer.ufh[1].panelHeatingSegment[3].vol.nPorts else 0)+13*  transfer.ufh[1].panelHeatingSegment[3].vol.nPorts+(if  not transfer.ufh[1].panelHeatingSegment[3].twoStar_RadEx.use_A_in   then 1 else 0)+(if  not transfer.ufh[1].panelHeatingSegment[4].vol.use_portsData   then 4*transfer.ufh[1].panelHeatingSegment[4].vol.nPorts else 0)+13*  transfer.ufh[1].panelHeatingSegment[4].vol.nPorts+(if  not transfer.ufh[1].panelHeatingSegment[4].twoStar_RadEx.use_A_in   then 1 else 0)+(if  not transfer.ufh[1].panelHeatingSegment[5].vol.use_portsData   then 4*transfer.ufh[1].panelHeatingSegment[5].vol.nPorts else 0)+13*  transfer.ufh[1].panelHeatingSegment[5].vol.nPorts+(if  not transfer.ufh[1].panelHeatingSegment[5].twoStar_RadEx.use_A_in   then 1 else 0)+(if bou1[1].use_Xi_in then 1 else (if bou1[1].use_X_in then 0   else 1))+(if  not bou1[1].use_p_in then 1 else 0)+2*bou1[1].nPorts+(if  not   bou1[1].use_T_in then 1 else 0)+(if  not transfer.pumpFix_m_flow[1].vol.dynBal.use_mWat_flow   then 1 else 0)+3*transfer.pumpFix_m_flow[1].vol.dynBal.nPorts+(if  not   vol[1].dynBal.use_mWat_flow then 1 else 0)+3*vol[1].dynBal.nPorts+(if  not   pumDis[1].dpControlled_dp.vol.steBal.use_mWat_flow then 1 else 0)
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  1144
+Check of BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating successful.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestUnderfloorHeating.mos\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating\\\");\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestUnderfloorHeating.mos");
+simulateModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating", stopTime=36000, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating");
+Translation of BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating
+Note: 
+Your model is using an outer "system" component but
+an inner "system" component is not defined.
+For simulation drag Modelica.Fluid.System into your model
+to specify system properties.
+ 
+The DAE has 1144 scalar unknowns and 1144 scalar equations.
+Warning: The initial conditions are not fully specified.
+Dymola has selected default initial conditions.
+Warning: Assuming fixed start value for the continuous states:
+    transfer.heaCap[1].T(start = 293.15)
+    transfer.ufh[1].panelHeatingSegment[1].panel_Segment1.heatCapacitor.T(start       = transfer.ufh[1].panelHeatingSegment[1].panel_Segment1.T0)
+    transfer.ufh[1].panelHeatingSegment[1].panel_Segment2.heatCapacitor.T(start       = transfer.ufh[1].panelHeatingSegment[1].panel_Segment2.T0)
+    transfer.ufh[1].panelHeatingSegment[1].vol.medium.T(start = transfer.ufh[1].panelHeatingSegment[1].vol.T_start)
+    transfer.ufh[1].panelHeatingSegment[2].panel_Segment1.heatCapacitor.T(start       = transfer.ufh[1].panelHeatingSegment[2].panel_Segment1.T0)
+    transfer.ufh[1].panelHeatingSegment[2].panel_Segment2.heatCapacitor.T(start       = transfer.ufh[1].panelHeatingSegment[2].panel_Segment2.T0)
+    transfer.ufh[1].panelHeatingSegment[2].vol.medium.T(start = transfer.ufh[1].panelHeatingSegment[2].vol.T_start)
+    transfer.ufh[1].panelHeatingSegment[3].panel_Segment1.heatCapacitor.T(start       = transfer.ufh[1].panelHeatingSegment[3].panel_Segment1.T0)
+    transfer.ufh[1].panelHeatingSegment[3].panel_Segment2.heatCapacitor.T(start       = transfer.ufh[1].panelHeatingSegment[3].panel_Segment2.T0)
+    transfer.ufh[1].panelHeatingSegment[3].vol.medium.T(start = transfer.ufh[1].panelHeatingSegment[3].vol.T_start)
+    transfer.ufh[1].panelHeatingSegment[4].panel_Segment1.heatCapacitor.T(start       = transfer.ufh[1].panelHeatingSegment[4].panel_Segment1.T0)
+    transfer.ufh[1].panelHeatingSegment[4].panel_Segment2.heatCapacitor.T(start       = transfer.ufh[1].panelHeatingSegment[4].panel_Segment2.T0)
+    transfer.ufh[1].panelHeatingSegment[4].vol.medium.T(start = transfer.ufh[1].panelHeatingSegment[4].vol.T_start)
+    transfer.ufh[1].panelHeatingSegment[5].panel_Segment1.heatCapacitor.T(start       = transfer.ufh[1].panelHeatingSegment[5].panel_Segment1.T0)
+    transfer.ufh[1].panelHeatingSegment[5].panel_Segment2.heatCapacitor.T(start       = transfer.ufh[1].panelHeatingSegment[5].panel_Segment2.T0)
+    transfer.ufh[1].panelHeatingSegment[5].vol.medium.T(start = transfer.ufh[1].panelHeatingSegment[5].vol.T_start)
+ 
+ 
+Statistics
+ 
+Original Model
+  Number of components: 231
+  Variables: 2497
+  Constants: 23 (23 scalars)
+  Parameters: 1143 (1403 scalars)
+  Unknowns: 1331 (1181 scalars)
+  Differentiated variables: 31 scalars
+  Equations: 1068
+  Nontrivial: 872
+Translated Model
+  Constants: 1052 scalars
+  Free parameters: 171 scalars
+  Parameter depending: 596 scalars
+  Outputs: 1 scalars
+  Continuous time states: 18 scalars
+  Time-varying variables: 265 scalars
+  Alias variables: 523 scalars
+  Assumed default initial conditions: 16
+  Number of mixed real/discrete systems of equations: 0
+  Sizes of linear systems of equations: { }
+  Sizes after manipulation of the linear systems: { }
+  Sizes of nonlinear systems of equations: {6, 6, 6, 6, 6, 1, 1}
+  Sizes after manipulation of the nonlinear systems: {1, 1, 1, 1, 1, 1, 1}
+  Number of numerical Jacobians: 0
+  Initialization problem
+    Sizes of nonlinear systems of equations: {1, 1}
+    Sizes after manipulation of the nonlinear systems: {1, 1}
+    Number of numerical Jacobians: 0
+ 
+Selected continuous time states
+Statically selected continuous time states
+transfer.heaCap[1].T
+transfer.integralKPICalculator[1].integrator2.y
+transfer.pumpFix_m_flow[1].vol.dynBal.U
+transfer.ufh[1].panelHeatingSegment[1].panel_Segment1.heatCapacitor.T
+transfer.ufh[1].panelHeatingSegment[1].panel_Segment2.heatCapacitor.T
+transfer.ufh[1].panelHeatingSegment[1].vol.medium.T
+transfer.ufh[1].panelHeatingSegment[2].panel_Segment1.heatCapacitor.T
+transfer.ufh[1].panelHeatingSegment[2].panel_Segment2.heatCapacitor.T
+transfer.ufh[1].panelHeatingSegment[2].vol.medium.T
+transfer.ufh[1].panelHeatingSegment[3].panel_Segment1.heatCapacitor.T
+transfer.ufh[1].panelHeatingSegment[3].panel_Segment2.heatCapacitor.T
+transfer.ufh[1].panelHeatingSegment[3].vol.medium.T
+transfer.ufh[1].panelHeatingSegment[4].panel_Segment1.heatCapacitor.T
+transfer.ufh[1].panelHeatingSegment[4].panel_Segment2.heatCapacitor.T
+transfer.ufh[1].panelHeatingSegment[4].vol.medium.T
+transfer.ufh[1].panelHeatingSegment[5].panel_Segment1.heatCapacitor.T
+transfer.ufh[1].panelHeatingSegment[5].panel_Segment2.heatCapacitor.T
+transfer.ufh[1].panelHeatingSegment[5].vol.medium.T
+Finished
+Warning: WARNINGS have been issued.
+Finished
+ = true
+
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.translation.log"); = true
 
 
 rCheck = checkModel("BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater");
@@ -781,15 +1183,15 @@ Statistics
  
 Original Model
   Number of components: 161
-  Variables: 1345
+  Variables: 1346
   Constants: 37 (37 scalars)
-  Parameters: 686 (839 scalars)
+  Parameters: 687 (840 scalars)
   Unknowns: 622 (570 scalars)
   Differentiated variables: 7 scalars
   Equations: 587
   Nontrivial: 492
 Translated Model
-  Constants: 592 scalars
+  Constants: 593 scalars
   Free parameters: 93 scalars
   Parameter depending: 305 scalars
   Outputs: 2 scalars
@@ -883,15 +1285,15 @@ Statistics
  
 Original Model
   Number of components: 314
-  Variables: 2401
+  Variables: 2402
   Constants: 45 (45 scalars)
-  Parameters: 1233 (1819 scalars)
+  Parameters: 1234 (1820 scalars)
   Unknowns: 1123 (1269 scalars)
   Differentiated variables: 12 scalars
   Equations: 1134
   Nontrivial: 976
 Translated Model
-  Constants: 1036 scalars
+  Constants: 1037 scalars
   Free parameters: 309 scalars
   Parameter depending: 807 scalars
   Outputs: 6 scalars
@@ -928,157 +1330,402 @@ Declaring variable: Boolean rScript ;
 savelog("BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.translation.log"); = true
 
 
-rCheck = checkModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem");
-Check of BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem
-The model has the same number of unknowns and equations: 692
-The model could not be deduced to be symbolically well-posed.
-The model has
-  658+2*transfer.parRad.nEle+transfer.rad[1].sumCon.nin+transfer.rad[1].sumRad.nin  +transfer.rad[1].vol[1].dynBal.nPorts+transfer.rad[1].vol[2].dynBal.nPorts+  transfer.rad[1].vol[3].dynBal.nPorts+transfer.rad[1].vol[4].dynBal.nPorts+  transfer.rad[1].vol[5].dynBal.nPorts+transfer.pumFixMFlo[1].vol.dynBal.nPorts+  vol[1].dynBal.nPorts
-scalar unknowns and
-  627+(if bou1[1].use_Xi_in then 1 else (if bou1[1].use_X_in then 0 else 1))+(if    not bou1[1].use_p_in then 1 else 0)+2*bou1[1].nPorts+(if  not   bou1[1].use_T_in then 1 else 0)+(if  not transfer.pumFixMFlo[1].vol.dynBal.use_mWat_flow   then 1 else 0)+3*transfer.pumFixMFlo[1].vol.dynBal.nPorts+(if  not   vol[1].dynBal.use_mWat_flow then 1 else 0)+3*vol[1].dynBal.nPorts+(if  not   transfer.rad[1].vol[1].dynBal.use_mWat_flow then 1 else 0)+3*transfer.rad[1].vol[1].dynBal.nPorts  +(if  not transfer.rad[1].vol[2].dynBal.use_mWat_flow then 1 else 0)+3*  transfer.rad[1].vol[2].dynBal.nPorts+(if  not transfer.rad[1].vol[3].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad[1].vol[3].dynBal.nPorts+(if  not   transfer.rad[1].vol[4].dynBal.use_mWat_flow then 1 else 0)+3*transfer.rad[1].vol[4].dynBal.nPorts  +(if  not transfer.rad[1].vol[5].dynBal.use_mWat_flow then 1 else 0)+3*  transfer.rad[1].vol[5].dynBal.nPorts+(if  not pumDis[1].dpControlled_dp.vol.steBal.use_mWat_flow   then 1 else 0)+2*transfer.parRad.nEle
-scalar equations.
-However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
-  692
-Check of BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem successful.
+rCheck = checkModel("BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading");
+Check of BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading
+The model has the same number of unknowns and equations: 3338
+Check of BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading successful.
 Declaring variable: Boolean rCheck ;
 
-Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestIdealValveRadiatorSystem.mos\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.statistics.log");
-Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.statistics.log");
-Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.statistics.log");
-Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem\\\");\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.statistics.log");
-Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.statistics.log");
-Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.statistics.log");
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Distribution/Tests/TwoStoDetailedIndirectLoading.mos\",", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading\",", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading\\\");\",", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.statistics.log");
 
 
-rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestIdealValveRadiatorSystem.mos");
-simulateModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem", stopTime=12000, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem");
-Translation of BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem
-The DAE has 692 scalar unknowns and 692 scalar equations.
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Distribution/Tests/TwoStoDetailedIndirectLoading.mos");
+simulateModel("BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading");
+Translation of BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading
+The DAE has 3338 scalar unknowns and 3338 scalar equations.
  
 Statistics
  
 Original Model
-  Number of components: 200
-  Variables: 1971
-  Constants: 40 (40 scalars)
-  Parameters: 1006 (1264 scalars)
-  Unknowns: 925 (729 scalars)
-  Differentiated variables: 15 scalars
-  Equations: 753
-  Nontrivial: 570
+  Number of components: 740
+  Variables: 9305
+  Constants: 154 (154 scalars)
+  Parameters: 4673 (5086 scalars)
+  Unknowns: 4478 (3476 scalars)
+  Differentiated variables: 99 scalars
+  Equations: 3508
+  Nontrivial: 2708
 Translated Model
-  Constants: 963 scalars
-  Free parameters: 91 scalars
-  Parameter depending: 444 scalars
-  Outputs: 1 scalars
-  Continuous time states: 7 scalars
-  Time-varying variables: 161 scalars
-  Alias variables: 374 scalars
+  Constants: 3611 scalars
+  Free parameters: 376 scalars
+  Parameter depending: 1768 scalars
+  Outputs: 7 scalars
+  Continuous time states: 69 scalars
+  Time-varying variables: 778 scalars
+  Alias variables: 2183 scalars
   Number of mixed real/discrete systems of equations: 0
-  Sizes of linear systems of equations: {2, 2, 2, 2, 2}
-  Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0}
-  Sizes of nonlinear systems of equations: {1, 1}
-  Sizes after manipulation of the nonlinear systems: {1, 1}
+  Sizes of linear systems of equations: {2, 2, 2, 4, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 3, 3, 2, 2, 2, 2, 2, 2, 4, 3, 3,   4, 3, 3, 2, 2, 2, 2, 2, 2}
+  Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0}
+  Sizes of nonlinear systems of equations: {27, 6, 6, 6, 6, 6, 6, 6, 6, 1, 1}
+  Sizes after manipulation of the nonlinear systems: {2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
   Number of numerical Jacobians: 0
   Initialization problem
-    Sizes of nonlinear systems of equations: {11, 1, 1}
-    Sizes after manipulation of the nonlinear systems: {5, 1, 1}
+    Sizes of nonlinear systems of equations: {4, 1, 27, 1, 1, 1, 1}
+    Sizes after manipulation of the nonlinear systems: {1, 1, 3, 0, 0, 1, 1}
+    Sizes of simplified homotopy nonlinear systems of equations: {27, 1, 1}
+    Sizes after manipulation of the simplified homotopy nonlinear systems: {3, 0, 0}
     Number of numerical Jacobians: 0
  
 Selected continuous time states
 Statically selected continuous time states
-transfer.intKPICalHeaFlo.integrator2.y
-transfer.pumFixMFlo[1].vol.dynBal.U
-transfer.rad[1].vol[1].dynBal.U
-transfer.rad[1].vol[2].dynBal.U
-transfer.rad[1].vol[3].dynBal.U
-transfer.rad[1].vol[4].dynBal.U
-transfer.rad[1].vol[5].dynBal.U
+distribution.eneKPICalBuf.integrator2.y
+distribution.eneKPICalDHW.integrator2.y
+distribution.senTBuiSup.T
+distribution.stoBuf.bottomCover.loadIns.T
+distribution.stoBuf.bottomCover.loadWall.T
+distribution.stoBuf.heatingCoil1.pipe[1].del.x
+distribution.stoBuf.heatingCoil1.pipe[1].timDel.x
+distribution.stoBuf.heatingCoil1.pipe[1].vol_a.dynBal.U
+distribution.stoBuf.heatingCoil1.pipe[1].vol_b.dynBal.U
+distribution.stoBuf.heatingCoil1.pipe[2].del.x
+distribution.stoBuf.heatingCoil1.pipe[2].timDel.x
+distribution.stoBuf.heatingCoil1.pipe[2].vol_a.dynBal.U
+distribution.stoBuf.heatingCoil1.pipe[2].vol_b.dynBal.U
+distribution.stoBuf.heatingCoil1.pipe[3].del.x
+distribution.stoBuf.heatingCoil1.pipe[3].timDel.x
+distribution.stoBuf.heatingCoil1.pipe[3].vol_a.dynBal.U
+distribution.stoBuf.heatingCoil1.pipe[3].vol_b.dynBal.U
+distribution.stoBuf.heatingCoil1.pipe[4].del.x
+distribution.stoBuf.heatingCoil1.pipe[4].timDel.x
+distribution.stoBuf.heatingCoil1.pipe[4].vol_a.dynBal.U
+distribution.stoBuf.heatingCoil1.pipe[4].vol_b.dynBal.U
+distribution.stoBuf.layer[1].dynBal.U
+distribution.stoBuf.layer[2].dynBal.U
+distribution.stoBuf.layer[3].dynBal.U
+distribution.stoBuf.layer[4].dynBal.U
+distribution.stoBuf.storageMantle[1].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.stoBuf.storageMantle[1].Wall.CylindricLoad1.heatCapacitor.T
+distribution.stoBuf.storageMantle[2].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.stoBuf.storageMantle[2].Wall.CylindricLoad1.heatCapacitor.T
+distribution.stoBuf.storageMantle[3].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.stoBuf.storageMantle[3].Wall.CylindricLoad1.heatCapacitor.T
+distribution.stoBuf.storageMantle[4].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.stoBuf.storageMantle[4].Wall.CylindricLoad1.heatCapacitor.T
+distribution.stoBuf.topCover.loadIns.T
+distribution.stoBuf.topCover.loadWall.T
+distribution.stoDHW.bottomCover.loadIns.T
+distribution.stoDHW.bottomCover.loadWall.T
+distribution.stoDHW.heatingCoil1.pipe[1].del.x
+distribution.stoDHW.heatingCoil1.pipe[1].timDel.x
+distribution.stoDHW.heatingCoil1.pipe[1].vol_a.dynBal.U
+distribution.stoDHW.heatingCoil1.pipe[1].vol_b.dynBal.U
+distribution.stoDHW.heatingCoil1.pipe[2].del.x
+distribution.stoDHW.heatingCoil1.pipe[2].timDel.x
+distribution.stoDHW.heatingCoil1.pipe[2].vol_a.dynBal.U
+distribution.stoDHW.heatingCoil1.pipe[2].vol_b.dynBal.U
+distribution.stoDHW.heatingCoil1.pipe[3].del.x
+distribution.stoDHW.heatingCoil1.pipe[3].timDel.x
+distribution.stoDHW.heatingCoil1.pipe[3].vol_a.dynBal.U
+distribution.stoDHW.heatingCoil1.pipe[3].vol_b.dynBal.U
+distribution.stoDHW.heatingCoil1.pipe[4].del.x
+distribution.stoDHW.heatingCoil1.pipe[4].timDel.x
+distribution.stoDHW.heatingCoil1.pipe[4].vol_a.dynBal.U
+distribution.stoDHW.heatingCoil1.pipe[4].vol_b.dynBal.U
+distribution.stoDHW.layer[1].dynBal.U
+distribution.stoDHW.layer[2].dynBal.U
+distribution.stoDHW.layer[3].dynBal.U
+distribution.stoDHW.layer[4].dynBal.U
+distribution.stoDHW.storageMantle[1].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.stoDHW.storageMantle[1].Wall.CylindricLoad1.heatCapacitor.T
+distribution.stoDHW.storageMantle[2].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.stoDHW.storageMantle[2].Wall.CylindricLoad1.heatCapacitor.T
+distribution.stoDHW.storageMantle[3].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.stoDHW.storageMantle[3].Wall.CylindricLoad1.heatCapacitor.T
+distribution.stoDHW.storageMantle[4].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.stoDHW.storageMantle[4].Wall.CylindricLoad1.heatCapacitor.T
+distribution.stoDHW.topCover.loadIns.T
+distribution.stoDHW.topCover.loadWall.T
+distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.U
+pumDHW.vol.dynBal.U
 Finished
 Finished
  = true
 
 Declaring variable: Boolean rScript ;
 
-savelog("BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.translation.log"); = true
+savelog("BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.translation.log"); = true
 
 
-rCheck = checkModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve");
-Check of BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve
-The model has the same number of unknowns and equations: 717
-The model could not be deduced to be symbolically well-posed.
-The model has
-  681+2*transfer.parRad.nEle+transfer.rad[1].vol[1].dynBal.nPorts+transfer.rad[1].vol[2].dynBal.nPorts  +transfer.rad[1].vol[3].dynBal.nPorts+transfer.rad[1].vol[4].dynBal.nPorts+  transfer.rad[1].vol[5].dynBal.nPorts+transfer.rad[1].sumCon.nin+  transfer.rad[1].sumRad.nin+transfer.volSup.dynBal.nPorts+transfer.volRet.dynBal.nPorts  +vol[1].dynBal.nPorts
-scalar unknowns and
-  645+(if bou1[1].use_Xi_in then 1 else (if bou1[1].use_X_in then 0 else 1))+(if    not bou1[1].use_p_in then 1 else 0)+2*bou1[1].nPorts+(if  not   bou1[1].use_T_in then 1 else 0)+(if  not transfer.rad[1].vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad[1].vol[1].dynBal.nPorts+(if  not   transfer.rad[1].vol[2].dynBal.use_mWat_flow then 1 else 0)+3*transfer.rad[1].vol[2].dynBal.nPorts  +(if  not transfer.rad[1].vol[3].dynBal.use_mWat_flow then 1 else 0)+3*  transfer.rad[1].vol[3].dynBal.nPorts+(if  not transfer.rad[1].vol[4].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad[1].vol[4].dynBal.nPorts+(if  not   transfer.rad[1].vol[5].dynBal.use_mWat_flow then 1 else 0)+3*transfer.rad[1].vol[5].dynBal.nPorts  +(if  not transfer.volSup.dynBal.use_mWat_flow then 1 else 0)+3*  transfer.volSup.dynBal.nPorts+(if  not transfer.volRet.dynBal.use_mWat_flow   then 1 else 0)+3*transfer.volRet.dynBal.nPorts+(if  not vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*vol[1].dynBal.nPorts+(if  not pumDis[1].dpControlled_dp.vol.steBal.use_mWat_flow   then 1 else 0)+2*transfer.parRad.nEle
-scalar equations.
-However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
-  717
-Check of BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve successful.
+rCheck = checkModel("BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage");
+Check of BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage
+In value attribute for resTra[1].m_flow_nominal.
+Modifier applied in class BESMod.Systems.Hydraulical.Distribution.Tests.BaseClasses.PartialTest.
+  File: /tmp/tmp-BESMod-2-ahsvch35/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 3
+Modifier applied for component resTra.m_flow_nominal.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/PartialTwoPortInterface.mo, line 8
+Variable found in class BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage.
+  Near file: /tmp/tmp-BESMod-2-ahsvch35/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 2
+Variable found in base-class resTra.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Error for array of components: Modifier(=fill(sum(distribution.Q_flow_design)/dTDem_nominal/4184, distribution.nParallelSup)) dimension 1 is 2, but the modifee expected 1.
+ 
+The model has the same number of unknowns and equations: 8547
+Check of BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage successful.
+Warning: WARNINGS have been issued.
 Declaring variable: Boolean rCheck ;
 
-Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestPressureBasedSystemWithReliefValve.mos\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.statistics.log");
-Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.statistics.log");
-Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.statistics.log");
-Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve\\\");\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.statistics.log");
-Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.statistics.log");
-Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.statistics.log");
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Distribution/Tests/CombiStorage.mos\",", "BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage\",", "BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage\\\");\",", "BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage.statistics.log");
 
 
-rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestPressureBasedSystemWithReliefValve.mos");
-simulateModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve", stopTime=12000, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve");
-Translation of BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve
-The DAE has 717 scalar unknowns and 717 scalar equations.
-Warning: The initial conditions are not fully specified.
-Dymola has selected default initial conditions.
-Warning: Assuming fixed start value for the continuous states:
-    transfer.pressureReliefValve.firstOrder.y(start = transfer.pressureReliefValve.firstOrder.y_start)
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Distribution/Tests/CombiStorage.mos");
+simulateModel("BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage");
+Translation of BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage
+In value attribute for resTra[1].m_flow_nominal.
+Modifier applied in class BESMod.Systems.Hydraulical.Distribution.Tests.BaseClasses.PartialTest.
+  File: /tmp/tmp-BESMod-2-ahsvch35/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 3
+Modifier applied for component resTra.m_flow_nominal.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/PartialTwoPortInterface.mo, line 8
+Variable found in class BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage.
+  Near file: /tmp/tmp-BESMod-2-ahsvch35/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 2
+Variable found in base-class resTra.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Error for array of components: Modifier(=fill(sum(distribution.Q_flow_design)/dTDem_nominal/4184, distribution.nParallelSup)) dimension 1 is 2, but the modifee expected 1.
  
+The DAE has 8547 scalar unknowns and 8547 scalar equations.
  
 Statistics
  
 Original Model
-  Number of components: 186
-  Variables: 2009
-  Constants: 45 (45 scalars)
-  Parameters: 990 (1110 scalars)
-  Unknowns: 974 (754 scalars)
-  Differentiated variables: 18 scalars
-  Equations: 769
-  Nontrivial: 577
+  Number of components: 1757
+  Variables: 22995
+  Constants: 424 (424 scalars)
+  Parameters: 10873 (11192 scalars)
+  Unknowns: 11698 (8842 scalars)
+  Differentiated variables: 273 scalars
+  Equations: 9105
+  Nontrivial: 6888
 Translated Model
-  Constants: 949 scalars
-  Free parameters: 92 scalars
-  Parameter depending: 316 scalars
-  Outputs: 1 scalars
-  Continuous time states: 9 scalars
-  Time-varying variables: 175 scalars
-  Alias variables: 377 scalars
-  Assumed default initial conditions: 1
+  Constants: 8545 scalars
+  Free parameters: 722 scalars
+  Parameter depending: 3711 scalars
+  Outputs: 6 scalars
+  Continuous time states: 186 scalars
+  Time-varying variables: 1949 scalars
+  Alias variables: 5531 scalars
   Number of mixed real/discrete systems of equations: 0
-  Sizes of linear systems of equations: {2, 2, 2, 2, 2}
-  Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0}
-  Sizes of nonlinear systems of equations: {12, 1}
-  Sizes after manipulation of the nonlinear systems: {2, 1}
+  Sizes of linear systems of equations: {2, 2, 4, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,   2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,   2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 4, 3, 2}
+  Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+  Sizes of nonlinear systems of equations: {6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6,   6, 6, 6, 1}
+  Sizes after manipulation of the nonlinear systems: {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,   1, 1, 1, 1}
   Number of numerical Jacobians: 0
   Initialization problem
-    Sizes of nonlinear systems of equations: {11, 12, 1, 1}
-    Sizes after manipulation of the nonlinear systems: {5, 2, 0, 1}
-    Sizes of simplified homotopy nonlinear systems of equations: {12, 1}
-    Sizes after manipulation of the simplified homotopy nonlinear systems: {2, 0}
+    Sizes of nonlinear systems of equations: {26, 4, 6, 1, 1, 1, 1, 1}
+    Sizes after manipulation of the nonlinear systems: {2, 1, 1, 0, 1, 1, 1, 1}
     Number of numerical Jacobians: 0
  
+Sparse solvers enabled: false
+Enabled for integrator Jacobian: false
+Model sparse and large enough: true.
+Sparse solvers are available for dassl, lsodar, cvode, ida, radau, esdirk*, sdirk*.
+Enable sparse solvers by setting Advanced.Translation.SparseActivate.
 Selected continuous time states
 Statically selected continuous time states
-transfer.pressureReliefValve.firstOrder.y
-transfer.pressureReliefValve.val.actPos.y
-transfer.rad[1].vol[1].dynBal.U
-transfer.rad[1].vol[2].dynBal.U
-transfer.rad[1].vol[3].dynBal.U
-transfer.rad[1].vol[4].dynBal.U
-transfer.rad[1].vol[5].dynBal.U
-transfer.volRet.dynBal.U
-transfer.volSup.dynBal.U
+distribution.bufSto.bottomCover.loadIns.T
+distribution.bufSto.bottomCover.loadWall.T
+distribution.bufSto.heatingCoil1.pipe[1].del.x
+distribution.bufSto.heatingCoil1.pipe[1].timDel.x
+distribution.bufSto.heatingCoil1.pipe[1].vol_a.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[1].vol_b.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[2].del.x
+distribution.bufSto.heatingCoil1.pipe[2].timDel.x
+distribution.bufSto.heatingCoil1.pipe[2].vol_a.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[2].vol_b.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[3].del.x
+distribution.bufSto.heatingCoil1.pipe[3].timDel.x
+distribution.bufSto.heatingCoil1.pipe[3].vol_a.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[3].vol_b.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[4].del.x
+distribution.bufSto.heatingCoil1.pipe[4].timDel.x
+distribution.bufSto.heatingCoil1.pipe[4].vol_a.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[4].vol_b.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[5].del.x
+distribution.bufSto.heatingCoil1.pipe[5].timDel.x
+distribution.bufSto.heatingCoil1.pipe[5].vol_a.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[5].vol_b.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[6].del.x
+distribution.bufSto.heatingCoil1.pipe[6].timDel.x
+distribution.bufSto.heatingCoil1.pipe[6].vol_a.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[6].vol_b.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[7].del.x
+distribution.bufSto.heatingCoil1.pipe[7].timDel.x
+distribution.bufSto.heatingCoil1.pipe[7].vol_a.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[7].vol_b.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[8].del.x
+distribution.bufSto.heatingCoil1.pipe[8].timDel.x
+distribution.bufSto.heatingCoil1.pipe[8].vol_a.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[8].vol_b.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[9].del.x
+distribution.bufSto.heatingCoil1.pipe[9].timDel.x
+distribution.bufSto.heatingCoil1.pipe[9].vol_a.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[9].vol_b.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[10].del.x
+distribution.bufSto.heatingCoil1.pipe[10].timDel.x
+distribution.bufSto.heatingCoil1.pipe[10].vol_a.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[10].vol_b.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[11].del.x
+distribution.bufSto.heatingCoil1.pipe[11].timDel.x
+distribution.bufSto.heatingCoil1.pipe[11].vol_a.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[11].vol_b.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[12].del.x
+distribution.bufSto.heatingCoil1.pipe[12].timDel.x
+distribution.bufSto.heatingCoil1.pipe[12].vol_a.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[12].vol_b.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[13].del.x
+distribution.bufSto.heatingCoil1.pipe[13].timDel.x
+distribution.bufSto.heatingCoil1.pipe[13].vol_a.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[13].vol_b.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[14].del.x
+distribution.bufSto.heatingCoil1.pipe[14].timDel.x
+distribution.bufSto.heatingCoil1.pipe[14].vol_a.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[14].vol_b.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[15].del.x
+distribution.bufSto.heatingCoil1.pipe[15].timDel.x
+distribution.bufSto.heatingCoil1.pipe[15].vol_a.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[15].vol_b.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[16].del.x
+distribution.bufSto.heatingCoil1.pipe[16].timDel.x
+distribution.bufSto.heatingCoil1.pipe[16].vol_a.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[16].vol_b.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[17].del.x
+distribution.bufSto.heatingCoil1.pipe[17].timDel.x
+distribution.bufSto.heatingCoil1.pipe[17].vol_a.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[17].vol_b.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[18].del.x
+distribution.bufSto.heatingCoil1.pipe[18].timDel.x
+distribution.bufSto.heatingCoil1.pipe[18].vol_a.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[18].vol_b.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[19].del.x
+distribution.bufSto.heatingCoil1.pipe[19].timDel.x
+distribution.bufSto.heatingCoil1.pipe[19].vol_a.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[19].vol_b.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[20].del.x
+distribution.bufSto.heatingCoil1.pipe[20].timDel.x
+distribution.bufSto.heatingCoil1.pipe[20].vol_a.dynBal.U
+distribution.bufSto.heatingCoil1.pipe[20].vol_b.dynBal.U
+distribution.bufSto.heatingCoil2.pipe[1].del.x
+distribution.bufSto.heatingCoil2.pipe[1].timDel.x
+distribution.bufSto.heatingCoil2.pipe[1].vol_a.dynBal.U
+distribution.bufSto.heatingCoil2.pipe[1].vol_b.dynBal.U
+distribution.bufSto.heatingCoil2.pipe[2].del.x
+distribution.bufSto.heatingCoil2.pipe[2].timDel.x
+distribution.bufSto.heatingCoil2.pipe[2].vol_a.dynBal.U
+distribution.bufSto.heatingCoil2.pipe[2].vol_b.dynBal.U
+distribution.bufSto.heatingCoil2.pipe[3].del.x
+distribution.bufSto.heatingCoil2.pipe[3].timDel.x
+distribution.bufSto.heatingCoil2.pipe[3].vol_a.dynBal.U
+distribution.bufSto.heatingCoil2.pipe[3].vol_b.dynBal.U
+distribution.bufSto.heatingCoil2.pipe[4].del.x
+distribution.bufSto.heatingCoil2.pipe[4].timDel.x
+distribution.bufSto.heatingCoil2.pipe[4].vol_a.dynBal.U
+distribution.bufSto.heatingCoil2.pipe[4].vol_b.dynBal.U
+distribution.bufSto.heatingCoil2.pipe[5].del.x
+distribution.bufSto.heatingCoil2.pipe[5].timDel.x
+distribution.bufSto.heatingCoil2.pipe[5].vol_a.dynBal.U
+distribution.bufSto.heatingCoil2.pipe[5].vol_b.dynBal.U
+distribution.bufSto.heatingCoil2.pipe[6].del.x
+distribution.bufSto.heatingCoil2.pipe[6].timDel.x
+distribution.bufSto.heatingCoil2.pipe[6].vol_a.dynBal.U
+distribution.bufSto.heatingCoil2.pipe[6].vol_b.dynBal.U
+distribution.bufSto.heatingCoil2.pipe[7].del.x
+distribution.bufSto.heatingCoil2.pipe[7].timDel.x
+distribution.bufSto.heatingCoil2.pipe[7].vol_a.dynBal.U
+distribution.bufSto.heatingCoil2.pipe[7].vol_b.dynBal.U
+distribution.bufSto.heatingCoil2.pipe[8].del.x
+distribution.bufSto.heatingCoil2.pipe[8].timDel.x
+distribution.bufSto.heatingCoil2.pipe[8].vol_a.dynBal.U
+distribution.bufSto.heatingCoil2.pipe[8].vol_b.dynBal.U
+distribution.bufSto.heatingCoil2.pipe[9].del.x
+distribution.bufSto.heatingCoil2.pipe[9].timDel.x
+distribution.bufSto.heatingCoil2.pipe[9].vol_a.dynBal.U
+distribution.bufSto.heatingCoil2.pipe[9].vol_b.dynBal.U
+distribution.bufSto.heatingCoil2.pipe[10].del.x
+distribution.bufSto.heatingCoil2.pipe[10].timDel.x
+distribution.bufSto.heatingCoil2.pipe[10].vol_a.dynBal.U
+distribution.bufSto.heatingCoil2.pipe[10].vol_b.dynBal.U
+distribution.bufSto.layer[1].dynBal.U
+distribution.bufSto.layer[2].dynBal.U
+distribution.bufSto.layer[3].dynBal.U
+distribution.bufSto.layer[4].dynBal.U
+distribution.bufSto.layer[5].dynBal.U
+distribution.bufSto.layer[6].dynBal.U
+distribution.bufSto.layer[7].dynBal.U
+distribution.bufSto.layer[8].dynBal.U
+distribution.bufSto.layer[9].dynBal.U
+distribution.bufSto.layer[10].dynBal.U
+distribution.bufSto.layer[11].dynBal.U
+distribution.bufSto.layer[12].dynBal.U
+distribution.bufSto.layer[13].dynBal.U
+distribution.bufSto.layer[14].dynBal.U
+distribution.bufSto.layer[15].dynBal.U
+distribution.bufSto.layer[16].dynBal.U
+distribution.bufSto.layer[17].dynBal.U
+distribution.bufSto.layer[18].dynBal.U
+distribution.bufSto.layer[19].dynBal.U
+distribution.bufSto.layer[20].dynBal.U
+distribution.bufSto.storageMantle[1].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[1].Wall.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[2].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[2].Wall.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[3].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[3].Wall.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[4].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[4].Wall.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[5].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[5].Wall.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[6].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[6].Wall.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[7].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[7].Wall.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[8].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[8].Wall.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[9].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[9].Wall.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[10].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[10].Wall.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[11].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[11].Wall.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[12].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[12].Wall.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[13].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[13].Wall.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[14].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[14].Wall.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[15].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[15].Wall.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[16].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[16].Wall.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[17].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[17].Wall.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[18].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[18].Wall.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[19].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[19].Wall.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[20].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.storageMantle[20].Wall.CylindricLoad1.heatCapacitor.T
+distribution.bufSto.topCover.loadIns.T
+distribution.bufSto.topCover.loadWall.T
+distribution.eneKPICal.integrator2.y
+pumDHW.vol.dynBal.U
 Finished
 Warning: WARNINGS have been issued.
 Finished
@@ -1086,7 +1733,7 @@ Finished
 
 Declaring variable: Boolean rScript ;
 
-savelog("BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.translation.log"); = true
+savelog("BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage.translation.log"); = true
 
 
 rCheck = checkModel("BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler");
@@ -1134,15 +1781,15 @@ Statistics
  
 Original Model
   Number of components: 166
-  Variables: 1468
+  Variables: 1469
   Constants: 36 (36 scalars)
-  Parameters: 755 (948 scalars)
+  Parameters: 756 (949 scalars)
   Unknowns: 677 (614 scalars)
   Differentiated variables: 10 scalars
   Equations: 636
   Nontrivial: 540
 Translated Model
-  Constants: 661 scalars
+  Constants: 662 scalars
   Free parameters: 106 scalars
   Parameter depending: 340 scalars
   Outputs: 3 scalars
@@ -1175,6 +1822,83 @@ Finished
 Declaring variable: Boolean rScript ;
 
 savelog("BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem");
+Check of BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem
+The model has the same number of unknowns and equations: 679
+The model could not be deduced to be symbolically well-posed.
+The model has
+  643+2*transfer.parRad.nEle+transfer.rad[1].vol[1].dynBal.nPorts+transfer.rad[1].vol[2].dynBal.nPorts  +transfer.rad[1].vol[3].dynBal.nPorts+transfer.rad[1].vol[4].dynBal.nPorts+  transfer.rad[1].vol[5].dynBal.nPorts+transfer.rad[1].sumCon.nin+  transfer.rad[1].sumRad.nin+transfer.volSup.dynBal.nPorts+transfer.volRet.dynBal.nPorts  +vol[1].dynBal.nPorts
+scalar unknowns and
+  607+(if bou1[1].use_Xi_in then 1 else (if bou1[1].use_X_in then 0 else 1))+(if    not bou1[1].use_p_in then 1 else 0)+2*bou1[1].nPorts+(if  not   bou1[1].use_T_in then 1 else 0)+(if  not transfer.rad[1].vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad[1].vol[1].dynBal.nPorts+(if  not   transfer.rad[1].vol[2].dynBal.use_mWat_flow then 1 else 0)+3*transfer.rad[1].vol[2].dynBal.nPorts  +(if  not transfer.rad[1].vol[3].dynBal.use_mWat_flow then 1 else 0)+3*  transfer.rad[1].vol[3].dynBal.nPorts+(if  not transfer.rad[1].vol[4].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad[1].vol[4].dynBal.nPorts+(if  not   transfer.rad[1].vol[5].dynBal.use_mWat_flow then 1 else 0)+3*transfer.rad[1].vol[5].dynBal.nPorts  +(if  not transfer.volSup.dynBal.use_mWat_flow then 1 else 0)+3*  transfer.volSup.dynBal.nPorts+(if  not transfer.volRet.dynBal.use_mWat_flow   then 1 else 0)+3*transfer.volRet.dynBal.nPorts+(if  not vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*vol[1].dynBal.nPorts+(if  not pumDis[1].dpControlled_dp.vol.steBal.use_mWat_flow   then 1 else 0)+2*transfer.parRad.nEle
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  679
+Check of BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem successful.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestPressureBasedSystem.mos\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem\\\");\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestPressureBasedSystem.mos");
+simulateModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem", stopTime=12000, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem");
+Translation of BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem
+The DAE has 679 scalar unknowns and 679 scalar equations.
+ 
+Statistics
+ 
+Original Model
+  Number of components: 176
+  Variables: 1901
+  Constants: 44 (44 scalars)
+  Parameters: 929 (1049 scalars)
+  Unknowns: 928 (712 scalars)
+  Differentiated variables: 16 scalars
+  Equations: 733
+  Nontrivial: 545
+Translated Model
+  Constants: 919 scalars
+  Free parameters: 81 scalars
+  Parameter depending: 296 scalars
+  Outputs: 1 scalars
+  Continuous time states: 7 scalars
+  Time-varying variables: 151 scalars
+  Alias variables: 358 scalars
+  Number of mixed real/discrete systems of equations: 0
+  Sizes of linear systems of equations: {2, 2, 2, 2, 2}
+  Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0}
+  Sizes of nonlinear systems of equations: {9, 1}
+  Sizes after manipulation of the nonlinear systems: {1, 1}
+  Number of numerical Jacobians: 0
+  Initialization problem
+    Sizes of nonlinear systems of equations: {11, 9, 1, 1}
+    Sizes after manipulation of the nonlinear systems: {5, 1, 0, 1}
+    Sizes of simplified homotopy nonlinear systems of equations: {9, 1}
+    Sizes after manipulation of the simplified homotopy nonlinear systems: {1, 0}
+    Number of numerical Jacobians: 0
+ 
+Selected continuous time states
+Statically selected continuous time states
+transfer.rad[1].vol[1].dynBal.U
+transfer.rad[1].vol[2].dynBal.U
+transfer.rad[1].vol[3].dynBal.U
+transfer.rad[1].vol[4].dynBal.U
+transfer.rad[1].vol[5].dynBal.U
+transfer.volRet.dynBal.U
+transfer.volSup.dynBal.U
+Finished
+Finished
+ = true
+
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.translation.log"); = true
 
 
 rCheck = checkModel("BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump");
@@ -1246,15 +1970,15 @@ Statistics
  
 Original Model
   Number of components: 510
-  Variables: 4505
+  Variables: 4506
   Constants: 96 (96 scalars)
-  Parameters: 2148 (2859 scalars)
+  Parameters: 2149 (2861 scalars)
   Unknowns: 2261 (2225 scalars)
   Differentiated variables: 31 scalars
   Equations: 1980
   Nontrivial: 1632
 Translated Model
-  Constants: 1859 scalars
+  Constants: 1861 scalars
   Free parameters: 391 scalars
   Parameter depending: 1176 scalars
   Outputs: 7 scalars
@@ -1299,4 +2023,119 @@ Finished
 
 Declaring variable: Boolean rScript ;
 
-savelog("BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.translation.log");
+savelog("BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading");
+Check of BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading
+The model has the same number of unknowns and equations: 2589
+Check of BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading successful.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Distribution/Tests/TwoStoDetailedDirectLoading.mos\",", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading\",", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading\\\");\",", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Distribution/Tests/TwoStoDetailedDirectLoading.mos");
+simulateModel("BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading");
+Translation of BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading
+The DAE has 2589 scalar unknowns and 2589 scalar equations.
+ 
+Statistics
+ 
+Original Model
+  Number of components: 604
+  Variables: 7265
+  Constants: 112 (112 scalars)
+  Parameters: 3756 (4210 scalars)
+  Unknowns: 3397 (2698 scalars)
+  Differentiated variables: 75 scalars
+  Equations: 2659
+  Nontrivial: 2068
+Translated Model
+  Constants: 2695 scalars
+  Free parameters: 316 scalars
+  Parameter depending: 1693 scalars
+  Outputs: 7 scalars
+  Continuous time states: 53 scalars
+  Time-varying variables: 592 scalars
+  Alias variables: 1724 scalars
+  Number of mixed real/discrete systems of equations: 0
+  Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 4, 3, 3, 2, 2, 2, 2, 2, 2, 4, 3, 3, 2, 2, 2, 2, 2, 2, 4, 3, 3,   4, 3, 3, 2, 2, 2, 2, 2, 2}
+  Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0}
+  Sizes of nonlinear systems of equations: {20, 6, 6, 6, 6, 1, 1}
+  Sizes after manipulation of the nonlinear systems: {2, 1, 1, 1, 1, 1, 1}
+  Number of numerical Jacobians: 0
+  Initialization problem
+    Sizes of nonlinear systems of equations: {6, 1, 1, 20, 1, 1, 1}
+    Sizes after manipulation of the nonlinear systems: {1, 0, 1, 3, 0, 1, 1}
+    Sizes of simplified homotopy nonlinear systems of equations: {20, 1}
+    Sizes after manipulation of the simplified homotopy nonlinear systems: {3, 0}
+    Number of numerical Jacobians: 0
+ 
+Selected continuous time states
+Statically selected continuous time states
+distribution.eneKPICalBuf.integrator2.y
+distribution.eneKPICalDHW.integrator2.y
+distribution.senTBuiSup.T
+distribution.stoBuf.bottomCover.loadIns.T
+distribution.stoBuf.bottomCover.loadWall.T
+distribution.stoBuf.layer[1].dynBal.U
+distribution.stoBuf.layer[2].dynBal.U
+distribution.stoBuf.layer[3].dynBal.U
+distribution.stoBuf.layer[4].dynBal.U
+distribution.stoBuf.storageMantle[1].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.stoBuf.storageMantle[1].Wall.CylindricLoad1.heatCapacitor.T
+distribution.stoBuf.storageMantle[2].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.stoBuf.storageMantle[2].Wall.CylindricLoad1.heatCapacitor.T
+distribution.stoBuf.storageMantle[3].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.stoBuf.storageMantle[3].Wall.CylindricLoad1.heatCapacitor.T
+distribution.stoBuf.storageMantle[4].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.stoBuf.storageMantle[4].Wall.CylindricLoad1.heatCapacitor.T
+distribution.stoBuf.topCover.loadIns.T
+distribution.stoBuf.topCover.loadWall.T
+distribution.stoDHW.bottomCover.loadIns.T
+distribution.stoDHW.bottomCover.loadWall.T
+distribution.stoDHW.heatingCoil1.pipe[1].del.x
+distribution.stoDHW.heatingCoil1.pipe[1].timDel.x
+distribution.stoDHW.heatingCoil1.pipe[1].vol_a.dynBal.U
+distribution.stoDHW.heatingCoil1.pipe[1].vol_b.dynBal.U
+distribution.stoDHW.heatingCoil1.pipe[2].del.x
+distribution.stoDHW.heatingCoil1.pipe[2].timDel.x
+distribution.stoDHW.heatingCoil1.pipe[2].vol_a.dynBal.U
+distribution.stoDHW.heatingCoil1.pipe[2].vol_b.dynBal.U
+distribution.stoDHW.heatingCoil1.pipe[3].del.x
+distribution.stoDHW.heatingCoil1.pipe[3].timDel.x
+distribution.stoDHW.heatingCoil1.pipe[3].vol_a.dynBal.U
+distribution.stoDHW.heatingCoil1.pipe[3].vol_b.dynBal.U
+distribution.stoDHW.heatingCoil1.pipe[4].del.x
+distribution.stoDHW.heatingCoil1.pipe[4].timDel.x
+distribution.stoDHW.heatingCoil1.pipe[4].vol_a.dynBal.U
+distribution.stoDHW.heatingCoil1.pipe[4].vol_b.dynBal.U
+distribution.stoDHW.layer[1].dynBal.U
+distribution.stoDHW.layer[2].dynBal.U
+distribution.stoDHW.layer[3].dynBal.U
+distribution.stoDHW.layer[4].dynBal.U
+distribution.stoDHW.storageMantle[1].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.stoDHW.storageMantle[1].Wall.CylindricLoad1.heatCapacitor.T
+distribution.stoDHW.storageMantle[2].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.stoDHW.storageMantle[2].Wall.CylindricLoad1.heatCapacitor.T
+distribution.stoDHW.storageMantle[3].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.stoDHW.storageMantle[3].Wall.CylindricLoad1.heatCapacitor.T
+distribution.stoDHW.storageMantle[4].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.stoDHW.storageMantle[4].Wall.CylindricLoad1.heatCapacitor.T
+distribution.stoDHW.topCover.loadIns.T
+distribution.stoDHW.topCover.loadWall.T
+distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.U
+pumDHW.vol.dynBal.U
+Finished
+Finished
+ = true
+
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading.translation.log");
