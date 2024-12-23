@@ -67,8 +67,10 @@ partial model PartialHydraulicSystem
       final TDem_nominal=distribution.TDem_nominal,
       final TSup_nominal=distribution.TSup_nominal,
       final dTTra_nominal=distribution.dTTra_nominal,
-      final m_flow_nominal=distribution.m_flow_nominal,
-      final dp_nominal=distribution.dp_nominal,
+      final mSup_flow_nominal=distribution.mSup_flow_nominal,
+      final dpSup_nominal=distribution.dpSup_nominal,
+      final mDem_flow_nominal=distribution.mDem_flow_nominal,
+      final dpDem_nominal=distribution.dpDem_nominal,
       final dTLoss_nominal=distribution.dTLoss_nominal,
       final f_design=distribution.f_design,
       final TOda_nominal=hydraulicSystemParameters.TOda_nominal,
@@ -104,8 +106,6 @@ partial model PartialHydraulicSystem
             {154,122}})));
   replaceable BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution distribution(
     dTTra_nominal=fill(1, distribution.nParallelDem),
-    m_flow_nominal=fill(0, distribution.nParallelDem),
-    dp_nominal=fill(0, distribution.nParallelDem),
     dTTraDHW_nominal=1,
     designType=BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.NoStorage,
     QDHWStoLoss_flow=0,

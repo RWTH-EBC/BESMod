@@ -22,7 +22,13 @@ model BuildingOnly "Only loads building"
     redeclare package MediumGen = Medium,
     redeclare package MediumDHW = Medium,
     final dTTra_nominal=fill(0, nParallelDem));
-
+  replaceable parameter
+    BESMod.Systems.RecordsCollection.Movers.DPVar parPum
+    constrainedby BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
+    "Parameters for pump" annotation (
+    Dialog(group="Component data"),
+    choicesAllMatching=true,
+    Placement(transformation(extent={{-58,6},{-44,18}})));
   Modelica.Blocks.Sources.RealExpression reaExpTStoBufTopMea(y(
       final unit="K",
       displayUnit="degC")=
@@ -61,13 +67,8 @@ model BuildingOnly "Only loads building"
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-10,10})));
-  replaceable parameter
-    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition parPum
-    "Parameters for pump" annotation (
-    Dialog(group="Component data"),
-    choicesAllMatching=true,
-    Placement(transformation(extent={{-58,6},{-44,18}})));
-  Utilities.Electrical.RealToElecCon realToElecCon(use_souGen=false)
+
+  BESMod.Utilities.Electrical.RealToElecCon realToElecCon(use_souGen=false)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,

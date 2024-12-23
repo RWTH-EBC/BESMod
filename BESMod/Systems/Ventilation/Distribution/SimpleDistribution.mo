@@ -1,7 +1,6 @@
 within BESMod.Systems.Ventilation.Distribution;
 model SimpleDistribution "Most basic distribution model"
   extends BaseClasses.PartialDistribution(
-    final dp_nominal=resSup.dp_nominal,
     final QLoss_flow_nominal=f_design .* Q_flow_nominal .- Q_flow_nominal,
     final f_design=fill(1, nParallelDem),
     final dTLoss_nominal=fill(0, nParallelDem),
@@ -10,7 +9,7 @@ model SimpleDistribution "Most basic distribution model"
   IBPSA.Fluid.FixedResistances.PressureDrop resSup[nParallelDem](
     redeclare final package Medium = Medium,
     each final dp_nominal=100,
-    final m_flow_nominal=m_flow_nominal)
+    final m_flow_nominal=mDem_flow_nominal)
     "Hydraulic resistance of supply" annotation (Placement(transformation(
         extent={{-7.5,-10},{7.5,10}},
         rotation=180,
@@ -18,7 +17,7 @@ model SimpleDistribution "Most basic distribution model"
   IBPSA.Fluid.FixedResistances.PressureDrop resExh[nParallelDem](
     redeclare final package Medium = Medium,
     each final dp_nominal=100,
-    final m_flow_nominal=m_flow_nominal)
+    final m_flow_nominal=mDem_flow_nominal)
     "Hydraulic resistance of exhaust" annotation (Placement(transformation(
         extent={{-7.5,-10},{7.5,10}},
         rotation=0,

@@ -27,21 +27,17 @@ model GasBoilerBuildingOnly
           BESMod.Systems.Hydraulical.Control.Components.RelativeSpeedController.PID
           PIDCtrl),
       redeclare BESMod.Systems.Hydraulical.Distribution.BuildingOnly
-        distribution(nParallelDem=1, redeclare
+        distribution(redeclare
           BESMod.Systems.RecordsCollection.Movers.DPVar parPum),
       redeclare BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased
         transfer(redeclare
-          BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
-          parTra, redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
           parRad)),
     redeclare BESMod.Systems.Demand.DHW.StandardProfiles DHW(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
-
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.PassThrough calcmFlow),
-
     redeclare BESMod.Systems.UserProfiles.TEASERProfiles userProfiles,
     redeclare BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy
       parameterStudy,
