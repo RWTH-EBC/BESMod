@@ -28,7 +28,6 @@ partial model PartialModelicaConferenceUseCase
         generation(
         dTTra_nominal={10},
         redeclare package Medium_eva = AixLib.Media.Air),
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare package MediumEva = AixLib.Media.Air,
         TBiv=271.15,
         redeclare
@@ -67,11 +66,7 @@ partial model PartialModelicaConferenceUseCase
         f_design=fill(1.2, hydraulic.transfer.nParallelDem),
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
-          parRad,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
-        redeclare
-          BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
-          parTra));
+          parRad));
     redeclare Systems.Demand.DHW.StandardProfiles DHW(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare final BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM

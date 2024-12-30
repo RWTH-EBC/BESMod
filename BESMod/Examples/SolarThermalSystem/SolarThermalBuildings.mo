@@ -19,7 +19,6 @@ model SolarThermalBuildings
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater.DefaultElectricHeater
           parEleHea,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
         redeclare package MediumEva = AixLib.Media.Air,
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
@@ -29,8 +28,7 @@ model SolarThermalBuildings
           final A=parameterStudy.A,
           final eta_zero=parameterStudy.eta_zero,
           final c1=parameterStudy.c1,
-          final c2=parameterStudy.c2),
-        redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPumSolThe));
+          final c2=parameterStudy.c2)));
 
   extends Modelica.Icons.Example;
   annotation (

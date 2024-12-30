@@ -45,7 +45,7 @@ model HybridHeatPumpSystem
         origin={-190,-30})));
 equation
   connect(boiInHybSys.secGen, buiAndDHWCtr.secGen) annotation (Line(points={{-31.8,
-          -6},{-110,-6},{-110,37.5},{-118,37.5}}, color={255,0,255}));
+          -6},{-110,-6},{-110,34},{-118,34}},     color={255,0,255}));
   connect(boiInHybSys.secGenOn,boiPIDCtrl.setOn)  annotation (Line(points={{-9,-10},
           {76,-10},{76,19},{98,19}},
                                    color={255,0,255}));
@@ -80,11 +80,13 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(boiInHybSys.priGenSetOn, buiAndDHWCtr.priGren) annotation (Line(points={
-          {-32,-12.4},{-72,-12.4},{-72,-12},{-110,-12},{-110,26},{-118,26},{-118,27.5}},
+  connect(boiInHybSys.priGenSetOn, buiAndDHWCtr.priGren) annotation (Line(points={{-32,
+          -12.4},{-72,-12.4},{-72,-12},{-110,-12},{-110,26},{-118,26},{-118,
+          27.3333}},
         color={255,0,255}));
-  connect(boiInHybSys.TOda, weaBus.TDryBul) annotation (Line(points={{-32,-2},{-237,
-          -2},{-237,2}}, color={0,0,127}), Text(
+  connect(boiInHybSys.TOda, weaBus.TDryBul) annotation (Line(points={{-32,-2},{-236.895,
+          -2},{-236.895,2.11}},
+                         color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
@@ -99,7 +101,8 @@ equation
   connect(priOrSecDevValCtrl.secGen, boiInHybSys.secGenOn) annotation (Line(
         points={{-184,-18},{-184,12},{-2,12},{-2,-10},{-9,-10}}, color={255,0,255}));
   connect(priOrSecDevValCtrl.priGen, buiAndDHWCtr.priGren) annotation (Line(
-        points={{-196,-18},{-196,12},{-112,12},{-112,26},{-118,26},{-118,27.5}},
+        points={{-196,-18},{-196,12},{-112,12},{-112,26},{-118,26},{-118,
+          27.3333}},
         color={255,0,255}));
   connect(priOrSecDevValCtrl.uThrWayVal, sigBusGen.uPriOrSecGen) annotation (Line(
         points={{-190,-41},{-190,-70},{-152,-70},{-152,-99}}, color={0,0,127}),
@@ -108,7 +111,13 @@ equation
       index=1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(buiAndDHWCtr.priGren, priGenPIDCtrl.setOn) annotation (Line(points={{
-          -118,27.5},{-118,26},{74,26},{74,74},{96,74},{96,90},{100.4,90}},
+  connect(buiAndDHWCtr.priGren, priGenPIDCtrl.setOn) annotation (Line(points={{-118,
+          27.3333},{-118,26},{74,26},{74,74},{96,74},{96,90},{80.4,90}},
         color={255,0,255}));
+  connect(anyGenDevIsOn.y, sigBusDistr.pumGenOn) annotation (Line(points={{-150,
+          -21.5},{-150,-70},{1,-70},{1,-100}}, color={255,0,255}), Text(
+      string="%second",
+      index=1,
+      extent={{-3,-6},{-3,-6}},
+      horizontalAlignment=TextAlignment.Right));
 end HybridHeatPumpSystem;

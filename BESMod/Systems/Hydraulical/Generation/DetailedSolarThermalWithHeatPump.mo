@@ -21,7 +21,6 @@ model DetailedSolarThermalWithHeatPump
     solarThermalParas constrainedby
     BESMod.Systems.Hydraulical.Generation.RecordsCollection.SolarThermal.Generic(
       final c_p=cp) annotation (
-    Dialog(group="Component data"),
     choicesAllMatching=true,
     Placement(transformation(extent={{-198,-178},{-182,-164}})));
   Buildings.Fluid.SolarCollectors.EN12975 solCol(

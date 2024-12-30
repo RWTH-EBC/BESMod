@@ -18,7 +18,6 @@ model SimpleSolarThermalWithHeatPump
     parSolThe constrainedby
     BESMod.Systems.Hydraulical.Generation.RecordsCollection.SolarThermal.Generic(
       final c_p=cp) "Parameters for solar thermal system" annotation (
-    Dialog(group="Component data"),
     choicesAllMatching=true,
     Placement(transformation(extent={{-176,-176},{-162,-162}})));
   AixLib.Fluid.Solar.Thermal.SolarThermal solThe(

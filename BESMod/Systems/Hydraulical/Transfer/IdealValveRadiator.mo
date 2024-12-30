@@ -12,7 +12,18 @@ model IdealValveRadiator
   parameter Boolean use_oldRad_design[nParallelDem]={not QOld_flow_design[i]==Q_flow_nominal[i] for i in 1:nParallelDem}
     "If true, radiator design of old building state is used"
     annotation (Dialog(group="Design - Internal: Parameters are defined by the subsystem"));
-
+  replaceable parameter
+    BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData parRad
+    "Radiator parameters" annotation (choicesAllMatching=true, Placement(
+        transformation(extent={{-74,82},{-58,98}})));
+  replaceable parameter
+    BESMod.Systems.RecordsCollection.Movers.DPVar
+    parPum
+    constrainedby
+    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
+    "Pump assumptions"
+           annotation (choicesAllMatching=true, Placement(transformation(extent={{-96,82},
+            {-80,98}})));
   IBPSA.Fluid.HeatExchangers.Radiators.RadiatorEN442_2 rad[nParallelDem](
     each final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=m_flow_design,
@@ -41,11 +52,8 @@ model IdealValveRadiator
         rotation=270,
         origin={10,30})));
 
-  replaceable parameter
-    BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData parRad
-    "Radiator parameters" annotation (choicesAllMatching=true, Placement(
-        transformation(extent={{-100,-98},{-80,-78}})));
-  Utilities.KPIs.EnergyKPICalculator intKPICalHeaFlo(final use_inpCon=false,
+
+  BESMod.Utilities.KPIs.EnergyKPICalculator intKPICalHeaFlo(final use_inpCon=false,
       final y=sum(-heatPortRad.Q_flow) + sum(-heatPortCon.Q_flow))
     annotation (Placement(transformation(extent={{-40,-80},{-20,-60}})));
   IBPSA.Fluid.Movers.Preconfigured.FlowControlled_m_flow pumFixMFlo[nParallelDem](
@@ -68,10 +76,7 @@ model IdealValveRadiator
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-10,10})));
-  replaceable parameter
-    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
-    parPum "Pump assumptions"
-           annotation (choicesAllMatching=true, Placement(transformation(extent={{-98,78},{-78,98}})));
+
   BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{30,-106},{50,-86}})));
   Modelica.Blocks.Routing.RealPassThrough reaPasThrOpe[nParallelDem] annotation (Placement(transformation(

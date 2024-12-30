@@ -11,15 +11,14 @@ partial model PartialTwoStorageParallel
     "Design pressure difference of components on demand side for pump sizing"
      annotation(Dialog(tab="Pressure losses"));
   parameter Modelica.Units.SI.TemperatureDifference dTLoaHCBuf
-    "Temperature difference for loading of heating coil in buffer storage"
-      annotation(Dialog(group="Component data"));
+    "Temperature difference for loading of heating coil in buffer storage";
 
   replaceable parameter
     BESMod.Systems.RecordsCollection.TemperatureSensors.TemperatureSensorBaseDefinition
     parTemSen
     constrainedby
     BESMod.Systems.RecordsCollection.TemperatureSensors.TemperatureSensorBaseDefinition(              iconName="T-Sensors")
-    annotation (Dialog(group="Component data"), choicesAllMatching=true,
+    annotation (choicesAllMatching=true,
     Placement(transformation(extent={{44,164},{56,176}})));
 
   replaceable parameter
@@ -43,7 +42,6 @@ partial model PartialTwoStorageParallel
     final QHC2_flow_nominal=9999999,
     final mHC2_flow_nominal=9999999)
     "Parameters for buffer storage" annotation (
-    Dialog(group="Component data"),
     choicesAllMatching=true,
     Placement(transformation(extent={{44,144},{56,156}})));
 
@@ -70,7 +68,6 @@ partial model PartialTwoStorageParallel
     final QHC2_flow_nominal=QHC2_flow_nominal,
     final mHC2_flow_nominal=mHC2_flow_nominal)
     "Parameters for DHW storage" annotation (
-    Dialog(group="Component data"),
     choicesAllMatching=true,
     Placement(transformation(extent={{64,144},{76,156}})));
 

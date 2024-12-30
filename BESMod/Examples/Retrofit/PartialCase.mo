@@ -13,13 +13,7 @@ partial model PartialCase
       redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater
         generation(
         use_old_design={NoRetrofitHydGen},
-<<<<<<< HEAD
-        redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
-        redeclare package Medium_eva = AixLib.Media.Air,
-=======
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         TBiv=271.15,
->>>>>>> main
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps.DefaultHP
           parHeaPum,
@@ -74,11 +68,7 @@ partial model PartialCase
         use_oldRad_design={NoRetrofitHydTra},
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
-          parRad,
-        redeclare
-          BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
-          parTra,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum)),
+          parRad)),
     redeclare Systems.Demand.DHW.StandardProfiles DHW(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,

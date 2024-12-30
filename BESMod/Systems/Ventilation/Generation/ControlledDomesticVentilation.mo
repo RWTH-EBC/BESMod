@@ -12,8 +12,8 @@ model ControlledDomesticVentilation
     redeclare package Medium2 = Medium,
     final allowFlowReversal1=allowFlowReversal,
     final allowFlowReversal2=allowFlowReversal,
-    final m1_flow_nominal=m_flow_nominal[1],
-    final m2_flow_nominal=m_flow_nominal[1],
+    final m1_flow_nominal=m_flow_design[1],
+    final m2_flow_nominal=m_flow_design[1],
     final dp1_nominal=parameters.dpHex_nominal,
     final dp2_nominal=parameters.dpHex_nominal,
     final eps=parameters.epsHex)
@@ -33,7 +33,7 @@ model ControlledDomesticVentilation
     final T_start=T_start,
     final allowFlowReversal=allowFlowReversal,
     final show_T=show_T,
-    final m_flow_nominal=m_flow_nominal[1],
+    final m_flow_nominal=m_flow_design[1],
     final dp_nominal=dpDem_nominal[1] + dp_nominal[1],
      final addPowerToMedium=fanData.addPowerToMedium,
     final tau=fanData.tau,
@@ -52,10 +52,10 @@ model ControlledDomesticVentilation
     final initType=tempSensorData.initType,
     redeclare final package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
-    final m_flow_small=1E-4*m_flow_nominal[1],
+    final m_flow_small=1E-4*m_flow_design[1],
     final T_start=T_start,
     final tau=tempSensorData.tau,
-    final m_flow_nominal=m_flow_nominal[1],
+    final m_flow_nominal=m_flow_design[1],
     final transferHeat=tempSensorData.transferHeat,
     final TAmb=tempSensorData.TAmb,
     final tauHeaTra=tempSensorData.tauHeaTra)
@@ -77,7 +77,7 @@ model ControlledDomesticVentilation
     final T_start=T_start,
     final allowFlowReversal=allowFlowReversal,
     final show_T=show_T,
-    final m_flow_nominal=m_flow_nominal[1],
+    final m_flow_nominal=m_flow_design[1],
     final dp_nominal=dpDem_nominal [1]+ parameters.dpHex_nominal + 2*threeWayValveParas.dpValve_nominal,
     final addPowerToMedium=fanData.addPowerToMedium,
     final tau=fanData.tau,
@@ -95,10 +95,10 @@ model ControlledDomesticVentilation
     final initType=tempSensorData.initType,
     redeclare final package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
-    final m_flow_small=1E-4*m_flow_nominal[1],
+    final m_flow_small=1E-4*m_flow_design[1],
     final T_start=T_start,
     final tau=tempSensorData.tau,
-    final m_flow_nominal=m_flow_nominal[1],
+    final m_flow_nominal=m_flow_design[1],
     final transferHeat=tempSensorData.transferHeat,
     final TAmb=tempSensorData.TAmb,
     final tauHeaTra=tempSensorData.tauHeaTra)
@@ -124,7 +124,7 @@ model ControlledDomesticVentilation
     final fraK=threeWayValveParas.fraK,
     redeclare final package Medium = Medium,
     final CvData=IBPSA.Fluid.Types.CvTypes.OpPoint,
-    final m_flow_nominal=m_flow_nominal[1]) annotation (choicesAllMatching=true,
+    final m_flow_nominal=m_flow_design[1]) annotation (choicesAllMatching=true,
       Placement(transformation(extent={{22,-64},{38,-80}})));
   replaceable IBPSA.Fluid.Actuators.Valves.ThreeWayLinear threeWayValve_a constrainedby
     IBPSA.Fluid.Actuators.BaseClasses.PartialThreeWayValve(
@@ -143,7 +143,7 @@ model ControlledDomesticVentilation
     final fraK=threeWayValveParas.fraK,
     redeclare final package Medium = Medium,
     final CvData=IBPSA.Fluid.Types.CvTypes.OpPoint,
-    final m_flow_nominal=m_flow_nominal[1]) annotation (choicesAllMatching=true,
+    final m_flow_nominal=m_flow_design[1]) annotation (choicesAllMatching=true,
       Placement(transformation(
         extent={{-7,-7},{7,7}},
         rotation=180,
@@ -151,7 +151,7 @@ model ControlledDomesticVentilation
   replaceable parameter BESMod.Systems.RecordsCollection.Valves.ThreeWayValve
     threeWayValveParas constrainedby
     BESMod.Systems.RecordsCollection.Valves.ThreeWayValve(
-    m_flow_nominal=m_flow_nominal[1],
+    m_flow_nominal=m_flow_design[1],
     dp_nominal={dpDem_nominal[1], dpDem_nominal[1] + parameters.dpHex_nominal})
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-98,-98},
             {-76,-74}})));

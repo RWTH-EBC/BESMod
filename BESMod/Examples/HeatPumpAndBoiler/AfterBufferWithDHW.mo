@@ -1,10 +1,8 @@
 within BESMod.Examples.HeatPumpAndBoiler;
 model AfterBufferWithDHW
   "Bivalent Heat Pump System with boiler integration after buffer tank without DHW support"
-  extends BaseClasses.PartialHybridSystem(redeclare
-      BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
+  extends BaseClasses.PartialHybridSystem(hydraulic(
       redeclare Systems.Hydraulical.Generation.HeatPump generation(
-        redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
         TBiv=parameterStudy.TBiv,
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps.DefaultHP
@@ -18,7 +16,6 @@ model AfterBufferWithDHW
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
           parTemSen,
         genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel),
-
       control(boiInGeneration=false),
       redeclare Systems.Hydraulical.Distribution.TwoStoragesBoilerWithDHW
         distribution(

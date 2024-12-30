@@ -14,7 +14,6 @@ model BESNoDHW "Example to demonstrate usage without DHW"
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater
         generation(
-        redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
         redeclare package MediumEva = AixLib.Media.Air,
         redeclare model RefrigerantCycleHeatPumpHeating =
             AixLib.Fluid.HeatPumps.ModularReversible.RefrigerantCycle.TableData3D
@@ -60,15 +59,11 @@ model BESNoDHW "Example to demonstrate usage without DHW"
           BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
           parPIDHeaPum),
       redeclare BESMod.Systems.Hydraulical.Distribution.BuildingOnly
-        distribution(nParallelDem=1),
+        distribution,
       redeclare Systems.Hydraulical.Transfer.IdealValveRadiator transfer(
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
-          parRad,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
-        redeclare
-          BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
-          parTra)),
+          parRad)),
     redeclare Systems.Demand.DHW.StandardProfiles DHW(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,

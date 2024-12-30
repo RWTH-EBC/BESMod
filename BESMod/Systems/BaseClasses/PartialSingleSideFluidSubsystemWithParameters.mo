@@ -2,8 +2,8 @@ within BESMod.Systems.BaseClasses;
 model PartialSingleSideFluidSubsystemWithParameters
   "Parameters for a single sided fluid subsystem"
   extends PartialSubsystemParameters;
-  extends PartialFluidSubsystem;
   extends PartialPipeParameters;
+  extends PartialFluidSubsystem;
 
 
   // Mass flow rates

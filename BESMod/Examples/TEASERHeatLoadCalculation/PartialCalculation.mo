@@ -13,7 +13,7 @@ model PartialCalculation "Partial model with common interfaces"
       redeclare BESMod.Systems.Hydraulical.Generation.NoGeneration generation,
       redeclare BESMod.Systems.Hydraulical.Control.NoControl control,
       redeclare BESMod.Systems.Hydraulical.Distribution.BuildingOnly
-        distribution(nParallelDem=1),
+        distribution,
       redeclare BESMod.Systems.Hydraulical.Transfer.NoHeatTransfer transfer(
           nParallelSup=1)),
     redeclare BESMod.Systems.Electrical.ElectricalSystem electrical(

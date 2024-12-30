@@ -65,7 +65,6 @@ model TwoStoragesBoilerWithDHW
     constrainedby
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition(iconName="Pump Boi")
     "Boiler pump parameters" annotation (
-    Dialog(group="Component data"),
     choicesAllMatching=true,
     Placement(transformation(extent={{44,124},{56,136}})));
   replaceable parameter BESMod.Systems.RecordsCollection.Valves.ThreeWayValve parThrWayValBoi
@@ -75,7 +74,6 @@ model TwoStoragesBoilerWithDHW
     final dp_nominal={resBoiValHydSep.dp_nominal, resBoiValDHW.dp_nominal + sum(stoDHW.heatingCoil2.pipe.res.dp_nominal)},
     final fraK=1,
     use_strokeTime=false) "Parameters for three way valve of boiler" annotation (
-    Dialog(group="Component data"),
     choicesAllMatching=true,
     Placement(transformation(extent={{64,124},{76,136}})));
   replaceable parameter

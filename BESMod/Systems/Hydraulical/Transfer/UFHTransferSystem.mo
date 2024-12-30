@@ -2,9 +2,19 @@ within BESMod.Systems.Hydraulical.Transfer;
 model UFHTransferSystem
   extends BaseClasses.PartialWithPipingLosses(dp_design=dpPipSca_design .+
         dpUFH_design,
-    nHeaTra=1);
+    nHeaTra=1.1);
   final parameter Modelica.Units.SI.PressureDifference dpUFH_design[nParallelDem]=ufh.pressureDrop.tubeLength.*ufh.pressureDrop.m.*m_flow_design.^ufh.pressureDrop.n
     "Pressure drop as calculated in UFH model";
+  replaceable parameter BESMod.Systems.Hydraulical.Transfer.RecordsCollection.UFHData UFHParameters
+    constrainedby RecordsCollection.UFHData(nZones=nParallelDem, area=AZone)
+    annotation (choicesAllMatching=true, Placement(transformation(extent={{82,82},
+            {96,96}})));
+  replaceable parameter
+    BESMod.Systems.RecordsCollection.Movers.DPVar
+    parPum
+    constrainedby BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
+    annotation (choicesAllMatching=true, Placement(transformation(extent={{-98,82},
+            {-84,96}})));
   Modelica.Blocks.Math.Gain gain[nParallelDem](k=m_flow_design)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -45,10 +55,6 @@ model UFHTransferSystem
         rotation=0,
         origin={-64,4})));
 
-  replaceable parameter BESMod.Systems.Hydraulical.Transfer.RecordsCollection.UFHData UFHParameters
-    constrainedby RecordsCollection.UFHData(nZones=nParallelDem, area=AZone)
-    annotation (choicesAllMatching=true, Placement(transformation(extent={{78,78},
-            {98,98}})));
 
   Utilities.KPIs.EnergyKPICalculator integralKPICalculator[nParallelDem]
     annotation (Placement(transformation(extent={{-40,-80},{-20,-60}})));
@@ -73,10 +79,7 @@ model UFHTransferSystem
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-10,40})));
-  replaceable parameter
-    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
-    parPum annotation (choicesAllMatching=true, Placement(transformation(extent={{-98,78},
-            {-78,98}})));
+
   BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{32,-108},{52,-88}})));
   Modelica.Blocks.Routing.RealPassThrough reaPasThrOpe[nParallelDem] annotation (Placement(transformation(
@@ -213,7 +216,11 @@ equation
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
   annotation (Documentation(info="<html>
-<p><br>According to https://www.energie-lexikon.info/heizkoerperexponent.html, the heating transfer exponent of underfloor heating systems is between 1 and 1.1.</p>
+  <p>
+  According to https://www.energie-lexikon.info/heizkoerperexponent.html, 
+  the heating transfer exponent of underfloor heating systems is between 1 and 1.1.
+  In the Recknagel, a value of 1.1 is speficied.
+  </p>
 <p>TODO: In the test, the heat flow rate does not match design conditions.</p>
 </html>"));
 end UFHTransferSystem;

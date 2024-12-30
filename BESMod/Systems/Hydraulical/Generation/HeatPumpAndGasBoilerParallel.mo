@@ -42,8 +42,7 @@ model HeatPumpAndGasBoilerParallel
     final m_flow_nominal=m_flow_design[1],
     final fraK=1) "Parameters for three-way-valve" annotation (Placement(
         transformation(extent={{24,-38},{38,-24}})),
-                                                  choicesAllMatching=true,
-        Dialog(group="Component data"));
+        choicesAllMatching=true);
 
   Distribution.Components.Valves.ThreeWayValveWithFlowReturn thrWayVal(
     redeclare package Medium = Medium,

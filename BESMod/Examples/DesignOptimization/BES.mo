@@ -14,7 +14,6 @@ model BES
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater
         generation(
-        redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
         redeclare package MediumEva = AixLib.Media.Air,
         redeclare model RefrigerantCycleHeatPumpHeating =
             AixLib.Fluid.HeatPumps.ModularReversible.RefrigerantCycle.TableData3D
@@ -71,25 +70,18 @@ model BES
           VPerQ_flow=parameterStudy.VPerQFlow,
           dTLoadingHC1=0,
           energyLabel=BESMod.Systems.Hydraulical.Distribution.Types.EnergyLabel.B),
-
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
           parStoDHW(dTLoadingHC1=10, energyLabel=BESMod.Systems.Hydraulical.Distribution.Types.EnergyLabel.A),
-
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
           parThrWayVal),
       redeclare Systems.Hydraulical.Transfer.IdealValveRadiator transfer(
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
-          parRad,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
-        redeclare
-          BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
-          parTra)),
+          parRad)),
     redeclare Systems.Demand.DHW.StandardProfiles DHW(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
-
       redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
         calcmFlow),

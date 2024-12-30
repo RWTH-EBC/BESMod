@@ -32,7 +32,6 @@ partial model PartialThreeWayValve "Partial model to later extent"
     final m_flow_nominal=mSup_flow_design[1],
     final fraK=1,
     use_strokeTime=false) "Parameters for three way valve" annotation (
-    Dialog(group="Component data"),
     choicesAllMatching=true,
     Placement(transformation(extent={{64,164},{76,176}})));
   replaceable parameter
@@ -40,7 +39,6 @@ partial model PartialThreeWayValve "Partial model to later extent"
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition(iconName=
         "Pump Gen", externalCtrlTyp=BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.Types.ExternalControlType.onOff)
     "Parameters for pump feeding supply system (generation)" annotation (
-    Dialog(group="Component data"),
     choicesAllMatching=true,
     Placement(transformation(extent={{84,164},{96,176}})));
   BESMod.Systems.Hydraulical.Distribution.Components.Valves.ThreeWayValveWithFlowReturn threeWayValveWithFlowReturn(

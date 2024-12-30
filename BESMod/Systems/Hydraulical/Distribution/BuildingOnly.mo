@@ -26,7 +26,6 @@ model BuildingOnly "Only loads building"
     BESMod.Systems.RecordsCollection.Movers.DPVar parPum
     constrainedby BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
     "Parameters for pump" annotation (
-    Dialog(group="Component data"),
     choicesAllMatching=true,
     Placement(transformation(extent={{-58,6},{-44,18}})));
   Modelica.Blocks.Sources.RealExpression reaExpTStoBufTopMea(y(

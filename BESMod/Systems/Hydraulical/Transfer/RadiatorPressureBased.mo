@@ -43,8 +43,8 @@ model RadiatorPressureBased "Pressure Based transfer system"
     annotation (Dialog(group="Volume"));
   replaceable parameter BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
     parRad
-    annotation (Dialog(group="Component data"), choicesAllMatching=true,
-    Placement(transformation(extent={{-100,-98},{-80,-78}})));
+    annotation (choicesAllMatching=true,
+    Placement(transformation(extent={{-96,82},{-82,96}})));
   IBPSA.Fluid.HeatExchangers.Radiators.RadiatorEN442_2 rad[nParallelDem](
     each final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=m_flow_design,

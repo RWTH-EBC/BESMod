@@ -114,12 +114,6 @@ partial model PartialHeatPumpSystemController
     choicesAllMatching=true,
     Placement(transformation(extent={{82,82},{98,98}})));
 
-  Modelica.Blocks.Math.BooleanToReal booToRea(final realTrue=1, final realFalse=0)
-    "Turn pump on if any device is on"
-    annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={-150,-50})));
   Modelica.Blocks.MathBoolean.Or anyGenDevIsOn(nu=2)
     "True if any generation device is on and pump must run" annotation (Placement(
         transformation(
@@ -185,14 +179,6 @@ equation
       index=1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(booToRea.u, anyGenDevIsOn.y)
-    annotation (Line(points={{-150,-38},{-150,-21.5}}, color={255,0,255}));
-  connect(booToRea.y, sigBusGen.uPump) annotation (Line(points={{-150,-61},{-150,-70},
-          {-152,-70},{-152,-99}},                 color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
   connect(buiAndDHWCtr.TZoneSet, useProBus.TZoneSet) annotation (Line(points={{-204,
           32.3333},{-238,32.3333},{-238,103},{-119,103}},
                                                      color={0,0,127}), Text(
@@ -299,6 +285,12 @@ equation
   connect(buiAndDHWCtr.priGren, anyGenDevIsOn.u[2]) annotation (Line(points={{-118,
           27.3333},{-112,27.3333},{-112,4},{-148.25,4},{-148.25,0}},color={255,
           0,255}));
+  connect(anyGenDevIsOn.y, sigBusDistr.pumGenOn) annotation (Line(points={{-150,
+          -21.5},{-150,-70},{1,-70},{1,-100}}, color={255,0,255}), Text(
+      string="%second",
+      index=1,
+      extent={{-3,-6},{-3,-6}},
+      horizontalAlignment=TextAlignment.Right));
                                                               annotation (Diagram(graphics={
         Rectangle(
           extent={{4,100},{136,36}},

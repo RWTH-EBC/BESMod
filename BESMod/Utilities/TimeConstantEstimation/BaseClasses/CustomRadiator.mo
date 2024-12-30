@@ -1,43 +1,52 @@
 within BESMod.Utilities.TimeConstantEstimation.BaseClasses;
 model CustomRadiator "Custom radiator with radiative fractions"
   // Abui =1 and hBui =1 to avaoid warnings, will be overwritten anyway
-  extends Systems.Hydraulical.Transfer.BaseClasses.PartialTransfer(
+  extends BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses(
     nHeaTra=parRad.n,
     ABui=1,
     hBui=1,
-    final dp_nominal=parTra.dp_nominal,
-    final nParallelSup=1);
+    final dp_design=dpPipSca_design .+ val.dpFixed_nominal .+ val.dpValve_nominal .+ rad.dp_nominal,
+    Q_flow_design={if use_oldRad_design[i] then QOld_flow_design[i] else Q_flow_nominal[i] for i in 1:nParallelDem},
+    TTra_design={if use_oldRad_design[i] then TTraOld_design[i] else TTra_nominal[i] for i in 1:nParallelDem});
+
+  parameter Boolean use_oldRad_design[nParallelDem]={not QOld_flow_design[i]==Q_flow_nominal[i] for i in 1:nParallelDem}
+    "If true, radiator design of the building with no retrofit (old state) is used"
+    annotation (Dialog(group="Design - Internal: Parameters are defined by the subsystem"));
+
   parameter Boolean use_preRelVal=false "=false to disable pressure relief valve"
     annotation(Dialog(group="Component choices"));
   parameter Real perPreRelValOpens=0.99
     "Percentage of nominal pressure difference at which the pressure relief valve starts to open"
       annotation(Dialog(group="Component choices", enable=use_preRelVal));
-  replaceable parameter
-    Systems.Hydraulical.Transfer.RecordsCollection.TransferDataBaseDefinition parTra
-    constrainedby
-    Systems.Hydraulical.Transfer.RecordsCollection.TransferDataBaseDefinition(
-    final Q_flow_nominal=Q_flow_nominal .* f_design,
-    final nZones=nParallelDem,
-    final AFloor=ABui,
-    final heiBui=hBui,
-    mRad_flow_nominal=m_flow_nominal,
-    mHeaCir_flow_nominal=mSup_flow_nominal[1]) "Transfer parameters"
-    annotation (
-    Dialog(group="Component data"),
-    choicesAllMatching=true,
-    Placement(transformation(extent={{-62,-98},{-42,-78}})));
 
-  replaceable parameter
-    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
-    parPum annotation (Dialog(group="Component data"),
-      choicesAllMatching=true, Placement(transformation(extent={{-98,78},
-            {-72,100}})));
+  // Valves
+  parameter Real valveAutho[nParallelDem](each min=0.2, each max=0.8, each unit="1")=
+    fill(0.5, nParallelDem)
+    "Assumed valve authority (typical value: 0.5)"
+     annotation(Dialog(group="Thermostatic Valve"));
+  parameter Boolean use_hydrBalAutom = true
+    "Use automatic hydraluic balancing to set dpFixed_nominal in valve"
+    annotation(Dialog(group="Thermostatic Valve"));
+  parameter Real leakageOpening = 0.0001
+    "may be useful for simulation stability. Always check the influence it has on your results"
+    annotation(Dialog(group="Thermostatic Valve"));
 
+  // Volume
+  parameter BESMod.Systems.Hydraulical.Transfer.Types.HeatTransferSystemType traType=
+    BESMod.Systems.Hydraulical.Transfer.Types.HeatTransferSystemType.SteelRadiator
+    "Heat transfer system type"
+      annotation(Dialog(group="Volume"));
+  parameter Modelica.Units.SI.Volume vol=
+      BESMod.Systems.Hydraulical.Transfer.Functions.GetAverageVolumeOfWater(sum(
+      Q_flow_nominal), traType)
+    "Volume of water in whole heat distribution and transfer system"
+    annotation (Dialog(group="Volume"));
   replaceable parameter BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
     parRad
-    annotation (Dialog(group="Component data"), choicesAllMatching=true,
-    Placement(transformation(extent={{-100,-98},{-80,-78}})));
-  RadiatorEN442_2                                      rad[nParallelDem](
+    annotation (choicesAllMatching=true,
+    Placement(transformation(extent={{-96,82},{-82,96}})));
+
+  BESMod.Utilities.TimeConstantEstimation.BaseClasses.RadiatorEN442_2 rad[nParallelDem](
     each final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=m_flow_nominal,
     each final show_T=show_T,
@@ -46,135 +55,168 @@ model CustomRadiator "Custom radiator with radiative fractions"
     each final nEle=parRad.nEle,
     each fraRad_nominal=parRad.fraRad,
     each use_dynamicFraRad=use_dynamicFraRad,
-    final Q_flow_nominal=Q_flow_nominal .* f_design,
-    final T_a_nominal=TTra_nominal,
-    final T_b_nominal=TTra_nominal .- dTTra_nominal,
+    final Q_flow_nominal=Q_flow_design .* f_design,
+    final T_a_nominal=TTra_design,
+    final T_b_nominal=TTra_design .- dTTra_design,
     final TAir_nominal=TDem_nominal,
     final TRad_nominal=TDem_nominal,
     each final n=parRad.n,
     each final deltaM=0.3,
-    final dp_nominal=parTra.dpRad_nominal,
+    final dp_nominal=dpPipSca_design*parRad.perPreLosRad,
     redeclare package Medium = Medium,
     each final T_start=T_start) "Radiator" annotation (Placement(transformation(
-        extent={{11,11},{-11,-11}},
+        extent={{10,10},{-10,-10}},
         rotation=90,
-        origin={-13,-27})));
+        origin={-10,-30})));
 
-  IBPSA.Fluid.FixedResistances.PressureDrop res[nParallelDem](
-    redeclare package Medium = Medium,
-    each final dp_nominal=parTra.dpHeaDistr_nominal,
-    final m_flow_nominal=m_flow_nominal) "Hydraulic resistance of supply"
-    annotation (Placement(transformation(
-        extent={{-12.5,-13.5},{12.5,13.5}},
-        rotation=0,
-        origin={-34.5,37.5})));
   IBPSA.Fluid.Actuators.Valves.TwoWayLinear val[nParallelDem](
     redeclare package Medium = Medium,
     each final allowFlowReversal=allowFlowReversal,
-    final m_flow_nominal=m_flow_nominal,
+    final m_flow_nominal=m_flow_design,
     each final show_T=show_T,
     each final CvData=IBPSA.Fluid.Types.CvTypes.OpPoint,
-    final dpValve_nominal=parTra.dpHeaSysValve_nominal,
+    final dpValve_nominal=valveAutho .* (val.dpFixed_nominal .+ rad.dp_nominal) ./ (1 .- valveAutho),
     each final use_strokeTime=false,
-    final dpFixed_nominal=parTra.dpHeaSysPreValve_nominal,
-    each final l=parTra.leakageOpening) annotation (Placement(transformation(
+    final dpFixed_nominal=if use_hydrBalAutom then max(dpPipSca_design .+ rad.dp_nominal) .- (dpPipSca_design .+ rad.dp_nominal)
+       else fill(0, nParallelDem),
+    each final l=leakageOpening)        annotation (Placement(transformation(
         extent={{-10,-11},{10,11}},
         rotation=270,
-        origin={-12,1})));
+        origin={-10,9})));
 
-  IBPSA.Fluid.MixingVolumes.MixingVolume vol(
+  IBPSA.Fluid.MixingVolumes.MixingVolume volSup(
     redeclare package Medium = Medium,
     final energyDynamics=energyDynamics,
     final p_start=p_start,
     final T_start=T_start,
     final mSenFac=1,
-    final m_flow_nominal=sum(rad.m_flow_nominal),
+    final m_flow_nominal=mSup_flow_design[1],
     final m_flow_small=1E-4*abs(sum(rad.m_flow_nominal)),
     final allowFlowReversal=allowFlowReversal,
-    final V(displayUnit="l") = parTra.vol,
+    final V(displayUnit="l") = vol/2,
     final use_C_flow=false,
-    nPorts=1 + nParallelDem) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=180,
-        origin={-58,18})));
-  IBPSA.Fluid.Movers.Preconfigured.SpeedControlled_y pump(
-    redeclare final package Medium = Medium,
-    final energyDynamics=energyDynamics,
-    final p_start=p_start,
-    final T_start=T_start,
-    final allowFlowReversal=allowFlowReversal,
-    final show_T=show_T,
-    final m_flow_nominal=sum(m_flow_nominal),
-    final dp_nominal=parTra.dpPumpHeaCir_nominal + dpSup_nominal[1],
-    final addPowerToMedium=parPum.addPowerToMedium,
-    final tau=parPum.tau,
-    final use_riseTime=parPum.use_riseTime,
-    final riseTime=parPum.riseTime,
-    final y_start=1) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=0,
-        origin={-74,38})));
-
-  Modelica.Blocks.Sources.Constant m_flow1(k=1)   annotation (Placement(
+    nPorts=nParallelDem + 1)     "Volume of supply pipes" annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={-48,68})));
+        origin={-66,20})));
 
-  BESMod.Utilities.Electrical.RealToElecCon realToElecCon(use_souGen=false)
-    annotation (Placement(transformation(extent={{34,-94},{54,-74}})));
-  Systems.Hydraulical.Distribution.Components.Valves.PressureReliefValve pressureReliefValve(
+  BESMod.Utilities.Electrical.ZeroLoad             zeroLoad
+    annotation (Placement(transformation(extent={{40,-80},{60,-60}})));
+  BESMod.Systems.Hydraulical.Distribution.Components.Valves.PressureReliefValve pressureReliefValve(
     redeclare final package Medium = Medium,
-    m_flow_nominal=mSup_flow_nominal[1],
-    final dpFullOpen_nominal=dp_nominal[1],
-    final dpThreshold_nominal=perPreRelValOpens*dp_nominal[1],
-    final facDpValve_nominal=parTra.valveAutho[1],
-    final l=parTra.leakageOpening) if use_preRelVal annotation (Placement(
+    m_flow_nominal=mSup_flow_design[1],
+    final dpFullOpen_nominal=dpSup_design[1],
+    final dpThreshold_nominal=perPreRelValOpens*dpSup_design[1],
+    final facDpValve_nominal=valveAutho[1],
+    final l=leakageOpening) if use_preRelVal annotation (Placement(
         transformation(
         extent={{10,-10},{-10,10}},
         rotation=90,
         origin={-90,-10})));
-  parameter Boolean use_dynamicFraRad=true;
+  Modelica.Blocks.Routing.RealPassThrough reaPasThrOpe[nParallelDem] annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=270,
+        origin={30,70})));
+  IBPSA.Fluid.MixingVolumes.MixingVolume volRet(
+    redeclare package Medium = Medium,
+    final energyDynamics=energyDynamics,
+    final p_start=p_start,
+    final T_start=T_start,
+    final mSenFac=1,
+    final m_flow_nominal=mSup_flow_design[1],
+    final m_flow_small=1E-4*abs(sum(rad.m_flow_nominal)),
+    final allowFlowReversal=allowFlowReversal,
+    final V(displayUnit="l") = vol/2,
+    final use_C_flow=false,
+    nPorts=nParallelDem + 1) "Volume of return pipes" annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-62,-22})));
+  Modelica.Blocks.Sources.RealExpression senTRet[nParallelSup](final y(
+      each final unit="K",
+      each displayUnit="degC") = Medium.temperature(Medium.setState_phX(
+      portTra_out.p,
+      actualStream(portTra_out.h_outflow),
+      inStream(portTra_out.Xi_outflow)))) "Real expression for return temperature"
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-30,-74})));
+  Modelica.Blocks.Sources.RealExpression senTSup[nParallelSup](final y(
+      each final unit="K",
+      each displayUnit="degC") = Medium.temperature(Medium.setState_phX(
+      portTra_in.p,
+      inStream(portTra_in.h_outflow),
+      inStream(portTra_in.Xi_outflow)))) "Real expression for supply temperature"
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-30,-54})));
 equation
-  connect(rad.heatPortRad, heatPortRad) annotation (Line(points={{-5.08,-29.2},
-          {40,-29.2},{40,-40},{100,-40}}, color={191,0,0}));
-  connect(rad.heatPortCon, heatPortCon) annotation (Line(points={{-5.08,-24.8},
-          {-5.08,-26},{40,-26},{40,40},{100,40}},  color={191,0,0}));
+  connect(rad.heatPortRad, heatPortRad) annotation (Line(points={{-2.8,-32},{40,
+          -32},{40,-40},{100,-40}},       color={191,0,0}));
+  connect(rad.heatPortCon, heatPortCon) annotation (Line(points={{-2.8,-28},{-2.8,
+          -26},{40,-26},{40,40},{100,40}},         color={191,0,0}));
 
   for i in 1:nParallelDem loop
-    connect(rad[i].port_b, portTra_out[1]) annotation (Line(points={{-13,-38},{
-            -13,-42},{-100,-42}},
+    connect(rad[i].port_b, volRet.ports[i + 1]) annotation (Line(points={{-10,-40},
+            {-62,-40},{-62,-32}},
                        color={0,127,255}));
-    connect(res[i].port_a, vol.ports[i + 1]) annotation (Line(points={{-47,37.5},
-            {-56,37.5},{-56,28},{-58,28}}, color={0,127,255}));
+    connect(res[i].port_a, volSup.ports[i + 1]) annotation (Line(points={{-60,40},
+            {-64,40},{-64,30},{-66,30}},   color={0,127,255}));
   end for;
 
-  connect(val.port_b, rad.port_a) annotation (Line(points={{-12,-9},{-12,-13.5},
-          {-13,-13.5},{-13,-16}}, color={0,127,255}));
-  connect(res.port_b, val.port_a) annotation (Line(points={{-22,37.5},{-12,37.5},
-          {-12,11}}, color={0,127,255}));
-  connect(portTra_in[1],pump.port_a)
-    annotation (Line(points={{-100,38},{-84,38}}, color={0,127,255}));
-  connect(pump.port_b, vol.ports[1]) annotation (Line(points={{-64,38},{-62,38},
-          {-62,28},{-58,28}}, color={0,127,255}));
+  connect(val.port_b, rad.port_a) annotation (Line(points={{-10,-1},{-10,-20}},
+                                  color={0,127,255}));
+  connect(res.port_b, val.port_a) annotation (Line(points={{-40,40},{-10,40},{-10,
+          19}},      color={0,127,255}));
 
-  connect(m_flow1.y,pump. y)
-    annotation (Line(points={{-59,68},{-74,68},{-74,50}}, color={0,0,127}));
-  connect(val.y, traControlBus.opening) annotation (Line(points={{1.2,1},{8,1},{
+  connect(val.y, traControlBus.opening) annotation (Line(points={{3.2,9},{8,9},{
           8,74},{0,74},{0,100}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(realToElecCon.internalElectricalPin, internalElectricalPin)
-    annotation (Line(
-      points={{54.2,-83.8},{54.2,-84},{72,-84},{72,-98}},
+  connect(zeroLoad.internalElectricalPin, internalElectricalPin) annotation (
+      Line(
+      points={{60,-70},{72,-70},{72,-98}},
       color={0,0,0},
       thickness=1));
-  connect(realToElecCon.PEleLoa, pump.P) annotation (Line(points={{32,-80},{
-          22,-80},{22,47},{-63,47}}, color={0,0,127}));
   connect(pressureReliefValve.port_b, portTra_out[1]) annotation (Line(points={{-90,-20},
           {-90,-42},{-100,-42}},           color={0,127,255}));
-  connect(pump.port_b, pressureReliefValve.port_a) annotation (Line(points={{-64,38},
-          {-60,38},{-60,30},{-90,30},{-90,0}},         color={0,127,255}));
+  connect(reaPasThrOpe.u, traControlBus.opening) annotation (Line(points={{30,
+          82},{30,94},{0,94},{0,100}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(reaPasThrOpe.y, outBusTra.opening) annotation (Line(points={{30,59},{
+          30,-90},{0,-90},{0,-104}},                 color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(volRet.ports[1], portTra_out[1]) annotation (Line(points={{-62,-32},{-62,
+          -42},{-100,-42}}, color={0,127,255}));
+  connect(pressureReliefValve.port_a, portTra_in[1])
+    annotation (Line(points={{-90,0},{-90,38},{-100,38}}, color={0,127,255}));
+  connect(volSup.ports[1], portTra_in[1]) annotation (Line(points={{-66,30},{-68,
+          30},{-68,38},{-100,38}},
+                              color={0,127,255}));
+  connect(senTSup.y, outBusTra.TSup) annotation (Line(points={{-19,-54},{0,-54},
+          {0,-104}},                   color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(senTRet.y, outBusTra.TRet) annotation (Line(points={{-19,-74},{0,-74},
+          {0,-104}},                   color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  annotation (Documentation(info="<html>
+<p>TODO: In the test with pressure relief valve, mass flow rates do not match</p>
+</html>"));
 end CustomRadiator;

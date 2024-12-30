@@ -39,11 +39,7 @@ package BaseClasses "Contains partial example case"
           Systems.Hydraulical.Transfer.IdealValveRadiator transfer(
           redeclare
             BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
-            parRad,
-          redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
-          redeclare
-            BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
-            parTra)),
+            parRad)),
       redeclare Systems.Demand.DHW.StandardProfiles DHW(
         energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
         redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,

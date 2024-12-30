@@ -33,7 +33,7 @@ model GasBoiler "Just a gas boiler"
   replaceable parameter
     BESMod.Systems.RecordsCollection.TemperatureSensors.TemperatureSensorBaseDefinition
     parTemSen
-    annotation (Dialog(group="Component data"), choicesAllMatching=true,
+    annotation (choicesAllMatching=true,
     Placement(transformation(extent={{-98,-16},{-80,-2}})));
   AixLib.Fluid.BoilerCHP.BoilerNoControl boi(
     redeclare package Medium = Medium,

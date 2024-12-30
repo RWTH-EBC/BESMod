@@ -35,7 +35,6 @@ partial model PartialHeatPumpMonoenergetic
             (redeclare
               AixLib.Fluid.HeatPumps.ModularReversible.Data.TableData2D.EN255.Vitocal350AWI114
               datTab),
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare package MediumEva = AixLib.Media.Air,
         TBiv=271.15,
         redeclare
@@ -60,7 +59,7 @@ partial model PartialHeatPumpMonoenergetic
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
           parPIDHeaPum),
-      redeclare Systems.Hydraulical.Distribution.DistributionTwoStorageParallel
+      redeclare BESMod.Systems.Hydraulical.Distribution.SimpleTwoStorageParallel
         distribution(
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
@@ -73,16 +72,12 @@ partial model PartialHeatPumpMonoenergetic
       redeclare Systems.Hydraulical.Transfer.IdealValveRadiator transfer(
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
-          parRad,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
-        redeclare
-          BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
-          parTra)),
+          parRad)),
     redeclare Systems.Demand.DHW.StandardProfiles DHW(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare final BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM
         DHWProfile,
-      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
+      redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
         calcmFlow),
     redeclare BESMod.Systems.RecordsCollection.ExampleSystemParameters

@@ -43,7 +43,7 @@ model SimpleTwoStorageParallel
       choicesAllMatching=true, Placement(transformation(extent={{62,142},{76,156}})));
 
   replaceable parameter
-    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition parPumTra(iconName="Pump Tra")
+    BESMod.Systems.RecordsCollection.Movers.DPVar parPumTra(iconName="Pump Tra")
     constrainedby
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
     "Parameters for pump for demand system (transfer)"

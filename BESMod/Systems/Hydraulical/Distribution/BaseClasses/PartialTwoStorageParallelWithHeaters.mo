@@ -83,7 +83,7 @@ partial model PartialTwoStorageParallelWithHeaters
     redeclare package Medium = AixLib.Media.Water,
     final allowFlowReversal=true,
     final m_flow_nominal=mDem_flow_design[1],
-    final m_flow_small=1E-4*abs(m_flow_design[1]),
+    final m_flow_small=1E-4*abs(mDem_flow_design[1]),
     final show_T=show_T,
     final tau=parTemSen.tau,
     final initType=parTemSen.initType,

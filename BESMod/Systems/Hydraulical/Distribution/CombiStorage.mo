@@ -16,10 +16,9 @@ model CombiStorage
     final nParallelDem=1);
   replaceable parameter
     BESMod.Systems.RecordsCollection.Movers.DPVar parPumGen constrainedby
-    BESMod.Systems.RecordsCollection.Movers.DPVar(iconName="Pump Gen",
+    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition (iconName="Pump Gen",
       externalCtrlTyp=BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.Types.ExternalControlType.onOff)
     "Parameters for pump feeding supply system (generation)" annotation (
-    Dialog(group="Component data"),
     choicesAllMatching=true,
     Placement(transformation(extent={{26,84},{38,96}})));
   replaceable parameter
@@ -33,7 +32,6 @@ model CombiStorage
     BESMod.Systems.RecordsCollection.Movers.DPVar(iconName="Pump Sec Gen",
       externalCtrlTyp=BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.Types.ExternalControlType.onOff)
     "Parameters for second pump feeding supply system (generation)" annotation (
-    Dialog(group="Component data"),
     choicesAllMatching=true,
     Placement(transformation(extent={{84,84},{96,96}})));
   replaceable parameter
