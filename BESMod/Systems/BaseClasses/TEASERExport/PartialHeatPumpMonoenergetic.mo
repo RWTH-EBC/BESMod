@@ -3,7 +3,8 @@ partial model PartialHeatPumpMonoenergetic
   "Partial model for TEASER export with monoenergetic heat pump"
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
     redeclare BESMod.Systems.UserProfiles.TEASERProfiles userProfiles,
-    redeclare replaceable BESMod.Systems.Demand.Building.TEASERThermalZone building(
+    redeclare replaceable BESMod.Systems.Demand.Building.TEASERThermalZone
+      building(
       hBui=0.1,
       ABui=0.1,
       ARoo=0.1),
@@ -14,7 +15,9 @@ partial model PartialHeatPumpMonoenergetic
         generation(
         redeclare model CellTemperature =
             AixLib.Electrical.PVSystem.BaseClasses.CellTemperatureMountingContactToGround,
+
         redeclare AixLib.DataBase.SolarElectric.SchuecoSPV170SME1 pVParameters,
+
         lat=weaDat.lat,
         lon=weaDat.lon,
         alt=weaDat.alt,
@@ -52,14 +55,18 @@ partial model PartialHeatPumpMonoenergetic
           BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
           valCtrl,
         supCtrDHWTyp=BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Internal,
+
         redeclare model DHWHysteresis =
             BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
+
         redeclare model BuildingHysteresis =
             BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
+
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
           parPIDHeaPum),
-      redeclare BESMod.Systems.Hydraulical.Distribution.SimpleTwoStorageParallel
+      redeclare
+        BESMod.Systems.Hydraulical.Distribution.SimpleTwoStorageParallel
         distribution(
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
@@ -70,7 +77,7 @@ partial model PartialHeatPumpMonoenergetic
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
           parThrWayVal),
       redeclare Systems.Hydraulical.Transfer.IdealValveRadiator transfer(
-        redeclare
+          redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
           parRad)),
     redeclare Systems.Demand.DHW.StandardProfiles DHW(
@@ -82,10 +89,10 @@ partial model PartialHeatPumpMonoenergetic
         calcmFlow),
     redeclare BESMod.Systems.RecordsCollection.ExampleSystemParameters
       systemParameters(
-          use_hydraulic=true,
-          use_ventilation=true,
-          use_elecHeating=false,
-          QBui_flow_nominal=building.QRec_flow_nominal),
+      use_hydraulic=true,
+      use_ventilation=true,
+      use_elecHeating=false,
+      QBui_flow_nominal=building.QRec_flow_nominal),
     redeclare BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy
       parameterStudy,
     redeclare final package MediumDHW = IBPSA.Media.Water,
@@ -105,13 +112,12 @@ partial model PartialHeatPumpMonoenergetic
         redeclare IBPSA.Fluid.Actuators.Valves.ThreeWayLinear threeWayValve_a,
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
           threeWayValveParas,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover fanData,
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
           tempSensorData),
       redeclare BESMod.Systems.Ventilation.Distribution.SimpleDistribution
-        distribution(m_flow_nominal=building.AZone .* building.hZone .* 0.5 ./
-            3600 .* 1.225),
+        distribution(redeclare BESMod.Systems.RecordsCollection.Movers.DPConst
+          fanData),
       redeclare BESMod.Systems.Ventilation.Control.SummerPIDByPass control(
           use_bypass=false)));
 
