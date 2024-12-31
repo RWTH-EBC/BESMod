@@ -1,134 +1,560 @@
 
-Error in model:  BESMod.Examples.Retrofit.PartialCase 
-Check of <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>
-Error: Class or component 'use_old_design' not found in TwoStoDetailedDirectLoading distribution
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 46
- Component context: hydraulic.distribution
-  Component declared as TwoStoDetailedDirectLoading distribution in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution">BESMod.Systems.Hydraulical.Distribution</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 2
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Examples.SolarThermalSystem.SolarThermalBuildings 
-Check of <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings">BESMod.Examples.SolarThermalSystem.SolarThermalBuildings</a>
-Warning: The bus-input hydraulic.distribution.sigBusDistr.pumGenOnSec lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
-Bus-signal: pumGenOnSec
-Use: <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings#diagram$hydraulic.distribution:pumGenSec,sigBusDistr"> connect(hydraulic.distribution.sigBusDistr.pumGenOnSec, hydraulic.distribution.pumGenSec.on)</a>;
-Connected bus variables:
-<a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings#$hydraulic.control.setAndMeaSelSec.sigBusDistr:pumGenOnSec">hydraulic.control.setAndMeaSelSec.sigBusDistr.pumGenOnSec</a> (connect) "=false to turn pump off"
-<a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings#$hydraulic.control.buiAndDHWCtr.TSetDHW.sigBusDistr:pumGenOnSec">hydraulic.control.buiAndDHWCtr.TSetDHW.sigBusDistr.pumGenOnSec</a> (connect)
-<a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings#$hydraulic.control.setAndMeaSelPri.sigBusDistr:pumGenOnSec">hydraulic.control.setAndMeaSelPri.sigBusDistr.pumGenOnSec</a> (connect)
-<a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings#$hydraulic.control.sigBusDistr:pumGenOnSec">hydraulic.control.sigBusDistr.pumGenOnSec</a> (connect)
-<a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings#$hydraulic.control.buiAndDHWCtr.sigBusDistr:pumGenOnSec">hydraulic.control.buiAndDHWCtr.sigBusDistr.pumGenOnSec</a> (connect)
-input <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings#$hydraulic.distribution.sigBusDistr:pumGenOnSec">hydraulic.distribution.sigBusDistr.pumGenOnSec</a> (connect)
-Error: The problem is structurally singular.
-
-It has 14128 scalar unknowns and 14127 scalar equations.
-  The Real part has 13795 unknowns and 13795 equations.
-  The Integer part has 37 unknowns and 37 equations.
-  The Boolean part has 296 unknowns and 295 equations.
-  The String part has 0 unknowns and 0 equations.
-Attempting to further localize singularity.
-
+Error in model:  BESMod.Examples.HeatPumpAndBoiler.Serial 
+Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Serial">BESMod.Examples.HeatPumpAndBoiler.Serial</a>
+Warning: Evaluation caused division by zero (ventilation.distribution.fanRet.eff.V_flow_max=0),
+ in ventilation.distribution.fanRet.eff.V_flow/ventilation.distribution.fanRet.eff.V_flow_max.
+Warning: Evaluation caused division by zero (2.0*(ventilation.distribution.fanRet.eff.delta*ventilation.distribution.fanRet.eff.V_flow_nominal)=0),
+ in (ventilation.distribution.fanRet.eff.V_flow-ventilation.distribution.fanRet.eff.V_flow_nominal)  *(IBPSA.Fluid.Movers.BaseClasses.Characteristics.pressure(
+  (1+ventilation.distribution.fanRet.eff.delta)*ventilation.distribution.fanRet.eff.V_flow_nominal,     
+  1, 
+  ventilation.distribution.fanRet.eff.preDer1, 
+  ventilation.distribution.fanRet.eff.dpMax, 
+  ventilation.distribution.fanRet.eff.V_flow_max, 
+  ventilation.distribution.fanRet.eff.pCur1)-IBPSA.Fluid.Movers.BaseClasses.Characteristics.pressure  (
+  (1-ventilation.distribution.fanRet.eff.delta)*ventilation.distribution.fanRet.eff.V_flow_nominal,     
+  1, 
+  ventilation.distribution.fanRet.eff.preDer1, 
+  ventilation.distribution.fanRet.eff.dpMax, 
+  ventilation.distribution.fanRet.eff.V_flow_max, 
+  ventilation.distribution.fanRet.eff.pCur1))/(2.0*(ventilation.distribution.fanRet.eff.delta  *ventilation.distribution.fanRet.eff.V_flow_nominal)).
+Warning: Evaluation caused division by zero (ventilation.distribution.fanRet.eff.V_flow_nominal=0),
+ in ventilation.distribution.fanRet.eff.V_flow*IBPSA.Fluid.Movers.BaseClasses.Characteristics.power  (
+  ventilation.distribution.fanRet.eff.powEu, 
+  ventilation.distribution.fanRet.eff.V_flow_nominal, 
+  1, 
+  ventilation.distribution.fanRet.eff.powEuDer, 
+  ventilation.distribution.fanRet.eff.delta)/ventilation.distribution.fanRet.eff.V_flow_nominal.
+Warning: Evaluation caused division by zero (ventilation.distribution.fanFlow.eff.V_flow_max=0),
+ in ventilation.distribution.fanFlow.eff.V_flow/ventilation.distribution.fanFlow.eff.V_flow_max.
+Warning: Evaluation caused division by zero (2.0*(ventilation.distribution.fanFlow.eff.delta*ventilation.distribution.fanFlow.eff.V_flow_nominal)=0),
+ in (ventilation.distribution.fanFlow.eff.V_flow-ventilation.distribution.fanFlow.eff.V_flow_nominal)  *(IBPSA.Fluid.Movers.BaseClasses.Characteristics.pressure(
+  (1+ventilation.distribution.fanFlow.eff.delta)*ventilation.distribution.fanFlow.eff.V_flow_nominal,     
+  1, 
+  ventilation.distribution.fanFlow.eff.preDer1, 
+  ventilation.distribution.fanFlow.eff.dpMax, 
+  ventilation.distribution.fanFlow.eff.V_flow_max, 
+  ventilation.distribution.fanFlow.eff.pCur1)-IBPSA.Fluid.Movers.BaseClasses.Characteristics.pressure  (
+  (1-ventilation.distribution.fanFlow.eff.delta)*ventilation.distribution.fanFlow.eff.V_flow_nominal,     
+  1, 
+  ventilation.distribution.fanFlow.eff.preDer1, 
+  ventilation.distribution.fanFlow.eff.dpMax, 
+  ventilation.distribution.fanFlow.eff.V_flow_max, 
+  ventilation.distribution.fanFlow.eff.pCur1))/(2.0*(ventilation.distribution.fanFlow.eff.delta  *ventilation.distribution.fanFlow.eff.V_flow_nominal)).
+Warning: Evaluation caused division by zero (ventilation.distribution.fanFlow.eff.V_flow_nominal=0),
+ in ventilation.distribution.fanFlow.eff.V_flow*IBPSA.Fluid.Movers.BaseClasses.Characteristics.power  (
+  ventilation.distribution.fanFlow.eff.powEu, 
+  ventilation.distribution.fanFlow.eff.V_flow_nominal, 
+  1, 
+  ventilation.distribution.fanFlow.eff.powEuDer, 
+  ventilation.distribution.fanFlow.eff.delta)/ventilation.distribution.fanFlow.eff.V_flow_nominal.
+The model has the same number of unknowns and equations: 7200
 The model has the same number of unknowns and equations
-for the given numerical settings of parameters: 2014
-The model has the same number of unknowns and equations:
-  17+max([size(userProfiles.tabIntGai.columns, 1); size(userProfiles.tabIntGai.offset,   1)])
-The model could not be deduced to be symbolically well-posed.
-The model has
-  181+DHW.calcmFlow.multiProduct.nu+DHW.pump.vol.dynBal.nPorts+max([
-[4]; size(DHW.combiTimeTableDHWInput.offset, 1)])
-scalar unknowns and
-  172+(if DHW.bou_sink.use_Xi_in then 1 else (if DHW.bou_sink.use_X_in then 0   else 1))+(if  not DHW.bou_sink.use_p_in then 1 else 0)+2*DHW.bou_sink.nPorts+  (if  not DHW.bou_sink.use_h_in then 1 else 0)+max([
-[4]; size(DHW.combiTimeTableDHWInput.offset, 1)])+(if  not DHW.pump.vol.dynBal.use_mWat_flow   then 1 else 0)+3*DHW.pump.vol.dynBal.nPorts+(if DHW.bouSou.use_Xi_in then 1   else (if DHW.bouSou.use_X_in then 0 else 1))+(if  not DHW.bouSou.use_p_in   then 1 else 0)+(if  not DHW.bouSou.use_T_in then 1 else 0)
-scalar equations.
-However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
-  191
-Warning: The bus-input hydraulic.distribution.sigBusDistr.pumGenOnSec lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
-Singularity of <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings">BESMod.Examples.SolarThermalSystem.SolarThermalBuildings</a> is in the component <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings#diagram:hydraulic">hydraulic</a>, class <a href="Modelica://BESMod.Systems.Hydraulical.HydraulicSystem">BESMod.Systems.Hydraulical.HydraulicSystem</a>.
-Error: The model <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings">BESMod.Examples.SolarThermalSystem.SolarThermalBuildings</a> component <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings#diagram:hydraulic">hydraulic</a> is structurally singular.
-when assuming inputs to be known
-and the most generic outside couplings to all the flow variables of its connectors.
-Error: The bus-input hydraulic.distribution.sigBusDistr.pumGenOnSec lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
+for the given numerical settings of parameters: 7200
+Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Serial">BESMod.Examples.HeatPumpAndBoiler.Serial</a> successful.
+Warning: WARNINGS have been issued.
+Translation of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Serial">BESMod.Examples.HeatPumpAndBoiler.Serial</a>
+Warning: Evaluation caused division by zero (ventilation.distribution.fanRet.eff.V_flow_max=0),
+ in ventilation.distribution.fanRet.eff.V_flow/ventilation.distribution.fanRet.eff.V_flow_max.
+Warning: Evaluation caused division by zero (2.0*(ventilation.distribution.fanRet.eff.delta*ventilation.distribution.fanRet.eff.V_flow_nominal)=0),
+ in (ventilation.distribution.fanRet.eff.V_flow-ventilation.distribution.fanRet.eff.V_flow_nominal)  *(IBPSA.Fluid.Movers.BaseClasses.Characteristics.pressure(
+  (1+ventilation.distribution.fanRet.eff.delta)*ventilation.distribution.fanRet.eff.V_flow_nominal,     
+  1, 
+  ventilation.distribution.fanRet.eff.preDer1, 
+  ventilation.distribution.fanRet.eff.dpMax, 
+  ventilation.distribution.fanRet.eff.V_flow_max, 
+  ventilation.distribution.fanRet.eff.pCur1)-IBPSA.Fluid.Movers.BaseClasses.Characteristics.pressure  (
+  (1-ventilation.distribution.fanRet.eff.delta)*ventilation.distribution.fanRet.eff.V_flow_nominal,     
+  1, 
+  ventilation.distribution.fanRet.eff.preDer1, 
+  ventilation.distribution.fanRet.eff.dpMax, 
+  ventilation.distribution.fanRet.eff.V_flow_max, 
+  ventilation.distribution.fanRet.eff.pCur1))/(2.0*(ventilation.distribution.fanRet.eff.delta  *ventilation.distribution.fanRet.eff.V_flow_nominal)).
+Warning: Evaluation caused division by zero (ventilation.distribution.fanRet.eff.V_flow_nominal=0),
+ in ventilation.distribution.fanRet.eff.V_flow*IBPSA.Fluid.Movers.BaseClasses.Characteristics.power  (
+  ventilation.distribution.fanRet.eff.powEu, 
+  ventilation.distribution.fanRet.eff.V_flow_nominal, 
+  1, 
+  ventilation.distribution.fanRet.eff.powEuDer, 
+  ventilation.distribution.fanRet.eff.delta)/ventilation.distribution.fanRet.eff.V_flow_nominal.
+Warning: Evaluation caused division by zero (ventilation.distribution.fanFlow.eff.V_flow_max=0),
+ in ventilation.distribution.fanFlow.eff.V_flow/ventilation.distribution.fanFlow.eff.V_flow_max.
+Warning: Evaluation caused division by zero (2.0*(ventilation.distribution.fanFlow.eff.delta*ventilation.distribution.fanFlow.eff.V_flow_nominal)=0),
+ in (ventilation.distribution.fanFlow.eff.V_flow-ventilation.distribution.fanFlow.eff.V_flow_nominal)  *(IBPSA.Fluid.Movers.BaseClasses.Characteristics.pressure(
+  (1+ventilation.distribution.fanFlow.eff.delta)*ventilation.distribution.fanFlow.eff.V_flow_nominal,     
+  1, 
+  ventilation.distribution.fanFlow.eff.preDer1, 
+  ventilation.distribution.fanFlow.eff.dpMax, 
+  ventilation.distribution.fanFlow.eff.V_flow_max, 
+  ventilation.distribution.fanFlow.eff.pCur1)-IBPSA.Fluid.Movers.BaseClasses.Characteristics.pressure  (
+  (1-ventilation.distribution.fanFlow.eff.delta)*ventilation.distribution.fanFlow.eff.V_flow_nominal,     
+  1, 
+  ventilation.distribution.fanFlow.eff.preDer1, 
+  ventilation.distribution.fanFlow.eff.dpMax, 
+  ventilation.distribution.fanFlow.eff.V_flow_max, 
+  ventilation.distribution.fanFlow.eff.pCur1))/(2.0*(ventilation.distribution.fanFlow.eff.delta  *ventilation.distribution.fanFlow.eff.V_flow_nominal)).
+Warning: Evaluation caused division by zero (ventilation.distribution.fanFlow.eff.V_flow_nominal=0),
+ in ventilation.distribution.fanFlow.eff.V_flow*IBPSA.Fluid.Movers.BaseClasses.Characteristics.power  (
+  ventilation.distribution.fanFlow.eff.powEu, 
+  ventilation.distribution.fanFlow.eff.V_flow_nominal, 
+  1, 
+  ventilation.distribution.fanFlow.eff.powEuDer, 
+  ventilation.distribution.fanFlow.eff.delta)/ventilation.distribution.fanFlow.eff.V_flow_nominal.
+The DAE has 7200 scalar unknowns and 7200 scalar equations.
+Warning: The initial conditions are not fully specified.
+Dymola has selected default initial conditions.
+Warning: Assuming fixed start value for the continuous states:
+    ventilation.distribution.fanFlow.vol.dynBal.medium.Xi[](each start =       ventilation.distribution.fanFlow.vol.dynBal.X_start[1])
+    ventilation.distribution.fanRet.vol.dynBal.medium.Xi[](each start =       ventilation.distribution.fanRet.vol.dynBal.X_start[1])
+
+Redundant consistent initial conditions.
+Removed the following equations which are redundant and consistent: 
+  if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+      hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = hydraulic.generation.heatPump.eva.vol.dynBal.p_start;
+    end if;
+  else
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==       Modelica.Fluid.Types.Dynamics.SteadyStateInitial) then 
+      if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+        der(hydraulic.generation.heatPump.eva.vol.dynBal.medium.p) = 0;
+      end if;
+    end if;
+  end if;
+
+This required evaluation of 
+the interactive parameters 
+    hydraulic.generation.bou_sinkAir.p(start = 101325)
+
+The redundancies involve
+initial equations: 
+  hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
+
+Error: The conditions of the following assert statements are always false:
+Error:   assert(ventilation.distribution.fanRet.per.havePressureCurve, "SpeedControlled_y requires to set the pressure vs. flow rate curve in record 'per'.");
+    The variable ventilation.distribution.fanRet.per.havePressureCurve = false, was declared in class <a href="Modelica://IBPSA.Fluid.Movers.Data.Generic">IBPSA.Fluid.Movers.Data.Generic</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Movers/Data/Generic.mo at line <a href="Modelica://IBPSA.Fluid.Movers.Data.Generic#text:158">159</a>, and used in component <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Serial#$ventilation.distribution.fanRet:per">ventilation.distribution.fanRet.per</a>.
+Error:   assert(ventilation.distribution.fanFlow.per.havePressureCurve,     "SpeedControlled_y requires to set the pressure vs. flow rate curve in record 'per'.");
+    The variable ventilation.distribution.fanFlow.per.havePressureCurve = false, was declared in class <a href="Modelica://IBPSA.Fluid.Movers.Data.Generic">IBPSA.Fluid.Movers.Data.Generic</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Movers/Data/Generic.mo at line <a href="Modelica://IBPSA.Fluid.Movers.Data.Generic#text:158">159</a>, and used in component <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Serial#$ventilation.distribution.fanFlow:per">ventilation.distribution.fanFlow.per</a>.
+Translation aborted.
 Warning: WARNINGS have been issued.
 Error: ERRORS have been issued.
+Error: Simulations failed for:
+<a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Serial">BESMod.Examples.HeatPumpAndBoiler.Serial</a>
 
 
-Error in model:  BESMod.Examples.Retrofit.Case1NoRetrofit 
-Check of <a href="Modelica://BESMod.Examples.Retrofit.Case1NoRetrofit">BESMod.Examples.Retrofit.Case1NoRetrofit</a>
-Error: Class or component 'use_old_design' not found in TwoStoDetailedDirectLoading distribution
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 46
- Component context: hydraulic.distribution
-  Component declared as TwoStoDetailedDirectLoading distribution in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution">BESMod.Systems.Hydraulical.Distribution</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1NoRetrofit.mo, line 3
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Examples.Retrofit.Case1PartialRetrofit 
-Check of <a href="Modelica://BESMod.Examples.Retrofit.Case1PartialRetrofit">BESMod.Examples.Retrofit.Case1PartialRetrofit</a>
-Error: Class or component 'use_old_design' not found in TwoStoDetailedDirectLoading distribution
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 46
- Component context: hydraulic.distribution
-  Component declared as TwoStoDetailedDirectLoading distribution in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution">BESMod.Systems.Hydraulical.Distribution</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1PartialRetrofit.mo, line 4
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Examples.Retrofit.Case1TotalRetrofit 
-Check of <a href="Modelica://BESMod.Examples.Retrofit.Case1TotalRetrofit">BESMod.Examples.Retrofit.Case1TotalRetrofit</a>
-Error: Class or component 'use_old_design' not found in TwoStoDetailedDirectLoading distribution
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/PartialCase.mo, line 46
- Component context: hydraulic.distribution
-  Component declared as TwoStoDetailedDirectLoading distribution in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution">BESMod.Systems.Hydraulical.Distribution</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/Retrofit/Case1TotalRetrofit.mo, line 3
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Examples.SolarThermalSystem.SolarThermalAixLib 
-Check of <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib">BESMod.Examples.SolarThermalSystem.SolarThermalAixLib</a>
-Warning: The bus-input hydraulic.distribution.sigBusDistr.pumGenOnSec lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
-Bus-signal: pumGenOnSec
-Use: <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib#diagram$hydraulic.distribution:pumGenSec,sigBusDistr"> connect(hydraulic.distribution.sigBusDistr.pumGenOnSec, hydraulic.distribution.pumGenSec.on)</a>;
-Connected bus variables:
-<a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib#$hydraulic.control.setAndMeaSelPri.sigBusDistr:pumGenOnSec">hydraulic.control.setAndMeaSelPri.sigBusDistr.pumGenOnSec</a> (connect) "=false to turn pump off"
-<a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib#$hydraulic.control.setAndMeaSelSec.sigBusDistr:pumGenOnSec">hydraulic.control.setAndMeaSelSec.sigBusDistr.pumGenOnSec</a> (connect)
-<a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib#$hydraulic.control.buiAndDHWCtr.sigBusDistr:pumGenOnSec">hydraulic.control.buiAndDHWCtr.sigBusDistr.pumGenOnSec</a> (connect)
-<a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib#$hydraulic.control.sigBusDistr:pumGenOnSec">hydraulic.control.sigBusDistr.pumGenOnSec</a> (connect)
-<a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib#$hydraulic.control.buiAndDHWCtr.TSetDHW.sigBusDistr:pumGenOnSec">hydraulic.control.buiAndDHWCtr.TSetDHW.sigBusDistr.pumGenOnSec</a> (connect)
-input <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib#$hydraulic.distribution.sigBusDistr:pumGenOnSec">hydraulic.distribution.sigBusDistr.pumGenOnSec</a> (connect)
-Error: The problem is structurally singular.
-
-It has 13661 scalar unknowns and 13660 scalar equations.
-  The Real part has 13328 unknowns and 13328 equations.
-  The Integer part has 37 unknowns and 37 equations.
-  The Boolean part has 296 unknowns and 295 equations.
-  The String part has 0 unknowns and 0 equations.
-Attempting to further localize singularity.
-
+Error in model:  BESMod.Examples.HeatPumpAndBoiler.Parallel 
+Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Parallel">BESMod.Examples.HeatPumpAndBoiler.Parallel</a>
+Warning: Evaluation caused division by zero (ventilation.distribution.fanRet.eff.V_flow_max=0),
+ in ventilation.distribution.fanRet.eff.V_flow/ventilation.distribution.fanRet.eff.V_flow_max.
+Warning: Evaluation caused division by zero (2.0*(ventilation.distribution.fanRet.eff.delta*ventilation.distribution.fanRet.eff.V_flow_nominal)=0),
+ in (ventilation.distribution.fanRet.eff.V_flow-ventilation.distribution.fanRet.eff.V_flow_nominal)  *(IBPSA.Fluid.Movers.BaseClasses.Characteristics.pressure(
+  (1+ventilation.distribution.fanRet.eff.delta)*ventilation.distribution.fanRet.eff.V_flow_nominal,     
+  1, 
+  ventilation.distribution.fanRet.eff.preDer1, 
+  ventilation.distribution.fanRet.eff.dpMax, 
+  ventilation.distribution.fanRet.eff.V_flow_max, 
+  ventilation.distribution.fanRet.eff.pCur1)-IBPSA.Fluid.Movers.BaseClasses.Characteristics.pressure  (
+  (1-ventilation.distribution.fanRet.eff.delta)*ventilation.distribution.fanRet.eff.V_flow_nominal,     
+  1, 
+  ventilation.distribution.fanRet.eff.preDer1, 
+  ventilation.distribution.fanRet.eff.dpMax, 
+  ventilation.distribution.fanRet.eff.V_flow_max, 
+  ventilation.distribution.fanRet.eff.pCur1))/(2.0*(ventilation.distribution.fanRet.eff.delta  *ventilation.distribution.fanRet.eff.V_flow_nominal)).
+Warning: Evaluation caused division by zero (ventilation.distribution.fanRet.eff.V_flow_nominal=0),
+ in ventilation.distribution.fanRet.eff.V_flow*IBPSA.Fluid.Movers.BaseClasses.Characteristics.power  (
+  ventilation.distribution.fanRet.eff.powEu, 
+  ventilation.distribution.fanRet.eff.V_flow_nominal, 
+  1, 
+  ventilation.distribution.fanRet.eff.powEuDer, 
+  ventilation.distribution.fanRet.eff.delta)/ventilation.distribution.fanRet.eff.V_flow_nominal.
+Warning: Evaluation caused division by zero (ventilation.distribution.fanFlow.eff.V_flow_max=0),
+ in ventilation.distribution.fanFlow.eff.V_flow/ventilation.distribution.fanFlow.eff.V_flow_max.
+Warning: Evaluation caused division by zero (2.0*(ventilation.distribution.fanFlow.eff.delta*ventilation.distribution.fanFlow.eff.V_flow_nominal)=0),
+ in (ventilation.distribution.fanFlow.eff.V_flow-ventilation.distribution.fanFlow.eff.V_flow_nominal)  *(IBPSA.Fluid.Movers.BaseClasses.Characteristics.pressure(
+  (1+ventilation.distribution.fanFlow.eff.delta)*ventilation.distribution.fanFlow.eff.V_flow_nominal,     
+  1, 
+  ventilation.distribution.fanFlow.eff.preDer1, 
+  ventilation.distribution.fanFlow.eff.dpMax, 
+  ventilation.distribution.fanFlow.eff.V_flow_max, 
+  ventilation.distribution.fanFlow.eff.pCur1)-IBPSA.Fluid.Movers.BaseClasses.Characteristics.pressure  (
+  (1-ventilation.distribution.fanFlow.eff.delta)*ventilation.distribution.fanFlow.eff.V_flow_nominal,     
+  1, 
+  ventilation.distribution.fanFlow.eff.preDer1, 
+  ventilation.distribution.fanFlow.eff.dpMax, 
+  ventilation.distribution.fanFlow.eff.V_flow_max, 
+  ventilation.distribution.fanFlow.eff.pCur1))/(2.0*(ventilation.distribution.fanFlow.eff.delta  *ventilation.distribution.fanFlow.eff.V_flow_nominal)).
+Warning: Evaluation caused division by zero (ventilation.distribution.fanFlow.eff.V_flow_nominal=0),
+ in ventilation.distribution.fanFlow.eff.V_flow*IBPSA.Fluid.Movers.BaseClasses.Characteristics.power  (
+  ventilation.distribution.fanFlow.eff.powEu, 
+  ventilation.distribution.fanFlow.eff.V_flow_nominal, 
+  1, 
+  ventilation.distribution.fanFlow.eff.powEuDer, 
+  ventilation.distribution.fanFlow.eff.delta)/ventilation.distribution.fanFlow.eff.V_flow_nominal.
+The model has the same number of unknowns and equations: 7356
 The model has the same number of unknowns and equations
-for the given numerical settings of parameters: 2014
-The model has the same number of unknowns and equations:
-  17+max([size(userProfiles.tabIntGai.columns, 1); size(userProfiles.tabIntGai.offset,   1)])
-The model could not be deduced to be symbolically well-posed.
-The model has
-  181+DHW.calcmFlow.multiProduct.nu+DHW.pump.vol.dynBal.nPorts+max([
-[4]; size(DHW.combiTimeTableDHWInput.offset, 1)])
-scalar unknowns and
-  172+max([
-[4]; size(DHW.combiTimeTableDHWInput.offset, 1)])+(if DHW.bou_sink.use_Xi_in   then 1 else (if DHW.bou_sink.use_X_in then 0 else 1))+(if  not   DHW.bou_sink.use_p_in then 1 else 0)+2*DHW.bou_sink.nPorts+(if  not   DHW.bou_sink.use_h_in then 1 else 0)+(if  not DHW.pump.vol.dynBal.use_mWat_flow   then 1 else 0)+3*DHW.pump.vol.dynBal.nPorts+(if DHW.bouSou.use_Xi_in then 1   else (if DHW.bouSou.use_X_in then 0 else 1))+(if  not DHW.bouSou.use_p_in   then 1 else 0)+(if  not DHW.bouSou.use_T_in then 1 else 0)
-scalar equations.
-However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
-  191
-Warning: The bus-input hydraulic.distribution.sigBusDistr.pumGenOnSec lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
-Singularity of <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib">BESMod.Examples.SolarThermalSystem.SolarThermalAixLib</a> is in the component <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib#diagram:hydraulic">hydraulic</a>, class <a href="Modelica://BESMod.Systems.Hydraulical.HydraulicSystem">BESMod.Systems.Hydraulical.HydraulicSystem</a>.
-Error: The model <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib">BESMod.Examples.SolarThermalSystem.SolarThermalAixLib</a> component <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib#diagram:hydraulic">hydraulic</a> is structurally singular.
-when assuming inputs to be known
-and the most generic outside couplings to all the flow variables of its connectors.
-Error: The bus-input hydraulic.distribution.sigBusDistr.pumGenOnSec lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
+for the given numerical settings of parameters: 7356
+Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Parallel">BESMod.Examples.HeatPumpAndBoiler.Parallel</a> successful.
+Warning: WARNINGS have been issued.
+Translation of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Parallel">BESMod.Examples.HeatPumpAndBoiler.Parallel</a>
+Warning: Evaluation caused division by zero (ventilation.distribution.fanRet.eff.V_flow_max=0),
+ in ventilation.distribution.fanRet.eff.V_flow/ventilation.distribution.fanRet.eff.V_flow_max.
+Warning: Evaluation caused division by zero (2.0*(ventilation.distribution.fanRet.eff.delta*ventilation.distribution.fanRet.eff.V_flow_nominal)=0),
+ in (ventilation.distribution.fanRet.eff.V_flow-ventilation.distribution.fanRet.eff.V_flow_nominal)  *(IBPSA.Fluid.Movers.BaseClasses.Characteristics.pressure(
+  (1+ventilation.distribution.fanRet.eff.delta)*ventilation.distribution.fanRet.eff.V_flow_nominal,     
+  1, 
+  ventilation.distribution.fanRet.eff.preDer1, 
+  ventilation.distribution.fanRet.eff.dpMax, 
+  ventilation.distribution.fanRet.eff.V_flow_max, 
+  ventilation.distribution.fanRet.eff.pCur1)-IBPSA.Fluid.Movers.BaseClasses.Characteristics.pressure  (
+  (1-ventilation.distribution.fanRet.eff.delta)*ventilation.distribution.fanRet.eff.V_flow_nominal,     
+  1, 
+  ventilation.distribution.fanRet.eff.preDer1, 
+  ventilation.distribution.fanRet.eff.dpMax, 
+  ventilation.distribution.fanRet.eff.V_flow_max, 
+  ventilation.distribution.fanRet.eff.pCur1))/(2.0*(ventilation.distribution.fanRet.eff.delta  *ventilation.distribution.fanRet.eff.V_flow_nominal)).
+Warning: Evaluation caused division by zero (ventilation.distribution.fanRet.eff.V_flow_nominal=0),
+ in ventilation.distribution.fanRet.eff.V_flow*IBPSA.Fluid.Movers.BaseClasses.Characteristics.power  (
+  ventilation.distribution.fanRet.eff.powEu, 
+  ventilation.distribution.fanRet.eff.V_flow_nominal, 
+  1, 
+  ventilation.distribution.fanRet.eff.powEuDer, 
+  ventilation.distribution.fanRet.eff.delta)/ventilation.distribution.fanRet.eff.V_flow_nominal.
+Warning: Evaluation caused division by zero (ventilation.distribution.fanFlow.eff.V_flow_max=0),
+ in ventilation.distribution.fanFlow.eff.V_flow/ventilation.distribution.fanFlow.eff.V_flow_max.
+Warning: Evaluation caused division by zero (2.0*(ventilation.distribution.fanFlow.eff.delta*ventilation.distribution.fanFlow.eff.V_flow_nominal)=0),
+ in (ventilation.distribution.fanFlow.eff.V_flow-ventilation.distribution.fanFlow.eff.V_flow_nominal)  *(IBPSA.Fluid.Movers.BaseClasses.Characteristics.pressure(
+  (1+ventilation.distribution.fanFlow.eff.delta)*ventilation.distribution.fanFlow.eff.V_flow_nominal,     
+  1, 
+  ventilation.distribution.fanFlow.eff.preDer1, 
+  ventilation.distribution.fanFlow.eff.dpMax, 
+  ventilation.distribution.fanFlow.eff.V_flow_max, 
+  ventilation.distribution.fanFlow.eff.pCur1)-IBPSA.Fluid.Movers.BaseClasses.Characteristics.pressure  (
+  (1-ventilation.distribution.fanFlow.eff.delta)*ventilation.distribution.fanFlow.eff.V_flow_nominal,     
+  1, 
+  ventilation.distribution.fanFlow.eff.preDer1, 
+  ventilation.distribution.fanFlow.eff.dpMax, 
+  ventilation.distribution.fanFlow.eff.V_flow_max, 
+  ventilation.distribution.fanFlow.eff.pCur1))/(2.0*(ventilation.distribution.fanFlow.eff.delta  *ventilation.distribution.fanFlow.eff.V_flow_nominal)).
+Warning: Evaluation caused division by zero (ventilation.distribution.fanFlow.eff.V_flow_nominal=0),
+ in ventilation.distribution.fanFlow.eff.V_flow*IBPSA.Fluid.Movers.BaseClasses.Characteristics.power  (
+  ventilation.distribution.fanFlow.eff.powEu, 
+  ventilation.distribution.fanFlow.eff.V_flow_nominal, 
+  1, 
+  ventilation.distribution.fanFlow.eff.powEuDer, 
+  ventilation.distribution.fanFlow.eff.delta)/ventilation.distribution.fanFlow.eff.V_flow_nominal.
+The DAE has 7356 scalar unknowns and 7356 scalar equations.
+Warning: The initial conditions are not fully specified.
+Dymola has selected default initial conditions.
+Warning: Assuming fixed start value for the continuous states:
+    ventilation.distribution.fanFlow.vol.dynBal.medium.Xi[](each start =       ventilation.distribution.fanFlow.vol.dynBal.X_start[1])
+    ventilation.distribution.fanRet.vol.dynBal.medium.Xi[](each start =       ventilation.distribution.fanRet.vol.dynBal.X_start[1])
+
+Redundant consistent initial conditions.
+Removed the following equations which are redundant and consistent: 
+  if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+      hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = hydraulic.generation.heatPump.eva.vol.dynBal.p_start;
+    end if;
+  else
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==       Modelica.Fluid.Types.Dynamics.SteadyStateInitial) then 
+      if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+        der(hydraulic.generation.heatPump.eva.vol.dynBal.medium.p) = 0;
+      end if;
+    end if;
+  end if;
+
+This required evaluation of 
+the interactive parameters 
+    hydraulic.generation.bou_sinkAir.p(start = 101325)
+
+The redundancies involve
+initial equations: 
+  hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
+
+Error: The conditions of the following assert statements are always false:
+Error:   assert(ventilation.distribution.fanRet.per.havePressureCurve, "SpeedControlled_y requires to set the pressure vs. flow rate curve in record 'per'.");
+    The variable ventilation.distribution.fanRet.per.havePressureCurve = false, was declared in class <a href="Modelica://IBPSA.Fluid.Movers.Data.Generic">IBPSA.Fluid.Movers.Data.Generic</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Movers/Data/Generic.mo at line <a href="Modelica://IBPSA.Fluid.Movers.Data.Generic#text:158">159</a>, and used in component <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Parallel#$ventilation.distribution.fanRet:per">ventilation.distribution.fanRet.per</a>.
+Error:   assert(ventilation.distribution.fanFlow.per.havePressureCurve,     "SpeedControlled_y requires to set the pressure vs. flow rate curve in record 'per'.");
+    The variable ventilation.distribution.fanFlow.per.havePressureCurve = false, was declared in class <a href="Modelica://IBPSA.Fluid.Movers.Data.Generic">IBPSA.Fluid.Movers.Data.Generic</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Movers/Data/Generic.mo at line <a href="Modelica://IBPSA.Fluid.Movers.Data.Generic#text:158">159</a>, and used in component <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Parallel#$ventilation.distribution.fanFlow:per">ventilation.distribution.fanFlow.per</a>.
+Translation aborted.
 Warning: WARNINGS have been issued.
 Error: ERRORS have been issued.
+Error: Simulations failed for:
+<a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Parallel">BESMod.Examples.HeatPumpAndBoiler.Parallel</a>
+
+
+Error in model:  BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW 
+Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW</a>
+Warning: Evaluation caused division by zero (ventilation.distribution.fanRet.eff.V_flow_max=0),
+ in ventilation.distribution.fanRet.eff.V_flow/ventilation.distribution.fanRet.eff.V_flow_max.
+Warning: Evaluation caused division by zero (2.0*(ventilation.distribution.fanRet.eff.delta*ventilation.distribution.fanRet.eff.V_flow_nominal)=0),
+ in (ventilation.distribution.fanRet.eff.V_flow-ventilation.distribution.fanRet.eff.V_flow_nominal)  *(IBPSA.Fluid.Movers.BaseClasses.Characteristics.pressure(
+  (1+ventilation.distribution.fanRet.eff.delta)*ventilation.distribution.fanRet.eff.V_flow_nominal,     
+  1, 
+  ventilation.distribution.fanRet.eff.preDer1, 
+  ventilation.distribution.fanRet.eff.dpMax, 
+  ventilation.distribution.fanRet.eff.V_flow_max, 
+  ventilation.distribution.fanRet.eff.pCur1)-IBPSA.Fluid.Movers.BaseClasses.Characteristics.pressure  (
+  (1-ventilation.distribution.fanRet.eff.delta)*ventilation.distribution.fanRet.eff.V_flow_nominal,     
+  1, 
+  ventilation.distribution.fanRet.eff.preDer1, 
+  ventilation.distribution.fanRet.eff.dpMax, 
+  ventilation.distribution.fanRet.eff.V_flow_max, 
+  ventilation.distribution.fanRet.eff.pCur1))/(2.0*(ventilation.distribution.fanRet.eff.delta  *ventilation.distribution.fanRet.eff.V_flow_nominal)).
+Warning: Evaluation caused division by zero (ventilation.distribution.fanRet.eff.V_flow_nominal=0),
+ in ventilation.distribution.fanRet.eff.V_flow*IBPSA.Fluid.Movers.BaseClasses.Characteristics.power  (
+  ventilation.distribution.fanRet.eff.powEu, 
+  ventilation.distribution.fanRet.eff.V_flow_nominal, 
+  1, 
+  ventilation.distribution.fanRet.eff.powEuDer, 
+  ventilation.distribution.fanRet.eff.delta)/ventilation.distribution.fanRet.eff.V_flow_nominal.
+Warning: Evaluation caused division by zero (ventilation.distribution.fanFlow.eff.V_flow_max=0),
+ in ventilation.distribution.fanFlow.eff.V_flow/ventilation.distribution.fanFlow.eff.V_flow_max.
+Warning: Evaluation caused division by zero (2.0*(ventilation.distribution.fanFlow.eff.delta*ventilation.distribution.fanFlow.eff.V_flow_nominal)=0),
+ in (ventilation.distribution.fanFlow.eff.V_flow-ventilation.distribution.fanFlow.eff.V_flow_nominal)  *(IBPSA.Fluid.Movers.BaseClasses.Characteristics.pressure(
+  (1+ventilation.distribution.fanFlow.eff.delta)*ventilation.distribution.fanFlow.eff.V_flow_nominal,     
+  1, 
+  ventilation.distribution.fanFlow.eff.preDer1, 
+  ventilation.distribution.fanFlow.eff.dpMax, 
+  ventilation.distribution.fanFlow.eff.V_flow_max, 
+  ventilation.distribution.fanFlow.eff.pCur1)-IBPSA.Fluid.Movers.BaseClasses.Characteristics.pressure  (
+  (1-ventilation.distribution.fanFlow.eff.delta)*ventilation.distribution.fanFlow.eff.V_flow_nominal,     
+  1, 
+  ventilation.distribution.fanFlow.eff.preDer1, 
+  ventilation.distribution.fanFlow.eff.dpMax, 
+  ventilation.distribution.fanFlow.eff.V_flow_max, 
+  ventilation.distribution.fanFlow.eff.pCur1))/(2.0*(ventilation.distribution.fanFlow.eff.delta  *ventilation.distribution.fanFlow.eff.V_flow_nominal)).
+Warning: Evaluation caused division by zero (ventilation.distribution.fanFlow.eff.V_flow_nominal=0),
+ in ventilation.distribution.fanFlow.eff.V_flow*IBPSA.Fluid.Movers.BaseClasses.Characteristics.power  (
+  ventilation.distribution.fanFlow.eff.powEu, 
+  ventilation.distribution.fanFlow.eff.V_flow_nominal, 
+  1, 
+  ventilation.distribution.fanFlow.eff.powEuDer, 
+  ventilation.distribution.fanFlow.eff.delta)/ventilation.distribution.fanFlow.eff.V_flow_nominal.
+The model has the same number of unknowns and equations: 9626
+Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW</a> successful.
+Warning: WARNINGS have been issued.
+Translation of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW</a>
+Warning: Evaluation caused division by zero (ventilation.distribution.fanRet.eff.V_flow_max=0),
+ in ventilation.distribution.fanRet.eff.V_flow/ventilation.distribution.fanRet.eff.V_flow_max.
+Warning: Evaluation caused division by zero (2.0*(ventilation.distribution.fanRet.eff.delta*ventilation.distribution.fanRet.eff.V_flow_nominal)=0),
+ in (ventilation.distribution.fanRet.eff.V_flow-ventilation.distribution.fanRet.eff.V_flow_nominal)  *(IBPSA.Fluid.Movers.BaseClasses.Characteristics.pressure(
+  (1+ventilation.distribution.fanRet.eff.delta)*ventilation.distribution.fanRet.eff.V_flow_nominal,     
+  1, 
+  ventilation.distribution.fanRet.eff.preDer1, 
+  ventilation.distribution.fanRet.eff.dpMax, 
+  ventilation.distribution.fanRet.eff.V_flow_max, 
+  ventilation.distribution.fanRet.eff.pCur1)-IBPSA.Fluid.Movers.BaseClasses.Characteristics.pressure  (
+  (1-ventilation.distribution.fanRet.eff.delta)*ventilation.distribution.fanRet.eff.V_flow_nominal,     
+  1, 
+  ventilation.distribution.fanRet.eff.preDer1, 
+  ventilation.distribution.fanRet.eff.dpMax, 
+  ventilation.distribution.fanRet.eff.V_flow_max, 
+  ventilation.distribution.fanRet.eff.pCur1))/(2.0*(ventilation.distribution.fanRet.eff.delta  *ventilation.distribution.fanRet.eff.V_flow_nominal)).
+Warning: Evaluation caused division by zero (ventilation.distribution.fanRet.eff.V_flow_nominal=0),
+ in ventilation.distribution.fanRet.eff.V_flow*IBPSA.Fluid.Movers.BaseClasses.Characteristics.power  (
+  ventilation.distribution.fanRet.eff.powEu, 
+  ventilation.distribution.fanRet.eff.V_flow_nominal, 
+  1, 
+  ventilation.distribution.fanRet.eff.powEuDer, 
+  ventilation.distribution.fanRet.eff.delta)/ventilation.distribution.fanRet.eff.V_flow_nominal.
+Warning: Evaluation caused division by zero (ventilation.distribution.fanFlow.eff.V_flow_max=0),
+ in ventilation.distribution.fanFlow.eff.V_flow/ventilation.distribution.fanFlow.eff.V_flow_max.
+Warning: Evaluation caused division by zero (2.0*(ventilation.distribution.fanFlow.eff.delta*ventilation.distribution.fanFlow.eff.V_flow_nominal)=0),
+ in (ventilation.distribution.fanFlow.eff.V_flow-ventilation.distribution.fanFlow.eff.V_flow_nominal)  *(IBPSA.Fluid.Movers.BaseClasses.Characteristics.pressure(
+  (1+ventilation.distribution.fanFlow.eff.delta)*ventilation.distribution.fanFlow.eff.V_flow_nominal,     
+  1, 
+  ventilation.distribution.fanFlow.eff.preDer1, 
+  ventilation.distribution.fanFlow.eff.dpMax, 
+  ventilation.distribution.fanFlow.eff.V_flow_max, 
+  ventilation.distribution.fanFlow.eff.pCur1)-IBPSA.Fluid.Movers.BaseClasses.Characteristics.pressure  (
+  (1-ventilation.distribution.fanFlow.eff.delta)*ventilation.distribution.fanFlow.eff.V_flow_nominal,     
+  1, 
+  ventilation.distribution.fanFlow.eff.preDer1, 
+  ventilation.distribution.fanFlow.eff.dpMax, 
+  ventilation.distribution.fanFlow.eff.V_flow_max, 
+  ventilation.distribution.fanFlow.eff.pCur1))/(2.0*(ventilation.distribution.fanFlow.eff.delta  *ventilation.distribution.fanFlow.eff.V_flow_nominal)).
+Warning: Evaluation caused division by zero (ventilation.distribution.fanFlow.eff.V_flow_nominal=0),
+ in ventilation.distribution.fanFlow.eff.V_flow*IBPSA.Fluid.Movers.BaseClasses.Characteristics.power  (
+  ventilation.distribution.fanFlow.eff.powEu, 
+  ventilation.distribution.fanFlow.eff.V_flow_nominal, 
+  1, 
+  ventilation.distribution.fanFlow.eff.powEuDer, 
+  ventilation.distribution.fanFlow.eff.delta)/ventilation.distribution.fanFlow.eff.V_flow_nominal.
+The DAE has 9626 scalar unknowns and 9626 scalar equations.
+Warning: The initial conditions are not fully specified.
+Dymola has selected default initial conditions.
+Warning: Assuming fixed start value for the continuous states:
+    ventilation.distribution.fanFlow.vol.dynBal.medium.Xi[](each start =       ventilation.distribution.fanFlow.vol.dynBal.X_start[1])
+    ventilation.distribution.fanRet.vol.dynBal.medium.Xi[](each start =       ventilation.distribution.fanRet.vol.dynBal.X_start[1])
+
+Redundant consistent initial conditions.
+Removed the following equations which are redundant and consistent: 
+  if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+      hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = hydraulic.generation.heatPump.eva.vol.dynBal.p_start;
+    end if;
+  else
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==       Modelica.Fluid.Types.Dynamics.SteadyStateInitial) then 
+      if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+        der(hydraulic.generation.heatPump.eva.vol.dynBal.medium.p) = 0;
+      end if;
+    end if;
+  end if;
+
+This required evaluation of 
+the interactive parameters 
+    hydraulic.generation.bou_sinkAir.p(start = 101325)
+
+The redundancies involve
+initial equations: 
+  hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
+
+Error: The conditions of the following assert statements are always false:
+Error:   assert(ventilation.distribution.fanRet.per.havePressureCurve, "SpeedControlled_y requires to set the pressure vs. flow rate curve in record 'per'.");
+    The variable ventilation.distribution.fanRet.per.havePressureCurve = false, was declared in class <a href="Modelica://IBPSA.Fluid.Movers.Data.Generic">IBPSA.Fluid.Movers.Data.Generic</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Movers/Data/Generic.mo at line <a href="Modelica://IBPSA.Fluid.Movers.Data.Generic#text:158">159</a>, and used in component <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW#$ventilation.distribution.fanRet:per">ventilation.distribution.fanRet.per</a>.
+Error:   assert(ventilation.distribution.fanFlow.per.havePressureCurve,     "SpeedControlled_y requires to set the pressure vs. flow rate curve in record 'per'.");
+    The variable ventilation.distribution.fanFlow.per.havePressureCurve = false, was declared in class <a href="Modelica://IBPSA.Fluid.Movers.Data.Generic">IBPSA.Fluid.Movers.Data.Generic</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Movers/Data/Generic.mo at line <a href="Modelica://IBPSA.Fluid.Movers.Data.Generic#text:158">159</a>, and used in component <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW#$ventilation.distribution.fanFlow:per">ventilation.distribution.fanFlow.per</a>.
+Translation aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+Error: Simulations failed for:
+<a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW</a>
+
+
+Error in model:  BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW 
+Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW</a>
+Warning: Evaluation caused division by zero (ventilation.distribution.fanRet.eff.V_flow_max=0),
+ in ventilation.distribution.fanRet.eff.V_flow/ventilation.distribution.fanRet.eff.V_flow_max.
+Warning: Evaluation caused division by zero (2.0*(ventilation.distribution.fanRet.eff.delta*ventilation.distribution.fanRet.eff.V_flow_nominal)=0),
+ in (ventilation.distribution.fanRet.eff.V_flow-ventilation.distribution.fanRet.eff.V_flow_nominal)  *(IBPSA.Fluid.Movers.BaseClasses.Characteristics.pressure(
+  (1+ventilation.distribution.fanRet.eff.delta)*ventilation.distribution.fanRet.eff.V_flow_nominal,     
+  1, 
+  ventilation.distribution.fanRet.eff.preDer1, 
+  ventilation.distribution.fanRet.eff.dpMax, 
+  ventilation.distribution.fanRet.eff.V_flow_max, 
+  ventilation.distribution.fanRet.eff.pCur1)-IBPSA.Fluid.Movers.BaseClasses.Characteristics.pressure  (
+  (1-ventilation.distribution.fanRet.eff.delta)*ventilation.distribution.fanRet.eff.V_flow_nominal,     
+  1, 
+  ventilation.distribution.fanRet.eff.preDer1, 
+  ventilation.distribution.fanRet.eff.dpMax, 
+  ventilation.distribution.fanRet.eff.V_flow_max, 
+  ventilation.distribution.fanRet.eff.pCur1))/(2.0*(ventilation.distribution.fanRet.eff.delta  *ventilation.distribution.fanRet.eff.V_flow_nominal)).
+Warning: Evaluation caused division by zero (ventilation.distribution.fanRet.eff.V_flow_nominal=0),
+ in ventilation.distribution.fanRet.eff.V_flow*IBPSA.Fluid.Movers.BaseClasses.Characteristics.power  (
+  ventilation.distribution.fanRet.eff.powEu, 
+  ventilation.distribution.fanRet.eff.V_flow_nominal, 
+  1, 
+  ventilation.distribution.fanRet.eff.powEuDer, 
+  ventilation.distribution.fanRet.eff.delta)/ventilation.distribution.fanRet.eff.V_flow_nominal.
+Warning: Evaluation caused division by zero (ventilation.distribution.fanFlow.eff.V_flow_max=0),
+ in ventilation.distribution.fanFlow.eff.V_flow/ventilation.distribution.fanFlow.eff.V_flow_max.
+Warning: Evaluation caused division by zero (2.0*(ventilation.distribution.fanFlow.eff.delta*ventilation.distribution.fanFlow.eff.V_flow_nominal)=0),
+ in (ventilation.distribution.fanFlow.eff.V_flow-ventilation.distribution.fanFlow.eff.V_flow_nominal)  *(IBPSA.Fluid.Movers.BaseClasses.Characteristics.pressure(
+  (1+ventilation.distribution.fanFlow.eff.delta)*ventilation.distribution.fanFlow.eff.V_flow_nominal,     
+  1, 
+  ventilation.distribution.fanFlow.eff.preDer1, 
+  ventilation.distribution.fanFlow.eff.dpMax, 
+  ventilation.distribution.fanFlow.eff.V_flow_max, 
+  ventilation.distribution.fanFlow.eff.pCur1)-IBPSA.Fluid.Movers.BaseClasses.Characteristics.pressure  (
+  (1-ventilation.distribution.fanFlow.eff.delta)*ventilation.distribution.fanFlow.eff.V_flow_nominal,     
+  1, 
+  ventilation.distribution.fanFlow.eff.preDer1, 
+  ventilation.distribution.fanFlow.eff.dpMax, 
+  ventilation.distribution.fanFlow.eff.V_flow_max, 
+  ventilation.distribution.fanFlow.eff.pCur1))/(2.0*(ventilation.distribution.fanFlow.eff.delta  *ventilation.distribution.fanFlow.eff.V_flow_nominal)).
+Warning: Evaluation caused division by zero (ventilation.distribution.fanFlow.eff.V_flow_nominal=0),
+ in ventilation.distribution.fanFlow.eff.V_flow*IBPSA.Fluid.Movers.BaseClasses.Characteristics.power  (
+  ventilation.distribution.fanFlow.eff.powEu, 
+  ventilation.distribution.fanFlow.eff.V_flow_nominal, 
+  1, 
+  ventilation.distribution.fanFlow.eff.powEuDer, 
+  ventilation.distribution.fanFlow.eff.delta)/ventilation.distribution.fanFlow.eff.V_flow_nominal.
+The model has the same number of unknowns and equations: 8052
+Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW</a> successful.
+Warning: WARNINGS have been issued.
+Translation of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW</a>
+Warning: Evaluation caused division by zero (ventilation.distribution.fanRet.eff.V_flow_max=0),
+ in ventilation.distribution.fanRet.eff.V_flow/ventilation.distribution.fanRet.eff.V_flow_max.
+Warning: Evaluation caused division by zero (2.0*(ventilation.distribution.fanRet.eff.delta*ventilation.distribution.fanRet.eff.V_flow_nominal)=0),
+ in (ventilation.distribution.fanRet.eff.V_flow-ventilation.distribution.fanRet.eff.V_flow_nominal)  *(IBPSA.Fluid.Movers.BaseClasses.Characteristics.pressure(
+  (1+ventilation.distribution.fanRet.eff.delta)*ventilation.distribution.fanRet.eff.V_flow_nominal,     
+  1, 
+  ventilation.distribution.fanRet.eff.preDer1, 
+  ventilation.distribution.fanRet.eff.dpMax, 
+  ventilation.distribution.fanRet.eff.V_flow_max, 
+  ventilation.distribution.fanRet.eff.pCur1)-IBPSA.Fluid.Movers.BaseClasses.Characteristics.pressure  (
+  (1-ventilation.distribution.fanRet.eff.delta)*ventilation.distribution.fanRet.eff.V_flow_nominal,     
+  1, 
+  ventilation.distribution.fanRet.eff.preDer1, 
+  ventilation.distribution.fanRet.eff.dpMax, 
+  ventilation.distribution.fanRet.eff.V_flow_max, 
+  ventilation.distribution.fanRet.eff.pCur1))/(2.0*(ventilation.distribution.fanRet.eff.delta  *ventilation.distribution.fanRet.eff.V_flow_nominal)).
+Warning: Evaluation caused division by zero (ventilation.distribution.fanRet.eff.V_flow_nominal=0),
+ in ventilation.distribution.fanRet.eff.V_flow*IBPSA.Fluid.Movers.BaseClasses.Characteristics.power  (
+  ventilation.distribution.fanRet.eff.powEu, 
+  ventilation.distribution.fanRet.eff.V_flow_nominal, 
+  1, 
+  ventilation.distribution.fanRet.eff.powEuDer, 
+  ventilation.distribution.fanRet.eff.delta)/ventilation.distribution.fanRet.eff.V_flow_nominal.
+Warning: Evaluation caused division by zero (ventilation.distribution.fanFlow.eff.V_flow_max=0),
+ in ventilation.distribution.fanFlow.eff.V_flow/ventilation.distribution.fanFlow.eff.V_flow_max.
+Warning: Evaluation caused division by zero (2.0*(ventilation.distribution.fanFlow.eff.delta*ventilation.distribution.fanFlow.eff.V_flow_nominal)=0),
+ in (ventilation.distribution.fanFlow.eff.V_flow-ventilation.distribution.fanFlow.eff.V_flow_nominal)  *(IBPSA.Fluid.Movers.BaseClasses.Characteristics.pressure(
+  (1+ventilation.distribution.fanFlow.eff.delta)*ventilation.distribution.fanFlow.eff.V_flow_nominal,     
+  1, 
+  ventilation.distribution.fanFlow.eff.preDer1, 
+  ventilation.distribution.fanFlow.eff.dpMax, 
+  ventilation.distribution.fanFlow.eff.V_flow_max, 
+  ventilation.distribution.fanFlow.eff.pCur1)-IBPSA.Fluid.Movers.BaseClasses.Characteristics.pressure  (
+  (1-ventilation.distribution.fanFlow.eff.delta)*ventilation.distribution.fanFlow.eff.V_flow_nominal,     
+  1, 
+  ventilation.distribution.fanFlow.eff.preDer1, 
+  ventilation.distribution.fanFlow.eff.dpMax, 
+  ventilation.distribution.fanFlow.eff.V_flow_max, 
+  ventilation.distribution.fanFlow.eff.pCur1))/(2.0*(ventilation.distribution.fanFlow.eff.delta  *ventilation.distribution.fanFlow.eff.V_flow_nominal)).
+Warning: Evaluation caused division by zero (ventilation.distribution.fanFlow.eff.V_flow_nominal=0),
+ in ventilation.distribution.fanFlow.eff.V_flow*IBPSA.Fluid.Movers.BaseClasses.Characteristics.power  (
+  ventilation.distribution.fanFlow.eff.powEu, 
+  ventilation.distribution.fanFlow.eff.V_flow_nominal, 
+  1, 
+  ventilation.distribution.fanFlow.eff.powEuDer, 
+  ventilation.distribution.fanFlow.eff.delta)/ventilation.distribution.fanFlow.eff.V_flow_nominal.
+The DAE has 8052 scalar unknowns and 8052 scalar equations.
+Warning: The initial conditions are not fully specified.
+Dymola has selected default initial conditions.
+Warning: Assuming fixed start value for the continuous states:
+    ventilation.distribution.fanFlow.vol.dynBal.medium.Xi[](each start =       ventilation.distribution.fanFlow.vol.dynBal.X_start[1])
+    ventilation.distribution.fanRet.vol.dynBal.medium.Xi[](each start =       ventilation.distribution.fanRet.vol.dynBal.X_start[1])
+
+Redundant consistent initial conditions.
+Removed the following equations which are redundant and consistent: 
+  if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+      hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = hydraulic.generation.heatPump.eva.vol.dynBal.p_start;
+    end if;
+  else
+    if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==       Modelica.Fluid.Types.Dynamics.SteadyStateInitial) then 
+      if (hydraulic.generation.heatPump.eva.vol.dynBal.initialize_p) then 
+        der(hydraulic.generation.heatPump.eva.vol.dynBal.medium.p) = 0;
+      end if;
+    end if;
+  end if;
+
+This required evaluation of 
+the interactive parameters 
+    hydraulic.generation.bou_sinkAir.p(start = 101325)
+
+The redundancies involve
+initial equations: 
+  hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
+
+Error: The conditions of the following assert statements are always false:
+Error:   assert(ventilation.distribution.fanRet.per.havePressureCurve, "SpeedControlled_y requires to set the pressure vs. flow rate curve in record 'per'.");
+    The variable ventilation.distribution.fanRet.per.havePressureCurve = false, was declared in class <a href="Modelica://IBPSA.Fluid.Movers.Data.Generic">IBPSA.Fluid.Movers.Data.Generic</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Movers/Data/Generic.mo at line <a href="Modelica://IBPSA.Fluid.Movers.Data.Generic#text:158">159</a>, and used in component <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW#$ventilation.distribution.fanRet:per">ventilation.distribution.fanRet.per</a>.
+Error:   assert(ventilation.distribution.fanFlow.per.havePressureCurve,     "SpeedControlled_y requires to set the pressure vs. flow rate curve in record 'per'.");
+    The variable ventilation.distribution.fanFlow.per.havePressureCurve = false, was declared in class <a href="Modelica://IBPSA.Fluid.Movers.Data.Generic">IBPSA.Fluid.Movers.Data.Generic</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Movers/Data/Generic.mo at line <a href="Modelica://IBPSA.Fluid.Movers.Data.Generic#text:158">159</a>, and used in component <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW#$ventilation.distribution.fanFlow:per">ventilation.distribution.fanFlow.per</a>.
+Translation aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+Error: Simulations failed for:
+<a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW</a>
 
