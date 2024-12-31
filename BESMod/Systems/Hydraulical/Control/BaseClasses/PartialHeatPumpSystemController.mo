@@ -87,7 +87,12 @@ partial model PartialHeatPumpSystemController
   parameter String filNamSGReady=ModelicaServices.ExternalReferences.loadResource("modelica://BESMod/Resources/SGReady/EVU_Sperre_EON.txt")
     "Name of SG Ready scenario input file"
     annotation (Dialog(group="SG Ready", enable=not useExtSGSig and useSGReady));
-
+  parameter Boolean withSolThePumCtrl=false
+    "=true to enable solar thermal pump control"
+    annotation (Dialog(group="Solar Thermal"));
+  parameter Modelica.Units.SI.HeatFlux thrToTurSolTheOn=100
+    "Threshold global radiation to turn on solar thermal pump"
+    annotation (Dialog(group="Solar Thermal", enable=withSolThePumCtrl));
   replaceable parameter BESMod.Systems.Hydraulical.Control.RecordsCollection.PIDBaseDataDefinition
     parPIDHeaPum constrainedby
     BESMod.Systems.Hydraulical.Control.RecordsCollection.PIDBaseDataDefinition
@@ -170,6 +175,12 @@ partial model PartialHeatPumpSystemController
         supCtrlNSetTyp) "Supervisory control of compressor speed"
     annotation (Placement(transformation(extent={{110,80},{130,100}})));
 
+  Modelica.Blocks.Logical.Hysteresis solThePumOn(uLow=thrToTurSolTheOn/2, uHigh
+      =thrToTurSolTheOn) if withSolThePumCtrl
+    "True to turn on solar thermal pump" annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=270,
+        origin={-210,-50})));
 equation
 
   connect(priGenPIDCtrl.isOn, sigBusGen.heaPumIsOn) annotation (Line(points={{85.2,
@@ -287,6 +298,18 @@ equation
           0,255}));
   connect(anyGenDevIsOn.y, sigBusDistr.pumGenOn) annotation (Line(points={{-150,
           -21.5},{-150,-70},{1,-70},{1,-100}}, color={255,0,255}), Text(
+      string="%second",
+      index=1,
+      extent={{-3,-6},{-3,-6}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(solThePumOn.u, weaBus.HGloHor) annotation (Line(points={{-210,-38},{-210,
+          2.11},{-236.895,2.11}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-3,6},{-3,6}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(solThePumOn.y, sigBusDistr.pumGenOnSec) annotation (Line(points={{-210,
+          -61},{-210,-70},{1,-70},{1,-100}}, color={255,0,255}), Text(
       string="%second",
       index=1,
       extent={{-3,-6},{-3,-6}},

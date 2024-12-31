@@ -44,7 +44,8 @@ partial model PartialCase
       redeclare
         BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedDirectLoading
         distribution(
-        use_old_design={NoRetrofitHydDis},
+        use_oldHeat_design={NoRetrofitHydDis},
+        use_oldDemPump_design={NoRetrofitHydDis},
         QHeaAftBuf_flow_nominal=0,
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor

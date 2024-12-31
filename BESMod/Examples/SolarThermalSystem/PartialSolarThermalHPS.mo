@@ -21,10 +21,11 @@ partial model PartialSolarThermalHPS
           valCtrl,
         redeclare model DHWHysteresis =
             BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
-
         redeclare model BuildingHysteresis =
             BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
 
+        withSolThePumCtrl=true,
+        thrToTurSolTheOn=100,
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
           parPIDHeaPum),
@@ -44,10 +45,8 @@ partial model PartialSolarThermalHPS
     redeclare Systems.Demand.DHW.StandardProfiles DHW(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
-
       redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
       redeclare Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic calcmFlow),
-
     redeclare SolarThermalSystemParameters systemParameters,
     redeclare SolarThermalDesignOptimization parameterStudy(
       A=11,
