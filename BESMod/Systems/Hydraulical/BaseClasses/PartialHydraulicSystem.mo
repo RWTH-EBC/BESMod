@@ -17,9 +17,10 @@ partial model PartialHydraulicSystem
 
   replaceable
     BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration
-    generation(dTTra_nominal=fill(1, generation.nParallelDem), dp_nominal=fill(0,
-        generation.nParallelDem)) constrainedby
-    Generation.BaseClasses.PartialGeneration(
+    generation(
+      dp_design=fill(0, generation.nParallelDem),
+      dTTra_nominal=fill(1, generation.nParallelDem))
+        constrainedby Generation.BaseClasses.PartialGeneration(
     final TDem_nominal=distribution.TSup_nominal,
     final TDemOld_design=distribution.TSupOld_design,
     final Q_flow_nominal={sum(distribution.Q_flow_nominal)*generation.f_design[
@@ -152,11 +153,12 @@ partial model PartialHydraulicSystem
       Placement(transformation(extent={{-12,-104},{90,28}})));
 
   replaceable BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialTransfer
-    transfer(dp_nominal=fill(0, transfer.nParallelDem),
-    dpSup_nominal=fill(0, transfer.nParallelDem),
-    dpSupOld_design=fill(0, transfer.nParallelDem),     nHeaTra=1)
-                                                        constrainedby
-    Transfer.BaseClasses.PartialTransfer(
+    transfer(
+      dp_design=fill(0, transfer.nParallelDem),
+      dpSup_design=fill(0, transfer.nParallelSup),
+      dpSup_nominal=fill(0, transfer.nParallelSup),
+      dpSupOld_design=fill(0, transfer.nParallelSup),
+      nHeaTra=1) constrainedby Transfer.BaseClasses.PartialTransfer(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
     final massDynamics=massDynamics,
@@ -202,8 +204,8 @@ partial model PartialHydraulicSystem
       Medium = MediumDHW) "Outlet for the distribution to the DHW" annotation (
       Placement(transformation(extent={{190,-70},{210,-50}}),iconTransformation(
           extent={{188,-76},{208,-56}})));
-  Modelica.Fluid.Interfaces.FluidPort_a portDHW_in(redeclare final package Medium =
-               MediumDHW) "Inet for the distribution from the DHW" annotation (
+  Modelica.Fluid.Interfaces.FluidPort_a portDHW_in(redeclare final package
+      Medium = MediumDHW) "Inet for the distribution from the DHW" annotation (
       Placement(transformation(extent={{190,-130},{210,-110}}),
                                                              iconTransformation(
           extent={{188,-116},{208,-96}})));
