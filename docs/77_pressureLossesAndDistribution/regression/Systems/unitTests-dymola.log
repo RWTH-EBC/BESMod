@@ -4,9 +4,25 @@ Regression tests are only run for the following package:
 
 *** Warning: Unspecified initial conditions in 'RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestUnderfloorHeating.mos");'.
 
+*** Error: BESMod_Systems_Hydraulical_Transfer_Tests_TestPressureBasedSystemWithReliefValve.txt: Errors during result verification.
+           Absolute error = 2.687e+02 at t = 960.0 for Q_flow[1].y
+           Absolute error = 8.360e-03 at t = 480.0 for pumDis[1].port_a.m_flow
+           Absolute error = 1.927e+04 at t = 120.0 for pumDis[1].dpControlled_dp.dp_actual
+           Absolute error = 1.695e+04 for transfer.dp_design[1]
+*** Error: BESMod_Systems_Hydraulical_Transfer_Tests_TestUnderfloorHeating.txt: Errors during result verification.
+           Absolute error = 1.756e+04 at t = 0.0 for pumDis[1].dpControlled_dp.dp_actual
+           Absolute error = 1.541e+04 for transfer.dp_design[1]
+*** Error: BESMod_Systems_Hydraulical_Transfer_Tests_TestPressureBasedSystem.txt: Errors during result verification.
+           Absolute error = 4.116e+02 at t = 960.0 for Q_flow[1].y
+           Absolute error = 1.325e-02 at t = 480.0 for pumDis[1].port_a.m_flow
+           Absolute error = 1.702e+04 at t = 480.0 for pumDis[1].dpControlled_dp.dp_actual
+           Absolute error = 1.695e+04 for transfer.dp_design[1]
+*** Error: BESMod_Systems_Hydraulical_Transfer_Tests_TestIdealValveRadiatorSystem.txt: Errors during result verification.
+           Absolute error = 1.844e+04 at t = 0.0 for pumDis[1].dpControlled_dp.dp_actual
+           Absolute error = 1.618e+04 for transfer.dp_design[1]
 Comparison files output by funnel are stored in the directory 'funnel_comp' of size 0.5 MB.
 Run 'python -c "import buildingspy.development.regressiontest as t; t.Tester(tool=\"dymola\").report()"'
 to access a summary of the comparison results.
 
-Script that runs unit tests had 2 warnings and 0 errors.
+Script that runs unit tests had 2 warnings and 4 errors.
 
