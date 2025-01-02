@@ -47,7 +47,7 @@ model SimpleDistribution "Most basic distribution model"
     final allowFlowReversal=allowFlowReversal,
     final show_T=show_T,
     final m_flow_nominal=mSup_flow_design[1],
-    final dp_nominal=dpSup_nominal[1]/ 2 + resSup[1].dp_nominal,
+    final dp_nominal=dpSup_nominal[1]/2 + resSup[1].dp_nominal,
     final addPowerToMedium=fanData.addPowerToMedium,
     final tau=fanData.tau,
     final use_riseTime=fanData.use_riseTime,

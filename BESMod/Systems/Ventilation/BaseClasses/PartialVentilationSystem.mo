@@ -12,8 +12,8 @@ partial model PartialVentilationSystem
     Placement(transformation(extent={{-100,-98},{-80,-78}})));
   replaceable Generation.BaseClasses.PartialGeneration generation(
       dTTra_nominal=fill(1, generation.nParallelDem),
-      m_flow_nominal=fill(1, generation.nParallelDem),
-      dp_nominal=fill(0, generation.nParallelDem))
+      dp_design=fill(0, generation.nParallelDem),
+      m_flow_nominal=fill(1, generation.nParallelDem))
     constrainedby Generation.BaseClasses.PartialGeneration(
     Q_flow_nominal={sum(distribution.Q_flow_nominal .* distribution.f_design)},
     redeclare final package Medium = Medium,

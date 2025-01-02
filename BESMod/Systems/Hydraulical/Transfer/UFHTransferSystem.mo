@@ -12,7 +12,8 @@ model UFHTransferSystem
   replaceable parameter
     BESMod.Systems.RecordsCollection.Movers.DPVar
     parPum
-    constrainedby BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
+    constrainedby
+    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-98,82},
             {-84,96}})));
   Modelica.Blocks.Math.Gain gain[nParallelDem](k=m_flow_design)
@@ -128,8 +129,8 @@ protected
 equation
 
   for i in 1:nParallelDem loop
-    connect(res[i].port_a, portTra_in[1]) annotation (Line(points={{-60,40},{-86,
-            40},{-86,38},{-100,38}},     color={0,127,255}));
+    connect(res[i].port_a, resMaiLin[1].port_b) annotation (Line(points={{-40,40},
+            {-60,40}},                   color={0,127,255}));
     connect(ufh[i].port_b, portTra_out[1]) annotation (Line(points={{8.33333,-20},
             {8.33333,-32},{8,-32},{8,-42},{-100,-42}},
                                          color={0,127,255}));
@@ -171,7 +172,7 @@ equation
   connect(heaFloSen.Q_flow, integralKPICalculator.u) annotation (Line(points={{
           -30,-21},{-30,-56},{-48,-56},{-48,-70},{-41.8,-70}}, color={0,0,127}));
   connect(res.port_b, pumpFix_m_flow.port_a)
-    annotation (Line(points={{-40,40},{-34,40},{-34,40},{-20,40}},
+    annotation (Line(points={{-20,40},{-34,40},{-34,40},{-20,40}},
                                                  color={0,127,255}));
   connect(pumpFix_m_flow.port_b, ufh.port_a) annotation (Line(points={{0,40},{8.33333,
           40},{8.33333,20}},    color={0,127,255}));

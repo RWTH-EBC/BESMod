@@ -113,13 +113,12 @@ equation
     connect(rad[i].port_b, portTra_out[1]) annotation (Line(points={{-10,-40},{
             -10,-42},{-100,-42}},
                        color={0,127,255}));
-    connect(portTra_in[1], res[i].port_a)
-      annotation (Line(points={{-100,38},{-80,38},{-80,40},{-60,40}},
-                                                    color={0,127,255}));
+    connect(resMaiLin[1].port_b, res[i].port_a)
+      annotation (Line(points={{-60,40},{-40,40}},  color={0,127,255}));
   end for;
 
   connect(res.port_b, pumFixMFlo.port_a)
-    annotation (Line(points={{-40,40},{-10,40},{-10,20}}, color={0,127,255}));
+    annotation (Line(points={{-20,40},{-10,40},{-10,20}}, color={0,127,255}));
   connect(pumFixMFlo.port_b, rad.port_a) annotation (Line(points={{-10,
           -3.55271e-15},{-10,-20}}, color={0,127,255}));
   connect(gain.y, pumFixMFlo.m_flow_in)

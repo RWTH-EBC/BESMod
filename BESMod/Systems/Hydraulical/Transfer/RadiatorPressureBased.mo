@@ -91,13 +91,13 @@ model RadiatorPressureBased "Pressure Based transfer system"
     final m_flow_nominal=mSup_flow_design[1],
     final m_flow_small=1E-4*abs(sum(rad.m_flow_nominal)),
     final allowFlowReversal=allowFlowReversal,
-    final V(displayUnit="l") = vol/2,
+    V(displayUnit="l") = vol/2,
     final use_C_flow=false,
     nPorts=nParallelDem + 1)     "Volume of supply pipes" annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={-66,20})));
+        origin={-50,20})));
 
   Utilities.Electrical.ZeroLoad             zeroLoad
     annotation (Placement(transformation(extent={{40,-80},{60,-60}})));
@@ -125,7 +125,7 @@ model RadiatorPressureBased "Pressure Based transfer system"
     final m_flow_nominal=mSup_flow_design[1],
     final m_flow_small=1E-4*abs(sum(rad.m_flow_nominal)),
     final allowFlowReversal=allowFlowReversal,
-    final V(displayUnit="l") = vol/2,
+    V(displayUnit="l") = vol/2,
     final use_C_flow=false,
     nPorts=nParallelDem + 1) "Volume of return pipes" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -161,13 +161,13 @@ equation
     connect(rad[i].port_b, volRet.ports[i + 1]) annotation (Line(points={{-10,-40},
             {-62,-40},{-62,-32}},
                        color={0,127,255}));
-    connect(res[i].port_a, volSup.ports[i + 1]) annotation (Line(points={{-60,40},
-            {-64,40},{-64,30},{-66,30}},   color={0,127,255}));
+    connect(res[i].port_a, volSup.ports[i + 1]) annotation (Line(points={{-40,40},
+            {-44,40},{-44,30},{-50,30}},   color={0,127,255}));
   end for;
 
   connect(val.port_b, rad.port_a) annotation (Line(points={{-10,-1},{-10,-20}},
                                   color={0,127,255}));
-  connect(res.port_b, val.port_a) annotation (Line(points={{-40,40},{-10,40},{-10,
+  connect(res.port_b, val.port_a) annotation (Line(points={{-20,40},{-10,40},{-10,
           19}},      color={0,127,255}));
 
   connect(val.y, traControlBus.opening) annotation (Line(points={{3.2,9},{8,9},{
@@ -199,8 +199,8 @@ equation
           -42},{-100,-42}}, color={0,127,255}));
   connect(pressureReliefValve.port_a, portTra_in[1])
     annotation (Line(points={{-90,0},{-90,38},{-100,38}}, color={0,127,255}));
-  connect(volSup.ports[1], portTra_in[1]) annotation (Line(points={{-66,30},{-68,
-          30},{-68,38},{-100,38}},
+  connect(volSup.ports[1], resMaiLin[1].port_b) annotation (Line(points={{-50,30},
+          {-54,30},{-54,40},{-60,40}},
                               color={0,127,255}));
   connect(senTSup.y, outBusTra.TSup) annotation (Line(points={{-19,-54},{0,-54},
           {0,-104}},                   color={0,0,127}), Text(
