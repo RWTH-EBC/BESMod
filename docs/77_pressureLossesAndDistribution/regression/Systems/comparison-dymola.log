@@ -84,7 +84,7 @@
     },
     "model": "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel",
     "simulation": {
-      "elapsed_time": 0.025403,
+      "elapsed_time": 0.0248988,
       "final_time": 3600,
       "jacobians": 26,
       "start_time": 0,
@@ -159,7 +159,7 @@
     },
     "model": "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater",
     "simulation": {
-      "elapsed_time": 0.0202539,
+      "elapsed_time": 0.0120878,
       "final_time": 3600,
       "jacobians": 21,
       "start_time": 0,
@@ -222,7 +222,7 @@
     },
     "model": "BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly",
     "simulation": {
-      "elapsed_time": 0.00776982,
+      "elapsed_time": 0.00724697,
       "final_time": 3600,
       "jacobians": 12,
       "start_time": 0,
@@ -315,7 +315,7 @@
     },
     "model": "BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions",
     "simulation": {
-      "elapsed_time": 0.0221,
+      "elapsed_time": 0.0195,
       "final_time": 3600,
       "jacobians": 184,
       "start_time": 0,
@@ -378,7 +378,7 @@
     },
     "model": "BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem",
     "simulation": {
-      "elapsed_time": 0.010458,
+      "elapsed_time": 0.0106771,
       "final_time": 12000,
       "jacobians": 7,
       "start_time": 0,
@@ -441,7 +441,7 @@
     },
     "model": "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve",
     "simulation": {
-      "elapsed_time": 0.0119259,
+      "elapsed_time": 0.0125709,
       "final_time": 12000,
       "jacobians": 16,
       "start_time": 0,
@@ -540,7 +540,7 @@
     },
     "model": "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW",
     "simulation": {
-      "elapsed_time": 0.137574,
+      "elapsed_time": 0.139533,
       "final_time": 3600,
       "jacobians": 37,
       "start_time": 0,
@@ -627,7 +627,7 @@
     },
     "model": "BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel",
     "simulation": {
-      "elapsed_time": 0.0302551,
+      "elapsed_time": 0.030519,
       "final_time": 3600,
       "jacobians": 34,
       "start_time": 0,
@@ -726,7 +726,7 @@
     },
     "model": "BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump",
     "simulation": {
-      "elapsed_time": 0.013293,
+      "elapsed_time": 0.0127559,
       "final_time": 3600,
       "jacobians": 21,
       "start_time": 0,
@@ -801,7 +801,7 @@
     },
     "model": "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries",
     "simulation": {
-      "elapsed_time": 0.0141361,
+      "elapsed_time": 0.013562,
       "final_time": 3600,
       "jacobians": 18,
       "start_time": 0,
@@ -864,7 +864,7 @@
     },
     "model": "BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating",
     "simulation": {
-      "elapsed_time": 0.0158529,
+      "elapsed_time": 0.0160019,
       "final_time": 36000,
       "jacobians": 6,
       "start_time": 0,
@@ -939,7 +939,7 @@
     },
     "model": "BESMod.Systems.Hydraulical.Generation.Tests.HeatPump",
     "simulation": {
-      "elapsed_time": 0.0116611,
+      "elapsed_time": 0.0121229,
       "final_time": 3600,
       "jacobians": 21,
       "start_time": 0,
@@ -1014,7 +1014,7 @@
     },
     "model": "BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater",
     "simulation": {
-      "elapsed_time": 0.011601,
+      "elapsed_time": 0.010895,
       "final_time": 3600,
       "jacobians": 24,
       "start_time": 0,
@@ -1125,7 +1125,7 @@
     },
     "model": "BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage",
     "simulation": {
-      "elapsed_time": 0.392074,
+      "elapsed_time": 0.392026,
       "final_time": 3600,
       "jacobians": 37,
       "start_time": 0,
@@ -1212,7 +1212,7 @@
     },
     "model": "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading",
     "simulation": {
-      "elapsed_time": 0.098573,
+      "elapsed_time": 0.095675,
       "final_time": 3600,
       "jacobians": 31,
       "start_time": 0,
@@ -1299,7 +1299,7 @@
     },
     "model": "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading",
     "simulation": {
-      "elapsed_time": 0.044976,
+      "elapsed_time": 0.0425189,
       "final_time": 3600,
       "jacobians": 20,
       "start_time": 0,
@@ -1398,7 +1398,7 @@
     },
     "model": "BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump",
     "simulation": {
-      "elapsed_time": 0.016211,
+      "elapsed_time": 0.0178108,
       "final_time": 3600,
       "jacobians": 21,
       "start_time": 0,
@@ -1461,7 +1461,7 @@
     },
     "model": "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem",
     "simulation": {
-      "elapsed_time": 0.00814295,
+      "elapsed_time": 0.00842619,
       "final_time": 12000,
       "jacobians": 5,
       "start_time": 0,
@@ -1536,7 +1536,7 @@
     },
     "model": "BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler",
     "simulation": {
-      "elapsed_time": 0.010982,
+      "elapsed_time": 0.0114112,
       "final_time": 3600,
       "jacobians": 25,
       "start_time": 0,
