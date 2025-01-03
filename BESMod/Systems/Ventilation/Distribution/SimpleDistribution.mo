@@ -6,6 +6,11 @@ model SimpleDistribution "Most basic distribution model"
     final dTLoss_nominal=fill(0, nParallelDem),
     final dTTra_nominal=fill(0, nParallelDem),
     final nParallelSup=1);
+  replaceable parameter BESMod.Systems.RecordsCollection.Movers.SpeedControlled fanData
+    constrainedby BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
+    annotation (Placement(transformation(extent={{52,-12},{72,8}})),
+      choicesAllMatching=true);
+
   IBPSA.Fluid.FixedResistances.PressureDrop resSup[nParallelDem](
     redeclare final package Medium = Medium,
     each final dp_nominal=100,
@@ -22,42 +27,43 @@ model SimpleDistribution "Most basic distribution model"
         extent={{-7.5,-10},{7.5,10}},
         rotation=0,
         origin={0.5,-60})));
-  IBPSA.Fluid.Movers.Preconfigured.SpeedControlled_y fanRet(
+  BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredDPControlled fanRet(
     redeclare final package Medium = Medium,
+    final externalCtrlTyp=fanData.externalCtrlTyp,
+    final ctrlType=fanData.ctrlType,
+    final dpVarBase_nominal=fanData.dpVarBase_nominal,
     final energyDynamics=energyDynamics,
     final p_start=p_start,
     final T_start=T_start,
     final allowFlowReversal=allowFlowReversal,
-    final show_T=show_T,
     final m_flow_nominal=mSup_flow_design[1],
     final dp_nominal=dpSup_nominal[1] / 2 + resExh[1].dp_nominal,
     final addPowerToMedium=fanData.addPowerToMedium,
-    final tau=fanData.tau,
     final use_riseTime=fanData.use_riseTime,
     final riseTime=fanData.riseTime,
     final y_start=1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={50,-60})));
-  IBPSA.Fluid.Movers.Preconfigured.SpeedControlled_y fanFlow(
+  BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredDPControlled fanFlow(
     redeclare final package Medium = Medium,
+    final externalCtrlTyp=fanData.externalCtrlTyp,
+    final ctrlType=fanData.ctrlType,
+    final dpVarBase_nominal=fanData.dpVarBase_nominal,
     final energyDynamics=energyDynamics,
     final p_start=p_start,
     final T_start=T_start,
     final allowFlowReversal=allowFlowReversal,
-    final show_T=show_T,
     final m_flow_nominal=mSup_flow_design[1],
     final dp_nominal=dpSup_nominal[1]/2 + resSup[1].dp_nominal,
     final addPowerToMedium=fanData.addPowerToMedium,
-    final tau=fanData.tau,
     final use_riseTime=fanData.use_riseTime,
     final riseTime=fanData.riseTime,
     final y_start=1) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=180,
         origin={50,60})));
-  parameter BESMod.Systems.RecordsCollection.Movers.SpeedControlled fanData annotation (Placement(transformation(extent={{52,-12},{72,8}})),
-      choicesAllMatching=true);
+
   Modelica.Blocks.Sources.Constant yFan(k=1)
     "Transform Volume l to massflowrate" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -65,8 +71,9 @@ model SimpleDistribution "Most basic distribution model"
         origin={10,10})));
   Modelica.Blocks.Math.Add add
     annotation (Placement(transformation(extent={{-60,-20},{-40,0}})));
-  Utilities.Electrical.RealToElecCon        realToElecCon(use_souGen=false)
+  BESMod.Utilities.Electrical.RealToElecCon        realToElecCon(use_souGen=false)
     annotation (Placement(transformation(extent={{-20,-30},{0,-10}})));
+
 equation
   connect(resExh.port_a, portExh_in)
     annotation (Line(points={{-7,-60},{-100,-60}}, color={0,127,255}));
@@ -91,9 +98,9 @@ equation
   connect(add.y,realToElecCon. PEleLoa)
     annotation (Line(points={{-39,-10},{-32,-10},{-32,-16},{-22,-16}},
                                                    color={0,0,127}));
-  connect(fanFlow.P, add.u1) annotation (Line(points={{39,69},{39,72},{30,72},{30,
+  connect(fanFlow.P, add.u1) annotation (Line(points={{39,66},{39,72},{30,72},{30,
           26},{-62,26},{-62,-4}}, color={0,0,127}));
-  connect(fanRet.P, add.u2) annotation (Line(points={{61,-51},{64,-51},{64,-38},
+  connect(fanRet.P, add.u2) annotation (Line(points={{61,-54},{64,-54},{64,-38},
           {-62,-38},{-62,-16}}, color={0,0,127}));
   connect(realToElecCon.internalElectricalPin, internalElectricalPin)
     annotation (Line(

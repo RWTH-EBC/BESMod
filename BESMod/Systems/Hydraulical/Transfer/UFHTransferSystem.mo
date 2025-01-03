@@ -27,7 +27,8 @@ model UFHTransferSystem
     each final dis=5,
     final A=UFHParameters.area,
     each final T0=T_start,
-    each calcMethod=AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.ASHRAE140_2017) "Underfloor heating" annotation (Placement(
+    each calcMethod=AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.ASHRAE140_2017,
+    each panelHeatingSegment(each fixedInitial=energyDynamics == Modelica.Fluid.Types.Dynamics.FixedInitial))                         "Underfloor heating" annotation (Placement(
         transformation(
         extent={{-20,-10},{20,10}},
         rotation=270,
@@ -51,6 +52,7 @@ model UFHTransferSystem
         rotation=0,
         origin={-92,-20})));
   Modelica.Thermal.HeatTransfer.Components.HeatCapacitor heaCap[nParallelDem](
+      each T(start=T_start, fixed=energyDynamics == Modelica.Fluid.Types.Dynamics.FixedInitial),
       each final C=100) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -79,7 +81,7 @@ model UFHTransferSystem
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={-10,40})));
+        origin={-6,40})));
 
   BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{32,-108},{52,-88}})));
@@ -172,12 +174,11 @@ equation
   connect(heaFloSen.Q_flow, integralKPICalculator.u) annotation (Line(points={{
           -30,-21},{-30,-56},{-48,-56},{-48,-70},{-41.8,-70}}, color={0,0,127}));
   connect(res.port_b, pumpFix_m_flow.port_a)
-    annotation (Line(points={{-20,40},{-34,40},{-34,40},{-20,40}},
-                                                 color={0,127,255}));
-  connect(pumpFix_m_flow.port_b, ufh.port_a) annotation (Line(points={{0,40},{8.33333,
+    annotation (Line(points={{-20,40},{-16,40}}, color={0,127,255}));
+  connect(pumpFix_m_flow.port_b, ufh.port_a) annotation (Line(points={{4,40},{8.33333,
           40},{8.33333,20}},    color={0,127,255}));
   connect(gain.y, pumpFix_m_flow.m_flow_in) annotation (Line(points={{-30,69},{-30,
-          62},{-10,62},{-10,52}},   color={0,0,127}));
+          56},{-6,56},{-6,52}},     color={0,0,127}));
   connect(zeroLoad.internalElectricalPin, internalElectricalPin) annotation (
       Line(
       points={{52,-98},{72,-98}},
