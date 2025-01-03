@@ -47,16 +47,16 @@ Statistics
  
 Original Model
   Number of components: 1551
-  Variables: 14959
+  Variables: 14963
   Constants: 236 (236 scalars)
-  Parameters: 6937 (8486 scalars)
+  Parameters: 6941 (8490 scalars)
   Unknowns: 7786 (7536 scalars)
   Differentiated variables: 140 scalars
   Equations: 6268
   Nontrivial: 5239
 Translated Model
-  Constants: 6366 scalars
-  Free parameters: 857 scalars
+  Constants: 6369 scalars
+  Free parameters: 858 scalars
   Parameter depending: 2481 scalars
   Outputs: 69 scalars
   Continuous time states: 112 scalars
@@ -230,15 +230,15 @@ Statistics
  
 Original Model
   Number of components: 805
-  Variables: 7438
+  Variables: 7440
   Constants: 134 (134 scalars)
-  Parameters: 3174 (4613 scalars)
+  Parameters: 3176 (4615 scalars)
   Unknowns: 4130 (4159 scalars)
   Differentiated variables: 63 scalars
   Equations: 3190
   Nontrivial: 2764
 Translated Model
-  Constants: 3517 scalars
+  Constants: 3519 scalars
   Free parameters: 531 scalars
   Parameter depending: 1181 scalars
   Outputs: 56 scalars
@@ -449,16 +449,16 @@ Statistics
  
 Original Model
   Number of components: 1871
-  Variables: 20873
+  Variables: 20877
   Constants: 707 (707 scalars)
-  Parameters: 12072 (16108 scalars)
+  Parameters: 12076 (16112 scalars)
   Unknowns: 8094 (8180 scalars)
   Differentiated variables: 155 scalars
   Equations: 6376
   Nontrivial: 5343
 Translated Model
-  Constants: 10726 scalars
-  Free parameters: 1196 scalars
+  Constants: 10729 scalars
+  Free parameters: 1197 scalars
   Parameter depending: 6082 scalars
   Outputs: 37 scalars
   Continuous time states: 126 scalars
@@ -722,17 +722,6 @@ savelog("BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASE
 
 rCheck = checkModel("BESMod.Examples.HighOrderModel.HOMAixLib");
 Check of BESMod.Examples.HighOrderModel.HOMAixLib
-In value attribute for hydraulic.transfer.resMaiLin[1].v_nominal.
-Modifier applied in class BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.
-  File: /tmp/tmp-BESMod-0-5h26g_l8/BESMod/Systems/Hydraulical/Transfer/RadiatorPressureBased.mo, line 4
-Modifier applied for component hydraulic.transfer.resMaiLin.v_nominal.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/FixedResistances/HydraulicDiameter.mo, line 16
-Variable found in class BESMod.Examples.HighOrderModel.HOMAixLib.
-  Near file: /tmp/tmp-BESMod-0-5h26g_l8/BESMod/Examples/HighOrderModel/HOMAixLib.mo, line 2
-Variable found in component hydraulic.transfer.resMaiLin.
-  Near file: /tmp/tmp-BESMod-0-5h26g_l8/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo, line 43
-Warning: Error for array of components: Modifier(=hydraulic.transfer.v_design) dimension 1 is 10, but the modifee expected 1.
- 
 The model has the same number of unknowns and equations: 19972
 The model could not be deduced to be symbolically well-posed.
 The model has
@@ -745,7 +734,6 @@ scalar equations.
 However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
   19972
 Check of BESMod.Examples.HighOrderModel.HOMAixLib successful.
-Warning: WARNINGS have been issued.
 Declaring variable: Boolean rCheck ;
 
 Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Examples/HighOrderModel/HOMAixLib.mos\",", "BESMod.Examples.HighOrderModel.HOMAixLib.statistics.log");
@@ -760,17 +748,6 @@ rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/HighOrder
 
 simulateModel("BESMod.Examples.HighOrderModel.HOMAixLib", stopTime=172800, method="Cvode", tolerance=1e-06, resultFile="BESMod.Examples.HighOrderModel.HOMAixLib");
 Translation of BESMod.Examples.HighOrderModel.HOMAixLib
-In value attribute for hydraulic.transfer.resMaiLin[1].v_nominal.
-Modifier applied in class BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.
-  File: /tmp/tmp-BESMod-0-5h26g_l8/BESMod/Systems/Hydraulical/Transfer/RadiatorPressureBased.mo, line 4
-Modifier applied for component hydraulic.transfer.resMaiLin.v_nominal.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/FixedResistances/HydraulicDiameter.mo, line 16
-Variable found in class BESMod.Examples.HighOrderModel.HOMAixLib.
-  Near file: /tmp/tmp-BESMod-0-5h26g_l8/BESMod/Examples/HighOrderModel/HOMAixLib.mo, line 2
-Variable found in component hydraulic.transfer.resMaiLin.
-  Near file: /tmp/tmp-BESMod-0-5h26g_l8/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo, line 43
-Warning: Error for array of components: Modifier(=hydraulic.transfer.v_design) dimension 1 is 10, but the modifee expected 1.
- 
 The DAE has 19972 scalar unknowns and 19972 scalar equations.
 Redundant consistent initial conditions.
 Removed the following equations which are redundant and consistent: 
@@ -799,16 +776,16 @@ Statistics
  
 Original Model
   Number of components: 4223
-  Variables: 41587
+  Variables: 41591
   Constants: 545 (545 scalars)
-  Parameters: 19627 (26407 scalars)
+  Parameters: 19631 (26411 scalars)
   Unknowns: 21415 (20403 scalars)
   Differentiated variables: 436 scalars
   Equations: 16327
   Nontrivial: 13460
 Translated Model
-  Constants: 13260 scalars
-  Free parameters: 2772 scalars
+  Constants: 13263 scalars
+  Free parameters: 2773 scalars
   Parameter depending: 12737 scalars
   Outputs: 38 scalars
   Continuous time states: 363 scalars
@@ -1198,10 +1175,8 @@ hydraulic.transfer.rad[10].vol[5].dynBal.U
 hydraulic.transfer.volRet.dynBal.U
 hydraulic.transfer.volSup.dynBal.U
 Finished
-Warning: WARNINGS have been issued.
-Failed
-Not possible to open file "BESMod.Examples.HighOrderModel.HOMAixLib.mat": No such file or directory
- = false
+Finished
+ = true
 
     
 Declaring variable: Boolean rScript ;
@@ -1255,16 +1230,16 @@ Statistics
  
 Original Model
   Number of components: 1934
-  Variables: 19672
+  Variables: 19679
   Constants: 303 (303 scalars)
-  Parameters: 9332 (11130 scalars)
+  Parameters: 9339 (11137 scalars)
   Unknowns: 10037 (9311 scalars)
   Differentiated variables: 192 scalars
   Equations: 8022
   Nontrivial: 6618
 Translated Model
-  Constants: 8084 scalars
-  Free parameters: 1061 scalars
+  Constants: 8088 scalars
+  Free parameters: 1064 scalars
   Parameter depending: 3424 scalars
   Outputs: 68 scalars
   Continuous time states: 150 scalars
@@ -1459,23 +1434,12 @@ Warning: Component nZones(min = << Empty >>),
  
   For element nZones found at
  
-  File: /tmp/tmp-BESMod-1-8s9wdmt6/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 14
+  File: /tmp/tmp-BESMod-1-qd690nm8/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 14
   Conflict with element from
-  File: /tmp/tmp-BESMod-1-8s9wdmt6/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line 7
+  File: /tmp/tmp-BESMod-1-qd690nm8/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line 7
  Component context: building
   Component declared as SpawnHighOrder building in BESMod.Systems.Demand.Building
-  File: /tmp/tmp-BESMod-1-8s9wdmt6/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
-In value attribute for hydraulic.transfer.resMaiLin[1].v_nominal.
-Modifier applied in class BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.
-  File: /tmp/tmp-BESMod-1-8s9wdmt6/BESMod/Systems/Hydraulical/Transfer/RadiatorPressureBased.mo, line 4
-Modifier applied for component hydraulic.transfer.resMaiLin.v_nominal.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/FixedResistances/HydraulicDiameter.mo, line 16
-Variable found in class BESMod.Examples.HighOrderModel.HOMSpawn.
-  Near file: /tmp/tmp-BESMod-1-8s9wdmt6/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 2
-Variable found in component hydraulic.transfer.resMaiLin.
-  Near file: /tmp/tmp-BESMod-1-8s9wdmt6/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo, line 43
-Warning: Error for array of components: Modifier(=hydraulic.transfer.v_design) dimension 1 is 10, but the modifee expected 1.
- 
+  File: /tmp/tmp-BESMod-1-qd690nm8/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
 Adding zero equation for variables:
  building.useProBus.natVent[11:end]
  building.buiMeaBus.TZoneMea[12:end]
@@ -1493,7 +1457,6 @@ scalar equations.
 However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
   12586
 Check of BESMod.Examples.HighOrderModel.HOMSpawn successful.
-Warning: WARNINGS have been issued.
 Declaring variable: Boolean rCheck ;
 
 Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Examples/HighOrderModel/HOMSpawn.mos\",", "BESMod.Examples.HighOrderModel.HOMSpawn.statistics.log");
@@ -1515,23 +1478,12 @@ Warning: Component nZones(min = << Empty >>),
  
   For element nZones found at
  
-  File: /tmp/tmp-BESMod-1-8s9wdmt6/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 14
+  File: /tmp/tmp-BESMod-1-qd690nm8/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 14
   Conflict with element from
-  File: /tmp/tmp-BESMod-1-8s9wdmt6/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line 7
+  File: /tmp/tmp-BESMod-1-qd690nm8/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line 7
  Component context: building
   Component declared as SpawnHighOrder building in BESMod.Systems.Demand.Building
-  File: /tmp/tmp-BESMod-1-8s9wdmt6/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
-In value attribute for hydraulic.transfer.resMaiLin[1].v_nominal.
-Modifier applied in class BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.
-  File: /tmp/tmp-BESMod-1-8s9wdmt6/BESMod/Systems/Hydraulical/Transfer/RadiatorPressureBased.mo, line 4
-Modifier applied for component hydraulic.transfer.resMaiLin.v_nominal.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/FixedResistances/HydraulicDiameter.mo, line 16
-Variable found in class BESMod.Examples.HighOrderModel.HOMSpawn.
-  Near file: /tmp/tmp-BESMod-1-8s9wdmt6/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 2
-Variable found in component hydraulic.transfer.resMaiLin.
-  Near file: /tmp/tmp-BESMod-1-8s9wdmt6/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo, line 43
-Warning: Error for array of components: Modifier(=hydraulic.transfer.v_design) dimension 1 is 10, but the modifee expected 1.
- 
+  File: /tmp/tmp-BESMod-1-qd690nm8/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
 The DAE has 12586 scalar unknowns and 12586 scalar equations.
 Redundant consistent initial conditions.
 Removed the following equations which are redundant and consistent: 
@@ -1560,16 +1512,16 @@ Statistics
  
 Original Model
   Number of components: 2468
-  Variables: 24434
+  Variables: 24438
   Constants: 629 (629 scalars)
-  Parameters: 10210 (13515 scalars)
+  Parameters: 10214 (13519 scalars)
   Unknowns: 13595 (12969 scalars)
   Differentiated variables: 219 scalars
   Equations: 10629
   Nontrivial: 8496
 Translated Model
-  Constants: 10517 scalars
-  Free parameters: 1878 scalars
+  Constants: 10520 scalars
+  Free parameters: 1879 scalars
   Parameter depending: 3517 scalars
   Outputs: 38 scalars
   Continuous time states: 146 scalars
@@ -1741,10 +1693,9 @@ Finished
 Warning: WARNINGS have been issued.
 EnergyPlus Completed Successfully.
  
-Failed
-Not possible to open file "BESMod.Examples.HighOrderModel.HOMSpawn.mat": No such file or directory
+Finished
 Warning: WARNINGS have been issued.
- = false
+ = true
 getLastError() 
  = "Translation of <a href=\"Modelica://BESMod.Examples.HighOrderModel.HOMSpawn\">BESMod.Examples.HighOrderModel.HOMSpawn</a>
 Warning: Local \"nZones\" conflict with inherited. Should be identical
@@ -1754,23 +1705,12 @@ Warning: Component nZones(min = &lt;&lt; Empty &gt;&gt;),
  
   For element nZones found at
  
-  File: /tmp/tmp-BESMod-1-8s9wdmt6/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line <a href=\"Modelica://BESMod.Systems.Demand.Building.SpawnHighOrder#text:13\">14</a>
+  File: /tmp/tmp-BESMod-1-qd690nm8/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line <a href=\"Modelica://BESMod.Systems.Demand.Building.SpawnHighOrder#text:13\">14</a>
   Conflict with element from
-  File: /tmp/tmp-BESMod-1-8s9wdmt6/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line <a href=\"Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6\">7</a>
+  File: /tmp/tmp-BESMod-1-qd690nm8/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line <a href=\"Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6\">7</a>
  Component context: building
   Component declared as SpawnHighOrder building in <a href=\"Modelica://BESMod.Systems.Demand.Building\">BESMod.Systems.Demand.Building</a>
-  File: /tmp/tmp-BESMod-1-8s9wdmt6/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
-In value attribute for hydraulic.transfer.resMaiLin[1].v_nominal.
-Modifier applied in class <a href=\"Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses\">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>.
-  File: /tmp/tmp-BESMod-1-8s9wdmt6/BESMod/Systems/Hydraulical/Transfer/RadiatorPressureBased.mo, line <a href=\"Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses#text:3\">4</a>
-Modifier applied for component <a href=\"Modelica://BESMod.Examples.HighOrderModel.HOMSpawn#$hydraulic.transfer.resMaiLin:v_nominal\">hydraulic.transfer.resMaiLin.v_nominal</a>.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/FixedResistances/HydraulicDiameter.mo, line 16
-Variable found in class <a href=\"Modelica://BESMod.Examples.HighOrderModel.HOMSpawn\">BESMod.Examples.HighOrderModel.HOMSpawn</a>.
-  Near file: /tmp/tmp-BESMod-1-8s9wdmt6/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 2
-Variable found in component <a href=\"Modelica://BESMod.Examples.HighOrderModel.HOMSpawn#$hydraulic.transfer:resMaiLin\">hydraulic.transfer.resMaiLin</a>.
-  Near file: /tmp/tmp-BESMod-1-8s9wdmt6/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo, line 43
-Warning: Error for array of components: Modifier(=hydraulic.transfer.v_design) dimension 1 is 10, but the modifee expected 1.
- 
+  File: /tmp/tmp-BESMod-1-qd690nm8/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
 The DAE has 12586 scalar unknowns and 12586 scalar equations.
 Redundant consistent initial conditions.
 Removed the following equations which are redundant and consistent: 
@@ -1799,16 +1739,16 @@ Statistics
  
 Original Model
   Number of components: 2468
-  Variables: 24434
+  Variables: 24438
   Constants: 629 (629 scalars)
-  Parameters: 10210 (13515 scalars)
+  Parameters: 10214 (13519 scalars)
   Unknowns: 13595 (12969 scalars)
   Differentiated variables: 219 scalars
   Equations: 10629
   Nontrivial: 8496
 Translated Model
-  Constants: 10517 scalars
-  Free parameters: 1878 scalars
+  Constants: 10520 scalars
+  Free parameters: 1879 scalars
   Parameter depending: 3517 scalars
   Outputs: 38 scalars
   Continuous time states: 146 scalars
@@ -1980,11 +1920,10 @@ Finished
 Warning: WARNINGS have been issued.
 EnergyPlus Completed Successfully.
  
-Failed
-Not possible to open file \"BESMod.Examples.HighOrderModel.HOMSpawn.mat\": No such file or directory
+Finished
 Warning: WARNINGS have been issued.
 getLastError() ,
-   0, 5, 16
+   0, 4, 14
     
 Declaring variable: Boolean rScript ;
 
@@ -2037,16 +1976,16 @@ Statistics
  
 Original Model
   Number of components: 1551
-  Variables: 14957
+  Variables: 14961
   Constants: 236 (236 scalars)
-  Parameters: 6935 (8484 scalars)
+  Parameters: 6939 (8488 scalars)
   Unknowns: 7786 (7536 scalars)
   Differentiated variables: 140 scalars
   Equations: 6268
   Nontrivial: 5239
 Translated Model
-  Constants: 6366 scalars
-  Free parameters: 858 scalars
+  Constants: 6369 scalars
+  Free parameters: 859 scalars
   Parameter depending: 2478 scalars
   Outputs: 69 scalars
   Continuous time states: 112 scalars
@@ -2240,16 +2179,16 @@ Statistics
  
 Original Model
   Number of components: 1551
-  Variables: 14959
+  Variables: 14963
   Constants: 236 (236 scalars)
-  Parameters: 6937 (8486 scalars)
+  Parameters: 6941 (8490 scalars)
   Unknowns: 7786 (7536 scalars)
   Differentiated variables: 140 scalars
   Equations: 6268
   Nontrivial: 5239
 Translated Model
-  Constants: 6342 scalars
-  Free parameters: 860 scalars
+  Constants: 6345 scalars
+  Free parameters: 861 scalars
   Parameter depending: 2495 scalars
   Outputs: 69 scalars
   Continuous time states: 112 scalars
@@ -2443,16 +2382,16 @@ Statistics
  
 Original Model
   Number of components: 1606
-  Variables: 15295
+  Variables: 15299
   Constants: 232 (232 scalars)
-  Parameters: 7149 (8872 scalars)
+  Parameters: 7153 (8876 scalars)
   Unknowns: 7914 (7678 scalars)
   Differentiated variables: 144 scalars
   Equations: 6414
   Nontrivial: 5387
 Translated Model
-  Constants: 6406 scalars
-  Free parameters: 904 scalars
+  Constants: 6409 scalars
+  Free parameters: 905 scalars
   Parameter depending: 2741 scalars
   Outputs: 68 scalars
   Continuous time states: 116 scalars
@@ -2652,16 +2591,16 @@ Statistics
  
 Original Model
   Number of components: 1365
-  Variables: 12620
+  Variables: 12624
   Constants: 226 (226 scalars)
-  Parameters: 5623 (7294 scalars)
+  Parameters: 5627 (7298 scalars)
   Unknowns: 6771 (6662 scalars)
   Differentiated variables: 106 scalars
   Equations: 5488
   Nontrivial: 4581
 Translated Model
-  Constants: 5470 scalars
-  Free parameters: 760 scalars
+  Constants: 5473 scalars
+  Free parameters: 761 scalars
   Parameter depending: 2144 scalars
   Outputs: 71 scalars
   Continuous time states: 79 scalars
@@ -2817,15 +2756,15 @@ Statistics
  
 Original Model
   Number of components: 2690
-  Variables: 30626
+  Variables: 30629
   Constants: 543 (543 scalars)
-  Parameters: 14038 (15492 scalars)
+  Parameters: 14041 (15495 scalars)
   Unknowns: 16045 (13672 scalars)
   Differentiated variables: 335 scalars
   Equations: 12668
   Nontrivial: 10033
 Translated Model
-  Constants: 12005 scalars
+  Constants: 12008 scalars
   Free parameters: 1267 scalars
   Parameter depending: 4546 scalars
   Outputs: 84 scalars
@@ -3165,10 +3104,10 @@ Warning: The bus-input hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea 
 Bus-signal: TStoBufBotMea
 Use:  connect(hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea, hydraulic.control.buiAndDHWCtr.hysBui.TStoBot);
 Connected bus variables:
-hydraulic.control.sigBusDistr.TStoBufBotMea (connect) "Supply temperature of the lower layers of the storage. Does not have to be the lowest layer, depending on comfort even the top may be selected"
-hydraulic.distribution.sigBusDistr.TStoBufBotMea (connect)
+hydraulic.control.setAndMeaSelPri.sigBusDistr.TStoBufBotMea (connect) "Supply temperature of the lower layers of the storage. Does not have to be the lowest layer, depending on comfort even the top may be selected"
 hydraulic.control.setAndMeaSelSec.sigBusDistr.TStoBufBotMea (connect)
-hydraulic.control.setAndMeaSelPri.sigBusDistr.TStoBufBotMea (connect)
+hydraulic.control.sigBusDistr.TStoBufBotMea (connect)
+hydraulic.distribution.sigBusDistr.TStoBufBotMea (connect)
 input hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea (connect)
 The DAE has 5093 scalar unknowns and 5093 scalar equations.
 After eliminating unused variables:
@@ -3215,15 +3154,15 @@ Statistics
  
 Original Model
   Number of components: 1064
-  Variables: 8998
+  Variables: 9000
   Constants: 145 (145 scalars)
-  Parameters: 3994 (5599 scalars)
+  Parameters: 3996 (5601 scalars)
   Unknowns: 4859 (5170 scalars)
   Differentiated variables: 70 scalars
   Equations: 4049
   Nontrivial: 3524
 Translated Model
-  Constants: 4128 scalars
+  Constants: 4130 scalars
   Free parameters: 653 scalars
   Parameter depending: 1623 scalars
   Outputs: 67 scalars
@@ -3362,16 +3301,16 @@ Statistics
  
 Original Model
   Number of components: 1440
-  Variables: 13438
+  Variables: 13445
   Constants: 236 (236 scalars)
-  Parameters: 6045 (7757 scalars)
+  Parameters: 6052 (7764 scalars)
   Unknowns: 7157 (6976 scalars)
   Differentiated variables: 113 scalars
   Equations: 5804
   Nontrivial: 4858
 Translated Model
-  Constants: 5822 scalars
-  Free parameters: 834 scalars
+  Constants: 5828 scalars
+  Free parameters: 835 scalars
   Parameter depending: 2249 scalars
   Outputs: 68 scalars
   Continuous time states: 84 scalars
@@ -3543,16 +3482,16 @@ Statistics
  
 Original Model
   Number of components: 1551
-  Variables: 14959
+  Variables: 14963
   Constants: 236 (236 scalars)
-  Parameters: 6937 (8486 scalars)
+  Parameters: 6941 (8490 scalars)
   Unknowns: 7786 (7536 scalars)
   Differentiated variables: 140 scalars
   Equations: 6268
   Nontrivial: 5239
 Translated Model
-  Constants: 6366 scalars
-  Free parameters: 857 scalars
+  Constants: 6369 scalars
+  Free parameters: 858 scalars
   Parameter depending: 2481 scalars
   Outputs: 69 scalars
   Continuous time states: 112 scalars
@@ -3705,9 +3644,9 @@ Check of BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatP
 Warning: Redeclaration of non-replaceable requires type equivalence
  But attempting to increase variability of component fanData.
   In redeclaration of component fanData:
-  File: /tmp/tmp-BESMod-2-2ujq9mu1/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 120
+  File: /tmp/tmp-BESMod-2-g_ld2176/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 120
 Original declaration of fanData:
-  File: /tmp/tmp-BESMod-2-2ujq9mu1/BESMod/Systems/Ventilation/Distribution/SimpleDistribution.mo, line 59
+  File: /tmp/tmp-BESMod-2-g_ld2176/BESMod/Systems/Ventilation/Distribution/SimpleDistribution.mo, line 59
   Context: BESMod.Systems.Ventilation.Distribution.SimpleDistribution.fanData
 Warning: The quantity of electrical.generation.pVSystem[1].weaBus.TDryBul is "ThermodynamicTemperature" and the quantity of electrical.generation.pVSystem[1].cellTemperature.T_a is "Temp_C".
 In connect(electrical.generation.pVSystem[1].weaBus.TDryBul, electrical.generation.pVSystem[1].cellTemperature.T_a);
@@ -3764,9 +3703,9 @@ Translation of BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding
 Warning: Redeclaration of non-replaceable requires type equivalence
  But attempting to increase variability of component fanData.
   In redeclaration of component fanData:
-  File: /tmp/tmp-BESMod-2-2ujq9mu1/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 120
+  File: /tmp/tmp-BESMod-2-g_ld2176/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 120
 Original declaration of fanData:
-  File: /tmp/tmp-BESMod-2-2ujq9mu1/BESMod/Systems/Ventilation/Distribution/SimpleDistribution.mo, line 59
+  File: /tmp/tmp-BESMod-2-g_ld2176/BESMod/Systems/Ventilation/Distribution/SimpleDistribution.mo, line 59
   Context: BESMod.Systems.Ventilation.Distribution.SimpleDistribution.fanData
 Warning: The quantity of electrical.generation.pVSystem[1].weaBus.TDryBul is "ThermodynamicTemperature" and the quantity of electrical.generation.pVSystem[1].cellTemperature.T_a is "Temp_C".
 In connect(electrical.generation.pVSystem[1].weaBus.TDryBul, electrical.generation.pVSystem[1].cellTemperature.T_a);
@@ -3834,16 +3773,16 @@ Statistics
  
 Original Model
   Number of components: 1497
-  Variables: 14865
+  Variables: 14869
   Constants: 279 (279 scalars)
-  Parameters: 6902 (9109 scalars)
+  Parameters: 6906 (9113 scalars)
   Unknowns: 7684 (7484 scalars)
   Differentiated variables: 105 scalars
   Equations: 6160
   Nontrivial: 5105
 Translated Model
-  Constants: 6303 scalars
-  Free parameters: 1140 scalars
+  Constants: 6306 scalars
+  Free parameters: 1141 scalars
   Parameter depending: 2927 scalars
   Outputs: 42 scalars
   Continuous time states: 77 scalars
@@ -3977,15 +3916,15 @@ Statistics
  
 Original Model
   Number of components: 786
-  Variables: 7201
+  Variables: 7203
   Constants: 126 (126 scalars)
-  Parameters: 3144 (4545 scalars)
+  Parameters: 3146 (4547 scalars)
   Unknowns: 3931 (3955 scalars)
   Differentiated variables: 63 scalars
   Equations: 3085
   Nontrivial: 2665
 Translated Model
-  Constants: 3445 scalars
+  Constants: 3447 scalars
   Free parameters: 610 scalars
   Parameter depending: 1071 scalars
   Outputs: 56 scalars
@@ -4186,24 +4125,24 @@ initial equations:
   hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
   ventilation.generation.threeWayValve_b.res1.port_b.p = ventilation.generation.threeWayValve_b.vol.dynBal.p_start;
   electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
-  electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
   electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
+  electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
  
  
 Statistics
  
 Original Model
   Number of components: 1522
-  Variables: 15164
+  Variables: 15168
   Constants: 288 (288 scalars)
-  Parameters: 6975 (9225 scalars)
+  Parameters: 6979 (9229 scalars)
   Unknowns: 7901 (7714 scalars)
   Differentiated variables: 109 scalars
   Equations: 6283
   Nontrivial: 5212
 Translated Model
-  Constants: 6316 scalars
-  Free parameters: 1068 scalars
+  Constants: 6319 scalars
+  Free parameters: 1069 scalars
   Parameter depending: 3131 scalars
   Outputs: 43 scalars
   Continuous time states: 81 scalars
@@ -4363,16 +4302,16 @@ Statistics
  
 Original Model
   Number of components: 1410
-  Variables: 12884
+  Variables: 12888
   Constants: 226 (226 scalars)
-  Parameters: 5728 (7440 scalars)
+  Parameters: 5732 (7444 scalars)
   Unknowns: 6930 (6811 scalars)
   Differentiated variables: 111 scalars
   Equations: 5646
   Nontrivial: 4727
 Translated Model
-  Constants: 5575 scalars
-  Free parameters: 799 scalars
+  Constants: 5578 scalars
+  Free parameters: 800 scalars
   Parameter depending: 2188 scalars
   Outputs: 68 scalars
   Continuous time states: 83 scalars
@@ -4532,15 +4471,15 @@ Statistics
  
 Original Model
   Number of components: 2757
-  Variables: 31455
+  Variables: 31458
   Constants: 570 (570 scalars)
-  Parameters: 14303 (15735 scalars)
+  Parameters: 14306 (15738 scalars)
   Unknowns: 16582 (14139 scalars)
   Differentiated variables: 341 scalars
   Equations: 13002
   Nontrivial: 10280
 Translated Model
-  Constants: 12241 scalars
+  Constants: 12244 scalars
   Free parameters: 1282 scalars
   Parameter depending: 4621 scalars
   Outputs: 82 scalars
