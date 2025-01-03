@@ -25,7 +25,6 @@ partial model PartialTEASERHeatLoadCalculation
           TN_heater=120),
       redeclare BESMod.Systems.Electrical.Control.IdealHeater control),
     redeclare BESMod.Systems.Demand.DHW.StandardProfiles DHW(
-      redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.PassThrough calcmFlow,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.NoDHW DHWProfile),
     redeclare replaceable BESMod.Systems.Demand.Building.TEASERThermalZone building(
