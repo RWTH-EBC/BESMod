@@ -1,0 +1,38 @@
+clear
+
+convertClear();
+
+convertElement("AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition", "pressureDrop", "a");
+
+
+convertClass("BESMod.Systems.Hydraulical.Distribution.DistributionTwoStorageParallel", "BESMod.Systems.Hydraulical.Distribution.SimpleTwoStorageParallel");
+
+
+convertModifiers("ElectricalHeater", {"parPum"}, fill("",0), true);
+convertModifiers("GasBoiler", {"parPum"}, fill("",0), true);
+convertModifiers("HeatPump", {"parPum"}, fill("",0), true);
+convertModifiers("HeatPumpAndElectricHeater", {"parPum"}, fill("",0), true);
+convertModifiers("HeatPumpAndGasBoilerParallel", {"parPum"}, fill("",0), true);
+convertModifiers("HeatPumpAndGasBoilerSerial", {"parPum"}, fill("",0), true);
+convertModifiers("HeatPumpAndElectricHeater", {"parPum"}, fill("",0), true);
+convertModifiers("SimpleSolarThermalWithHeatPump", {"parPum"}, fill("",0), true);
+convertModifiers("DetailedSolarThermalWithHeatPump", {"parPum"}, fill("",0), true);
+convertModifiers("SimpleSolarThermalWithHeatPump", {"parPumSolThe"}, fill("",0), true);
+convertModifiers("DetailedSolarThermalWithHeatPump", {"parPumSolThe"}, fill("",0), true);
+
+
+convertElement("HeatPump", "Medium_eva", "MediumEva");
+convertElement("HeatPumpAndElectricHeater", "Medium_eva", "MediumEva");
+convertElement("HeatPumpAndGasBoilerParallel", "Medium_eva", "MediumEva");
+convertElement("HeatPumpAndGasBoilerSerial", "Medium_eva", "MediumEva");
+convertElement("HeatPumpAndElectricHeater", "Medium_eva", "MediumEva");
+convertElement("SimpleSolarThermalWithHeatPump", "Medium_eva", "MediumEva");
+convertElement("DetailedSolarThermalWithHeatPump", "Medium_eva", "MediumEva");
+
+
+convertModifiers("IdealValveRadiator", {"parTra"}, fill("",0), true);
+convertModifiers("UFHTransferSystem", {"parTra"}, fill("",0), true);
+convertModifiers("RadiatorPressureBased", {"parTra"}, fill("",0), true);
+convertModifiers("RadiatorPressureBased", {"parPum"}, fill("",0), true);
+
+convertModifiers("BESMod.Systems.Hydraulical.Distribution.BuildingOnly", {"nParallelDem"}, fill("", 0), true);
