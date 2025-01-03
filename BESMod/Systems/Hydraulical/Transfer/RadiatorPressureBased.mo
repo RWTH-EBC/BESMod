@@ -77,7 +77,9 @@ model RadiatorPressureBased "Pressure Based transfer system"
     each final use_strokeTime=false,
     final dpFixed_nominal=if use_hydrBalAutom then max(dpPipSca_design .+ rad.dp_nominal) .- (dpPipSca_design .+ rad.dp_nominal)
        else fill(0, nParallelDem),
-    each final l=leakageOpening)        annotation (Placement(transformation(
+    each final l=leakageOpening,
+    dp(start=val.dpFixed_nominal .+ val.dpValve_nominal .+ rad.dp_nominal))
+                                        annotation (Placement(transformation(
         extent={{-10,-11},{10,11}},
         rotation=270,
         origin={-10,9})));

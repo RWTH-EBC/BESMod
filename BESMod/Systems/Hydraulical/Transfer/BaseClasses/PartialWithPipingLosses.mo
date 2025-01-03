@@ -24,7 +24,9 @@ partial model PartialWithPipingLosses
   parameter Modelica.Units.SI.Length lenDisPerUnit[nParallelDem]=fill(2*sqrt(ABui), nParallelDem)
     "Length between main line and each transfer system, default is worst point but leads to hydraulically balanced system (factor 2 for flow and return)"
     annotation(Dialog(tab="Pressure losses"));
-
+  parameter Modelica.Units.SI.Velocity vSup_design[nParallelSup] = fill(max(v_design), nParallelSup)
+    "Design velocity of main supply lines"
+    annotation(Dialog(tab="Pressure losses"));
   IBPSA.Fluid.FixedResistances.HydraulicDiameter res[nParallelDem](redeclare
       package Medium =
                Medium,
@@ -43,10 +45,10 @@ partial model PartialWithPipingLosses
   IBPSA.Fluid.FixedResistances.HydraulicDiameter resMaiLin[nParallelSup](
     redeclare package Medium = Medium,
     final m_flow_nominal=mSupOld_flow_design,
-    final dh=sqrt(4*mSupOld_flow_design ./ rho ./ max(v_design) ./ Modelica.Constants.pi),
+    final dh=sqrt(4*mSupOld_flow_design ./ rho ./ vSup_design ./ Modelica.Constants.pi),
     final length=lenDisToTra,
     each final ReC=ReC,
-    final v_nominal=v_design,
+    final v_nominal=vSup_design,
     each final roughness=roughness,
     each final fac=1) "Hydraulic resistance of main line" annotation (Placement(
         transformation(
