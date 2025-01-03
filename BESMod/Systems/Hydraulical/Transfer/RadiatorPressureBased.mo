@@ -215,6 +215,11 @@ equation
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
   annotation (Documentation(info="<html>
-<p>TODO: In the test with pressure relief valve, mass flow rates do not match</p>
+<h4>Known Limitations</h4>
+<p>
+  When enabling the pressure relief valve, the design pressure losses and mass flow rates are 
+  not met 100 %, see the simulate and plot script of <a href=\"modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve\">BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve</a>.
+</p>
+  
 </html>"));
 end RadiatorPressureBased;

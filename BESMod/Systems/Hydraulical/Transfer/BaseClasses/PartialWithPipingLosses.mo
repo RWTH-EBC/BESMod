@@ -3,9 +3,9 @@ partial model PartialWithPipingLosses
   "Partial model with piping pressure losses"
   extends PartialTransfer(
     dPip_design={max(12/1000, sqrt(4*mOld_flow_design[i] / rho / v_design[i] / Modelica.Constants.pi)) for i in 1:nParallelDem},
-    dpSup_design={(mSup_flow_design[1]/sum({sqrt(m_flow_design[i]^2/dp_design[i]) for i in 1:nParallelDem})) ^2},
-    dpSupOld_design={(mSupOld_flow_design[1]/sum({sqrt(mOld_flow_design[i]^2/dpOld_design[i]) for i in 1:nParallelDem})) ^2},
-    dpSup_nominal={(mSup_flow_nominal[1]/sum({sqrt(m_flow_nominal[i]^2/dp_nominal[i]) for i in 1:nParallelDem})) ^2},
+    dpSup_design={dpPipSupSca_design[1] + (mSup_flow_design[1]/sum({sqrt(m_flow_design[i]^2/dp_design[i]) for i in 1:nParallelDem})) ^2},
+    dpSupOld_design={resMaiLin[1].dp_nominal + (mSupOld_flow_design[1]/sum({sqrt(mOld_flow_design[i]^2/dpOld_design[i]) for i in 1:nParallelDem})) ^2},
+    dpSup_nominal={dpPipSupSca_nominal[1] + (mSup_flow_nominal[1]/sum({sqrt(m_flow_nominal[i]^2/dp_nominal[i]) for i in 1:nParallelDem})) ^2},
     final nParallelSup=1);
 
   // Pressure
@@ -54,9 +54,16 @@ partial model PartialWithPipingLosses
         rotation=0,
         origin={-70,40})));
 protected
-    parameter Modelica.Units.SI.PressureDifference dpPipSca_design[nParallelDem]=
+  parameter Modelica.Units.SI.PressureDifference dpPipSca_design[nParallelDem]=
     res.dp_nominal .* (m_flow_design ./ mOld_flow_design).^2
     "Pipe pressure losses scaled to design flow rate of radiators";
+  parameter Modelica.Units.SI.PressureDifference dpPipSupSca_design[nParallelSup]=
+    resMaiLin.dp_nominal .* (mSup_flow_design ./ mSupOld_flow_design).^2
+    "Pipe pressure losses scaled to design flow rate of radiators";
+  parameter Modelica.Units.SI.PressureDifference dpPipSupSca_nominal[nParallelSup]=
+    resMaiLin.dp_nominal .* (mSup_flow_nominal ./ mSupOld_flow_design).^2
+    "Pipe pressure losses scaled to design flow rate of radiators";
+
 initial algorithm
   for i in 1:nParallelSup loop
     assert(dpSupOld_design[i] / (max(lenDisToTra) + max(lenDisPerUnit)) < 100, "Pressure drop per meter should roughly be below 100 Pa/m, but is " +
