@@ -1,15 +1,4 @@
 
-Error in model:  BESMod.Systems.Ventilation.Generation.Tests.PartialTest 
-Check of <a href="Modelica://BESMod.Systems.Ventilation.Generation.Tests.PartialTest">BESMod.Systems.Ventilation.Generation.Tests.PartialTest</a>
-Error: Class or component 'dpDem_nominal' not found in PartialGeneration generation
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Ventilation/Generation/Tests/PartialTest.mo, line 11
- Component context: generation
-  Component declared as PartialGeneration generation in <a href="Modelica://BESMod.Systems.Ventilation.Generation.BaseClasses">BESMod.Systems.Ventilation.Generation.BaseClasses</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Ventilation.Generation.Tests.PartialTest">BESMod.Systems.Ventilation.Generation.Tests.PartialTest</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Ventilation/Generation/Tests/PartialTest.mo, line 2
-Error: ERRORS have been issued.
-
-
 Error in model:  BESMod.Systems.Hydraulical.HydraulicSystem 
 Check of <a href="Modelica://BESMod.Systems.Hydraulical.HydraulicSystem">BESMod.Systems.Hydraulical.HydraulicSystem</a>
 Component type specifier PartialGeneration is a partial type
@@ -19,17 +8,17 @@ Component type specifier PartialGeneration is a partial type
   Component declared as PartialGeneration generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses">BESMod.Systems.Hydraulical.Generation.BaseClasses</a>
 Component type specifier PartialControl is a partial type
   It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem#text:46">47</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem#text:47">48</a>
  Component context: control
   Component declared as PartialControl control in <a href="Modelica://BESMod.Systems.Hydraulical.Control.BaseClasses">BESMod.Systems.Hydraulical.Control.BaseClasses</a>
 Component type specifier PartialDistribution is a partial type
   It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem#text:106">107</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem#text:107">108</a>
  Component context: distribution
   Component declared as PartialDistribution distribution in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses">BESMod.Systems.Hydraulical.Distribution.BaseClasses</a>
 Component type specifier PartialTransfer is a partial type
   It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem#text:154">155</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/BaseClasses/PartialHydraulicSystem.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem#text:155">156</a>
  Component context: transfer
   Component declared as PartialTransfer transfer in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses">BESMod.Systems.Hydraulical.Transfer.BaseClasses</a>
 Check is assuming: generation.nParallelDem = 1
@@ -38,57 +27,13 @@ Check is assuming: distribution.nParallelDem = 1
 Check is assuming: transfer.nParallelSup = 1
 Check is assuming: hydraulicSystemParameters.nZones = 1
 The model has 60 scalar unknowns and 32 scalar equations.
-Error: The following parameters don't have any value:
-<a href="Modelica://BESMod.Systems.Hydraulical.HydraulicSystem#text$generation:dp_design">generation.dp_design[]</a>
-<a href="Modelica://BESMod.Systems.Hydraulical.HydraulicSystem#text$transfer:dp_design">transfer.dp_design[]</a>
-<a href="Modelica://BESMod.Systems.Hydraulical.HydraulicSystem#text$transfer:dpSup_design">transfer.dpSup_design[]</a>
+Error: The following parameter doesn't have any value:
+  <a href="Modelica://BESMod.Systems.Hydraulical.HydraulicSystem#text$distribution:QDHWStoLoss_flow_estimate">distribution.QDHWStoLoss_flow_estimate</a>
 DAE with 62 unknown scalars and 30 scalar equations.
 
 Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.HydraulicSystem#:control">control</a>.
 Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.HydraulicSystem#:distribution">distribution</a>.
 Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.HydraulicSystem#:generation">generation</a>.
 Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.HydraulicSystem#:transfer">transfer</a>.
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Systems.Ventilation.Generation.Tests.ControlledDomesticVentilation 
-Check of <a href="Modelica://BESMod.Systems.Ventilation.Generation.Tests.ControlledDomesticVentilation">BESMod.Systems.Ventilation.Generation.Tests.ControlledDomesticVentilation</a>
-Error: Class or component 'dpDem_nominal' not found in ControlledDomesticVentilation generation
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Ventilation/Generation/Tests/ControlledDomesticVentilation.mo, line 5
- Component context: generation
-  Component declared as ControlledDomesticVentilation generation in <a href="Modelica://BESMod.Systems.Ventilation.Generation">BESMod.Systems.Ventilation.Generation</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Ventilation.Generation.Tests.PartialTest">BESMod.Systems.Ventilation.Generation.Tests.PartialTest</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Ventilation/Generation/Tests/ControlledDomesticVentilation.mo, line 3
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Systems.Ventilation.VentilationSystem 
-Check of <a href="Modelica://BESMod.Systems.Ventilation.VentilationSystem">BESMod.Systems.Ventilation.VentilationSystem</a>
-Component type specifier PartialGeneration is a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Ventilation/BaseClasses/PartialVentilationSystem.mo, line <a href="Modelica://BESMod.Systems.Ventilation.BaseClasses.PartialVentilationSystem#text:12">13</a>
- Component context: generation
-  Component declared as PartialGeneration generation in <a href="Modelica://BESMod.Systems.Ventilation.Generation.BaseClasses">BESMod.Systems.Ventilation.Generation.BaseClasses</a>
-Component type specifier PartialDistribution is a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Ventilation/BaseClasses/PartialVentilationSystem.mo, line <a href="Modelica://BESMod.Systems.Ventilation.BaseClasses.PartialVentilationSystem#text:38">39</a>
- Component context: distribution
-  Component declared as PartialDistribution distribution in <a href="Modelica://BESMod.Systems.Ventilation.Distribution.BaseClasses">BESMod.Systems.Ventilation.Distribution.BaseClasses</a>
-Component type specifier PartialControl is a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Ventilation/BaseClasses/PartialVentilationSystem.mo, line <a href="Modelica://BESMod.Systems.Ventilation.BaseClasses.PartialVentilationSystem#text:70">71</a>
- Component context: control
-  Component declared as PartialControl control in <a href="Modelica://BESMod.Systems.Ventilation.Control.BaseClasses">BESMod.Systems.Ventilation.Control.BaseClasses</a>
-Check is assuming: generation.nParallelDem = 1
-Check is assuming: ventilationSystemParameters.nZones = 1
-Check is assuming: distribution.nParallelSup = 1
-The model has 36 scalar unknowns and 20 scalar equations.
-Error: The following parameter doesn't have any value:
-  <a href="Modelica://BESMod.Systems.Ventilation.VentilationSystem#text$generation:dp_design">generation.dp_design[]</a>
-DAE with 38 unknown scalars and 20 scalar equations.
-
-Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Ventilation.VentilationSystem#:control">control</a>.
-Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Ventilation.VentilationSystem#:distribution">distribution</a>.
-Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Ventilation.VentilationSystem#:generation">generation</a>.
 Error: ERRORS have been issued.
 
