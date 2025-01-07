@@ -1,7 +1,7 @@
 within BESMod.Systems.Demand.DHW;
 model DHWCalc "Use DHWCalc tables"
   extends BaseClasses.PartialDHWWithBasics(
-    QCrit=0.0172*VDHWDay/1000 + 0.1582,
+    QCrit=0.0172*VDHWDayAt60/1000 + 0.1582,
     tCrit=3600,
     TDHWCold_nominal=283.15,
     TDHW_nominal=323.15,
@@ -20,15 +20,15 @@ model DHWCalc "Use DHWCalc tables"
   https://www.uni-kassel.de/maschinenbau/institute/thermische-energietechnik/fachgebiete/solar-und-anlagentechnik/downloads</span>
 </p>
 <p>
-  <span style=\"font-size: 8.25pt;\">The columns of the file-name need to
+  The columns of the file-name need to
   be the same as in the StandardProfiles module based on EU Regulation
-  812/2013.</span>
+  812/2013.
 </p>
 <p>
-  <span style=\"font-size: 8.25pt;\">The default values for tCrit are
+  The default values for tCrit are
   based on the EU profiles. As the three profiles S, M, and L have a
   near ideal linear fit (R2 = 0.999) for QCrit depending on the daily
-  volume, the default regression for QCrit was added.</span>
+  volume, the default regression for QCrit was added.
 </p>
 <p>
   <span style=\"font-size: 8.25pt;\">This should be re-considered for

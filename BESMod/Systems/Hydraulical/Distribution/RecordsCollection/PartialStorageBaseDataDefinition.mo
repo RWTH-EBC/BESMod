@@ -66,17 +66,7 @@ partial record PartialStorageBaseDataDefinition
                                                    annotation (Dialog(
       group="Insulation"));
 
-  parameter Real QLosPerDay=if energyLabel ==
-      Systems.Hydraulical.Distribution.Types.EnergyLabel.APlus then (5.5+3.16*(V*1000)^(0.4))*0.024
-       elseif energyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.A
-       then (7+ 3.705*(V*1000)^(0.4))*0.024 elseif energyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.B
-       then (10.25 + 5.09*(V*1000)^(0.4))*0.024 elseif energyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.C
-       then (14.33+ 7.13 *(V*1000)^(0.4))*0.024 elseif energyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.D
-       then (18.83 + 9.33*(V*1000)^(0.4))*0.024 elseif energyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.E
-       then (23.5 + 11.995*(V*1000)^(0.4))*0.024 elseif energyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.F
-       then (28.5+ 15.16*(V*1000)^(0.4))*0.024 elseif energyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.G
-       then (31 + 16.66*(V*1000)^(0.4))*0.024
-       else 0
+  parameter Real QLosPerDay=BESMod.Systems.Hydraulical.Distribution.RecordsCollection.GetDailyStorageLossesForLabel(V, energyLabel)
       "Heat loss per day. MUST BE IN kWh/d" annotation (Dialog(enable=use_QLos, group="Insulation"));
 
   parameter Modelica.Units.SI.Temperature T_m

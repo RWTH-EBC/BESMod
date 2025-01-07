@@ -4,8 +4,8 @@ partial model PartialTwoStorageParallel
   extends BaseClasses.PartialThreeWayValve(
     final dpDHWHCSto_design=sum(stoDHW.heatingCoil1.pipe.res.dp_nominal),
     final dTTraDHW_nominal=parStoDHW.dTLoadingHC1,
+    final QDHWStoLoss_flow_estimate=BESMod.Systems.Hydraulical.Distribution.RecordsCollection.GetDailyStorageLossesForLabel(VDHWDay_nominal, parStoDHW.energyLabel)/24*1000,
     final dTTra_nominal={parStoBuf.dTLoadingHC1},
-    final VStoDHW=parStoDHW.V,
     final QDHWStoLoss_flow=parStoDHW.QLoss_flow);
   parameter Modelica.Units.SI.PressureDifference dpBufToDem_design
     "Design pressure difference of components on demand side for pump sizing"
@@ -17,7 +17,7 @@ partial model PartialTwoStorageParallel
     BESMod.Systems.RecordsCollection.TemperatureSensors.TemperatureSensorBaseDefinition
     parTemSen
     constrainedby
-    BESMod.Systems.RecordsCollection.TemperatureSensors.TemperatureSensorBaseDefinition(              iconName="T-Sensors")
+    BESMod.Systems.RecordsCollection.TemperatureSensors.TemperatureSensorBaseDefinition(iconName="T-Sensors")
     annotation (choicesAllMatching=true,
     Placement(transformation(extent={{44,164},{56,176}})));
 
@@ -54,8 +54,7 @@ partial model PartialTwoStorageParallel
     final VPerQ_flow=0,
     final rho=rho,
     final c_p=cp,
-    V=if designType == Types.DHWDesignType.FullStorage then VDHWDay*
-        fFullSto else VDHWDay,
+    V=VStoDHW,
     final TAmb=TAmb,
     T_m=TDHW_nominal,
     final QHC1_flow_nominal=QDHW_flow_nominal,

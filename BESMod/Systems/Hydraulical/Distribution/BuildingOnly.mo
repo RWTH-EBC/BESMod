@@ -13,6 +13,7 @@ model BuildingOnly "Only loads building"
     final QDHWStoLoss_flow=0,
     final designType=BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.NoStorage,
     QDHW_flow_nominal=Modelica.Constants.eps,
+    QDHWStoLoss_flow_estimate=Modelica.Constants.eps,
     final nParallelSup=1,
     final dTTraDHW_nominal=0,
     final QLoss_flow_nominal=f_design .* Q_flow_nominal .- Q_flow_nominal,

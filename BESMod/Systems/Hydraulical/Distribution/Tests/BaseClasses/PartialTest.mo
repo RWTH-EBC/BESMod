@@ -28,7 +28,7 @@ partial model PartialTest
     mDHW_flow_nominal=0.1,
     QDHW_flow_nominal=2000,
     TDHW_nominal=systemParameters.TSetDHW,
-    VDHWDay=0.125,
+    VDHWDayAt60=0.125,
     TDHWCold_nominal=systemParameters.TDHWWaterCold,
     mSup_flow_nominal=resGen.m_flow_nominal,
     mDem_flow_nominal=resTra.m_flow_nominal,

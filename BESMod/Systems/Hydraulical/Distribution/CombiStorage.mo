@@ -5,6 +5,7 @@ model CombiStorage
     final dpDHW_nominal=sum(bufSto.heatingCoil1.pipe.res.dp_nominal),
     final VStoDHW=parSto.V,
     final QDHWStoLoss_flow=parSto.QLoss_flow,
+    final QDHWStoLoss_flow_estimate=parSto.QLoss_flow,
     designType=BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage,
     dTTraDHW_nominal=parSto.dTLoadingHC1,
     dTTra_nominal={0},
