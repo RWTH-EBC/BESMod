@@ -1,12 +1,14 @@
 Regression tests are only run for the following package:
   BESMod.Systems
-*** Warning: Unspecified initial conditions in 'RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestPressureBasedSystemWithReliefValve.mos");'.
-
-*** Warning: Unspecified initial conditions in 'RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestUnderfloorHeating.mos");'.
-
+*** Error: BESMod_Systems_Hydraulical_Distribution_Tests_TwoStoragesBoilerWithDHW.txt: Errors during result verification.
+           Absolute error = 1.111e+03 at t = 0.0 for distribution.pumGen.dpControlled_dp.dp_actual
+           Absolute error = 1.111e+03 for distribution.pumGen.dpControlled_dp.dp_nominal
+*** Error: BESMod_Systems_Hydraulical_Distribution_Tests_TwoStoDetailedDirectLoading.txt: Errors during result verification.
+           Absolute error = 1.111e+03 at t = 0.0 for distribution.pumGen.dpControlled_dp.dp_actual
+           Absolute error = 1.111e+03 for distribution.pumGen.dpControlled_dp.dp_nominal
 Comparison files output by funnel are stored in the directory 'funnel_comp' of size 0.5 MB.
 Run 'python -c "import buildingspy.development.regressiontest as t; t.Tester(tool=\"dymola\").report()"'
 to access a summary of the comparison results.
 
-Script that runs unit tests had 2 warnings and 0 errors.
+Script that runs unit tests had 0 warnings and 2 errors.
 

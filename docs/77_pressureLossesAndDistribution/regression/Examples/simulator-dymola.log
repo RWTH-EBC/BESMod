@@ -26,17 +26,17 @@ The DAE has 4110 scalar unknowns and 4110 scalar equations.
 Statistics
  
 Original Model
-  Number of components: 805
-  Variables: 7440
+  Number of components: 804
+  Variables: 7438
   Constants: 134 (134 scalars)
-  Parameters: 3176 (4615 scalars)
+  Parameters: 3174 (4613 scalars)
   Unknowns: 4130 (4159 scalars)
   Differentiated variables: 63 scalars
   Equations: 3190
   Nontrivial: 2764
 Translated Model
-  Constants: 3519 scalars
-  Free parameters: 531 scalars
+  Constants: 3516 scalars
+  Free parameters: 532 scalars
   Parameter depending: 1181 scalars
   Outputs: 56 scalars
   Continuous time states: 53 scalars
@@ -237,30 +237,30 @@ initial equations:
   building.roo.air.vol.dynBal.medium.p = building.roo.air.vol.dynBal.p_start;
   hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
   ventilation.generation.threeWayValve_b.res1.port_b.p = ventilation.generation.threeWayValve_b.vol.dynBal.p_start;
-  electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
   electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
   electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
+  electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
  
  
 Statistics
  
 Original Model
-  Number of components: 1873
-  Variables: 20901
+  Number of components: 1872
+  Variables: 20899
   Constants: 709 (709 scalars)
-  Parameters: 12126 (16178 scalars)
+  Parameters: 12124 (16176 scalars)
   Unknowns: 8066 (8158 scalars)
   Differentiated variables: 149 scalars
   Equations: 6358
   Nontrivial: 5339
 Translated Model
-  Constants: 10797 scalars
-  Free parameters: 1209 scalars
-  Parameter depending: 6114 scalars
+  Constants: 10828 scalars
+  Free parameters: 1205 scalars
+  Parameter depending: 6090 scalars
   Outputs: 37 scalars
   Continuous time states: 120 scalars
   Time-varying variables: 1864 scalars
-  Alias variables: 5061 scalars
+  Alias variables: 5056 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 35, 6, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 19}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
@@ -458,22 +458,22 @@ initial equations:
 Statistics
  
 Original Model
-  Number of components: 1606
-  Variables: 15299
+  Number of components: 1605
+  Variables: 15297
   Constants: 232 (232 scalars)
-  Parameters: 7153 (8876 scalars)
+  Parameters: 7151 (8874 scalars)
   Unknowns: 7914 (7678 scalars)
   Differentiated variables: 144 scalars
   Equations: 6414
   Nontrivial: 5387
 Translated Model
-  Constants: 6409 scalars
-  Free parameters: 905 scalars
-  Parameter depending: 2741 scalars
+  Constants: 6440 scalars
+  Free parameters: 901 scalars
+  Parameter depending: 2717 scalars
   Outputs: 68 scalars
   Continuous time states: 116 scalars
   Time-varying variables: 1833 scalars
-  Alias variables: 4898 scalars
+  Alias variables: 4893 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 4, 4, 3, 2, 2, 2, 2, 3, 3, 2, 2, 2, 2, 3, 5, 4, 3, 2, 2, 4, 3, 2,   2, 2, 2, 2, 2, 4, 3, 2, 2, 4, 3, 2, 2, 2, 2, 2, 2}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
@@ -665,18 +665,18 @@ initial equations:
 Statistics
  
 Original Model
-  Number of components: 1551
-  Variables: 14963
+  Number of components: 1550
+  Variables: 14961
   Constants: 236 (236 scalars)
-  Parameters: 6941 (8490 scalars)
+  Parameters: 6939 (8488 scalars)
   Unknowns: 7786 (7536 scalars)
   Differentiated variables: 140 scalars
   Equations: 6268
   Nontrivial: 5239
 Translated Model
-  Constants: 6369 scalars
-  Free parameters: 858 scalars
-  Parameter depending: 2481 scalars
+  Constants: 6372 scalars
+  Free parameters: 855 scalars
+  Parameter depending: 2479 scalars
   Outputs: 69 scalars
   Continuous time states: 112 scalars
   Time-varying variables: 1785 scalars
@@ -953,17 +953,17 @@ The DAE has 3906 scalar unknowns and 3906 scalar equations.
 Statistics
  
 Original Model
-  Number of components: 786
-  Variables: 7203
+  Number of components: 785
+  Variables: 7201
   Constants: 126 (126 scalars)
-  Parameters: 3146 (4547 scalars)
+  Parameters: 3144 (4545 scalars)
   Unknowns: 3931 (3955 scalars)
   Differentiated variables: 63 scalars
   Equations: 3085
   Nontrivial: 2665
 Translated Model
-  Constants: 3447 scalars
-  Free parameters: 610 scalars
+  Constants: 3444 scalars
+  Free parameters: 611 scalars
   Parameter depending: 1071 scalars
   Outputs: 56 scalars
   Continuous time states: 53 scalars
@@ -1092,17 +1092,17 @@ initial equations:
 Statistics
  
 Original Model
-  Number of components: 2690
-  Variables: 30629
+  Number of components: 2689
+  Variables: 30627
   Constants: 543 (543 scalars)
-  Parameters: 14041 (15495 scalars)
+  Parameters: 14039 (15493 scalars)
   Unknowns: 16045 (13672 scalars)
   Differentiated variables: 335 scalars
   Equations: 12668
   Nontrivial: 10033
 Translated Model
   Constants: 12008 scalars
-  Free parameters: 1267 scalars
+  Free parameters: 1265 scalars
   Parameter depending: 4546 scalars
   Outputs: 84 scalars
   Continuous time states: 244 scalars
@@ -1429,22 +1429,22 @@ initial equations:
 Statistics
  
 Original Model
-  Number of components: 1440
-  Variables: 13445
+  Number of components: 1439
+  Variables: 13443
   Constants: 236 (236 scalars)
-  Parameters: 6052 (7764 scalars)
+  Parameters: 6050 (7762 scalars)
   Unknowns: 7157 (6976 scalars)
   Differentiated variables: 113 scalars
   Equations: 5804
   Nontrivial: 4858
 Translated Model
-  Constants: 5828 scalars
-  Free parameters: 835 scalars
-  Parameter depending: 2249 scalars
+  Constants: 5859 scalars
+  Free parameters: 831 scalars
+  Parameter depending: 2225 scalars
   Outputs: 68 scalars
   Continuous time states: 84 scalars
   Time-varying variables: 1628 scalars
-  Alias variables: 4436 scalars
+  Alias variables: 4431 scalars
   Number of mixed real/discrete systems of equations: 1
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 4, 4, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0}
@@ -1610,18 +1610,18 @@ initial equations:
 Statistics
  
 Original Model
-  Number of components: 1551
-  Variables: 14963
+  Number of components: 1550
+  Variables: 14961
   Constants: 236 (236 scalars)
-  Parameters: 6941 (8490 scalars)
+  Parameters: 6939 (8488 scalars)
   Unknowns: 7786 (7536 scalars)
   Differentiated variables: 140 scalars
   Equations: 6268
   Nontrivial: 5239
 Translated Model
-  Constants: 6345 scalars
-  Free parameters: 861 scalars
-  Parameter depending: 2495 scalars
+  Constants: 6348 scalars
+  Free parameters: 858 scalars
+  Parameter depending: 2493 scalars
   Outputs: 69 scalars
   Continuous time states: 112 scalars
   Time-varying variables: 1785 scalars
@@ -1921,22 +1921,22 @@ initial equations:
 Statistics
  
 Original Model
-  Number of components: 4223
-  Variables: 41591
+  Number of components: 4222
+  Variables: 41589
   Constants: 545 (545 scalars)
-  Parameters: 19631 (26411 scalars)
+  Parameters: 19629 (26409 scalars)
   Unknowns: 21415 (20403 scalars)
   Differentiated variables: 436 scalars
   Equations: 16327
   Nontrivial: 13460
 Translated Model
-  Constants: 13263 scalars
-  Free parameters: 2773 scalars
-  Parameter depending: 12737 scalars
+  Constants: 13294 scalars
+  Free parameters: 2769 scalars
+  Parameter depending: 12713 scalars
   Outputs: 38 scalars
   Continuous time states: 363 scalars
   Time-varying variables: 4889 scalars
-  Alias variables: 13697 scalars
+  Alias variables: 13692 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4,   4, 4, 4, 4, 4, 4, 4, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 2, 2,   2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 2, 2, 2, 2, 4, 4, 2, 2,   2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,   4, 4, 4, 4, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2,   2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 2, 2, 2, 2, 4, 4, 4,   4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,   4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,   4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,   4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
@@ -2375,18 +2375,18 @@ initial equations:
 Statistics
  
 Original Model
-  Number of components: 1551
-  Variables: 14961
+  Number of components: 1550
+  Variables: 14959
   Constants: 236 (236 scalars)
-  Parameters: 6939 (8488 scalars)
+  Parameters: 6937 (8486 scalars)
   Unknowns: 7786 (7536 scalars)
   Differentiated variables: 140 scalars
   Equations: 6268
   Nontrivial: 5239
 Translated Model
-  Constants: 6369 scalars
-  Free parameters: 859 scalars
-  Parameter depending: 2478 scalars
+  Constants: 6372 scalars
+  Free parameters: 856 scalars
+  Parameter depending: 2476 scalars
   Outputs: 69 scalars
   Continuous time states: 112 scalars
   Time-varying variables: 1785 scalars
@@ -2578,17 +2578,17 @@ initial equations:
 Statistics
  
 Original Model
-  Number of components: 2757
-  Variables: 31458
+  Number of components: 2756
+  Variables: 31456
   Constants: 570 (570 scalars)
-  Parameters: 14306 (15738 scalars)
+  Parameters: 14304 (15736 scalars)
   Unknowns: 16582 (14139 scalars)
   Differentiated variables: 341 scalars
   Equations: 13002
   Nontrivial: 10280
 Translated Model
   Constants: 12244 scalars
-  Free parameters: 1282 scalars
+  Free parameters: 1280 scalars
   Parameter depending: 4621 scalars
   Outputs: 82 scalars
   Continuous time states: 246 scalars
@@ -2915,22 +2915,22 @@ initial equations:
 Statistics
  
 Original Model
-  Number of components: 1934
-  Variables: 19679
+  Number of components: 1933
+  Variables: 19677
   Constants: 303 (303 scalars)
-  Parameters: 9339 (11137 scalars)
+  Parameters: 9337 (11135 scalars)
   Unknowns: 10037 (9311 scalars)
   Differentiated variables: 192 scalars
   Equations: 8022
   Nontrivial: 6618
 Translated Model
-  Constants: 8088 scalars
-  Free parameters: 1064 scalars
-  Parameter depending: 3424 scalars
+  Constants: 8119 scalars
+  Free parameters: 1060 scalars
+  Parameter depending: 3400 scalars
   Outputs: 68 scalars
   Continuous time states: 150 scalars
   Time-varying variables: 2239 scalars
-  Alias variables: 5936 scalars
+  Alias variables: 5931 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 4, 4, 3, 2, 2, 2, 2, 3, 3, 2, 2, 2, 2, 3, 2, 2, 4, 3, 2, 2, 4, 4,   3, 2, 2, 2, 2, 2, 2, 4, 3, 2, 2, 2, 2, 4, 3, 2, 2, 2, 2, 15, 4, 3, 2, 2, 2, 2,   4, 3, 2, 2}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0}
@@ -3120,16 +3120,16 @@ Warning: Component nZones(min = << Empty >>),
  
   For element nZones found at
  
-  File: /tmp/tmp-BESMod-2-_8klkirw/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 14
+  File: /tmp/tmp-BESMod-2-hw6jnice/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 14
   Conflict with element from
-  File: /tmp/tmp-BESMod-2-_8klkirw/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line 7
+  File: /tmp/tmp-BESMod-2-hw6jnice/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line 7
  Component context: building
   Component declared as SpawnHighOrder building in BESMod.Systems.Demand.Building
-  File: /tmp/tmp-BESMod-2-_8klkirw/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
+  File: /tmp/tmp-BESMod-2-hw6jnice/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
 Adding zero equation for variables:
  building.useProBus.natVent[11:end]
  building.buiMeaBus.TZoneMea[12:end]
- electrical.control.buiMeaBus.TZoneOpeMea[12:end]
+ hydraulic.control.buiMeaBus.TZoneOpeMea[12:end]
  hydraulic.control.buiMeaBus.TZoneRadMea[12:end]
 The model has the same number of unknowns and equations: 12586
 The model could not be deduced to be symbolically well-posed.
@@ -3164,12 +3164,12 @@ Warning: Component nZones(min = << Empty >>),
  
   For element nZones found at
  
-  File: /tmp/tmp-BESMod-2-_8klkirw/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 14
+  File: /tmp/tmp-BESMod-2-hw6jnice/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 14
   Conflict with element from
-  File: /tmp/tmp-BESMod-2-_8klkirw/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line 7
+  File: /tmp/tmp-BESMod-2-hw6jnice/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line 7
  Component context: building
   Component declared as SpawnHighOrder building in BESMod.Systems.Demand.Building
-  File: /tmp/tmp-BESMod-2-_8klkirw/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
+  File: /tmp/tmp-BESMod-2-hw6jnice/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
 The DAE has 12586 scalar unknowns and 12586 scalar equations.
 Redundant consistent initial conditions.
 Removed the following equations which are redundant and consistent: 
@@ -3197,22 +3197,22 @@ initial equations:
 Statistics
  
 Original Model
-  Number of components: 2468
-  Variables: 24438
+  Number of components: 2467
+  Variables: 24436
   Constants: 629 (629 scalars)
-  Parameters: 10214 (13519 scalars)
+  Parameters: 10212 (13517 scalars)
   Unknowns: 13595 (12969 scalars)
   Differentiated variables: 219 scalars
   Equations: 10629
   Nontrivial: 8496
 Translated Model
-  Constants: 10520 scalars
-  Free parameters: 1879 scalars
-  Parameter depending: 3517 scalars
+  Constants: 10551 scalars
+  Free parameters: 1875 scalars
+  Parameter depending: 3493 scalars
   Outputs: 38 scalars
   Continuous time states: 146 scalars
   Time-varying variables: 3178 scalars
-  Alias variables: 8023 scalars
+  Alias variables: 8018 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,   2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,   2, 2, 2, 2, 2, 2, 2, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0}
@@ -3391,12 +3391,12 @@ Warning: Component nZones(min = &lt;&lt; Empty &gt;&gt;),
  
   For element nZones found at
  
-  File: /tmp/tmp-BESMod-2-_8klkirw/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line <a href=\"Modelica://BESMod.Systems.Demand.Building.SpawnHighOrder#text:13\">14</a>
+  File: /tmp/tmp-BESMod-2-hw6jnice/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line <a href=\"Modelica://BESMod.Systems.Demand.Building.SpawnHighOrder#text:13\">14</a>
   Conflict with element from
-  File: /tmp/tmp-BESMod-2-_8klkirw/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line <a href=\"Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6\">7</a>
+  File: /tmp/tmp-BESMod-2-hw6jnice/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line <a href=\"Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6\">7</a>
  Component context: building
   Component declared as SpawnHighOrder building in <a href=\"Modelica://BESMod.Systems.Demand.Building\">BESMod.Systems.Demand.Building</a>
-  File: /tmp/tmp-BESMod-2-_8klkirw/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
+  File: /tmp/tmp-BESMod-2-hw6jnice/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
 The DAE has 12586 scalar unknowns and 12586 scalar equations.
 Redundant consistent initial conditions.
 Removed the following equations which are redundant and consistent: 
@@ -3424,22 +3424,22 @@ initial equations:
 Statistics
  
 Original Model
-  Number of components: 2468
-  Variables: 24438
+  Number of components: 2467
+  Variables: 24436
   Constants: 629 (629 scalars)
-  Parameters: 10214 (13519 scalars)
+  Parameters: 10212 (13517 scalars)
   Unknowns: 13595 (12969 scalars)
   Differentiated variables: 219 scalars
   Equations: 10629
   Nontrivial: 8496
 Translated Model
-  Constants: 10520 scalars
-  Free parameters: 1879 scalars
-  Parameter depending: 3517 scalars
+  Constants: 10551 scalars
+  Free parameters: 1875 scalars
+  Parameter depending: 3493 scalars
   Outputs: 38 scalars
   Continuous time states: 146 scalars
   Time-varying variables: 3178 scalars
-  Alias variables: 8023 scalars
+  Alias variables: 8018 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,   2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,   2, 2, 2, 2, 2, 2, 2, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0}
@@ -3663,22 +3663,22 @@ initial equations:
 Statistics
  
 Original Model
-  Number of components: 1365
-  Variables: 12624
+  Number of components: 1364
+  Variables: 12622
   Constants: 226 (226 scalars)
-  Parameters: 5627 (7298 scalars)
+  Parameters: 5625 (7296 scalars)
   Unknowns: 6771 (6662 scalars)
   Differentiated variables: 106 scalars
   Equations: 5488
   Nontrivial: 4581
 Translated Model
-  Constants: 5473 scalars
-  Free parameters: 761 scalars
-  Parameter depending: 2144 scalars
+  Constants: 5504 scalars
+  Free parameters: 757 scalars
+  Parameter depending: 2120 scalars
   Outputs: 71 scalars
   Continuous time states: 79 scalars
   Time-varying variables: 1561 scalars
-  Alias variables: 4247 scalars
+  Alias variables: 4242 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 4, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0}
@@ -3828,18 +3828,18 @@ initial equations:
 Statistics
  
 Original Model
-  Number of components: 1551
-  Variables: 14963
+  Number of components: 1550
+  Variables: 14961
   Constants: 236 (236 scalars)
-  Parameters: 6941 (8490 scalars)
+  Parameters: 6939 (8488 scalars)
   Unknowns: 7786 (7536 scalars)
   Differentiated variables: 140 scalars
   Equations: 6268
   Nontrivial: 5239
 Translated Model
-  Constants: 6369 scalars
-  Free parameters: 858 scalars
-  Parameter depending: 2481 scalars
+  Constants: 6372 scalars
+  Free parameters: 855 scalars
+  Parameter depending: 2479 scalars
   Outputs: 69 scalars
   Continuous time states: 112 scalars
   Time-varying variables: 1785 scalars
@@ -4045,10 +4045,10 @@ Warning: The bus-input hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea 
 Bus-signal: TStoBufBotMea
 Use:  connect(hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea, hydraulic.control.buiAndDHWCtr.hysBui.TStoBot);
 Connected bus variables:
-hydraulic.control.setAndMeaSelPri.sigBusDistr.TStoBufBotMea (connect) "Supply temperature of the lower layers of the storage. Does not have to be the lowest layer, depending on comfort even the top may be selected"
-hydraulic.control.setAndMeaSelSec.sigBusDistr.TStoBufBotMea (connect)
-hydraulic.control.sigBusDistr.TStoBufBotMea (connect)
+hydraulic.control.setAndMeaSelSec.sigBusDistr.TStoBufBotMea (connect) "Supply temperature of the lower layers of the storage. Does not have to be the lowest layer, depending on comfort even the top may be selected"
 hydraulic.distribution.sigBusDistr.TStoBufBotMea (connect)
+hydraulic.control.sigBusDistr.TStoBufBotMea (connect)
+hydraulic.control.setAndMeaSelPri.sigBusDistr.TStoBufBotMea (connect)
 input hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea (connect)
 The DAE has 5093 scalar unknowns and 5093 scalar equations.
 After eliminating unused variables:
@@ -4094,17 +4094,17 @@ initial equations:
 Statistics
  
 Original Model
-  Number of components: 1064
-  Variables: 9000
+  Number of components: 1063
+  Variables: 8998
   Constants: 145 (145 scalars)
-  Parameters: 3996 (5601 scalars)
+  Parameters: 3994 (5599 scalars)
   Unknowns: 4859 (5170 scalars)
   Differentiated variables: 70 scalars
   Equations: 4049
   Nontrivial: 3524
 Translated Model
-  Constants: 4130 scalars
-  Free parameters: 653 scalars
+  Constants: 4127 scalars
+  Free parameters: 654 scalars
   Parameter depending: 1623 scalars
   Outputs: 67 scalars
   Continuous time states: 60 scalars
@@ -4241,22 +4241,22 @@ initial equations:
 Statistics
  
 Original Model
-  Number of components: 1410
-  Variables: 12888
+  Number of components: 1409
+  Variables: 12886
   Constants: 226 (226 scalars)
-  Parameters: 5732 (7444 scalars)
+  Parameters: 5730 (7442 scalars)
   Unknowns: 6930 (6811 scalars)
   Differentiated variables: 111 scalars
   Equations: 5646
   Nontrivial: 4727
 Translated Model
-  Constants: 5578 scalars
-  Free parameters: 800 scalars
-  Parameter depending: 2188 scalars
+  Constants: 5609 scalars
+  Free parameters: 796 scalars
+  Parameter depending: 2164 scalars
   Outputs: 68 scalars
   Continuous time states: 83 scalars
   Time-varying variables: 1586 scalars
-  Alias variables: 4329 scalars
+  Alias variables: 4324 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 4, 4, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0}
@@ -4484,22 +4484,22 @@ initial equations:
 Statistics
  
 Original Model
-  Number of components: 1513
-  Variables: 14949
+  Number of components: 1512
+  Variables: 14947
   Constants: 281 (281 scalars)
-  Parameters: 6990 (9223 scalars)
+  Parameters: 6988 (9221 scalars)
   Unknowns: 7678 (7484 scalars)
   Differentiated variables: 99 scalars
   Equations: 6160
   Nontrivial: 5115
 Translated Model
-  Constants: 6412 scalars
-  Free parameters: 1149 scalars
-  Parameter depending: 2942 scalars
+  Constants: 6443 scalars
+  Free parameters: 1145 scalars
+  Parameter depending: 2918 scalars
   Outputs: 42 scalars
   Continuous time states: 71 scalars
   Time-varying variables: 1806 scalars
-  Alias variables: 4679 scalars
+  Alias variables: 4674 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 4, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0}
@@ -4711,30 +4711,30 @@ The redundancies involve
 initial equations: 
   hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
   ventilation.generation.threeWayValve_b.res1.port_b.p = ventilation.generation.threeWayValve_b.vol.dynBal.p_start;
-  electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
   electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
   electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
+  electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
  
  
 Statistics
  
 Original Model
-  Number of components: 1524
-  Variables: 15192
+  Number of components: 1523
+  Variables: 15190
   Constants: 290 (290 scalars)
-  Parameters: 7029 (9295 scalars)
+  Parameters: 7027 (9293 scalars)
   Unknowns: 7873 (7692 scalars)
   Differentiated variables: 103 scalars
   Equations: 6265
   Nontrivial: 5208
 Translated Model
-  Constants: 6387 scalars
-  Free parameters: 1081 scalars
-  Parameter depending: 3136 scalars
+  Constants: 6418 scalars
+  Free parameters: 1077 scalars
+  Parameter depending: 3112 scalars
   Outputs: 43 scalars
   Continuous time states: 75 scalars
   Time-varying variables: 1867 scalars
-  Alias variables: 4806 scalars
+  Alias variables: 4801 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 4, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0}
