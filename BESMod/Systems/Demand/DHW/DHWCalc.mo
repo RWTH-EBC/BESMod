@@ -1,7 +1,7 @@
 within BESMod.Systems.Demand.DHW;
 model DHWCalc "Use DHWCalc tables"
   extends BaseClasses.PartialDHWWithBasics(
-    QCrit=0.0172*VDHWDayAt60/1000 + 0.1582,
+    QCrit=0.0213*VDHWDayAt60/1000+0.1421,
     tCrit=3600,
     TDHWCold_nominal=283.15,
     TDHW_nominal=323.15,
