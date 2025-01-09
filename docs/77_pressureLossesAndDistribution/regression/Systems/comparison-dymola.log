@@ -1,656 +1,20 @@
 ﻿[
   {
     "comparison": {
-      "file_name": "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.mat",
+      "file_name": "BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.mat",
       "funnel_dirs": [
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.mat_genControlBus.TGenOutMea",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.mat_generation.TSup_nominal[1]",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.mat_generation.boi.vol.heatPort.Q_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.mat_generation.heatPump.con.Q_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.mat_generation.Q_flow_design[1]",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.mat_generation.boi.m_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.mat_generation.mBoi_flow_nominal",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.mat_generation.heatPump.con.m_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.mat_generation.m_flow_design[1]",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.mat_pumDis[1].dpControlled_dp.dp_actual",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.mat_generation.dp_design[1]"
-      ],
-      "success_rate": 1.0,
-      "t_err_max": [
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ],
-      "test_passed": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "var_groups": [
-        0,
-        0,
-        1,
-        1,
-        1,
-        2,
-        2,
-        2,
-        2,
-        3,
-        3
-      ],
-      "variables": [
-        "genControlBus.TGenOutMea",
-        "generation.TSup_nominal[1]",
-        "generation.boi.vol.heatPort.Q_flow",
-        "generation.heatPump.con.Q_flow",
-        "generation.Q_flow_design[1]",
-        "generation.boi.m_flow",
-        "generation.mBoi_flow_nominal",
-        "generation.heatPump.con.m_flow",
-        "generation.m_flow_design[1]",
-        "pumDis[1].dpControlled_dp.dp_actual",
-        "generation.dp_design[1]"
-      ],
-      "warnings": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ]
-    },
-    "model": "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel",
-    "simulation": {
-      "elapsed_time": 0.0245812,
-      "final_time": 3600,
-      "jacobians": 26,
-      "start_time": 0,
-      "state_events": 3,
-      "success": true
-    }
-  },
-  {
-    "comparison": {
-      "file_name": "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.mat",
-      "funnel_dirs": [
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.mat_genControlBus.TGenOutMea",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.mat_generation.TSup_nominal[1]",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.mat_fixedTemperature[1].port.Q_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.mat_generation.Q_flow_design[1]",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.mat_pumDis[1].port_a.m_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.mat_generation.m_flow_design[1]",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.mat_pumDis[1].dpControlled_dp.dp_actual",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.mat_generation.dp_design[1]"
-      ],
-      "success_rate": 1.0,
-      "t_err_max": [
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ],
-      "test_passed": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "var_groups": [
-        0,
-        0,
-        1,
-        1,
-        2,
-        2,
-        3,
-        3
-      ],
-      "variables": [
-        "genControlBus.TGenOutMea",
-        "generation.TSup_nominal[1]",
-        "fixedTemperature[1].port.Q_flow",
-        "generation.Q_flow_design[1]",
-        "pumDis[1].port_a.m_flow",
-        "generation.m_flow_design[1]",
-        "pumDis[1].dpControlled_dp.dp_actual",
-        "generation.dp_design[1]"
-      ],
-      "warnings": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ]
-    },
-    "model": "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater",
-    "simulation": {
-      "elapsed_time": 0.0123949,
-      "final_time": 3600,
-      "jacobians": 21,
-      "start_time": 0,
-      "state_events": 7,
-      "success": true
-    }
-  },
-  {
-    "comparison": {
-      "file_name": "BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly.mat",
-      "funnel_dirs": [
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly.mat_resTra[1].m_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly.mat_resTra[1].m_flow_nominal",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly.mat_resGen[1].m_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly.mat_resGen[1].m_flow_nominal",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly.mat_distribution.pump.dpControlled_dp.dp_actual",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly.mat_distribution.pump.dpControlled_dp.dp_nominal"
-      ],
-      "success_rate": 1.0,
-      "t_err_max": [
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ],
-      "test_passed": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "var_groups": [
-        0,
-        0,
-        0,
-        0,
-        1,
-        1
-      ],
-      "variables": [
-        "resTra[1].m_flow",
-        "resTra[1].m_flow_nominal",
-        "resGen[1].m_flow",
-        "resGen[1].m_flow_nominal",
-        "distribution.pump.dpControlled_dp.dp_actual",
-        "distribution.pump.dpControlled_dp.dp_nominal"
-      ],
-      "warnings": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ]
-    },
-    "model": "BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly",
-    "simulation": {
-      "elapsed_time": 0.00787497,
-      "final_time": 3600,
-      "jacobians": 12,
-      "start_time": 0,
-      "state_events": 5,
-      "success": true
-    }
-  },
-  {
-    "comparison": {
-      "file_name": "BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat",
-      "funnel_dirs": [
-        "funnel_comp/BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat_pumDPConst.m_flow_nominal",
-        "funnel_comp/BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat_pumDPConst.port_a.m_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat_pumDPVar.port_a.m_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat_pumDPTotal.port_a.m_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat_pumDPVarOnOff.port_a.m_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat_pumSpeed.speedControlled_y.m_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat_pumDPConst.P",
-        "funnel_comp/BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat_pumDPVar.P",
-        "funnel_comp/BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat_pumDPTotal.P",
-        "funnel_comp/BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat_pumDPVarOnOff.P",
-        "funnel_comp/BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat_pumSpeed.P"
-      ],
-      "success_rate": 1.0,
-      "t_err_max": [
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ],
-      "test_passed": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "var_groups": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "variables": [
-        "pumDPConst.m_flow_nominal",
-        "pumDPConst.port_a.m_flow",
-        "pumDPVar.port_a.m_flow",
-        "pumDPTotal.port_a.m_flow",
-        "pumDPVarOnOff.port_a.m_flow",
-        "pumSpeed.speedControlled_y.m_flow",
-        "pumDPConst.P",
-        "pumDPVar.P",
-        "pumDPTotal.P",
-        "pumDPVarOnOff.P",
-        "pumSpeed.P"
-      ],
-      "warnings": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ]
-    },
-    "model": "BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions",
-    "simulation": {
-      "elapsed_time": 0.0318,
-      "final_time": 3600,
-      "jacobians": 184,
-      "start_time": 0,
-      "state_events": 0,
-      "success": true
-    }
-  },
-  {
-    "comparison": {
-      "file_name": "BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.mat",
-      "funnel_dirs": [
-        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.mat_Q_flow[1].y",
-        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.mat_transfer.Q_flow_design[1]",
-        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.mat_pumDis[1].port_a.m_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.mat_transfer.mSup_flow_design[1]",
-        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.mat_pumDis[1].dpControlled_dp.dp_actual",
-        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.mat_transfer.dpSup_design[1]"
-      ],
-      "success_rate": 1.0,
-      "t_err_max": [
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ],
-      "test_passed": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "var_groups": [
-        0,
-        0,
-        1,
-        1,
-        2,
-        2
-      ],
-      "variables": [
-        "Q_flow[1].y",
-        "transfer.Q_flow_design[1]",
-        "pumDis[1].port_a.m_flow",
-        "transfer.mSup_flow_design[1]",
-        "pumDis[1].dpControlled_dp.dp_actual",
-        "transfer.dpSup_design[1]"
-      ],
-      "warnings": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ]
-    },
-    "model": "BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem",
-    "simulation": {
-      "elapsed_time": 0.0107651,
-      "final_time": 12000,
-      "jacobians": 7,
-      "start_time": 0,
-      "state_events": 0,
-      "success": true
-    }
-  },
-  {
-    "comparison": {
-      "file_name": "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.mat",
-      "funnel_dirs": [
-        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.mat_Q_flow[1].y",
-        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.mat_transfer.Q_flow_design[1]",
-        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.mat_pumDis[1].port_a.m_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.mat_transfer.mSup_flow_design[1]",
-        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.mat_pumDis[1].dpControlled_dp.dp_actual",
-        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.mat_transfer.dpSup_design[1]"
-      ],
-      "success_rate": 1.0,
-      "t_err_max": [
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ],
-      "test_passed": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "var_groups": [
-        0,
-        0,
-        1,
-        1,
-        2,
-        2
-      ],
-      "variables": [
-        "Q_flow[1].y",
-        "transfer.Q_flow_design[1]",
-        "pumDis[1].port_a.m_flow",
-        "transfer.mSup_flow_design[1]",
-        "pumDis[1].dpControlled_dp.dp_actual",
-        "transfer.dpSup_design[1]"
-      ],
-      "warnings": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ]
-    },
-    "model": "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve",
-    "simulation": {
-      "elapsed_time": 0.011441,
-      "final_time": 12000,
-      "jacobians": 13,
-      "start_time": 0,
-      "state_events": 1,
-      "success": true
-    }
-  },
-  {
-    "comparison": {
-      "file_name": "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.mat",
-      "funnel_dirs": [
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.mat_resTra[1].m_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.mat_resTra[1].m_flow_nominal",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.mat_resGen[1].m_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.mat_resGen[1].m_flow_nominal",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.mat_distribution.pumBoi.m_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.mat_distribution.mBoi_flow_nominal",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.mat_distribution.pumTra.dpControlled_dp.dp_actual",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.mat_distribution.pumTra.dpControlled_dp.dp_nominal",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.mat_distribution.pumGen.dpControlled_dp.dp_actual",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.mat_distribution.pumGen.dpControlled_dp.dp_nominal",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.mat_fixTSup[1].T",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.mat_sigBusDistr.TBuiSupMea"
-      ],
-      "success_rate": 0.8333333333333334,
-      "t_err_max": [
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ],
-      "test_passed": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        0,
-        0,
-        1,
-        1
-      ],
-      "var_groups": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        1,
-        1,
-        1,
-        2,
-        2
-      ],
-      "variables": [
-        "resTra[1].m_flow",
-        "resTra[1].m_flow_nominal",
-        "resGen[1].m_flow",
-        "resGen[1].m_flow_nominal",
-        "distribution.pumBoi.m_flow",
-        "distribution.mBoi_flow_nominal",
-        "distribution.pumTra.dpControlled_dp.dp_actual",
-        "distribution.pumTra.dpControlled_dp.dp_nominal",
-        "distribution.pumGen.dpControlled_dp.dp_actual",
-        "distribution.pumGen.dpControlled_dp.dp_nominal",
-        "fixTSup[1].T",
-        "sigBusDistr.TBuiSupMea"
-      ],
-      "warnings": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        "Absolute error = 1.111e+03 at t = 0.0 for distribution.pumGen.dpControlled_dp.dp_actual",
-        "Absolute error = 1.111e+03 for distribution.pumGen.dpControlled_dp.dp_nominal",
-        null,
-        null
-      ]
-    },
-    "model": "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW",
-    "simulation": {
-      "elapsed_time": 0.137885,
-      "final_time": 3600,
-      "jacobians": 37,
-      "start_time": 0,
-      "state_events": 5,
-      "success": true
-    }
-  },
-  {
-    "comparison": {
-      "file_name": "BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.mat",
-      "funnel_dirs": [
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.mat_resTra[1].m_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.mat_resTra[1].m_flow_nominal",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.mat_resGen[1].m_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.mat_resGen[1].m_flow_nominal",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.mat_distribution.pumTra.dpControlled_dp.dp_actual",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.mat_distribution.pumTra.dpControlled_dp.dp_nominal",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.mat_distribution.pumGen.dpControlled_dp.dp_actual",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.mat_distribution.pumGen.dpControlled_dp.dp_nominal",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.mat_fixTSup[1].T",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.mat_sigBusDistr.TStoBufTopMea"
-      ],
-      "success_rate": 1.0,
-      "t_err_max": [
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ],
-      "test_passed": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "var_groups": [
-        0,
-        0,
-        0,
-        0,
-        1,
-        1,
-        1,
-        1,
-        2,
-        2
-      ],
-      "variables": [
-        "resTra[1].m_flow",
-        "resTra[1].m_flow_nominal",
-        "resGen[1].m_flow",
-        "resGen[1].m_flow_nominal",
-        "distribution.pumTra.dpControlled_dp.dp_actual",
-        "distribution.pumTra.dpControlled_dp.dp_nominal",
-        "distribution.pumGen.dpControlled_dp.dp_actual",
-        "distribution.pumGen.dpControlled_dp.dp_nominal",
-        "fixTSup[1].T",
-        "sigBusDistr.TStoBufTopMea"
-      ],
-      "warnings": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ]
-    },
-    "model": "BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel",
-    "simulation": {
-      "elapsed_time": 0.029923,
-      "final_time": 3600,
-      "jacobians": 29,
-      "start_time": 0,
-      "state_events": 15,
-      "success": true
-    }
-  },
-  {
-    "comparison": {
-      "file_name": "BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.mat",
-      "funnel_dirs": [
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.mat_genControlBus.TGenOutMea",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.mat_generation.TSup_nominal[1]",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.mat_fixedTemperature[1].port.Q_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.mat_generation.Q_flow_design[1]",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.mat_pumDis[1].port_a.m_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.mat_generation.m_flow_design[1]",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.mat_pumDis[2].port_a.m_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.mat_generation.m_flow_design[2]",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.mat_pumDis[1].dpControlled_dp.dp_actual",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.mat_generation.dp_design[1]",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.mat_pumDis[2].dpControlled_dp.dp_actual",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.mat_generation.dp_design[2]"
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.mat_genControlBus.TGenOutMea",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.mat_generation.TSup_nominal[1]",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.mat_fixedTemperature[1].port.Q_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.mat_generation.Q_flow_design[1]",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.mat_pumDis[1].port_a.m_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.mat_generation.m_flow_design[1]",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.mat_pumDis[2].port_a.m_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.mat_generation.m_flow_design[2]",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.mat_pumDis[1].dpControlled_dp.dp_actual",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.mat_generation.dp_design[1]",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.mat_pumDis[2].dpControlled_dp.dp_actual",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.mat_generation.dp_design[2]"
       ],
       "success_rate": 1.0,
       "t_err_max": [
@@ -724,13 +88,76 @@
         null
       ]
     },
-    "model": "BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump",
+    "model": "BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump",
     "simulation": {
-      "elapsed_time": 0.0128598,
+      "elapsed_time": 0.0147419,
       "final_time": 3600,
       "jacobians": 21,
       "start_time": 0,
       "state_events": 7,
+      "success": true
+    }
+  },
+  {
+    "comparison": {
+      "file_name": "BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly.mat",
+      "funnel_dirs": [
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly.mat_resTra[1].m_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly.mat_resTra[1].m_flow_nominal",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly.mat_resGen[1].m_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly.mat_resGen[1].m_flow_nominal",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly.mat_distribution.pump.dpControlled_dp.dp_actual",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly.mat_distribution.pump.dpControlled_dp.dp_nominal"
+      ],
+      "success_rate": 1.0,
+      "t_err_max": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "test_passed": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "var_groups": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "variables": [
+        "resTra[1].m_flow",
+        "resTra[1].m_flow_nominal",
+        "resGen[1].m_flow",
+        "resGen[1].m_flow_nominal",
+        "distribution.pump.dpControlled_dp.dp_actual",
+        "distribution.pump.dpControlled_dp.dp_nominal"
+      ],
+      "warnings": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "model": "BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly",
+    "simulation": {
+      "elapsed_time": 0.00508213,
+      "final_time": 3600,
+      "jacobians": 12,
+      "start_time": 0,
+      "state_events": 5,
       "success": true
     }
   },
@@ -801,224 +228,11 @@
     },
     "model": "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries",
     "simulation": {
-      "elapsed_time": 0.014025,
+      "elapsed_time": 0.0160441,
       "final_time": 3600,
       "jacobians": 18,
       "start_time": 0,
       "state_events": 7,
-      "success": true
-    }
-  },
-  {
-    "comparison": {
-      "file_name": "BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.mat",
-      "funnel_dirs": [
-        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.mat_Q_flow[1].y",
-        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.mat_transfer.Q_flow_design[1]",
-        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.mat_pumDis[1].port_a.m_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.mat_transfer.mSup_flow_design[1]",
-        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.mat_pumDis[1].dpControlled_dp.dp_actual",
-        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.mat_transfer.dpSup_design[1]"
-      ],
-      "success_rate": 1.0,
-      "t_err_max": [
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ],
-      "test_passed": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "var_groups": [
-        0,
-        0,
-        1,
-        1,
-        2,
-        2
-      ],
-      "variables": [
-        "Q_flow[1].y",
-        "transfer.Q_flow_design[1]",
-        "pumDis[1].port_a.m_flow",
-        "transfer.mSup_flow_design[1]",
-        "pumDis[1].dpControlled_dp.dp_actual",
-        "transfer.dpSup_design[1]"
-      ],
-      "warnings": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ]
-    },
-    "model": "BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating",
-    "simulation": {
-      "elapsed_time": 0.0158751,
-      "final_time": 36000,
-      "jacobians": 6,
-      "start_time": 0,
-      "state_events": 0,
-      "success": true
-    }
-  },
-  {
-    "comparison": {
-      "file_name": "BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.mat",
-      "funnel_dirs": [
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.mat_genControlBus.TGenOutMea",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.mat_generation.TSup_nominal[1]",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.mat_fixedTemperature[1].port.Q_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.mat_generation.Q_flow_design[1]",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.mat_pumDis[1].port_a.m_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.mat_generation.m_flow_design[1]",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.mat_pumDis[1].dpControlled_dp.dp_actual",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.mat_generation.dp_design[1]"
-      ],
-      "success_rate": 1.0,
-      "t_err_max": [
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ],
-      "test_passed": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "var_groups": [
-        0,
-        0,
-        1,
-        1,
-        2,
-        2,
-        3,
-        3
-      ],
-      "variables": [
-        "genControlBus.TGenOutMea",
-        "generation.TSup_nominal[1]",
-        "fixedTemperature[1].port.Q_flow",
-        "generation.Q_flow_design[1]",
-        "pumDis[1].port_a.m_flow",
-        "generation.m_flow_design[1]",
-        "pumDis[1].dpControlled_dp.dp_actual",
-        "generation.dp_design[1]"
-      ],
-      "warnings": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ]
-    },
-    "model": "BESMod.Systems.Hydraulical.Generation.Tests.HeatPump",
-    "simulation": {
-      "elapsed_time": 0.0117428,
-      "final_time": 3600,
-      "jacobians": 21,
-      "start_time": 0,
-      "state_events": 7,
-      "success": true
-    }
-  },
-  {
-    "comparison": {
-      "file_name": "BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater.mat",
-      "funnel_dirs": [
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater.mat_genControlBus.TGenOutMea",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater.mat_generation.TSup_nominal[1]",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater.mat_fixedTemperature[1].port.Q_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater.mat_generation.Q_flow_design[1]",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater.mat_pumDis[1].port_a.m_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater.mat_generation.m_flow_design[1]",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater.mat_pumDis[1].dpControlled_dp.dp_actual",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater.mat_generation.dp_design[1]"
-      ],
-      "success_rate": 1.0,
-      "t_err_max": [
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ],
-      "test_passed": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "var_groups": [
-        0,
-        0,
-        1,
-        1,
-        2,
-        2,
-        3,
-        3
-      ],
-      "variables": [
-        "genControlBus.TGenOutMea",
-        "generation.TSup_nominal[1]",
-        "fixedTemperature[1].port.Q_flow",
-        "generation.Q_flow_design[1]",
-        "pumDis[1].port_a.m_flow",
-        "generation.m_flow_design[1]",
-        "pumDis[1].dpControlled_dp.dp_actual",
-        "generation.dp_design[1]"
-      ],
-      "warnings": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ]
-    },
-    "model": "BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater",
-    "simulation": {
-      "elapsed_time": 0.010993,
-      "final_time": 3600,
-      "jacobians": 24,
-      "start_time": 0,
-      "state_events": 5,
       "success": true
     }
   },
@@ -1125,7 +339,7 @@
     },
     "model": "BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage",
     "simulation": {
-      "elapsed_time": 0.393202,
+      "elapsed_time": 0.797834,
       "final_time": 3600,
       "jacobians": 37,
       "start_time": 0,
@@ -1135,21 +349,151 @@
   },
   {
     "comparison": {
-      "file_name": "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.mat",
+      "file_name": "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.mat",
       "funnel_dirs": [
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.mat_resTra[1].m_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.mat_resTra[1].m_flow_nominal",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.mat_resGen[1].m_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.mat_resGen[1].m_flow_nominal",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.mat_distribution.pumTra.dpControlled_dp.dp_actual",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.mat_distribution.pumTra.dpControlled_dp.dp_nominal",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.mat_distribution.pumGen.dpControlled_dp.dp_actual",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.mat_distribution.pumGen.dpControlled_dp.dp_nominal",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.mat_fixTSup[1].T",
-        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.mat_distribution.senTBuiSup.T"
+        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.mat_Q_flow[1].y",
+        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.mat_transfer.Q_flow_design[1]",
+        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.mat_pumDis[1].port_a.m_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.mat_transfer.mSup_flow_design[1]",
+        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.mat_pumDis[1].dpControlled_dp.dp_actual",
+        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.mat_transfer.dpSup_design[1]"
       ],
       "success_rate": 1.0,
       "t_err_max": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "test_passed": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "var_groups": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        2
+      ],
+      "variables": [
+        "Q_flow[1].y",
+        "transfer.Q_flow_design[1]",
+        "pumDis[1].port_a.m_flow",
+        "transfer.mSup_flow_design[1]",
+        "pumDis[1].dpControlled_dp.dp_actual",
+        "transfer.dpSup_design[1]"
+      ],
+      "warnings": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "model": "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem",
+    "simulation": {
+      "elapsed_time": 0.00622392,
+      "final_time": 12000,
+      "jacobians": 5,
+      "start_time": 0,
+      "state_events": 0,
+      "success": true
+    }
+  },
+  {
+    "comparison": {
+      "file_name": "BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.mat",
+      "funnel_dirs": [
+        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.mat_Q_flow[1].y",
+        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.mat_transfer.Q_flow_design[1]",
+        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.mat_pumDis[1].port_a.m_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.mat_transfer.mSup_flow_design[1]",
+        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.mat_pumDis[1].dpControlled_dp.dp_actual",
+        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.mat_transfer.dpSup_design[1]"
+      ],
+      "success_rate": 1.0,
+      "t_err_max": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "test_passed": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "var_groups": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        2
+      ],
+      "variables": [
+        "Q_flow[1].y",
+        "transfer.Q_flow_design[1]",
+        "pumDis[1].port_a.m_flow",
+        "transfer.mSup_flow_design[1]",
+        "pumDis[1].dpControlled_dp.dp_actual",
+        "transfer.dpSup_design[1]"
+      ],
+      "warnings": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "model": "BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem",
+    "simulation": {
+      "elapsed_time": 0.00727582,
+      "final_time": 12000,
+      "jacobians": 7,
+      "start_time": 0,
+      "state_events": 0,
+      "success": true
+    }
+  },
+  {
+    "comparison": {
+      "file_name": "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.mat",
+      "funnel_dirs": [
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.mat_resTra[1].m_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.mat_resTra[1].m_flow_nominal",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.mat_resGen[1].m_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.mat_resGen[1].m_flow_nominal",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.mat_distribution.pumBoi.m_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.mat_distribution.mBoi_flow_nominal",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.mat_distribution.pumTra.dpControlled_dp.dp_actual",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.mat_distribution.pumTra.dpControlled_dp.dp_nominal",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.mat_distribution.pumGen.dpControlled_dp.dp_actual",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.mat_distribution.pumGen.dpControlled_dp.dp_nominal",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.mat_fixTSup[1].T",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.mat_sigBusDistr.TBuiSupMea"
+      ],
+      "success_rate": 0.8333333333333334,
+      "t_err_max": [
+        0.0,
+        0.0,
         0.0,
         0.0,
         0.0,
@@ -1170,10 +514,14 @@
         1,
         1,
         1,
+        0,
+        0,
         1,
         1
       ],
       "var_groups": [
+        0,
+        0,
         0,
         0,
         0,
@@ -1190,12 +538,14 @@
         "resTra[1].m_flow_nominal",
         "resGen[1].m_flow",
         "resGen[1].m_flow_nominal",
+        "distribution.pumBoi.m_flow",
+        "distribution.mBoi_flow_nominal",
         "distribution.pumTra.dpControlled_dp.dp_actual",
         "distribution.pumTra.dpControlled_dp.dp_nominal",
         "distribution.pumGen.dpControlled_dp.dp_actual",
         "distribution.pumGen.dpControlled_dp.dp_nominal",
         "fixTSup[1].T",
-        "distribution.senTBuiSup.T"
+        "sigBusDistr.TBuiSupMea"
       ],
       "warnings": [
         null,
@@ -1206,15 +556,17 @@
         null,
         null,
         null,
+        "Absolute error = 1.111e+03 at t = 0.0 for distribution.pumGen.dpControlled_dp.dp_actual",
+        "Absolute error = 1.111e+03 for distribution.pumGen.dpControlled_dp.dp_nominal",
         null,
         null
       ]
     },
-    "model": "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading",
+    "model": "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW",
     "simulation": {
-      "elapsed_time": 0.0908,
+      "elapsed_time": 0.289253,
       "final_time": 3600,
-      "jacobians": 30,
+      "jacobians": 37,
       "start_time": 0,
       "state_events": 5,
       "success": true
@@ -1299,7 +651,7 @@
     },
     "model": "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading",
     "simulation": {
-      "elapsed_time": 0.041846,
+      "elapsed_time": 0.0904701,
       "final_time": 3600,
       "jacobians": 21,
       "start_time": 0,
@@ -1309,20 +661,395 @@
   },
   {
     "comparison": {
-      "file_name": "BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.mat",
+      "file_name": "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.mat",
       "funnel_dirs": [
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.mat_genControlBus.TGenOutMea",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.mat_generation.TSup_nominal[1]",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.mat_fixedTemperature[1].port.Q_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.mat_generation.Q_flow_design[1]",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.mat_pumDis[1].port_a.m_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.mat_generation.m_flow_design[1]",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.mat_pumDis[2].port_a.m_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.mat_generation.m_flow_design[2]",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.mat_pumDis[1].dpControlled_dp.dp_actual",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.mat_generation.dp_design[1]",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.mat_pumDis[2].dpControlled_dp.dp_actual",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.mat_generation.dp_design[2]"
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.mat_genControlBus.TGenOutMea",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.mat_generation.TSup_nominal[1]",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.mat_fixedTemperature[1].port.Q_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.mat_generation.Q_flow_design[1]",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.mat_pumDis[1].port_a.m_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.mat_generation.m_flow_design[1]",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.mat_pumDis[1].dpControlled_dp.dp_actual",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.mat_generation.dp_design[1]"
+      ],
+      "success_rate": 1.0,
+      "t_err_max": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "test_passed": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "var_groups": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3
+      ],
+      "variables": [
+        "genControlBus.TGenOutMea",
+        "generation.TSup_nominal[1]",
+        "fixedTemperature[1].port.Q_flow",
+        "generation.Q_flow_design[1]",
+        "pumDis[1].port_a.m_flow",
+        "generation.m_flow_design[1]",
+        "pumDis[1].dpControlled_dp.dp_actual",
+        "generation.dp_design[1]"
+      ],
+      "warnings": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "model": "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater",
+    "simulation": {
+      "elapsed_time": 0.00785899,
+      "final_time": 3600,
+      "jacobians": 21,
+      "start_time": 0,
+      "state_events": 7,
+      "success": true
+    }
+  },
+  {
+    "comparison": {
+      "file_name": "BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.mat",
+      "funnel_dirs": [
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.mat_genControlBus.TBoiOut",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.mat_generation.TSup_nominal[1]",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.mat_fixedTemperature[1].port.Q_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.mat_generation.Q_flow_design[1]",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.mat_pumDis[1].port_a.m_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.mat_generation.m_flow_design[1]",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.mat_pumDis[1].dpControlled_dp.dp_actual",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.mat_generation.dp_design[1]"
+      ],
+      "success_rate": 1.0,
+      "t_err_max": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "test_passed": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "var_groups": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3
+      ],
+      "variables": [
+        "genControlBus.TBoiOut",
+        "generation.TSup_nominal[1]",
+        "fixedTemperature[1].port.Q_flow",
+        "generation.Q_flow_design[1]",
+        "pumDis[1].port_a.m_flow",
+        "generation.m_flow_design[1]",
+        "pumDis[1].dpControlled_dp.dp_actual",
+        "generation.dp_design[1]"
+      ],
+      "warnings": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "model": "BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler",
+    "simulation": {
+      "elapsed_time": 0.00700092,
+      "final_time": 3600,
+      "jacobians": 25,
+      "start_time": 0,
+      "state_events": 5,
+      "success": true
+    }
+  },
+  {
+    "comparison": {
+      "file_name": "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.mat",
+      "funnel_dirs": [
+        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.mat_Q_flow[1].y",
+        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.mat_transfer.Q_flow_design[1]",
+        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.mat_pumDis[1].port_a.m_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.mat_transfer.mSup_flow_design[1]",
+        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.mat_pumDis[1].dpControlled_dp.dp_actual",
+        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.mat_transfer.dpSup_design[1]"
+      ],
+      "success_rate": 1.0,
+      "t_err_max": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "test_passed": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "var_groups": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        2
+      ],
+      "variables": [
+        "Q_flow[1].y",
+        "transfer.Q_flow_design[1]",
+        "pumDis[1].port_a.m_flow",
+        "transfer.mSup_flow_design[1]",
+        "pumDis[1].dpControlled_dp.dp_actual",
+        "transfer.dpSup_design[1]"
+      ],
+      "warnings": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "model": "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve",
+    "simulation": {
+      "elapsed_time": 0.00852895,
+      "final_time": 12000,
+      "jacobians": 13,
+      "start_time": 0,
+      "state_events": 1,
+      "success": true
+    }
+  },
+  {
+    "comparison": {
+      "file_name": "BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater.mat",
+      "funnel_dirs": [
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater.mat_genControlBus.TGenOutMea",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater.mat_generation.TSup_nominal[1]",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater.mat_fixedTemperature[1].port.Q_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater.mat_generation.Q_flow_design[1]",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater.mat_pumDis[1].port_a.m_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater.mat_generation.m_flow_design[1]",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater.mat_pumDis[1].dpControlled_dp.dp_actual",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater.mat_generation.dp_design[1]"
+      ],
+      "success_rate": 1.0,
+      "t_err_max": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "test_passed": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "var_groups": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3
+      ],
+      "variables": [
+        "genControlBus.TGenOutMea",
+        "generation.TSup_nominal[1]",
+        "fixedTemperature[1].port.Q_flow",
+        "generation.Q_flow_design[1]",
+        "pumDis[1].port_a.m_flow",
+        "generation.m_flow_design[1]",
+        "pumDis[1].dpControlled_dp.dp_actual",
+        "generation.dp_design[1]"
+      ],
+      "warnings": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "model": "BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater",
+    "simulation": {
+      "elapsed_time": 0.00784898,
+      "final_time": 3600,
+      "jacobians": 24,
+      "start_time": 0,
+      "state_events": 5,
+      "success": true
+    }
+  },
+  {
+    "comparison": {
+      "file_name": "BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.mat",
+      "funnel_dirs": [
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.mat_resTra[1].m_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.mat_resTra[1].m_flow_nominal",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.mat_resGen[1].m_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.mat_resGen[1].m_flow_nominal",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.mat_distribution.pumTra.dpControlled_dp.dp_actual",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.mat_distribution.pumTra.dpControlled_dp.dp_nominal",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.mat_distribution.pumGen.dpControlled_dp.dp_actual",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.mat_distribution.pumGen.dpControlled_dp.dp_nominal",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.mat_fixTSup[1].T",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.mat_sigBusDistr.TStoBufTopMea"
+      ],
+      "success_rate": 1.0,
+      "t_err_max": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "test_passed": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "var_groups": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "variables": [
+        "resTra[1].m_flow",
+        "resTra[1].m_flow_nominal",
+        "resGen[1].m_flow",
+        "resGen[1].m_flow_nominal",
+        "distribution.pumTra.dpControlled_dp.dp_actual",
+        "distribution.pumTra.dpControlled_dp.dp_nominal",
+        "distribution.pumGen.dpControlled_dp.dp_actual",
+        "distribution.pumGen.dpControlled_dp.dp_nominal",
+        "fixTSup[1].T",
+        "sigBusDistr.TStoBufTopMea"
+      ],
+      "warnings": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "model": "BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel",
+    "simulation": {
+      "elapsed_time": 0.09464,
+      "final_time": 3600,
+      "jacobians": 29,
+      "start_time": 0,
+      "state_events": 15,
+      "success": true
+    }
+  },
+  {
+    "comparison": {
+      "file_name": "BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.mat",
+      "funnel_dirs": [
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.mat_genControlBus.TGenOutMea",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.mat_generation.TSup_nominal[1]",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.mat_fixedTemperature[1].port.Q_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.mat_generation.Q_flow_design[1]",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.mat_pumDis[1].port_a.m_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.mat_generation.m_flow_design[1]",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.mat_pumDis[2].port_a.m_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.mat_generation.m_flow_design[2]",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.mat_pumDis[1].dpControlled_dp.dp_actual",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.mat_generation.dp_design[1]",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.mat_pumDis[2].dpControlled_dp.dp_actual",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.mat_generation.dp_design[2]"
       ],
       "success_rate": 1.0,
       "t_err_max": [
@@ -1396,9 +1123,9 @@
         null
       ]
     },
-    "model": "BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump",
+    "model": "BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump",
     "simulation": {
-      "elapsed_time": 0.017123,
+      "elapsed_time": 0.0103469,
       "final_time": 3600,
       "jacobians": 21,
       "start_time": 0,
@@ -1408,14 +1135,107 @@
   },
   {
     "comparison": {
-      "file_name": "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.mat",
+      "file_name": "BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat",
       "funnel_dirs": [
-        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.mat_Q_flow[1].y",
-        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.mat_transfer.Q_flow_design[1]",
-        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.mat_pumDis[1].port_a.m_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.mat_transfer.mSup_flow_design[1]",
-        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.mat_pumDis[1].dpControlled_dp.dp_actual",
-        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.mat_transfer.dpSup_design[1]"
+        "funnel_comp/BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat_pumDPConst.m_flow_nominal",
+        "funnel_comp/BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat_pumDPConst.port_a.m_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat_pumDPVar.port_a.m_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat_pumDPTotal.port_a.m_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat_pumDPVarOnOff.port_a.m_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat_pumSpeed.speedControlled_y.m_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat_pumDPConst.P",
+        "funnel_comp/BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat_pumDPVar.P",
+        "funnel_comp/BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat_pumDPTotal.P",
+        "funnel_comp/BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat_pumDPVarOnOff.P",
+        "funnel_comp/BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.mat_pumSpeed.P"
+      ],
+      "success_rate": 1.0,
+      "t_err_max": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "test_passed": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "var_groups": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "variables": [
+        "pumDPConst.m_flow_nominal",
+        "pumDPConst.port_a.m_flow",
+        "pumDPVar.port_a.m_flow",
+        "pumDPTotal.port_a.m_flow",
+        "pumDPVarOnOff.port_a.m_flow",
+        "pumSpeed.speedControlled_y.m_flow",
+        "pumDPConst.P",
+        "pumDPVar.P",
+        "pumDPTotal.P",
+        "pumDPVarOnOff.P",
+        "pumSpeed.P"
+      ],
+      "warnings": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "model": "BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions",
+    "simulation": {
+      "elapsed_time": 0.0812,
+      "final_time": 3600,
+      "jacobians": 184,
+      "start_time": 0,
+      "state_events": 0,
+      "success": true
+    }
+  },
+  {
+    "comparison": {
+      "file_name": "BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.mat",
+      "funnel_dirs": [
+        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.mat_Q_flow[1].y",
+        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.mat_transfer.Q_flow_design[1]",
+        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.mat_pumDis[1].port_a.m_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.mat_transfer.mSup_flow_design[1]",
+        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.mat_pumDis[1].dpControlled_dp.dp_actual",
+        "funnel_comp/BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.mat_transfer.dpSup_design[1]"
       ],
       "success_rate": 1.0,
       "t_err_max": [
@@ -1459,11 +1279,11 @@
         null
       ]
     },
-    "model": "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem",
+    "model": "BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating",
     "simulation": {
-      "elapsed_time": 0.00814915,
-      "final_time": 12000,
-      "jacobians": 5,
+      "elapsed_time": 0.0124459,
+      "final_time": 36000,
+      "jacobians": 6,
       "start_time": 0,
       "state_events": 0,
       "success": true
@@ -1471,16 +1291,109 @@
   },
   {
     "comparison": {
-      "file_name": "BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.mat",
+      "file_name": "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.mat",
       "funnel_dirs": [
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.mat_genControlBus.TBoiOut",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.mat_generation.TSup_nominal[1]",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.mat_fixedTemperature[1].port.Q_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.mat_generation.Q_flow_design[1]",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.mat_pumDis[1].port_a.m_flow",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.mat_generation.m_flow_design[1]",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.mat_pumDis[1].dpControlled_dp.dp_actual",
-        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.mat_generation.dp_design[1]"
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.mat_genControlBus.TGenOutMea",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.mat_generation.TSup_nominal[1]",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.mat_generation.boi.vol.heatPort.Q_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.mat_generation.heatPump.con.Q_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.mat_generation.Q_flow_design[1]",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.mat_generation.boi.m_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.mat_generation.mBoi_flow_nominal",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.mat_generation.heatPump.con.m_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.mat_generation.m_flow_design[1]",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.mat_pumDis[1].dpControlled_dp.dp_actual",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.mat_generation.dp_design[1]"
+      ],
+      "success_rate": 1.0,
+      "t_err_max": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "test_passed": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "var_groups": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        3,
+        3
+      ],
+      "variables": [
+        "genControlBus.TGenOutMea",
+        "generation.TSup_nominal[1]",
+        "generation.boi.vol.heatPort.Q_flow",
+        "generation.heatPump.con.Q_flow",
+        "generation.Q_flow_design[1]",
+        "generation.boi.m_flow",
+        "generation.mBoi_flow_nominal",
+        "generation.heatPump.con.m_flow",
+        "generation.m_flow_design[1]",
+        "pumDis[1].dpControlled_dp.dp_actual",
+        "generation.dp_design[1]"
+      ],
+      "warnings": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "model": "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel",
+    "simulation": {
+      "elapsed_time": 0.035095,
+      "final_time": 3600,
+      "jacobians": 26,
+      "start_time": 0,
+      "state_events": 3,
+      "success": true
+    }
+  },
+  {
+    "comparison": {
+      "file_name": "BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.mat",
+      "funnel_dirs": [
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.mat_genControlBus.TGenOutMea",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.mat_generation.TSup_nominal[1]",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.mat_fixedTemperature[1].port.Q_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.mat_generation.Q_flow_design[1]",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.mat_pumDis[1].port_a.m_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.mat_generation.m_flow_design[1]",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.mat_pumDis[1].dpControlled_dp.dp_actual",
+        "funnel_comp/BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.mat_generation.dp_design[1]"
       ],
       "success_rate": 1.0,
       "t_err_max": [
@@ -1514,7 +1427,7 @@
         3
       ],
       "variables": [
-        "genControlBus.TBoiOut",
+        "genControlBus.TGenOutMea",
         "generation.TSup_nominal[1]",
         "fixedTemperature[1].port.Q_flow",
         "generation.Q_flow_design[1]",
@@ -1534,11 +1447,98 @@
         null
       ]
     },
-    "model": "BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler",
+    "model": "BESMod.Systems.Hydraulical.Generation.Tests.HeatPump",
     "simulation": {
-      "elapsed_time": 0.010782,
+      "elapsed_time": 0.0646892,
       "final_time": 3600,
-      "jacobians": 25,
+      "jacobians": 21,
+      "start_time": 0,
+      "state_events": 7,
+      "success": true
+    }
+  },
+  {
+    "comparison": {
+      "file_name": "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.mat",
+      "funnel_dirs": [
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.mat_resTra[1].m_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.mat_resTra[1].m_flow_nominal",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.mat_resGen[1].m_flow",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.mat_resGen[1].m_flow_nominal",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.mat_distribution.pumTra.dpControlled_dp.dp_actual",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.mat_distribution.pumTra.dpControlled_dp.dp_nominal",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.mat_distribution.pumGen.dpControlled_dp.dp_actual",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.mat_distribution.pumGen.dpControlled_dp.dp_nominal",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.mat_fixTSup[1].T",
+        "funnel_comp/BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.mat_distribution.senTBuiSup.T"
+      ],
+      "success_rate": 1.0,
+      "t_err_max": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "test_passed": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "var_groups": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "variables": [
+        "resTra[1].m_flow",
+        "resTra[1].m_flow_nominal",
+        "resGen[1].m_flow",
+        "resGen[1].m_flow_nominal",
+        "distribution.pumTra.dpControlled_dp.dp_actual",
+        "distribution.pumTra.dpControlled_dp.dp_nominal",
+        "distribution.pumGen.dpControlled_dp.dp_actual",
+        "distribution.pumGen.dpControlled_dp.dp_nominal",
+        "fixTSup[1].T",
+        "distribution.senTBuiSup.T"
+      ],
+      "warnings": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "model": "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading",
+    "simulation": {
+      "elapsed_time": 0.121157,
+      "final_time": 3600,
+      "jacobians": 30,
       "start_time": 0,
       "state_events": 5,
       "success": true
