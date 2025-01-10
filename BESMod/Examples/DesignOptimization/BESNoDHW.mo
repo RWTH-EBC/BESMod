@@ -1,82 +1,7 @@
 within BESMod.Examples.DesignOptimization;
 model BESNoDHW "Example to demonstrate usage without DHW"
-  extends Systems.BaseClasses.PartialBuildingEnergySystem(
-    redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
-    redeclare Systems.Demand.Building.TEASERThermalZone building(
-      ABui=sum(building.zoneParam.VAir)^(2/3),
-      hBui=sum(building.zoneParam.VAir)^(1/3),
-      ARoo=sum(building.zoneParam.ARoof),
-      redeclare BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
-        oneZoneParam,
-      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial),
-    redeclare BESMod.Systems.Control.NoControl control,
-    redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
-      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
-      redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater
-        generation(
-        redeclare package MediumEva = AixLib.Media.Air,
-        redeclare model RefrigerantCycleHeatPumpHeating =
-            AixLib.Fluid.HeatPumps.ModularReversible.RefrigerantCycle.TableData3D
-            (y_nominal=0.8, redeclare
-              AixLib.Fluid.HeatPumps.ModularReversible.Data.TableDataSDF.TableData3D.VCLibPy.VCLibVaporInjectionPhaseSeparatorPropane
-              datTab),
-        genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
-        TBiv=parameterStudy.TBiv,
-        redeclare
-          BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps.DefaultHP
-          parHeaPum,
-        redeclare
-          BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater.DefaultElectricHeater
-          parEleHea,
-        redeclare
-          BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
-          parTemSen),
-      redeclare Systems.Hydraulical.Control.MonoenergeticHeatPumpSystem control(
-        redeclare
-          BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
-          valCtrl,
-        redeclare model DHWHysteresis =
-            BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.PartParallelBivalent
-            (
-            TCutOff=parameterStudy.TCutOff,
-            TBiv=parameterStudy.TBiv,
-            TOda_nominal=systemParameters.TOda_nominal,
-            TRoom=systemParameters.TSetZone_nominal[1],
-            QDem_flow_nominal=systemParameters.QBui_flow_nominal[1],
-            QHP_flow_cutOff=parameterStudy.QHP_flow_cutOff),
-        redeclare model BuildingHysteresis =
-            BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.PartParallelBivalent
-            (
-            TCutOff=parameterStudy.TCutOff,
-            TBiv=parameterStudy.TBiv,
-            TOda_nominal=systemParameters.TOda_nominal,
-            TRoom=systemParameters.TSetZone_nominal[1],
-            QDem_flow_nominal=systemParameters.QBui_flow_nominal[1],
-            QHP_flow_cutOff=parameterStudy.QHP_flow_cutOff),
-        useSGReady=true,
-        useExtSGSig=false,
-        redeclare
-          BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
-          parPIDHeaPum),
-      redeclare BESMod.Systems.Hydraulical.Distribution.BuildingOnly
-        distribution,
-      redeclare Systems.Hydraulical.Transfer.IdealValveRadiator transfer(
-        redeclare
-          BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
-          parRad)),
-    redeclare Systems.Demand.DHW.StandardProfiles DHW(
-      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
-      redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
-      redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
-        calcmFlow),
-    redeclare Systems.UserProfiles.TEASERProfiles userProfiles,
-    redeclare AachenSystem systemParameters(use_ventilation=false, use_dhw=
-          false),
-    redeclare ParametersToChange parameterStudy(VPerQFlow=1),
-    redeclare final package MediumDHW = AixLib.Media.Water,
-    redeclare final package MediumZone = AixLib.Media.Air,
-    redeclare final package MediumHyd = AixLib.Media.Water,
-    redeclare BESMod.Systems.Ventilation.NoVentilation ventilation);
+  extends BES(systemParameters(use_dhw=false), DHW(redeclare
+        BESMod.Systems.Demand.DHW.RecordsCollection.NoDHW DHWProfile));
 
   extends Modelica.Icons.Example;
 
@@ -84,5 +9,9 @@ model BESNoDHW "Example to demonstrate usage without DHW"
      Interval=600,
      Tolerance=1e-06),
    __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/DesignOptimization/BESNoDHW.mos"
-        "Simulate and plot"));
+        "Simulate and plot"),
+    Documentation(info="<html>
+<p>In this case, DHW is disabled which is currently only supported for the distribution systems X and Y. However, you can create your own distribution modules if this is a relevant use case for you. </p>
+<p>As Modelica does not allow conditional variables outside of connect and the DHW parameters are used as bottom-up and top-down, this workaround is needed.</p>
+</html>"));
 end BESNoDHW;

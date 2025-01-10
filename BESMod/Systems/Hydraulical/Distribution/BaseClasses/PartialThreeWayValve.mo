@@ -54,13 +54,6 @@ partial model PartialThreeWayValve "Partial model to later extent"
       parameters=parThrWayVal)
     annotation (Placement(transformation(extent={{-60,140},{-40,160}})));
 
-  AixLib.Fluid.Interfaces.PassThroughMedium pasThrNoDHW(redeclare package
-      Medium =
-        Medium, allowFlowReversal=allowFlowReversal) if not use_dhw
-    "Pass through if DHW is disabled" annotation (Placement(transformation(
-        extent={{-2,-2},{2,2}},
-        rotation=270,
-        origin={-34,144})));
   IBPSA.Fluid.Sources.Boundary_pT bouPum(
     redeclare package Medium = Medium,
     final p=p_start,
@@ -135,14 +128,6 @@ equation
       index=1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(threeWayValveWithFlowReturn.portDHW_b, pasThrNoDHW.port_a) annotation (
-      Line(points={{-40,146.4},{-37,146.4},{-37,146},{-34,146}},
-                           color={0,127,255},
-      pattern=LinePattern.Dash));
-  connect(pasThrNoDHW.port_b, threeWayValveWithFlowReturn.portDHW_a) annotation (
-      Line(points={{-34,142},{-37,142},{-37,142.4},{-40,142.4}},
-                                    color={0,127,255},
-      pattern=LinePattern.Dash));
 
   connect(pumGen.y, sigBusDistr.uPumGen) annotation (Line(points={{-68,120},{0,120},
           {0,101}}, color={0,0,127}), Text(

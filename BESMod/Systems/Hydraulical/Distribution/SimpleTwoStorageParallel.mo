@@ -105,8 +105,9 @@ model SimpleTwoStorageParallel
     "The buffer storage (PS) for the building"
     annotation (Placement(transformation(extent={{16,32},{-10,72}})));
 
-  Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixTemDHW(final T=
-        parStoDHW.TAmb) "Constant ambient temperature of storage"
+  Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixTemDHW(final T=if
+        use_dhw then parStoDHW.TAmb else TDHW_nominal)
+                        "Constant ambient temperature of storage"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
@@ -162,16 +163,38 @@ model SimpleTwoStorageParallel
 
 
 
+  IBPSA.Fluid.Sources.Boundary_pT bouNoDHW(
+    redeclare package Medium = MediumDHW,
+    final p=p_start,
+    final T=T_start,
+    nPorts=1) if not use_dhw "Boundary to disable DHW" annotation (Placement(
+        transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={80,-40})));
+  IBPSA.Fluid.Sources.MassFlowSource_T
+                                  souNoDHW(
+    redeclare package Medium = MediumDHW,
+    m_flow=0.01,
+    final T=TDHW_nominal,
+    nPorts=1) if not use_dhw
+    "Constant mass flow source to disable DHW and always ensure the DHW storage is at TDHW_nominal"
+                                                       annotation (Placement(
+        transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={80,-66})));
 equation
   connect(fixTemBuf.port, stoBuf.heatPort) annotation (Line(points={{40,50},{22,
           50},{22,52},{13.4,52}},     color={191,0,0}));
   connect(stoBuf.port_b_consumer, portBui_out[1]) annotation (Line(points={{3,72},{
           74,72},{74,80},{100,80}},      color={0,127,255}));
-  connect(stoDHW.port_b_consumer, portDHW_out) annotation (Line(points={{-1,-32},
-          {-1,-30},{84,-30},{84,-22},{100,-22}},
-                                             color={0,127,255}));
-  connect(portDHW_in, stoDHW.port_a_consumer) annotation (Line(points={{100,-82},
+  if use_dhw then
+    connect(stoDHW.port_b_consumer, portDHW_out) annotation (Line(points={{-1,-32},
+          {-1,-22},{100,-22}},               color={0,127,255}));
+    connect(portDHW_in, stoDHW.port_a_consumer) annotation (Line(points={{100,-82},
           {-1,-82},{-1,-72}},               color={0,127,255}));
+  end if;
   connect(fixTemDHW.port, stoDHW.heatPort) annotation (Line(points={{40,-52},{9.4,
           -52}},                         color={191,0,0}));
   connect(stoDHW.port_a_heatGenerator, resValToDHWSto.port_b) annotation (Line(
@@ -263,4 +286,8 @@ equation
   connect(stoDHW.port_b_heatGenerator, threeWayValveWithFlowReturn.portDHW_a)
     annotation (Line(points={{-11.92,-68},{-36,-68},{-36,142.4},{-40,142.4}},
         color={0,127,255}));
+  connect(bouNoDHW.ports[1], stoDHW.port_b_consumer) annotation (Line(points={{70,-40},
+          {66,-40},{66,-22},{-1,-22},{-1,-32}},      color={0,127,255}));
+  connect(souNoDHW.ports[1], stoDHW.port_a_consumer) annotation (Line(points={{
+          70,-66},{60,-66},{60,-82},{-1,-82},{-1,-72}}, color={0,127,255}));
 end SimpleTwoStorageParallel;
