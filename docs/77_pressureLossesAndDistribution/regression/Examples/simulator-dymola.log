@@ -52,8 +52,8 @@ Original Model
   Parameters: 6940 (8489 scalars)
   Unknowns: 7786 (7536 scalars)
   Differentiated variables: 140 scalars
-  Equations: 6268
-  Nontrivial: 5239
+  Equations: 6266
+  Nontrivial: 5237
 Translated Model
   Constants: 6373 scalars
   Free parameters: 855 scalars
@@ -440,8 +440,8 @@ initial equations:
   building.roo.air.vol.dynBal.medium.p = building.roo.air.vol.dynBal.p_start;
   hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
   ventilation.generation.threeWayValve_b.res1.port_b.p = ventilation.generation.threeWayValve_b.vol.dynBal.p_start;
-  electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
   electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
+  electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
   electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
  
  
@@ -454,8 +454,8 @@ Original Model
   Parameters: 12124 (16176 scalars)
   Unknowns: 8066 (8158 scalars)
   Differentiated variables: 149 scalars
-  Equations: 6358
-  Nontrivial: 5339
+  Equations: 6357
+  Nontrivial: 5338
 Translated Model
   Constants: 10828 scalars
   Free parameters: 1205 scalars
@@ -775,8 +775,8 @@ Original Model
   Parameters: 19629 (26409 scalars)
   Unknowns: 21415 (20403 scalars)
   Differentiated variables: 436 scalars
-  Equations: 16327
-  Nontrivial: 13460
+  Equations: 16326
+  Nontrivial: 13459
 Translated Model
   Constants: 13294 scalars
   Free parameters: 2769 scalars
@@ -1229,8 +1229,8 @@ Original Model
   Parameters: 9338 (11136 scalars)
   Unknowns: 10037 (9311 scalars)
   Differentiated variables: 192 scalars
-  Equations: 8022
-  Nontrivial: 6618
+  Equations: 8020
+  Nontrivial: 6616
 Translated Model
   Constants: 8120 scalars
   Free parameters: 1060 scalars
@@ -1428,12 +1428,12 @@ Warning: Component nZones(min = << Empty >>),
  
   For element nZones found at
  
-  File: /tmp/tmp-BESMod-1-xfpsp08a/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 14
+  File: /tmp/tmp-BESMod-1-fcs918dg/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 14
   Conflict with element from
-  File: /tmp/tmp-BESMod-1-xfpsp08a/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line 7
+  File: /tmp/tmp-BESMod-1-fcs918dg/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line 7
  Component context: building
   Component declared as SpawnHighOrder building in BESMod.Systems.Demand.Building
-  File: /tmp/tmp-BESMod-1-xfpsp08a/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
+  File: /tmp/tmp-BESMod-1-fcs918dg/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
 Adding zero equation for variables:
  building.useProBus.natVent[11:end]
  building.buiMeaBus.TZoneMea[12:end]
@@ -1472,12 +1472,12 @@ Warning: Component nZones(min = << Empty >>),
  
   For element nZones found at
  
-  File: /tmp/tmp-BESMod-1-xfpsp08a/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 14
+  File: /tmp/tmp-BESMod-1-fcs918dg/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line 14
   Conflict with element from
-  File: /tmp/tmp-BESMod-1-xfpsp08a/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line 7
+  File: /tmp/tmp-BESMod-1-fcs918dg/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line 7
  Component context: building
   Component declared as SpawnHighOrder building in BESMod.Systems.Demand.Building
-  File: /tmp/tmp-BESMod-1-xfpsp08a/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
+  File: /tmp/tmp-BESMod-1-fcs918dg/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
 The DAE has 12586 scalar unknowns and 12586 scalar equations.
 Redundant consistent initial conditions.
 Removed the following equations which are redundant and consistent: 
@@ -1511,8 +1511,8 @@ Original Model
   Parameters: 10212 (13517 scalars)
   Unknowns: 13595 (12969 scalars)
   Differentiated variables: 219 scalars
-  Equations: 10629
-  Nontrivial: 8496
+  Equations: 10628
+  Nontrivial: 8495
 Translated Model
   Constants: 10551 scalars
   Free parameters: 1875 scalars
@@ -1699,12 +1699,12 @@ Warning: Component nZones(min = &lt;&lt; Empty &gt;&gt;),
  
   For element nZones found at
  
-  File: /tmp/tmp-BESMod-1-xfpsp08a/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line <a href=\"Modelica://BESMod.Systems.Demand.Building.SpawnHighOrder#text:13\">14</a>
+  File: /tmp/tmp-BESMod-1-fcs918dg/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line <a href=\"Modelica://BESMod.Systems.Demand.Building.SpawnHighOrder#text:13\">14</a>
   Conflict with element from
-  File: /tmp/tmp-BESMod-1-xfpsp08a/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line <a href=\"Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6\">7</a>
+  File: /tmp/tmp-BESMod-1-fcs918dg/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line <a href=\"Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6\">7</a>
  Component context: building
   Component declared as SpawnHighOrder building in <a href=\"Modelica://BESMod.Systems.Demand.Building\">BESMod.Systems.Demand.Building</a>
-  File: /tmp/tmp-BESMod-1-xfpsp08a/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
+  File: /tmp/tmp-BESMod-1-fcs918dg/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
 The DAE has 12586 scalar unknowns and 12586 scalar equations.
 Redundant consistent initial conditions.
 Removed the following equations which are redundant and consistent: 
@@ -1738,8 +1738,8 @@ Original Model
   Parameters: 10212 (13517 scalars)
   Unknowns: 13595 (12969 scalars)
   Differentiated variables: 219 scalars
-  Equations: 10629
-  Nontrivial: 8496
+  Equations: 10628
+  Nontrivial: 8495
 Translated Model
   Constants: 10551 scalars
   Free parameters: 1875 scalars
@@ -1975,8 +1975,8 @@ Original Model
   Parameters: 6938 (8487 scalars)
   Unknowns: 7786 (7536 scalars)
   Differentiated variables: 140 scalars
-  Equations: 6268
-  Nontrivial: 5239
+  Equations: 6266
+  Nontrivial: 5237
 Translated Model
   Constants: 6373 scalars
   Free parameters: 856 scalars
@@ -2178,8 +2178,8 @@ Original Model
   Parameters: 6940 (8489 scalars)
   Unknowns: 7786 (7536 scalars)
   Differentiated variables: 140 scalars
-  Equations: 6268
-  Nontrivial: 5239
+  Equations: 6266
+  Nontrivial: 5237
 Translated Model
   Constants: 6349 scalars
   Free parameters: 858 scalars
@@ -2381,8 +2381,8 @@ Original Model
   Parameters: 7152 (8875 scalars)
   Unknowns: 7914 (7678 scalars)
   Differentiated variables: 144 scalars
-  Equations: 6414
-  Nontrivial: 5387
+  Equations: 6412
+  Nontrivial: 5385
 Translated Model
   Constants: 6441 scalars
   Free parameters: 901 scalars
@@ -2590,8 +2590,8 @@ Original Model
   Parameters: 5626 (7297 scalars)
   Unknowns: 6771 (6662 scalars)
   Differentiated variables: 106 scalars
-  Equations: 5488
-  Nontrivial: 4581
+  Equations: 5487
+  Nontrivial: 4580
 Translated Model
   Constants: 5505 scalars
   Free parameters: 757 scalars
@@ -3041,45 +3041,10 @@ savelog("BESMod.Examples.SolarThermalSystem.SolarThermalAixLib.translation.log")
 
 rCheck = checkModel("BESMod.Examples.DesignOptimization.BESNoDHW");
 Check of BESMod.Examples.DesignOptimization.BESNoDHW
-Warning: The bus-input hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
-Bus-signal: TStoBufBotMea
-Use:  connect(hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea, hydraulic.control.buiAndDHWCtr.hysBui.TStoBot);
-Connected bus variables:
-hydraulic.control.setAndMeaSelPri.sigBusDistr.TStoBufBotMea (connect) "Supply temperature of the lower layers of the storage. Does not have to be the lowest layer, depending on comfort even the top may be selected"
-hydraulic.control.sigBusDistr.TStoBufBotMea (connect)
-hydraulic.distribution.sigBusDistr.TStoBufBotMea (connect)
-hydraulic.control.setAndMeaSelSec.sigBusDistr.TStoBufBotMea (connect)
-input hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea (connect)
-The DAE has 5093 scalar unknowns and 5093 scalar equations.
-After eliminating unused variables:
-hydraulic.control.buiAndDHWCtr.hysBui.TStoBot
-hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea
-hydraulic.control.setAndMeaSelPri.sigBusDistr.TStoBufBotMea
-hydraulic.control.setAndMeaSelSec.sigBusDistr.TStoBufBotMea
-hydraulic.control.sigBusDistr.TStoBufBotMea
-hydraulic.distribution.sigBusDistr.TStoBufBotMea
-The model could not be deduced to be symbolically well-posed.
-The model has
-  4871+2*hydraulic.transfer.parRad.nEle+29*building.thermalZone[1].zoneParam.nOrientations  +2*building.thermalZone[1].ROM.volAir.dynBal.nPorts+building.thermalZone[1].humanSenHeaDependent.productHeatOutput.nu  +building.thermalZone[1].machinesSenHea.productHeatOutput.nu+building.thermalZone[1].lights.productHeatOutput.nu  +5*building.thermalZone[1].zoneParam.nOrientationsRoof+building.thermalZone[1].ventCont.optimalTemp.nin  +building.thermalZone[1].ventCont.optimalTemp.nout+building.thermalZone[1].ventCont.dEMA.nout  +building.thermalZone[1].ventCont.dEMA.ExpAVG.n+building.thermalZone[1].ventCont.dEMA.ExpAVG1.n  +building.multiSumEle.nu+max([size(userProfiles.tabIntGai.columns, 1); size(  userProfiles.tabIntGai.offset, 1)])+DHW.calcmFlow.multiProduct.nu+  DHW.pump.vol.dynBal.nPorts+max([
-[4]; size(DHW.combiTimeTableDHWInput.offset, 1)])+14*systemParameters.nZones+  hydraulic.generation.heatPump.con.vol.dynBal.nPorts+2*hydraulic.generation.heatPump.eva.vol.dynBal.nPorts  +size(hydraulic.generation.heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns, 1)  +hydraulic.generation.heatPump.safCtr.opeEnv.bouMapHea.nor.nu+size(  hydraulic.generation.heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns, 1)+  hydraulic.generation.heatPump.safCtr.opeEnv.bouMapCoo.nor.nu+hydraulic.generation.multiSum.nu  +hydraulic.generation.eleHea.vol.dynBal.nPorts+hydraulic.control.anyGenDevIsOn.nu  +hydraulic.control.buiAndDHWCtr.maxSecHeaGen.nu+max([size(hydraulic.control.buiAndDHWCtr.TSetBuiSupSGReady.datRea.columns,   1); size(hydraulic.control.buiAndDHWCtr.TSetBuiSupSGReady.datRea.offset, 1)])  +hydraulic.transfer.rad[1].vol[1].dynBal.nPorts+hydraulic.transfer.rad[1].vol[2].dynBal.nPorts  +hydraulic.transfer.rad[1].vol[3].dynBal.nPorts+hydraulic.transfer.rad[1].vol[4].dynBal.nPorts  +hydraulic.transfer.rad[1].vol[5].dynBal.nPorts+hydraulic.transfer.rad[1].sumCon.nin  +hydraulic.transfer.rad[1].sumRad.nin+hydraulic.transfer.pumFixMFlo[1].vol.dynBal.nPorts
-scalar unknowns and
-  4877+max([size(userProfiles.tabIntGai.columns, 1); size(userProfiles.tabIntGai.offset,   1)])+(if DHW.bou_sink.use_Xi_in then 1 else (if DHW.bou_sink.use_X_in then 0   else 1))+(if  not DHW.bou_sink.use_p_in then 1 else 0)+2*DHW.bou_sink.nPorts+  (if  not DHW.bou_sink.use_h_in then 1 else 0)+(if DHW.bouSou.use_Xi_in then 1   else (if DHW.bouSou.use_X_in then 0 else 1))+(if  not DHW.bouSou.use_p_in   then 1 else 0)+(if  not DHW.bouSou.use_T_in then 1 else 0)+max([
-[4]; size(DHW.combiTimeTableDHWInput.offset, 1)])+(if hydraulic.generation.bou_sinkAir.use_Xi_in   then 2 else (if hydraulic.generation.bou_sinkAir.use_X_in then 1 else 3))+(  if  not hydraulic.generation.bou_sinkAir.use_p_in then 1 else 0)+(if  not   hydraulic.generation.bou_sinkAir.use_h_in then 1 else 0)+(if hydraulic.generation.bouEva.use_Xi_in   then 2 else (if hydraulic.generation.bouEva.use_X_in then 1 else 3))+max([  size(hydraulic.control.buiAndDHWCtr.TSetBuiSupSGReady.datRea.columns, 1); size  (hydraulic.control.buiAndDHWCtr.TSetBuiSupSGReady.datRea.offset, 1)])+(if   hydraulic.distribution.bouPum.use_Xi_in then 1 else (if hydraulic.distribution.bouPum.use_X_in   then 0 else 1))+(if  not hydraulic.distribution.bouPum.use_p_in then 1 else 0)  +(if  not hydraulic.distribution.bouPum.use_T_in then 1 else 0)+(if   weaDat.pAtmSou == IBPSA.BoundaryConditions.Types.DataSource.Parameter then 1   else 0)+(if weaDat.TDewPoiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TDryBulSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TBlaSkySou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.relHumSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.opaSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.ceiHeiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.totSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winSpeSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winDirSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HInfHorSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HDifHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HGloHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HGloHor_HDifHor then 2 else 1)+19*building.thermalZone[1].zoneParam.nOrientations  +(if  not building.thermalZone[1].eqAirTempWall.TGroundFromInput then 1 else 0)  +(if  not building.thermalZone[1].eqAirTempRoof.TGroundFromInput then 1 else 0)  +3*building.thermalZone[1].zoneParam.nOrientationsRoof+building.thermalZone[1].ventCont.optimalTemp.nout  +building.thermalZone[1].ventCont.dEMA.ExpAVG.n+building.thermalZone[1].ventCont.dEMA.ExpAVG1.n  +(if  not DHW.pump.vol.dynBal.use_mWat_flow then 1 else 0)+3*DHW.pump.vol.dynBal.nPorts  +(if  not hydraulic.generation.heatPump.con.vol.dynBal.use_mWat_flow then 1   else 0)+3*hydraulic.generation.heatPump.con.vol.dynBal.nPorts+(if  not   hydraulic.generation.heatPump.eva.vol.dynBal.use_mWat_flow then 1 else 0)+5*  hydraulic.generation.heatPump.eva.vol.dynBal.nPorts+size(hydraulic.generation.heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns,   1)+size(hydraulic.generation.heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns,   1)+(if  not hydraulic.generation.eleHea.vol.dynBal.use_mWat_flow then 1 else 0)  +3*hydraulic.generation.eleHea.vol.dynBal.nPorts+(if  not hydraulic.transfer.rad[1].vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*hydraulic.transfer.rad[1].vol[1].dynBal.nPorts+(if  not   hydraulic.transfer.rad[1].vol[2].dynBal.use_mWat_flow then 1 else 0)+3*  hydraulic.transfer.rad[1].vol[2].dynBal.nPorts+(if  not hydraulic.transfer.rad[1].vol[3].dynBal.use_mWat_flow   then 1 else 0)+3*hydraulic.transfer.rad[1].vol[3].dynBal.nPorts+(if  not   hydraulic.transfer.rad[1].vol[4].dynBal.use_mWat_flow then 1 else 0)+3*  hydraulic.transfer.rad[1].vol[4].dynBal.nPorts+(if  not hydraulic.transfer.rad[1].vol[5].dynBal.use_mWat_flow   then 1 else 0)+3*hydraulic.transfer.rad[1].vol[5].dynBal.nPorts+(if  not   hydraulic.transfer.pumFixMFlo[1].vol.dynBal.use_mWat_flow then 1 else 0)+3*  hydraulic.transfer.pumFixMFlo[1].vol.dynBal.nPorts+(if  not building.thermalZone[1].ROM.volAir.dynBal.use_mWat_flow   then 1 else 0)+5*building.thermalZone[1].ROM.volAir.dynBal.nPorts+(if  not   hydraulic.distribution.pump.dpControlled_dp.vol.steBal.use_mWat_flow then 1   else 0)+8*systemParameters.nZones+2*hydraulic.transfer.parRad.nEle
-scalar equations.
-However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
-  5093
-Warning: Some connector variables are removed from the simulation problem,
-since they are not used in the model.
-Warning: Connector variables that are removed:
-hydraulic.control.buiAndDHWCtr.hysBui.TStoBot
-Expandable connector variables that are removed:
-hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea
-hydraulic.control.setAndMeaSelPri.sigBusDistr.TStoBufBotMea
-hydraulic.control.setAndMeaSelSec.sigBusDistr.TStoBufBotMea
-hydraulic.control.sigBusDistr.TStoBufBotMea
-hydraulic.distribution.sigBusDistr.TStoBufBotMea
+The model has the same number of unknowns and equations: 6445
+The model has the same number of unknowns and equations
+for the given numerical settings of parameters: 6445
 Check of BESMod.Examples.DesignOptimization.BESNoDHW successful.
-Warning: WARNINGS have been issued.
 Declaring variable: Boolean rCheck ;
 
 Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Examples/DesignOptimization/BESNoDHW.mos\",", "BESMod.Examples.DesignOptimization.BESNoDHW.statistics.log");
@@ -3094,33 +3059,7 @@ rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Examples/DesignOpt
 
 simulateModel("BESMod.Examples.DesignOptimization.BESNoDHW", stopTime=172800, method="dassl", tolerance=1e-06, resultFile="BESMod.Examples.DesignOptimization.BESNoDHW");
 Translation of BESMod.Examples.DesignOptimization.BESNoDHW
-Warning: The bus-input hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
-Bus-signal: TStoBufBotMea
-Use:  connect(hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea, hydraulic.control.buiAndDHWCtr.hysBui.TStoBot);
-Connected bus variables:
-hydraulic.control.sigBusDistr.TStoBufBotMea (connect) "Supply temperature of the lower layers of the storage. Does not have to be the lowest layer, depending on comfort even the top may be selected"
-hydraulic.distribution.sigBusDistr.TStoBufBotMea (connect)
-hydraulic.control.setAndMeaSelSec.sigBusDistr.TStoBufBotMea (connect)
-hydraulic.control.setAndMeaSelPri.sigBusDistr.TStoBufBotMea (connect)
-input hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea (connect)
-The DAE has 5093 scalar unknowns and 5093 scalar equations.
-After eliminating unused variables:
-hydraulic.control.buiAndDHWCtr.hysBui.TStoBot
-hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea
-hydraulic.control.setAndMeaSelPri.sigBusDistr.TStoBufBotMea
-hydraulic.control.setAndMeaSelSec.sigBusDistr.TStoBufBotMea
-hydraulic.control.sigBusDistr.TStoBufBotMea
-hydraulic.distribution.sigBusDistr.TStoBufBotMea
-Warning: Some connector variables are removed from the simulation problem,
-since they are not used in the model.
-Warning: Connector variables that are removed:
-hydraulic.control.buiAndDHWCtr.hysBui.TStoBot
-Expandable connector variables that are removed:
-hydraulic.control.buiAndDHWCtr.sigBusDistr.TStoBufBotMea
-hydraulic.control.setAndMeaSelPri.sigBusDistr.TStoBufBotMea
-hydraulic.control.setAndMeaSelSec.sigBusDistr.TStoBufBotMea
-hydraulic.control.sigBusDistr.TStoBufBotMea
-hydraulic.distribution.sigBusDistr.TStoBufBotMea
+The DAE has 6445 scalar unknowns and 6445 scalar equations.
 Redundant consistent initial conditions.
 Removed the following equations which are redundant and consistent: 
   if (hydraulic.generation.heatPump.eva.vol.dynBal.massDynamics ==     Modelica.Fluid.Types.Dynamics.FixedInitial) then 
@@ -3147,31 +3086,33 @@ initial equations:
 Statistics
  
 Original Model
-  Number of components: 1063
-  Variables: 8999
-  Constants: 145 (145 scalars)
-  Parameters: 3995 (5600 scalars)
-  Unknowns: 4859 (5170 scalars)
-  Differentiated variables: 70 scalars
-  Equations: 4049
-  Nontrivial: 3524
+  Number of components: 1339
+  Variables: 12547
+  Constants: 228 (228 scalars)
+  Parameters: 5600 (6350 scalars)
+  Unknowns: 6719 (6580 scalars)
+  Differentiated variables: 106 scalars
+  Equations: 5471
+  Nontrivial: 4570
 Translated Model
-  Constants: 4128 scalars
-  Free parameters: 654 scalars
-  Parameter depending: 1623 scalars
-  Outputs: 67 scalars
-  Continuous time states: 60 scalars
-  Time-varying variables: 1227 scalars
-  Alias variables: 3283 scalars
+  Constants: 4593 scalars
+  Free parameters: 756 scalars
+  Parameter depending: 2112 scalars
+  Outputs: 71 scalars
+  Continuous time states: 79 scalars
+  Time-varying variables: 1524 scalars
+  Alias variables: 4173 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2, 4, 4}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0}
-  Sizes of nonlinear systems of equations: {1, 59, 3, 1, 1, 1, 1, 1, 1, 1, 1}
-  Sizes after manipulation of the nonlinear systems: {1, 6, 1, 0, 1, 0, 1, 0, 1, 1, 1}
+  Sizes of nonlinear systems of equations: {16, 1, 1, 59, 3, 1, 1, 1, 1, 1, 1, 1, 1}
+  Sizes after manipulation of the nonlinear systems: {2, 1, 1, 6, 1, 0, 1, 0, 1, 0, 1, 1, 1}
   Number of numerical Jacobians: 0
   Initialization problem
-    Sizes of nonlinear systems of equations: {11, 70, 1, 1, 1}
-    Sizes after manipulation of the nonlinear systems: {5, 7, 1, 1, 1}
+    Sizes of nonlinear systems of equations: {11, 70, 16, 1, 1, 1, 1}
+    Sizes after manipulation of the nonlinear systems: {5, 7, 3, 1, 1, 1, 1}
+    Sizes of simplified homotopy nonlinear systems of equations: {16}
+    Sizes after manipulation of the simplified homotopy nonlinear systems: {3}
     Number of numerical Jacobians: 0
  
 Selected continuous time states
@@ -3216,6 +3157,25 @@ hydraulic.control.priGenPIDCtrl.intSqu.y
 hydraulic.control.priGenPIDCtrl.PID.D.x
 hydraulic.control.priGenPIDCtrl.PID.I.y
 hydraulic.control.valCtrl.PI[1].I.y
+hydraulic.distribution.eneKPICalBuf.integrator2.y
+hydraulic.distribution.eneKPICalDHW.integrator2.y
+hydraulic.distribution.stoBuf.layer[1].dynBal.U
+hydraulic.distribution.stoBuf.layer[2].dynBal.U
+hydraulic.distribution.stoBuf.layer[3].dynBal.U
+hydraulic.distribution.stoBuf.layer[4].dynBal.U
+hydraulic.distribution.stoBuf.layer_HE[1].dynBal.U
+hydraulic.distribution.stoBuf.layer_HE[2].dynBal.U
+hydraulic.distribution.stoBuf.layer_HE[3].dynBal.U
+hydraulic.distribution.stoBuf.layer_HE[4].dynBal.U
+hydraulic.distribution.stoDHW.layer[1].dynBal.U
+hydraulic.distribution.stoDHW.layer[2].dynBal.U
+hydraulic.distribution.stoDHW.layer[3].dynBal.U
+hydraulic.distribution.stoDHW.layer[4].dynBal.U
+hydraulic.distribution.stoDHW.layer_HE[1].dynBal.U
+hydraulic.distribution.stoDHW.layer_HE[2].dynBal.U
+hydraulic.distribution.stoDHW.layer_HE[3].dynBal.U
+hydraulic.distribution.stoDHW.layer_HE[4].dynBal.U
+hydraulic.distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.U
 hydraulic.generation.eleHea.vol.dynBal.U
 hydraulic.generation.heatPump.con.vol.dynBal.U
 hydraulic.generation.heatPump.eva.vol.dynBal.medium.Xi[1]
@@ -3237,7 +3197,6 @@ hydraulic.transfer.rad[1].vol[3].dynBal.U
 hydraulic.transfer.rad[1].vol[4].dynBal.U
 hydraulic.transfer.rad[1].vol[5].dynBal.U
 Finished
-Warning: WARNINGS have been issued.
 Finished
  = true
 
@@ -3300,8 +3259,8 @@ Original Model
   Parameters: 6051 (7763 scalars)
   Unknowns: 7157 (6976 scalars)
   Differentiated variables: 113 scalars
-  Equations: 5804
-  Nontrivial: 4858
+  Equations: 5803
+  Nontrivial: 4857
 Translated Model
   Constants: 5860 scalars
   Free parameters: 831 scalars
@@ -3481,8 +3440,8 @@ Original Model
   Parameters: 6940 (8489 scalars)
   Unknowns: 7786 (7536 scalars)
   Differentiated variables: 140 scalars
-  Equations: 6268
-  Nontrivial: 5239
+  Equations: 6266
+  Nontrivial: 5237
 Translated Model
   Constants: 6373 scalars
   Free parameters: 855 scalars
@@ -3758,8 +3717,8 @@ Original Model
   Parameters: 6988 (9221 scalars)
   Unknowns: 7678 (7484 scalars)
   Differentiated variables: 99 scalars
-  Equations: 6160
-  Nontrivial: 5115
+  Equations: 6159
+  Nontrivial: 5114
 Translated Model
   Constants: 6443 scalars
   Free parameters: 1145 scalars
@@ -4098,8 +4057,8 @@ The redundancies involve
 initial equations: 
   hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
   ventilation.generation.threeWayValve_b.res1.port_b.p = ventilation.generation.threeWayValve_b.vol.dynBal.p_start;
-  electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
   electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
+  electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
   electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
  
  
@@ -4112,8 +4071,8 @@ Original Model
   Parameters: 7027 (9293 scalars)
   Unknowns: 7873 (7692 scalars)
   Differentiated variables: 103 scalars
-  Equations: 6265
-  Nontrivial: 5208
+  Equations: 6264
+  Nontrivial: 5207
 Translated Model
   Constants: 6418 scalars
   Free parameters: 1077 scalars
@@ -4275,8 +4234,8 @@ Original Model
   Parameters: 5731 (7443 scalars)
   Unknowns: 6930 (6811 scalars)
   Differentiated variables: 111 scalars
-  Equations: 5646
-  Nontrivial: 4727
+  Equations: 5645
+  Nontrivial: 4726
 Translated Model
   Constants: 5610 scalars
   Free parameters: 796 scalars
