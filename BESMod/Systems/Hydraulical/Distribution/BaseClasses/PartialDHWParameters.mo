@@ -16,7 +16,7 @@ model PartialDHWParameters
       elseif designType==BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage
          then ((QCrit - (VStoDHW * rho_cp_kWh_in_m3) * (TDHW_nominal - TDHW_min_EN15450)) * 3600 * 1000 + QDHWStoLoss_flow) / tCrit
       elseif designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage
-         then (VStoDHW * rho_cp_kWh_in_m3 / tCrit) * (TDHW_nominal - TDHWCold_nominal)
+         then (VStoDHW * rho_cp_kWh_in_m3 / tCrit) * (TDHW_nominal - TDHWCold_nominal) * 3600 * 1000
       else Modelica.Constants.eps)
     "Nominal heat flow rate to DHW before the storage. Used to design the size of heat generation devices if a storage is used." annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
   parameter Modelica.Units.SI.Temperature TDHW_nominal
