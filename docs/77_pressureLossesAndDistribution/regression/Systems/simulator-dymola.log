@@ -655,16 +655,16 @@ rCheck = checkModel("BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStor
 Check of BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel
 Warning: Incompatible units.
 Warning: Incompatible units in
-  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  NoStorage then distribution.QDHW_flow_nominal else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage   then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3*  (distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal) else _GlobalScope.Modelica.Constants.eps)))
+  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  NoStorage then distribution.QDHW_flow_nominal else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage   then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3*  (distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal)*3600*1000 else   _GlobalScope.Modelica.Constants.eps)))
 The part
   distribution.QDHW_flow_nominal
 has unit W
 The part
-  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  PartStorage then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3  *(distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal) else _GlobalScope.Modelica.Constants.eps))
+  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  PartStorage then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3  *(distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal)*3600*1000 else   _GlobalScope.Modelica.Constants.eps))
 has unit W/s
 Warning: The unit issue reported appeared in the binding equation of the variable
   distribution.QDHWBefSto_flow_nominal
-Variable distribution.QDHWBefSto_flow_nominal was declared in class Modelica.Units.SI, /tmp/tmp-BESMod-1-_jzmpjn3/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialDHWParameters.mo at line 12, and used in component distribution.PartialDHWParameters.
+Variable distribution.QDHWBefSto_flow_nominal was declared in class Modelica.Units.SI, /tmp/tmp-BESMod-1-0slyu_q3/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialDHWParameters.mo at line 12, and used in component distribution.PartialDHWParameters.
 The model has the same number of unknowns and equations: 1733
 The model could not be deduced to be symbolically well-posed.
 The model has
@@ -691,16 +691,16 @@ simulateModel("BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStoragePar
 Translation of BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel
 Warning: Incompatible units.
 Warning: Incompatible units in
-  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  NoStorage then distribution.QDHW_flow_nominal else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage   then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3*  (distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal) else 1E-15)))
+  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  NoStorage then distribution.QDHW_flow_nominal else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage   then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3*  (distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal)*3600*1000 else 1E-15)))
 The part
   distribution.QDHW_flow_nominal
 has unit W
 The part
-  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  PartStorage then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3  *(distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal) else 1E-15))
+  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  PartStorage then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3  *(distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal)*3600*1000 else 1E-15))
 has unit W/s
 Warning: The unit issue reported appeared in the binding equation of the variable
   distribution.QDHWBefSto_flow_nominal
-Variable distribution.QDHWBefSto_flow_nominal was declared in class Modelica.Units.SI, /tmp/tmp-BESMod-1-_jzmpjn3/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialDHWParameters.mo at line 12, and used in component distribution.PartialDHWParameters.
+Variable distribution.QDHWBefSto_flow_nominal was declared in class Modelica.Units.SI, /tmp/tmp-BESMod-1-0slyu_q3/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialDHWParameters.mo at line 12, and used in component distribution.PartialDHWParameters.
 The DAE has 1733 scalar unknowns and 1733 scalar equations.
  
 Statistics
@@ -882,16 +882,16 @@ rCheck = checkModel("BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBo
 Check of BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW
 Warning: Incompatible units.
 Warning: Incompatible units in
-  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  NoStorage then distribution.QDHW_flow_nominal else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage   then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3*  (distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal) else _GlobalScope.Modelica.Constants.eps)))
+  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  NoStorage then distribution.QDHW_flow_nominal else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage   then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3*  (distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal)*3600*1000 else   _GlobalScope.Modelica.Constants.eps)))
 The part
   distribution.QDHW_flow_nominal
 has unit W
 The part
-  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  PartStorage then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3  *(distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal) else _GlobalScope.Modelica.Constants.eps))
+  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  PartStorage then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3  *(distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal)*3600*1000 else   _GlobalScope.Modelica.Constants.eps))
 has unit W/s
 Warning: The unit issue reported appeared in the binding equation of the variable
   distribution.QDHWBefSto_flow_nominal
-Variable distribution.QDHWBefSto_flow_nominal was declared in class Modelica.Units.SI, /tmp/tmp-BESMod-1-_jzmpjn3/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialDHWParameters.mo at line 12, and used in component distribution.PartialDHWParameters.
+Variable distribution.QDHWBefSto_flow_nominal was declared in class Modelica.Units.SI, /tmp/tmp-BESMod-1-0slyu_q3/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialDHWParameters.mo at line 12, and used in component distribution.PartialDHWParameters.
 The model has the same number of unknowns and equations: 4316
 Check of BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW successful.
 Warning: WARNINGS have been issued.
@@ -910,16 +910,16 @@ simulateModel("BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWi
 Translation of BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW
 Warning: Incompatible units.
 Warning: Incompatible units in
-  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  NoStorage then distribution.QDHW_flow_nominal else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage   then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3*  (distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal) else 1E-15)))
+  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  NoStorage then distribution.QDHW_flow_nominal else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage   then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3*  (distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal)*3600*1000 else 1E-15)))
 The part
   distribution.QDHW_flow_nominal
 has unit W
 The part
-  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  PartStorage then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3  *(distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal) else 1E-15))
+  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  PartStorage then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3  *(distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal)*3600*1000 else 1E-15))
 has unit W/s
 Warning: The unit issue reported appeared in the binding equation of the variable
   distribution.QDHWBefSto_flow_nominal
-Variable distribution.QDHWBefSto_flow_nominal was declared in class Modelica.Units.SI, /tmp/tmp-BESMod-1-_jzmpjn3/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialDHWParameters.mo at line 12, and used in component distribution.PartialDHWParameters.
+Variable distribution.QDHWBefSto_flow_nominal was declared in class Modelica.Units.SI, /tmp/tmp-BESMod-1-0slyu_q3/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialDHWParameters.mo at line 12, and used in component distribution.PartialDHWParameters.
 The DAE has 4316 scalar unknowns and 4316 scalar equations.
  
 Statistics
@@ -1357,16 +1357,16 @@ rCheck = checkModel("BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetaile
 Check of BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading
 Warning: Incompatible units.
 Warning: Incompatible units in
-  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  NoStorage then distribution.QDHW_flow_nominal else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage   then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3*  (distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal) else _GlobalScope.Modelica.Constants.eps)))
+  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  NoStorage then distribution.QDHW_flow_nominal else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage   then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3*  (distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal)*3600*1000 else   _GlobalScope.Modelica.Constants.eps)))
 The part
   distribution.QDHW_flow_nominal
 has unit W
 The part
-  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  PartStorage then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3  *(distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal) else _GlobalScope.Modelica.Constants.eps))
+  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  PartStorage then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3  *(distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal)*3600*1000 else   _GlobalScope.Modelica.Constants.eps))
 has unit W/s
 Warning: The unit issue reported appeared in the binding equation of the variable
   distribution.QDHWBefSto_flow_nominal
-Variable distribution.QDHWBefSto_flow_nominal was declared in class Modelica.Units.SI, /tmp/tmp-BESMod-2-nx66m1ju/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialDHWParameters.mo at line 12, and used in component distribution.PartialDHWParameters.
+Variable distribution.QDHWBefSto_flow_nominal was declared in class Modelica.Units.SI, /tmp/tmp-BESMod-2-eftcaptz/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialDHWParameters.mo at line 12, and used in component distribution.PartialDHWParameters.
 The model has the same number of unknowns and equations: 3338
 Check of BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading successful.
 Warning: WARNINGS have been issued.
@@ -1385,16 +1385,16 @@ simulateModel("BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndir
 Translation of BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading
 Warning: Incompatible units.
 Warning: Incompatible units in
-  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  NoStorage then distribution.QDHW_flow_nominal else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage   then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3*  (distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal) else 1E-15)))
+  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  NoStorage then distribution.QDHW_flow_nominal else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage   then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3*  (distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal)*3600*1000 else 1E-15)))
 The part
   distribution.QDHW_flow_nominal
 has unit W
 The part
-  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  PartStorage then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3  *(distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal) else 1E-15))
+  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  PartStorage then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3  *(distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal)*3600*1000 else 1E-15))
 has unit W/s
 Warning: The unit issue reported appeared in the binding equation of the variable
   distribution.QDHWBefSto_flow_nominal
-Variable distribution.QDHWBefSto_flow_nominal was declared in class Modelica.Units.SI, /tmp/tmp-BESMod-2-nx66m1ju/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialDHWParameters.mo at line 12, and used in component distribution.PartialDHWParameters.
+Variable distribution.QDHWBefSto_flow_nominal was declared in class Modelica.Units.SI, /tmp/tmp-BESMod-2-eftcaptz/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialDHWParameters.mo at line 12, and used in component distribution.PartialDHWParameters.
 The DAE has 3338 scalar unknowns and 3338 scalar equations.
  
 Statistics
@@ -1514,27 +1514,27 @@ rCheck = checkModel("BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage"
 Check of BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage
 In value attribute for resTra[1].m_flow_nominal.
 Modifier applied in class BESMod.Systems.Hydraulical.Distribution.Tests.BaseClasses.PartialTest.
-  File: /tmp/tmp-BESMod-2-nx66m1ju/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 3
+  File: /tmp/tmp-BESMod-2-eftcaptz/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 3
 Modifier applied for component resTra.m_flow_nominal.
   File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/PartialTwoPortInterface.mo, line 8
 Variable found in class BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage.
-  Near file: /tmp/tmp-BESMod-2-nx66m1ju/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 2
+  Near file: /tmp/tmp-BESMod-2-eftcaptz/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 2
 Variable found in base-class resTra.PartialTwoPortInterface.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/BaseClasses/PartialResistance.mo, line 3
 Warning: Error for array of components: Modifier(=fill(sum(distribution.Q_flow_design)/dTDem_nominal/4184, distribution.nParallelSup)) dimension 1 is 2, but the modifee expected 1.
  
 Warning: Incompatible units.
 Warning: Incompatible units in
-  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  NoStorage then distribution.QDHW_flow_nominal else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage   then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3*  (distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal) else _GlobalScope.Modelica.Constants.eps)))
+  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  NoStorage then distribution.QDHW_flow_nominal else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage   then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3*  (distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal)*3600*1000 else   _GlobalScope.Modelica.Constants.eps)))
 The part
   distribution.QDHW_flow_nominal
 has unit W
 The part
-  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  PartStorage then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3  *(distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal) else _GlobalScope.Modelica.Constants.eps))
+  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  PartStorage then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3  *(distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal)*3600*1000 else   _GlobalScope.Modelica.Constants.eps))
 has unit W/s
 Warning: The unit issue reported appeared in the binding equation of the variable
   distribution.QDHWBefSto_flow_nominal
-Variable distribution.QDHWBefSto_flow_nominal was declared in class Modelica.Units.SI, /tmp/tmp-BESMod-2-nx66m1ju/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialDHWParameters.mo at line 12, and used in component distribution.PartialDHWParameters.
+Variable distribution.QDHWBefSto_flow_nominal was declared in class Modelica.Units.SI, /tmp/tmp-BESMod-2-eftcaptz/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialDHWParameters.mo at line 12, and used in component distribution.PartialDHWParameters.
 The model has the same number of unknowns and equations: 8547
 Check of BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage successful.
 Warning: WARNINGS have been issued.
@@ -1553,27 +1553,27 @@ simulateModel("BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage", stop
 Translation of BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage
 In value attribute for resTra[1].m_flow_nominal.
 Modifier applied in class BESMod.Systems.Hydraulical.Distribution.Tests.BaseClasses.PartialTest.
-  File: /tmp/tmp-BESMod-2-nx66m1ju/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 3
+  File: /tmp/tmp-BESMod-2-eftcaptz/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 3
 Modifier applied for component resTra.m_flow_nominal.
   File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/PartialTwoPortInterface.mo, line 8
 Variable found in class BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage.
-  Near file: /tmp/tmp-BESMod-2-nx66m1ju/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 2
+  Near file: /tmp/tmp-BESMod-2-eftcaptz/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 2
 Variable found in base-class resTra.PartialTwoPortInterface.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/BaseClasses/PartialResistance.mo, line 3
 Warning: Error for array of components: Modifier(=fill(sum(distribution.Q_flow_design)/dTDem_nominal/4184, distribution.nParallelSup)) dimension 1 is 2, but the modifee expected 1.
  
 Warning: Incompatible units.
 Warning: Incompatible units in
-  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  NoStorage then distribution.QDHW_flow_nominal else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage   then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3*  (distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal) else 1E-15)))
+  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  NoStorage then distribution.QDHW_flow_nominal else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage   then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3*  (distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal)*3600*1000 else 1E-15)))
 The part
   distribution.QDHW_flow_nominal
 has unit W
 The part
-  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  PartStorage then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3  *(distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal) else 1E-15))
+  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  PartStorage then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3  *(distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal)*3600*1000 else 1E-15))
 has unit W/s
 Warning: The unit issue reported appeared in the binding equation of the variable
   distribution.QDHWBefSto_flow_nominal
-Variable distribution.QDHWBefSto_flow_nominal was declared in class Modelica.Units.SI, /tmp/tmp-BESMod-2-nx66m1ju/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialDHWParameters.mo at line 12, and used in component distribution.PartialDHWParameters.
+Variable distribution.QDHWBefSto_flow_nominal was declared in class Modelica.Units.SI, /tmp/tmp-BESMod-2-eftcaptz/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialDHWParameters.mo at line 12, and used in component distribution.PartialDHWParameters.
 The DAE has 8547 scalar unknowns and 8547 scalar equations.
  
 Statistics
@@ -2103,16 +2103,16 @@ rCheck = checkModel("BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetaile
 Check of BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading
 Warning: Incompatible units.
 Warning: Incompatible units in
-  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  NoStorage then distribution.QDHW_flow_nominal else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage   then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3*  (distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal) else _GlobalScope.Modelica.Constants.eps)))
+  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  NoStorage then distribution.QDHW_flow_nominal else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage   then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3*  (distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal)*3600*1000 else   _GlobalScope.Modelica.Constants.eps)))
 The part
   distribution.QDHW_flow_nominal
 has unit W
 The part
-  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  PartStorage then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3  *(distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal) else _GlobalScope.Modelica.Constants.eps))
+  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  PartStorage then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3  *(distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal)*3600*1000 else   _GlobalScope.Modelica.Constants.eps))
 has unit W/s
 Warning: The unit issue reported appeared in the binding equation of the variable
   distribution.QDHWBefSto_flow_nominal
-Variable distribution.QDHWBefSto_flow_nominal was declared in class Modelica.Units.SI, /tmp/tmp-BESMod-3-7tt_nqtv/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialDHWParameters.mo at line 12, and used in component distribution.PartialDHWParameters.
+Variable distribution.QDHWBefSto_flow_nominal was declared in class Modelica.Units.SI, /tmp/tmp-BESMod-3-svisxrxi/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialDHWParameters.mo at line 12, and used in component distribution.PartialDHWParameters.
 The model has the same number of unknowns and equations: 2589
 Check of BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading successful.
 Warning: WARNINGS have been issued.
@@ -2131,16 +2131,16 @@ simulateModel("BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirec
 Translation of BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading
 Warning: Incompatible units.
 Warning: Incompatible units in
-  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  NoStorage then distribution.QDHW_flow_nominal else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage   then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3*  (distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal) else 1E-15)))
+  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  NoStorage then distribution.QDHW_flow_nominal else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage   then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3*  (distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal)*3600*1000 else 1E-15)))
 The part
   distribution.QDHW_flow_nominal
 has unit W
 The part
-  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  PartStorage then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3  *(distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal) else 1E-15))
+  (if distribution.designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.  PartStorage then ((distribution.QCrit-distribution.VStoDHW*distribution.rho_cp_kWh_in_m3  *(distribution.TDHW_nominal-distribution.TDHW_min_EN15450))*3600*1000+  distribution.QDHWStoLoss_flow)/distribution.tCrit else (if distribution.designType   == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage   then distribution.VStoDHW*distribution.rho_cp_kWh_in_m3/distribution.tCrit*(  distribution.TDHW_nominal-distribution.TDHWCold_nominal)*3600*1000 else 1E-15))
 has unit W/s
 Warning: The unit issue reported appeared in the binding equation of the variable
   distribution.QDHWBefSto_flow_nominal
-Variable distribution.QDHWBefSto_flow_nominal was declared in class Modelica.Units.SI, /tmp/tmp-BESMod-3-7tt_nqtv/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialDHWParameters.mo at line 12, and used in component distribution.PartialDHWParameters.
+Variable distribution.QDHWBefSto_flow_nominal was declared in class Modelica.Units.SI, /tmp/tmp-BESMod-3-svisxrxi/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialDHWParameters.mo at line 12, and used in component distribution.PartialDHWParameters.
 The DAE has 2589 scalar unknowns and 2589 scalar equations.
  
 Statistics
