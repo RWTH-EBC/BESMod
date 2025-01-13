@@ -14,7 +14,7 @@ model PartialDHWParameters
       if designType==BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.NoStorage
          then QDHW_flow_nominal
       elseif designType==BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage
-         then (((QCrit - (VStoDHW * rho_cp_kWh_in_m3) * (TDHW_nominal - TDHW_min_EN15450)) / (tCrit/3600)) * 1000 + QDHWStoLoss_flow)
+         then ((QCrit - (VStoDHW * rho_cp_kWh_in_m3) * (TDHW_nominal - TDHW_min_EN15450)) * 3600 * 1000 + QDHWStoLoss_flow) / tCrit
       elseif designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage
          then (VStoDHW * rho_cp_kWh_in_m3 / tCrit) * (TDHW_nominal - TDHWCold_nominal)
       else Modelica.Constants.eps)
