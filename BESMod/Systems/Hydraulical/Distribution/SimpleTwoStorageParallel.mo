@@ -184,6 +184,12 @@ model SimpleTwoStorageParallel
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={80,-66})));
+
+initial algorithm
+  assert(parStoDHW.qHC1_flow_nominal * 1000 > 0.25, "In " + getInstanceName() +
+      ": Storage heat exchanger is probably to small and the calculated heat 
+      transfer coefficient to high. VDI 4645 suggests at least 0.25 m2/kW, 
+      you have " + String(parStoDHW.qHC1_flow_nominal * 1000) + "m2/W", AssertionLevel.warning);
 equation
   connect(fixTemBuf.port, stoBuf.heatPort) annotation (Line(points={{40,50},{22,
           50},{22,52},{13.4,52}},     color={191,0,0}));

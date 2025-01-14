@@ -275,6 +275,10 @@ model TwoStoragesBoilerWithDHW
         origin={-10,-84})));
 initial algorithm
   assert(use_dhw, "This system can only be simulated with use_dhw=true", AssertionLevel.error);
+  assert(parStoDHW.qHC2_flow_nominal * 1000 > 0.25, "In " + getInstanceName() +
+      ": Storage heat exchanger is probably to small and the calculated heat 
+      transfer coefficient to high. VDI 4645 suggests at least 0.25 m2/kW, 
+      you have " + String(parStoDHW.qHC2_flow_nominal * 1000) + "m2/W", AssertionLevel.warning);
 equation
   connect(thrWayValBoiDHW.uBuf, sigBusDistr.uThrWayVal) annotation (Line(points={{70,22},
           {70,32},{0,32},{0,101}},                           color={0,0,127}),

@@ -12,6 +12,11 @@ model TwoStoDetailedIndirectLoading "Two detailed storages, indirect loading of 
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={90,10})));
+initial algorithm
+  assert(parStoBuf.qHC1_flow_nominal * 1000 > 0.25, "In " + getInstanceName() +
+      ": Storage heat exchanger is probably to small and the calculated heat 
+      transfer coefficient to high. VDI 4645 suggests at least 0.25 m2/W, 
+      you have " + String(parStoBuf.qHC1_flow_nominal) + "m2/W", AssertionLevel.warning);
 equation
   connect(threeWayValveWithFlowReturn.portBui_a, stoBuf.portHC1Out)
     annotation (Line(points={{-40,154},{10,154},{10,52},{-56,52},{-56,24},{-50.2,

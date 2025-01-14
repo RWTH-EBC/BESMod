@@ -281,6 +281,11 @@ protected
   parameter Modelica.Units.SI.MassFlowRate mHC2_flow_nominal=9999999
     "Nominal mass flow rate of HC fluid";
   Modelica.Blocks.Sources.Constant constZero(final k=0);
+initial algorithm
+  assert(parStoDHW.qHC1_flow_nominal * 1000 > 0.25, "In " + getInstanceName() +
+      ": Storage heat exchanger is probably to small and the calculated heat 
+      transfer coefficient to high. VDI 4645 suggests at least 0.25 m2/kW, 
+      you have " + String(parStoDHW.qHC1_flow_nominal * 1000) + "m2/W", AssertionLevel.warning);
 equation
   connect(fixTemDHW.port, stoDHW.heatportOutside) annotation (Line(points={{-10,-50},
           {-10,-48.8},{-18.4,-48.8}},                               color={191,0,0}));
