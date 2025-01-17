@@ -148,13 +148,31 @@ model TEASERThermalZone
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-90,-148})));
-  Modelica.Blocks.Sources.RealExpression QSolRad_flow[nZones](y={sum({
-        thermalZone[i].ROM.radHeatSol[n].Q_flow for n in 1:thermalZone[i].ROM.nOrientations})
-        for i in 1:nZones}) if use_verboseEnergyBalance
+  Modelica.Blocks.Sources.RealExpression QSolRad_flow[nZones](
+    y={if ATot[i] > 0 and sum(thermalZone[i].ROM.ATransparent) > 0 then
+       sum({thermalZone[i].ROM.radHeatSol[n].Q_flow
+           for n in 1:thermalZone[i].ROM.nOrientations})
+       else 0 for i in 1:nZones}) if use_verboseEnergyBalance
     "Solar radiative  heat flow rate" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-90,-170})));
+  Modelica.Blocks.Sources.RealExpression QSolConv_flow[nZones](
+    y={if thermalZone[i].ROM.ratioWinConRad > 0 and
+       (ATot[i] > 0 or thermalZone[i].ROM.VAir > 0) and
+       sum(thermalZone[i].ROM.ATransparent) > 0 then
+       sum({thermalZone[i].ROM.convHeatSol.Q_flow})
+       else 0 for i in 1:nZones}) if use_verboseEnergyBalance
+    "Solar convective  heat flow rate" annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-90,-184})));
+  Modelica.Blocks.Math.Add addSol[nZones] if use_verboseEnergyBalance
+    annotation (Placement(transformation(
+        extent={{-4,4},{4,-4}},
+        rotation=0,
+        origin={-74,-178})));
+
   Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow preAbsHeaGaiRad(
       final T_ref=293.15, final alpha=0) if use_absIntGai
     "Add absolute radiative heat gain" annotation (Placement(transformation(
@@ -167,19 +185,8 @@ model TEASERThermalZone
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-90,-30})));
-
-  Modelica.Blocks.Sources.RealExpression QSolConv_flow[nZones](y={sum({
-        thermalZone[i].ROM.convHeatSol[n].Q_flow for n in 1:thermalZone[i].ROM.nOrientations})
-        for i in 1:nZones}) if use_verboseEnergyBalance
-    "Solar convective  heat flow rate" annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=0,
-        origin={-90,-184})));
-  Modelica.Blocks.Math.Add addSol[nZones] if use_verboseEnergyBalance
-    annotation (Placement(transformation(
-        extent={{-4,4},{4,-4}},
-        rotation=0,
-        origin={-74,-178})));
+protected
+  parameter Modelica.Units.SI.Area ATot[nZones]={sum(zoneParam[i].AExt)+sum(zoneParam[i].AWin) for i in 1:nZones} "Sum of wall surface areas";
 initial equation
   assert(if use_absIntGai then nZones == 1 else true, "use_absIntGai is only supported for single zones");
 equation
