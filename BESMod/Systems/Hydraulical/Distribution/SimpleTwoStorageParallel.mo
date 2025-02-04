@@ -254,6 +254,13 @@ equation
   connect(pumTra.P, multiSum.u[2]) annotation (Line(points={{59,16},{-88,16},{-88,
           -126.25},{-78,-126.25}},                                       color={
           0,0,127}));
+  connect(stoBuf.TLayer[parStoBuf.nLayer], sigBusDistr.TBuiSupMea)
+    annotation (Line(points={{14.245,57.9},{24,57.9},{24,101},{0,101}}, color={0,
+          0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
   connect(stoBuf.TLayer[parStoBuf.nLayer], sigBusDistr.TStoBufTopMea)
     annotation (Line(points={{14.245,57.9},{24,57.9},{24,101},{0,101}}, color={0,
           0,127}), Text(

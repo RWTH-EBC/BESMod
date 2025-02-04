@@ -14,7 +14,7 @@ model HybridHeatPumpSystem
     BESMod.Systems.Hydraulical.Control.RecordsCollection.PIDBaseDataDefinition
     "PID parameters of boiler" annotation (
     choicesAllMatching=true,
-    Dialog(group="Primary device control"),
+    Dialog(group="Boiler Control"),
     Placement(transformation(extent={{100,-20},{120,0}})));
   replaceable BESMod.Systems.Hydraulical.Control.Components.RelativeSpeedController.PID boiPIDCtrl(
     final yMax=parPIDBoi.yMax,
@@ -29,7 +29,7 @@ model HybridHeatPumpSystem
      constrainedby
     BESMod.Systems.Hydraulical.Control.Components.RelativeSpeedController.BaseClasses.PartialControler
     "PID control of boiler" annotation (choicesAllMatching=true,
-      Dialog(group="Boiler control", tab="Advanced"), Placement(
+      Dialog(group="Boiler Control"), Placement(
         transformation(extent={{100,10},{120,28}})));
 
   Components.BoilerInHybridSystem boiInHybSys(final TBiv=TBiv, final TCutOff=
@@ -44,8 +44,6 @@ model HybridHeatPumpSystem
         rotation=270,
         origin={-190,-30})));
 equation
-  connect(boiInHybSys.secGen, buiAndDHWCtr.secGen) annotation (Line(points={{-31.8,
-          -6},{-110,-6},{-110,34},{-118,34}},     color={255,0,255}));
   connect(boiInHybSys.secGenOn,boiPIDCtrl.setOn)  annotation (Line(points={{-9,-10},
           {76,-10},{76,19},{98,19}},
                                    color={255,0,255}));
@@ -73,16 +71,15 @@ equation
           {110,6},{61,6}},                 color={0,0,127}));
   connect(boiPIDCtrl.TSet, setAndMeaSelSec.TSet) annotation (Line(points={{98,24.4},
           {96,24.4},{96,16},{61,16}}, color={0,0,127}));
-  connect(boiInHybSys.priGenIsOn, sigBusGen.heaPumIsOn) annotation (Line(points={{
-          -31.8,-16},{-54,-16},{-54,-70},{-152,-70},{-152,-99}}, color={255,0,255}),
+  connect(boiInHybSys.priGenIsOn, sigBusGen.heaPumIsOn) annotation (Line(points={{-32,-16},
+          {-54,-16},{-54,-70},{-152,-70},{-152,-99}},            color={255,0,255}),
       Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(boiInHybSys.priGenSetOn, buiAndDHWCtr.priGren) annotation (Line(points={{-32,
-          -12.4},{-72,-12.4},{-72,-12},{-110,-12},{-110,26},{-118,26},{-118,
-          27.3333}},
+          -12.4},{-112,-12.4},{-112,28},{-118,28},{-118,27.3333}},
         color={255,0,255}));
   connect(boiInHybSys.TOda, weaBus.TDryBul) annotation (Line(points={{-32,-2},{
           -236.895,-2},{-236.895,2.11}},
@@ -101,7 +98,7 @@ equation
   connect(priOrSecDevValCtrl.secGen, boiInHybSys.secGenOn) annotation (Line(
         points={{-184,-18},{-184,12},{-2,12},{-2,-10},{-9,-10}}, color={255,0,255}));
   connect(priOrSecDevValCtrl.priGen, buiAndDHWCtr.priGren) annotation (Line(
-        points={{-196,-18},{-196,12},{-112,12},{-112,26},{-118,26},{-118,
+        points={{-196,-18},{-196,14},{-112,14},{-112,28},{-118,28},{-118,
           27.3333}},
         color={255,0,255}));
   connect(priOrSecDevValCtrl.uThrWayVal, sigBusGen.uPriOrSecGen) annotation (Line(
@@ -112,6 +109,13 @@ equation
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
   connect(buiAndDHWCtr.priGren, priGenPIDCtrl.setOn) annotation (Line(points={{-118,
-          27.3333},{-118,26},{74,26},{74,74},{96,74},{96,90},{80.4,90}},
+          27.3333},{-118,28},{-106,28},{-106,90},{80.4,90}},
         color={255,0,255}));
+  connect(boiInHybSys.secGen, secGenOn.y) annotation (Line(points={{-31.8,-6},{-62,
+          -6},{-62,30},{-69,30}}, color={255,0,255}));
+  connect(boiInHybSys.secGenOnDueToOpeEnv, setAndMeaSelPri.bivOn) annotation (
+      Line(points={{-32,-19},{-48,-19},{-48,50},{64,50},{64,72},{61,72}}, color
+        ={255,0,255}));
+  connect(noOpeEnvLimCtrl.y, boiInHybSys.secGenOnDueToOpeEnv) annotation (Line(
+        points={{19,50},{-48,50},{-48,-19},{-32,-19}}, color={255,0,255}));
 end HybridHeatPumpSystem;

@@ -24,12 +24,11 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(buiAndDHWCtr.secGen,swiSecGen. u2) annotation (Line(points={{-118,37.5},
-          {-118,36},{-110,36},{-110,10},{28,10},{28,26},{66,26},{66,10},{98,10}},
-                                              color={255,0,255}));
   connect(swiSecGen.u1, buiAndDHWCtr.ySecGenSet) annotation (Line(points={{98,18},
-          {90,18},{90,45},{-118,45}},     color={0,0,127}));
-  connect(buiAndDHWCtr.priGren, priGenPIDCtrl.setOn) annotation (Line(points={{
-          -118,27.5},{-100,27.5},{-100,30},{-10,30},{-10,78},{-8,78},{-8,90},{
-          100.4,90}}, color={255,0,255}));
+          {90,18},{90,39},{-118,39}},     color={0,0,127}));
+  connect(buiAndDHWCtr.priGren, priGenPIDCtrl.setOn) annotation (Line(points={{-118,
+          27.3333},{-104,27.3333},{-104,90},{80.4,90}},
+                      color={255,0,255}));
+  connect(secGenOn.y, swiSecGen.u2) annotation (Line(points={{-69,30},{88,30},{
+          88,10},{98,10}}, color={255,0,255}));
 end MonoenergeticHeatPumpSystem;

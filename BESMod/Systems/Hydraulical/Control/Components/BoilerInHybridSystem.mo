@@ -13,7 +13,8 @@ model BoilerInHybridSystem "Decides when to use the boiler"
   Modelica.Blocks.MathBoolean.And allConMet(nu=3)
     "If all 3 conditions are met, turn secondary heater on"
     annotation (Placement(transformation(extent={{34,-10},{54,10}})));
-  Modelica.Blocks.Logical.Or or2
+  Modelica.Blocks.MathBoolean.Or
+                             or2(nu=3)
     "if Toda is smaller than TCutOff, activate Boiler"
     annotation (Placement(transformation(extent={{72,-10},{92,10}})));
   Modelica.Blocks.Logical.LessThreshold lesTCutOff(threshold=TCutOff)
@@ -38,26 +39,21 @@ model BoilerInHybridSystem "Decides when to use the boiler"
     annotation (Placement(transformation(extent={{-140,-44},{-100,-4}})));
   Modelica.Blocks.Interfaces.BooleanInput priGenIsOn
     "=true if primary generator is on"
-    annotation (Placement(transformation(extent={{-138,-80},{-98,-40}})));
+    annotation (Placement(transformation(extent={{-140,-80},{-100,-40}})));
   Modelica.Blocks.Interfaces.RealInput ySetPriGen "Primary generator set speed"
     annotation (Placement(transformation(extent={{-140,-10},{-100,30}})));
   Modelica.Blocks.Interfaces.BooleanOutput secGenOn "Turn secondary generator on"
     annotation (Placement(transformation(extent={{100,-10},{120,10}})));
+  Modelica.Blocks.Interfaces.BooleanInput secGenOnDueToOpeEnv
+    "=true if secondary generator should turn on due to operational envelope control"
+    annotation (Placement(transformation(extent={{-140,-110},{-100,-70}})));
 equation
   connect(lesTBiv.y, allConMet.u[1]) annotation (Line(points={{-39,90},{-24,90},{
           -24,40},{4,40},{4,-2.33333},{34,-2.33333}}, color={255,0,255}));
   connect(or1.y, allConMet.u[2]) annotation (Line(points={{21,-20},{30,-20},{30,
           -2},{34,-2},{34,0}}, color={255,0,255}));
-  connect(allConMet.y, or2.u2) annotation (Line(points={{55.5,0},{62,0},{62,-8},{
-          70,-8}}, color={255,0,255}));
-  connect(lesTCutOff.y, or2.u1) annotation (Line(points={{-39,60},{64,60},{64,0},
-          {70,0}}, color={255,0,255}));
   connect(not2.y, safCtrOn.u1) annotation (Line(points={{-59,-60},{-48,-60},{-48,
           -40},{-42,-40}}, color={255,0,255}));
-  connect(safCtrOn.y, or1.u2) annotation (Line(points={{-19,-40},{-10,-40},{-10,
-          -28},{-2,-28}}, color={255,0,255}));
-  connect(hysPriGenAtMax.y, or1.u1) annotation (Line(points={{-39,10},{-8,10},{-8,
-          -20},{-2,-20}}, color={255,0,255}));
   connect(allConMet.u[3], secGen) annotation (Line(points={{34,2.33333},{34,-2},{
           4,-2},{4,40},{-118,40}}, color={255,0,255}));
   connect(lesTBiv.u, TOda) annotation (Line(points={{-62,90},{-92,90},{-92,80},{
@@ -65,13 +61,24 @@ equation
   connect(lesTCutOff.u, TOda) annotation (Line(points={{-62,60},{-88,60},{-88,80},
           {-120,80}}, color={0,0,127}));
   connect(priGenIsOn, not2.u)
-    annotation (Line(points={{-118,-60},{-82,-60}}, color={255,0,255}));
+    annotation (Line(points={{-120,-60},{-82,-60}}, color={255,0,255}));
   connect(safCtrOn.u2, priGenSetOn) annotation (Line(points={{-42,-32},{-94,-32},
           {-94,-24},{-120,-24}}, color={255,0,255}));
   connect(hysPriGenAtMax.u, ySetPriGen)
     annotation (Line(points={{-62,10},{-120,10}}, color={0,0,127}));
   connect(or2.y, secGenOn)
-    annotation (Line(points={{93,0},{110,0}}, color={255,0,255}));
+    annotation (Line(points={{93.5,0},{110,0}},
+                                              color={255,0,255}));
+  connect(or1.u1, hysPriGenAtMax.y) annotation (Line(points={{-2,-20},{-34,-20},
+          {-34,10},{-39,10}}, color={255,0,255}));
+  connect(or1.u2, safCtrOn.y) annotation (Line(points={{-2,-28},{-14,-28},{-14,
+          -40},{-19,-40}}, color={255,0,255}));
+  connect(or2.u[1], allConMet.y) annotation (Line(points={{72,-2.33333},{64,
+          -2.33333},{64,0},{55.5,0}}, color={255,0,255}));
+  connect(or2.u[2], lesTCutOff.y) annotation (Line(points={{72,0},{64,0},{64,0},
+          {60,0},{60,44},{-36,44},{-36,60},{-39,60}}, color={255,0,255}));
+  connect(or2.u[3], secGenOnDueToOpeEnv) annotation (Line(points={{72,2.33333},
+          {62,2.33333},{62,-90},{-120,-90}}, color={255,0,255}));
   annotation (Diagram(coordinateSystem(extent={{-100,-100},{100,100}})), Icon(
         coordinateSystem(extent={{-100,-100},{80,100}})));
 end BoilerInHybridSystem;
