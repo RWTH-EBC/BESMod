@@ -89,15 +89,16 @@ model PartialHeatPump "Generation with only the heat pump"
       Q_flow_design[1] else QGenBiv_flow_nominal
     "Nominal heat flow rate of primary generation component (e.g. heat pump)"
     annotation (Dialog(tab="Calculated", group="Heat Pump System Design"));
-  parameter Modelica.Units.SI.HeatFlowRate QSec_flow_nominal=if genDesTyp ==
+  parameter Modelica.Units.SI.HeatFlowRate QSec_flow_nominal=max(QSecMin_flow_nominal, if genDesTyp ==
       Systems.Hydraulical.Generation.Types.GenerationDesign.Monovalent then 0
        elseif genDesTyp == Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentAlternativ
        then Q_flow_design[1] elseif genDesTyp == Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentParallel
-       then max(0, Q_flow_design[1] - QPriAtTOdaNom_flow_nominal) else Q_flow_design[1]
+       then max(0, Q_flow_design[1] - QPriAtTOdaNom_flow_nominal) else Q_flow_design[1])
     "Nominal heat flow rate of secondary generation component (e.g. auxilliar heater)"
     annotation (Dialog(tab="Calculated", group="Heat Pump System Design"));
-
-
+  parameter Modelica.Units.SI.HeatFlowRate QSecMin_flow_nominal(min=0)=0
+    "Minimal secondary generator design heat flow rate according to EN 15450 for DHW"
+    annotation (Dialog(tab="Calculated", group="Heat Pump System Design"));
   parameter Boolean use_airSource=true
     "Turn false to use water as temperature source"
      annotation(Dialog(group="Component choices"));
@@ -114,7 +115,6 @@ model PartialHeatPump "Generation with only the heat pump"
   parameter Modelica.Media.Interfaces.Types.Temperature TSoilConst=273.15 + 10
     "Constant soil temperature for ground source heat pumps"
     annotation(Dialog(group="Component choices", enable=use_airSource));
-
   replaceable BESMod.Systems.Hydraulical.Control.Components.Defrost.NoDefrost defCtrl if use_rev and use_airSource
     constrainedby
     BESMod.Systems.Hydraulical.Control.Components.Defrost.BaseClasses.PartialDefrost
@@ -134,7 +134,6 @@ model PartialHeatPump "Generation with only the heat pump"
        QCoo_flow_nominal=heatPump.QCoo_flow_nominal)
   "Refrigerant cycle module for the cooling mode"
     annotation (Dialog(group="Component choices", enable=use_rev),choicesAllMatching=true);
-
   parameter Modelica.Units.SI.Temperature TConCoo_nominal=291.15
     "Nominal temperature of the cooled fluid"
      annotation(Dialog(group="Component choices", enable=use_rev));
@@ -191,7 +190,6 @@ model PartialHeatPump "Generation with only the heat pump"
         extent={{17.5,-17.5},{-17.5,17.5}},
         rotation=270,
         origin={-40.5,17.5})));
-
   IBPSA.Fluid.Sources.Boundary_ph bou_sinkAir(final nPorts=1, redeclare package
       Medium =         MediumEva)                       annotation (Placement(
         transformation(
@@ -205,7 +203,6 @@ model PartialHeatPump "Generation with only the heat pump"
     final use_m_flow_in=false,
     final nPorts=1) "Evaporator boundary"
     annotation (Placement(transformation(extent={{-100,40},{-80,60}})));
-
   Modelica.Blocks.Logical.Switch switch "Switch between air and soil temperature"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -216,19 +213,15 @@ model PartialHeatPump "Generation with only the heat pump"
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-170,90})));
-
   Utilities.KPIs.EnergyKPICalculator KPIWel(use_inpCon=true)
     annotation (Placement(transformation(extent={{-140,-40},{-120,-20}})));
-
   Modelica.Blocks.Sources.Constant TSoil(k=TSoilConst)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-170,50})));
-
   BESMod.Utilities.KPIs.EnergyKPICalculator KPIQHP(use_inpCon=true)
     annotation (Placement(transformation(extent={{-140,-80},{-120,-60}})));
-
   IBPSA.Fluid.Sensors.TemperatureTwoPort senTGenOut(
     redeclare final package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
@@ -259,7 +252,6 @@ model PartialHeatPump "Generation with only the heat pump"
     calc_totalOnTime=true,
     calc_numSwi=true) "Heat pump KPIs"
     annotation (Placement(transformation(extent={{-120,-60},{-100,-40}})));
-
   BESMod.Systems.Hydraulical.Control.Components.BaseClasses.HeatPumpBusPassThrough
     heaPumSigBusPasThr
     "Bus connector pass through for OpenModelica" annotation (Placement(
@@ -267,14 +259,12 @@ model PartialHeatPump "Generation with only the heat pump"
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={-40,90})));
-
   Modelica.Blocks.Sources.Constant constTAmb(final k=TAmb) if not use_airSource
     "Constant ambient temperature for heat pump" annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-170,10})));
-
   AixLib.Fluid.HeatPumps.ModularReversible.BaseClasses.RefrigerantMachineControlBus
     sigBus "Bus with model outputs and possibly inputs"
     annotation (Placement(transformation(extent={{-92,-60},{-52,-20}})));
@@ -285,8 +275,6 @@ model PartialHeatPump "Generation with only the heat pump"
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-170,-30})));
-
-
   BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter
                                             resGen(
     redeclare final package Medium = Medium,
@@ -301,7 +289,6 @@ model PartialHeatPump "Generation with only the heat pump"
     final roughness=roughness)
     "Pressure drop model depending on the configuration"
     annotation (Placement(transformation(extent={{60,-20},{80,0}})));
-
 equation
   connect(bouEva.ports[1], heatPump.port_a2) annotation (Line(points={{-80,50},
           {-50,50},{-50,35},{-51,35}},         color={0,127,255}));
@@ -312,12 +299,10 @@ equation
           50},{-119,50}}, color={0,0,127}));
   connect(switch.u2, AirOrSoil.y) annotation (Line(points={{-142,50},{-152,50},{-152,
           90},{-159,90}}, color={255,0,255}));
-
   connect(TSoil.y, switch.u3) annotation (Line(points={{-159,50},{-156,50},{-156,
           42},{-142,42}}, color={0,0,127}));
   connect(senTGenOut.port_b, portGen_out[1])
     annotation (Line(points={{80,80},{100,80}}, color={0,127,255}));
-
   connect(realToElecCon.internalElectricalPin, internalElectricalPin)
     annotation (Line(
       points={{89.8,-78.2},{72,-78.2},{72,-100}},
@@ -325,7 +310,6 @@ equation
       thickness=1));
   connect(multiSum.y, realToElecCon.PEleLoa)
     annotation (Line(points={{122.98,-82},{112,-82}}, color={0,0,127}));
-
   connect(switch.u1, weaBus.TDryBul) annotation (Line(points={{-142,58},{-144,58},
           {-144,80.11},{-100.895,80.11}},
                                 color={0,0,127}), Text(
@@ -365,7 +349,6 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-
   connect(heatPump.P, multiSum.u[1]) annotation (Line(points={{-40.5,36.75},{-40.5,
           40},{152,40},{152,-82},{136,-82}},       color={0,0,127}));
   connect(KPIWel.u, heatPump.P) annotation (Line(points={{-141.8,-30},{-148,-30},
@@ -398,7 +381,6 @@ equation
               {-108,10},{-108,-26},{-26,-26},{-26,-1.925},{-24.925,-1.925}},
                                                                        color={0,0,127}));
     end if;
-
   end if;
   if parHeaPum.use_evaCap then
     if use_airSource then
@@ -410,12 +392,10 @@ equation
               {-108,10},{-108,-26},{-56.425,-26},{-56.425,-1.925}},
                                                               color={0,0,127}));
     end if;
-
   end if;
   connect(defCtrl.hea, heatPump.hea) annotation (Line(points={{-81.2,20},{-60,
           20},{-60,-6},{-44,-6},{-44,-1.925},{-44.175,-1.925}},
                                           color={255,0,255}));
-
   connect(sigBus, heatPump.sigBus) annotation (Line(
       points={{-72,-40},{-72,0.175},{-47.325,0.175}},
       color={255,204,51},
@@ -463,9 +443,13 @@ equation
   connect(portGen_in[1], resGen.port_b)
     annotation (Line(points={{100,-2},{90,-2},{90,-10},{80,-10}},
                                                 color={0,127,255}));
-  annotation (Line(
+    annotation (Dialog(tab="Calculated", group="Heat Pump System Design"),
+              Line(
       points={{-52.775,-6.78},{-52.775,33.61},{-56,33.61},{-56,74}},
       color={255,204,51},
       thickness=0.5),
               Diagram(coordinateSystem(extent={{-180,-140},{100,100}})));
+
+
+
 end PartialHeatPump;
