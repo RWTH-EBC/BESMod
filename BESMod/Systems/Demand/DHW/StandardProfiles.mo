@@ -5,7 +5,7 @@ model StandardProfiles "DHW profiles based on EU 812/2013"
     tCrit=DHWProfile.tCrit,
     TDHWCold_nominal=283.15,
     TDHW_nominal=323.15,
-    VDHWDay=DHWProfile.VDHWDay,
+    VDHWDayAt60=DHWProfile.VDHWDayAt60,
     mDHW_flow_nominal=DHWProfile.m_flow_nominal,
     combiTimeTableDHWInput(tableOnFile=false, table=DHWProfile.table));
   replaceable parameter Systems.Demand.DHW.RecordsCollection.ProfileM

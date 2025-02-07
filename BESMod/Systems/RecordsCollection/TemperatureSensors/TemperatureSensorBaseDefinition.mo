@@ -1,6 +1,6 @@
 within BESMod.Systems.RecordsCollection.TemperatureSensors;
 partial record TemperatureSensorBaseDefinition
-  extends Modelica.Icons.Record;
+  extends BESMod.Utilities.Icons.RecordWithName;
 
   parameter Modelica.Units.SI.Time tau
     "Time constant at nominal flow rate (use tau=0 for steady-state sensor, but see user guide for potential problems)";

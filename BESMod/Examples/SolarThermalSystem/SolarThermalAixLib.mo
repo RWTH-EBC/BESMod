@@ -13,10 +13,10 @@ model SolarThermalAixLib "Solar thermal collector from AixLib"
             (y_nominal=0.8, redeclare
               AixLib.Fluid.HeatPumps.ModularReversible.Data.TableDataSDF.TableData3D.VCLibPy.VCLibVaporInjectionPhaseSeparatorPropane
               datTab),
+
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater.DefaultElectricHeater
           parEleHea,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare package MediumEva = AixLib.Media.Air,
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
@@ -25,9 +25,7 @@ model SolarThermalAixLib "Solar thermal collector from AixLib"
           final A=parameterStudy.A,
           final eta_zero=parameterStudy.eta_zero,
           final c1=parameterStudy.c1,
-          final c2=parameterStudy.c2),
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover
-          parPumSolThe));
+          final c2=parameterStudy.c2)));
 
   extends Modelica.Icons.Example;
   annotation (

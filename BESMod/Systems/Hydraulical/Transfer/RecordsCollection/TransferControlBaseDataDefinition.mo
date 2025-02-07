@@ -1,7 +1,7 @@
 within BESMod.Systems.Hydraulical.Transfer.RecordsCollection;
 record TransferControlBaseDataDefinition
   "Custom transfer control data record"
-  extends BESMod.Systems.RecordsCollection.SubsystemControlBaseDataDefinition;
+  extends BESMod.Systems.RecordsCollection.SingleSideSubsystemControlBaseDataDefinition;
 
   parameter Modelica.Units.SI.HeatFlowRate QSup_flow_nominal[nParallelSup]=fill(sum(
       Q_flow_nominal .* f_design), nParallelSup)

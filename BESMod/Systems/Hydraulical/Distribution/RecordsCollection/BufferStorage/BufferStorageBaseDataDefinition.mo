@@ -43,6 +43,8 @@ record BufferStorageBaseDataDefinition
       tab="Calculated",
       group="Loading",
       enable=use_HC2));
+  parameter Modelica.Units.SI.HeatFlux qHC2_flow_nominal = (lengthHC2 * pipeHC2.d_o * Modelica.Constants.pi) / QHC2_flow_nominal
+    "Area per heat flow rate of coil, should be greater than 0.25 m2/kW according to VDI 4645";
 
 
 end BufferStorageBaseDataDefinition;

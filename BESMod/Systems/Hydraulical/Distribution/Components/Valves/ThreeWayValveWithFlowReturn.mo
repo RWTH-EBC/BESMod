@@ -68,7 +68,7 @@ equation
   connect(threWayValFlow.y, uBuf)
     annotation (Line(points={{0,68},{0,120}}, color={0,0,127}));
   connect(threWayValFlow.port_1, portBui_b) annotation (Line(points={{22,44},{
-          34,44},{34,42},{56,42},{56,80},{100,80}}, color={0,127,255}));
+          56,44},{56,80},{100,80}},                 color={0,127,255}));
   connect(threWayValFlow.port_3, portDHW_b) annotation (Line(points={{0,24},{0,
           14},{84,14},{84,-36},{100,-36}}, color={0,127,255}));
   connect(threWayValFlow.port_2, portGen_a) annotation (Line(points={{-22,44},{

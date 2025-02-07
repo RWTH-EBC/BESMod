@@ -59,7 +59,9 @@ model PressureReliefValve
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={70,50})));
-  Modelica.Blocks.Continuous.FirstOrder firstOrder(k=1, T=360) annotation (
+  Modelica.Blocks.Continuous.FirstOrder firstOrder(k=1, T=360,
+    initType=init,
+    y_start=y_start)                                           annotation (
       Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=180,
