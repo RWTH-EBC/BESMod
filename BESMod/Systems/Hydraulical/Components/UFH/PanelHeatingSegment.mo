@@ -61,7 +61,7 @@ parameter
     final A=A_floor,
     final calcMethod=calcMethod,
     final hCon_const=hCon_const,
-    surfaceOrientation=if isFloor then AixLib.ThermalZones.HighOrder.Components.Types.InsideSurfaceOrientation.floor else AixLib.ThermalZones.HighOrder.Components.Types.InsideSurfaceOrientation.vertical_wall) annotation (Placement(
+    surfaceOrientation=if isFloor then AixLib.ThermalZones.HighOrder.Components.Types.InsideSurfaceOrientation.floor else AixLib.ThermalZones.HighOrder.Components.Types.InsideSurfaceOrientation.ceiling)  annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
