@@ -18,6 +18,7 @@ model TimeConstantEstimationControl
     final TOda_nominal=parGen.TOda_nominal,
     final nHeaTra=parTra.nHeaTra) "Supply set temperature" annotation (Placement(
         transformation(extent={{-160,20},{-140,40}})), choicesAllMatching=true);
+  replaceable
     BESMod.Systems.Hydraulical.Control.Components.RelativeSpeedController.PID PIDCtrl(
     yMax=parPID.yMax,
     yOff=parPID.yOff,
