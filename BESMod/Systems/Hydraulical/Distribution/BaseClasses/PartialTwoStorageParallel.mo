@@ -47,7 +47,7 @@ partial model PartialTwoStorageParallel
 
   replaceable parameter
     BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition parStoDHW
-    if use_dhw constrainedby
+               constrainedby
     BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition(
     iconName="DHW",
     final Q_flow_nominal=0,
@@ -86,9 +86,9 @@ partial model PartialTwoStorageParallel
         rotation=180,
         origin={4,20})));
 
-  Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixTemDHW(final T=
-        parStoDHW.TAmb) if use_dhw
-                        "Constant ambient temperature of storage" annotation (
+  Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixTemDHW(
+      final T=if use_dhw then parStoDHW.TAmb else TDHW_nominal)
+      "Constant ambient temperature of storage" annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
@@ -200,7 +200,7 @@ partial model PartialTwoStorageParallel
         AixLib.Fluid.Storage.BaseClasses.HeatTransferBuoyancyWetter,
     final allowFlowReversal_layers=allowFlowReversal,
     final allowFlowReversal_HC1=allowFlowReversal,
-    final allowFlowReversal_HC2=allowFlowReversal) if use_dhw "DHW storage"
+    final allowFlowReversal_HC2=allowFlowReversal)            "DHW storage"
     annotation (Placement(transformation(extent={{-50,-70},{-18,-30}})));
 
   BESMod.Utilities.KPIs.EnergyKPICalculator eneKPICalBuf(use_inpCon=false, y=fixTemBuf.port.Q_flow)
@@ -271,6 +271,27 @@ partial model PartialTwoStorageParallel
         rotation=180,
         origin={70,40})));
 
+  IBPSA.Fluid.Sources.MassFlowSource_T
+                                  souNoDHW(
+    redeclare package Medium = MediumDHW,
+    m_flow=0.01,
+    final T=TDHW_nominal,
+    nPorts=1) if not use_dhw
+    "Constant mass flow source to disable DHW and always ensure the DHW storage is at TDHW_nominal"
+                                                       annotation (Placement(
+        transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={0,-70})));
+  IBPSA.Fluid.Sources.Boundary_pT bouNoDHW(
+    redeclare package Medium = MediumDHW,
+    final p=p_start,
+    final T=T_start,
+    nPorts=1) if not use_dhw "Boundary to disable DHW" annotation (Placement(
+        transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={0,-30})));
 protected
   parameter Boolean use_secHeaCoiDHWSto
     "=false to disable second heating coil in DHW storage";
@@ -291,8 +312,12 @@ equation
           {-10,-48.8},{-18.4,-48.8}},                               color={191,0,0}));
   connect(stoBuf.heatportOutside, fixTemBuf.port) annotation (Line(points={{-18.4,
           21.2},{-18.4,20},{-6,20}},       color={191,0,0}));
+  if use_dhw then
   connect(portDHW_in, stoDHW.fluidportBottom2) annotation (Line(points={{100,-82},
           {-29.4,-82},{-29.4,-70.2}}, color={0,127,255}));
+  connect(stoDHW.fluidportTop2, portDHW_out) annotation (Line(points={{-29,-29.8},
+          {-29,-22},{100,-22}},                   color={0,127,255}));
+  end if;
   connect(senTBuiSup.port_b, portBui_out[1]) annotation (Line(points={{86,80},{100,
           80}},                   color={0,127,255}));
   connect(senTBuiSup.T, sigBusDistr.TBuiSupMea) annotation (Line(points={{76,91},
@@ -302,8 +327,6 @@ equation
       index=1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(stoDHW.fluidportTop2, portDHW_out) annotation (Line(points={{-29,-29.8},
-          {-29,-22},{100,-22}},                   color={0,127,255}));
   connect(eneKPICalBuf.KPI, outBusDist.QBufLos_flow) annotation (Line(points={{-57.8,
           -150},{0,-150},{0,-100}}, color={135,135,135}), Text(
       string="%second",
@@ -336,12 +359,7 @@ equation
       points={{40.2,-109.8},{56,-109.8},{56,-98},{70,-98}},
       color={0,0,0},
       thickness=1));
-  if parStoDHW.use_hr and use_dhw then
-  else
-  end if;
-  if parStoBuf.use_hr then
-  else
-  end if;
+
   connect(stoBuf.TTop, sigBusDistr.TStoBufTopMea) annotation (Line(points={{-50,
           37.6},{-126,37.6},{-126,101},{0,101}}, color={0,0,127}), Text(
       string="%second",
@@ -414,5 +432,9 @@ equation
         color={0,0,127}));
   connect(pumTra.P, multiSum.u[4]) annotation (Line(points={{59,46},{72,46},{72,
           102},{-126,102},{-126,-108.637},{-58,-108.637}}, color={0,0,127}));
+  connect(bouNoDHW.ports[1], stoDHW.fluidportTop2) annotation (Line(points={{-10,
+          -30},{-10,-22},{-29,-22},{-29,-29.8}}, color={0,127,255}));
+  connect(souNoDHW.ports[1], stoDHW.fluidportBottom2) annotation (Line(points={{
+          -10,-70},{-12,-70.2},{-29.4,-70.2}}, color={0,127,255}));
   annotation (Diagram(coordinateSystem(extent={{-100,-180},{100,180}})));
 end PartialTwoStorageParallel;
