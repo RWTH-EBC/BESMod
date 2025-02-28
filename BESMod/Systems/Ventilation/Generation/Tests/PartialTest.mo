@@ -14,11 +14,10 @@ partial model PartialTest
     energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
     m_flow_nominal=fill(0.5*150*2.6/3600*1.225, generation.nParallelDem),
     Q_flow_nominal=fill(sum(systemParameters.QBui_flow_nominal), generation.nParallelDem),
+
     TOda_nominal=systemParameters.TOda_nominal,
     TDem_nominal=systemParameters.TSetZone_nominal,
-    TAmb=systemParameters.TAmbVen,
-    dpDem_nominal=fill(0, generation.nParallelDem))
-                                   annotation (Placement(transformation(extent=
+    TAmb=systemParameters.TAmbVen) annotation (Placement(transformation(extent=
             {{-20,-68},{68,30}})), choicesAllMatching=true);
 
   IBPSA.Fluid.MixingVolumes.MixingVolume vol[generation.nParallelDem](

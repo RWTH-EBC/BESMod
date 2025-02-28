@@ -21,7 +21,8 @@ partial model PartialControl "Partial controller for HPS"
             -216,22}})));
   Interfaces.TransferControlBus sigBusTra
     annotation (Placement(transformation(extent={{152,-124},{196,-76}})));
-  replaceable parameter BESMod.Systems.RecordsCollection.SubsystemControlBaseDataDefinition
+  replaceable parameter
+    BESMod.Systems.RecordsCollection.SingleSideSubsystemControlBaseDataDefinition
     parGen "Parameters of generation subsystem"
     annotation (Placement(transformation(extent={{-194,-106},{-174,-86}})));
   replaceable parameter BESMod.Systems.Hydraulical.Distribution.RecordsCollection.DistributionControlBaseDataDefinition

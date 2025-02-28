@@ -113,7 +113,7 @@ partial model PartialBuildingEnergySystem "Partial BES"
       final QCrit=DHW.QCrit,
       final TDHWCold_nominal=DHW.TDHWCold_nominal,
       final QDHW_flow_nominal=DHW.QDHW_flow_nominal,
-      final VDHWDay=DHW.VDHWDay),
+      final VDHWDayAt60=DHW.VDHWDayAt60),
       final use_openModelica=use_openModelica)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-198,
             -98},{-42,-2}})));

@@ -1,6 +1,6 @@
 within BESMod.Systems.RecordsCollection.Valves;
 partial record ThreeWayValve
-  extends Modelica.Icons.Record;
+  extends BESMod.Utilities.Icons.RecordWithName;
 
   parameter Modelica.Units.SI.MassFlowRate m_flow_nominal
     "Nominal mass flow rate";

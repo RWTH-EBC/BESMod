@@ -2,11 +2,6 @@ within BESMod.Systems.Demand.DHW.BaseClasses;
 partial model PartialDHWWithBasics "DHW module with basic models"
   extends BaseClasses.PartialDHW;
 
-  replaceable parameter
-    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
-    parPum
-    annotation (choicesAllMatching=true, Placement(transformation(extent={{-96,-96},{-84,-84}})));
-
   replaceable TappingProfiles.BaseClasses.PartialDHW calcmFlow constrainedby
     TappingProfiles.BaseClasses.PartialDHW(
     final TCold=TDHWCold_nominal,
@@ -36,10 +31,8 @@ Modelica.Blocks.Math.UnitConversions.From_degC fromDegC
     final m_flow_nominal=mDHW_flow_nominal,
     final dp_nominal(displayUnit="Pa") = if dpDHW_nominal <> 0 then
       dpDHW_nominal else 100,
-    final addPowerToMedium=parPum.addPowerToMedium,
-    final tau=parPum.tau,
-    final use_riseTime=parPum.use_riseTime,
-    final riseTime=parPum.riseTimeInpFilter)                 annotation (Placement(transformation(
+    final addPowerToMedium=false,
+    final use_riseTime=false)                       annotation (Placement(transformation(
         extent={{-9.5,9.5},{9.5,-9.5}},
         rotation=180,
         origin={-69.5,-50.5})));

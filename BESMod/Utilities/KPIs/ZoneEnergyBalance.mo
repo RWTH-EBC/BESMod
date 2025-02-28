@@ -2,10 +2,12 @@ within BESMod.Utilities.KPIs;
 model ZoneEnergyBalance
   "Model for energy KPIs relevant for a single zone"
   parameter Boolean with_ventilation=true "=false to disable ventilation values";
+  parameter Boolean with_floor=true "=false to disable floor values";
   BaseClasses.SplitGainAndLoss tra
     "KPIs for energy flow through transfer systems"
     annotation (Placement(transformation(extent={{-10,-170},{10,-150}})));
-  BaseClasses.SplitGainAndLoss floor "KPIs for energy flow through floor"
+  BaseClasses.SplitGainAndLoss floor if with_floor
+                                     "KPIs for energy flow through floor"
     annotation (Placement(transformation(extent={{-10,110},{10,130}})));
   BaseClasses.SplitGainAndLoss win "KPIs for energy flow through window"
     annotation (Placement(transformation(extent={{-10,70},{10,90}})));
@@ -41,6 +43,7 @@ model ZoneEnergyBalance
     "Heat flow through roof"
     annotation (Placement(transformation(extent={{-140,140},{-100,180}})));
   Modelica.Blocks.Interfaces.RealInput QFloor_flow(unit="W", displayUnit="kW")
+    if with_floor
     "Heat flow through floor"
     annotation (Placement(transformation(extent={{-140,100},{-100,140}})));
   Modelica.Blocks.Interfaces.RealInput QWin_flow(unit="W", displayUnit="kW")

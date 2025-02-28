@@ -1,0 +1,39 @@
+clear
+
+convertClear();
+
+convertClass("BESMod.Systems.Hydraulical.Distribution.DistributionTwoStorageParallel", "BESMod.Systems.Hydraulical.Distribution.SimpleTwoStorageParallel");
+
+convertModifiers("BESMod.Systems.Hydraulical.Generation.ElectricalHeater", {"parPum"}, fill("",0), true);
+convertModifiers("BESMod.Systems.Hydraulical.Generation.GasBoiler", {"parPum"}, fill("",0), true);
+convertModifiers("BESMod.Systems.Hydraulical.Generation.HeatPump", {"parPum"}, fill("",0), true);
+convertModifiers("BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater", {"parPum"}, fill("",0), true);
+convertModifiers("BESMod.Systems.Hydraulical.Generation.HeatPumpAndGasBoilerParallel", {"parPum"}, fill("",0), true);
+convertModifiers("BESMod.Systems.Hydraulical.Generation.HeatPumpAndGasBoilerSerial", {"parPum"}, fill("",0), true);
+convertModifiers("BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater", {"parPum"}, fill("",0), true);
+convertModifiers("BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump", {"parPum"}, fill("",0), true);
+convertModifiers("BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump", {"parPum"}, fill("",0), true);
+convertModifiers("BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump", {"parPumSolThe"}, fill("",0), true);
+convertModifiers("BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump", {"parPumSolThe"}, fill("",0), true);
+
+convertModifiers("BESMod.Systems.Demand.DHW.BaseClasses.PartialDHWWithBasics", {"parPum"}, fill("",0), true);
+convertModifiers("BESMod.Systems.Demand.DHW.DHWCalc", {"parPum"}, fill("",0), true);
+convertModifiers("BESMod.Systems.Demand.DHW.StandardProfiles", {"parPum"}, fill("",0), true);
+
+
+
+convertElement("BESMod.Systems.Hydraulical.Generation.HeatPump", "Medium_eva", "MediumEva");
+convertElement("BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater", "Medium_eva", "MediumEva");
+convertElement("BESMod.Systems.Hydraulical.Generation.HeatPumpAndGasBoilerParallel", "Medium_eva", "MediumEva");
+convertElement("BESMod.Systems.Hydraulical.Generation.HeatPumpAndGasBoilerSerial", "Medium_eva", "MediumEva");
+convertElement("BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater", "Medium_eva", "MediumEva");
+convertElement("BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump", "Medium_eva", "MediumEva");
+convertElement("BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump", "Medium_eva", "MediumEva");
+
+
+convertModifiers("BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator", {"parTra"}, fill("",0), true);
+convertModifiers("BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem", {"parTra"}, fill("",0), true);
+convertModifiers("BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased", {"parTra"}, fill("",0), true);
+convertModifiers("BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased", {"parPum"}, fill("",0), true);
+
+convertModifiers("BESMod.Systems.Hydraulical.Distribution.BuildingOnly", {"nParallelDem"}, fill("", 0), true);

@@ -23,11 +23,15 @@ partial model PartialSolarThermalHPS
             BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
         redeclare model BuildingHysteresis =
             BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
+
+        withSolThePumCtrl=true,
+        thrToTurSolTheOn=100,
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
           parPIDHeaPum),
-      redeclare BESMod.Systems.Hydraulical.Distribution.CombiStorage distribution(
-          redeclare BESMod.Examples.SolarThermalSystem.CombiStorage parameters(
+      redeclare BESMod.Systems.Hydraulical.Distribution.CombiStorage
+        distribution(redeclare BESMod.Examples.SolarThermalSystem.CombiStorage
+          parSto(
           V=parameterStudy.V,
           use_HC1=true,
           dTLoadingHC1=5,
@@ -37,15 +41,10 @@ partial model PartialSolarThermalHPS
         transfer(
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
-          parRad,
-        redeclare
-          BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
-          parTra,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum)),
+          parRad)),
     redeclare Systems.Demand.DHW.StandardProfiles DHW(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
-      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic calcmFlow),
     redeclare SolarThermalSystemParameters systemParameters,
     redeclare SolarThermalDesignOptimization parameterStudy(

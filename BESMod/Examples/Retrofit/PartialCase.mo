@@ -13,7 +13,6 @@ partial model PartialCase
       redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater
         generation(
         use_old_design={NoRetrofitHydGen},
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         TBiv=271.15,
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps.DefaultHP
@@ -45,7 +44,8 @@ partial model PartialCase
       redeclare
         BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedDirectLoading
         distribution(
-        use_old_design={NoRetrofitHydDis},
+        use_oldHeat_design={NoRetrofitHydDis},
+        use_oldDemPump_design={NoRetrofitHydDis},
         QHeaAftBuf_flow_nominal=0,
         redeclare
           BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
@@ -69,15 +69,10 @@ partial model PartialCase
         use_oldRad_design={NoRetrofitHydTra},
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
-          parRad,
-        redeclare
-          BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
-          parTra,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum)),
+          parRad)),
     redeclare Systems.Demand.DHW.StandardProfiles DHW(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
-      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
         calcmFlow),
     redeclare Systems.UserProfiles.TEASERProfiles userProfiles,

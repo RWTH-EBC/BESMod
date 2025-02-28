@@ -32,12 +32,13 @@ parameter
       group="Heat convection",
       descriptionLabel=true,
       enable=if calcMethod == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.Custom_hCon then true else false));
-
+  parameter Boolean fixedInitial=false "=true to fix initial temperatures";
   Modelica.Fluid.Vessels.ClosedVolume vol(
     redeclare package Medium = Medium,
     energyDynamics=system.energyDynamics,
     use_HeatTransfer=true,
     T_start=T0,
+    medium(T(fixed=fixedInitial)),
     redeclare model HeatTransfer =
         Modelica.Fluid.Vessels.BaseClasses.HeatTransfer.IdealHeatTransfer,
     use_portsData=false,
@@ -72,12 +73,14 @@ parameter
   AixLib.Fluid.HeatExchangers.ActiveWalls.BaseClasses.HeatConductionSegment panel_Segment1(
     kA=kTop*A,
     mc_p=cTop*A,
+    heatCapacitor(T(fixed=fixedInitial)),
     T0=T0) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-16,30})));
   AixLib.Fluid.HeatExchangers.ActiveWalls.BaseClasses.HeatConductionSegment panel_Segment2(
     T0=T0,
+    heatCapacitor(T(fixed=fixedInitial)),
     kA=kDown*A,
     mc_p=cDown*A) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},

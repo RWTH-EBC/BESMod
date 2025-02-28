@@ -10,12 +10,8 @@ model ControlledDomesticVentilation
         threeWayValve_b,
       redeclare IBPSA.Fluid.Actuators.Valves.ThreeWayEqualPercentageLinear
         threeWayValve_a,
-      redeclare
-        BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
+      redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
         threeWayValveParas,
-      redeclare
-        BESMod.Systems.RecordsCollection.Movers.DefaultMover
-        fanData,
       redeclare
         BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
         tempSensorData));

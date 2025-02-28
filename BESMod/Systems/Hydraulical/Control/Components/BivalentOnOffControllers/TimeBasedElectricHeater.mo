@@ -8,67 +8,103 @@ model TimeBasedElectricHeater
     "Seconds for regulation when hr should be activated: If lower set temperature is hurt for more than this time period";
   parameter Real addSetDelTimEleHea=1
     "Each time electric heater time passes, the output of the electric heater is increased by this amount in percentage. Maximum and default is 100 (on-off hr)%";
+  parameter Boolean electricHeaterOnlyBelowBivalenceTemperature=false
+    "=true to only allow electric heater usage below bivalence temperature";
+  parameter Modelica.Units.SI.Temperature TBiv=273.15 "Bivalence temperature"
+    annotation(Dialog(enable=electricHeaterOnlyBelowBivalenceTemperature));
 
   BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.Utilities.StorageHysteresis
     hysSto(final bandwidth=dTHys, final pre_y_start=true) "Storage hysteresis"
-    annotation (Placement(transformation(extent={{-58,18},{-18,58}})));
+    annotation (Placement(transformation(extent={{-60,40},{-40,60}})));
   BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.Utilities.TriggerTime
     trigTime "Trigger once the hysteresis is violated"
-    annotation (Placement(transformation(extent={{-32,-88},{-12,-68}})));
+    annotation (Placement(transformation(extent={{-10,-30},{10,-10}})));
   Modelica.Blocks.Sources.RealExpression reaExp(y=min(floor((time - trigTime.y)/
         dtEleHea)*addSetDelTimEleHea, 1))
     "Calculate if electric heater time has elapsed"
-    annotation (Placement(transformation(extent={{6,-70},{26,-50}})));
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
   Modelica.Blocks.Logical.GreaterThreshold greThr(threshold=Modelica.Constants.eps)
-    annotation (Placement(transformation(extent={{70,-68},{86,-52}})));
+    annotation (Placement(transformation(extent={{60,-40},{80,-20}})));
 
   Modelica.Blocks.Logical.Switch swiOn "Switch on or off"
-    annotation (Placement(transformation(extent={{34,-86},{48,-72}})));
+    annotation (Placement(transformation(extent={{20,-40},{40,-20}})));
   Modelica.Blocks.Sources.Constant constOff(final k=0)
     "Turn auxilliar heater off"
-    annotation (Placement(transformation(extent={{14,-98},{24,-88}})));
+    annotation (Placement(transformation(extent={{-20,-80},{0,-60}})));
   Modelica.Blocks.Logical.OnOffController hysAuxHea(bandwidth=dTHys/2,
       pre_y_start=true)
     "Generates the on/off signal depending on the temperature inputs"
-    annotation (Placement(transformation(extent={{-62,-70},{-42,-50}})));
+    annotation (Placement(transformation(extent={{-80,-20},{-60,0}})));
   Modelica.Blocks.Math.Add add1(k1=-1)
-    annotation (Placement(transformation(extent={{-7,-7},{7,7}},
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
-        origin={-69,-95})));
+        origin={-70,-50})));
   Modelica.Blocks.Sources.Constant constdTHys(final k=dTHys/4)
     "Set auxilliar heater hysteresis"
-    annotation (Placement(transformation(extent={{-98,-118},{-88,-108}})));
+    annotation (Placement(transformation(extent={{-100,-100},{-80,-80}})));
+  Modelica.Blocks.Logical.And andBelBiv
+    "Check if should be turned on and is below bivalence temperature"
+    annotation (Placement(transformation(extent={{-40,-40},{-20,-20}})));
+  Modelica.Blocks.Sources.BooleanConstant conBelBiv(final k=true)
+    if not electricHeaterOnlyBelowBivalenceTemperature
+    "Disable below bivalence point check"
+    annotation (Placement(transformation(extent={{-40,0},{-20,20}})));
+  Modelica.Blocks.Logical.LessEqualThreshold belBiv(threshold=Modelica.Constants.eps)
+    if electricHeaterOnlyBelowBivalenceTemperature
+    "Is below bivalence temperature"
+    annotation (Placement(transformation(extent={{12,60},{32,80}})));
 equation
-  connect(TStoTop, hysSto.T_top) annotation (Line(points={{-120,60},{-86,60},{-86,
-          38},{-62,38}}, color={0,0,127}));
-  connect(TSupSet, hysSto.T_set) annotation (Line(points={{0,-118},{0,-20},{-80,-20},
-          {-80,54},{-62,54}}, color={0,0,127}));
-  connect(hysSto.y, priGenOn) annotation (Line(points={{-16,38},{30,38},{30,60},{110,
-          60}}, color={255,0,255}));
+  connect(TStoTop, hysSto.T_top) annotation (Line(points={{-120,60},{-92,60},{
+          -92,42},{-72,42},{-72,50},{-62,50}},
+                         color={0,0,127}));
+  connect(TSupSet, hysSto.T_set) annotation (Line(points={{0,-118},{0,-94},{-56,
+          -94},{-56,34},{-70,34},{-70,58},{-62,58}},
+                              color={0,0,127}));
+  connect(hysSto.y, priGenOn) annotation (Line(points={{-39,50},{94,50},{94,60},
+          {110,60}},
+                color={255,0,255}));
   connect(greThr.y, secGenOn)
-    annotation (Line(points={{86.8,-60},{110,-60}}, color={255,0,255}));
-  connect(constOff.y, swiOn.u3) annotation (Line(points={{24.5,-93},{28,-93},{28,-84.6},
-          {32.6,-84.6}}, color={0,0,127}));
-  connect(swiOn.y, ySecGenSet) annotation (Line(points={{48.7,-79},{70,-79},{70,-80},
-          {110,-80}}, color={0,0,127}));
-  connect(swiOn.y, greThr.u) annotation (Line(points={{48.7,-79},{56,-79},{56,-60},
-          {68.4,-60}}, color={0,0,127}));
-  connect(reaExp.y, swiOn.u1) annotation (Line(points={{27,-60},{30,-60},{30,-73.4},
-          {32.6,-73.4}}, color={0,0,127}));
-  connect(TStoTop, hysSto.T_bot) annotation (Line(points={{-120,60},{-92,60},{-92,
-          22},{-62,22}}, color={0,0,127}));
-  connect(TStoTop, hysAuxHea.u) annotation (Line(points={{-120,60},{-92,60},{-92,-66},
-          {-64,-66}}, color={0,0,127}));
-  connect(constdTHys.y, add1.u1) annotation (Line(points={{-87.5,-113},{-74,-113},
-          {-74,-103.4},{-73.2,-103.4}}, color={0,0,127}));
+    annotation (Line(points={{81,-30},{96,-30},{96,-60},{110,-60}},
+                                                    color={255,0,255}));
+  connect(constOff.y, swiOn.u3) annotation (Line(points={{1,-70},{18,-70},{18,
+          -38}},         color={0,0,127}));
+  connect(swiOn.y, ySecGenSet) annotation (Line(points={{41,-30},{52,-30},{52,
+          -80},{110,-80}},
+                      color={0,0,127}));
+  connect(swiOn.y, greThr.u) annotation (Line(points={{41,-30},{58,-30}},
+                       color={0,0,127}));
+  connect(reaExp.y, swiOn.u1) annotation (Line(points={{11,0},{18,0},{18,-22}},
+                         color={0,0,127}));
+  connect(TStoTop, hysSto.T_bot) annotation (Line(points={{-120,60},{-92,60},{
+          -92,42},{-72,42},{-72,32},{-62,32},{-62,42}},
+                         color={0,0,127}));
+  connect(TStoTop, hysAuxHea.u) annotation (Line(points={{-120,60},{-92,60},{
+          -92,-16},{-82,-16}},
+                      color={0,0,127}));
+  connect(constdTHys.y, add1.u1) annotation (Line(points={{-79,-90},{-76,-90},{
+          -76,-62}},                    color={0,0,127}));
   connect(add1.y, hysAuxHea.reference)
-    annotation (Line(points={{-69,-87.3},{-69,-54},{-64,-54}}, color={0,0,127}));
-  connect(TSupSet, add1.u2) annotation (Line(points={{0,-118},{0,-104},{-20,-104},
-          {-20,-103.4},{-64.8,-103.4}}, color={0,0,127}));
-  connect(hysAuxHea.y, trigTime.u) annotation (Line(points={{-41,-60},{-38,-60},{-38,
-          -78},{-34,-78}}, color={255,0,255}));
-  connect(hysAuxHea.y, swiOn.u2) annotation (Line(points={{-41,-60},{2,-60},{2,-79},
-          {32.6,-79}}, color={255,0,255}));
+    annotation (Line(points={{-70,-39},{-70,-28},{-90,-28},{-90,-4},{-82,-4}},
+                                                               color={0,0,127}));
+  connect(TSupSet, add1.u2) annotation (Line(points={{0,-118},{0,-94},{-56,-94},
+          {-56,-70},{-64,-70},{-64,-62}},
+                                        color={0,0,127}));
+  connect(andBelBiv.y, trigTime.u) annotation (Line(points={{-19,-30},{-16,-30},
+          {-16,-20},{-12,-20}}, color={255,0,255}));
+  connect(andBelBiv.u2, hysAuxHea.y) annotation (Line(points={{-42,-38},{-54,
+          -38},{-54,-10},{-59,-10}}, color={255,0,255}));
+  connect(andBelBiv.y, swiOn.u2) annotation (Line(points={{-19,-30},{-14,-30},{
+          -14,-34},{16,-34},{16,-30},{18,-30}}, color={255,0,255}));
+  connect(belBiv.u, TOda)
+    annotation (Line(points={{10,70},{0,70},{0,120}}, color={0,0,127}));
+  connect(conBelBiv.y, andBelBiv.u1) annotation (Line(
+      points={{-19,10},{-16,10},{-16,-8},{-46,-8},{-46,-30},{-42,-30}},
+      color={255,0,255},
+      pattern=LinePattern.Dash));
+  connect(andBelBiv.u1, belBiv.y) annotation (Line(
+      points={{-42,-30},{-46,-30},{-46,28},{40,28},{40,70},{33,70}},
+      color={255,0,255},
+      pattern=LinePattern.Dash));
   annotation (Icon(graphics={     Polygon(
             points={{-65,89},{-73,67},{-57,67},{-65,89}},
             lineColor={192,192,192},
