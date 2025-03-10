@@ -1,6 +1,0 @@
-loadFile("D:/04_git/BESMod/installed_dependencies/IBPSA/IBPSA/package.mo");
-loadFile("D:/04_git/BESMod/installed_dependencies/AixLib/AixLib/package.mo");
-loadFile("D:/04_git/BESMod/installed_dependencies/Buildings/Buildings/package.mo");
-loadFile("D:/04_git/BESMod/installed_dependencies/BuildingSystems/BuildingSystems/package.mo");
-loadFile("D:/04_git/BESMod/BESMod/package.mo");
-cd("D:/04_git/BESMod/working_dir")
