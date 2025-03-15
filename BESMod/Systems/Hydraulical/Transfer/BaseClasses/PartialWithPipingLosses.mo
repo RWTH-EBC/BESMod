@@ -36,7 +36,7 @@ partial model PartialWithPipingLosses
     each final ReC=ReC,
     final v_nominal=v_design,
     each final roughness=roughness,
-    each final fac=facPip)
+    each final fac=facPip) if withPressureLossPerZone
     "Hydraulic resistance of supply and radiator to set dp allways to m_flow_nominal"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -65,7 +65,7 @@ protected
   parameter Modelica.Units.SI.PressureDifference dpPipSupSca_nominal[nParallelSup]=
     resMaiLin.dp_nominal .* (mSup_flow_nominal ./ mSupOld_flow_design).^2
     "Pipe pressure losses scaled to design flow rate of radiators";
-
+  parameter Boolean withPressureLossPerZone=true;
 initial algorithm
   for i in 1:nParallelSup loop
     assert(dpSupOld_design[i] / (max(lenDisToTra) + max(lenDisPerUnit)) < 100, "Pressure drop per meter should roughly be below 100 Pa/m, but is " +
