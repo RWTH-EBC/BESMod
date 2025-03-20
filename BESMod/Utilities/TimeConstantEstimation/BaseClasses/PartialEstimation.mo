@@ -6,7 +6,7 @@ partial model PartialEstimation "Partial model for estimation of time constants"
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
     redeclare Systems.Demand.Building.TEASERThermalZone building(
       ARoo=sum(building.zoneParam.ARoof),
-      redeclare BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
+      redeclare replaceable BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
         oneZoneParam(useConstantACHrate=true),
       hBui=sum(building.zoneParam.VAir)^(1/3),
       ABui=sum(building.zoneParam.VAir)^(2/3),
@@ -75,7 +75,9 @@ partial model PartialEstimation "Partial model for estimation of time constants"
 
 initial equation
   building.thermalZone[1].ROM.extWallRC.thermCapExt[1].T = building.T_start;
-  building.thermalZone[1].ROM.floorRC.thermCapExt[1].T = building.T_start;
+  //if building.oneZoneParam.AFloor > 0 then
+  //  building.thermalZone[1].ROM.floorRC.thermCapExt[1].T = building.T_start;
+  //end if;
   building.thermalZone[1].ROM.intWallRC.thermCapInt[1].T = building.T_start;
   building.thermalZone[1].ROM.roofRC.thermCapExt[1].T = building.T_start;
 equation
