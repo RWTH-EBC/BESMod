@@ -1,5 +1,5 @@
 #1
-double SGReady(48,2)
+double SGReady(49,2)
 #C1 Time in seconds. Beginning of a year is 0s.
 #C3 SG-Ready signal between 1 and 4	
 0	2
