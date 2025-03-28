@@ -16,6 +16,10 @@ model UFHTransferSystem
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-98,82},
             {-84,96}})));
+
+  parameter Integer dis=5 "Number of Discreatisation Layers"
+    annotation (Dialog(tab="Advanced"));
+
   Modelica.Blocks.Math.Gain gain[nParallelDem](k=m_flow_design)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -24,7 +28,7 @@ model UFHTransferSystem
   BESMod.Systems.Hydraulical.Components.UFH.PanelHeating ufh[nParallelDem](
     redeclare package Medium = Medium,
     final floorHeatingType=floorHeatingType,
-    each final dis=5,
+    each final dis=dis,
     final A=UFHParameters.area,
     each final T0=T_start,
     each calcMethod=AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransferInsideSurface.ASHRAE140_2017,
