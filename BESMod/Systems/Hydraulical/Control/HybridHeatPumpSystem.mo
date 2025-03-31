@@ -3,7 +3,7 @@ model HybridHeatPumpSystem
   "Hybrid HPS with PID controlled boiler"
   extends
     BESMod.Systems.Hydraulical.Control.BaseClasses.PartialHeatPumpSystemController(
-      final meaValSecGen=if boiInGeneration then BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue.GenerationSupplyTemperature
+      meaValSecGen=if boiInGeneration then BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue.GenerationSupplyTemperature
          else BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue.DistributionTemperature);
   parameter Modelica.Units.SI.Temperature TBiv "Bivalence temperature";
   parameter Modelica.Units.SI.Temperature TCutOff "Cutoff temperature";
@@ -118,4 +118,11 @@ equation
         ={255,0,255}));
   connect(noOpeEnvLimCtrl.y, boiInHybSys.secGenOnDueToOpeEnv) annotation (Line(
         points={{19,50},{-48,50},{-48,-19},{-32,-19}}, color={255,0,255}));
+  connect(secGenOn.y, sigBusDistr.pumBoiOn) annotation (Line(points={{-69,30},{
+          -62,30},{-62,-70},{0,-70},{0,-100},{1,-100}}, color={255,0,255}),
+      Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
 end HybridHeatPumpSystem;

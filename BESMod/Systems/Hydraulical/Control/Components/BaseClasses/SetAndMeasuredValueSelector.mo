@@ -59,7 +59,7 @@ model SetAndMeasuredValueSelector
   Modelica.Blocks.Interfaces.RealOutput TSet(unit="K", displayUnit="degC")
     "Set temperature"
     annotation (Placement(transformation(extent={{100,50},{120,70}})));
-  Modelica.Blocks.Logical.Switch swiDHWBuiMea if meaVal == BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue.DistributionTemperature
+  Modelica.Blocks.Logical.Switch swiDHWBuiMea if meaVal <> BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue.GenerationSupplyTemperature
      and use_dhw
     "Switch between building and DHW" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -81,9 +81,9 @@ model SetAndMeasuredValueSelector
                                               "Evaporator inlet temperature"
     annotation (Placement(transformation(extent={{-120,-10},{-100,10}}),
         iconTransformation(extent={{-120,-10},{-100,10}})));
-  Modelica.Blocks.Routing.RealPassThrough reaPasTrhDisTemNoDHW if meaVal ==
-    BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue.DistributionTemperature and not use_dhw
-    "Real pass through for conditional option"
+  Modelica.Blocks.Routing.RealPassThrough reaPasTrhDisTemNoDHW if meaVal <>
+    BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue.GenerationSupplyTemperature
+     and not use_dhw "Real pass through for conditional option"
     annotation (Placement(transformation(extent={{40,-70},{60,-50}})));
   Modelica.Blocks.Routing.RealPassThrough reaPasTrhNoDHW if not use_dhw
     "Real pass through for conditional option"
@@ -92,6 +92,13 @@ model SetAndMeasuredValueSelector
     if not use_opeEncControl
     "Real pass through for conditional option"
     annotation (Placement(transformation(extent={{40,20},{60,40}})));
+  Modelica.Blocks.Routing.RealPassThrough reaPasTrhDisOut if meaVal == BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue.DistributionTemperature
+    "Real pass through for conditional option"
+    annotation (Placement(transformation(extent={{-80,-50},{-60,-30}})));
+  Modelica.Blocks.Routing.RealPassThrough reaPasTrhSto if meaVal == BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue.StorageTemperature
+    "Real pass through for conditional option"
+    annotation (Placement(transformation(extent={{-80,-70},{-60,-50}})));
+
 protected
   parameter Modelica.Units.SI.TemperatureDifference dTTraDHW_nominal=
     if meaVal ==BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue.GenerationSupplyTemperature
@@ -116,8 +123,8 @@ equation
           {-22,-40}}, color={255,0,255}));
   connect(swiDHWBuiMea.y, TMea)
     annotation (Line(points={{1,-40},{110,-40}}, color={0,0,127}));
-  connect(swiDHWBuiMea.u1, sigBusDistr.TStoDHWTopMea) annotation (Line(points={{-22,
-          -32},{-78,-32},{-78,-21},{-100,-21}}, color={0,0,127}), Text(
+  connect(swiDHWBuiMea.u1, sigBusDistr.TStoDHWTopMea) annotation (Line(points={{-22,-32},
+          {-26,-32},{-26,-21},{-100,-21}},      color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
@@ -152,18 +159,26 @@ equation
           30},{20,60},{1,60}}, color={0,0,127}));
   connect(reaPasTrhNoDHW1.y, TSet) annotation (Line(points={{61,30},{92,30},{92,
           60},{110,60}}, color={0,0,127}));
-  connect(swiDHWBuiMea.u3, sigBusDistr.TBuiSupMea) annotation (Line(points={{
-          -22,-48},{-94,-48},{-94,-21},{-100,-21}}, color={0,0,127}), Text(
+  connect(reaPasTrhDisTemNoDHW.u, reaPasTrhDisOut.y) annotation (Line(points={{38,-60},
+          {-52,-60},{-52,-40},{-59,-40}},          color={0,0,127}));
+  connect(reaPasTrhSto.y, reaPasTrhDisTemNoDHW.u)
+    annotation (Line(points={{-59,-60},{38,-60}}, color={0,0,127}));
+  connect(reaPasTrhDisOut.y, swiDHWBuiMea.u3) annotation (Line(points={{-59,-40},
+          {-52,-40},{-52,-48},{-22,-48}},                     color={0,0,127}));
+  connect(reaPasTrhDisOut.u, sigBusDistr.TBuiSupMea) annotation (Line(points={{-82,
+          -40},{-100,-40},{-100,-21}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(reaPasTrhDisTemNoDHW.u, sigBusDistr.TBuiSupMea) annotation (Line(
-        points={{38,-60},{-100,-60},{-100,-21}}, color={0,0,127}), Text(
+  connect(reaPasTrhSto.u, sigBusDistr.TStoBufTopMea) annotation (Line(points={{-82,
+          -60},{-100,-60},{-100,-21}}, color={0,0,127}), Text(
       string="%second",
       index=1,
-      extent={{-6,3},{-6,3}},
+      extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
+  connect(swiDHWBuiMea.u3, reaPasTrhSto.y) annotation (Line(points={{-22,-48},{
+          -54,-48},{-54,-60},{-59,-60}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
                                         Text(
         extent={{-150,138},{150,98}},

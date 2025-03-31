@@ -1,9 +1,8 @@
 within BESMod.Systems.Hydraulical.Control.Components.BaseClasses;
 type MeasuredValue = enumeration(
-    GenerationSupplyTemperature
-                              "Supply temperature of generation system",
-    DistributionTemperature
-                          "Temperature in distribution")
+    GenerationSupplyTemperature "Supply temperature of generation system",
+    DistributionTemperature "Temperature leaving distribution",
+    StorageTemperature "Temperature in storage")
   "Select possible measurements for control" annotation (Icon(graphics={
                                         Text(
         extent={{-150,138},{150,98}},
