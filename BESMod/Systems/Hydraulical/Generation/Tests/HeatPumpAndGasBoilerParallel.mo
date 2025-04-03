@@ -17,6 +17,7 @@ model HeatPumpAndGasBoilerParallel
         parHeaPum,
       redeclare BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
         parTemSen,
+      TBiv=268.15,
       mBoi_flow_nominal=generation.m_flow_design[1],
       redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
         parThrWayVal));
@@ -26,13 +27,13 @@ model HeatPumpAndGasBoilerParallel
     annotation (Placement(transformation(extent={{-10,10},{10,-10}},
         rotation=180,
         origin={50,80})));
+  Modelica.Blocks.Sources.Trapezoid trapezoid(
+    rising=150,
+    width=150,
+    falling=150,
+    period=600)
+    annotation (Placement(transformation(extent={{-80,22},{-60,42}})));
 equation
-  connect(pulse.y, genControlBus.uPriOrSecGen) annotation (Line(points={{-19,70},
-          {-14,70},{-14,74},{10,74}}, color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
   connect(pulse.y, genControlBus.yHeaPumSet) annotation (Line(points={{-19,70},
           {-14,70},{-14,74},{10,74}}, color={0,0,127}), Text(
       string="%second",
@@ -45,6 +46,13 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
+  connect(trapezoid.y, genControlBus.uPriOrSecGen) annotation (Line(points={{-59,
+          32},{-16,32},{-16,70},{-14,70},{-14,74},{10,74}}, color={0,0,127}),
+      Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
   annotation (experiment(StopTime=3600, Tolerance=1e-06, Interval=100),
      __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/HeatPumpAndGasBoilerParallel.mos"
           "Simulate and plot"),
