@@ -1,12 +1,14 @@
 within BESMod.Systems.Hydraulical.Generation;
 model HeatPumpAndElectricHeater "Heat pump with an electric heater in series"
   extends BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump(
-    dp_design={heatPump.dpCon_nominal + dpEleHea_nominal + resGen.dp_nominal},
+    dp_design={resGen.dp_nominal},
     genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentParallel,
   multiSum(nu=if use_eleHea then 2 else 1),
     resGen(
+      dp_nominal=heatPump.dpCon_nominal + dpEleHea_nominal + resGen.dpFixed_nominal,
       final length=lengthPip,
-      final resCoe=resCoe));
+      final resCoe=resCoe),
+    heatPump(dpCon_nominal=0));
   parameter Modelica.Units.SI.Length lengthPip=8 "Length of all pipes"
     annotation (Dialog(tab="Pressure losses"));
   parameter Real resCoe=4*facPerBend
@@ -26,7 +28,7 @@ model HeatPumpAndElectricHeater "Heat pump with an electric heater in series"
     final m_flow_nominal=m_flow_design[1],
     final m_flow_small=1E-4*abs(m_flow_design[1]),
     final show_T=show_T,
-    final dp_nominal=parEleHea.dp_nominal,
+    final dp_nominal=0,
     final tau=30,
     final energyDynamics=energyDynamics,
     final p_start=p_start,

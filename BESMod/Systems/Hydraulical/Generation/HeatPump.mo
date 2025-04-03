@@ -9,8 +9,10 @@ model HeatPump "Monovalent heat pump"
     genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.Monovalent,
     TBiv=TOda_nominal,
     resGen(
+      dp_nominal=parHeaPum.dpCon_nominal + resGen.dpFixed_nominal,
       final length=lengthPip,
-      final resCoe=resCoe));
+      final resCoe=resCoe),
+    heatPump(dpCon_nominal=0));
   parameter Modelica.Units.SI.Length lengthPip=8 "Length of all pipes"
     annotation (Dialog(tab="Pressure losses"));
   parameter Real resCoe=4*facPerBend

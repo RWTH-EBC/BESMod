@@ -5,15 +5,17 @@ partial record ThreeWayValve
   parameter Modelica.Units.SI.MassFlowRate m_flow_nominal
     "Nominal mass flow rate";
 
-  parameter Modelica.Units.SI.PressureDifference dp_nominal[2](each displayUnit="Pa")
+  parameter Modelica.Units.SI.PressureDifference dp_nominal[2](each displayUnit="Pa")=fill(0, 2)
     "Nominal pressure drop of connected resistances without the valve";
 
-  parameter Modelica.Units.SI.PressureDifference dpValve_nominal=valveAutho*max(dp_nominal)
+  parameter Modelica.Units.SI.PressureDifference dpValve_nominal=valveAutho*dpMax_nominal
       /(1 - valveAutho)
     "Nominal pressure drop of fully open valve, used if CvData=IBPSA.Fluid.Types.CvTypes.OpPoint";
-  parameter Modelica.Units.SI.PressureDifference dpFixed_nominal[2]=max(
-      dp_nominal) .- (dp_nominal)
+  parameter Modelica.Units.SI.PressureDifference dpMax_nominal = max(dp_nominal .+ dpFixedExtra_nominal);
+  parameter Modelica.Units.SI.PressureDifference dpFixed_nominal[2]=dpMax_nominal .- (dp_nominal .+ dpFixedExtra_nominal)
     "Nominal pressure drop of pipes and other equipment in flow legs at port_1 and port_3";
+  parameter Modelica.Units.SI.PressureDifference dpFixedExtra_nominal[2]=fill(0, 2)
+    "Additional fixed resistances in both lines lumped to hopefully improve algrebraic loop iterations";
   parameter Real deltaM
     "Fraction of nominal flow rate where linearization starts, if y=1";
   parameter Real delta0

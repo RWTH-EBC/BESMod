@@ -153,7 +153,7 @@ model PartialHeatPump "Generation with only the heat pump"
     final tauCon=parHeaPum.tauCon,
     final dTCon_nominal=dTTra_nominal[1],
     final mCon_flow_nominal=m_flow_design[1],
-    final dpCon_nominal=parHeaPum.dpCon_nominal,
+    dpCon_nominal=parHeaPum.dpCon_nominal,
     final use_conCap=parHeaPum.use_conCap,
     final CCon=parHeaPum.CCon,
     final GConOut=parHeaPum.GConOut,
@@ -275,8 +275,7 @@ model PartialHeatPump "Generation with only the heat pump"
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-170,-30})));
-  BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter
-                                            resGen(
+  Components.HydraulicDiameterParameterOnly resGen(
     redeclare final package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=m_flow_design[1],

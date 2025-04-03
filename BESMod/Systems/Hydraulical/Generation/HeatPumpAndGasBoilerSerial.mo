@@ -2,16 +2,19 @@ within BESMod.Systems.Hydraulical.Generation;
 model HeatPumpAndGasBoilerSerial "serial arrangement of heatpump and boiler"
   extends
     BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPumpAndGasBoiler(
-    dp_design={heatPump.dpCon_nominal + boi.dp_nominal + resGen.dp_nominal},
+    dp_design={resGen.dp_nominal},
     final use_old_design=fill(false, nParallelDem), resGen(
+      dp_nominal=heatPump.dpCon_nominal + dpBoi_nominal + resGen.dpFixed_nominal,
       final length=lengthPip,
       final resCoe=resCoe),
-    boi(m_flow_nominal=m_flow_design[1]));
+    boi(m_flow_nominal=m_flow_design[1], dp_nominal=0),
+    heatPump(dpCon_nominal=0));
   parameter Modelica.Units.SI.Length lengthPip=8 "Length of all pipes"
     annotation (Dialog(tab="Pressure losses"));
   parameter Real resCoe=4*facPerBend
     "Factor to take into account resistance of bends, fittings etc."
     annotation (Dialog(tab="Pressure losses"));
+  parameter Modelica.Units.SI.PressureDifference dpBoi_nominal=boi.a*(mBoi_flow_nominal/boi.rho_default)^boi.n "Boiler pressure drop";
 equation
 
   connect(boi.port_a, heatPump.port_b1) annotation (Line(points={{20,50},{-30,

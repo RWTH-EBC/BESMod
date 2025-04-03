@@ -27,9 +27,9 @@ partial model PartialThreeWayValve "Partial model to later extent"
     parThrWayVal constrainedby
     BESMod.Systems.RecordsCollection.Valves.ThreeWayValve(
     iconName="3WayValve",
-    final dp_nominal={dpBufHCSto_design + resValToBufSto.dp_nominal,
-        dpDHWHCSto_design + resValToDHWSto.dp_nominal},
+    final dp_nominal={dpBufHCSto_design,dpDHWHCSto_design},
     final m_flow_nominal=mSup_flow_design[1],
+    dpFixedExtra_nominal={resValToBufSto.dpFixed_nominal,resValToDHWSto.dpFixed_nominal},
     final fraK=1,
     use_strokeTime=false) "Parameters for three way valve" annotation (
     choicesAllMatching=true,
@@ -72,8 +72,8 @@ partial model PartialThreeWayValve "Partial model to later extent"
     final T_start=T_start,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=mSup_flow_design[1],
-    final dp_nominal=dpSup_design[1] + (parThrWayVal.dpValve_nominal + max(
-        parThrWayVal.dp_nominal)),
+    final dp_nominal=dpSup_design[1] + (parThrWayVal.dpValve_nominal +
+        parThrWayVal.dpMax_nominal),
     final externalCtrlTyp=parPumGen.externalCtrlTyp,
     final ctrlType=parPumGen.ctrlType,
     final dpVarBase_nominal=parPumGen.dpVarBase_nominal,
@@ -85,7 +85,7 @@ partial model PartialThreeWayValve "Partial model to later extent"
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-80,120})));
-  BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter resValToBufSto(
+  BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly         resValToBufSto(
     redeclare final package Medium = MediumGen,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=mSup_flow_design[1],
@@ -97,11 +97,10 @@ partial model PartialThreeWayValve "Partial model to later extent"
     final resCoe=resCoeValBufSto,
     final ReC=ReC,
     final v_nominal=vSup_design[1],
-    final roughness=roughness,
-    dp_start=0)
+    final roughness=roughness)
     "Pressure drop due to resistances between valve+pump and buffer storage"
     annotation (Placement(transformation(extent={{-20,150},{0,170}})));
-  BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter resValToDHWSto(
+  BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly         resValToDHWSto(
     redeclare final package Medium = MediumGen,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=mSup_flow_design[1],

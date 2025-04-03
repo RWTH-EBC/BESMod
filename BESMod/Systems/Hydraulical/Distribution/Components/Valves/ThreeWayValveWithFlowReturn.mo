@@ -49,7 +49,7 @@ model ThreeWayValveWithFlowReturn
     final deltaM=parameters.deltaM,
     final m_flow_nominal=parameters.m_flow_nominal,
     final dpValve_nominal=parameters.dpValve_nominal,
-    final dpFixed_nominal=parameters.dpFixed_nominal,
+    final dpFixed_nominal=parameters.dpFixed_nominal .+ parameters.dpFixedExtra_nominal,
     final fraK=parameters.fraK,
     final l=parameters.l,
     final linearized={false,false})

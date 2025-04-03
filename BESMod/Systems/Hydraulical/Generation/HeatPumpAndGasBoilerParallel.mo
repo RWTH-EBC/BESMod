@@ -2,10 +2,14 @@ within BESMod.Systems.Hydraulical.Generation;
 model HeatPumpAndGasBoilerParallel
   "Parallel connection of heat pump and gas boiler"
   extends BaseClasses.PartialHeatPumpAndGasBoiler(
-    dp_design={resGen.dp_nominal + resGenOut.dp_nominal + parThrWayVal.dpValve_nominal
-         + max(parThrWayVal.dp_nominal)},
-    final use_old_design=fill(false, nParallelDem), resGen(final length=
-          lengthPipValIn, final resCoe=resCoeValIn));
+    dp_design={resGenOut.dpFixed_nominal + resGen.dpFixed_nominal + parThrWayVal.dpValve_nominal
+         + max(parThrWayVal.dpFixed_nominal)},
+    final use_old_design=fill(false, nParallelDem), resGen(
+      dp_nominal=resGenOut.dpFixed_nominal + resGen.dpFixed_nominal,
+                                                           final length=
+          lengthPipValIn, final resCoe=resCoeValIn),
+    boi(dp_nominal=0),
+    heatPump(dpCon_nominal=0));
   parameter Modelica.Units.SI.Length lengthPipValIn=3.5
     "Length of all pipes between inlet and three way valve"
     annotation (Dialog(tab="Pressure losses"));
@@ -33,13 +37,14 @@ model HeatPumpAndGasBoilerParallel
       "Hydraulic diameter of pipes"
     annotation(Dialog(tab="Pressure losses",
       group="Design - Internal: Parameters are defined by the subsystem"));
+  parameter Modelica.Units.SI.PressureDifference dpBoi_nominal=boi.a*(mBoi_flow_nominal/boi.rho_default)^boi.n "Boiler pressure drop";
+
   replaceable parameter BESMod.Systems.RecordsCollection.Valves.ThreeWayValve
     parThrWayVal constrainedby
     BESMod.Systems.RecordsCollection.Valves.ThreeWayValve(
-    final dp_nominal={
-      parHeaPum.dpCon_nominal + resValHeaPum.dp_nominal,
-      dpBoiTotSca},
     final m_flow_nominal=m_flow_design[1],
+    dpFixedExtra_nominal={parHeaPum.dpCon_nominal + resValHeaPum.dpFixed_nominal,
+        dpBoiTotSca},
     final fraK=1) "Parameters for three-way-valve" annotation (Placement(
         transformation(extent={{24,-38},{38,-24}})),
         choicesAllMatching=true);
@@ -58,7 +63,8 @@ model HeatPumpAndGasBoilerParallel
     "Three-way-valve to either run heat pump or gas boiler"
     annotation (Placement(transformation(extent={{40,20},{20,0}})));
 
-  BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter resGenOut(
+  Components.HydraulicDiameterParameterOnly                                    resGenOut(
+    dp_nominal=0,
     length=lengthPipValOut,
     resCoe=resCoeValOut,
     redeclare final package Medium = Medium,
@@ -73,7 +79,8 @@ model HeatPumpAndGasBoilerParallel
     final roughness=roughness) "Pressure drop for valve to outlet"
     annotation (Placement(transformation(extent={{60,10},{80,30}})));
 
-  BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter resValBoi(
+  Components.HydraulicDiameterParameterOnly                                    resValBoi(
+    dp_nominal=0,
     length=lengthPipValBoi,
     resCoe=resCoeValBoi,
     redeclare final package Medium = Medium,
@@ -87,7 +94,8 @@ model HeatPumpAndGasBoilerParallel
     final v_nominal=v_design[1],
     final roughness=roughness) "Pressure drop for valve to boiler"
     annotation (Placement(transformation(extent={{20,20},{40,40}})));
-  BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter resValHeaPum(
+  Components.HydraulicDiameterParameterOnly                                    resValHeaPum(
+    dp_nominal=0,
     length=lengthPipValHeaPum,
     resCoe=resCoeValHeaPum,
     redeclare final package Medium = Medium,
@@ -107,7 +115,7 @@ model HeatPumpAndGasBoilerParallel
 
 protected
   parameter Modelica.Units.SI.PressureDifference dpBoiTotSca =
-    (boi.dp_nominal + resValBoi.dp_nominal) * (m_flow_design[1] / mBoi_flow_nominal)^2
+    (dpBoi_nominal + resValBoi.dpFixed_nominal) * (m_flow_design[1] / mBoi_flow_nominal)^2
     "Total pressure drop of boiler circuit scaled to m_flow_design";
 
 equation
