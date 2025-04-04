@@ -5,10 +5,11 @@ model RadiatorPressureBased "Pressure Based transfer system"
     nHeaTra=parRad.n,
     ABui=1,
     hBui=1,
-    final dp_design=dpPipSca_design .+ val.dpFixed_nominal .+ val.dpValve_nominal .+ rad.dp_nominal,
+    final dp_design=val.dpFixed_nominal .+ val.dpValve_nominal,
     Q_flow_design={if use_oldRad_design[i] then QOld_flow_design[i] else Q_flow_nominal[i] for i in 1:nParallelDem},
-    TTra_design={if use_oldRad_design[i] then TTraOld_design[i] else TTra_nominal[i] for i in 1:nParallelDem});
-
+    TTra_design={if use_oldRad_design[i] then TTraOld_design[i] else TTra_nominal[i] for i in 1:nParallelDem},
+    res(each final dp_nominal=0));
+  final parameter Modelica.Units.SI.PressureDifference dpFixedTotal_nominal[nParallelDem] = dpPipSca_design.*(1 + parRad.perPreLosRad);
   parameter Boolean use_oldRad_design[nParallelDem]={not QOld_flow_design[i]==Q_flow_nominal[i] for i in 1:nParallelDem}
     "If true, radiator design of the building with no retrofit (old state) is used"
     annotation (Dialog(group="Design - Internal: Parameters are defined by the subsystem"));
@@ -60,7 +61,7 @@ model RadiatorPressureBased "Pressure Based transfer system"
     final TRad_nominal=TDem_nominal,
     each final n=parRad.n,
     each final deltaM=0.3,
-    final dp_nominal=dpPipSca_design*parRad.perPreLosRad,
+    each final dp_nominal=0,
     redeclare package Medium = Medium,
     each final T_start=T_start) "Radiator" annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
@@ -73,12 +74,12 @@ model RadiatorPressureBased "Pressure Based transfer system"
     final m_flow_nominal=m_flow_design,
     each final show_T=show_T,
     each final CvData=IBPSA.Fluid.Types.CvTypes.OpPoint,
-    final dpValve_nominal=valveAutho .* (val.dpFixed_nominal .+ rad.dp_nominal) ./ (1 .- valveAutho),
+    final dpValve_nominal=valveAutho .* dpFixedTotal_nominal ./ (1 .- valveAutho),
     each final use_strokeTime=false,
-    final dpFixed_nominal=if use_hydrBalAutom then max(dpPipSca_design .+ rad.dp_nominal) .- (dpPipSca_design .+ rad.dp_nominal)
+    final dpFixed_nominal=if use_hydrBalAutom then max(dpFixedTotal_nominal) .- dpFixedTotal_nominal
        else fill(0, nParallelDem),
     each final l=leakageOpening,
-    dp(start=val.dpFixed_nominal .+ val.dpValve_nominal .+ rad.dp_nominal))
+    dp(start=val.dpFixed_nominal .+ val.dpValve_nominal))
                                         annotation (Placement(transformation(
         extent={{-10,-11},{10,11}},
         rotation=270,

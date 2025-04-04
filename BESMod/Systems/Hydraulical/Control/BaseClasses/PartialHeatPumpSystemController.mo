@@ -18,7 +18,9 @@ partial model PartialHeatPumpSystemController
     annotation (Dialog(group="Building control"));
   parameter Modelica.Units.SI.TemperatureDifference dTHysDHW=10
     "Hysteresis for DHW demand control" annotation (Dialog(group="DHW control"));
-
+  parameter Boolean pumGenAlwOn=false
+    "=true to let the generation pump run always. May be used for external control."
+    annotation(Dialog(tab="Advanced"));
   parameter Utilities.SupervisoryControl.Types.SupervisoryControlType
     supCtrHeaCurTyp=BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Local
     "Heating curve supervisory control" annotation(Dialog(group="Building control"));
@@ -127,7 +129,7 @@ partial model PartialHeatPumpSystemController
     choicesAllMatching=true,
     Placement(transformation(extent={{82,82},{98,98}})));
 
-  Modelica.Blocks.MathBoolean.Or anyGenDevIsOn(nu=2)
+  Modelica.Blocks.MathBoolean.Or anyGenDevIsOn(nu=3)
     "True if any generation device is on and pump must run" annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
@@ -204,6 +206,12 @@ partial model PartialHeatPumpSystemController
         extent={{-10,10},{10,-10}},
         rotation=180,
         origin={30,50})));
+  Modelica.Blocks.Sources.BooleanConstant conPumGenAlwOn(final k=pumGenAlwOn)
+    "Pump generation is always on" annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-192,-12})));
+
 equation
 
   connect(priGenPIDCtrl.isOn, sigBusGen.heaPumIsOn) annotation (Line(points={{85.2,
@@ -314,7 +322,8 @@ equation
   connect(supCtrNSet.uLoc, priGenPIDCtrl.ySet) annotation (Line(points={{108,82},
           {104,82},{104,90},{98.8,90}}, color={0,0,127}));
   connect(buiAndDHWCtr.priGren, anyGenDevIsOn.u[1]) annotation (Line(points={{-118,
-          27.3333},{-112,27.3333},{-112,4},{-151.75,4},{-151.75,0}},color={255,
+          27.3333},{-112,27.3333},{-112,4},{-152.333,4},{-152.333,0}},
+                                                                    color={255,
           0,255}));
   connect(anyGenDevIsOn.y, sigBusDistr.pumGenOn) annotation (Line(points={{-150,
           -21.5},{-150,-70},{1,-70},{1,-100}}, color={255,0,255}), Text(
@@ -346,9 +355,12 @@ equation
   connect(buiAndDHWCtr.secGen, secGenOn.u2) annotation (Line(points={{-118,34},{
           -108,34},{-108,22},{-92,22}}, color={255,0,255}));
   connect(secGenOn.y, anyGenDevIsOn.u[2]) annotation (Line(points={{-69,30},{-62,
-          30},{-62,12},{-148.25,12},{-148.25,0}}, color={255,0,255}));
+          30},{-62,12},{-150,12},{-150,0}},       color={255,0,255}));
   connect(noOpeEnvLimCtrl.y, secGenOn.u1) annotation (Line(points={{19,50},{-96,
           50},{-96,30},{-92,30}}, color={255,0,255}));
+  connect(conPumGenAlwOn.y, anyGenDevIsOn.u[3]) annotation (Line(points={{-181,
+          -12},{-166,-12},{-166,6},{-152,6},{-152,0},{-147.667,0}},
+                                                               color={255,0,255}));
                                                               annotation (Diagram(graphics={
         Rectangle(
           extent={{4,100},{136,36}},

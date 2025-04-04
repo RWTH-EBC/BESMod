@@ -24,7 +24,7 @@ model HydraulicDiameterParameterOnly
   parameter Modelica.Units.SI.Length roughness(min=0) = 2.5e-5
     "Absolute roughness of pipe, with a default for a smooth steel pipe (dummy if use_roughness = false)";
 
-  final parameter Real fac(min=1) = 1 + (resCoe*rho_default/2*v_nominal^2)/dpStraightPipe_nominal
+  parameter Real fac(min=1) = 1 + (resCoe*rho_default/2*v_nominal^2)/dpStraightPipe_nominal
     "Factor to take into account resistance of bends etc., fac=dp_nominal/dpStraightPipe_nominal";
   final parameter Modelica.Units.SI.PressureDifference dpFixed_nominal = fac*dpStraightPipe_nominal
     "Resulting dp_nominal which must be included in another dpFixed_nominal";
