@@ -70,14 +70,16 @@ equation
 
    annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
-    Documentation(info="<html>
-<p>This control was developed and presented within the publication 
-'Integration of Back-Up Heaters in Retrofit Heat Pump Systems: Which to Choose, Where to Place, and How to Control?' (
-see <a href=\"https://doi.org/10.3390/en15197134\">https://doi.org/10.3390/en15197134<\a>)
-and account for limited operational envelope temperatures of heat pumps. 
-In case the set temperature exceeds the envelope minus some threshold (e.g. due to 
-different set / measurement location in the system), the set temperature 
-is limited and a bivalent backup unit may turn on.
-  </p>
+    Documentation(info="<html><p>
+  This control was developed and presented within the publication
+  'Integration of Back-Up Heaters in Retrofit Heat Pump Systems: Which
+  to Choose, Where to Place, and How to Control?' ( see <a href=
+  \"https://doi.org/10.3390/en15197134\">https://doi.org/10.3390/en15197134&lt;\a&gt;)
+  and account for limited operational envelope temperatures of heat
+  pumps. In case the set temperature exceeds the envelope minus some
+  threshold (e.g. due to different set / measurement location in the
+  system), the set temperature is limited and a bivalent backup unit
+  may turn on. </a>
+</p>
 </html>"));
 end OperationalEnvelopeLimitControl;
