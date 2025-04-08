@@ -36,7 +36,7 @@ partial model PartialWithPipingLosses
     each final ReC=ReC,
     final v_nominal=v_design,
     each final roughness=roughness,
-    final fac=facPip)      if withPressureLossPerZone
+    each final fac=facPip)      if withPressureLossPerZone
     "Hydraulic resistance of supply and radiator to set dp allways to m_flow_nominal"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
