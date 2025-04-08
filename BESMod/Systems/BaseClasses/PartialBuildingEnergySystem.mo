@@ -358,6 +358,10 @@ equation
       points={{62.04,198.37},{62.04,206},{-16,206},{-16,88},{39,88},{39,77.62}},
       color={255,128,0},
       thickness=0.5));
+  connect(userProfiles.weaBus, weaDat.weaBus) annotation (Line(
+      points={{-252,124.675},{-252,112},{-214,112},{-214,70},{-220,70}},
+      color={255,204,51},
+      thickness=0.5));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false, extent={{-280,
             -140},{280,200}})),

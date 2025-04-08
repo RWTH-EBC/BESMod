@@ -27,9 +27,8 @@ partial model PartialWithPipingLosses
   parameter Modelica.Units.SI.Velocity vSup_design[nParallelSup] = fill(max(v_design), nParallelSup)
     "Design velocity of main supply lines"
     annotation(Dialog(tab="Pressure losses"));
-  Components.HydraulicDiameterParameterOnly      res[nParallelDem](redeclare
-      package Medium =
-               Medium,
+  Components.HydraulicDiameterParameterOnly res[nParallelDem](
+    redeclare package Medium = Medium,
     final m_flow_nominal=mOld_flow_design,
     each final resCoe=0,
     final dh=dPip_design,
