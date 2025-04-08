@@ -1,4 +1,15 @@
 
+Error in model:  BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding 
+Check of <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding">BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding</a>
+Error: Class or component 'setBakTSetZone' not found in TEASERProfiles userProfiles
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialGasBoilerBuildingOnly.mo, line 35
+ Component context: userProfiles
+  Component declared as TEASERProfiles userProfiles in <a href="Modelica://BESMod.Systems.UserProfiles">BESMod.Systems.UserProfiles</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding">BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/TEASERExport/ArchetypeExample/ResidentialBuilding/GasBoilerBuildingOnlyResidentialBuilding.mo, line 2
+Error: ERRORS have been issued.
+
+
 Error in model:  BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding 
 Check of <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding">BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding</a>
 Error: Class or component 'setBakTSetZone' not found in TEASERProfiles userProfiles
@@ -18,40 +29,5 @@ Error: Class or component 'setBakTSetZone' not found in TEASERProfiles userProfi
   Component declared as TEASERProfiles userProfiles in <a href="Modelica://BESMod.Systems.UserProfiles">BESMod.Systems.UserProfiles</a>
   Attempted modification in <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding">BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/TEASERExport/ArchetypeExample/ResidentialBuilding/HeatPumpMonoenergeticResidentialBuilding.mo, line 2
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Examples.SolarThermalSystem.SolarThermalAixLib 
-Check of <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib">BESMod.Examples.SolarThermalSystem.SolarThermalAixLib</a>
-Error: Overriding final modifier for energyDynamics
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BoilerCHP/BaseClasses/PartialHeatGenerator.mo, line <a href="Modelica://AixLib.Fluid.BoilerCHP.BaseClasses.PartialHeatGenerator.vol#text:3">96</a>
-Overriding found at:
- Component context: BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump.solThe.vol.energyDynamics
-  Component declared as AixLib.Fluid.Solar.Thermal.SolarThermal solThe in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump">BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump</a>
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/SimpleSolarThermalWithHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump.solThe.vol#text">51</a>
-Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
-Error: Overriding final modifier for energyDynamics
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BoilerCHP/BaseClasses/PartialHeatGenerator.mo, line <a href="Modelica://AixLib.Fluid.BoilerCHP.BaseClasses.PartialHeatGenerator.vol#text:3">96</a>
-Overriding found at:
- Component context: BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump.solThe.vol.energyDynamics
-  Component declared as AixLib.Fluid.Solar.Thermal.SolarThermal solThe in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump">BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump</a>
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/SimpleSolarThermalWithHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump.solThe.vol#text">51</a>
-Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
-Warning: Automatically introducing 'each' in definition equation for variable:
-  userProfiles.nigSetBack[1].TOdaMin
-Additional warnings of this type will not be written.
-The model has the same number of unknowns and equations: 13382
-Warning: WARNINGS have been issued.
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding 
-Check of <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding">BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding</a>
-Error: Class or component 'setBakTSetZone' not found in TEASERProfiles userProfiles
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialGasBoilerBuildingOnly.mo, line 35
- Component context: userProfiles
-  Component declared as TEASERProfiles userProfiles in <a href="Modelica://BESMod.Systems.UserProfiles">BESMod.Systems.UserProfiles</a>
-  Attempted modification in <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding">BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/TEASERExport/ArchetypeExample/ResidentialBuilding/GasBoilerBuildingOnlyResidentialBuilding.mo, line 2
 Error: ERRORS have been issued.
 

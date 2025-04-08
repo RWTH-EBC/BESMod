@@ -1,25 +1,4 @@
 
-Error in model:  BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump 
-Check of <a href="Modelica://BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump">BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump</a>
-Error: Overriding final modifier for energyDynamics
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BoilerCHP/BaseClasses/PartialHeatGenerator.mo, line <a href="Modelica://AixLib.Fluid.BoilerCHP.BaseClasses.PartialHeatGenerator.vol#text:3">96</a>
-Overriding found at:
- Component context: BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump.solThe.vol.energyDynamics
-  Component declared as AixLib.Fluid.Solar.Thermal.SolarThermal solThe in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump">BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump</a>
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/SimpleSolarThermalWithHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump.solThe.vol#text">51</a>
-Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
-The model has the same number of unknowns and equations: 1694
-The model could not be deduced to be symbolically well-posed.
-The model has
-  1670+generation.heatPump.con.vol.dynBal.nPorts+2*generation.heatPump.eva.vol.dynBal.nPorts  +size(generation.heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns, 1)+  generation.heatPump.safCtr.opeEnv.bouMapHea.nor.nu+size(generation.heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns,   1)+generation.heatPump.safCtr.opeEnv.bouMapCoo.nor.nu+generation.multiSum.nu+  generation.eleHea.vol.dynBal.nPorts+generation.solThe.vol.dynBal.nPorts+  vol[1].dynBal.nPorts+vol[2].dynBal.nPorts
-scalar unknowns and
-  1625+(if weaDat.pAtmSou == IBPSA.BoundaryConditions.Types.DataSource.Parameter   then 1 else 0)+(if weaDat.TDewPoiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TDryBulSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TBlaSkySou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.relHumSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.opaSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.ceiHeiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.totSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winSpeSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winDirSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HInfHorSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HDifHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HGloHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HGloHor_HDifHor then 2 else 1)+(if generation.bou_sinkAir.use_Xi_in   then 2 else (if generation.bou_sinkAir.use_X_in then 1 else 3))+(if  not   generation.bou_sinkAir.use_p_in then 1 else 0)+(if  not generation.bou_sinkAir.use_h_in   then 1 else 0)+(if generation.bouEva.use_Xi_in then 2 else (if   generation.bouEva.use_X_in then 1 else 3))+(if bouTra[1].use_Xi_in then 1   else (if bouTra[1].use_X_in then 0 else 1))+(if  not bouTra[1].use_p_in then 1   else 0)+(if  not bouTra[1].use_T_in then 1 else 0)+(if bouTra[2].use_Xi_in   then 1 else (if bouTra[2].use_X_in then 0 else 1))+(if  not bouTra[2].use_p_in   then 1 else 0)+(if  not bouTra[2].use_T_in then 1 else 0)+(if  not   generation.heatPump.con.vol.dynBal.use_mWat_flow then 1 else 0)+3*  generation.heatPump.con.vol.dynBal.nPorts+(if  not generation.heatPump.eva.vol.dynBal.use_mWat_flow   then 1 else 0)+5*generation.heatPump.eva.vol.dynBal.nPorts+size(  generation.heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns, 1)+size(  generation.heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns, 1)+(if  not   generation.eleHea.vol.dynBal.use_mWat_flow then 1 else 0)+3*generation.eleHea.vol.dynBal.nPorts  +(if  not generation.solThe.vol.dynBal.use_mWat_flow then 1 else 0)+3*  generation.solThe.vol.dynBal.nPorts+(if  not vol[1].dynBal.use_mWat_flow then 1   else 0)+3*vol[1].dynBal.nPorts+(if  not vol[2].dynBal.use_mWat_flow then 1   else 0)+3*vol[2].dynBal.nPorts+(if  not pumDis[1].dpControlled_dp.vol.steBal.use_mWat_flow   then 1 else 0)+(if  not pumDis[2].dpControlled_dp.vol.steBal.use_mWat_flow   then 1 else 0)
-scalar equations.
-However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
-  1694
-Error: ERRORS have been issued.
-
-
 Error in model:  BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump 
 Check of <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
 Component type specifier Generic is a partial type
@@ -60,6 +39,106 @@ Balancing not required due to partial component <a href="Modelica://BESMod.Syste
 Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#$heatPump.refCyc:refCycHeaPumHea">heatPump.refCyc.refCycHeaPumHea</a>.
 Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#:parHeaPum">parHeaPum</a>.
 Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#:parTemSen">parTemSen</a>.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPumpAndGasBoiler 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPumpAndGasBoiler">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPumpAndGasBoiler</a>
+Component type specifier Generic is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:28">29</a>
+ Component context: parHeaPum
+  Component declared as Generic parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+Component type specifier TemperatureSensorBaseDefinition is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:42">43</a>
+ Component context: parTemSen
+  Component declared as TemperatureSensorBaseDefinition parTemSen in <a href="Modelica://BESMod.Systems.RecordsCollection.TemperatureSensors">BESMod.Systems.RecordsCollection.TemperatureSensors</a>
+Warning: Component type specifier RefrigerantCycleHeatPumpHeating is equal to a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/HeatPumps/ModularReversible/BaseClasses/RefrigerantCycle.mo, line <a href="Modelica://AixLib.Fluid.HeatPumps.ModularReversible.BaseClasses.RefrigerantCycle#text:25">26</a>
+ Component context: heatPump.refCyc.refCycHeaPumHea
+  Component declared as RefrigerantCycleHeatPumpHeating refCycHeaPumHea in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: heatPump.con.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: boi.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Check is assuming: Q_flow_nominal = fill(1e-15, 1)
+Check is assuming: parHeaPum.dpCon_nominal = 0
+Check is assuming: parHeaPum.dpEva_nominal = 0
+The model has
+  952+heatPump.con.vol.dynBal.nPorts+2*heatPump.eva.vol.dynBal.nPorts+size(    heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns, 1)+heatPump.safCtr.opeEnv.bouMapHea.nor.nu    +size(heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns, 1)+heatPump.safCtr.opeEnv.bouMapCoo.nor.nu    +multiSum.nu+boi.vol.dynBal.nPorts
+scalar unknowns and
+  918+(if bou_sinkAir.use_Xi_in then 2 else (if bou_sinkAir.use_X_in then 1     else 3))+(if  not bou_sinkAir.use_p_in then 1 else 0)+(if  not     bou_sinkAir.use_h_in then 1 else 0)+(if bouEva.use_Xi_in then 2 else (if     bouEva.use_X_in then 1 else 3))+(if heatPump.con.vol.dynBal.medium.standardOrderComponents     then 1 else 0)+(if  not heatPump.con.vol.dynBal.use_mWat_flow then 1 else 0)    +3*heatPump.con.vol.dynBal.nPorts+(if  not heatPump.eva.vol.dynBal.use_mWat_flow     then 1 else 0)+5*heatPump.eva.vol.dynBal.nPorts+size(heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns,     1)+size(heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns, 1)+(if     boi.vol.dynBal.medium.standardOrderComponents then 1 else 0)+(if  not     boi.vol.dynBal.use_mWat_flow then 1 else 0)+3*boi.vol.dynBal.nPorts
+scalar equations.
+Error: The following parameters don't have any value:
+<a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPumpAndGasBoiler#text$resGen:length">resGen.length</a>
+<a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPumpAndGasBoiler#text$resGen:resCoe">resGen.resCoe</a>
+DAE with 995 unknown scalars and 977 scalar equations.
+
+Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPumpAndGasBoiler#$boi.vol.dynBal:medium">boi.vol.dynBal.medium</a>.
+Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPumpAndGasBoiler#$heatPump.con.vol.dynBal:medium">heatPump.con.vol.dynBal.medium</a>.
+Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPumpAndGasBoiler#$heatPump.refCyc:refCycHeaPumHea">heatPump.refCyc.refCycHeaPumHea</a>.
+Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPumpAndGasBoiler#:parHeaPum">parHeaPum</a>.
+Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPumpAndGasBoiler#:parTemSen">parTemSen</a>.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM 
+Check of <a href="Modelica://BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM">BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM</a>
+Warning: Automatically introducing 'each' in definition equation for variable:
+  heaDemSce.nigSetBack[1].TOdaMin
+Additional warnings of this type will not be written.
+Error: The problem is structurally singular.
+
+It has 2668 scalar unknowns and 2667 scalar equations.
+  The Real part has 2626 unknowns and 2625 equations.
+  The Integer part has 1 unknowns and 1 equations.
+  The Boolean part has 41 unknowns and 41 equations.
+  The String part has 0 unknowns and 0 equations.
+Error: The model is not well-posed.
+The model has
+  2522+max([size(heaDemSce.tabIntGai.columns, 1); size(heaDemSce.tabIntGai.offset,   1)])+29*building.thermalZone[1].zoneParam.nOrientations+2*building.thermalZone[1].ROM.volAir.dynBal.nPorts  +building.thermalZone[1].humanSenHeaDependent.productHeatOutput.nu+  building.thermalZone[1].machinesSenHea.productHeatOutput.nu+building.thermalZone[1].lights.productHeatOutput.nu  +5*building.thermalZone[1].zoneParam.nOrientationsRoof+building.thermalZone[1].ventCont.optimalTemp.nin  +building.thermalZone[1].ventCont.optimalTemp.nout+building.thermalZone[1].ventCont.dEMA.nout  +building.thermalZone[1].ventCont.dEMA.ExpAVG.n+building.thermalZone[1].ventCont.dEMA.ExpAVG1.n  +building.multiSumEle.nu+2*building.nZones
+scalar unknowns and
+  2563+max([size(heaDemSce.tabIntGai.columns, 1); size(heaDemSce.tabIntGai.offset,   1)])+(if weaDat.pAtmSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TDewPoiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TDryBulSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TBlaSkySou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.relHumSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.opaSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.ceiHeiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.totSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winSpeSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winDirSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HInfHorSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HDifHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HGloHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HGloHor_HDifHor then 2 else 1)+19*building.thermalZone[1].zoneParam.nOrientations  +(if  not building.thermalZone[1].eqAirTempWall.TGroundFromInput then 1 else 0)  +(if  not building.thermalZone[1].eqAirTempRoof.TGroundFromInput then 1 else 0)  +3*building.thermalZone[1].zoneParam.nOrientationsRoof+building.thermalZone[1].ventCont.optimalTemp.nout  +building.thermalZone[1].ventCont.dEMA.ExpAVG.n+building.thermalZone[1].ventCont.dEMA.ExpAVG1.n  +(if  not building.thermalZone[1].ROM.volAir.dynBal.use_mWat_flow then 1 else 0)  +5*building.thermalZone[1].ROM.volAir.dynBal.nPorts
+scalar equations.
+Using the given settings of the parameters, the difference could be reduced to
+  1
+Attempting to further localize singularity.
+
+Attempting to further localize singularity.
+
+The model has the same number of unknowns and equations:
+  3+max([size(heaDemSce.tabIntGai.columns, 1); size(heaDemSce.tabIntGai.offset, 1)])
+Singularity of <a href="Modelica://BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM">BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM</a> is in the component <a href="Modelica://BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM#diagram:heaDemSce">heaDemSce</a>, class <a href="Modelica://BESMod.Systems.UserProfiles.TEASERProfiles">BESMod.Systems.UserProfiles.TEASERProfiles</a>.
+Error: The model <a href="Modelica://BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM">BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM</a> component <a href="Modelica://BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM#diagram:heaDemSce">heaDemSce</a> is structurally singular.
+Warning: Some connectors are not connected from the outside:
+<a href="Modelica://BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM#diagram$heaDemSce:weaBus">heaDemSce.weaBus</a>
+Warning: The problem is structurally singular for the element type Real.
+
+The number of scalar Real unknown elements are 26.
+The number of scalar Real equation elements are 25.
+Warning: Part of the problem for Real elements is underdetermined. 
+1 scalar Real  equations are missing for the variables or its derivatives.
+We did not find equations for:
+<a href="Modelica://BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM#diagram$heaDemSce:repTDryBul.u">heaDemSce.repTDryBul.u</a>
+But it could be other indeterminate variables as well.
+Indeterminate variables declared as inputs:
+<a href="Modelica://BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM#diagram$heaDemSce:nigSetBack[1].TOda">heaDemSce.nigSetBack[1].TOda</a>
+<a href="Modelica://BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM#diagram$heaDemSce.nigSetBack[1]:TOda_internal.u">heaDemSce.nigSetBack[1].TOda_internal.u</a>
+<a href="Modelica://BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM#diagram$heaDemSce:repTDryBul.u">heaDemSce.repTDryBul.u</a>
+<a href="Modelica://BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM#diagram$:heaDemSce.weaBus">heaDemSce.weaBus.TDryBul</a>
+Indeterminate variables declared as outputs:
+<a href="Modelica://BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM#diagram$heaDemSce.nigSetBack[1]:TOda_internal.y">heaDemSce.nigSetBack[1].TOda_internal.y</a>
+<a href="Modelica://BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM#diagram$heaDemSce:repTDryBul.y">heaDemSce.repTDryBul.y[]</a>
 Warning: WARNINGS have been issued.
 Error: ERRORS have been issued.
 
@@ -117,59 +196,8 @@ Warning: WARNINGS have been issued.
 Error: ERRORS have been issued.
 
 
-Error in model:  BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM 
-Check of <a href="Modelica://BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM">BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM</a>
-Warning: Automatically introducing 'each' in definition equation for variable:
-  heaDemSce.nigSetBack[1].TOdaMin
-Additional warnings of this type will not be written.
-Error: The problem is structurally singular.
-
-It has 2668 scalar unknowns and 2667 scalar equations.
-  The Real part has 2626 unknowns and 2625 equations.
-  The Integer part has 1 unknowns and 1 equations.
-  The Boolean part has 41 unknowns and 41 equations.
-  The String part has 0 unknowns and 0 equations.
-Error: The model is not well-posed.
-The model has
-  2522+max([size(heaDemSce.tabIntGai.columns, 1); size(heaDemSce.tabIntGai.offset,   1)])+29*building.thermalZone[1].zoneParam.nOrientations+2*building.thermalZone[1].ROM.volAir.dynBal.nPorts  +building.thermalZone[1].humanSenHeaDependent.productHeatOutput.nu+  building.thermalZone[1].machinesSenHea.productHeatOutput.nu+building.thermalZone[1].lights.productHeatOutput.nu  +5*building.thermalZone[1].zoneParam.nOrientationsRoof+building.thermalZone[1].ventCont.optimalTemp.nin  +building.thermalZone[1].ventCont.optimalTemp.nout+building.thermalZone[1].ventCont.dEMA.nout  +building.thermalZone[1].ventCont.dEMA.ExpAVG.n+building.thermalZone[1].ventCont.dEMA.ExpAVG1.n  +building.multiSumEle.nu+2*building.nZones
-scalar unknowns and
-  2563+max([size(heaDemSce.tabIntGai.columns, 1); size(heaDemSce.tabIntGai.offset,   1)])+(if weaDat.pAtmSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TDewPoiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TDryBulSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.TBlaSkySou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.relHumSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.opaSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.ceiHeiSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.totSkyCovSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winSpeSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.winDirSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HInfHorSou == IBPSA.BoundaryConditions.Types.DataSource.  Parameter then 1 else 0)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HDifHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HDirNor_HGloHor then 2 else 1)+(if weaDat.HSou == IBPSA.BoundaryConditions.Types.RadiationDataSource.  Input_HGloHor_HDifHor then 2 else 1)+19*building.thermalZone[1].zoneParam.nOrientations  +(if  not building.thermalZone[1].eqAirTempWall.TGroundFromInput then 1 else 0)  +(if  not building.thermalZone[1].eqAirTempRoof.TGroundFromInput then 1 else 0)  +3*building.thermalZone[1].zoneParam.nOrientationsRoof+building.thermalZone[1].ventCont.optimalTemp.nout  +building.thermalZone[1].ventCont.dEMA.ExpAVG.n+building.thermalZone[1].ventCont.dEMA.ExpAVG1.n  +(if  not building.thermalZone[1].ROM.volAir.dynBal.use_mWat_flow then 1 else 0)  +5*building.thermalZone[1].ROM.volAir.dynBal.nPorts
-scalar equations.
-Using the given settings of the parameters, the difference could be reduced to
-  1
-Attempting to further localize singularity.
-
-Attempting to further localize singularity.
-
-The model has the same number of unknowns and equations:
-  3+max([size(heaDemSce.tabIntGai.columns, 1); size(heaDemSce.tabIntGai.offset, 1)])
-Singularity of <a href="Modelica://BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM">BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM</a> is in the component <a href="Modelica://BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM#diagram:heaDemSce">heaDemSce</a>, class <a href="Modelica://BESMod.Systems.UserProfiles.TEASERProfiles">BESMod.Systems.UserProfiles.TEASERProfiles</a>.
-Error: The model <a href="Modelica://BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM">BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM</a> component <a href="Modelica://BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM#diagram:heaDemSce">heaDemSce</a> is structurally singular.
-Warning: Some connectors are not connected from the outside:
-<a href="Modelica://BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM#diagram$heaDemSce:weaBus">heaDemSce.weaBus</a>
-Warning: The problem is structurally singular for the element type Real.
-
-The number of scalar Real unknown elements are 26.
-The number of scalar Real equation elements are 25.
-Warning: Part of the problem for Real elements is underdetermined. 
-1 scalar Real  equations are missing for the variables or its derivatives.
-We did not find equations for:
-<a href="Modelica://BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM#diagram$heaDemSce:repTDryBul.u">heaDemSce.repTDryBul.u</a>
-But it could be other indeterminate variables as well.
-Indeterminate variables declared as inputs:
-<a href="Modelica://BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM#diagram$heaDemSce:nigSetBack[1].TOda">heaDemSce.nigSetBack[1].TOda</a>
-<a href="Modelica://BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM#diagram$heaDemSce.nigSetBack[1]:TOda_internal.u">heaDemSce.nigSetBack[1].TOda_internal.u</a>
-<a href="Modelica://BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM#diagram$heaDemSce:repTDryBul.u">heaDemSce.repTDryBul.u</a>
-<a href="Modelica://BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM#diagram$:heaDemSce.weaBus">heaDemSce.weaBus.TDryBul</a>
-Indeterminate variables declared as outputs:
-<a href="Modelica://BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM#diagram$heaDemSce.nigSetBack[1]:TOda_internal.y">heaDemSce.nigSetBack[1].TOda_internal.y</a>
-<a href="Modelica://BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM#diagram$heaDemSce:repTDryBul.y">heaDemSce.repTDryBul.y[]</a>
-Warning: WARNINGS have been issued.
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPumpAndGasBoiler 
-Check of <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPumpAndGasBoiler">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPumpAndGasBoiler</a>
+Error in model:  BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump">BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump</a>
 Component type specifier Generic is a partial type
   It must be redeclared before being used.
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:28">29</a>
@@ -190,29 +218,53 @@ Component type specifier BaseProperties is a partial type
   File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
  Component context: heatPump.con.vol.dynBal.medium
   Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier Generic is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/HeatPumpAndElectricHeater.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater#text:19">20</a>
+ Component context: parEleHea
+  Component declared as Generic parEleHea in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater">BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater</a>
 Component type specifier BaseProperties is a partial type
   It must be redeclared before being used.
   File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
- Component context: boi.vol.dynBal.medium
+ Component context: eleHea.vol.dynBal.medium
   Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
-Check is assuming: Q_flow_nominal = fill(1e-15, 1)
-Check is assuming: parHeaPum.dpCon_nominal = 0
+Component type specifier Generic is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/SimpleSolarThermalWithHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump#text:17">18</a>
+ Component context: parSolThe
+  Component declared as Generic parSolThe in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.SolarThermal">BESMod.Systems.Hydraulical.Generation.RecordsCollection.SolarThermal</a>
+Error: Overriding final modifier for energyDynamics
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/BoilerCHP/BaseClasses/PartialHeatGenerator.mo, line <a href="Modelica://AixLib.Fluid.BoilerCHP.BaseClasses.PartialHeatGenerator.vol#text:3">96</a>
+Overriding found at:
+ Component context: BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump.solThe.vol.energyDynamics
+  Component declared as AixLib.Fluid.Solar.Thermal.SolarThermal solThe in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump">BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/SimpleSolarThermalWithHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump.solThe.vol#text">51</a>
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: solThe.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Check is assuming: Q_flow_nominal = fill(1e-15, 2)
 Check is assuming: parHeaPum.dpEva_nominal = 0
+Check is assuming: parEleHea.dp_nominal = 0
+Check is assuming: parSolThe.GMax = 0
+Check is assuming: parSolThe.dTMax = 0
 The model has
-  952+heatPump.con.vol.dynBal.nPorts+2*heatPump.eva.vol.dynBal.nPorts+size(    heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns, 1)+heatPump.safCtr.opeEnv.bouMapHea.nor.nu    +size(heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns, 1)+heatPump.safCtr.opeEnv.bouMapCoo.nor.nu    +multiSum.nu+boi.vol.dynBal.nPorts
+  1063+heatPump.con.vol.dynBal.nPorts+2*heatPump.eva.vol.dynBal.nPorts+size(    heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns, 1)+heatPump.safCtr.opeEnv.bouMapHea.nor.nu    +size(heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns, 1)+heatPump.safCtr.opeEnv.bouMapCoo.nor.nu    +multiSum.nu+eleHea.vol.dynBal.nPorts+solThe.vol.dynBal.nPorts
 scalar unknowns and
-  918+(if bou_sinkAir.use_Xi_in then 2 else (if bou_sinkAir.use_X_in then 1     else 3))+(if  not bou_sinkAir.use_p_in then 1 else 0)+(if  not     bou_sinkAir.use_h_in then 1 else 0)+(if bouEva.use_Xi_in then 2 else (if     bouEva.use_X_in then 1 else 3))+(if heatPump.con.vol.dynBal.medium.standardOrderComponents     then 1 else 0)+(if  not heatPump.con.vol.dynBal.use_mWat_flow then 1 else 0)    +3*heatPump.con.vol.dynBal.nPorts+(if  not heatPump.eva.vol.dynBal.use_mWat_flow     then 1 else 0)+5*heatPump.eva.vol.dynBal.nPorts+size(heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns,     1)+size(heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns, 1)+(if     boi.vol.dynBal.medium.standardOrderComponents then 1 else 0)+(if  not     boi.vol.dynBal.use_mWat_flow then 1 else 0)+3*boi.vol.dynBal.nPorts
+  1019+(if bou_sinkAir.use_Xi_in then 2 else (if bou_sinkAir.use_X_in then 1     else 3))+(if  not bou_sinkAir.use_p_in then 1 else 0)+(if  not     bou_sinkAir.use_h_in then 1 else 0)+(if bouEva.use_Xi_in then 2 else (if     bouEva.use_X_in then 1 else 3))+(if heatPump.con.vol.dynBal.medium.standardOrderComponents     then 1 else 0)+(if  not heatPump.con.vol.dynBal.use_mWat_flow then 1 else 0)    +3*heatPump.con.vol.dynBal.nPorts+(if  not heatPump.eva.vol.dynBal.use_mWat_flow     then 1 else 0)+5*heatPump.eva.vol.dynBal.nPorts+size(heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns,     1)+size(heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns, 1)+(if     eleHea.vol.dynBal.medium.standardOrderComponents then 1 else 0)+(if  not     eleHea.vol.dynBal.use_mWat_flow then 1 else 0)+3*eleHea.vol.dynBal.nPorts+(    if solThe.vol.dynBal.medium.standardOrderComponents then 1 else 0)+(if  not     solThe.vol.dynBal.use_mWat_flow then 1 else 0)+3*solThe.vol.dynBal.nPorts
 scalar equations.
-Error: The following parameters don't have any value:
-<a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPumpAndGasBoiler#text$resGen:length">resGen.length</a>
-<a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPumpAndGasBoiler#text$resGen:resCoe">resGen.resCoe</a>
-DAE with 995 unknown scalars and 977 scalar equations.
+DAE with 1116 unknown scalars and 1090 scalar equations.
 
-Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPumpAndGasBoiler#$boi.vol.dynBal:medium">boi.vol.dynBal.medium</a>.
-Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPumpAndGasBoiler#$heatPump.con.vol.dynBal:medium">heatPump.con.vol.dynBal.medium</a>.
-Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPumpAndGasBoiler#$heatPump.refCyc:refCycHeaPumHea">heatPump.refCyc.refCycHeaPumHea</a>.
-Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPumpAndGasBoiler#:parHeaPum">parHeaPum</a>.
-Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPumpAndGasBoiler#:parTemSen">parTemSen</a>.
+Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump#$eleHea.vol.dynBal:medium">eleHea.vol.dynBal.medium</a>.
+Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump#$heatPump.con.vol.dynBal:medium">heatPump.con.vol.dynBal.medium</a>.
+Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump#$heatPump.refCyc:refCycHeaPumHea">heatPump.refCyc.refCycHeaPumHea</a>.
+Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump#:parEleHea">parEleHea</a>.
+Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump#:parHeaPum">parHeaPum</a>.
+Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump#:parSolThe">parSolThe</a>.
+Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump#:parTemSen">parTemSen</a>.
+Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump#$solThe.vol.dynBal:medium">solThe.vol.dynBal.medium</a>.
 Warning: WARNINGS have been issued.
 Error: ERRORS have been issued.
 
