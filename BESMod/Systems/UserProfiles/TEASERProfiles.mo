@@ -34,9 +34,9 @@ model TEASERProfiles "TEASER Profiles with possible set-back temperature"
   BaseClasses.NightSetback nigSetBack[nZones](
     each dTSetBack=dTSetBack,
     each final startTimeSetBack=startTimeSetBack,
-    each final timeSetBack=hoursSetBack*3600,
+    each timeSetBack=hoursSetBack*3600,
     final TZone_nominal=TSetZone_nominal,
-    TOdaMin=TOdaMin)
+    each final TOdaMin=TOdaMin)
     "Room set temperature with set-back option"
     annotation (Placement(transformation(extent={{-20,-60},{0,-40}})));
   Modelica.Blocks.Routing.Replicator repTDryBul(final nout=nZones)

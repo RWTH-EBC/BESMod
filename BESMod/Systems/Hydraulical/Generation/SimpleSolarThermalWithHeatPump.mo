@@ -41,14 +41,14 @@ model SimpleSolarThermalWithHeatPump
     final dp_nominal=dpST_nominal,
     final rho_default=rho,
     final a=solThe.pressureDropCoeff,
+    energyDynamics=energyDynamics,
     final A=parSolThe.A,
     final volPip=parSolThe.volPip,
     final pressureDropCoeff=parSolThe.pressureDropCoeff,
     final Collector=AixLib.DataBase.SolarThermal.SimpleAbsorber(
         eta_zero=parSolThe.eta_zero,
         c1=parSolThe.c1,
-        c2=parSolThe.c2),
-    vol(final energyDynamics=energyDynamics)) "Solar thermal collector"
+        c2=parSolThe.c2)) "Solar thermal collector"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
