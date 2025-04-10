@@ -1,15 +1,9 @@
 
-Error in model:  BESMod.Examples.BAUSimStudy.PartialCase 
-Check of <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase">BESMod.Examples.BAUSimStudy.PartialCase</a>
-Warning: The variable hydraulic.distribution.stoDHW.heatingCoil1.pipe[2].res.fac=0 is not in range [1, DBL_MAX].
-Warning: The variable hydraulic.distribution.stoDHW.heatingCoil1.pipe[3].res.fac=0 is not in range [1, DBL_MAX].
-Warning: The variable hydraulic.distribution.stoDHW.heatingCoil1.pipe[4].res.fac=0 is not in range [1, DBL_MAX].
-Check of class aborted.
-Warning: WARNINGS have been issued.
-
-
 Error in model:  BESMod.Examples.Retrofit.PartialCase 
 Check of <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
 Warning: The variable hydraulic.distribution.stoDHW.heatingCoil1.pipe[2].res.fac=0 is not in range [1, DBL_MAX].
 Warning: The variable hydraulic.distribution.stoDHW.heatingCoil1.pipe[3].res.fac=0 is not in range [1, DBL_MAX].
 Warning: The variable hydraulic.distribution.stoDHW.heatingCoil1.pipe[4].res.fac=0 is not in range [1, DBL_MAX].
@@ -19,24 +13,15 @@ Warning: WARNINGS have been issued.
 
 Error in model:  BESMod.Examples.Retrofit.Case1PartialRetrofit 
 Check of <a href="Modelica://BESMod.Examples.Retrofit.Case1PartialRetrofit">BESMod.Examples.Retrofit.Case1PartialRetrofit</a>
-Warning: The variable hydraulic.distribution.stoDHW.heatingCoil1.pipe[2].res.fac=0 is not in range [1, DBL_MAX].
-Warning: The variable hydraulic.distribution.stoDHW.heatingCoil1.pipe[3].res.fac=0 is not in range [1, DBL_MAX].
-Warning: The variable hydraulic.distribution.stoDHW.heatingCoil1.pipe[4].res.fac=0 is not in range [1, DBL_MAX].
-Check of class aborted.
-Warning: WARNINGS have been issued.
-
-
-Error in model:  BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW 
-Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW</a>
-Warning: The variable hydraulic.distribution.stoDHW.heatingCoil1.pipe[2].res.fac=0 is not in range [1, DBL_MAX].
-Warning: The variable hydraulic.distribution.stoDHW.heatingCoil1.pipe[3].res.fac=0 is not in range [1, DBL_MAX].
-Warning: The variable hydraulic.distribution.stoDHW.heatingCoil1.pipe[4].res.fac=0 is not in range [1, DBL_MAX].
-Check of class aborted.
-Warning: WARNINGS have been issued.
-
-
-Error in model:  BESMod.Examples.BAUSimStudy.Case1Standard 
-Check of <a href="Modelica://BESMod.Examples.BAUSimStudy.Case1Standard">BESMod.Examples.BAUSimStudy.Case1Standard</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.RIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 2 the size declaration is building.thermalZone[1].ROM.nIzeRC, and the required size is 1.
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.CIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 2 the size declaration is building.thermalZone[1].ROM.nIzeRC, and the required size is 1.
 Warning: The variable hydraulic.distribution.stoDHW.heatingCoil1.pipe[2].res.fac=0 is not in range [1, DBL_MAX].
 Warning: The variable hydraulic.distribution.stoDHW.heatingCoil1.pipe[3].res.fac=0 is not in range [1, DBL_MAX].
 Warning: The variable hydraulic.distribution.stoDHW.heatingCoil1.pipe[4].res.fac=0 is not in range [1, DBL_MAX].
@@ -46,6 +31,15 @@ Warning: WARNINGS have been issued.
 
 Error in model:  BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW 
 Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.RIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 2 the size declaration is building.thermalZone[1].ROM.nIzeRC, and the required size is 1.
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.CIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 2 the size declaration is building.thermalZone[1].ROM.nIzeRC, and the required size is 1.
 Warning: The variable hydraulic.distribution.stoDHW.heatingCoil1.pipe[2].res.fac=0 is not in range [1, DBL_MAX].
 Warning: The variable hydraulic.distribution.stoDHW.heatingCoil1.pipe[3].res.fac=0 is not in range [1, DBL_MAX].
 Warning: The variable hydraulic.distribution.stoDHW.heatingCoil1.pipe[4].res.fac=0 is not in range [1, DBL_MAX].
@@ -53,8 +47,47 @@ Check of class aborted.
 Warning: WARNINGS have been issued.
 
 
-Error in model:  BESMod.Examples.Retrofit.Case1NoRetrofit 
-Check of <a href="Modelica://BESMod.Examples.Retrofit.Case1NoRetrofit">BESMod.Examples.Retrofit.Case1NoRetrofit</a>
+Error in model:  BESMod.Examples.BAUSimStudy.PartialCase 
+Check of <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase">BESMod.Examples.BAUSimStudy.PartialCase</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+Warning: The variable hydraulic.distribution.stoDHW.heatingCoil1.pipe[2].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable hydraulic.distribution.stoDHW.heatingCoil1.pipe[3].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable hydraulic.distribution.stoDHW.heatingCoil1.pipe[4].res.fac=0 is not in range [1, DBL_MAX].
+Check of class aborted.
+Warning: WARNINGS have been issued.
+
+
+Error in model:  BESMod.Examples.BAUSimStudy.Case1Standard 
+Check of <a href="Modelica://BESMod.Examples.BAUSimStudy.Case1Standard">BESMod.Examples.BAUSimStudy.Case1Standard</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.RIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 2 the size declaration is building.thermalZone[1].ROM.nIzeRC, and the required size is 1.
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.CIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 2 the size declaration is building.thermalZone[1].ROM.nIzeRC, and the required size is 1.
+Warning: The variable hydraulic.distribution.stoDHW.heatingCoil1.pipe[2].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable hydraulic.distribution.stoDHW.heatingCoil1.pipe[3].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable hydraulic.distribution.stoDHW.heatingCoil1.pipe[4].res.fac=0 is not in range [1, DBL_MAX].
+Check of class aborted.
+Warning: WARNINGS have been issued.
+
+
+Error in model:  BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW 
+Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.RIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 2 the size declaration is building.thermalZone[1].ROM.nIzeRC, and the required size is 1.
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.CIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 2 the size declaration is building.thermalZone[1].ROM.nIzeRC, and the required size is 1.
 Warning: The variable hydraulic.distribution.stoDHW.heatingCoil1.pipe[2].res.fac=0 is not in range [1, DBL_MAX].
 Warning: The variable hydraulic.distribution.stoDHW.heatingCoil1.pipe[3].res.fac=0 is not in range [1, DBL_MAX].
 Warning: The variable hydraulic.distribution.stoDHW.heatingCoil1.pipe[4].res.fac=0 is not in range [1, DBL_MAX].
@@ -64,6 +97,33 @@ Warning: WARNINGS have been issued.
 
 Error in model:  BESMod.Examples.Retrofit.Case1TotalRetrofit 
 Check of <a href="Modelica://BESMod.Examples.Retrofit.Case1TotalRetrofit">BESMod.Examples.Retrofit.Case1TotalRetrofit</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.RIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 2 the size declaration is building.thermalZone[1].ROM.nIzeRC, and the required size is 1.
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.CIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 2 the size declaration is building.thermalZone[1].ROM.nIzeRC, and the required size is 1.
+Warning: The variable hydraulic.distribution.stoDHW.heatingCoil1.pipe[2].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable hydraulic.distribution.stoDHW.heatingCoil1.pipe[3].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable hydraulic.distribution.stoDHW.heatingCoil1.pipe[4].res.fac=0 is not in range [1, DBL_MAX].
+Check of class aborted.
+Warning: WARNINGS have been issued.
+
+
+Error in model:  BESMod.Examples.Retrofit.Case1NoRetrofit 
+Check of <a href="Modelica://BESMod.Examples.Retrofit.Case1NoRetrofit">BESMod.Examples.Retrofit.Case1NoRetrofit</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.RIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 2 the size declaration is building.thermalZone[1].ROM.nIzeRC, and the required size is 1.
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.CIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 2 the size declaration is building.thermalZone[1].ROM.nIzeRC, and the required size is 1.
 Warning: The variable hydraulic.distribution.stoDHW.heatingCoil1.pipe[2].res.fac=0 is not in range [1, DBL_MAX].
 Warning: The variable hydraulic.distribution.stoDHW.heatingCoil1.pipe[3].res.fac=0 is not in range [1, DBL_MAX].
 Warning: The variable hydraulic.distribution.stoDHW.heatingCoil1.pipe[4].res.fac=0 is not in range [1, DBL_MAX].
