@@ -2,7 +2,7 @@ within BESMod.Systems.Hydraulical.Distribution.BaseClasses;
 partial model PartialTwoStorageParallel
   "Partial model to later extent"
   extends BaseClasses.PartialThreeWayValve(
-    final dpDHWHCSto_design=sum(stoDHW.heatingCoil1.pipe.res.dp_nominal),
+    final dpDHWHCSto_design=stoDHW.dpHC1Fixed_nominal,
     final dTTraDHW_nominal=parStoDHW.dTLoadingHC1,
     final QDHWStoLoss_flow_estimate=BESMod.Systems.Hydraulical.Distribution.RecordsCollection.GetDailyStorageLossesForLabel(VDHWDay_nominal, parStoDHW.energyLabel)/24*1000,
     final dTTra_nominal={parStoBuf.dTLoadingHC1},
@@ -145,7 +145,9 @@ partial model PartialTwoStorageParallel
         AixLib.Fluid.Storage.BaseClasses.HeatTransferBuoyancyWetter,
     final allowFlowReversal_layers=allowFlowReversal,
     final allowFlowReversal_HC1=allowFlowReversal,
-    final allowFlowReversal_HC2=allowFlowReversal) "Buffer storage"
+    final allowFlowReversal_HC2=allowFlowReversal,
+    final computePressureLossInternally=false,
+    final fac=1)                                   "Buffer storage"
     annotation (Placement(transformation(extent={{-50,0},{-18,40}})));
 
   AixLib.Fluid.Storage.StorageDetailed stoDHW(
@@ -200,7 +202,9 @@ partial model PartialTwoStorageParallel
         AixLib.Fluid.Storage.BaseClasses.HeatTransferBuoyancyWetter,
     final allowFlowReversal_layers=allowFlowReversal,
     final allowFlowReversal_HC1=allowFlowReversal,
-    final allowFlowReversal_HC2=allowFlowReversal)            "DHW storage"
+    final allowFlowReversal_HC2=allowFlowReversal,
+    final computePressureLossInternally=false,
+    final fac=1)                                              "DHW storage"
     annotation (Placement(transformation(extent={{-50,-70},{-18,-30}})));
 
   BESMod.Utilities.KPIs.EnergyKPICalculator eneKPICalBuf(use_inpCon=false, y=fixTemBuf.port.Q_flow)

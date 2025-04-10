@@ -72,8 +72,8 @@ model TwoStoragesBoilerWithDHW
     constrainedby BESMod.Systems.RecordsCollection.Valves.ThreeWayValve(
     final m_flow_nominal=mBoi_flow_nominal,
     iconName="BoiWayValve",
-    final dp_nominal={0,sum(stoDHW.heatingCoil2.pipe.res.dp_nominal)},
-    dpFixedExtra_nominal={resBoiValHydSep.dpFixed_nominal,resBoiValDHW.dpFixed_nominal},
+    final dp_nominal={0,0},
+    dpFixedExtra_nominal={resBoiValHydSep.dpFixed_nominal,resBoiValDHW.dpFixed_nominal + stoDHW.dpHC2Fixed_nominal},
     final fraK=1,
     use_strokeTime=false) "Parameters for three way valve of boiler" annotation (
     choicesAllMatching=true,
