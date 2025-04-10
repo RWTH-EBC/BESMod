@@ -1,46 +1,156 @@
 
-Error in model:  BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump 
-Check of <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
-Component type specifier Generic is a partial type
+Error in model:  BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading">BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading</a>
+Warning: The variable distribution.stoBuf.heatingCoil1.pipe[2].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable distribution.stoBuf.heatingCoil1.pipe[3].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable distribution.stoBuf.heatingCoil1.pipe[4].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable distribution.stoDHW.heatingCoil1.pipe[2].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable distribution.stoDHW.heatingCoil1.pipe[3].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable distribution.stoDHW.heatingCoil1.pipe[4].res.fac=0 is not in range [1, DBL_MAX].
+Check of class aborted.
+Warning: WARNINGS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading">BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading</a>
+Warning: The variable distribution.stoDHW.heatingCoil1.pipe[2].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable distribution.stoDHW.heatingCoil1.pipe[3].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable distribution.stoDHW.heatingCoil1.pipe[4].res.fac=0 is not in range [1, DBL_MAX].
+Check of class aborted.
+Warning: WARNINGS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallelWithHeaters 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallelWithHeaters">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallelWithHeaters</a>
+Check is assuming: VDHWDayAt60 = 1e-15
+Check is assuming: parStoDHW.energyLabel = BESMod.Systems.Hydraulical.Distribution.Types.EnergyLabel.APlus
+Check is assuming: mSup_flow_nominal = fill(1e-15, 1)
+Check is assuming: Q_flow_nominal = fill(1e-15, 1)
+Warning: The variable stoBuf.heatingCoil1.pipe[2].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable stoBuf.heatingCoil1.pipe[3].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable stoBuf.heatingCoil1.pipe[4].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable stoDHW.heatingCoil1.pipe[2].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable stoDHW.heatingCoil1.pipe[3].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable stoDHW.heatingCoil1.pipe[4].res.fac=0 is not in range [1, DBL_MAX].
+Check of class aborted.
+Warning: WARNINGS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedDirectLoading 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedDirectLoading">BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedDirectLoading</a>
+Component type specifier ThreeWayValve is a partial type
   It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:28">29</a>
- Component context: parHeaPum
-  Component declared as Generic parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve#text:26">27</a>
+ Component context: parThrWayVal
+  Component declared as ThreeWayValve parThrWayVal in <a href="Modelica://BESMod.Systems.RecordsCollection.Valves">BESMod.Systems.RecordsCollection.Valves</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Sources/BaseClasses/PartialSource.mo, line <a href="Modelica://IBPSA.Fluid.Sources.BaseClasses.PartialSource#text:36">37</a>
+ Component context: bouPum.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: pumGen.dpControlled_dp.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: pumGen.speedControlled_y.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
 Component type specifier TemperatureSensorBaseDefinition is a partial type
   It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:42">43</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel#text:17">18</a>
  Component context: parTemSen
   Component declared as TemperatureSensorBaseDefinition parTemSen in <a href="Modelica://BESMod.Systems.RecordsCollection.TemperatureSensors">BESMod.Systems.RecordsCollection.TemperatureSensors</a>
-Warning: Component type specifier RefrigerantCycleHeatPumpHeating is equal to a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/HeatPumps/ModularReversible/BaseClasses/RefrigerantCycle.mo, line <a href="Modelica://AixLib.Fluid.HeatPumps.ModularReversible.BaseClasses.RefrigerantCycle#text:25">26</a>
- Component context: heatPump.refCyc.refCycHeaPumHea
-  Component declared as RefrigerantCycleHeatPumpHeating refCycHeaPumHea in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
 Component type specifier BaseProperties is a partial type
   It must be redeclared before being used.
   File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
- Component context: heatPump.con.vol.dynBal.medium
+ Component context: stoBuf.layer.dynBal.medium
   Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
-Check is assuming: genDesTyp = BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.Monovalent
-Check is assuming: Q_flow_nominal = fill(1e-15, 1)
-Check is assuming: parHeaPum.dpCon_nominal = 0
-Check is assuming: parHeaPum.dpEva_nominal = 0
-The model has
-  796+heatPump.con.vol.dynBal.nPorts+2*heatPump.eva.vol.dynBal.nPorts+size(    heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns, 1)+heatPump.safCtr.opeEnv.bouMapHea.nor.nu    +size(heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns, 1)+heatPump.safCtr.opeEnv.bouMapCoo.nor.nu    +multiSum.nu
-scalar unknowns and
-  773+(if bou_sinkAir.use_Xi_in then 2 else (if bou_sinkAir.use_X_in then 1     else 3))+(if  not bou_sinkAir.use_p_in then 1 else 0)+(if  not     bou_sinkAir.use_h_in then 1 else 0)+(if bouEva.use_Xi_in then 2 else (if     bouEva.use_X_in then 1 else 3))+(if heatPump.con.vol.dynBal.medium.standardOrderComponents     then 1 else 0)+(if  not heatPump.con.vol.dynBal.use_mWat_flow then 1 else 0)    +3*heatPump.con.vol.dynBal.nPorts+(if  not heatPump.eva.vol.dynBal.use_mWat_flow     then 1 else 0)+5*heatPump.eva.vol.dynBal.nPorts+size(heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns,     1)+size(heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns, 1)
-scalar equations.
-Error: The following parameters don't have any value:
-<a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text$resGen:length">resGen.length</a>
-<a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text$resGen:resCoe">resGen.resCoe</a>
-DAE with 833 unknown scalars and 820 scalar equations.
-
-Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#$heatPump.con.vol.dynBal:medium">heatPump.con.vol.dynBal.medium</a>.
-Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#$heatPump.refCyc:refCycHeaPumHea">heatPump.refCyc.refCycHeaPumHea</a>.
-Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#:parHeaPum">parHeaPum</a>.
-Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#:parTemSen">parTemSen</a>.
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: stoBuf.heatingCoil1.pipe.vol_b.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: stoBuf.heatingCoil1.pipe.vol_a.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: stoBuf.heatingCoil2.pipe.vol_b.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: stoBuf.heatingCoil2.pipe.vol_a.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: stoDHW.layer.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: stoDHW.heatingCoil1.pipe.vol_b.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: stoDHW.heatingCoil1.pipe.vol_a.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: stoDHW.heatingCoil2.pipe.vol_b.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: stoDHW.heatingCoil2.pipe.vol_a.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: pumTra.dpControlled_dp.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: pumTra.speedControlled_y.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Sources/BaseClasses/PartialSource.mo, line <a href="Modelica://IBPSA.Fluid.Sources.BaseClasses.PartialSource#text:36">37</a>
+ Component context: souNoDHW.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Sources/BaseClasses/PartialSource.mo, line <a href="Modelica://IBPSA.Fluid.Sources.BaseClasses.PartialSource#text:36">37</a>
+ Component context: bouNoDHW.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: hea.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Check is assuming: VDHWDayAt60 = 1e-15
+Check is assuming: parStoDHW.energyLabel = BESMod.Systems.Hydraulical.Distribution.Types.EnergyLabel.APlus
+Check is assuming: mSup_flow_nominal = fill(1e-15, 1)
+Warning: The variable stoDHW.heatingCoil1.pipe[2].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable stoDHW.heatingCoil1.pipe[3].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable stoDHW.heatingCoil1.pipe[4].res.fac=0 is not in range [1, DBL_MAX].
+Check of class aborted.
 Warning: WARNINGS have been issued.
-Error: ERRORS have been issued.
 
 
 Error in model:  BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPumpAndGasBoiler 
@@ -92,6 +202,319 @@ Warning: WARNINGS have been issued.
 Error: ERRORS have been issued.
 
 
+Error in model:  BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedIndirectLoading 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedIndirectLoading">BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedIndirectLoading</a>
+Component type specifier ThreeWayValve is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve#text:26">27</a>
+ Component context: parThrWayVal
+  Component declared as ThreeWayValve parThrWayVal in <a href="Modelica://BESMod.Systems.RecordsCollection.Valves">BESMod.Systems.RecordsCollection.Valves</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Sources/BaseClasses/PartialSource.mo, line <a href="Modelica://IBPSA.Fluid.Sources.BaseClasses.PartialSource#text:36">37</a>
+ Component context: bouPum.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: pumGen.dpControlled_dp.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: pumGen.speedControlled_y.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier TemperatureSensorBaseDefinition is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel#text:17">18</a>
+ Component context: parTemSen
+  Component declared as TemperatureSensorBaseDefinition parTemSen in <a href="Modelica://BESMod.Systems.RecordsCollection.TemperatureSensors">BESMod.Systems.RecordsCollection.TemperatureSensors</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: stoBuf.layer.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: stoBuf.heatingCoil1.pipe.vol_b.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: stoBuf.heatingCoil1.pipe.vol_a.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: stoBuf.heatingCoil2.pipe.vol_b.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: stoBuf.heatingCoil2.pipe.vol_a.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: stoDHW.layer.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: stoDHW.heatingCoil1.pipe.vol_b.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: stoDHW.heatingCoil1.pipe.vol_a.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: stoDHW.heatingCoil2.pipe.vol_b.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: stoDHW.heatingCoil2.pipe.vol_a.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: pumTra.dpControlled_dp.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: pumTra.speedControlled_y.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Sources/BaseClasses/PartialSource.mo, line <a href="Modelica://IBPSA.Fluid.Sources.BaseClasses.PartialSource#text:36">37</a>
+ Component context: souNoDHW.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Sources/BaseClasses/PartialSource.mo, line <a href="Modelica://IBPSA.Fluid.Sources.BaseClasses.PartialSource#text:36">37</a>
+ Component context: bouNoDHW.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: hea.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Sources/BaseClasses/PartialSource.mo, line <a href="Modelica://IBPSA.Fluid.Sources.BaseClasses.PartialSource#text:36">37</a>
+ Component context: bouPumBuf.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Check is assuming: VDHWDayAt60 = 1e-15
+Check is assuming: parStoDHW.energyLabel = BESMod.Systems.Hydraulical.Distribution.Types.EnergyLabel.APlus
+Check is assuming: mSup_flow_nominal = fill(1e-15, 1)
+Check is assuming: Q_flow_nominal = fill(1e-15, 1)
+Warning: The variable stoBuf.heatingCoil1.pipe[2].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable stoBuf.heatingCoil1.pipe[3].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable stoBuf.heatingCoil1.pipe[4].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable stoDHW.heatingCoil1.pipe[2].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable stoDHW.heatingCoil1.pipe[3].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable stoDHW.heatingCoil1.pipe[4].res.fac=0 is not in range [1, DBL_MAX].
+Check of class aborted.
+Warning: WARNINGS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Component type specifier Generic is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:28">29</a>
+ Component context: parHeaPum
+  Component declared as Generic parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+Component type specifier TemperatureSensorBaseDefinition is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:42">43</a>
+ Component context: parTemSen
+  Component declared as TemperatureSensorBaseDefinition parTemSen in <a href="Modelica://BESMod.Systems.RecordsCollection.TemperatureSensors">BESMod.Systems.RecordsCollection.TemperatureSensors</a>
+Warning: Component type specifier RefrigerantCycleHeatPumpHeating is equal to a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/HeatPumps/ModularReversible/BaseClasses/RefrigerantCycle.mo, line <a href="Modelica://AixLib.Fluid.HeatPumps.ModularReversible.BaseClasses.RefrigerantCycle#text:25">26</a>
+ Component context: heatPump.refCyc.refCycHeaPumHea
+  Component declared as RefrigerantCycleHeatPumpHeating refCycHeaPumHea in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: heatPump.con.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Check is assuming: genDesTyp = BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.Monovalent
+Check is assuming: Q_flow_nominal = fill(1e-15, 1)
+Check is assuming: parHeaPum.dpCon_nominal = 0
+Check is assuming: parHeaPum.dpEva_nominal = 0
+The model has
+  796+heatPump.con.vol.dynBal.nPorts+2*heatPump.eva.vol.dynBal.nPorts+size(    heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns, 1)+heatPump.safCtr.opeEnv.bouMapHea.nor.nu    +size(heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns, 1)+heatPump.safCtr.opeEnv.bouMapCoo.nor.nu    +multiSum.nu
+scalar unknowns and
+  773+(if bou_sinkAir.use_Xi_in then 2 else (if bou_sinkAir.use_X_in then 1     else 3))+(if  not bou_sinkAir.use_p_in then 1 else 0)+(if  not     bou_sinkAir.use_h_in then 1 else 0)+(if bouEva.use_Xi_in then 2 else (if     bouEva.use_X_in then 1 else 3))+(if heatPump.con.vol.dynBal.medium.standardOrderComponents     then 1 else 0)+(if  not heatPump.con.vol.dynBal.use_mWat_flow then 1 else 0)    +3*heatPump.con.vol.dynBal.nPorts+(if  not heatPump.eva.vol.dynBal.use_mWat_flow     then 1 else 0)+5*heatPump.eva.vol.dynBal.nPorts+size(heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns,     1)+size(heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns, 1)
+scalar equations.
+Error: The following parameters don't have any value:
+<a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text$resGen:length">resGen.length</a>
+<a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text$resGen:resCoe">resGen.resCoe</a>
+DAE with 833 unknown scalars and 820 scalar equations.
+
+Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#$heatPump.con.vol.dynBal:medium">heatPump.con.vol.dynBal.medium</a>.
+Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#$heatPump.refCyc:refCycHeaPumHea">heatPump.refCyc.refCycHeaPumHea</a>.
+Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#:parHeaPum">parHeaPum</a>.
+Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#:parTemSen">parTemSen</a>.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Distribution.TwoStoragesBoilerWithDHW 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.TwoStoragesBoilerWithDHW">BESMod.Systems.Hydraulical.Distribution.TwoStoragesBoilerWithDHW</a>
+Component type specifier ThreeWayValve is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialThreeWayValve.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialThreeWayValve#text:26">27</a>
+ Component context: parThrWayVal
+  Component declared as ThreeWayValve parThrWayVal in <a href="Modelica://BESMod.Systems.RecordsCollection.Valves">BESMod.Systems.RecordsCollection.Valves</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Sources/BaseClasses/PartialSource.mo, line <a href="Modelica://IBPSA.Fluid.Sources.BaseClasses.PartialSource#text:36">37</a>
+ Component context: bouPum.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: pumGen.dpControlled_dp.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: pumGen.speedControlled_y.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier TemperatureSensorBaseDefinition is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel#text:17">18</a>
+ Component context: parTemSen
+  Component declared as TemperatureSensorBaseDefinition parTemSen in <a href="Modelica://BESMod.Systems.RecordsCollection.TemperatureSensors">BESMod.Systems.RecordsCollection.TemperatureSensors</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: stoBuf.layer.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: stoBuf.heatingCoil1.pipe.vol_b.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: stoBuf.heatingCoil1.pipe.vol_a.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: stoBuf.heatingCoil2.pipe.vol_b.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: stoBuf.heatingCoil2.pipe.vol_a.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: stoDHW.layer.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: stoDHW.heatingCoil1.pipe.vol_b.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: stoDHW.heatingCoil1.pipe.vol_a.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: stoDHW.heatingCoil2.pipe.vol_b.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: stoDHW.heatingCoil2.pipe.vol_a.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: pumTra.dpControlled_dp.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: pumTra.speedControlled_y.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Sources/BaseClasses/PartialSource.mo, line <a href="Modelica://IBPSA.Fluid.Sources.BaseClasses.PartialSource#text:36">37</a>
+ Component context: souNoDHW.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Sources/BaseClasses/PartialSource.mo, line <a href="Modelica://IBPSA.Fluid.Sources.BaseClasses.PartialSource#text:36">37</a>
+ Component context: bouNoDHW.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier ThreeWayValve is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/TwoStoragesBoilerWithDHW.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.TwoStoragesBoilerWithDHW#text:70">71</a>
+ Component context: parThrWayValBoi
+  Component declared as ThreeWayValve parThrWayValBoi in <a href="Modelica://BESMod.Systems.RecordsCollection.Valves">BESMod.Systems.RecordsCollection.Valves</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: boi.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: thrWayValBoiDHW.threWayValFlow.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: hydSep.layer.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: pumBoi.dpControlled_dp.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: pumBoi.speedControlled_y.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Check is assuming: VDHWDayAt60 = 1e-15
+Check is assuming: parStoDHW.energyLabel = BESMod.Systems.Hydraulical.Distribution.Types.EnergyLabel.APlus
+Check is assuming: Q_flow_nominal = fill(1e-15, 1)
+Check is assuming: mSup_flow_nominal = fill(1e-15, 1)
+Warning: The variable stoDHW.heatingCoil1.pipe[2].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable stoDHW.heatingCoil1.pipe[3].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable stoDHW.heatingCoil1.pipe[4].res.fac=0 is not in range [1, DBL_MAX].
+Check of class aborted.
+Warning: WARNINGS have been issued.
+
+
 Error in model:  BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM 
 Check of <a href="Modelica://BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM">BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM</a>
 Error: The problem is structurally singular.
@@ -138,4 +561,30 @@ Indeterminate variables declared as outputs:
 <a href="Modelica://BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemROM#diagram$heaDemSce:repTDryBul.y">heaDemSce.repTDryBul.y[]</a>
 Warning: WARNINGS have been issued.
 Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel</a>
+Check is assuming: VDHWDayAt60 = 1e-15
+Check is assuming: parStoDHW.energyLabel = BESMod.Systems.Hydraulical.Distribution.Types.EnergyLabel.APlus
+Check is assuming: use_secHeaCoiDHWSto = false
+Check is assuming: mSup_flow_nominal = fill(1e-15, 1)
+Check is assuming: Q_flow_nominal = fill(1e-15, 1)
+Warning: The variable stoBuf.heatingCoil1.pipe[2].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable stoBuf.heatingCoil1.pipe[3].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable stoBuf.heatingCoil1.pipe[4].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable stoDHW.heatingCoil1.pipe[2].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable stoDHW.heatingCoil1.pipe[3].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable stoDHW.heatingCoil1.pipe[4].res.fac=0 is not in range [1, DBL_MAX].
+Check of class aborted.
+Warning: WARNINGS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW">BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW</a>
+Warning: The variable distribution.stoDHW.heatingCoil1.pipe[2].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable distribution.stoDHW.heatingCoil1.pipe[3].res.fac=0 is not in range [1, DBL_MAX].
+Warning: The variable distribution.stoDHW.heatingCoil1.pipe[4].res.fac=0 is not in range [1, DBL_MAX].
+Check of class aborted.
+Warning: WARNINGS have been issued.
 
