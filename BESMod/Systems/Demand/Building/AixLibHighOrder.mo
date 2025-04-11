@@ -18,7 +18,7 @@ model AixLibHighOrder "High order building model from AixLib library"
 
   parameter Boolean useConstVentRate;
   parameter Real ventRate[nZones]=fill(0, nZones) if useConstVentRate "Constant mechanical ventilation rate" annotation (Dialog(enable=useConstVentRate));
-  parameter Modelica.Units.SI.Temperature TSoil=281.65     "Temperature of soil";
+  parameter Modelica.Units.SI.Temperature TSoil=286.15     "Temperature of soil";
   parameter Real GroundReflectance = 0.2 "ground reflectance coefficient";
 
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature preTSoi(T=TSoil)
