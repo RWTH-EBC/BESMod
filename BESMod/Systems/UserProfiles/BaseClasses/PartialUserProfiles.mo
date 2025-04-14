@@ -12,6 +12,9 @@ partial model PartialUserProfiles
       Placement(transformation(extent={{80,-34},{150,32}}), iconTransformation(
           extent={{80,-34},{150,32}})));
 
+  IBPSA.BoundaryConditions.WeatherData.Bus
+      weaBus "Weather data bus" annotation (Placement(transformation(extent={{-34,
+            -148},{36,-90}}),    iconTransformation(extent={{-36,-152},{36,-82}})));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-120,
             -120},{120,120}}),
                          graphics={

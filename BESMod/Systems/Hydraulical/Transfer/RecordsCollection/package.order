@@ -1,7 +1,4 @@
 DefaultUFHData
 RadiatorTransferData
-SteelRadiatorStandardPressureLossData
 TransferControlBaseDataDefinition
-TransferDataBaseDefinition
 UFHData
-UnderfloorHeatingTransferData

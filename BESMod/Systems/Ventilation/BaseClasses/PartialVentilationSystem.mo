@@ -12,8 +12,8 @@ partial model PartialVentilationSystem
     Placement(transformation(extent={{-100,-98},{-80,-78}})));
   replaceable Generation.BaseClasses.PartialGeneration generation(
       dTTra_nominal=fill(1, generation.nParallelDem),
-      m_flow_nominal=fill(1, generation.nParallelDem),
-      dp_nominal=fill(0, generation.nParallelDem))
+      dp_design=fill(0, generation.nParallelDem),
+      m_flow_nominal=fill(1, generation.nParallelDem))
     constrainedby Generation.BaseClasses.PartialGeneration(
     Q_flow_nominal={sum(distribution.Q_flow_nominal .* distribution.f_design)},
     redeclare final package Medium = Medium,
@@ -32,16 +32,13 @@ partial model PartialVentilationSystem
     final show_T=show_T,
     final rho=rho,
     final cp=cp,
-    dpDem_nominal=fill(max(distribution.dp_nominal),generation.nParallelDem),
     final use_openModelica=use_openModelica)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{26,-56},
             {80,-2}})));
 
   replaceable Distribution.BaseClasses.PartialDistribution distribution(
-      dTTra_nominal=fill(1, distribution.nParallelDem),
-      m_flow_nominal=fill(1, distribution.nParallelDem),
-      dp_nominal=fill(0, distribution.nParallelDem))
-    constrainedby Distribution.BaseClasses.PartialDistribution(
+      dTTra_nominal=fill(1, distribution.nParallelDem)) constrainedby
+    Distribution.BaseClasses.PartialDistribution(
     redeclare package Medium = Medium,
     final nParallelDem=ventilationSystemParameters.nZones,
     final Q_flow_nominal=ventilationSystemParameters.Q_flow_nominal,
@@ -60,7 +57,15 @@ partial model PartialVentilationSystem
     final show_T=show_T,
     final rho=rho,
     final cp=cp,
-    final use_openModelica=use_openModelica)
+    final use_openModelica=use_openModelica,
+    mDem_flow_nominal=ventilationSystemParameters.AZone .* ventilationSystemParameters.hZone .* 0.5 ./ 3600 .* 1.225,
+    mDemOld_flow_design=ventilationSystemParameters.AZone .* ventilationSystemParameters.hZone .* 0.5 ./ 3600 .* 1.225,
+    dpDem_nominal=fill(0, ventilationSystemParameters.nZones),
+    dpDemOld_design=fill(0, ventilationSystemParameters.nZones),
+    final mSup_flow_nominal=generation.m_flow_nominal,
+    final mSupOld_flow_design=generation.mOld_flow_design,
+    final dpSup_nominal=generation.dp_nominal,
+    final dpSupOld_design=generation.dpOld_design)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-60,-52},{-16,0}})));
 
   replaceable Control.BaseClasses.PartialControl control constrainedby
@@ -85,8 +90,10 @@ partial model PartialVentilationSystem
       final TDem_nominal=distribution.TDem_nominal,
       final TSup_nominal=distribution.TSup_nominal,
       final dTTra_nominal=distribution.dTTra_nominal,
-      final m_flow_nominal=distribution.m_flow_nominal,
-      final dp_nominal=distribution.dp_nominal,
+      final mSup_flow_nominal=distribution.mSup_flow_nominal,
+      final dpSup_nominal=distribution.dpSup_nominal,
+      final mDem_flow_nominal=distribution.mDem_flow_nominal,
+      final dpDem_nominal=distribution.dpDem_nominal,
       final dTLoss_nominal=distribution.dTLoss_nominal,
       final f_design=distribution.f_design,
       final TOda_nominal=ventilationSystemParameters.TOda_nominal,

@@ -116,6 +116,10 @@ equation
       points={{-62.75,19.85},{-36,19.85},{-36,50},{45.4,50},{45.4,38}},
       color={255,204,51},
       thickness=0.5));
+  connect(weaDat.weaBus, heaDemSce.weaBus) annotation (Line(
+      points={{-20,80},{-18,80},{-18,78},{-16,78},{-16,2.45},{-80,2.45}},
+      color={255,204,51},
+      thickness=0.5));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false), graphics={Text(

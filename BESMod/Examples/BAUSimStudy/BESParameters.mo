@@ -8,7 +8,7 @@ record BESParameters
     final TDHWWaterCold=283.15,
     final TSetDHW=328.15,
     final TVenSup_nominal=TSetZone_nominal,
-    final TSetZone_nominal=fill(293.15, nZones),
+    TSetZone_nominal=fill(293.15, nZones),
     final nZones=1,
     final use_ventilation=false);
 

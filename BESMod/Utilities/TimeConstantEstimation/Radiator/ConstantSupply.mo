@@ -1,8 +1,9 @@
 within BESMod.Utilities.TimeConstantEstimation.Radiator;
 model ConstantSupply "Smart thermotat PI control estimation"
   extends Partial(
-    QBuiNoRetrofit_flow_nominal=systemParameters.QBui_flow_nominal*3,
-    dTStepSet=0,  hydraulic(control(
+    dTStepOda=0,
+    QBuiNoRetrofit_flow_nominal=systemParameters.QBui_flow_nominal,
+    dTStepSet=2,  hydraulic(control(
         useOpeTemCtrl=false,
         redeclare
           BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ConstantOpening
@@ -13,11 +14,8 @@ model ConstantSupply "Smart thermotat PI control estimation"
                                  systemParameters(QBui_flow_nominal={11000},
         THydSup_nominal={343.15}));
   extends Modelica.Icons.Example;
-  parameter Modelica.Units.SI.Time timeInt=1200
-    "Time constant of Integrator block";
-  parameter Real P=0.3 "Gain of PID-controller";
   parameter Modelica.Units.SI.Temperature TConSup=273.15 + 40
-    "Constant supply temperature" annotation (Dialog(tab="Advanced"));
+    "Constant supply temperature";
   annotation (experiment(
       StopTime=864000,
       Interval=60,

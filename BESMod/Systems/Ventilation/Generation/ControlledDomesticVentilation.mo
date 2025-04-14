@@ -1,7 +1,8 @@
 within BESMod.Systems.Ventilation.Generation;
 model ControlledDomesticVentilation
   extends BESMod.Systems.Ventilation.Generation.BaseClasses.PartialGeneration(
-    dp_nominal={hex.dp1_nominal},
+    dp_design={2 * parameters.dpHex_nominal + 2*
+        threeWayValveParas.dpValve_nominal},
     dTTra_nominal={0},
     nParallelSup=1,
     nParallelDem=1,
@@ -12,8 +13,8 @@ model ControlledDomesticVentilation
     redeclare package Medium2 = Medium,
     final allowFlowReversal1=allowFlowReversal,
     final allowFlowReversal2=allowFlowReversal,
-    final m1_flow_nominal=m_flow_nominal[1],
-    final m2_flow_nominal=m_flow_nominal[1],
+    final m1_flow_nominal=m_flow_design[1],
+    final m2_flow_nominal=m_flow_design[1],
     final dp1_nominal=parameters.dpHex_nominal,
     final dp2_nominal=parameters.dpHex_nominal,
     final eps=parameters.epsHex)
@@ -26,36 +27,14 @@ model ControlledDomesticVentilation
         extent={{-8,-8},{8,8}},
         rotation=180,
         origin={78,-22})));
-  IBPSA.Fluid.Movers.Preconfigured.SpeedControlled_y fanFlow(
-    redeclare final package Medium = Medium,
-    final energyDynamics=energyDynamics,
-    final p_start=p_start,
-    final T_start=T_start,
-    final allowFlowReversal=allowFlowReversal,
-    final show_T=show_T,
-    final m_flow_nominal=m_flow_nominal[1],
-    final dp_nominal=dpDem_nominal[1] + dp_nominal[1],
-     final addPowerToMedium=fanData.addPowerToMedium,
-    final tau=fanData.tau,
-    final use_riseTime=fanData.use_riseTime,
-    final riseTime=fanData.riseTimeInpFilter,
-    final y_start=1) annotation (Placement(transformation(
-        extent={{-10,10},{10,-10}},
-        rotation=180,
-        origin={-76,42})));
-  Modelica.Blocks.Sources.Constant yFan(k=1)
-    "Transform Volume l to massflowrate" annotation (Placement(transformation(
-        extent={{-7,-7},{7,7}},
-        rotation=180,
-        origin={-65,71})));
   IBPSA.Fluid.Sensors.TemperatureTwoPort TExhIn(
     final initType=tempSensorData.initType,
     redeclare final package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
-    final m_flow_small=1E-4*m_flow_nominal[1],
+    final m_flow_small=1E-4*m_flow_design[1],
     final T_start=T_start,
     final tau=tempSensorData.tau,
-    final m_flow_nominal=m_flow_nominal[1],
+    final m_flow_nominal=m_flow_design[1],
     final transferHeat=tempSensorData.transferHeat,
     final TAmb=tempSensorData.TAmb,
     final tauHeaTra=tempSensorData.tauHeaTra)
@@ -70,35 +49,18 @@ model ControlledDomesticVentilation
         rotation=180,
         origin={73,-41})));
 
-  IBPSA.Fluid.Movers.Preconfigured.SpeedControlled_y fanRet(
-    redeclare final package Medium = Medium,
-    final energyDynamics=energyDynamics,
-    final p_start=p_start,
-    final T_start=T_start,
-    final allowFlowReversal=allowFlowReversal,
-    final show_T=show_T,
-    final m_flow_nominal=m_flow_nominal[1],
-    final dp_nominal=dpDem_nominal [1]+ parameters.dpHex_nominal + 2*threeWayValveParas.dpValve_nominal,
-    final addPowerToMedium=fanData.addPowerToMedium,
-    final tau=fanData.tau,
-    final use_riseTime=fanData.use_riseTime,
-    final riseTime=fanData.riseTimeInpFilter,
-    final y_start=1) annotation (Placement(transformation(
-        extent={{-10,10},{10,-10}},
-        rotation=0,
-        origin={-72,-40})));
   replaceable parameter
     BESMod.Systems.Ventilation.Generation.RecordsCollection.PartialHeatExchangerRecovery
     parameters annotation (choicesAllMatching=true, Placement(transformation(
-          extent={{46,-98},{66,-78}})));
+          extent={{24,64},{38,78}})));
   IBPSA.Fluid.Sensors.TemperatureTwoPort TSup(
     final initType=tempSensorData.initType,
     redeclare final package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
-    final m_flow_small=1E-4*m_flow_nominal[1],
+    final m_flow_small=1E-4*m_flow_design[1],
     final T_start=T_start,
     final tau=tempSensorData.tau,
-    final m_flow_nominal=m_flow_nominal[1],
+    final m_flow_nominal=m_flow_design[1],
     final transferHeat=tempSensorData.transferHeat,
     final TAmb=tempSensorData.TAmb,
     final tauHeaTra=tempSensorData.tauHeaTra)
@@ -124,7 +86,7 @@ model ControlledDomesticVentilation
     final fraK=threeWayValveParas.fraK,
     redeclare final package Medium = Medium,
     final CvData=IBPSA.Fluid.Types.CvTypes.OpPoint,
-    final m_flow_nominal=m_flow_nominal[1]) annotation (choicesAllMatching=true,
+    final m_flow_nominal=m_flow_design[1]) annotation (choicesAllMatching=true,
       Placement(transformation(extent={{22,-64},{38,-80}})));
   replaceable IBPSA.Fluid.Actuators.Valves.ThreeWayLinear threeWayValve_a constrainedby
     IBPSA.Fluid.Actuators.BaseClasses.PartialThreeWayValve(
@@ -143,7 +105,7 @@ model ControlledDomesticVentilation
     final fraK=threeWayValveParas.fraK,
     redeclare final package Medium = Medium,
     final CvData=IBPSA.Fluid.Types.CvTypes.OpPoint,
-    final m_flow_nominal=m_flow_nominal[1]) annotation (choicesAllMatching=true,
+    final m_flow_nominal=m_flow_design[1]) annotation (choicesAllMatching=true,
       Placement(transformation(
         extent={{-7,-7},{7,7}},
         rotation=180,
@@ -151,23 +113,17 @@ model ControlledDomesticVentilation
   replaceable parameter BESMod.Systems.RecordsCollection.Valves.ThreeWayValve
     threeWayValveParas constrainedby
     BESMod.Systems.RecordsCollection.Valves.ThreeWayValve(
-    m_flow_nominal=m_flow_nominal[1],
-    dp_nominal={dpDem_nominal[1], dpDem_nominal[1] + parameters.dpHex_nominal})
-    annotation (choicesAllMatching=true, Placement(transformation(extent={{-98,-98},
-            {-76,-74}})));
-  replaceable parameter
-    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
-    fanData annotation (Placement(transformation(extent={{-82,-8},{-62,12}})),
-      choicesAllMatching=true);
+    m_flow_nominal=m_flow_design[1],
+    dp_nominal={0, parameters.dpHex_nominal})
+    annotation (choicesAllMatching=true, Placement(transformation(extent={{44,64},
+            {58,78}})));
   replaceable parameter
     BESMod.Systems.RecordsCollection.TemperatureSensors.TemperatureSensorBaseDefinition
     tempSensorData
-    annotation (Placement(transformation(extent={{76,78},{96,98}})),
+    annotation (Placement(transformation(extent={{62,64},{78,78}})),
       choicesAllMatching=true);
-  BESMod.Utilities.Electrical.RealToElecCon realToElecCon(use_souGen=false)
-    annotation (Placement(transformation(extent={{36,-118},{56,-98}})));
-  Modelica.Blocks.Math.Add add
-    annotation (Placement(transformation(extent={{2,-114},{22,-94}})));
+  Utilities.Electrical.ZeroLoad        zeroLoad
+    annotation (Placement(transformation(extent={{0,-110},{20,-90}})));
 equation
   connect(bouSup.p_in, weaBus.pAtm) annotation (Line(points={{87.6,-28.4},{112,-28.4},
           {112,92},{41.105,92},{41.105,100.11}},       color={0,0,127}), Text(
@@ -182,38 +138,13 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(fanFlow.port_b, portVent_in[1]) annotation (Line(points={{-86,42},{-100,42}},
-                               color={0,127,255}));
   connect(TExhIn.T,outBusGen.TExhIn)  annotation (Line(points={{-42,-51},{-42,-56},
           {102,-56},{102,-1}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(fanFlow.P,outBusGen.PVentSup)  annotation (Line(points={{-87,51},{-87,
-          84},{102,84},{102,-1}}, color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{-3,6},{-3,6}},
-      horizontalAlignment=TextAlignment.Right));
-  connect(portVent_out[1], fanRet.port_a)
-    annotation (Line(points={{-100,-40},{-82,-40}}, color={0,127,255}));
-  connect(TExhIn.port_a, fanRet.port_b)
-    annotation (Line(points={{-52,-40},{-62,-40}}, color={0,127,255}));
-  connect(fanRet.P,outBusGen.PelVentRet)  annotation (Line(points={{-61,-49},{
-          -62,-49},{-62,-50},{102,-50},{102,-1}},
-                                    color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{-3,-6},{-3,-6}},
-      horizontalAlignment=TextAlignment.Right));
-  connect(yFan.y, fanFlow.y)
-    annotation (Line(points={{-72.7,71},{-76,71},{-76,54}}, color={0,0,127}));
-  connect(yFan.y, fanRet.y) annotation (Line(points={{-72.7,71},{-90,71},{-90,
-          -60},{-72,-60},{-72,-52}}, color={0,0,127}));
 
-  connect(fanFlow.port_a, TSup.port_b)
-    annotation (Line(points={{-66,42},{-62,42}}, color={0,127,255}));
   connect(TSup.T, sigBusGen.THROut) annotation (Line(points={{-53,50.8},{-53,66},
           {-42,66},{-42,98}}, color={0,0,127}), Text(
       string="%second",
@@ -247,16 +178,14 @@ equation
         points={{-4,-69},{14,-69},{14,-72},{22,-72}}, color={0,127,255}));
   connect(hex.port_a1, bouSup.ports[1]) annotation (Line(points={{32,-21.6},{51,
           -21.6},{51,-22},{70,-22}}, color={0,127,255}));
-  connect(realToElecCon.internalElectricalPin, internalElectricalPin)
-    annotation (Line(
-      points={{56.2,-107.8},{61.1,-107.8},{61.1,-98},{70,-98}},
+
+  connect(TSup.port_b, portVent_in[1])
+    annotation (Line(points={{-62,42},{-100,42}}, color={0,127,255}));
+  connect(TExhIn.port_a, portVent_out[1])
+    annotation (Line(points={{-52,-40},{-100,-40}}, color={0,127,255}));
+  connect(zeroLoad.internalElectricalPin, internalElectricalPin) annotation (
+      Line(
+      points={{20,-100},{42,-100},{42,-98},{70,-98}},
       color={0,0,0},
       thickness=1));
-
-  connect(add.y, realToElecCon.PEleLoa)
-    annotation (Line(points={{23,-104},{34,-104}}, color={0,0,127}));
-  connect(fanRet.P, add.u2) annotation (Line(points={{-61,-49},{-58,-49},{-58,
-          -110},{0,-110}}, color={0,0,127}));
-  connect(add.u1, fanFlow.P) annotation (Line(points={{0,-98},{-20,-98},{-20,
-          -96},{-87,-96},{-87,51}}, color={0,0,127}));
 end ControlledDomesticVentilation;

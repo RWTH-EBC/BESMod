@@ -1,22 +1,15 @@
 within BESMod.Systems.Hydraulical.Generation.BaseClasses;
 partial model PartialGeneration "Partial generation model for HPS"
   extends BESMod.Utilities.Icons.GenerationIcon;
-  extends BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters(
+  extends BESMod.Systems.BaseClasses.PartialSingleSideFluidSubsystemWithParameters(
+    final useRoundPipes=true,
+    v_design=fill(0.7,nParallelDem),
     final TSup_nominal=TDem_nominal .+ dTLoss_nominal,
     final TSupOld_design=TDemOld_design .+ dTLoss_nominal,
     m_flow_nominal=Q_flow_nominal .* f_design ./ dTTra_nominal ./ 4184,
     m_flow_design=Q_flow_design .* f_design ./ dTTra_design ./ 4184,
     mOld_flow_design=QOld_flow_design .* f_design ./ dTTraOld_design ./ 4184,
     final nParallelSup=nParallelDem);
-
-  parameter Modelica.Units.SI.PressureDifference dpDem_nominal[nParallelDem]
-    "Nominal pressure loss of resistances in the demand system of the generation"
-    annotation (Dialog(group=
-          "Design - Top Down: Parameters are given by the parent system"));
-  parameter Modelica.Units.SI.PressureDifference dpDemOld_design[nParallelDem]
-    "Nominal design pressure loss of resistances in the old demand system of the generation"
-    annotation (Dialog(group=
-          "Design - Top Down: Parameters are given by the parent system"));
 
   BESMod.Systems.Hydraulical.Interfaces.GenerationControlBus
     sigBusGen

@@ -6,7 +6,7 @@ model NoVentilation "Model without any ventilation"
     final dTLoss_nominal={0},
     final m_flow_nominal={0},
     final TSup_nominal=TDem_nominal,
-    final dp_nominal={0},
+    final dp_design={0},
     final dTTra_nominal={0},
     final nParallelSup=1,
     final nParallelDem=1);

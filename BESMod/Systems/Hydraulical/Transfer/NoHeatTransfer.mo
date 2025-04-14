@@ -1,6 +1,11 @@
 within BESMod.Systems.Hydraulical.Transfer;
 model NoHeatTransfer "No heat tranfser to building"
   extends BaseClasses.PartialTransfer(
+    dpSupOld_design=fill(0, nParallelSup),
+    dpSup_design=fill(0, nParallelSup),
+    dpSup_nominal=fill(0, nParallelSup),
+    dp_design=fill(0, nParallelDem),
+    nParallelSup=1,
     final nHeaTra=1,
     dp_nominal=fill(0, nParallelDem),
     dTTra_nominal=fill(0, nParallelDem));

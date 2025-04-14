@@ -13,34 +13,30 @@ model HeatPump "Heat pump test case"
       redeclare
         BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps.DefaultHP
         parHeaPum,
-      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
-      redeclare
-        BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
+      redeclare BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
         parTemSen));
    extends Modelica.Icons.Example;
 
-  Modelica.Blocks.Sources.Pulse        pulse(period=1800)
-    annotation (Placement(transformation(extent={{-40,80},{-20,100}})));
-  Modelica.Blocks.Sources.BooleanConstant
-                                       booleanConstant
-    annotation (Placement(transformation(extent={{-40,50},{-20,70}})));
 equation
-  connect(pulse.y, genControlBus.yHeaPumSet) annotation (Line(points={{-19,90},{
-          -14,90},{-14,98},{10,98},{10,74}},  color={0,0,127}), Text(
+  connect(pulse.y, genControlBus.yHeaPumSet) annotation (Line(points={{-19,70},{
+          -4,70},{-4,88},{10,88},{10,74}},    color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(pulse.y, genControlBus.uPump) annotation (Line(points={{-19,90},{-14,90},
-          {-14,98},{10,98},{10,74}},     color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(booleanConstant.y, genControlBus.hea) annotation (Line(points={{-19,
-          60},{-14,60},{-14,74},{10,74}}, color={255,0,255}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
+  annotation (experiment(StopTime=3600, Tolerance=1e-06, Interval=100),
+     __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/HeatPump.mos"
+          "Simulate and plot"),
+    Documentation(info="<html>
+<p>
+  Test for  
+  <a href=\"modelica://BESMod.Systems.Hydraulical.Generation.HeatPump\">BESMod.Systems.Hydraulical.Generation.HeatPump</a>.
+</p>
+<p>
+As the set compressor speed <code>yHeaPumSet</code> actuates faster 
+than the internal safety control, the device sometimes runs longer than set. 
+Search for <code>yMea</code> in results to see the actual compressor 
+speed applied.
+</p>
+</html>"));
 end HeatPump;

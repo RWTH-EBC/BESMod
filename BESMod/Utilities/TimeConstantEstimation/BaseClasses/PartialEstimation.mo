@@ -6,7 +6,7 @@ partial model PartialEstimation "Partial model for estimation of time constants"
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
     redeclare Systems.Demand.Building.TEASERThermalZone building(
       ARoo=sum(building.zoneParam.ARoof),
-      redeclare BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
+      redeclare replaceable BESMod.Systems.Demand.Building.RecordsCollection.RefAachen
         oneZoneParam(useConstantACHrate=true),
       hBui=sum(building.zoneParam.VAir)^(1/3),
       ABui=sum(building.zoneParam.VAir)^(2/3),
@@ -15,25 +15,24 @@ partial model PartialEstimation "Partial model for estimation of time constants"
       T_start=293.15 - dTStepSet),
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
-      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,   redeclare
-        BESMod.Systems.Hydraulical.Generation.ElectricalHeater generation(
+      energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
+      redeclare BESMod.Systems.Hydraulical.Generation.ElectricalHeater
+        generation(
         dTTra_nominal={max(hydraulic.transfer.dTTra_nominal)},
         f_design={2},
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater.DefaultElectricHeater
-          parEleHea,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum),
-        redeclare
+          parEleHea),
+      redeclare
         BESMod.Utilities.TimeConstantEstimation.BaseClasses.TimeConstantEstimationControl
         control),
     redeclare Systems.Demand.DHW.StandardProfiles DHW(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.NoDHW DHWProfile,
-      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
         calcmFlow),
-    redeclare BESMod.Systems.UserProfiles.TEASERProfiles userProfiles(gain={0,0,
-          0},
+    redeclare BESMod.Systems.UserProfiles.TEASERProfiles userProfiles(
+      gain={0,0,0},
       dTSetBack=dTStepSet,
       startTimeSetBack=startTimeTSet),
     redeclare BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy
@@ -50,9 +49,11 @@ partial model PartialEstimation "Partial model for estimation of time constants"
       relHum=0,
       winSpeSou=IBPSA.BoundaryConditions.Types.DataSource.Parameter,
       winSpe=0,
-      HInfHorSou=if use_solGai then IBPSA.BoundaryConditions.Types.DataSource.File else IBPSA.BoundaryConditions.Types.DataSource.Parameter,
+      HInfHorSou=if use_solGai then IBPSA.BoundaryConditions.Types.DataSource.File
+           else IBPSA.BoundaryConditions.Types.DataSource.Parameter,
       HInfHor=0,
-      HSou=if use_solGai then IBPSA.BoundaryConditions.Types.RadiationDataSource.File else IBPSA.BoundaryConditions.Types.RadiationDataSource.Input_HGloHor_HDifHor));
+      HSou=if use_solGai then IBPSA.BoundaryConditions.Types.RadiationDataSource.File
+           else IBPSA.BoundaryConditions.Types.RadiationDataSource.Input_HGloHor_HDifHor));
 
   parameter Modelica.Units.SI.TemperatureDifference dTStepSet=2
     "Temperature difference of set temperature";
@@ -74,7 +75,9 @@ partial model PartialEstimation "Partial model for estimation of time constants"
 
 initial equation
   building.thermalZone[1].ROM.extWallRC.thermCapExt[1].T = building.T_start;
-  building.thermalZone[1].ROM.floorRC.thermCapExt[1].T = building.T_start;
+  //if building.oneZoneParam.AFloor > 0 then
+  //  building.thermalZone[1].ROM.floorRC.thermCapExt[1].T = building.T_start;
+  //end if;
   building.thermalZone[1].ROM.intWallRC.thermCapInt[1].T = building.T_start;
   building.thermalZone[1].ROM.roofRC.thermCapExt[1].T = building.T_start;
 equation
