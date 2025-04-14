@@ -1,5 +1,5 @@
 within BESMod.Systems.Hydraulical.Generation.BaseClasses;
-model PartialHeatPump "Generation with only the heat pump"
+partial model PartialHeatPump "Generation with only the heat pump"
   extends BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration(
     dp_design={heatPump.dpCon_nominal + resGen.dp_nominal},
     final QLoss_flow_nominal=f_design .* Q_flow_nominal .- Q_flow_nominal,

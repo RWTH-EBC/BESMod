@@ -1,5 +1,5 @@
 within BESMod.Systems.Hydraulical.Generation.BaseClasses;
-model PartialHeatPumpAndGasBoiler "Partial heat pump and boiler"
+partial model PartialHeatPumpAndGasBoiler "Partial heat pump and boiler"
   extends BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump(genDesTyp
       =BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel);
   parameter Real etaTem[:,2]=[293.15,1.09; 303.15,1.08; 313.15,1.05; 323.15,1.; 373.15,
