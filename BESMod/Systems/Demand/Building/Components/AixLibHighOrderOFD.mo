@@ -98,7 +98,7 @@ model AixLibHighOrderOFD "High order OFD"
         extent={{10,-10},{-10,10}},
         rotation=0,
         origin={20,-78})));
-  Modelica.Blocks.Sources.Constant constVenRatAtt(final k=1)
+  Modelica.Blocks.Sources.Constant constVenRatAtt(k=1)
     "Constant ventilation rate of attic"
     annotation (Placement(transformation(extent={{-80,8},{-60,28}})));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a thermOutside annotation (
