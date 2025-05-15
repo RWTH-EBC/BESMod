@@ -79,7 +79,7 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
                                                                                                                                                 nPools) if use_pools "Setup for swimming pool walls"
                                                                                                                                                                                                     annotation(Dialog(enable=use_pools,tab="Moisture", group="Pools"));
 
-    replaceable parameter AixLib.DataBase.ThermalZones.ZoneBaseRecord zoneParam
+    replaceable parameter BESMod.Systems.Demand.Building.RecordsCollection.BuildingSingleZoneBaseRecord zoneParam
       "Choose setup for this zone" annotation (choicesAllMatching=true);
 
     replaceable AixLib.BoundaryConditions.InternalGains.Humans.HumanSensibleHeatTemperatureDependent humanSenHeaDependent(
@@ -158,20 +158,19 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
           extent={{3,-3},{-3,3}},
           rotation=90,
           origin={-36,95})));
-    AixLib.BoundaryConditions.SolarIrradiation.DiffusePerez HDifTilWall[zoneParam.nOrientations]
-      (
+    AixLib.BoundaryConditions.SolarIrradiation.DiffusePerez HDifTilWall[zoneParam.nOrientations](
       each final outSkyCon=true,
       each final outGroCon=true,
       final azi=zoneParam.aziExtWalls,
       final til=zoneParam.tiltExtWalls)
       "Calculates diffuse solar radiation on titled surface for both directions"
       annotation (Placement(transformation(extent={{-84,10},{-68,26}})));
-    replaceable AixLib.BoundaryConditions.SolarIrradiation.DirectTiltedSurface HDirTilWall[zoneParam.nOrientations]
-      (final azi=zoneParam.aziExtWalls, final til=zoneParam.tiltExtWalls)
+    replaceable AixLib.BoundaryConditions.SolarIrradiation.DirectTiltedSurface HDirTilWall[zoneParam.nOrientations](
+       final azi=zoneParam.aziExtWalls, final til=zoneParam.tiltExtWalls)
       "Calculates direct solar radiation on titled surface for both directions"
       annotation (Placement(transformation(extent={{-84,31},{-68,48}})));
-    replaceable AixLib.BoundaryConditions.SolarIrradiation.DirectTiltedSurface HDirTilRoof[zoneParam.nOrientationsRoof]
-      (final azi=zoneParam.aziRoof, final til=zoneParam.tiltRoof)
+    replaceable AixLib.BoundaryConditions.SolarIrradiation.DirectTiltedSurface HDirTilRoof[zoneParam.nOrientationsRoof](
+       final azi=zoneParam.aziRoof, final til=zoneParam.tiltRoof)
       "Calculates direct solar radiation on titled surface for roof"
       annotation (Placement(transformation(extent={{-84,82},{-68,98}})));
 
@@ -193,8 +192,8 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
        or (not recOrSep and (Heater_on or Cooler_on))
       "Heater Cooler with PI control"
       annotation (Placement(transformation(extent={{62,26},{84,46}})));
-    AixLib.Utilities.Sources.HeaterCooler.HeaterCoolerController heaterCoolerController(zoneParam
-        =zoneParam) if zoneParam.withIdealThresholds annotation (Placement(
+    AixLib.Utilities.Sources.HeaterCooler.HeaterCoolerController heaterCoolerController(zoneParam=
+         zoneParam) if zoneParam.withIdealThresholds annotation (Placement(
           transformation(
           extent={{-9,-8},{9,8}},
           rotation=0,
@@ -344,8 +343,7 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
       "Mass fraction of co2 in ROM in kg_CO2/ kg_TotalAir"
       annotation (Placement(transformation(extent={{-8,-74},{10,-60}})));
 
-    AixLib.BoundaryConditions.SolarIrradiation.DiffusePerez HDifTilRoof[zoneParam.nOrientationsRoof]
-      (
+    AixLib.BoundaryConditions.SolarIrradiation.DiffusePerez HDifTilRoof[zoneParam.nOrientationsRoof](
       each final outSkyCon=false,
       each final outGroCon=false,
       final azi=zoneParam.aziRoof,
@@ -752,8 +750,8 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
     end if;
 
     if sum(zoneParam.AIze) > 0 then
-      connect(ROM.ize, izeHeaFlow) annotation (Line(points={{83.5,91.8},{80,91.8},
-              {80,96},{104,96}}, color={191,0,0}));
+      connect(ROM.ize, izeHeaFlow) annotation (Line(points={{80.5,92},{80,92},{80,
+              96},{104,96}},     color={191,0,0}));
     end if;
 
   if use_NaturalAirExchange and not use_MechanicalAirExchange then
@@ -802,7 +800,8 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
                 {-21.2,-10}},
         color={0,0,127},
         pattern=LinePattern.Dash));
-  else connect(addInfVen.y, cO2Balance.airExc) annotation (Line(points={{-29.5,-27},
+  else
+       connect(addInfVen.y, cO2Balance.airExc) annotation (Line(points={{-29.5,-27},
               {-24,-27},{-24,-34},{12,-34},{12,-63.6},{16,-63.6}},
                                                               color={0,0,127}));
        connect(addInfVen.y, airExc.ventRate) annotation (Line(points={{-29.5,-27},
