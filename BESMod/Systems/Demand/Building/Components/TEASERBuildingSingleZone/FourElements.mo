@@ -56,7 +56,7 @@ protected
     rotation=90,
     origin={-12,120})));
   Modelica.Blocks.Sources.Constant hConRoof_const(
-  final k=ARoof*hConRoof)
+  final k=ARoof*RoofAreaAtticFactor*hConRoof)
     if ARoof > 0 "Coefficient of convective heat transfer for roof"
      annotation (Placement(transformation(
        extent={{-5,-5},{5,5}},
