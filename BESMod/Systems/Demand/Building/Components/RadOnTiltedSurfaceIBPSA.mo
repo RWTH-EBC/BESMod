@@ -8,7 +8,7 @@ model RadOnTiltedSurfaceIBPSA
     final til=til,
     final rho=rho,
     final azi=azi,
-    final outSkyCon=false,
+    final outSkyCon=true,
     final outGroCon=true)
     annotation (Placement(transformation(extent={{-20,20},{0,40}})));
   IBPSA.BoundaryConditions.SolarIrradiation.DirectTiltedSurface HDirTil(
@@ -23,7 +23,7 @@ model RadOnTiltedSurfaceIBPSA
 equation
   radOnTiltedSurf.I = HDifTil.H + HDirTil.H;
   radOnTiltedSurf.I_dir = HDirTil.H;
-  radOnTiltedSurf.I_diff = HDifTil.H;
+  radOnTiltedSurf.I_diff = HDifTil.HSkyDifTil;
   radOnTiltedSurf.I_gr = HDifTil.HGroDifTil;
   radOnTiltedSurf.AOI = HDirTil.inc;
   connect(HDifTil.weaBus, weaBus) annotation (Line(
