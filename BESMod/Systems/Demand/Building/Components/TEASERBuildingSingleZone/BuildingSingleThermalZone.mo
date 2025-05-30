@@ -1,4 +1,4 @@
-﻿within BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone;
+within BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone;
 package BuildingSingleThermalZone "Package for single zone thermal zone models"
   extends Modelica.Icons.VariantsPackage;
 
@@ -124,7 +124,7 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
     replaceable
       AixLib.ThermalZones.ReducedOrder.EquivalentAirTemperature.VDI6007WithWindow
       eqAirTempWall(
-      withLongwave=true,
+      withLongwave=false,
       final n=zoneParam.nOrientations,
       final wfWall=zoneParam.wfWall,
       final wfWin=zoneParam.wfWin,
@@ -147,6 +147,7 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
       final hConWallOut=zoneParam.hConRoofOut,
       final hRad=zoneParam.hRadRoof,
       final wfWin=fill(0, zoneParam.nOrientationsRoof),
+      withLongwave=false,
       TGroundFromInput=true) if zoneParam.ARoof > 0
       "Computes equivalent air temperature for roof"
       annotation (Placement(transformation(extent={{-40,66},{-28,78}})));
@@ -800,8 +801,7 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
                 {-21.2,-10}},
         color={0,0,127},
         pattern=LinePattern.Dash));
-  else
-       connect(addInfVen.y, cO2Balance.airExc) annotation (Line(points={{-29.5,-27},
+  else connect(addInfVen.y, cO2Balance.airExc) annotation (Line(points={{-29.5,-27},
               {-24,-27},{-24,-34},{12,-34},{12,-63.6},{16,-63.6}},
                                                               color={0,0,127}));
        connect(addInfVen.y, airExc.ventRate) annotation (Line(points={{-29.5,-27},
