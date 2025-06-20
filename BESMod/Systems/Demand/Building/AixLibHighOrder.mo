@@ -8,7 +8,9 @@ model AixLibHighOrder "High order building model from AixLib library"
     final ABui=HOMBuiEnv.ABui,
     final hBui=HOMBuiEnv.hBui,
     final ARoo=HOMBuiEnv.ARoof);
-  extends Components.BaseClasses.HighOrderModelParameters;
+  extends Components.BaseClasses.HighOrderModelParameters(TWalls_start=291.15,
+                                                          T0_air=min(
+        TSetZone_nominal));
 
   final parameter AixLib.DataBase.Weather.SurfaceOrientation.SurfaceOrientationBaseDataDefinition  SOD=
   AixLib.DataBase.Weather.SurfaceOrientation.SurfaceOrientationData_N_E_S_W_RoofN_Roof_S()
@@ -28,6 +30,7 @@ model AixLibHighOrder "High order building model from AixLib library"
     annotation (Placement(transformation(extent={{-40,-4},{-60,-20}})));
   replaceable Components.AixLibHighOrderOFD HOMBuiEnv(
     use_ventilation=use_ventilation,
+    final TIR=TIR,
     final denAir=denAir,
     final cAir=cAir,
     final wallTypes=wallTypes,
@@ -180,6 +183,13 @@ connect(weaBus.winSpe, HOMBuiEnv.WindSpeedPort) annotation (Line(
   connect(RadOnTiltedSurfaceAdaptor[6].radOnTiltedSurf, HOMBuiEnv.SolarRadiationPort_RoofS) annotation (
       Line(points={{21,49.9},{52,49.9},{52,21.4},{40.4,21.4}},
                                                            color={255,128,0}));
+  connect(HOMBuiEnv.TZoneMea, useProBus.TZoneMea) annotation (Line(points={{-23.2,
+          -18.5},{-22,-18.5},{-22,-44},{50,-44},{50,-16},{54,-16},{54,68},{51,68},
+          {51,101}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-3,6},{-3,6}},
+      horizontalAlignment=TextAlignment.Right));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end AixLibHighOrder;

@@ -1,4 +1,4 @@
-within BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone;
+﻿within BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone;
 package BuildingSingleThermalZone "Package for single zone thermal zone models"
   extends Modelica.Icons.VariantsPackage;
 
@@ -14,9 +14,9 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
       annotation(choicesAllMatching=true);
     parameter Integer internalGainsMode = 1
        "decides which internal gains model for persons is used";
-    parameter Boolean use_MechanicalAirExchange = false
+    parameter Boolean use_MechanicalAirExchange = true
       "Consider mechanical ventilation by setting true";
-    parameter Boolean use_NaturalAirExchange = use_MechanicalAirExchange
+    parameter Boolean use_NaturalAirExchange = false
       "Consider natural infiltration and ventilation by setting true";
 
     // Heater/ cooler parameters
@@ -801,7 +801,8 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
                 {-21.2,-10}},
         color={0,0,127},
         pattern=LinePattern.Dash));
-  else connect(addInfVen.y, cO2Balance.airExc) annotation (Line(points={{-29.5,-27},
+  else
+       connect(addInfVen.y, cO2Balance.airExc) annotation (Line(points={{-29.5,-27},
               {-24,-27},{-24,-34},{12,-34},{12,-63.6},{16,-63.6}},
                                                               color={0,0,127}));
        connect(addInfVen.y, airExc.ventRate) annotation (Line(points={{-29.5,-27},

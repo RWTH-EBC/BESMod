@@ -12,6 +12,7 @@ model TEASERSingleThermalZone
     "Default zone if only one is chosen" annotation(choicesAllMatching=true);
   parameter BESMod.Systems.Demand.Building.RecordsCollection.BuildingSingleZoneBaseRecord zoneParam[nZones] = fill(oneZoneParam, nZones)
     "Choose an array of multiple zones" annotation(choicesAllMatching=true);
+  parameter Boolean useUserProfileNatVent = false;
   parameter Real ventRate[nZones]=fill(0, nZones) "Constant mechanical ventilation rate";
 
   parameter Boolean use_verboseEnergyBalance=true   "=false to disable the integration of the verbose energy balance";
@@ -37,7 +38,7 @@ model TEASERSingleThermalZone
     each final T_start=T_start,
     final zoneParam=zoneParam,
     each final use_MechanicalAirExchange=true,
-    each final use_NaturalAirExchange=true,
+    each final use_NaturalAirExchange=false,
     each final nPorts=if use_ventilation then 2 else 0) annotation (Placement(
         transformation(extent={{35,12},{-39,84}}, rotation=0)));
 
@@ -48,7 +49,7 @@ model TEASERSingleThermalZone
         rotation=180,
         origin={70,80})));
 
-  Modelica.Blocks.Sources.Constant constVentRate[nZones](final k=ventRate)
+  Modelica.Blocks.Sources.Constant constVentRate[nZones](final k=ventRate) if not useUserProfileNatVent
                                          annotation (Placement(transformation(
           extent={{-10,-10},{10,10}}, rotation=180,
         origin={70,20})));
@@ -201,6 +202,7 @@ equation
         points={{-42.7,33.6},{-42.7,32},{-120,32},{-120,-88},{-26,-88},{-26,-120},
             {20,-120}},               color={0,0,127}));
     if use_ventilation then
+
       connect(portVent_in[i], thermalZone[i].ports[1]) annotation (Line(points={{100,38},
               {82,38},{82,10},{-2,10},{-2,22.08}},                 color={0,127,
             255}));
@@ -408,6 +410,16 @@ equation
                    color={191,0,0}));
   connect(QSol_flow.y, zoneEneBal.QSol_flow)
     annotation (Line(points={{-79,-170},{-63.8,-170}}, color={0,0,127}));
+  if useUserProfileNatVent then
+    connect(useProBus.natVent, thermalZone.ventRate) annotation (Line(
+      points={{51,101},{51,32.88},{33.52,32.88}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%first",
+      index=-1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  end if;
     annotation (Diagram(coordinateSystem(extent={{-100,-220},{100,100}})),
       Documentation(info="<html>
 <p>This model uses the reduced-order approach with the common TEASER output to model the building envelope. Relevant KPIs are calculated.</p>
