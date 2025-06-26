@@ -28,6 +28,10 @@ record SupplySystemBaseDataDefinition
     annotation (Dialog(group="Building"));
   parameter Modelica.Units.SI.Height hBui "Height of building"
     annotation (Dialog(group="Building"));
+  parameter Real PercentMflowWorstPressureDropPath = 1
+  "The Percentage of m_flow_nominal of the Path with the worst pressure drop. 
+  Used for dp calculation of SingleZoneBuildings" annotation (Dialog(group="Building"));
+
   parameter Modelica.Units.SI.Area ARoo "Roof area of building"
     annotation (Dialog(group="Geometry"));
 

@@ -172,6 +172,7 @@ partial model PartialHydraulicSystem
     final hZone=hydraulicSystemParameters.hZone,
     final ABui=hydraulicSystemParameters.ABui,
     final hBui=hydraulicSystemParameters.hBui,
+    final PercentMflowWorstPressureDropPath=hydraulicSystemParameters.PercentMflowWorstPressureDropPath,
     final C_nominal=C_nominal,
     final mSenFac=mSenFac,
     final TOda_nominal=hydraulicSystemParameters.TOda_nominal,

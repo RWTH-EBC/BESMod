@@ -8,8 +8,8 @@ model AixLibHighOrderOFD "High order OFD"
   // Rooms:
   //Groundfloor -  1:LivingRoom_GF, 2:Hobby_GF, 3: Corridor_GF, 4: WC_Storage_GF, 5: Kitchen_GF,
   //Upperfloor -  6: Bedroom_UF, 7: Child1_UF, 8: Corridor_UF, 9: Bath_UF, 10: Child2_UF, 11: Attic
-  final parameter Modelica.Units.SI.Area ABui = sum(AZone) "Total area of all zones";
-  final parameter Modelica.Units.SI.Length hBui = hZone[1] + hZone[6] + hZone[11] "Total hight of building";
+  final parameter Modelica.Units.SI.Area ABui = sum(AZone[i] for i in 1:10)/2 "Total area of all zones";
+  final parameter Modelica.Units.SI.Length hBui = hZone[1] + hZone[6] "Total hight of building";
   final parameter Modelica.Units.SI.Area ARoof = sum(ARoofZone) "Total area of roof";
   final parameter Modelica.Units.SI.Area AZone[nZones+nZonesNonHeated]=
   {wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.room_length *

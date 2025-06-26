@@ -23,6 +23,7 @@ partial model PartialDemand "Partial demand model for HPS"
   parameter Modelica.Units.SI.Area ARoo(min=0.1)
     "Roof area of building"
     annotation (Dialog(group="Geometry"));
+  parameter Real PercentMflowWorstPressureDropPath = 1 "The Percentage of m_flow_nominal of the Path with the worst pressure drop. Used for dp calculation of SingleZoneBuildings";
   parameter Boolean use_hydraulic=true "=false to disable hydraulic supply";
   parameter Boolean use_ventilation=true "=false to disable ventilation supply";
   parameter Modelica.Units.SI.Temperature TOda_nominal "Nominal outdoor air temperature"

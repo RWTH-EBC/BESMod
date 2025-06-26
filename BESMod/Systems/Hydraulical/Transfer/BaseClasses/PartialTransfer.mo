@@ -60,7 +60,9 @@ partial model PartialTransfer "Partial transfer model for BES"
     "Old design pressure loss to design the distribution system"
     annotation (Dialog(tab="Pressure losses", group=
           "Design - Bottom Up: Parameters are defined by the subsystem"));
-
+  parameter Real PercentMflowWorstPressureDropPath = 1
+  "The Percentage of m_flow_nominal of the Path with the worst pressure drop. 
+  Used for dp calculation of SingleZoneBuildings" annotation(Dialog(tab="Pressure losses", group="Design - Top Down: Parameters are given by the parent system"));
 
   parameter Modelica.Units.SI.Area AZone[nParallelDem](each min=0.1)
      "Area of zones/rooms"

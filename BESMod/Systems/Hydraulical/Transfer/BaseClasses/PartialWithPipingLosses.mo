@@ -2,7 +2,7 @@ within BESMod.Systems.Hydraulical.Transfer.BaseClasses;
 partial model PartialWithPipingLosses
   "Partial model with piping pressure losses"
   extends PartialTransfer(
-    dPip_design={max(12/1000, sqrt(4*mOld_flow_design[i] / rho / v_design[i] / Modelica.Constants.pi)) for i in 1:nParallelDem},
+    dPip_design={max(12/1000, sqrt(4*mOld_flow_design[i]*PercentMflowWorstPressureDropPath / rho / v_design[i] / Modelica.Constants.pi)) for i in 1:nParallelDem},
     dpSup_design={dpPipSupSca_design[1] + (mSup_flow_design[1]/sum({sqrt(m_flow_design[i]^2/dp_design[i]) for i in 1:nParallelDem})) ^2},
     dpSupOld_design={resMaiLin[1].dp_nominal + (mSupOld_flow_design[1]/sum({sqrt(mOld_flow_design[i]^2/dpOld_design[i]) for i in 1:nParallelDem})) ^2},
     dpSup_nominal={dpPipSupSca_nominal[1] + (mSup_flow_nominal[1]/sum({sqrt(m_flow_nominal[i]^2/dp_nominal[i]) for i in 1:nParallelDem})) ^2},
@@ -29,7 +29,7 @@ partial model PartialWithPipingLosses
     annotation(Dialog(tab="Pressure losses"));
   Components.HydraulicDiameterParameterOnly res[nParallelDem](
     redeclare package Medium = Medium,
-    final m_flow_nominal=mOld_flow_design,
+    final m_flow_nominal=mOld_flow_design*PercentMflowWorstPressureDropPath,
     each final resCoe=0,
     final dh=dPip_design,
     final length=lenDisPerUnit,
