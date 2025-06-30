@@ -25,7 +25,7 @@ model PartialSubsystemParameters "Model for a partial subsystem"
           "Design - Internal: Parameters are defined by the subsystem"));
   parameter Real f_design[nParallelDem]=fill(1, nParallelDem)
     "Factor for oversizing, e.g. due to heat losses"
-    annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
+    annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"),Evaluate=false);
 
   // Temperatures
   parameter Modelica.Units.SI.Temperature TDem_nominal[nParallelDem]

@@ -19,6 +19,13 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
     parameter Boolean use_NaturalAirExchange = false
       "Consider natural infiltration and ventilation by setting true";
 
+    parameter Modelica.Units.SI.Temperature TSetZone_nominal = 293.15 "Nominal room set temperature";
+    parameter Real solGainFacConst = 0 annotation(Evaluate=false);
+    parameter Real solGainFacTDryBul = 0 annotation(Evaluate=false);
+    parameter Real solGainFacTSet = 0 annotation(Evaluate=false);
+
+   parameter Modelica.Units.SI.Temperature TOda_nominal "Nominal outdoor air temperature";
+
     // Heater/ cooler parameters
     parameter Boolean recOrSep=true "Use record or seperate parameters"
       annotation (Dialog(tab="IdealHeaterCooler", group="Modes"), choices(choice =  false
@@ -395,6 +402,18 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
       VAirLay=zoneParam.VAir) if (ATot > 0 or zoneParam.VAir > 0) and
       use_moisture_balance and use_pools
       annotation (Placement(transformation(extent={{-66,-76},{-60,-70}})));
+    Modelica.Blocks.Interfaces.RealInput TSetZone
+      annotation (Placement(transformation(extent={{-132,36},{-92,76}})));
+    Modelica.Blocks.Sources.RealExpression solGainFac[zoneParam.nOrientations](
+        each final y=min(1, max(0, TOda_nominal/TDryBul.y*solGainFacTDryBul +
+          TSetZone/TSetZone_nominal*solGainFacTSet + solGainFacConst)))
+      if sum(zoneParam.ATransparent) > 0
+      annotation (Placement(transformation(extent={{-14,100},{6,120}})));
+    Modelica.Blocks.Math.Product solGain[zoneParam.nOrientations]
+      if sum(zoneParam.ATransparent) > 0
+      annotation (Placement(transformation(extent={{18,82},{28,92}})));
+    Modelica.Blocks.Routing.RealPassThrough TDryBul
+      annotation (Placement(transformation(extent={{-86,110},{-66,130}})));
   protected
       Modelica.Blocks.Sources.Constant hConRoof(final k=(zoneParam.hConRoofOut + zoneParam.hRadRoof)*zoneParam.ARoof)
       "Outdoor coefficient of heat transfer for roof" annotation (Placement(transformation(extent={{-14,68},
@@ -688,8 +707,6 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
     connect(simpleExternalShading.shadingFactor, eqAirTempWall.sunblind)
       annotation (Line(points={{10.06,44.6},{10,44.6},{10,40},{-32,40},{-32,23.2}},
           color={0,0,127}));
-    connect(simpleExternalShading.corrIrr, ROM.solRad) annotation (Line(points={{9.94,
-            47.24},{9.94,52},{26,52},{26,89},{37,89}}, color={0,0,127}));
 
     connect(ventCont.y, addInfVen.u1) annotation (Line(
         points={{-50.8,-26},{-46,-26},{-46,-24},{-41,-24}},
@@ -949,6 +966,20 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
     connect(indoorSwimmingPool.m_flow_eva, airFlowMoistureToROM.m_flow_eva)
       annotation (Line(points={{-54.42,-73.24},{-57.25,-73.24},{-57.25,-74.11},{-60.15,
             -74.11}}, color={0,0,127}));
+    connect(simpleExternalShading.corrIrr, solGain.u2) annotation (Line(points={{9.94,
+            47.24},{9.94,46},{14,46},{14,78},{17,78},{17,84}}, color={0,0,127}));
+    connect(solGainFac.y, solGain.u1)
+      annotation (Line(points={{7,110},{17,110},{17,90}}, color={0,0,127}));
+    connect(solGain.y, ROM.solRad)
+      annotation (Line(points={{28.5,87},{28.5,89},{37,89}}, color={0,0,127}));
+    connect(weaBus.TDryBul, TDryBul.u) annotation (Line(
+        points={{-99.915,34.08},{-64,34.08},{-64,56},{-88,56},{-88,120}},
+        color={255,204,51},
+        thickness=0.5), Text(
+        string="%first",
+        index=-1,
+        extent={{-3,-6},{-3,-6}},
+        horizontalAlignment=TextAlignment.Right));
      annotation (Documentation(revisions="<html><ul>
   <li>April 20, 2023, by Philip Groesdonk:<br/>
   Added five element RC model (for heat exchange with neighboured zones) and
@@ -1263,6 +1294,7 @@ Infiltration
         "Radiative internal gains"
         annotation (Placement(transformation(extent={{94,30},{114,50}}),
                                 iconTransformation(extent={{92,24},{112,44}})));
+
       BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.FiveElements ROM(
         redeclare final package Medium = Medium,
         final use_moisture_balance=use_moisture_balance,

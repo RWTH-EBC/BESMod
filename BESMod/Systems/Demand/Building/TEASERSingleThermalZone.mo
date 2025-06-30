@@ -7,6 +7,15 @@ model TEASERSingleThermalZone
     ARoo=0,
     hZone=zoneParam.VAir ./ zoneParam.AZone,
     AZone=zoneParam.AZone);
+
+  parameter Real solGainFacConst = 1 annotation(Evaluate=false);
+  parameter Real solGainFacTDryBul = 0 annotation(Evaluate=false);
+  parameter Real solGainFacTSet = 0 annotation(Evaluate=false);
+
+  parameter Real intGainFacConst = 1 annotation(Evaluate=false);
+  parameter Real intGainFacTDryBul = 0 annotation(Evaluate=false);
+  parameter Real intGainFacTSet = 0 annotation(Evaluate=false);
+
   replaceable parameter BESMod.Systems.Demand.Building.RecordsCollection.BuildingSingleZoneRecordDummy oneZoneParam constrainedby
     BESMod.Systems.Demand.Building.RecordsCollection.BuildingSingleZoneBaseRecord
     "Default zone if only one is chosen" annotation(choicesAllMatching=true);
@@ -39,7 +48,12 @@ model TEASERSingleThermalZone
     final zoneParam=zoneParam,
     each final use_MechanicalAirExchange=true,
     each final use_NaturalAirExchange=false,
-    each final nPorts=if use_ventilation then 2 else 0) annotation (Placement(
+    each final nPorts=if use_ventilation then 2 else 0,
+    each final TOda_nominal=TOda_nominal,
+    each final TSetZone_nominal=TSetZone_nominal[1],
+    each final solGainFacConst=solGainFacConst,
+    each final solGainFacTDryBul=solGainFacTDryBul,
+    each final solGainFacTSet=solGainFacTSet) annotation (Placement(
         transformation(extent={{35,12},{-39,84}}, rotation=0)));
 
   Modelica.Blocks.Sources.Constant constTSetRoom[nZones](final k=
@@ -420,6 +434,14 @@ equation
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
   end if;
+  connect(useProBus.TZoneSet, thermalZone.TSetZone) annotation (Line(
+      points={{51,101},{50,101},{50,68.16},{39.44,68.16}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%first",
+      index=-1,
+      extent={{-3,6},{-3,6}},
+      horizontalAlignment=TextAlignment.Right));
     annotation (Diagram(coordinateSystem(extent={{-100,-220},{100,100}})),
       Documentation(info="<html>
 <p>This model uses the reduced-order approach with the common TEASER output to model the building envelope. Relevant KPIs are calculated.</p>
