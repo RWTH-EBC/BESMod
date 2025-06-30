@@ -15,10 +15,10 @@ model FourElements "Thermal Zone with four elements for exterior walls,
     annotation (Dialog(group="Roof"));
   parameter Integer nRoof(min = 1) "Number of RC-elements of roof"
     annotation(Dialog(group="Roof"));
-  parameter Modelica.Units.SI.ThermalResistance RRoof[nRoof](each min=Modelica.Constants.small)
+  parameter Modelica.Units.SI.ThermalResistance TotalRRoof(min=Modelica.Constants.small)
     "Vector of resistances of roof, from inside to outside"
     annotation (Dialog(group="Roof"));
-  parameter Modelica.Units.SI.ThermalResistance RRoofRem(min=Modelica.Constants.small)
+  parameter Real FacRRoofRem(min=Modelica.Constants.eps, max=1)
     "Resistance of remaining resistor RRoofRem between capacity n and outside"
     annotation (Dialog(group="Roof"));
   parameter Modelica.Units.SI.HeatCapacity CRoof[nRoof](each min=Modelica.Constants.small)
@@ -38,8 +38,8 @@ model FourElements "Thermal Zone with four elements for exterior walls,
       transformation(extent={{-50,-190},{-30,-170}}), iconTransformation(
       extent={{-50,-190},{-30,-170}})));
   AixLib.ThermalZones.ReducedOrder.RC.BaseClasses.ExteriorWall roofRC(
-    final RExt=RRoof,
-    final RExtRem=RRoofRem,
+    final RExt=fill(TotalRRoof*(1 - FacRRoofRem)/nRoof,nRoof),
+    final RExtRem=TotalRRoof*FacRRoofRem,
     final CExt=CRoof,
     final n=nRoof,
     final T_start=T_start) if ARoof > 0 "RC-element for roof" annotation (

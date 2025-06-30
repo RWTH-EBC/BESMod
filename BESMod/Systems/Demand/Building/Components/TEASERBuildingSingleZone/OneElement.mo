@@ -39,10 +39,10 @@ model OneElement "Thermal Zone with one element for exterior walls"
     annotation (Dialog(group="Exterior walls"));
   parameter Integer nExt(min = 1) "Number of RC-elements of exterior walls"
     annotation(Dialog(group="Exterior walls"));
-  parameter Modelica.Units.SI.ThermalResistance RExt[nExt](each min=Modelica.Constants.small)
+  parameter Modelica.Units.SI.ThermalResistance TotalRExt(min=Modelica.Constants.small)
     "Vector of resistances of exterior walls, from inside to outside"
     annotation (Dialog(group="Exterior walls"));
-  parameter Modelica.Units.SI.ThermalResistance RExtRem(min=Modelica.Constants.small)
+  parameter Real FacRExtRem(min=Modelica.Constants.eps, max=1)
     "Resistance of remaining resistor RExtRem between capacity n and outside"
     annotation (Dialog(group="Exterior walls"));
   parameter Modelica.Units.SI.HeatCapacity CExt[nExt](each min=Modelica.Constants.small)
@@ -184,9 +184,9 @@ model OneElement "Thermal Zone with one element for exterior walls"
     annotation (Placement(transformation(extent={{-138,138},{-122,154}})));
   AixLib.ThermalZones.ReducedOrder.RC.BaseClasses.ExteriorWall extWallRC(
     final n=nExt,
-    final RExt=RExt,
+    final RExt=fill(TotalRExt*(1 - FacRExtRem)/nExt,nExt),
     final CExt=CExt,
-    final RExtRem=RExtRem,
+    final RExtRem=TotalRExt*FacRExtRem,
     final T_start=T_start) if ATotExt > 0 "RC-element for exterior walls"
     annotation (Placement(transformation(extent={{-158,-50},{-178,-28}})));
 

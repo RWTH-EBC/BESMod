@@ -15,11 +15,11 @@ model ThreeElements "Thermal Zone with three elements for exterior walls,
     annotation (Dialog(group="Floor plate"));
   parameter Integer nFloor(min = 1) "Number of RC-elements of floor plate"
     annotation(Dialog(group="Floor plate"));
-  parameter Modelica.Units.SI.ThermalResistance RFloor[nFloor](each min=
+  parameter Modelica.Units.SI.ThermalResistance TotalRFloor(min=
         Modelica.Constants.small)
     "Vector of resistances of floor plate, from inside to outside"
     annotation (Dialog(group="Floor plate"));
-  parameter Modelica.Units.SI.ThermalResistance RFloorRem(min=Modelica.Constants.small)
+  parameter Real FacRFloorRem(min=Modelica.Constants.eps, max=1)
     "Resistance of remaining resistor RFloorRem between capacity n and outside"
     annotation (Dialog(group="Floor plate"));
   parameter Modelica.Units.SI.HeatCapacity CFloor[nFloor](each min=Modelica.Constants.small)
@@ -40,8 +40,8 @@ model ThreeElements "Thermal Zone with three elements for exterior walls,
     extent={{-90,-190},{-70,-170}})));
   AixLib.ThermalZones.ReducedOrder.RC.BaseClasses.ExteriorWall floorRC(
     final n=nFloor,
-    final RExt=RFloor,
-    final RExtRem=RFloorRem,
+    final RExt=fill(TotalRFloor*(1 - FacRFloorRem)/nFloor,nFloor),
+    final RExtRem=TotalRFloor*FacRFloorRem,
     final CExt=CFloor,
     final T_start=T_start) if AFloor > 0 "RC-element for floor plate"
     annotation (Placement(transformation(
