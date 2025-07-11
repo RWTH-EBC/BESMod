@@ -32,7 +32,7 @@ model TEASERSingleThermalZone
   parameter Modelica.Fluid.Types.Dynamics energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial
     "Type of energy balance: dynamic (3 initialization options) or steady state"
     annotation (Dialog(tab="Dynamics"));
-  parameter Modelica.Units.SI.Temperature T_start=293.15
+  parameter Modelica.Units.SI.Temperature T_start=min(TSetZone_nominal)
     "Start value of temperature" annotation (Dialog(tab="Initialization"));
   parameter Boolean use_absIntGai=false "=true to use absolute internal gains from user-profiles, e.g. from real data. Only supported for single zone";
   final parameter Modelica.Units.SI.HeatFlowRate QRec_flow_nominal[nZones]= {

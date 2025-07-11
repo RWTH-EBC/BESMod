@@ -17,7 +17,11 @@ model RadiatorEN442_2_SingleZoneBuilding
 
   parameter Real UAFacConst = 1 annotation(Evaluate=false);
   parameter Real UAFacTDryBul = 0 annotation(Evaluate=false);
+  parameter Real UAExpTDryBul = 1 annotation(Evaluate=false);
   parameter Real UAFacTZoneSet = 0 annotation(Evaluate=false);
+  parameter Real UAExpTZoneSet = 1 annotation(Evaluate=false);
+  parameter Real UAFacGain = 0 annotation(Evaluate=false);
+  parameter Real UAExpGain = 1 annotation(Evaluate=false);
 
   parameter Integer nEle(min=1) = 5
     "Number of elements used in the discretization";

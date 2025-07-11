@@ -18,6 +18,8 @@ model OneElement "Thermal Zone with one element for exterior walls"
     annotation (Dialog(group="Windows"));
   parameter Modelica.Units.SI.Area ATransparent[nOrientations] "Vector of areas of transparent (solar radiation transmittend) elements by
     orientations" annotation (Dialog(group="Windows"));
+
+  parameter Real ratioWinAreaExtWall=1;
   parameter Modelica.Units.SI.CoefficientOfHeatTransfer hConWin
     "Convective coefficient of heat transfer of windows (indoor)"
     annotation (Dialog(group="Windows"));
@@ -203,7 +205,6 @@ protected
     "Sum of exterior wall surface areas";
   parameter Modelica.Units.SI.Area ATotWin=sum(AWin)
     "Sum of window surface areas";
-  parameter Real ratioWinAreaExtWall=1;
   parameter Modelica.Units.SI.Area[:] AArray={ATotExt,ATotWin}
     "List of all wall surface areas";
   parameter Integer dimension = sum({if A>0 then 1 else 0 for A in AArray})

@@ -8,9 +8,8 @@ model AixLibHighOrder "High order building model from AixLib library"
     final ABui=HOMBuiEnv.ABui,
     final hBui=HOMBuiEnv.hBui,
     final ARoo=HOMBuiEnv.ARoof);
-  extends Components.BaseClasses.HighOrderModelParameters(TWalls_start=291.15,
-                                                          T0_air=min(
-        TSetZone_nominal));
+  extends Components.BaseClasses.HighOrderModelParameters(TWalls_start=273.15+18,
+      T0_air=min(TSetZone_nominal));
 
   final parameter AixLib.DataBase.Weather.SurfaceOrientation.SurfaceOrientationBaseDataDefinition  SOD=
   AixLib.DataBase.Weather.SurfaceOrientation.SurfaceOrientationData_N_E_S_W_RoofN_Roof_S()

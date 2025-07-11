@@ -414,6 +414,8 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
       annotation (Placement(transformation(extent={{18,82},{28,92}})));
     Modelica.Blocks.Routing.RealPassThrough TDryBul
       annotation (Placement(transformation(extent={{-86,110},{-66,130}})));
+    Modelica.Blocks.Routing.RealPassThrough HDirNor
+      annotation (Placement(transformation(extent={{-50,114},{-30,134}})));
   protected
       Modelica.Blocks.Sources.Constant hConRoof(final k=(zoneParam.hConRoofOut + zoneParam.hRadRoof)*zoneParam.ARoof)
       "Outdoor coefficient of heat transfer for roof" annotation (Placement(transformation(extent={{-14,68},
@@ -980,6 +982,15 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
         index=-1,
         extent={{-3,-6},{-3,-6}},
         horizontalAlignment=TextAlignment.Right));
+    connect(weaBus.HDirNor, HDirNor.u) annotation (Line(
+        points={{-99.915,34.08},{-56,34.08},{-56,78},{-62,78},{-62,114},{-52,
+            114},{-52,124}},
+        color={255,204,51},
+        thickness=0.5), Text(
+        string="%first",
+        index=-1,
+        extent={{-6,3},{-6,3}},
+        horizontalAlignment=TextAlignment.Right));
      annotation (Documentation(revisions="<html><ul>
   <li>April 20, 2023, by Philip Groesdonk:<br/>
   Added five element RC model (for heat exchange with neighboured zones) and
@@ -1342,6 +1353,7 @@ Infiltration
         final othZoneInd=zoneParam.othZoneInd,
         final zoneInd=zoneParam.zoneInd,
         final nFloorLevels=zoneParam.nFloorLevels,
+        final ratioWinAreaExtWall=zoneParam.ratioWinAreaExtWall,
         final RoofAreaAtticFactor=zoneParam.RoofAreaAtticFactor,
         final ratioExtWallAreaTopFloor=zoneParam.ratioExtWallAreaTopFloor,
         final ratioExtWallAreaBottomFloor=zoneParam.ratioExtWallAreaBottomFloor,
@@ -1349,7 +1361,6 @@ Infiltration
         final ratioIntWallAreaBottomFloor=zoneParam.ratioIntWallAreaBottomFloor,
         final ratioWinAreaTopFloor=zoneParam.ratioWinAreaTopFloor,
         final ratioWinAreaBottomFloor=zoneParam.ratioWinAreaBottomFloor,
-        final ratioWinAreaExtWall=zoneParam.ratioWinAreaExtWall,
         final ratioWinAreaIntWall=zoneParam.ratioWinAreaIntWall,
         final energyDynamics=energyDynamics,
         extWallRC(thermCapExt(each der_T(fixed=energyDynamics == Modelica.Fluid.Types.Dynamics.FixedInitial))),
