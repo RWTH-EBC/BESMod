@@ -16,6 +16,11 @@ model TEASERSingleThermalZone
   parameter Real intGainFacTDryBul = 0 annotation(Evaluate=false);
   parameter Real intGainFacTSet = 0 annotation(Evaluate=false);
 
+  parameter AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer calcMethodOut=AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.Custom_hCon
+  "Calculation method for convective heat transfer coefficient at outside surface";
+  parameter AixLib.DataBase.Surfaces.RoughnessForHT.PolynomialCoefficients_ASHRAEHandbook surfaceType = AixLib.DataBase.Surfaces.RoughnessForHT.Brick_RoughPlaster()
+    "Surface type";
+
   replaceable parameter BESMod.Systems.Demand.Building.RecordsCollection.BuildingSingleZoneRecordDummy oneZoneParam constrainedby
     BESMod.Systems.Demand.Building.RecordsCollection.BuildingSingleZoneBaseRecord
     "Default zone if only one is chosen" annotation(choicesAllMatching=true);
@@ -46,6 +51,8 @@ model TEASERSingleThermalZone
     each final energyDynamics=energyDynamics,
     each final T_start=T_start,
     final zoneParam=zoneParam,
+    each final calcMethodOut=calcMethodOut,
+    each final surfaceType=surfaceType,
     each final use_MechanicalAirExchange=true,
     each final use_NaturalAirExchange=false,
     each final nPorts=if use_ventilation then 2 else 0,

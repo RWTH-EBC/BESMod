@@ -12,6 +12,11 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
       AixLib.ThermalZones.ReducedOrder.SolarGain.BaseClasses.PartialCorrectionG
       "Model for correction of solar transmission"
       annotation(choicesAllMatching=true);
+    parameter AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer calcMethodOut=AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.Custom_hCon
+    "Calculation method for convective heat transfer coefficient at outside surface";
+    parameter AixLib.DataBase.Surfaces.RoughnessForHT.PolynomialCoefficients_ASHRAEHandbook surfaceType = AixLib.DataBase.Surfaces.RoughnessForHT.Brick_RoughPlaster()
+      "Surface type";
+
     parameter Integer internalGainsMode = 1
        "decides which internal gains model for persons is used";
     parameter Boolean use_MechanicalAirExchange = true
@@ -416,15 +421,21 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
       annotation (Placement(transformation(extent={{-86,110},{-66,130}})));
     Modelica.Blocks.Routing.RealPassThrough HDirNor
       annotation (Placement(transformation(extent={{-50,114},{-30,134}})));
+    AixLib.Utilities.HeatTransfer.HeatConvOutside heatConvOutsideExtWall(
+      calcMethod=calcMethodOut,
+      A=sum(zoneParam.AExt),
+      hCon_const=zoneParam.hConWallOut + zoneParam.hRadWall,
+      surfaceType=surfaceType)
+      annotation (Placement(transformation(extent={{4,14},{16,26}})));
+
+    AixLib.Utilities.HeatTransfer.HeatConvOutside heatConvOutsideRoof(
+      calcMethod=calcMethodOut,
+      A=zoneParam.ARoof,
+      hCon_const=zoneParam.hConRoofOut + zoneParam.hRadRoof,
+      surfaceType=surfaceType)
+      annotation (Placement(transformation(extent={{0,78},{12,90}})));
+
   protected
-      Modelica.Blocks.Sources.Constant hConRoof(final k=(zoneParam.hConRoofOut + zoneParam.hRadRoof)*zoneParam.ARoof)
-      "Outdoor coefficient of heat transfer for roof" annotation (Placement(transformation(extent={{-14,68},
-              {-6,76}})));
-    Modelica.Thermal.HeatTransfer.Components.Convection theConRoof
-   if zoneParam.ARoof > 0
-      "Outdoor convective heat transfer of roof"
-      annotation (Placement(transformation(extent={{5,5},{-5,-5}},rotation=0,
-      origin={5,83})));
     Modelica.Thermal.HeatTransfer.Sources.PrescribedTemperature preTemRoof
    if zoneParam.ARoof > 0
       "Prescribed temperature for roof outdoor surface temperature"
@@ -444,14 +455,6 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
       final filDatSou=zoneParam.TSoiFil)
       "Outdoor surface temperature for floor plate" annotation (Placement(
           transformation(extent={{4,-4},{-4,4}}, rotation=180)));
-    Modelica.Blocks.Sources.Constant hConWall(final k=(zoneParam.hConWallOut + zoneParam.hRadWall)*sum(zoneParam.AExt))
-      "Outdoor coefficient of heat transfer for walls" annotation (Placement(transformation(extent={{4,-4},{
-              -4,4}},                                                                                               rotation=180,
-          origin={-2,16})));
-    Modelica.Thermal.HeatTransfer.Components.Convection theConWall
-   if sum(zoneParam.AExt) > 0
-      "Outdoor convective heat transfer of walls"
-      annotation (Placement(transformation(extent={{26,24},{16,14}})));
     Modelica.Blocks.Sources.Constant hConWin(final k=(zoneParam.hConWinOut + zoneParam.hRadWall)*sum(zoneParam.AWin))
       "Outdoor coefficient of heat transfer for windows" annotation (Placement(transformation(extent={{4,-4},{-4,4}}, rotation=90,
           origin={22,48})));
@@ -599,8 +602,6 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
           color={0,0,127}));
     connect(theConWin.solid, ROM.window) annotation (Line(points={{26,35},{28,35},
             {28,78},{38,78}}, color={191,0,0}));
-    connect(theConWall.solid, ROM.extWall) annotation (Line(points={{26,19},{29,19},
-            {29,70},{38,70}}, color={191,0,0}));
     connect(weaBus.TDryBul, eqAirTempRoof.TDryBul) annotation (Line(
         points={{-99.915,34.08},{-86,34.08},{-86,60},{-46,60},{-46,68.4},{-41.2,68.4}},
         color={255,204,51},
@@ -627,14 +628,8 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
       annotation (Line(points={{4.4,0},{48,0},{48,28.8}}, color={0,0,127}));
     connect(preTemFloor.port, ROM.floor)
       annotation (Line(points={{48,42},{48,56},{62,56}}, color={191,0,0}));
-    connect(preTemRoof.port, theConRoof.fluid)
-      annotation (Line(points={{-5,84},{0,84},{0,83}}, color={191,0,0}));
-    connect(theConRoof.Gc, hConRoof.y)
-      annotation (Line(points={{5,78},{5,72},{-5.6,72}}, color={0,0,127}));
     connect(eqAirTempRoof.TEqAir, preTemRoof.T) annotation (Line(points={{-27.4,72},
             {-27.4,84},{-14.9,84}}, color={0,0,127}));
-    connect(theConRoof.solid, ROM.roof) annotation (Line(points={{10,83},{14,83},{
-            14,92},{60.9,92}}, color={191,0,0}));
     for i in 1:zoneParam.nOrientations loop
       connect(weaBus, HDifTilWall[i].weaBus) annotation (Line(
           points={{-100,34},{-100,34},{-86,34},{-86,18},{-84,18}},
@@ -667,12 +662,8 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
           index=-1,
           extent={{-6,3},{-6,3}}));
     end for;
-    connect(preTemWall.port, theConWall.fluid) annotation (Line(points={{-10,20},{
-            18,20},{18,19},{16,19}}, color={191,0,0}));
     connect(preTemWin.port, theConWin.fluid)
       annotation (Line(points={{12,34.5},{16,34.5},{16,35}}, color={191,0,0}));
-    connect(hConWall.y, theConWall.Gc)
-      annotation (Line(points={{2.4,16},{21,16},{21,14}}, color={0,0,127}));
     connect(hConWin.y, theConWin.Gc)
       annotation (Line(points={{22,43.6},{22,40},{21,40}}, color={0,0,127}));
     connect(heaterCoolerController.heaterActive, heaterCooler.heaterActive)
@@ -985,6 +976,31 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
     connect(weaBus.HDirNor, HDirNor.u) annotation (Line(
         points={{-99.915,34.08},{-56,34.08},{-56,78},{-62,78},{-62,114},{-52,
             114},{-52,124}},
+        color={255,204,51},
+        thickness=0.5), Text(
+        string="%first",
+        index=-1,
+        extent={{-6,3},{-6,3}},
+        horizontalAlignment=TextAlignment.Right));
+    connect(preTemWall.port, heatConvOutsideExtWall.port_a)
+      annotation (Line(points={{-10,20},{4,20}}, color={191,0,0}));
+    connect(heatConvOutsideExtWall.port_b, ROM.extWall) annotation (Line(points={{
+            16,20},{32,20},{32,70},{38,70}}, color={191,0,0}));
+    connect(weaBus.winSpe, heatConvOutsideExtWall.WindSpeedPort) annotation (Line(
+        points={{-99.915,34.08},{-6,34.08},{-6,18},{-2,18},{-2,15.8},{4.6,15.8}},
+        color={255,204,51},
+        thickness=0.5), Text(
+        string="%first",
+        index=-1,
+        extent={{-6,3},{-6,3}},
+        horizontalAlignment=TextAlignment.Right));
+
+    connect(preTemRoof.port, heatConvOutsideRoof.port_a)
+      annotation (Line(points={{-5,84},{4.44089e-16,84}}, color={191,0,0}));
+    connect(heatConvOutsideRoof.port_b, ROM.roof) annotation (Line(points={{12,84},
+            {12,82},{14,82},{14,94},{18,94},{18,92},{60.9,92}}, color={191,0,0}));
+    connect(weaBus.winSpe, heatConvOutsideRoof.WindSpeedPort) annotation (Line(
+        points={{-99.915,34.08},{-22,34.08},{-22,74},{0.6,74},{0.6,79.8}},
         color={255,204,51},
         thickness=0.5), Text(
         string="%first",
