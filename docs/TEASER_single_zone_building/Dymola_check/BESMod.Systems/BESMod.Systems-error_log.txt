@@ -1,0 +1,120 @@
+
+Error in model:  BESMod.Systems.Hydraulical.Distribution.CombiStorage 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.CombiStorage">BESMod.Systems.Hydraulical.Distribution.CombiStorage</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: bufSto.layer.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: bufSto.heatingCoil1.pipe.vol_b.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: bufSto.heatingCoil1.pipe.vol_a.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: bufSto.heatingCoil2.pipe.vol_b.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: bufSto.heatingCoil2.pipe.vol_a.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Sources/BaseClasses/PartialSource.mo, line <a href="Modelica://IBPSA.Fluid.Sources.BaseClasses.PartialSource#text:36">37</a>
+ Component context: bouPumSec.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: pumGen.dpControlled_dp.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: pumGen.speedControlled_y.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Sources/BaseClasses/PartialSource.mo, line <a href="Modelica://IBPSA.Fluid.Sources.BaseClasses.PartialSource#text:36">37</a>
+ Component context: bouPumGen.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: pumTra.dpControlled_dp.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: pumTra.speedControlled_y.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: pumGenSec.dpControlled_dp.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: pumGenSec.speedControlled_y.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Check is assuming: Q_flow_nominal = fill(1e-15, 1)
+Warning: Current version of the Modelica translator can only handle
+array of components with fixed size.
+But component bufSto.layer[1].ports had non-fixed array dimensions [nPorts].
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/MixingVolumes/BaseClasses/PartialMixingVolume.mo, line 32
+But component bufSto.layer[1].dynBal.ports had non-fixed array dimensions [nPorts].
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line 73
+But component bufSto.layer[2].ports had non-fixed array dimensions [nPorts].
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/MixingVolumes/BaseClasses/PartialMixingVolume.mo, line 32
+But component bufSto.layer[2].dynBal.ports had non-fixed array dimensions [nPorts].
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line 73
+But component bufSto.layer[3].ports had non-fixed array dimensions [nPorts].
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/MixingVolumes/BaseClasses/PartialMixingVolume.mo, line 32
+But component bufSto.layer[3].dynBal.ports had non-fixed array dimensions [nPorts].
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line 73
+But component bufSto.layer[4].ports had non-fixed array dimensions [nPorts].
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/MixingVolumes/BaseClasses/PartialMixingVolume.mo, line 32
+But component bufSto.layer[4].dynBal.ports had non-fixed array dimensions [nPorts].
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line 73
+But component bufSto.heatingCoil1.convHC1Outside had non-fixed array dimensions [disHC].
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Storage/BaseClasses/HeatingCoil.mo, line 25
+But component bufSto.heatingCoil1.Therm1 had non-fixed array dimensions [disHC].
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Storage/BaseClasses/HeatingCoil.mo, line 31
+But component bufSto.heatingCoil1.pipe had non-fixed array dimensions [disHC].
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Storage/BaseClasses/HeatingCoil.mo, line 35
+But component bufSto.heatingCoil2.convHC1Outside had non-fixed array dimensions [disHC].
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Storage/BaseClasses/HeatingCoil.mo, line 25
+But component bufSto.heatingCoil2.Therm1 had non-fixed array dimensions [disHC].
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Storage/BaseClasses/HeatingCoil.mo, line 31
+But component bufSto.heatingCoil2.pipe had non-fixed array dimensions [disHC].
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Storage/BaseClasses/HeatingCoil.mo, line 35
+All variables used in size expressions must be declared as constants or parameters.
+Unspecified size for array of records bufSto.layer[1].ports; using default size for check. This must be specified before using the model.
+Unspecified size for array of records bufSto.layer[1].dynBal.ports; using default size for check. This must be specified before using the model.
+Unspecified size for array of records bufSto.layer[2].ports; using default size for check. This must be specified before using the model.
+Unspecified size for array of records bufSto.layer[2].dynBal.ports; using default size for check. This must be specified before using the model.
+Unspecified size for array of records bufSto.layer[3].ports; using default size for check. This must be specified before using the model.
+Unspecified size for array of records bufSto.layer[3].dynBal.ports; using default size for check. This must be specified before using the model.
+Unspecified size for array of records bufSto.layer[4].ports; using default size for check. This must be specified before using the model.
+Unspecified size for array of records bufSto.layer[4].dynBal.ports; using default size for check. This must be specified before using the model.
+Unspecified size for array of records bufSto.heatingCoil1.convHC1Outside; using default size for check. This must be specified before using the model.
+Unspecified size for array of records bufSto.heatingCoil1.Therm1; using default size for check. This must be specified before using the model.
+Unspecified size for array of records bufSto.heatingCoil1.pipe; using default size for check. This must be specified before using the model.
+Check is assuming: mDHW_flow_nominal = 1e-15
+Unspecified size for array of records bufSto.heatingCoil2.convHC1Outside; using default size for check. This must be specified before using the model.
+Unspecified size for array of records bufSto.heatingCoil2.Therm1; using default size for check. This must be specified before using the model.
+Unspecified size for array of records bufSto.heatingCoil2.pipe; using default size for check. This must be specified before using the model.
+Check is assuming: mSup_flow_nominal = fill(1e-15, 2)
+The model contained invalid expressions.
+Check of class aborted.
+Warning: WARNINGS have been issued.
+
