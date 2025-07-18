@@ -4,4 +4,7 @@ ThreeElements
 FourElements
 FiveElements
 BuildingSingleThermalZone
-SolarUsability
+PartialSolarUsability
+expDecaySolarUsability
+SimpleSolarUsability
+PowerLawSolarUsability

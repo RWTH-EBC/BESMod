@@ -409,11 +409,6 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
       annotation (Placement(transformation(extent={{-66,-76},{-60,-70}})));
     Modelica.Blocks.Interfaces.RealInput TSetZone
       annotation (Placement(transformation(extent={{-132,36},{-92,76}})));
-    Modelica.Blocks.Sources.RealExpression solGainFac[zoneParam.nOrientations](
-        each final y=min(1, max(0, TOda_nominal/TDryBul.y*solGainFacTDryBul +
-          TSetZone/TSetZone_nominal*solGainFacTSet + solGainFacConst)))
-      if sum(zoneParam.ATransparent) > 0
-      annotation (Placement(transformation(extent={{-14,100},{6,120}})));
     Modelica.Blocks.Math.Product solGain[zoneParam.nOrientations]
       if sum(zoneParam.ATransparent) > 0
       annotation (Placement(transformation(extent={{18,82},{28,92}})));
@@ -435,6 +430,10 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
       surfaceType=surfaceType)
       annotation (Placement(transformation(extent={{0,78},{12,90}})));
 
+    replaceable SimpleSolarUsability solarUsability
+      constrainedby  BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PartialSolarUsability(
+                        nOrientations=zoneParam.nOrientations)
+      annotation (Placement(transformation(extent={{-4,108},{16,128}})));
   protected
     Modelica.Thermal.HeatTransfer.Sources.PrescribedTemperature preTemRoof
    if zoneParam.ARoof > 0
@@ -961,8 +960,6 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
             -74.11}}, color={0,0,127}));
     connect(simpleExternalShading.corrIrr, solGain.u2) annotation (Line(points={{9.94,
             47.24},{9.94,46},{14,46},{14,78},{17,78},{17,84}}, color={0,0,127}));
-    connect(solGainFac.y, solGain.u1)
-      annotation (Line(points={{7,110},{17,110},{17,90}}, color={0,0,127}));
     connect(solGain.y, ROM.solRad)
       annotation (Line(points={{28.5,87},{28.5,89},{37,89}}, color={0,0,127}));
     connect(weaBus.TDryBul, TDryBul.u) annotation (Line(
@@ -1007,6 +1004,16 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
         index=-1,
         extent={{-6,3},{-6,3}},
         horizontalAlignment=TextAlignment.Right));
+    connect(TSetZone, solarUsability.TZoneSet) annotation (Line(points={{-112,
+            56},{-20,56},{-20,116},{-10,116},{-10,118},{-4.6,118}}, color={0,0,127}));
+    connect(TDryBul.y, solarUsability.TDryBul) annotation (Line(points={{-65,
+            120},{-65,118},{-58,118},{-58,108},{-10,108},{-10,124},{-4.6,124}},
+          color={0,0,127}));
+    connect(solarUsability.solarGainFactor, solGain.u1) annotation (Line(
+          points={{16.6,118},{20,118},{20,96},{17,96},{17,90}}, color={0,0,127}));
+    connect(simpleExternalShading.corrIrr, solarUsability.IOrientations)
+      annotation (Line(points={{9.94,47.24},{9.94,46},{14,46},{14,104},{-4.6,104},
+            {-4.6,112}}, color={0,0,127}));
      annotation (Documentation(revisions="<html><ul>
   <li>April 20, 2023, by Philip Groesdonk:<br/>
   Added five element RC model (for heat exchange with neighboured zones) and
