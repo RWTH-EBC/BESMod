@@ -119,6 +119,20 @@ Check of class aborted.
 Warning: WARNINGS have been issued.
 
 
+Error in model:  BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability 
+Check of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability</a>
+Errors found in: solarGainFactor[i] = IrrSolGainFac*IOrientation[i]^IrrSolGainExp
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/TEASERBuildingSingleZone/PowerLawSolarUsability.mo, line <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability#text:8">9</a>
+Error: Use of undeclared variable: <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability#text:IOrientation">IOrientation</a>
+In class <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/TEASERBuildingSingleZone/PowerLawSolarUsability.mo, line <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability#text">2</a>
+Errors found in: solarGainFactor[i] = IrrSolGainFac*IOrientation[i]^IrrSolGainExp
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/TEASERBuildingSingleZone/PowerLawSolarUsability.mo, line <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability#text:8">9</a>
+The model contained invalid expressions.
+Check aborted.
+Error: ERRORS have been issued.
+
+
 Error in model:  BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone 
 Check of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone</a>
 Checking model <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone</a>
@@ -137,13 +151,19 @@ Check is assuming: zoneParam.CoolerOn = false
 Check is assuming: zoneParam.withIdealThresholds = false
 Error: The problem is structurally singular.
 
-It has 303 scalar unknowns and 303 scalar equations.
-  The Real part has 303 unknowns and 303 equations.
+It has 307 scalar unknowns and 306 scalar equations.
+  The Real part has 307 unknowns and 306 equations.
   The Integer part has 0 unknowns and 0 equations.
   The Boolean part has 0 unknowns and 0 equations.
   The String part has 0 unknowns and 0 equations.
-The model has the same number of unknowns and equations
-for the given numerical settings of parameters.
+Error: The model is not well-posed.
+The model has
+  305+2*solarUsability.nOrientations
+scalar unknowns and
+  301+(if heatConvOutsideExtWall.calcMethod == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if heatConvOutsideExtWall.calcMethod == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if heatConvOutsideRoof.calcMethod ==   AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if heatConvOutsideRoof.calcMethod == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+solarUsability.nOrientations
+scalar equations.
+Using the given settings of the parameters, the difference could be reduced to
+  1
 Attempting to further localize singularity.
 
 The model component <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone#diagram:ROM">ROM</a> has the same number of unknowns and equations.
