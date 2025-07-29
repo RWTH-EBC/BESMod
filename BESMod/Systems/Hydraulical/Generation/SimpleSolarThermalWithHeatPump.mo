@@ -57,9 +57,9 @@ model SimpleSolarThermalWithHeatPump
   Utilities.KPIs.EnergyKPICalculator KPIWel1(use_inpCon=false, y=-solThe.heater.port.Q_flow)
     annotation (Placement(transformation(extent={{-60,-100},{-40,-80}})));
 
-  Modelica.Blocks.Sources.RealExpression reaExpSolTheTCol(y=solThe.senTCold.T)
+  Modelica.Blocks.Sources.RealExpression reaExpSolTheTCol(y=solThe.senTRet.T)
     annotation (Placement(transformation(extent={{-100,-146},{-80,-126}})));
-  Modelica.Blocks.Sources.RealExpression reaExpSolTheTHot(y=solThe.senTHot.T)
+  Modelica.Blocks.Sources.RealExpression reaExpSolTheTHot(y=solThe.senTSup.T)
     annotation (Placement(transformation(extent={{-100,-100},{-80,-80}})));
 
   BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter resSolThe(

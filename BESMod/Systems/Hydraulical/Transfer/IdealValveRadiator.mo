@@ -8,7 +8,7 @@ model IdealValveRadiator
     final dTLoss_nominal=fill(0, nParallelDem),
     Q_flow_design={if use_oldRad_design[i] then QOld_flow_design[i] else Q_flow_nominal[i] for i in 1:nParallelDem},
     TTra_design={if use_oldRad_design[i] then TTraOld_design[i] else TTra_nominal[i] for i in 1:nParallelDem},
-    res(final dp_nominal=res.dpFixed_nominal));
+    res(disableComputeFlowResistance=false));
 
   parameter Boolean use_oldRad_design[nParallelDem]={not QOld_flow_design[i]==Q_flow_nominal[i] for i in 1:nParallelDem}
     "If true, radiator design of old building state is used"
