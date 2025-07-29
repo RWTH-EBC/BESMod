@@ -1,0 +1,323 @@
+
+Error in model:  BESMod.Utilities.TimeConstantEstimation.Radiator.HeatingCurve 
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.HeatingCurve">BESMod.Utilities.TimeConstantEstimation.Radiator.HeatingCurve</a>
+Error: Overriding final modifier for fac
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/ResistanceCoefficientHydraulicDiameter.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter.IBPSA.Fluid.FixedResistances.HydraulicDiameter#text:3">5</a>
+Overriding found at:
+ Component context: BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res.fac
+  Component declared as Components.HydraulicDiameterParameterOnly res in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res#text:10">39</a>
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
+
+)}.
+Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
+
+)}.
+Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
+
+)}.
+Error: Type error
+in the definition equation
+ hydraulic.transfer.dpPipSca_design = {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
+
+)}.dpFixed_nominal.*(hydraulic.transfer.m_flow_design./hydraulic.transfer.mOld_flow_design  .^2)
+
+Variable <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.HeatingCurve#text$hydraulic.transfer:dpPipSca_design">hydraulic.transfer.dpPipSca_design[]</a> was declared in class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo at line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses#text:58">59</a>, and used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.HeatingCurve#$hydraulic.transfer:PartialWithPipingLosses">hydraulic.transfer.PartialWithPipingLosses</a>.
+Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
+
+)}.
+Missing declarations.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve 
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve</a>
+Error: Overriding final modifier for fac
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/ResistanceCoefficientHydraulicDiameter.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter.IBPSA.Fluid.FixedResistances.HydraulicDiameter#text:3">5</a>
+Overriding found at:
+ Component context: BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res.fac
+  Component declared as Components.HydraulicDiameterParameterOnly res in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res#text:10">39</a>
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Note: 
+Your model is using an outer "system" component but
+an inner "system" component is not defined.
+For simulation drag Modelica.Fluid.System into your model
+to specify system properties.
+
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+Error: Could not find member dpFixed_nominal in record expression hydraulic.transfer.res.
+Error: Type error
+in the definition equation
+ hydraulic.transfer.dpPipSca_design = hydraulic.transfer.res.dpFixed_nominal.*(hydraulic.transfer.m_flow_design./  hydraulic.transfer.mOld_flow_design.^2)
+
+Variable <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer:dpPipSca_design">hydraulic.transfer.dpPipSca_design[]</a> was declared in class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo at line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses#text:58">59</a>, and used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#$hydraulic.transfer:PartialWithPipingLosses">hydraulic.transfer.PartialWithPipingLosses</a>.
+Error: Could not find member dpFixed_nominal in record expression hydraulic.transfer.res.
+Missing declarations.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply 
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply</a>
+Error: Overriding final modifier for fac
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/ResistanceCoefficientHydraulicDiameter.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter.IBPSA.Fluid.FixedResistances.HydraulicDiameter#text:3">5</a>
+Overriding found at:
+ Component context: BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res.fac
+  Component declared as Components.HydraulicDiameterParameterOnly res in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res#text:10">39</a>
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Note: 
+Your model is using an outer "system" component but
+an inner "system" component is not defined.
+For simulation drag Modelica.Fluid.System into your model
+to specify system properties.
+
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+Error: Could not find member dpFixed_nominal in record expression hydraulic.transfer.res.
+Error: Type error
+in the definition equation
+ hydraulic.transfer.dpPipSca_design = hydraulic.transfer.res.dpFixed_nominal.*(hydraulic.transfer.m_flow_design./  hydraulic.transfer.mOld_flow_design.^2)
+
+Variable <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer:dpPipSca_design">hydraulic.transfer.dpPipSca_design[]</a> was declared in class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo at line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses#text:58">59</a>, and used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#$hydraulic.transfer:PartialWithPipingLosses">hydraulic.transfer.PartialWithPipingLosses</a>.
+Error: Could not find member dpFixed_nominal in record expression hydraulic.transfer.res.
+Missing declarations.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator 
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator">BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator</a>
+Error: Overriding final modifier for fac
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/ResistanceCoefficientHydraulicDiameter.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter.IBPSA.Fluid.FixedResistances.HydraulicDiameter#text:3">5</a>
+Overriding found at:
+ Component context: BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res.fac
+  Component declared as Components.HydraulicDiameterParameterOnly res in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res#text:10">39</a>
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: rad.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: volSup.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: volRet.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Check is assuming: nParallelDem = 1
+Check is assuming: Q_flow_nominal = fill(1e-15, 1)
+Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
+
+)}.
+Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
+
+)}.
+Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
+
+)}.
+Error: Type error
+in the definition equation
+ dpPipSca_design = {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
+
+)}.dpFixed_nominal.*(m_flow_design./mOld_flow_design.^2)
+
+Variable <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator#text:dpPipSca_design">dpPipSca_design[]</a> was declared in class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo at line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses#text:58">59</a>, and used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator#:PartialWithPipingLosses">PartialWithPipingLosses</a>.
+Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
+
+)}.
+Missing declarations.
+Check aborted.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.Partial 
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.Partial">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.Partial</a>
+Error: Overriding final modifier for fac
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/ResistanceCoefficientHydraulicDiameter.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter.IBPSA.Fluid.FixedResistances.HydraulicDiameter#text:3">5</a>
+Overriding found at:
+ Component context: BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res.fac
+  Component declared as Components.HydraulicDiameterParameterOnly res in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res#text:10">39</a>
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Note: 
+Your model is using an outer "system" component but
+an inner "system" component is not defined.
+For simulation drag Modelica.Fluid.System into your model
+to specify system properties.
+
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+Error: Could not find member dpFixed_nominal in record expression hydraulic.transfer.res.
+Error: Type error
+in the definition equation
+ hydraulic.transfer.dpPipSca_design = hydraulic.transfer.res.dpFixed_nominal.*(hydraulic.transfer.m_flow_design./  hydraulic.transfer.mOld_flow_design.^2)
+
+Variable <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.Partial#text$hydraulic.transfer:dpPipSca_design">hydraulic.transfer.dpPipSca_design[]</a> was declared in class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo at line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses#text:58">59</a>, and used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.Partial#$hydraulic.transfer:PartialWithPipingLosses">hydraulic.transfer.PartialWithPipingLosses</a>.
+Error: Could not find member dpFixed_nominal in record expression hydraulic.transfer.res.
+Missing declarations.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat 
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat</a>
+Error: Overriding final modifier for fac
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/ResistanceCoefficientHydraulicDiameter.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter.IBPSA.Fluid.FixedResistances.HydraulicDiameter#text:3">5</a>
+Overriding found at:
+ Component context: BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res.fac
+  Component declared as Components.HydraulicDiameterParameterOnly res in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res#text:10">39</a>
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Note: 
+Your model is using an outer "system" component but
+an inner "system" component is not defined.
+For simulation drag Modelica.Fluid.System into your model
+to specify system properties.
+
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+Error: Could not find member dpFixed_nominal in record expression hydraulic.transfer.res.
+Error: Type error
+in the definition equation
+ hydraulic.transfer.dpPipSca_design = hydraulic.transfer.res.dpFixed_nominal.*(hydraulic.transfer.m_flow_design./  hydraulic.transfer.mOld_flow_design.^2)
+
+Variable <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer:dpPipSca_design">hydraulic.transfer.dpPipSca_design[]</a> was declared in class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo at line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses#text:58">59</a>, and used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#$hydraulic.transfer:PartialWithPipingLosses">hydraulic.transfer.PartialWithPipingLosses</a>.
+Error: Could not find member dpFixed_nominal in record expression hydraulic.transfer.res.
+Missing declarations.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Utilities.TimeConstantEstimation.Radiator.Partial 
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.Partial">BESMod.Utilities.TimeConstantEstimation.Radiator.Partial</a>
+Error: Overriding final modifier for fac
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/ResistanceCoefficientHydraulicDiameter.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter.IBPSA.Fluid.FixedResistances.HydraulicDiameter#text:3">5</a>
+Overriding found at:
+ Component context: BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res.fac
+  Component declared as Components.HydraulicDiameterParameterOnly res in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res#text:10">39</a>
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+Check is assuming: QBuiNoRetrofit_flow_nominal = fill(0, 1)
+Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
+
+)}.
+Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
+
+)}.
+Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
+
+)}.
+Error: Type error
+in the definition equation
+ hydraulic.transfer.dpPipSca_design = {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
+
+)}.dpFixed_nominal.*(hydraulic.transfer.m_flow_design./hydraulic.transfer.mOld_flow_design  .^2)
+
+Variable <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.Partial#text$hydraulic.transfer:dpPipSca_design">hydraulic.transfer.dpPipSca_design[]</a> was declared in class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo at line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses#text:58">59</a>, and used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.Partial#$hydraulic.transfer:PartialWithPipingLosses">hydraulic.transfer.PartialWithPipingLosses</a>.
+Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
+
+)}.
+Missing declarations.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Utilities.TimeConstantEstimation.Radiator.SmartThermostat 
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.SmartThermostat">BESMod.Utilities.TimeConstantEstimation.Radiator.SmartThermostat</a>
+Error: Overriding final modifier for fac
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/ResistanceCoefficientHydraulicDiameter.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter.IBPSA.Fluid.FixedResistances.HydraulicDiameter#text:3">5</a>
+Overriding found at:
+ Component context: BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res.fac
+  Component declared as Components.HydraulicDiameterParameterOnly res in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res#text:10">39</a>
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
+
+)}.
+Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
+
+)}.
+Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
+
+)}.
+Error: Type error
+in the definition equation
+ hydraulic.transfer.dpPipSca_design = {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
+
+)}.dpFixed_nominal.*(hydraulic.transfer.m_flow_design./hydraulic.transfer.mOld_flow_design  .^2)
+
+Variable <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.SmartThermostat#text$hydraulic.transfer:dpPipSca_design">hydraulic.transfer.dpPipSca_design[]</a> was declared in class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo at line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses#text:58">59</a>, and used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.SmartThermostat#$hydraulic.transfer:PartialWithPipingLosses">hydraulic.transfer.PartialWithPipingLosses</a>.
+Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
+
+)}.
+Missing declarations.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Utilities.TimeConstantEstimation.Radiator.ConstantSupply 
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.ConstantSupply">BESMod.Utilities.TimeConstantEstimation.Radiator.ConstantSupply</a>
+Error: Overriding final modifier for fac
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/ResistanceCoefficientHydraulicDiameter.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter.IBPSA.Fluid.FixedResistances.HydraulicDiameter#text:3">5</a>
+Overriding found at:
+ Component context: BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res.fac
+  Component declared as Components.HydraulicDiameterParameterOnly res in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res#text:10">39</a>
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
+
+)}.
+Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
+
+)}.
+Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
+
+)}.
+Error: Type error
+in the definition equation
+ hydraulic.transfer.dpPipSca_design = {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
+
+)}.dpFixed_nominal.*(hydraulic.transfer.m_flow_design./hydraulic.transfer.mOld_flow_design  .^2)
+
+Variable <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.ConstantSupply#text$hydraulic.transfer:dpPipSca_design">hydraulic.transfer.dpPipSca_design[]</a> was declared in class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo at line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses#text:58">59</a>, and used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.ConstantSupply#$hydraulic.transfer:PartialWithPipingLosses">hydraulic.transfer.PartialWithPipingLosses</a>.
+Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
+
+)}.
+Missing declarations.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
