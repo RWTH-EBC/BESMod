@@ -142,8 +142,8 @@ partial model PartialTwoStorageParallel
     nHC1Up=parStoBuf.nLayer,
     nHC1Low=1,
     nHR=parStoBuf.nLayerHR,
-    redeclare model HeatTransfer =
-        AixLib.Fluid.Storage.BaseClasses.HeatTransferBuoyancyWetter,
+    redeclare replaceable model HeatTransfer =
+        AixLib.Fluid.Storage.BaseClasses.HeatTransferOnlyConduction,
     final allowFlowReversal_layers=allowFlowReversal,
     final allowFlowReversal_HC1=allowFlowReversal,
     final allowFlowReversal_HC2=allowFlowReversal) "Buffer storage"
@@ -198,8 +198,8 @@ partial model PartialTwoStorageParallel
     nHC1Up=parStoDHW.nLayer,
     nHC1Low=1,
     nHR=parStoDHW.nLayerHR,
-    redeclare model HeatTransfer =
-        AixLib.Fluid.Storage.BaseClasses.HeatTransferBuoyancyWetter,
+    redeclare replaceable model HeatTransfer =
+        AixLib.Fluid.Storage.BaseClasses.HeatTransferOnlyConduction,
     final allowFlowReversal_layers=allowFlowReversal,
     final allowFlowReversal_HC1=allowFlowReversal,
     final allowFlowReversal_HC2=allowFlowReversal)            "DHW storage"
