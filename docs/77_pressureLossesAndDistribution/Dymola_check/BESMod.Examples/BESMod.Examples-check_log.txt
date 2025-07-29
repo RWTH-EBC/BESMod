@@ -1,4 +1,21 @@
 
+Error in model:  BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW 
+Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW</a>
+Error: Class or component 'disableComputeFlowResistance' not found in StorageDetailed stoBuf
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line 97
+ Component context: hydraulic.distribution.stoBuf
+  Component declared as StorageDetailed stoBuf in <a href="Modelica://AixLib.Fluid.Storage">AixLib.Fluid.Storage</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/TwoStoragesBoilerWithDHW.mo, line 4
+Error: Class or component 'disableComputeFlowResistance' not found in StorageDetailed stoDHW
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line 152
+ Component context: hydraulic.distribution.stoDHW
+  Component declared as StorageDetailed stoDHW in <a href="Modelica://AixLib.Fluid.Storage">AixLib.Fluid.Storage</a>
+  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/TwoStoragesBoilerWithDHW.mo, line 4
+Error: ERRORS have been issued.
+
+
 Error in model:  BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW 
 Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW</a>
 Error: Class or component 'disableComputeFlowResistance' not found in StorageDetailed stoBuf
@@ -16,8 +33,8 @@ Error: Class or component 'disableComputeFlowResistance' not found in StorageDet
 Error: ERRORS have been issued.
 
 
-Error in model:  BESMod.Examples.BAUSimStudy.PartialCase 
-Check of <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase">BESMod.Examples.BAUSimStudy.PartialCase</a>
+Error in model:  BESMod.Examples.Retrofit.PartialCase 
+Check of <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>
 Error: Class or component 'disableComputeFlowResistance' not found in StorageDetailed stoBuf
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line 97
  Component context: hydraulic.distribution.stoBuf
@@ -50,8 +67,8 @@ Error: Class or component 'disableComputeFlowResistance' not found in StorageDet
 Error: ERRORS have been issued.
 
 
-Error in model:  BESMod.Examples.BAUSimStudy.Case1Standard 
-Check of <a href="Modelica://BESMod.Examples.BAUSimStudy.Case1Standard">BESMod.Examples.BAUSimStudy.Case1Standard</a>
+Error in model:  BESMod.Examples.BAUSimStudy.PartialCase 
+Check of <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase">BESMod.Examples.BAUSimStudy.PartialCase</a>
 Error: Class or component 'disableComputeFlowResistance' not found in StorageDetailed stoBuf
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line 97
  Component context: hydraulic.distribution.stoBuf
@@ -284,8 +301,8 @@ Check aborted.
 Error: ERRORS have been issued.
 
 
-Error in model:  BESMod.Examples.Retrofit.Case1NoRetrofit 
-Check of <a href="Modelica://BESMod.Examples.Retrofit.Case1NoRetrofit">BESMod.Examples.Retrofit.Case1NoRetrofit</a>
+Error in model:  BESMod.Examples.BAUSimStudy.Case1Standard 
+Check of <a href="Modelica://BESMod.Examples.BAUSimStudy.Case1Standard">BESMod.Examples.BAUSimStudy.Case1Standard</a>
 Error: Class or component 'disableComputeFlowResistance' not found in StorageDetailed stoBuf
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line 97
  Component context: hydraulic.distribution.stoBuf
@@ -301,8 +318,8 @@ Error: Class or component 'disableComputeFlowResistance' not found in StorageDet
 Error: ERRORS have been issued.
 
 
-Error in model:  BESMod.Examples.Retrofit.PartialCase 
-Check of <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>
+Error in model:  BESMod.Examples.Retrofit.Case1NoRetrofit 
+Check of <a href="Modelica://BESMod.Examples.Retrofit.Case1NoRetrofit">BESMod.Examples.Retrofit.Case1NoRetrofit</a>
 Error: Class or component 'disableComputeFlowResistance' not found in StorageDetailed stoBuf
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line 97
  Component context: hydraulic.distribution.stoBuf
@@ -332,22 +349,5 @@ Error: Class or component 'disableComputeFlowResistance' not found in StorageDet
   Component declared as StorageDetailed stoDHW in <a href="Modelica://AixLib.Fluid.Storage">AixLib.Fluid.Storage</a>
   Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel</a>.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallelWithHeaters.mo, line 4
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW 
-Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW</a>
-Error: Class or component 'disableComputeFlowResistance' not found in StorageDetailed stoBuf
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line 97
- Component context: hydraulic.distribution.stoBuf
-  Component declared as StorageDetailed stoBuf in <a href="Modelica://AixLib.Fluid.Storage">AixLib.Fluid.Storage</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/TwoStoragesBoilerWithDHW.mo, line 4
-Error: Class or component 'disableComputeFlowResistance' not found in StorageDetailed stoDHW
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/BaseClasses/PartialTwoStorageParallel.mo, line 152
- Component context: hydraulic.distribution.stoDHW
-  Component declared as StorageDetailed stoDHW in <a href="Modelica://AixLib.Fluid.Storage">AixLib.Fluid.Storage</a>
-  Attempted modification in <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialTwoStorageParallel</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Distribution/TwoStoragesBoilerWithDHW.mo, line 4
 Error: ERRORS have been issued.
 
