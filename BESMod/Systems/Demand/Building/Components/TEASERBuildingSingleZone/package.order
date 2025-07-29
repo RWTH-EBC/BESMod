@@ -8,3 +8,6 @@ PartialSolarUsability
 expDecaySolarUsability
 SimpleSolarUsability
 PowerLawSolarUsability
+PartialConvertRoomInputs
+ConvertRoomsInputsSimple
+ConvertRoomsInputsDelayLoss

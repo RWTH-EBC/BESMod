@@ -1,7 +1,8 @@
 within BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone;
 model FourElements "Thermal Zone with four elements for exterior walls,
   interior walls, floor plate and roof"
-  extends BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.ThreeElements(AArray={ATotExt,
+  extends
+    BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.ThreeElements(      AArray={ATotExt,
         ATotWin,AInt,AFloor,ARoof});
 
   parameter Real RoofAreaAtticFactor = 1;
