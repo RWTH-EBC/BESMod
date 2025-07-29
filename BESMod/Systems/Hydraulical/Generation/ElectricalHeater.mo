@@ -115,4 +115,6 @@ equation
           {20,40},{20,80},{100,80}}, color={0,127,255}));
   connect(resGen.port_a, hea.port_a) annotation (Line(points={{20,-10},{-32,-10},
           {-32,-6}},         color={0,127,255}));
+  connect(resGen.port_b, resGenApp.port_a)
+    annotation (Line(points={{40,-10},{70,-10}}, color={0,127,255}));
 end ElectricalHeater;
