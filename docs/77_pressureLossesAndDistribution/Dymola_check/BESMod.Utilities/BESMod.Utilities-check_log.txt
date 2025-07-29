@@ -1,50 +1,6 @@
 
-Error in model:  BESMod.Utilities.TimeConstantEstimation.Radiator.HeatingCurve 
-Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.HeatingCurve">BESMod.Utilities.TimeConstantEstimation.Radiator.HeatingCurve</a>
-Error: Overriding final modifier for fac
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/ResistanceCoefficientHydraulicDiameter.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter.IBPSA.Fluid.FixedResistances.HydraulicDiameter#text:3">5</a>
-Overriding found at:
- Component context: BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res.fac
-  Component declared as Components.HydraulicDiameterParameterOnly res in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res#text:10">39</a>
-Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
-Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
-The definition equation or start value requires a certain size.
-Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
-Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
-
-)}.
-Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
-
-)}.
-Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
-
-)}.
-Error: Type error
-in the definition equation
- hydraulic.transfer.dpPipSca_design = {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
-
-)}.dpFixed_nominal.*(hydraulic.transfer.m_flow_design./hydraulic.transfer.mOld_flow_design  .^2)
-
-Variable <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.HeatingCurve#text$hydraulic.transfer:dpPipSca_design">hydraulic.transfer.dpPipSca_design[]</a> was declared in class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo at line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses#text:58">59</a>, and used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.HeatingCurve#$hydraulic.transfer:PartialWithPipingLosses">hydraulic.transfer.PartialWithPipingLosses</a>.
-Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
-
-)}.
-Missing declarations.
-Check aborted.
-Warning: WARNINGS have been issued.
-Error: ERRORS have been issued.
-
-
 Error in model:  BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve 
 Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve</a>
-Error: Overriding final modifier for fac
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/ResistanceCoefficientHydraulicDiameter.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter.IBPSA.Fluid.FixedResistances.HydraulicDiameter#text:3">5</a>
-Overriding found at:
- Component context: BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res.fac
-  Component declared as Components.HydraulicDiameterParameterOnly res in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res#text:10">39</a>
-Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
 Note: 
 Your model is using an outer "system" component but
 an inner "system" component is not defined.
@@ -54,140 +10,336 @@ to specify system properties.
 Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
 The definition equation or start value requires a certain size.
 Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
-Error: Could not find member dpFixed_nominal in record expression hydraulic.transfer.res.
-Error: Type error
-in the definition equation
- hydraulic.transfer.dpPipSca_design = hydraulic.transfer.res.dpFixed_nominal.*(hydraulic.transfer.m_flow_design./  hydraulic.transfer.mOld_flow_design.^2)
-
-Variable <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer:dpPipSca_design">hydraulic.transfer.dpPipSca_design[]</a> was declared in class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo at line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses#text:58">59</a>, and used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#$hydraulic.transfer:PartialWithPipingLosses">hydraulic.transfer.PartialWithPipingLosses</a>.
-Error: Could not find member dpFixed_nominal in record expression hydraulic.transfer.res.
-Missing declarations.
-Check aborted.
-Warning: WARNINGS have been issued.
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply 
-Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply</a>
-Error: Overriding final modifier for fac
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/ResistanceCoefficientHydraulicDiameter.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter.IBPSA.Fluid.FixedResistances.HydraulicDiameter#text:3">5</a>
-Overriding found at:
- Component context: BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res.fac
-  Component declared as Components.HydraulicDiameterParameterOnly res in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res#text:10">39</a>
-Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
-Note: 
-Your model is using an outer "system" component but
-an inner "system" component is not defined.
-For simulation drag Modelica.Fluid.System into your model
-to specify system properties.
-
-Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.RIze.
 The definition equation or start value requires a certain size.
-Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
-Error: Could not find member dpFixed_nominal in record expression hydraulic.transfer.res.
-Error: Type error
-in the definition equation
- hydraulic.transfer.dpPipSca_design = hydraulic.transfer.res.dpFixed_nominal.*(hydraulic.transfer.m_flow_design./  hydraulic.transfer.mOld_flow_design.^2)
-
-Variable <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer:dpPipSca_design">hydraulic.transfer.dpPipSca_design[]</a> was declared in class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo at line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses#text:58">59</a>, and used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#$hydraulic.transfer:PartialWithPipingLosses">hydraulic.transfer.PartialWithPipingLosses</a>.
-Error: Could not find member dpFixed_nominal in record expression hydraulic.transfer.res.
-Missing declarations.
-Check aborted.
-Warning: WARNINGS have been issued.
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator 
-Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator">BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator</a>
-Error: Overriding final modifier for fac
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/ResistanceCoefficientHydraulicDiameter.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter.IBPSA.Fluid.FixedResistances.HydraulicDiameter#text:3">5</a>
-Overriding found at:
- Component context: BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res.fac
-  Component declared as Components.HydraulicDiameterParameterOnly res in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res#text:10">39</a>
-Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
-Component type specifier BaseProperties is a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
- Component context: rad.vol.dynBal.medium
-  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
-Component type specifier BaseProperties is a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
- Component context: volSup.dynBal.medium
-  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
-Component type specifier BaseProperties is a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
- Component context: volRet.dynBal.medium
-  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
-Check is assuming: nParallelDem = 1
-Check is assuming: Q_flow_nominal = fill(1e-15, 1)
-Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
-
-)}.
-Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
-
-)}.
-Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
-
-)}.
-Error: Type error
-in the definition equation
- dpPipSca_design = {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
-
-)}.dpFixed_nominal.*(m_flow_design./mOld_flow_design.^2)
-
-Variable <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator#text:dpPipSca_design">dpPipSca_design[]</a> was declared in class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo at line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses#text:58">59</a>, and used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator#:PartialWithPipingLosses">PartialWithPipingLosses</a>.
-Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
-
-)}.
-Missing declarations.
-Check aborted.
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.Partial 
-Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.Partial">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.Partial</a>
-Error: Overriding final modifier for fac
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/ResistanceCoefficientHydraulicDiameter.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter.IBPSA.Fluid.FixedResistances.HydraulicDiameter#text:3">5</a>
-Overriding found at:
- Component context: BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res.fac
-  Component declared as Components.HydraulicDiameterParameterOnly res in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res#text:10">39</a>
-Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
-Note: 
-Your model is using an outer "system" component but
-an inner "system" component is not defined.
-For simulation drag Modelica.Fluid.System into your model
-to specify system properties.
-
-Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+Warning: For dimension 2 the size declaration is building.thermalZone[1].ROM.nIzeRC, and the required size is 1.
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.CIze.
 The definition equation or start value requires a certain size.
-Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
-Error: Could not find member dpFixed_nominal in record expression hydraulic.transfer.res.
-Error: Type error
-in the definition equation
- hydraulic.transfer.dpPipSca_design = hydraulic.transfer.res.dpFixed_nominal.*(hydraulic.transfer.m_flow_design./  hydraulic.transfer.mOld_flow_design.^2)
+Warning: For dimension 2 the size declaration is building.thermalZone[1].ROM.nIzeRC, and the required size is 1.
+The following parameters have enable=false and don't have any value, only a start value:
+    building.thermalZone[1].eqAirTempRoof.TGro(start = 288.15)
+    building.thermalZone[1].eqAirTempWall.TGro(start = 288.15)
 
-Variable <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.Partial#text$hydraulic.transfer:dpPipSca_design">hydraulic.transfer.dpPipSca_design[]</a> was declared in class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo at line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses#text:58">59</a>, and used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.Partial#$hydraulic.transfer:PartialWithPipingLosses">hydraulic.transfer.PartialWithPipingLosses</a>.
-Error: Could not find member dpFixed_nominal in record expression hydraulic.transfer.res.
-Missing declarations.
-Check aborted.
+Error: The problem is structurally singular.
+
+It has 4640 scalar unknowns and 4640 scalar equations.
+  The Real part has 4540 unknowns and 4540 equations.
+  The Integer part has 14 unknowns and 14 equations.
+  The Boolean part has 86 unknowns and 86 equations.
+  The String part has 0 unknowns and 0 equations.
+The model has the same number of unknowns and equations
+for the given numerical settings of parameters: 4587
+Attempting to further localize singularity.
+
+The model has the same number of unknowns and equations
+for the given numerical settings of parameters: 2019
+The model has the same number of unknowns and equations:
+  22+max([size(userProfiles.tabIntGai.columns, 1); size(userProfiles.tabIntGai.offset,   1)])+systemParameters.nZones
+The model could not be deduced to be symbolically well-posed.
+The model has
+  181+DHW.calcmFlow.multiProduct.nu+DHW.pump.vol.dynBal.nPorts+max([
+[4]; size(DHW.combiTimeTableDHWInput.offset, 1)])
+scalar unknowns and
+  172+(if DHW.bou_sink.use_Xi_in then 1 else (if DHW.bou_sink.use_X_in then 0   else 1))+(if  not DHW.bou_sink.use_p_in then 1 else 0)+2*DHW.bou_sink.nPorts+  (if  not DHW.bou_sink.use_h_in then 1 else 0)+(if DHW.bouSou.use_Xi_in then 1   else (if DHW.bouSou.use_X_in then 0 else 1))+(if  not DHW.bouSou.use_p_in   then 1 else 0)+(if  not DHW.bouSou.use_T_in then 1 else 0)+(if  not   DHW.pump.vol.dynBal.use_mWat_flow then 1 else 0)+3*DHW.pump.vol.dynBal.nPorts+  max([
+[4]; size(DHW.combiTimeTableDHWInput.offset, 1)])
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  191
+The model could not be deduced to be symbolically well-posed.
+The model has
+  1299+15*(hydraulic.transfer.ufh[1].panelHeatingSegment[1].vol.nPorts+  hydraulic.transfer.ufh[1].panelHeatingSegment[2].vol.nPorts+hydraulic.transfer.ufh[1].panelHeatingSegment[3].vol.nPorts  +hydraulic.transfer.ufh[1].panelHeatingSegment[4].vol.nPorts+hydraulic.transfer.ufh[1].panelHeatingSegment[5].vol.nPorts)  +hydraulic.generation.hea.vol.dynBal.nPorts+8*systemParameters.nZones+  hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.nPorts
+scalar unknowns and
+  1266+(if  not hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.use_mWat_flow   then 1 else 0)+3*hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.nPorts+(if    not hydraulic.transfer.ufh[1].panelHeatingSegment[1].vol.use_portsData then 4  *hydraulic.transfer.ufh[1].panelHeatingSegment[1].vol.nPorts else 0)+13*  hydraulic.transfer.ufh[1].panelHeatingSegment[1].vol.nPorts+(if  not   hydraulic.transfer.ufh[1].panelHeatingSegment[1].twoStar_RadEx.use_A_in then 1   else 0)+(if  not hydraulic.transfer.ufh[1].panelHeatingSegment[2].vol.use_portsData   then 4*hydraulic.transfer.ufh[1].panelHeatingSegment[2].vol.nPorts else 0)+13  *hydraulic.transfer.ufh[1].panelHeatingSegment[2].vol.nPorts+(if  not   hydraulic.transfer.ufh[1].panelHeatingSegment[3].twoStar_RadEx.use_A_in then 1   else 0)+(if  not hydraulic.transfer.ufh[1].panelHeatingSegment[4].vol.use_portsData   then 4*hydraulic.transfer.ufh[1].panelHeatingSegment[4].vol.nPorts else 0)+13  *hydraulic.transfer.ufh[1].panelHeatingSegment[4].vol.nPorts+(if  not   hydraulic.transfer.ufh[1].panelHeatingSegment[4].twoStar_RadEx.use_A_in then 1   else 0)+(if  not hydraulic.generation.hea.vol.dynBal.use_mWat_flow then 1   else 0)+3*hydraulic.generation.hea.vol.dynBal.nPorts+(if hydraulic.distribution.bouPum.use_Xi_in   then 1 else (if hydraulic.distribution.bouPum.use_X_in then 0 else 1))+(if    not hydraulic.distribution.bouPum.use_p_in then 1 else 0)+(if  not   hydraulic.distribution.bouPum.use_T_in then 1 else 0)+(if  not   hydraulic.transfer.ufh[1].panelHeatingSegment[5].vol.use_portsData then 4*  hydraulic.transfer.ufh[1].panelHeatingSegment[5].vol.nPorts else 0)+13*  hydraulic.transfer.ufh[1].panelHeatingSegment[5].vol.nPorts+(if  not   hydraulic.transfer.ufh[1].panelHeatingSegment[5].twoStar_RadEx.use_A_in then 1   else 0)+(if  not hydraulic.transfer.ufh[1].panelHeatingSegment[2].twoStar_RadEx.use_A_in   then 1 else 0)+(if  not hydraulic.transfer.ufh[1].panelHeatingSegment[3].vol.use_portsData   then 4*hydraulic.transfer.ufh[1].panelHeatingSegment[3].vol.nPorts else 0)+13  *hydraulic.transfer.ufh[1].panelHeatingSegment[3].vol.nPorts+(if  not   hydraulic.distribution.pump.dpControlled_dp.vol.steBal.use_mWat_flow then 1   else 0)+2*systemParameters.nZones
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  1461
+Attempting to further localize singularity.
+
+The model could not be deduced to be symbolically well-posed.
+The model has
+  162+hydraulic.generation.hea.vol.dynBal.nPorts
+scalar unknowns and
+  157+(if  not hydraulic.generation.hea.vol.dynBal.use_mWat_flow then 1 else 0)+3*  hydraulic.generation.hea.vol.dynBal.nPorts
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  164
+The model could not be deduced to be symbolically well-posed.
+The model has
+  127+6*systemParameters.nZones
+scalar unknowns and
+  132+systemParameters.nZones
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  133
+The model could not be deduced to be symbolically well-posed.
+The model has
+  158
+scalar unknowns and
+  154+(if hydraulic.distribution.bouPum.use_Xi_in then 1 else (if hydraulic.distribution.bouPum.use_X_in   then 0 else 1))+(if  not hydraulic.distribution.bouPum.use_p_in then 1 else 0)  +(if  not hydraulic.distribution.bouPum.use_T_in then 1 else 0)+(if  not   hydraulic.distribution.pump.dpControlled_dp.vol.steBal.use_mWat_flow then 1   else 0)
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  158
+The model could not be deduced to be symbolically well-posed.
+The model has
+  814+15*(hydraulic.transfer.ufh[1].panelHeatingSegment[1].vol.nPorts+  hydraulic.transfer.ufh[1].panelHeatingSegment[2].vol.nPorts+hydraulic.transfer.ufh[1].panelHeatingSegment[3].vol.nPorts  +hydraulic.transfer.ufh[1].panelHeatingSegment[4].vol.nPorts+hydraulic.transfer.ufh[1].panelHeatingSegment[5].vol.nPorts)  +hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.nPorts
+scalar unknowns and
+  784+(if  not hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.use_mWat_flow then 1   else 0)+3*hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.nPorts+(if  not   hydraulic.transfer.ufh[1].panelHeatingSegment[1].vol.use_portsData then 4*  hydraulic.transfer.ufh[1].panelHeatingSegment[1].vol.nPorts else 0)+13*  hydraulic.transfer.ufh[1].panelHeatingSegment[1].vol.nPorts+(if  not   hydraulic.transfer.ufh[1].panelHeatingSegment[1].twoStar_RadEx.use_A_in then 1   else 0)+(if  not hydraulic.transfer.ufh[1].panelHeatingSegment[2].vol.use_portsData   then 4*hydraulic.transfer.ufh[1].panelHeatingSegment[2].vol.nPorts else 0)+13  *hydraulic.transfer.ufh[1].panelHeatingSegment[2].vol.nPorts+(if  not   hydraulic.transfer.ufh[1].panelHeatingSegment[3].twoStar_RadEx.use_A_in then 1   else 0)+(if  not hydraulic.transfer.ufh[1].panelHeatingSegment[4].vol.use_portsData   then 4*hydraulic.transfer.ufh[1].panelHeatingSegment[4].vol.nPorts else 0)+13  *hydraulic.transfer.ufh[1].panelHeatingSegment[4].vol.nPorts+(if  not   hydraulic.transfer.ufh[1].panelHeatingSegment[4].twoStar_RadEx.use_A_in then 1   else 0)+(if  not hydraulic.transfer.ufh[1].panelHeatingSegment[5].vol.use_portsData   then 4*hydraulic.transfer.ufh[1].panelHeatingSegment[5].vol.nPorts else 0)+13  *hydraulic.transfer.ufh[1].panelHeatingSegment[5].vol.nPorts+(if  not   hydraulic.transfer.ufh[1].panelHeatingSegment[5].twoStar_RadEx.use_A_in then 1   else 0)+(if  not hydraulic.transfer.ufh[1].panelHeatingSegment[2].twoStar_RadEx.use_A_in   then 1 else 0)+(if  not hydraulic.transfer.ufh[1].panelHeatingSegment[3].vol.use_portsData   then 4*hydraulic.transfer.ufh[1].panelHeatingSegment[3].vol.nPorts else 0)+13  *hydraulic.transfer.ufh[1].panelHeatingSegment[3].vol.nPorts
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  966
+Singularity of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve</a> is in the component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram:hydraulic">hydraulic</a>, class <a href="Modelica://BESMod.Systems.Hydraulical.HydraulicSystem">BESMod.Systems.Hydraulical.HydraulicSystem</a>.
+Error: The model <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve</a> component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram:hydraulic">hydraulic</a> is structurally singular.
+when assuming inputs to be known
+and the most generic outside couplings to all the flow variables of its connectors.
+Warning: The problem is structurally singular for the element type Real.
+
+The number of scalar Real unknown elements are 1441.
+The number of scalar Real equation elements are 1441.
+Warning: Part of the problem for Real elements is overdetermined.
+There are 1 scalar equations too many in the set:
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.pumpFix_m_flow.senRelPre:35">hydraulic.transfer.pumpFix_m_flow[1].senRelPre.port_b.m_flow = 0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.control.valCtrl.PI.limiter:18">hydraulic.control.valCtrl.PI[1].limiter.simplifiedExpr = hydraulic.control.valCtrl.PI[1].limiter.u;</a>
+  which was derived from
+    hydraulic.control.valCtrl.PI[1].limiter.simplifiedExpr = (if       hydraulic.control.valCtrl.PI[1].limiter.homotopyType == Modelica.Blocks.Types.LimiterHomotopy.      Linear then hydraulic.control.valCtrl.PI[1].limiter.u else (if       hydraulic.control.valCtrl.PI[1].limiter.homotopyType == Modelica.Blocks.Types.LimiterHomotopy.      UpperLimit then hydraulic.control.valCtrl.PI[1].limiter.uMax else (if       hydraulic.control.valCtrl.PI[1].limiter.homotopyType == Modelica.Blocks.Types.LimiterHomotopy.      LowerLimit then hydraulic.control.valCtrl.PI[1].limiter.uMin else 0)));
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.control.valCtrl.PI.FFzero:7">hydraulic.control.valCtrl.PI[1].FFzero.y = hydraulic.control.valCtrl.PI[1].FFzero.k;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.control.valCtrl.PI[1]:FF.u2,ero.y">hydraulic.control.valCtrl.PI[1].addFF.u2 = hydraulic.control.valCtrl.PI[1].FFzero.y;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.control.valCtrl.PI[1]:Sat.u2,FF.y">hydraulic.control.valCtrl.PI[1].addSat.u2 = hydraulic.control.valCtrl.PI[1].addFF.y;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.control.valCtrl.PI.addSat:8">hydraulic.control.valCtrl.PI[1].addSat.y = hydraulic.control.valCtrl.PI[1].addSat.k1  *hydraulic.control.valCtrl.PI[1].addSat.u1+hydraulic.control.valCtrl.PI[1].addSat.k2  *hydraulic.control.valCtrl.PI[1].addSat.u2;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.control.valCtrl.PI[1]:nTrack.u,Sat.y">hydraulic.control.valCtrl.PI[1].gainTrack.u = hydraulic.control.valCtrl.PI[1].addSat.y;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.control.valCtrl.PI.gainTrack:12">hydraulic.control.valCtrl.PI[1].gainTrack.y = hydraulic.control.valCtrl.PI[1].gainTrack.k  *hydraulic.control.valCtrl.PI[1].gainTrack.u;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.control.valCtrl.PI[1]:nTrack.y,I.u3">hydraulic.control.valCtrl.PI[1].gainTrack.y = hydraulic.control.valCtrl.PI[1].addI.u3;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.control.valCtrl.PI.addI:17">hydraulic.control.valCtrl.PI[1].addI.y = hydraulic.control.valCtrl.PI[1].addI.k1  *hydraulic.control.valCtrl.PI[1].addI.u1+hydraulic.control.valCtrl.PI[1].addI.k2  *hydraulic.control.valCtrl.PI[1].addI.u2+hydraulic.control.valCtrl.PI[1].addI.k3  *hydraulic.control.valCtrl.PI[1].addI.u3;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.control.valCtrl.PI[1]:I.y,">hydraulic.control.valCtrl.PI[1].addI.y = hydraulic.control.valCtrl.PI[1].I.u;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.control.valCtrl.PI.I:54">der(hydraulic.control.valCtrl.PI[1].I.y) = hydraulic.control.valCtrl.PI[1].I.k*  hydraulic.control.valCtrl.PI[1].I.u;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.control.valCtrl.PI[1]:PID.u3,">hydraulic.control.valCtrl.PI[1].addPID.u3 = hydraulic.control.valCtrl.PI[1].I.y;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.control.valCtrl.PI.Dzero:7">hydraulic.control.valCtrl.PI[1].Dzero.y = hydraulic.control.valCtrl.PI[1].Dzero.k;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.control.valCtrl.PI[1]:PID.u2,ro.y">hydraulic.control.valCtrl.PI[1].addPID.u2 = hydraulic.control.valCtrl.PI[1].Dzero.y;</a>
+hydraulic.control.buiMeaBus.TZoneMea[1] = hydraulic.buiMeaBus.TZoneMea[1];
+  which was derived from
+    hydraulic.control.buiMeaBus.TZoneMea = hydraulic.buiMeaBus.TZoneMea;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.control:valCtrl.TZoneMea,buiMeaBus">hydraulic.control.valCtrl.TZoneMea[1] = hydraulic.control.buiMeaBus.TZoneMea[1];</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.control.valCtrl:TZoneMea,PI.u_m">hydraulic.control.valCtrl.TZoneMea[1] = hydraulic.control.valCtrl.PI[1].u_m;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.control.valCtrl.PI[1]:I.u2">hydraulic.control.valCtrl.PI[1].u_m = hydraulic.control.valCtrl.PI[1].addI.u2;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.control.valCtrl.PI[1]:P.u2,I.u2">hydraulic.control.valCtrl.PI[1].addP.u2 = hydraulic.control.valCtrl.PI[1].addI.u2;</a>
+hydraulic.useProBus.TZoneSet[1] = hydraulic.control.useProBus.TZoneSet[1];
+  which was derived from
+    hydraulic.useProBus.TZoneSet = hydraulic.control.useProBus.TZoneSet;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.control:useProBus,supTSet.TZoneSet">hydraulic.control.useProBus.TZoneSet[1] = hydraulic.control.supTSet.TZoneSet[1];</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.control:valCtrl.TZoneSet,supTSet.TZoneSet">hydraulic.control.valCtrl.TZoneSet[1] = hydraulic.control.supTSet.TZoneSet[1];</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.control.valCtrl:TZoneSet,PI.u_s">hydraulic.control.valCtrl.TZoneSet[1] = hydraulic.control.valCtrl.PI[1].u_s;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.control.valCtrl.PI[1]:I.u1">hydraulic.control.valCtrl.PI[1].u_s = hydraulic.control.valCtrl.PI[1].addI.u1;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.control.valCtrl.PI[1]:P.u1,I.u1">hydraulic.control.valCtrl.PI[1].addP.u1 = hydraulic.control.valCtrl.PI[1].addI.u1;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.control.valCtrl.PI.addP:8">hydraulic.control.valCtrl.PI[1].addP.y = hydraulic.control.valCtrl.PI[1].addP.k1  *hydraulic.control.valCtrl.PI[1].addP.u1+hydraulic.control.valCtrl.PI[1].addP.k2  *hydraulic.control.valCtrl.PI[1].addP.u2;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.control.valCtrl.PI[1]:P.y,">hydraulic.control.valCtrl.PI[1].addP.y = hydraulic.control.valCtrl.PI[1].P.u;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.control.valCtrl.PI.P:12">hydraulic.control.valCtrl.PI[1].P.y = hydraulic.control.valCtrl.PI[1].P.k*  hydraulic.control.valCtrl.PI[1].P.u;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.control.valCtrl.PI[1]:PID.u1,">hydraulic.control.valCtrl.PI[1].addPID.u1 = hydraulic.control.valCtrl.PI[1].P.y;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.control.valCtrl.PI.addPID:17">hydraulic.control.valCtrl.PI[1].addPID.y = hydraulic.control.valCtrl.PI[1].addPID.k1  *hydraulic.control.valCtrl.PI[1].addPID.u1+hydraulic.control.valCtrl.PI[1].addPID.k2  *hydraulic.control.valCtrl.PI[1].addPID.u2+hydraulic.control.valCtrl.PI[1].addPID.k3  *hydraulic.control.valCtrl.PI[1].addPID.u3;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.control.valCtrl.PI[1]:nPID.u,PID.y">hydraulic.control.valCtrl.PI[1].gainPID.u = hydraulic.control.valCtrl.PI[1].addPID.y;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.control.valCtrl.PI.gainPID:12">hydraulic.control.valCtrl.PI[1].gainPID.y = hydraulic.control.valCtrl.PI[1].gainPID.k  *hydraulic.control.valCtrl.PI[1].gainPID.u;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.control.valCtrl.PI[1]:nPID.y,FF.u1">hydraulic.control.valCtrl.PI[1].gainPID.y = hydraulic.control.valCtrl.PI[1].addFF.u1;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.control.valCtrl.PI.addFF:8">hydraulic.control.valCtrl.PI[1].addFF.y = hydraulic.control.valCtrl.PI[1].addFF.k1  *hydraulic.control.valCtrl.PI[1].addFF.u1+hydraulic.control.valCtrl.PI[1].addFF.k2  *hydraulic.control.valCtrl.PI[1].addFF.u2;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.control.valCtrl.PI[1]:iter.u,FF.y">hydraulic.control.valCtrl.PI[1].limiter.u = hydraulic.control.valCtrl.PI[1].addFF.y;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.control.valCtrl.PI.limiter:31">hydraulic.control.valCtrl.PI[1].limiter.y = homotopy(smooth(0, (if   hydraulic.control.valCtrl.PI[1].limiter.u &gt; 1.0 then 1.0 else (if   hydraulic.control.valCtrl.PI[1].limiter.u &lt; hydraulic.control.valCtrl.PI[1].limiter.uMin   then hydraulic.control.valCtrl.PI[1].limiter.uMin else hydraulic.control.valCtrl.PI[1].limiter.u))),   hydraulic.control.valCtrl.PI[1].limiter.simplifiedExpr);</a>
+  which was derived from
+    if (hydraulic.control.valCtrl.PI[1].limiter.strict) then 
+      if (hydraulic.control.valCtrl.PI[1].limiter.homotopyType ==         Modelica.Blocks.Types.LimiterHomotopy.NoHomotopy) then 
+        hydraulic.control.valCtrl.PI[1].limiter.y = smooth(0, noEvent((if           hydraulic.control.valCtrl.PI[1].limiter.u &gt; hydraulic.control.valCtrl.PI[1].limiter.uMax           then hydraulic.control.valCtrl.PI[1].limiter.uMax else (if           hydraulic.control.valCtrl.PI[1].limiter.u &lt; hydraulic.control.valCtrl.PI[1].limiter.uMin           then hydraulic.control.valCtrl.PI[1].limiter.uMin else           hydraulic.control.valCtrl.PI[1].limiter.u))));
+      else
+        hydraulic.control.valCtrl.PI[1].limiter.y = homotopy(smooth(0, noEvent((          if hydraulic.control.valCtrl.PI[1].limiter.u &gt; hydraulic.control.valCtrl.PI[1].limiter.uMax           then hydraulic.control.valCtrl.PI[1].limiter.uMax else (if           hydraulic.control.valCtrl.PI[1].limiter.u &lt; hydraulic.control.valCtrl.PI[1].limiter.uMin           then hydraulic.control.valCtrl.PI[1].limiter.uMin else           hydraulic.control.valCtrl.PI[1].limiter.u)))), hydraulic.control.valCtrl.PI[1].limiter.simplifiedExpr);
+      end if;
+    else
+      if (hydraulic.control.valCtrl.PI[1].limiter.homotopyType ==         Modelica.Blocks.Types.LimiterHomotopy.NoHomotopy) then 
+        hydraulic.control.valCtrl.PI[1].limiter.y = smooth(0, (if           hydraulic.control.valCtrl.PI[1].limiter.u &gt; hydraulic.control.valCtrl.PI[1].limiter.uMax           then hydraulic.control.valCtrl.PI[1].limiter.uMax else (if           hydraulic.control.valCtrl.PI[1].limiter.u &lt; hydraulic.control.valCtrl.PI[1].limiter.uMin           then hydraulic.control.valCtrl.PI[1].limiter.uMin else           hydraulic.control.valCtrl.PI[1].limiter.u)));
+      else
+        hydraulic.control.valCtrl.PI[1].limiter.y = homotopy(smooth(0, (if           hydraulic.control.valCtrl.PI[1].limiter.u &gt; hydraulic.control.valCtrl.PI[1].limiter.uMax           then hydraulic.control.valCtrl.PI[1].limiter.uMax else (if           hydraulic.control.valCtrl.PI[1].limiter.u &lt; hydraulic.control.valCtrl.PI[1].limiter.uMin           then hydraulic.control.valCtrl.PI[1].limiter.uMin else           hydraulic.control.valCtrl.PI[1].limiter.u))), hydraulic.control.valCtrl.PI[1].limiter.simplifiedExpr);
+      end if;
+    end if;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.control.valCtrl.PI[1]:iter.y,Sat.u1">hydraulic.control.valCtrl.PI[1].limiter.y = hydraulic.control.valCtrl.PI[1].addSat.u1;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.control.valCtrl.PI[1]:Sat.u1">hydraulic.control.valCtrl.PI[1].y = hydraulic.control.valCtrl.PI[1].addSat.u1;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.control.valCtrl:opening,PI.y">hydraulic.control.valCtrl.opening[1] = hydraulic.control.valCtrl.PI[1].y;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.control:valCtrl.opening,supCtrlTheVal.uLoc">hydraulic.control.valCtrl.opening[1] = hydraulic.control.supCtrlTheVal[1].uLoc;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.control.supCtrlTheVal[1]:c,.u3">hydraulic.control.supCtrlTheVal[1].uLoc = hydraulic.control.supCtrlTheVal[1].swi.u3;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.control.supCtrlTheVal.uSupDeAct:7">hydraulic.control.supCtrlTheVal[1].uSupDeAct.y = 0.0;</a>
+  which was derived from
+    hydraulic.control.supCtrlTheVal[1].uSupDeAct.y = hydraulic.control.supCtrlTheVal[1].uSupDeAct.k;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.control.supCtrlTheVal[1]:pDeAct.y,.u1">hydraulic.control.supCtrlTheVal[1].uSupDeAct.y = hydraulic.control.supCtrlTheVal[1].swi.u1;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.control.supCtrlTheVal.swi:13">hydraulic.control.supCtrlTheVal[1].swi.y = (if hydraulic.control.supCtrlTheVal[1].swi.u2   then hydraulic.control.supCtrlTheVal[1].swi.u1 else hydraulic.control.supCtrlTheVal[1].swi.u3);</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.control.supCtrlTheVal[1]:.y">hydraulic.control.supCtrlTheVal[1].y = hydraulic.control.supCtrlTheVal[1].swi.y;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.control:supCtrlTheVal.y,sigBusTra">hydraulic.control.supCtrlTheVal[1].y = hydraulic.control.sigBusTra.opening[1];</a>
+hydraulic.transfer.traControlBus.opening[1] = hydraulic.control.sigBusTra.opening[1];
+  which was derived from
+    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.transfer:traControlBus,gain.u">hydraulic.transfer.traControlBus.opening[1] = hydraulic.transfer.gain[1].u;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.gain:12">hydraulic.transfer.gain[1].y = 0.3740568816633237*hydraulic.transfer.gain[1].u;</a>
+  which was derived from
+    hydraulic.transfer.gain[1].y = hydraulic.transfer.gain[1].k*hydraulic.transfer.gain[1].u;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.transfer:pumpFix_m_flow.m_flow_in,gain.y">hydraulic.transfer.pumpFix_m_flow[1].m_flow_in = hydraulic.transfer.gain[1].y;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.transfer.pumpFix_m_flow[1]:low_in,utSwitch.u">hydraulic.transfer.pumpFix_m_flow[1].m_flow_in = hydraulic.transfer.pumpFix_m_flow[1].inputSwitch.u;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.pumpFix_m_flow.inputSwitch:4">hydraulic.transfer.pumpFix_m_flow[1].inputSwitch.y = hydraulic.transfer.pumpFix_m_flow[1].inputSwitch.u;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.transfer.pumpFix_m_flow[1]:Sou.m_flow_in,utSwitch.y">hydraulic.transfer.pumpFix_m_flow[1].preSou.m_flow_in = hydraulic.transfer.pumpFix_m_flow[1].inputSwitch.y;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.transfer.pumpFix_m_flow[1].preSou:low_internal,low_in">hydraulic.transfer.pumpFix_m_flow[1].preSou.m_flow_internal = hydraulic.transfer.pumpFix_m_flow[1].preSou.m_flow_in;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.pumpFix_m_flow.preSou:41">hydraulic.transfer.pumpFix_m_flow[1].preSou.m_flow = hydraulic.transfer.pumpFix_m_flow[1].preSou.m_flow_internal;</a>
+  which was derived from
+    if (hydraulic.transfer.pumpFix_m_flow[1].preSou.control_m_flow) then 
+      hydraulic.transfer.pumpFix_m_flow[1].preSou.m_flow = hydraulic.transfer.pumpFix_m_flow[1].preSou.m_flow_internal;
+    else
+      hydraulic.transfer.pumpFix_m_flow[1].preSou.m_flow_internal = 0;
+    end if;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.pumpFix_m_flow.preSou:78">hydraulic.transfer.pumpFix_m_flow[1].preSou.m_flow = hydraulic.transfer.pumpFix_m_flow[1].preSou.port_a.m_flow;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.transfer.pumpFix_m_flow[1]:Sou.port_a,MasFlo.port_b,RelPre.port_b">hydraulic.transfer.pumpFix_m_flow[1].preSou.port_a.m_flow+hydraulic.transfer.pumpFix_m_flow[1].senMasFlo.port_b.m_flow  +hydraulic.transfer.pumpFix_m_flow[1].senRelPre.port_b.m_flow = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.pumpFix_m_flow.senMasFlo:13">hydraulic.transfer.pumpFix_m_flow[1].senMasFlo.port_b.m_flow =  -  hydraulic.transfer.pumpFix_m_flow[1].senMasFlo.port_a.m_flow;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.transfer.pumpFix_m_flow[1]:MasFlo.port_a,.ports">hydraulic.transfer.pumpFix_m_flow[1].senMasFlo.port_a.m_flow+hydraulic.transfer.pumpFix_m_flow[1].vol.ports[2].m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.transfer.pumpFix_m_flow[1].vol:ts,Bal.ports">hydraulic.transfer.pumpFix_m_flow[1].vol.ports[2].m_flow-hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.ports[2].m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.pumpFix_m_flow.vol.dynBal.medium:22">hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.medium.d = 995.586;</a>
+  which was derived from
+    hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.medium.d = _GlobalScope.AixLib.Media.Water.d_const;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.pumpFix_m_flow.vol.dynBal:256">hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.m = hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.fluidVolume  *hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.medium.d;</a>
+  which was derived from
+    if (hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.massDynamics ==       Modelica.Fluid.Types.Dynamics.SteadyState) then 
+      hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.m = hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.fluidVolume        *hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.rho_start;
+    else
+      if (hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal._simplify_mWat_flow)         then 
+        hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.m = hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.fluidVolume          *AixLib.Media.Water.density_Unique36(
+          AixLib.Media.Water.setState_phX_Unique48(hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.medium.p,             hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.hOut,             _GlobalScope.AixLib.Media.Water.X_default));
+      else
+        hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.m = hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.fluidVolume          *hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.medium.d;
+      end if;
+    end if;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.pumpFix_m_flow.vol.dynBal:308">der(hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.m) = hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.mb_flow;</a>
+  which was derived from
+    if (hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.massDynamics ==       Modelica.Fluid.Types.Dynamics.SteadyState) then 
+      0 = hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.mb_flow+(if         hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.simplify_mWat_flow then 0         else hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.mWat_flow_internal);
+    else
+      der(hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.m) = hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.mb_flow        +(if hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.simplify_mWat_flow         then 0 else hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.mWat_flow_internal);
+    end if;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.pumpFix_m_flow.vol.dynBal:295">hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.mb_flow = hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.ports[1].m_flow  +hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.ports[2].m_flow;</a>
+  which was derived from
+    hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.mb_flow = sum(      hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.ports.m_flow);
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.transfer.pumpFix_m_flow[1].vol:ts,Bal.ports">hydraulic.transfer.pumpFix_m_flow[1].vol.ports[1].m_flow-hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.ports[1].m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.transfer.pumpFix_m_flow[1]:t_a,.ports">hydraulic.transfer.pumpFix_m_flow[1].port_a.m_flow-hydraulic.transfer.pumpFix_m_flow[1].vol.ports[1].m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.transfer:pumpFix_m_flow.port_a,res.port_b">hydraulic.transfer.pumpFix_m_flow[1].port_a.m_flow+hydraulic.transfer.res[1].port_b.m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.res:52">hydraulic.transfer.res[1].port_a.m_flow =  -hydraulic.transfer.res[1].port_b.m_flow;</a>
+  which was derived from
+    hydraulic.transfer.res[1].port_a.m_flow+hydraulic.transfer.res[1].port_b.m_flow       = 0;
+hydraulic.generation.resGen.port_b.m_flow = 0.0;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.generation.resGen:52">hydraulic.generation.resGen.port_a.m_flow =  -hydraulic.generation.resGen.port_b.m_flow;</a>
+  which was derived from
+    hydraulic.generation.resGen.port_a.m_flow+hydraulic.generation.resGen.port_b.m_flow       = 0;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.generation:hea.port_a,resGen.port_a">hydraulic.generation.hea.port_a.m_flow+hydraulic.generation.resGen.port_a.m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.generation.hea:port_a,preDro.port_a">hydraulic.generation.hea.port_a.m_flow-hydraulic.generation.hea.preDro.port_a.m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.generation.hea.preDro:52">hydraulic.generation.hea.preDro.port_a.m_flow =  -hydraulic.generation.hea.preDro.port_b.m_flow;</a>
+  which was derived from
+    hydraulic.generation.hea.preDro.port_a.m_flow+hydraulic.generation.hea.preDro.port_b.m_flow       = 0;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.generation.hea:preDro.port_b,vol.ports">hydraulic.generation.hea.preDro.port_b.m_flow+hydraulic.generation.hea.vol.ports[1].m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.generation.hea.vol:ports,dynBal.ports">hydraulic.generation.hea.vol.ports[1].m_flow-hydraulic.generation.hea.vol.dynBal.ports[1].m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.generation.hea.vol.dynBal.medium:22">hydraulic.generation.hea.vol.dynBal.medium.d = 995.586;</a>
+  which was derived from
+    hydraulic.generation.hea.vol.dynBal.medium.d = _GlobalScope.AixLib.Media.Water.d_const;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.generation.hea.vol.dynBal:256">hydraulic.generation.hea.vol.dynBal.m = hydraulic.generation.hea.vol.dynBal.fluidVolume  *hydraulic.generation.hea.vol.dynBal.medium.d;</a>
+  which was derived from
+    if (hydraulic.generation.hea.vol.dynBal.massDynamics == Modelica.Fluid.Types.Dynamics.      SteadyState) then 
+      hydraulic.generation.hea.vol.dynBal.m = hydraulic.generation.hea.vol.dynBal.fluidVolume        *hydraulic.generation.hea.vol.dynBal.rho_start;
+    else
+      if (hydraulic.generation.hea.vol.dynBal._simplify_mWat_flow) then 
+        hydraulic.generation.hea.vol.dynBal.m = hydraulic.generation.hea.vol.dynBal.fluidVolume          *AixLib.Media.Water.density_Unique36(
+          AixLib.Media.Water.setState_phX_Unique48(hydraulic.generation.hea.vol.dynBal.medium.p,             hydraulic.generation.hea.vol.dynBal.hOut, _GlobalScope.AixLib.Media.Water.X_default));
+      else
+        hydraulic.generation.hea.vol.dynBal.m = hydraulic.generation.hea.vol.dynBal.fluidVolume          *hydraulic.generation.hea.vol.dynBal.medium.d;
+      end if;
+    end if;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.generation.hea.vol.dynBal:308">der(hydraulic.generation.hea.vol.dynBal.m) = hydraulic.generation.hea.vol.dynBal.mb_flow;</a>
+  which was derived from
+    if (hydraulic.generation.hea.vol.dynBal.massDynamics == Modelica.Fluid.Types.Dynamics.      SteadyState) then 
+      0 = hydraulic.generation.hea.vol.dynBal.mb_flow+(if hydraulic.generation.hea.vol.dynBal.simplify_mWat_flow         then 0 else hydraulic.generation.hea.vol.dynBal.mWat_flow_internal);
+    else
+      der(hydraulic.generation.hea.vol.dynBal.m) = hydraulic.generation.hea.vol.dynBal.mb_flow        +(if hydraulic.generation.hea.vol.dynBal.simplify_mWat_flow then 0 else         hydraulic.generation.hea.vol.dynBal.mWat_flow_internal);
+    end if;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.generation.hea.vol.dynBal:295">hydraulic.generation.hea.vol.dynBal.mb_flow = hydraulic.generation.hea.vol.dynBal.ports[1].m_flow  +hydraulic.generation.hea.vol.dynBal.ports[2].m_flow;</a>
+  which was derived from
+    hydraulic.generation.hea.vol.dynBal.mb_flow = sum(hydraulic.generation.hea.vol.dynBal.ports      .m_flow);
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.generation.hea.vol:ports,dynBal.ports">hydraulic.generation.hea.vol.ports[2].m_flow-hydraulic.generation.hea.vol.dynBal.ports[2].m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.generation.hea:port_b,vol.ports">hydraulic.generation.hea.port_b.m_flow-hydraulic.generation.hea.vol.ports[2].m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.generation:portGen_out,hea.port_b">hydraulic.generation.portGen_out[1].m_flow-hydraulic.generation.hea.port_b.m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic:distribution.portGen_in,generation.portGen_out">hydraulic.distribution.portGen_in[1].m_flow+hydraulic.generation.portGen_out[1].m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.distribution:portBui_out,portGen_in">hydraulic.distribution.portBui_out[1].m_flow+hydraulic.distribution.portGen_in[1].m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic:distribution.portBui_out,transfer.portTra_in">hydraulic.distribution.portBui_out[1].m_flow+hydraulic.transfer.portTra_in[1].m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.transfer:portTra_in,resMaiLin.port_a">hydraulic.transfer.portTra_in[1].m_flow-hydraulic.transfer.resMaiLin[1].port_a.m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.resMaiLin:52">hydraulic.transfer.resMaiLin[1].port_a.m_flow =  -hydraulic.transfer.resMaiLin[1].port_b.m_flow;</a>
+  which was derived from
+    hydraulic.transfer.resMaiLin[1].port_a.m_flow+hydraulic.transfer.resMaiLin[1].port_b.m_flow       = 0;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.transfer:resMaiLin.port_b,res.port_a">hydraulic.transfer.resMaiLin[1].port_b.m_flow+hydraulic.transfer.res[1].port_a.m_flow   = 0.0;</a>
+Warning: Part of the problem for Real elements is underdetermined. 
+1 scalar Real  equations are missing for the variables or its derivatives.
+We did not find equations for:
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.generation.hea.vol.dynBal:medium.p">hydraulic.generation.hea.vol.dynBal.medium.p</a>
+But it could be other indeterminate variables as well.
+Indeterminate variables declared as inputs:
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.generation.hea.vol.dynBal:medium.p">hydraulic.generation.hea.vol.dynBal.medium.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.transfer.pumpFix_m_flow[1]:eff.dp_in">hydraulic.transfer.pumpFix_m_flow[1].eff.dp_in</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal:medium.p">hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.medium.p</a>
+Indeterminate variables declared as outputs:
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.transfer.pumpFix_m_flow[1]:eff.dp_internal">hydraulic.transfer.pumpFix_m_flow[1].eff.dp_internal</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.transfer.pumpFix_m_flow[1]:eff.eta">hydraulic.transfer.pumpFix_m_flow[1].eff.eta</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.transfer.pumpFix_m_flow[1]:eff.etaHyd">hydraulic.transfer.pumpFix_m_flow[1].eff.etaHyd</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.transfer.pumpFix_m_flow[1]:eff.etaMot">hydraulic.transfer.pumpFix_m_flow[1].eff.etaMot</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.transfer.pumpFix_m_flow[1]:eff.PEle">hydraulic.transfer.pumpFix_m_flow[1].eff.PEle</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.transfer.pumpFix_m_flow[1]:eff.r_N">hydraulic.transfer.pumpFix_m_flow[1].eff.r_N</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.transfer.pumpFix_m_flow[1]:eff.WFlo">hydraulic.transfer.pumpFix_m_flow[1].eff.WFlo</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.transfer.pumpFix_m_flow[1]:eff.WHyd">hydraulic.transfer.pumpFix_m_flow[1].eff.WHyd</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.transfer.pumpFix_m_flow[1]:eff.y_out">hydraulic.transfer.pumpFix_m_flow[1].eff.y_out</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.transfer:pumpFix_m_flow[1].P">hydraulic.transfer.pumpFix_m_flow[1].P</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.transfer.pumpFix_m_flow[1]:senRelPre.p_rel">hydraulic.transfer.pumpFix_m_flow[1].senRelPre.p_rel</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.transfer:pumpFix_m_flow[1].y_actual">hydraulic.transfer.pumpFix_m_flow[1].y_actual</a>
+Indeterminate acausal variables:
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.distribution.portBui_out:p">hydraulic.distribution.portBui_out[1].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.distribution.portGen_in:p">hydraulic.distribution.portGen_in[1].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.generation.hea:dp">hydraulic.generation.hea.dp</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.generation.hea.port_a:p">hydraulic.generation.hea.port_a.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.generation.hea.port_b:p">hydraulic.generation.hea.port_b.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.generation.hea.preDro.port_a:p">hydraulic.generation.hea.preDro.port_a.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.generation.hea.preDro.port_b:p">hydraulic.generation.hea.preDro.port_b.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.generation.hea.vol.dynBal.medium:p_bar">hydraulic.generation.hea.vol.dynBal.medium.p_bar</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.generation.hea.vol.dynBal.medium.state:p">hydraulic.generation.hea.vol.dynBal.medium.state.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.generation.hea.vol.dynBal.ports:p">hydraulic.generation.hea.vol.dynBal.ports[1].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.generation.hea.vol.dynBal.ports:p">hydraulic.generation.hea.vol.dynBal.ports[2].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.generation.hea.vol:p">hydraulic.generation.hea.vol.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.generation.hea.vol.ports:p">hydraulic.generation.hea.vol.ports[1].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.generation.hea.vol.ports:p">hydraulic.generation.hea.vol.ports[2].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.generation.portGen_out:p">hydraulic.generation.portGen_out[1].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.generation.resGen.port_a:p">hydraulic.generation.resGen.port_a.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.generation.resGen.port_b:p">hydraulic.generation.resGen.port_b.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.portTra_in:p">hydraulic.transfer.portTra_in[1].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.pumpFix_m_flow:dp">hydraulic.transfer.pumpFix_m_flow[1].dp</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.pumpFix_m_flow:dpMachine">hydraulic.transfer.pumpFix_m_flow[1].dpMachine</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.pumpFix_m_flow.eff:eta_internal">hydraulic.transfer.pumpFix_m_flow[1].eff.eta_internal</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.pumpFix_m_flow.eff:P_internal">hydraulic.transfer.pumpFix_m_flow[1].eff.P_internal</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.pumpFix_m_flow.eff:yMot">hydraulic.transfer.pumpFix_m_flow[1].eff.yMot</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.pumpFix_m_flow:eta">hydraulic.transfer.pumpFix_m_flow[1].eta</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.pumpFix_m_flow:etaHyd">hydraulic.transfer.pumpFix_m_flow[1].etaHyd</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.pumpFix_m_flow:etaMot">hydraulic.transfer.pumpFix_m_flow[1].etaMot</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.pumpFix_m_flow.port_a:p">hydraulic.transfer.pumpFix_m_flow[1].port_a.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.pumpFix_m_flow.preSou:dp">hydraulic.transfer.pumpFix_m_flow[1].preSou.dp</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.pumpFix_m_flow.preSou.port_a:p">hydraulic.transfer.pumpFix_m_flow[1].preSou.port_a.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.pumpFix_m_flow.senMasFlo.port_a:p">hydraulic.transfer.pumpFix_m_flow[1].senMasFlo.port_a.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.pumpFix_m_flow.senMasFlo.port_b:p">hydraulic.transfer.pumpFix_m_flow[1].senMasFlo.port_b.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.pumpFix_m_flow.senRelPre.port_b:p">hydraulic.transfer.pumpFix_m_flow[1].senRelPre.port_b.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.pumpFix_m_flow.vol.dynBal.medium:p_bar">hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.medium.p_bar</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.pumpFix_m_flow.vol.dynBal.medium.state:p">hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.medium.state.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.pumpFix_m_flow.vol.dynBal.ports:p">hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.ports[1].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.pumpFix_m_flow.vol.dynBal.ports:p">hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.ports[2].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.pumpFix_m_flow.vol:p">hydraulic.transfer.pumpFix_m_flow[1].vol.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.pumpFix_m_flow.vol.ports:p">hydraulic.transfer.pumpFix_m_flow[1].vol.ports[1].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.pumpFix_m_flow.vol.ports:p">hydraulic.transfer.pumpFix_m_flow[1].vol.ports[2].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.res.port_a:p">hydraulic.transfer.res[1].port_a.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.res.port_b:p">hydraulic.transfer.res[1].port_b.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.resMaiLin.port_a:p">hydraulic.transfer.resMaiLin[1].port_a.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer.resMaiLin.port_b:p">hydraulic.transfer.resMaiLin[1].port_b.p</a>
 Warning: WARNINGS have been issued.
 Error: ERRORS have been issued.
 
 
 Error in model:  BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat 
 Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat</a>
-Error: Overriding final modifier for fac
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/ResistanceCoefficientHydraulicDiameter.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter.IBPSA.Fluid.FixedResistances.HydraulicDiameter#text:3">5</a>
-Overriding found at:
- Component context: BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res.fac
-  Component declared as Components.HydraulicDiameterParameterOnly res in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res#text:10">39</a>
-Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
 Note: 
 Your model is using an outer "system" component but
 an inner "system" component is not defined.
@@ -197,127 +349,669 @@ to specify system properties.
 Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
 The definition equation or start value requires a certain size.
 Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
-Error: Could not find member dpFixed_nominal in record expression hydraulic.transfer.res.
-Error: Type error
-in the definition equation
- hydraulic.transfer.dpPipSca_design = hydraulic.transfer.res.dpFixed_nominal.*(hydraulic.transfer.m_flow_design./  hydraulic.transfer.mOld_flow_design.^2)
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.RIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 2 the size declaration is building.thermalZone[1].ROM.nIzeRC, and the required size is 1.
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.CIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 2 the size declaration is building.thermalZone[1].ROM.nIzeRC, and the required size is 1.
+The following parameters have enable=false and don't have any value, only a start value:
+    building.thermalZone[1].eqAirTempRoof.TGro(start = 288.15)
+    building.thermalZone[1].eqAirTempWall.TGro(start = 288.15)
 
-Variable <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer:dpPipSca_design">hydraulic.transfer.dpPipSca_design[]</a> was declared in class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo at line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses#text:58">59</a>, and used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#$hydraulic.transfer:PartialWithPipingLosses">hydraulic.transfer.PartialWithPipingLosses</a>.
-Error: Could not find member dpFixed_nominal in record expression hydraulic.transfer.res.
-Missing declarations.
-Check aborted.
+Error: The problem is structurally singular.
+
+It has 4673 scalar unknowns and 4673 scalar equations.
+  The Real part has 4572 unknowns and 4572 equations.
+  The Integer part has 14 unknowns and 14 equations.
+  The Boolean part has 87 unknowns and 87 equations.
+  The String part has 0 unknowns and 0 equations.
+The model has the same number of unknowns and equations
+for the given numerical settings of parameters: 4620
+Attempting to further localize singularity.
+
+The model has the same number of unknowns and equations
+for the given numerical settings of parameters: 2019
+The model has the same number of unknowns and equations:
+  22+max([size(userProfiles.tabIntGai.columns, 1); size(userProfiles.tabIntGai.offset,   1)])+systemParameters.nZones
+The model could not be deduced to be symbolically well-posed.
+The model has
+  181+DHW.calcmFlow.multiProduct.nu+DHW.pump.vol.dynBal.nPorts+max([
+[4]; size(DHW.combiTimeTableDHWInput.offset, 1)])
+scalar unknowns and
+  172+(if DHW.bouSou.use_Xi_in then 1 else (if DHW.bouSou.use_X_in then 0 else 1))  +(if  not DHW.bouSou.use_p_in then 1 else 0)+(if  not DHW.bouSou.use_T_in   then 1 else 0)+max([
+[4]; size(DHW.combiTimeTableDHWInput.offset, 1)])+(if DHW.bou_sink.use_Xi_in   then 1 else (if DHW.bou_sink.use_X_in then 0 else 1))+(if  not   DHW.bou_sink.use_p_in then 1 else 0)+2*DHW.bou_sink.nPorts+(if  not   DHW.bou_sink.use_h_in then 1 else 0)+(if  not DHW.pump.vol.dynBal.use_mWat_flow   then 1 else 0)+3*DHW.pump.vol.dynBal.nPorts
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  191
+The model could not be deduced to be symbolically well-posed.
+The model has
+  1333+15*(hydraulic.transfer.ufh[1].panelHeatingSegment[1].vol.nPorts+  hydraulic.transfer.ufh[1].panelHeatingSegment[2].vol.nPorts+hydraulic.transfer.ufh[1].panelHeatingSegment[3].vol.nPorts  +hydraulic.transfer.ufh[1].panelHeatingSegment[4].vol.nPorts+hydraulic.transfer.ufh[1].panelHeatingSegment[5].vol.nPorts)  +hydraulic.generation.hea.vol.dynBal.nPorts+7*systemParameters.nZones+  hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.nPorts
+scalar unknowns and
+  1300+(if  not hydraulic.transfer.ufh[1].panelHeatingSegment[1].vol.use_portsData   then 4*hydraulic.transfer.ufh[1].panelHeatingSegment[1].vol.nPorts else 0)+13  *hydraulic.transfer.ufh[1].panelHeatingSegment[1].vol.nPorts+(if  not   hydraulic.transfer.ufh[1].panelHeatingSegment[2].twoStar_RadEx.use_A_in then 1   else 0)+(if  not hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.use_mWat_flow   then 1 else 0)+3*hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.nPorts+(if    not hydraulic.transfer.ufh[1].panelHeatingSegment[5].vol.use_portsData then 4  *hydraulic.transfer.ufh[1].panelHeatingSegment[5].vol.nPorts else 0)+13*  hydraulic.transfer.ufh[1].panelHeatingSegment[5].vol.nPorts+(if  not   hydraulic.transfer.ufh[1].panelHeatingSegment[4].twoStar_RadEx.use_A_in then 1   else 0)+(if hydraulic.distribution.bouPum.use_Xi_in then 1 else (if   hydraulic.distribution.bouPum.use_X_in then 0 else 1))+(if  not   hydraulic.distribution.bouPum.use_p_in then 1 else 0)+(if  not   hydraulic.distribution.bouPum.use_T_in then 1 else 0)+(if  not   hydraulic.transfer.ufh[1].panelHeatingSegment[1].twoStar_RadEx.use_A_in then 1   else 0)+(if  not hydraulic.distribution.pump.dpControlled_dp.vol.steBal.use_mWat_flow   then 1 else 0)+(if  not hydraulic.transfer.ufh[1].panelHeatingSegment[3].twoStar_RadEx.use_A_in   then 1 else 0)+(if  not hydraulic.transfer.ufh[1].panelHeatingSegment[5].twoStar_RadEx.use_A_in   then 1 else 0)+(if  not hydraulic.transfer.ufh[1].panelHeatingSegment[3].vol.use_portsData   then 4*hydraulic.transfer.ufh[1].panelHeatingSegment[3].vol.nPorts else 0)+13  *hydraulic.transfer.ufh[1].panelHeatingSegment[3].vol.nPorts+(if  not   hydraulic.transfer.ufh[1].panelHeatingSegment[4].vol.use_portsData then 4*  hydraulic.transfer.ufh[1].panelHeatingSegment[4].vol.nPorts else 0)+13*  hydraulic.transfer.ufh[1].panelHeatingSegment[4].vol.nPorts+(if  not   hydraulic.transfer.ufh[1].panelHeatingSegment[2].vol.use_portsData then 4*  hydraulic.transfer.ufh[1].panelHeatingSegment[2].vol.nPorts else 0)+13*  hydraulic.transfer.ufh[1].panelHeatingSegment[2].vol.nPorts+(if  not   hydraulic.generation.hea.vol.dynBal.use_mWat_flow then 1 else 0)+3*  hydraulic.generation.hea.vol.dynBal.nPorts+systemParameters.nZones
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  1494
+Attempting to further localize singularity.
+
+The model could not be deduced to be symbolically well-posed.
+The model has
+  162+hydraulic.generation.hea.vol.dynBal.nPorts
+scalar unknowns and
+  157+(if  not hydraulic.generation.hea.vol.dynBal.use_mWat_flow then 1 else 0)+3*  hydraulic.generation.hea.vol.dynBal.nPorts
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  164
+The model could not be deduced to be symbolically well-posed.
+The model has
+  161+5*systemParameters.nZones
+scalar unknowns and
+  166
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  166
+The model could not be deduced to be symbolically well-posed.
+The model has
+  158
+scalar unknowns and
+  154+(if hydraulic.distribution.bouPum.use_Xi_in then 1 else (if hydraulic.distribution.bouPum.use_X_in   then 0 else 1))+(if  not hydraulic.distribution.bouPum.use_p_in then 1 else 0)  +(if  not hydraulic.distribution.bouPum.use_T_in then 1 else 0)+(if  not   hydraulic.distribution.pump.dpControlled_dp.vol.steBal.use_mWat_flow then 1   else 0)
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  158
+The model could not be deduced to be symbolically well-posed.
+The model has
+  814+15*(hydraulic.transfer.ufh[1].panelHeatingSegment[1].vol.nPorts+  hydraulic.transfer.ufh[1].panelHeatingSegment[2].vol.nPorts+hydraulic.transfer.ufh[1].panelHeatingSegment[3].vol.nPorts  +hydraulic.transfer.ufh[1].panelHeatingSegment[4].vol.nPorts+hydraulic.transfer.ufh[1].panelHeatingSegment[5].vol.nPorts)  +hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.nPorts
+scalar unknowns and
+  784+(if  not hydraulic.transfer.ufh[1].panelHeatingSegment[1].vol.use_portsData   then 4*hydraulic.transfer.ufh[1].panelHeatingSegment[1].vol.nPorts else 0)+13  *hydraulic.transfer.ufh[1].panelHeatingSegment[1].vol.nPorts+(if  not   hydraulic.transfer.ufh[1].panelHeatingSegment[2].twoStar_RadEx.use_A_in then 1   else 0)+(if  not hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.use_mWat_flow   then 1 else 0)+3*hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.nPorts+(if    not hydraulic.transfer.ufh[1].panelHeatingSegment[5].vol.use_portsData then 4  *hydraulic.transfer.ufh[1].panelHeatingSegment[5].vol.nPorts else 0)+13*  hydraulic.transfer.ufh[1].panelHeatingSegment[5].vol.nPorts+(if  not   hydraulic.transfer.ufh[1].panelHeatingSegment[4].twoStar_RadEx.use_A_in then 1   else 0)+(if  not hydraulic.transfer.ufh[1].panelHeatingSegment[1].twoStar_RadEx.use_A_in   then 1 else 0)+(if  not hydraulic.transfer.ufh[1].panelHeatingSegment[3].twoStar_RadEx.use_A_in   then 1 else 0)+(if  not hydraulic.transfer.ufh[1].panelHeatingSegment[5].twoStar_RadEx.use_A_in   then 1 else 0)+(if  not hydraulic.transfer.ufh[1].panelHeatingSegment[3].vol.use_portsData   then 4*hydraulic.transfer.ufh[1].panelHeatingSegment[3].vol.nPorts else 0)+13  *hydraulic.transfer.ufh[1].panelHeatingSegment[3].vol.nPorts+(if  not   hydraulic.transfer.ufh[1].panelHeatingSegment[4].vol.use_portsData then 4*  hydraulic.transfer.ufh[1].panelHeatingSegment[4].vol.nPorts else 0)+13*  hydraulic.transfer.ufh[1].panelHeatingSegment[4].vol.nPorts+(if  not   hydraulic.transfer.ufh[1].panelHeatingSegment[2].vol.use_portsData then 4*  hydraulic.transfer.ufh[1].panelHeatingSegment[2].vol.nPorts else 0)+13*  hydraulic.transfer.ufh[1].panelHeatingSegment[2].vol.nPorts
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  966
+Singularity of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat</a> is in the component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram:hydraulic">hydraulic</a>, class <a href="Modelica://BESMod.Systems.Hydraulical.HydraulicSystem">BESMod.Systems.Hydraulical.HydraulicSystem</a>.
+Error: The model <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat</a> component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram:hydraulic">hydraulic</a> is structurally singular.
+when assuming inputs to be known
+and the most generic outside couplings to all the flow variables of its connectors.
+Warning: The problem is structurally singular for the element type Real.
+
+The number of scalar Real unknown elements are 1473.
+The number of scalar Real equation elements are 1473.
+Warning: Part of the problem for Real elements is overdetermined.
+There are 1 scalar equations too many in the set:
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.pumpFix_m_flow.senRelPre:35">hydraulic.transfer.pumpFix_m_flow[1].senRelPre.port_b.m_flow = 0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.control.valCtrl.PI.limiter:18">hydraulic.control.valCtrl.PI[1].limiter.simplifiedExpr = hydraulic.control.valCtrl.PI[1].limiter.u;</a>
+  which was derived from
+    hydraulic.control.valCtrl.PI[1].limiter.simplifiedExpr = (if       hydraulic.control.valCtrl.PI[1].limiter.homotopyType == Modelica.Blocks.Types.LimiterHomotopy.      Linear then hydraulic.control.valCtrl.PI[1].limiter.u else (if       hydraulic.control.valCtrl.PI[1].limiter.homotopyType == Modelica.Blocks.Types.LimiterHomotopy.      UpperLimit then hydraulic.control.valCtrl.PI[1].limiter.uMax else (if       hydraulic.control.valCtrl.PI[1].limiter.homotopyType == Modelica.Blocks.Types.LimiterHomotopy.      LowerLimit then hydraulic.control.valCtrl.PI[1].limiter.uMin else 0)));
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.control.valCtrl.PI.FFzero:7">hydraulic.control.valCtrl.PI[1].FFzero.y = hydraulic.control.valCtrl.PI[1].FFzero.k;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.control.valCtrl.PI[1]:FF.u2,ero.y">hydraulic.control.valCtrl.PI[1].addFF.u2 = hydraulic.control.valCtrl.PI[1].FFzero.y;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.control.valCtrl.PI[1]:Sat.u2,FF.y">hydraulic.control.valCtrl.PI[1].addSat.u2 = hydraulic.control.valCtrl.PI[1].addFF.y;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.control.valCtrl.PI.addSat:8">hydraulic.control.valCtrl.PI[1].addSat.y = hydraulic.control.valCtrl.PI[1].addSat.k1  *hydraulic.control.valCtrl.PI[1].addSat.u1+hydraulic.control.valCtrl.PI[1].addSat.k2  *hydraulic.control.valCtrl.PI[1].addSat.u2;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.control.valCtrl.PI[1]:nTrack.u,Sat.y">hydraulic.control.valCtrl.PI[1].gainTrack.u = hydraulic.control.valCtrl.PI[1].addSat.y;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.control.valCtrl.PI.gainTrack:12">hydraulic.control.valCtrl.PI[1].gainTrack.y = hydraulic.control.valCtrl.PI[1].gainTrack.k  *hydraulic.control.valCtrl.PI[1].gainTrack.u;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.control.valCtrl.PI[1]:nTrack.y,I.u3">hydraulic.control.valCtrl.PI[1].gainTrack.y = hydraulic.control.valCtrl.PI[1].addI.u3;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.control.valCtrl.PI.addI:17">hydraulic.control.valCtrl.PI[1].addI.y = hydraulic.control.valCtrl.PI[1].addI.k1  *hydraulic.control.valCtrl.PI[1].addI.u1+hydraulic.control.valCtrl.PI[1].addI.k2  *hydraulic.control.valCtrl.PI[1].addI.u2+hydraulic.control.valCtrl.PI[1].addI.k3  *hydraulic.control.valCtrl.PI[1].addI.u3;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.control.valCtrl.PI[1]:I.y,">hydraulic.control.valCtrl.PI[1].addI.y = hydraulic.control.valCtrl.PI[1].I.u;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.control.valCtrl.PI.I:54">der(hydraulic.control.valCtrl.PI[1].I.y) = hydraulic.control.valCtrl.PI[1].I.k*  hydraulic.control.valCtrl.PI[1].I.u;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.control.valCtrl.PI[1]:PID.u3,">hydraulic.control.valCtrl.PI[1].addPID.u3 = hydraulic.control.valCtrl.PI[1].I.y;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.control.valCtrl.PI.Dzero:7">hydraulic.control.valCtrl.PI[1].Dzero.y = hydraulic.control.valCtrl.PI[1].Dzero.k;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.control.valCtrl.PI[1]:PID.u2,ro.y">hydraulic.control.valCtrl.PI[1].addPID.u2 = hydraulic.control.valCtrl.PI[1].Dzero.y;</a>
+hydraulic.control.buiMeaBus.TZoneMea[1] = hydraulic.buiMeaBus.TZoneMea[1];
+  which was derived from
+    hydraulic.control.buiMeaBus.TZoneMea = hydraulic.buiMeaBus.TZoneMea;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.control:valCtrl.TZoneMea,buiMeaBus">hydraulic.control.valCtrl.TZoneMea[1] = hydraulic.control.buiMeaBus.TZoneMea[1];</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.control.valCtrl:TZoneMea,PI.u_m">hydraulic.control.valCtrl.TZoneMea[1] = hydraulic.control.valCtrl.PI[1].u_m;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.control.valCtrl.PI[1]:I.u2">hydraulic.control.valCtrl.PI[1].u_m = hydraulic.control.valCtrl.PI[1].addI.u2;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.control.valCtrl.PI[1]:P.u2,I.u2">hydraulic.control.valCtrl.PI[1].addP.u2 = hydraulic.control.valCtrl.PI[1].addI.u2;</a>
+hydraulic.useProBus.TZoneSet[1] = hydraulic.control.useProBus.TZoneSet[1];
+  which was derived from
+    hydraulic.useProBus.TZoneSet = hydraulic.control.useProBus.TZoneSet;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.control:useProBus,supTSet.TZoneSet">hydraulic.control.useProBus.TZoneSet[1] = hydraulic.control.supTSet.TZoneSet[1];</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.control:valCtrl.TZoneSet,supTSet.TZoneSet">hydraulic.control.valCtrl.TZoneSet[1] = hydraulic.control.supTSet.TZoneSet[1];</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.control.valCtrl:TZoneSet,PI.u_s">hydraulic.control.valCtrl.TZoneSet[1] = hydraulic.control.valCtrl.PI[1].u_s;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.control.valCtrl.PI[1]:I.u1">hydraulic.control.valCtrl.PI[1].u_s = hydraulic.control.valCtrl.PI[1].addI.u1;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.control.valCtrl.PI[1]:P.u1,I.u1">hydraulic.control.valCtrl.PI[1].addP.u1 = hydraulic.control.valCtrl.PI[1].addI.u1;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.control.valCtrl.PI.addP:8">hydraulic.control.valCtrl.PI[1].addP.y = hydraulic.control.valCtrl.PI[1].addP.k1  *hydraulic.control.valCtrl.PI[1].addP.u1+hydraulic.control.valCtrl.PI[1].addP.k2  *hydraulic.control.valCtrl.PI[1].addP.u2;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.control.valCtrl.PI[1]:P.y,">hydraulic.control.valCtrl.PI[1].addP.y = hydraulic.control.valCtrl.PI[1].P.u;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.control.valCtrl.PI.P:12">hydraulic.control.valCtrl.PI[1].P.y = hydraulic.control.valCtrl.PI[1].P.k*  hydraulic.control.valCtrl.PI[1].P.u;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.control.valCtrl.PI[1]:PID.u1,">hydraulic.control.valCtrl.PI[1].addPID.u1 = hydraulic.control.valCtrl.PI[1].P.y;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.control.valCtrl.PI.addPID:17">hydraulic.control.valCtrl.PI[1].addPID.y = hydraulic.control.valCtrl.PI[1].addPID.k1  *hydraulic.control.valCtrl.PI[1].addPID.u1+hydraulic.control.valCtrl.PI[1].addPID.k2  *hydraulic.control.valCtrl.PI[1].addPID.u2+hydraulic.control.valCtrl.PI[1].addPID.k3  *hydraulic.control.valCtrl.PI[1].addPID.u3;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.control.valCtrl.PI[1]:nPID.u,PID.y">hydraulic.control.valCtrl.PI[1].gainPID.u = hydraulic.control.valCtrl.PI[1].addPID.y;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.control.valCtrl.PI.gainPID:12">hydraulic.control.valCtrl.PI[1].gainPID.y = hydraulic.control.valCtrl.PI[1].gainPID.k  *hydraulic.control.valCtrl.PI[1].gainPID.u;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.control.valCtrl.PI[1]:nPID.y,FF.u1">hydraulic.control.valCtrl.PI[1].gainPID.y = hydraulic.control.valCtrl.PI[1].addFF.u1;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.control.valCtrl.PI.addFF:8">hydraulic.control.valCtrl.PI[1].addFF.y = hydraulic.control.valCtrl.PI[1].addFF.k1  *hydraulic.control.valCtrl.PI[1].addFF.u1+hydraulic.control.valCtrl.PI[1].addFF.k2  *hydraulic.control.valCtrl.PI[1].addFF.u2;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.control.valCtrl.PI[1]:iter.u,FF.y">hydraulic.control.valCtrl.PI[1].limiter.u = hydraulic.control.valCtrl.PI[1].addFF.y;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.control.valCtrl.PI.limiter:31">hydraulic.control.valCtrl.PI[1].limiter.y = homotopy(smooth(0, (if   hydraulic.control.valCtrl.PI[1].limiter.u &gt; 1.0 then 1.0 else (if   hydraulic.control.valCtrl.PI[1].limiter.u &lt; hydraulic.control.valCtrl.PI[1].limiter.uMin   then hydraulic.control.valCtrl.PI[1].limiter.uMin else hydraulic.control.valCtrl.PI[1].limiter.u))),   hydraulic.control.valCtrl.PI[1].limiter.simplifiedExpr);</a>
+  which was derived from
+    if (hydraulic.control.valCtrl.PI[1].limiter.strict) then 
+      if (hydraulic.control.valCtrl.PI[1].limiter.homotopyType ==         Modelica.Blocks.Types.LimiterHomotopy.NoHomotopy) then 
+        hydraulic.control.valCtrl.PI[1].limiter.y = smooth(0, noEvent((if           hydraulic.control.valCtrl.PI[1].limiter.u &gt; hydraulic.control.valCtrl.PI[1].limiter.uMax           then hydraulic.control.valCtrl.PI[1].limiter.uMax else (if           hydraulic.control.valCtrl.PI[1].limiter.u &lt; hydraulic.control.valCtrl.PI[1].limiter.uMin           then hydraulic.control.valCtrl.PI[1].limiter.uMin else           hydraulic.control.valCtrl.PI[1].limiter.u))));
+      else
+        hydraulic.control.valCtrl.PI[1].limiter.y = homotopy(smooth(0, noEvent((          if hydraulic.control.valCtrl.PI[1].limiter.u &gt; hydraulic.control.valCtrl.PI[1].limiter.uMax           then hydraulic.control.valCtrl.PI[1].limiter.uMax else (if           hydraulic.control.valCtrl.PI[1].limiter.u &lt; hydraulic.control.valCtrl.PI[1].limiter.uMin           then hydraulic.control.valCtrl.PI[1].limiter.uMin else           hydraulic.control.valCtrl.PI[1].limiter.u)))), hydraulic.control.valCtrl.PI[1].limiter.simplifiedExpr);
+      end if;
+    else
+      if (hydraulic.control.valCtrl.PI[1].limiter.homotopyType ==         Modelica.Blocks.Types.LimiterHomotopy.NoHomotopy) then 
+        hydraulic.control.valCtrl.PI[1].limiter.y = smooth(0, (if           hydraulic.control.valCtrl.PI[1].limiter.u &gt; hydraulic.control.valCtrl.PI[1].limiter.uMax           then hydraulic.control.valCtrl.PI[1].limiter.uMax else (if           hydraulic.control.valCtrl.PI[1].limiter.u &lt; hydraulic.control.valCtrl.PI[1].limiter.uMin           then hydraulic.control.valCtrl.PI[1].limiter.uMin else           hydraulic.control.valCtrl.PI[1].limiter.u)));
+      else
+        hydraulic.control.valCtrl.PI[1].limiter.y = homotopy(smooth(0, (if           hydraulic.control.valCtrl.PI[1].limiter.u &gt; hydraulic.control.valCtrl.PI[1].limiter.uMax           then hydraulic.control.valCtrl.PI[1].limiter.uMax else (if           hydraulic.control.valCtrl.PI[1].limiter.u &lt; hydraulic.control.valCtrl.PI[1].limiter.uMin           then hydraulic.control.valCtrl.PI[1].limiter.uMin else           hydraulic.control.valCtrl.PI[1].limiter.u))), hydraulic.control.valCtrl.PI[1].limiter.simplifiedExpr);
+      end if;
+    end if;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.control.valCtrl.PI[1]:iter.y,Sat.u1">hydraulic.control.valCtrl.PI[1].limiter.y = hydraulic.control.valCtrl.PI[1].addSat.u1;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.control.valCtrl.PI[1]:Sat.u1">hydraulic.control.valCtrl.PI[1].y = hydraulic.control.valCtrl.PI[1].addSat.u1;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.control.valCtrl:opening,PI.y">hydraulic.control.valCtrl.opening[1] = hydraulic.control.valCtrl.PI[1].y;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.control:valCtrl.opening,supCtrlTheVal.uLoc">hydraulic.control.valCtrl.opening[1] = hydraulic.control.supCtrlTheVal[1].uLoc;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.control.supCtrlTheVal[1]:c,.u3">hydraulic.control.supCtrlTheVal[1].uLoc = hydraulic.control.supCtrlTheVal[1].swi.u3;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.control.supCtrlTheVal.uSupDeAct:7">hydraulic.control.supCtrlTheVal[1].uSupDeAct.y = 0.0;</a>
+  which was derived from
+    hydraulic.control.supCtrlTheVal[1].uSupDeAct.y = hydraulic.control.supCtrlTheVal[1].uSupDeAct.k;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.control.supCtrlTheVal[1]:pDeAct.y,.u1">hydraulic.control.supCtrlTheVal[1].uSupDeAct.y = hydraulic.control.supCtrlTheVal[1].swi.u1;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.control.supCtrlTheVal.swi:13">hydraulic.control.supCtrlTheVal[1].swi.y = (if hydraulic.control.supCtrlTheVal[1].swi.u2   then hydraulic.control.supCtrlTheVal[1].swi.u1 else hydraulic.control.supCtrlTheVal[1].swi.u3);</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.control.supCtrlTheVal[1]:.y">hydraulic.control.supCtrlTheVal[1].y = hydraulic.control.supCtrlTheVal[1].swi.y;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.control:supCtrlTheVal.y,sigBusTra">hydraulic.control.supCtrlTheVal[1].y = hydraulic.control.sigBusTra.opening[1];</a>
+hydraulic.transfer.traControlBus.opening[1] = hydraulic.control.sigBusTra.opening[1];
+  which was derived from
+    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.transfer:traControlBus,gain.u">hydraulic.transfer.traControlBus.opening[1] = hydraulic.transfer.gain[1].u;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.gain:12">hydraulic.transfer.gain[1].y = 0.37558044250204864*hydraulic.transfer.gain[1].u;</a>
+  which was derived from
+    hydraulic.transfer.gain[1].y = hydraulic.transfer.gain[1].k*hydraulic.transfer.gain[1].u;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.transfer:pumpFix_m_flow.m_flow_in,gain.y">hydraulic.transfer.pumpFix_m_flow[1].m_flow_in = hydraulic.transfer.gain[1].y;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.transfer.pumpFix_m_flow[1]:low_in,utSwitch.u">hydraulic.transfer.pumpFix_m_flow[1].m_flow_in = hydraulic.transfer.pumpFix_m_flow[1].inputSwitch.u;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.pumpFix_m_flow.inputSwitch:4">hydraulic.transfer.pumpFix_m_flow[1].inputSwitch.y = hydraulic.transfer.pumpFix_m_flow[1].inputSwitch.u;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.transfer.pumpFix_m_flow[1]:Sou.m_flow_in,utSwitch.y">hydraulic.transfer.pumpFix_m_flow[1].preSou.m_flow_in = hydraulic.transfer.pumpFix_m_flow[1].inputSwitch.y;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.transfer.pumpFix_m_flow[1].preSou:low_internal,low_in">hydraulic.transfer.pumpFix_m_flow[1].preSou.m_flow_internal = hydraulic.transfer.pumpFix_m_flow[1].preSou.m_flow_in;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.pumpFix_m_flow.preSou:41">hydraulic.transfer.pumpFix_m_flow[1].preSou.m_flow = hydraulic.transfer.pumpFix_m_flow[1].preSou.m_flow_internal;</a>
+  which was derived from
+    if (hydraulic.transfer.pumpFix_m_flow[1].preSou.control_m_flow) then 
+      hydraulic.transfer.pumpFix_m_flow[1].preSou.m_flow = hydraulic.transfer.pumpFix_m_flow[1].preSou.m_flow_internal;
+    else
+      hydraulic.transfer.pumpFix_m_flow[1].preSou.m_flow_internal = 0;
+    end if;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.pumpFix_m_flow.preSou:78">hydraulic.transfer.pumpFix_m_flow[1].preSou.m_flow = hydraulic.transfer.pumpFix_m_flow[1].preSou.port_a.m_flow;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.transfer.pumpFix_m_flow[1]:Sou.port_a,MasFlo.port_b,RelPre.port_b">hydraulic.transfer.pumpFix_m_flow[1].preSou.port_a.m_flow+hydraulic.transfer.pumpFix_m_flow[1].senMasFlo.port_b.m_flow  +hydraulic.transfer.pumpFix_m_flow[1].senRelPre.port_b.m_flow = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.pumpFix_m_flow.senMasFlo:13">hydraulic.transfer.pumpFix_m_flow[1].senMasFlo.port_b.m_flow =  -  hydraulic.transfer.pumpFix_m_flow[1].senMasFlo.port_a.m_flow;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.transfer.pumpFix_m_flow[1]:MasFlo.port_a,.ports">hydraulic.transfer.pumpFix_m_flow[1].senMasFlo.port_a.m_flow+hydraulic.transfer.pumpFix_m_flow[1].vol.ports[2].m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.transfer.pumpFix_m_flow[1].vol:ts,Bal.ports">hydraulic.transfer.pumpFix_m_flow[1].vol.ports[2].m_flow-hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.ports[2].m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.pumpFix_m_flow.vol.dynBal.medium:22">hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.medium.d = 995.586;</a>
+  which was derived from
+    hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.medium.d = _GlobalScope.AixLib.Media.Water.d_const;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.pumpFix_m_flow.vol.dynBal:256">hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.m = hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.fluidVolume  *hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.medium.d;</a>
+  which was derived from
+    if (hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.massDynamics ==       Modelica.Fluid.Types.Dynamics.SteadyState) then 
+      hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.m = hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.fluidVolume        *hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.rho_start;
+    else
+      if (hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal._simplify_mWat_flow)         then 
+        hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.m = hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.fluidVolume          *AixLib.Media.Water.density_Unique36(
+          AixLib.Media.Water.setState_phX_Unique48(hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.medium.p,             hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.hOut,             _GlobalScope.AixLib.Media.Water.X_default));
+      else
+        hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.m = hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.fluidVolume          *hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.medium.d;
+      end if;
+    end if;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.pumpFix_m_flow.vol.dynBal:308">der(hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.m) = hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.mb_flow;</a>
+  which was derived from
+    if (hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.massDynamics ==       Modelica.Fluid.Types.Dynamics.SteadyState) then 
+      0 = hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.mb_flow+(if         hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.simplify_mWat_flow then 0         else hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.mWat_flow_internal);
+    else
+      der(hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.m) = hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.mb_flow        +(if hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.simplify_mWat_flow         then 0 else hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.mWat_flow_internal);
+    end if;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.pumpFix_m_flow.vol.dynBal:295">hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.mb_flow = hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.ports[1].m_flow  +hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.ports[2].m_flow;</a>
+  which was derived from
+    hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.mb_flow = sum(      hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.ports.m_flow);
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.transfer.pumpFix_m_flow[1].vol:ts,Bal.ports">hydraulic.transfer.pumpFix_m_flow[1].vol.ports[1].m_flow-hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.ports[1].m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.transfer.pumpFix_m_flow[1]:t_a,.ports">hydraulic.transfer.pumpFix_m_flow[1].port_a.m_flow-hydraulic.transfer.pumpFix_m_flow[1].vol.ports[1].m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.transfer:pumpFix_m_flow.port_a,res.port_b">hydraulic.transfer.pumpFix_m_flow[1].port_a.m_flow+hydraulic.transfer.res[1].port_b.m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.res:52">hydraulic.transfer.res[1].port_a.m_flow =  -hydraulic.transfer.res[1].port_b.m_flow;</a>
+  which was derived from
+    hydraulic.transfer.res[1].port_a.m_flow+hydraulic.transfer.res[1].port_b.m_flow       = 0;
+hydraulic.generation.resGen.port_b.m_flow = 0.0;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.generation.resGen:52">hydraulic.generation.resGen.port_a.m_flow =  -hydraulic.generation.resGen.port_b.m_flow;</a>
+  which was derived from
+    hydraulic.generation.resGen.port_a.m_flow+hydraulic.generation.resGen.port_b.m_flow       = 0;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.generation:hea.port_a,resGen.port_a">hydraulic.generation.hea.port_a.m_flow+hydraulic.generation.resGen.port_a.m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.generation.hea:port_a,preDro.port_a">hydraulic.generation.hea.port_a.m_flow-hydraulic.generation.hea.preDro.port_a.m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.generation.hea.preDro:52">hydraulic.generation.hea.preDro.port_a.m_flow =  -hydraulic.generation.hea.preDro.port_b.m_flow;</a>
+  which was derived from
+    hydraulic.generation.hea.preDro.port_a.m_flow+hydraulic.generation.hea.preDro.port_b.m_flow       = 0;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.generation.hea:preDro.port_b,vol.ports">hydraulic.generation.hea.preDro.port_b.m_flow+hydraulic.generation.hea.vol.ports[1].m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.generation.hea.vol:ports,dynBal.ports">hydraulic.generation.hea.vol.ports[1].m_flow-hydraulic.generation.hea.vol.dynBal.ports[1].m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.generation.hea.vol.dynBal.medium:22">hydraulic.generation.hea.vol.dynBal.medium.d = 995.586;</a>
+  which was derived from
+    hydraulic.generation.hea.vol.dynBal.medium.d = _GlobalScope.AixLib.Media.Water.d_const;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.generation.hea.vol.dynBal:256">hydraulic.generation.hea.vol.dynBal.m = hydraulic.generation.hea.vol.dynBal.fluidVolume  *hydraulic.generation.hea.vol.dynBal.medium.d;</a>
+  which was derived from
+    if (hydraulic.generation.hea.vol.dynBal.massDynamics == Modelica.Fluid.Types.Dynamics.      SteadyState) then 
+      hydraulic.generation.hea.vol.dynBal.m = hydraulic.generation.hea.vol.dynBal.fluidVolume        *hydraulic.generation.hea.vol.dynBal.rho_start;
+    else
+      if (hydraulic.generation.hea.vol.dynBal._simplify_mWat_flow) then 
+        hydraulic.generation.hea.vol.dynBal.m = hydraulic.generation.hea.vol.dynBal.fluidVolume          *AixLib.Media.Water.density_Unique36(
+          AixLib.Media.Water.setState_phX_Unique48(hydraulic.generation.hea.vol.dynBal.medium.p,             hydraulic.generation.hea.vol.dynBal.hOut, _GlobalScope.AixLib.Media.Water.X_default));
+      else
+        hydraulic.generation.hea.vol.dynBal.m = hydraulic.generation.hea.vol.dynBal.fluidVolume          *hydraulic.generation.hea.vol.dynBal.medium.d;
+      end if;
+    end if;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.generation.hea.vol.dynBal:308">der(hydraulic.generation.hea.vol.dynBal.m) = hydraulic.generation.hea.vol.dynBal.mb_flow;</a>
+  which was derived from
+    if (hydraulic.generation.hea.vol.dynBal.massDynamics == Modelica.Fluid.Types.Dynamics.      SteadyState) then 
+      0 = hydraulic.generation.hea.vol.dynBal.mb_flow+(if hydraulic.generation.hea.vol.dynBal.simplify_mWat_flow         then 0 else hydraulic.generation.hea.vol.dynBal.mWat_flow_internal);
+    else
+      der(hydraulic.generation.hea.vol.dynBal.m) = hydraulic.generation.hea.vol.dynBal.mb_flow        +(if hydraulic.generation.hea.vol.dynBal.simplify_mWat_flow then 0 else         hydraulic.generation.hea.vol.dynBal.mWat_flow_internal);
+    end if;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.generation.hea.vol.dynBal:295">hydraulic.generation.hea.vol.dynBal.mb_flow = hydraulic.generation.hea.vol.dynBal.ports[1].m_flow  +hydraulic.generation.hea.vol.dynBal.ports[2].m_flow;</a>
+  which was derived from
+    hydraulic.generation.hea.vol.dynBal.mb_flow = sum(hydraulic.generation.hea.vol.dynBal.ports      .m_flow);
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.generation.hea.vol:ports,dynBal.ports">hydraulic.generation.hea.vol.ports[2].m_flow-hydraulic.generation.hea.vol.dynBal.ports[2].m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.generation.hea:port_b,vol.ports">hydraulic.generation.hea.port_b.m_flow-hydraulic.generation.hea.vol.ports[2].m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.generation:portGen_out,hea.port_b">hydraulic.generation.portGen_out[1].m_flow-hydraulic.generation.hea.port_b.m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic:distribution.portGen_in,generation.portGen_out">hydraulic.distribution.portGen_in[1].m_flow+hydraulic.generation.portGen_out[1].m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.distribution:portBui_out,portGen_in">hydraulic.distribution.portBui_out[1].m_flow+hydraulic.distribution.portGen_in[1].m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic:distribution.portBui_out,transfer.portTra_in">hydraulic.distribution.portBui_out[1].m_flow+hydraulic.transfer.portTra_in[1].m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.transfer:portTra_in,resMaiLin.port_a">hydraulic.transfer.portTra_in[1].m_flow-hydraulic.transfer.resMaiLin[1].port_a.m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.resMaiLin:52">hydraulic.transfer.resMaiLin[1].port_a.m_flow =  -hydraulic.transfer.resMaiLin[1].port_b.m_flow;</a>
+  which was derived from
+    hydraulic.transfer.resMaiLin[1].port_a.m_flow+hydraulic.transfer.resMaiLin[1].port_b.m_flow       = 0;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.transfer:resMaiLin.port_b,res.port_a">hydraulic.transfer.resMaiLin[1].port_b.m_flow+hydraulic.transfer.res[1].port_a.m_flow   = 0.0;</a>
+Warning: Part of the problem for Real elements is underdetermined. 
+1 scalar Real  equations are missing for the variables or its derivatives.
+We did not find equations for:
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.generation.hea.vol.dynBal:medium.p">hydraulic.generation.hea.vol.dynBal.medium.p</a>
+But it could be other indeterminate variables as well.
+Indeterminate variables declared as inputs:
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.generation.hea.vol.dynBal:medium.p">hydraulic.generation.hea.vol.dynBal.medium.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.transfer.pumpFix_m_flow[1]:eff.dp_in">hydraulic.transfer.pumpFix_m_flow[1].eff.dp_in</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal:medium.p">hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.medium.p</a>
+Indeterminate variables declared as outputs:
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.transfer.pumpFix_m_flow[1]:eff.dp_internal">hydraulic.transfer.pumpFix_m_flow[1].eff.dp_internal</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.transfer.pumpFix_m_flow[1]:eff.eta">hydraulic.transfer.pumpFix_m_flow[1].eff.eta</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.transfer.pumpFix_m_flow[1]:eff.etaHyd">hydraulic.transfer.pumpFix_m_flow[1].eff.etaHyd</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.transfer.pumpFix_m_flow[1]:eff.etaMot">hydraulic.transfer.pumpFix_m_flow[1].eff.etaMot</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.transfer.pumpFix_m_flow[1]:eff.PEle">hydraulic.transfer.pumpFix_m_flow[1].eff.PEle</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.transfer.pumpFix_m_flow[1]:eff.r_N">hydraulic.transfer.pumpFix_m_flow[1].eff.r_N</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.transfer.pumpFix_m_flow[1]:eff.WFlo">hydraulic.transfer.pumpFix_m_flow[1].eff.WFlo</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.transfer.pumpFix_m_flow[1]:eff.WHyd">hydraulic.transfer.pumpFix_m_flow[1].eff.WHyd</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.transfer.pumpFix_m_flow[1]:eff.y_out">hydraulic.transfer.pumpFix_m_flow[1].eff.y_out</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.transfer:pumpFix_m_flow[1].P">hydraulic.transfer.pumpFix_m_flow[1].P</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.transfer.pumpFix_m_flow[1]:senRelPre.p_rel">hydraulic.transfer.pumpFix_m_flow[1].senRelPre.p_rel</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.transfer:pumpFix_m_flow[1].y_actual">hydraulic.transfer.pumpFix_m_flow[1].y_actual</a>
+Indeterminate acausal variables:
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.distribution.portBui_out:p">hydraulic.distribution.portBui_out[1].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.distribution.portGen_in:p">hydraulic.distribution.portGen_in[1].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.generation.hea:dp">hydraulic.generation.hea.dp</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.generation.hea.port_a:p">hydraulic.generation.hea.port_a.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.generation.hea.port_b:p">hydraulic.generation.hea.port_b.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.generation.hea.preDro.port_a:p">hydraulic.generation.hea.preDro.port_a.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.generation.hea.preDro.port_b:p">hydraulic.generation.hea.preDro.port_b.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.generation.hea.vol.dynBal.medium:p_bar">hydraulic.generation.hea.vol.dynBal.medium.p_bar</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.generation.hea.vol.dynBal.medium.state:p">hydraulic.generation.hea.vol.dynBal.medium.state.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.generation.hea.vol.dynBal.ports:p">hydraulic.generation.hea.vol.dynBal.ports[1].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.generation.hea.vol.dynBal.ports:p">hydraulic.generation.hea.vol.dynBal.ports[2].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.generation.hea.vol:p">hydraulic.generation.hea.vol.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.generation.hea.vol.ports:p">hydraulic.generation.hea.vol.ports[1].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.generation.hea.vol.ports:p">hydraulic.generation.hea.vol.ports[2].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.generation.portGen_out:p">hydraulic.generation.portGen_out[1].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.generation.resGen.port_a:p">hydraulic.generation.resGen.port_a.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.generation.resGen.port_b:p">hydraulic.generation.resGen.port_b.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.portTra_in:p">hydraulic.transfer.portTra_in[1].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.pumpFix_m_flow:dp">hydraulic.transfer.pumpFix_m_flow[1].dp</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.pumpFix_m_flow:dpMachine">hydraulic.transfer.pumpFix_m_flow[1].dpMachine</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.pumpFix_m_flow.eff:eta_internal">hydraulic.transfer.pumpFix_m_flow[1].eff.eta_internal</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.pumpFix_m_flow.eff:P_internal">hydraulic.transfer.pumpFix_m_flow[1].eff.P_internal</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.pumpFix_m_flow.eff:yMot">hydraulic.transfer.pumpFix_m_flow[1].eff.yMot</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.pumpFix_m_flow:eta">hydraulic.transfer.pumpFix_m_flow[1].eta</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.pumpFix_m_flow:etaHyd">hydraulic.transfer.pumpFix_m_flow[1].etaHyd</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.pumpFix_m_flow:etaMot">hydraulic.transfer.pumpFix_m_flow[1].etaMot</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.pumpFix_m_flow.port_a:p">hydraulic.transfer.pumpFix_m_flow[1].port_a.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.pumpFix_m_flow.preSou:dp">hydraulic.transfer.pumpFix_m_flow[1].preSou.dp</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.pumpFix_m_flow.preSou.port_a:p">hydraulic.transfer.pumpFix_m_flow[1].preSou.port_a.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.pumpFix_m_flow.senMasFlo.port_a:p">hydraulic.transfer.pumpFix_m_flow[1].senMasFlo.port_a.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.pumpFix_m_flow.senMasFlo.port_b:p">hydraulic.transfer.pumpFix_m_flow[1].senMasFlo.port_b.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.pumpFix_m_flow.senRelPre.port_b:p">hydraulic.transfer.pumpFix_m_flow[1].senRelPre.port_b.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.pumpFix_m_flow.vol.dynBal.medium:p_bar">hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.medium.p_bar</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.pumpFix_m_flow.vol.dynBal.medium.state:p">hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.medium.state.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.pumpFix_m_flow.vol.dynBal.ports:p">hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.ports[1].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.pumpFix_m_flow.vol.dynBal.ports:p">hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.ports[2].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.pumpFix_m_flow.vol:p">hydraulic.transfer.pumpFix_m_flow[1].vol.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.pumpFix_m_flow.vol.ports:p">hydraulic.transfer.pumpFix_m_flow[1].vol.ports[1].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.pumpFix_m_flow.vol.ports:p">hydraulic.transfer.pumpFix_m_flow[1].vol.ports[2].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.res.port_a:p">hydraulic.transfer.res[1].port_a.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.res.port_b:p">hydraulic.transfer.res[1].port_b.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.resMaiLin.port_a:p">hydraulic.transfer.resMaiLin[1].port_a.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer.resMaiLin.port_b:p">hydraulic.transfer.resMaiLin[1].port_b.p</a>
 Warning: WARNINGS have been issued.
 Error: ERRORS have been issued.
 
 
-Error in model:  BESMod.Utilities.TimeConstantEstimation.Radiator.Partial 
-Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.Partial">BESMod.Utilities.TimeConstantEstimation.Radiator.Partial</a>
-Error: Overriding final modifier for fac
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/ResistanceCoefficientHydraulicDiameter.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter.IBPSA.Fluid.FixedResistances.HydraulicDiameter#text:3">5</a>
-Overriding found at:
- Component context: BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res.fac
-  Component declared as Components.HydraulicDiameterParameterOnly res in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res#text:10">39</a>
-Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Error in model:  BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply 
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply</a>
+Note: 
+Your model is using an outer "system" component but
+an inner "system" component is not defined.
+For simulation drag Modelica.Fluid.System into your model
+to specify system properties.
+
 Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
 The definition equation or start value requires a certain size.
 Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
-Check is assuming: QBuiNoRetrofit_flow_nominal = fill(0, 1)
-Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
-
-)}.
-Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
-
-)}.
-Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
-
-)}.
-Error: Type error
-in the definition equation
- hydraulic.transfer.dpPipSca_design = {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
-
-)}.dpFixed_nominal.*(hydraulic.transfer.m_flow_design./hydraulic.transfer.mOld_flow_design  .^2)
-
-Variable <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.Partial#text$hydraulic.transfer:dpPipSca_design">hydraulic.transfer.dpPipSca_design[]</a> was declared in class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo at line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses#text:58">59</a>, and used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.Partial#$hydraulic.transfer:PartialWithPipingLosses">hydraulic.transfer.PartialWithPipingLosses</a>.
-Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
-
-)}.
-Missing declarations.
-Check aborted.
-Warning: WARNINGS have been issued.
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Utilities.TimeConstantEstimation.Radiator.SmartThermostat 
-Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.SmartThermostat">BESMod.Utilities.TimeConstantEstimation.Radiator.SmartThermostat</a>
-Error: Overriding final modifier for fac
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/ResistanceCoefficientHydraulicDiameter.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter.IBPSA.Fluid.FixedResistances.HydraulicDiameter#text:3">5</a>
-Overriding found at:
- Component context: BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res.fac
-  Component declared as Components.HydraulicDiameterParameterOnly res in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res#text:10">39</a>
-Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
-Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.RIze.
 The definition equation or start value requires a certain size.
-Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
-Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
-
-)}.
-Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
-
-)}.
-Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
-
-)}.
-Error: Type error
-in the definition equation
- hydraulic.transfer.dpPipSca_design = {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
-
-)}.dpFixed_nominal.*(hydraulic.transfer.m_flow_design./hydraulic.transfer.mOld_flow_design  .^2)
-
-Variable <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.SmartThermostat#text$hydraulic.transfer:dpPipSca_design">hydraulic.transfer.dpPipSca_design[]</a> was declared in class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo at line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses#text:58">59</a>, and used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.SmartThermostat#$hydraulic.transfer:PartialWithPipingLosses">hydraulic.transfer.PartialWithPipingLosses</a>.
-Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
-
-)}.
-Missing declarations.
-Check aborted.
-Warning: WARNINGS have been issued.
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Utilities.TimeConstantEstimation.Radiator.ConstantSupply 
-Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.ConstantSupply">BESMod.Utilities.TimeConstantEstimation.Radiator.ConstantSupply</a>
-Error: Overriding final modifier for fac
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/ResistanceCoefficientHydraulicDiameter.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter.IBPSA.Fluid.FixedResistances.HydraulicDiameter#text:3">5</a>
-Overriding found at:
- Component context: BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res.fac
-  Component declared as Components.HydraulicDiameterParameterOnly res in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses.res#text:10">39</a>
-Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
-Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+Warning: For dimension 2 the size declaration is building.thermalZone[1].ROM.nIzeRC, and the required size is 1.
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.CIze.
 The definition equation or start value requires a certain size.
-Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
-Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
+Warning: For dimension 2 the size declaration is building.thermalZone[1].ROM.nIzeRC, and the required size is 1.
+The following parameters have enable=false and don't have any value, only a start value:
+    building.thermalZone[1].eqAirTempRoof.TGro(start = 288.15)
+    building.thermalZone[1].eqAirTempWall.TGro(start = 288.15)
 
-)}.
-Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
+Error: The problem is structurally singular.
 
-)}.
-Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
+It has 4638 scalar unknowns and 4638 scalar equations.
+  The Real part has 4538 unknowns and 4538 equations.
+  The Integer part has 14 unknowns and 14 equations.
+  The Boolean part has 86 unknowns and 86 equations.
+  The String part has 0 unknowns and 0 equations.
+The model has the same number of unknowns and equations
+for the given numerical settings of parameters: 4585
+Attempting to further localize singularity.
 
-)}.
-Error: Type error
-in the definition equation
- hydraulic.transfer.dpPipSca_design = {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
+The model has the same number of unknowns and equations
+for the given numerical settings of parameters: 2019
+The model has the same number of unknowns and equations:
+  22+max([size(userProfiles.tabIntGai.columns, 1); size(userProfiles.tabIntGai.offset,   1)])+systemParameters.nZones
+The model could not be deduced to be symbolically well-posed.
+The model has
+  181+DHW.calcmFlow.multiProduct.nu+DHW.pump.vol.dynBal.nPorts+max([
+[4]; size(DHW.combiTimeTableDHWInput.offset, 1)])
+scalar unknowns and
+  172+max([
+[4]; size(DHW.combiTimeTableDHWInput.offset, 1)])+(if  not DHW.pump.vol.dynBal.use_mWat_flow   then 1 else 0)+3*DHW.pump.vol.dynBal.nPorts+(if DHW.bou_sink.use_Xi_in then 1   else (if DHW.bou_sink.use_X_in then 0 else 1))+(if  not DHW.bou_sink.use_p_in   then 1 else 0)+2*DHW.bou_sink.nPorts+(if  not DHW.bou_sink.use_h_in then 1   else 0)+(if DHW.bouSou.use_Xi_in then 1 else (if DHW.bouSou.use_X_in then 0   else 1))+(if  not DHW.bouSou.use_p_in then 1 else 0)+(if  not   DHW.bouSou.use_T_in then 1 else 0)
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  191
+The model could not be deduced to be symbolically well-posed.
+The model has
+  1298+15*(hydraulic.transfer.ufh[1].panelHeatingSegment[1].vol.nPorts+  hydraulic.transfer.ufh[1].panelHeatingSegment[2].vol.nPorts+hydraulic.transfer.ufh[1].panelHeatingSegment[3].vol.nPorts  +hydraulic.transfer.ufh[1].panelHeatingSegment[4].vol.nPorts+hydraulic.transfer.ufh[1].panelHeatingSegment[5].vol.nPorts)  +hydraulic.generation.hea.vol.dynBal.nPorts+7*systemParameters.nZones+  hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.nPorts
+scalar unknowns and
+  1265+(if  not hydraulic.transfer.ufh[1].panelHeatingSegment[2].twoStar_RadEx.use_A_in   then 1 else 0)+(if  not hydraulic.transfer.ufh[1].panelHeatingSegment[1].twoStar_RadEx.use_A_in   then 1 else 0)+(if hydraulic.distribution.bouPum.use_Xi_in then 1 else (if   hydraulic.distribution.bouPum.use_X_in then 0 else 1))+(if  not   hydraulic.distribution.bouPum.use_p_in then 1 else 0)+(if  not   hydraulic.distribution.bouPum.use_T_in then 1 else 0)+(if  not   hydraulic.transfer.ufh[1].panelHeatingSegment[1].vol.use_portsData then 4*  hydraulic.transfer.ufh[1].panelHeatingSegment[1].vol.nPorts else 0)+13*  hydraulic.transfer.ufh[1].panelHeatingSegment[1].vol.nPorts+(if  not   hydraulic.transfer.ufh[1].panelHeatingSegment[5].twoStar_RadEx.use_A_in then 1   else 0)+(if  not hydraulic.transfer.ufh[1].panelHeatingSegment[2].vol.use_portsData   then 4*hydraulic.transfer.ufh[1].panelHeatingSegment[2].vol.nPorts else 0)+13  *hydraulic.transfer.ufh[1].panelHeatingSegment[2].vol.nPorts+(if  not   hydraulic.transfer.ufh[1].panelHeatingSegment[3].vol.use_portsData then 4*  hydraulic.transfer.ufh[1].panelHeatingSegment[3].vol.nPorts else 0)+13*  hydraulic.transfer.ufh[1].panelHeatingSegment[3].vol.nPorts+(if  not   hydraulic.transfer.ufh[1].panelHeatingSegment[3].twoStar_RadEx.use_A_in then 1   else 0)+(if  not hydraulic.transfer.ufh[1].panelHeatingSegment[4].twoStar_RadEx.use_A_in   then 1 else 0)+(if  not hydraulic.transfer.ufh[1].panelHeatingSegment[5].vol.use_portsData   then 4*hydraulic.transfer.ufh[1].panelHeatingSegment[5].vol.nPorts else 0)+13  *hydraulic.transfer.ufh[1].panelHeatingSegment[5].vol.nPorts+(if  not   hydraulic.distribution.pump.dpControlled_dp.vol.steBal.use_mWat_flow then 1   else 0)+(if  not hydraulic.generation.hea.vol.dynBal.use_mWat_flow then 1   else 0)+3*hydraulic.generation.hea.vol.dynBal.nPorts+(if  not   hydraulic.transfer.ufh[1].panelHeatingSegment[4].vol.use_portsData then 4*  hydraulic.transfer.ufh[1].panelHeatingSegment[4].vol.nPorts else 0)+13*  hydraulic.transfer.ufh[1].panelHeatingSegment[4].vol.nPorts+(if  not   hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.use_mWat_flow then 1 else 0)+3  *hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.nPorts+systemParameters.nZones
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  1459
+Attempting to further localize singularity.
 
-)}.dpFixed_nominal.*(hydraulic.transfer.m_flow_design./hydraulic.transfer.mOld_flow_design  .^2)
+The model could not be deduced to be symbolically well-posed.
+The model has
+  162+hydraulic.generation.hea.vol.dynBal.nPorts
+scalar unknowns and
+  157+(if  not hydraulic.generation.hea.vol.dynBal.use_mWat_flow then 1 else 0)+3*  hydraulic.generation.hea.vol.dynBal.nPorts
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  164
+The model could not be deduced to be symbolically well-posed.
+The model has
+  126+5*systemParameters.nZones
+scalar unknowns and
+  131
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  131
+The model could not be deduced to be symbolically well-posed.
+The model has
+  158
+scalar unknowns and
+  154+(if hydraulic.distribution.bouPum.use_Xi_in then 1 else (if hydraulic.distribution.bouPum.use_X_in   then 0 else 1))+(if  not hydraulic.distribution.bouPum.use_p_in then 1 else 0)  +(if  not hydraulic.distribution.bouPum.use_T_in then 1 else 0)+(if  not   hydraulic.distribution.pump.dpControlled_dp.vol.steBal.use_mWat_flow then 1   else 0)
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  158
+The model could not be deduced to be symbolically well-posed.
+The model has
+  814+15*(hydraulic.transfer.ufh[1].panelHeatingSegment[1].vol.nPorts+  hydraulic.transfer.ufh[1].panelHeatingSegment[2].vol.nPorts+hydraulic.transfer.ufh[1].panelHeatingSegment[3].vol.nPorts  +hydraulic.transfer.ufh[1].panelHeatingSegment[4].vol.nPorts+hydraulic.transfer.ufh[1].panelHeatingSegment[5].vol.nPorts)  +hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.nPorts
+scalar unknowns and
+  784+(if  not hydraulic.transfer.ufh[1].panelHeatingSegment[2].twoStar_RadEx.use_A_in   then 1 else 0)+(if  not hydraulic.transfer.ufh[1].panelHeatingSegment[1].twoStar_RadEx.use_A_in   then 1 else 0)+(if  not hydraulic.transfer.ufh[1].panelHeatingSegment[1].vol.use_portsData   then 4*hydraulic.transfer.ufh[1].panelHeatingSegment[1].vol.nPorts else 0)+13  *hydraulic.transfer.ufh[1].panelHeatingSegment[1].vol.nPorts+(if  not   hydraulic.transfer.ufh[1].panelHeatingSegment[5].twoStar_RadEx.use_A_in then 1   else 0)+(if  not hydraulic.transfer.ufh[1].panelHeatingSegment[2].vol.use_portsData   then 4*hydraulic.transfer.ufh[1].panelHeatingSegment[2].vol.nPorts else 0)+13  *hydraulic.transfer.ufh[1].panelHeatingSegment[2].vol.nPorts+(if  not   hydraulic.transfer.ufh[1].panelHeatingSegment[3].vol.use_portsData then 4*  hydraulic.transfer.ufh[1].panelHeatingSegment[3].vol.nPorts else 0)+13*  hydraulic.transfer.ufh[1].panelHeatingSegment[3].vol.nPorts+(if  not   hydraulic.transfer.ufh[1].panelHeatingSegment[3].twoStar_RadEx.use_A_in then 1   else 0)+(if  not hydraulic.transfer.ufh[1].panelHeatingSegment[4].twoStar_RadEx.use_A_in   then 1 else 0)+(if  not hydraulic.transfer.ufh[1].panelHeatingSegment[5].vol.use_portsData   then 4*hydraulic.transfer.ufh[1].panelHeatingSegment[5].vol.nPorts else 0)+13  *hydraulic.transfer.ufh[1].panelHeatingSegment[5].vol.nPorts+(if  not   hydraulic.transfer.ufh[1].panelHeatingSegment[4].vol.use_portsData then 4*  hydraulic.transfer.ufh[1].panelHeatingSegment[4].vol.nPorts else 0)+13*  hydraulic.transfer.ufh[1].panelHeatingSegment[4].vol.nPorts+(if  not   hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.use_mWat_flow then 1 else 0)+3  *hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.nPorts
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  966
+Singularity of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply</a> is in the component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram:hydraulic">hydraulic</a>, class <a href="Modelica://BESMod.Systems.Hydraulical.HydraulicSystem">BESMod.Systems.Hydraulical.HydraulicSystem</a>.
+Error: The model <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply</a> component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram:hydraulic">hydraulic</a> is structurally singular.
+when assuming inputs to be known
+and the most generic outside couplings to all the flow variables of its connectors.
+Warning: The problem is structurally singular for the element type Real.
 
-Variable <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.ConstantSupply#text$hydraulic.transfer:dpPipSca_design">hydraulic.transfer.dpPipSca_design[]</a> was declared in class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/BaseClasses/PartialWithPipingLosses.mo at line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialWithPipingLosses#text:58">59</a>, and used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.ConstantSupply#$hydraulic.transfer:PartialWithPipingLosses">hydraulic.transfer.PartialWithPipingLosses</a>.
-Error: Could not find member dpFixed_nominal in record expression {BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly(
-
-)}.
-Missing declarations.
-Check aborted.
+The number of scalar Real unknown elements are 1439.
+The number of scalar Real equation elements are 1439.
+Warning: Part of the problem for Real elements is overdetermined.
+There are 1 scalar equations too many in the set:
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.pumpFix_m_flow.senRelPre:35">hydraulic.transfer.pumpFix_m_flow[1].senRelPre.port_b.m_flow = 0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.control.valCtrl.PI.limiter:18">hydraulic.control.valCtrl.PI[1].limiter.simplifiedExpr = hydraulic.control.valCtrl.PI[1].limiter.u;</a>
+  which was derived from
+    hydraulic.control.valCtrl.PI[1].limiter.simplifiedExpr = (if       hydraulic.control.valCtrl.PI[1].limiter.homotopyType == Modelica.Blocks.Types.LimiterHomotopy.      Linear then hydraulic.control.valCtrl.PI[1].limiter.u else (if       hydraulic.control.valCtrl.PI[1].limiter.homotopyType == Modelica.Blocks.Types.LimiterHomotopy.      UpperLimit then hydraulic.control.valCtrl.PI[1].limiter.uMax else (if       hydraulic.control.valCtrl.PI[1].limiter.homotopyType == Modelica.Blocks.Types.LimiterHomotopy.      LowerLimit then hydraulic.control.valCtrl.PI[1].limiter.uMin else 0)));
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.control.valCtrl.PI.FFzero:7">hydraulic.control.valCtrl.PI[1].FFzero.y = hydraulic.control.valCtrl.PI[1].FFzero.k;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.control.valCtrl.PI[1]:FF.u2,ero.y">hydraulic.control.valCtrl.PI[1].addFF.u2 = hydraulic.control.valCtrl.PI[1].FFzero.y;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.control.valCtrl.PI[1]:Sat.u2,FF.y">hydraulic.control.valCtrl.PI[1].addSat.u2 = hydraulic.control.valCtrl.PI[1].addFF.y;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.control.valCtrl.PI.addSat:8">hydraulic.control.valCtrl.PI[1].addSat.y = hydraulic.control.valCtrl.PI[1].addSat.k1  *hydraulic.control.valCtrl.PI[1].addSat.u1+hydraulic.control.valCtrl.PI[1].addSat.k2  *hydraulic.control.valCtrl.PI[1].addSat.u2;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.control.valCtrl.PI[1]:nTrack.u,Sat.y">hydraulic.control.valCtrl.PI[1].gainTrack.u = hydraulic.control.valCtrl.PI[1].addSat.y;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.control.valCtrl.PI.gainTrack:12">hydraulic.control.valCtrl.PI[1].gainTrack.y = hydraulic.control.valCtrl.PI[1].gainTrack.k  *hydraulic.control.valCtrl.PI[1].gainTrack.u;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.control.valCtrl.PI[1]:nTrack.y,I.u3">hydraulic.control.valCtrl.PI[1].gainTrack.y = hydraulic.control.valCtrl.PI[1].addI.u3;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.control.valCtrl.PI.addI:17">hydraulic.control.valCtrl.PI[1].addI.y = hydraulic.control.valCtrl.PI[1].addI.k1  *hydraulic.control.valCtrl.PI[1].addI.u1+hydraulic.control.valCtrl.PI[1].addI.k2  *hydraulic.control.valCtrl.PI[1].addI.u2+hydraulic.control.valCtrl.PI[1].addI.k3  *hydraulic.control.valCtrl.PI[1].addI.u3;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.control.valCtrl.PI[1]:I.y,">hydraulic.control.valCtrl.PI[1].addI.y = hydraulic.control.valCtrl.PI[1].I.u;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.control.valCtrl.PI.I:54">der(hydraulic.control.valCtrl.PI[1].I.y) = hydraulic.control.valCtrl.PI[1].I.k*  hydraulic.control.valCtrl.PI[1].I.u;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.control.valCtrl.PI[1]:PID.u3,">hydraulic.control.valCtrl.PI[1].addPID.u3 = hydraulic.control.valCtrl.PI[1].I.y;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.control.valCtrl.PI.Dzero:7">hydraulic.control.valCtrl.PI[1].Dzero.y = hydraulic.control.valCtrl.PI[1].Dzero.k;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.control.valCtrl.PI[1]:PID.u2,ro.y">hydraulic.control.valCtrl.PI[1].addPID.u2 = hydraulic.control.valCtrl.PI[1].Dzero.y;</a>
+hydraulic.control.buiMeaBus.TZoneMea[1] = hydraulic.buiMeaBus.TZoneMea[1];
+  which was derived from
+    hydraulic.control.buiMeaBus.TZoneMea = hydraulic.buiMeaBus.TZoneMea;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.control:valCtrl.TZoneMea,buiMeaBus">hydraulic.control.valCtrl.TZoneMea[1] = hydraulic.control.buiMeaBus.TZoneMea[1];</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.control.valCtrl:TZoneMea,PI.u_m">hydraulic.control.valCtrl.TZoneMea[1] = hydraulic.control.valCtrl.PI[1].u_m;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.control.valCtrl.PI[1]:I.u2">hydraulic.control.valCtrl.PI[1].u_m = hydraulic.control.valCtrl.PI[1].addI.u2;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.control.valCtrl.PI[1]:P.u2,I.u2">hydraulic.control.valCtrl.PI[1].addP.u2 = hydraulic.control.valCtrl.PI[1].addI.u2;</a>
+hydraulic.useProBus.TZoneSet[1] = hydraulic.control.useProBus.TZoneSet[1];
+  which was derived from
+    hydraulic.useProBus.TZoneSet = hydraulic.control.useProBus.TZoneSet;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.control:useProBus,supTSet.TZoneSet">hydraulic.control.useProBus.TZoneSet[1] = hydraulic.control.supTSet.TZoneSet[1];</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.control:valCtrl.TZoneSet,supTSet.TZoneSet">hydraulic.control.valCtrl.TZoneSet[1] = hydraulic.control.supTSet.TZoneSet[1];</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.control.valCtrl:TZoneSet,PI.u_s">hydraulic.control.valCtrl.TZoneSet[1] = hydraulic.control.valCtrl.PI[1].u_s;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.control.valCtrl.PI[1]:I.u1">hydraulic.control.valCtrl.PI[1].u_s = hydraulic.control.valCtrl.PI[1].addI.u1;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.control.valCtrl.PI[1]:P.u1,I.u1">hydraulic.control.valCtrl.PI[1].addP.u1 = hydraulic.control.valCtrl.PI[1].addI.u1;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.control.valCtrl.PI.addP:8">hydraulic.control.valCtrl.PI[1].addP.y = hydraulic.control.valCtrl.PI[1].addP.k1  *hydraulic.control.valCtrl.PI[1].addP.u1+hydraulic.control.valCtrl.PI[1].addP.k2  *hydraulic.control.valCtrl.PI[1].addP.u2;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.control.valCtrl.PI[1]:P.y,">hydraulic.control.valCtrl.PI[1].addP.y = hydraulic.control.valCtrl.PI[1].P.u;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.control.valCtrl.PI.P:12">hydraulic.control.valCtrl.PI[1].P.y = hydraulic.control.valCtrl.PI[1].P.k*  hydraulic.control.valCtrl.PI[1].P.u;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.control.valCtrl.PI[1]:PID.u1,">hydraulic.control.valCtrl.PI[1].addPID.u1 = hydraulic.control.valCtrl.PI[1].P.y;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.control.valCtrl.PI.addPID:17">hydraulic.control.valCtrl.PI[1].addPID.y = hydraulic.control.valCtrl.PI[1].addPID.k1  *hydraulic.control.valCtrl.PI[1].addPID.u1+hydraulic.control.valCtrl.PI[1].addPID.k2  *hydraulic.control.valCtrl.PI[1].addPID.u2+hydraulic.control.valCtrl.PI[1].addPID.k3  *hydraulic.control.valCtrl.PI[1].addPID.u3;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.control.valCtrl.PI[1]:nPID.u,PID.y">hydraulic.control.valCtrl.PI[1].gainPID.u = hydraulic.control.valCtrl.PI[1].addPID.y;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.control.valCtrl.PI.gainPID:12">hydraulic.control.valCtrl.PI[1].gainPID.y = hydraulic.control.valCtrl.PI[1].gainPID.k  *hydraulic.control.valCtrl.PI[1].gainPID.u;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.control.valCtrl.PI[1]:nPID.y,FF.u1">hydraulic.control.valCtrl.PI[1].gainPID.y = hydraulic.control.valCtrl.PI[1].addFF.u1;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.control.valCtrl.PI.addFF:8">hydraulic.control.valCtrl.PI[1].addFF.y = hydraulic.control.valCtrl.PI[1].addFF.k1  *hydraulic.control.valCtrl.PI[1].addFF.u1+hydraulic.control.valCtrl.PI[1].addFF.k2  *hydraulic.control.valCtrl.PI[1].addFF.u2;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.control.valCtrl.PI[1]:iter.u,FF.y">hydraulic.control.valCtrl.PI[1].limiter.u = hydraulic.control.valCtrl.PI[1].addFF.y;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.control.valCtrl.PI.limiter:31">hydraulic.control.valCtrl.PI[1].limiter.y = homotopy(smooth(0, (if   hydraulic.control.valCtrl.PI[1].limiter.u &gt; 1.0 then 1.0 else (if   hydraulic.control.valCtrl.PI[1].limiter.u &lt; hydraulic.control.valCtrl.PI[1].limiter.uMin   then hydraulic.control.valCtrl.PI[1].limiter.uMin else hydraulic.control.valCtrl.PI[1].limiter.u))),   hydraulic.control.valCtrl.PI[1].limiter.simplifiedExpr);</a>
+  which was derived from
+    if (hydraulic.control.valCtrl.PI[1].limiter.strict) then 
+      if (hydraulic.control.valCtrl.PI[1].limiter.homotopyType ==         Modelica.Blocks.Types.LimiterHomotopy.NoHomotopy) then 
+        hydraulic.control.valCtrl.PI[1].limiter.y = smooth(0, noEvent((if           hydraulic.control.valCtrl.PI[1].limiter.u &gt; hydraulic.control.valCtrl.PI[1].limiter.uMax           then hydraulic.control.valCtrl.PI[1].limiter.uMax else (if           hydraulic.control.valCtrl.PI[1].limiter.u &lt; hydraulic.control.valCtrl.PI[1].limiter.uMin           then hydraulic.control.valCtrl.PI[1].limiter.uMin else           hydraulic.control.valCtrl.PI[1].limiter.u))));
+      else
+        hydraulic.control.valCtrl.PI[1].limiter.y = homotopy(smooth(0, noEvent((          if hydraulic.control.valCtrl.PI[1].limiter.u &gt; hydraulic.control.valCtrl.PI[1].limiter.uMax           then hydraulic.control.valCtrl.PI[1].limiter.uMax else (if           hydraulic.control.valCtrl.PI[1].limiter.u &lt; hydraulic.control.valCtrl.PI[1].limiter.uMin           then hydraulic.control.valCtrl.PI[1].limiter.uMin else           hydraulic.control.valCtrl.PI[1].limiter.u)))), hydraulic.control.valCtrl.PI[1].limiter.simplifiedExpr);
+      end if;
+    else
+      if (hydraulic.control.valCtrl.PI[1].limiter.homotopyType ==         Modelica.Blocks.Types.LimiterHomotopy.NoHomotopy) then 
+        hydraulic.control.valCtrl.PI[1].limiter.y = smooth(0, (if           hydraulic.control.valCtrl.PI[1].limiter.u &gt; hydraulic.control.valCtrl.PI[1].limiter.uMax           then hydraulic.control.valCtrl.PI[1].limiter.uMax else (if           hydraulic.control.valCtrl.PI[1].limiter.u &lt; hydraulic.control.valCtrl.PI[1].limiter.uMin           then hydraulic.control.valCtrl.PI[1].limiter.uMin else           hydraulic.control.valCtrl.PI[1].limiter.u)));
+      else
+        hydraulic.control.valCtrl.PI[1].limiter.y = homotopy(smooth(0, (if           hydraulic.control.valCtrl.PI[1].limiter.u &gt; hydraulic.control.valCtrl.PI[1].limiter.uMax           then hydraulic.control.valCtrl.PI[1].limiter.uMax else (if           hydraulic.control.valCtrl.PI[1].limiter.u &lt; hydraulic.control.valCtrl.PI[1].limiter.uMin           then hydraulic.control.valCtrl.PI[1].limiter.uMin else           hydraulic.control.valCtrl.PI[1].limiter.u))), hydraulic.control.valCtrl.PI[1].limiter.simplifiedExpr);
+      end if;
+    end if;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.control.valCtrl.PI[1]:iter.y,Sat.u1">hydraulic.control.valCtrl.PI[1].limiter.y = hydraulic.control.valCtrl.PI[1].addSat.u1;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.control.valCtrl.PI[1]:Sat.u1">hydraulic.control.valCtrl.PI[1].y = hydraulic.control.valCtrl.PI[1].addSat.u1;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.control.valCtrl:opening,PI.y">hydraulic.control.valCtrl.opening[1] = hydraulic.control.valCtrl.PI[1].y;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.control:valCtrl.opening,supCtrlTheVal.uLoc">hydraulic.control.valCtrl.opening[1] = hydraulic.control.supCtrlTheVal[1].uLoc;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.control.supCtrlTheVal[1]:c,.u3">hydraulic.control.supCtrlTheVal[1].uLoc = hydraulic.control.supCtrlTheVal[1].swi.u3;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.control.supCtrlTheVal.uSupDeAct:7">hydraulic.control.supCtrlTheVal[1].uSupDeAct.y = 0.0;</a>
+  which was derived from
+    hydraulic.control.supCtrlTheVal[1].uSupDeAct.y = hydraulic.control.supCtrlTheVal[1].uSupDeAct.k;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.control.supCtrlTheVal[1]:pDeAct.y,.u1">hydraulic.control.supCtrlTheVal[1].uSupDeAct.y = hydraulic.control.supCtrlTheVal[1].swi.u1;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.control.supCtrlTheVal.swi:13">hydraulic.control.supCtrlTheVal[1].swi.y = (if hydraulic.control.supCtrlTheVal[1].swi.u2   then hydraulic.control.supCtrlTheVal[1].swi.u1 else hydraulic.control.supCtrlTheVal[1].swi.u3);</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.control.supCtrlTheVal[1]:.y">hydraulic.control.supCtrlTheVal[1].y = hydraulic.control.supCtrlTheVal[1].swi.y;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.control:supCtrlTheVal.y,sigBusTra">hydraulic.control.supCtrlTheVal[1].y = hydraulic.control.sigBusTra.opening[1];</a>
+hydraulic.transfer.traControlBus.opening[1] = hydraulic.control.sigBusTra.opening[1];
+  which was derived from
+    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.transfer:traControlBus,gain.u">hydraulic.transfer.traControlBus.opening[1] = hydraulic.transfer.gain[1].u;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.gain:12">hydraulic.transfer.gain[1].y = 0.3740568816633237*hydraulic.transfer.gain[1].u;</a>
+  which was derived from
+    hydraulic.transfer.gain[1].y = hydraulic.transfer.gain[1].k*hydraulic.transfer.gain[1].u;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.transfer:pumpFix_m_flow.m_flow_in,gain.y">hydraulic.transfer.pumpFix_m_flow[1].m_flow_in = hydraulic.transfer.gain[1].y;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.transfer.pumpFix_m_flow[1]:low_in,utSwitch.u">hydraulic.transfer.pumpFix_m_flow[1].m_flow_in = hydraulic.transfer.pumpFix_m_flow[1].inputSwitch.u;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.pumpFix_m_flow.inputSwitch:4">hydraulic.transfer.pumpFix_m_flow[1].inputSwitch.y = hydraulic.transfer.pumpFix_m_flow[1].inputSwitch.u;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.transfer.pumpFix_m_flow[1]:Sou.m_flow_in,utSwitch.y">hydraulic.transfer.pumpFix_m_flow[1].preSou.m_flow_in = hydraulic.transfer.pumpFix_m_flow[1].inputSwitch.y;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.transfer.pumpFix_m_flow[1].preSou:low_internal,low_in">hydraulic.transfer.pumpFix_m_flow[1].preSou.m_flow_internal = hydraulic.transfer.pumpFix_m_flow[1].preSou.m_flow_in;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.pumpFix_m_flow.preSou:41">hydraulic.transfer.pumpFix_m_flow[1].preSou.m_flow = hydraulic.transfer.pumpFix_m_flow[1].preSou.m_flow_internal;</a>
+  which was derived from
+    if (hydraulic.transfer.pumpFix_m_flow[1].preSou.control_m_flow) then 
+      hydraulic.transfer.pumpFix_m_flow[1].preSou.m_flow = hydraulic.transfer.pumpFix_m_flow[1].preSou.m_flow_internal;
+    else
+      hydraulic.transfer.pumpFix_m_flow[1].preSou.m_flow_internal = 0;
+    end if;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.pumpFix_m_flow.preSou:78">hydraulic.transfer.pumpFix_m_flow[1].preSou.m_flow = hydraulic.transfer.pumpFix_m_flow[1].preSou.port_a.m_flow;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.transfer.pumpFix_m_flow[1]:Sou.port_a,MasFlo.port_b,RelPre.port_b">hydraulic.transfer.pumpFix_m_flow[1].preSou.port_a.m_flow+hydraulic.transfer.pumpFix_m_flow[1].senMasFlo.port_b.m_flow  +hydraulic.transfer.pumpFix_m_flow[1].senRelPre.port_b.m_flow = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.pumpFix_m_flow.senMasFlo:13">hydraulic.transfer.pumpFix_m_flow[1].senMasFlo.port_b.m_flow =  -  hydraulic.transfer.pumpFix_m_flow[1].senMasFlo.port_a.m_flow;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.transfer.pumpFix_m_flow[1]:MasFlo.port_a,.ports">hydraulic.transfer.pumpFix_m_flow[1].senMasFlo.port_a.m_flow+hydraulic.transfer.pumpFix_m_flow[1].vol.ports[2].m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.transfer.pumpFix_m_flow[1].vol:ts,Bal.ports">hydraulic.transfer.pumpFix_m_flow[1].vol.ports[2].m_flow-hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.ports[2].m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.pumpFix_m_flow.vol.dynBal.medium:22">hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.medium.d = 995.586;</a>
+  which was derived from
+    hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.medium.d = _GlobalScope.AixLib.Media.Water.d_const;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.pumpFix_m_flow.vol.dynBal:256">hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.m = hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.fluidVolume  *hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.medium.d;</a>
+  which was derived from
+    if (hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.massDynamics ==       Modelica.Fluid.Types.Dynamics.SteadyState) then 
+      hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.m = hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.fluidVolume        *hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.rho_start;
+    else
+      if (hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal._simplify_mWat_flow)         then 
+        hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.m = hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.fluidVolume          *AixLib.Media.Water.density_Unique36(
+          AixLib.Media.Water.setState_phX_Unique48(hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.medium.p,             hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.hOut,             _GlobalScope.AixLib.Media.Water.X_default));
+      else
+        hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.m = hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.fluidVolume          *hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.medium.d;
+      end if;
+    end if;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.pumpFix_m_flow.vol.dynBal:308">der(hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.m) = hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.mb_flow;</a>
+  which was derived from
+    if (hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.massDynamics ==       Modelica.Fluid.Types.Dynamics.SteadyState) then 
+      0 = hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.mb_flow+(if         hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.simplify_mWat_flow then 0         else hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.mWat_flow_internal);
+    else
+      der(hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.m) = hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.mb_flow        +(if hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.simplify_mWat_flow         then 0 else hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.mWat_flow_internal);
+    end if;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.pumpFix_m_flow.vol.dynBal:295">hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.mb_flow = hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.ports[1].m_flow  +hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.ports[2].m_flow;</a>
+  which was derived from
+    hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.mb_flow = sum(      hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.ports.m_flow);
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.transfer.pumpFix_m_flow[1].vol:ts,Bal.ports">hydraulic.transfer.pumpFix_m_flow[1].vol.ports[1].m_flow-hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.ports[1].m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.transfer.pumpFix_m_flow[1]:t_a,.ports">hydraulic.transfer.pumpFix_m_flow[1].port_a.m_flow-hydraulic.transfer.pumpFix_m_flow[1].vol.ports[1].m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.transfer:pumpFix_m_flow.port_a,res.port_b">hydraulic.transfer.pumpFix_m_flow[1].port_a.m_flow+hydraulic.transfer.res[1].port_b.m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.res:52">hydraulic.transfer.res[1].port_a.m_flow =  -hydraulic.transfer.res[1].port_b.m_flow;</a>
+  which was derived from
+    hydraulic.transfer.res[1].port_a.m_flow+hydraulic.transfer.res[1].port_b.m_flow       = 0;
+hydraulic.generation.resGen.port_b.m_flow = 0.0;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.generation.resGen:52">hydraulic.generation.resGen.port_a.m_flow =  -hydraulic.generation.resGen.port_b.m_flow;</a>
+  which was derived from
+    hydraulic.generation.resGen.port_a.m_flow+hydraulic.generation.resGen.port_b.m_flow       = 0;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.generation:hea.port_a,resGen.port_a">hydraulic.generation.hea.port_a.m_flow+hydraulic.generation.resGen.port_a.m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.generation.hea:port_a,preDro.port_a">hydraulic.generation.hea.port_a.m_flow-hydraulic.generation.hea.preDro.port_a.m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.generation.hea.preDro:52">hydraulic.generation.hea.preDro.port_a.m_flow =  -hydraulic.generation.hea.preDro.port_b.m_flow;</a>
+  which was derived from
+    hydraulic.generation.hea.preDro.port_a.m_flow+hydraulic.generation.hea.preDro.port_b.m_flow       = 0;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.generation.hea:preDro.port_b,vol.ports">hydraulic.generation.hea.preDro.port_b.m_flow+hydraulic.generation.hea.vol.ports[1].m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.generation.hea.vol:ports,dynBal.ports">hydraulic.generation.hea.vol.ports[1].m_flow-hydraulic.generation.hea.vol.dynBal.ports[1].m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.generation.hea.vol.dynBal.medium:22">hydraulic.generation.hea.vol.dynBal.medium.d = 995.586;</a>
+  which was derived from
+    hydraulic.generation.hea.vol.dynBal.medium.d = _GlobalScope.AixLib.Media.Water.d_const;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.generation.hea.vol.dynBal:256">hydraulic.generation.hea.vol.dynBal.m = hydraulic.generation.hea.vol.dynBal.fluidVolume  *hydraulic.generation.hea.vol.dynBal.medium.d;</a>
+  which was derived from
+    if (hydraulic.generation.hea.vol.dynBal.massDynamics == Modelica.Fluid.Types.Dynamics.      SteadyState) then 
+      hydraulic.generation.hea.vol.dynBal.m = hydraulic.generation.hea.vol.dynBal.fluidVolume        *hydraulic.generation.hea.vol.dynBal.rho_start;
+    else
+      if (hydraulic.generation.hea.vol.dynBal._simplify_mWat_flow) then 
+        hydraulic.generation.hea.vol.dynBal.m = hydraulic.generation.hea.vol.dynBal.fluidVolume          *AixLib.Media.Water.density_Unique36(
+          AixLib.Media.Water.setState_phX_Unique48(hydraulic.generation.hea.vol.dynBal.medium.p,             hydraulic.generation.hea.vol.dynBal.hOut, _GlobalScope.AixLib.Media.Water.X_default));
+      else
+        hydraulic.generation.hea.vol.dynBal.m = hydraulic.generation.hea.vol.dynBal.fluidVolume          *hydraulic.generation.hea.vol.dynBal.medium.d;
+      end if;
+    end if;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.generation.hea.vol.dynBal:308">der(hydraulic.generation.hea.vol.dynBal.m) = hydraulic.generation.hea.vol.dynBal.mb_flow;</a>
+  which was derived from
+    if (hydraulic.generation.hea.vol.dynBal.massDynamics == Modelica.Fluid.Types.Dynamics.      SteadyState) then 
+      0 = hydraulic.generation.hea.vol.dynBal.mb_flow+(if hydraulic.generation.hea.vol.dynBal.simplify_mWat_flow         then 0 else hydraulic.generation.hea.vol.dynBal.mWat_flow_internal);
+    else
+      der(hydraulic.generation.hea.vol.dynBal.m) = hydraulic.generation.hea.vol.dynBal.mb_flow        +(if hydraulic.generation.hea.vol.dynBal.simplify_mWat_flow then 0 else         hydraulic.generation.hea.vol.dynBal.mWat_flow_internal);
+    end if;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.generation.hea.vol.dynBal:295">hydraulic.generation.hea.vol.dynBal.mb_flow = hydraulic.generation.hea.vol.dynBal.ports[1].m_flow  +hydraulic.generation.hea.vol.dynBal.ports[2].m_flow;</a>
+  which was derived from
+    hydraulic.generation.hea.vol.dynBal.mb_flow = sum(hydraulic.generation.hea.vol.dynBal.ports      .m_flow);
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.generation.hea.vol:ports,dynBal.ports">hydraulic.generation.hea.vol.ports[2].m_flow-hydraulic.generation.hea.vol.dynBal.ports[2].m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.generation.hea:port_b,vol.ports">hydraulic.generation.hea.port_b.m_flow-hydraulic.generation.hea.vol.ports[2].m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.generation:portGen_out,hea.port_b">hydraulic.generation.portGen_out[1].m_flow-hydraulic.generation.hea.port_b.m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic:distribution.portGen_in,generation.portGen_out">hydraulic.distribution.portGen_in[1].m_flow+hydraulic.generation.portGen_out[1].m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.distribution:portBui_out,portGen_in">hydraulic.distribution.portBui_out[1].m_flow+hydraulic.distribution.portGen_in[1].m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic:distribution.portBui_out,transfer.portTra_in">hydraulic.distribution.portBui_out[1].m_flow+hydraulic.transfer.portTra_in[1].m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.transfer:portTra_in,resMaiLin.port_a">hydraulic.transfer.portTra_in[1].m_flow-hydraulic.transfer.resMaiLin[1].port_a.m_flow   = 0.0;</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.resMaiLin:52">hydraulic.transfer.resMaiLin[1].port_a.m_flow =  -hydraulic.transfer.resMaiLin[1].port_b.m_flow;</a>
+  which was derived from
+    hydraulic.transfer.resMaiLin[1].port_a.m_flow+hydraulic.transfer.resMaiLin[1].port_b.m_flow       = 0;
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.transfer:resMaiLin.port_b,res.port_a">hydraulic.transfer.resMaiLin[1].port_b.m_flow+hydraulic.transfer.res[1].port_a.m_flow   = 0.0;</a>
+Warning: Part of the problem for Real elements is underdetermined. 
+1 scalar Real  equations are missing for the variables or its derivatives.
+We did not find equations for:
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.generation.hea.vol.dynBal:medium.p">hydraulic.generation.hea.vol.dynBal.medium.p</a>
+But it could be other indeterminate variables as well.
+Indeterminate variables declared as inputs:
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.generation.hea.vol.dynBal:medium.p">hydraulic.generation.hea.vol.dynBal.medium.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.transfer.pumpFix_m_flow[1]:eff.dp_in">hydraulic.transfer.pumpFix_m_flow[1].eff.dp_in</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal:medium.p">hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.medium.p</a>
+Indeterminate variables declared as outputs:
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.transfer.pumpFix_m_flow[1]:eff.dp_internal">hydraulic.transfer.pumpFix_m_flow[1].eff.dp_internal</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.transfer.pumpFix_m_flow[1]:eff.eta">hydraulic.transfer.pumpFix_m_flow[1].eff.eta</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.transfer.pumpFix_m_flow[1]:eff.etaHyd">hydraulic.transfer.pumpFix_m_flow[1].eff.etaHyd</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.transfer.pumpFix_m_flow[1]:eff.etaMot">hydraulic.transfer.pumpFix_m_flow[1].eff.etaMot</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.transfer.pumpFix_m_flow[1]:eff.PEle">hydraulic.transfer.pumpFix_m_flow[1].eff.PEle</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.transfer.pumpFix_m_flow[1]:eff.r_N">hydraulic.transfer.pumpFix_m_flow[1].eff.r_N</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.transfer.pumpFix_m_flow[1]:eff.WFlo">hydraulic.transfer.pumpFix_m_flow[1].eff.WFlo</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.transfer.pumpFix_m_flow[1]:eff.WHyd">hydraulic.transfer.pumpFix_m_flow[1].eff.WHyd</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.transfer.pumpFix_m_flow[1]:eff.y_out">hydraulic.transfer.pumpFix_m_flow[1].eff.y_out</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.transfer:pumpFix_m_flow[1].P">hydraulic.transfer.pumpFix_m_flow[1].P</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.transfer.pumpFix_m_flow[1]:senRelPre.p_rel">hydraulic.transfer.pumpFix_m_flow[1].senRelPre.p_rel</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.transfer:pumpFix_m_flow[1].y_actual">hydraulic.transfer.pumpFix_m_flow[1].y_actual</a>
+Indeterminate acausal variables:
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.distribution.portBui_out:p">hydraulic.distribution.portBui_out[1].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.distribution.portGen_in:p">hydraulic.distribution.portGen_in[1].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.generation.hea:dp">hydraulic.generation.hea.dp</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.generation.hea.port_a:p">hydraulic.generation.hea.port_a.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.generation.hea.port_b:p">hydraulic.generation.hea.port_b.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.generation.hea.preDro.port_a:p">hydraulic.generation.hea.preDro.port_a.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.generation.hea.preDro.port_b:p">hydraulic.generation.hea.preDro.port_b.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.generation.hea.vol.dynBal.medium:p_bar">hydraulic.generation.hea.vol.dynBal.medium.p_bar</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.generation.hea.vol.dynBal.medium.state:p">hydraulic.generation.hea.vol.dynBal.medium.state.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.generation.hea.vol.dynBal.ports:p">hydraulic.generation.hea.vol.dynBal.ports[1].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.generation.hea.vol.dynBal.ports:p">hydraulic.generation.hea.vol.dynBal.ports[2].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.generation.hea.vol:p">hydraulic.generation.hea.vol.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.generation.hea.vol.ports:p">hydraulic.generation.hea.vol.ports[1].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.generation.hea.vol.ports:p">hydraulic.generation.hea.vol.ports[2].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.generation.portGen_out:p">hydraulic.generation.portGen_out[1].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.generation.resGen.port_a:p">hydraulic.generation.resGen.port_a.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.generation.resGen.port_b:p">hydraulic.generation.resGen.port_b.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.portTra_in:p">hydraulic.transfer.portTra_in[1].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.pumpFix_m_flow:dp">hydraulic.transfer.pumpFix_m_flow[1].dp</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.pumpFix_m_flow:dpMachine">hydraulic.transfer.pumpFix_m_flow[1].dpMachine</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.pumpFix_m_flow.eff:eta_internal">hydraulic.transfer.pumpFix_m_flow[1].eff.eta_internal</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.pumpFix_m_flow.eff:P_internal">hydraulic.transfer.pumpFix_m_flow[1].eff.P_internal</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.pumpFix_m_flow.eff:yMot">hydraulic.transfer.pumpFix_m_flow[1].eff.yMot</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.pumpFix_m_flow:eta">hydraulic.transfer.pumpFix_m_flow[1].eta</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.pumpFix_m_flow:etaHyd">hydraulic.transfer.pumpFix_m_flow[1].etaHyd</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.pumpFix_m_flow:etaMot">hydraulic.transfer.pumpFix_m_flow[1].etaMot</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.pumpFix_m_flow.port_a:p">hydraulic.transfer.pumpFix_m_flow[1].port_a.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.pumpFix_m_flow.preSou:dp">hydraulic.transfer.pumpFix_m_flow[1].preSou.dp</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.pumpFix_m_flow.preSou.port_a:p">hydraulic.transfer.pumpFix_m_flow[1].preSou.port_a.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.pumpFix_m_flow.senMasFlo.port_a:p">hydraulic.transfer.pumpFix_m_flow[1].senMasFlo.port_a.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.pumpFix_m_flow.senMasFlo.port_b:p">hydraulic.transfer.pumpFix_m_flow[1].senMasFlo.port_b.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.pumpFix_m_flow.senRelPre.port_b:p">hydraulic.transfer.pumpFix_m_flow[1].senRelPre.port_b.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.pumpFix_m_flow.vol.dynBal.medium:p_bar">hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.medium.p_bar</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.pumpFix_m_flow.vol.dynBal.medium.state:p">hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.medium.state.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.pumpFix_m_flow.vol.dynBal.ports:p">hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.ports[1].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.pumpFix_m_flow.vol.dynBal.ports:p">hydraulic.transfer.pumpFix_m_flow[1].vol.dynBal.ports[2].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.pumpFix_m_flow.vol:p">hydraulic.transfer.pumpFix_m_flow[1].vol.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.pumpFix_m_flow.vol.ports:p">hydraulic.transfer.pumpFix_m_flow[1].vol.ports[1].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.pumpFix_m_flow.vol.ports:p">hydraulic.transfer.pumpFix_m_flow[1].vol.ports[2].p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.res.port_a:p">hydraulic.transfer.res[1].port_a.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.res.port_b:p">hydraulic.transfer.res[1].port_b.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.resMaiLin.port_a:p">hydraulic.transfer.resMaiLin[1].port_a.p</a>
+<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer.resMaiLin.port_b:p">hydraulic.transfer.resMaiLin[1].port_b.p</a>
 Warning: WARNINGS have been issued.
 Error: ERRORS have been issued.
 
