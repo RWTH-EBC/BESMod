@@ -1,8 +1,8 @@
 within BESMod.Systems.Hydraulical.Generation;
 model ElectricalHeater "Only heat using an electric heater"
-  extends BaseClasses.PartialGeneration(
-    dp_design={hea.dp_nominal + resGen.dp_nominal},
-    final dTLoss_nominal=fill(0, nParallelDem),    final nParallelDem=1);
+  extends BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialAggregatedPressureLoss(
+    final dTLoss_nominal=fill(0, nParallelDem),    final nParallelDem=1,
+    resGenApp(final dp_nominal=parEleHea.dp_nominal + resGen.dp_nominal));
   parameter Modelica.Units.SI.Length lengthPip=4 "Length of all pipes"
     annotation (Dialog(tab="Pressure losses"));
   parameter Real resCoe=4*facPerBend
@@ -14,7 +14,7 @@ model ElectricalHeater "Only heat using an electric heater"
     final m_flow_nominal=m_flow_design[1],
     final m_flow_small=1E-4*abs(m_flow_nominal[1]),
     final show_T=show_T,
-    final dp_nominal=parEleHea.dp_nominal,
+    final dp_nominal=0,
     final tau=30,
     final energyDynamics=energyDynamics,
     final p_start=p_start,
@@ -113,8 +113,6 @@ equation
       horizontalAlignment=TextAlignment.Left));
   connect(hea.port_b, portGen_out[1]) annotation (Line(points={{-32,26},{-32,40},
           {20,40},{20,80},{100,80}}, color={0,127,255}));
-  connect(resGen.port_b, portGen_in[1]) annotation (Line(points={{40,-10},{84,-10},
-          {84,-2},{100,-2}}, color={0,127,255}));
   connect(resGen.port_a, hea.port_a) annotation (Line(points={{20,-10},{-32,-10},
           {-32,-6}},         color={0,127,255}));
 end ElectricalHeater;

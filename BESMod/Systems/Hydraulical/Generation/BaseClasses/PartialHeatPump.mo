@@ -1,7 +1,6 @@
 within BESMod.Systems.Hydraulical.Generation.BaseClasses;
 partial model PartialHeatPump "Generation with only the heat pump"
-  extends BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration(
-    dp_design={heatPump.dpCon_nominal + resGen.dp_nominal},
+  extends BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialAggregatedPressureLoss(
     final QLoss_flow_nominal=f_design .* Q_flow_nominal .- Q_flow_nominal,
     final dTLoss_nominal=fill(0, nParallelDem),
     Q_flow_design = {if use_old_design[i] then QOld_flow_design[i] else Q_flow_nominal[i] for i in 1:nParallelDem},
@@ -10,7 +9,8 @@ partial model PartialHeatPump "Generation with only the heat pump"
     dTTraOld_design={if TDemOld_design[i] > 273.15 + 55 then 10 elseif TDemOld_design[
         i] > 44.9 + 273.15 then 8 else 5 for i in 1:nParallelDem},
     dTTra_design={if use_old_design[i] then dTTraOld_design[i] else dTTra_nominal[i] for i in 1:nParallelDem},
-      nParallelDem=1);
+      nParallelDem=1,
+    resGenApp(dp_nominal=parHeaPum.dpCon_nominal + resGen.dp_nominal));
 
   replaceable model RefrigerantCycleHeatPumpHeating =
     AixLib.Fluid.HeatPumps.ModularReversible.RefrigerantCycle.BaseClasses.PartialHeatPumpCycle
@@ -153,7 +153,7 @@ partial model PartialHeatPump "Generation with only the heat pump"
     final tauCon=parHeaPum.tauCon,
     final dTCon_nominal=dTTra_nominal[1],
     final mCon_flow_nominal=m_flow_design[1],
-    dpCon_nominal=parHeaPum.dpCon_nominal,
+    dpCon_nominal=0,
     final use_conCap=parHeaPum.use_conCap,
     final CCon=parHeaPum.CCon,
     final GConOut=parHeaPum.GConOut,
@@ -275,7 +275,7 @@ partial model PartialHeatPump "Generation with only the heat pump"
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-170,-30})));
-  Components.HydraulicDiameterParameterOnly resGen(
+  BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly resGen(
     redeclare final package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=m_flow_design[1],
@@ -287,7 +287,7 @@ partial model PartialHeatPump "Generation with only the heat pump"
     final v_nominal=v_design[1],
     final roughness=roughness)
     "Pressure drop model depending on the configuration"
-    annotation (Placement(transformation(extent={{60,-20},{80,0}})));
+    annotation (Placement(transformation(extent={{40,-20},{60,0}})));
 equation
   connect(bouEva.ports[1], heatPump.port_a2) annotation (Line(points={{-80,50},
           {-50,50},{-50,35},{-51,35}},         color={0,127,255}));
@@ -439,9 +439,8 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(portGen_in[1], resGen.port_b)
-    annotation (Line(points={{100,-2},{90,-2},{90,-10},{80,-10}},
-                                                color={0,127,255}));
+  connect(resGen.port_b, resGenApp.port_a)
+    annotation (Line(points={{60,-10},{70,-10}}, color={0,127,255}));
     annotation (Dialog(tab="Calculated", group="Heat Pump System Design"),
               Line(
       points={{-52.775,-6.78},{-52.775,33.61},{-56,33.61},{-56,74}},

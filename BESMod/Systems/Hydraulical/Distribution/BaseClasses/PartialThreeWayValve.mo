@@ -29,7 +29,7 @@ partial model PartialThreeWayValve "Partial model to later extent"
     iconName="3WayValve",
     final dp_nominal={0, 0},
     final m_flow_nominal=mSup_flow_design[1],
-    dpFixedExtra_nominal={resValToBufSto.dpFixed_nominal + dpBufHCSto_design,resValToDHWSto.dpFixed_nominal + dpDHWHCSto_design},
+    dpFixedExtra_nominal={resValToBufSto.dp_nominal + dpBufHCSto_design,resValToDHWSto.dp_nominal + dpDHWHCSto_design},
     final fraK=1,
     use_strokeTime=false) "Parameters for three way valve" annotation (
     choicesAllMatching=true,

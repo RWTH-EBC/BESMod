@@ -1,6 +1,7 @@
 within BESMod.Systems.Hydraulical.Generation;
 model GasBoiler "Just a gas boiler"
-  extends BaseClasses.PartialGeneration(dp_design={boi.dp_nominal + resGen.dp_nominal},
+  extends BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialAggregatedPressureLoss(
+    resGenApp(final dp_nominal=dpBoi_nominal + resGen.dp_nominal),
     Q_flow_design = {if use_old_design then QOld_flow_design[1] else Q_flow_nominal[1]},
     dTTra_design={if use_old_design then dTTraOld_design[1] else dTTra_nominal[1]},
     final nParallelDem=1);
@@ -16,6 +17,7 @@ model GasBoiler "Just a gas boiler"
   parameter Real etaTem[:,2]=[293.15,1.09; 303.15,1.08; 313.15,1.05; 323.15,1.;
       373.15,0.99] "Temperature based efficiency"
         annotation(Dialog(group="Component data"));
+  parameter Modelica.Units.SI.PressureDifference dpBoi_nominal=boi.a*(m_flow_design[1]/boi.rho_default)^boi.n "Boiler pressure drop";
 
   /* 
   Boiler record needs nominal firing power which is estimated 
@@ -46,6 +48,7 @@ model GasBoiler "Just a gas boiler"
     final transferHeat=parTemSen.transferHeat,
     final TAmb=parTemSen.TAmb,
     final tauHeaTra=parTemSen.tauHeaTra,
+    dp_nominal=0,
     final rho_default=rho,
     final p_start=p_start,
     final T_start=T_start,
