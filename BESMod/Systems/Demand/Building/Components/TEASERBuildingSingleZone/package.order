@@ -11,3 +11,4 @@ PowerLawSolarUsability
 PartialConvertRoomInputs
 ConvertRoomsInputsSimple
 ConvertRoomsInputsDelayLoss
+IntegrateAndStoreSolarUsability
