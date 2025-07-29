@@ -65,19 +65,39 @@ model AixLibHighOrderOFD "High order OFD"
 
   AixLib.ThermalZones.HighOrder.House.OFD_MiddleInnerLoadWall.BuildingEnvelope.WholeHouseBuildingEnvelope
     wholeHouseBuildingEnvelope(
-    wallTypes=wallTypes,
-    energyDynamicsWalls=energyDynamicsWalls,
-    T0_air=T0_air,
-    TWalls_start=TWalls_start,
-    redeclare model WindowModel = WindowModel (windowarea=2),
-    Type_Win = Type_Win,
-    redeclare model CorrSolarGainWin = CorrSolarGainWin,
-    use_sunblind=use_sunblind,
-    use_infiltEN12831=use_infiltEN12831,
-    n50=n50,
-    energyDynamics=energyDynamics,
+    final denAir=denAir,
+    final cAir=cAir,
+    final wallTypes=wallTypes,
+    final energyDynamicsWalls=energyDynamicsWalls,
+    final energyDynamics=energyDynamics,
+    final T0_air=T0_air,
+    final TWalls_start=TWalls_start,
+    final calcMethodIn=calcMethodIn,
+    final hConIn_const=hConIn_const,
+    final radLongCalcMethod=radLongCalcMethod,
+    final T_ref=T_ref,
+    final Type_Win=Type_Win,
+    redeclare final model WindowModel = WindowModel,
+    redeclare final model CorrSolarGainWin = CorrSolarGainWin,
+    final solar_absorptance_OW=solar_absorptance_OW,
+    final calcMethodOut=calcMethodOut,
+    final surfaceType=surfaceType,
+    final hConOut_const=hConOut_const,
+    final use_infiltEN12831=use_infiltEN12831,
+    final n50=n50,
+    final e=e,
+    final eps=eps,
+    final use_sunblind=use_sunblind,
+    final ratioSunblind=ratioSunblind,
+    final solIrrThreshold=solIrrThreshold,
+    final TOutAirLimit=TOutAirLimit,
+    final withDynamicVentilation=withDynamicVentilation,
+    final HeatingLimit=HeatingLimit,
+    final Max_VR=Max_VR,
+    final Diff_toTempset=Diff_toTempset,
     redeclare package Medium = MediumZone,
-    UValOutDoors=UValOutDoors,
+    final UValOutDoors=UValOutDoors,
+    final epsOutDoors=eps_door,
     useVentAirPort=true)
     annotation (Placement(transformation(extent={{-44,-40},{50,72}})));
 
@@ -98,7 +118,7 @@ model AixLibHighOrderOFD "High order OFD"
         extent={{10,-10},{-10,10}},
         rotation=0,
         origin={20,-78})));
-  Modelica.Blocks.Sources.Constant constVenRatAtt(final k=1)
+  Modelica.Blocks.Sources.Constant constVenRatAtt(k=1)
     "Constant ventilation rate of attic"
     annotation (Placement(transformation(extent={{-80,8},{-60,28}})));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a thermOutside annotation (
