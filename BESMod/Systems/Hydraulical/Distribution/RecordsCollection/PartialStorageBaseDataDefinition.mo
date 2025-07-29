@@ -64,8 +64,7 @@ partial record PartialStorageBaseDataDefinition
   // Heat losses
 
   parameter Types.EnergyLabel energyLabel "Level of Storage Tank Insulation"
-                                                   annotation (Dialog(
-      group="Insulation"));
+    annotation (Dialog(group="Insulation"));
 
   parameter Real QLosPerDay=BESMod.Systems.Hydraulical.Distribution.RecordsCollection.GetDailyStorageLossesForLabel(V, energyLabel)
       "Heat loss per day. MUST BE IN kWh/d" annotation (Dialog(enable=use_QLos, group="Insulation"));

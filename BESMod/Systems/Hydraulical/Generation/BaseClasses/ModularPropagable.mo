@@ -43,6 +43,13 @@ model ModularPropagable "Modular model with propagable modules"
     "=true for heating, =false for cooling"
     annotation (Placement(transformation(extent={{-164,-82},{-140,-58}}),
         iconTransformation(extent={{-120,-30},{-102,-12}})));
+  Modelica.Blocks.Logical.Hysteresis hys(
+    final uLow=0.001,
+    final uHigh=ySet_small,
+    final pre_y_start=false)
+    "Outputs whether the device is on based on the relative speed"
+    annotation (Placement(
+      transformation(extent={{10,10},{-10,-10}}, rotation=180, origin={-110,-90})));
 equation
   connect(conHea.y, sigBus.hea)
     annotation (Line(points={{-99,-130},{-76,-130},{-76,-40},{-140,-40},{-140,-41},
@@ -59,7 +66,13 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  annotation (Icon(coordinateSystem(extent={{-100,-100},{100,100}}), graphics={
+  connect(hys.y, sigBus.onOffMea) annotation (Line(points={{-99,-90},{-88,-90},
+          {-88,-70},{-128,-70},{-128,-40},{-134,-40},{-134,-41},{-141,-41}},
+                                           color={255,0,255}));
+  connect(hys.u, sigBus.yMea) annotation (Line(points={{-122,-90},{-132,-90},{
+          -132,-40},{-136,-40},{-136,-41},{-141,-41}},
+                       color={0,0,127}));
+   annotation (Icon(coordinateSystem(extent={{-100,-100},{100,100}}), graphics={
           Text(
           extent={{-100,-12},{-72,-30}},
           textColor={255,85,255},

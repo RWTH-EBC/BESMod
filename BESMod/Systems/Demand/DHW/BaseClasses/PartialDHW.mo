@@ -19,8 +19,10 @@ partial model PartialDHW "Partial model for domestic hot water (DHW)"
     annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
   parameter Modelica.Units.SI.HeatFlowRate QDHW_flow_nominal = mDHW_flow_nominal * cp * (TDHW_nominal - TDHWCold_nominal) "Nominal heat flow rate of DHW system" annotation (Dialog(group=
           "Design - Bottom Up: Parameters are defined by the subsystem"));
-  parameter Modelica.Units.SI.Time tCrit(displayUnit="h") "Time for critical period. Based on EN 15450" annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem", enable=designType <> BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.NoStorage));
-  parameter Real QCrit "Energy demand in kWh during critical period. Based on EN 15450" annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem", enable=designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage));
+  parameter Modelica.Units.SI.Time tCrit(displayUnit="h") "Time for critical period. Based on EN 15450" annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem", enable=designType
+           <> BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.NoStorage));
+  parameter Real QCrit "Energy demand in kWh during critical period. Based on EN 15450" annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem", enable=designType
+           == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage));
 
   Modelica.Fluid.Interfaces.FluidPort_a port_a(redeclare final package Medium =
         Medium) "Inlet for the demand of DHW" annotation (Placement(

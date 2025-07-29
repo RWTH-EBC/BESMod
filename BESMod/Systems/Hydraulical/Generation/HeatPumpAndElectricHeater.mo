@@ -100,6 +100,6 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(resGen.port_a, heatPump.port_a1) annotation (Line(points={{50,-20},{30,
-          -20},{30,-18},{-30,-18},{-30,0}},color={0,127,255}));
+  connect(resGen.port_a, heatPump.port_a1) annotation (Line(points={{40,-10},{
+          -30,-10},{-30,0}},               color={0,127,255}));
 end HeatPumpAndElectricHeater;

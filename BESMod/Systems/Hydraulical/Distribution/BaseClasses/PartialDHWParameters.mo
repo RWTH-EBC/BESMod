@@ -15,7 +15,7 @@ model PartialDHWParameters
          then QDHW_flow_nominal
       elseif designType==BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage
          then ((QCrit - (VStoDHW * rho_cp_kWh_in_m3) * (TDHW_nominal - TDHW_min_EN15450)) * 3600 * 1000) / tCrit + QDHWStoLoss_flow
-      elseif designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage
+      elseif designType ==BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage
          then (VStoDHW * rho_cp_kWh_in_m3 / tCrit) * (TDHW_nominal - TDHWCold_nominal) * 3600 * 1000
       else Modelica.Constants.eps)
     "Nominal heat flow rate to DHW before the storage. Used to design the size of heat generation devices if a storage is used." annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
@@ -36,8 +36,9 @@ model PartialDHWParameters
   parameter Modelica.Units.SI.Temperature TDHWCold_nominal
     "DHW cold city water" annotation (Dialog(group=
           "Design - Top Down: Parameters are given by the parent system"));
-  parameter Types.DHWDesignType designType "Design according to EN 15450"
-    annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
+  parameter BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType
+    designType "Design according to EN 15450" annotation (Dialog(group=
+          "Design - Bottom Up: Parameters are defined by the subsystem"));
   parameter Modelica.Units.SI.HeatFlowRate QDHWStoLoss_flow "Losses of DHW storage"
     annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem",
       enable=designType <> BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.NoStorage));
@@ -59,11 +60,12 @@ model PartialDHWParameters
     "Extra volume to account for storage loss according to EN 15450, in l/d"
     annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
   parameter Modelica.Units.SI.Volume VStoDHW =
-    if designType == Types.DHWDesignType.FullStorage
+    if designType ==BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage
       then VDHWDay_nominal * fFullSto + VStoDHWLos
     else VDHWDay_nominal + VStoDHWLos
     "Volume of DHW storage" annotation (Dialog(group=
-          "Design - Bottom Up: Parameters are defined by the subsystem", enable=designType <> BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.NoStorage));
+          "Design - Bottom Up: Parameters are defined by the subsystem", enable=designType
+           <> BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.NoStorage));
 protected
   parameter Modelica.Units.SI.Temperature TDHW_nominal_EN15450=333.15
     "Storage temperature according to EN 15450 is 60 °C";
