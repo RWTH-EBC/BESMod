@@ -407,15 +407,11 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
       VAirLay=zoneParam.VAir) if (ATot > 0 or zoneParam.VAir > 0) and
       use_moisture_balance and use_pools
       annotation (Placement(transformation(extent={{-66,-76},{-60,-70}})));
-    Modelica.Blocks.Interfaces.RealInput TSetZone
-      annotation (Placement(transformation(extent={{-132,36},{-92,76}})));
-    Modelica.Blocks.Math.Product solGain[zoneParam.nOrientations]
-      if sum(zoneParam.ATransparent) > 0
-      annotation (Placement(transformation(extent={{18,82},{28,92}})));
+    Modelica.Blocks.Interfaces.RealInput TSetRooms[zoneParam.nRooms] annotation (
+        Placement(transformation(extent={{-120,100},{-94,126}}),
+          iconTransformation(extent={{-120,100},{-94,126}})));
     Modelica.Blocks.Routing.RealPassThrough TDryBul
-      annotation (Placement(transformation(extent={{-86,110},{-66,130}})));
-    Modelica.Blocks.Routing.RealPassThrough HDirNor
-      annotation (Placement(transformation(extent={{-50,114},{-30,134}})));
+      annotation (Placement(transformation(extent={{-76,102},{-70,108}})));
     AixLib.Utilities.HeatTransfer.HeatConvOutside heatConvOutsideExtWall(
       calcMethod=calcMethodOut,
       A=sum(zoneParam.AExt),
@@ -430,10 +426,45 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
       surfaceType=surfaceType)
       annotation (Placement(transformation(extent={{0,78},{12,90}})));
 
-    replaceable SimpleSolarUsability solarUsability
-      constrainedby  BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PartialSolarUsability(
-                        nOrientations=zoneParam.nOrientations)
+    replaceable BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.ConvertRoomsInputsDelayLoss roomsConverter
+      constrainedby
+      BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PartialConvertRoomInputs(
+        nOrientations=zoneParam.nOrientations,
+        nRooms=zoneParam.nRooms,
+        FacATransparentPerRoom=zoneParam.FacATransparentPerRoom,
+        roomVolumes=zoneParam.roomVolumes)
       annotation (Placement(transformation(extent={{-4,108},{16,128}})));
+    Modelica.Blocks.Math.Gain solOrientationGain[zoneParam.nOrientations](k=
+          zoneParam.gWin .* zoneParam.ATransparent) annotation (Placement(
+          transformation(
+          extent={{-5,-5},{5,5}},
+          rotation=90,
+          origin={17,71})));
+    Modelica.Blocks.Interfaces.RealInput natVentRooms[zoneParam.nRooms]
+      annotation (Placement(transformation(extent={{-122,120},{-90,152}}),
+          iconTransformation(
+          extent={{-8,-8},{8,8}},
+          rotation=270,
+          origin={-70,100})));
+    Modelica.Blocks.Interfaces.RealInput intGainRooms[zoneParam.nRooms]
+      annotation (Placement(transformation(
+          extent={{-16,-16},{16,16}},
+          rotation=270,
+          origin={-32,146}), iconTransformation(extent={{-106,90},{-92,104}})));
+    Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow preAbsHeaGaiRad(final
+        T_ref=293.15, final alpha=0) "Add absolute radiative heat gain"
+                                         annotation (Placement(transformation(
+          extent={{-10,-10},{10,10}},
+          rotation=0,
+          origin={54,118})));
+    Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow preAbsHeaGaiCon(final
+        T_ref=293.15, final alpha=0) "Add absolute radiative heat gain"
+      annotation (Placement(transformation(
+          extent={{-10,-10},{10,10}},
+          rotation=0,
+          origin={56,104})));
+    Modelica.Blocks.Math.Gain ratioIntGaiRadCon[2](k={0.5,0.5})
+      annotation (Placement(transformation(extent={{24,110},{36,122}})));
   protected
     Modelica.Thermal.HeatTransfer.Sources.PrescribedTemperature preTemRoof
    if zoneParam.ARoof > 0
@@ -810,8 +841,7 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
                 {-21.2,-10}},
         color={0,0,127},
         pattern=LinePattern.Dash));
-  else
-       connect(addInfVen.y, cO2Balance.airExc) annotation (Line(points={{-29.5,-27},
+  else connect(addInfVen.y, cO2Balance.airExc) annotation (Line(points={{-29.5,-27},
               {-24,-27},{-24,-34},{12,-34},{12,-63.6},{16,-63.6}},
                                                               color={0,0,127}));
        connect(addInfVen.y, airExc.ventRate) annotation (Line(points={{-29.5,-27},
@@ -958,26 +988,14 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
     connect(indoorSwimmingPool.m_flow_eva, airFlowMoistureToROM.m_flow_eva)
       annotation (Line(points={{-54.42,-73.24},{-57.25,-73.24},{-57.25,-74.11},{-60.15,
             -74.11}}, color={0,0,127}));
-    connect(simpleExternalShading.corrIrr, solGain.u2) annotation (Line(points={{9.94,
-            47.24},{9.94,46},{14,46},{14,78},{17,78},{17,84}}, color={0,0,127}));
-    connect(solGain.y, ROM.solRad)
-      annotation (Line(points={{28.5,87},{28.5,89},{37,89}}, color={0,0,127}));
     connect(weaBus.TDryBul, TDryBul.u) annotation (Line(
-        points={{-99.915,34.08},{-64,34.08},{-64,56},{-88,56},{-88,120}},
+        points={{-99.915,34.08},{-64,34.08},{-64,64},{-62,64},{-62,112},{-80,112},
+            {-80,105},{-76.6,105}},
         color={255,204,51},
         thickness=0.5), Text(
         string="%first",
         index=-1,
         extent={{-3,-6},{-3,-6}},
-        horizontalAlignment=TextAlignment.Right));
-    connect(weaBus.HDirNor, HDirNor.u) annotation (Line(
-        points={{-99.915,34.08},{-56,34.08},{-56,78},{-62,78},{-62,114},{-52,
-            114},{-52,124}},
-        color={255,204,51},
-        thickness=0.5), Text(
-        string="%first",
-        index=-1,
-        extent={{-6,3},{-6,3}},
         horizontalAlignment=TextAlignment.Right));
     connect(preTemWall.port, heatConvOutsideExtWall.port_a)
       annotation (Line(points={{-10,20},{4,20}}, color={191,0,0}));
@@ -1004,16 +1022,34 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
         index=-1,
         extent={{-6,3},{-6,3}},
         horizontalAlignment=TextAlignment.Right));
-    connect(TSetZone, solarUsability.TZoneSet) annotation (Line(points={{-112,
-            56},{-20,56},{-20,116},{-10,116},{-10,118},{-4.6,118}}, color={0,0,127}));
-    connect(TDryBul.y, solarUsability.TDryBul) annotation (Line(points={{-65,
-            120},{-65,118},{-58,118},{-58,108},{-10,108},{-10,124},{-4.6,124}},
-          color={0,0,127}));
-    connect(solarUsability.solarGainFactor, solGain.u1) annotation (Line(
-          points={{16.6,118},{20,118},{20,96},{17,96},{17,90}}, color={0,0,127}));
-    connect(simpleExternalShading.corrIrr, solarUsability.IOrientations)
-      annotation (Line(points={{9.94,47.24},{9.94,46},{14,46},{14,104},{-4.6,104},
-            {-4.6,112}}, color={0,0,127}));
+    connect(simpleExternalShading.corrIrr, solOrientationGain.u) annotation (Line(
+          points={{9.94,47.24},{9.94,46},{17,46},{17,65}}, color={0,0,127}));
+    connect(TDryBul.y, roomsConverter.TDryBul) annotation (Line(points={{-69.7,
+            105},{-12,105},{-12,118},{-4.6,118},{-4.6,126}}, color={0,0,127}));
+    connect(TSetRooms, roomsConverter.TRoomSet) annotation (Line(points={{-107,
+            113},{-56.5,113},{-56.5,122},{-4.6,122}}, color={0,0,127}));
+    connect(natVentRooms, roomsConverter.natVent) annotation (Line(points={{
+            -106,136},{-56,136},{-56,118},{-4.6,118}}, color={0,0,127}));
+    connect(intGainRooms, roomsConverter.intGains) annotation (Line(points={{
+            -32,146},{-32,110},{-4.6,110}}, color={0,0,127}));
+    connect(solOrientationGain.y, roomsConverter.solOrientationGain)
+      annotation (Line(points={{17,76.5},{16,76.5},{16,104},{-10,104},{-10,114},
+            {-4.6,114}}, color={0,0,127}));
+    connect(roomsConverter.solGain, ROM.solRad) annotation (Line(points={{17.5,
+            113.3},{17.5,112},{24,112},{24,89},{37,89}}, color={0,0,127}));
+    connect(preAbsHeaGaiRad.port, ROM.intGainsRad) annotation (Line(points={{64,
+            118},{88,118},{88,94},{90,94},{90,82},{86,82}}, color={191,0,0}));
+    connect(roomsConverter.intGain[1], ratioIntGaiRadCon[1].u) annotation (Line(
+          points={{17.5,117.9},{17.5,116},{22.8,116}}, color={0,0,127}));
+    connect(roomsConverter.intGain[1], ratioIntGaiRadCon[2].u) annotation (Line(
+          points={{17.5,117.9},{17.5,116},{22.8,116}}, color={0,0,127}));
+    connect(ratioIntGaiRadCon[1].y, preAbsHeaGaiRad.Q_flow) annotation (Line(
+          points={{36.6,116},{36.6,118},{44,118}}, color={0,0,127}));
+    connect(ratioIntGaiRadCon[2].y, preAbsHeaGaiCon.Q_flow) annotation (Line(
+          points={{36.6,116},{36.6,118},{38,118},{38,112},{40,112},{40,104},{46,
+            104}}, color={0,0,127}));
+    connect(preAbsHeaGaiCon.port, ROM.intGainsConv) annotation (Line(points={{
+            66,104},{90,104},{90,78},{86,78}}, color={191,0,0}));
      annotation (Documentation(revisions="<html><ul>
   <li>April 20, 2023, by Philip Groesdonk:<br/>
   Added five element RC model (for heat exchange with neighboured zones) and

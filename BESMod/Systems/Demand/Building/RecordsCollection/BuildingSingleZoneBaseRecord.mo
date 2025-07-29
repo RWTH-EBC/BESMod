@@ -21,6 +21,8 @@ record BuildingSingleZoneBaseRecord
   parameter Real FacRFloorRem
   "Facotr of Resistance of remaining resistor RExtRem between capacity n and outside from total Resistance" annotation(Evaluate=false);
   parameter Integer nFloorLevels = 1;
+  parameter Integer nRooms = 1;
+  parameter Real roomVolumes[nRooms] = fill(0, nRooms);
   parameter Real RoofAreaAtticFactor = 1;
   parameter Real ratioExtWallAreaTopFloor = 1/nFloorLevels;
   parameter Real ratioExtWallAreaBottomFloor = 1/nFloorLevels;
@@ -30,5 +32,6 @@ record BuildingSingleZoneBaseRecord
   parameter Real ratioWinAreaBottomFloor = 1/nFloorLevels;
   parameter Real ratioWinAreaExtWall = 1;
   parameter Real ratioWinAreaIntWall = 1;
+  parameter Real FacATransparentPerRoom[nOrientations, nRooms] = fill({1}, nOrientations);
 
 end BuildingSingleZoneBaseRecord;

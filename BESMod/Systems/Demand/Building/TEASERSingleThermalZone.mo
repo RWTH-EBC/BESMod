@@ -181,18 +181,6 @@ model TEASERSingleThermalZone
         rotation=0,
         origin={-90,-170})));
 
-  Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow preAbsHeaGaiRad(
-      final T_ref=293.15, final alpha=0) if use_absIntGai
-    "Add absolute radiative heat gain" annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=0,
-        origin={-90,-10})));
-  Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow preAbsHeaGaiCon(
-      final T_ref=293.15, final alpha=0) if use_absIntGai
-    "Add absolute radiative heat gain" annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=0,
-        origin={-90,-30})));
 protected
   parameter Modelica.Units.SI.Area ATot[nZones]={sum(zoneParam[i].AExt)+sum(zoneParam[i].AWin) for i in 1:nZones} "Sum of wall surface areas";
 initial equation
@@ -410,25 +398,6 @@ equation
   connect(thermalZone.QIntGains_flow[2], zoneEneBal.QMac_flow) annotation (Line(
         points={{-42.7,33.6},{-40,33.6},{-40,32},{-120,32},{-120,-188},{-63.8,
           -188}},                                                   color={0,0,127}));
-  connect(preAbsHeaGaiRad.Q_flow, useProBus.absIntGaiRad) annotation (Line(points={{-100,
-          -10},{-124,-10},{-124,101},{51,101}},
-        color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(preAbsHeaGaiCon.Q_flow, useProBus.absIntGaiConv) annotation (Line(points={{-100,
-          -30},{-128,-30},{-128,101},{51,101}},         color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
-  connect(preAbsHeaGaiCon.port, thermalZone[1].intGainsConv) annotation (Line(points={{-80,-30},
-          {-50,-30},{-50,50},{-54,50},{-54,49.44},{-39.74,49.44}},
-                               color={191,0,0}));
-  connect(preAbsHeaGaiRad.port, thermalZone[1].intGainsRad) annotation (Line(points={{-80,-10},
-          {-52,-10},{-52,60.24},{-39.74,60.24}},
-                   color={191,0,0}));
   connect(QSol_flow.y, zoneEneBal.QSol_flow)
     annotation (Line(points={{-79,-170},{-63.8,-170}}, color={0,0,127}));
   if useUserProfileNatVent then
@@ -441,14 +410,32 @@ equation
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
   end if;
-  connect(useProBus.TZoneSet, thermalZone.TSetZone) annotation (Line(
-      points={{51,101},{50,101},{50,68.16},{39.44,68.16}},
+  connect(useProBus.TRoomSet, thermalZone[1].TSetRooms) annotation (Line(
+      points={{51,101},{50,101},{50,88.68},{37.59,88.68}},
       color={255,204,51},
       thickness=0.5), Text(
       string="%first",
       index=-1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
+  connect(useProBus.intGainRooms, thermalZone[1].intGainRooms) annotation (Line(
+      points={{51,101},{50,101},{50,64},{92,64},{92,124},{34.63,124},{34.63,
+          82.92}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%first",
+      index=-1,
+      extent={{-3,6},{-3,6}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(useProBus.natVentRooms, thermalZone[1].natVentRooms) annotation (Line(
+      points={{51,101},{50,101},{50,62},{94,62},{94,126},{23.9,126},{23.9,84}},
+
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%first",
+      index=-1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
     annotation (Diagram(coordinateSystem(extent={{-100,-220},{100,100}})),
       Documentation(info="<html>
 <p>This model uses the reduced-order approach with the common TEASER output to model the building envelope. Relevant KPIs are calculated.</p>
