@@ -135,8 +135,6 @@ equation
           {98.8,-81},{113,-81}}, color={0,0,127}));
   connect(const3.y, max2.u1) annotation (Line(points={{-17.5,19},{-4,19},{-4,17.6},
           {2.8,17.6}}, color={0,0,127}));
-  connect(variableLimiter.y, max2.u2) annotation (Line(points={{-9,-60},{-6,-60},
-          {-6,4},{2.8,4},{2.8,10.4}}, color={0,0,127}));
   connect(product1.y, sumSolMax.u) annotation (Line(points={{52.7,-53},{56.75,-53},
           {56.75,-52},{60.8,-52}}, color={0,0,127}));
   connect(totSolToOri.y, product3.u1)
@@ -149,4 +147,6 @@ equation
   connect(realExpression1.y, variableLimiter.limit1) annotation (Line(points={{-53,
           24},{-46,24},{-46,-30},{-38,-30},{-38,-32},{-32,-32},{-32,-52}},
         color={0,0,127}));
+  connect(add3.y, max2.u2) annotation (Line(points={{-47.4,-60},{-38,-60},{-38,
+          -30},{-8,-30},{-8,2},{2.8,2},{2.8,10.4}}, color={0,0,127}));
 end ConvertRoomsInputsDelayLoss;
