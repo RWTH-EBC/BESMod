@@ -1,12 +1,18 @@
-within BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone;
+﻿within BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone;
 model ConvertRoomsInputsDelayLoss
   extends PartialConvertRoomInputs;
 
-  parameter Real totalHvaluesRoom[nRooms] = fill(Modelica.Constants.inf, nRooms);
+  parameter Real totalHvaluesRoom[nRooms] = fill(10000, nRooms);
   parameter Real overheatingLossRoom[nRooms] = fill(1, nRooms);
   parameter Modelica.Units.SI.Time overheatingDelayRoom[nRooms] = fill(60, nRooms);
 
+  parameter Real dT_switch = 0.5 "ΔT [K] where limit starts increasing";
+  parameter Real dT_slope=50    "Slope sharpness";
+
   final parameter Real A[nRooms,nOrientations] = transpose(FacATransparentPerRoom);
+
+  //Real limitFactor[nRooms];
+  Real limit[nRooms];
   Modelica.Blocks.Math.MatrixGain OrisToRooms(K=A)
     annotation (Placement(transformation(extent={{-80,-46},{-68,-34}})));
   Modelica.Blocks.Nonlinear.VariableLimiter variableLimiter[nRooms]
@@ -17,11 +23,6 @@ model ConvertRoomsInputsDelayLoss
     annotation (Placement(transformation(extent={{-44,50},{-24,70}})));
   Modelica.Blocks.Routing.Replicator replicator(nout=nRooms)
     annotation (Placement(transformation(extent={{-76,70},{-56,90}})));
-  Modelica.Blocks.Math.Gain H[nRooms](k=totalHvaluesRoom)
-                                      annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={-40,0})));
   Modelica.Blocks.Math.Sum sumSol(each nin=nRooms)
     annotation (Placement(transformation(extent={{-54,-46},{-42,-34}})));
   Modelica.Blocks.Math.Sum sumOverheating(each nin=nRooms)
@@ -44,12 +45,6 @@ model ConvertRoomsInputsDelayLoss
   Modelica.Blocks.Nonlinear.FixedDelay fixedDelay[nRooms](delayTime=
         overheatingDelayRoom)
     annotation (Placement(transformation(extent={{10,-22},{-2,-10}})));
-  Modelica.Blocks.Math.Max max1[nRooms] annotation (Placement(transformation(
-        extent={{-6,-6},{6,6}},
-        rotation=270,
-        origin={-40,26})));
-  Modelica.Blocks.Sources.Constant const1[nRooms](each k=0)
-    annotation (Placement(transformation(extent={{-72,24},{-62,34}})));
   Modelica.Blocks.Math.Add3 add3[nRooms]
     annotation (Placement(transformation(extent={{-60,-66},{-48,-54}})));
   Modelica.Blocks.Sources.RealExpression realExpression[nRooms](y=OrisToRooms.y ./
@@ -77,7 +72,19 @@ model ConvertRoomsInputsDelayLoss
     annotation (Placement(transformation(extent={{56,-32},{76,-12}})));
   Modelica.Blocks.Math.Product product3[nOrientations]
     annotation (Placement(transformation(extent={{80,-44},{90,-34}})));
+  Modelica.Blocks.Sources.RealExpression realExpression1[nRooms](y=limit)
+    annotation (Placement(transformation(extent={{-74,14},{-54,34}})));
 equation
+
+  // compute smooth gain limit for each room
+  for r in 1:nRooms loop
+    //limitFactor[r] = 1 / (1 + exp(-dT_slope * (dT[r].y - dT_switch)));
+
+    // final solar gain limit (kW or W)
+    //limit[r] = (1 - limitFactor[r]) * OrisToRooms.y[r] + limitFactor[r] * dT[r].y * totalHvaluesRoom[r];
+    limit[r] = noEvent(max(abs(dT[r].y),1)) * totalHvaluesRoom[r];
+  end for;
+
   connect(solOrientationGain, OrisToRooms.u)
     annotation (Line(points={{-106,-40},{-81.2,-40}}, color={0,0,127}));
   connect(const.y, variableLimiter.limit2) annotation (Line(points={{-47.5,-75},
@@ -88,8 +95,6 @@ equation
           {-52,72},{-52,66},{-46,66}}, color={0,0,127}));
   connect(TRoomSet, dT.u2) annotation (Line(points={{-106,40},{-52,40},{-52,54},
           {-46,54}}, color={0,0,127}));
-  connect(H.y, variableLimiter.limit1)
-    annotation (Line(points={{-40,-11},{-40,-52},{-32,-52}}, color={0,0,127}));
   connect(intGains, sumInt.u) annotation (Line(points={{-106,-80},{-66,-80},{-66,
           -94},{-59.2,-94}}, color={0,0,127}));
   connect(OrisToRooms.y, sumSol.u)
@@ -98,12 +103,6 @@ equation
           {-6,-60},{-6,-39.2},{6.6,-39.2}}, color={0,0,127}));
   connect(delayedGains.y, roomGainLoss.u) annotation (Line(points={{22.7,-35},{40,
           -35},{40,-31.2}}, color={0,0,127}));
-  connect(const1.y, max1.u2) annotation (Line(points={{-61.5,29},{-48,29},{-48,33.2},
-          {-43.6,33.2}}, color={0,0,127}));
-  connect(dT.y, max1.u1) annotation (Line(points={{-23,60},{-18,60},{-18,38},{-36.4,
-          38},{-36.4,33.2}}, color={0,0,127}));
-  connect(max1.y, H.u)
-    annotation (Line(points={{-40,19.4},{-40,12}}, color={0,0,127}));
   connect(OrisToRooms.y, add3.u2) annotation (Line(points={{-67.4,-40},{-66,-40},
           {-66,-60},{-61.2,-60}}, color={0,0,127}));
   connect(intGains, add3.u3) annotation (Line(points={{-106,-80},{-66,-80},{-66,
@@ -136,8 +135,6 @@ equation
           {98.8,-81},{113,-81}}, color={0,0,127}));
   connect(const3.y, max2.u1) annotation (Line(points={{-17.5,19},{-4,19},{-4,17.6},
           {2.8,17.6}}, color={0,0,127}));
-  connect(variableLimiter.y, max2.u2) annotation (Line(points={{-9,-60},{-6,-60},
-          {-6,4},{2.8,4},{2.8,10.4}}, color={0,0,127}));
   connect(product1.y, sumSolMax.u) annotation (Line(points={{52.7,-53},{56.75,-53},
           {56.75,-52},{60.8,-52}}, color={0,0,127}));
   connect(totSolToOri.y, product3.u1)
@@ -147,4 +144,9 @@ equation
   end for;
   connect(product3.y, solGain) annotation (Line(points={{90.5,-39},{90.5,-36},{94,
           -36},{94,-47},{115,-47}}, color={0,0,127}));
+  connect(realExpression1.y, variableLimiter.limit1) annotation (Line(points={{-53,
+          24},{-46,24},{-46,-30},{-38,-30},{-38,-32},{-32,-32},{-32,-52}},
+        color={0,0,127}));
+  connect(add3.y, max2.u2) annotation (Line(points={{-47.4,-60},{-38,-60},{-38,
+          -30},{-8,-30},{-8,2},{2.8,2},{2.8,10.4}}, color={0,0,127}));
 end ConvertRoomsInputsDelayLoss;
