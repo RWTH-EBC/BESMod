@@ -11,3 +11,8 @@ PowerLawSolarUsability
 PartialConvertRoomInputs
 ConvertRoomsInputsSimple
 ConvertRoomsInputsDelayLoss
+ConvertRoomsInputsDelayLoss2
+ConvertRoomsInputsDelayLossPT1
+ConvertRoomsInputsIntegratePT1
+ConvertRoomsInputsDelayLossPT1nR
+ConvertRoomsInputsDelayLoss2nR

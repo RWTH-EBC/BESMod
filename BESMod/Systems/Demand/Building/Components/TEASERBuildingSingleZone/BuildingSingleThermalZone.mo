@@ -426,7 +426,7 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
       surfaceType=surfaceType)
       annotation (Placement(transformation(extent={{0,78},{12,90}})));
 
-    replaceable BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.ConvertRoomsInputsDelayLoss roomsConverter
+    replaceable BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.ConvertRoomsInputsDelayLoss2nR roomsConverter
       constrainedby
       BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PartialConvertRoomInputs(
         nOrientations=zoneParam.nOrientations,
@@ -841,7 +841,8 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
                 {-21.2,-10}},
         color={0,0,127},
         pattern=LinePattern.Dash));
-  else connect(addInfVen.y, cO2Balance.airExc) annotation (Line(points={{-29.5,-27},
+  else
+       connect(addInfVen.y, cO2Balance.airExc) annotation (Line(points={{-29.5,-27},
               {-24,-27},{-24,-34},{12,-34},{12,-63.6},{16,-63.6}},
                                                               color={0,0,127}));
        connect(addInfVen.y, airExc.ventRate) annotation (Line(points={{-29.5,-27},
