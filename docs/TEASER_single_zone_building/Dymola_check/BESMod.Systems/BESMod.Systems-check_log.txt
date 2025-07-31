@@ -149,21 +149,18 @@ Check is assuming: zoneParam.nOrientationsRoof = 1
 Check is assuming: zoneParam.HeaterOn = false
 Check is assuming: zoneParam.CoolerOn = false
 Check is assuming: zoneParam.withIdealThresholds = false
-Warning: Automatically introducing 'each' in definition equation for variable:
-  roomsConverter.const[1].k
-Additional warnings of this type will not be written.
 Error: The problem is structurally singular.
 
-It has 375 scalar unknowns and 374 scalar equations.
-  The Real part has 375 unknowns and 374 equations.
+It has 385 scalar unknowns and 384 scalar equations.
+  The Real part has 384 unknowns and 383 equations.
   The Integer part has 0 unknowns and 0 equations.
-  The Boolean part has 0 unknowns and 0 equations.
+  The Boolean part has 1 unknowns and 1 equations.
   The String part has 0 unknowns and 0 equations.
 Error: The model is not well-posed.
 The model has
-  360+4*roomsConverter.nRooms+2*roomsConverter.nOrientations+roomsConverter.nZones  +size(roomsConverter.OrisToRooms.K, 2)+size(roomsConverter.OrisToRooms.K, 1)+  roomsConverter.replicator.nout+roomsConverter.sumSol.nin+roomsConverter.sumOverheating.nin  +roomsConverter.sumInt.nin+roomsConverter.sumIntMax.nin+roomsConverter.sumSolMax.nin
+  370+4*roomsConverter.nRooms+2*roomsConverter.nOrientations+roomsConverter.nZones  +size(roomsConverter.OrisToRooms.K, 2)+size(roomsConverter.OrisToRooms.K, 1)+  roomsConverter.replicator.nout+roomsConverter.sumSol.nin+roomsConverter.sumInt.nin  +roomsConverter.sumIntMax.nin+roomsConverter.sumSolMax.nin+roomsConverter.sum1.nin
 scalar unknowns and
-  363+(if heatConvOutsideExtWall.calcMethod == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if heatConvOutsideExtWall.calcMethod == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if heatConvOutsideRoof.calcMethod ==   AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if heatConvOutsideRoof.calcMethod == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+size(roomsConverter.OrisToRooms.K, 1)+  roomsConverter.replicator.nout+4*roomsConverter.nRooms+roomsConverter.nOrientations
+  373+(if heatConvOutsideExtWall.calcMethod == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if heatConvOutsideExtWall.calcMethod == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if heatConvOutsideRoof.calcMethod ==   AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if heatConvOutsideRoof.calcMethod == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+size(roomsConverter.OrisToRooms.K, 1)+  roomsConverter.replicator.nout+4*roomsConverter.nRooms+roomsConverter.nOrientations
 scalar equations.
 Using the given settings of the parameters, the difference could be reduced to
   1
