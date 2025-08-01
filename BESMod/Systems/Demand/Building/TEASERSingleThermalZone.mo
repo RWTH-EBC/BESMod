@@ -172,9 +172,8 @@ model TEASERSingleThermalZone
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-90,-148})));
-  Modelica.Blocks.Sources.RealExpression QSol_flow[nZones](y={if ATot[i] > 0 then
-        sum({thermalZone[i].ROM.solRad[n]*thermalZone[i].ROM.ATransparent[n]*
-        thermalZone[i].ROM.gWin for n in 1:thermalZone[i].ROM.nOrientations})
+  Modelica.Blocks.Sources.RealExpression QSol_flow[nZones](y={if ATot[i] > 0
+         then sum({thermalZone[i].ROM.solRad[n] for n in 1:thermalZone[i].ROM.nOrientations})
          else 0 for i in 1:nZones}) if use_verboseEnergyBalance
     "Solar radiative  heat flow rate" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -429,13 +428,13 @@ equation
       horizontalAlignment=TextAlignment.Right));
   connect(useProBus.natVentRooms, thermalZone[1].natVentRooms) annotation (Line(
       points={{51,101},{50,101},{50,62},{94,62},{94,126},{23.9,126},{23.9,84}},
-
       color={255,204,51},
       thickness=0.5), Text(
       string="%first",
       index=-1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+
     annotation (Diagram(coordinateSystem(extent={{-100,-220},{100,100}})),
       Documentation(info="<html>
 <p>This model uses the reduced-order approach with the common TEASER output to model the building envelope. Relevant KPIs are calculated.</p>
