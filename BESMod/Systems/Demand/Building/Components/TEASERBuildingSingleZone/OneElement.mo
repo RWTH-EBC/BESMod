@@ -196,6 +196,14 @@ model OneElement "Thermal Zone with one element for exterior walls"
     "Trace substance mass flow rate added to the thermal zone"
     annotation (Placement(transformation(extent={{-280,70},{-240,110}}), iconTransformation(extent={{-260,90},{-240,110}})));
 
+  parameter Modelica.Units.SI.Area[:] AArraySol={ATotExt,ATotWin}
+    "List of all wall surface areas";
+
+  parameter Real splitFactorSolRad[dimension, nOrientations]=
+    AixLib.ThermalZones.ReducedOrder.RC.BaseClasses.splitFacVal(
+                            dimension, nOrientations, AArray, AExt, AWin)
+    "Share of each wall surface area that is non-zero, for each orientation separately";
+
 protected
   constant Modelica.Units.SI.SpecificEnergy h_fg=
       AixLib.Media.Air.enthalpyOfCondensingGas(273.15 + 37)
@@ -213,10 +221,7 @@ protected
     AixLib.ThermalZones.ReducedOrder.RC.BaseClasses.splitFacVal(
                             dimension, 1, AArray, fill(0, 1), fill(0, 1))
     "Share of each wall surface area that is non-zero";
-  parameter Real splitFactorSolRad[dimension, nOrientations]=
-    AixLib.ThermalZones.ReducedOrder.RC.BaseClasses.splitFacVal(
-                            dimension, nOrientations, AArray, AExt, AWin)
-    "Share of each wall surface area that is non-zero, for each orientation separately";
+
   Modelica.Thermal.HeatTransfer.Components.Convection convExtWall(dT(start=0))
                                                                   if ATotExt > 0
     "Convective heat transfer of exterior walls"

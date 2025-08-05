@@ -426,7 +426,7 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
       surfaceType=surfaceType)
       annotation (Placement(transformation(extent={{0,78},{12,90}})));
 
-    replaceable BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.ConvertRoomsInputsSimple roomsConverter
+    replaceable BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.ConvertRoomsInptsDelayLossPT1 roomsConverter
       constrainedby
       BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PartialConvertRoomInputs(
         nOrientations=zoneParam.nOrientations,
@@ -1370,6 +1370,7 @@ Infiltration
         redeclare final package Medium = Medium,
         final use_moisture_balance=use_moisture_balance,
         final use_C_flow=use_C_flow,
+        splitFactorSolRad=zoneParam.splitFactorSolRad,
         final nPorts=nPortsROM,
         final VAir=if zoneParam.withAirCap then zoneParam.VAir else 0.0,
         final hRad=zoneParam.hRad,

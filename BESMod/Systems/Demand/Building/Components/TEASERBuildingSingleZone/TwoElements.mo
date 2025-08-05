@@ -2,7 +2,7 @@ within BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone;
 model TwoElements
   "Thermal Zone with two elements for exterior and interior walls"
   extends BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.OneElement(AArray={ATotExt,
-        ATotWin,AInt});
+        ATotWin,AInt}, AArraySol={ATotExt,ATotWin,AInt});
 
   parameter Real ratioWinAreaIntWall = 1;
   parameter Modelica.Units.SI.Area AInt "Area of interior walls"

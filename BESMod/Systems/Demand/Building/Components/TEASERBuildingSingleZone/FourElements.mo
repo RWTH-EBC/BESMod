@@ -3,7 +3,7 @@ model FourElements "Thermal Zone with four elements for exterior walls,
   interior walls, floor plate and roof"
   extends
     BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.ThreeElements(      AArray={ATotExt,
-        ATotWin,AInt,AFloor,ARoof});
+        ATotWin,AInt,AFloor,ARoof}, AArraySol={ATotExt,ATotWin,AInt,AFloor,ARoof});
 
   parameter Real RoofAreaAtticFactor = 1;
   parameter Real ratioExtWallAreaTopFloor = 1/nFloorLevels;

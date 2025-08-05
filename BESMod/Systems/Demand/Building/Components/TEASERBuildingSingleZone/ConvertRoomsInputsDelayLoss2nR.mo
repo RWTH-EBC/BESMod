@@ -3,8 +3,8 @@ model ConvertRoomsInputsDelayLoss2nR
   extends PartialConvertRoomInputs;
 
   parameter Real totalHvaluesRoom[nRooms] = fill(Modelica.Constants.inf, nRooms);
-  parameter Real useLossRatio[nRooms] = fill(1, nRooms);
-  parameter Real delayFac[nRooms] = fill(1, nRooms);
+  parameter Real useLossRatio = 1;
+  parameter Real delayFac = 1;
 
   final parameter Real A[nRooms,nOrientations] = transpose(FacATransparentPerRoom);
 
@@ -62,11 +62,11 @@ model ConvertRoomsInputsDelayLoss2nR
         extent={{7,-7},{-7,7}},
         rotation=90,
         origin={83,-3})));
-  Modelica.Blocks.Math.Gain useRate[nRooms](k={useLossRatio[i]*10^(-5*(1 -
-        delayFac[i])) for i in 1:nRooms})
+  Modelica.Blocks.Math.Gain useRate[nRooms](k={useLossRatio*10^(-5*(1 -
+        delayFac)) for i in 1:nRooms})
     annotation (Placement(transformation(extent={{44,8},{64,28}})));
-  Modelica.Blocks.Math.Gain lossRate[nRooms](k={(1 - useLossRatio[i])*10^(-5*(1
-         - delayFac[i])) for i in 1:nRooms})
+  Modelica.Blocks.Math.Gain lossRate[nRooms](k={(1 - useLossRatio)*10^(-5*(1 -
+        delayFac)) for i in 1:nRooms})
     annotation (Placement(transformation(extent={{44,36},{64,56}})));
   Modelica.Blocks.Math.Add3 add3_1[nRooms](
     each k1=-1,

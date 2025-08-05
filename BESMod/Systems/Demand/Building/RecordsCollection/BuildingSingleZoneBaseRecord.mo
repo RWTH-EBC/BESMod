@@ -33,5 +33,8 @@ record BuildingSingleZoneBaseRecord
   parameter Real ratioWinAreaExtWall = 1;
   parameter Real ratioWinAreaIntWall = 1;
   parameter Real FacATransparentPerRoom[nOrientations, nRooms] = fill({1}, nOrientations);
+  parameter Real splitFactorSolRad[5,nOrientations] =  AixLib.ThermalZones.ReducedOrder.RC.BaseClasses.splitFacVal(
+                            5, nOrientations, {sum(AExt),
+        sum(AWin),AInt,AFloor,ARoof}, AExt, AWin);
 
 end BuildingSingleZoneBaseRecord;

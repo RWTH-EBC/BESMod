@@ -2,7 +2,7 @@ within BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone;
 model ThreeElements "Thermal Zone with three elements for exterior walls,
   interior walls and floor plate"
     extends BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.TwoElements(AArray={ATotExt,
-        ATotWin,AInt,AFloor});
+        ATotWin,AInt,AFloor}, AArraySol={ATotExt,ATotWin,AInt,AFloor});
 
   parameter Integer nFloorLevels = 1;
   parameter Modelica.Units.SI.Area AFloor "Area of floor plate"
