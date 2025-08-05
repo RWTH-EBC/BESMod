@@ -1,169 +1,15 @@
 
-Error in model:  BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability 
-Check of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability</a>
-Error: The problem is structurally singular.
-
-It has 17 scalar unknowns and 8 scalar equations.
-  The Real part has 13 unknowns and 6 equations.
-  The Integer part has 0 unknowns and 0 equations.
-  The Boolean part has 4 unknowns and 2 equations.
-  The String part has 0 unknowns and 0 equations.
-Error: The model is not well-posed.
-The model has
-  16+nOrientations
-scalar unknowns and
-  8
-scalar equations.
-Using the given settings of the parameters, the difference could be reduced to
-  9
-Attempting to further localize singularity.
-
-Singularity of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability</a> is at the top level.
-Warning: The model <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability</a> is structurally singular,
-when assuming inputs to be known.
-Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:variableDelay.u">u</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:variableDelay">variableDelay</a> is not connected from the outside.
- It is likely that it should have been connected, and recursive check assumes this.
- The missing connection is a likely cause of errors in the model.
-Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:variableDelay.delayTime">delayTime</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:variableDelay">variableDelay</a> is not connected from the outside.
- It is likely that it should have been connected, and recursive check assumes this.
- The missing connection is a likely cause of errors in the model.
-Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:integrator.u">u</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:integrator">integrator</a> is not connected from the outside.
- It is likely that it should have been connected, and recursive check assumes this.
- The missing connection is a likely cause of errors in the model.
-Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:integrator.reset">reset</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:integrator">integrator</a> is not connected from the outside.
- It is likely that it should have been connected, and recursive check assumes this.
- The missing connection is a likely cause of errors in the model.
-Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator.u">u</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator">limIntegrator</a> is not connected from the outside.
- It is likely that it should have been connected, and recursive check assumes this.
- The missing connection is a likely cause of errors in the model.
-Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator.reset">reset</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator">limIntegrator</a> is not connected from the outside.
- It is likely that it should have been connected, and recursive check assumes this.
- The missing connection is a likely cause of errors in the model.
-Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator.set">set</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator">limIntegrator</a> is not connected from the outside.
- It is likely that it should have been connected, and recursive check assumes this.
- The missing connection is a likely cause of errors in the model.
-Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:der1.u">u</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:der1">der1</a> is not connected from the outside.
- It is likely that it should have been connected, and recursive check assumes this.
- The missing connection is a likely cause of errors in the model.
-Warning: WARNINGS have been issued.
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Systems.Demand.Building.TEASERSingleThermalZone 
-Check of <a href="Modelica://BESMod.Systems.Demand.Building.TEASERSingleThermalZone">BESMod.Systems.Demand.Building.TEASERSingleThermalZone</a>
-Check is assuming: nZones = 1
-Warning: Failed to evaluate and check the size declaration of thermalZone[1].ROM.AIze.
-The definition equation or start value requires a certain size.
-Warning: For dimension 1 the size declaration is thermalZone[1].ROM.nIze, and the required size is 1.
-Error: Failed to expand connect(thermalZone[1].roomsConverter.intGains, thermalZone[1].roomsConverter.sum3[1]  .u);
-
-Found in class <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.ConvertRoomsInputsSimple">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.ConvertRoomsInputsSimple</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/TEASERBuildingSingleZone/ConvertRoomsInputsSimple.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.ConvertRoomsInputsSimple#text:10">11</a>, and used in component <a href="Modelica://BESMod.Systems.Demand.Building.TEASERSingleThermalZone#$thermalZone:roomsConverter">thermalZone[1].roomsConverter</a>.
-Warning: Failed to expand the variable thermalZone[1].roomsConverter.intGains
-Warning: Failed to expand the variable thermalZone[1].roomsConverter.sum3[1].u
-Error: Failed to expand connect(useProBus.TRoomSet, thermalZone[1].TSetRooms);
-
-Found in class <a href="Modelica://BESMod.Systems.Demand.Building.TEASERSingleThermalZone">BESMod.Systems.Demand.Building.TEASERSingleThermalZone</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERSingleThermalZone.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.TEASERSingleThermalZone#text:418">419</a>.
-Error: Detected when expanding useProBus.TRoomSet did not find record element TRoomSet at expansion, probably caused by heterogeneous arrays.
-Warning: Failed to expand the variable thermalZone[1].TSetRooms
-Error: Failed to expand connect(useProBus.intGainRooms, thermalZone[1].intGainRooms);
-
-Found in class <a href="Modelica://BESMod.Systems.Demand.Building.TEASERSingleThermalZone">BESMod.Systems.Demand.Building.TEASERSingleThermalZone</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERSingleThermalZone.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.TEASERSingleThermalZone#text:427">428</a>.
-Error: Detected when expanding useProBus.intGainRooms did not find record element intGainRooms at expansion, probably caused by heterogeneous arrays.
-Warning: Failed to expand the variable thermalZone[1].intGainRooms
-Error: Failed to expand connect(useProBus.natVentRooms, thermalZone[1].natVentRooms);
-
-Found in class <a href="Modelica://BESMod.Systems.Demand.Building.TEASERSingleThermalZone">BESMod.Systems.Demand.Building.TEASERSingleThermalZone</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/TEASERSingleThermalZone.mo at line <a href="Modelica://BESMod.Systems.Demand.Building.TEASERSingleThermalZone#text:435">436</a>.
-Error: Detected when expanding useProBus.natVentRooms did not find record element natVentRooms at expansion, probably caused by heterogeneous arrays.
-Warning: Failed to expand the variable thermalZone[1].natVentRooms
-The model contained invalid connect statements.
-Check aborted.
-Warning: WARNINGS have been issued.
-Error: ERRORS have been issued.
-
-
 Error in model:  BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone 
 Check of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone</a>
 Checking model <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone</a>
-Check is assuming: zoneParam.VAir = 0
-Check is assuming: zoneParam.nOrientations = 1
-Check is assuming: zoneParam.ATransparent = fill(0, 1)
-Check is assuming: zoneParam.ratioWinConRad = 0
-Check is assuming: zoneParam.AExt = fill(0, 1)
-Check is assuming: zoneParam.AWin = fill(0, 1)
-Check is assuming: zoneParam.AInt = 0
-Check is assuming: zoneParam.AFloor = 0
-Check is assuming: zoneParam.ARoof = 0
-Check is assuming: zoneParam.nOrientationsRoof = 1
-Check is assuming: zoneParam.HeaterOn = false
-Check is assuming: zoneParam.CoolerOn = false
-Check is assuming: zoneParam.withIdealThresholds = false
-Error: The problem is structurally singular.
-
-It has 322 scalar unknowns and 321 scalar equations.
-  The Real part has 322 unknowns and 321 equations.
-  The Integer part has 0 unknowns and 0 equations.
-  The Boolean part has 0 unknowns and 0 equations.
-  The String part has 0 unknowns and 0 equations.
-Error: The model is not well-posed.
-The model has
-  315+3*roomsConverter.nRooms+2*roomsConverter.nOrientations+roomsConverter.nZones  +roomsConverter.sum3[1].nin
-scalar unknowns and
-  313+(if heatConvOutsideExtWall.calcMethod == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if heatConvOutsideExtWall.calcMethod == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+(if heatConvOutsideRoof.calcMethod ==   AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  DIN_6946 then 1 else (if heatConvOutsideRoof.calcMethod == AixLib.ThermalZones.HighOrder.Components.Types.CalcMethodConvectiveHeatTransfer.  ASHRAE_Fundamentals then 1 else 2))+3*roomsConverter.nRooms+roomsConverter.nOrientations
-scalar equations.
-Using the given settings of the parameters, the difference could be reduced to
-  1
-Attempting to further localize singularity.
-
-The model component <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone#diagram:ROM">ROM</a> has the same number of unknowns and equations.
-The model component <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone#diagram:constSunblindRoof">constSunblindRoof[1]</a> has the same number of unknowns and equations.
-The model component <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone#diagram:HDifTilWall">HDifTilWall[1]</a> has the same number of unknowns and equations.
-The model component <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone#diagram:HDirTilWall">HDirTilWall[1]</a> has the same number of unknowns and equations.
-The model component <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone#diagram:HDirTilRoof">HDirTilRoof[1]</a> has the same number of unknowns and equations.
-The model component <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone#diagram:HDifTilRoof">HDifTilRoof[1]</a> has the same number of unknowns and equations.
-The model component <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone#diagram:TDryBul">TDryBul</a> has the same number of unknowns and equations.
-The model has the same number of unknowns and equations
-for the given numerical settings of parameters.
-Singularity of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone</a> is in the component <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone#diagram:heatConvOutsideExtWall">heatConvOutsideExtWall</a>, class <a href="Modelica://AixLib.Utilities.HeatTransfer.HeatConvOutside">AixLib.Utilities.HeatTransfer.HeatConvOutside</a>.
-Error: The model <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone</a> component <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone#diagram:heatConvOutsideExtWall">heatConvOutsideExtWall</a> is structurally singular.
-Warning: Some connectors are not connected from the outside:
-<a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone#diagram$heatConvOutsideExtWall:port_a">heatConvOutsideExtWall.port_a</a>
-<a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone#diagram$heatConvOutsideExtWall:port_b">heatConvOutsideExtWall.port_b</a>
-Error: There was an attempt to connect to <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone#diagram:heatConvOutsideExtWall.port_a">port_a</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone#diagram:heatConvOutsideExtWall">heatConvOutsideExtWall</a> connector, as an outside connector - but the other part was disabled. That is a likely cause of a singularity
-Error: There was an attempt to connect to <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone#diagram:heatConvOutsideExtWall.port_b">port_b</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone#diagram:heatConvOutsideExtWall">heatConvOutsideExtWall</a> connector, as an outside connector - but the other part was disabled. That is a likely cause of a singularity
-Checking package <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BaseClasses">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BaseClasses</a>
-Checking partial model <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BaseClasses.PartialBuildingSingleThermalZone">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BaseClasses.PartialBuildingSingleThermalZone</a>
-Check is assuming: zoneParam.VAir = 0
-Check is assuming: zoneParam.nOrientations = 1
-Check is assuming: zoneParam.ATransparent = fill(0, 1)
-Check is assuming: zoneParam.ratioWinConRad = 0
-Check is assuming: zoneParam.AExt = fill(0, 1)
-Check is assuming: zoneParam.AWin = fill(0, 1)
-Check is assuming: zoneParam.AInt = 0
-Check is assuming: zoneParam.AFloor = 0
-Check is assuming: zoneParam.ARoof = 0
-DAE with 1 unknown scalars and 1 scalar equations.
-
-Check of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BaseClasses.PartialBuildingSingleThermalZone">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BaseClasses.PartialBuildingSingleThermalZone</a> successful.
-
-Local classes checked, checking <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BaseClasses">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BaseClasses</a>:
-Check of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BaseClasses">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BaseClasses</a> successful.
-
-Local classes checked, checking <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone</a>:
-Warning: WARNINGS have been issued.
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability 
-Check of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability</a>
-Errors found in: solarGainFactor[i] = IrrSolGainFac*IOrientation[i]^IrrSolGainExp
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/TEASERBuildingSingleZone/PowerLawSolarUsability.mo, line <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability#text:8">9</a>
-Error: Use of undeclared variable: <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability#text:IOrientation">IOrientation</a>
-In class <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability</a>.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/TEASERBuildingSingleZone/PowerLawSolarUsability.mo, line <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability#text">2</a>
-Errors found in: solarGainFactor[i] = IrrSolGainFac*IOrientation[i]^IrrSolGainExp
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/TEASERBuildingSingleZone/PowerLawSolarUsability.mo, line <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability#text:8">9</a>
-The model contained invalid expressions.
-Check aborted.
+Error: Component type specifier BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.ConvertRoomsInptsDelayLossPT1 not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/TEASERBuildingSingleZone/BuildingSingleThermalZone.mo, line <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone#text:425">429</a>
+ Component context: roomsConverter
+  Component declared as BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.ConvertRoomsInptsDelayLossPT1 roomsConverter in <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone</a>
+Error: Component type specifier BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.ConvertRoomsInptsDelayLossPT1 not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/TEASERBuildingSingleZone/BuildingSingleThermalZone.mo, line <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone#text:425">429</a>
+ Component context: roomsConverter
+  Component declared as BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.ConvertRoomsInptsDelayLossPT1 roomsConverter in <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone</a>
 Error: ERRORS have been issued.
 
 
@@ -285,4 +131,81 @@ Check is assuming: mSup_flow_nominal = fill(1e-15, 2)
 The model contained invalid expressions.
 Check of class aborted.
 Warning: WARNINGS have been issued.
+
+
+Error in model:  BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability 
+Check of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability</a>
+Error: The problem is structurally singular.
+
+It has 17 scalar unknowns and 8 scalar equations.
+  The Real part has 13 unknowns and 6 equations.
+  The Integer part has 0 unknowns and 0 equations.
+  The Boolean part has 4 unknowns and 2 equations.
+  The String part has 0 unknowns and 0 equations.
+Error: The model is not well-posed.
+The model has
+  16+nOrientations
+scalar unknowns and
+  8
+scalar equations.
+Using the given settings of the parameters, the difference could be reduced to
+  9
+Attempting to further localize singularity.
+
+Singularity of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability</a> is at the top level.
+Warning: The model <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability</a> is structurally singular,
+when assuming inputs to be known.
+Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:variableDelay.u">u</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:variableDelay">variableDelay</a> is not connected from the outside.
+ It is likely that it should have been connected, and recursive check assumes this.
+ The missing connection is a likely cause of errors in the model.
+Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:variableDelay.delayTime">delayTime</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:variableDelay">variableDelay</a> is not connected from the outside.
+ It is likely that it should have been connected, and recursive check assumes this.
+ The missing connection is a likely cause of errors in the model.
+Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:integrator.u">u</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:integrator">integrator</a> is not connected from the outside.
+ It is likely that it should have been connected, and recursive check assumes this.
+ The missing connection is a likely cause of errors in the model.
+Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:integrator.reset">reset</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:integrator">integrator</a> is not connected from the outside.
+ It is likely that it should have been connected, and recursive check assumes this.
+ The missing connection is a likely cause of errors in the model.
+Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator.u">u</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator">limIntegrator</a> is not connected from the outside.
+ It is likely that it should have been connected, and recursive check assumes this.
+ The missing connection is a likely cause of errors in the model.
+Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator.reset">reset</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator">limIntegrator</a> is not connected from the outside.
+ It is likely that it should have been connected, and recursive check assumes this.
+ The missing connection is a likely cause of errors in the model.
+Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator.set">set</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator">limIntegrator</a> is not connected from the outside.
+ It is likely that it should have been connected, and recursive check assumes this.
+ The missing connection is a likely cause of errors in the model.
+Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:der1.u">u</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:der1">der1</a> is not connected from the outside.
+ It is likely that it should have been connected, and recursive check assumes this.
+ The missing connection is a likely cause of errors in the model.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Demand.Building.TEASERSingleThermalZone 
+Check of <a href="Modelica://BESMod.Systems.Demand.Building.TEASERSingleThermalZone">BESMod.Systems.Demand.Building.TEASERSingleThermalZone</a>
+Error: Component type specifier BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.ConvertRoomsInptsDelayLossPT1 not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/TEASERBuildingSingleZone/BuildingSingleThermalZone.mo, line <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone#text:425">429</a>
+ Component context: thermalZone.roomsConverter
+  Component declared as BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.ConvertRoomsInptsDelayLossPT1 roomsConverter in <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone</a>
+Error: Component type specifier BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.ConvertRoomsInptsDelayLossPT1 not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/TEASERBuildingSingleZone/BuildingSingleThermalZone.mo, line <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone#text:425">429</a>
+ Component context: thermalZone.roomsConverter
+  Component declared as BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.ConvertRoomsInptsDelayLossPT1 roomsConverter in <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability 
+Check of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability</a>
+Errors found in: solarGainFactor[i] = IrrSolGainFac*IOrientation[i]^IrrSolGainExp
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/TEASERBuildingSingleZone/PowerLawSolarUsability.mo, line <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability#text:8">9</a>
+Error: Use of undeclared variable: <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability#text:IOrientation">IOrientation</a>
+In class <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/TEASERBuildingSingleZone/PowerLawSolarUsability.mo, line <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability#text">2</a>
+Errors found in: solarGainFactor[i] = IrrSolGainFac*IOrientation[i]^IrrSolGainExp
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/TEASERBuildingSingleZone/PowerLawSolarUsability.mo, line <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability#text:8">9</a>
+The model contained invalid expressions.
+Check aborted.
+Error: ERRORS have been issued.
 
