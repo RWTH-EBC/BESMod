@@ -1,16 +1,20 @@
 
-Error in model:  BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone 
-Check of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone</a>
-Checking model <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone</a>
-Error: Component type specifier BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.ConvertRoomsInptsDelayLossPT1 not found
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/TEASERBuildingSingleZone/BuildingSingleThermalZone.mo, line <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone#text:425">429</a>
- Component context: roomsConverter
-  Component declared as BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.ConvertRoomsInptsDelayLossPT1 roomsConverter in <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone</a>
-Error: Component type specifier BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.ConvertRoomsInptsDelayLossPT1 not found
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/TEASERBuildingSingleZone/BuildingSingleThermalZone.mo, line <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone#text:425">429</a>
- Component context: roomsConverter
-  Component declared as BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.ConvertRoomsInptsDelayLossPT1 roomsConverter in <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone</a>
-Error: ERRORS have been issued.
+Error in model:  BESMod.Systems.Demand.Building.TEASERSingleThermalZone 
+Check of <a href="Modelica://BESMod.Systems.Demand.Building.TEASERSingleThermalZone">BESMod.Systems.Demand.Building.TEASERSingleThermalZone</a>
+Check is assuming: nZones = 1
+Warning: Failed to evaluate and check the size declaration of thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is thermalZone[1].ROM.nIze, and the required size is 1.
+Warning: Automatically introducing 'each' in definition equation for variable:
+  thermalZone[1].roomsConverter.add[1].k1
+Additional warnings of this type will not be written.
+Warning: Incompatible sizes for variable and its definition equation;
+  thermalZone[1].ROM.splitFactorSolRad = thermalZone[1].zoneParam.splitFactorSolRad
+They have for dimension 1 the sizes 6 and 5.
+Failure to expand could be due to unknown sizes, which is not an error 
+if the sizes are given when using the component.
+Check of class aborted.
+Warning: WARNINGS have been issued.
 
 
 Error in model:  BESMod.Systems.Hydraulical.Distribution.CombiStorage 
@@ -180,19 +184,6 @@ Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Co
  It is likely that it should have been connected, and recursive check assumes this.
  The missing connection is a likely cause of errors in the model.
 Warning: WARNINGS have been issued.
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Systems.Demand.Building.TEASERSingleThermalZone 
-Check of <a href="Modelica://BESMod.Systems.Demand.Building.TEASERSingleThermalZone">BESMod.Systems.Demand.Building.TEASERSingleThermalZone</a>
-Error: Component type specifier BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.ConvertRoomsInptsDelayLossPT1 not found
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/TEASERBuildingSingleZone/BuildingSingleThermalZone.mo, line <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone#text:425">429</a>
- Component context: thermalZone.roomsConverter
-  Component declared as BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.ConvertRoomsInptsDelayLossPT1 roomsConverter in <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone</a>
-Error: Component type specifier BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.ConvertRoomsInptsDelayLossPT1 not found
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/TEASERBuildingSingleZone/BuildingSingleThermalZone.mo, line <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone#text:425">429</a>
- Component context: thermalZone.roomsConverter
-  Component declared as BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.ConvertRoomsInptsDelayLossPT1 roomsConverter in <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.BuildingSingleThermalZone.BuildingSingleThermalZone</a>
 Error: ERRORS have been issued.
 
 
