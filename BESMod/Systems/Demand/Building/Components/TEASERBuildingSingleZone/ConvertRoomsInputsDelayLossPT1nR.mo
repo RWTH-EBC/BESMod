@@ -4,7 +4,7 @@ model ConvertRoomsInputsDelayLossPT1nR
 
   parameter Real totalHvaluesRoom[nRooms] = fill(Modelica.Constants.inf, nRooms);
   parameter Real useLossRatio[nRooms] = fill(1, nRooms);
-  parameter Modelica.Units.SI.Time timeConstUse[nRooms] = fill(60, nRooms);
+  parameter Modelica.Units.SI.Time timeConstUse[nRooms] = fill(300, nRooms);
 
   final parameter Real A[nRooms,nOrientations] = transpose(FacATransparentPerRoom);
 

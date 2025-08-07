@@ -2,7 +2,7 @@ within BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone;
 model ConvertRoomsInputsDelayLossPT1
   extends PartialConvertRoomInputs;
 
-  parameter Real totalHvaluesRoom[nRooms] = fill(100, nRooms);
+  parameter Real totalHvaluesRoom[nRooms] = fill(Modelica.Constants.inf, nRooms);
   parameter Real useLossRatio = 1;
   parameter Modelica.Units.SI.Time timeConstUse = 300;
 

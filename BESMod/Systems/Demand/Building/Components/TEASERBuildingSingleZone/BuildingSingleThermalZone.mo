@@ -426,7 +426,7 @@ package BuildingSingleThermalZone "Package for single zone thermal zone models"
       surfaceType=surfaceType)
       annotation (Placement(transformation(extent={{0,78},{12,90}})));
 
-    replaceable BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.ConvertRoomsInptsDelayLossPT1 roomsConverter
+    replaceable BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.ConvertRoomsInputsDelayLossPT1 roomsConverter
       constrainedby
       BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PartialConvertRoomInputs(
         nOrientations=zoneParam.nOrientations,
