@@ -27,6 +27,7 @@ partial model PartialHeatPumpAndGasBoiler "Partial heat pump and boiler"
     final transferHeat=parTemSen.transferHeat,
     final TAmb=parTemSen.TAmb,
     final tauHeaTra=parTemSen.tauHeaTra,
+    dp_nominal=0,
     final rho_default=rho,
     final p_start=p_start,
     final T_start=T_start,

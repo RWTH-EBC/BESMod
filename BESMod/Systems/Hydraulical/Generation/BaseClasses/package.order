@@ -1,4 +1,5 @@
 ModularPropagable
 PartialGeneration
+PartialAggregatedPressureLoss
 PartialHeatPump
 PartialHeatPumpAndGasBoiler

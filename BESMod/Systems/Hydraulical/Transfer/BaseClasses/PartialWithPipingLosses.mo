@@ -27,8 +27,9 @@ partial model PartialWithPipingLosses
   parameter Modelica.Units.SI.Velocity vSup_design[nParallelSup] = fill(max(v_design), nParallelSup)
     "Design velocity of main supply lines"
     annotation(Dialog(tab="Pressure losses"));
-  Components.HydraulicDiameterParameterOnly res[nParallelDem](
+  IBPSA.Fluid.FixedResistances.HydraulicDiameter res[nParallelDem](
     redeclare package Medium = Medium,
+    each final show_T=show_T,
     final m_flow_nominal=mOld_flow_design*PercentMflowWorstPressureDropPath,
     each final resCoe=0,
     final dh=dPip_design,
@@ -36,7 +37,9 @@ partial model PartialWithPipingLosses
     each final ReC=ReC,
     final v_nominal=v_design,
     each final roughness=roughness,
-    each final fac=facPip)      if withPressureLossPerZone
+    each final fac=facPip,
+    each disableComputeFlowResistance=true)
+                           if withPressureLossPerZone
     "Hydraulic resistance of supply and radiator to set dp allways to m_flow_nominal"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -45,6 +48,7 @@ partial model PartialWithPipingLosses
   IBPSA.Fluid.FixedResistances.HydraulicDiameter resMaiLin[nParallelSup](
     redeclare package Medium = Medium,
     final m_flow_nominal=mSupOld_flow_design,
+    each final show_T=show_T,
     final dh=sqrt(4*mSupOld_flow_design ./ rho ./ vSup_design ./ Modelica.Constants.pi),
     final length=lenDisToTra,
     each final ReC=ReC,
@@ -57,7 +61,7 @@ partial model PartialWithPipingLosses
         origin={-70,40})));
 protected
   parameter Modelica.Units.SI.PressureDifference dpPipSca_design[nParallelDem]=
-    res.dpFixed_nominal .* (m_flow_design ./ mOld_flow_design).^2
+    res.dp_nominal .* (m_flow_design ./ mOld_flow_design).^2
     "Pipe pressure losses scaled to design flow rate of radiators";
   parameter Modelica.Units.SI.PressureDifference dpPipSupSca_design[nParallelSup]=
     resMaiLin.dp_nominal .* (mSup_flow_design ./ mSupOld_flow_design).^2

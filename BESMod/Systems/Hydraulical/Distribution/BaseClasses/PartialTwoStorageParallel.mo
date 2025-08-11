@@ -132,6 +132,7 @@ partial model PartialTwoStorageParallel
     upToDownHC2=true,
     final TStartWall=T_start,
     final TStartIns=T_start,
+    disableComputeFlowResistance=true,
     nLowerPortSupply=1,
     nUpperPortSupply=parStoBuf.nLayer,
     nLowerPortDemand=1,
@@ -141,13 +142,11 @@ partial model PartialTwoStorageParallel
     nHC1Up=parStoBuf.nLayer,
     nHC1Low=1,
     nHR=parStoBuf.nLayerHR,
-    redeclare model HeatTransfer =
-        AixLib.Fluid.Storage.BaseClasses.HeatTransferBuoyancyWetter,
+    redeclare replaceable model HeatTransfer =
+        AixLib.Fluid.Storage.BaseClasses.HeatTransferOnlyConduction,
     final allowFlowReversal_layers=allowFlowReversal,
     final allowFlowReversal_HC1=allowFlowReversal,
-    final allowFlowReversal_HC2=allowFlowReversal,
-    final computePressureLossInternally=false,
-    final fac=1)                                   "Buffer storage"
+    final allowFlowReversal_HC2=allowFlowReversal) "Buffer storage"
     annotation (Placement(transformation(extent={{-50,0},{-18,40}})));
 
   AixLib.Fluid.Storage.StorageDetailed stoDHW(
@@ -189,6 +188,7 @@ partial model PartialTwoStorageParallel
     final upToDownHC2=true,
     final TStartWall=T_start,
     final TStartIns=T_start,
+    disableComputeFlowResistance=true,
     nLowerPortSupply=1,
     nUpperPortSupply=parStoDHW.nLayer,
     nLowerPortDemand=1,
@@ -198,13 +198,11 @@ partial model PartialTwoStorageParallel
     nHC1Up=parStoDHW.nLayer,
     nHC1Low=1,
     nHR=parStoDHW.nLayerHR,
-    redeclare model HeatTransfer =
-        AixLib.Fluid.Storage.BaseClasses.HeatTransferBuoyancyWetter,
+    redeclare replaceable model HeatTransfer =
+        AixLib.Fluid.Storage.BaseClasses.HeatTransferOnlyConduction,
     final allowFlowReversal_layers=allowFlowReversal,
     final allowFlowReversal_HC1=allowFlowReversal,
-    final allowFlowReversal_HC2=allowFlowReversal,
-    final computePressureLossInternally=false,
-    final fac=1)                                              "DHW storage"
+    final allowFlowReversal_HC2=allowFlowReversal)            "DHW storage"
     annotation (Placement(transformation(extent={{-50,-70},{-18,-30}})));
 
   BESMod.Utilities.KPIs.EnergyKPICalculator eneKPICalBuf(use_inpCon=false, y=fixTemBuf.port.Q_flow)

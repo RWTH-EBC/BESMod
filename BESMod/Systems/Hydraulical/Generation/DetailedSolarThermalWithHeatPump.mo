@@ -3,7 +3,7 @@ model DetailedSolarThermalWithHeatPump
   "Detailed solar thermal model with monoenergetic heat pump"
   extends HeatPumpAndElectricHeater(
     m_flow_design={Q_flow_design[1]*f_design[1]/dTTra_design[1]/4184,solCol.m_flow_nominal},
-    dp_design={heatPump.dpCon_nominal + dpEleHea_nominal + resGen.dp_nominal, solCol.dp_nominal +resSolThe.dp_nominal},
+    dp_design={resGenApp.dp_nominal, solCol.dp_nominal +resSolThe.dp_nominal},
     m_flow_nominal={Q_flow_nominal[1]*f_design[1]/dTTra_nominal[1]/4184,
         solarThermalParas.m_flow_nominal},
     redeclare package Medium = IBPSA.Media.Water,

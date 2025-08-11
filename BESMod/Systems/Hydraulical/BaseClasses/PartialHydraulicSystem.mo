@@ -105,11 +105,14 @@ partial model PartialHydraulicSystem
     final use_openModelica=use_openModelica)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-132,54},
             {154,122}})));
-  replaceable BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution distribution(
+  replaceable
+    BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution
+    distribution(
     dTTra_nominal=fill(1, distribution.nParallelDem),
     dTTraDHW_nominal=1,
     designType=BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.NoStorage,
-    QDHWStoLoss_flow=0, QDHWStoLoss_flow_estimate=0,
+    QDHWStoLoss_flow=0,
+    QDHWStoLoss_flow_estimate=0,
     VStoDHW=0) constrainedby Distribution.BaseClasses.PartialDistribution(
     redeclare package Medium = Medium,
     redeclare final package MediumDHW = MediumDHW,
@@ -148,9 +151,9 @@ partial model PartialHydraulicSystem
     final dpSup_nominal=generation.dp_nominal,
     final dpSupOld_design=generation.dpOld_design,
     final dpDem_nominal=transfer.dpSup_nominal,
-    final dpDemOld_design=transfer.dpSupOld_design)
-                                             annotation (choicesAllMatching=true,
-      Placement(transformation(extent={{-12,-104},{90,28}})));
+    final dpDemOld_design=transfer.dpSupOld_design) annotation (
+      choicesAllMatching=true, Placement(transformation(extent={{-12,-104},{90,
+            28}})));
 
   replaceable BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialTransfer
     transfer(
