@@ -25,7 +25,7 @@ equation
   radOnTiltedSurf.HDir = HDirTil.H;
   radOnTiltedSurf.HDif = HDifTil.HSkyDifTil;
   radOnTiltedSurf.HGrd = HDifTil.HGroDifTil;
-  radOnTiltedSurf.AOI = HDirTil.inc;
+  radOnTiltedSurf.incAng = HDirTil.inc;
   connect(HDifTil.weaBus, weaBus) annotation (Line(
       points={{-20,30},{-58,30},{-58,0},{-102,0}},
       color={255,204,51},

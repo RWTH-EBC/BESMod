@@ -31,7 +31,6 @@ partial model PartialWithPipingLosses
     redeclare package Medium = Medium,
     each final show_T=show_T,
     final m_flow_nominal=mOld_flow_design*PercentMflowWorstPressureDropPath,
-    each final resCoe=0,
     final dh=dPip_design,
     final length=lenDisPerUnit,
     each final ReC=ReC,
