@@ -1,18 +1,4 @@
 
-Error in model:  BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability 
-Check of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability</a>
-Errors found in: solarGainFactor[i] = IrrSolGainFac*IOrientation[i]^IrrSolGainExp
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/TEASERBuildingSingleZone/PowerLawSolarUsability.mo, line <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability#text:8">9</a>
-Error: Use of undeclared variable: <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability#text:IOrientation">IOrientation</a>
-In class <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability</a>.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/TEASERBuildingSingleZone/PowerLawSolarUsability.mo, line <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability#text">2</a>
-Errors found in: solarGainFactor[i] = IrrSolGainFac*IOrientation[i]^IrrSolGainExp
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/TEASERBuildingSingleZone/PowerLawSolarUsability.mo, line <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability#text:8">9</a>
-The model contained invalid expressions.
-Check aborted.
-Error: ERRORS have been issued.
-
-
 Error in model:  BESMod.Systems.Hydraulical.Distribution.CombiStorage 
 Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.CombiStorage">BESMod.Systems.Hydraulical.Distribution.CombiStorage</a>
 Component type specifier BaseProperties is a partial type
@@ -199,6 +185,20 @@ Failure to expand could be due to unknown sizes, which is not an error
 if the sizes are given when using the component.
 Check of class aborted.
 Warning: WARNINGS have been issued.
+
+
+Error in model:  BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability 
+Check of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability</a>
+Errors found in: solarGainFactor[i] = IrrSolGainFac*IOrientation[i]^IrrSolGainExp
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/TEASERBuildingSingleZone/PowerLawSolarUsability.mo, line <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability#text:8">9</a>
+Error: Use of undeclared variable: <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability#text:IOrientation">IOrientation</a>
+In class <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/TEASERBuildingSingleZone/PowerLawSolarUsability.mo, line <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability#text">2</a>
+Errors found in: solarGainFactor[i] = IrrSolGainFac*IOrientation[i]^IrrSolGainExp
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/TEASERBuildingSingleZone/PowerLawSolarUsability.mo, line <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability#text:8">9</a>
+The model contained invalid expressions.
+Check aborted.
+Error: ERRORS have been issued.
 
 
 Error in model:  BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased_SingleZoneBuilding 
