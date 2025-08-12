@@ -48,7 +48,7 @@ model ElectricalHeater "Only heat using an electric heater"
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-30,70})));
-  BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter
+  BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly
                                             resGen(
     redeclare final package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
