@@ -80,7 +80,8 @@ partial model PartialThreeWayValve "Partial model to later extent"
     final addPowerToMedium=parPumGen.addPowerToMedium,
     final use_riseTime=parPumGen.use_riseTime,
     final riseTime=parPumGen.riseTime,
-    final y_start=1) "Pump for supply system (generation)" annotation (
+    final y_start=1,
+    final dp_start=pumGen.dp_nominal) "Pump for supply system (generation)" annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
