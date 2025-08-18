@@ -34,6 +34,8 @@ model TimeConstantEstimationControl
     annotation (Placement(transformation(extent={{-220,-60},{-200,-40}})));
   Modelica.Blocks.Sources.BooleanConstant booleanConstant(k=true)
     annotation (Placement(transformation(extent={{-20,20},{0,40}})));
+  Modelica.Blocks.Sources.Constant const1(k=1)
+    annotation (Placement(transformation(extent={{-102,-64},{-82,-44}})));
 equation
   connect(supTSet.TOda, weaBus.TDryBul) annotation (Line(points={{-162,30},{-236.895,
           30},{-236.895,2.11}}, color={0,0,127}), Text(
@@ -90,4 +92,10 @@ equation
           {18,2},{49.2,2},{49.2,18.4}}, color={255,0,255}));
   connect(PIDCtrl.TSet, supTSet.TSet) annotation (Line(points={{38.4,50.8},{-112,50.8},
           {-112,30},{-139,30}}, color={0,0,127}));
+  connect(const1.y, sigBusDistr.uThrWayVal) annotation (Line(points={{-81,-54},
+          {1,-54},{1,-100}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
 end TimeConstantEstimationControl;
