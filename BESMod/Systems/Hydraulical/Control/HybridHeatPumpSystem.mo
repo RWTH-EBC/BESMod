@@ -114,8 +114,8 @@ equation
   connect(boiInHybSys.secGen, secGenOn.y) annotation (Line(points={{-31.8,-6},{-62,
           -6},{-62,30},{-69,30}}, color={255,0,255}));
   connect(boiInHybSys.secGenOnDueToOpeEnv, setAndMeaSelPri.bivOn) annotation (
-      Line(points={{-32,-19},{-48,-19},{-48,50},{64,50},{64,72},{61,72}}, color
-        ={255,0,255}));
+      Line(points={{-32,-19},{-48,-19},{-48,50},{64,50},{64,72},{61,72}}, color=
+         {255,0,255}));
   connect(noOpeEnvLimCtrl.y, boiInHybSys.secGenOnDueToOpeEnv) annotation (Line(
         points={{19,50},{-48,50},{-48,-19},{-32,-19}}, color={255,0,255}));
   connect(secGenOn.y, sigBusDistr.pumBoiOn) annotation (Line(points={{-69,30},{

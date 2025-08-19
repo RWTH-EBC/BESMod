@@ -1,5 +1,5 @@
 within BESMod.Systems.Hydraulical.Control.BaseClasses;
-partial model PartialHeatPumpSystemController
+partial model PartialHeatPumpSystemControllerSingleZoneBui
   "Partial model with replaceable blocks for rule based control of heat pump systems"
   extends
     BESMod.Systems.Hydraulical.Control.BaseClasses.PartialThermostaticValveControl;
@@ -41,13 +41,14 @@ partial model PartialHeatPumpSystemController
     "Hysteresis for building" annotation (Dialog(group="Building control"),
     choicesAllMatching=true);
   replaceable model BuildingSupplySetTemperature =
-      BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.IdealHeatingCurve
+      BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.IdealHeatingCurveHOMtoROM
       constrainedby
-    BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.BaseClasses.PartialSetpoint(
+    BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.IdealHeatingCurveHOMtoROM(
         final TSup_nominal=buiAndDHWCtr.TSup_nominal,
         final TRet_nominal=buiAndDHWCtr.TRet_nominal,
         final TOda_nominal=buiAndDHWCtr.TOda_nominal,
         final nZones=buiAndDHWCtr.nZones,
+        final nRooms=buiAndDHWCtr.nRooms,
         final nHeaTra=buiAndDHWCtr.nHeaTra)
       "Supply temperature setpoint model, e.g. heating curve"
     annotation (choicesAllMatching=true, Dialog(group="Building control"));
@@ -135,9 +136,10 @@ partial model PartialHeatPumpSystemController
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-150,-10})));
-  Components.BuildingAndDHWControl buiAndDHWCtr(
+  Components.SingleZoneBuildingAndDHWControl buiAndDHWCtr(
     final use_dhw=use_dhw,
     final nZones=parTra.nParallelDem,
+    nRooms=10,
     final TSup_nominal=max(parTra.TTra_nominal),
     final TRet_nominal=max(parTra.TTra_nominal .- parTra.dTTra_nominal),
     final TOda_nominal=parGen.TOda_nominal,
@@ -361,6 +363,14 @@ equation
   connect(conPumGenAlwOn.y, anyGenDevIsOn.u[3]) annotation (Line(points={{-181,
           -12},{-166,-12},{-166,6},{-152,6},{-152,0},{-147.667,0}},
                                                                color={255,0,255}));
+  connect(useProBus.TRoomSet, buiAndDHWCtr.TRoomSet) annotation (Line(
+      points={{-119,103},{-119,14},{-204,14},{-204,26}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%first",
+      index=-1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
                                                               annotation (Diagram(graphics={
         Rectangle(
           extent={{4,100},{136,36}},
@@ -380,4 +390,4 @@ equation
           lineColor={162,29,33},
           lineThickness=1,
           textString="Auxilliary Heater Control")}));
-end PartialHeatPumpSystemController;
+end PartialHeatPumpSystemControllerSingleZoneBui;

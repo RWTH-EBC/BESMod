@@ -1,6 +1,8 @@
 within BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.BaseClasses;
 partial model PartialSetpoint
   parameter Integer nZones "Number of heated zones";
+  parameter Boolean useRoomSetT=false;
+  parameter Integer nRooms=nZones "Number of Room set points";
   parameter Modelica.Units.SI.Temperature TSup_nominal
     "Nominal supply temperature";
   parameter Modelica.Units.SI.Temperature TRet_nominal
@@ -18,6 +20,10 @@ partial model PartialSetpoint
   Modelica.Blocks.Interfaces.RealInput TZoneSet[nZones](each final unit="K",
       each final displayUnit="degC") "Zones set temperatures"
     annotation (Placement(transformation(extent={{-140,-100},{-100,-60}})));
+  Modelica.Blocks.Interfaces.RealInput TRoomSet[nRooms](each final unit="K",
+      each final displayUnit="degC") if useRoomSetT
+                                     "Room set temperatures"
+    annotation (Placement(transformation(extent={{-140,-60},{-100,-20}})));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
                              Rectangle(
           extent={{-100,100},{100,-100}},

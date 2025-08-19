@@ -10,3 +10,4 @@ RelativeSpeedController
 SummerMode
 ThermostaticValveController
 BaseClasses
+SingleZoneBuildingAndDHWControl

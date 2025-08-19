@@ -1,4 +1,4 @@
-within BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers;
+﻿within BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers;
 model DegreeMinuteController
   "Based on degree minute approach"
   extends BaseClasses.PartialOnOffController;

@@ -1,7 +1,8 @@
 within BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints;
-model IdealHeatingCurve "Ideal linear heating curve"
-  extends BaseClasses.PartialSetpoint;
-  Modelica.Blocks.Math.MinMax maxTZoneSet(final nu=nZones)
+model IdealHeatingCurveHOMtoROM "Ideal linear heating curve based on Room set points"
+  extends BaseClasses.PartialSetpoint(useRoomSetT=true);
+
+  Modelica.Blocks.Math.MinMax maxTZoneSet(nu=nRooms)
     annotation (Placement(transformation(extent={{-60,-80},{-40,-60}})));
   parameter Modelica.Units.SI.TemperatureDifference dTAddCon=0
     "Constant offset of ideal heating curve";
@@ -20,6 +21,6 @@ equation
     // No heating required.
     TSet = maxTZoneSet.yMax + dTAddCon;
   end if;
-  connect(maxTZoneSet.u, TZoneSet) annotation (Line(points={{-60,-70},{-84,-70},{-84,
-          -80},{-120,-80}}, color={0,0,127}));
-end IdealHeatingCurve;
+  connect(TRoomSet, maxTZoneSet.u) annotation (Line(points={{-120,-40},{-66,-40},
+          {-66,-70},{-60,-70}}, color={0,0,127}));
+end IdealHeatingCurveHOMtoROM;

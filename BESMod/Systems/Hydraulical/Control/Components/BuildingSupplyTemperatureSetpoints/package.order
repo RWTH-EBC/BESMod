@@ -2,3 +2,4 @@ Constant
 IdealHeatingCurve
 SingleZonePID
 BaseClasses
+IdealHeatingCurveHOMtoROM
