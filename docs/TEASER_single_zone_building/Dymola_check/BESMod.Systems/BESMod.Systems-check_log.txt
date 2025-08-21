@@ -1,54 +1,4 @@
 
-Error in model:  BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability 
-Check of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability</a>
-Error: The problem is structurally singular.
-
-It has 17 scalar unknowns and 8 scalar equations.
-  The Real part has 13 unknowns and 6 equations.
-  The Integer part has 0 unknowns and 0 equations.
-  The Boolean part has 4 unknowns and 2 equations.
-  The String part has 0 unknowns and 0 equations.
-Error: The model is not well-posed.
-The model has
-  16+nOrientations
-scalar unknowns and
-  8
-scalar equations.
-Using the given settings of the parameters, the difference could be reduced to
-  9
-Attempting to further localize singularity.
-
-Singularity of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability</a> is at the top level.
-Warning: The model <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability</a> is structurally singular,
-when assuming inputs to be known.
-Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:variableDelay.u">u</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:variableDelay">variableDelay</a> is not connected from the outside.
- It is likely that it should have been connected, and recursive check assumes this.
- The missing connection is a likely cause of errors in the model.
-Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:variableDelay.delayTime">delayTime</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:variableDelay">variableDelay</a> is not connected from the outside.
- It is likely that it should have been connected, and recursive check assumes this.
- The missing connection is a likely cause of errors in the model.
-Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:integrator.u">u</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:integrator">integrator</a> is not connected from the outside.
- It is likely that it should have been connected, and recursive check assumes this.
- The missing connection is a likely cause of errors in the model.
-Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:integrator.reset">reset</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:integrator">integrator</a> is not connected from the outside.
- It is likely that it should have been connected, and recursive check assumes this.
- The missing connection is a likely cause of errors in the model.
-Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator.u">u</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator">limIntegrator</a> is not connected from the outside.
- It is likely that it should have been connected, and recursive check assumes this.
- The missing connection is a likely cause of errors in the model.
-Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator.reset">reset</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator">limIntegrator</a> is not connected from the outside.
- It is likely that it should have been connected, and recursive check assumes this.
- The missing connection is a likely cause of errors in the model.
-Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator.set">set</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator">limIntegrator</a> is not connected from the outside.
- It is likely that it should have been connected, and recursive check assumes this.
- The missing connection is a likely cause of errors in the model.
-Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:der1.u">u</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:der1">der1</a> is not connected from the outside.
- It is likely that it should have been connected, and recursive check assumes this.
- The missing connection is a likely cause of errors in the model.
-Warning: WARNINGS have been issued.
-Error: ERRORS have been issued.
-
-
 Error in model:  BESMod.Systems.Hydraulical.Distribution.CombiStorage 
 Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.CombiStorage">BESMod.Systems.Hydraulical.Distribution.CombiStorage</a>
 Component type specifier BaseProperties is a partial type
@@ -212,5 +162,55 @@ Errors found in: solarGainFactor[i] = IrrSolGainFac*IOrientation[i]^IrrSolGainEx
   File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/TEASERBuildingSingleZone/PowerLawSolarUsability.mo, line <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability#text:8">9</a>
 The model contained invalid expressions.
 Check aborted.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability 
+Check of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability</a>
+Error: The problem is structurally singular.
+
+It has 17 scalar unknowns and 8 scalar equations.
+  The Real part has 13 unknowns and 6 equations.
+  The Integer part has 0 unknowns and 0 equations.
+  The Boolean part has 4 unknowns and 2 equations.
+  The String part has 0 unknowns and 0 equations.
+Error: The model is not well-posed.
+The model has
+  16+nOrientations
+scalar unknowns and
+  8
+scalar equations.
+Using the given settings of the parameters, the difference could be reduced to
+  9
+Attempting to further localize singularity.
+
+Singularity of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability</a> is at the top level.
+Warning: The model <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability</a> is structurally singular,
+when assuming inputs to be known.
+Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:variableDelay.u">u</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:variableDelay">variableDelay</a> is not connected from the outside.
+ It is likely that it should have been connected, and recursive check assumes this.
+ The missing connection is a likely cause of errors in the model.
+Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:variableDelay.delayTime">delayTime</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:variableDelay">variableDelay</a> is not connected from the outside.
+ It is likely that it should have been connected, and recursive check assumes this.
+ The missing connection is a likely cause of errors in the model.
+Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:integrator.u">u</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:integrator">integrator</a> is not connected from the outside.
+ It is likely that it should have been connected, and recursive check assumes this.
+ The missing connection is a likely cause of errors in the model.
+Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:integrator.reset">reset</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:integrator">integrator</a> is not connected from the outside.
+ It is likely that it should have been connected, and recursive check assumes this.
+ The missing connection is a likely cause of errors in the model.
+Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator.u">u</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator">limIntegrator</a> is not connected from the outside.
+ It is likely that it should have been connected, and recursive check assumes this.
+ The missing connection is a likely cause of errors in the model.
+Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator.reset">reset</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator">limIntegrator</a> is not connected from the outside.
+ It is likely that it should have been connected, and recursive check assumes this.
+ The missing connection is a likely cause of errors in the model.
+Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator.set">set</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator">limIntegrator</a> is not connected from the outside.
+ It is likely that it should have been connected, and recursive check assumes this.
+ The missing connection is a likely cause of errors in the model.
+Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:der1.u">u</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:der1">der1</a> is not connected from the outside.
+ It is likely that it should have been connected, and recursive check assumes this.
+ The missing connection is a likely cause of errors in the model.
+Warning: WARNINGS have been issued.
 Error: ERRORS have been issued.
 
