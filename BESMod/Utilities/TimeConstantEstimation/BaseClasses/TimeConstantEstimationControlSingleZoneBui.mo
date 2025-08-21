@@ -11,7 +11,8 @@ model TimeConstantEstimationControlSingleZoneBui
         transformation(extent={{142,84},{162,104}})));
   replaceable
     BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.IdealHeatingCurveHOMtoROM
-    supTSet(nRooms=10)
+    supTSet(useRoomSetT=true,
+            nRooms=10)
             constrainedby
     Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.BaseClasses.PartialSetpoint(
     final nZones=parTra.nParallelDem,

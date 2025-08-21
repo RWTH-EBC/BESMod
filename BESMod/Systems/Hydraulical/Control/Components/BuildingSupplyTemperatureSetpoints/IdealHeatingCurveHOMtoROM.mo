@@ -3,7 +3,7 @@ model IdealHeatingCurveHOMtoROM "Ideal linear heating curve based on Room set po
   extends BaseClasses.PartialSetpoint;
 
   parameter Boolean useRoomSetT=false;
-  parameter Integer nRooms=nZones "Number of Room set points";
+  parameter Integer nRooms=10     "Number of Room set points";
 
   Modelica.Blocks.Interfaces.RealInput TRoomSet[nRooms](each final unit="K",
       each final displayUnit="degC") "Room set temperatures"
