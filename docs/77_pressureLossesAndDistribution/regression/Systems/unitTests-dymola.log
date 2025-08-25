@@ -16,7 +16,6 @@ Regression tests are only run for the following package:
            Absolute error = 9.041e+02 for generation.dp_design[1]
 *** Error: Systems/Hydraulical/Distribution/Tests/TwoStoragesBoilerWithDHW.mos uses distribution.pumBoi.m_flow which does not exist in BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.mat.
 
-Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Systems_Hydraulical_Distribution_Tests_TwoStoDetailedDirectLoading.txt.
 *** Error: BESMod_Systems_Hydraulical_Transfer_Tests_TestPressureBasedSystem.txt: Errors during result verification.
            Absolute error = 3.383e+02 at t = 720.0 for Q_flow[1].y
            Absolute error = 2.291e+03 at t = 360.0 for pumDis[1].dpControlled_dp.dp_actual
@@ -28,7 +27,7 @@ Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/R
            Absolute error = 3.014e+02 at t = 720.0 for Q_flow[1].y
            Absolute error = 2.606e+03 at t = 120.0 for pumDis[1].dpControlled_dp.dp_actual
            Absolute error = 2.291e+03 for transfer.dpSup_design[1]
-Comparison files output by funnel are stored in the directory 'funnel_comp' of size 0.4 MB.
+Comparison files output by funnel are stored in the directory 'funnel_comp' of size 0.5 MB.
 Run 'python -c "import buildingspy.development.regressiontest as t; t.Tester(tool=\"dymola\").report()"'
 to access a summary of the comparison results.
 
