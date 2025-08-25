@@ -17,7 +17,7 @@ model SpawnHighOrder "Spawn model of the AixLib High Order Model"
   parameter String idf_name=Modelica.Utilities.Files.loadResource("modelica://BESMod/Resources/Spawn/AixLib_HOM_in_EnergyPlus.idf")        "Name of the IDF file";
   parameter String epw_name=Modelica.Utilities.Files.loadResource("modelica://BESMod/Resources/Spawn/Potsdam_TRY2015_normal.epw")        "Name of the weather file (.epw format)";
   parameter String wea_name=Modelica.Utilities.Files.loadResource("modelica://BESMod/Resources/Spawn/Potsdam_TRY2015_normal.mos")        "Name of the weather file (.mos format)";
-  inner Buildings.ThermalZones.EnergyPlus_9_6_0.Building building(
+  inner Buildings.ThermalZones.EnergyPlus_24_2_0.Building building(
     idfName=idf_name,
     epwName=epw_name,
     weaName=wea_name)
@@ -267,7 +267,7 @@ equation
     <span style=\"font-size: 8.25pt;\">error: Compilation/Simulation
     failed due to a missing PATH environment variable<br/>
     solution: Follow the instructions in
-    \"Buildings.ThermalZones.EnergyPlus_9_6_0.UsersGuide.Installation\"</span>
+    \"Buildings.ThermalZones.EnergyPlus_24_2_0.UsersGuide.Installation\"</span>
   </li>
   <li>
     <span style=\"font-size: 8.25pt;\">error: Integrator failed to start

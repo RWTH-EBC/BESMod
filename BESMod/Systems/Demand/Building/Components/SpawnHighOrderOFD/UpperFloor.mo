@@ -7,24 +7,24 @@ model UpperFloor "Spawn Groundfloor of the AixLib High Order OFD"
   IBPSA.BoundaryConditions.WeatherData.Bus
       weaBus "Weather data bus" annotation (Placement(transformation(extent={{-70,78},
             {-28,122}}),         iconTransformation(extent={{-68,92},{-48,112}})));
-  Buildings.ThermalZones.EnergyPlus_9_6_0.ThermalZone zoneBedroom6(
+  Buildings.ThermalZones.EnergyPlus_24_2_0.ThermalZone zoneBedroom6(
     zoneName="JIlBdoXH9kyILsDvu4wx8A",
     redeclare package Medium = Medium,
     nPorts=4) annotation (Placement(transformation(extent={{-54,50},{-26,78}})));
-  Buildings.ThermalZones.EnergyPlus_9_6_0.ThermalZone zoneChildren7(
+  Buildings.ThermalZones.EnergyPlus_24_2_0.ThermalZone zoneChildren7(
     zoneName="BGVPLnC4OUeqffvCvT6TTQ",
     redeclare package Medium = Medium,
     nPorts=4) annotation (Placement(transformation(extent={{44,50},{72,78}})));
-  Buildings.ThermalZones.EnergyPlus_9_6_0.ThermalZone zoneChildren10(
+  Buildings.ThermalZones.EnergyPlus_24_2_0.ThermalZone zoneChildren10(
     zoneName="uFb0fbIbnUCa0AXLT56UfA",
     redeclare package Medium = Medium,
     nPorts=4)
     annotation (Placement(transformation(extent={{-54,-54},{-26,-26}})));
-  Buildings.ThermalZones.EnergyPlus_9_6_0.ThermalZone zoneCorridor8(
+  Buildings.ThermalZones.EnergyPlus_24_2_0.ThermalZone zoneCorridor8(
     zoneName="amiO3KhG402UMEU7Fs9xaA",
     redeclare package Medium = Medium,
     nPorts=4) annotation (Placement(transformation(extent={{44,-2},{72,26}})));
-  Buildings.ThermalZones.EnergyPlus_9_6_0.ThermalZone zoneBath9(
+  Buildings.ThermalZones.EnergyPlus_24_2_0.ThermalZone zoneBath9(
     zoneName="E4XJpmy03kW3qfdfjVrPLA",
     redeclare package Medium = Medium,
     nPorts=4) annotation (Placement(transformation(extent={{44,-54},{72,-26}})));

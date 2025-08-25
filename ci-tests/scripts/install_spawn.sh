@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set the download URL and target subdirectory structure
-download_url="https://spawn.s3.amazonaws.com/builds/Spawn-light-0.4.3-7048a72798-Linux.tar.gz"
+download_url="https://spawn.s3.amazonaws.com/custom/Spawn-light-0.6.0-9f1b36b00b-Linux.tar.gz"
 destination_dir="installed_dependencies/Buildings/Buildings/Resources/bin/spawn-0.4.3-7048a72798/linux64/bin"
 
 # Create the destination directory if it doesn't exist

@@ -7,7 +7,7 @@ model Attic "Spawn Attic of the AixLib High Order OFD"
   IBPSA.BoundaryConditions.WeatherData.Bus
       weaBus "Weather data bus" annotation (Placement(transformation(extent={{-70,78},
             {-28,122}}),         iconTransformation(extent={{-68,92},{-48,112}})));
-  Buildings.ThermalZones.EnergyPlus_9_6_0.ThermalZone zoneAttic(
+  Buildings.ThermalZones.EnergyPlus_24_2_0.ThermalZone zoneAttic(
     zoneName="IfKJfrdT40ehbMFAOP2OHQ",
     redeclare package Medium = Medium,
     nPorts=2) annotation (Placement(transformation(extent={{-6,-6},{22,22}})));
