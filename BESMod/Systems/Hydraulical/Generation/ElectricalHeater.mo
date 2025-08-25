@@ -48,8 +48,7 @@ model ElectricalHeater "Only heat using an electric heater"
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-30,70})));
-  BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter
-                                            resGen(
+  Components.ResistanceCoefficientHydraulicDiameterDPFixed resGen(
     redeclare final package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=m_flow_design[1],
@@ -61,7 +60,7 @@ model ElectricalHeater "Only heat using an electric heater"
     final ReC=ReC,
     final v_nominal=v_design[1],
     final roughness=roughness,
-    final resCoe=resCoe)          "Pressure drop model depending on the configuration"
+    final resCoe=resCoe) "Pressure drop model depending on the configuration"
     annotation (Placement(transformation(extent={{20,-20},{40,0}})));
 
 equation

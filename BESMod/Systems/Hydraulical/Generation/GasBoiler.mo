@@ -73,7 +73,7 @@ model GasBoiler "Just a gas boiler"
     calc_numSwi=true) "Boiler KPIs"
     annotation (Placement(transformation(extent={{-60,-80},{-40,-60}})));
 
-  BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter
+  Components.ResistanceCoefficientHydraulicDiameterDPFixed
                                             resGen(
     redeclare final package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,

@@ -227,7 +227,8 @@ model TwoStoragesBoilerWithDHW
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={30,-140})));
-  BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly         resBoiToBoiVal(
+  BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameterDPFixed
+    resBoiToBoiVal(
     redeclare final package Medium = MediumGen,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=mBoi_flow_nominal,
@@ -246,7 +247,8 @@ model TwoStoragesBoilerWithDHW
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={110,24})));
-  BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly         resBoiValHydSep(
+  BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameterDPFixed
+    resBoiValHydSep(
     redeclare final package Medium = MediumGen,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=mBoi_flow_nominal,
@@ -262,7 +264,8 @@ model TwoStoragesBoilerWithDHW
     final resCoe=resCoeBoiValHydSep)
     "Pressure drop due to resistances between boiler valve and hydraulic sepearator"
     annotation (Placement(transformation(extent={{0,-20},{20,0}})));
-  BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly         resBoiValDHW(
+  BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameterDPFixed
+    resBoiValDHW(
     redeclare final package Medium = MediumGen,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=mBoi_flow_nominal,

@@ -60,7 +60,7 @@ model HeatPumpAndGasBoilerParallel
     "Three-way-valve to either run heat pump or gas boiler"
     annotation (Placement(transformation(extent={{40,20},{20,0}})));
 
-  Components.HydraulicDiameterParameterOnly resGenOut(
+  Components.ResistanceCoefficientHydraulicDiameterDPFixed resGenOut(
     length=lengthPipValOut,
     resCoe=resCoeValOut,
     redeclare final package Medium = Medium,
@@ -75,7 +75,7 @@ model HeatPumpAndGasBoilerParallel
     final roughness=roughness) "Pressure drop for valve to outlet"
     annotation (Placement(transformation(extent={{60,10},{80,30}})));
 
-  Components.HydraulicDiameterParameterOnly resValBoi(
+  Components.ResistanceCoefficientHydraulicDiameterDPFixed resValBoi(
     length=lengthPipValBoi,
     resCoe=resCoeValBoi,
     redeclare final package Medium = Medium,
@@ -89,7 +89,7 @@ model HeatPumpAndGasBoilerParallel
     final v_nominal=v_design[1],
     final roughness=roughness) "Pressure drop for valve to boiler"
     annotation (Placement(transformation(extent={{20,20},{40,40}})));
-  Components.HydraulicDiameterParameterOnly resValHeaPum(
+  Components.ResistanceCoefficientHydraulicDiameterDPFixed resValHeaPum(
     length=lengthPipValHeaPum,
     resCoe=resCoeValHeaPum,
     redeclare final package Medium = Medium,

@@ -1,10 +1,9 @@
 within BESMod.Systems.Hydraulical.Components;
-model HydraulicDiameterParameterOnly
-  "Fixed flow resistance with hydraulic diameter and m_flow as parameter"
+model ResistanceCoefficientHydraulicDiameterDPFixed
+  "Flow resistance to be used in dpFixed_nominal"
   extends BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter(
     disableComputeFlowResistance=true,
     dp_start=0);
-
 
 annotation (
 Documentation(info="<html>
@@ -20,4 +19,4 @@ First implementation for
 </li>
 </ul>
 </html>"));
-end HydraulicDiameterParameterOnly;
+end ResistanceCoefficientHydraulicDiameterDPFixed;

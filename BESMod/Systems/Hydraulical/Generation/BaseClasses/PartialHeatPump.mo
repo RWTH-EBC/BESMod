@@ -275,7 +275,8 @@ partial model PartialHeatPump "Generation with only the heat pump"
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-170,-30})));
-  BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly resGen(
+  BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameterDPFixed
+    resGen(
     redeclare final package Medium = Medium,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=m_flow_design[1],

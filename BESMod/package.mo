@@ -8,7 +8,7 @@ package BESMod
     Modelica(version="4.0.0"),
     SDF(version="0.4.2"),
       IBPSA(version="4.0.0"),
-      AixLib(version="2.1.1")),
+      AixLib(version="3.0.0")),
    conversion(
  from(
   version="0.6.0",

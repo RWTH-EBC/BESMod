@@ -85,7 +85,8 @@ partial model PartialThreeWayValve "Partial model to later extent"
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-80,120})));
-  BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly         resValToBufSto(
+  BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameterDPFixed
+    resValToBufSto(
     redeclare final package Medium = MediumGen,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=mSup_flow_design[1],
@@ -100,7 +101,8 @@ partial model PartialThreeWayValve "Partial model to later extent"
     final roughness=roughness)
     "Pressure drop due to resistances between valve+pump and buffer storage"
     annotation (Placement(transformation(extent={{-20,150},{0,170}})));
-  BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly         resValToDHWSto(
+  BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameterDPFixed
+    resValToDHWSto(
     redeclare final package Medium = MediumGen,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=mSup_flow_design[1],
