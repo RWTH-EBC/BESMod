@@ -119,6 +119,7 @@ model TwoStoragesBoilerWithDHW
     final transferHeat=parTemSen.transferHeat,
     final TAmb=parTemSen.TAmb,
     final tauHeaTra=parTemSen.tauHeaTra,
+    final energyDynamics=energyDynamics,
     final etaLoadBased=parBoi.eta,
     final G=0.003*parBoi.Q_nom/50,
     final C=1.5*parBoi.Q_nom,

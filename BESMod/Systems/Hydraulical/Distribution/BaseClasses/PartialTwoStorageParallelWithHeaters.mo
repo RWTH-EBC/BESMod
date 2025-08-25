@@ -95,6 +95,7 @@ partial model PartialTwoStorageParallelWithHeaters
     final rho_default=rho,
     final p_start=p_start,
     final T_start=T_start,
+    final energyDynamics=energyDynamics,
     final etaLoadBased=parBoi.eta,
     final G=0.003*parBoi.Q_nom/50,
     final C=1.5*parBoi.Q_nom,

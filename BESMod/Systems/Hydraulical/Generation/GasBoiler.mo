@@ -52,6 +52,7 @@ model GasBoiler "Just a gas boiler"
     final rho_default=rho,
     final p_start=p_start,
     final T_start=T_start,
+    final energyDynamics=energyDynamics,
     paramBoiler=parBoi,
     etaTempBased=etaTem,
     T_out(unit="K", displayUnit="degC"),
@@ -137,8 +138,8 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(resGen.port_a, portGen_in[1]) annotation (Line(points={{20,-30},{52,
-          -30},{52,-2},{100,-2}}, color={0,127,255}));
   connect(resGen.port_b, boi.port_a)
     annotation (Line(points={{0,-30},{-66,-30},{-66,10}}, color={0,127,255}));
+  connect(resGen.port_a, resGenApp.port_a) annotation (Line(points={{20,-30},{
+          52,-30},{52,-10},{70,-10}}, color={0,127,255}));
 end GasBoiler;
