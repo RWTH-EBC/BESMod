@@ -1,0 +1,92 @@
+
+Error in model:  BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump">BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump</a>
+Component type specifier Generic is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:28">29</a>
+ Component context: parHeaPum
+  Component declared as Generic parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+Component type specifier TemperatureSensorBaseDefinition is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:42">43</a>
+ Component context: parTemSen
+  Component declared as TemperatureSensorBaseDefinition parTemSen in <a href="Modelica://BESMod.Systems.RecordsCollection.TemperatureSensors">BESMod.Systems.RecordsCollection.TemperatureSensors</a>
+Warning: Component type specifier RefrigerantCycleHeatPumpHeating is equal to a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/HeatPumps/ModularReversible/BaseClasses/RefrigerantCycle.mo, line <a href="Modelica://AixLib.Fluid.HeatPumps.ModularReversible.BaseClasses.RefrigerantCycle#text:25">26</a>
+ Component context: heatPump.refCyc.refCycHeaPumHea
+  Component declared as RefrigerantCycleHeatPumpHeating refCycHeaPumHea in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Component type specifier Generic is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/HeatPumpAndElectricHeater.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater#text:18">19</a>
+ Component context: parEleHea
+  Component declared as Generic parEleHea in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater">BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater</a>
+Component type specifier Generic is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/DetailedSolarThermalWithHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump#text:20">21</a>
+ Component context: solarThermalParas
+  Component declared as Generic solarThermalParas in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.SolarThermal">BESMod.Systems.Hydraulical.Generation.RecordsCollection.SolarThermal</a>
+Error: Function Buildings.Fluid.SolarCollectors.Data.GenericSolarCollector is not known in solCol.per (model <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump">BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump</a>).
+In call <a href="Modelica://Buildings.Fluid.SolarCollectors.Data.GenericSolarCollector">Buildings.Fluid.SolarCollectors.Data.GenericSolarCollector</a>(
+        ATyp=Buildings.Fluid.SolarCollectors.Types.Area.Aperture,
+        A=4.302,
+        mDry=484,
+        V=4.4/1000,
+        dp_nominal=100,
+        mperA_flow_nominal=solarThermalParas.m_flow_nominal/solarThermalParas.A,
+        B0=0,
+        B1=0,
+        y_intercept=solarThermalParas.eta_zero,
+        slope=0,
+        IAMDiff=0.133,
+        C1=solarThermalParas.c1,
+        C2=solarThermalParas.c2,
+        G_nominal=solarThermalParas.GMax,
+        dT_nominal=solarThermalParas.dTMax)
+Error: Unknown function Buildings.Fluid.SolarCollectors.Data.GenericSolarCollector in solCol.per (model <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump">BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump</a>).
+Check is assuming: Q_flow_nominal = fill(1e-15, 2)
+Check is assuming: parHeaPum.dpCon_nominal = 0
+Check is assuming: parEleHea.dp_nominal = 0
+Check is assuming: parHeaPum.dpEva_nominal = 0
+Error: For variable solCol.per
+ declared in class <a href="Modelica://Buildings.Fluid.SolarCollectors.Data">Buildings.Fluid.SolarCollectors.Data</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/Buildings/Buildings/Fluid/SolarCollectors/EN12975.mo at line 4, and used in component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump#$solCol:PartialSolarCollector">solCol.PartialSolarCollector</a>.
+Type error in record binding:
+  solCol.per = Buildings.Fluid.SolarCollectors.Data.GenericSolarCollector();
+Error: The types of the operands in (solCol.per)    =    (Buildings.Fluid.SolarCollectors.Data.GenericSolarCollector  ())
+are Record and Real, but they must be compatible.
+Errors detected in record bindings.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump">BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump</a>
+Error: Function Buildings.Fluid.SolarCollectors.Data.GenericSolarCollector is not known in generation.solCol.per (model <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump">BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump</a>).
+In call <a href="Modelica://Buildings.Fluid.SolarCollectors.Data.GenericSolarCollector">Buildings.Fluid.SolarCollectors.Data.GenericSolarCollector</a>(
+        ATyp=Buildings.Fluid.SolarCollectors.Types.Area.Aperture,
+        A=4.302,
+        mDry=484,
+        V=4.4/1000,
+        dp_nominal=100,
+        mperA_flow_nominal=solarThermalParas.m_flow_nominal/solarThermalParas.A,
+        B0=0,
+        B1=0,
+        y_intercept=solarThermalParas.eta_zero,
+        slope=0,
+        IAMDiff=0.133,
+        C1=solarThermalParas.c1,
+        C2=solarThermalParas.c2,
+        G_nominal=solarThermalParas.GMax,
+        dT_nominal=solarThermalParas.dTMax)
+Error: Unknown function Buildings.Fluid.SolarCollectors.Data.GenericSolarCollector in generation.solCol.per (model <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump">BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump</a>).
+Error: For variable generation.solCol.per
+ declared in class <a href="Modelica://Buildings.Fluid.SolarCollectors.Data">Buildings.Fluid.SolarCollectors.Data</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/Buildings/Buildings/Fluid/SolarCollectors/EN12975.mo at line 4, and used in component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump#$generation.solCol:PartialSolarCollector">generation.solCol.PartialSolarCollector</a>.
+Type error in record binding:
+  generation.solCol.per = Buildings.Fluid.SolarCollectors.Data.GenericSolarCollector    ();
+Error: The types of the operands in (generation.solCol.per)    =    (Buildings.Fluid.SolarCollectors.Data.GenericSolarCollector  ())
+are Record and Real, but they must be compatible.
+Errors detected in record bindings.
+Check aborted.
+Error: ERRORS have been issued.
+
