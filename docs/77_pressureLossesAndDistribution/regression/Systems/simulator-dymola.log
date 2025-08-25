@@ -282,11 +282,6 @@ rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulica
 simulateModel("BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel");
 Translation of BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel
 The DAE has 1591 scalar unknowns and 1591 scalar equations.
-Warning: The initial conditions are not fully specified.
-Dymola has selected default initial conditions.
-Warning: Assuming fixed start value for the continuous states:
-    generation.boi.vol.dynBal.U(start = 27492.5100384*(generation.boi.vol.dynBal.T_start      -273.15))
- 
 Redundant consistent initial conditions.
 Removed the following equations which are redundant and consistent: 
   if (vol[1].dynBal.energyDynamics == Modelica.Fluid.Types.Dynamics.FixedInitial)     then 
@@ -337,7 +332,6 @@ Translated Model
   Continuous time states: 14 scalars
   Time-varying variables: 321 scalars
   Alias variables: 1007 scalars
-  Assumed default initial conditions: 1
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {4}
   Sizes after manipulation of the linear systems: {0}
@@ -368,7 +362,6 @@ generation.KPIWel.integrator2.y
 generation.senTGenOut.T
 generation.thrWayVal.threWayValFlow.vol.dynBal.U
 Finished
-Warning: WARNINGS have been issued.
 Finished
  = true
 
@@ -618,8 +611,8 @@ Translated Model
   Parameter depending: 317 scalars
   Outputs: 1 scalars
   Continuous time states: 9 scalars
-  Time-varying variables: 174 scalars
-  Alias variables: 381 scalars
+  Time-varying variables: 175 scalars
+  Alias variables: 380 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0}
@@ -769,11 +762,6 @@ rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulica
 simulateModel("BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries");
 Translation of BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries
 The DAE has 1425 scalar unknowns and 1425 scalar equations.
-Warning: The initial conditions are not fully specified.
-Dymola has selected default initial conditions.
-Warning: Assuming fixed start value for the continuous states:
-    generation.boi.internalCapacity.T(start = generation.boi.T_start)
- 
 Redundant consistent initial conditions.
 Removed the following equations which are redundant and consistent: 
   if (vol[1].dynBal.energyDynamics == Modelica.Fluid.Types.Dynamics.FixedInitial)     then 
@@ -824,7 +812,6 @@ Translated Model
   Continuous time states: 13 scalars
   Time-varying variables: 235 scalars
   Alias variables: 894 scalars
-  Assumed default initial conditions: 1
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {4}
   Sizes after manipulation of the linear systems: {0}
@@ -852,7 +839,6 @@ generation.KPIQHP.integrator2.y
 generation.KPIWel.integrator2.y
 generation.senTGenOut.T
 Finished
-Warning: WARNINGS have been issued.
 Finished
  = true
 
@@ -879,11 +865,6 @@ rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulica
 simulateModel("BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW");
 Translation of BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW
 The DAE has 4320 scalar unknowns and 4320 scalar equations.
-Warning: The initial conditions are not fully specified.
-Dymola has selected default initial conditions.
-Warning: Assuming fixed start value for the continuous states:
-    distribution.boi.vol.dynBal.U(start = 27492.5100384*(distribution.boi.vol.dynBal.T_start      -273.15))
- 
  
 Statistics
  
@@ -904,7 +885,6 @@ Translated Model
   Continuous time states: 91 scalars
   Time-varying variables: 991 scalars
   Alias variables: 2874 scalars
-  Assumed default initial conditions: 1
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 4, 3, 3, 2, 2, 2, 4, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 3, 3, 2, 2, 2, 2, 2,   2, 4, 2, 2, 15, 4, 3, 2, 2, 2, 2, 2, 2, 4, 3, 4, 3, 3, 2, 2, 2, 2, 2}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
@@ -1017,7 +997,6 @@ distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.U
 distribution.thrWayValBoiDHW.threWayValFlow.vol.dynBal.U
 pumDHW.vol.dynBal.U
 Finished
-Warning: WARNINGS have been issued.
 Finished
  = true
 
@@ -1451,11 +1430,11 @@ rCheck = checkModel("BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage"
 Check of BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage
 In value attribute for resTra[1].m_flow_nominal.
 Modifier applied in class BESMod.Systems.Hydraulical.Distribution.Tests.BaseClasses.PartialTest.
-  File: /tmp/tmp-BESMod-2-bjfa8t0a/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 3
+  File: /tmp/tmp-BESMod-2-1tnhiwpf/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 3
 Modifier applied for component resTra.m_flow_nominal.
   File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/PartialTwoPortInterface.mo, line 8
 Variable found in class BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage.
-  Near file: /tmp/tmp-BESMod-2-bjfa8t0a/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 2
+  Near file: /tmp/tmp-BESMod-2-1tnhiwpf/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 2
 Variable found in base-class resTra.PartialTwoPortInterface.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/BaseClasses/PartialResistance.mo, line 3
 Warning: Error for array of components: Modifier(=fill(sum(distribution.Q_flow_design)/dTDem_nominal/4184, distribution.nParallelSup)) dimension 1 is 2, but the modifee expected 1.
@@ -1478,11 +1457,11 @@ simulateModel("BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage", stop
 Translation of BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage
 In value attribute for resTra[1].m_flow_nominal.
 Modifier applied in class BESMod.Systems.Hydraulical.Distribution.Tests.BaseClasses.PartialTest.
-  File: /tmp/tmp-BESMod-2-bjfa8t0a/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 3
+  File: /tmp/tmp-BESMod-2-1tnhiwpf/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 3
 Modifier applied for component resTra.m_flow_nominal.
   File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/PartialTwoPortInterface.mo, line 8
 Variable found in class BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage.
-  Near file: /tmp/tmp-BESMod-2-bjfa8t0a/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 2
+  Near file: /tmp/tmp-BESMod-2-1tnhiwpf/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 2
 Variable found in base-class resTra.PartialTwoPortInterface.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/BaseClasses/PartialResistance.mo, line 3
 Warning: Error for array of components: Modifier(=fill(sum(distribution.Q_flow_design)/dTDem_nominal/4184, distribution.nParallelSup)) dimension 1 is 2, but the modifee expected 1.
@@ -1748,11 +1727,6 @@ rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulica
 simulateModel("BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler");
 Translation of BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler
 The DAE has 601 scalar unknowns and 601 scalar equations.
-Warning: The initial conditions are not fully specified.
-Dymola has selected default initial conditions.
-Warning: Assuming fixed start value for the continuous states:
-    generation.boi.vol.dynBal.U(start = 28573.976006969377*(generation.boi.vol.dynBal.T_start      -273.15))
- 
 Redundant consistent initial conditions.
 Removed the following equations which are redundant and consistent: 
   if (vol[1].dynBal.energyDynamics == Modelica.Fluid.Types.Dynamics.FixedInitial)     then 
@@ -1775,19 +1749,18 @@ Original Model
   Variables: 1508
   Constants: 37 (37 scalars)
   Parameters: 782 (975 scalars)
-  Unknowns: 689 (623 scalars)
+  Unknowns: 689 (622 scalars)
   Differentiated variables: 10 scalars
   Equations: 647
   Nontrivial: 550
 Translated Model
-  Constants: 717 scalars
+  Constants: 689 scalars
   Free parameters: 109 scalars
-  Parameter depending: 329 scalars
+  Parameter depending: 337 scalars
   Outputs: 3 scalars
   Continuous time states: 6 scalars
-  Time-varying variables: 126 scalars
-  Alias variables: 354 scalars
-  Assumed default initial conditions: 1
+  Time-varying variables: 123 scalars
+  Alias variables: 376 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {5}
   Sizes after manipulation of the linear systems: {0}
@@ -1795,7 +1768,7 @@ Translated Model
   Sizes after manipulation of the nonlinear systems: {1}
   Number of numerical Jacobians: 0
   Initialization problem
-    Sizes of nonlinear systems of equations: {1, 1}
+    Sizes of nonlinear systems of equations: {6, 1}
     Sizes after manipulation of the nonlinear systems: {1, 1}
     Number of numerical Jacobians: 0
  
@@ -1807,15 +1780,9 @@ generation.boi.vol.dynBal.U
 generation.KPIBoi.integrator1.y
 generation.KPIBoi.integrator3.y
 generation.KPIQBoi.integrator2.y
-Warning: Some variables are iteration variables of the initialization problem:
-but they are not given any explicit start values. Zero will be used.
-Iteration variables:
-pumDis[1].ctrl.u
 Finished
-Warning: WARNINGS have been issued.
-Failed
-Not possible to open file "BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.mat": No such file or directory
- = false
+Finished
+ = true
 
 Declaring variable: Boolean rScript ;
 
@@ -1866,8 +1833,8 @@ Translated Model
   Parameter depending: 296 scalars
   Outputs: 1 scalars
   Continuous time states: 7 scalars
-  Time-varying variables: 149 scalars
-  Alias variables: 362 scalars
+  Time-varying variables: 150 scalars
+  Alias variables: 361 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2}
   Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0}
