@@ -17,7 +17,6 @@ model HeatPumpAndGasBoilerParallel
         parHeaPum,
       redeclare BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
         parTemSen,
-      TBiv=268.15,
       mBoi_flow_nominal=generation.m_flow_design[1],
       redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
         parThrWayVal));
@@ -28,9 +27,9 @@ model HeatPumpAndGasBoilerParallel
         rotation=180,
         origin={50,80})));
   Modelica.Blocks.Sources.Trapezoid trapezoid(
-    rising=150,
-    width=150,
-    falling=150,
+    rising=0,
+    width=300,
+    falling=0,
     period=600)
     annotation (Placement(transformation(extent={{-80,22},{-60,42}})));
 equation
@@ -68,8 +67,8 @@ Thus, both operate with 50 percent part load. As the boilers heat flow rate
 depends on the part load, the nominal conditions is not met exactly.
 </p>
 <p>
-Furthermore, as the set compressor speed <code>yHeaPumSet</code> actuates faster 
-than the internal safety control, the device sometimes runs longer than set. 
+Furthermore, as the set compressor speed <code>yHeaPumSet</code> turns off
+more than three times in one our, than the internal safety control prevents further operation.
 Search for <code>yMea</code> in results to see the actual compressor 
 speed applied.
 </p>
