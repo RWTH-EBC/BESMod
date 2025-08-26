@@ -1430,11 +1430,11 @@ rCheck = checkModel("BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage"
 Check of BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage
 In value attribute for resTra[1].m_flow_nominal.
 Modifier applied in class BESMod.Systems.Hydraulical.Distribution.Tests.BaseClasses.PartialTest.
-  File: /tmp/tmp-BESMod-2-4gnqk7od/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 3
+  File: /tmp/tmp-BESMod-2-404cy790/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 3
 Modifier applied for component resTra.m_flow_nominal.
   File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/PartialTwoPortInterface.mo, line 8
 Variable found in class BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage.
-  Near file: /tmp/tmp-BESMod-2-4gnqk7od/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 2
+  Near file: /tmp/tmp-BESMod-2-404cy790/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 2
 Variable found in base-class resTra.PartialTwoPortInterface.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/BaseClasses/PartialResistance.mo, line 3
 Warning: Error for array of components: Modifier(=fill(sum(distribution.Q_flow_design)/dTDem_nominal/4184, distribution.nParallelSup)) dimension 1 is 2, but the modifee expected 1.
@@ -1457,11 +1457,11 @@ simulateModel("BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage", stop
 Translation of BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage
 In value attribute for resTra[1].m_flow_nominal.
 Modifier applied in class BESMod.Systems.Hydraulical.Distribution.Tests.BaseClasses.PartialTest.
-  File: /tmp/tmp-BESMod-2-4gnqk7od/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 3
+  File: /tmp/tmp-BESMod-2-404cy790/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 3
 Modifier applied for component resTra.m_flow_nominal.
   File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/PartialTwoPortInterface.mo, line 8
 Variable found in class BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage.
-  Near file: /tmp/tmp-BESMod-2-4gnqk7od/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 2
+  Near file: /tmp/tmp-BESMod-2-404cy790/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 2
 Variable found in base-class resTra.PartialTwoPortInterface.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/BaseClasses/PartialResistance.mo, line 3
 Warning: Error for array of components: Modifier(=fill(sum(distribution.Q_flow_design)/dTDem_nominal/4184, distribution.nParallelSup)) dimension 1 is 2, but the modifee expected 1.
@@ -1991,4 +1991,119 @@ Finished
 
 Declaring variable: Boolean rScript ;
 
-savelog("BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.translation.log");
+savelog("BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading");
+Check of BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading
+The model has the same number of unknowns and equations: 2589
+Check of BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading successful.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Distribution/Tests/TwoStoDetailedDirectLoading.mos\",", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading\",", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading\\\");\",", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Distribution/Tests/TwoStoDetailedDirectLoading.mos");
+simulateModel("BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading");
+Translation of BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading
+The DAE has 2589 scalar unknowns and 2589 scalar equations.
+ 
+Statistics
+ 
+Original Model
+  Number of components: 604
+  Variables: 7302
+  Constants: 112 (112 scalars)
+  Parameters: 3793 (4251 scalars)
+  Unknowns: 3397 (2698 scalars)
+  Differentiated variables: 75 scalars
+  Equations: 2656
+  Nontrivial: 2065
+Translated Model
+  Constants: 2840 scalars
+  Free parameters: 313 scalars
+  Parameter depending: 1610 scalars
+  Outputs: 7 scalars
+  Continuous time states: 53 scalars
+  Time-varying variables: 569 scalars
+  Alias variables: 1729 scalars
+  Number of mixed real/discrete systems of equations: 0
+  Sizes of linear systems of equations: {2, 2, 2, 2, 2, 2, 4, 3, 3, 2, 2, 2, 2, 2, 2, 4, 3, 3, 2, 2, 2, 2, 2, 2, 4, 3, 3,   4, 3, 3, 2, 2, 2, 2, 2, 2}
+  Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0}
+  Sizes of nonlinear systems of equations: {11, 6, 6, 6, 6, 1, 1}
+  Sizes after manipulation of the nonlinear systems: {1, 1, 1, 1, 1, 1, 1}
+  Number of numerical Jacobians: 0
+  Initialization problem
+    Sizes of nonlinear systems of equations: {6, 1, 1, 11, 1, 1}
+    Sizes after manipulation of the nonlinear systems: {1, 0, 1, 1, 1, 1}
+    Sizes of simplified homotopy nonlinear systems of equations: {11}
+    Sizes after manipulation of the simplified homotopy nonlinear systems: {1}
+    Number of numerical Jacobians: 0
+ 
+Selected continuous time states
+Statically selected continuous time states
+distribution.eneKPICalBuf.integrator2.y
+distribution.eneKPICalDHW.integrator2.y
+distribution.senTBuiSup.T
+distribution.stoBuf.bottomCover.loadIns.T
+distribution.stoBuf.bottomCover.loadWall.T
+distribution.stoBuf.layer[1].dynBal.U
+distribution.stoBuf.layer[2].dynBal.U
+distribution.stoBuf.layer[3].dynBal.U
+distribution.stoBuf.layer[4].dynBal.U
+distribution.stoBuf.storageMantle[1].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.stoBuf.storageMantle[1].Wall.CylindricLoad1.heatCapacitor.T
+distribution.stoBuf.storageMantle[2].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.stoBuf.storageMantle[2].Wall.CylindricLoad1.heatCapacitor.T
+distribution.stoBuf.storageMantle[3].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.stoBuf.storageMantle[3].Wall.CylindricLoad1.heatCapacitor.T
+distribution.stoBuf.storageMantle[4].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.stoBuf.storageMantle[4].Wall.CylindricLoad1.heatCapacitor.T
+distribution.stoBuf.topCover.loadIns.T
+distribution.stoBuf.topCover.loadWall.T
+distribution.stoDHW.bottomCover.loadIns.T
+distribution.stoDHW.bottomCover.loadWall.T
+distribution.stoDHW.heatingCoil1.pipe[1].del.x
+distribution.stoDHW.heatingCoil1.pipe[1].timDel.x
+distribution.stoDHW.heatingCoil1.pipe[1].vol_a.dynBal.U
+distribution.stoDHW.heatingCoil1.pipe[1].vol_b.dynBal.U
+distribution.stoDHW.heatingCoil1.pipe[2].del.x
+distribution.stoDHW.heatingCoil1.pipe[2].timDel.x
+distribution.stoDHW.heatingCoil1.pipe[2].vol_a.dynBal.U
+distribution.stoDHW.heatingCoil1.pipe[2].vol_b.dynBal.U
+distribution.stoDHW.heatingCoil1.pipe[3].del.x
+distribution.stoDHW.heatingCoil1.pipe[3].timDel.x
+distribution.stoDHW.heatingCoil1.pipe[3].vol_a.dynBal.U
+distribution.stoDHW.heatingCoil1.pipe[3].vol_b.dynBal.U
+distribution.stoDHW.heatingCoil1.pipe[4].del.x
+distribution.stoDHW.heatingCoil1.pipe[4].timDel.x
+distribution.stoDHW.heatingCoil1.pipe[4].vol_a.dynBal.U
+distribution.stoDHW.heatingCoil1.pipe[4].vol_b.dynBal.U
+distribution.stoDHW.layer[1].dynBal.U
+distribution.stoDHW.layer[2].dynBal.U
+distribution.stoDHW.layer[3].dynBal.U
+distribution.stoDHW.layer[4].dynBal.U
+distribution.stoDHW.storageMantle[1].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.stoDHW.storageMantle[1].Wall.CylindricLoad1.heatCapacitor.T
+distribution.stoDHW.storageMantle[2].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.stoDHW.storageMantle[2].Wall.CylindricLoad1.heatCapacitor.T
+distribution.stoDHW.storageMantle[3].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.stoDHW.storageMantle[3].Wall.CylindricLoad1.heatCapacitor.T
+distribution.stoDHW.storageMantle[4].Insulation.CylindricLoad1.heatCapacitor.T
+distribution.stoDHW.storageMantle[4].Wall.CylindricLoad1.heatCapacitor.T
+distribution.stoDHW.topCover.loadIns.T
+distribution.stoDHW.topCover.loadWall.T
+distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.U
+pumDHW.vol.dynBal.U
+Finished
+Finished
+ = true
+
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading.translation.log");
