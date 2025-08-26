@@ -72,8 +72,7 @@ partial model PartialThreeWayValve "Partial model to later extent"
     final T_start=T_start,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=mSup_flow_design[1],
-    final dp_nominal=dpSup_design[1] + (parThrWayVal.dpValve_nominal +
-        parThrWayVal.dpMax_nominal),
+    final dp_nominal=dpSup_design[1] + parThrWayVal.dpPum_design,
     final externalCtrlTyp=parPumGen.externalCtrlTyp,
     final ctrlType=parPumGen.ctrlType,
     final dpVarBase_nominal=parPumGen.dpVarBase_nominal,

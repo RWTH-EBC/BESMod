@@ -2,8 +2,7 @@ within BESMod.Systems.Hydraulical.Generation;
 model HeatPumpAndGasBoilerParallel
   "Parallel connection of heat pump and gas boiler"
   extends BaseClasses.PartialHeatPumpAndGasBoiler(
-    dp_design={resGenApp.dp_nominal + parThrWayVal.dpValve_nominal
-         + max(parThrWayVal.dpFixed_nominal)},
+    dp_design={resGenApp.dp_nominal + parThrWayVal.dpPum_design},
     final use_old_design=fill(false, nParallelDem), resGen(
         final length=lengthPipValIn, final resCoe=resCoeValIn),
     resGenApp(dp_nominal=resGenOut.dp_nominal + resGen.dp_nominal));
@@ -40,6 +39,7 @@ model HeatPumpAndGasBoilerParallel
     parThrWayVal constrainedby
     BESMod.Systems.RecordsCollection.Valves.ThreeWayValve(
     final m_flow_nominal=m_flow_design[1],
+    dp_nominal={0,0},
     dpFixedExtra_nominal={parHeaPum.dpCon_nominal + resValHeaPum.dp_nominal,
         dpBoiTotSca},
     final fraK=1) "Parameters for three-way-valve" annotation (Placement(

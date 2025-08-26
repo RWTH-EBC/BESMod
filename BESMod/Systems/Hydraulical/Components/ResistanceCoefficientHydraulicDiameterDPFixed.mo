@@ -2,7 +2,7 @@ within BESMod.Systems.Hydraulical.Components;
 model ResistanceCoefficientHydraulicDiameterDPFixed
   "Flow resistance to be used in dpFixed_nominal"
   extends BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter(
-    disableComputeFlowResistance=true,
+    final disableComputeFlowResistance=true,
     dp_start=0);
 
 annotation (
