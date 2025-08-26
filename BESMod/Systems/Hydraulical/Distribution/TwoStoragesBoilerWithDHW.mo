@@ -241,7 +241,6 @@ model TwoStoragesBoilerWithDHW
     final ReC=ReC,
     final v_nominal=vBoi_design,
     final roughness=roughness,
-    disableComputeFlowResistance=true,
     final resCoe=resCoeBoiToBoiVal)
     "Pressure drop due to resistances between boiler valve and buffer storage"
     annotation (Placement(transformation(
@@ -261,7 +260,6 @@ model TwoStoragesBoilerWithDHW
     final from_dp=false,
     final linearized=false,
     final roughness=roughness,
-    disableComputeFlowResistance=true,
     final resCoe=resCoeBoiValHydSep)
     "Pressure drop due to resistances between boiler valve and hydraulic sepearator"
     annotation (Placement(transformation(extent={{0,-20},{20,0}})));
@@ -278,7 +276,6 @@ model TwoStoragesBoilerWithDHW
     final from_dp=false,
     final linearized=false,
     final roughness=roughness,
-    disableComputeFlowResistance=true,
     final resCoe=resCoeBoiValDHW)
     "Pressure drop due to resistances between boiler valve and DHW storage"
     annotation (Placement(transformation(
