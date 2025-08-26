@@ -317,15 +317,15 @@ Statistics
  
 Original Model
   Number of components: 394
-  Variables: 3456
+  Variables: 3460
   Constants: 61 (61 scalars)
-  Parameters: 1809 (2431 scalars)
+  Parameters: 1813 (2437 scalars)
   Unknowns: 1586 (1639 scalars)
   Differentiated variables: 21 scalars
   Equations: 1496
   Nontrivial: 1276
 Translated Model
-  Constants: 1530 scalars
+  Constants: 1536 scalars
   Free parameters: 390 scalars
   Parameter depending: 883 scalars
   Outputs: 9 scalars
@@ -677,15 +677,15 @@ Statistics
  
 Original Model
   Number of components: 406
-  Variables: 4852
+  Variables: 4856
   Constants: 106 (106 scalars)
-  Parameters: 2341 (2783 scalars)
+  Parameters: 2345 (2789 scalars)
   Unknowns: 2405 (1829 scalars)
   Differentiated variables: 42 scalars
   Equations: 1885
   Nontrivial: 1403
 Translated Model
-  Constants: 1937 scalars
+  Constants: 1943 scalars
   Free parameters: 214 scalars
   Parameter depending: 1069 scalars
   Outputs: 7 scalars
@@ -849,6 +849,27 @@ savelog("BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries.
 
 rCheck = checkModel("BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW");
 Check of BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW
+Error: Overriding final modifier for disableComputeFlowResistance
+  File: /tmp/tmp-BESMod-1-fujnxhla/BESMod/Systems/Hydraulical/Components/ResistanceCoefficientHydraulicDiameterDPFixed.mo, line 5
+Overriding found at:
+ Component context: BESMod.Systems.Hydraulical.Distribution.TwoStoragesBoilerWithDHW.resBoiToBoiVal.disableComputeFlowResistance
+  Component declared as BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameterDPFixed resBoiToBoiVal in BESMod.Systems.Hydraulical.Distribution.TwoStoragesBoilerWithDHW
+  File: /tmp/tmp-BESMod-1-fujnxhla/BESMod/Systems/Hydraulical/Distribution/TwoStoragesBoilerWithDHW.mo, line 244
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Error: Overriding final modifier for disableComputeFlowResistance
+  File: /tmp/tmp-BESMod-1-fujnxhla/BESMod/Systems/Hydraulical/Components/ResistanceCoefficientHydraulicDiameterDPFixed.mo, line 5
+Overriding found at:
+ Component context: BESMod.Systems.Hydraulical.Distribution.TwoStoragesBoilerWithDHW.resBoiValHydSep.disableComputeFlowResistance
+  Component declared as BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameterDPFixed resBoiValHydSep in BESMod.Systems.Hydraulical.Distribution.TwoStoragesBoilerWithDHW
+  File: /tmp/tmp-BESMod-1-fujnxhla/BESMod/Systems/Hydraulical/Distribution/TwoStoragesBoilerWithDHW.mo, line 264
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Error: Overriding final modifier for disableComputeFlowResistance
+  File: /tmp/tmp-BESMod-1-fujnxhla/BESMod/Systems/Hydraulical/Components/ResistanceCoefficientHydraulicDiameterDPFixed.mo, line 5
+Overriding found at:
+ Component context: BESMod.Systems.Hydraulical.Distribution.TwoStoragesBoilerWithDHW.resBoiValDHW.disableComputeFlowResistance
+  Component declared as BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameterDPFixed resBoiValDHW in BESMod.Systems.Hydraulical.Distribution.TwoStoragesBoilerWithDHW
+  File: /tmp/tmp-BESMod-1-fujnxhla/BESMod/Systems/Hydraulical/Distribution/TwoStoragesBoilerWithDHW.mo, line 281
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
 The model has the same number of unknowns and equations: 4320
 Check of BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW successful.
 Declaring variable: Boolean rCheck ;
@@ -864,21 +885,42 @@ Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Distrib
 rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Distribution/Tests/TwoStoragesBoilerWithDHW.mos");
 simulateModel("BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW");
 Translation of BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW
+Error: Overriding final modifier for disableComputeFlowResistance
+  File: /tmp/tmp-BESMod-1-fujnxhla/BESMod/Systems/Hydraulical/Components/ResistanceCoefficientHydraulicDiameterDPFixed.mo, line 5
+Overriding found at:
+ Component context: BESMod.Systems.Hydraulical.Distribution.TwoStoragesBoilerWithDHW.resBoiToBoiVal.disableComputeFlowResistance
+  Component declared as BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameterDPFixed resBoiToBoiVal in BESMod.Systems.Hydraulical.Distribution.TwoStoragesBoilerWithDHW
+  File: /tmp/tmp-BESMod-1-fujnxhla/BESMod/Systems/Hydraulical/Distribution/TwoStoragesBoilerWithDHW.mo, line 244
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Error: Overriding final modifier for disableComputeFlowResistance
+  File: /tmp/tmp-BESMod-1-fujnxhla/BESMod/Systems/Hydraulical/Components/ResistanceCoefficientHydraulicDiameterDPFixed.mo, line 5
+Overriding found at:
+ Component context: BESMod.Systems.Hydraulical.Distribution.TwoStoragesBoilerWithDHW.resBoiValHydSep.disableComputeFlowResistance
+  Component declared as BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameterDPFixed resBoiValHydSep in BESMod.Systems.Hydraulical.Distribution.TwoStoragesBoilerWithDHW
+  File: /tmp/tmp-BESMod-1-fujnxhla/BESMod/Systems/Hydraulical/Distribution/TwoStoragesBoilerWithDHW.mo, line 264
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Error: Overriding final modifier for disableComputeFlowResistance
+  File: /tmp/tmp-BESMod-1-fujnxhla/BESMod/Systems/Hydraulical/Components/ResistanceCoefficientHydraulicDiameterDPFixed.mo, line 5
+Overriding found at:
+ Component context: BESMod.Systems.Hydraulical.Distribution.TwoStoragesBoilerWithDHW.resBoiValDHW.disableComputeFlowResistance
+  Component declared as BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameterDPFixed resBoiValDHW in BESMod.Systems.Hydraulical.Distribution.TwoStoragesBoilerWithDHW
+  File: /tmp/tmp-BESMod-1-fujnxhla/BESMod/Systems/Hydraulical/Distribution/TwoStoragesBoilerWithDHW.mo, line 281
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
 The DAE has 4320 scalar unknowns and 4320 scalar equations.
  
 Statistics
  
 Original Model
   Number of components: 975
-  Variables: 12131
+  Variables: 12139
   Constants: 189 (189 scalars)
-  Parameters: 6230 (6808 scalars)
+  Parameters: 6238 (6820 scalars)
   Unknowns: 5712 (4494 scalars)
   Differentiated variables: 128 scalars
   Equations: 4437
   Nontrivial: 3446
 Translated Model
-  Constants: 4768 scalars
+  Constants: 4780 scalars
   Free parameters: 510 scalars
   Parameter depending: 2348 scalars
   Outputs: 9 scalars
@@ -996,9 +1038,10 @@ distribution.stoDHW.topCover.loadWall.T
 distribution.threeWayValveWithFlowReturn.threWayValFlow.vol.dynBal.U
 distribution.thrWayValBoiDHW.threWayValFlow.vol.dynBal.U
 pumDHW.vol.dynBal.U
-Finished
-Finished
- = true
+Error detected when generating code.
+Translation aborted.
+Error: ERRORS have been issued.
+ = false
 
 Declaring variable: Boolean rScript ;
 
@@ -1318,15 +1361,15 @@ Statistics
  
 Original Model
   Number of components: 740
-  Variables: 9353
+  Variables: 9357
   Constants: 154 (154 scalars)
-  Parameters: 4721 (5136 scalars)
+  Parameters: 4725 (5142 scalars)
   Unknowns: 4478 (3476 scalars)
   Differentiated variables: 99 scalars
   Equations: 3505
   Nontrivial: 2705
 Translated Model
-  Constants: 3779 scalars
+  Constants: 3785 scalars
   Free parameters: 372 scalars
   Parameter depending: 1688 scalars
   Outputs: 7 scalars
@@ -1430,11 +1473,11 @@ rCheck = checkModel("BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage"
 Check of BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage
 In value attribute for resTra[1].m_flow_nominal.
 Modifier applied in class BESMod.Systems.Hydraulical.Distribution.Tests.BaseClasses.PartialTest.
-  File: /tmp/tmp-BESMod-2-lft4lm6t/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 3
+  File: /tmp/tmp-BESMod-2-bboelfw7/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 3
 Modifier applied for component resTra.m_flow_nominal.
   File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/PartialTwoPortInterface.mo, line 8
 Variable found in class BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage.
-  Near file: /tmp/tmp-BESMod-2-lft4lm6t/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 2
+  Near file: /tmp/tmp-BESMod-2-bboelfw7/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 2
 Variable found in base-class resTra.PartialTwoPortInterface.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/BaseClasses/PartialResistance.mo, line 3
 Warning: Error for array of components: Modifier(=fill(sum(distribution.Q_flow_design)/dTDem_nominal/4184, distribution.nParallelSup)) dimension 1 is 2, but the modifee expected 1.
@@ -1457,11 +1500,11 @@ simulateModel("BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage", stop
 Translation of BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage
 In value attribute for resTra[1].m_flow_nominal.
 Modifier applied in class BESMod.Systems.Hydraulical.Distribution.Tests.BaseClasses.PartialTest.
-  File: /tmp/tmp-BESMod-2-lft4lm6t/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 3
+  File: /tmp/tmp-BESMod-2-bboelfw7/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 3
 Modifier applied for component resTra.m_flow_nominal.
   File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/PartialTwoPortInterface.mo, line 8
 Variable found in class BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage.
-  Near file: /tmp/tmp-BESMod-2-lft4lm6t/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 2
+  Near file: /tmp/tmp-BESMod-2-bboelfw7/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 2
 Variable found in base-class resTra.PartialTwoPortInterface.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/BaseClasses/PartialResistance.mo, line 3
 Warning: Error for array of components: Modifier(=fill(sum(distribution.Q_flow_design)/dTDem_nominal/4184, distribution.nParallelSup)) dimension 1 is 2, but the modifee expected 1.
@@ -2017,15 +2060,15 @@ Statistics
  
 Original Model
   Number of components: 604
-  Variables: 7298
+  Variables: 7302
   Constants: 112 (112 scalars)
-  Parameters: 3789 (4245 scalars)
+  Parameters: 3793 (4251 scalars)
   Unknowns: 3397 (2698 scalars)
   Differentiated variables: 75 scalars
   Equations: 2656
   Nontrivial: 2065
 Translated Model
-  Constants: 2834 scalars
+  Constants: 2840 scalars
   Free parameters: 313 scalars
   Parameter depending: 1610 scalars
   Outputs: 7 scalars
