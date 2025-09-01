@@ -39,7 +39,9 @@ model TEASERSingleThermalZoneOld
     final zoneParam=zoneParam,
     each final use_MechanicalAirExchange=true,
     each final use_NaturalAirExchange=false,
-    each final nPorts=if use_ventilation then 2 else 0) annotation (Placement(
+    each final nPorts=if use_ventilation then 2 else 0,
+    eqAirTempRoof(withLongwave=false),
+    eqAirTempWall(withLongwave=false))                  annotation (Placement(
         transformation(extent={{35,12},{-39,84}}, rotation=0)));
 
   Modelica.Blocks.Sources.Constant constTSetRoom[nZones](final k=
