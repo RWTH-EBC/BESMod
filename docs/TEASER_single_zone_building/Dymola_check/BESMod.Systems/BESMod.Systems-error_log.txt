@@ -1,110 +1,4 @@
 
-Error in model:  BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased_SingleZoneBuilding 
-Check of <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased_SingleZoneBuilding">BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased_SingleZoneBuilding</a>
-Error: Overriding final modifier for dp_nominal
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/FixedResistances/HydraulicDiameter.mo, line <a href="Modelica://IBPSA.Fluid.FixedResistances.HydraulicDiameter.IBPSA.Fluid.FixedResistances.PressureDrop#text:3">5</a>
-Overriding found at:
- Component context: BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased_SingleZoneBuilding.BaseClasses.PartialWithPipingLosses.res.dp_nominal
-  Component declared as _Default res in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased_SingleZoneBuilding.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased_SingleZoneBuilding.BaseClasses.PartialWithPipingLosses</a>
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/RadiatorPressureBased_SingleZoneBuilding.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased_SingleZoneBuilding.BaseClasses.PartialWithPipingLosses.res#text">12</a>
-Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
-Component type specifier BaseProperties is a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
- Component context: rad.vol.dynBal.medium
-  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
-Component type specifier BaseProperties is a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
- Component context: volSup.dynBal.medium
-  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
-Component type specifier BaseProperties is a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
- Component context: volRet.dynBal.medium
-  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
-Check is assuming: nParallelDem = 1
-Check is assuming: Q_flow_nominal = fill(1e-15, 1)
-The model has
-  456+2*parRad.nEle+rad[1].vol[1].dynBal.nPorts+rad[1].vol[2].dynBal.nPorts+    rad[1].vol[3].dynBal.nPorts+rad[1].vol[4].dynBal.nPorts+rad[1].vol[5].dynBal.nPorts    +rad[1].sumCon.nin+rad[1].sumRad.nin+volSup.dynBal.nPorts+volRet.dynBal.nPorts
-scalar unknowns and
-  387+(if rad[1].vol[1].dynBal.medium.standardOrderComponents then 1 else 0)+(    if  not rad[1].vol[1].dynBal.use_mWat_flow then 1 else 0)+3*rad[1].vol[1].dynBal.nPorts    +(if rad[1].vol[2].dynBal.medium.standardOrderComponents then 1 else 0)+(if      not rad[1].vol[2].dynBal.use_mWat_flow then 1 else 0)+3*rad[1].vol[2].dynBal.nPorts    +(if rad[1].vol[3].dynBal.medium.standardOrderComponents then 1 else 0)+(if      not rad[1].vol[3].dynBal.use_mWat_flow then 1 else 0)+3*rad[1].vol[3].dynBal.nPorts    +(if rad[1].vol[4].dynBal.medium.standardOrderComponents then 1 else 0)+(if      not rad[1].vol[4].dynBal.use_mWat_flow then 1 else 0)+3*rad[1].vol[4].dynBal.nPorts    +(if rad[1].vol[5].dynBal.medium.standardOrderComponents then 1 else 0)+(if      not rad[1].vol[5].dynBal.use_mWat_flow then 1 else 0)+3*rad[1].vol[5].dynBal.nPorts    +(if volSup.dynBal.medium.standardOrderComponents then 1 else 0)+(if  not     volSup.dynBal.use_mWat_flow then 1 else 0)+3*volSup.dynBal.nPorts+(if     volRet.dynBal.medium.standardOrderComponents then 1 else 0)+(if  not     volRet.dynBal.use_mWat_flow then 1 else 0)+3*volRet.dynBal.nPorts+2*    parRad.nEle
-scalar equations.
-Warning: Evaluation caused division by zero (sqrt(val[1].dpValve_nominal)=0),
- in val[1].m_flow_nominal/sqrt(val[1].dpValve_nominal).
-DAE with 508 unknown scalars and 467 scalar equations.
-
-Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased_SingleZoneBuilding#$rad.vol.dynBal:medium">rad.vol.dynBal.medium</a>.
-Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased_SingleZoneBuilding#$volRet.dynBal:medium">volRet.dynBal.medium</a>.
-Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased_SingleZoneBuilding#$volSup.dynBal:medium">volSup.dynBal.medium</a>.
-Warning: WARNINGS have been issued.
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability 
-Check of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability</a>
-Error: The problem is structurally singular.
-
-It has 17 scalar unknowns and 8 scalar equations.
-  The Real part has 13 unknowns and 6 equations.
-  The Integer part has 0 unknowns and 0 equations.
-  The Boolean part has 4 unknowns and 2 equations.
-  The String part has 0 unknowns and 0 equations.
-Error: The model is not well-posed.
-The model has
-  16+nOrientations
-scalar unknowns and
-  8
-scalar equations.
-Using the given settings of the parameters, the difference could be reduced to
-  9
-Attempting to further localize singularity.
-
-Singularity of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability</a> is at the top level.
-Warning: The model <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability</a> is structurally singular,
-when assuming inputs to be known.
-Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:variableDelay.u">u</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:variableDelay">variableDelay</a> is not connected from the outside.
- It is likely that it should have been connected, and recursive check assumes this.
- The missing connection is a likely cause of errors in the model.
-Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:variableDelay.delayTime">delayTime</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:variableDelay">variableDelay</a> is not connected from the outside.
- It is likely that it should have been connected, and recursive check assumes this.
- The missing connection is a likely cause of errors in the model.
-Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:integrator.u">u</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:integrator">integrator</a> is not connected from the outside.
- It is likely that it should have been connected, and recursive check assumes this.
- The missing connection is a likely cause of errors in the model.
-Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:integrator.reset">reset</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:integrator">integrator</a> is not connected from the outside.
- It is likely that it should have been connected, and recursive check assumes this.
- The missing connection is a likely cause of errors in the model.
-Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator.u">u</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator">limIntegrator</a> is not connected from the outside.
- It is likely that it should have been connected, and recursive check assumes this.
- The missing connection is a likely cause of errors in the model.
-Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator.reset">reset</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator">limIntegrator</a> is not connected from the outside.
- It is likely that it should have been connected, and recursive check assumes this.
- The missing connection is a likely cause of errors in the model.
-Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator.set">set</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator">limIntegrator</a> is not connected from the outside.
- It is likely that it should have been connected, and recursive check assumes this.
- The missing connection is a likely cause of errors in the model.
-Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:der1.u">u</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:der1">der1</a> is not connected from the outside.
- It is likely that it should have been connected, and recursive check assumes this.
- The missing connection is a likely cause of errors in the model.
-Warning: WARNINGS have been issued.
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability 
-Check of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability</a>
-Errors found in: solarGainFactor[i] = IrrSolGainFac*IOrientation[i]^IrrSolGainExp
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/TEASERBuildingSingleZone/PowerLawSolarUsability.mo, line <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability#text:8">9</a>
-Error: Use of undeclared variable: <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability#text:IOrientation">IOrientation</a>
-In class <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability</a>.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/TEASERBuildingSingleZone/PowerLawSolarUsability.mo, line <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability#text">2</a>
-Errors found in: solarGainFactor[i] = IrrSolGainFac*IOrientation[i]^IrrSolGainExp
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/TEASERBuildingSingleZone/PowerLawSolarUsability.mo, line <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability#text:8">9</a>
-The model contained invalid expressions.
-Check aborted.
-Error: ERRORS have been issued.
-
-
 Error in model:  BESMod.Systems.Hydraulical.Distribution.CombiStorage 
 Check of <a href="Modelica://BESMod.Systems.Hydraulical.Distribution.CombiStorage">BESMod.Systems.Hydraulical.Distribution.CombiStorage</a>
 Component type specifier BaseProperties is a partial type
@@ -225,6 +119,62 @@ Check of class aborted.
 Warning: WARNINGS have been issued.
 
 
+Error in model:  BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased_SingleZoneBuilding 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased_SingleZoneBuilding">BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased_SingleZoneBuilding</a>
+Error: Overriding final modifier for dp_nominal
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/FixedResistances/HydraulicDiameter.mo, line <a href="Modelica://IBPSA.Fluid.FixedResistances.HydraulicDiameter.IBPSA.Fluid.FixedResistances.PressureDrop#text:3">5</a>
+Overriding found at:
+ Component context: BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased_SingleZoneBuilding.BaseClasses.PartialWithPipingLosses.res.dp_nominal
+  Component declared as _Default res in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased_SingleZoneBuilding.BaseClasses.PartialWithPipingLosses">BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased_SingleZoneBuilding.BaseClasses.PartialWithPipingLosses</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/RadiatorPressureBased_SingleZoneBuilding.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased_SingleZoneBuilding.BaseClasses.PartialWithPipingLosses.res#text">12</a>
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: rad.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: volSup.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: volRet.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Check is assuming: nParallelDem = 1
+Check is assuming: Q_flow_nominal = fill(1e-15, 1)
+The model has
+  456+2*parRad.nEle+rad[1].vol[1].dynBal.nPorts+rad[1].vol[2].dynBal.nPorts+    rad[1].vol[3].dynBal.nPorts+rad[1].vol[4].dynBal.nPorts+rad[1].vol[5].dynBal.nPorts    +rad[1].sumCon.nin+rad[1].sumRad.nin+volSup.dynBal.nPorts+volRet.dynBal.nPorts
+scalar unknowns and
+  387+(if rad[1].vol[1].dynBal.medium.standardOrderComponents then 1 else 0)+(    if  not rad[1].vol[1].dynBal.use_mWat_flow then 1 else 0)+3*rad[1].vol[1].dynBal.nPorts    +(if rad[1].vol[2].dynBal.medium.standardOrderComponents then 1 else 0)+(if      not rad[1].vol[2].dynBal.use_mWat_flow then 1 else 0)+3*rad[1].vol[2].dynBal.nPorts    +(if rad[1].vol[3].dynBal.medium.standardOrderComponents then 1 else 0)+(if      not rad[1].vol[3].dynBal.use_mWat_flow then 1 else 0)+3*rad[1].vol[3].dynBal.nPorts    +(if rad[1].vol[4].dynBal.medium.standardOrderComponents then 1 else 0)+(if      not rad[1].vol[4].dynBal.use_mWat_flow then 1 else 0)+3*rad[1].vol[4].dynBal.nPorts    +(if rad[1].vol[5].dynBal.medium.standardOrderComponents then 1 else 0)+(if      not rad[1].vol[5].dynBal.use_mWat_flow then 1 else 0)+3*rad[1].vol[5].dynBal.nPorts    +(if volSup.dynBal.medium.standardOrderComponents then 1 else 0)+(if  not     volSup.dynBal.use_mWat_flow then 1 else 0)+3*volSup.dynBal.nPorts+(if     volRet.dynBal.medium.standardOrderComponents then 1 else 0)+(if  not     volRet.dynBal.use_mWat_flow then 1 else 0)+3*volRet.dynBal.nPorts+2*    parRad.nEle
+scalar equations.
+Warning: Evaluation caused division by zero (sqrt(val[1].dpValve_nominal)=0),
+ in val[1].m_flow_nominal/sqrt(val[1].dpValve_nominal).
+DAE with 508 unknown scalars and 467 scalar equations.
+
+Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased_SingleZoneBuilding#$rad.vol.dynBal:medium">rad.vol.dynBal.medium</a>.
+Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased_SingleZoneBuilding#$volRet.dynBal:medium">volRet.dynBal.medium</a>.
+Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased_SingleZoneBuilding#$volSup.dynBal:medium">volSup.dynBal.medium</a>.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability 
+Check of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability</a>
+Errors found in: solarGainFactor[i] = IrrSolGainFac*IOrientation[i]^IrrSolGainExp
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/TEASERBuildingSingleZone/PowerLawSolarUsability.mo, line <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability#text:8">9</a>
+Error: Use of undeclared variable: <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability#text:IOrientation">IOrientation</a>
+In class <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/TEASERBuildingSingleZone/PowerLawSolarUsability.mo, line <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability#text">2</a>
+Errors found in: solarGainFactor[i] = IrrSolGainFac*IOrientation[i]^IrrSolGainExp
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/Components/TEASERBuildingSingleZone/PowerLawSolarUsability.mo, line <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PowerLawSolarUsability#text:8">9</a>
+The model contained invalid expressions.
+Check aborted.
+Error: ERRORS have been issued.
+
+
 Error in model:  BESMod.Systems.Demand.Building.TEASERSingleThermalZone 
 Check of <a href="Modelica://BESMod.Systems.Demand.Building.TEASERSingleThermalZone">BESMod.Systems.Demand.Building.TEASERSingleThermalZone</a>
 Check is assuming: nZones = 1
@@ -253,6 +203,56 @@ Error: Detected when expanding useProBus.natVentRooms did not find record elemen
 Warning: Failed to expand the variable thermalZone[1].natVentRooms
 The model contained invalid connect statements.
 Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability 
+Check of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability</a>
+Error: The problem is structurally singular.
+
+It has 17 scalar unknowns and 8 scalar equations.
+  The Real part has 13 unknowns and 6 equations.
+  The Integer part has 0 unknowns and 0 equations.
+  The Boolean part has 4 unknowns and 2 equations.
+  The String part has 0 unknowns and 0 equations.
+Error: The model is not well-posed.
+The model has
+  16+nOrientations
+scalar unknowns and
+  8
+scalar equations.
+Using the given settings of the parameters, the difference could be reduced to
+  9
+Attempting to further localize singularity.
+
+Singularity of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability</a> is at the top level.
+Warning: The model <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability">BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability</a> is structurally singular,
+when assuming inputs to be known.
+Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:variableDelay.u">u</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:variableDelay">variableDelay</a> is not connected from the outside.
+ It is likely that it should have been connected, and recursive check assumes this.
+ The missing connection is a likely cause of errors in the model.
+Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:variableDelay.delayTime">delayTime</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:variableDelay">variableDelay</a> is not connected from the outside.
+ It is likely that it should have been connected, and recursive check assumes this.
+ The missing connection is a likely cause of errors in the model.
+Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:integrator.u">u</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:integrator">integrator</a> is not connected from the outside.
+ It is likely that it should have been connected, and recursive check assumes this.
+ The missing connection is a likely cause of errors in the model.
+Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:integrator.reset">reset</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:integrator">integrator</a> is not connected from the outside.
+ It is likely that it should have been connected, and recursive check assumes this.
+ The missing connection is a likely cause of errors in the model.
+Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator.u">u</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator">limIntegrator</a> is not connected from the outside.
+ It is likely that it should have been connected, and recursive check assumes this.
+ The missing connection is a likely cause of errors in the model.
+Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator.reset">reset</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator">limIntegrator</a> is not connected from the outside.
+ It is likely that it should have been connected, and recursive check assumes this.
+ The missing connection is a likely cause of errors in the model.
+Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator.set">set</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:limIntegrator">limIntegrator</a> is not connected from the outside.
+ It is likely that it should have been connected, and recursive check assumes this.
+ The missing connection is a likely cause of errors in the model.
+Error: The input connector <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:der1.u">u</a> of <a href="Modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.IntegrateAndStoreSolarUsability#diagram:der1">der1</a> is not connected from the outside.
+ It is likely that it should have been connected, and recursive check assumes this.
+ The missing connection is a likely cause of errors in the model.
 Warning: WARNINGS have been issued.
 Error: ERRORS have been issued.
 
