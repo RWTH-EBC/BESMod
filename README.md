@@ -11,11 +11,11 @@ Moreover, `BESMod` won the best paper award.
 
 We held a tutorial at our institute to teach the motivation and usage of BESMod.
 The recordings are available on YouTube:
-1. Motivation: https://www.youtube.com/watch?v=s6ufqhITJh8
-2. Installation: https://www.youtube.com/watch?v=bwkI_ZqXlx0&t=196s
-3. Basics on modelling: https://www.youtube.com/watch?v=1FIX1WUTrf4
-4. Model aggregation and simulation: https://www.youtube.com/watch?v=yVMQ63bn5MA
-5. Adding own modules: https://www.youtube.com/watch?v=Am1rIv6zmVk&t=4s
+1. Motivation: https://www.youtube.com/watch?v=w2nJX6tOo_Q
+2. Installation: https://www.youtube.com/watch?v=mFO_zy3dLZ8
+3. Basics on modelling: https://www.youtube.com/watch?v=h0zl2HRpDGA
+4. Model aggregation and simulation: https://www.youtube.com/watch?v=RCmVW183z1I
+5. Adding own modules: https://www.youtube.com/watch?v=hys-wP_0aK4
 
 # Installation
 
@@ -67,6 +67,8 @@ to update the existing repos and avoid a second download.
 You are invited to contribute to the development of **BESMod**.
 Issues can be reported using this site's [Issues section](https://github.com/RWTH-EBC/BESMod/issues).
 Furthermore, you are welcome to contribute via [Pull Requests](https://github.com/RWTH-EBC/BESMod/pulls).
+
+For other inquires, please contact [ebc-tools@eonerc.rwth-aachen.de](mailto:ebc-tools@eonerc.rwth-aachen.de).
 
 If you want to update the CI templates, get MoCITempGen locally, change the tomls under ci-tests\config and run:
 ```bash
