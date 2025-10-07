@@ -94,13 +94,6 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(swiDHWBuiMea.u3, sigBusDistr.TStoBufTopMea) annotation (Line(points={{-22,-48},
-          {-78,-48},{-78,-21},{-100,-21}},                          color={0,0,127}),
-      Text(
-      string="%second",
-      index=1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
   connect(reaPasTrhGenSup.y, TMea) annotation (Line(points={{1,-82},{88,-82},{88,-40},
           {110,-40}}, color={0,0,127}));
   connect(reaPasTrhGenSup.u, sigBusGen.TGenOutMea) annotation (Line(points={{-22,-82},
@@ -125,6 +118,14 @@ equation
       horizontalAlignment=TextAlignment.Right));
     end if;
   end if;
+  connect(sigBusDistr.TBuiSupMea, swiDHWBuiMea.u3) annotation (Line(
+      points={{-100,-21},{-100,-22},{-80,-22},{-80,-48},{-22,-48}},
+      color={255,204,51},
+      thickness=0.5), Text(
+      string="%first",
+      index=-1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
                                         Text(
         extent={{-150,138},{150,98}},
