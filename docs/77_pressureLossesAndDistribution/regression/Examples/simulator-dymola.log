@@ -50,17 +50,17 @@ Statistics
  
 Original Model
   Number of components: 809
-  Variables: 7583
+  Variables: 7586
   Constants: 135 (135 scalars)
-  Parameters: 3271 (4711 scalars)
+  Parameters: 3274 (4714 scalars)
   Unknowns: 4177 (4202 scalars)
   Differentiated variables: 63 scalars
   Equations: 3223
   Nontrivial: 2795
 Translated Model
-  Constants: 4133 scalars
-  Free parameters: 447 scalars
-  Parameter depending: 786 scalars
+  Constants: 4134 scalars
+  Free parameters: 448 scalars
+  Parameter depending: 787 scalars
   Outputs: 56 scalars
   Continuous time states: 53 scalars
   Time-varying variables: 1059 scalars
@@ -265,24 +265,24 @@ initial equations:
   building.roo.air.vol.dynBal.medium.p = building.roo.air.vol.dynBal.p_start;
   hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
   ventilation.generation.threeWayValve_b.res1.port_b.p = ventilation.generation.threeWayValve_b.vol.dynBal.p_start;
-  electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
-  electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
   electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
+  electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
+  electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
  
  
 Statistics
  
 Original Model
   Number of components: 1892
-  Variables: 21047
+  Variables: 21050
   Constants: 710 (710 scalars)
-  Parameters: 12199 (16266 scalars)
+  Parameters: 12202 (16269 scalars)
   Unknowns: 8138 (8241 scalars)
   Differentiated variables: 149 scalars
   Equations: 6435
   Nontrivial: 5407
 Translated Model
-  Constants: 10926 scalars
+  Constants: 10929 scalars
   Free parameters: 1218 scalars
   Parameter depending: 6101 scalars
   Outputs: 37 scalars
@@ -510,15 +510,15 @@ Statistics
  
 Original Model
   Number of components: 1626
-  Variables: 15528
+  Variables: 15531
   Constants: 233 (233 scalars)
-  Parameters: 7306 (9043 scalars)
+  Parameters: 7309 (9046 scalars)
   Unknowns: 7989 (7761 scalars)
   Differentiated variables: 144 scalars
   Equations: 6504
   Nontrivial: 5467
 Translated Model
-  Constants: 7156 scalars
+  Constants: 7159 scalars
   Free parameters: 819 scalars
   Parameter depending: 2329 scalars
   Outputs: 68 scalars
@@ -745,15 +745,15 @@ Statistics
  
 Original Model
   Number of components: 1571
-  Variables: 15191
+  Variables: 15194
   Constants: 237 (237 scalars)
-  Parameters: 7093 (8656 scalars)
+  Parameters: 7096 (8659 scalars)
   Unknowns: 7861 (7616 scalars)
   Differentiated variables: 140 scalars
   Equations: 6355
   Nontrivial: 5316
 Translated Model
-  Constants: 7074 scalars
+  Constants: 7077 scalars
   Free parameters: 777 scalars
   Parameter depending: 2103 scalars
   Outputs: 69 scalars
@@ -1075,17 +1075,17 @@ Statistics
  
 Original Model
   Number of components: 790
-  Variables: 7346
+  Variables: 7349
   Constants: 127 (127 scalars)
-  Parameters: 3241 (4643 scalars)
+  Parameters: 3244 (4646 scalars)
   Unknowns: 3978 (3998 scalars)
   Differentiated variables: 63 scalars
   Equations: 3118
   Nontrivial: 2696
 Translated Model
-  Constants: 3506 scalars
-  Free parameters: 634 scalars
-  Parameter depending: 1093 scalars
+  Constants: 3507 scalars
+  Free parameters: 635 scalars
+  Parameter depending: 1094 scalars
   Outputs: 56 scalars
   Continuous time states: 53 scalars
   Time-varying variables: 1002 scalars
@@ -1242,16 +1242,16 @@ Statistics
  
 Original Model
   Number of components: 2710
-  Variables: 30932
+  Variables: 30935
   Constants: 544 (544 scalars)
-  Parameters: 14268 (15732 scalars)
+  Parameters: 14271 (15735 scalars)
   Unknowns: 16120 (13752 scalars)
   Differentiated variables: 335 scalars
   Equations: 12758
   Nontrivial: 10113
 Translated Model
-  Constants: 12784 scalars
-  Free parameters: 1186 scalars
+  Constants: 12786 scalars
+  Free parameters: 1187 scalars
   Parameter depending: 4155 scalars
   Outputs: 84 scalars
   Continuous time states: 244 scalars
@@ -1607,15 +1607,15 @@ Statistics
  
 Original Model
   Number of components: 1459
-  Variables: 13666
+  Variables: 13669
   Constants: 237 (237 scalars)
-  Parameters: 6199 (7929 scalars)
+  Parameters: 6202 (7932 scalars)
   Unknowns: 7230 (7063 scalars)
   Differentiated variables: 113 scalars
   Equations: 5896
   Nontrivial: 4941
 Translated Model
-  Constants: 6569 scalars
+  Constants: 6572 scalars
   Free parameters: 754 scalars
   Parameter depending: 1825 scalars
   Outputs: 68 scalars
@@ -1816,15 +1816,15 @@ Statistics
  
 Original Model
   Number of components: 1571
-  Variables: 15191
+  Variables: 15194
   Constants: 237 (237 scalars)
-  Parameters: 7093 (8656 scalars)
+  Parameters: 7096 (8659 scalars)
   Unknowns: 7861 (7616 scalars)
   Differentiated variables: 140 scalars
   Equations: 6355
   Nontrivial: 5316
 Translated Model
-  Constants: 7074 scalars
+  Constants: 7077 scalars
   Free parameters: 777 scalars
   Parameter depending: 2103 scalars
   Outputs: 69 scalars
@@ -2147,15 +2147,15 @@ Statistics
  
 Original Model
   Number of components: 4240
-  Variables: 41753
+  Variables: 41756
   Constants: 546 (546 scalars)
-  Parameters: 19728 (26530 scalars)
+  Parameters: 19731 (26533 scalars)
   Unknowns: 21479 (20478 scalars)
   Differentiated variables: 436 scalars
   Equations: 16396
   Nontrivial: 13520
 Translated Model
-  Constants: 13454 scalars
+  Constants: 13457 scalars
   Free parameters: 2742 scalars
   Parameter depending: 12759 scalars
   Outputs: 38 scalars
@@ -2624,15 +2624,15 @@ Statistics
  
 Original Model
   Number of components: 1571
-  Variables: 15189
+  Variables: 15192
   Constants: 237 (237 scalars)
-  Parameters: 7091 (8654 scalars)
+  Parameters: 7094 (8657 scalars)
   Unknowns: 7861 (7616 scalars)
   Differentiated variables: 140 scalars
   Equations: 6355
   Nontrivial: 5316
 Translated Model
-  Constants: 7071 scalars
+  Constants: 7074 scalars
   Free parameters: 778 scalars
   Parameter depending: 2103 scalars
   Outputs: 69 scalars
@@ -2857,16 +2857,16 @@ Statistics
  
 Original Model
   Number of components: 2776
-  Variables: 31762
+  Variables: 31765
   Constants: 571 (571 scalars)
-  Parameters: 14534 (16021 scalars)
+  Parameters: 14537 (16024 scalars)
   Unknowns: 16657 (14219 scalars)
   Differentiated variables: 341 scalars
   Equations: 13092
   Nontrivial: 10360
 Translated Model
-  Constants: 13017 scalars
-  Free parameters: 1238 scalars
+  Constants: 13019 scalars
+  Free parameters: 1239 scalars
   Parameter depending: 4242 scalars
   Outputs: 82 scalars
   Continuous time states: 246 scalars
@@ -3222,15 +3222,15 @@ Statistics
  
 Original Model
   Number of components: 1962
-  Variables: 19978
+  Variables: 19981
   Constants: 305 (305 scalars)
-  Parameters: 9562 (11392 scalars)
+  Parameters: 9565 (11395 scalars)
   Unknowns: 10111 (9400 scalars)
   Differentiated variables: 190 scalars
   Equations: 8118
   Nontrivial: 6712
 Translated Model
-  Constants: 8929 scalars
+  Constants: 8932 scalars
   Free parameters: 983 scalars
   Parameter depending: 3021 scalars
   Outputs: 68 scalars
@@ -3477,15 +3477,15 @@ Statistics
  
 Original Model
   Number of components: 2571
-  Variables: 24875
+  Variables: 24878
   Constants: 630 (630 scalars)
-  Parameters: 10460 (13787 scalars)
+  Parameters: 10463 (13790 scalars)
   Unknowns: 13785 (13036 scalars)
   Differentiated variables: 219 scalars
   Equations: 10770
   Nontrivial: 8565
 Translated Model
-  Constants: 10594 scalars
+  Constants: 10597 scalars
   Free parameters: 1894 scalars
   Parameter depending: 3636 scalars
   Outputs: 71 scalars
@@ -3688,15 +3688,15 @@ Statistics
  
 Original Model
   Number of components: 2571
-  Variables: 24875
+  Variables: 24878
   Constants: 630 (630 scalars)
-  Parameters: 10460 (13787 scalars)
+  Parameters: 10463 (13790 scalars)
   Unknowns: 13785 (13036 scalars)
   Differentiated variables: 219 scalars
   Equations: 10770
   Nontrivial: 8565
 Translated Model
-  Constants: 10594 scalars
+  Constants: 10597 scalars
   Free parameters: 1894 scalars
   Parameter depending: 3636 scalars
   Outputs: 71 scalars
@@ -3947,15 +3947,15 @@ Statistics
  
 Original Model
   Number of components: 1385
-  Variables: 12834
+  Variables: 12837
   Constants: 227 (227 scalars)
-  Parameters: 5761 (7446 scalars)
+  Parameters: 5764 (7449 scalars)
   Unknowns: 6846 (6748 scalars)
   Differentiated variables: 106 scalars
   Equations: 5578
   Nontrivial: 4661
 Translated Model
-  Constants: 6194 scalars
+  Constants: 6197 scalars
   Free parameters: 678 scalars
   Parameter depending: 1727 scalars
   Outputs: 71 scalars
@@ -4140,15 +4140,15 @@ Statistics
  
 Original Model
   Number of components: 1571
-  Variables: 15191
+  Variables: 15194
   Constants: 237 (237 scalars)
-  Parameters: 7093 (8656 scalars)
+  Parameters: 7096 (8659 scalars)
   Unknowns: 7861 (7616 scalars)
   Differentiated variables: 140 scalars
   Equations: 6355
   Nontrivial: 5316
 Translated Model
-  Constants: 7074 scalars
+  Constants: 7077 scalars
   Free parameters: 777 scalars
   Parameter depending: 2103 scalars
   Outputs: 69 scalars
@@ -4373,15 +4373,15 @@ Statistics
  
 Original Model
   Number of components: 1362
-  Variables: 12762
+  Variables: 12765
   Constants: 229 (229 scalars)
-  Parameters: 5735 (6499 scalars)
+  Parameters: 5738 (6502 scalars)
   Unknowns: 6798 (6668 scalars)
   Differentiated variables: 106 scalars
   Equations: 5564
   Nontrivial: 4651
 Translated Model
-  Constants: 5281 scalars
+  Constants: 5284 scalars
   Free parameters: 677 scalars
   Parameter depending: 1721 scalars
   Outputs: 71 scalars
@@ -4568,15 +4568,15 @@ Statistics
  
 Original Model
   Number of components: 1429
-  Variables: 13099
+  Variables: 13102
   Constants: 227 (227 scalars)
-  Parameters: 5869 (7595 scalars)
+  Parameters: 5872 (7598 scalars)
   Unknowns: 7003 (6898 scalars)
   Differentiated variables: 111 scalars
   Equations: 5738
   Nontrivial: 4810
 Translated Model
-  Constants: 6302 scalars
+  Constants: 6305 scalars
   Free parameters: 716 scalars
   Parameter depending: 1767 scalars
   Outputs: 68 scalars
@@ -4826,15 +4826,15 @@ Statistics
  
 Original Model
   Number of components: 1533
-  Variables: 15162
+  Variables: 15165
   Constants: 282 (282 scalars)
-  Parameters: 7127 (9376 scalars)
+  Parameters: 7130 (9379 scalars)
   Unknowns: 7753 (7570 scalars)
   Differentiated variables: 99 scalars
   Equations: 6248
   Nontrivial: 5193
 Translated Model
-  Constants: 6564 scalars
+  Constants: 6567 scalars
   Free parameters: 1177 scalars
   Parameter depending: 2951 scalars
   Outputs: 42 scalars
@@ -5087,15 +5087,15 @@ Statistics
  
 Original Model
   Number of components: 1544
-  Variables: 15405
+  Variables: 15408
   Constants: 291 (291 scalars)
-  Parameters: 7166 (9448 scalars)
+  Parameters: 7169 (9451 scalars)
   Unknowns: 7948 (7778 scalars)
   Differentiated variables: 103 scalars
   Equations: 6353
   Nontrivial: 5286
 Translated Model
-  Constants: 7108 scalars
+  Constants: 7111 scalars
   Free parameters: 998 scalars
   Parameter depending: 2724 scalars
   Outputs: 43 scalars
