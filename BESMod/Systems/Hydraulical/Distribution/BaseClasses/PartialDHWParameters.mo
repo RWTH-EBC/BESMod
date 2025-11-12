@@ -16,7 +16,7 @@ model PartialDHWParameters
       elseif designType==BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage
          then max((QCrit - QDHWStoUse) / tCrit, 0) + QDHWStoLoss_flow
       elseif designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage
-         then VStoDHW * rho_cp * (TDHW_nominal - TDHWCold_nominal) / secondsInDay
+         then VStoDHW * rho_cp * (TDHW_nominal - TDHWCold_nominal) / tEnergy
       else Modelica.Constants.eps)
     "Nominal heat flow rate to DHW before the storage. Used to design the size of heat generation devices if a storage is used." annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
 
@@ -40,13 +40,16 @@ model PartialDHWParameters
   parameter BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType
     designType "Design according to EN 15450" annotation (Dialog(group=
           "Design - Bottom Up: Parameters are defined by the subsystem"));
-  parameter Modelica.Units.SI.HeatFlowRate QDHWStoLoss_flow "Losses of DHW storage"
+  parameter Modelica.Units.SI.HeatFlowRate QDHWStoLoss_flow "Losses of DHW storage at TDHW_nominal"
     annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem",
       enable=designType <> BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.NoStorage));
   parameter Modelica.Units.SI.HeatFlowRate QDHWStoLoss_flow_estimate
-    "Estimate of DHW storage losses based on daily dhw volume only to avoid implicit functions"
+    "Estimate of DHW storage losses based on daily dhw volume only to avoid implicit functions, at TDHW_nominal"
     annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem",
       enable=designType <> BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.NoStorage));
+  parameter Modelica.Units.SI.Time tEnergy(displayUnit="h") = 28800 "Time available for heating in case of full storage. Based on EN 15450"
+    annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem",
+      enable=designType == BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.FullStorage));
   parameter Modelica.Units.SI.Time tCrit(displayUnit="h") "Time for critical period. Based on EN 15450"
     annotation (Dialog(group="Design - Top Down: Parameters are given by the parent system",
       enable=designType <> BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.NoStorage));
