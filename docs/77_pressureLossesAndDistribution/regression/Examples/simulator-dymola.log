@@ -265,8 +265,8 @@ initial equations:
   building.roo.air.vol.dynBal.medium.p = building.roo.air.vol.dynBal.p_start;
   hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
   ventilation.generation.threeWayValve_b.res1.port_b.p = ventilation.generation.threeWayValve_b.vol.dynBal.p_start;
-  electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
   electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
+  electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
   electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
  
  
@@ -3655,9 +3655,11 @@ hydraulic.transfer.rad[10].vol[5].dynBal.U
 hydraulic.transfer.volRet.dynBal.U
 hydraulic.transfer.volSup.dynBal.U
 Finished
-Failed
-Not possible to open file "BESMod.Examples.HighOrderModel.HOMSpawn.mat": No such file or directory
- = false
+EnergyPlus Completed Successfully.
+ 
+Finished
+Warning: WARNINGS have been issued.
+ = true
 getLastError() 
  = "Translation of <a href=\"Modelica://BESMod.Examples.HighOrderModel.HOMSpawn\">BESMod.Examples.HighOrderModel.HOMSpawn</a>
 The DAE has 12642 scalar unknowns and 12642 scalar equations.
@@ -3866,10 +3868,12 @@ Statically selected continuous time states
 <a href=\"Modelica://BESMod.Examples.HighOrderModel.HOMSpawn#text$hydraulic.transfer.volRet.dynBal:U\">hydraulic.transfer.volRet.dynBal.U</a>
 <a href=\"Modelica://BESMod.Examples.HighOrderModel.HOMSpawn#text$hydraulic.transfer.volSup.dynBal:U\">hydraulic.transfer.volSup.dynBal.U</a>
 Finished
-Failed
-Not possible to open file \"BESMod.Examples.HighOrderModel.HOMSpawn.mat\": No such file or directory
+EnergyPlus Completed Successfully.
+ 
+Finished
+Warning: WARNINGS have been issued.
 getLastError() ,
-   0, 0, 15
+   0, 2, 14
     
 Declaring variable: Boolean rScript ;
 
@@ -5078,9 +5082,9 @@ The redundancies involve
 initial equations: 
   hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
   ventilation.generation.threeWayValve_b.res1.port_b.p = ventilation.generation.threeWayValve_b.vol.dynBal.p_start;
-  electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
-  electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
   electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
+  electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
+  electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
  
  
 Statistics
