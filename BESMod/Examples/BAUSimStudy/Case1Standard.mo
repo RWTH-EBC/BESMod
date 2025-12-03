@@ -7,8 +7,8 @@ model Case1Standard
   extends Modelica.Icons.Example;
 
   annotation (experiment(
-      StopTime=31536000,
-      Interval=599.999616,
+      StopTime=172800,
+      Interval=600,
       Tolerance=1e-06,
       __Dymola_Algorithm="Dassl"),
    __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/BAUSimStudy/Case1Standard.mos"

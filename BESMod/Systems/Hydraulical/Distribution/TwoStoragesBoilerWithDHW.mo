@@ -72,15 +72,16 @@ model TwoStoragesBoilerWithDHW
     constrainedby BESMod.Systems.RecordsCollection.Valves.ThreeWayValve(
     final m_flow_nominal=mBoi_flow_nominal,
     iconName="BoiWayValve",
-    final dp_nominal={0,sum(stoDHW.heatingCoil2.pipe.res.dp_nominal)},
-    dpFixedExtra_nominal={resBoiValHydSep.dpFixed_nominal,resBoiValDHW.dpFixed_nominal},
+    final dp_nominal={0,0},
+    dpFixedExtra_nominal={resBoiValHydSep.dp_nominal,resBoiValDHW.dp_nominal + stoDHW.dpHC2Fixed_nominal},
     final fraK=1,
     use_strokeTime=false) "Parameters for three way valve of boiler" annotation (
     choicesAllMatching=true,
     Placement(transformation(extent={{64,124},{76,136}})));
   replaceable parameter
     BESMod.Systems.Hydraulical.Distribution.RecordsCollection.BufferStorage.HydraulicSeparator
-    parHydSep constrainedby RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition(
+    parHydSep constrainedby
+    RecordsCollection.BufferStorage.BufferStorageBaseDataDefinition(
     iconName="HydSep",
     final Q_flow_nominal=Q_flow_nominal[1]*f_design[1],
     final rho=rho,
@@ -109,7 +110,7 @@ model TwoStoragesBoilerWithDHW
     final m_flow_small=1E-4*abs(mBoi_flow_nominal),
     final show_T=show_T,
     dp_nominal=boi.a*(boi.m_flow_nominal/boi.rho_default)^boi.n +
-        resBoiToBoiVal.dpFixed_nominal,
+        resBoiToBoiVal.dp_nominal,
     final rho_default=rho,
     final p_start=p_start,
     final T_start=T_start,
@@ -118,6 +119,7 @@ model TwoStoragesBoilerWithDHW
     final transferHeat=parTemSen.transferHeat,
     final TAmb=parTemSen.TAmb,
     final tauHeaTra=parTemSen.tauHeaTra,
+    final energyDynamics=energyDynamics,
     final etaLoadBased=parBoi.eta,
     final G=0.003*parBoi.Q_nom/50,
     final C=1.5*parBoi.Q_nom,
@@ -226,13 +228,13 @@ model TwoStoragesBoilerWithDHW
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={30,-140})));
-  BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly         resBoiToBoiVal(
+  BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameterDPFixed
+    resBoiToBoiVal(
     redeclare final package Medium = MediumGen,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=mBoi_flow_nominal,
     final show_T=show_T,
     final from_dp=false,
-    final dp_nominal=0,
     final linearized=false,
     final dh=dPipBoi_design,
     final length=lengthPipBoiToBoiVal,
@@ -245,12 +247,12 @@ model TwoStoragesBoilerWithDHW
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={110,24})));
-  BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly         resBoiValHydSep(
+  BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameterDPFixed
+    resBoiValHydSep(
     redeclare final package Medium = MediumGen,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=mBoi_flow_nominal,
     final show_T=show_T,
-    final dp_nominal=0,
     final dh=dPipBoi_design,
     final length=lengthPipBoiValHydSep,
     final ReC=ReC,
@@ -261,11 +263,11 @@ model TwoStoragesBoilerWithDHW
     final resCoe=resCoeBoiValHydSep)
     "Pressure drop due to resistances between boiler valve and hydraulic sepearator"
     annotation (Placement(transformation(extent={{0,-20},{20,0}})));
-  BESMod.Systems.Hydraulical.Components.HydraulicDiameterParameterOnly         resBoiValDHW(
+  BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameterDPFixed
+    resBoiValDHW(
     redeclare final package Medium = MediumGen,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=mBoi_flow_nominal,
-    final dp_nominal=0,
     final dh=dPipBoi_design,
     final length=lengthPipBoiValDHW,
     final ReC=ReC,

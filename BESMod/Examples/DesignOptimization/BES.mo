@@ -37,8 +37,7 @@ model BES
           BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
           valCtrl,
         redeclare model BuildingSupplySetTemperature =
-            BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.IdealHeatingCurve
-            (dTAddCon=5),
+            BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.IdealHeatingCurve,
         redeclare model DHWHysteresis =
             BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.PartParallelBivalent
             (
@@ -76,7 +75,7 @@ model BES
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
           parThrWayVal),
       redeclare Systems.Hydraulical.Transfer.IdealValveRadiator transfer(
-        redeclare
+          redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
           parRad)),
     redeclare Systems.Demand.DHW.StandardProfiles DHW(
@@ -95,8 +94,8 @@ model BES
   extends Modelica.Icons.Example;
 
   annotation (experiment(
-      StopTime=31536000,
-      Interval=599.999616,
+      StopTime=172800,
+      Interval=600,
       Tolerance=1e-06,
       __Dymola_Algorithm="Dassl"),
    __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/DesignOptimization/BES.mos"

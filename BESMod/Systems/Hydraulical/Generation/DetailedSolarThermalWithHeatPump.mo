@@ -3,7 +3,7 @@ model DetailedSolarThermalWithHeatPump
   "Detailed solar thermal model with monoenergetic heat pump"
   extends HeatPumpAndElectricHeater(
     m_flow_design={Q_flow_design[1]*f_design[1]/dTTra_design[1]/4184,solCol.m_flow_nominal},
-    dp_design={heatPump.dpCon_nominal + dpEleHea_nominal + resGen.dp_nominal, solCol.dp_nominal +resSolThe.dp_nominal},
+    dp_design={resGenApp.dp_nominal, solCol.dp_nominal +resSolThe.dp_nominal},
     m_flow_nominal={Q_flow_nominal[1]*f_design[1]/dTTra_nominal[1]/4184,
         solarThermalParas.m_flow_nominal},
     redeclare package Medium = IBPSA.Media.Water,
@@ -23,7 +23,7 @@ model DetailedSolarThermalWithHeatPump
       final c_p=cp) annotation (
     choicesAllMatching=true,
     Placement(transformation(extent={{-198,-178},{-182,-164}})));
-  Buildings.Fluid.SolarCollectors.EN12975 solCol(
+  IBPSA.Fluid.SolarCollectors.EN12975     solCol(
     redeclare final package Medium = Medium,
     final energyDynamics=energyDynamics,
     final allowFlowReversal=true,
@@ -37,31 +37,28 @@ model DetailedSolarThermalWithHeatPump
     rho=0.2,
     use_shaCoe_in=false,
     shaCoe=0,
-    nColType=Buildings.Fluid.SolarCollectors.Types.NumberSelection.Area,
+    nColType=IBPSA.Fluid.SolarCollectors.Types.NumberSelection.Area,
     totalArea=solarThermalParas.A,
-    sysConfig=Buildings.Fluid.SolarCollectors.Types.SystemConfiguration.Series,
-    per=Buildings.Fluid.SolarCollectors.Data.GenericSolarCollector(
-        ATyp=Buildings.Fluid.SolarCollectors.Types.Area.Aperture,
+    sysConfig=IBPSA.Fluid.SolarCollectors.Types.SystemConfiguration.Series,
+    per=IBPSA.Fluid.SolarCollectors.Data.GenericEN12975(
         A=4.302,
-        mDry=484,
+        CTyp=IBPSA.Fluid.SolarCollectors.Types.HeatCapacity.DryMass,
+        C=484,
         V=4.4/1000,
-        dp_nominal=100,
+        mDry=484,
         mperA_flow_nominal=solarThermalParas.m_flow_nominal/solarThermalParas.A,
-        B0=0,
-        B1=0,
-        y_intercept=solarThermalParas.eta_zero,
-        slope=0,
+        dp_nominal=100,
+        incAngModDat={1.0,0.9967,0.9862,0.9671,0.9360,0.8868,0.8065,0.6686,0.4906,0.0},
         IAMDiff=0.133,
-        C1=solarThermalParas.c1,
-        C2=solarThermalParas.c2,
-        G_nominal=solarThermalParas.GMax,
-        dT_nominal=solarThermalParas.dTMax))                 annotation (Placement(
+        eta0=solarThermalParas.eta_zero,
+        a1=solarThermalParas.c1,
+        a2=solarThermalParas.c2))                            annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-30,-170})));
 
-  Utilities.KPIs.EnergyKPICalculator KPIQSol(use_inpCon=false, y=sum(solCol.vol.heatPort.Q_flow))
+  BESMod.Utilities.KPIs.EnergyKPICalculator KPIQSol(use_inpCon=false, y=sum(solCol.vol.heatPort.Q_flow))
     "Solar thermal KPI"
     annotation (Placement(transformation(extent={{-60,-120},{-40,-100}})));
 
@@ -88,7 +85,7 @@ equation
 
   connect(weaBus, solCol.weaBus) annotation (Line(
       points={{-101,80},{-101,-6},{-104,-6},{-104,-108},{-108,-108},{-108,-184},
-          {-20,-184},{-20,-179.6}},
+          {-20,-184},{-20,-178}},
       color={255,204,51},
       thickness=0.5), Text(
       string="%first",

@@ -2,18 +2,29 @@ within BESMod.Systems.UserProfiles;
 model TEASERProfiles "TEASER Profiles with possible set-back temperature"
   extends BaseClasses.PartialUserProfiles;
   parameter String fileNameIntGains=Modelica.Utilities.Files.loadResource("modelica://BESMod/Resources/InternalGains.txt")
-    "File where matrix is stored";
-  parameter Real gain[3]=fill(1, 3) "Gain value multiplied with internal gains. Used to e.g. disable single gains.";
+    "File where three internal gains are stored"
+    annotation(Dialog(group="Internal Gains"));
+  parameter Real gain[3]=fill(1, 3)
+    "Gain value multiplied with internal gains. Used to e.g. disable single gains."
+    annotation(Dialog(group="Internal Gains"));
 
   parameter Modelica.Units.SI.TemperatureDifference dTSetBack=0
-    "Temperature difference of set-back";
+    "Temperature difference of set-back"
+    annotation(Dialog(group="Set temperatures", enable=not use_TSetFile));
   parameter Modelica.Units.SI.Time startTimeSetBack(displayUnit="h")=79200
-                                                      "Start time of set back";
+    "Start time of set back"
+    annotation(Dialog(group="Set temperatures", enable=not use_TSetFile));
   parameter Real hoursSetBack(max=24, min=0)=8
-                                             "Number of hours the set-back lasts, maximum 24";
+    "Number of hours the set-back lasts, maximum 24"
+    annotation(Dialog(group="Set temperatures", enable=not use_TSetFile));
   parameter Modelica.Units.SI.Temperature TOdaMin=253.15
-    "Minimal outdoor air temperature below which no setback is performed";
-
+    "Minimal outdoor air temperature below which no setback is performed"
+    annotation(Dialog(group="Set temperatures", enable=not use_TSetFile));
+  parameter Boolean use_TSetFile=false "=true to use a file for room set temperature profiles"
+    annotation(Dialog(group="Set temperatures"));
+  parameter String fileNameTSet=Modelica.Utilities.Files.loadResource("modelica://BESMod/Resources/InternalGains.txt")
+    "File where TSet is stored"
+    annotation(Dialog(group="Set temperatures", enable=use_TSetFile));
   Modelica.Blocks.Sources.CombiTimeTable tabIntGai(
     final tableOnFile=true,
     final extrapolation=Modelica.Blocks.Types.Extrapolation.Periodic,
@@ -34,15 +45,29 @@ model TEASERProfiles "TEASER Profiles with possible set-back temperature"
   BaseClasses.NightSetback nigSetBack[nZones](
     each dTSetBack=dTSetBack,
     each final startTimeSetBack=startTimeSetBack,
-    each final timeSetBack=hoursSetBack*3600,
+    each timeSetBack=hoursSetBack*3600,
     final TZone_nominal=TSetZone_nominal,
-    TOdaMin=TOdaMin)
+    each final TOdaMin=TOdaMin) if not use_TSetFile
     "Room set temperature with set-back option"
     annotation (Placement(transformation(extent={{-20,-60},{0,-40}})));
   Modelica.Blocks.Routing.Replicator repTDryBul(final nout=nZones)
+    if not use_TSetFile
     "Match temperature to number of zones"
     annotation (Placement(transformation(extent={{-60,-60},{-40,-40}})));
 
+  Modelica.Blocks.Sources.CombiTimeTable tabTSet(
+    final tableOnFile=true,
+    final extrapolation=Modelica.Blocks.Types.Extrapolation.Periodic,
+    final tableName="TZoneSet",
+    final fileName=fileNameTSet,
+    columns=2:(1 + nZones),
+    y(each unit="K", each displayUnit="degC"))
+                            if use_TSetFile
+    "Profiles for internal gains of machines and lights in W" annotation (
+      Placement(transformation(
+        extent={{10,10},{-10,-10}},
+        rotation=180,
+        origin={30,-60})));
 equation
   connect(tabIntGai.y, gainIntGai.u)
     annotation (Line(points={{1,30},{18,30}}, color={0,0,127}));
@@ -67,4 +92,11 @@ equation
       horizontalAlignment=TextAlignment.Right));
   connect(repTDryBul.y, nigSetBack.TOda)
     annotation (Line(points={{-39,-50},{-22,-50}}, color={0,0,127}));
+  connect(tabTSet.y, useProBus.TZoneSet) annotation (Line(points={{41,-60},{52,
+          -60},{52,-2},{72,-2},{72,0},{78,0},{78,-1},{115,-1}},
+                             color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
 end TEASERProfiles;

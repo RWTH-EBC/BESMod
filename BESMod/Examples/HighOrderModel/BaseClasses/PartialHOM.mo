@@ -45,7 +45,9 @@ partial model PartialHOM
           parThrWayVal,
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
-          parStoBuf(VPerQ_flow=parameterStudy.VPerQFlow, dTLoadingHC1=0)),
+          parStoBuf(VPerQ_flow=parameterStudy.VPerQFlow, dTLoadingHC1=0),
+        redeclare BESMod.Systems.RecordsCollection.Movers.SpeedControlled
+          parPumTra),
       redeclare BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased
         transfer(redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData

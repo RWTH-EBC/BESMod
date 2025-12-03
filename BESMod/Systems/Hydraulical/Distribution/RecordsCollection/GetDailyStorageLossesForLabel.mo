@@ -6,21 +6,21 @@ function GetDailyStorageLossesForLabel
   output Real QLosPerDay "Storage loss per day in kWh/d";
 
 algorithm
-  if energyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.APlus then
+  if energyLabel == Types.EnergyLabel.APlus then
     QLosPerDay:= (5.5+3.16*(V*1000)^(0.4))*0.024;
-  elseif energyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.A then
+  elseif energyLabel == Types.EnergyLabel.A then
     QLosPerDay:= (7+ 3.705*(V*1000)^(0.4))*0.024;
-  elseif energyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.B then
+  elseif energyLabel == Types.EnergyLabel.B then
     QLosPerDay:=(10.25 + 5.09*(V*1000)^(0.4))*0.024;
-  elseif energyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.C then
+  elseif energyLabel == Types.EnergyLabel.C then
     QLosPerDay:=(14.33+ 7.13 *(V*1000)^(0.4))*0.024;
-  elseif energyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.D then
+  elseif energyLabel == Types.EnergyLabel.D then
     QLosPerDay:=(18.83 + 9.33*(V*1000)^(0.4))*0.024;
-  elseif energyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.E then
+  elseif energyLabel == Types.EnergyLabel.E then
     QLosPerDay:=(23.5 + 11.995*(V*1000)^(0.4))*0.024;
-  elseif energyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.F then
+  elseif energyLabel == Types.EnergyLabel.F then
     QLosPerDay:=(28.5+ 15.16*(V*1000)^(0.4))*0.024;
-  elseif energyLabel == Systems.Hydraulical.Distribution.Types.EnergyLabel.G then
+  elseif energyLabel == Types.EnergyLabel.G then
     QLosPerDay:=(31 + 16.66*(V*1000)^(0.4))*0.024;
   else
     QLosPerDay:= 0;

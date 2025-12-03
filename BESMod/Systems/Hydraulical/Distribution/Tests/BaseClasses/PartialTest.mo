@@ -104,8 +104,7 @@ partial model PartialTest
         origin={-69.5,-30})));
   Modelica.Blocks.Sources.Pulse        pulse(period=600)
     annotation (Placement(transformation(extent={{-80,70},{-60,90}})));
-  Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixTSup[distribution.nParallelSup]
-    (                                                                                       T=
+  Modelica.Thermal.HeatTransfer.Sources.FixedTemperature fixTSup[distribution.nParallelSup](T=
         distribution.TSup_nominal)
     "Fixed supply temperature"
     annotation (Placement(transformation(extent={{-100,0},{-80,20}})));

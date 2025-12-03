@@ -2,7 +2,7 @@ within BESMod.Systems.Hydraulical.Distribution.BaseClasses;
 partial model PartialTwoStorageParallel
   "Partial model to later extent"
   extends BaseClasses.PartialThreeWayValve(
-    final dpDHWHCSto_design=sum(stoDHW.heatingCoil1.pipe.res.dp_nominal),
+    final dpDHWHCSto_design=stoDHW.dpHC1Fixed_nominal,
     final dTTraDHW_nominal=parStoDHW.dTLoadingHC1,
     final QDHWStoLoss_flow_estimate=BESMod.Systems.Hydraulical.Distribution.RecordsCollection.GetDailyStorageLossesForLabel(VDHWDay_nominal, parStoDHW.energyLabel)/24*1000,
     final dTTra_nominal={parStoBuf.dTLoadingHC1},
@@ -132,6 +132,7 @@ partial model PartialTwoStorageParallel
     upToDownHC2=true,
     final TStartWall=T_start,
     final TStartIns=T_start,
+    disableComputeFlowResistance=true,
     nLowerPortSupply=1,
     nUpperPortSupply=parStoBuf.nLayer,
     nLowerPortDemand=1,
@@ -142,7 +143,7 @@ partial model PartialTwoStorageParallel
     nHC1Low=1,
     nHR=parStoBuf.nLayerHR,
     redeclare replaceable model HeatTransfer =
-        AixLib.Fluid.Storage.BaseClasses.HeatTransferBuoyancyWetter,
+        AixLib.Fluid.Storage.BaseClasses.HeatTransferOnlyConduction,
     final allowFlowReversal_layers=allowFlowReversal,
     final allowFlowReversal_HC1=allowFlowReversal,
     final allowFlowReversal_HC2=allowFlowReversal) "Buffer storage"
@@ -187,6 +188,7 @@ partial model PartialTwoStorageParallel
     final upToDownHC2=true,
     final TStartWall=T_start,
     final TStartIns=T_start,
+    disableComputeFlowResistance=true,
     nLowerPortSupply=1,
     nUpperPortSupply=parStoDHW.nLayer,
     nLowerPortDemand=1,
@@ -197,7 +199,7 @@ partial model PartialTwoStorageParallel
     nHC1Low=1,
     nHR=parStoDHW.nLayerHR,
     redeclare replaceable model HeatTransfer =
-        AixLib.Fluid.Storage.BaseClasses.HeatTransferBuoyancyWetter,
+        AixLib.Fluid.Storage.BaseClasses.HeatTransferOnlyConduction,
     final allowFlowReversal_layers=allowFlowReversal,
     final allowFlowReversal_HC1=allowFlowReversal,
     final allowFlowReversal_HC2=allowFlowReversal)            "DHW storage"

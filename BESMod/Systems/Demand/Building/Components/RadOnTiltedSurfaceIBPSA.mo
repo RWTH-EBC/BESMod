@@ -21,11 +21,11 @@ model RadOnTiltedSurfaceIBPSA
     annotation (Placement(transformation(extent={{-112,-10},{-92,10}})));
 
 equation
-  radOnTiltedSurf.I = HDifTil.H + HDirTil.H;
-  radOnTiltedSurf.I_dir = HDirTil.H;
-  radOnTiltedSurf.I_diff = HDifTil.H;
-  radOnTiltedSurf.I_gr = HDifTil.HGroDifTil;
-  radOnTiltedSurf.AOI = HDirTil.inc;
+  radOnTiltedSurf.H = HDifTil.H + HDirTil.H;
+  radOnTiltedSurf.HDir  = HDirTil.H;
+  radOnTiltedSurf.HDif = HDifTil.H;
+  radOnTiltedSurf.HGrd = HDifTil.HGroDifTil;
+  radOnTiltedSurf.incAng = HDirTil.inc;
   connect(HDifTil.weaBus, weaBus) annotation (Line(
       points={{-20,30},{-58,30},{-58,0},{-102,0}},
       color={255,204,51},

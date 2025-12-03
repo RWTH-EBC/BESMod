@@ -7,7 +7,7 @@ model SimpleSolarThermalWithHeatPump
     dTTra_nominal={if TDem_nominal[1] > 273.15 + 55 then 10 elseif TDem_nominal[1] >
         44.9 then 8 else 5,parSolThe.dTMax},
     final nParallelDem=2,
-    dp_design={heatPump.dpCon_nominal + dpEleHea_nominal + resGen.dp_nominal, dpST_nominal + resSolThe.dp_nominal});
+    dp_design={resGenApp.dp_nominal, dpST_nominal + resSolThe.dp_nominal});
   parameter Modelica.Units.SI.Length lengthPipSolThe=30 "Length of all pipes to and from solar thermal"
     annotation (Dialog(tab="Pressure losses", group="Solar Thermal"));
   parameter Real resCoeSolThe=8*facPerBend
@@ -41,14 +41,14 @@ model SimpleSolarThermalWithHeatPump
     final dp_nominal=dpST_nominal,
     final rho_default=rho,
     final a=solThe.pressureDropCoeff,
+    energyDynamics=energyDynamics,
     final A=parSolThe.A,
     final volPip=parSolThe.volPip,
     final pressureDropCoeff=parSolThe.pressureDropCoeff,
     final Collector=AixLib.DataBase.SolarThermal.SimpleAbsorber(
         eta_zero=parSolThe.eta_zero,
         c1=parSolThe.c1,
-        c2=parSolThe.c2),
-    vol(final energyDynamics=energyDynamics)) "Solar thermal collector"
+        c2=parSolThe.c2)) "Solar thermal collector"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
@@ -57,9 +57,9 @@ model SimpleSolarThermalWithHeatPump
   Utilities.KPIs.EnergyKPICalculator KPIWel1(use_inpCon=false, y=-solThe.heater.port.Q_flow)
     annotation (Placement(transformation(extent={{-60,-100},{-40,-80}})));
 
-  Modelica.Blocks.Sources.RealExpression reaExpSolTheTCol(y=solThe.senTCold.T)
+  Modelica.Blocks.Sources.RealExpression reaExpSolTheTCol(y=solThe.senTRet.T)
     annotation (Placement(transformation(extent={{-100,-146},{-80,-126}})));
-  Modelica.Blocks.Sources.RealExpression reaExpSolTheTHot(y=solThe.senTHot.T)
+  Modelica.Blocks.Sources.RealExpression reaExpSolTheTHot(y=solThe.senTSup.T)
     annotation (Placement(transformation(extent={{-100,-100},{-80,-80}})));
 
   BESMod.Systems.Hydraulical.Components.ResistanceCoefficientHydraulicDiameter resSolThe(

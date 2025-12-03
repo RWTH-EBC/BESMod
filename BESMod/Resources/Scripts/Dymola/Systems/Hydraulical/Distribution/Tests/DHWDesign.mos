@@ -1,0 +1,15 @@
+simulateModel("BESMod.Systems.Hydraulical.Distribution.Tests.DHWDesign", stopTime=1, method="CVode", tolerance=1e-06, resultFile="DHWDesign");
+createPlot(
+	id=2, position={75, 70, 700, 500}, 
+	y={"fullStorage.QDHWBefSto_flow_nominal", "partStorage.QDHWBefSto_flow_nominal"}, 
+	grid=true, subPlot=1, 
+	patterns={LinePattern.Solid, LinePattern.Solid}, 
+	colors={{28,108,200}, {28,200,108}}
+);
+createPlot(
+	id=2, position={75, 70, 700, 500}, 
+	y={"fullStorage.VStoDHWLos", "partStorage.VStoDHWLos"}, 
+	grid=true, subPlot=2, 
+	patterns={LinePattern.Solid, LinePattern.Solid}, 
+	colors={{28,108,200}, {28,200,108}}
+);

@@ -150,30 +150,14 @@ model TEASERThermalZone
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-90,-148})));
-  Modelica.Blocks.Sources.RealExpression QSolRad_flow[nZones](
-    y={if ATot[i] > 0 and sum(thermalZone[i].ROM.ATransparent) > 0 then
-       sum({thermalZone[i].ROM.radHeatSol[n].Q_flow
-           for n in 1:thermalZone[i].ROM.nOrientations})
-       else 0 for i in 1:nZones}) if use_verboseEnergyBalance
+  Modelica.Blocks.Sources.RealExpression QSol_flow[nZones](y={if ATot[i] > 0 then
+        sum({thermalZone[i].ROM.solRad[n]*thermalZone[i].ROM.ATransparent[n]*
+        thermalZone[i].ROM.gWin for n in 1:thermalZone[i].ROM.nOrientations})
+         else 0 for i in 1:nZones}) if use_verboseEnergyBalance
     "Solar radiative  heat flow rate" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-90,-170})));
-  Modelica.Blocks.Sources.RealExpression QSolConv_flow[nZones](
-    y={if thermalZone[i].ROM.ratioWinConRad > 0 and
-       (ATot[i] > 0 or thermalZone[i].ROM.VAir > 0) and
-       sum(thermalZone[i].ROM.ATransparent) > 0 then
-       sum({thermalZone[i].ROM.convHeatSol.Q_flow})
-       else 0 for i in 1:nZones}) if use_verboseEnergyBalance
-    "Solar convective  heat flow rate" annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=0,
-        origin={-90,-184})));
-  Modelica.Blocks.Math.Add addSol[nZones] if use_verboseEnergyBalance
-    annotation (Placement(transformation(
-        extent={{-4,4},{4,-4}},
-        rotation=0,
-        origin={-74,-178})));
 
   Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow preAbsHeaGaiRad(
       final T_ref=293.15, final alpha=0) if use_absIntGai
@@ -422,12 +406,8 @@ equation
   connect(preAbsHeaGaiRad.port, thermalZone[1].intGainsRad) annotation (Line(points={{-80,-10},
           {-52,-10},{-52,60.24},{-39.74,60.24}},
                    color={191,0,0}));
-  connect(addSol.y, zoneEneBal.QSol_flow) annotation (Line(points={{-69.6,-178},
-          {-66,-178},{-66,-170},{-63.8,-170}}, color={0,0,127}));
-  connect(QSolConv_flow.y, addSol.u1) annotation (Line(points={{-79,-184},{-79,
-          -182.2},{-78.8,-182.2},{-78.8,-180.4}}, color={0,0,127}));
-  connect(QSolRad_flow.y, addSol.u2) annotation (Line(points={{-79,-170},{-79,
-          -172.8},{-78.8,-172.8},{-78.8,-175.6}}, color={0,0,127}));
+  connect(QSol_flow.y, zoneEneBal.QSol_flow)
+    annotation (Line(points={{-79,-170},{-63.8,-170}}, color={0,0,127}));
     annotation (Diagram(coordinateSystem(extent={{-100,-220},{100,100}})),
       Documentation(info="<html>
 <p>This model uses the reduced-order approach with the common TEASER output to model the building envelope. Relevant KPIs are calculated.</p>

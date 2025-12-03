@@ -1,5 +1,5 @@
 within BESMod.Systems.Hydraulical.Generation.BaseClasses;
-model PartialHeatPumpAndGasBoiler "Partial heat pump and boiler"
+partial model PartialHeatPumpAndGasBoiler "Partial heat pump and boiler"
   extends BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump(genDesTyp
       =BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel);
   parameter Real etaTem[:,2]=[293.15,1.09; 303.15,1.08; 313.15,1.05; 323.15,1.; 373.15,
@@ -27,9 +27,11 @@ model PartialHeatPumpAndGasBoiler "Partial heat pump and boiler"
     final transferHeat=parTemSen.transferHeat,
     final TAmb=parTemSen.TAmb,
     final tauHeaTra=parTemSen.tauHeaTra,
+    dp_nominal=0,
     final rho_default=rho,
     final p_start=p_start,
     final T_start=T_start,
+    final energyDynamics=energyDynamics,
     final etaLoadBased=parBoi.eta,
     final G=0.003*parBoi.Q_nom/50,
     final C=1.5*parBoi.Q_nom,

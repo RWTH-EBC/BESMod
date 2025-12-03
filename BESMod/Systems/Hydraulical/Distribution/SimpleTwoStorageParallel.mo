@@ -6,7 +6,9 @@ model SimpleTwoStorageParallel
     final dpDHW_nominal=0,
     final dpDHWHCSto_design=0,
     final QDHWStoLoss_flow=parStoDHW.QLoss_flow,
-    final QDHWStoLoss_flow_estimate=BESMod.Systems.Hydraulical.Distribution.RecordsCollection.GetDailyStorageLossesForLabel(VDHWDay_nominal, parStoDHW.energyLabel)/24*1000,
+    final QDHWStoLoss_flow_estimate=
+        BESMod.Systems.Hydraulical.Distribution.RecordsCollection.GetDailyStorageLossesForLabel(
+        VDHWDay_nominal, parStoDHW.energyLabel)/24*1000,
     designType=BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage,
     final dTTraDHW_nominal=parStoDHW.dTLoadingHC1,
     final dTTra_nominal={parStoBuf.dTLoadingHC1},

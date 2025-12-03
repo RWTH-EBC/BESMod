@@ -5,10 +5,9 @@ model HeatPumpMonoenergeticResidentialBuilding
       use_verboseEnergyBalance=false,
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial),
     userProfiles(
-      setBakTSetZone(
-        amplitude={0},
-        width={1e-50},
-        startTime={0})),
+      dTSetBack=0,
+      startTimeSetBack=0,
+      hoursSetBack=0),
     systemParameters(
         nZones=1,
         TSetZone_nominal={294.15},
