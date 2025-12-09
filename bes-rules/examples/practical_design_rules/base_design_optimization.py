@@ -13,12 +13,10 @@ def get_inputs_config_to_simulate(modifiers: list = None):
     weathers = boundary_conditions.weather.get_weather_configs_by_names(region_names=["Potsdam"])
     buildings = boundary_conditions.building.get_all_tabula_sfh_buildings()
     dhw_profiles = [{"profile": "M"}]
-    users = []
     return configs.InputsConfig(
         full_factorial=True,
         weathers=weathers,
         buildings=buildings,
-        users=users,
         dhw_profiles=dhw_profiles,
         modifiers=modifiers
     )
