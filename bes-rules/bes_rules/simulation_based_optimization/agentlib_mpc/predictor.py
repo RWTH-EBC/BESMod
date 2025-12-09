@@ -1,6 +1,5 @@
 """
-Model taken from here
-https://git-ce.rwth-aachen.de/ebc/projects/ACS_EBC0022_ERANET_I-Greta_bsc/optimization/-/tree/fwu-pkr
+Module with a predictor based on a pre-simulation
 """
 import agentlib as al
 import pandas as pd

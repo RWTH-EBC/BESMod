@@ -10,8 +10,7 @@ python-telegram-bot==13.14
 python-dotenv
 matplotlib
 git+https://github.com/RWTH-EBC/AixWeather.git@development
-#git+https://github.com/RWTH-EBC/OpenDHW.git@75075392496ae09c03fc7b43eaa4cff6f6f9d759
-vclibpy
+git+https://github.com/RWTH-EBC/OpenDHW.git@75075392496ae09c03fc7b43eaa4cff6f6f9d759
 Agentlib[full]
 urllib3==1.26.19
 geopandas

@@ -15,7 +15,6 @@ class ControlEmulatorModuleConfig(al.BaseModuleConfig):
 
 
 class ControlEmulatorModule(al.BaseModule):
-
     config: ControlEmulatorModuleConfig
 
     def register_callbacks(self):

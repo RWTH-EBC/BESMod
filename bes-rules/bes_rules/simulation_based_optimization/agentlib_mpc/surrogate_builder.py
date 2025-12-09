@@ -3,18 +3,23 @@ import logging
 
 import pandas as pd
 
-from bes_rules.simulation_based_optimization import BaseSupervisoryControl
 from ebcpy import DymolaAPI
 
 from bes_rules.configs import InputConfig
-from bes_rules.simulation_based_optimization.agentlib_mpc import run_mpc
+from bes_rules.simulation_based_optimization import BaseSupervisoryControl
 
 logger = logging.getLogger(__name__)
 logger.setLevel("DEBUG")
 
 
 class AgentLibMPC(BaseSupervisoryControl):
-    external_control_function: callable = run_mpc.run
+    """
+    Class used to generate FMUs and MPC-configs for AgentLib-MPC Co-Simulations.
+
+    You can pass a custom run_mpc function via `external_control_function` to actually run the multi-agent system.
+    Inputs to this function are defined by `get_function_inputs_for_parameters`.
+    See the examples for how to do that.
+    """
 
     def __init__(self, config, input_config: InputConfig, sim_api: DymolaAPI = None, **kwargs):
         super().__init__(config=config, input_config=input_config, sim_api=sim_api, **kwargs)

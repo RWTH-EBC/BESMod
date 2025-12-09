@@ -1,10 +1,9 @@
-import datetime
 import logging
 from pathlib import Path
 
 from agentlib.utils.multi_agent_system import LocalMASAgency
 
-from bes_rules.simulation_based_optimization.agentlib_mpc.config_editor import generator_simulator_comparison_configs
+from config_editor import generator_simulator_comparison_configs
 
 logger = logging.getLogger(__name__)
 
