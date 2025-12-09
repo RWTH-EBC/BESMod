@@ -1,0 +1,29 @@
+
+Error in model:  BESMod.Systems.Hydraulical.Control.Components.Defrost.NoDefrost 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Control.Components.Defrost.NoDefrost">BESMod.Systems.Hydraulical.Control.Components.Defrost.NoDefrost</a>
+Did not find model BESMod.Systems.Hydraulical.Control.Components.Defrost.NoDefrost
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Electrical.Transfer.IdealHeaterFraRad 
+Check of <a href="Modelica://BESMod.Systems.Electrical.Transfer.IdealHeaterFraRad">BESMod.Systems.Electrical.Transfer.IdealHeaterFraRad</a>
+Found for import <a href="Modelica://BESRules">BESRules</a>
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Electrical/Transfer/IdealHeaterFraRad.mo, line 2
+  Context: <a href="Modelica://BESMod.Systems.Electrical.Transfer.IdealHeaterFraRad">BESMod.Systems.Electrical.Transfer.IdealHeaterFraRad</a>
+Error: Error: Lookup failed for import <a href="Modelica://BESRules">BESRules</a>
+Found for import <a href="Modelica://BESRules">BESRules</a>
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Electrical/Transfer/IdealHeaterFraRad.mo, line 2
+  Context: <a href="Modelica://BESMod.Systems.Electrical.Transfer.IdealHeaterFraRad">BESMod.Systems.Electrical.Transfer.IdealHeaterFraRad</a>
+Error: Error: Lookup failed for import <a href="Modelica://BESRules">BESRules</a>
+Error: Component type specifier BESRules.InputAnalysis.HeaterCoolerPIFraRad not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Electrical/Transfer/IdealHeaterFraRad.mo, line <a href="Modelica://BESMod.Systems.Electrical.Transfer.IdealHeaterFraRad#text:10">11</a>
+ Component context: heaterCooler
+  Component declared as BESRules.InputAnalysis.HeaterCoolerPIFraRad heaterCooler in <a href="Modelica://BESMod.Systems.Electrical.Transfer.IdealHeaterFraRad">BESMod.Systems.Electrical.Transfer.IdealHeaterFraRad</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Control.Components.Defrost.BaseClasses.PartialDefrost 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Control.Components.Defrost.BaseClasses.PartialDefrost">BESMod.Systems.Hydraulical.Control.Components.Defrost.BaseClasses.PartialDefrost</a>
+Did not find model BESMod.Systems.Hydraulical.Control.Components.Defrost.BaseClasses.PartialDefrost
+Error: ERRORS have been issued.
+
