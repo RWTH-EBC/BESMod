@@ -360,7 +360,8 @@ equation
       color={0,0,0},
       thickness=1));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-180,-140},
-            {200,140}}), graphics={
+            {200,140}}),
+            graphics={
         Rectangle(
           extent={{-180,140},{200,-140}},
           lineColor={0,0,0},
@@ -472,5 +473,27 @@ equation
           origin={4,-2})}),
                           Diagram(graphics,
                                   coordinateSystem(preserveAspectRatio=false,
-          extent={{-180,-140},{200,140}})));
+          extent={{-180,-140},{200,140}})),
+          Documentation(info="<html>
+This is a partial model for a complete hydraulic system. 
+It contains replaceable models for generation, control, distribution, and transfer components.
+The subsystems are connected using the demand/supply top/down parameters, as described in the BEStPar contribution by Wuellhorst et al.
+
+<h4>Normative Equations</h4>
+Note that the DHW design according to EN 15450 is realized by
+adding the building distribution design heat flow with the DHW design flow rate.
+This is based on Equation (1) in DIN EN 15450.
+
+<h4>Important Parameters</h4>
+<ul>
+<li><code>use_dhw</code>: Boolean parameter to enable or disable domestic hot water (DHW).</li>
+<li><code>hydraulicSystemParameters</code>: Record containing base data definitions for the hydraulic system.</li>
+</ul>
+<h4>Used Modules</h4>
+<ul>
+<li><a href=\"modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration\">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialGeneration</a></li>
+<li><a href=\"modelica://BESMod.Systems.Hydraulical.Control.BaseClasses.PartialControl\">BESMod.Systems.Hydraulical.Control.BaseClasses.PartialControl</a></li>
+<li><a href=\"modelica://BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution\">BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution</a></li>
+<li><a href=\"modelica://BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialTransfer\">BESMod.Systems.Hydraulical.Transfer.BaseClasses.PartialTransfer</a></li>
+</ul></html>"));
 end PartialHydraulicSystem;
