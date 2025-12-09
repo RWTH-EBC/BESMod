@@ -1,0 +1,80 @@
+{
+  "module_id": "sim",
+  "type": "simulator",
+  "model": {
+    "type": "fmu",
+    "only_config_variables": true
+  },
+  "update_inputs_on_callback": true,
+  "t_sample_communication": 50,
+  "t_sample_simulation": 900,
+  "save_results": true,
+  "shared_variable_fields": [
+    "outputs",
+    "states"
+  ],
+  "overwrite_result_file": true,
+  "result_causalities": [
+    "input",
+    "output",
+    "local"
+  ],
+  "inputs": [
+    {
+      "name": "TBufSet",
+      "alias": "THeaPumSet",
+      "value": 323.15
+    },
+    {
+      "name": "yValSet",
+      "value": 0
+    },
+    {
+      "name": "yEleHeaSet",
+      "value": 0
+    },
+    {
+      "name": "actExtVal",
+      "value": true
+    },
+    {
+      "name": "actExtDHWCtrl",
+      "value": false
+    },
+    {
+      "name": "actExtBufCtrl",
+      "value": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "outputs.electrical.dis.PEleLoa.value",
+      "alias": "P_el_feed_from_grid"
+    },
+    {
+      "name": "outputs.electrical.dis.PEleGen.value",
+      "alias": "P_el_feed_into_grid"
+    }
+  ],
+  "states": [
+    {
+      "name": "hydraulic.distribution.stoBuf.layer[1].T",
+      "alias": "T_TES_1"
+    },
+    {
+      "name": "hydraulic.distribution.stoBuf.layer[2].T",
+      "alias": "T_TES_2"
+    },
+    {
+      "name": "hydraulic.distribution.stoBuf.layer[3].T",
+      "alias": "T_TES_3"
+    },
+    {
+      "name": "hydraulic.distribution.stoBuf.layer[4].T",
+      "alias": "T_TES_4"
+    },
+    {
+      "name": "hydraulic.transfer.portTra_in[1].m_flow"
+    }
+  ]
+}

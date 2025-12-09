@@ -1,4 +1,4 @@
-﻿within BESMod.Systems.Hydraulical.Control.Components;
+within BESMod.Systems.Hydraulical.Control.Components;
 package DHWSetControl
 
 

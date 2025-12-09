@@ -1,4 +1,4 @@
-﻿within BESMod.Systems.Hydraulical.Control.Components.RelativeSpeedController.BaseClasses;
+within BESMod.Systems.Hydraulical.Control.Components.RelativeSpeedController.BaseClasses;
 block LimPID
   "P, PI, PD, and PID controller with limited output, anti-windup compensation, setpoint weighting and optional feed-forward"
   import InitPID =

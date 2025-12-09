@@ -1,0 +1,120 @@
+{
+  "module_id": "mpc",
+  "type": "agentlib_mpc.mpc",
+  "enable_deactivate_mpc": true,
+  "control_values_when_deactivated": {
+    "TBufSet": 303.15,
+    "yValSet": 0,
+    "yEleHeaSet": 0,
+    "actExtVal": false,
+    "actExtDHWCtrl": false,
+    "actExtBufCtrl": false
+  },
+  "outputs_to_send_when_activated": {
+    "actExtVal": true,
+    "actExtDHWCtrl": false,
+    "actExtBufCtrl": true
+  },
+  "optimization_backend": {
+    "type": "casadi",
+    "build_batch_bat": "mpc_utils/solver_lib/compile_nlp.bat",
+    "do_jit": false,
+    "overwrite_result_file": true,
+    "discretization_options": {
+      "collocation_order": 2,
+      "collocation_method": "legendre"
+    },
+    "solver": {
+      "name": "ipopt",
+      "options": {
+        "ipopt": {
+          "max_iter": 500,
+          "tol": 0.0001,
+          "acceptable_iter": 20,
+          "acceptable_tol": 0.001
+        }
+      }
+    }
+  },
+  "parameters": [],
+  "controls": [
+    {
+      "name": "THeaPumSet",
+      "value": 323.15,
+      "lb": 293.15,
+      "ub": 343.15
+    },
+    {
+      "name": "yValSet",
+      "value": 0,
+      "lb": 0,
+      "ub": 1
+    },
+    {
+      "name": "yEleHeaSet",
+      "value": 0,
+      "lb": 0,
+      "ub": 1
+    }
+  ],
+  "states": [
+    {
+      "name": "T_TES_1",
+      "value": 293.15
+    },
+    {
+      "name": "T_TES_2",
+      "value": 293.15
+    },
+    {
+      "name": "T_TES_3",
+      "value": 293.15
+    },
+    {
+      "name": "T_TES_4",
+      "value": 293.15
+    }
+  ],
+  "inputs": [
+    {
+      "name": "T_Air",
+      "value": 293.15,
+      "alias": "T_Air_prediction"
+    },
+    {
+      "name": "T_amb",
+      "value": 283.15,
+      "alias": "T_amb_prediction"
+    },
+    {
+      "name": "THeaCur",
+      "value": 293.15,
+      "alias": "THeaCur_prediction"
+    },
+    {
+      "name": "P_el_pv",
+      "value": 0,
+      "alias": "P_el_pv_prediction"
+    },
+    {
+      "name": "Q_demand",
+      "value": 0,
+      "alias": "Q_demand_prediction"
+    },
+    {
+      "name": "P_el_demand",
+      "value": 0,
+      "alias": "P_el_demand_prediction"
+    },
+    {
+      "name": "c_grid",
+      "value": 0.3606,
+      "alias": "c_grid_prediction"
+    },
+    {
+      "name": "c_feed_in",
+      "value": 0.082,
+      "alias": "c_feed_in_prediction"
+    }
+  ]
+}

@@ -49,7 +49,7 @@ model TimeBasedElectricHeater
     if not electricHeaterOnlyBelowBivalenceTemperature
     "Disable below bivalence point check"
     annotation (Placement(transformation(extent={{-40,0},{-20,20}})));
-  Modelica.Blocks.Logical.LessEqualThreshold belBiv(threshold=Modelica.Constants.eps)
+  Modelica.Blocks.Logical.LessEqualThreshold belBiv(final threshold=TBiv)
     if electricHeaterOnlyBelowBivalenceTemperature
     "Is below bivalence temperature"
     annotation (Placement(transformation(extent={{12,60},{32,80}})));

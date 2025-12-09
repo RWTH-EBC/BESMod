@@ -1,0 +1,10 @@
+{
+    "SCOP_Sys": {
+        "parameterStudy.TBiv": 203.3344444,
+        "parameterStudy.VPerQFlow": 1948.924297
+    },
+    "outputs.hydraulic.gen.heaPum.numSwi": {
+        "parameterStudy.TBiv": 193.7915046,
+        "parameterStudy.VPerQFlow": 493.9923611
+    }
+}

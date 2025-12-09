@@ -6,3 +6,4 @@ RoomControlCalculator
 ZoneEnergyBalance
 ZoneTemperature
 BaseClasses
+CalculateHeatMeanTemperature

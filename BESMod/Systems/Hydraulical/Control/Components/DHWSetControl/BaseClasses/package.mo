@@ -1,4 +1,4 @@
-﻿within BESMod.Systems.Hydraulical.Control.Components.DHWSetControl;
+within BESMod.Systems.Hydraulical.Control.Components.DHWSetControl;
 package BaseClasses "Package with base classes for IBPSA.Controls.HeatPump.SecurityControls"
 
 
