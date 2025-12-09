@@ -12,7 +12,12 @@ partial model PartialTwoStorageParallel
      annotation(Dialog(tab="Pressure losses"));
   parameter Modelica.Units.SI.TemperatureDifference dTLoaHCBuf
     "Temperature difference for loading of heating coil in buffer storage";
-
+  replaceable model HeatTransferBuf =
+      AixLib.Fluid.Storage.BaseClasses.HeatTransferOnlyConduction annotation (
+      choicesAllMatching=true, Dialog(tab="Advanced", group="Storage heat transfer"));
+  replaceable model HeatTransferDHW =
+      AixLib.Fluid.Storage.BaseClasses.HeatTransferOnlyConduction annotation (
+      choicesAllMatching=true, Dialog(tab="Advanced", group="Storage heat transfer"));
   replaceable parameter
     BESMod.Systems.RecordsCollection.TemperatureSensors.TemperatureSensorBaseDefinition
     parTemSen
@@ -142,8 +147,7 @@ partial model PartialTwoStorageParallel
     nHC1Up=parStoBuf.nLayer,
     nHC1Low=1,
     nHR=parStoBuf.nLayerHR,
-    redeclare replaceable model HeatTransfer =
-        AixLib.Fluid.Storage.BaseClasses.HeatTransferOnlyConduction,
+    redeclare model HeatTransfer = HeatTransferBuf,
     final allowFlowReversal_layers=allowFlowReversal,
     final allowFlowReversal_HC1=allowFlowReversal,
     final allowFlowReversal_HC2=allowFlowReversal) "Buffer storage"
@@ -198,8 +202,7 @@ partial model PartialTwoStorageParallel
     nHC1Up=parStoDHW.nLayer,
     nHC1Low=1,
     nHR=parStoDHW.nLayerHR,
-    redeclare replaceable model HeatTransfer =
-        AixLib.Fluid.Storage.BaseClasses.HeatTransferOnlyConduction,
+    redeclare model HeatTransfer = HeatTransferDHW,
     final allowFlowReversal_layers=allowFlowReversal,
     final allowFlowReversal_HC1=allowFlowReversal,
     final allowFlowReversal_HC2=allowFlowReversal)            "DHW storage"
@@ -294,6 +297,7 @@ partial model PartialTwoStorageParallel
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={0,-30})));
+
 protected
   parameter Boolean use_secHeaCoiDHWSto
     "=false to disable second heating coil in DHW storage";
