@@ -1,0 +1,134 @@
+
+Error in model:  BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding 
+Check of <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding">BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+Error: For variable userProfiles.dTSetBack
+ declared in class <a href="Modelica://BESMod.Systems.UserProfiles.TEASERProfiles">BESMod.Systems.UserProfiles.TEASERProfiles</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/UserProfiles/TEASERProfiles.mo at line <a href="Modelica://BESMod.Systems.UserProfiles.TEASERProfiles#text:10">11</a>, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding#:userProfiles">userProfiles</a>.
+Type inconsistent definition equation:
+  userProfiles.dTSetBack = 0;
+Error: The left hand side of the following equation is a vector
+and the right hand side is a scalar, i.e. it has non-compatible parts:
+    userProfiles.dTSetBack = 0;
+
+Error: For variable userProfiles.startTimeSetBack
+ declared in class <a href="Modelica://BESMod.Systems.UserProfiles.TEASERProfiles">BESMod.Systems.UserProfiles.TEASERProfiles</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/UserProfiles/TEASERProfiles.mo at line <a href="Modelica://BESMod.Systems.UserProfiles.TEASERProfiles#text:13">14</a>, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding#:userProfiles">userProfiles</a>.
+Type inconsistent definition equation:
+  userProfiles.startTimeSetBack = 0;
+Error: The left hand side of the following equation is a vector
+and the right hand side is a scalar, i.e. it has non-compatible parts:
+    userProfiles.startTimeSetBack = 0;
+
+Error: For variable userProfiles.hoursSetBack
+ declared in class <a href="Modelica://BESMod.Systems.UserProfiles.TEASERProfiles">BESMod.Systems.UserProfiles.TEASERProfiles</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/UserProfiles/TEASERProfiles.mo at line <a href="Modelica://BESMod.Systems.UserProfiles.TEASERProfiles#text:16">17</a>, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding#:userProfiles">userProfiles</a>.
+Type inconsistent definition equation:
+  userProfiles.hoursSetBack = 0;
+Error: The left hand side of the following equation is a vector
+and the right hand side is a scalar, i.e. it has non-compatible parts:
+    userProfiles.hoursSetBack = 0;
+
+Basic type inconsistencies detected.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding 
+Check of <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding">BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+Warning: The quantity of electrical.generation.pVSystem[1].weaBus.TDryBul is "ThermodynamicTemperature" and the quantity of electrical.generation.pVSystem[1].cellTemperature.T_a is "Temp_C".
+In <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#diagram$electrical.generation.pVSystem[1]:Bus.TDryBul,lTemperature.T_a">connect(electrical.generation.pVSystem[1].weaBus.TDryBul, electrical.generation.pVSystem[1].cellTemperature.T_a);
+</a>Found in class <a href="Modelica://AixLib.Electrical.PVSystem.PVSystem">AixLib.Electrical.PVSystem.PVSystem</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/PVSystem.mo at line <a href="Modelica://AixLib.Electrical.PVSystem.PVSystem#text:131">132</a>, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#$electrical.generation:pVSystem">electrical.generation.pVSystem[1]</a>.
+Variable <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#diagram$electrical.generation:pVSystem[1].weaBus">electrical.generation.pVSystem[1].weaBus.TDryBul</a> was declared in class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/BoundaryConditions/WeatherData/Bus.mo at line 5, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#$electrical.generation.pVSystem:weaBus">electrical.generation.pVSystem[1].weaBus</a>.
+Variable <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#diagram$electrical.generation.pVSystem[1]:cellTemperature.T_a">electrical.generation.pVSystem[1].cellTemperature.T_a</a> was declared in class <a href="Modelica://Modelica.Blocks.Interfaces">Modelica.Blocks.Interfaces</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/BaseClasses/PartialCellTemperature.mo at line 21, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#$electrical.generation.pVSystem.cellTemperature:PartialCellTemperature">electrical.generation.pVSystem.cellTemperature.PartialCellTemperature</a>.
+Warning: The quantity of electrical.generation.pVSystem[2].weaBus.TDryBul is "ThermodynamicTemperature" and the quantity of electrical.generation.pVSystem[2].cellTemperature.T_a is "Temp_C".
+In <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#diagram$electrical.generation.pVSystem[2]:Bus.TDryBul,lTemperature.T_a">connect(electrical.generation.pVSystem[2].weaBus.TDryBul, electrical.generation.pVSystem[2].cellTemperature.T_a);
+</a>Found in class <a href="Modelica://AixLib.Electrical.PVSystem.PVSystem">AixLib.Electrical.PVSystem.PVSystem</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/PVSystem.mo at line <a href="Modelica://AixLib.Electrical.PVSystem.PVSystem#text:131">132</a>, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#$electrical.generation:pVSystem">electrical.generation.pVSystem[2]</a>.
+Variable <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#diagram$electrical.generation:pVSystem[2].weaBus">electrical.generation.pVSystem[2].weaBus.TDryBul</a> was declared in class <a href="Modelica://Modelica.Units.SI">Modelica.Units.SI</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/BoundaryConditions/WeatherData/Bus.mo at line 5, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#$electrical.generation.pVSystem:weaBus">electrical.generation.pVSystem[2].weaBus</a>.
+Variable <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#diagram$electrical.generation.pVSystem[2]:cellTemperature.T_a">electrical.generation.pVSystem[2].cellTemperature.T_a</a> was declared in class <a href="Modelica://Modelica.Blocks.Interfaces">Modelica.Blocks.Interfaces</a>, /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Electrical/PVSystem/BaseClasses/PartialCellTemperature.mo at line 21, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#$electrical.generation.pVSystem.cellTemperature:PartialCellTemperature">electrical.generation.pVSystem.cellTemperature.PartialCellTemperature</a>.
+Error: For variable userProfiles.dTSetBack
+ declared in class <a href="Modelica://BESMod.Systems.UserProfiles.TEASERProfiles">BESMod.Systems.UserProfiles.TEASERProfiles</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/UserProfiles/TEASERProfiles.mo at line <a href="Modelica://BESMod.Systems.UserProfiles.TEASERProfiles#text:10">11</a>, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#:userProfiles">userProfiles</a>.
+Type inconsistent definition equation:
+  userProfiles.dTSetBack = 0;
+Error: The left hand side of the following equation is a vector
+and the right hand side is a scalar, i.e. it has non-compatible parts:
+    userProfiles.dTSetBack = 0;
+
+Error: For variable userProfiles.startTimeSetBack
+ declared in class <a href="Modelica://BESMod.Systems.UserProfiles.TEASERProfiles">BESMod.Systems.UserProfiles.TEASERProfiles</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/UserProfiles/TEASERProfiles.mo at line <a href="Modelica://BESMod.Systems.UserProfiles.TEASERProfiles#text:13">14</a>, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#:userProfiles">userProfiles</a>.
+Type inconsistent definition equation:
+  userProfiles.startTimeSetBack = 0;
+Error: The left hand side of the following equation is a vector
+and the right hand side is a scalar, i.e. it has non-compatible parts:
+    userProfiles.startTimeSetBack = 0;
+
+Error: For variable userProfiles.hoursSetBack
+ declared in class <a href="Modelica://BESMod.Systems.UserProfiles.TEASERProfiles">BESMod.Systems.UserProfiles.TEASERProfiles</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/UserProfiles/TEASERProfiles.mo at line <a href="Modelica://BESMod.Systems.UserProfiles.TEASERProfiles#text:16">17</a>, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#:userProfiles">userProfiles</a>.
+Type inconsistent definition equation:
+  userProfiles.hoursSetBack = 0;
+Error: The left hand side of the following equation is a vector
+and the right hand side is a scalar, i.e. it has non-compatible parts:
+    userProfiles.hoursSetBack = 0;
+
+Basic type inconsistencies detected.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding 
+Check of <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding">BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+Error: For variable userProfiles.dTSetBack
+ declared in class <a href="Modelica://BESMod.Systems.UserProfiles.TEASERProfiles">BESMod.Systems.UserProfiles.TEASERProfiles</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/UserProfiles/TEASERProfiles.mo at line <a href="Modelica://BESMod.Systems.UserProfiles.TEASERProfiles#text:10">11</a>, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding#:userProfiles">userProfiles</a>.
+Type inconsistent definition equation:
+  userProfiles.dTSetBack = 0;
+Error: The left hand side of the following equation is a vector
+and the right hand side is a scalar, i.e. it has non-compatible parts:
+    userProfiles.dTSetBack = 0;
+
+Error: For variable userProfiles.startTimeSetBack
+ declared in class <a href="Modelica://BESMod.Systems.UserProfiles.TEASERProfiles">BESMod.Systems.UserProfiles.TEASERProfiles</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/UserProfiles/TEASERProfiles.mo at line <a href="Modelica://BESMod.Systems.UserProfiles.TEASERProfiles#text:13">14</a>, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding#:userProfiles">userProfiles</a>.
+Type inconsistent definition equation:
+  userProfiles.startTimeSetBack = 0;
+Error: The left hand side of the following equation is a vector
+and the right hand side is a scalar, i.e. it has non-compatible parts:
+    userProfiles.startTimeSetBack = 0;
+
+Error: For variable userProfiles.hoursSetBack
+ declared in class <a href="Modelica://BESMod.Systems.UserProfiles.TEASERProfiles">BESMod.Systems.UserProfiles.TEASERProfiles</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/UserProfiles/TEASERProfiles.mo at line <a href="Modelica://BESMod.Systems.UserProfiles.TEASERProfiles#text:16">17</a>, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding#:userProfiles">userProfiles</a>.
+Type inconsistent definition equation:
+  userProfiles.hoursSetBack = 0;
+Error: The left hand side of the following equation is a vector
+and the right hand side is a scalar, i.e. it has non-compatible parts:
+    userProfiles.hoursSetBack = 0;
+
+Basic type inconsistencies detected.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.TEASERHeatLoadCalculation.Example 
+Check of <a href="Modelica://BESMod.Examples.TEASERHeatLoadCalculation.Example">BESMod.Examples.TEASERHeatLoadCalculation.Example</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+Error: For variable userProfiles.dTSetBack
+ declared in class <a href="Modelica://BESMod.Systems.UserProfiles.TEASERProfiles">BESMod.Systems.UserProfiles.TEASERProfiles</a>, /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/UserProfiles/TEASERProfiles.mo at line <a href="Modelica://BESMod.Systems.UserProfiles.TEASERProfiles#text:10">11</a>, and used in component <a href="Modelica://BESMod.Examples.TEASERHeatLoadCalculation.Example#:userProfiles">userProfiles</a>.
+Type inconsistent definition equation:
+  userProfiles.dTSetBack = 3;
+Error: The left hand side of the following equation is a vector
+and the right hand side is a scalar, i.e. it has non-compatible parts:
+    userProfiles.dTSetBack = 3;
+
+Basic type inconsistencies detected.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
