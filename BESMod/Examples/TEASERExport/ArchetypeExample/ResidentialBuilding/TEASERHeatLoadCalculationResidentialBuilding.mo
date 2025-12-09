@@ -4,9 +4,9 @@ model TEASERHeatLoadCalculationResidentialBuilding
     BESMod.Systems.BaseClasses.TEASERExport.PartialTEASERHeatLoadCalculation(
     redeclare ResidentialBuilding building,
     userProfiles(
-      dTSetBack=0,
-      startTimeSetBack=0,
-      hoursSetBack=0),
+      dTSetBack={0},
+      startTimeSetBack={0},
+      hoursSetBack={0}),
     systemParameters(nZones=1,
                      TSetZone_nominal={294.15},
                      TOda_nominal=262.65));
