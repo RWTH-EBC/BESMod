@@ -1,87 +1,25 @@
 Regression tests are only run for the following package:
   BESMod.Examples
-*** Error: BESMod_Examples_HighOrderModel_HOMAixLib.txt: Errors during result verification.
-           Absolute error = 9.933e+00 at t = 114048.0 for hydraulic.generation.sigBusGen.TGenOutMea
-           Absolute error = 5.501e-01 at t = 58752.00000000001 for hydraulic.control.buiMeaBus.TZoneMea[1]
-           Absolute error = 1.219e-01 at t = 48384.00000000001 for hydraulic.control.buiMeaBus.TZoneMea[10]
-           Absolute error = 5.473e+03 at t = 58752.00000000001 for electricalGrid.PElecLoa
-*** Warning: BESMod.Examples.HighOrderModel.HOMAixLib: Translation statistics for initialization and results changed for nonlinear.
- Old = 5, 5, 5, 5, 5, 5, 5, 2, 5, 5, 3, 1, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 9, 8, 9,   8, 9, 7, 8, 8, 7, 8, 1
- New = 5, 5, 5, 5, 5, 5, 5, 2, 5, 5, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 8, 8, 9,   8, 9, 8, 7, 8, 9, 1
-*** Warning: BESMod.Examples.HighOrderModel.HOMAixLib: Translation statistics for simulation and results changed for nonlinear.
- Old = 2, 1, 10, 1, 9, 8, 10, 9, 8, 9, 7, 8, 8, 7, 8, 1, 0, 1, 0, 1, 1
- New = 1, 1, 10, 7, 8, 10, 8, 9, 8, 9, 8, 7, 8, 9, 1, 0, 1, 0, 1, 1
-*** Error: BESMod_Examples_HighOrderModel_HOMSpawn.txt: Errors during result verification.
-           Absolute error = 2.905e+01 at t = 27648.0 for hydraulic.generation.sigBusGen.TGenOutMea
-           Absolute error = 2.796e-02 at t = 69120.0 for hydraulic.control.buiMeaBus.TZoneMea[1]
-           Absolute error = 2.680e+03 at t = 79488.0 for electricalGrid.PElecLoa
-*** Warning: BESMod.Examples.HighOrderModel.HOMSpawn: Translation statistics for initialization and results changed for nonlinear.
- Old = 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 1, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
- New = 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1
-*** Warning: BESMod.Examples.HighOrderModel.HOMSpawn: Translation statistics for simulation and results changed for nonlinear.
- Old = 2, 1, 10, 1, 1, 1, 1
- New = 1, 1, 10, 1, 1, 1
-*** Error: BESMod_Examples_HeatPumpAndBoiler_Serial.txt: Errors during result verification.
-           Absolute error = 7.329e-01 at t = 5184.0 for hydraulic.generation.sigBusGen.TGenOutMea
-           Absolute error = 9.020e+02 at t = 172800.0 for electricalGrid.PElecLoa
-*** Error: BESMod_Examples_HeatPumpAndBoiler_AfterBufferWithoutDHW.txt: Errors during result verification.
-           Absolute error = 2.019e+00 at t = 32832.0 for hydraulic.generation.sigBusGen.TGenOutMea
-           Absolute error = 2.349e+03 at t = 77760.0 for electricalGrid.PElecLoa
-*** Error: BESMod_Examples_HeatPumpAndBoiler_Parallel.txt: Errors during result verification.
-           Absolute error = 7.514e-01 at t = 5184.0 for hydraulic.generation.sigBusGen.TGenOutMea
-           Absolute error = 9.676e+02 at t = 165888.0 for electricalGrid.PElecLoa
-*** Error: BESMod_Examples_HeatPumpAndBoiler_AfterBufferWithDHW.txt: Errors during result verification.
-           Absolute error = 1.191e+00 at t = 12096.0 for hydraulic.generation.sigBusGen.TGenOutMea
-           Absolute error = 5.622e+02 at t = 17280.0 for electricalGrid.PElecLoa
-*** Error: BESMod_Examples_Retrofit_Case1TotalRetrofit.txt: Errors during result verification.
-           Absolute error = 2.544e+01 at t = 48384.00000000001 for hydraulic.generation.sigBusGen.TGenOutMea
-           Absolute error = 3.273e-01 at t = 80352.0 for outputs.building.TZone[1]
-           Absolute error = 1.403e+03 at t = 48384.00000000001 for electricalGrid.PElecLoa
-*** Warning: BESMod.Examples.Retrofit.Case1TotalRetrofit: Translation statistics for initialization and results changed for nonlinear.
- Old = 5, 7, 3, 0, 1, 1, 0, 1, 1
- New = 5, 8, 1, 1, 2, 0, 1, 1
-*** Warning: BESMod.Examples.Retrofit.Case1TotalRetrofit: Translation statistics for simulation and results changed for nonlinear.
- Old = 2, 1, 1, 1, 6, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1
- New = 1, 1, 1, 1, 6, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1
-*** Error: BESMod_Examples_Retrofit_Case1NoRetrofit.txt: Errors during result verification.
-           Absolute error = 6.181e+00 at t = 25056.0 for hydraulic.generation.sigBusGen.TGenOutMea
-           Absolute error = 1.461e+04 at t = 25056.0 for electricalGrid.PElecLoa
-*** Error: BESMod_Examples_Retrofit_Case1PartialRetrofit.txt: Errors during result verification.
-           Absolute error = 5.183e+01 at t = 49247.99999999999 for electricalGrid.PElecLoa
-*** Error: BESMod_Examples_SolarThermalSystem_SolarThermalAixLib.txt: Errors during result verification.
-           Absolute error = 3.418e+01 at t = 105408.0 for hydraulic.generation.sigBusGen.TGenOutMea
-           Absolute error = 4.292e-01 at t = 81216.0 for outputs.building.TZone[1]
-           Absolute error = 5.511e+03 at t = 50112.0 for electricalGrid.PElecLoa
-*** Error: BESMod_Examples_SolarThermalSystem_SolarThermalBuildings.txt: Errors during result verification.
-           Absolute error = 3.418e+01 at t = 105408.0 for hydraulic.generation.sigBusGen.TGenOutMea
-           Absolute error = 4.291e-01 at t = 81216.0 for outputs.building.TZone[1]
-           Absolute error = 5.511e+03 at t = 50112.0 for electricalGrid.PElecLoa
-*** Error: BESMod_Examples_TEASERExport_ArchetypeExample_ResidentialBuilding_HeatPumpMonoenergeticResidentialBuilding.txt: Errors during result verification.
-           Absolute error = 1.191e+04 at t = 24192.0 for electrical.distribution.OutputDistr.PEleLoa.value
-           Absolute error = 2.158e+00 at t = 110592.0 for hydraulic.distribution.sigBusDistr.TStoDHWTopMea
-           Absolute error = 3.785e+00 at t = 31104.0 for hydraulic.distribution.sigBusDistr.TStoBufTopMea
-           Absolute error = 6.256e+00 at t = 31104.0 for hydraulic.generation.sigBusGen.TGenOutMea
-           Absolute error = 6.100e-02 at t = 39744.0 for building.buiMeaBus.TZoneMea[1]
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Examples_HighOrderModel_HOMAixLib.txt.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Examples_HighOrderModel_HOMSpawn.txt.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Examples_HeatPumpAndBoiler_Serial.txt.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Examples_HeatPumpAndBoiler_AfterBufferWithoutDHW.txt.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Examples_HeatPumpAndBoiler_Parallel.txt.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Examples_HeatPumpAndBoiler_AfterBufferWithDHW.txt.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Examples_Retrofit_Case1TotalRetrofit.txt.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Examples_Retrofit_Case1NoRetrofit.txt.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Examples_Retrofit_Case1PartialRetrofit.txt.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Examples_SolarThermalSystem_SolarThermalAixLib.txt.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Examples_SolarThermalSystem_SolarThermalBuildings.txt.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Examples_TEASERExport_ArchetypeExample_ResidentialBuilding_HeatPumpMonoenergeticResidentialBuilding.txt.
 *** Error: BESMod_Examples_BAUSimStudy_Case1Standard.txt: Errors during result verification.
            Absolute error = 5.542e+00 at t = 31104.0 for hydraulic.generation.sigBusGen.TGenOutMea
            Absolute error = 1.540e+04 at t = 31104.0 for electricalGrid.PElecLoa
-*** Error: BESMod_Examples_ModelicaConferencePaper_TEASERBuilding.txt: Errors during result verification.
-           Absolute error = 1.246e+04 at t = 198720.0 for electrical.distribution.batterySimple.PLoad
-           Absolute error = 8.045e+00 at t = 267840.0 for hydraulic.distribution.sigBusDistr.TStoDHWTopMea
-           Absolute error = 3.678e+00 at t = 190080.0 for hydraulic.distribution.sigBusDistr.TStoBufTopMea
-           Absolute error = 5.625e+00 at t = 190080.0 for hydraulic.generation.sigBusGen.TGenOutMea
-           Absolute error = 2.814e-01 at t = 198720.0 for ventilation.generation.TSup.T
-           Absolute error = 4.098e-01 at t = 198720.0 for building.buiMeaBus.TZoneMea[1]
-*** Error: BESMod_Examples_ModelicaConferencePaper_BuildingsLibraryRoom.txt: Errors during result verification.
-           Absolute error = 3.192e+03 at t = 69120.0 for electrical.distribution.batterySimple.PLoad
-           Absolute error = 1.390e+01 at t = 129600.0 for hydraulic.distribution.sigBusDistr.TStoDHWTopMea
-           Absolute error = 9.832e+00 at t = 69120.0 for hydraulic.distribution.sigBusDistr.TStoBufTopMea
-           Absolute error = 2.143e+01 at t = 570240.0 for hydraulic.generation.sigBusGen.TGenOutMea
-           Absolute error = 5.929e-01 at t = 259200.0 for ventilation.generation.TSup.T
-           Absolute error = 1.150e+00 at t = 259200.0 for building.buiMeaBus.TZoneMea[1]
-Comparison files output by funnel are stored in the directory 'funnel_comp' of size 1.2 MB.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Examples_ModelicaConferencePaper_TEASERBuilding.txt.
+Wrote new reference file /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Resources/ReferenceResults/Dymola/BESMod_Examples_ModelicaConferencePaper_BuildingsLibraryRoom.txt.
+Comparison files output by funnel are stored in the directory 'funnel_comp' of size 0.3 MB.
 Run 'python -c "import buildingspy.development.regressiontest as t; t.Tester(tool=\"dymola\").report()"'
 to access a summary of the comparison results.
 
-Script that runs unit tests had 6 warnings and 15 errors.
+Script that runs unit tests had 0 warnings and 1 errors.
 
