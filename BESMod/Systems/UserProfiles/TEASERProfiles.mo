@@ -8,16 +8,16 @@ model TEASERProfiles "TEASER Profiles with possible set-back temperature"
     "Gain value multiplied with internal gains. Used to e.g. disable single gains."
     annotation(Dialog(group="Internal Gains"));
 
-  parameter Modelica.Units.SI.TemperatureDifference dTSetBack=0
+  parameter Modelica.Units.SI.TemperatureDifference dTSetBack[nZones]=fill(0,nZones)
     "Temperature difference of set-back"
     annotation(Dialog(group="Set temperatures", enable=not use_TSetFile));
-  parameter Modelica.Units.SI.Time startTimeSetBack(displayUnit="h")=79200
+  parameter Modelica.Units.SI.Time startTimeSetBack[nZones]=fill(79200, nZones)
     "Start time of set back"
     annotation(Dialog(group="Set temperatures", enable=not use_TSetFile));
-  parameter Real hoursSetBack(max=24, min=0)=8
+  parameter Real hoursSetBack[nZones](each max=24, each min=0)=fill(8,nZones)
     "Number of hours the set-back lasts, maximum 24"
     annotation(Dialog(group="Set temperatures", enable=not use_TSetFile));
-  parameter Modelica.Units.SI.Temperature TOdaMin=253.15
+  parameter Modelica.Units.SI.Temperature TOdaMin[nZones]=fill(253.15,nZones)
     "Minimal outdoor air temperature below which no setback is performed"
     annotation(Dialog(group="Set temperatures", enable=not use_TSetFile));
   parameter Boolean use_TSetFile=false "=true to use a file for room set temperature profiles"
@@ -43,11 +43,11 @@ model TEASERProfiles "TEASER Profiles with possible set-back temperature"
         origin={30,30})));
 
   BaseClasses.NightSetback nigSetBack[nZones](
-    each dTSetBack=dTSetBack,
-    each final startTimeSetBack=startTimeSetBack,
-    each timeSetBack=hoursSetBack*3600,
+    final dTSetBack=dTSetBack,
+    final startTimeSetBack=startTimeSetBack,
+    final timeSetBack=hoursSetBack*3600,
     final TZone_nominal=TSetZone_nominal,
-    each final TOdaMin=TOdaMin) if not use_TSetFile
+    final TOdaMin=TOdaMin) if not use_TSetFile
     "Room set temperature with set-back option"
     annotation (Placement(transformation(extent={{-20,-60},{0,-40}})));
   Modelica.Blocks.Routing.Replicator repTDryBul(final nout=nZones)
@@ -57,6 +57,7 @@ model TEASERProfiles "TEASER Profiles with possible set-back temperature"
 
   Modelica.Blocks.Sources.CombiTimeTable tabTSet(
     final tableOnFile=true,
+    smoothness=Modelica.Blocks.Types.Smoothness.ConstantSegments,
     final extrapolation=Modelica.Blocks.Types.Extrapolation.Periodic,
     final tableName="TZoneSet",
     final fileName=fileNameTSet,
