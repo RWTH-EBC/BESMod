@@ -1,5 +1,112 @@
-from bes_rules import configs, STARTUP_BESMOD_MOS
+import json
+import pathlib
+
+from bes_rules import STARTUP_BESMOD_MOS
+from bes_rules import configs, DATA_PATH
+from bes_rules.configs.plotting import PlotConfig
+from bes_rules.input_variations import run_input_variations
 from bes_rules.simulation_based_optimization.utils import constraints
+from bes_rules import boundary_conditions
+
+
+def get_inputs_config_to_simulate(modifiers: list = None):
+    weathers = boundary_conditions.weather.get_weather_configs_by_names(region_names=["Potsdam"])
+    buildings = boundary_conditions.building.get_all_tabula_sfh_buildings()
+    dhw_profiles = [{"profile": "M"}]
+    users = []
+    return configs.InputsConfig(
+        full_factorial=True,
+        weathers=weathers,
+        buildings=buildings,
+        users=users,
+        dhw_profiles=dhw_profiles,
+        modifiers=modifiers
+    )
+
+
+def run(
+        study_name: str,
+        base_path: pathlib.Path,
+        n_cpu: int = 1,
+        time_step: int = 900,
+        surrogate_builder_kwargs: dict = {},
+        surrogate_builder_class=None,
+        model: str = "MonoenergeticVitoCal",
+        use_bayes: bool = True
+):
+    sim_config = get_simulation_config(
+        model=model,
+        time_step=time_step,
+        convert_to_hdf_and_delete_mat=True,
+        recalculate=False,
+        equidistant_output=True
+    )
+
+    optimization_config = get_optimization_config(
+        configs.OptimizationVariable(
+            name="parameterStudy.TBiv",
+            lower_bound=273.15 - 20,
+            upper_bound=278.15 if use_bayes else 279.15,  # For FFD plan to include 5 °C
+            discrete_steps=1
+        ),
+        configs.OptimizationVariable(
+            name="parameterStudy.VPerQFlow",
+            lower_bound=5,
+            upper_bound=50,
+            levels=6,
+        ),
+        use_bayes=use_bayes,
+        n_iter=25
+    )
+
+    inputs_config = get_inputs_config_to_simulate()
+    config = configs.StudyConfig(
+        base_path=base_path,
+        n_cpu=n_cpu,
+        name=study_name,
+        simulation=sim_config,
+        optimization=optimization_config,
+        inputs=inputs_config,
+        test_only=False
+    )
+    run_input_variations(
+        config=config, run_inputs_in_parallel=use_bayes,
+        surrogate_builder_class=surrogate_builder_class,
+        **surrogate_builder_kwargs
+    )
+
+
+def load_best_hyperparameters():
+    hyperparameters_path = DATA_PATH.joinpath("default_configs", "best_hyperparameters.json")
+    with open(hyperparameters_path, "r") as file:
+        return json.load(file)
+
+
+def get_optimization_config(*variables: configs.OptimizationVariable, **kwargs):
+    obj_kwargs = dict(
+        constraints=[
+            constraints.BivalenceTemperatureGreaterNominalOutdoorAirTemperature(),
+            constraints.HydraulicSeperatorConstraint()  # Only active if modifier is passed
+        ],
+        variables=variables
+    )
+    use_bayes = kwargs.get("use_bayes", False)
+    if not use_bayes:
+        return configs.OptimizationConfig(framework="doe", method="ffd", **obj_kwargs)
+
+    return configs.OptimizationConfig(
+        framework="bayes",
+        method="Not implemented",
+        solver_settings={
+            "allow_duplicate_points": False,
+            "hyperparameters": kwargs["hyperparameters"],
+            "n_iter": kwargs.get("n_iter", 21),
+            "scale_variables": False
+        },
+        objective_names=["SCOP_Sys"],
+        hyperparameters=load_best_hyperparameters(),
+        **obj_kwargs
+    )
 
 
 def get_simulation_config(
@@ -25,7 +132,6 @@ def get_simulation_config(
         "$P_\mathrm{el,HeaPum}$": "outputs.hydraulic.gen.PEleHeaPum.value",
         "$P_\mathrm{el,EleHea}$": "outputs.hydraulic.gen.PEleEleHea.value"
     }
-    from bes_rules.configs.plotting import PlotConfig
     plot_settings = dict(
         plot_config=PlotConfig.load_default(),
         y_variables=y_variables
@@ -33,73 +139,11 @@ def get_simulation_config(
 
     return configs.SimulationConfig(
         startup_mos=STARTUP_BESMOD_MOS,
-        model_name=f"BESRules.DesignOptimization.{model}",
+        model_name=f"BESMod.BESRules.DesignOptimization.{model}",
         sim_setup=dict(stop_time=86400 * n_days, output_interval=time_step),
         equidistant_output=equidistant_output,
         plot_settings=plot_settings,
         dymola_api_kwargs={"time_delay_between_starts": 5},
         result_names=["scalingFactor"],
-        **kwargs
-    )
-
-
-def get_optimization_config(*variables: configs.OptimizationVariable, **kwargs):
-    obj_kwargs = dict(
-        constraints=[
-            constraints.BivalenceTemperatureGreaterNominalOutdoorAirTemperature(),
-            constraints.HydraulicSeperatorConstraint()  # Only active if modifier is passed
-        ],
-        variables=variables
-    )
-    use_bayes = kwargs.get("use_bayes", False)
-    if not use_bayes:
-        return configs.OptimizationConfig(framework="doe", method="ffd", **obj_kwargs)
-
-    return configs.OptimizationConfig(
-        framework="bayes",
-        method="Not implemented",
-        solver_settings={
-            "allow_duplicate_points": False,
-            "hyperparameters": kwargs["hyperparameters"],
-            "n_iter": kwargs.get("n_iter", 21),
-            "scale_variables": False
-        },
-        objective_names=["SCOP_Sys"],
-        **obj_kwargs
-    )
-
-
-def extend_input_configs_with_modifiers(
-        inputs_config_corner: configs.InputsConfig,
-        modifiers: list,
-        is_evu: bool = False
-):
-    weathers = []
-    buildings = []
-    users = []
-    dhw_profiles = []
-    all_modifiers = []
-
-    for modifier in modifiers:
-        weathers.extend(inputs_config_corner.weathers)
-        buildings.extend(inputs_config_corner.buildings)
-        users.extend(inputs_config_corner.users)
-        dhw_profiles.extend(inputs_config_corner.dhw_profiles)
-        all_modifiers.extend([modifier] * len(inputs_config_corner.weathers))
-
-    kwargs = dict(
-        full_factorial=False,
-        weathers=weathers,
-        buildings=buildings,
-        users=users,
-        dhw_profiles=dhw_profiles,
-    )
-    if is_evu:
-        return configs.InputsConfig(
-            evu_profiles=all_modifiers,
-            **kwargs
-        )
-    return configs.InputsConfig(
-        modifiers=all_modifiers,
         **kwargs
     )

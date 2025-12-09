@@ -10,7 +10,7 @@ def run_optimization(test_only=False):
 
     sim_config = configs.SimulationConfig(
         startup_mos=STARTUP_BESMOD_MOS,
-        model_name="BESRules.DesignOptimization.MonoenergeticVitoCal",
+        model_name="BESMod.BESRules.DesignOptimization.MonoenergeticVitoCal",
         sim_setup=dict(stop_time=86400 * 30, output_interval=600),
         show_window=True,
         debug=True,

@@ -3,8 +3,7 @@ import logging
 from bes_rules import RESULTS_FOLDER, configs
 from bes_rules.input_variations import run_input_variations
 from bes_rules.simulation_based_optimization import AgentLibMPC
-from bes_rules.boundary_conditions.prices import calculate_operating_costs_with_dynamic_prices, \
-    load_dynamic_electricity_prices
+from bes_rules.boundary_conditions.prices import calculate_operating_costs_with_dynamic_prices
 from bes_rules.plotting import EBCColors
 
 from . import MPC_UTILS_PATH
@@ -31,7 +30,7 @@ def _get_configs(
     optimization_config = compare_onoff.get_optimization_config(
         compare_to_mpc=True, only_one_hp_size=only_one_hp_size
     )
-    inputs_config = compare_onoff.get_inputs_config(
+    inputs_config = compare_onoff.get_inputs_config_with_added_modifiers(
         inverter_uses_storage=inverter_uses_storage,
         no_minimal_compressor_speed=no_minimal_compressor_speed, with_start_losses=False,
         only_inverter=True,
