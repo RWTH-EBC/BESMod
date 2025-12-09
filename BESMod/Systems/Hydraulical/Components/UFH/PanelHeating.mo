@@ -56,9 +56,8 @@ model PanelHeating
 
   final parameter Modelica.Units.SI.Length tubeLength=A/Spacing;
 
-  final parameter Modelica.Units.SI.Volume VWater=
-      Modelica.Units.Conversions.from_litre(Modelica.Constants.pi*
-      floorHeatingType.diameter^2*tubeLength/4) "Volume of Water";
+  final parameter Modelica.Units.SI.Volume VWater=Modelica.Constants.pi*
+      floorHeatingType.diameter^2*tubeLength/4 "Volume of Water";
 
   // ACCORDING TO GLUECK, Bauteilaktivierung 1999
 
