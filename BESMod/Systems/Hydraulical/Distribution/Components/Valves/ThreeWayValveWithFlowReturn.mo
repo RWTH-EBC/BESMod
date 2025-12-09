@@ -30,7 +30,7 @@ model ThreeWayValveWithFlowReturn
     redeclare package Medium = Medium)
     "Port connecting to heating demand"
     annotation (Placement(transformation(extent={{110,70},{90,90}})));
-  IBPSA.Fluid.Actuators.Valves.ThreeWayEqualPercentageLinear threWayValFlow(
+  IBPSA.Fluid.Actuators.Valves.ThreeWayLinear threWayValFlow(
     redeclare package Medium = Medium,
     final energyDynamics=energyDynamics,
     final p_start=p_start,
@@ -49,12 +49,10 @@ model ThreeWayValveWithFlowReturn
     final deltaM=parameters.deltaM,
     final m_flow_nominal=parameters.m_flow_nominal,
     final dpValve_nominal=parameters.dpValve_nominal,
-    final dpFixed_nominal=parameters.dpFixed_nominal,
+    final dpFixed_nominal=parameters.dpHydBal_nominal .+ parameters.dpFixedExtra_nominal,
     final fraK=parameters.fraK,
     final l=parameters.l,
-    final linearized={false,false},
-    final R=parameters.R,
-    final delta0=parameters.delta0)
+    final linearized={false,false})
     annotation (Placement(transformation(extent={{22,24},{-22,64}})));
 
   Modelica.Blocks.Interfaces.RealInput uBuf
@@ -68,7 +66,7 @@ equation
   connect(threWayValFlow.y, uBuf)
     annotation (Line(points={{0,68},{0,120}}, color={0,0,127}));
   connect(threWayValFlow.port_1, portBui_b) annotation (Line(points={{22,44},{
-          34,44},{34,42},{56,42},{56,80},{100,80}}, color={0,127,255}));
+          56,44},{56,80},{100,80}},                 color={0,127,255}));
   connect(threWayValFlow.port_3, portDHW_b) annotation (Line(points={{0,24},{0,
           14},{84,14},{84,-36},{100,-36}}, color={0,127,255}));
   connect(threWayValFlow.port_2, portGen_a) annotation (Line(points={{-22,44},{

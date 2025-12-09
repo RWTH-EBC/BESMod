@@ -18,7 +18,9 @@ partial model PartialHeatPumpSystemController
     annotation (Dialog(group="Building control"));
   parameter Modelica.Units.SI.TemperatureDifference dTHysDHW=10
     "Hysteresis for DHW demand control" annotation (Dialog(group="DHW control"));
-
+  parameter Boolean pumGenAlwOn=false
+    "=true to let the generation pump run always. May be used for external control."
+    annotation(Dialog(tab="Advanced"));
   parameter Utilities.SupervisoryControl.Types.SupervisoryControlType
     supCtrHeaCurTyp=BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Local
     "Heating curve supervisory control" annotation(Dialog(group="Building control"));
@@ -29,7 +31,7 @@ partial model PartialHeatPumpSystemController
   parameter Utilities.SupervisoryControl.Types.SupervisoryControlType
     supCtrlThrWayValTyp=BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.Local
     "Type of supervisory control for three way valve"
-    annotation (Dialog(tab="DHW control"));
+    annotation (Dialog(group="DHW control"));
 
   replaceable model BuildingHysteresis =
       BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.BaseClasses.PartialOnOffController
@@ -87,7 +89,20 @@ partial model PartialHeatPumpSystemController
   parameter String filNamSGReady=ModelicaServices.ExternalReferences.loadResource("modelica://BESMod/Resources/SGReady/EVU_Sperre_EON.txt")
     "Name of SG Ready scenario input file"
     annotation (Dialog(group="SG Ready", enable=not useExtSGSig and useSGReady));
-
+  parameter Boolean withSolThePumCtrl=false
+    "=true to enable solar thermal pump control"
+    annotation (Dialog(group="Solar Thermal"));
+  parameter Modelica.Units.SI.HeatFlux thrToTurSolTheOn=100
+    "Threshold global radiation to turn on solar thermal pump"
+    annotation (Dialog(group="Solar Thermal", enable=withSolThePumCtrl));
+  parameter Boolean use_opeEncControl=false
+    "Use operational envelope limit control"
+    annotation (Dialog(tab="Operational Envelope Control"));
+  parameter Modelica.Units.SI.Temperature tabUppHea[:,2]=[233.15,373.15; 333.15,373.15]
+    "Upper temperature boundary for heating with second column as useful temperature side"
+    annotation (Dialog(tab="Operational Envelope Control", enable=use_opeEncControl));
+  parameter Modelica.Units.SI.TemperatureDifference dTOpeEnv=2 "Extra temperature difference until limit when bivalent device is turned on"
+  annotation (Dialog(tab="Operational Envelope Control", enable=use_opeEncControl));
   replaceable parameter BESMod.Systems.Hydraulical.Control.RecordsCollection.PIDBaseDataDefinition
     parPIDHeaPum constrainedby
     BESMod.Systems.Hydraulical.Control.RecordsCollection.PIDBaseDataDefinition
@@ -110,17 +125,11 @@ partial model PartialHeatPumpSystemController
     final Nd=parPIDHeaPum.Nd)                                                                                                             constrainedby
     BESMod.Systems.Hydraulical.Control.Components.RelativeSpeedController.BaseClasses.PartialControler
     "Control of heat pump" annotation (
-    Dialog(group="Heat Pump", tab="Advanced"),
+    Dialog(group="Heat Pump"),
     choicesAllMatching=true,
     Placement(transformation(extent={{82,82},{98,98}})));
 
-  Modelica.Blocks.Math.BooleanToReal booToRea(final realTrue=1, final realFalse=0)
-    "Turn pump on if any device is on"
-    annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={-150,-50})));
-  Modelica.Blocks.MathBoolean.Or anyGenDevIsOn(nu=2)
+  Modelica.Blocks.MathBoolean.Or anyGenDevIsOn(nu=3)
     "True if any generation device is on and pump must run" annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
@@ -159,7 +168,9 @@ partial model PartialHeatPumpSystemController
     final dTTraToDis_nominal=parTra.dTLoss_nominal[1],
     final dTDisToGen_nominal=parDis.dTTra_nominal[1] + parGen.dTLoss_nominal[1],
     final dTDHWToGen_nominal=parDis.dTTraDHW_nominal,
-    final dTHysDHW=dTHysDHW)
+    final dTHysDHW=dTHysDHW,
+    final use_opeEncControl=use_opeEncControl,
+    final tabUppHea=tabUppHea)
     "Selection of set and measured value for primary generation device"
     annotation (Placement(transformation(extent={{40,60},{60,80}})));
   Components.BaseClasses.SetAndMeasuredValueSelector setAndMeaSelSec(
@@ -168,13 +179,38 @@ partial model PartialHeatPumpSystemController
     final dTTraToDis_nominal=parTra.dTLoss_nominal[1],
     final dTDisToGen_nominal=parDis.dTTra_nominal[1] + parGen.dTLoss_nominal[1],
     final dTDHWToGen_nominal=parDis.dTTraDHW_nominal,
-    final dTHysDHW=dTHysDHW)
+    final dTHysDHW=dTHysDHW,
+    final use_opeEncControl=false,
+    final tabUppHea=[233.15,373.15; 333.15,373.15])
     "Selection of set and measured value for secondary generation device"
     annotation (Placement(transformation(extent={{40,0},{60,20}})));
 
   BESMod.Utilities.SupervisoryControl.SupervisoryControl supCtrNSet(final ctrlType=
         supCtrlNSetTyp) "Supervisory control of compressor speed"
     annotation (Placement(transformation(extent={{110,80},{130,100}})));
+
+  Modelica.Blocks.Logical.Hysteresis solThePumOn(uLow=thrToTurSolTheOn/2, uHigh
+      =thrToTurSolTheOn) if withSolThePumCtrl
+    "True to turn on solar thermal pump" annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=270,
+        origin={-210,-50})));
+  Modelica.Blocks.Logical.Or secGenOn "True if secondary device should turn on"
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-80,30})));
+  Modelica.Blocks.Sources.BooleanConstant noOpeEnvLimCtrl(final k=false)
+    if not use_opeEncControl "Always false for bivalent control override"
+    annotation (Placement(transformation(
+        extent={{-10,10},{10,-10}},
+        rotation=180,
+        origin={30,50})));
+  Modelica.Blocks.Sources.BooleanConstant conPumGenAlwOn(final k=pumGenAlwOn)
+    "Pump generation is always on" annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={-192,-12})));
 
 equation
 
@@ -185,14 +221,6 @@ equation
       index=1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(booToRea.u, anyGenDevIsOn.y)
-    annotation (Line(points={{-150,-38},{-150,-21.5}}, color={255,0,255}));
-  connect(booToRea.y, sigBusGen.uPump) annotation (Line(points={{-150,-61},{-150,-70},
-          {-152,-70},{-152,-99}},                 color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
   connect(buiAndDHWCtr.TZoneSet, useProBus.TZoneSet) annotation (Line(points={{-204,
           32.3333},{-238,32.3333},{-238,103},{-119,103}},
                                                      color={0,0,127}), Text(
@@ -230,9 +258,6 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(buiAndDHWCtr.secGen, anyGenDevIsOn.u[1]) annotation (Line(points={{-118,34},
-          {-118,36},{-112,36},{-112,6},{-151.75,6},{-151.75,0}},
-        color={255,0,255}));
   connect(setAndMeaSelPri.DHW, buiAndDHWCtr.DHW) annotation (Line(points={{39,76},
           {28,76},{28,74},{-106,74},{-106,54.3333},{-118,54.3333}},
                                                           color={0,0,127}));
@@ -296,9 +321,46 @@ equation
 
   connect(supCtrNSet.uLoc, priGenPIDCtrl.ySet) annotation (Line(points={{108,82},
           {104,82},{104,90},{98.8,90}}, color={0,0,127}));
-  connect(buiAndDHWCtr.priGren, anyGenDevIsOn.u[2]) annotation (Line(points={{
-          -118,27.3333},{-112,27.3333},{-112,4},{-150,4},{-150,0}}, color={255,
+  connect(buiAndDHWCtr.priGren, anyGenDevIsOn.u[1]) annotation (Line(points={{-118,
+          27.3333},{-112,27.3333},{-112,4},{-152.333,4},{-152.333,0}},
+                                                                    color={255,
           0,255}));
+  connect(anyGenDevIsOn.y, sigBusDistr.pumGenOn) annotation (Line(points={{-150,
+          -21.5},{-150,-70},{1,-70},{1,-100}}, color={255,0,255}), Text(
+      string="%second",
+      index=1,
+      extent={{-3,-6},{-3,-6}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(solThePumOn.u, weaBus.HGloHor) annotation (Line(points={{-210,-38},{-210,
+          2.11},{-236.895,2.11}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{-3,6},{-3,6}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(solThePumOn.y, sigBusDistr.pumGenOnSec) annotation (Line(points={{-210,
+          -61},{-210,-70},{1,-70},{1,-100}}, color={255,0,255}), Text(
+      string="%second",
+      index=1,
+      extent={{-3,-6},{-3,-6}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(setAndMeaSelPri.TEvaIn, sigBusGen.THeaPumEvaIn) annotation (Line(
+        points={{39,70},{-100,70},{-100,-78},{-152,-78},{-152,-99}}, color={0,0,
+          127}), Text(
+      string="%second",
+      index=1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(setAndMeaSelPri.bivOn, secGenOn.u1) annotation (Line(points={{61,72},{
+          64,72},{64,50},{-96,50},{-96,30},{-92,30}}, color={255,0,255}));
+  connect(buiAndDHWCtr.secGen, secGenOn.u2) annotation (Line(points={{-118,34},{
+          -108,34},{-108,22},{-92,22}}, color={255,0,255}));
+  connect(secGenOn.y, anyGenDevIsOn.u[2]) annotation (Line(points={{-69,30},{-62,
+          30},{-62,12},{-150,12},{-150,0}},       color={255,0,255}));
+  connect(noOpeEnvLimCtrl.y, secGenOn.u1) annotation (Line(points={{19,50},{-96,
+          50},{-96,30},{-92,30}}, color={255,0,255}));
+  connect(conPumGenAlwOn.y, anyGenDevIsOn.u[3]) annotation (Line(points={{-181,
+          -12},{-166,-12},{-166,6},{-152,6},{-152,0},{-147.667,0}},
+                                                               color={255,0,255}));
                                                               annotation (Diagram(graphics={
         Rectangle(
           extent={{4,100},{136,36}},

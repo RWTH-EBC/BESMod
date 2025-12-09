@@ -13,7 +13,7 @@ model PartialCalculation "Partial model with common interfaces"
       redeclare BESMod.Systems.Hydraulical.Generation.NoGeneration generation,
       redeclare BESMod.Systems.Hydraulical.Control.NoControl control,
       redeclare BESMod.Systems.Hydraulical.Distribution.BuildingOnly
-        distribution(nParallelDem=1),
+        distribution,
       redeclare BESMod.Systems.Hydraulical.Transfer.NoHeatTransfer transfer(
           nParallelSup=1)),
     redeclare BESMod.Systems.Electrical.ElectricalSystem electrical(
@@ -24,7 +24,6 @@ model PartialCalculation "Partial model with common interfaces"
           TN_heater=120),
       redeclare BESMod.Systems.Electrical.Control.IdealHeater control),
     redeclare BESMod.Systems.Demand.DHW.StandardProfiles DHW(
-      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.PassThrough calcmFlow,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.NoDHW DHWProfile),
     redeclare BESMod.Systems.Demand.Building.TEASERThermalZone building,

@@ -14,7 +14,6 @@ model BES
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare Systems.Hydraulical.Generation.HeatPumpAndElectricHeater
         generation(
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare package MediumEva = AixLib.Media.Air,
         redeclare model RefrigerantCycleHeatPumpHeating =
             AixLib.Fluid.HeatPumps.ModularReversible.RefrigerantCycle.TableData3D
@@ -22,6 +21,7 @@ model BES
               AixLib.Fluid.HeatPumps.ModularReversible.Data.TableDataSDF.TableData3D.VCLibPy.VCLibVaporInjectionPhaseSeparatorPropane
               datTab),
         genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel,
+
         TBiv=parameterStudy.TBiv,
         redeclare
           BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps.DefaultHP
@@ -37,8 +37,7 @@ model BES
           BESMod.Systems.Hydraulical.Control.Components.ThermostaticValveController.ThermostaticValvePIControlled
           valCtrl,
         redeclare model BuildingSupplySetTemperature =
-            BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.IdealHeatingCurve
-            (dTAddCon=5),
+            BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.IdealHeatingCurve,
         redeclare model DHWHysteresis =
             BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.PartParallelBivalent
             (
@@ -62,7 +61,7 @@ model BES
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
           parPIDHeaPum),
-      redeclare Systems.Hydraulical.Distribution.DistributionTwoStorageParallel
+      redeclare Systems.Hydraulical.Distribution.SimpleTwoStorageParallel
         distribution(
         redeclare
           BESMod.Systems.Hydraulical.Distribution.RecordsCollection.SimpleStorage.DefaultStorage
@@ -76,17 +75,12 @@ model BES
         redeclare BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
           parThrWayVal),
       redeclare Systems.Hydraulical.Transfer.IdealValveRadiator transfer(
-        redeclare
+          redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
-          parRad,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
-        redeclare
-          BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
-          parTra)),
+          parRad)),
     redeclare Systems.Demand.DHW.StandardProfiles DHW(
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
-      redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
         calcmFlow),
     redeclare Systems.UserProfiles.TEASERProfiles userProfiles,
@@ -99,9 +93,11 @@ model BES
 
   extends Modelica.Icons.Example;
 
-  annotation (experiment(StopTime=172800,
-     Interval=600,
-     Tolerance=1e-06),
+  annotation (experiment(
+      StopTime=172800,
+      Interval=600,
+      Tolerance=1e-06,
+      __Dymola_Algorithm="Dassl"),
    __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Examples/DesignOptimization/BES.mos"
         "Simulate and plot"));
 end BES;

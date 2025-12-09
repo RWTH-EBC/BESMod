@@ -1,3 +1,4 @@
-AutomaticConfigurationData
-DefaultMover
+DPConst
+DPVar
 MoverBaseDataDefinition
+SpeedControlled

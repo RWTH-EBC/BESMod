@@ -2,11 +2,8 @@ within BESMod.Systems.Ventilation.Generation.BaseClasses;
 partial model PartialGeneration
   "Base model for all ventilation generation systems"
   extends BESMod.Utilities.Icons.GenerationIcon;
-  extends BESMod.Systems.BaseClasses.PartialFluidSubsystemWithParameters;
-  parameter Modelica.Units.SI.PressureDifference dpDem_nominal[nParallelDem]
-    "Nominal pressure loss of resistances in the demand system of the generation"
-    annotation (Dialog(group=
-          "Design - Top Down: Parameters are given by the parent system"));
+  extends BESMod.Systems.BaseClasses.PartialSingleSideFluidSubsystemWithParameters(
+      final useRoundPipes=false, v_design=fill(2, nParallelDem));
 
   Interfaces.GenerationOutputs outBusGen if not use_openModelica
     annotation (Placement(transformation(extent={{88,-16},{116,14}})));

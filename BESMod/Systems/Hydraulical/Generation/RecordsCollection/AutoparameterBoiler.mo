@@ -7,6 +7,7 @@ record AutoparameterBoiler "Boiler with automated sizing"
     n=2,
     Q_min=Q_nom * 0.3,
     eta=[0.3,0.93; 1.0,0.93]);
+
   annotation (Documentation(info="<html>
 <p>Automated sizing based on Vitogas 200-F (11-60kW and 72-144kW) and Vitocrossal 200 (82-311kW). </p>
 <p>These boilers have the same Q_min of 30 &percnt; of Q_nom. 

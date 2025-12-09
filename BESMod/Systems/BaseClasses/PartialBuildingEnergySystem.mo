@@ -113,7 +113,7 @@ partial model PartialBuildingEnergySystem "Partial BES"
       final QCrit=DHW.QCrit,
       final TDHWCold_nominal=DHW.TDHWCold_nominal,
       final QDHW_flow_nominal=DHW.QDHW_flow_nominal,
-      final VDHWDay=DHW.VDHWDay),
+      final VDHWDayAt60=DHW.VDHWDayAt60),
       final use_openModelica=use_openModelica)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-198,
             -98},{-42,-2}})));
@@ -357,6 +357,10 @@ equation
   connect(control.buiMeaBus, building.buiMeaBus) annotation (Line(
       points={{62.04,198.37},{62.04,206},{-16,206},{-16,88},{39,88},{39,77.62}},
       color={255,128,0},
+      thickness=0.5));
+  connect(userProfiles.weaBus, weaDat.weaBus) annotation (Line(
+      points={{-252,124.675},{-252,112},{-214,112},{-214,70},{-220,70}},
+      color={255,204,51},
       thickness=0.5));
   annotation (Icon(graphics,
                    coordinateSystem(preserveAspectRatio=false, extent={{-280,

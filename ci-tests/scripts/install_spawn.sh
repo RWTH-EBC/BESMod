@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Set the download URL and target subdirectory structure
-download_url="https://spawn.s3.amazonaws.com/builds/Spawn-light-0.4.3-7048a72798-Linux.tar.gz"
-destination_dir="installed_dependencies/Buildings/Buildings/Resources/bin/spawn-0.4.3-7048a72798/linux64/bin"
+download_url="https://spawn.s3.amazonaws.com/custom/Spawn-light-0.6.0-9f1b36b00b-Linux.tar.gz"
+destination_dir="installed_dependencies/Buildings/Buildings/Resources/bin/Spawn-light-0.6.0-9f1b36b00b-Linux/bin"
 
 # Create the destination directory if it doesn't exist
 mkdir -p "$destination_dir"
@@ -35,12 +35,12 @@ echo "Setting execute permissions for Spawn binaries..."
 chmod +x "$destination_dir"/*
 
 # Check the name of the binary and rename if necessary
-binary_path="$destination_dir/spawn-0.4.3-7048a72798"
+binary_path="$destination_dir/spawn-0.6.0-9f1b36b00b"
 if [ ! -f "$binary_path" ]; then
   # Find the actual binary name in the directory
   actual_binary_name=$(ls "$destination_dir" | grep 'spawn' | head -n 1)
   if [ -n "$actual_binary_name" ]; then
-    echo "Renaming $actual_binary_name to spawn-0.4.3-7048a72798"
+    echo "Renaming $actual_binary_name to spawn-0.6.0-9f1b36b00b"
     mv "$destination_dir/$actual_binary_name" "$binary_path"
   else
     echo "Spawn binary not found in $destination_dir."

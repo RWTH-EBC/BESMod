@@ -1,19 +1,30 @@
 within BESMod.Systems.Hydraulical.Transfer;
 model IdealValveRadiator
   "Subsystem using a radiator and ideal thermostatic valves"
-  extends BaseClasses.PartialTransfer(
+  extends BaseClasses.PartialWithPipingLosses(
+    dp_design=dpPipSca_design .+ rad.dp_nominal,
     final nHeaTra=parRad.n,
     final QLoss_flow_nominal=f_design .* Q_flow_nominal .- Q_flow_nominal,
     final dTLoss_nominal=fill(0, nParallelDem),
-    final nParallelSup=1,
-    final dp_nominal=parTra.dp_nominal,
     Q_flow_design={if use_oldRad_design[i] then QOld_flow_design[i] else Q_flow_nominal[i] for i in 1:nParallelDem},
-    TTra_design={if use_oldRad_design[i] then TTraOld_design[i] else TTra_nominal[i] for i in 1:nParallelDem});
+    TTra_design={if use_oldRad_design[i] then TTraOld_design[i] else TTra_nominal[i] for i in 1:nParallelDem},
+    res(each final disableComputeFlowResistance=false));
 
   parameter Boolean use_oldRad_design[nParallelDem]={not QOld_flow_design[i]==Q_flow_nominal[i] for i in 1:nParallelDem}
     "If true, radiator design of old building state is used"
     annotation (Dialog(group="Design - Internal: Parameters are defined by the subsystem"));
-
+  replaceable parameter
+    BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData parRad
+    "Radiator parameters" annotation (choicesAllMatching=true, Placement(
+        transformation(extent={{-74,82},{-58,98}})));
+  replaceable parameter
+    BESMod.Systems.RecordsCollection.Movers.DPVar
+    parPum
+    constrainedby
+    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
+    "Pump assumptions"
+           annotation (choicesAllMatching=true, Placement(transformation(extent={{-96,82},
+            {-80,98}})));
   IBPSA.Fluid.HeatExchangers.Radiators.RadiatorEN442_2 rad[nParallelDem](
     each final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=m_flow_design,
@@ -29,33 +40,21 @@ model IdealValveRadiator
     final TRad_nominal=TDem_nominal,
     each final n=parRad.n,
     each final deltaM=0.3,
-    each final dp_nominal=0,
+    final dp_nominal=parRad.perPreLosRad .* dpPipSca_design,
     redeclare package Medium = Medium,
     each final T_start=T_start) "Radiator" annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=90,
         origin={-10,-30})));
 
-  IBPSA.Fluid.FixedResistances.PressureDrop res[nParallelDem](
-    redeclare package Medium = Medium,
-    each final dp_nominal=parTra.dpHeaDistr_nominal+parTra.dpRad_nominal[1],
-    final m_flow_nominal=m_flow_nominal)
-    "Hydraulic resistance of supply and radiator to set dp allways to m_flow_nominal"
-    annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=0,
-        origin={-48,38})));
   Modelica.Blocks.Math.Gain gain[nParallelDem](final k=rad.m_flow_nominal)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={10,30})));
 
-  replaceable parameter
-    BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData parRad
-    "Radiator parameters" annotation (choicesAllMatching=true, Placement(
-        transformation(extent={{-100,-98},{-80,-78}})));
-  Utilities.KPIs.EnergyKPICalculator intKPICalHeaFlo(final use_inpCon=false,
+
+  BESMod.Utilities.KPIs.EnergyKPICalculator intKPICalHeaFlo(final use_inpCon=false,
       final y=sum(-heatPortRad.Q_flow) + sum(-heatPortCon.Q_flow))
     annotation (Placement(transformation(extent={{-40,-80},{-20,-60}})));
   IBPSA.Fluid.Movers.Preconfigured.FlowControlled_m_flow pumFixMFlo[nParallelDem](
@@ -69,8 +68,8 @@ model IdealValveRadiator
     each final allowFlowReversal=allowFlowReversal,
     final m_flow_small=1E-4*abs(m_flow_nominal),
     each final show_T=show_T,
-    final m_flow_nominal=m_flow_nominal,
-    final dp_nominal=dp_nominal,
+    final m_flow_nominal=m_flow_design,
+    final dp_nominal=dp_design,
     each final addPowerToMedium=parPum.addPowerToMedium,
     each final tau=parPum.tau,
     each final use_riseTime=false,
@@ -78,27 +77,13 @@ model IdealValveRadiator
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-10,10})));
-  replaceable parameter
-    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition
-    parPum "Pump assumptions"
-           annotation (choicesAllMatching=true, Placement(transformation(extent={{-98,78},{-78,98}})));
+
   BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{30,-106},{50,-86}})));
   Modelica.Blocks.Routing.RealPassThrough reaPasThrOpe[nParallelDem] annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={0,70})));
-  replaceable parameter RecordsCollection.TransferDataBaseDefinition parTra
-    constrainedby RecordsCollection.TransferDataBaseDefinition(
-    final Q_flow_nominal=Q_flow_design .* f_design,
-    final nZones=nParallelDem,
-    final AFloor=ABui,
-    final heiBui=hBui,
-    mRad_flow_nominal=m_flow_nominal,
-    mHeaCir_flow_nominal=mSup_flow_nominal[1]) "Transfer parameters" annotation (
-    Dialog(group="Component data"),
-    choicesAllMatching=true,
-    Placement(transformation(extent={{-70,-98},{-50,-78}})));
   Modelica.Blocks.Sources.RealExpression senTSup[nParallelSup](final y(
       each final unit="K",
       each displayUnit="degC") = Medium.temperature(Medium.setState_phX(
@@ -129,12 +114,12 @@ equation
     connect(rad[i].port_b, portTra_out[1]) annotation (Line(points={{-10,-40},{
             -10,-42},{-100,-42}},
                        color={0,127,255}));
-    connect(portTra_in[1], res[i].port_a)
-      annotation (Line(points={{-100,38},{-58,38}}, color={0,127,255}));
+    connect(resMaiLin[1].port_b, res[i].port_a)
+      annotation (Line(points={{-60,40},{-40,40}},  color={0,127,255}));
   end for;
 
   connect(res.port_b, pumFixMFlo.port_a)
-    annotation (Line(points={{-38,38},{-10,38},{-10,20}}, color={0,127,255}));
+    annotation (Line(points={{-20,40},{-10,40},{-10,20}}, color={0,127,255}));
   connect(pumFixMFlo.port_b, rad.port_a) annotation (Line(points={{-10,
           -3.55271e-15},{-10,-20}}, color={0,127,255}));
   connect(gain.y, pumFixMFlo.m_flow_in)

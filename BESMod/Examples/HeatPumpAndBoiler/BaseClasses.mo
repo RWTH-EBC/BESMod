@@ -39,20 +39,14 @@ package BaseClasses "Contains partial example case"
           Systems.Hydraulical.Transfer.IdealValveRadiator transfer(
           redeclare
             BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
-            parRad,
-          redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
-          redeclare
-            BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
-            parTra)),
+            parRad)),
       redeclare Systems.Demand.DHW.StandardProfiles DHW(
         energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
         redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
           calcmFlow),
       redeclare Systems.UserProfiles.TEASERProfiles userProfiles,
-      redeclare DesignOptimization.AachenSystem systemParameters(use_ventilation=
-            true),
+      redeclare DesignOptimization.AachenSystem systemParameters,
       redeclare DesignOptimization.ParametersToChange parameterStudy,
       redeclare final package MediumDHW = AixLib.Media.Water,
       redeclare final package MediumZone = AixLib.Media.Air,

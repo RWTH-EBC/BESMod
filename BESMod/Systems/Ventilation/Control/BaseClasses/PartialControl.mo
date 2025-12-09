@@ -5,15 +5,15 @@ partial model PartialControl
     "=true to disable features which 
     are not available in open modelica" annotation(Dialog(tab="Advanced"));
   replaceable parameter
-    BESMod.Systems.RecordsCollection.SubsystemControlBaseDataDefinition
+    BESMod.Systems.RecordsCollection.TwoSideSubsystemControlBaseDataDefinition
     parDis constrainedby
-    BESMod.Systems.RecordsCollection.SubsystemControlBaseDataDefinition
+    BESMod.Systems.RecordsCollection.TwoSideSubsystemControlBaseDataDefinition
     annotation (Placement(transformation(extent={{-94,-100},{-74,-80}})),
       choicesAllMatching=true);
   replaceable parameter
-    BESMod.Systems.RecordsCollection.SubsystemControlBaseDataDefinition
+    BESMod.Systems.RecordsCollection.SingleSideSubsystemControlBaseDataDefinition
     parGen constrainedby
-    BESMod.Systems.RecordsCollection.SubsystemControlBaseDataDefinition
+    BESMod.Systems.RecordsCollection.SingleSideSubsystemControlBaseDataDefinition
     annotation (Placement(transformation(extent={{30,-100},{50,-80}})),
       choicesAllMatching=true);
   Interfaces.ControlOutputs outBusCtrl if not use_openModelica

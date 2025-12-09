@@ -1,6 +1,8 @@
 within BESMod.Systems.Hydraulical.Transfer.RecordsCollection;
 record DefaultUFHData "For a well insulated retrofit building"
   extends UFHData(
+    dpCoe=0,
+    dpExp=1.7,
     T_floor=291.15,
     final diameter=18e-3,
     c_top_ratio=fill(0.19, nZones),

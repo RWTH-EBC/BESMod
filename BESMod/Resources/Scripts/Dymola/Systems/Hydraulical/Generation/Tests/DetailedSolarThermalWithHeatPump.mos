@@ -1,0 +1,17 @@
+simulateModel("BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="DetailedSolarThermalWithHeatPump");
+createPlot(id=2, position={75, 70, 700, 500}, y={"genControlBus.TGenOutMea", "generation.TSup_nominal[1]"}, grid=true, subPlot=1, colors={{28,108,200}, {28,200,108}});
+createPlot(id=2, position={75, 70, 700, 500}, y={"fixedTemperature[1].port.Q_flow", "generation.Q_flow_design[1]"}, grid=true, subPlot=2, colors={{28,108,200}, {28,200,108}});
+createPlot(
+	id=2, position={75, 70, 700, 500}, 
+	y={"pumDis[1].port_a.m_flow", "generation.m_flow_design[1]", "pumDis[2].port_a.m_flow", "generation.m_flow_design[2]"}, 
+	grid=true, subPlot=3, 
+	patterns={LinePattern.Solid, LinePattern.Solid, LinePattern.Dash, LinePattern.Dash}, 
+	colors={{28,108,200}, {28,200,108}, {28,108,200}, {28,200,108}}
+);
+createPlot(
+	id=2, position={75, 70, 700, 500}, 
+	y={"pumDis[1].dpControlled_dp.dp_actual", "generation.dp_design[1]", "pumDis[2].dpControlled_dp.dp_actual", "generation.dp_design[2]"}, 
+	grid=true, subPlot=4, 
+	patterns={LinePattern.Solid, LinePattern.Solid, LinePattern.Dash, LinePattern.Dash}, 
+	colors={{28,108,200}, {28,200,108}, {28,108,200}, {28,200,108}}
+);

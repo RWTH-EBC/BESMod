@@ -2,14 +2,24 @@ within BESMod.Systems.Hydraulical.Generation;
 model HeatPumpAndElectricHeater "Heat pump with an electric heater in series"
   extends BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump(
     genDesTyp=BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentParallel,
-  dp_nominal={heatPump.dpCon_nominal +dpEleHea_nominal},
-  multiSum(nu=if use_eleHea then 3 else 2));
+  multiSum(nu=if use_eleHea then 2 else 1),
+    resGen(
+      final length=lengthPip,
+      final resCoe=resCoe),
+    resGenApp(final dp_nominal=parHeaPum.dpCon_nominal + dpEleHea_nominal +
+          resGen.dp_nominal));
+  parameter Modelica.Units.SI.Length lengthPip=8 "Length of all pipes"
+    annotation (Dialog(tab="Pressure losses"));
+  parameter Real resCoe=4*facPerBend
+    "Factor to take into account resistance of bends, fittings etc."
+    annotation (Dialog(tab="Pressure losses"));
+  parameter Boolean use_eleHea=true "=false to disable the electric heater"
+   annotation(Dialog(group="Component choices"));
+
   replaceable parameter RecordsCollection.ElectricHeater.Generic parEleHea
     "Electric heater parameters" annotation (
     choicesAllMatching=true,
     Placement(transformation(extent={{24,64},{36,76}})));
-  parameter Boolean use_eleHea=true "=false to disable the electric heater"
-   annotation(Dialog(group="Component choices"));
 
   AixLib.Fluid.HeatExchangers.HeatingRod eleHea(
     redeclare package Medium = Medium,
@@ -17,7 +27,7 @@ model HeatPumpAndElectricHeater "Heat pump with an electric heater in series"
     final m_flow_nominal=m_flow_design[1],
     final m_flow_small=1E-4*abs(m_flow_design[1]),
     final show_T=show_T,
-    final dp_nominal=parEleHea.dp_nominal,
+    final dp_nominal=0,
     final tau=30,
     final energyDynamics=energyDynamics,
     final p_start=p_start,
@@ -50,24 +60,23 @@ protected
     "Possible electric heater nominal pressure drop";
 
 equation
-  connect(heatPump.port_a1, pump.port_b) annotation (Line(points={{-30,0},{-30,-70},
-          {1.77636e-15,-70}},            color={0,127,255}));
   connect(pasThrMedEleHea.port_b, senTGenOut.port_a) annotation (Line(points={{40,30},
           {54,30},{54,80},{60,80}},     color={0,127,255}));
   connect(eleHea.port_b, senTGenOut.port_a) annotation (Line(points={{40,50},{54,50},
           {54,80},{60,80}}, color={0,127,255}));
   connect(pasThrMedEleHea.port_a, heatPump.port_b1) annotation (Line(points={{20,30},
-          {10,30},{10,50},{-30,50},{-30,38},{-30,38},{-30,35}},         color={0,
+          {10,30},{10,44},{-30,44},{-30,35}},                           color={0,
           127,255}));
-  connect(heatPump.port_b1, eleHea.port_a) annotation (Line(points={{-30,35},{-30,
-          36},{-30,36},{-30,50},{20,50}}, color={0,127,255}));
+  connect(heatPump.port_b1, eleHea.port_a) annotation (Line(points={{-30,35},{
+          -30,44},{10,44},{10,50},{20,50}},
+                                          color={0,127,255}));
   connect(eleHea.u, sigBusGen.uEleHea) annotation (Line(points={{18,56},{2,56},{2,
           98}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(multiSum.u[3], eleHea.Pel) annotation (Line(points={{136,-82},{140,-82},
+  connect(multiSum.u[2], eleHea.Pel) annotation (Line(points={{136,-82},{140,-82},
           {140,56},{41,56}}, color={0,0,127}));
   connect(KPIQEleHea_flow.KPI, outBusGen.QEleHea_flow) annotation (Line(points={{
           -117.8,-130},{0,-130},{0,-100}}, color={135,135,135}), Text(
@@ -91,4 +100,6 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  connect(resGen.port_a, heatPump.port_a1) annotation (Line(points={{40,-10},{
+          -30,-10},{-30,0}},               color={0,127,255}));
 end HeatPumpAndElectricHeater;

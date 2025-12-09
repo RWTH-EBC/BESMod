@@ -1,4 +1,4 @@
-﻿within BESMod.Systems.Demand.Building;
+within BESMod.Systems.Demand.Building;
 model TEASERThermalZone
   "Reduced order building model, coupled with TEASER"
   extends BaseClasses.PartialDemand(
@@ -113,7 +113,8 @@ model TEASERThermalZone
         rotation=0,
         origin={30,-120})));
   Utilities.KPIs.ZoneEnergyBalance zoneEneBal[nZones](each final
-      with_ventilation=use_ventilation)
+      with_ventilation=use_ventilation, each final with_floor=zoneParam[1].AFloor
+         > 0)
     if use_verboseEnergyBalance "Zone energy balance"
     annotation (Placement(transformation(extent={{-60,-200},{-22,-140}})));
   Modelica.Blocks.Sources.RealExpression QExtWall_flow[nZones](y=thermalZone.ROM.extWall.Q_flow)
@@ -137,7 +138,8 @@ model TEASERThermalZone
         rotation=0,
         origin={-90,-120})));
   Modelica.Blocks.Sources.RealExpression QFloor_flow[nZones](y=thermalZone.ROM.floor.Q_flow)
-    if use_verboseEnergyBalance "Floor heat flow rate" annotation (Placement(
+    if use_verboseEnergyBalance and zoneParam[1].AFloor > 0
+                                "Floor heat flow rate" annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,

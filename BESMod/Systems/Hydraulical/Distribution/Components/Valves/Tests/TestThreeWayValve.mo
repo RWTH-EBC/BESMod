@@ -26,23 +26,19 @@ model TestThreeWayValve
         origin={84,6})));
   ThreeWayValveWithFlowReturn threeWayValveWithFlowReturn(redeclare package
       Medium = Medium, redeclare
-      BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve
-      parameters(
+      BESMod.Systems.RecordsCollection.Valves.DefaultThreeWayValve parameters(
       m_flow_nominal=m_flow_nominal,
-      dp_nominal={dpValve_nominal, dpValve_nominal},
-      dpFixed_nominal={0,0},
+      dp_nominal={dpValve_nominal,dpValve_nominal},
+      dpFixedExtra_nominal={0,0},
       fraK=1,
       strokeTime=50))
     annotation (Placement(transformation(extent={{-46,-40},{24,20}})));
-  IBPSA.Fluid.Movers.Preconfigured.FlowControlled_m_flow
-                                        pumpHP(
+  IBPSA.Fluid.Movers.Preconfigured.FlowControlled_m_flow pumpHP(
     redeclare final package Medium = Medium,
     final m_flow_nominal=m_flow_nominal,
-    final dp_nominal=2*(threeWayValveWithFlowReturn.parameters.dpValve_nominal
-           + threeWayValveWithFlowReturn.parameters.dpFixed_nominal[1]) + dpRes,
+    final dp_nominal=threeWayValveWithFlowReturn.parameters.dpPum_design + dpRes,
     final addPowerToMedium=false,
-    final use_riseTime=false)
-                     annotation (Placement(transformation(
+    final use_riseTime=false) annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=270,
         origin={-80,-12})));

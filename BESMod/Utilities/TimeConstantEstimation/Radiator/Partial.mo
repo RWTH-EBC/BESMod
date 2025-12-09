@@ -6,16 +6,11 @@ partial model Partial "Estimate UFH time constants"
     TOda_start=268.15,
     hydraulic(
       T_start=273.15 + 55,
-      redeclare BESMod.Systems.Hydraulical.Distribution.BuildingOnly distribution(
-          nParallelDem=1),
+      redeclare BESMod.Systems.Hydraulical.Distribution.BuildingOnly distribution,
       redeclare
         BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator
         transfer(
         f_design=QBuiNoRetrofit_flow_nominal ./ systemParameters.QBui_flow_nominal,
-        redeclare
-          BESMod.Systems.Hydraulical.Transfer.RecordsCollection.SteelRadiatorStandardPressureLossData
-          parTra,
-        redeclare BESMod.Systems.RecordsCollection.Movers.DefaultMover parPum,
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
           parRad),

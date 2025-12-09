@@ -1,6 +1,6 @@
 within BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater;
 partial record Generic
-  extends Modelica.Icons.Record;
+  extends BESMod.Utilities.Icons.RecordWithName;
   // Generation: electric heater
   parameter Real eta "Electric heater efficiency";
   parameter Modelica.Units.SI.Volume V_hr
