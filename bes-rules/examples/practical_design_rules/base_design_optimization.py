@@ -2,16 +2,27 @@ import json
 import pathlib
 
 from bes_rules import STARTUP_BESMOD_MOS
-from bes_rules import configs, DATA_PATH
+from bes_rules import configs, boundary_conditions
 from bes_rules.configs.plotting import PlotConfig
 from bes_rules.input_variations import run_input_variations
 from bes_rules.simulation_based_optimization.utils import constraints
-from bes_rules import boundary_conditions
+from bes_rules.rule_extraction.surrogates.bayes import load_best_hyperparameters
 
 
 def get_inputs_config_to_simulate(modifiers: list = None):
     weathers = boundary_conditions.weather.get_weather_configs_by_names(region_names=["Potsdam"])
-    buildings = boundary_conditions.building.get_all_tabula_sfh_buildings()
+    buildings = boundary_conditions.building.get_all_tabula_sfh_buildings(
+        skip_years=[
+            2015,
+            2009,
+            1994,
+            1970,
+            1960,
+            1948,
+            1918,
+            1859,
+        ]
+    )
     dhw_profiles = [{"profile": "M"}]
     return configs.InputsConfig(
         full_factorial=True,
@@ -72,12 +83,6 @@ def run(
         surrogate_builder_class=surrogate_builder_class,
         **surrogate_builder_kwargs
     )
-
-
-def load_best_hyperparameters():
-    hyperparameters_path = DATA_PATH.joinpath("default_configs", "best_hyperparameters.json")
-    with open(hyperparameters_path, "r") as file:
-        return json.load(file)
 
 
 def get_optimization_config(*variables: configs.OptimizationVariable, **kwargs):
@@ -145,3 +150,4 @@ def get_simulation_config(
         result_names=["scalingFactor"],
         **kwargs
     )
+

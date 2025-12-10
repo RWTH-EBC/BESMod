@@ -1,3 +1,4 @@
+import logging
 import os
 from pathlib import Path
 from typing import List
@@ -10,8 +11,6 @@ from bes_rules import RESULTS_FOLDER
 from bes_rules import configs
 from bes_rules.plotting import utils
 from bes_rules.rule_extraction.innovization import mesh_arrays
-from bes_rules.rule_extraction.surrogates import AnnuityMixedBayesSurrogate
-from examples.practical_design_rules.base_design_optimization import load_best_hyperparameters
 
 
 def filter_constants(df, constants):
@@ -157,47 +156,3 @@ def get_vars_from_df_for_bayes(variables: list, df: pd.DataFrame, n_sample: int 
     flat_design_variables = {var: design_values[:, idx] for idx, var in enumerate(design_variables)}
     return flat_design_variables
 
-
-def plot_bayes_surrogate_for_simulations(
-        result_folder: Path,
-        start_from: int = 9,
-        idx_step: int = 1,
-        show_plot: bool = False,
-        just_end: bool = False,
-        metrics_to_plot: list = None
-):
-    hyperparameters = load_best_hyperparameters()
-    if metrics_to_plot is None:
-        metrics_to_plot = list(hyperparameters.keys())
-    for metric in metrics_to_plot:
-        if metric not in hyperparameters:
-            hyperparameters[metric] = hyperparameters["outputs.hydraulic.gen.heaPum.numSwi"]
-    plot_path = result_folder.joinpath("bayes_plots")
-    os.makedirs(plot_path, exist_ok=True)
-    variables = ["parameterStudy.TBiv", "parameterStudy.VPerQFlow"]
-    for file in os.listdir(result_folder):
-        if not file.endswith(".xlsx") or file.endswith("all_results.xlsx"):
-            continue
-        df_path = result_folder.joinpath(file)
-        df = pd.read_excel(df_path, index_col=0)
-        flat_design_variables = get_vars_from_df_for_bayes(variables, df, n_sample=100)
-        if not np.any((df.loc[:, "parameterStudy.TBiv"] == 278.15) & (df.loc[:, "parameterStudy.VPerQFlow"] == 5)):
-            print("Not corner design", file)
-        if just_end:
-            indexes = [len(df.index)]
-        else:
-            indexes = range(start_from, len(df.index), idx_step)
-        for idx in indexes:
-            try:
-                surrogate = AnnuityMixedBayesSurrogate(
-                    df=df.loc[:idx],
-                    metric_hyperparameters=hyperparameters
-                )
-                surrogate.predict(
-                    metrics=metrics_to_plot,
-                    design_variables=flat_design_variables,
-                    save_path_plot=plot_path.joinpath(f"{df_path.stem}_{idx}.png"),
-                    plot_kwargs=dict(plot_surface=True, show_plot=show_plot)
-                )
-            except ValueError as err:
-                print(f"Can't plot {file} with idx {idx}: {err}")

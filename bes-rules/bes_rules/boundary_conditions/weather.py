@@ -161,9 +161,7 @@ def create_weather_cases(path: Path, weathers: List[WeatherConfig]):
         # Some file have station names like London/Gatwick --> leads to path errors
         mos_path = f"{dat_stem}_{try_project.meta_data.station_name.replace('/', '_')}.mos"
         try_project.core_2_mos(filename=mos_path)
-        _din_ts_12831_path = DATA_PATH.joinpath(
-            "weather", "DIN_TS_12831-1_Klimadaten.xlsx"
-        )
+
         weather_config.mos_path = try_project.abs_result_folder_path.joinpath(mos_path)
         for weird_char in ["ü", "ö", "ä", "ß"]:
             if weird_char in str(weather_config.mos_path).lower():
@@ -173,6 +171,14 @@ def create_weather_cases(path: Path, weathers: List[WeatherConfig]):
                 )
 
         if weather_config.TOda_nominal is None:
+            _din_ts_12831_path = DATA_PATH.joinpath(
+                "weather", "DIN_TS_12831-1_Klimadaten.xlsx"
+            )
+            if _din_ts_12831_path.exists():
+                raise FileNotFoundError(
+                    "You need the Appendix data `DIN_TS_12831-1_Klimadaten.xlsx` "
+                    "to automatically get TOda_nominal based on zip code."
+                )
             geo_loc = Nominatim(user_agent="GetLoc")
             locname = geo_loc.reverse(f"{try_project.meta_data.latitude}, {try_project.meta_data.longitude}")
             # Get PLZ from address
@@ -202,4 +208,4 @@ def get_international_weather_data_configs():
 
 
 if __name__ == '__main__':
-    create_weather_cases(path=Path(r"D:\00_temp\test_epw"), weathers=get_international_weather_data_configs())
+    save_weather_configs_to_json(weather_configs=get_weather_configs(condition="average"))

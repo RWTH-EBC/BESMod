@@ -1,8 +1,8 @@
 import json
 import logging
 
-from bes_rules import configs, STARTUP_BESMOD_MOS, RESULTS_FOLDER
-from bes_rules.input_variations import InputVariations
+from bes_rules import configs, STARTUP_BESMOD_MOS, RESULTS_FOLDER, DATA_PATH
+from bes_rules.input_variations import run_input_variations
 from bes_rules.boundary_conditions import weather, building
 from bes_rules.simulation_based_optimization.utils import constraints
 
@@ -11,7 +11,7 @@ def run_optimization(test_only=False):
     sim_config = configs.SimulationConfig(
         startup_mos=STARTUP_BESMOD_MOS,
         model_name="BESMod.BESRules.DesignOptimization.MonoenergeticVitoCal",
-        sim_setup=dict(stop_time=86400 * 365, output_interval=900),
+        sim_setup=dict(stop_time=86400 * 30, output_interval=900),
         result_names=[],
         type="Dymola",
         recalculate=False,
@@ -21,13 +21,13 @@ def run_optimization(test_only=False):
         convert_to_hdf_and_delete_mat=True
     )
 
-    with open(RESULTS_FOLDER.joinpath("BayesHyperparameters", "best_hyperparameters.json"), "r") as file:
+    with open(DATA_PATH.joinpath("default_configs", "best_hyperparameters.json"), "r") as file:
         hyperparameters = json.load(file)
 
     ## Optimization
     optimization_config = configs.OptimizationConfig(
         framework="bayes",
-        method="Not implemented",
+        method="Not required for bayes",
         solver_settings={"allow_duplicate_points": False, "hyperparameters": hyperparameters, "n_iter": 20},
         objective_names=["SCOP_Sys"],
         constraints=[constraints.BivalenceTemperatureGreaterNominalOutdoorAirTemperature()],
@@ -45,7 +45,7 @@ def run_optimization(test_only=False):
         ],
     )
 
-    weathers = weather.get_weather_configs_by_names(region_names=["Bremerhaven"])
+    weathers = weather.get_weather_configs_by_names(region_names=["Potsdam"])
     buildings = building.get_building_configs_by_name(building_names=["Retrofit1918"])
 
     inputs_config = configs.InputsConfig(
@@ -63,8 +63,7 @@ def run_optimization(test_only=False):
         inputs=inputs_config,
         test_only=test_only
     )
-    DESOPT = InputVariations(config=config)
-    DESOPT.run()
+    run_input_variations(config=config, run_inputs_in_parallel=False)
 
 
 if __name__ == '__main__':

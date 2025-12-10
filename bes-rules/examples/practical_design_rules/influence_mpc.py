@@ -24,24 +24,31 @@ def manipulate_predictions(df):
 def _get_configs(
         with_dynamic_prices: bool,
         no_minimal_compressor_speed: bool = False,
-        inverter_uses_storage: bool = True,
-        only_one_hp_size: bool = False
+        inverter_uses_storage: bool = True
 ):
-    optimization_config = compare_onoff.get_optimization_config(
-        compare_to_mpc=True, only_one_hp_size=only_one_hp_size
+    optimization_config = base_design_optimization.get_optimization_config(
+        configs.OptimizationVariable(
+            name="parameterStudy.TBiv",
+            lower_bound=261.15,
+            upper_bound=273.15,
+            levels=3
+        ),
+        configs.OptimizationVariable(
+            name="parameterStudy.VPerQFlow",
+            lower_bound=5,
+            upper_bound=50,
+            levels=3
+        )
     )
     inputs_config = compare_onoff.get_inputs_config_with_added_modifiers(
         inverter_uses_storage=inverter_uses_storage,
         no_minimal_compressor_speed=no_minimal_compressor_speed, with_start_losses=False,
-        only_inverter=True,
-        cases_to_simulate=["TRY2045_507965128723_Wint_B1980_standard_o0w2r0g1_SingleDwelling_NoDHW_0K-Per-IntGai"]
+        only_inverter=True
     )
     if with_dynamic_prices:
         inputs_config.prices = [
             {"year": None},
-            # {"year": 2024, "only_wholesale_price": True},
             {"year": 2024, "only_wholesale_price": False},
-            # {"year": 2023, "only_wholesale_price": True}
         ]
     return inputs_config, optimization_config
 
@@ -50,8 +57,7 @@ def run_mpc_studies(
         n_cpu,
         with_dynamic_prices: bool,
         no_minimal_compressor_speed: bool = False,
-        inverter_uses_storage: bool = True,
-        only_one_hp_size: bool = False
+        inverter_uses_storage: bool = True
 ):
     time_step = 900
 
@@ -102,8 +108,7 @@ def run_mpc_studies(
     inputs_config, optimization_config = _get_configs(
         with_dynamic_prices=with_dynamic_prices,
         inverter_uses_storage=inverter_uses_storage,
-        no_minimal_compressor_speed=no_minimal_compressor_speed,
-        only_one_hp_size=only_one_hp_size
+        no_minimal_compressor_speed=no_minimal_compressor_speed
     )
 
     config = configs.StudyConfig(
@@ -192,8 +197,7 @@ def plot_influence_mpc():
 def run_rule_based_comparison(
         with_dynamic_prices: bool,
         no_minimal_compressor_speed: bool = False,
-        inverter_uses_storage: bool = True,
-        only_one_hp_size: bool = False
+        inverter_uses_storage: bool = True
 ):
     study_name = "mpc_perfect_reference"
     sim_config = base_design_optimization.get_simulation_config(
@@ -207,8 +211,7 @@ def run_rule_based_comparison(
     inputs_config, optimization_config = _get_configs(
         with_dynamic_prices=with_dynamic_prices,
         inverter_uses_storage=inverter_uses_storage,
-        no_minimal_compressor_speed=no_minimal_compressor_speed,
-        only_one_hp_size=only_one_hp_size
+        no_minimal_compressor_speed=no_minimal_compressor_speed
     )
 
     config = configs.StudyConfig(
@@ -228,4 +231,4 @@ def run_rule_based_comparison(
 
 if __name__ == "__main__":
     logging.basicConfig(level="INFO")
-    run_mpc_studies(n_cpu=9, with_dynamic_prices=True, inverter_uses_storage=True, no_minimal_compressor_speed=False, only_one_hp_size=False)
+    run_mpc_studies(n_cpu=9, with_dynamic_prices=True, inverter_uses_storage=True, no_minimal_compressor_speed=False)

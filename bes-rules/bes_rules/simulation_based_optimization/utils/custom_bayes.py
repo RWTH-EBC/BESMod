@@ -28,7 +28,7 @@ class ExplorationAcquisition(acquisition.AcquisitionFunction):
         super().__init__(random_state)
 
     def base_acq(self, mean, std):
-        logging.info(f"std={std}, mean={mean}")
+        logging.debug(f"std={std}, mean={mean}")
         return 1e8 * std  # disregard std
 
 

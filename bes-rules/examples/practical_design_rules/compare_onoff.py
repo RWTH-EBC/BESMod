@@ -51,7 +51,6 @@ def run(
         model: str = "MonoenergeticVitoCal",
         with_start_losses: bool = False,
         inverter_uses_storage: bool = False,
-        compare_to_mpc: bool = False,
         no_minimal_compressor_speed: bool = False
 ):
     sim_config = base_design_optimization.get_simulation_config(
@@ -62,36 +61,21 @@ def run(
         equidistant_output=True
     )
 
-    if compare_to_mpc:
-        optimization_config = base_design_optimization.get_optimization_config(
-            configs.OptimizationVariable(
-                name="parameterStudy.TBiv",
-                lower_bound=261.15,
-                upper_bound=273.15,
-                levels=3
-            ),
-            configs.OptimizationVariable(
-                name="parameterStudy.VPerQFlow",
-                lower_bound=5,
-                upper_bound=50,
-                levels=3
-            )
+
+    optimization_config = base_design_optimization.get_optimization_config(
+        configs.OptimizationVariable(
+            name="parameterStudy.TBiv",
+            lower_bound=273.15 - 20,
+            upper_bound=278.15,
+            discrete_steps=2
+        ),
+        configs.OptimizationVariable(
+            name="parameterStudy.VPerQFlow",
+            lower_bound=5,
+            upper_bound=50,
+            levels=6
         )
-    else:
-        optimization_config = base_design_optimization.get_optimization_config(
-            configs.OptimizationVariable(
-                name="parameterStudy.TBiv",
-                lower_bound=273.15 - 20,
-                upper_bound=278.15,
-                discrete_steps=2
-            ),
-            configs.OptimizationVariable(
-                name="parameterStudy.VPerQFlow",
-                lower_bound=5,
-                upper_bound=50,
-                levels=6
-            )
-        )
+    )
 
     inputs_config = get_inputs_config_with_added_modifiers(
         inverter_uses_storage=inverter_uses_storage, only_on_off=True,
@@ -116,4 +100,4 @@ def run(
 if __name__ == '__main__':
     logging.basicConfig(level="INFO")
     STUDY_NAME = "test_besmod"
-    run(STUDY_NAME, n_cpu=1, with_start_losses=False, compare_to_mpc=True, inverter_uses_storage=True)
+    run(STUDY_NAME, n_cpu=1, with_start_losses=False, inverter_uses_storage=True)

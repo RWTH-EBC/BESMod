@@ -31,22 +31,19 @@ def run_optimization(test_only=False):
                 name="parameterStudy.TBiv",
                 lower_bound=273.15 - 16,
                 upper_bound=278.15,
-                levels=24
+                levels=8
             ),
             configs.OptimizationVariable(
                 name="parameterStudy.VPerQFlow",
                 lower_bound=12,
-                upper_bound=12,
-                levels=1
+                upper_bound=35,
+                levels=3
             )
         ],
     )
 
-    weathers = weather.get_all_weather_configs()
     weathers = weather.get_weather_configs_by_names(region_names=["Potsdam"])
     buildings = building.get_building_configs_by_name(building_names=["Retrofit1918", "NoRetrofit1983"])
-    buildings[0].modify_transfer_system = True
-    buildings[1].modify_transfer_system = True
 
     inputs_config = configs.InputsConfig(
         weathers=weathers,

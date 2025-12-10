@@ -1,4 +1,5 @@
 import logging
+import json
 from pathlib import Path
 from typing import Dict, List
 from functools import reduce
@@ -12,6 +13,7 @@ from sklearn.gaussian_process.kernels import Matern
 from bes_rules.plotting.utils import PlotConfig
 from bes_rules.rule_extraction.surrogates import Surrogate
 from bes_rules.rule_extraction.surrogates.plotting import plot_surrogate_quality
+from bes_rules import DATA_PATH
 
 logger = logging.getLogger(__name__)
 
@@ -98,3 +100,9 @@ class BayesSurrogate(Surrogate):
                 **plot_kwargs
             )
         return df_predict
+
+
+def load_best_hyperparameters():
+    hyperparameters_path = DATA_PATH.joinpath("default_configs", "best_hyperparameters.json")
+    with open(hyperparameters_path, "r") as file:
+        return json.load(file)

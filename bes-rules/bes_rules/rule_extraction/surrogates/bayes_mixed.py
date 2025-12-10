@@ -118,39 +118,3 @@ class AnnuityMixedBayesSurrogate(Surrogate):
                 plot_surface=True
             )
         return df_interpolated_bayes_costs
-
-
-if __name__ == '__main__':
-    from bes_rules import RESULTS_FOLDER
-    from bes_rules.rule_extraction.innovization import mesh_arrays
-
-    with open(RESULTS_FOLDER.joinpath(
-            "BayesHyperparametersCornerPoints",
-            "TRY2015_474856110632_Jahr_B1950_standard_o1w2r0g2_SingleDwelling_NoDHW_0K-Per-IntGai.xlsx",
-            "best_hyperparameters.json"), "r"
-    ) as file:
-        PARAS = json.load(file)
-    PATH = RESULTS_FOLDER.joinpath("BayesHyperparametersMixed")
-    df_path = PATH.joinpath("TRY2015_474856110632_Jahr_B1950_standard_o1w2r0g2_SingleDwelling_NoDHW_0K-Per-IntGai.xlsx")
-    df_path = PATH.joinpath("TRY2015_474856110632_Jahr_B1950_standard_o1w2r0g2_SingleDwelling_NoDHW_0K-Per-IntGai_reduced.xlsx")
-
-    SURROGATE = AnnuityMixedBayesSurrogate(
-        df=pd.read_excel(df_path, index_col=0),
-        metric_hyperparameters=PARAS
-    )
-    design_variables = {
-        "parameterStudy.TBiv": np.linspace(-15, 4, 100) + 273.15,
-        "parameterStudy.VPerQFlow": np.linspace(5, 5, 1),
-        # "parameterStudy.ShareOfPEleNominal": np.ones(100)
-    }
-    design_values = mesh_arrays(list(design_variables.values()))
-    flat_design_variables = {var: design_values[:, idx] for idx, var in enumerate(design_variables)}
-
-    print(SURROGATE.predict(
-        metrics=[
-            "costs_total",
-            "SCOP_Sys"
-        ],
-        design_variables=flat_design_variables,
-        save_path_plot=PATH.joinpath("quality.png")
-    ))

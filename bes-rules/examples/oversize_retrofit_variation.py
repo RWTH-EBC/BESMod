@@ -27,6 +27,7 @@ def run_optimization(test_only=False):
     optimization_config = configs.OptimizationConfig(
         framework="doe",
         method="ffd",
+        # Note: No constraint, thus enabling oversizing heat pumps
         variables=[
             configs.OptimizationVariable(
                 name="parameterStudy.TBiv",
@@ -60,7 +61,7 @@ def run_optimization(test_only=False):
         retrofit_choices=None
     )
     for building in building_configs:
-        building.modify_transfer_system = True
+        building.modify_transfer_system = True  # If not set by default, required to use correct transfer system in BESMod
 
     inputs_config = configs.InputsConfig(
         weathers=weathers,
@@ -80,20 +81,6 @@ def run_optimization(test_only=False):
     run_input_variations(config=config, run_inputs_in_parallel=True)
 
 
-def copy_files():
-    iterate = 14
-    path = RESULTS_FOLDER.joinpath("TBivOptimization", "OversizeRetrofitOptions", "DesignOptimizationResults")
-    dst_folder = RESULTS_FOLDER.joinpath("TBivOptimization", "OversizeRetrofitOptions", "for_nico")
-    os.makedirs(dst_folder, exist_ok=True)
-    for folder in os.listdir(path):
-        shutil.copy(
-            path.joinpath(path.joinpath(folder, f"iterate_{iterate}.hdf")),
-            dst_folder.joinpath(f"{folder}.hdf"),
-        )
-
-
-
 if __name__ == '__main__':
     logging.basicConfig(level="INFO")
-    #run_optimization(test_only=False)
-
+    run_optimization(test_only=False)
