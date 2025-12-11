@@ -8,7 +8,7 @@ model IdealHeaterFraRad
     "Time constant of the heating controller";
   BESMod.Utilities.Electrical.RealToElecCon realToElecCon(use_souGen=false)
     annotation (Placement(transformation(extent={{20,60},{40,80}})));
-  BESRules.InputAnalysis.HeaterCoolerPIFraRad heaterCooler[nParallelDem](
+  BESMod.Systems.Electrical.Transfer.BaseClasses.HeaterCoolerPIFraRad heaterCooler[nParallelDem](
     h_heater=Q_flow_nominal .* 1.5,
     each final l_heater=0,
     each final KR_heater=KR_heater,
