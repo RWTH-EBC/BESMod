@@ -33,8 +33,8 @@ partial model PartialEstimation "Partial model for estimation of time constants"
         calcmFlow),
     redeclare BESMod.Systems.UserProfiles.TEASERProfiles userProfiles(
       gain={0,0,0},
-      dTSetBack=dTStepSet,
-      startTimeSetBack=startTimeTSet),
+      dTSetBack={dTStepSet},
+      startTimeSetBack={startTimeTSet}),
     redeclare BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy
       parameterStudy,
     redeclare final package MediumDHW = AixLib.Media.Water,
