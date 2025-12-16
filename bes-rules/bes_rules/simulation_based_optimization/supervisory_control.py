@@ -66,10 +66,16 @@ def do_not_manipulate_predictions(df: pd.DataFrame) -> pd.DataFrame:
 
 
 class BaseSupervisoryControl(SurrogateBuilder, abc.ABC):
-    external_control_function: callable = None
 
-    def __init__(self, config, input_config: InputConfig, sim_api: DymolaAPI = None, **kwargs):
+    def __init__(
+            self,
+            config, input_config: InputConfig,
+            sim_api: DymolaAPI = None,
+            external_control_function: callable = None,
+            **kwargs
+    ):
         super().__init__(config=config, input_config=input_config, sim_api=sim_api, **kwargs)
+        self.external_control_function = external_control_function
         self._predictive_control_options = kwargs["predictive_control_options"]
         self.mapping_predictions = kwargs["mapping_predictions"]
         self.pv_design_name = kwargs.get("pv_design_name", "PVDesignSize")

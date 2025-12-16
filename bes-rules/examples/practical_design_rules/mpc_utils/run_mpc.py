@@ -3,7 +3,7 @@ import logging
 from pathlib import Path
 
 from agentlib.utils.multi_agent_system import LocalMASAgency
-from config_editor import generate_agent_configs
+from mpc_utils.config_editor import generate_agent_configs
 
 logger = logging.getLogger(__name__)
 

@@ -18,12 +18,8 @@ class AgentLibMPC(BaseSupervisoryControl):
 
     You can pass a custom run_mpc function via `external_control_function` to actually run the multi-agent system.
     Inputs to this function are defined by `get_function_inputs_for_parameters`.
-    See the examples for how to do that.
+    See the examples and `BaseSupervisoryControl` for how to do that.
     """
-
-    def __init__(self, config, input_config: InputConfig, sim_api: DymolaAPI = None, **kwargs):
-        super().__init__(config=config, input_config=input_config, sim_api=sim_api, **kwargs)
-        self.external_control_function = run_mpc.run
 
     def get_function_inputs_for_parameters(
             self,
