@@ -7,6 +7,8 @@ pip install -r requirements.txt
 pip install -e .
 ```
 
+The -e option for editable mode is necessary to correctly load all the paths.
+
 ## Paths
 
 We use pathlib and globally defined PATH variables to make transitioning between devices easier. 
