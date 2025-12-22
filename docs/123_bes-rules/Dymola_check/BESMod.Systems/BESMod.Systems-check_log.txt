@@ -1,7 +1,18 @@
 
-Error in model:  BESMod.Systems.Hydraulical.Control.Components.Defrost.BaseClasses.PartialDefrost 
-Check of <a href="Modelica://BESMod.Systems.Hydraulical.Control.Components.Defrost.BaseClasses.PartialDefrost">BESMod.Systems.Hydraulical.Control.Components.Defrost.BaseClasses.PartialDefrost</a>
-Did not find model BESMod.Systems.Hydraulical.Control.Components.Defrost.BaseClasses.PartialDefrost
+Error in model:  BESMod.Systems.Electrical.Transfer.IdealHeaterFraRad 
+Check of <a href="Modelica://BESMod.Systems.Electrical.Transfer.IdealHeaterFraRad">BESMod.Systems.Electrical.Transfer.IdealHeaterFraRad</a>
+Found for import <a href="Modelica://BESRules">BESRules</a>
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Electrical/Transfer/IdealHeaterFraRad.mo, line 2
+  Context: <a href="Modelica://BESMod.Systems.Electrical.Transfer.IdealHeaterFraRad">BESMod.Systems.Electrical.Transfer.IdealHeaterFraRad</a>
+Error: Error: Lookup failed for import <a href="Modelica://BESRules">BESRules</a>
+Check is assuming: nParallelDem = 1
+Warning: Automatically introducing 'each' in definition equation for variable:
+  heaterCooler[1].fraCooRad
+Additional warnings of this type will not be written.
+The model has the same number of unknowns and equations: 107
+The model has the same number of unknowns and equations
+for the given numerical settings of parameters: 107
+Warning: WARNINGS have been issued.
 Error: ERRORS have been issued.
 
 
@@ -11,19 +22,8 @@ Did not find model BESMod.Systems.Hydraulical.Control.Components.Defrost.NoDefro
 Error: ERRORS have been issued.
 
 
-Error in model:  BESMod.Systems.Electrical.Transfer.IdealHeaterFraRad 
-Check of <a href="Modelica://BESMod.Systems.Electrical.Transfer.IdealHeaterFraRad">BESMod.Systems.Electrical.Transfer.IdealHeaterFraRad</a>
-Found for import <a href="Modelica://BESRules">BESRules</a>
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Electrical/Transfer/IdealHeaterFraRad.mo, line 2
-  Context: <a href="Modelica://BESMod.Systems.Electrical.Transfer.IdealHeaterFraRad">BESMod.Systems.Electrical.Transfer.IdealHeaterFraRad</a>
-Error: Error: Lookup failed for import <a href="Modelica://BESRules">BESRules</a>
-Found for import <a href="Modelica://BESRules">BESRules</a>
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Electrical/Transfer/IdealHeaterFraRad.mo, line 2
-  Context: <a href="Modelica://BESMod.Systems.Electrical.Transfer.IdealHeaterFraRad">BESMod.Systems.Electrical.Transfer.IdealHeaterFraRad</a>
-Error: Error: Lookup failed for import <a href="Modelica://BESRules">BESRules</a>
-Error: Component type specifier BESRules.InputAnalysis.HeaterCoolerPIFraRad not found
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Electrical/Transfer/IdealHeaterFraRad.mo, line <a href="Modelica://BESMod.Systems.Electrical.Transfer.IdealHeaterFraRad#text:10">11</a>
- Component context: heaterCooler
-  Component declared as BESRules.InputAnalysis.HeaterCoolerPIFraRad heaterCooler in <a href="Modelica://BESMod.Systems.Electrical.Transfer.IdealHeaterFraRad">BESMod.Systems.Electrical.Transfer.IdealHeaterFraRad</a>
+Error in model:  BESMod.Systems.Hydraulical.Control.Components.Defrost.BaseClasses.PartialDefrost 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Control.Components.Defrost.BaseClasses.PartialDefrost">BESMod.Systems.Hydraulical.Control.Components.Defrost.BaseClasses.PartialDefrost</a>
+Did not find model BESMod.Systems.Hydraulical.Control.Components.Defrost.BaseClasses.PartialDefrost
 Error: ERRORS have been issued.
 
