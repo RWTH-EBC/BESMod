@@ -32,5 +32,4 @@ htmlcov
 .unitTests-dymola.log
 
 installed_dependencies/*
-startup.mos
 working_dir
