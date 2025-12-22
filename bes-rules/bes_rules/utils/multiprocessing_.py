@@ -59,6 +59,8 @@ def execute_function_in_parallel(
     # Take current time
     start_time = time.time()
     last_start_time = start_time
+    if func is None:
+        raise ValueError("You passed a func which is None, can't parallelize")
     notify_kwargs = dict(
         function_name=func.__name__,
         n_calls=n_calls,

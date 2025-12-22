@@ -1,16 +1,17 @@
 import logging
+from pathlib import Path
 
-from bes_rules import RESULTS_FOLDER, configs
-from bes_rules.input_variations import run_input_variations
-from bes_rules.simulation_based_optimization import AgentLibMPC
-from bes_rules.boundary_conditions.prices import calculate_operating_costs_with_dynamic_prices
-from bes_rules.plotting import EBCColors
-
-from . import MPC_UTILS_PATH
 import base_design_optimization
 import compare_onoff
-from plotting import compare_plots_with_modifiers
+from bes_rules import RESULTS_FOLDER, configs
+from bes_rules.boundary_conditions.prices import calculate_operating_costs_with_dynamic_prices
+from bes_rules.input_variations import run_input_variations
+from bes_rules.plotting import EBCColors
+from bes_rules.simulation_based_optimization import AgentLibMPC
 from mpc_utils import run_mpc
+from plotting import compare_plots_with_modifiers
+
+MPC_UTILS_PATH = Path(__file__).parent.joinpath("mpc_utils")
 
 
 def manipulate_predictions(df):
@@ -42,8 +43,10 @@ def _get_configs(
     )
     inputs_config = compare_onoff.get_inputs_config_with_added_modifiers(
         inverter_uses_storage=inverter_uses_storage,
-        no_minimal_compressor_speed=no_minimal_compressor_speed, with_start_losses=False,
-        only_inverter=True
+        no_minimal_compressor_speed=no_minimal_compressor_speed,
+        with_start_losses=False,
+        only_inverter=True,
+        years_of_construction=["1980"]
     )
     if with_dynamic_prices:
         inputs_config.prices = [
@@ -98,7 +101,7 @@ def run_mpc_studies(
     )
     sim_config = base_design_optimization.get_simulation_config(
         model="MonoenergeticVitoCal_MPC",
-        # n_days=4,
+        n_days=30,
         time_step=time_step,
         convert_to_hdf_and_delete_mat=False,
         recalculate=False,
@@ -202,6 +205,7 @@ def run_rule_based_comparison(
     study_name = "mpc_perfect_reference"
     sim_config = base_design_optimization.get_simulation_config(
         model="MonoenergeticVitoCal",
+        n_days=30,
         time_step=900,
         convert_to_hdf_and_delete_mat=True,
         recalculate=False,
@@ -231,4 +235,4 @@ def run_rule_based_comparison(
 
 if __name__ == "__main__":
     logging.basicConfig(level="INFO")
-    run_mpc_studies(n_cpu=9, with_dynamic_prices=True, inverter_uses_storage=True, no_minimal_compressor_speed=False)
+    run_mpc_studies(n_cpu=3, with_dynamic_prices=True, inverter_uses_storage=True, no_minimal_compressor_speed=False)

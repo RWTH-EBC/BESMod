@@ -9,25 +9,19 @@ from bes_rules.simulation_based_optimization.utils import constraints
 from bes_rules.rule_extraction.surrogates.bayes import load_best_hyperparameters
 
 
-def get_inputs_config_to_simulate(modifiers: list = None):
+def get_inputs_config_to_simulate(modifiers: list = None, years_of_construction: list = None):
     weathers = boundary_conditions.weather.get_weather_configs_by_names(region_names=["Potsdam"])
-    buildings = boundary_conditions.building.get_all_tabula_sfh_buildings(
-        skip_years=[
-            2015,
-            2009,
-            1994,
-            1970,
-            1960,
-            1948,
-            1918,
-            1859,
-        ]
-    )
+    buildings_per_year = boundary_conditions.building.get_all_tabula_sfh_buildings(as_dict=True)
+    if years_of_construction is None:
+        years_of_construction = buildings_per_year.keys()
+    buildings_to_simulate = [
+        buildings_per_year[f"{year}_standard"] for year in years_of_construction
+    ]
     dhw_profiles = [{"profile": "M"}]
     return configs.InputsConfig(
         full_factorial=True,
         weathers=weathers,
-        buildings=buildings,
+        buildings=buildings_to_simulate,
         dhw_profiles=dhw_profiles,
         modifiers=modifiers
     )
