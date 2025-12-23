@@ -27,6 +27,7 @@ model CalcHeaDemHOMAixLib
         293.15,293.15,293.15,288.15,297.15,293.15},
       THydSup_nominal=fill(273.15 + 55, building.nZones)),
     redeclare AixLibHighOrder building(
+      TIR=TIR,
       useConstVentRate=true,
       ventRate={0.5,0.5,0,0.5,0.5,0.5,0.5,0,0.5,0.5},
       GroundReflectance=0.2,

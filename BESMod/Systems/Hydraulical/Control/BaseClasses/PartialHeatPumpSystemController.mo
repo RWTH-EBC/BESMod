@@ -189,8 +189,8 @@ partial model PartialHeatPumpSystemController
         supCtrlNSetTyp) "Supervisory control of compressor speed"
     annotation (Placement(transformation(extent={{110,80},{130,100}})));
 
-  Modelica.Blocks.Logical.Hysteresis solThePumOn(uLow=thrToTurSolTheOn/2, uHigh
-      =thrToTurSolTheOn) if withSolThePumCtrl
+  Modelica.Blocks.Logical.Hysteresis solThePumOn(uLow=thrToTurSolTheOn/2, uHigh=
+       thrToTurSolTheOn) if withSolThePumCtrl
     "True to turn on solar thermal pump" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,

@@ -3,3 +3,5 @@ PartialDistribution
 PartialThreeWayValve
 PartialTwoStorageParallel
 PartialTwoStorageParallelWithHeaters
+PartialTwoStorageSerialWithHeaters
+PartialTwoStorageSerial

@@ -72,14 +72,16 @@ partial model PartialThreeWayValve "Partial model to later extent"
     final T_start=T_start,
     final allowFlowReversal=allowFlowReversal,
     final m_flow_nominal=mSup_flow_design[1],
-    final dp_nominal=dpSup_design[1] + parThrWayVal.dpPum_design,
+    dp_nominal=dpSup_design[1] + (parThrWayVal.dpValve_nominal +
+        parThrWayVal.dpMax_nominal),
     final externalCtrlTyp=parPumGen.externalCtrlTyp,
     final ctrlType=parPumGen.ctrlType,
     final dpVarBase_nominal=parPumGen.dpVarBase_nominal,
     final addPowerToMedium=parPumGen.addPowerToMedium,
     final use_riseTime=parPumGen.use_riseTime,
     final riseTime=parPumGen.riseTime,
-    final y_start=1) "Pump for supply system (generation)" annotation (
+    final y_start=1,
+    final dp_start=pumGen.dp_nominal) "Pump for supply system (generation)" annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,

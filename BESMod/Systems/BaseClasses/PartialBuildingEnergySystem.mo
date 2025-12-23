@@ -107,6 +107,7 @@ partial model PartialBuildingEnergySystem "Partial BES"
       final ABui=building.ABui,
       final ARoo=building.ARoo,
       final hBui=building.hBui,
+      final PercentMflowWorstPressureDropPath=building.PercentMflowWorstPressureDropPath,
       final mDHW_flow_nominal=DHW.mDHW_flow_nominal,
       final TDHW_nominal=DHW.TDHW_nominal,
       final tCrit=DHW.tCrit,

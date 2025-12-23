@@ -37,6 +37,8 @@ model PreconfiguredDPControlled
 
   parameter Real y_start=0 "Initial value of speed"
     annotation(Dialog(tab="Dynamics", group="Motor speed",enable=use_riseTime));
+  parameter Real dp_start=0 "Initial value of dp"
+    annotation(Dialog(tab="Dynamics", group="Motor speed",enable=use_riseTime));
 
   parameter Modelica.Blocks.Types.Smoothness smoothness=Modelica.Blocks.Types.Smoothness.LinearSegments
     "Smoothness of table interpolation" annotation (Dialog(tab="Advanced"));
@@ -99,6 +101,7 @@ model PreconfiguredDPControlled
     final addPowerToMedium=addPowerToMedium,
     use_riseTime=use_riseTime,
     final riseTime=riseTime,
+    final dp_start=dp_start,
     final m_flow_nominal=m_flow_nominal,
     final energyDynamics=Modelica.Fluid.Types.Dynamics.SteadyState,
     final dp_nominal=dp_nominal) if useDPCtrl "dp controlled Pump"

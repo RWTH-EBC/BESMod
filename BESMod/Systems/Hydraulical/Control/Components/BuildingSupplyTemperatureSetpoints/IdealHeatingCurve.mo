@@ -9,7 +9,8 @@ model IdealHeatingCurve "Ideal linear heating curve"
 
   replaceable function heaCur =
     BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.BaseClasses.Functions.ConstantGradientHeatCurve
-    constrainedby BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.BaseClasses.Functions.PartialHeatingCurve
+    constrainedby
+    BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.BaseClasses.Functions.PartialHeatingCurve
     "Linearization approach"
     annotation(choicesAllMatching=true);
 equation

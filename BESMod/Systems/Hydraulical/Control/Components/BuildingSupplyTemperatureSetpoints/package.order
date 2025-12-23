@@ -3,3 +3,4 @@ IdealHeatingCurve
 SingleZonePID
 TableBasedNightSetbackHeatingCurve
 BaseClasses
+IdealHeatingCurveHOMtoROM

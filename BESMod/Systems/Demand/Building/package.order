@@ -2,7 +2,9 @@ AixLibHighOrder
 BuildingsRoomCase600FF
 SpawnHighOrder
 TEASERThermalZone
+TEASERSingleThermalZone
 Components
 HeatDemand
 RecordsCollection
 BaseClasses
+TEASERSingleThermalZoneOld

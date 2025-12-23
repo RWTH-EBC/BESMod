@@ -1,4 +1,4 @@
-within BESMod.Systems.Demand.Building;
+﻿within BESMod.Systems.Demand.Building;
 model SpawnHighOrder "Spawn model of the AixLib High Order Model"
   extends BESMod.Systems.Demand.Building.BaseClasses.PartialDemand(
     use_hydraulic = true,
@@ -62,8 +62,8 @@ model SpawnHighOrder "Spawn model of the AixLib High Order Model"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
         origin={50,70})));
-  Modelica.Blocks.Routing.RealPassThrough reaPasThrTZoneMea[nZones](y(each unit
-        ="K", each displayUnit="degC"))
+  Modelica.Blocks.Routing.RealPassThrough reaPasThrTZoneMea[nZones](y(each unit=
+         "K", each displayUnit="degC"))
     "Pass through for bus of room air temperature"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
