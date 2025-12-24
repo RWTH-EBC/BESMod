@@ -1,7 +1,6 @@
 within BESMod.Systems.Electrical.Transfer;
 model IdealHeaterFraRad
   "Ideal heater as in reduced order model, with added fraction for radiative heat transfer"
-  import BESRules;
   extends BESMod.Systems.Electrical.Transfer.BaseClasses.PartialTransfer;
   parameter Real KR_heater=1000 "Gain of the heating controller";
   parameter Modelica.Units.SI.Time TN_heater=1
@@ -17,8 +16,8 @@ model IdealHeaterFraRad
     each recOrSep=false,
     each Heater_on=true,
     each Cooler_on=false,
-    fraCooRad=0,
-    fraHeaRad=0.35,
+    each fraCooRad=0,
+    each fraHeaRad=0.35,
     each final staOrDyn=false) "Heater Cooler with PI control"
     annotation (Placement(transformation(extent={{-62,0},{-20,40}})));
   Modelica.Blocks.Sources.BooleanConstant booCooAct[nParallelDem](each final k=
