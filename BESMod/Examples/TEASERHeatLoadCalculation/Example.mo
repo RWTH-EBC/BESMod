@@ -3,7 +3,7 @@ model Example "Simple example"
   extends PartialCalculation(building(redeclare
         BESMod.Systems.Demand.Building.RecordsCollection.ACoolHeadAndBEStPar.Retrofit1983_SingleDwelling
         oneZoneParam, energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial),
-                                                  userProfiles(dTSetBack=3));
+                                                  userProfiles(dTSetBack={3}));
   extends Modelica.Icons.Example;
 
   annotation (
