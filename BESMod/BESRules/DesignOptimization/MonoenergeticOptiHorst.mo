@@ -3,10 +3,11 @@ model MonoenergeticOptiHorst "Model for the python API"
   extends BESMod.BESRules.DesignOptimization.BaseAPI(
       QPriAtTOdaNom_flow_nominal_internal=QPriAtTOdaNom_flow_nominal, hydraulic(
         generation(redeclare model RefrigerantCycleHeatPumpHeating =
-            AixLib.Fluid.HeatPumps.ModularReversible.RefrigerantCycle.TableData4DDeltaT (
+            AixLib.Fluid.HeatPumps.ModularReversible.RefrigerantCycle.TableData4DDeltaT
+            (
             redeclare iceFacModel iceFacCal,
             redeclare
-              AixLib.Fluid.HeatPumps.ModularReversible.Data.TableDataSDF.VCLibPy4DDeltaT.EN_MEN412_Linear
+              AixLib.Fluid.HeatPumps.ModularReversible.Data.TableDataSDF.TableData4DDeltaTCon.VCLibPy.EN_MEN412_Linear
               datTab,
             dTCon_nominal=if hydraulic.generation.TSupAtBiv >= 273.15 + 55
                  then 10 elseif hydraulic.generation.TSupAtBiv >= 45 + 273.15
