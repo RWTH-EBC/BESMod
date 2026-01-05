@@ -46,7 +46,7 @@ class BuildingConfig(BaseInputConfig):
     record_name: str = None
     building_model_name: str = None
     package_path: pathlib.Path = None
-    modify_transfer_system: bool = True
+    modify_transfer_system: bool = False
     element_retrofits: Optional[dict] = None
     use_normative_infiltration: bool = False
     use_led: bool = False
