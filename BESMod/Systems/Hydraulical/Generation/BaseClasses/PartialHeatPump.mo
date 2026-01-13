@@ -151,7 +151,8 @@ model PartialHeatPump "Generation with only the heat pump"
   parameter Modelica.Units.SI.HeatFlowRate QCoo_flow_nominal=0
     "Nominal cooling capacity"
      annotation(Dialog(group="Component choices", enable=use_rev));
-  BESMod.Systems.Hydraulical.Generation.BaseClasses.ModularPropagable heatPump(
+  RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled
+                                                                      heatPump(
     redeclare package MediumCon = Medium,
     redeclare package MediumEva = MediumEva,
     allowDifferentDeviceIdentifiers=true,
