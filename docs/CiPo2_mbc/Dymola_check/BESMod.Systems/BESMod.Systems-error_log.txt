@@ -1,0 +1,410 @@
+
+Error in model:  BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPumpAndGasBoiler 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPumpAndGasBoiler">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPumpAndGasBoiler</a>
+Component type specifier Generic is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:28">29</a>
+ Component context: parHeaPum
+  Component declared as Generic parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+Component type specifier MoverBaseDataDefinition is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:39">40</a>
+ Component context: parPum
+  Component declared as MoverBaseDataDefinition parPum in <a href="Modelica://BESMod.Systems.RecordsCollection.Movers">BESMod.Systems.RecordsCollection.Movers</a>
+Component type specifier TemperatureSensorBaseDefinition is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:45">46</a>
+ Component context: parTemSen
+  Component declared as TemperatureSensorBaseDefinition parTemSen in <a href="Modelica://BESMod.Systems.RecordsCollection.TemperatureSensors">BESMod.Systems.RecordsCollection.TemperatureSensors</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: pump.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Sources/BaseClasses/PartialSource.mo, line <a href="Modelica://IBPSA.Fluid.Sources.BaseClasses.PartialSource#text:36">37</a>
+ Component context: bouPum.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: boi.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Generation.HeatPumpAndGasBoilerParallel 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Generation.HeatPumpAndGasBoilerParallel">BESMod.Systems.Hydraulical.Generation.HeatPumpAndGasBoilerParallel</a>
+Component type specifier Generic is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:28">29</a>
+ Component context: parHeaPum
+  Component declared as Generic parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+Component type specifier MoverBaseDataDefinition is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:39">40</a>
+ Component context: parPum
+  Component declared as MoverBaseDataDefinition parPum in <a href="Modelica://BESMod.Systems.RecordsCollection.Movers">BESMod.Systems.RecordsCollection.Movers</a>
+Component type specifier TemperatureSensorBaseDefinition is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:45">46</a>
+ Component context: parTemSen
+  Component declared as TemperatureSensorBaseDefinition parTemSen in <a href="Modelica://BESMod.Systems.RecordsCollection.TemperatureSensors">BESMod.Systems.RecordsCollection.TemperatureSensors</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: pump.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Sources/BaseClasses/PartialSource.mo, line <a href="Modelica://IBPSA.Fluid.Sources.BaseClasses.PartialSource#text:36">37</a>
+ Component context: bouPum.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: boi.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier ThreeWayValve is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/HeatPumpAndGasBoilerParallel.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.HeatPumpAndGasBoilerParallel#text:7">8</a>
+ Component context: parThrWayVal
+  Component declared as ThreeWayValve parThrWayVal in <a href="Modelica://BESMod.Systems.RecordsCollection.Valves">BESMod.Systems.RecordsCollection.Valves</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: thrWayVal.threWayValFlow.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater">BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: generation.heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Generation.HeatPump 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Generation.HeatPump">BESMod.Systems.Hydraulical.Generation.HeatPump</a>
+Component type specifier Generic is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:28">29</a>
+ Component context: parHeaPum
+  Component declared as Generic parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+Component type specifier MoverBaseDataDefinition is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:39">40</a>
+ Component context: parPum
+  Component declared as MoverBaseDataDefinition parPum in <a href="Modelica://BESMod.Systems.RecordsCollection.Movers">BESMod.Systems.RecordsCollection.Movers</a>
+Component type specifier TemperatureSensorBaseDefinition is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:45">46</a>
+ Component context: parTemSen
+  Component declared as TemperatureSensorBaseDefinition parTemSen in <a href="Modelica://BESMod.Systems.RecordsCollection.TemperatureSensors">BESMod.Systems.RecordsCollection.TemperatureSensors</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: pump.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Sources/BaseClasses/PartialSource.mo, line <a href="Modelica://IBPSA.Fluid.Sources.BaseClasses.PartialSource#text:36">37</a>
+ Component context: bouPum.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries">BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: generation.heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel">BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: generation.heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Generation.Tests.HeatPump 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Generation.Tests.HeatPump">BESMod.Systems.Hydraulical.Generation.Tests.HeatPump</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: generation.heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater">BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater</a>
+Component type specifier Generic is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:28">29</a>
+ Component context: parHeaPum
+  Component declared as Generic parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+Component type specifier MoverBaseDataDefinition is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:39">40</a>
+ Component context: parPum
+  Component declared as MoverBaseDataDefinition parPum in <a href="Modelica://BESMod.Systems.RecordsCollection.Movers">BESMod.Systems.RecordsCollection.Movers</a>
+Component type specifier TemperatureSensorBaseDefinition is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:45">46</a>
+ Component context: parTemSen
+  Component declared as TemperatureSensorBaseDefinition parTemSen in <a href="Modelica://BESMod.Systems.RecordsCollection.TemperatureSensors">BESMod.Systems.RecordsCollection.TemperatureSensors</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: pump.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Sources/BaseClasses/PartialSource.mo, line <a href="Modelica://IBPSA.Fluid.Sources.BaseClasses.PartialSource#text:36">37</a>
+ Component context: bouPum.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier Generic is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/HeatPumpAndElectricHeater.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater#text:6">7</a>
+ Component context: parEleHea
+  Component declared as Generic parEleHea in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater">BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: eleHea.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Generation.HeatPumpAndGasBoilerSerial 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Generation.HeatPumpAndGasBoilerSerial">BESMod.Systems.Hydraulical.Generation.HeatPumpAndGasBoilerSerial</a>
+Component type specifier Generic is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:28">29</a>
+ Component context: parHeaPum
+  Component declared as Generic parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+Component type specifier MoverBaseDataDefinition is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:39">40</a>
+ Component context: parPum
+  Component declared as MoverBaseDataDefinition parPum in <a href="Modelica://BESMod.Systems.RecordsCollection.Movers">BESMod.Systems.RecordsCollection.Movers</a>
+Component type specifier TemperatureSensorBaseDefinition is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:45">46</a>
+ Component context: parTemSen
+  Component declared as TemperatureSensorBaseDefinition parTemSen in <a href="Modelica://BESMod.Systems.RecordsCollection.TemperatureSensors">BESMod.Systems.RecordsCollection.TemperatureSensors</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: pump.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Sources/BaseClasses/PartialSource.mo, line <a href="Modelica://IBPSA.Fluid.Sources.BaseClasses.PartialSource#text:36">37</a>
+ Component context: bouPum.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: boi.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump">BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump</a>
+Component type specifier Generic is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:28">29</a>
+ Component context: parHeaPum
+  Component declared as Generic parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+Component type specifier MoverBaseDataDefinition is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:39">40</a>
+ Component context: parPum
+  Component declared as MoverBaseDataDefinition parPum in <a href="Modelica://BESMod.Systems.RecordsCollection.Movers">BESMod.Systems.RecordsCollection.Movers</a>
+Component type specifier TemperatureSensorBaseDefinition is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:45">46</a>
+ Component context: parTemSen
+  Component declared as TemperatureSensorBaseDefinition parTemSen in <a href="Modelica://BESMod.Systems.RecordsCollection.TemperatureSensors">BESMod.Systems.RecordsCollection.TemperatureSensors</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: pump.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Sources/BaseClasses/PartialSource.mo, line <a href="Modelica://IBPSA.Fluid.Sources.BaseClasses.PartialSource#text:36">37</a>
+ Component context: bouPum.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier Generic is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/HeatPumpAndElectricHeater.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater#text:6">7</a>
+ Component context: parEleHea
+  Component declared as Generic parEleHea in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater">BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: eleHea.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier Generic is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/SimpleSolarThermalWithHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump#text:12">13</a>
+ Component context: parSolThe
+  Component declared as Generic parSolThe in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.SolarThermal">BESMod.Systems.Hydraulical.Generation.RecordsCollection.SolarThermal</a>
+Component type specifier MoverBaseDataDefinition is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/SimpleSolarThermalWithHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.SimpleSolarThermalWithHeatPump#text:19">20</a>
+ Component context: parPumSolThe
+  Component declared as MoverBaseDataDefinition parPumSolThe in <a href="Modelica://BESMod.Systems.RecordsCollection.Movers">BESMod.Systems.RecordsCollection.Movers</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://AixLib.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: solThe.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: pumpSolThe.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Sources/BaseClasses/PartialSource.mo, line <a href="Modelica://IBPSA.Fluid.Sources.BaseClasses.PartialSource#text:36">37</a>
+ Component context: bou.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Generation.Tests.SolarThermalAndHeatPumpDetailed 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Generation.Tests.SolarThermalAndHeatPumpDetailed">BESMod.Systems.Hydraulical.Generation.Tests.SolarThermalAndHeatPumpDetailed</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: generation.heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Generation.Tests.SolarThermalAndHeatPumpSimple 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Generation.Tests.SolarThermalAndHeatPumpSimple">BESMod.Systems.Hydraulical.Generation.Tests.SolarThermalAndHeatPumpSimple</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: generation.heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Component type specifier Generic is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:28">29</a>
+ Component context: parHeaPum
+  Component declared as Generic parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+Component type specifier MoverBaseDataDefinition is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:39">40</a>
+ Component context: parPum
+  Component declared as MoverBaseDataDefinition parPum in <a href="Modelica://BESMod.Systems.RecordsCollection.Movers">BESMod.Systems.RecordsCollection.Movers</a>
+Component type specifier TemperatureSensorBaseDefinition is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:45">46</a>
+ Component context: parTemSen
+  Component declared as TemperatureSensorBaseDefinition parTemSen in <a href="Modelica://BESMod.Systems.RecordsCollection.TemperatureSensors">BESMod.Systems.RecordsCollection.TemperatureSensors</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: pump.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Sources/BaseClasses/PartialSource.mo, line <a href="Modelica://IBPSA.Fluid.Sources.BaseClasses.PartialSource#text:36">37</a>
+ Component context: bouPum.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump">BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump</a>
+Component type specifier Generic is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:28">29</a>
+ Component context: parHeaPum
+  Component declared as Generic parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+Component type specifier MoverBaseDataDefinition is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:39">40</a>
+ Component context: parPum
+  Component declared as MoverBaseDataDefinition parPum in <a href="Modelica://BESMod.Systems.RecordsCollection.Movers">BESMod.Systems.RecordsCollection.Movers</a>
+Component type specifier TemperatureSensorBaseDefinition is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:45">46</a>
+ Component context: parTemSen
+  Component declared as TemperatureSensorBaseDefinition parTemSen in <a href="Modelica://BESMod.Systems.RecordsCollection.TemperatureSensors">BESMod.Systems.RecordsCollection.TemperatureSensors</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Component type specifier Generic is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/HeatPumpAndElectricHeater.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater#text:6">7</a>
+ Component context: parEleHea
+  Component declared as Generic parEleHea in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater">BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater</a>
+Component type specifier Generic is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/DetailedSolarThermalWithHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump#text:13">14</a>
+ Component context: solarThermalParas
+  Component declared as Generic solarThermalParas in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.SolarThermal">BESMod.Systems.Hydraulical.Generation.RecordsCollection.SolarThermal</a>
+Component type specifier MoverBaseDataDefinition is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/DetailedSolarThermalWithHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump#text:20">21</a>
+ Component context: parPumSolThe
+  Component declared as MoverBaseDataDefinition parPumSolThe in <a href="Modelica://BESMod.Systems.RecordsCollection.Movers">BESMod.Systems.RecordsCollection.Movers</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic 
+Check of <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic">BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: hydraulic.generation.heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: ERRORS have been issued.
+

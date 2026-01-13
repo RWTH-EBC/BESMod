@@ -1,0 +1,217 @@
+
+Error in model:  BESMod.Examples.HeatPumpAndBoiler.Serial 
+Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Serial">BESMod.Examples.HeatPumpAndBoiler.Serial</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: hydraulic.generation.heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase 
+Check of <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: hydraulic.generation.heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.DesignOptimization.BESNoDHW 
+Check of <a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW">BESMod.Examples.DesignOptimization.BESNoDHW</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: hydraulic.generation.heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.HighOrderModel.HOMAixLib 
+Check of <a href="Modelica://BESMod.Examples.HighOrderModel.HOMAixLib">BESMod.Examples.HighOrderModel.HOMAixLib</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: hydraulic.generation.heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW 
+Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: hydraulic.generation.heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.BAUSimStudy.PartialCase 
+Check of <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase">BESMod.Examples.BAUSimStudy.PartialCase</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: hydraulic.generation.heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM 
+Check of <a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM">BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: hydraulic.generation.heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.Retrofit.Case1PartialRetrofit 
+Check of <a href="Modelica://BESMod.Examples.Retrofit.Case1PartialRetrofit">BESMod.Examples.Retrofit.Case1PartialRetrofit</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: hydraulic.generation.heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.Retrofit.PartialCase 
+Check of <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: hydraulic.generation.heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding 
+Check of <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding">BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: hydraulic.generation.heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.BAUSimStudy.Case1Standard 
+Check of <a href="Modelica://BESMod.Examples.BAUSimStudy.Case1Standard">BESMod.Examples.BAUSimStudy.Case1Standard</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: hydraulic.generation.heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.HighOrderModel.HOMSpawn 
+Check of <a href="Modelica://BESMod.Examples.HighOrderModel.HOMSpawn">BESMod.Examples.HighOrderModel.HOMSpawn</a>
+Warning: Local "nZones" conflict with inherited. Should be identical
+Warning: Component nZones(min = &lt;&lt; Empty &gt;&gt;),
+  but previously nZones(min = 1).
+  The components are not identical.
+
+  For element nZones found at
+
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/SpawnHighOrder.mo, line <a href="Modelica://BESMod.Systems.Demand.Building.SpawnHighOrder#text:13">14</a>
+  Conflict with element from
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Demand/Building/BaseClasses/PartialDemand.mo, line <a href="Modelica://BESMod.Systems.Demand.Building.BaseClasses.PartialDemand#text:6">7</a>
+ Component context: building
+  Component declared as SpawnHighOrder building in <a href="Modelica://BESMod.Systems.Demand.Building">BESMod.Systems.Demand.Building</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HighOrderModel/HOMSpawn.mo, line 4
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: hydraulic.generation.heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.DesignOptimization.BES 
+Check of <a href="Modelica://BESMod.Examples.DesignOptimization.BES">BESMod.Examples.DesignOptimization.BES</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: hydraulic.generation.heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: Class or component 'heatPump' not found in HeatPumpAndElectricHeater generation
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 16
+ Component context: hydraulic.generation
+  Component declared as HeatPumpAndElectricHeater generation in <a href="Modelica://BESMod.Systems.Hydraulical.Generation">BESMod.Systems.Hydraulical.Generation</a>
+  Attempted modification in <a href="Modelica://BESMod.Examples.DesignOptimization.BES">BESMod.Examples.DesignOptimization.BES</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 2
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.ModelicaConferencePaper.TEASERBuilding 
+Check of <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding">BESMod.Examples.ModelicaConferencePaper.TEASERBuilding</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: hydraulic.generation.heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.SolarThermalSystem.SolarThermalBuildings 
+Check of <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings">BESMod.Examples.SolarThermalSystem.SolarThermalBuildings</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: hydraulic.generation.heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: hydGeneration.heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW 
+Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: hydraulic.generation.heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.HeatPumpAndBoiler.Parallel 
+Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Parallel">BESMod.Examples.HeatPumpAndBoiler.Parallel</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: hydraulic.generation.heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.Retrofit.Case1TotalRetrofit 
+Check of <a href="Modelica://BESMod.Examples.Retrofit.Case1TotalRetrofit">BESMod.Examples.Retrofit.Case1TotalRetrofit</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: hydraulic.generation.heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.Retrofit.Case1NoRetrofit 
+Check of <a href="Modelica://BESMod.Examples.Retrofit.Case1NoRetrofit">BESMod.Examples.Retrofit.Case1NoRetrofit</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: hydraulic.generation.heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom 
+Check of <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom">BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: hydraulic.generation.heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.SolarThermalSystem.SolarThermalAixLib 
+Check of <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib">BESMod.Examples.SolarThermalSystem.SolarThermalAixLib</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: hydraulic.generation.heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: Component type specifier RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled not found
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:154">155</a>
+ Component context: hydGeneration.heatPump
+  Component declared as RollOut.Systems.Hydraulical.Generation.BaseClasses.ModularPropagableScaled heatPump in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Error: ERRORS have been issued.
+
