@@ -9,7 +9,7 @@ from bes_rules.simulation_based_optimization.utils import constraints
 from bes_rules.rule_extraction.surrogates.bayes import load_best_hyperparameters
 
 
-def get_inputs_config_to_simulate(modifiers: list = None, years_of_construction: list = None):
+def get_inputs_config_to_simulate(modifiers: list = None, possibly_use_underfloor_heating: bool = True):
     weathers = boundary_conditions.weather.get_weather_configs_by_names(region_names=["Potsdam"])
     buildings_per_year = boundary_conditions.building.get_all_tabula_sfh_buildings(as_dict=True)
     years_of_construction = buildings_per_year.keys()
@@ -18,6 +18,7 @@ def get_inputs_config_to_simulate(modifiers: list = None, years_of_construction:
     ]
     for building in buildings_to_simulate:
         building.modify_transfer_system = True
+        building.possibly_use_underfloor_heating = possibly_use_underfloor_heating
 
     dhw_profiles = [{"profile": "M"}]
     return configs.InputsConfig(

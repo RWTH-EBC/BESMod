@@ -1,20 +1,8 @@
 {
   "module_id": "mpc",
   "type": "agentlib_mpc.mpc",
-  "enable_deactivate_mpc": true,
-  "control_values_when_deactivated": {
-    "TBufSet": 303.15,
-    "yValSet": 0,
-    "yEleHeaSet": 0,
-    "actExtVal": false,
-    "actExtDHWCtrl": false,
-    "actExtBufCtrl": false
-  },
-  "outputs_to_send_when_activated": {
-    "actExtVal": true,
-    "actExtDHWCtrl": false,
-    "actExtBufCtrl": true
-  },
+  "enable_deactivation": true,
+  "deactivation_source": {"module_id": "skip_mpc"},
   "optimization_backend": {
     "type": "casadi",
     "build_batch_bat": "mpc_utils/solver_lib/compile_nlp.bat",

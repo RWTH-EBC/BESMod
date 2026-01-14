@@ -271,14 +271,22 @@ def generate_agent_configs(
     mpc_config["prediction_horizon"] = prediction_horizon
     mpc_config = config_editor.update_module_parameters(mpc_config=mpc_config, parameters=mpc_parameters)
     mpc_config["optimization_backend"]["model"] = mpc_model
-    if mpc_config.get("enable_deactivate_mpc", False):
+    if mpc_config.get("enable_deactivation", False):
         other_modules = [{
             "type": "agentlib_mpc.skip_mpc_intervals",
             # "intervals": [(2, 2.5)],
             "intervals": [(120, 273)],
             "time_unit": "days",
             "t_sample": output_interval,
-            "log_level": "DEBUG"
+            "log_level": "DEBUG",
+            "controls_when_deactivated": [
+                {"name": "TBufSet", "value": 303.15},
+                {"name": "yValSet", "value": 0},
+                {"name": "yEleHeaSet", "value": 0},
+                {"name": "actExtVal", "value": False},
+                {"name": "actExtDHWCtrl", "value": False},
+                {"name": "actExtBufCtrl", "value": False}
+            ],
         }]
     else:
         other_modules = None

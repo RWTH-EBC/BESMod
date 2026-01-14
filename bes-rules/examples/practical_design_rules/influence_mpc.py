@@ -46,7 +46,7 @@ def _get_configs(
         no_minimal_compressor_speed=no_minimal_compressor_speed,
         with_start_losses=False,
         only_inverter=True,
-        years_of_construction=["1980"]
+        possibly_use_underfloor_heating=False
     )
     if with_dynamic_prices:
         inputs_config.prices = [

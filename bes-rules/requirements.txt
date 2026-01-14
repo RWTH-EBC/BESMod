@@ -16,7 +16,7 @@ urllib3==1.26.19
 geopandas
 pyomo
 sympy
-agentlib-mpc
+agentlib-mpc @ git+https://github.com/RWTH-EBC/AgentLib-MPC.git@9e2abbbeb4bb0149e58b6fddfd29ead615c6083b
 bayesian-optimization==2.0.3
 scikit-learn~=1.6.0
 pyDOE~=0.3.8

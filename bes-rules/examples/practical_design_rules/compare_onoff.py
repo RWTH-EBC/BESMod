@@ -13,7 +13,7 @@ def get_inputs_config_with_added_modifiers(
         only_inverter: bool = False,
         only_on_off: bool = False,
         heating_curve_offset: bool = False,
-        years_of_construction: list = None
+        possibly_use_underfloor_heating: bool = True
 ):
     if inverter_uses_storage:
         inverter_modifier = [custom_modifiers.NoModifier()]
@@ -41,7 +41,7 @@ def get_inputs_config_with_added_modifiers(
         modifiers = [mod + [custom_modifiers.HeatingCurveOffsetModifier()] for mod in modifiers]
 
     return base_design_optimization.get_inputs_config_to_simulate(
-        modifiers=modifiers, years_of_construction=years_of_construction
+        modifiers=modifiers, possibly_use_underfloor_heating=possibly_use_underfloor_heating
     )
 
 
