@@ -1,6 +1,6 @@
 within BESMod.BESRules.DesignOptimization.ExamplesInModelica;
 model VitoCal250
-  extends MonoenergeticVitoCal                            (
+  extends MonoenergeticVitoCal(
     hydraulic(control(
         useSGReady=true,
         useExtSGSig=false,
@@ -22,13 +22,5 @@ model VitoCal250
               AixLib.Fluid.Storage.BaseClasses.HeatTransferOnlyConduction))),
     DHW(redeclare BESMod.Systems.Demand.DHW.TappingProfiles.PassThrough
         calcmFlow, redeclare BESMod.Systems.Demand.DHW.RecordsCollection.NoDHW
-        DHWProfile),
-    userProfiles(
-      fileNameIntGains=Modelica.Utilities.Files.loadResource(
-          "D:/00_temp/01_bes_rules/UseCase_TBivAndV/influence_user/data/InternalGainsHoliday.txt"),
-      gain={1,1,1},
-      use_TSetFile=true,
-      fileNameTSet=Modelica.Utilities.Files.loadResource(
-          "D:/00_temp/01_bes_rules/UseCase_TBivAndV/influence_user/data/TSetHoliday.txt"),
-      use_absIntGai=false));
+        DHWProfile));
 end VitoCal250;
