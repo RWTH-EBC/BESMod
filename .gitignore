@@ -34,3 +34,6 @@ htmlcov
 installed_dependencies/*
 startup.mos
 working_dir
+
+*.env*
+bes-rules/pc_specific_settings.json

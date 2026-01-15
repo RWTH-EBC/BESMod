@@ -1,0 +1,715 @@
+{
+  "language": "en",
+  "file_endings": ["svg", "png", "pdf"],
+  "rcParams": {
+    "font.size": 11,
+    "axes.titlesize": 11,
+    "figure.figsize": [
+      9.3,
+      5.5
+    ]
+  },
+  "variables": {
+    "parameterStudy.TBiv": {
+      "quantity": "Temperature",
+      "label": "$T_\\mathrm{Biv}$"
+    },
+    "parameterStudy.TBiv_optimum": {
+      "quantity": "Temperature",
+      "label": "$T_\\mathrm{Biv,opt}$"
+    },
+    "parameterStudy.TBiv_rule": {
+      "quantity": "Temperature",
+      "label": "$\\hat{T}_\\mathrm{Biv,opt}$"
+    },
+    "parameterStudy.VPerQFlow": {
+      "factor": 1.0,
+      "offset": 0,
+      "unit": "L/kW",
+      "labels": {
+        "de": "$v_{\\dot{Q}_\\mathrm{HL}}$",
+        "en": "$v_{\\dot{Q}_\\mathrm{Bui}}$"
+      }
+    },
+    "parameterStudy.VPerQFlow_optimum": {
+      "factor": 1.0,
+      "offset": 0,
+      "unit": "L/kW",
+      "labels": {
+        "de": "$v_\\mathrm{\\dot{Q}_\\mathrm{HL},opt}$",
+        "en": "$v_\\mathrm{\\dot{Q}_\\mathrm{Bui},opt}$"
+      }
+    },
+    "parameterStudy.VPerQFlow_rule": {
+      "factor": 1.0,
+      "offset": 0,
+      "unit": "L/kW",
+      "labels": {
+        "de": "$\\hat{v}_\\mathrm{\\dot{Q}_\\mathrm{HL},opt}$",
+        "en": "$\\hat{v}_\\mathrm{\\dot{Q}_\\mathrm{Bui},opt}$"
+      }
+    },
+    "hydraulic.distribution.parStoDHW.V": {
+      "factor": 0.001,
+      "offset": 0,
+      "unit": "L",
+      "labels": {
+        "de": "$V_\\mathrm{TWW}$",
+        "en": "$V_\\mathrm{DHW}$"
+      }
+    },
+    "hydraulic.distribution.parStoBuf.V": {
+      "factor": 0.001,
+      "offset": 0,
+      "unit": "L",
+      "labels": {
+        "de": "$V_\\mathrm{PS}$",
+        "en": "$V_\\mathrm{SH}$"
+      }
+    },
+    "lambda_h": {
+      "factor": 0.01,
+      "offset": 0,
+      "unit": "%",
+      "labels": {
+        "de": "$\\lambda_\\mathrm{h}$",
+        "en": "$\\lambda_\\mathrm{h}$"
+      }
+    },
+    "eta_mech": {
+      "factor": 0.01,
+      "offset": 0,
+      "unit": "%",
+      "labels": {
+        "de": "$\\eta_\\mathrm{Mech}$",
+        "en": "$\\eta_\\mathrm{Mech}$"
+      }
+    },
+    "eta_is": {
+      "factor": 0.01,
+      "offset": 0,
+      "unit": "%",
+      "labels": {
+        "de": "$\\eta_\\mathrm{Is}$",
+        "en": "$\\eta_\\mathrm{Is}$"
+      }
+    },
+    "eta_glob": {
+      "factor": 0.01,
+      "offset": 0,
+      "unit": "%",
+      "labels": {
+        "de": "$\\eta_\\mathrm{Glo}$",
+        "en": "$\\eta_\\mathrm{Glo}$"
+      }
+    },
+    "n_compressor": {
+      "factor": 0.01,
+      "offset": 0,
+      "unit": "%",
+      "labels": {
+        "de": "$n_\\mathrm{Verd}$",
+        "en": "$n_\\mathrm{Com}$"
+      }
+    },
+    "outputs.electrical.dis.PEleGen.integral": {
+      "quantity": "EnergyMega",
+      "labels": {
+        "en": "$W_\\mathrm{el,Fee}$",
+        "de": "$W_\\mathrm{el,Netz,Erz}$"
+      }
+    },
+    "f_inv_biv": {
+      "labels": {
+        "en": "$f_{\\mathrm{Cap,Biv},c_\\mathrm{el,Dem}}$",
+        "de": "$f_{\\mathrm{Inv,Biv},c_\\mathrm{el,Bed}}$"
+      },
+      "factor": 1,
+      "offset": 0,
+      "unit": "kWh/kW/a"
+    },
+    "outputs.electrical.dis.PEleLoa.integral": {
+      "quantity": "EnergyMega",
+      "labels": {
+        "en": "$W_\\mathrm{el,Dem}$",
+        "de": "$W_\\mathrm{el,Netz,Bed}$"
+      }
+    },
+    "outputs.hydraulic.gen.PEleHeaPum.integral": {
+      "quantity": "Energy",
+      "label": "$W_\\mathrm{el,HP}$"
+    },
+    "outputs.hydraulic.gen.PEleHeaPum.value": {
+      "quantity": "Power",
+      "label": "$P_\\mathrm{el,HP}$"
+    },
+    "outputs.hydraulic.gen.PEleEleHea.integral": {
+      "quantity": "Energy",
+      "label": "$W_\\mathrm{el,HR}$"
+    },
+    "outputs.hydraulic.gen.PEleEleHea.value": {
+      "quantity": "Power",
+      "label": "$P_\\mathrm{el,HR}$"
+    },
+    "outputs.building.dTComHea[1]": {
+      "quantity": "Discomfort",
+      "labels": {
+        "en": "$\\Delta T_\\mathrm{Comfort}$",
+        "de": "$\\Delta T_\\mathrm{Komfort}$"
+      }
+    },
+    "outputs.building.dTCtrl[1]": {
+      "quantity": "Discomfort",
+      "labels": {
+        "en": "$\\Delta T_\\mathrm{Room}$",
+        "de": "$\\Delta T_\\mathrm{Raum}$"
+      }
+    },
+    "outputs.building.dTComHeaOpe[1]": {
+      "quantity": "Discomfort",
+      "label": "$\\Delta T_\\mathrm{Comfort,Ope}$"
+    },
+    "outputs.building.dTCtrlHeaOpe[1]": {
+      "quantity": "Discomfort",
+      "label": "$\\Delta T_\\mathrm{Ope}$"
+    },
+    "dTComHea": {
+      "quantity": "Discomfort",
+      "label": "$\\Delta T_\\mathrm{Komfort}$"
+    },
+    "dTCtrl": {
+      "quantity": "Discomfort",
+      "label": "$\\Delta T_\\mathrm{Raum}$"
+    },
+    "dTComHeaOpe": {
+      "quantity": "Discomfort",
+      "label": "$\\Delta T_\\mathrm{Komfort,Ope}$"
+    },
+    "dTCtrlHeaOpe": {
+      "quantity": "Discomfort",
+      "label": "$\\Delta T_\\mathrm{Ope}$"
+    },
+    "outputs.hydraulic.generation.QHP_flow.integral": {
+      "quantity": "Energy",
+      "label": "$Q_\\mathrm{HP}$"
+    },
+    "GTZ_Ti_HT": {
+      "factor": 1000,
+      "offset": 0,
+      "unit": "Tsd. Kd",
+      "labels": {
+        "de": "$GTZ_\\mathrm{T_\\mathrm{Raum},T_\\mathrm{HG}}$",
+        "en": "$HDD_\\mathrm{T_\\mathrm{Roo},T_\\mathrm{Thr}}$"
+      }
+    },
+    "GTZ_Ti_Ti": {
+      "factor": 1000,
+      "offset": 0,
+      "unit": "Tsd. Kd",
+      "labels": {
+        "de": "$GTZ_\\mathrm{T_\\mathrm{Raum},T_\\mathrm{Raum}}$",
+        "en": "$HDD_\\mathrm{T_\\mathrm{Roo},T_\\mathrm{Roo}}$"
+      }
+    },
+    "outputs.hydraulic.gen.QEleHea_flow.value": {
+      "quantity": "Power",
+      "label": "$\\dot{Q}_\\mathrm{Bed}$"
+    },
+    "hydraulic.control.buiAndDHWCtr.TSetBuiSup.TSet": {
+      "quantity": "Temperature",
+      "label": "$T_\\mathrm{VL,Soll}$"
+    },
+    "hydraulic.control.supTSet.TSet": {
+      "quantity": "Temperature",
+      "label": "$T_\\mathrm{VL,Soll}$"
+    },
+    "QHeaLoa_flow": {
+      "quantity": "Power",
+      "labels": {
+        "de": "$\\dot{Q}_\\mathrm{HL}$",
+        "en": "$\\dot{Q}_\\mathrm{HeaLoa}$"
+      }
+    },
+    "qHeaLoa_flow": {
+      "factor": 1000,
+      "offset": 0,
+      "unit": "kW/K",
+      "labels": {
+        "de": "$\\dot{q}_\\mathrm{HL}$",
+        "en": "$\\dot{q}_\\mathrm{HeaLoa}$"
+      }
+    },
+    "q_demand_total": {
+      "factor": 1,
+      "offset": 0,
+      "unit": "kWh/m2/a",
+      "labels": {
+        "de": "$q^{''}_\\mathrm{Bed,Ges}$",
+        "en": "$q^{''}_\\mathrm{Dem,Tot}$"
+      }
+    },
+    "Q_demand_total": {
+      "unit": "MWh",
+      "factor": 1000,
+      "offset": 0,
+      "labels": {
+        "de": "$Q_\\mathrm{Bed,Ges}$",
+        "en": "$Q_\\mathrm{Dem,Tot}$"
+      }
+    },
+    "THyd_nominal": {
+      "quantity": "Temperature",
+      "labels": {
+        "de": "$T_\\mathrm{VL,Nom}$",
+        "en": "$T_\\mathrm{Sup,Nom}$"
+      }
+    },
+    "dhw_share": {
+      "quantity": "Percent",
+      "labels": {
+        "de": "$\\alpha_\\mathrm{TWW}$",
+        "en": "$\\alpha_\\mathrm{DHW}$"
+      }
+    },
+    "outputs.DHW.Q_flow.integral": {
+      "quantity": "Energy",
+      "label": "$Q_\\mathrm{DHW}$"
+    },
+    "outputs.DHW.Q_flow.value": {
+      "quantity": "Power",
+      "label": "$\\dot{Q}_\\mathrm{DHW}$"
+    },
+    "QHeaPum_flow_A2W35": {
+      "quantity": "Power",
+      "label": "$\\dot{Q}_\\mathrm{HP,Nom}$"
+    },
+    "outputs.building.eneBal[1].traGain.integral": {
+      "unit": "MWh",
+      "factor": 3600000000,
+      "offset": 0,
+      "label": "$Q_\\mathrm{Tra}$"
+    },
+    "outputs.hydraulic.storage.WelHRDHW.integral": {
+      "quantity": "Energy",
+      "label": "$W_\\mathrm{el,HR,DHW}$"
+    },
+    "outputs.hydraulic.storage.WelHRAftBuf.integral": {
+      "quantity": "Energy",
+      "label": "$W_\\mathrm{el,HR,AftSto}$"
+    },
+    "outputs.hydraulic.storage.WelHRBufSto.integral": {
+      "quantity": "Energy",
+      "label": "$W_\\mathrm{el,HR,Sto}$"
+    },
+    "outputs.hydraulic.storage.QBufLoss.integral": {
+      "quantity": "Energy",
+      "label": "$Q_\\mathrm{Loss,Buf}$"
+    },
+    "outputs.hydraulic.storage.QDHWLoss.integral": {
+      "quantity": "Energy",
+      "label": "$Q_\\mathrm{Loss,DHW}$"
+    },
+    "outputs.hydraulic.gen.heaPum.numSwi": {
+      "factor": 365.0,
+      "offset": 0,
+      "unit": "-",
+      "labels": {
+        "en": "$N_\\mathrm{Swi,HP,d}$",
+        "de": "$N_\\mathrm{WP,d}$"
+      }
+    },
+    "delta_W_el_demand": {
+      "factor": 1,
+      "offset": 0,
+      "unit": "kWh/a",
+      "label": "$\\Delta W_\\mathrm{el,Dem,V_\\mathrm{min}}$"
+    },
+    "delta_W_el_feed_in": {
+      "factor": 1,
+      "offset": 0,
+      "unit": "kWh/a",
+      "label": "$\\Delta W_\\mathrm{el,Fee,V_\\mathrm{min}}$"
+    },
+    "outputs.hydraulic.gen.PEleEleHea.numSwi": {
+      "factor": 1.0,
+      "offset": 0,
+      "unit": "-",
+      "label": "$N_\\mathrm{Swi,AftHR}$"
+    },
+    "outputs.hydraulic.storage.WelHRDHW.numSwi": {
+      "factor": 1.0,
+      "offset": 0,
+      "unit": "-",
+      "label": "$N_\\mathrm{Swi,DHW}$"
+    },
+    "outputs.hydraulic.storage.WelHRAftBuf.numSwi": {
+      "factor": 1.0,
+      "offset": 0,
+      "unit": "-",
+      "label": "$N_\\mathrm{Swi,HR,Buf}$"
+    },
+    "outputs.hydraulic.storage.WelHRBufSto.numSwi": {
+      "factor": 1.0,
+      "offset": 0,
+      "unit": "-",
+      "label": "$N_\\mathrm{Swi,HR,AftBuf}$"
+    },
+    "hydraulic.control.securityControl.operationalEnvelope.ERR": {
+      "factor": 1.0,
+      "offset": 0,
+      "unit": "-",
+      "label": "$N_\\mathrm{OE,HP}$"
+    },
+    "hydraulic.control.HRPIDControlBuf.IAE": {
+      "quantity": "Discomfort",
+      "label": "$IAE_\\mathrm{Buf}$"
+    },
+    "hydraulic.control.HRPIDControlDHW.IAE": {
+      "quantity": "Discomfort",
+      "label": "$IAE_\\mathrm{DHW}$"
+    },
+    "hydraulic.control.HRPIDControlBuf.ISE": {
+      "factor": 3600.0,
+      "offset": 0,
+      "unit": "K^2h",
+      "label": "$ISE_\\mathrm{Bui}$"
+    },
+    "hydraulic.control.HRPIDControlDHW.ISE": {
+      "factor": 3600.0,
+      "offset": 0,
+      "unit": "K^2h",
+      "label": "$ISE_\\mathrm{DHW}$"
+    },
+    "outputs.hydraulic.control.IAE_Bui": {
+      "quantity": "Discomfort",
+      "label": "$IAE_\\mathrm{Bui}$"
+    },
+    "outputs.hydraulic.control.ISE_Bui": {
+      "factor": 3600.0,
+      "offset": 0,
+      "unit": "K^2h",
+      "label": "$ISE_\\mathrm{Bui}$"
+    },
+    "outputs.hydraulic.generation.WPumpel.integral": {
+      "quantity": "Energy"
+    },
+    "outputs.electrical.gen.PElePV.integral": {
+      "quantity": "Energy",
+      "label": "$W_\\mathrm{PV}$"
+    },
+    "outputs.hydraulic.generation.WPumpel.totalOnTime": {
+      "factor": 3600.0,
+      "offset": 0,
+      "unit": "h"
+    },
+    "costs_total": {
+      "labels": {
+        "en": "$C_\\mathrm{Tot}$",
+        "de": "$K_\\mathrm{Tot}$"
+      },
+      "factor": 1000,
+      "offset": 0,
+      "unit": "k€/a"
+    },
+    "costs_operating": {
+      "labels": {
+        "en": "$C_\\mathrm{Ope}$",
+        "de": "$K_\\mathrm{Bed}$"
+      },
+      "factor": 1,
+      "offset": 0,
+      "unit": "€/a"
+    },
+    "costs_invest": {
+      "labels": {
+        "en": "$C_\\mathrm{Inv}$",
+        "de": "$K_\\mathrm{Kap}$"
+      },
+      "factor": 1,
+      "offset": 0,
+      "unit": "€/a"
+    },
+    "invest_total": {
+      "labels": {
+        "en": "$C_\\mathrm{Inv}$",
+        "de": "$K_\\mathrm{Kap}$"
+      },
+      "factor": 1,
+      "offset": 0,
+      "unit": "€"
+    },
+    "dynamic_costs_operation_2023": {
+      "label": "$C_\\mathrm{Ope,Dyn}$",
+      "factor": 1,
+      "offset": 0,
+      "unit": "€/a"
+    },
+    "TBufSet": {
+      "label": "$T_\\mathrm{Sup,Set}$",
+      "quantity": "Temperature"
+    },
+    "yValSet": {
+      "label": "$y_\\mathrm{Val,Set}$",
+      "quantity": "Percent"
+    },
+    "outputs.hydraulic.gen.eleHea.totOnTim": {
+      "label": "$t_\\mathrm{HR}$",
+      "factor": 3600,
+      "offset": 0,
+      "unit": "h"
+    },
+    "SCOP": {
+      "label": "$SCOP$",
+      "factor": 1,
+      "offset": 0,
+      "unit": "-"
+    },
+    "SCOP_HP": {
+      "label": "$SCOP_\\mathrm{WP}$",
+      "factor": 1,
+      "offset": 0,
+      "unit": "-"
+    },
+    "SCOP_Sys": {
+      "label": "$SCOP_\\mathrm{Sys}$",
+      "factor": 1,
+      "offset": 0,
+      "unit": "-"
+    },
+    "parameterStudy.PVSurplus": {
+      "label": "$PV_\\mathrm{Lim}$",
+      "factor": 1,
+      "offset": 0,
+      "unit": "$W$"
+    },
+    "emissions": {
+      "label": "$E_\\mathrm{Tot}$",
+      "factor": 1,
+      "offset": 0,
+      "unit": "$kg_\\mathrm{CO2}/a$"
+    },
+    "TOda_nominal": {
+      "labels": {
+        "de": "$T_\\mathrm{Auß,Nom}$",
+        "en": "$T_\\mathrm{Oda,Nom}$"
+      },
+      "quantity": "Temperature"
+    },
+    "outputs.THeaPumSinMean": {
+      "labels": {
+        "de": "$\\bar{T}_\\mathrm{WP,VL}$",
+        "en": "$\\bar{T}_\\mathrm{HP,Sou}$"
+      },
+      "quantity": "Temperature"
+    },
+    "outputs.THeaPumSouMean": {
+      "labels": {
+        "de": "$\\bar{T}_\\mathrm{WP,Auß}$",
+        "en": "$\\bar{T}_\\mathrm{HP,Sou}$"
+      },
+      "quantity": "Temperature"
+    },
+    "TMin": {
+      "label": "$T_\\mathrm{Oda,Min}$",
+      "quantity": "Temperature"
+    },
+    "TMean": {
+      "label": "$T_\\mathrm{Oda,Mean}$",
+      "quantity": "Temperature"
+    },
+    "parameterStudy.DHWOverheatTemp": {
+      "label": "$T_\\mathrm{Set,DHW,PV}$",
+      "quantity": "Temperature"
+    },
+    "parameterStudy.ShareOfPEleNominal": {
+      "labels": {
+        "en": "$f_\\mathrm{HP,PV}$",
+        "de": "$f_\\mathrm{WP,PV}$"
+      },
+      "factor": 1,
+      "offset": 0,
+      "unit": "-"
+    },
+    "parameterStudy.BufOverheatdT": {
+      "label": "$\\Delta T_\\mathrm{SH,PV}$",
+      "factor": 1,
+      "offset": 0,
+      "unit": "K"
+    },
+    "dTSetback": {
+      "label": "$\\Delta T_\\mathrm{Abs}$",
+      "factor": 1,
+      "offset": 0,
+      "unit": "K"
+    },
+    "tau_building": {
+      "label": "$\\tau_\\mathrm{Geb}$",
+      "factor": 1,
+      "offset": 0,
+      "unit": "h"
+    },
+    "dQ_setback": {
+      "label": "$\\Delta Q_\\mathrm{Abs}$",
+      "factor": 1,
+      "offset": 0,
+      "unit": "%"
+    },
+    "eps_hp": {
+      "label": "$\\xi_\\mathrm{HP}$",
+      "quantity": "Percent"
+    },
+    "HP_Coverage": {
+      "labels": {
+        "en": "$\\alpha_\\mathrm{HP}$",
+        "de": "$\\alpha_\\mathrm{WP}$"
+      },
+      "quantity": "Percent"
+    },
+    "self_consumption_rate": {
+      "labels": {
+        "en": "$SCR$",
+        "de": "$EVQ$"
+      },
+      "quantity": "Percent"
+    },
+    "self_sufficiency_degree": {
+      "labels": {
+        "en": "$SSD$",
+        "de": "$AG$"
+      },
+      "quantity": "Percent"
+    },
+    "TMeanSmaller20": {
+      "label": "$\\bar{T}_\\mathrm{Oda,<20}$",
+      "quantity": "Temperature"
+    },
+    "phiHeatingToNominal": {
+      "label": "$\\phi_\\mathrm{HeaToNom}$",
+      "factor": 1,
+      "offset": 0,
+      "unit": "-"
+    },
+    "outputs.building.QIntGain[1].value": {
+      "quantity": "Power",
+      "label": "$\\dot{Q}_\\mathrm{IntGai}$"
+    },
+    "outputs.building.QIntGain[1].integral": {
+      "quantity": "Energy",
+      "label": "$Q_\\mathrm{IntGai}$"
+    },
+    "outputs.weather.TDryBul": {
+      "quantity": "Temperature",
+      "label": "$T_\\mathrm{Oda}$"
+    },
+    "outputs.building.TZone[1]": {
+      "quantity": "Temperature",
+      "label": "$T_\\mathrm{Room,Mea}$"
+    },
+    "building.buiMeaBus.TZoneMea[1]": {
+      "quantity": "Temperature",
+      "label": "$T_\\mathrm{Room,Mea}$"
+    },
+    "outputs.user.TZoneSet[1]": {
+      "quantity": "Temperature",
+      "label": "$T_\\mathrm{Room,Set}$"
+    },
+    "outputs.hydraulic.disCtrl.TStoDHWBotMea": {
+      "quantity": "Temperature",
+      "label": "$T_\\mathrm{DHW,Bot}$"
+    },
+    "outputs.hydraulic.disCtrl.TStoDHWTopMea": {
+      "quantity": "Temperature",
+      "label": "$T_\\mathrm{DHW,Top}$"
+    },
+    "outputs.hydraulic.disCtrl.TStoBufBotMea": {
+      "quantity": "Temperature",
+      "label": "$T_\\mathrm{Buf,Bot}$"
+    },
+    "outputs.hydraulic.disCtrl.TStoBufTopMea": {
+      "quantity": "Temperature",
+      "label": "$T_\\mathrm{Buf,Top}$"
+    },
+    "outputs.hydraulic.genCtrl.THeaPumOut": {
+      "quantity": "Temperature",
+      "label": "$T_\\mathrm{HeaPum,Out}$"
+    },
+    "outputs.hydraulic.genCtrl.THeaPumIn": {
+      "quantity": "Temperature",
+      "label": "$T_\\mathrm{HeaPum,In}$"
+    },
+    "outputs.hydraulic.disCtrl.TBoiOut": {
+      "quantity": "Temperature",
+      "label": "$T_\\mathrm{Boi,Out}$"
+    },
+    "outputs.hydraulic.tra.opening[1]": {
+      "quantity": "Percent",
+      "label": "$y_\\mathrm{Val}$"
+    },
+    "outputs.hydraulic.disCtrl.yBoi": {
+      "quantity": "Percent",
+      "label": "$y_\\mathrm{Boi}$"
+    },
+    "outputs.hydraulic.genCtrl.yHeaPumSet": {
+      "quantity": "Percent",
+      "label": "$y_\\mathrm{HeaPum}$"
+    },
+    "outputs.hydraulic.genCtrl.COP": {
+      "factor": 1,
+      "offset": 0,
+      "unit": "-",
+      "label": "$COP$"
+    },
+    "time": {
+      "factor": 86400,
+      "offset": 0,
+      "unit": "d",
+      "label": "Time"
+    },
+    "outputs.hydraulic.gen.QBoi_flow.integral": {
+      "quantity": "Energy",
+      "label": "$Q_\\mathrm{Boi}$"
+    },
+    "outputs.hydraulic.dis.QBoi_flow.integral": {
+      "quantity": "Energy",
+      "label": "$Q_\\mathrm{Boi}$"
+    },
+    "outputs.hydraulic.gen.QBoi_flow.value": {
+      "quantity": "Power",
+      "label": "$\\dot{Q}_\\mathrm{Boi}$"
+    },
+    "outputs.hydraulic.dis.QBoi_flow.value": {
+      "quantity": "Power",
+      "label": "$\\dot{Q}_\\mathrm{Boi}$"
+    },
+    "outputs.building.eneBal[1].traGain.value": {
+      "quantity": "Power",
+      "label": "$\\dot{Q}_\\mathrm{Bui}$"
+    },
+    "userProfiles.useProBus.absIntGai": {
+      "quantity": "Power",
+      "label": "$\\dot{Q}_\\mathrm{EleGai}$"
+    },
+    "hydraulic.control.buiAndDHWCtr.TSetBuiSup.TSet": {
+      "quantity": "Temperature",
+      "label": "$T_\\mathrm{Set}$"
+    },
+    "outputs.electrical.dis.PEleLoa.value": {
+      "quantity": "Power",
+      "label": "$P_\\mathrm{Ele}$"
+    },
+    "outputs.electrical.tra.PHea[1].value": {
+      "quantity": "Power",
+      "label": "$\\dot{Q}_\\mathrm{Dem}$"
+    },
+    "hydraulic.distribution.boi.Q_nom": {
+      "quantity": "Power",
+      "label": "$\\dot{Q}_\\mathrm{Gas}$"
+    },
+    "building.thermalZone[1].airExc.ventRate": {
+      "factor": 1,
+      "offset": 0,
+      "unit": "1/h",
+      "label": "$a$"
+    }
+  }
+}

@@ -115,9 +115,10 @@ partial model PartialHeatPump "Generation with only the heat pump"
   parameter Modelica.Media.Interfaces.Types.Temperature TSoilConst=273.15 + 10
     "Constant soil temperature for ground source heat pumps"
     annotation(Dialog(group="Component choices", enable=use_airSource));
-  replaceable BESMod.Systems.Hydraulical.Control.Components.Defrost.NoDefrost defCtrl if use_rev and use_airSource
+  replaceable AixLib.Fluid.HeatPumps.ModularReversible.Controls.Defrost.NoDefrost
+                                                                              defCtrl if use_rev and use_airSource
     constrainedby
-    BESMod.Systems.Hydraulical.Control.Components.Defrost.BaseClasses.PartialDefrost
+    AixLib.Fluid.HeatPumps.ModularReversible.Controls.Defrost.BaseClasses.PartialDefrost
        "Defrost control"
     annotation (choicesAllMatching=true,
         Dialog(group="Component choices", enable=use_rev and use_airSource),

@@ -1,4 +1,4 @@
-﻿within BESMod.Systems.Hydraulical.Control.Components.DHWSetControl;
+within BESMod.Systems.Hydraulical.Control.Components.DHWSetControl;
 model AntiLegionellaControl "Control to avoid Legionella in the DHW"
   extends BaseClasses.PartialTSet_DHW_Control;
   parameter Modelica.Units.SI.ThermodynamicTemperature TLegMin=333.15

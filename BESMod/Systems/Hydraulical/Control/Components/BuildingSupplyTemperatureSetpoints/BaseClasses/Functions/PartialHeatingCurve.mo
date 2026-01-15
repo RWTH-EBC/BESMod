@@ -1,4 +1,4 @@
-﻿within BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.BaseClasses.Functions;
+within BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.BaseClasses.Functions;
 partial function PartialHeatingCurve "Partial function to define interfacesHeating curve based on Lämmle et al."
   input Modelica.Units.SI.Temperature TOda "Outdoor air temperature";
   input Modelica.Units.SI.Temperature THeaThr "Heating threshold temperature";

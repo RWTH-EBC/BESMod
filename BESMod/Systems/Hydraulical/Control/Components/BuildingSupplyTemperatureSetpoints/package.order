@@ -1,4 +1,5 @@
 Constant
 IdealHeatingCurve
 SingleZonePID
+TableBasedNightSetbackHeatingCurve
 BaseClasses

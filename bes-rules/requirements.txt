@@ -1,0 +1,22 @@
+ebcpy
+numpy==1.26.4
+pandas==2.1.4
+openpyxl>=3.1.0
+timezonefinder==6.1.6
+geopy==2.3.0
+teaser==1.3.1
+GitPython>=3.1.29
+python-telegram-bot==13.14
+python-dotenv
+matplotlib
+git+https://github.com/RWTH-EBC/AixWeather.git@development
+git+https://github.com/RWTH-EBC/OpenDHW.git@75075392496ae09c03fc7b43eaa4cff6f6f9d759
+Agentlib[full]
+urllib3==1.26.19
+geopandas
+pyomo
+sympy
+agentlib-mpc @ git+https://github.com/RWTH-EBC/AgentLib-MPC.git@9e2abbbeb4bb0149e58b6fddfd29ead615c6083b
+bayesian-optimization==2.0.3
+scikit-learn~=1.6.0
+pyDOE~=0.3.8

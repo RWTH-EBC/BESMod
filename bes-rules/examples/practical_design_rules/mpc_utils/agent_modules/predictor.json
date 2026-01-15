@@ -1,0 +1,47 @@
+{
+  "module_id": "predictor",
+  "send_measurements": false,
+  "parameters": [
+    {
+      "name": "sampling_time",
+      "value": 60
+    }
+  ],
+  "outputs": [
+    {
+      "name": "c_grid_prediction",
+      "value": 0.3606
+    },
+    {
+      "name": "c_feed_in_prediction",
+      "value": 0.082
+    },
+    {
+      "name": "T_amb_prediction",
+      "value": 273.15
+    },
+    {
+      "name": "THeaCur_prediction",
+      "value": 293.15
+    },
+    {
+      "name": "P_el_pv_prediction",
+      "value": 0
+    },
+    {
+      "name": "T_Air_prediction",
+      "value": 0
+    },
+    {
+      "name": "P_el_demand_prediction",
+      "value": 0
+    },
+    {
+      "name": "Q_demand_prediction",
+      "value": 0
+    }
+  ],
+  "shared_variable_fields": [
+    "outputs"
+  ]
+}
