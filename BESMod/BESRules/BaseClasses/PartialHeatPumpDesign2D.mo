@@ -1,7 +1,6 @@
 within BESMod.BESRules.BaseClasses;
 partial model PartialHeatPumpDesign2D
   "Partial design with 2D table data"
-  //extends PartialBESRulesSystem;
   extends PartialHeatPumpDesign(
     QHeaPum_flow_A2W35=Modelica.Blocks.Tables.Internal.getTable2DValueNoDer2(
         tabIdeQUse_flow,

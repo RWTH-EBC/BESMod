@@ -11,7 +11,7 @@ from ebcpy.preprocessing import convert_index_to_datetime_index
 from bes_rules import configs, STARTUP_BESMOD_MOS
 from bes_rules.boundary_conditions import weather, building
 from bes_rules.configs.simulation import start_api
-from bes_rules.input_analysis.heat_load_estimation import VARIABLE_NAMES
+from bes_rules.input_analysis import VARIABLE_NAMES
 from bes_rules.utils import notify
 
 
@@ -167,7 +167,8 @@ def simulate_cases_heat_load_estimation(study_path: Path, n_cpu: int):
     for use_normative_infiltration in [True, False]:
         building_config_kwargs = dict(
             use_normative_infiltration=use_normative_infiltration,
-            use_led=False
+            use_led=False,
+            modify_transfer_system=False,
         )
         buildings.extend(building.get_all_tabula_sfh_buildings(**building_config_kwargs))
     users = [

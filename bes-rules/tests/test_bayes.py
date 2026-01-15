@@ -1,5 +1,5 @@
 import unittest
-from custom_bayes import CustomBayesianOptimization
+from bes_rules.simulation_based_optimization.utils.custom_bayes import CustomBayesianOptimization
 from bayes_opt import acquisition
 import numpy as np
 from sklearn.gaussian_process import GaussianProcessRegressor
@@ -17,13 +17,13 @@ class BayesianOptTestCase(unittest.TestCase):
         pbounds3 = {'x': (257.15, 278.15), 'y': (12.5, 31)}
 
         optimizer1 = CustomBayesianOptimization(f=convergence_dummy, pbounds=pbounds1)
-        optimizer1.maximize(n_iter=0, initialization_method='central_points')
+        optimizer1.maximize(n_iter=0, init_points='central_points')
 
         optimizer2 = CustomBayesianOptimization(f=convergence_dummy, pbounds=pbounds2)
-        optimizer2.maximize(n_iter=0, initialization_method='central_points')
+        optimizer2.maximize(n_iter=0, init_points='central_points')
 
         optimizer3 = CustomBayesianOptimization(f=convergence_dummy, pbounds=pbounds3)
-        optimizer3.maximize(n_iter=0, initialization_method='central_points')
+        optimizer3.maximize(n_iter=0, init_points='central_points')
 
         x1 = [float(res["params"]["x"]) for res in optimizer1.res]
         y1 = [float(res["params"]["y"]) for res in optimizer1.res]
@@ -67,7 +67,7 @@ class BayesianOptTestCase(unittest.TestCase):
         optimizer._gp = GaussianProcessRegressor(
             kernel=Matern(nu=2.5, length_scale=[2000, 30]),
             optimizer=None, )
-        optimizer.maximize(n_iter=21, initialization_method="central_points")
+        optimizer.maximize(n_iter=21, init_points="central_points")
 
         x_range = np.linspace(-10, 10, 100)
         y_range = np.linspace(-10, 10, 100)

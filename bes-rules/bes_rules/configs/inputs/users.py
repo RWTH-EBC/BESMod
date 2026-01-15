@@ -58,14 +58,14 @@ class UserProfile(BaseInputConfig):
         if self.room_temperature_profile_path is None:
             _base_modifier = (
                 f'{room_set_temperature_modifier},\n'
-                f'userProfiles(each dTSetBack={self.night_set_back},use_TSetFile=false,\n'
-                f'{_path_modifier},\n'
+                f'userProfiles(dTSetBack=fill({self.night_set_back}, systemParameters.nZones),use_TSetFile=false,\n'
+                f'{_path_modifier}\n'
             )
         else:
             _path_temperature_modifier = load_modelica_file_modifier(self.room_temperature_profile_path)
             _base_modifier = (
                 f'{room_set_temperature_modifier},\n'
-                f'userProfiles(each dTSetBack={self.night_set_back},use_TSetFile=true,\n'
+                f'userProfiles(dTSetBack=fill({self.night_set_back}, systemParameters.nZones),use_TSetFile=true,\n'
                 f'fileNameTSet={_path_temperature_modifier},\n'
                 f'{_path_modifier}\n'
             )
