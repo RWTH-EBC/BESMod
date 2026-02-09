@@ -158,7 +158,8 @@ partial model PartialHeatPumpSystemController
     final TAddSta4Bui=TAddSta4Bui,
     final filNamSGReady=filNamSGReady,
     final TAddSta3DHW=TAddSta3DHW,
-    final TAddSta4DHW=TAddSta4DHW) "Control for building and DHW system"
+    final TAddSta4DHW=TAddSta4DHW)
+    "Control for building and DHW system"
     annotation (Placement(transformation(extent={{-200,20},{-120,80}})));
 
   Components.BaseClasses.SetAndMeasuredValueSelector setAndMeaSelPri(
