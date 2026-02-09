@@ -354,7 +354,7 @@ def component_based_retrofit(building: Building, element_retrofit_stats: dict):
                 )
 
 
-def get_nominal_supply_temperature(year_of_construction):
+def get_nominal_supply_temperature(year_of_construction, use_ufh: bool = False):
     """
     Sources:
     https://www.ffe.de/projekte/waermepumpen-fahrplan-finanzielle-kipppunkte-zur-modernisierung-mit-waermepumpen-im-wohngebaeudebestand/
@@ -376,13 +376,19 @@ def get_nominal_supply_temperature(year_of_construction):
     # n values as in BESMod / IBPSA.
     # Recknagel would use 1.1 for UFH and 1.2 up to 1.3 for residential buildings.
     # Konvektoren are not expected.
-    if year_of_construction < 1950:
-        return 90 + 273.15, 20, 1.24
-    if year_of_construction < 1980:
-        return 70 + 273.15, 15, 1.24
-    if year_of_construction < 2010:
-        return 55 + 273.15, 10, 1.24
-    return 35 + 273.15, 5, 1.1
+    if use_ufh:
+        if year_of_construction < 1990:
+            return 40 + 273.15, 10, 1.1
+        return 35 + 273.15, 5, 1.1
+    else:
+        if year_of_construction < 1950:
+            return 90 + 273.15, 20, 1.24
+        if year_of_construction < 1980:
+            return 70 + 273.15, 15, 1.24
+        if year_of_construction < 2010:
+            return 55 + 273.15, 10, 1.24
+        return 35 + 273.15, 5, 1.1
+
 
 
 def get_supply_temperature_after_retrofit(
@@ -432,7 +438,8 @@ def get_retrofit_temperatures(
         building_config: "BuildingConfig",
         TOda_nominal: float,
         TRoom_nominal: float,
-        retrofit_transfer_system_to_at_least: tuple = None
+        retrofit_transfer_system_to_at_least: tuple = None,
+        use_ufh: bool = False
 ):
     """
     According to Lämmle et al. 2022, Chapter 4.1
@@ -445,7 +452,8 @@ def get_retrofit_temperatures(
     If the retrofit or both supply temperature are lower than the given value, they are not used.
     """
     THydNoRet, dTHydNoRet, n_heat_exponent = get_nominal_supply_temperature(
-        year_of_construction=building_config.year_of_construction
+        year_of_construction=building_config.year_of_construction,
+        use_ufh=use_ufh
     )
     building_config_without_retrofit = building_config.copy()
     building_config_without_retrofit.construction_data = "tabula_de_standard"
