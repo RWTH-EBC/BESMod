@@ -62,7 +62,8 @@ class BuildingConfig(BaseInputConfig):
         description="If specified, the buildings supply and return temperature will be this tuple."
     )
     use_verboseEnergyBalance: bool = True
-    possibly_use_underfloor_heating: bool = True
+    possibly_use_underfloor_heating: bool = True  # use UFH if supply temperature allows it
+    use_ufh: bool = False  # always use UFH
     method: Optional[str] = None
     usage: Optional[str] = None
     construction_type: Optional[str] = None
@@ -107,14 +108,16 @@ class BuildingConfig(BaseInputConfig):
             building_config=self,
             TOda_nominal=input_config.weather.TOda_nominal,
             TRoom_nominal=input_config.user.room_set_temperature,
-            retrofit_transfer_system_to_at_least=self.retrofit_transfer_system_to_at_least
+            retrofit_transfer_system_to_at_least=self.retrofit_transfer_system_to_at_least,
+            use_ufh=self.use_ufh
         )
-        use_ufh = self.possibly_use_underfloor_heating and THydSupOld_design < 273.15 + 36
+        apply_ufh = ((self.possibly_use_underfloor_heating and THydSupOld_design < 273.15 + 36)
+                     or self.use_ufh)
 
-        if use_ufh:
+        if apply_ufh:
             transfer_system_type = (
                 "BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem transfer(\n "
-                "  nHeaTra=1.3, "
+                "  nHeaTra=1.1, "
                 "  redeclare BESMod.Systems.Hydraulical.Transfer.RecordsCollection.DefaultUFHData UFHParameters(T_floor=291.15), \n"
                 "  redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum)"
             )
