@@ -111,12 +111,13 @@ class BuildingConfig(BaseInputConfig):
             retrofit_transfer_system_to_at_least=self.retrofit_transfer_system_to_at_least,
             use_ufh=self.use_ufh
         )
-        use_ufh = self.possibly_use_underfloor_heating and THydSupOld_design < 273.15 + 36
+        apply_ufh = ((self.possibly_use_underfloor_heating and THydSupOld_design < 273.15 + 36)
+                     or self.use_ufh)
 
-        if use_ufh:
+        if apply_ufh:
             transfer_system_type = (
                 "BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem transfer(\n "
-                "  nHeaTra=1.3, "
+                "  nHeaTra=1.1, "
                 "  redeclare BESMod.Systems.Hydraulical.Transfer.RecordsCollection.DefaultUFHData UFHParameters(T_floor=291.15), \n"
                 "  redeclare BESMod.Systems.RecordsCollection.Movers.DPVar parPum)"
             )
