@@ -20,16 +20,18 @@ model MonoenergeticHeatPumpSystem
         extent={{10,10},{-10,-10}},
         rotation=180,
         origin={-50,-30})));
+
+  parameter BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType
+  supCtrluHRSetTyp=BESMod.Utilities.SupervisoryControl.Types.SupervisoryControlType.
+       Local "Type of supervisory control for heating rod"
+    annotation (Dialog(group="Heat Pump"));
+  BESMod.Utilities.SupervisoryControl.SupervisoryControl supCtruHRSet(final
+      ctrlType=supCtrluHRSetTyp) "Supervisory control of heating rod"
+    annotation (Placement(transformation(extent={{134,0},{154,20}})));
+
 equation
   connect(constZero.y,swiSecGen. u3)
     annotation (Line(points={{81,-10},{92,-10},{92,2},{98,2}}, color={0,0,127}));
-  connect(swiSecGen.y, sigBusGen.uEleHea) annotation (Line(points={{121,10},{126,
-          10},{126,-60},{-152,-60},{-152,-99}},
-                                       color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
   connect(swiSecGen.u1, buiAndDHWCtr.ySecGenSet) annotation (Line(points={{98,18},
           {90,18},{90,39},{-118,39}},     color={0,0,127}));
   connect(buiAndDHWCtr.priGren, priGenPIDCtrl.setOn) annotation (Line(points={{-118,
@@ -44,4 +46,12 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  connect(supCtruHRSet.y, sigBusGen.uEleHea) annotation (Line(points={{156,10},{
+          178,10},{178,-48},{-152,-48},{-152,-99}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(swiSecGen.y, supCtruHRSet.uLoc) annotation (Line(points={{121,10},{126,
+          10},{126,2},{132,2}}, color={0,0,127}));
 end MonoenergeticHeatPumpSystem;
