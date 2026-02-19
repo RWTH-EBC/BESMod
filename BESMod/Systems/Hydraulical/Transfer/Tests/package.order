@@ -4,3 +4,4 @@ TestPressureBasedSystem
 TestPressureBasedSystemWithReliefValve
 TestUnderfloorHeating
 TestOpenModelica
+TestOpenModelicaClean
