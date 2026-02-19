@@ -1,6 +1,6 @@
 within BESMod.Systems.Electrical.Distribution.BaseClasses;
 partial model PartialDistribution
-  parameter Boolean use_openModelica=false
+  parameter Boolean use_openModelica=true
     "=true to disable features which 
     are not available in open modelica" annotation(Dialog(tab="Advanced"));
   parameter Integer nSubSys(min=2)

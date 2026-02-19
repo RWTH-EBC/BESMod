@@ -228,16 +228,6 @@ partial model PartialTwoStorageParallel
         rotation=180,
         origin={76,80})));
 
-  BESMod.Utilities.KPIs.EnergyKPICalculator eneKPICalDHWHeaRod(use_inpCon=false, y=
-        QHRStoDHWPre_flow.Q_flow) if parStoDHW.use_hr     annotation (Placement(
-        transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=0,
-        origin={-50,-170})));
-  BESMod.Utilities.KPIs.EnergyKPICalculator eneKPICalBufHeaRod(use_inpCon=false, y=
-        QHRStoBufPre_flow.Q_flow) if parStoBuf.use_hr
-    annotation (Placement(transformation(extent={{-100,-180},{-80,-160}})));
-
   Modelica.Blocks.Math.MultiSum multiSum(nu=4)                           annotation (Placement(
         transformation(
         extent={{-9,-9},{9,9}},
@@ -345,18 +335,6 @@ equation
       index=1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(eneKPICalBufHeaRod.KPI, outBusDist.PEleHRPreBuf) annotation (Line(
-        points={{-77.8,-170},{0,-170},{0,-100}}, color={135,135,135}), Text(
-      string="%second",
-      index=1,
-      extent={{-3,6},{-3,6}},
-      horizontalAlignment=TextAlignment.Right));
-  connect(eneKPICalDHWHeaRod.KPI, outBusDist.PEleHRPreDHW) annotation (Line(
-        points={{-37.8,-170},{0,-170},{0,-100}},color={135,135,135}), Text(
-      string="%second",
-      index=1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
   connect(multiSum.y, realToElecCon.PEleLoa)
     annotation (Line(points={{-38.47,-111},{-38.47,-110},{-40,-110},{-40,-106},
           {18,-106}},                                 color={0,0,127}));

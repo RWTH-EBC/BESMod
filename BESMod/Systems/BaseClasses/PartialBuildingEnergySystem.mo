@@ -1,7 +1,7 @@
 within BESMod.Systems.BaseClasses;
 partial model PartialBuildingEnergySystem "Partial BES"
 
-  parameter Boolean use_openModelica=false
+  parameter Boolean use_openModelica=true
     "=true to disable features which 
     are not available in open modelica" annotation(Dialog(tab="Advanced"));
 

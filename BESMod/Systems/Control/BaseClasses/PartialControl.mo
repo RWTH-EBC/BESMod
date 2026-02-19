@@ -1,7 +1,7 @@
 within BESMod.Systems.Control.BaseClasses;
 partial model PartialControl "Model for a partial HEMS control"
   extends BESMod.Utilities.Icons.ControlIcon;
-  parameter Boolean use_openModelica=false
+  parameter Boolean use_openModelica=true
     "=true to disable features which 
     are not available in open modelica" annotation(Dialog(tab="Advanced"));
   BESMod.Systems.Hydraulical.Interfaces.SystemControlBus sigBusHyd annotation (Placement(

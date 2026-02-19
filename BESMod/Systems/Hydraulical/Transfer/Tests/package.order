@@ -3,3 +3,4 @@ TestIdealValveRadiatorSystem
 TestPressureBasedSystem
 TestPressureBasedSystemWithReliefValve
 TestUnderfloorHeating
+PartialTestNew

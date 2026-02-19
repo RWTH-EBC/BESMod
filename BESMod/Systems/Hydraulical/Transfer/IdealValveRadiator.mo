@@ -10,7 +10,7 @@ model IdealValveRadiator
     TTra_design={if use_oldRad_design[i] then TTraOld_design[i] else TTra_nominal[i] for i in 1:nParallelDem},
     res(each final disableComputeFlowResistance=false));
 
-  parameter Boolean use_oldRad_design[nParallelDem]={not QOld_flow_design[i]==Q_flow_nominal[i] for i in 1:nParallelDem}
+  parameter Boolean use_oldRad_design[nParallelDem]={abs(QOld_flow_design[i]-Q_flow_nominal[i])>1 for i in 1:nParallelDem}
     "If true, radiator design of old building state is used"
     annotation (Dialog(group="Design - Internal: Parameters are defined by the subsystem"));
   replaceable parameter

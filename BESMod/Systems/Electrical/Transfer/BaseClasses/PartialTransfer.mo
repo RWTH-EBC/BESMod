@@ -1,6 +1,6 @@
 within BESMod.Systems.Electrical.Transfer.BaseClasses;
 partial model PartialTransfer "Partial model for transfer subsystems"
-  parameter Boolean use_openModelica=false
+  parameter Boolean use_openModelica=true
     "=true to disable features which 
     are not available in open modelica" annotation(Dialog(tab="Advanced"));
   parameter Integer nParallelDem(min=1)

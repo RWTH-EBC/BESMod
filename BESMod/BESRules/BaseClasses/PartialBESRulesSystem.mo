@@ -5,7 +5,7 @@ partial model PartialBESRulesSystem
     redeclare replaceable
       BESMod.BESRules.DesignOptimization.DesignOptimizationVariables parameterStudy,
     redeclare replaceable BESMod.Systems.UserProfiles.TEASERInputsStoIntGai userProfiles,
-    final use_openModelica=false,
+    final use_openModelica=true,
     redeclare BESMod.BESRules.BaseClasses.SystemParameters systemParameters(
         QBui_flow_nominal=building.QRec_flow_nominal, THydSup_nominal=fill(
           THyd_nominal, systemParameters.nZones)),
