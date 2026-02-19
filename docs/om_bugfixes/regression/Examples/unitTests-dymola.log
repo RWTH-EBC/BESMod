@@ -1,0 +1,44 @@
+Regression tests are only run for the following package:
+  BESMod.Examples
+*** Error: Examples/GasBoilerBuildingOnly.mos uses outputs.building.TZone[1] which does not exist in BESMod.Examples.GasBoilerBuildingOnly.mat.
+
+*** Error: Examples/HeatPumpAndBoiler/Serial.mos uses outputs.building.TZone[1] which does not exist in BESMod.Examples.HeatPumpAndBoiler.Serial.mat.
+
+*** Error: Examples/HeatPumpAndBoiler/AfterBufferWithoutDHW.mos uses outputs.building.TZone[1] which does not exist in BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW.mat.
+
+*** Error: Examples/HeatPumpAndBoiler/Parallel.mos uses outputs.building.TZone[1] which does not exist in BESMod.Examples.HeatPumpAndBoiler.Parallel.mat.
+
+*** Error: Examples/HeatPumpAndBoiler/AfterBufferWithDHW.mos uses outputs.building.TZone[1] which does not exist in BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW.mat.
+
+*** Error: Examples/Retrofit/Case1TotalRetrofit.mos uses outputs.building.TZone[1] which does not exist in BESMod.Examples.Retrofit.Case1TotalRetrofit.mat.
+
+*** Error: Examples/Retrofit/Case1NoRetrofit.mos uses outputs.building.TZone[1] which does not exist in BESMod.Examples.Retrofit.Case1NoRetrofit.mat.
+
+*** Error: Examples/Retrofit/Case1PartialRetrofit.mos uses outputs.building.TZone[1] which does not exist in BESMod.Examples.Retrofit.Case1PartialRetrofit.mat.
+
+*** Error: Examples/DesignOptimization/BES.mos uses outputs.building.TZone[1] which does not exist in BESMod.Examples.DesignOptimization.BES.mat.
+
+*** Error: Examples/DesignOptimization/BESNoDHW.mos uses outputs.building.TZone[1] which does not exist in BESMod.Examples.DesignOptimization.BESNoDHW.mat.
+
+*** Error: Examples/TEASERHeatLoadCalculation/Example.mos uses outputs.building.TZone[1] which does not exist in BESMod.Examples.TEASERHeatLoadCalculation.Example.mat.
+
+*** Error: Examples/SolarThermalSystem/SolarThermalAixLib.mos uses outputs.building.TZone[1] which does not exist in BESMod.Examples.SolarThermalSystem.SolarThermalAixLib.mat.
+
+*** Error: Examples/SolarThermalSystem/SolarThermalBuildings.mos uses outputs.building.TZone[1] which does not exist in BESMod.Examples.SolarThermalSystem.SolarThermalBuildings.mat.
+
+*** Error: Examples/TEASERExport/ArchetypeExample/ResidentialBuilding/HeatPumpMonoenergeticResidentialBuilding.mos uses electrical.distribution.OutputDistr.PEleGen.value which does not exist in BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding.mat.
+
+*** Error: Examples/TEASERExport/ArchetypeExample/ResidentialBuilding/HeatPumpMonoenergeticResidentialBuilding.mos uses electrical.distribution.OutputDistr.PEleLoa.value which does not exist in BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding.mat.
+
+*** Error: Examples/TEASERExport/ArchetypeExample/ResidentialBuilding/GasBoilerBuildingOnlyResidentialBuilding.mos uses outputs.building.TZone[1] which does not exist in BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding.mat.
+
+*** Error: Examples/TEASERExport/ArchetypeExample/ResidentialBuilding/TEASERHeatLoadCalculationResidentialBuilding.mos uses outputs.building.TZone[1] which does not exist in BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.TEASERHeatLoadCalculationResidentialBuilding.mat.
+
+*** Error: Examples/BAUSimStudy/Case1Standard.mos uses outputs.building.TZone[1] which does not exist in BESMod.Examples.BAUSimStudy.Case1Standard.mat.
+
+Comparison files output by funnel are stored in the directory 'funnel_comp' of size 0.3 MB.
+Run 'python -c "import buildingspy.development.regressiontest as t; t.Tester(tool=\"dymola\").report()"'
+to access a summary of the comparison results.
+
+Script that runs unit tests had 0 warnings and 18 errors.
+
