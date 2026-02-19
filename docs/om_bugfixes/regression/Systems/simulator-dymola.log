@@ -114,15 +114,15 @@ savelog("BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.t
 
 rCheck = checkModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem");
 Check of BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem
-The model has the same number of unknowns and equations: 685
+The model has the same number of unknowns and equations: 683
 The model could not be deduced to be symbolically well-posed.
 The model has
-  649+2*transfer.parRad.nEle+transfer.rad[1].vol[1].dynBal.nPorts+transfer.rad[1].vol[2].dynBal.nPorts  +transfer.rad[1].vol[3].dynBal.nPorts+transfer.rad[1].vol[4].dynBal.nPorts+  transfer.rad[1].vol[5].dynBal.nPorts+transfer.rad[1].sumCon.nin+  transfer.rad[1].sumRad.nin+transfer.volSup.dynBal.nPorts+transfer.volRet.dynBal.nPorts  +vol[1].dynBal.nPorts
+  647+2*transfer.parRad.nEle+transfer.rad[1].vol[1].dynBal.nPorts+transfer.rad[1].vol[2].dynBal.nPorts  +transfer.rad[1].vol[3].dynBal.nPorts+transfer.rad[1].vol[4].dynBal.nPorts+  transfer.rad[1].vol[5].dynBal.nPorts+transfer.rad[1].sumCon.nin+  transfer.rad[1].sumRad.nin+transfer.volSup.dynBal.nPorts+transfer.volRet.dynBal.nPorts  +vol[1].dynBal.nPorts
 scalar unknowns and
-  613+(if bou1[1].use_Xi_in then 1 else (if bou1[1].use_X_in then 0 else 1))+(if    not bou1[1].use_p_in then 1 else 0)+2*bou1[1].nPorts+(if  not   bou1[1].use_T_in then 1 else 0)+(if  not transfer.rad[1].vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad[1].vol[1].dynBal.nPorts+(if  not   transfer.rad[1].vol[2].dynBal.use_mWat_flow then 1 else 0)+3*transfer.rad[1].vol[2].dynBal.nPorts  +(if  not transfer.rad[1].vol[3].dynBal.use_mWat_flow then 1 else 0)+3*  transfer.rad[1].vol[3].dynBal.nPorts+(if  not transfer.rad[1].vol[4].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad[1].vol[4].dynBal.nPorts+(if  not   transfer.rad[1].vol[5].dynBal.use_mWat_flow then 1 else 0)+3*transfer.rad[1].vol[5].dynBal.nPorts  +(if  not transfer.volSup.dynBal.use_mWat_flow then 1 else 0)+3*  transfer.volSup.dynBal.nPorts+(if  not transfer.volRet.dynBal.use_mWat_flow   then 1 else 0)+3*transfer.volRet.dynBal.nPorts+(if  not vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*vol[1].dynBal.nPorts+(if  not pumDis[1].dpControlled_dp.vol.steBal.use_mWat_flow   then 1 else 0)+2*transfer.parRad.nEle
+  611+(if bou1[1].use_Xi_in then 1 else (if bou1[1].use_X_in then 0 else 1))+(if    not bou1[1].use_p_in then 1 else 0)+2*bou1[1].nPorts+(if  not   bou1[1].use_T_in then 1 else 0)+(if  not transfer.rad[1].vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad[1].vol[1].dynBal.nPorts+(if  not   transfer.rad[1].vol[2].dynBal.use_mWat_flow then 1 else 0)+3*transfer.rad[1].vol[2].dynBal.nPorts  +(if  not transfer.rad[1].vol[3].dynBal.use_mWat_flow then 1 else 0)+3*  transfer.rad[1].vol[3].dynBal.nPorts+(if  not transfer.rad[1].vol[4].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad[1].vol[4].dynBal.nPorts+(if  not   transfer.rad[1].vol[5].dynBal.use_mWat_flow then 1 else 0)+3*transfer.rad[1].vol[5].dynBal.nPorts  +(if  not transfer.volSup.dynBal.use_mWat_flow then 1 else 0)+3*  transfer.volSup.dynBal.nPorts+(if  not transfer.volRet.dynBal.use_mWat_flow   then 1 else 0)+3*transfer.volRet.dynBal.nPorts+(if  not vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*vol[1].dynBal.nPorts+(if  not pumDis[1].dpControlled_dp.vol.steBal.use_mWat_flow   then 1 else 0)+2*transfer.parRad.nEle
 scalar equations.
 However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
-  685
+  683
 Check of BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem successful.
 Declaring variable: Boolean rCheck ;
 
@@ -137,26 +137,26 @@ Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Transfe
 rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestPressureBasedSystem.mos");
 simulateModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem", stopTime=12000, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem");
 Translation of BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem
-The DAE has 685 scalar unknowns and 685 scalar equations.
+The DAE has 683 scalar unknowns and 683 scalar equations.
  
 Statistics
  
 Original Model
-  Number of components: 179
-  Variables: 1957
+  Number of components: 177
+  Variables: 1955
   Constants: 45 (45 scalars)
   Parameters: 971 (1091 scalars)
-  Unknowns: 941 (718 scalars)
+  Unknowns: 939 (716 scalars)
   Differentiated variables: 16 scalars
-  Equations: 745
-  Nontrivial: 556
+  Equations: 743
+  Nontrivial: 554
 Translated Model
-  Constants: 963 scalars
+  Constants: 962 scalars
   Free parameters: 86 scalars
   Parameter depending: 296 scalars
   Outputs: 1 scalars
   Continuous time states: 7 scalars
-  Time-varying variables: 149 scalars
+  Time-varying variables: 148 scalars
   Alias variables: 360 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2}
@@ -797,15 +797,15 @@ savelog("BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries.
 
 rCheck = checkModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem");
 Check of BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem
-The model has the same number of unknowns and equations: 685
+The model has the same number of unknowns and equations: 683
 The model could not be deduced to be symbolically well-posed.
 The model has
-  651+2*transfer.parRad.nEle+transfer.rad[1].vol[1].dynBal.nPorts+transfer.rad[1].vol[2].dynBal.nPorts  +transfer.rad[1].vol[3].dynBal.nPorts+transfer.rad[1].vol[4].dynBal.nPorts+  transfer.rad[1].vol[5].dynBal.nPorts+transfer.rad[1].sumCon.nin+  transfer.rad[1].sumRad.nin+transfer.pumFixMFlo[1].vol.dynBal.nPorts+  vol[1].dynBal.nPorts
+  649+2*transfer.parRad.nEle+transfer.rad[1].vol[1].dynBal.nPorts+transfer.rad[1].vol[2].dynBal.nPorts  +transfer.rad[1].vol[3].dynBal.nPorts+transfer.rad[1].vol[4].dynBal.nPorts+  transfer.rad[1].vol[5].dynBal.nPorts+transfer.rad[1].sumCon.nin+  transfer.rad[1].sumRad.nin+transfer.pumFixMFlo[1].vol.dynBal.nPorts+  vol[1].dynBal.nPorts
 scalar unknowns and
-  620+(if bou1[1].use_Xi_in then 1 else (if bou1[1].use_X_in then 0 else 1))+(if    not bou1[1].use_p_in then 1 else 0)+2*bou1[1].nPorts+(if  not   bou1[1].use_T_in then 1 else 0)+(if  not transfer.rad[1].vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad[1].vol[1].dynBal.nPorts+(if  not   transfer.rad[1].vol[2].dynBal.use_mWat_flow then 1 else 0)+3*transfer.rad[1].vol[2].dynBal.nPorts  +(if  not transfer.rad[1].vol[3].dynBal.use_mWat_flow then 1 else 0)+3*  transfer.rad[1].vol[3].dynBal.nPorts+(if  not transfer.rad[1].vol[4].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad[1].vol[4].dynBal.nPorts+(if  not   transfer.rad[1].vol[5].dynBal.use_mWat_flow then 1 else 0)+3*transfer.rad[1].vol[5].dynBal.nPorts  +(if  not transfer.pumFixMFlo[1].vol.dynBal.use_mWat_flow then 1 else 0)+3*  transfer.pumFixMFlo[1].vol.dynBal.nPorts+(if  not vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*vol[1].dynBal.nPorts+(if  not pumDis[1].speedControlled_y.vol.steBal.use_mWat_flow   then 1 else 0)+2*transfer.parRad.nEle
+  618+(if bou1[1].use_Xi_in then 1 else (if bou1[1].use_X_in then 0 else 1))+(if    not bou1[1].use_p_in then 1 else 0)+2*bou1[1].nPorts+(if  not   bou1[1].use_T_in then 1 else 0)+(if  not transfer.rad[1].vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad[1].vol[1].dynBal.nPorts+(if  not   transfer.rad[1].vol[2].dynBal.use_mWat_flow then 1 else 0)+3*transfer.rad[1].vol[2].dynBal.nPorts  +(if  not transfer.rad[1].vol[3].dynBal.use_mWat_flow then 1 else 0)+3*  transfer.rad[1].vol[3].dynBal.nPorts+(if  not transfer.rad[1].vol[4].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad[1].vol[4].dynBal.nPorts+(if  not   transfer.rad[1].vol[5].dynBal.use_mWat_flow then 1 else 0)+3*transfer.rad[1].vol[5].dynBal.nPorts  +(if  not transfer.pumFixMFlo[1].vol.dynBal.use_mWat_flow then 1 else 0)+3*  transfer.pumFixMFlo[1].vol.dynBal.nPorts+(if  not vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*vol[1].dynBal.nPorts+(if  not pumDis[1].speedControlled_y.vol.steBal.use_mWat_flow   then 1 else 0)+2*transfer.parRad.nEle
 scalar equations.
 However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
-  685
+  683
 Check of BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem successful.
 Declaring variable: Boolean rCheck ;
 
@@ -820,26 +820,26 @@ Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Transfe
 rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestIdealValveRadiatorSystem.mos");
 simulateModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem", stopTime=12000, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem");
 Translation of BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem
-The DAE has 685 scalar unknowns and 685 scalar equations.
+The DAE has 683 scalar unknowns and 683 scalar equations.
  
 Statistics
  
 Original Model
-  Number of components: 196
-  Variables: 2003
+  Number of components: 194
+  Variables: 2001
   Constants: 41 (41 scalars)
   Parameters: 1035 (1288 scalars)
-  Unknowns: 927 (722 scalars)
+  Unknowns: 925 (720 scalars)
   Differentiated variables: 15 scalars
-  Equations: 757
-  Nontrivial: 574
+  Equations: 755
+  Nontrivial: 572
 Translated Model
-  Constants: 991 scalars
+  Constants: 990 scalars
   Free parameters: 98 scalars
   Parameter depending: 440 scalars
   Outputs: 1 scalars
   Continuous time states: 7 scalars
-  Time-varying variables: 160 scalars
+  Time-varying variables: 159 scalars
   Alias variables: 362 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2}
@@ -1077,15 +1077,15 @@ savelog("BESMod.Systems.Hydraulical.Distribution.Tests.DHWDesign.translation.log
 
 rCheck = checkModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve");
 Check of BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve
-The model has the same number of unknowns and equations: 723
+The model has the same number of unknowns and equations: 721
 The model could not be deduced to be symbolically well-posed.
 The model has
-  687+2*transfer.parRad.nEle+transfer.rad[1].vol[1].dynBal.nPorts+transfer.rad[1].vol[2].dynBal.nPorts  +transfer.rad[1].vol[3].dynBal.nPorts+transfer.rad[1].vol[4].dynBal.nPorts+  transfer.rad[1].vol[5].dynBal.nPorts+transfer.rad[1].sumCon.nin+  transfer.rad[1].sumRad.nin+transfer.volSup.dynBal.nPorts+transfer.volRet.dynBal.nPorts  +vol[1].dynBal.nPorts
+  685+2*transfer.parRad.nEle+transfer.rad[1].vol[1].dynBal.nPorts+transfer.rad[1].vol[2].dynBal.nPorts  +transfer.rad[1].vol[3].dynBal.nPorts+transfer.rad[1].vol[4].dynBal.nPorts+  transfer.rad[1].vol[5].dynBal.nPorts+transfer.rad[1].sumCon.nin+  transfer.rad[1].sumRad.nin+transfer.volSup.dynBal.nPorts+transfer.volRet.dynBal.nPorts  +vol[1].dynBal.nPorts
 scalar unknowns and
-  651+(if bou1[1].use_Xi_in then 1 else (if bou1[1].use_X_in then 0 else 1))+(if    not bou1[1].use_p_in then 1 else 0)+2*bou1[1].nPorts+(if  not   bou1[1].use_T_in then 1 else 0)+(if  not transfer.rad[1].vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad[1].vol[1].dynBal.nPorts+(if  not   transfer.rad[1].vol[2].dynBal.use_mWat_flow then 1 else 0)+3*transfer.rad[1].vol[2].dynBal.nPorts  +(if  not transfer.rad[1].vol[3].dynBal.use_mWat_flow then 1 else 0)+3*  transfer.rad[1].vol[3].dynBal.nPorts+(if  not transfer.rad[1].vol[4].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad[1].vol[4].dynBal.nPorts+(if  not   transfer.rad[1].vol[5].dynBal.use_mWat_flow then 1 else 0)+3*transfer.rad[1].vol[5].dynBal.nPorts  +(if  not transfer.volSup.dynBal.use_mWat_flow then 1 else 0)+3*  transfer.volSup.dynBal.nPorts+(if  not transfer.volRet.dynBal.use_mWat_flow   then 1 else 0)+3*transfer.volRet.dynBal.nPorts+(if  not vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*vol[1].dynBal.nPorts+(if  not pumDis[1].dpControlled_dp.vol.steBal.use_mWat_flow   then 1 else 0)+2*transfer.parRad.nEle
+  649+(if bou1[1].use_Xi_in then 1 else (if bou1[1].use_X_in then 0 else 1))+(if    not bou1[1].use_p_in then 1 else 0)+2*bou1[1].nPorts+(if  not   bou1[1].use_T_in then 1 else 0)+(if  not transfer.rad[1].vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad[1].vol[1].dynBal.nPorts+(if  not   transfer.rad[1].vol[2].dynBal.use_mWat_flow then 1 else 0)+3*transfer.rad[1].vol[2].dynBal.nPorts  +(if  not transfer.rad[1].vol[3].dynBal.use_mWat_flow then 1 else 0)+3*  transfer.rad[1].vol[3].dynBal.nPorts+(if  not transfer.rad[1].vol[4].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad[1].vol[4].dynBal.nPorts+(if  not   transfer.rad[1].vol[5].dynBal.use_mWat_flow then 1 else 0)+3*transfer.rad[1].vol[5].dynBal.nPorts  +(if  not transfer.volSup.dynBal.use_mWat_flow then 1 else 0)+3*  transfer.volSup.dynBal.nPorts+(if  not transfer.volRet.dynBal.use_mWat_flow   then 1 else 0)+3*transfer.volRet.dynBal.nPorts+(if  not vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*vol[1].dynBal.nPorts+(if  not pumDis[1].dpControlled_dp.vol.steBal.use_mWat_flow   then 1 else 0)+2*transfer.parRad.nEle
 scalar equations.
 However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
-  723
+  721
 Check of BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve successful.
 Declaring variable: Boolean rCheck ;
 
@@ -1100,26 +1100,26 @@ Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Transfe
 rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestPressureBasedSystemWithReliefValve.mos");
 simulateModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve", stopTime=12000, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve");
 Translation of BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve
-The DAE has 723 scalar unknowns and 723 scalar equations.
+The DAE has 721 scalar unknowns and 721 scalar equations.
  
 Statistics
  
 Original Model
-  Number of components: 189
-  Variables: 2070
+  Number of components: 187
+  Variables: 2068
   Constants: 46 (46 scalars)
   Parameters: 1037 (1157 scalars)
-  Unknowns: 987 (760 scalars)
+  Unknowns: 985 (758 scalars)
   Differentiated variables: 18 scalars
-  Equations: 781
-  Nontrivial: 588
+  Equations: 779
+  Nontrivial: 586
 Translated Model
-  Constants: 997 scalars
+  Constants: 996 scalars
   Free parameters: 96 scalars
   Parameter depending: 317 scalars
   Outputs: 1 scalars
   Continuous time states: 9 scalars
-  Time-varying variables: 174 scalars
+  Time-varying variables: 173 scalars
   Alias variables: 379 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: {2, 2, 2, 2, 2}
@@ -1532,15 +1532,15 @@ an inner "system" component is not defined.
 For simulation drag Modelica.Fluid.System into your model
 to specify system properties.
  
-The model has the same number of unknowns and equations: 1148
+The model has the same number of unknowns and equations: 1146
 The model could not be deduced to be symbolically well-posed.
 The model has
-  994+15*(transfer.ufh[1].panelHeatingSegment[1].vol.nPorts+transfer.ufh[1].panelHeatingSegment[2].vol.nPorts  +transfer.ufh[1].panelHeatingSegment[3].vol.nPorts+transfer.ufh[1].panelHeatingSegment[4].vol.nPorts  +transfer.ufh[1].panelHeatingSegment[5].vol.nPorts)+transfer.pumpFix_m_flow[1].vol.dynBal.nPorts  +vol[1].dynBal.nPorts
+  992+15*(transfer.ufh[1].panelHeatingSegment[1].vol.nPorts+transfer.ufh[1].panelHeatingSegment[2].vol.nPorts  +transfer.ufh[1].panelHeatingSegment[3].vol.nPorts+transfer.ufh[1].panelHeatingSegment[4].vol.nPorts  +transfer.ufh[1].panelHeatingSegment[5].vol.nPorts)+transfer.pumpFix_m_flow[1].vol.dynBal.nPorts  +vol[1].dynBal.nPorts
 scalar unknowns and
-  953+(if  not transfer.ufh[1].panelHeatingSegment[1].vol.use_portsData then 4*  transfer.ufh[1].panelHeatingSegment[1].vol.nPorts else 0)+13*transfer.ufh[1].panelHeatingSegment[1].vol.nPorts  +(if  not transfer.ufh[1].panelHeatingSegment[1].twoStar_RadEx.use_A_in then 1   else 0)+(if  not transfer.ufh[1].panelHeatingSegment[2].vol.use_portsData   then 4*transfer.ufh[1].panelHeatingSegment[2].vol.nPorts else 0)+13*  transfer.ufh[1].panelHeatingSegment[2].vol.nPorts+(if  not transfer.ufh[1].panelHeatingSegment[2].twoStar_RadEx.use_A_in   then 1 else 0)+(if  not transfer.ufh[1].panelHeatingSegment[3].vol.use_portsData   then 4*transfer.ufh[1].panelHeatingSegment[3].vol.nPorts else 0)+13*  transfer.ufh[1].panelHeatingSegment[3].vol.nPorts+(if  not transfer.ufh[1].panelHeatingSegment[3].twoStar_RadEx.use_A_in   then 1 else 0)+(if  not transfer.ufh[1].panelHeatingSegment[4].vol.use_portsData   then 4*transfer.ufh[1].panelHeatingSegment[4].vol.nPorts else 0)+13*  transfer.ufh[1].panelHeatingSegment[4].vol.nPorts+(if  not transfer.ufh[1].panelHeatingSegment[4].twoStar_RadEx.use_A_in   then 1 else 0)+(if  not transfer.ufh[1].panelHeatingSegment[5].vol.use_portsData   then 4*transfer.ufh[1].panelHeatingSegment[5].vol.nPorts else 0)+13*  transfer.ufh[1].panelHeatingSegment[5].vol.nPorts+(if  not transfer.ufh[1].panelHeatingSegment[5].twoStar_RadEx.use_A_in   then 1 else 0)+(if bou1[1].use_Xi_in then 1 else (if bou1[1].use_X_in then 0   else 1))+(if  not bou1[1].use_p_in then 1 else 0)+2*bou1[1].nPorts+(if  not   bou1[1].use_T_in then 1 else 0)+(if  not transfer.pumpFix_m_flow[1].vol.dynBal.use_mWat_flow   then 1 else 0)+3*transfer.pumpFix_m_flow[1].vol.dynBal.nPorts+(if  not   vol[1].dynBal.use_mWat_flow then 1 else 0)+3*vol[1].dynBal.nPorts+(if  not   pumDis[1].dpControlled_dp.vol.steBal.use_mWat_flow then 1 else 0)
+  951+(if  not transfer.ufh[1].panelHeatingSegment[1].vol.use_portsData then 4*  transfer.ufh[1].panelHeatingSegment[1].vol.nPorts else 0)+13*transfer.ufh[1].panelHeatingSegment[1].vol.nPorts  +(if  not transfer.ufh[1].panelHeatingSegment[1].twoStar_RadEx.use_A_in then 1   else 0)+(if  not transfer.ufh[1].panelHeatingSegment[2].vol.use_portsData   then 4*transfer.ufh[1].panelHeatingSegment[2].vol.nPorts else 0)+13*  transfer.ufh[1].panelHeatingSegment[2].vol.nPorts+(if  not transfer.ufh[1].panelHeatingSegment[2].twoStar_RadEx.use_A_in   then 1 else 0)+(if  not transfer.ufh[1].panelHeatingSegment[3].vol.use_portsData   then 4*transfer.ufh[1].panelHeatingSegment[3].vol.nPorts else 0)+13*  transfer.ufh[1].panelHeatingSegment[3].vol.nPorts+(if  not transfer.ufh[1].panelHeatingSegment[3].twoStar_RadEx.use_A_in   then 1 else 0)+(if  not transfer.ufh[1].panelHeatingSegment[4].vol.use_portsData   then 4*transfer.ufh[1].panelHeatingSegment[4].vol.nPorts else 0)+13*  transfer.ufh[1].panelHeatingSegment[4].vol.nPorts+(if  not transfer.ufh[1].panelHeatingSegment[4].twoStar_RadEx.use_A_in   then 1 else 0)+(if  not transfer.ufh[1].panelHeatingSegment[5].vol.use_portsData   then 4*transfer.ufh[1].panelHeatingSegment[5].vol.nPorts else 0)+13*  transfer.ufh[1].panelHeatingSegment[5].vol.nPorts+(if  not transfer.ufh[1].panelHeatingSegment[5].twoStar_RadEx.use_A_in   then 1 else 0)+(if bou1[1].use_Xi_in then 1 else (if bou1[1].use_X_in then 0   else 1))+(if  not bou1[1].use_p_in then 1 else 0)+2*bou1[1].nPorts+(if  not   bou1[1].use_T_in then 1 else 0)+(if  not transfer.pumpFix_m_flow[1].vol.dynBal.use_mWat_flow   then 1 else 0)+3*transfer.pumpFix_m_flow[1].vol.dynBal.nPorts+(if  not   vol[1].dynBal.use_mWat_flow then 1 else 0)+3*vol[1].dynBal.nPorts+(if  not   pumDis[1].dpControlled_dp.vol.steBal.use_mWat_flow then 1 else 0)
 scalar equations.
 However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
-  1148
+  1146
 Check of BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating successful.
 Declaring variable: Boolean rCheck ;
 
@@ -1561,26 +1561,26 @@ an inner "system" component is not defined.
 For simulation drag Modelica.Fluid.System into your model
 to specify system properties.
  
-The DAE has 1148 scalar unknowns and 1148 scalar equations.
+The DAE has 1146 scalar unknowns and 1146 scalar equations.
  
 Statistics
  
 Original Model
-  Number of components: 234
-  Variables: 2557
+  Number of components: 232
+  Variables: 2555
   Constants: 24 (24 scalars)
   Parameters: 1189 (1449 scalars)
-  Unknowns: 1344 (1185 scalars)
+  Unknowns: 1342 (1183 scalars)
   Differentiated variables: 31 scalars
-  Equations: 1080
-  Nontrivial: 883
+  Equations: 1078
+  Nontrivial: 881
 Translated Model
-  Constants: 1100 scalars
+  Constants: 1099 scalars
   Free parameters: 174 scalars
   Parameter depending: 593 scalars
   Outputs: 1 scalars
   Continuous time states: 18 scalars
-  Time-varying variables: 265 scalars
+  Time-varying variables: 264 scalars
   Alias variables: 526 scalars
   Number of mixed real/discrete systems of equations: 0
   Sizes of linear systems of equations: { }
@@ -1885,11 +1885,11 @@ rCheck = checkModel("BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage"
 Check of BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage
 In value attribute for resTra[1].m_flow_nominal.
 Modifier applied in class BESMod.Systems.Hydraulical.Distribution.Tests.BaseClasses.PartialTest.
-  File: /tmp/tmp-BESMod-3-mtfhaow3/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 3
+  File: /tmp/tmp-BESMod-3-wrmu2dw7/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 3
 Modifier applied for component resTra.m_flow_nominal.
   File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/PartialTwoPortInterface.mo, line 8
 Variable found in class BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage.
-  Near file: /tmp/tmp-BESMod-3-mtfhaow3/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 2
+  Near file: /tmp/tmp-BESMod-3-wrmu2dw7/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 2
 Variable found in base-class resTra.PartialTwoPortInterface.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/BaseClasses/PartialResistance.mo, line 3
 Warning: Error for array of components: Modifier(=fill(sum(distribution.Q_flow_design)/dTDem_nominal/4184, distribution.nParallelSup)) dimension 1 is 2, but the modifee expected 1.
@@ -1912,11 +1912,11 @@ simulateModel("BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage", stop
 Translation of BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage
 In value attribute for resTra[1].m_flow_nominal.
 Modifier applied in class BESMod.Systems.Hydraulical.Distribution.Tests.BaseClasses.PartialTest.
-  File: /tmp/tmp-BESMod-3-mtfhaow3/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 3
+  File: /tmp/tmp-BESMod-3-wrmu2dw7/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 3
 Modifier applied for component resTra.m_flow_nominal.
   File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/PartialTwoPortInterface.mo, line 8
 Variable found in class BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage.
-  Near file: /tmp/tmp-BESMod-3-mtfhaow3/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 2
+  Near file: /tmp/tmp-BESMod-3-wrmu2dw7/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 2
 Variable found in base-class resTra.PartialTwoPortInterface.
   Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/BaseClasses/PartialResistance.mo, line 3
 Warning: Error for array of components: Modifier(=fill(sum(distribution.Q_flow_design)/dTDem_nominal/4184, distribution.nParallelSup)) dimension 1 is 2, but the modifee expected 1.
