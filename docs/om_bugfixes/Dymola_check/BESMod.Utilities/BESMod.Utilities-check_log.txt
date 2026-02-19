@@ -1,0 +1,200 @@
+
+Error in model:  BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve 
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve</a>
+Note: 
+Your model is using an outer "system" component but
+an inner "system" component is not defined.
+For simulation drag Modelica.Fluid.System into your model
+to specify system properties.
+
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+In call connect(<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#diagram$hydraulic.transfer:res.port_a,resMaiLin.port_b">res[i].port_a, resMaiLin[1].port_b</a>)
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/UFHTransferSystem.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem#text:137">138</a>
+Error: Use of undeclared variable: <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#text$hydraulic.transfer:res.port_a">res[i].port_a</a>
+In class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem">BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/UFHTransferSystem.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem#text">2</a>
+Used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.HeatingCurve#$hydraulic:transfer">hydraulic.transfer</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/UnderfloorHeating/Partial.mo, line 10
+The model contained invalid expressions.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Utilities.TimeConstantEstimation.Radiator.SmartThermostat 
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.SmartThermostat">BESMod.Utilities.TimeConstantEstimation.Radiator.SmartThermostat</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+In call connect(<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.SmartThermostat#diagram$hydraulic.transfer:res.port_a,volSup.ports">res[i].port_a, volSup.ports[i + 1]</a>)
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/BaseClasses/CustomRadiator.mo, line <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator#text:166">167</a>
+Error: Use of undeclared variable: <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.SmartThermostat#text$hydraulic.transfer:res.port_a">res[i].port_a</a>
+In class <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator">BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/BaseClasses/CustomRadiator.mo, line <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator#text">2</a>
+Used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.SmartThermostat#$hydraulic:transfer">hydraulic.transfer</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/Radiator/Partial.mo, line 12
+The model contained invalid expressions.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Utilities.TimeConstantEstimation.Radiator.Partial 
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.Partial">BESMod.Utilities.TimeConstantEstimation.Radiator.Partial</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+In call connect(<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.Partial#diagram$hydraulic.transfer:res.port_a,volSup.ports">res[i].port_a, volSup.ports[i + 1]</a>)
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/BaseClasses/CustomRadiator.mo, line <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator#text:166">167</a>
+Error: Use of undeclared variable: <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.Partial#text$hydraulic.transfer:res.port_a">res[i].port_a</a>
+In class <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator">BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/BaseClasses/CustomRadiator.mo, line <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator#text">2</a>
+Used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.Partial#$hydraulic:transfer">hydraulic.transfer</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/Radiator/Partial.mo, line 12
+Check is assuming: QBuiNoRetrofit_flow_nominal = fill(0, 1)
+Check is assuming: hydraulic.transfer.dpPipSca_design = fill(0, 1)
+The model contained invalid expressions.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Utilities.TimeConstantEstimation.Radiator.ConstantSupply 
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.ConstantSupply">BESMod.Utilities.TimeConstantEstimation.Radiator.ConstantSupply</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+In call connect(<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.ConstantSupply#diagram$hydraulic.transfer:res.port_a,volSup.ports">res[i].port_a, volSup.ports[i + 1]</a>)
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/BaseClasses/CustomRadiator.mo, line <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator#text:166">167</a>
+Error: Use of undeclared variable: <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.ConstantSupply#text$hydraulic.transfer:res.port_a">res[i].port_a</a>
+In class <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator">BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/BaseClasses/CustomRadiator.mo, line <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator#text">2</a>
+Used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.ConstantSupply#$hydraulic:transfer">hydraulic.transfer</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/Radiator/Partial.mo, line 12
+The model contained invalid expressions.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply 
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply</a>
+Note: 
+Your model is using an outer "system" component but
+an inner "system" component is not defined.
+For simulation drag Modelica.Fluid.System into your model
+to specify system properties.
+
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+In call connect(<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#diagram$hydraulic.transfer:res.port_a,resMaiLin.port_b">res[i].port_a, resMaiLin[1].port_b</a>)
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/UFHTransferSystem.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem#text:137">138</a>
+Error: Use of undeclared variable: <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#text$hydraulic.transfer:res.port_a">res[i].port_a</a>
+In class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem">BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/UFHTransferSystem.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem#text">2</a>
+Used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.ConstantSupply#$hydraulic:transfer">hydraulic.transfer</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/UnderfloorHeating/Partial.mo, line 10
+The model contained invalid expressions.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Utilities.TimeConstantEstimation.Radiator.HeatingCurve 
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.HeatingCurve">BESMod.Utilities.TimeConstantEstimation.Radiator.HeatingCurve</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+In call connect(<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.HeatingCurve#diagram$hydraulic.transfer:res.port_a,volSup.ports">res[i].port_a, volSup.ports[i + 1]</a>)
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/BaseClasses/CustomRadiator.mo, line <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator#text:166">167</a>
+Error: Use of undeclared variable: <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.HeatingCurve#text$hydraulic.transfer:res.port_a">res[i].port_a</a>
+In class <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator">BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/BaseClasses/CustomRadiator.mo, line <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator#text">2</a>
+Used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.Radiator.HeatingCurve#$hydraulic:transfer">hydraulic.transfer</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/Radiator/Partial.mo, line 12
+The model contained invalid expressions.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator 
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator">BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: rad.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: volSup.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: volRet.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Check is assuming: nParallelDem = 1
+In call connect(<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator#diagram:res.port_a,volSup.ports">res[i].port_a, volSup.ports[i + 1]</a>)
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/BaseClasses/CustomRadiator.mo, line <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator#text:166">167</a>
+Error: Use of undeclared variable: <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator#text:res.port_a">res[i].port_a</a>
+In class <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator">BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/BaseClasses/CustomRadiator.mo, line <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.BaseClasses.CustomRadiator#text">2</a>
+Check is assuming: Q_flow_nominal = fill(1e-15, 1)
+Check is assuming: dpPipSca_design = fill(0, 1)
+The model contained invalid expressions.
+Check aborted.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.Partial 
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.Partial">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.Partial</a>
+Note: 
+Your model is using an outer "system" component but
+an inner "system" component is not defined.
+For simulation drag Modelica.Fluid.System into your model
+to specify system properties.
+
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+In call connect(<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.Partial#diagram$hydraulic.transfer:res.port_a,resMaiLin.port_b">res[i].port_a, resMaiLin[1].port_b</a>)
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/UFHTransferSystem.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem#text:137">138</a>
+Error: Use of undeclared variable: <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.Partial#text$hydraulic.transfer:res.port_a">res[i].port_a</a>
+In class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem">BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/UFHTransferSystem.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem#text">2</a>
+Used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.Partial#$hydraulic:transfer">hydraulic.transfer</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/UnderfloorHeating/Partial.mo, line 10
+The model contained invalid expressions.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat 
+Check of <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat">BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat</a>
+Note: 
+Your model is using an outer "system" component but
+an inner "system" component is not defined.
+For simulation drag Modelica.Fluid.System into your model
+to specify system properties.
+
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+In call connect(<a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#diagram$hydraulic.transfer:res.port_a,resMaiLin.port_b">res[i].port_a, resMaiLin[1].port_b</a>)
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/UFHTransferSystem.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem#text:137">138</a>
+Error: Use of undeclared variable: <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#text$hydraulic.transfer:res.port_a">res[i].port_a</a>
+In class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem">BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/UFHTransferSystem.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem#text">2</a>
+Used in component <a href="Modelica://BESMod.Utilities.TimeConstantEstimation.UnderfloorHeating.SmartThermostat#$hydraulic:transfer">hydraulic.transfer</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Utilities/TimeConstantEstimation/UnderfloorHeating/Partial.mo, line 10
+The model contained invalid expressions.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+

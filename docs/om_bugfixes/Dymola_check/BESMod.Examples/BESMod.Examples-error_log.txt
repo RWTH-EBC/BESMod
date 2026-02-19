@@ -1,0 +1,742 @@
+
+Error in model:  BESMod.Examples.Retrofit.Case1NoRetrofit 
+Check of <a href="Modelica://BESMod.Examples.Retrofit.Case1NoRetrofit">BESMod.Examples.Retrofit.Case1NoRetrofit</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+Error: Type error for equation
+    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
+found in class <a href="Modelica://BESMod.Systems.Hydraulical.HydraulicSystem">BESMod.Systems.Hydraulical.HydraulicSystem</a>, and used in component <a href="Modelica://BESMod.Examples.Retrofit.Case1NoRetrofit#:hydraulic">hydraulic</a>.
+Error: The left hand side of the following equation is a scalar
+and the right hand side is a vector, i.e. it has non-compatible parts:
+    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
+
+Basic type inconsistencies detected.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.Retrofit.PartialCase 
+Check of <a href="Modelica://BESMod.Examples.Retrofit.PartialCase">BESMod.Examples.Retrofit.PartialCase</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+Error: Type error for equation
+    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
+found in class <a href="Modelica://BESMod.Systems.Hydraulical.HydraulicSystem">BESMod.Systems.Hydraulical.HydraulicSystem</a>, and used in component <a href="Modelica://BESMod.Examples.Retrofit.PartialCase#:hydraulic">hydraulic</a>.
+Error: The left hand side of the following equation is a scalar
+and the right hand side is a vector, i.e. it has non-compatible parts:
+    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
+
+Basic type inconsistencies detected.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.HighOrderModel.HOMSpawn 
+Check of <a href="Modelica://BESMod.Examples.HighOrderModel.HOMSpawn">BESMod.Examples.HighOrderModel.HOMSpawn</a>
+Warning: Inconsistency for connectors dimensioned using parameter with annotation(Dialog(connectorSizing=true)).
+ Some connector elements are not connected.
+This is either because the connections and/or parameters has been edited textually to an inconsistent state
+ or because the default for the parameter is not 0. The unconnected connectors are:
+  hydraulic.transfer.volSup.ports[3]
+  hydraulic.transfer.volSup.ports[4]
+  hydraulic.transfer.volSup.ports[5]
+  hydraulic.transfer.volSup.ports[6]
+  hydraulic.transfer.volSup.ports[7]
+  hydraulic.transfer.volSup.ports[8]
+  hydraulic.transfer.volSup.ports[9]
+  hydraulic.transfer.volSup.ports[10]
+  hydraulic.transfer.volSup.ports[11]
+  hydraulic.transfer.volRet.ports[3]
+  hydraulic.transfer.volRet.ports[4]
+  hydraulic.transfer.volRet.ports[5]
+  hydraulic.transfer.volRet.ports[6]
+  hydraulic.transfer.volRet.ports[7]
+  hydraulic.transfer.volRet.ports[8]
+  hydraulic.transfer.volRet.ports[9]
+  hydraulic.transfer.volRet.ports[10]
+  hydraulic.transfer.volRet.ports[11]
+
+Error: Type error for equation
+    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
+found in class <a href="Modelica://BESMod.Systems.Hydraulical.HydraulicSystem">BESMod.Systems.Hydraulical.HydraulicSystem</a>, and used in component <a href="Modelica://BESMod.Examples.HighOrderModel.HOMSpawn#:hydraulic">hydraulic</a>.
+Error: The left hand side of the following equation is a scalar
+and the right hand side is a vector, i.e. it has non-compatible parts:
+    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
+
+Basic type inconsistencies detected.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.DesignOptimization.BESNoDHW 
+Check of <a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW">BESMod.Examples.DesignOptimization.BESNoDHW</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+In call connect(<a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#diagram$hydraulic.transfer:resMaiLin.port_b,res.port_a">resMaiLin[1].port_b, res[i].port_a</a>)
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text:117">118</a>
+Error: Use of undeclared variable: <a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#text$hydraulic.transfer:res.port_a">res[i].port_a</a>
+In class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator">BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text">2</a>
+Used in component <a href="Modelica://BESMod.Examples.DesignOptimization.BESNoDHW#$hydraulic:transfer">hydraulic.transfer</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 77
+The model contained invalid expressions.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW 
+Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+In call connect(<a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW#diagram$hydraulic.transfer:resMaiLin.port_b,res.port_a">resMaiLin[1].port_b, res[i].port_a</a>)
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text:117">118</a>
+Error: Use of undeclared variable: <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW#text$hydraulic.transfer:res.port_a">res[i].port_a</a>
+In class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator">BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text">2</a>
+Used in component <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithoutDHW#$hydraulic:transfer">hydraulic.transfer</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/BaseClasses.mo, line 39
+The model contained invalid expressions.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.HeatPumpAndBoiler.Parallel 
+Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Parallel">BESMod.Examples.HeatPumpAndBoiler.Parallel</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+In call connect(<a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Parallel#diagram$hydraulic.transfer:resMaiLin.port_b,res.port_a">resMaiLin[1].port_b, res[i].port_a</a>)
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text:117">118</a>
+Error: Use of undeclared variable: <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Parallel#text$hydraulic.transfer:res.port_a">res[i].port_a</a>
+In class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator">BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text">2</a>
+Used in component <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Parallel#$hydraulic:transfer">hydraulic.transfer</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/BaseClasses.mo, line 39
+The model contained invalid expressions.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding 
+Check of <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding">BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+In call connect(<a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#diagram$hydraulic.transfer:resMaiLin.port_b,res.port_a">resMaiLin[1].port_b, res[i].port_a</a>)
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text:117">118</a>
+Error: Use of undeclared variable: <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#text$hydraulic.transfer:res.port_a">res[i].port_a</a>
+In class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator">BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text">2</a>
+Used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#$hydraulic:transfer">hydraulic.transfer</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 79
+Errors found in: state = f size(X, 1) == nX then ThermodynamicState(p=p, T=T, X=X) else ThermodynamicS...
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Media/Air.mo, line <a href="Modelica://IBPSA.Media.Air.setState_pTX#text:7">636</a>
+In call <a href="Modelica://"></a>(p=p, T=T, X=X)
+Error: Unknown function ThermodynamicState in  (function <a href="Modelica://IBPSA.Media.Air.setState_pTX">IBPSA.Media.Air.setState_pTX</a>).
+In call <a href="Modelica://"></a>(p=p, T=T, X=cat(1, X, {1 - sum(X)}))
+Error: Unknown function ThermodynamicState in  (function <a href="Modelica://IBPSA.Media.Air.setState_pTX">IBPSA.Media.Air.setState_pTX</a>).
+Errors found in: state = f size(X, 1) == nX then ThermodynamicState(p=p, T=T, X=X) else ThermodynamicS...
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Media/Air.mo, line <a href="Modelica://IBPSA.Media.Air.setState_pTX#text:7">636</a>
+In start attribute for ventilation.distribution.fanRet.port_a.h_outflow.
+Modifier applied in class <a href="Modelica://IBPSA.Fluid.Interfaces.PartialTwoPort">IBPSA.Fluid.Interfaces.PartialTwoPort</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/PreconfiguredControlledMovers/PreconfiguredDPControlled.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.PartialTwoPort#text:3">4</a>
+Modifier applied for component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#$ventilation.distribution.fanRet.port_a:h_outflow">ventilation.distribution.fanRet.port_a.h_outflow</a>.
+  File: /opt/dymola-2024xRefresh1-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Interfaces.mo, line 16
+Variable found in class <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding">BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/TEASERExport/ArchetypeExample/ResidentialBuilding/HeatPumpMonoenergeticResidentialBuilding.mo, line 2
+Variable found in base-class ventilation.distribution.fanRet.port_a.FluidPort.
+  Near file: /opt/dymola-2024xRefresh1-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Interfaces.mo, line 25
+Errors found in: state = f size(X, 1) == nX then ThermodynamicState(p=p, T=temperature_phX(p, h, X), X...
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Media/Air.mo, line <a href="Modelica://IBPSA.Media.Air.setState_phX#text:7">620</a>
+In call <a href="Modelica://"></a>(p=p, T=temperature_phX(p, h, X), X=X)
+Error: Unknown function ThermodynamicState in  (function <a href="Modelica://IBPSA.Media.Air.setState_phX">IBPSA.Media.Air.setState_phX</a>).
+In call <a href="Modelica://"></a>(p=p, T=temperature_phX(p, h, X), X=cat(1, X, {1 - sum(X)}))
+Error: Unknown function ThermodynamicState in  (function <a href="Modelica://IBPSA.Media.Air.setState_phX">IBPSA.Media.Air.setState_phX</a>).
+Errors found in: state = f size(X, 1) == nX then ThermodynamicState(p=p, T=temperature_phX(p, h, X), X...
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Media/Air.mo, line <a href="Modelica://IBPSA.Media.Air.setState_phX#text:7">620</a>
+In value attribute for ventilation.distribution.fanRet.rho_inlet.y.
+Modifier applied in class <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredDPControlled">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredDPControlled</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/PreconfiguredControlledMovers/PreconfiguredDPControlled.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredDPControlled#text">2</a>
+Modifier applied for component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#$ventilation.distribution.fanRet.rho_inlet:y">ventilation.distribution.fanRet.rho_inlet.y</a>.
+  File: /opt/dymola-2024xRefresh1-x86_64/Modelica/Library/Modelica 4.0.0/Blocks/Sources.mo, line 10
+Variable found in class <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding">BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/TEASERExport/ArchetypeExample/ResidentialBuilding/HeatPumpMonoenergeticResidentialBuilding.mo, line 2
+Variable found in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.HeatPumpMonoenergeticResidentialBuilding#$ventilation.distribution.fanRet:rho_inlet">ventilation.distribution.fanRet.rho_inlet</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/PreconfiguredControlledMovers/PreconfiguredDPControlled.mo, line 149
+The model contained invalid expressions.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.HighOrderModel.HOMAixLib 
+Check of <a href="Modelica://BESMod.Examples.HighOrderModel.HOMAixLib">BESMod.Examples.HighOrderModel.HOMAixLib</a>
+Warning: Inconsistency for connectors dimensioned using parameter with annotation(Dialog(connectorSizing=true)).
+ Some connector elements are not connected.
+This is either because the connections and/or parameters has been edited textually to an inconsistent state
+ or because the default for the parameter is not 0. The unconnected connectors are:
+  hydraulic.transfer.volSup.ports[3]
+  hydraulic.transfer.volSup.ports[4]
+  hydraulic.transfer.volSup.ports[5]
+  hydraulic.transfer.volSup.ports[6]
+  hydraulic.transfer.volSup.ports[7]
+  hydraulic.transfer.volSup.ports[8]
+  hydraulic.transfer.volSup.ports[9]
+  hydraulic.transfer.volSup.ports[10]
+  hydraulic.transfer.volSup.ports[11]
+  hydraulic.transfer.volRet.ports[3]
+  hydraulic.transfer.volRet.ports[4]
+  hydraulic.transfer.volRet.ports[5]
+  hydraulic.transfer.volRet.ports[6]
+  hydraulic.transfer.volRet.ports[7]
+  hydraulic.transfer.volRet.ports[8]
+  hydraulic.transfer.volRet.ports[9]
+  hydraulic.transfer.volRet.ports[10]
+  hydraulic.transfer.volRet.ports[11]
+
+Error: Type error for equation
+    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
+found in class <a href="Modelica://BESMod.Systems.Hydraulical.HydraulicSystem">BESMod.Systems.Hydraulical.HydraulicSystem</a>, and used in component <a href="Modelica://BESMod.Examples.HighOrderModel.HOMAixLib#:hydraulic">hydraulic</a>.
+Error: The left hand side of the following equation is a scalar
+and the right hand side is a vector, i.e. it has non-compatible parts:
+    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
+
+Basic type inconsistencies detected.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.GasBoilerBuildingOnly 
+Check of <a href="Modelica://BESMod.Examples.GasBoilerBuildingOnly">BESMod.Examples.GasBoilerBuildingOnly</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+Warning: The bus-input hydraulic.transfer.traControlBus.opening lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
+Bus-signal: opening
+Use: <a href="Modelica://BESMod.Examples.GasBoilerBuildingOnly#diagram$hydraulic.transfer:reaPasThrOpe,traControlBus"> connect(hydraulic.transfer.traControlBus.opening, hydraulic.transfer.reaPasThrOpe.u)</a>;
+Connected bus variables:
+<a href="Modelica://BESMod.Examples.GasBoilerBuildingOnly#$hydraulic.control.sigBusTra:opening">hydraulic.control.sigBusTra.opening</a> (connect) "Control output"
+input <a href="Modelica://BESMod.Examples.GasBoilerBuildingOnly#$hydraulic.transfer.traControlBus:opening">hydraulic.transfer.traControlBus.opening</a> (connect) "Actuator position (0: closed, 1: open)"
+Error: Type error for equation
+    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
+found in class <a href="Modelica://BESMod.Systems.Hydraulical.HydraulicSystem">BESMod.Systems.Hydraulical.HydraulicSystem</a>, and used in component <a href="Modelica://BESMod.Examples.GasBoilerBuildingOnly#:hydraulic">hydraulic</a>.
+Error: The left hand side of the following equation is a scalar
+and the right hand side is a vector, i.e. it has non-compatible parts:
+    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
+
+Basic type inconsistencies detected.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.Retrofit.Case1PartialRetrofit 
+Check of <a href="Modelica://BESMod.Examples.Retrofit.Case1PartialRetrofit">BESMod.Examples.Retrofit.Case1PartialRetrofit</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+Warning: The bus-input hydraulic.transfer.traControlBus.opening lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
+Bus-signal: opening
+Use: <a href="Modelica://BESMod.Examples.Retrofit.Case1PartialRetrofit#diagram$hydraulic.transfer:reaPasThrOpe,traControlBus"> connect(hydraulic.transfer.traControlBus.opening, hydraulic.transfer.reaPasThrOpe.u)</a>;
+Connected bus variables:
+<a href="Modelica://BESMod.Examples.Retrofit.Case1PartialRetrofit#$hydraulic.control.sigBusTra:opening">hydraulic.control.sigBusTra.opening</a> (connect) "Control output"
+input <a href="Modelica://BESMod.Examples.Retrofit.Case1PartialRetrofit#$hydraulic.transfer.traControlBus:opening">hydraulic.transfer.traControlBus.opening</a> (connect) "Actuator position (0: closed, 1: open)"
+Error: Type error for equation
+    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
+found in class <a href="Modelica://BESMod.Systems.Hydraulical.HydraulicSystem">BESMod.Systems.Hydraulical.HydraulicSystem</a>, and used in component <a href="Modelica://BESMod.Examples.Retrofit.Case1PartialRetrofit#:hydraulic">hydraulic</a>.
+Error: The left hand side of the following equation is a scalar
+and the right hand side is a vector, i.e. it has non-compatible parts:
+    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
+
+Basic type inconsistencies detected.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.HeatPumpAndBoiler.Serial 
+Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Serial">BESMod.Examples.HeatPumpAndBoiler.Serial</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+In call connect(<a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Serial#diagram$hydraulic.transfer:resMaiLin.port_b,res.port_a">resMaiLin[1].port_b, res[i].port_a</a>)
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text:117">118</a>
+Error: Use of undeclared variable: <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Serial#text$hydraulic.transfer:res.port_a">res[i].port_a</a>
+In class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator">BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text">2</a>
+Used in component <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.Serial#$hydraulic:transfer">hydraulic.transfer</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/BaseClasses.mo, line 39
+The model contained invalid expressions.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.Retrofit.Case1TotalRetrofit 
+Check of <a href="Modelica://BESMod.Examples.Retrofit.Case1TotalRetrofit">BESMod.Examples.Retrofit.Case1TotalRetrofit</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+Error: Type error for equation
+    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
+found in class <a href="Modelica://BESMod.Systems.Hydraulical.HydraulicSystem">BESMod.Systems.Hydraulical.HydraulicSystem</a>, and used in component <a href="Modelica://BESMod.Examples.Retrofit.Case1TotalRetrofit#:hydraulic">hydraulic</a>.
+Error: The left hand side of the following equation is a scalar
+and the right hand side is a vector, i.e. it has non-compatible parts:
+    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
+
+Basic type inconsistencies detected.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.SolarThermalSystem.SolarThermalAixLib 
+Check of <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib">BESMod.Examples.SolarThermalSystem.SolarThermalAixLib</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+Warning: The bus-input hydraulic.transfer.traControlBus.opening lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
+Bus-signal: opening
+Use: <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib#diagram$hydraulic.transfer:reaPasThrOpe,traControlBus"> connect(hydraulic.transfer.traControlBus.opening, hydraulic.transfer.reaPasThrOpe.u)</a>;
+Connected bus variables:
+<a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib#$hydraulic.control.sigBusTra:opening">hydraulic.control.sigBusTra.opening</a> (connect) "Control output"
+input <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib#$hydraulic.transfer.traControlBus:opening">hydraulic.transfer.traControlBus.opening</a> (connect) "Actuator position (0: closed, 1: open)"
+Error: Type error for equation
+    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
+found in class <a href="Modelica://BESMod.Systems.Hydraulical.HydraulicSystem">BESMod.Systems.Hydraulical.HydraulicSystem</a>, and used in component <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalAixLib#:hydraulic">hydraulic</a>.
+Error: The left hand side of the following equation is a scalar
+and the right hand side is a vector, i.e. it has non-compatible parts:
+    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
+
+Basic type inconsistencies detected.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.ModelicaConferencePaper.TEASERBuilding 
+Check of <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding">BESMod.Examples.ModelicaConferencePaper.TEASERBuilding</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+In call connect(<a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#diagram$hydraulic.transfer:resMaiLin.port_b,res.port_a">resMaiLin[1].port_b, res[i].port_a</a>)
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text:117">118</a>
+Error: Use of undeclared variable: <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#text$hydraulic.transfer:res.port_a">res[i].port_a</a>
+In class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator">BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text">2</a>
+Used in component <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#$hydraulic:transfer">hydraulic.transfer</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 69
+Errors found in: state = f size(X, 1) == nX then ThermodynamicState(p=p, T=T, X=X) else ThermodynamicS...
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Media/Air.mo, line <a href="Modelica://IBPSA.Media.Air.setState_pTX#text:7">636</a>
+In call <a href="Modelica://"></a>(p=p, T=T, X=X)
+Error: Unknown function ThermodynamicState in  (function <a href="Modelica://IBPSA.Media.Air.setState_pTX">IBPSA.Media.Air.setState_pTX</a>).
+In call <a href="Modelica://"></a>(p=p, T=T, X=cat(1, X, {1 - sum(X)}))
+Error: Unknown function ThermodynamicState in  (function <a href="Modelica://IBPSA.Media.Air.setState_pTX">IBPSA.Media.Air.setState_pTX</a>).
+Errors found in: state = f size(X, 1) == nX then ThermodynamicState(p=p, T=T, X=X) else ThermodynamicS...
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Media/Air.mo, line <a href="Modelica://IBPSA.Media.Air.setState_pTX#text:7">636</a>
+In start attribute for ventilation.distribution.fanRet.port_a.h_outflow.
+Modifier applied in class <a href="Modelica://IBPSA.Fluid.Interfaces.PartialTwoPort">IBPSA.Fluid.Interfaces.PartialTwoPort</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/PreconfiguredControlledMovers/PreconfiguredDPControlled.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.PartialTwoPort#text:3">4</a>
+Modifier applied for component <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding#$ventilation.distribution.fanRet.port_a:h_outflow">ventilation.distribution.fanRet.port_a.h_outflow</a>.
+  File: /opt/dymola-2024xRefresh1-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Interfaces.mo, line 16
+Variable found in class <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.TEASERBuilding">BESMod.Examples.ModelicaConferencePaper.TEASERBuilding</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/TEASERBuilding.mo, line 2
+Variable found in base-class ventilation.distribution.fanRet.port_a.FluidPort.
+  Near file: /opt/dymola-2024xRefresh1-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Interfaces.mo, line 25
+The model contained invalid expressions.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS 
+Check of <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS">BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+Check is assuming: hydraulic.generation.dTTra_nominal = fill(0, 2)
+Warning: The bus-input hydraulic.control.setAndMeaSelPri.sigBusGen.TGenOutMea lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
+Bus-signal: TGenOutMea
+Use: <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#diagram$hydraulic.control.setAndMeaSelSec:reaPasTrhGenSup,sigBusGen"> connect(hydraulic.control.setAndMeaSelSec.sigBusGen.TGenOutMea, hydraulic.control.setAndMeaSelSec.reaPasTrhGenSup.u)</a>;
+Use: <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#diagram$hydraulic.control.setAndMeaSelPri:reaPasTrhGenSup,sigBusGen"> connect(hydraulic.control.setAndMeaSelPri.sigBusGen.TGenOutMea, hydraulic.control.setAndMeaSelPri.reaPasTrhGenSup.u)</a>;
+Connected bus variables:
+<a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#$hydraulic.control.sigBusGen:TGenOutMea">hydraulic.control.sigBusGen.TGenOutMea</a> (connect) "Connector of Real input signal"
+<a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#$hydraulic.generation.sigBusGen:TGenOutMea">hydraulic.generation.sigBusGen.TGenOutMea</a> (connect)
+input <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#$hydraulic.control.setAndMeaSelSec.sigBusGen:TGenOutMea">hydraulic.control.setAndMeaSelSec.sigBusGen.TGenOutMea</a> (connect)
+input <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#$hydraulic.control.setAndMeaSelPri.sigBusGen:TGenOutMea">hydraulic.control.setAndMeaSelPri.sigBusGen.TGenOutMea</a> (connect)
+Warning: The bus-input hydraulic.control.sigBusGen.heaPumIsOn lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
+Bus-signal: heaPumIsOn
+Use: <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#diagram$hydraulic.control:priGenPIDCtrl,sigBusGen"> connect(hydraulic.control.sigBusGen.heaPumIsOn, hydraulic.control.priGenPIDCtrl.isOn)</a>;
+Connected bus variables:
+<a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#$hydraulic.control.setAndMeaSelPri.sigBusGen:heaPumIsOn">hydraulic.control.setAndMeaSelPri.sigBusGen.heaPumIsOn</a> (connect) "True if the device is actually on"
+<a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#$hydraulic.control.setAndMeaSelSec.sigBusGen:heaPumIsOn">hydraulic.control.setAndMeaSelSec.sigBusGen.heaPumIsOn</a> (connect)
+<a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#$hydraulic.generation.sigBusGen:heaPumIsOn">hydraulic.generation.sigBusGen.heaPumIsOn</a> (connect)
+input <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#$hydraulic.control.sigBusGen:heaPumIsOn">hydraulic.control.sigBusGen.heaPumIsOn</a> (connect)
+Warning: The bus-input hydraulic.transfer.traControlBus.opening lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
+Bus-signal: opening
+Use: <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#diagram$hydraulic.transfer:reaPasThrOpe,traControlBus"> connect(hydraulic.transfer.traControlBus.opening, hydraulic.transfer.reaPasThrOpe.u)</a>;
+Connected bus variables:
+<a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#$hydraulic.control.sigBusTra:opening">hydraulic.control.sigBusTra.opening</a> (connect) "Control output"
+input <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#$hydraulic.transfer.traControlBus:opening">hydraulic.transfer.traControlBus.opening</a> (connect) "Actuator position (0: closed, 1: open)"
+Error: Type error for equation
+    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
+found in class <a href="Modelica://BESMod.Systems.Hydraulical.HydraulicSystem">BESMod.Systems.Hydraulical.HydraulicSystem</a>, and used in component <a href="Modelica://BESMod.Examples.SolarThermalSystem.PartialSolarThermalHPS#:hydraulic">hydraulic</a>.
+Error: The left hand side of the following equation is a scalar
+and the right hand side is a vector, i.e. it has non-compatible parts:
+    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
+
+Basic type inconsistencies detected.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW 
+Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW">BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+In call connect(<a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW#diagram$hydraulic.transfer:resMaiLin.port_b,res.port_a">resMaiLin[1].port_b, res[i].port_a</a>)
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text:117">118</a>
+Error: Use of undeclared variable: <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW#text$hydraulic.transfer:res.port_a">res[i].port_a</a>
+In class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator">BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text">2</a>
+Used in component <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.AfterBufferWithDHW#$hydraulic:transfer">hydraulic.transfer</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/BaseClasses.mo, line 39
+The model contained invalid expressions.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase 
+Check of <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>
+In call connect(<a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase#diagram$hydraulic.transfer:resMaiLin.port_b,res.port_a">resMaiLin[1].port_b, res[i].port_a</a>)
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text:117">118</a>
+Error: Use of undeclared variable: <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase#text$hydraulic.transfer:res.port_a">res[i].port_a</a>
+In class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator">BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text">2</a>
+Used in component <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase#$hydraulic:transfer">hydraulic.transfer</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 69
+Check is assuming: building.AZone = fill(0.1, 1)
+Check is assuming: building.hZone = fill(0.1, 1)
+Errors found in: state = f size(X, 1) == nX then ThermodynamicState(p=p, T=T, X=X) else ThermodynamicS...
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Media/Air.mo, line <a href="Modelica://IBPSA.Media.Air.setState_pTX#text:7">636</a>
+In call <a href="Modelica://"></a>(p=p, T=T, X=X)
+Error: Unknown function ThermodynamicState in  (function <a href="Modelica://IBPSA.Media.Air.setState_pTX">IBPSA.Media.Air.setState_pTX</a>).
+In call <a href="Modelica://"></a>(p=p, T=T, X=cat(1, X, {1 - sum(X)}))
+Error: Unknown function ThermodynamicState in  (function <a href="Modelica://IBPSA.Media.Air.setState_pTX">IBPSA.Media.Air.setState_pTX</a>).
+Errors found in: state = f size(X, 1) == nX then ThermodynamicState(p=p, T=T, X=X) else ThermodynamicS...
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Media/Air.mo, line <a href="Modelica://IBPSA.Media.Air.setState_pTX#text:7">636</a>
+In start attribute for ventilation.distribution.fanRet.port_a.h_outflow.
+Modifier applied in class <a href="Modelica://IBPSA.Fluid.Interfaces.PartialTwoPort">IBPSA.Fluid.Interfaces.PartialTwoPort</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/PreconfiguredControlledMovers/PreconfiguredDPControlled.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.PartialTwoPort#text:3">4</a>
+Modifier applied for component <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase#$ventilation.distribution.fanRet.port_a:h_outflow">ventilation.distribution.fanRet.port_a.h_outflow</a>.
+  File: /opt/dymola-2024xRefresh1-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Interfaces.mo, line 16
+Variable found in class <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase">BESMod.Examples.ModelicaConferencePaper.PartialModelicaConferenceUseCase</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 2
+Variable found in base-class ventilation.distribution.fanRet.port_a.FluidPort.
+  Near file: /opt/dymola-2024xRefresh1-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Interfaces.mo, line 25
+Check is assuming: building.hBui = 0.1
+Check is assuming: hydraulic.transfer.dpPipSca_design = fill(0, 1)
+Check is assuming: building.ABui = 0.1
+The model contained invalid expressions.
+Check aborted.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.DesignOptimization.BES 
+Check of <a href="Modelica://BESMod.Examples.DesignOptimization.BES">BESMod.Examples.DesignOptimization.BES</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+In call connect(<a href="Modelica://BESMod.Examples.DesignOptimization.BES#diagram$hydraulic.transfer:resMaiLin.port_b,res.port_a">resMaiLin[1].port_b, res[i].port_a</a>)
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text:117">118</a>
+Error: Use of undeclared variable: <a href="Modelica://BESMod.Examples.DesignOptimization.BES#text$hydraulic.transfer:res.port_a">res[i].port_a</a>
+In class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator">BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text">2</a>
+Used in component <a href="Modelica://BESMod.Examples.DesignOptimization.BES#$hydraulic:transfer">hydraulic.transfer</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/DesignOptimization/BES.mo, line 77
+The model contained invalid expressions.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding 
+Check of <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding">BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+Warning: The bus-input hydraulic.transfer.traControlBus.opening lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
+Bus-signal: opening
+Use: <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding#diagram$hydraulic.transfer:reaPasThrOpe,traControlBus"> connect(hydraulic.transfer.traControlBus.opening, hydraulic.transfer.reaPasThrOpe.u)</a>;
+Connected bus variables:
+<a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding#$hydraulic.control.sigBusTra:opening">hydraulic.control.sigBusTra.opening</a> (connect) "Control output"
+input <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding#$hydraulic.transfer.traControlBus:opening">hydraulic.transfer.traControlBus.opening</a> (connect) "Actuator position (0: closed, 1: open)"
+Error: Type error for equation
+    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
+found in class <a href="Modelica://BESMod.Systems.Hydraulical.HydraulicSystem">BESMod.Systems.Hydraulical.HydraulicSystem</a>, and used in component <a href="Modelica://BESMod.Examples.TEASERExport.ArchetypeExample.ResidentialBuilding.GasBoilerBuildingOnlyResidentialBuilding#:hydraulic">hydraulic</a>.
+Error: The left hand side of the following equation is a scalar
+and the right hand side is a vector, i.e. it has non-compatible parts:
+    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
+
+Basic type inconsistencies detected.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom 
+Check of <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom">BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom</a>
+In call connect(<a href="Modelica://BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom#diagram$hydraulic.transfer:resMaiLin.port_b,res.port_a">resMaiLin[1].port_b, res[i].port_a</a>)
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text:117">118</a>
+Error: Use of undeclared variable: <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom#text$hydraulic.transfer:res.port_a">res[i].port_a</a>
+In class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator">BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text">2</a>
+Used in component <a href="Modelica://BESMod.Examples.ModelicaConferencePaper.BuildingsLibraryRoom#$hydraulic:transfer">hydraulic.transfer</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/ModelicaConferencePaper/PartialModelicaConferenceUseCase.mo, line 69
+The model contained invalid expressions.
+Check aborted.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.SolarThermalSystem.SolarThermalBuildings 
+Check of <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings">BESMod.Examples.SolarThermalSystem.SolarThermalBuildings</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+Error: Type error for equation
+    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
+found in class <a href="Modelica://BESMod.Systems.Hydraulical.HydraulicSystem">BESMod.Systems.Hydraulical.HydraulicSystem</a>, and used in component <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings#:hydraulic">hydraulic</a>.
+Error: The left hand side of the following equation is a scalar
+and the right hand side is a vector, i.e. it has non-compatible parts:
+    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
+
+Basic type inconsistencies detected.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.BAUSimStudy.Case1Standard 
+Check of <a href="Modelica://BESMod.Examples.BAUSimStudy.Case1Standard">BESMod.Examples.BAUSimStudy.Case1Standard</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+Error: Type error for equation
+    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
+found in class <a href="Modelica://BESMod.Systems.Hydraulical.HydraulicSystem">BESMod.Systems.Hydraulical.HydraulicSystem</a>, and used in component <a href="Modelica://BESMod.Examples.BAUSimStudy.Case1Standard#:hydraulic">hydraulic</a>.
+Error: The left hand side of the following equation is a scalar
+and the right hand side is a vector, i.e. it has non-compatible parts:
+    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
+
+Basic type inconsistencies detected.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM 
+Check of <a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM">BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM</a>
+Check is assuming: building.hBui = 0.1
+Check is assuming: building.ABui = 0.1
+Warning: Inconsistency for connectors dimensioned using parameter with annotation(Dialog(connectorSizing=true)).
+ Some connector elements are not connected.
+This is either because the connections and/or parameters has been edited textually to an inconsistent state
+ or because the default for the parameter is not 0. The unconnected connectors are:
+  hydraulic.transfer.volRet.ports[3]
+  hydraulic.transfer.volRet.ports[4]
+  hydraulic.transfer.volRet.ports[5]
+  hydraulic.transfer.volRet.ports[6]
+  hydraulic.transfer.volRet.ports[7]
+  hydraulic.transfer.volRet.ports[8]
+  hydraulic.transfer.volRet.ports[9]
+  hydraulic.transfer.volRet.ports[10]
+  hydraulic.transfer.volRet.ports[11]
+  hydraulic.transfer.volSup.ports[3]
+  hydraulic.transfer.volSup.ports[4]
+  hydraulic.transfer.volSup.ports[5]
+  hydraulic.transfer.volSup.ports[6]
+  hydraulic.transfer.volSup.ports[7]
+  hydraulic.transfer.volSup.ports[8]
+  hydraulic.transfer.volSup.ports[9]
+  hydraulic.transfer.volSup.ports[10]
+  hydraulic.transfer.volSup.ports[11]
+
+Warning: The bus-input hydraulic.control.buiMeaBus.TZoneMea[1] lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
+Bus-signal: TZoneMea[1]
+Use: <a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#diagram$hydraulic.control:buiAndDHWCtr,buiMeaBus"> connect(hydraulic.control.buiMeaBus.TZoneMea[1], hydraulic.control.buiAndDHWCtr.TZoneMea[1])</a>;
+Connected bus variables:
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$building.buiMeaBus:TZoneMea">building.buiMeaBus.TZoneMea[1]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$electrical.buiMeaBus:TZoneMea">electrical.buiMeaBus.TZoneMea[1]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$hydraulic.buiMeaBus:TZoneMea">hydraulic.buiMeaBus.TZoneMea[1]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$electrical.control.buiMeaBus:TZoneMea">electrical.control.buiMeaBus.TZoneMea[1]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$control.buiMeaBus:TZoneMea">control.buiMeaBus.TZoneMea[1]</a> (connect)
+input <a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$hydraulic.control.buiMeaBus:TZoneMea">hydraulic.control.buiMeaBus.TZoneMea[1]</a> (connect)
+Warning: The bus-input hydraulic.control.buiMeaBus.TZoneMea[2] lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
+Bus-signal: TZoneMea[2]
+Use: <a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#diagram$hydraulic.control:buiAndDHWCtr,buiMeaBus"> connect(hydraulic.control.buiMeaBus.TZoneMea[2], hydraulic.control.buiAndDHWCtr.TZoneMea[2])</a>;
+Connected bus variables:
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$building.buiMeaBus:TZoneMea">building.buiMeaBus.TZoneMea[2]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$electrical.buiMeaBus:TZoneMea">electrical.buiMeaBus.TZoneMea[2]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$hydraulic.buiMeaBus:TZoneMea">hydraulic.buiMeaBus.TZoneMea[2]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$electrical.control.buiMeaBus:TZoneMea">electrical.control.buiMeaBus.TZoneMea[2]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$control.buiMeaBus:TZoneMea">control.buiMeaBus.TZoneMea[2]</a> (connect)
+input <a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$hydraulic.control.buiMeaBus:TZoneMea">hydraulic.control.buiMeaBus.TZoneMea[2]</a> (connect)
+Warning: The bus-input hydraulic.control.buiMeaBus.TZoneMea[3] lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
+Bus-signal: TZoneMea[3]
+Use: <a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#diagram$hydraulic.control:buiAndDHWCtr,buiMeaBus"> connect(hydraulic.control.buiMeaBus.TZoneMea[3], hydraulic.control.buiAndDHWCtr.TZoneMea[3])</a>;
+Connected bus variables:
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$building.buiMeaBus:TZoneMea">building.buiMeaBus.TZoneMea[3]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$control.buiMeaBus:TZoneMea">control.buiMeaBus.TZoneMea[3]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$hydraulic.buiMeaBus:TZoneMea">hydraulic.buiMeaBus.TZoneMea[3]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$electrical.control.buiMeaBus:TZoneMea">electrical.control.buiMeaBus.TZoneMea[3]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$electrical.buiMeaBus:TZoneMea">electrical.buiMeaBus.TZoneMea[3]</a> (connect)
+input <a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$hydraulic.control.buiMeaBus:TZoneMea">hydraulic.control.buiMeaBus.TZoneMea[3]</a> (connect)
+Warning: The bus-input hydraulic.control.buiMeaBus.TZoneMea[4] lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
+Bus-signal: TZoneMea[4]
+Use: <a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#diagram$hydraulic.control:buiAndDHWCtr,buiMeaBus"> connect(hydraulic.control.buiMeaBus.TZoneMea[4], hydraulic.control.buiAndDHWCtr.TZoneMea[4])</a>;
+Connected bus variables:
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$building.buiMeaBus:TZoneMea">building.buiMeaBus.TZoneMea[4]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$hydraulic.buiMeaBus:TZoneMea">hydraulic.buiMeaBus.TZoneMea[4]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$electrical.control.buiMeaBus:TZoneMea">electrical.control.buiMeaBus.TZoneMea[4]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$electrical.buiMeaBus:TZoneMea">electrical.buiMeaBus.TZoneMea[4]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$control.buiMeaBus:TZoneMea">control.buiMeaBus.TZoneMea[4]</a> (connect)
+input <a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$hydraulic.control.buiMeaBus:TZoneMea">hydraulic.control.buiMeaBus.TZoneMea[4]</a> (connect)
+Warning: The bus-input hydraulic.control.buiMeaBus.TZoneMea[5] lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
+Bus-signal: TZoneMea[5]
+Use: <a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#diagram$hydraulic.control:buiAndDHWCtr,buiMeaBus"> connect(hydraulic.control.buiMeaBus.TZoneMea[5], hydraulic.control.buiAndDHWCtr.TZoneMea[5])</a>;
+Connected bus variables:
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$building.buiMeaBus:TZoneMea">building.buiMeaBus.TZoneMea[5]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$hydraulic.buiMeaBus:TZoneMea">hydraulic.buiMeaBus.TZoneMea[5]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$electrical.control.buiMeaBus:TZoneMea">electrical.control.buiMeaBus.TZoneMea[5]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$electrical.buiMeaBus:TZoneMea">electrical.buiMeaBus.TZoneMea[5]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$control.buiMeaBus:TZoneMea">control.buiMeaBus.TZoneMea[5]</a> (connect)
+input <a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$hydraulic.control.buiMeaBus:TZoneMea">hydraulic.control.buiMeaBus.TZoneMea[5]</a> (connect)
+Warning: The bus-input hydraulic.control.buiMeaBus.TZoneMea[6] lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
+Bus-signal: TZoneMea[6]
+Use: <a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#diagram$hydraulic.control:buiAndDHWCtr,buiMeaBus"> connect(hydraulic.control.buiMeaBus.TZoneMea[6], hydraulic.control.buiAndDHWCtr.TZoneMea[6])</a>;
+Connected bus variables:
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$building.buiMeaBus:TZoneMea">building.buiMeaBus.TZoneMea[6]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$hydraulic.buiMeaBus:TZoneMea">hydraulic.buiMeaBus.TZoneMea[6]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$electrical.control.buiMeaBus:TZoneMea">electrical.control.buiMeaBus.TZoneMea[6]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$electrical.buiMeaBus:TZoneMea">electrical.buiMeaBus.TZoneMea[6]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$control.buiMeaBus:TZoneMea">control.buiMeaBus.TZoneMea[6]</a> (connect)
+input <a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$hydraulic.control.buiMeaBus:TZoneMea">hydraulic.control.buiMeaBus.TZoneMea[6]</a> (connect)
+Warning: The bus-input hydraulic.control.buiMeaBus.TZoneMea[7] lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
+Bus-signal: TZoneMea[7]
+Use: <a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#diagram$hydraulic.control:buiAndDHWCtr,buiMeaBus"> connect(hydraulic.control.buiMeaBus.TZoneMea[7], hydraulic.control.buiAndDHWCtr.TZoneMea[7])</a>;
+Connected bus variables:
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$hydraulic.buiMeaBus:TZoneMea">hydraulic.buiMeaBus.TZoneMea[7]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$electrical.control.buiMeaBus:TZoneMea">electrical.control.buiMeaBus.TZoneMea[7]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$electrical.buiMeaBus:TZoneMea">electrical.buiMeaBus.TZoneMea[7]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$control.buiMeaBus:TZoneMea">control.buiMeaBus.TZoneMea[7]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$building.buiMeaBus:TZoneMea">building.buiMeaBus.TZoneMea[7]</a> (connect)
+input <a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$hydraulic.control.buiMeaBus:TZoneMea">hydraulic.control.buiMeaBus.TZoneMea[7]</a> (connect)
+Warning: The bus-input hydraulic.control.buiMeaBus.TZoneMea[8] lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
+Bus-signal: TZoneMea[8]
+Use: <a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#diagram$hydraulic.control:buiAndDHWCtr,buiMeaBus"> connect(hydraulic.control.buiMeaBus.TZoneMea[8], hydraulic.control.buiAndDHWCtr.TZoneMea[8])</a>;
+Connected bus variables:
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$hydraulic.buiMeaBus:TZoneMea">hydraulic.buiMeaBus.TZoneMea[8]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$electrical.control.buiMeaBus:TZoneMea">electrical.control.buiMeaBus.TZoneMea[8]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$electrical.buiMeaBus:TZoneMea">electrical.buiMeaBus.TZoneMea[8]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$control.buiMeaBus:TZoneMea">control.buiMeaBus.TZoneMea[8]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$building.buiMeaBus:TZoneMea">building.buiMeaBus.TZoneMea[8]</a> (connect)
+input <a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$hydraulic.control.buiMeaBus:TZoneMea">hydraulic.control.buiMeaBus.TZoneMea[8]</a> (connect)
+Warning: The bus-input hydraulic.control.buiMeaBus.TZoneMea[9] lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
+Bus-signal: TZoneMea[9]
+Use: <a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#diagram$hydraulic.control:buiAndDHWCtr,buiMeaBus"> connect(hydraulic.control.buiMeaBus.TZoneMea[9], hydraulic.control.buiAndDHWCtr.TZoneMea[9])</a>;
+Connected bus variables:
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$hydraulic.buiMeaBus:TZoneMea">hydraulic.buiMeaBus.TZoneMea[9]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$electrical.control.buiMeaBus:TZoneMea">electrical.control.buiMeaBus.TZoneMea[9]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$electrical.buiMeaBus:TZoneMea">electrical.buiMeaBus.TZoneMea[9]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$control.buiMeaBus:TZoneMea">control.buiMeaBus.TZoneMea[9]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$building.buiMeaBus:TZoneMea">building.buiMeaBus.TZoneMea[9]</a> (connect)
+input <a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$hydraulic.control.buiMeaBus:TZoneMea">hydraulic.control.buiMeaBus.TZoneMea[9]</a> (connect)
+Warning: The bus-input hydraulic.control.buiMeaBus.TZoneMea[10] lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
+Bus-signal: TZoneMea[10]
+Use: <a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#diagram$hydraulic.control:buiAndDHWCtr,buiMeaBus"> connect(hydraulic.control.buiMeaBus.TZoneMea[10], hydraulic.control.buiAndDHWCtr.TZoneMea[10])</a>;
+Connected bus variables:
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$hydraulic.buiMeaBus:TZoneMea">hydraulic.buiMeaBus.TZoneMea[10]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$electrical.control.buiMeaBus:TZoneMea">electrical.control.buiMeaBus.TZoneMea[10]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$electrical.buiMeaBus:TZoneMea">electrical.buiMeaBus.TZoneMea[10]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$control.buiMeaBus:TZoneMea">control.buiMeaBus.TZoneMea[10]</a> (connect)
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$building.buiMeaBus:TZoneMea">building.buiMeaBus.TZoneMea[10]</a> (connect)
+input <a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$hydraulic.control.buiMeaBus:TZoneMea">hydraulic.control.buiMeaBus.TZoneMea[10]</a> (connect)
+Warning: The bus-input hydraulic.transfer.traControlBus.opening lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
+Bus-signal: opening
+Use: <a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#diagram$hydraulic.transfer:reaPasThrOpe,traControlBus"> connect(hydraulic.transfer.traControlBus.opening, hydraulic.transfer.reaPasThrOpe.u)</a>;
+Connected bus variables:
+<a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$hydraulic.control.sigBusTra:opening">hydraulic.control.sigBusTra.opening</a> (connect) "Control output"
+input <a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#$hydraulic.transfer.traControlBus:opening">hydraulic.transfer.traControlBus.opening</a> (connect) "Actuator position (0: closed, 1: open)"
+Error: Type error for equation
+    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
+found in class <a href="Modelica://BESMod.Systems.Hydraulical.HydraulicSystem">BESMod.Systems.Hydraulical.HydraulicSystem</a>, and used in component <a href="Modelica://BESMod.Examples.HighOrderModel.BaseClasses.PartialHOM#:hydraulic">hydraulic</a>.
+Error: The left hand side of the following equation is a scalar
+and the right hand side is a vector, i.e. it has non-compatible parts:
+    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
+
+Basic type inconsistencies detected.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.BAUSimStudy.PartialCase 
+Check of <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase">BESMod.Examples.BAUSimStudy.PartialCase</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+Warning: The bus-input hydraulic.transfer.traControlBus.opening lacks a matching non-input in the connection sets. This means that it lacks a source writing the signal to the bus.
+Bus-signal: opening
+Use: <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase#diagram$hydraulic.transfer:reaPasThrOpe,traControlBus"> connect(hydraulic.transfer.traControlBus.opening, hydraulic.transfer.reaPasThrOpe.u)</a>;
+Connected bus variables:
+<a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase#$hydraulic.control.sigBusTra:opening">hydraulic.control.sigBusTra.opening</a> (connect) "Control output"
+input <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase#$hydraulic.transfer.traControlBus:opening">hydraulic.transfer.traControlBus.opening</a> (connect) "Actuator position (0: closed, 1: open)"
+Error: Type error for equation
+    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
+found in class <a href="Modelica://BESMod.Systems.Hydraulical.HydraulicSystem">BESMod.Systems.Hydraulical.HydraulicSystem</a>, and used in component <a href="Modelica://BESMod.Examples.BAUSimStudy.PartialCase#:hydraulic">hydraulic</a>.
+Error: The left hand side of the following equation is a scalar
+and the right hand side is a vector, i.e. it has non-compatible parts:
+    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
+
+Basic type inconsistencies detected.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Examples.HeatPumpAndBoiler.BaseClasses 
+Check of <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.BaseClasses">BESMod.Examples.HeatPumpAndBoiler.BaseClasses</a>
+Checking partial model <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.BaseClasses.PartialHybridSystem">BESMod.Examples.HeatPumpAndBoiler.BaseClasses.PartialHybridSystem</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+Check is assuming: hydraulic.generation.nParallelDem = 1
+Check is assuming: hydraulic.distribution.nParallelSup = 1
+Check is assuming: hydraulic.distribution.nParallelDem = 1
+In call connect(<a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.BaseClasses.PartialHybridSystem#diagram$hydraulic.transfer:resMaiLin.port_b,res.port_a">resMaiLin[1].port_b, res[i].port_a</a>)
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text:117">118</a>
+Error: Use of undeclared variable: <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.BaseClasses.PartialHybridSystem#text$hydraulic.transfer:res.port_a">res[i].port_a</a>
+In class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator">BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text">2</a>
+Used in component <a href="Modelica://BESMod.Examples.HeatPumpAndBoiler.BaseClasses.PartialHybridSystem#$hydraulic:transfer">hydraulic.transfer</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Examples/HeatPumpAndBoiler/BaseClasses.mo, line 39
+Check is assuming: hydraulic.transfer.dpPipSca_design = fill(0, 1)
+The model contained invalid expressions.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
