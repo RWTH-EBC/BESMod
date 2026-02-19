@@ -1,31 +1,4 @@
 
-Error in model:  BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator 
-Check of <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator">BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator</a>
-Component type specifier BaseProperties is a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
- Component context: rad.vol.dynBal.medium
-  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
-Component type specifier BaseProperties is a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
- Component context: pumFixMFlo.vol.dynBal.medium
-  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
-Check is assuming: nParallelDem = 1
-In call connect(<a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#diagram:resMaiLin.port_b,res.port_a">resMaiLin[1].port_b, res[i].port_a</a>)
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text:117">118</a>
-Error: Use of undeclared variable: <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text:res.port_a">res[i].port_a</a>
-In class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator">BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator</a>.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text">2</a>
-Check is assuming: Q_flow_nominal = fill(1e-15, 1)
-Check is assuming: hBui = 0.1
-Check is assuming: dpPipSca_design = fill(0, 1)
-Check is assuming: ABui = 0.1
-The model contained invalid expressions.
-Check aborted.
-Error: ERRORS have been issued.
-
-
 Error in model:  BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem 
 Check of <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem">BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem</a>
 Error: The following parameters don't have any value:
@@ -53,7 +26,7 @@ The model could not be deduced to be symbolically well-posed.
 The model has
   474+transfer.rad.vol[1].dynBal.nPorts+transfer.rad.vol[2].dynBal.nPorts+  transfer.rad.vol[3].dynBal.nPorts+transfer.rad.vol[4].dynBal.nPorts+  transfer.rad.vol[5].dynBal.nPorts+transfer.rad.sumCon.nin+transfer.rad.sumRad.nin  +transfer.volSup.dynBal.nPorts+transfer.volRet.dynBal.nPorts
 scalar unknowns and
-  449+(if  not transfer.rad.vol[1].dynBal.use_mWat_flow then 1 else 0)+3*  transfer.rad.vol[1].dynBal.nPorts+(if  not transfer.volSup.dynBal.use_mWat_flow   then 1 else 0)+3*transfer.volSup.dynBal.nPorts+(if  not transfer.rad.vol[4].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad.vol[4].dynBal.nPorts+(if  not transfer.volRet.dynBal.use_mWat_flow   then 1 else 0)+3*transfer.volRet.dynBal.nPorts+(if  not transfer.rad.vol[3].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad.vol[3].dynBal.nPorts+(if  not transfer.rad.vol[5].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad.vol[5].dynBal.nPorts+(if  not transfer.rad.vol[2].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad.vol[2].dynBal.nPorts
+  449+(if  not transfer.rad.vol[1].dynBal.use_mWat_flow then 1 else 0)+3*  transfer.rad.vol[1].dynBal.nPorts+(if  not transfer.rad.vol[2].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad.vol[2].dynBal.nPorts+(if  not transfer.rad.vol[3].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad.vol[3].dynBal.nPorts+(if  not transfer.rad.vol[4].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad.vol[4].dynBal.nPorts+(if  not transfer.rad.vol[5].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad.vol[5].dynBal.nPorts+(if  not transfer.volSup.dynBal.use_mWat_flow   then 1 else 0)+3*transfer.volSup.dynBal.nPorts+(if  not transfer.volRet.dynBal.use_mWat_flow   then 1 else 0)+3*transfer.volRet.dynBal.nPorts
 scalar equations.
 However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
   498
@@ -241,6 +214,199 @@ Warning: WARNINGS have been issued.
 Error: ERRORS have been issued.
 
 
+Error in model:  BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating">BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating</a>
+Note: 
+Your model is using an outer "system" component but
+an inner "system" component is not defined.
+For simulation drag Modelica.Fluid.System into your model
+to specify system properties.
+
+In call connect(<a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating#diagram$transfer:res.port_a,resMaiLin.port_b">res[i].port_a, resMaiLin[1].port_b</a>)
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/UFHTransferSystem.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem#text:137">138</a>
+Error: Use of undeclared variable: <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating#text$transfer:res.port_a">res[i].port_a</a>
+In class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem">BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/UFHTransferSystem.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem#text">2</a>
+Used in component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating#:transfer">transfer</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/Tests/TestUnderfloorHeating.mo, line 6
+Errors found in: state = ThermodynamicState(p=p, T=T)
+  File: /opt/dymola-2024xRefresh1-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line <a href="Modelica://Modelica.Media.Interfaces.PartialSimpleMedium.setState_pTX#text:9">5914</a>
+In call <a href="Modelica://"></a>(p=p, T=T)
+Error: Unknown function ThermodynamicState in  (function <a href="Modelica://Modelica.Media.Interfaces.PartialSimpleMedium.setState_pTX">Modelica.Media.Interfaces.PartialSimpleMedium.setState_pTX</a>).
+Errors found in: state = ThermodynamicState(p=p, T=T)
+  File: /opt/dymola-2024xRefresh1-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line <a href="Modelica://Modelica.Media.Interfaces.PartialSimpleMedium.setState_pTX#text:9">5914</a>
+In value attribute for pumDis[1].rho_default.
+Modifier applied in class <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredDPControlled">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredDPControlled</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/PreconfiguredControlledMovers/PreconfiguredDPControlled.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredDPControlled#text">2</a>
+Modifier applied for component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating#$pumDis:rho_default">pumDis.rho_default</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/PreconfiguredControlledMovers/PreconfiguredDPControlled.mo, line 140
+Variable found in class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating">BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/Tests/TestUnderfloorHeating.mo, line 2
+Variable found in component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating#:pumDis">pumDis</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/Tests/PartialTest.mo, line 45
+Errors found in: state = ThermodynamicState(p=p, T=T0 + h/cp_const)
+  File: /opt/dymola-2024xRefresh1-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line <a href="Modelica://Modelica.Media.Interfaces.PartialSimpleMedium.setState_phX#text:9">5925</a>
+In call <a href="Modelica://"></a>(p=p, T=T0 + h/cp_const)
+Error: Unknown function ThermodynamicState in  (function <a href="Modelica://Modelica.Media.Interfaces.PartialSimpleMedium.setState_phX">Modelica.Media.Interfaces.PartialSimpleMedium.setState_phX</a>).
+Errors found in: state = ThermodynamicState(p=p, T=T0 + h/cp_const)
+  File: /opt/dymola-2024xRefresh1-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line <a href="Modelica://Modelica.Media.Interfaces.PartialSimpleMedium.setState_phX#text:9">5925</a>
+In value attribute for pumDis[1].rho_inlet.y.
+Modifier applied in class <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredDPControlled">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredDPControlled</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/PreconfiguredControlledMovers/PreconfiguredDPControlled.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredDPControlled#text">2</a>
+Modifier applied for component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating#$pumDis.rho_inlet:y">pumDis.rho_inlet.y</a>.
+  File: /opt/dymola-2024xRefresh1-x86_64/Modelica/Library/Modelica 4.0.0/Blocks/Sources.mo, line 10
+Variable found in class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating">BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/Tests/TestUnderfloorHeating.mo, line 2
+Variable found in component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating#$pumDis:rho_inlet">pumDis.rho_inlet</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/PreconfiguredControlledMovers/PreconfiguredDPControlled.mo, line 149
+The model contained invalid expressions.
+Check aborted.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem">BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem</a>
+In call connect(<a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem#diagram$transfer:resMaiLin.port_b,res.port_a">resMaiLin[1].port_b, res[i].port_a</a>)
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text:117">118</a>
+Error: Use of undeclared variable: <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem#text$transfer:res.port_a">res[i].port_a</a>
+In class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator">BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text">2</a>
+Used in component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem#:transfer">transfer</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/Tests/TestIdealValveRadiatorSystem.mo, line 4
+Errors found in: state = ThermodynamicState(p=p, T=T)
+  File: /opt/dymola-2024xRefresh1-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line <a href="Modelica://Modelica.Media.Interfaces.PartialSimpleMedium.setState_pTX#text:9">5914</a>
+In call <a href="Modelica://"></a>(p=p, T=T)
+Error: Unknown function ThermodynamicState in  (function <a href="Modelica://Modelica.Media.Interfaces.PartialSimpleMedium.setState_pTX">Modelica.Media.Interfaces.PartialSimpleMedium.setState_pTX</a>).
+Errors found in: state = ThermodynamicState(p=p, T=T)
+  File: /opt/dymola-2024xRefresh1-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line <a href="Modelica://Modelica.Media.Interfaces.PartialSimpleMedium.setState_pTX#text:9">5914</a>
+In value attribute for pumDis[1].rho_default.
+Modifier applied in class <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredDPControlled">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredDPControlled</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/PreconfiguredControlledMovers/PreconfiguredDPControlled.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredDPControlled#text">2</a>
+Modifier applied for component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem#$pumDis:rho_default">pumDis.rho_default</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/PreconfiguredControlledMovers/PreconfiguredDPControlled.mo, line 140
+Variable found in class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem">BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/Tests/TestIdealValveRadiatorSystem.mo, line 2
+Variable found in component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem#:pumDis">pumDis</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/Tests/PartialTest.mo, line 45
+The model contained invalid expressions.
+Check aborted.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Transfer.Tests.PartialTestNew 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.PartialTestNew">BESMod.Systems.Hydraulical.Transfer.Tests.PartialTestNew</a>
+Did not find model BESMod.Systems.Hydraulical.Transfer.Tests.PartialTestNew
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly 
+Check of <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly">BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+Error: Type error for equation
+    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
+found in class <a href="Modelica://BESMod.Systems.Hydraulical.HydraulicSystem">BESMod.Systems.Hydraulical.HydraulicSystem</a>, and used in component <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#:hydraulic">hydraulic</a>.
+Error: The left hand side of the following equation is a scalar
+and the right hand side is a vector, i.e. it has non-compatible parts:
+    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
+
+Basic type inconsistencies detected.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic 
+Check of <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic">BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic</a>
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+In call connect(<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$hydraulic.transfer:resMaiLin.port_b,res.port_a">resMaiLin[1].port_b, res[i].port_a</a>)
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text:117">118</a>
+Error: Use of undeclared variable: <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$hydraulic.transfer:res.port_a">res[i].port_a</a>
+In class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator">BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text">2</a>
+Used in component <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$hydraulic:transfer">hydraulic.transfer</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 79
+Errors found in: state = f size(X, 1) == nX then ThermodynamicState(p=p, T=T, X=X) else ThermodynamicS...
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Media/Air.mo, line <a href="Modelica://IBPSA.Media.Air.setState_pTX#text:7">636</a>
+In call <a href="Modelica://"></a>(p=p, T=T, X=X)
+Error: Unknown function ThermodynamicState in  (function <a href="Modelica://IBPSA.Media.Air.setState_pTX">IBPSA.Media.Air.setState_pTX</a>).
+In call <a href="Modelica://"></a>(p=p, T=T, X=cat(1, X, {1 - sum(X)}))
+Error: Unknown function ThermodynamicState in  (function <a href="Modelica://IBPSA.Media.Air.setState_pTX">IBPSA.Media.Air.setState_pTX</a>).
+Errors found in: state = f size(X, 1) == nX then ThermodynamicState(p=p, T=T, X=X) else ThermodynamicS...
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Media/Air.mo, line <a href="Modelica://IBPSA.Media.Air.setState_pTX#text:7">636</a>
+In start attribute for ventilation.distribution.fanRet.port_a.h_outflow.
+Modifier applied in class <a href="Modelica://IBPSA.Fluid.Interfaces.PartialTwoPort">IBPSA.Fluid.Interfaces.PartialTwoPort</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/PreconfiguredControlledMovers/PreconfiguredDPControlled.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.PartialTwoPort#text:3">4</a>
+Modifier applied for component <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$ventilation.distribution.fanRet.port_a:h_outflow">ventilation.distribution.fanRet.port_a.h_outflow</a>.
+  File: /opt/dymola-2024xRefresh1-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Interfaces.mo, line 16
+Variable found in class <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic">BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 2
+Variable found in base-class ventilation.distribution.fanRet.port_a.FluidPort.
+  Near file: /opt/dymola-2024xRefresh1-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Interfaces.mo, line 25
+Errors found in: state = f size(X, 1) == nX then ThermodynamicState(p=p, T=temperature_phX(p, h, X), X...
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Media/Air.mo, line <a href="Modelica://IBPSA.Media.Air.setState_phX#text:7">620</a>
+In call <a href="Modelica://"></a>(p=p, T=temperature_phX(p, h, X), X=X)
+Error: Unknown function ThermodynamicState in  (function <a href="Modelica://IBPSA.Media.Air.setState_phX">IBPSA.Media.Air.setState_phX</a>).
+In call <a href="Modelica://"></a>(p=p, T=temperature_phX(p, h, X), X=cat(1, X, {1 - sum(X)}))
+Error: Unknown function ThermodynamicState in  (function <a href="Modelica://IBPSA.Media.Air.setState_phX">IBPSA.Media.Air.setState_phX</a>).
+Errors found in: state = f size(X, 1) == nX then ThermodynamicState(p=p, T=temperature_phX(p, h, X), X...
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Media/Air.mo, line <a href="Modelica://IBPSA.Media.Air.setState_phX#text:7">620</a>
+In value attribute for ventilation.distribution.fanRet.rho_inlet.y.
+Modifier applied in class <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredDPControlled">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredDPControlled</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/PreconfiguredControlledMovers/PreconfiguredDPControlled.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredDPControlled#text">2</a>
+Modifier applied for component <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$ventilation.distribution.fanRet.rho_inlet:y">ventilation.distribution.fanRet.rho_inlet.y</a>.
+  File: /opt/dymola-2024xRefresh1-x86_64/Modelica/Library/Modelica 4.0.0/Blocks/Sources.mo, line 10
+Variable found in class <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic">BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 2
+Variable found in component <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$ventilation.distribution.fanRet:rho_inlet">ventilation.distribution.fanRet.rho_inlet</a>.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/PreconfiguredControlledMovers/PreconfiguredDPControlled.mo, line 149
+Check is assuming: hydraulic.transfer.dpPipSca_design = fill(0, 1)
+The model contained invalid expressions.
+Check aborted.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
+
+Error in model:  BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem">BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem</a>
+Component type specifier UFHData is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/UFHTransferSystem.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem#text:7">8</a>
+ Component context: UFHParameters
+  Component declared as UFHData UFHParameters in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.RecordsCollection">BESMod.Systems.Hydraulical.Transfer.RecordsCollection</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /opt/dymola-2024xRefresh1-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Interfaces.mo, line <a href="Modelica://Modelica.Fluid.Interfaces.PartialLumpedVolume#text:52">552</a>
+ Component context: ufh.panelHeatingSegment.vol.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Component type specifier BaseProperties is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: pumpFix_m_flow.vol.dynBal.medium
+  Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
+Note: 
+Your model is using an outer "system" component but
+an inner "system" component is not defined.
+For simulation drag Modelica.Fluid.System into your model
+to specify system properties.
+
+Check is assuming: nParallelDem = 1
+Check is assuming: Q_flow_nominal = fill(1e-15, 1)
+In call connect(<a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem#diagram:res.port_a,resMaiLin.port_b">res[i].port_a, resMaiLin[1].port_b</a>)
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/UFHTransferSystem.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem#text:137">138</a>
+Error: Use of undeclared variable: <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem#text:res.port_a">res[i].port_a</a>
+In class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem">BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/UFHTransferSystem.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem#text">2</a>
+Check is assuming: hBui = 0.1
+Check is assuming: ABui = 0.1
+The model contained invalid expressions.
+Check aborted.
+Error: ERRORS have been issued.
+
+
 Error in model:  BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve 
 Check of <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve">BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve</a>
 Error: The following parameters don't have any value:
@@ -249,26 +415,26 @@ Error: The following parameters don't have any value:
 <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve#text$transfer:dpPipSupSca_nominal">transfer.dpPipSupSca_nominal[]</a>
 Error: The problem is structurally singular.
 
-It has 759 scalar unknowns and 759 scalar equations.
-  The Real part has 757 unknowns and 757 equations.
+It has 760 scalar unknowns and 759 scalar equations.
+  The Real part has 758 unknowns and 757 equations.
   The Integer part has 0 unknowns and 0 equations.
   The Boolean part has 2 unknowns and 2 equations.
   The String part has 0 unknowns and 0 equations.
-The model could not be deduced to be symbolically well-posed.
+Error: The model is not well-posed.
 The model has
-  696+transfer.rad.vol[1].dynBal.nPorts+transfer.rad.vol[2].dynBal.nPorts+  transfer.rad.vol[3].dynBal.nPorts+transfer.rad.vol[4].dynBal.nPorts+  transfer.rad.vol[5].dynBal.nPorts+transfer.rad.sumCon.nin+transfer.rad.sumRad.nin  +transfer.volSup.dynBal.nPorts+transfer.volRet.dynBal.nPorts+vol[1].dynBal.nPorts
+  697+transfer.rad.vol[1].dynBal.nPorts+transfer.rad.vol[2].dynBal.nPorts+  transfer.rad.vol[3].dynBal.nPorts+transfer.rad.vol[4].dynBal.nPorts+  transfer.rad.vol[5].dynBal.nPorts+transfer.rad.sumCon.nin+transfer.rad.sumRad.nin  +transfer.volSup.dynBal.nPorts+transfer.volRet.dynBal.nPorts+vol[1].dynBal.nPorts
 scalar unknowns and
   660+(if bou1[1].use_Xi_in then 1 else (if bou1[1].use_X_in then 0 else 1))+(if    not bou1[1].use_p_in then 1 else 0)+2*bou1[1].nPorts+(if  not   bou1[1].use_T_in then 1 else 0)+(if  not transfer.rad.vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad.vol[1].dynBal.nPorts+(if  not transfer.rad.vol[2].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad.vol[2].dynBal.nPorts+(if  not transfer.rad.vol[3].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad.vol[3].dynBal.nPorts+(if  not transfer.rad.vol[4].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad.vol[4].dynBal.nPorts+(if  not transfer.rad.vol[5].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad.vol[5].dynBal.nPorts+(if  not transfer.volSup.dynBal.use_mWat_flow   then 1 else 0)+3*transfer.volSup.dynBal.nPorts+(if  not transfer.volRet.dynBal.use_mWat_flow   then 1 else 0)+3*transfer.volRet.dynBal.nPorts+(if  not vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*vol[1].dynBal.nPorts+(if  not pumDis[1].dpControlled_dp.vol.steBal.use_mWat_flow   then 1 else 0)
 scalar equations.
-However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
-  722
+Using the given settings of the parameters, the difference could be reduced to
+  1
 Attempting to further localize singularity.
 
 The model could not be deduced to be symbolically well-posed.
 The model has
   512+transfer.rad.vol[1].dynBal.nPorts+transfer.rad.vol[2].dynBal.nPorts+  transfer.rad.vol[3].dynBal.nPorts+transfer.rad.vol[4].dynBal.nPorts+  transfer.rad.vol[5].dynBal.nPorts+transfer.rad.sumCon.nin+transfer.rad.sumRad.nin  +transfer.volSup.dynBal.nPorts+transfer.volRet.dynBal.nPorts
 scalar unknowns and
-  487+(if  not transfer.rad.vol[4].dynBal.use_mWat_flow then 1 else 0)+3*  transfer.rad.vol[4].dynBal.nPorts+(if  not transfer.rad.vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad.vol[1].dynBal.nPorts+(if  not transfer.volRet.dynBal.use_mWat_flow   then 1 else 0)+3*transfer.volRet.dynBal.nPorts+(if  not transfer.rad.vol[2].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad.vol[2].dynBal.nPorts+(if  not transfer.rad.vol[5].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad.vol[5].dynBal.nPorts+(if  not transfer.volSup.dynBal.use_mWat_flow   then 1 else 0)+3*transfer.volSup.dynBal.nPorts+(if  not transfer.rad.vol[3].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad.vol[3].dynBal.nPorts
+  487+(if  not transfer.rad.vol[4].dynBal.use_mWat_flow then 1 else 0)+3*  transfer.rad.vol[4].dynBal.nPorts+(if  not transfer.rad.vol[2].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad.vol[2].dynBal.nPorts+(if  not transfer.rad.vol[5].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad.vol[5].dynBal.nPorts+(if  not transfer.volSup.dynBal.use_mWat_flow   then 1 else 0)+3*transfer.volSup.dynBal.nPorts+(if  not transfer.rad.vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad.vol[1].dynBal.nPorts+(if  not transfer.rad.vol[3].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad.vol[3].dynBal.nPorts+(if  not transfer.volRet.dynBal.use_mWat_flow   then 1 else 0)+3*transfer.volRet.dynBal.nPorts
 scalar equations.
 However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
   536
@@ -297,16 +463,11 @@ scalar equations.
 However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
   51
 Singularity of <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve">BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve</a> is at the top level.
-Warning: The model <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve">BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve</a> is structurally singular,
-when assuming inputs to be known.
+Error: The model <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve">BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve</a> is structurally singular.
 Warning: The problem is structurally singular for the element type Real.
 
-The number of scalar Real unknown elements are 757.
+The number of scalar Real unknown elements are 758.
 The number of scalar Real equation elements are 757.
-Warning: Part of the problem for Real elements is overdetermined.
-There are 1 scalar equations too many in the set:
-<a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve#text$ramp:10">ramp[1].y = ramp[1].offset+(if time &lt; ramp[1].startTime then 0 else (if time &lt;   ramp[1].startTime+ramp[1].duration then (time-ramp[1].startTime)*  ramp[1].height/ramp[1].duration else ramp[1].height));</a>
-<a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve#diagram:traControlBus,ramp.y">traControlBus.opening[1] = ramp[1].y;</a>
 Warning: Part of the problem for Real elements is underdetermined. 
 1 scalar Real  equations are missing for the variables or its derivatives.
 We did not find equations for:
@@ -472,187 +633,27 @@ Warning: WARNINGS have been issued.
 Error: ERRORS have been issued.
 
 
-Error in model:  BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly 
-Check of <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly">BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly</a>
-Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
-The definition equation or start value requires a certain size.
-Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
-Error: Type error for equation
-    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
-found in class <a href="Modelica://BESMod.Systems.Hydraulical.HydraulicSystem">BESMod.Systems.Hydraulical.HydraulicSystem</a>, and used in component <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialGasBoilerBuildingOnly#:hydraulic">hydraulic</a>.
-Error: The left hand side of the following equation is a scalar
-and the right hand side is a vector, i.e. it has non-compatible parts:
-    hydraulic.transfer.traControlBus.opening = hydraulic.control.sigBusTra.opening;
-
-Basic type inconsistencies detected.
-Check aborted.
-Warning: WARNINGS have been issued.
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating 
-Check of <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating">BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating</a>
-Note: 
-Your model is using an outer "system" component but
-an inner "system" component is not defined.
-For simulation drag Modelica.Fluid.System into your model
-to specify system properties.
-
-In call connect(<a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating#diagram$transfer:res.port_a,resMaiLin.port_b">res[i].port_a, resMaiLin[1].port_b</a>)
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/UFHTransferSystem.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem#text:137">138</a>
-Error: Use of undeclared variable: <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating#text$transfer:res.port_a">res[i].port_a</a>
-In class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem">BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem</a>.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/UFHTransferSystem.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem#text">2</a>
-Used in component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating#:transfer">transfer</a>.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/Tests/TestUnderfloorHeating.mo, line 6
-Errors found in: state = ThermodynamicState(p=p, T=T)
-  File: /opt/dymola-2024xRefresh1-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line <a href="Modelica://Modelica.Media.Interfaces.PartialSimpleMedium.setState_pTX#text:9">5914</a>
-In call <a href="Modelica://"></a>(p=p, T=T)
-Error: Unknown function ThermodynamicState in  (function <a href="Modelica://Modelica.Media.Interfaces.PartialSimpleMedium.setState_pTX">Modelica.Media.Interfaces.PartialSimpleMedium.setState_pTX</a>).
-Errors found in: state = ThermodynamicState(p=p, T=T)
-  File: /opt/dymola-2024xRefresh1-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line <a href="Modelica://Modelica.Media.Interfaces.PartialSimpleMedium.setState_pTX#text:9">5914</a>
-In value attribute for pumDis[1].rho_default.
-Modifier applied in class <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredDPControlled">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredDPControlled</a>.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/PreconfiguredControlledMovers/PreconfiguredDPControlled.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredDPControlled#text">2</a>
-Modifier applied for component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating#$pumDis:rho_default">pumDis.rho_default</a>.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/PreconfiguredControlledMovers/PreconfiguredDPControlled.mo, line 140
-Variable found in class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating">BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/Tests/TestUnderfloorHeating.mo, line 2
-Variable found in component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating#:pumDis">pumDis</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/Tests/PartialTest.mo, line 45
-Errors found in: state = ThermodynamicState(p=p, T=T0 + h/cp_const)
-  File: /opt/dymola-2024xRefresh1-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line <a href="Modelica://Modelica.Media.Interfaces.PartialSimpleMedium.setState_phX#text:9">5925</a>
-In call <a href="Modelica://"></a>(p=p, T=T0 + h/cp_const)
-Error: Unknown function ThermodynamicState in  (function <a href="Modelica://Modelica.Media.Interfaces.PartialSimpleMedium.setState_phX">Modelica.Media.Interfaces.PartialSimpleMedium.setState_phX</a>).
-Errors found in: state = ThermodynamicState(p=p, T=T0 + h/cp_const)
-  File: /opt/dymola-2024xRefresh1-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line <a href="Modelica://Modelica.Media.Interfaces.PartialSimpleMedium.setState_phX#text:9">5925</a>
-In value attribute for pumDis[1].rho_inlet.y.
-Modifier applied in class <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredDPControlled">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredDPControlled</a>.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/PreconfiguredControlledMovers/PreconfiguredDPControlled.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredDPControlled#text">2</a>
-Modifier applied for component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating#$pumDis.rho_inlet:y">pumDis.rho_inlet.y</a>.
-  File: /opt/dymola-2024xRefresh1-x86_64/Modelica/Library/Modelica 4.0.0/Blocks/Sources.mo, line 10
-Variable found in class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating">BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/Tests/TestUnderfloorHeating.mo, line 2
-Variable found in component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating#$pumDis:rho_inlet">pumDis.rho_inlet</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/PreconfiguredControlledMovers/PreconfiguredDPControlled.mo, line 149
-The model contained invalid expressions.
-Check aborted.
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic 
-Check of <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic">BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic</a>
-Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
-The definition equation or start value requires a certain size.
-Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
-In call connect(<a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#diagram$hydraulic.transfer:resMaiLin.port_b,res.port_a">resMaiLin[1].port_b, res[i].port_a</a>)
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text:117">118</a>
-Error: Use of undeclared variable: <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#text$hydraulic.transfer:res.port_a">res[i].port_a</a>
-In class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator">BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator</a>.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text">2</a>
-Used in component <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$hydraulic:transfer">hydraulic.transfer</a>.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 79
-Errors found in: state = f size(X, 1) == nX then ThermodynamicState(p=p, T=T, X=X) else ThermodynamicS...
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Media/Air.mo, line <a href="Modelica://IBPSA.Media.Air.setState_pTX#text:7">636</a>
-In call <a href="Modelica://"></a>(p=p, T=T, X=X)
-Error: Unknown function ThermodynamicState in  (function <a href="Modelica://IBPSA.Media.Air.setState_pTX">IBPSA.Media.Air.setState_pTX</a>).
-In call <a href="Modelica://"></a>(p=p, T=T, X=cat(1, X, {1 - sum(X)}))
-Error: Unknown function ThermodynamicState in  (function <a href="Modelica://IBPSA.Media.Air.setState_pTX">IBPSA.Media.Air.setState_pTX</a>).
-Errors found in: state = f size(X, 1) == nX then ThermodynamicState(p=p, T=T, X=X) else ThermodynamicS...
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Media/Air.mo, line <a href="Modelica://IBPSA.Media.Air.setState_pTX#text:7">636</a>
-In start attribute for ventilation.distribution.fanRet.port_a.h_outflow.
-Modifier applied in class <a href="Modelica://IBPSA.Fluid.Interfaces.PartialTwoPort">IBPSA.Fluid.Interfaces.PartialTwoPort</a>.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/PreconfiguredControlledMovers/PreconfiguredDPControlled.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.PartialTwoPort#text:3">4</a>
-Modifier applied for component <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$ventilation.distribution.fanRet.port_a:h_outflow">ventilation.distribution.fanRet.port_a.h_outflow</a>.
-  File: /opt/dymola-2024xRefresh1-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Interfaces.mo, line 16
-Variable found in class <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic">BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 2
-Variable found in base-class ventilation.distribution.fanRet.port_a.FluidPort.
-  Near file: /opt/dymola-2024xRefresh1-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Interfaces.mo, line 25
-Errors found in: state = f size(X, 1) == nX then ThermodynamicState(p=p, T=temperature_phX(p, h, X), X...
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Media/Air.mo, line <a href="Modelica://IBPSA.Media.Air.setState_phX#text:7">620</a>
-In call <a href="Modelica://"></a>(p=p, T=temperature_phX(p, h, X), X=X)
-Error: Unknown function ThermodynamicState in  (function <a href="Modelica://IBPSA.Media.Air.setState_phX">IBPSA.Media.Air.setState_phX</a>).
-In call <a href="Modelica://"></a>(p=p, T=temperature_phX(p, h, X), X=cat(1, X, {1 - sum(X)}))
-Error: Unknown function ThermodynamicState in  (function <a href="Modelica://IBPSA.Media.Air.setState_phX">IBPSA.Media.Air.setState_phX</a>).
-Errors found in: state = f size(X, 1) == nX then ThermodynamicState(p=p, T=temperature_phX(p, h, X), X...
-  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Media/Air.mo, line <a href="Modelica://IBPSA.Media.Air.setState_phX#text:7">620</a>
-In value attribute for ventilation.distribution.fanRet.rho_inlet.y.
-Modifier applied in class <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredDPControlled">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredDPControlled</a>.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/PreconfiguredControlledMovers/PreconfiguredDPControlled.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredDPControlled#text">2</a>
-Modifier applied for component <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$ventilation.distribution.fanRet.rho_inlet:y">ventilation.distribution.fanRet.rho_inlet.y</a>.
-  File: /opt/dymola-2024xRefresh1-x86_64/Modelica/Library/Modelica 4.0.0/Blocks/Sources.mo, line 10
-Variable found in class <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic">BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/BaseClasses/TEASERExport/PartialHeatPumpMonoenergetic.mo, line 2
-Variable found in component <a href="Modelica://BESMod.Systems.BaseClasses.TEASERExport.PartialHeatPumpMonoenergetic#$ventilation.distribution.fanRet:rho_inlet">ventilation.distribution.fanRet.rho_inlet</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/PreconfiguredControlledMovers/PreconfiguredDPControlled.mo, line 149
-Check is assuming: hydraulic.transfer.dpPipSca_design = fill(0, 1)
-The model contained invalid expressions.
-Check aborted.
-Warning: WARNINGS have been issued.
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem 
-Check of <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem">BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem</a>
-In call connect(<a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem#diagram$transfer:resMaiLin.port_b,res.port_a">resMaiLin[1].port_b, res[i].port_a</a>)
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text:117">118</a>
-Error: Use of undeclared variable: <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem#text$transfer:res.port_a">res[i].port_a</a>
-In class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator">BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator</a>.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text">2</a>
-Used in component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem#:transfer">transfer</a>.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/Tests/TestIdealValveRadiatorSystem.mo, line 4
-Errors found in: state = ThermodynamicState(p=p, T=T)
-  File: /opt/dymola-2024xRefresh1-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line <a href="Modelica://Modelica.Media.Interfaces.PartialSimpleMedium.setState_pTX#text:9">5914</a>
-In call <a href="Modelica://"></a>(p=p, T=T)
-Error: Unknown function ThermodynamicState in  (function <a href="Modelica://Modelica.Media.Interfaces.PartialSimpleMedium.setState_pTX">Modelica.Media.Interfaces.PartialSimpleMedium.setState_pTX</a>).
-Errors found in: state = ThermodynamicState(p=p, T=T)
-  File: /opt/dymola-2024xRefresh1-x86_64/Modelica/Library/Modelica 4.0.0/Media/package.mo, line <a href="Modelica://Modelica.Media.Interfaces.PartialSimpleMedium.setState_pTX#text:9">5914</a>
-In value attribute for pumDis[1].rho_default.
-Modifier applied in class <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredDPControlled">BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredDPControlled</a>.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/PreconfiguredControlledMovers/PreconfiguredDPControlled.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredDPControlled#text">2</a>
-Modifier applied for component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem#$pumDis:rho_default">pumDis.rho_default</a>.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Components/PreconfiguredControlledMovers/PreconfiguredDPControlled.mo, line 140
-Variable found in class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem">BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/Tests/TestIdealValveRadiatorSystem.mo, line 2
-Variable found in component <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem#:pumDis">pumDis</a>.
-  Near file: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/Tests/PartialTest.mo, line 45
-The model contained invalid expressions.
-Check aborted.
-Error: ERRORS have been issued.
-
-
-Error in model:  BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem 
-Check of <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem">BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem</a>
-Component type specifier UFHData is a partial type
-  It must be redeclared before being used.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/UFHTransferSystem.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem#text:7">8</a>
- Component context: UFHParameters
-  Component declared as UFHData UFHParameters in <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.RecordsCollection">BESMod.Systems.Hydraulical.Transfer.RecordsCollection</a>
+Error in model:  BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator">BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator</a>
 Component type specifier BaseProperties is a partial type
   It must be redeclared before being used.
-  File: /opt/dymola-2024xRefresh1-x86_64/Modelica/Library/Modelica 4.0.0/Fluid/Interfaces.mo, line <a href="Modelica://Modelica.Fluid.Interfaces.PartialLumpedVolume#text:52">552</a>
- Component context: ufh.panelHeatingSegment.vol.medium
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
+ Component context: rad.vol.dynBal.medium
   Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
 Component type specifier BaseProperties is a partial type
   It must be redeclared before being used.
   File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/ConservationEquation.mo, line <a href="Modelica://IBPSA.Fluid.Interfaces.ConservationEquation#text:80">81</a>
- Component context: pumpFix_m_flow.vol.dynBal.medium
+ Component context: pumFixMFlo.vol.dynBal.medium
   Component declared as BaseProperties medium in <a href="Modelica://Modelica.Media.Interfaces.PartialMedium">Modelica.Media.Interfaces.PartialMedium</a>
-Note: 
-Your model is using an outer "system" component but
-an inner "system" component is not defined.
-For simulation drag Modelica.Fluid.System into your model
-to specify system properties.
-
 Check is assuming: nParallelDem = 1
+In call connect(<a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#diagram:resMaiLin.port_b,res.port_a">resMaiLin[1].port_b, res[i].port_a</a>)
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text:117">118</a>
+Error: Use of undeclared variable: <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text:res.port_a">res[i].port_a</a>
+In class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator">BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator</a>.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/IdealValveRadiator.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.IdealValveRadiator#text">2</a>
 Check is assuming: Q_flow_nominal = fill(1e-15, 1)
-In call connect(<a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem#diagram:res.port_a,resMaiLin.port_b">res[i].port_a, resMaiLin[1].port_b</a>)
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/UFHTransferSystem.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem#text:137">138</a>
-Error: Use of undeclared variable: <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem#text:res.port_a">res[i].port_a</a>
-In class <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem">BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem</a>.
-  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Transfer/UFHTransferSystem.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem#text">2</a>
 Check is assuming: hBui = 0.1
+Check is assuming: dpPipSca_design = fill(0, 1)
 Check is assuming: ABui = 0.1
 The model contained invalid expressions.
 Check aborted.
