@@ -138,7 +138,7 @@ model RadiatorPressureBased "Pressure Based transfer system"
       each displayUnit="degC") = Medium.temperature(Medium.setState_phX(
       portTra_out.p,
       actualStream(portTra_out.h_outflow),
-      inStream(portTra_out.Xi_outflow)))) "Real expression for return temperature"
+      inStream(portTra_out.Xi_outflow)))) if not use_openModelica "Real expression for return temperature"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -148,7 +148,7 @@ model RadiatorPressureBased "Pressure Based transfer system"
       each displayUnit="degC") = Medium.temperature(Medium.setState_phX(
       portTra_in.p,
       inStream(portTra_in.h_outflow),
-      inStream(portTra_in.Xi_outflow)))) "Real expression for supply temperature"
+      inStream(portTra_in.Xi_outflow)))) if not use_openModelica "Real expression for supply temperature"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
