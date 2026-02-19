@@ -1,6 +1,5 @@
 IdealValveRadiator
 NoHeatTransfer
-RadiatorPressureBasedOpenModelica
 UFHTransferSystem
 Functions
 RecordsCollection

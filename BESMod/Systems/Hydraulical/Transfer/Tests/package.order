@@ -3,5 +3,3 @@ TestIdealValveRadiatorSystem
 TestPressureBasedSystem
 TestPressureBasedSystemWithReliefValve
 TestUnderfloorHeating
-TestOpenModelica
-TestOpenModelicaClean
