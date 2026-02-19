@@ -1,11 +1,8 @@
 within BESMod.Systems.Hydraulical.Transfer.Tests;
 model TestPressureBasedSystemWithReliefValve
-  extends BESMod.Systems.Hydraulical.Transfer.Tests.PartialTest(
-      redeclare
+  extends BESMod.Systems.Hydraulical.Transfer.Tests.PartialTest(redeclare
       BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased
-      transfer(
-      use_preRelVal=true,
-      redeclare
+      transfer(use_preRelVal=true, redeclare
         BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
         parRad));
   extends Modelica.Icons.Example;
@@ -15,7 +12,7 @@ model TestPressureBasedSystemWithReliefValve
     Documentation(info="<html>
 <p>
   Test for 
-  <a href=\"modelica://BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased\">BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased</a>.
+  <a href=\"modelica://BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBasedOpenModelica\">BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased</a>.
   with pressure relief valve.
 </p>
 </html>"));

@@ -1,10 +1,8 @@
 within BESMod.Systems.Hydraulical.Transfer.Tests;
 model TestPressureBasedSystem
-  extends BESMod.Systems.Hydraulical.Transfer.Tests.PartialTest(
-      redeclare
+  extends BESMod.Systems.Hydraulical.Transfer.Tests.PartialTest(redeclare
       BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased
-      transfer(
-      redeclare
+      transfer(redeclare
         BESMod.Systems.Hydraulical.Transfer.RecordsCollection.RadiatorTransferData
         parRad), pumDis(each ctrlType=AixLib.Fluid.Movers.DpControlledMovers.Types.CtrlType.dpVar));
   extends Modelica.Icons.Example;
@@ -15,7 +13,7 @@ model TestPressureBasedSystem
     Documentation(info="<html>
 <p>
   Test for 
-  <a href=\"modelica://BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased\">BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased</a>.
+  <a href=\"modelica://BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBasedOpenModelica\">BESMod.Systems.Hydraulical.Transfer.RadiatorPressureBased</a>.
 </p>
 </html>"));
 end TestPressureBasedSystem;

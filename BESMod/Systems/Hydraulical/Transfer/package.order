@@ -1,9 +1,10 @@
 IdealValveRadiator
 NoHeatTransfer
-RadiatorPressureBased
+RadiatorPressureBasedOpenModelica
 UFHTransferSystem
 Functions
 RecordsCollection
 Tests
 Types
 BaseClasses
+RadiatorPressureBased
