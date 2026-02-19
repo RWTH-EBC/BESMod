@@ -50,15 +50,15 @@ Statistics
  
 Original Model
   Number of components: 733
-  Variables: 7205
+  Variables: 7206
   Constants: 135 (135 scalars)
-  Parameters: 3124 (4564 scalars)
+  Parameters: 3125 (4565 scalars)
   Unknowns: 3946 (3819 scalars)
   Differentiated variables: 47 scalars
   Equations: 2986
   Nontrivial: 2574
 Translated Model
-  Constants: 3981 scalars
+  Constants: 3982 scalars
   Free parameters: 416 scalars
   Parameter depending: 787 scalars
   Outputs: 2 scalars
@@ -708,15 +708,15 @@ Statistics
  
 Original Model
   Number of components: 1499
-  Variables: 14825
+  Variables: 14826
   Constants: 237 (237 scalars)
-  Parameters: 6950 (8513 scalars)
+  Parameters: 6951 (8514 scalars)
   Unknowns: 7638 (7202 scalars)
   Differentiated variables: 124 scalars
   Equations: 6128
   Nontrivial: 5103
 Translated Model
-  Constants: 6932 scalars
+  Constants: 6933 scalars
   Free parameters: 745 scalars
   Parameter depending: 2103 scalars
   Outputs: 2 scalars
@@ -1001,15 +1001,15 @@ Statistics
  
 Original Model
   Number of components: 714
-  Variables: 6968
+  Variables: 6969
   Constants: 127 (127 scalars)
-  Parameters: 3094 (4496 scalars)
+  Parameters: 3095 (4497 scalars)
   Unknowns: 3747 (3615 scalars)
   Differentiated variables: 47 scalars
   Equations: 2881
   Nontrivial: 2475
 Translated Model
-  Constants: 3354 scalars
+  Constants: 3355 scalars
   Free parameters: 603 scalars
   Parameter depending: 1094 scalars
   Outputs: 2 scalars
@@ -1152,15 +1152,15 @@ Statistics
  
 Original Model
   Number of components: 2638
-  Variables: 30566
+  Variables: 30567
   Constants: 544 (544 scalars)
-  Parameters: 14125 (15589 scalars)
+  Parameters: 14126 (15590 scalars)
   Unknowns: 15897 (13293 scalars)
   Differentiated variables: 319 scalars
   Equations: 12533
   Nontrivial: 9902
 Translated Model
-  Constants: 12641 scalars
+  Constants: 12642 scalars
   Free parameters: 1155 scalars
   Parameter depending: 4155 scalars
   Outputs: 2 scalars
@@ -1694,15 +1694,15 @@ Statistics
  
 Original Model
   Number of components: 1499
-  Variables: 14825
+  Variables: 14826
   Constants: 237 (237 scalars)
-  Parameters: 6950 (8513 scalars)
+  Parameters: 6951 (8514 scalars)
   Unknowns: 7638 (7202 scalars)
   Differentiated variables: 124 scalars
   Equations: 6128
   Nontrivial: 5103
 Translated Model
-  Constants: 6932 scalars
+  Constants: 6933 scalars
   Free parameters: 745 scalars
   Parameter depending: 2103 scalars
   Outputs: 2 scalars
@@ -1988,15 +1988,15 @@ Statistics
  
 Original Model
   Number of components: 4235
-  Variables: 41739
+  Variables: 41740
   Constants: 546 (546 scalars)
-  Parameters: 19719 (26516 scalars)
+  Parameters: 19720 (26517 scalars)
   Unknowns: 21474 (20367 scalars)
   Differentiated variables: 436 scalars
   Equations: 16397
   Nontrivial: 13521
 Translated Model
-  Constants: 13449 scalars
+  Constants: 13450 scalars
   Free parameters: 2745 scalars
   Parameter depending: 12754 scalars
   Outputs: 2 scalars
@@ -2465,15 +2465,15 @@ Statistics
  
 Original Model
   Number of components: 1499
-  Variables: 14823
+  Variables: 14824
   Constants: 237 (237 scalars)
-  Parameters: 6948 (8511 scalars)
+  Parameters: 6949 (8512 scalars)
   Unknowns: 7638 (7202 scalars)
   Differentiated variables: 124 scalars
   Equations: 6128
   Nontrivial: 5103
 Translated Model
-  Constants: 6929 scalars
+  Constants: 6930 scalars
   Free parameters: 746 scalars
   Parameter depending: 2103 scalars
   Outputs: 2 scalars
@@ -2677,15 +2677,15 @@ Statistics
  
 Original Model
   Number of components: 2704
-  Variables: 31396
+  Variables: 31397
   Constants: 571 (571 scalars)
-  Parameters: 14391 (15878 scalars)
+  Parameters: 14392 (15879 scalars)
   Unknowns: 16434 (13766 scalars)
   Differentiated variables: 325 scalars
   Equations: 12867
   Nontrivial: 10149
 Translated Model
-  Constants: 12874 scalars
+  Constants: 12875 scalars
   Free parameters: 1207 scalars
   Parameter depending: 4242 scalars
   Outputs: 2 scalars
@@ -3265,15 +3265,15 @@ Statistics
  
 Original Model
   Number of components: 2566
-  Variables: 24861
+  Variables: 24862
   Constants: 630 (630 scalars)
-  Parameters: 10451 (13773 scalars)
+  Parameters: 10452 (13774 scalars)
   Unknowns: 13780 (12859 scalars)
   Differentiated variables: 219 scalars
   Equations: 10771
   Nontrivial: 8566
 Translated Model
-  Constants: 10589 scalars
+  Constants: 10590 scalars
   Free parameters: 1897 scalars
   Parameter depending: 3631 scalars
   Outputs: 2 scalars
@@ -3478,15 +3478,15 @@ Statistics
  
 Original Model
   Number of components: 2566
-  Variables: 24861
+  Variables: 24862
   Constants: 630 (630 scalars)
-  Parameters: 10451 (13773 scalars)
+  Parameters: 10452 (13774 scalars)
   Unknowns: 13780 (12859 scalars)
   Differentiated variables: 219 scalars
   Equations: 10771
   Nontrivial: 8566
 Translated Model
-  Constants: 10589 scalars
+  Constants: 10590 scalars
   Free parameters: 1897 scalars
   Parameter depending: 3631 scalars
   Outputs: 2 scalars
@@ -3916,15 +3916,15 @@ Statistics
  
 Original Model
   Number of components: 1499
-  Variables: 14825
+  Variables: 14826
   Constants: 237 (237 scalars)
-  Parameters: 6950 (8513 scalars)
+  Parameters: 6951 (8514 scalars)
   Unknowns: 7638 (7202 scalars)
   Differentiated variables: 124 scalars
   Equations: 6128
   Nontrivial: 5103
 Translated Model
-  Constants: 6932 scalars
+  Constants: 6933 scalars
   Free parameters: 745 scalars
   Parameter depending: 2103 scalars
   Outputs: 2 scalars
@@ -4801,9 +4801,9 @@ The redundancies involve
 initial equations: 
   hydraulic.generation.heatPump.eva.vol.dynBal.medium.p = 101325.0;
   ventilation.generation.threeWayValve_b.res1.port_b.p = ventilation.generation.threeWayValve_b.vol.dynBal.p_start;
-  electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
-  electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
   electrical.distribution.batterySimple.EAva = electrical.distribution.batterySimple.c    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
+  electrical.distribution.batterySimple.EBou = (1.0-electrical.distribution.batterySimple.c)    *electrical.distribution.batterySimple.SOC_start*electrical.distribution.batterySimple.E_nominal;
+  electrical.distribution.batterySimple.E = electrical.distribution.batterySimple.E_nominal    *electrical.distribution.batterySimple.SOC_start;
  
  
 Statistics
