@@ -5,7 +5,7 @@ model AixLibHighOrderOFD "High order OFD"
 
   parameter Integer nZonesNonHeated = 1 "Non heated rooms of the building";
 
-  // Rooms:
+// Rooms:
   //Groundfloor -  1:LivingRoom_GF, 2:Hobby_GF, 3: Corridor_GF, 4: WC_Storage_GF, 5: Kitchen_GF,
   //Upperfloor -  6: Bedroom_UF, 7: Child1_UF, 8: Corridor_UF, 9: Bath_UF, 10: Child2_UF, 11: Attic
   final parameter Modelica.Units.SI.Area ABui = sum(AZone) "Total area of all zones";
@@ -125,8 +125,8 @@ model AixLibHighOrderOFD "High order OFD"
       Placement(transformation(extent={{-108,90},{-88,110}}),
         iconTransformation(extent={{-108,90},{-88,110}})));
 equation
-    // Romm Temperatures
-  /*
+// Romm Temperatures
+/*
   TZoneMea[1]= wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.airload.heatPort.T;
   TZoneMea[2]=wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.airload.heatPort.T;
   TZoneMea[3]=wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.airload.heatPort.T;
@@ -138,7 +138,6 @@ equation
   TZoneMea[9]=wholeHouseBuildingEnvelope.upperFloor_Building.Bath.airload.heatPort.T;
   TZoneMea[10]=wholeHouseBuildingEnvelope.upperFloor_Building.Children2.airload.heatPort.T;
   */
-
   connect(wholeHouseBuildingEnvelope.groPlateUp, wholeHouseBuildingEnvelope.groFloDown)
     annotation (Line(points={{-44,-28.8},{-54,-28.8},{-54,-15.36},{-44,-15.36}},
         color={191,0,0}));
@@ -181,7 +180,7 @@ equation
   end for;
 
   connect(convRadToCombPort.portConvRadComb, wholeHouseBuildingEnvelope.heatingToRooms[11]) annotation (Line(points={{-46,-56},
-          {-72,-56},{-72,2.86545},{-44,2.86545}},
+          {-76,-56},{-76,-3.13455}, {-58, -3.13455}, {-58, 2.86545},{-44,2.86545}},
         color={191,0,0}));
   connect(intGaiAttRad.port, convRadToCombPort.portRad) annotation (Line(points=
          {{10,-78},{-20,-78},{-20,-61},{-26,-61}}, color={191,0,0}));
