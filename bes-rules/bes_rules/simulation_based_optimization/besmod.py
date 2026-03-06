@@ -56,7 +56,7 @@ class BESMod(SurrogateBuilder):
                 else file_path_mat
             )
             log_df.loc[idx_to_use, "model_name"] = self.config.simulation.model_name.replace("\n", "")
-            log_df.loc[idx_to_use, single_parameters.keys()] = single_parameters.values()
+            log_df.loc[idx_to_use, single_parameters.keys()] = list(single_parameters.values())
 
         logger.info(f"Simulating {len(parameters)} combinations")
         results = self.sim_api.simulate(
