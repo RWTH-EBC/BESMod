@@ -1,7 +1,7 @@
 within BESMod.Systems.Electrical.Generation.BaseClasses;
 partial model PartialGeneration
   "Basic model with interfaces for electrical generation package"
-  parameter Boolean use_openModelica=true
+  parameter Boolean use_openModelica=false
     "=true to disable features which 
     are not available in open modelica" annotation(Dialog(tab="Advanced"));
   parameter Integer numGenUnits(min=1) "Number of generation (e.g. PV module) units"
