@@ -55,7 +55,8 @@ partial model PartialBuildingEnergySystem "Partial BES"
       choicesAllMatching=true, Placement(transformation(extent={{-280,124},{
             -224,178}})));
   replaceable BESMod.Systems.Demand.DHW.BaseClasses.PartialDHW
-    DHW if systemParameters.use_hydraulic constrainedby
+    DHW(final use_openModelica=use_openModelica)
+        if systemParameters.use_hydraulic constrainedby
     Demand.DHW.BaseClasses.PartialDHW(
     redeclare final package Medium = MediumDHW,
     final TDHW_nominal=systemParameters.TSetDHW,
