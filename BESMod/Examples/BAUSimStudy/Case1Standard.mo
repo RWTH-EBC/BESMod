@@ -1,6 +1,8 @@
 within BESMod.Examples.BAUSimStudy;
 model Case1Standard
-  extends PartialCase(building(redeclare BESMod.Systems.Demand.Building.RecordsCollection.ACoolHeadAndBEStPar.NoRetrofit1918_SingleDwelling oneZoneParam, use_verboseEnergyBalance = false),
+  extends PartialCase(building(redeclare
+        BESMod.Systems.Demand.Building.RecordsCollection.ACoolHeadAndBEStPar.NoRetrofit1918_SingleDwelling
+        oneZoneParam),
   systemParameters(TOda_nominal=263.15, THydSup_nominal={328.15}));
   extends Modelica.Icons.Example;
 
