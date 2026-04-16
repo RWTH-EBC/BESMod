@@ -77,7 +77,8 @@ model BuildingAndDHWControl
   SummerMode sumMod "Summer mode instance"
     annotation (Placement(transformation(extent={{-58,-44},{-38,-24}})));
 
-  BuildingHysteresis hysBui
+  BivalentOnOffControllers.TimeBasedElectricHeaterThreeStep
+                     hysBui(dTHys=10)
     "Hysteresis for building" annotation (Placement(
         transformation(extent={{-60,-106},{-40,-86}})));
   BuildingSupplySetTemperature TSetBuiSup

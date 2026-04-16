@@ -96,12 +96,6 @@ equation
       horizontalAlignment=TextAlignment.Right));
   connect(reaPasTrhGenSup.y, TMea) annotation (Line(points={{1,-82},{88,-82},{88,-40},
           {110,-40}}, color={0,0,127}));
-  connect(reaPasTrhGenSup.u, sigBusGen.TGenOutMea) annotation (Line(points={{-22,-82},
-          {-100,-82}}, color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
   if not use_dhw then
     connect(constAddBuf.y, TSet) annotation (Line(
       points={{-39,40},{70,40},{70,60},{110,60}},
@@ -124,6 +118,12 @@ equation
       thickness=0.5), Text(
       string="%first",
       index=-1,
+      extent={{-6,3},{-6,3}},
+      horizontalAlignment=TextAlignment.Right));
+  connect(reaPasTrhGenSup.u, sigBusGen.THeaPumOut) annotation (Line(points={{
+          -22,-82},{-100,-82}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={

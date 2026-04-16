@@ -3,6 +3,7 @@ DegreeMinuteController
 FloatingHysteresis
 PartParallelBivalent
 TimeBasedElectricHeater
+TimeBasedElectricHeaterThreeStep
 Utilities
 Examples
 BaseClasses

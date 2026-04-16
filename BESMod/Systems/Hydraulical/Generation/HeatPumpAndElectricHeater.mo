@@ -26,11 +26,11 @@ model HeatPumpAndElectricHeater "Heat pump with an electric heater in series"
     final V=parEleHea.V_hr,
     final eta=parEleHea.eta,
     use_countNumSwi=false) if use_eleHea "Electric heater"
-    annotation (Placement(transformation(extent={{20,40},{40,60}})));
+    annotation (Placement(transformation(extent={{26,40},{46,60}})));
   AixLib.Fluid.Interfaces.PassThroughMedium pasThrMedEleHea(redeclare package
       Medium = Medium, allowFlowReversal=allowFlowReversal) if not use_eleHea
     "Pass through if electric heater is not used"
-    annotation (Placement(transformation(extent={{20,20},{40,40}})));
+    annotation (Placement(transformation(extent={{26,20},{46,40}})));
 
   Utilities.KPIs.DeviceKPICalculator KPIEleHea(
     use_reaInp=true,
@@ -52,32 +52,30 @@ protected
 equation
   connect(heatPump.port_a1, pump.port_b) annotation (Line(points={{-30,0},{-30,-70},
           {1.77636e-15,-70}},            color={0,127,255}));
-  connect(pasThrMedEleHea.port_b, senTGenOut.port_a) annotation (Line(points={{40,30},
+  connect(pasThrMedEleHea.port_b, senTGenOut.port_a) annotation (Line(points={{46,30},
           {54,30},{54,80},{60,80}},     color={0,127,255}));
-  connect(eleHea.port_b, senTGenOut.port_a) annotation (Line(points={{40,50},{54,50},
-          {54,80},{60,80}}, color={0,127,255}));
-  connect(pasThrMedEleHea.port_a, heatPump.port_b1) annotation (Line(points={{20,30},
-          {10,30},{10,50},{-30,50},{-30,38},{-30,38},{-30,35}},         color={0,
-          127,255}));
-  connect(heatPump.port_b1, eleHea.port_a) annotation (Line(points={{-30,35},{-30,
-          36},{-30,36},{-30,50},{20,50}}, color={0,127,255}));
-  connect(eleHea.u, sigBusGen.uEleHea) annotation (Line(points={{18,56},{2,56},{2,
-          98}}, color={0,0,127}), Text(
+  connect(eleHea.port_b, senTGenOut.port_a) annotation (Line(points={{46,50},{
+          54,50},{54,80},{60,80}},
+                            color={0,127,255}));
+  connect(eleHea.u, sigBusGen.uEleHea) annotation (Line(points={{24,56},{2,56},
+          {2,98}},
+                color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(multiSum.u[3], eleHea.Pel) annotation (Line(points={{136,-82},{140,-82},
-          {140,56},{41,56}}, color={0,0,127}));
+  connect(multiSum.u[3], eleHea.Pel) annotation (Line(points={{136,-82},{140,
+          -82},{140,56},{47,56}},
+                             color={0,0,127}));
   connect(KPIQEleHea_flow.KPI, outBusGen.QEleHea_flow) annotation (Line(points={{
           -117.8,-130},{0,-130},{0,-100}}, color={135,135,135}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(eleHea.Pel, KPIEleHea.uRea) annotation (Line(points={{41,56},{42,56},{42,
-          -38},{-10,-38},{-10,-66},{92,-66},{92,-154},{-130,-154},{-130,-110},{-122.2,
-          -110}}, color={0,0,127}));
+  connect(eleHea.Pel, KPIEleHea.uRea) annotation (Line(points={{47,56},{140,56},
+          {140,-152},{-150,-152},{-150,-110},{-122.2,-110}},
+                  color={0,0,127}));
   connect(KPIPEleEleHea.KPI, outBusGen.PEleEleHea) annotation (Line(points={{
           -117.8,-90},{-68,-90},{-68,-92},{0,-92},{0,-100}}, color={135,135,135}),
       Text(
@@ -91,4 +89,8 @@ equation
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  connect(pasThrMedEleHea.port_a, heatPump.port_b1) annotation (Line(points={{
+          26,30},{14,30},{14,34},{-30,34},{-30,35}}, color={0,127,255}));
+  connect(eleHea.port_a, heatPump.port_b1) annotation (Line(points={{26,50},{14,
+          50},{14,34},{-30,34},{-30,35}}, color={0,127,255}));
 end HeatPumpAndElectricHeater;
