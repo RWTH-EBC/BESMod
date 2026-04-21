@@ -1,0 +1,72 @@
+
+Error in model:  BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump 
+Check of <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump">BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump</a>
+Component type specifier Generic is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:28">29</a>
+ Component context: parHeaPum
+  Component declared as Generic parHeaPum in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps">BESMod.Systems.Hydraulical.Generation.RecordsCollection.HeatPumps</a>
+Component type specifier TemperatureSensorBaseDefinition is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/BaseClasses/PartialHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump#text:42">43</a>
+ Component context: parTemSen
+  Component declared as TemperatureSensorBaseDefinition parTemSen in <a href="Modelica://BESMod.Systems.RecordsCollection.TemperatureSensors">BESMod.Systems.RecordsCollection.TemperatureSensors</a>
+Warning: Component type specifier RefrigerantCycleHeatPumpHeating is equal to a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/AixLib/AixLib/Fluid/HeatPumps/ModularReversible/BaseClasses/RefrigerantCycle.mo, line <a href="Modelica://AixLib.Fluid.HeatPumps.ModularReversible.BaseClasses.RefrigerantCycle#text:25">26</a>
+ Component context: heatPump.refCyc.refCycHeaPumHea
+  Component declared as RefrigerantCycleHeatPumpHeating refCycHeaPumHea in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump">BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump</a>
+Component type specifier Generic is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/HeatPumpAndElectricHeater.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater#text:18">19</a>
+ Component context: parEleHea
+  Component declared as Generic parEleHea in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater">BESMod.Systems.Hydraulical.Generation.RecordsCollection.ElectricHeater</a>
+Error: Overriding final modifier for resetTimeKPIs
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/HeatPumpAndElectricHeater.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater.KPIEleHea#text:2">46</a>
+Overriding found at:
+ Component context: BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater.KPIEleHea.resetTimeKPIs
+  Component declared as _Default KPIEleHea in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater">BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/DetailedSolarThermalWithHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater.KPIEleHea#text">14</a>
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Error: Overriding final modifier for resetTimeKPIs
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/HeatPumpAndElectricHeater.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater.KPIQEleHea_flow#text:2">53</a>
+Overriding found at:
+ Component context: BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater.KPIQEleHea_flow.resetTimeKPIs
+  Component declared as _Default KPIQEleHea_flow in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater">BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/DetailedSolarThermalWithHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater.KPIQEleHea_flow#text">15</a>
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Error: Overriding final modifier for resetTimeKPIs
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/HeatPumpAndElectricHeater.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater.KPIPEleEleHea#text:2">57</a>
+Overriding found at:
+ Component context: BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater.KPIPEleEleHea.resetTimeKPIs
+  Component declared as _Default KPIPEleEleHea in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater">BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/DetailedSolarThermalWithHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater.KPIPEleEleHea#text">13</a>
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Component type specifier Generic is a partial type
+  It must be redeclared before being used.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/DetailedSolarThermalWithHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump#text:23">24</a>
+ Component context: solarThermalParas
+  Component declared as Generic solarThermalParas in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.RecordsCollection.SolarThermal">BESMod.Systems.Hydraulical.Generation.RecordsCollection.SolarThermal</a>
+Check is assuming: Q_flow_nominal = fill(1e-15, 2)
+Check is assuming: parHeaPum.dpCon_nominal = 0
+Check is assuming: parEleHea.dp_nominal = 0
+Check is assuming: parHeaPum.dpEva_nominal = 0
+The model has
+  1456+6*solCol.nSeg+heatPump.con.vol.dynBal.nPorts+2*heatPump.eva.vol.dynBal.nPorts    +size(heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns, 1)+heatPump.safCtr.opeEnv.bouMapHea.nor.nu    +size(heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns, 1)+heatPump.safCtr.opeEnv.bouMapCoo.nor.nu    +multiSum.nu+eleHea.vol.dynBal.nPorts+solCol.vol[1].dynBal.nPorts+    solCol.vol[2].dynBal.nPorts+solCol.vol[3].dynBal.nPorts+solCol.vol[4].dynBal.nPorts    +solCol.vol[5].dynBal.nPorts
+scalar unknowns and
+  1418+(if bou_sinkAir.use_Xi_in then 2 else (if bou_sinkAir.use_X_in then 1     else 3))+(if  not bou_sinkAir.use_p_in then 1 else 0)+(if  not     bou_sinkAir.use_h_in then 1 else 0)+(if bouEva.use_Xi_in then 2 else (if     bouEva.use_X_in then 1 else 3))+2*(if  not solCol.use_shaCoe_in then 1 else 0)    +4*solCol.nSeg+(if  not heatPump.con.vol.dynBal.use_mWat_flow then 1 else 0)    +3*heatPump.con.vol.dynBal.nPorts+(if  not heatPump.eva.vol.dynBal.use_mWat_flow     then 1 else 0)+5*heatPump.eva.vol.dynBal.nPorts+size(heatPump.safCtr.opeEnv.bouMapHea.tabBou.columns,     1)+size(heatPump.safCtr.opeEnv.bouMapCoo.tabBou.columns, 1)+(if  not     eleHea.vol.dynBal.use_mWat_flow then 1 else 0)+3*eleHea.vol.dynBal.nPorts+(    if  not solCol.vol[1].dynBal.use_mWat_flow then 1 else 0)+3*solCol.vol[1].dynBal.nPorts    +(if  not solCol.vol[2].dynBal.use_mWat_flow then 1 else 0)+3*    solCol.vol[2].dynBal.nPorts+(if  not solCol.vol[3].dynBal.use_mWat_flow     then 1 else 0)+3*solCol.vol[3].dynBal.nPorts+(if  not solCol.vol[4].dynBal.use_mWat_flow     then 1 else 0)+3*solCol.vol[4].dynBal.nPorts+(if  not solCol.vol[5].dynBal.use_mWat_flow     then 1 else 0)+3*solCol.vol[5].dynBal.nPorts
+scalar equations.
+Warning: There is more than one reinit to KPIHeaPum.integrator3.y.
+The behaviour is non-deterministic if the events are non-exclusive.
+Warning: There is more than one reinit to KPIEleHea.integrator3.y.
+The behaviour is non-deterministic if the events are non-exclusive.
+DAE with 1552 unknown scalars and 1544 scalar equations.
+
+Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump#$heatPump.refCyc:refCycHeaPumHea">heatPump.refCyc.refCycHeaPumHea</a>.
+Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump#:parEleHea">parEleHea</a>.
+Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump#:parHeaPum">parHeaPum</a>.
+Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump#:parTemSen">parTemSen</a>.
+Balancing not required due to partial component <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump#:solarThermalParas">solarThermalParas</a>.
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+

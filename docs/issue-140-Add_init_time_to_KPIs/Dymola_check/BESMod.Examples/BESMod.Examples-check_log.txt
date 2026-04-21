@@ -1,0 +1,64 @@
+
+Error in model:  BESMod.Examples.SolarThermalSystem.SolarThermalBuildings 
+Check of <a href="Modelica://BESMod.Examples.SolarThermalSystem.SolarThermalBuildings">BESMod.Examples.SolarThermalSystem.SolarThermalBuildings</a>
+Error: Overriding final modifier for resetTimeKPIs
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/HeatPumpAndElectricHeater.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater.KPIEleHea#text:2">46</a>
+Overriding found at:
+ Component context: BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater.KPIEleHea.resetTimeKPIs
+  Component declared as _Default KPIEleHea in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater">BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/DetailedSolarThermalWithHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater.KPIEleHea#text">14</a>
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Error: Overriding final modifier for resetTimeKPIs
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/HeatPumpAndElectricHeater.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater.KPIQEleHea_flow#text:2">53</a>
+Overriding found at:
+ Component context: BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater.KPIQEleHea_flow.resetTimeKPIs
+  Component declared as _Default KPIQEleHea_flow in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater">BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/DetailedSolarThermalWithHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater.KPIQEleHea_flow#text">15</a>
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Error: Overriding final modifier for resetTimeKPIs
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/HeatPumpAndElectricHeater.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater.KPIPEleEleHea#text:2">57</a>
+Overriding found at:
+ Component context: BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater.KPIPEleEleHea.resetTimeKPIs
+  Component declared as _Default KPIPEleEleHea in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater">BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/DetailedSolarThermalWithHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater.KPIPEleEleHea#text">13</a>
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Error: Overriding final modifier for resetTimeKPIs
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/HeatPumpAndElectricHeater.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater.KPIEleHea#text:2">46</a>
+Overriding found at:
+ Component context: BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater.KPIEleHea.resetTimeKPIs
+  Component declared as _Default KPIEleHea in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater">BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/DetailedSolarThermalWithHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater.KPIEleHea#text">14</a>
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Error: Overriding final modifier for resetTimeKPIs
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/HeatPumpAndElectricHeater.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater.KPIQEleHea_flow#text:2">53</a>
+Overriding found at:
+ Component context: BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater.KPIQEleHea_flow.resetTimeKPIs
+  Component declared as _Default KPIQEleHea_flow in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater">BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/DetailedSolarThermalWithHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater.KPIQEleHea_flow#text">15</a>
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Error: Overriding final modifier for resetTimeKPIs
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/HeatPumpAndElectricHeater.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater.KPIPEleEleHea#text:2">57</a>
+Overriding found at:
+ Component context: BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater.KPIPEleEleHea.resetTimeKPIs
+  Component declared as _Default KPIPEleEleHea in <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater">BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater</a>
+  File: /builds/EBC/EBC_all/github_ci/BESMod/BESMod/Systems/Hydraulical/Generation/DetailedSolarThermalWithHeatPump.mo, line <a href="Modelica://BESMod.Systems.Hydraulical.Generation.DetailedSolarThermalWithHeatPump.HeatPumpAndElectricHeater.KPIPEleEleHea#text">13</a>
+Set Advanced.Translation.Log.FinalStartModifierError = false to disregard these errors
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.AIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 1 the size declaration is building.thermalZone[1].ROM.nIze, and the required size is 1.
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.RIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 2 the size declaration is building.thermalZone[1].ROM.nIzeRC, and the required size is 1.
+Warning: Failed to evaluate and check the size declaration of building.thermalZone[1].ROM.CIze.
+The definition equation or start value requires a certain size.
+Warning: For dimension 2 the size declaration is building.thermalZone[1].ROM.nIzeRC, and the required size is 1.
+Warning: There is more than one reinit to hydraulic.generation.KPIHeaPum.integrator3.y.
+The behaviour is non-deterministic if the events are non-exclusive.
+The following parameters have enable=false and don't have any value, only a start value:
+    building.thermalZone[1].eqAirTempRoof.TGro(start = 288.15)
+    building.thermalZone[1].eqAirTempWall.TGro(start = 288.15)
+
+The model has the same number of unknowns and equations: 13885
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+
