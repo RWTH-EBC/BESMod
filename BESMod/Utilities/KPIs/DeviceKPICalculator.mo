@@ -58,7 +58,6 @@ equation
 
   when time >= resetTimeKPIs then
     reinit(integrator1.y, 0.0);
-    reinit(integrator3.y, 0.0);
   end when;
 
   connect(switch1.u1,const. y) annotation (Line(points={{-12,8},{-14,8},{-14,20},
