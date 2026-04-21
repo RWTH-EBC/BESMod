@@ -15,6 +15,7 @@ model TEASERThermalZone
   parameter Real ventRate[nZones]=fill(0, nZones) "Constant mechanical ventilation rate";
 
   parameter Boolean use_verboseEnergyBalance=true   "=false to disable the integration of the verbose energy balance";
+  final parameter Boolean use_verboseEnergyBalanceInternal = not use_openModelica and use_verboseEnergyBalance;
   parameter Modelica.Units.SI.TemperatureDifference dTComfort=2
     "Temperature difference to room set temperature at which the comfort is still acceptable. In DIN EN 15251, all temperatures below 22 °C - 2 K count as discomfort. Hence the default value. If your room set temperature is lower, consider using smaller values.";
   parameter Boolean incElePro = false
@@ -55,14 +56,14 @@ model TEASERThermalZone
 
   Modelica.Blocks.Sources.RealExpression QVent[nZones](y=
         portVent_in.m_flow.*inStream(portVent_in.h_outflow) .+ portVent_out.m_flow
-        .*portVent_out.h_outflow) if use_ventilation and use_verboseEnergyBalance
+        .*portVent_out.h_outflow) if use_ventilation and use_verboseEnergyBalanceInternal
     "Internal gains"                                               annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-90,-216})));
   Modelica.Blocks.Sources.RealExpression QAirExc[nZones](y=
-        thermalZone.airExc.Q_flow) if use_verboseEnergyBalance "Internal gains"                annotation (
+        thermalZone.airExc.Q_flow) if use_verboseEnergyBalanceInternal "Internal gains"                annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -73,7 +74,7 @@ model TEASERThermalZone
   Modelica.Thermal.HeatTransfer.Sensors.HeatFlowSensor heatFlowSensorConv[
     nZones]
     annotation (Placement(transformation(extent={{-80,40},{-60,60}})));
-  Modelica.Blocks.Math.Add          addTra[nZones] if use_verboseEnergyBalance
+  Modelica.Blocks.Math.Add          addTra[nZones] if use_verboseEnergyBalanceInternal
     annotation (Placement(transformation(extent={{-10,10},{10,-10}},
         rotation=0,
         origin={-90,-198})));
@@ -115,10 +116,10 @@ model TEASERThermalZone
   Utilities.KPIs.ZoneEnergyBalance zoneEneBal[nZones](each final
       with_ventilation=use_ventilation, each final with_floor=zoneParam[1].AFloor
          > 0)
-    if use_verboseEnergyBalance "Zone energy balance"
+    if use_verboseEnergyBalanceInternal "Zone energy balance"
     annotation (Placement(transformation(extent={{-60,-200},{-22,-140}})));
   Modelica.Blocks.Sources.RealExpression QExtWall_flow[nZones](y=thermalZone.ROM.extWall.Q_flow)
-    if use_verboseEnergyBalance "External wall heat flow rate" annotation (
+    if use_verboseEnergyBalanceInternal "External wall heat flow rate" annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -132,20 +133,20 @@ model TEASERThermalZone
     "Zone temperature KPIs for operative temperature"
     annotation (Placement(transformation(extent={{0,-80},{20,-60}})));
   Modelica.Blocks.Sources.RealExpression QRoof_flow[nZones](y=thermalZone.ROM.roof.Q_flow)
-    if use_verboseEnergyBalance "Roof heat flow rate" annotation (Placement(
+    if use_verboseEnergyBalanceInternal "Roof heat flow rate" annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-90,-120})));
   Modelica.Blocks.Sources.RealExpression QFloor_flow[nZones](y=thermalZone.ROM.floor.Q_flow)
-    if use_verboseEnergyBalance and zoneParam[1].AFloor > 0
+    if use_verboseEnergyBalanceInternal and zoneParam[1].AFloor > 0
                                 "Floor heat flow rate" annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-90,-134})));
   Modelica.Blocks.Sources.RealExpression QWin_flow[nZones](y=thermalZone.ROM.window.Q_flow)
-    if use_verboseEnergyBalance "Window heat flow rate"                                        annotation (
+    if use_verboseEnergyBalanceInternal "Window heat flow rate"                                        annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -153,7 +154,7 @@ model TEASERThermalZone
   Modelica.Blocks.Sources.RealExpression QSol_flow[nZones](y={if ATot[i] > 0 then
         sum({thermalZone[i].ROM.solRad[n]*thermalZone[i].ROM.ATransparent[n]*
         thermalZone[i].ROM.gWin for n in 1:thermalZone[i].ROM.nOrientations})
-         else 0 for i in 1:nZones}) if use_verboseEnergyBalance
+         else 0 for i in 1:nZones}) if use_verboseEnergyBalanceInternal
     "Solar radiative  heat flow rate" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
