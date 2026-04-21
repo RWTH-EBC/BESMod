@@ -9,7 +9,7 @@ model RadiatorPressureBased "Pressure Based transfer system"
     Q_flow_design={if use_oldRad_design[i] then QOld_flow_design[i] else Q_flow_nominal[i] for i in 1:nParallelDem},
     TTra_design={if use_oldRad_design[i] then TTraOld_design[i] else TTra_nominal[i] for i in 1:nParallelDem});
   final parameter Modelica.Units.SI.PressureDifference dpFixedTotal_nominal[nParallelDem] = dpPipSca_design.*(1 + parRad.perPreLosRad);
-  parameter Boolean use_oldRad_design[nParallelDem]={not QOld_flow_design[i]==Q_flow_nominal[i] for i in 1:nParallelDem}
+  parameter Boolean use_oldRad_design[nParallelDem]={abs(QOld_flow_design[i]-Q_flow_nominal[i])>1 for i in 1:nParallelDem}
     "If true, radiator design of the building with no retrofit (old state) is used"
     annotation (Dialog(group="Design - Internal: Parameters are defined by the subsystem"));
 
@@ -106,14 +106,14 @@ model RadiatorPressureBased "Pressure Based transfer system"
   Distribution.Components.Valves.PressureReliefValve pressureReliefValve(
     redeclare final package Medium = Medium,
     m_flow_nominal=mSup_flow_design[1],
-    final dpFullOpen_nominal=dpSup_design[1],
+    final dpFullOpen_nominal=dpFullOpen_nominal,
     final dpThreshold_nominal=perPreRelValOpens*dpSup_design[1],
     final facDpValve_nominal=valveAutho[1],
     final l=leakageOpening) if use_preRelVal annotation (Placement(
         transformation(
         extent={{10,-10},{-10,10}},
         rotation=90,
-        origin={-90,-10})));
+        origin={-90,-8})));
   Modelica.Blocks.Routing.RealPassThrough reaPasThrOpe[nParallelDem] annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
@@ -138,7 +138,7 @@ model RadiatorPressureBased "Pressure Based transfer system"
       each displayUnit="degC") = Medium.temperature(Medium.setState_phX(
       portTra_out.p,
       actualStream(portTra_out.h_outflow),
-      inStream(portTra_out.Xi_outflow)))) "Real expression for return temperature"
+      inStream(portTra_out.Xi_outflow)))) if not use_openModelica "Real expression for return temperature"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -148,11 +148,14 @@ model RadiatorPressureBased "Pressure Based transfer system"
       each displayUnit="degC") = Medium.temperature(Medium.setState_phX(
       portTra_in.p,
       inStream(portTra_in.h_outflow),
-      inStream(portTra_in.Xi_outflow)))) "Real expression for supply temperature"
+      inStream(portTra_in.Xi_outflow)))) if not use_openModelica "Real expression for supply temperature"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-30,-54})));
+  parameter Modelica.Units.SI.PressureDifference dpFullOpen_nominal=
+      dpSup_design[1] "Pressure difference at which valve is fully open"
+    annotation (Dialog(tab="Pressure losses", group="Relief Valve"));
 equation
   connect(rad.heatPortRad, heatPortRad) annotation (Line(points={{-2.8,-32},{40,
           -32},{40,-40},{100,-40}},       color={191,0,0}));
@@ -183,7 +186,7 @@ equation
       points={{60,-70},{72,-70},{72,-98}},
       color={0,0,0},
       thickness=1));
-  connect(pressureReliefValve.port_b, portTra_out[1]) annotation (Line(points={{-90,-20},
+  connect(pressureReliefValve.port_b, portTra_out[1]) annotation (Line(points={{-90,-18},
           {-90,-42},{-100,-42}},           color={0,127,255}));
   connect(reaPasThrOpe.u, traControlBus.opening) annotation (Line(points={{30,
           82},{30,94},{0,94},{0,100}}, color={0,0,127}), Text(
@@ -200,7 +203,7 @@ equation
   connect(volRet.ports[1], portTra_out[1]) annotation (Line(points={{-62,-32},{-62,
           -42},{-100,-42}}, color={0,127,255}));
   connect(pressureReliefValve.port_a, portTra_in[1])
-    annotation (Line(points={{-90,0},{-90,38},{-100,38}}, color={0,127,255}));
+    annotation (Line(points={{-90,2},{-90,38},{-100,38}}, color={0,127,255}));
   connect(volSup.ports[1], resMaiLin[1].port_b) annotation (Line(points={{-50,30},
           {-54,30},{-54,40},{-60,40}},
                               color={0,127,255}));

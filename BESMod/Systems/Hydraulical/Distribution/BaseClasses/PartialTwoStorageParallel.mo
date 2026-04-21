@@ -231,15 +231,13 @@ partial model PartialTwoStorageParallel
         origin={76,80})));
 
   BESMod.Utilities.KPIs.EnergyKPICalculator eneKPICalDHWHeaRod(use_inpCon=false,
-    final resetTimeKPIs=resetTimeKPIs,                                           y=
-        QHRStoDHWPre_flow.Q_flow) if parStoDHW.use_hr     annotation (Placement(
+      y=heaRodDHW.PEleHea) if parStoDHW.use_hr annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-50,-170})));
-  BESMod.Utilities.KPIs.EnergyKPICalculator eneKPICalBufHeaRod(use_inpCon=false,
-    final resetTimeKPIs=resetTimeKPIs,                                           y=
-        QHRStoBufPre_flow.Q_flow) if parStoBuf.use_hr
+  BESMod.Utilities.KPIs.EnergyKPICalculator eneKPICalBufHeaRod(use_inpCon=false, y=
+        heaRodBuf.PEleHea)        if parStoBuf.use_hr
     annotation (Placement(transformation(extent={{-100,-180},{-80,-160}})));
 
   Modelica.Blocks.Math.MultiSum multiSum(nu=4)                           annotation (Placement(
@@ -255,8 +253,8 @@ partial model PartialTwoStorageParallel
   BESMod.Systems.Hydraulical.Distribution.Components.ConditionalPrescibedHeater heaRodBuf(Q_flow_nominal=parStoBuf.QHR_flow_nominal,
       useHeater=parStoBuf.use_hr) "Heating rod in buffer storage"
     annotation (Placement(transformation(extent={{-90,10},{-70,30}})));
-  BESMod.Systems.Hydraulical.Distribution.Components.ConditionalPrescibedHeater heaRodparStoDHW(Q_flow_nominal=
-        parStoDHW.QHR_flow_nominal, useHeater=parStoDHW.use_hr)
+  BESMod.Systems.Hydraulical.Distribution.Components.ConditionalPrescibedHeater
+    heaRodDHW(Q_flow_nominal=parStoDHW.QHR_flow_nominal, useHeater=parStoDHW.use_hr)
     "Heating rod in DHW storage"
     annotation (Placement(transformation(extent={{-90,-60},{-70,-40}})));
   BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredDPControlled
@@ -401,19 +399,19 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(heaRodparStoDHW.uHea, sigBusDistr.uHRStoDHW) annotation (Line(points={
-          {-91.8,-50},{-126,-50},{-126,102},{2,102},{2,101},{0,101}}, color={0,0,
-          127}), Text(
+  connect(heaRodDHW.uHea, sigBusDistr.uHRStoDHW) annotation (Line(points={{-91.8,
+          -50},{-126,-50},{-126,102},{2,102},{2,101},{0,101}}, color={0,0,127}),
+      Text(
       string="%second",
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(heaRodparStoDHW.port, stoDHW.heatingRod)
+  connect(heaRodDHW.port, stoDHW.heatingRod)
     annotation (Line(points={{-70,-50},{-50,-50}}, color={191,0,0}));
   connect(heaRodBuf.port, stoBuf.heatingRod)
     annotation (Line(points={{-70,20},{-50,20}}, color={191,0,0}));
-  connect(heaRodparStoDHW.PEleHea, multiSum.u[1]) annotation (Line(points={{-69,-57},
-          {-66,-57},{-66,-113.363},{-58,-113.363}},      color={0,0,127}));
+  connect(heaRodDHW.PEleHea, multiSum.u[1]) annotation (Line(points={{-69,-57},
+          {-66,-57},{-66,-113.363},{-58,-113.363}}, color={0,0,127}));
   connect(heaRodBuf.PEleHea, multiSum.u[2]) annotation (Line(points={{-69,13},{
           -64,13},{-64,-108},{-58,-108},{-58,-111.787}},
                                                      color={0,0,127}));
