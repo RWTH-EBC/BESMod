@@ -1,4 +1,4 @@
-within BESMod.Systems.Demand.Building;
+﻿within BESMod.Systems.Demand.Building;
 model TEASERThermalZone
   "Reduced order building model, coupled with TEASER"
   extends BaseClasses.PartialDemand(
@@ -114,7 +114,8 @@ model TEASERThermalZone
         origin={30,-120})));
   Utilities.KPIs.ZoneEnergyBalance zoneEneBal[nZones](each final
       with_ventilation=use_ventilation, each final with_floor=zoneParam[1].AFloor
-         > 0)
+         > 0,
+    each final resetTimeKPIs=resetTimeKPIs)
     if use_verboseEnergyBalance "Zone energy balance"
     annotation (Placement(transformation(extent={{-60,-200},{-22,-140}})));
   Modelica.Blocks.Sources.RealExpression QExtWall_flow[nZones](y=thermalZone.ROM.extWall.Q_flow)
@@ -124,11 +125,13 @@ model TEASERThermalZone
         rotation=0,
         origin={-90,-110})));
   Utilities.KPIs.ZoneTemperature zonTem[nZones](each final dTComfort=dTComfort,
-      final TSetZone_nominal=TSetZone_nominal)
+      final TSetZone_nominal=TSetZone_nominal,
+    each final resetTimeKPIs=resetTimeKPIs)
     "Zone temperature KPIs for air temperature"
     annotation (Placement(transformation(extent={{0,-50},{20,-30}})));
   Utilities.KPIs.ZoneTemperature zonTemOpe[nZones](each final dTComfort=
-        dTComfort, final TSetZone_nominal=TSetZone_nominal)
+        dTComfort, final TSetZone_nominal=TSetZone_nominal,
+    each final resetTimeKPIs=resetTimeKPIs)
     "Zone temperature KPIs for operative temperature"
     annotation (Placement(transformation(extent={{0,-80},{20,-60}})));
   Modelica.Blocks.Sources.RealExpression QRoof_flow[nZones](y=thermalZone.ROM.roof.Q_flow)

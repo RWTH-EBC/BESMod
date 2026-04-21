@@ -61,13 +61,15 @@ model GasBoiler "Just a gas boiler"
     annotation (Placement(transformation(extent={{-66,-6},{-34,26}})));
 
 
-  Utilities.KPIs.EnergyKPICalculator KPIQBoi(use_inpCon=false, y=boi.QflowCalculation.y)
+  Utilities.KPIs.EnergyKPICalculator KPIQBoi(use_inpCon=false,
+    final resetTimeKPIs=resetTimeKPIs,                         y=boi.QflowCalculation.y)
     "Boiler heat flow rate"
     annotation (Placement(transformation(extent={{-40,-100},{-20,-80}})));
 
   BESMod.Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{26,-108},{46,-88}})));
   Utilities.KPIs.DeviceKPICalculator KPIBoi(
+    final resetTimeKPIs=resetTimeKPIs,
     use_reaInp=true,
     calc_singleOnTime=true,
     calc_totalOnTime=true,

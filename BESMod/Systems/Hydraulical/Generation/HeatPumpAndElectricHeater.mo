@@ -43,15 +43,18 @@ model HeatPumpAndElectricHeater "Heat pump with an electric heater in series"
     annotation (Placement(transformation(extent={{20,20},{40,40}})));
 
   Utilities.KPIs.DeviceKPICalculator KPIEleHea(
+    final resetTimeKPIs=resetTimeKPIs,
     use_reaInp=true,
     calc_singleOnTime=true,
     calc_totalOnTime=true,
     calc_numSwi=true) if use_eleHea "Electric heater KPIs"
     annotation (Placement(transformation(extent={{-120,-120},{-100,-100}})));
-  Utilities.KPIs.EnergyKPICalculator KPIQEleHea_flow(use_inpCon=false, y=eleHea.vol.heatPort.Q_flow)
+  Utilities.KPIs.EnergyKPICalculator KPIQEleHea_flow(use_inpCon=false,
+    final resetTimeKPIs=resetTimeKPIs,                                 y=eleHea.vol.heatPort.Q_flow)
     if use_eleHea "Electric heater heat flow rate"
     annotation (Placement(transformation(extent={{-140,-140},{-120,-120}})));
-  Utilities.KPIs.EnergyKPICalculator KPIPEleEleHea(use_inpCon=false, y=eleHea.Pel)
+  Utilities.KPIs.EnergyKPICalculator KPIPEleEleHea(use_inpCon=false,
+    final resetTimeKPIs=resetTimeKPIs,                               y=eleHea.Pel)
     if use_eleHea "Electric heater heat flow rate"
     annotation (Placement(transformation(extent={{-140,-100},{-120,-80}})));
 protected

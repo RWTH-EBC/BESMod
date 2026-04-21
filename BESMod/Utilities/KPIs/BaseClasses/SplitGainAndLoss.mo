@@ -1,6 +1,9 @@
 within BESMod.Utilities.KPIs.BaseClasses;
 model SplitGainAndLoss
   "Model to split an energy input value into gain and loss"
+
+  parameter Modelica.Units.SI.Time resetTimeKPIs = 0 "Simulation time where KPI integrals are reset to zero";
+
   Modelica.Blocks.Nonlinear.Limiter limLoss(final uMax=0, final uMin=-Modelica.Constants.inf,
     strict=noEvents)
     "Only use negative values (loss)"
@@ -9,12 +12,14 @@ model SplitGainAndLoss
       final uMin=0,
     strict=noEvents) "Only use positive values (gain)"
     annotation (Placement(transformation(extent={{-40,20},{-20,40}})));
-  Utilities.KPIs.EnergyKPICalculator gainKPI(final use_inpCon=true)
+  Utilities.KPIs.EnergyKPICalculator gainKPI(final use_inpCon=true, final resetTimeKPIs=
+        resetTimeKPIs)
      annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={30,30})));
-  Utilities.KPIs.EnergyKPICalculator lossKPI(final use_inpCon=true)
+  Utilities.KPIs.EnergyKPICalculator lossKPI(final use_inpCon=true, final resetTimeKPIs=
+        resetTimeKPIs)
      annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,

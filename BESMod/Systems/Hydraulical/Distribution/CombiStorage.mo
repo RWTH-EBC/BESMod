@@ -17,7 +17,7 @@ model CombiStorage
     final nParallelDem=1);
   replaceable parameter
     BESMod.Systems.RecordsCollection.Movers.DPVar parPumGen constrainedby
-    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition (iconName="Pump Gen",
+    BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition( iconName="Pump Gen",
       externalCtrlTyp=BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.Types.ExternalControlType.onOff)
     "Parameters for pump feeding supply system (generation)" annotation (
     choicesAllMatching=true,
@@ -110,7 +110,8 @@ model CombiStorage
     "Temperatures of all layers"
     annotation (Placement(transformation(extent={{-60,-100},{-40,-80}})));
 
-  BESMod.Utilities.KPIs.EnergyKPICalculator eneKPICal(use_inpCon=false, y=fixTempBuf.port.Q_flow)
+  BESMod.Utilities.KPIs.EnergyKPICalculator eneKPICal(use_inpCon=false,
+    final resetTimeKPIs=resetTimeKPIs,                                  y=fixTempBuf.port.Q_flow)
     "Energy KPI calculator"
     annotation (Placement(transformation(extent={{-100,-90},{-80,-70}})));
   IBPSA.Fluid.Sources.Boundary_pT bouPumSec(

@@ -54,7 +54,8 @@ model SimpleSolarThermalWithHeatPump
         rotation=180,
         origin={-30,-148})));
 
-  Utilities.KPIs.EnergyKPICalculator KPIWel1(use_inpCon=false, y=-solThe.heater.port.Q_flow)
+  Utilities.KPIs.EnergyKPICalculator KPIWel1(use_inpCon=false,
+    final resetTimeKPIs=resetTimeKPIs,                         y=-solThe.heater.port.Q_flow)
     annotation (Placement(transformation(extent={{-60,-100},{-40,-80}})));
 
   Modelica.Blocks.Sources.RealExpression reaExpSolTheTCol(y=solThe.senTRet.T)

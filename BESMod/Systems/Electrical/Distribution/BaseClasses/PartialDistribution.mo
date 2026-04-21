@@ -3,6 +3,9 @@ partial model PartialDistribution
   parameter Boolean use_openModelica=false
     "=true to disable features which 
     are not available in open modelica" annotation(Dialog(tab="Advanced"));
+  parameter Modelica.Units.SI.Time resetTimeKPIs = 0
+    "Simulation time where KPI integrals are reset to zero"
+    annotation(Dialog(tab="Advanced"));
   parameter Integer nSubSys(min=2)
     "Number of subsystems with electrical load / generation";
   Interfaces.DistributionOutputs OutputDistr if not use_openModelica
@@ -16,14 +19,14 @@ partial model PartialDistribution
     annotation (Placement(transformation(extent={{40,90},{60,110}})));
   Interfaces.ExternalElectricalPin externalElectricalPin
     annotation (Placement(transformation(extent={{40,-108},{60,-88}})));
-  Utilities.KPIs.EnergyKPICalculator eneKPILoa(final use_inpCon=true)
-                                        "Load on grid" annotation (Placement(
+  Utilities.KPIs.EnergyKPICalculator eneKPILoa(final use_inpCon=true, final
+      resetTimeKPIs=resetTimeKPIs)      "Load on grid" annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-30,-50})));
-  Utilities.KPIs.EnergyKPICalculator eneKPIGen(final use_inpCon=true)
-                                        "Load on grid" annotation (Placement(
+  Utilities.KPIs.EnergyKPICalculator eneKPIGen(final use_inpCon=true, final
+      resetTimeKPIs=resetTimeKPIs)      "Load on grid" annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,

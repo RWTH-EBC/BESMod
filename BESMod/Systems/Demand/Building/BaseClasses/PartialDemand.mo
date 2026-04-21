@@ -4,6 +4,9 @@ partial model PartialDemand "Partial demand model for HPS"
   parameter Boolean use_openModelica=false
     "=true to disable features which 
     are not available in open modelica" annotation(Dialog(tab="Advanced"));
+  parameter Modelica.Units.SI.Time resetTimeKPIs = 0
+    "Simulation time where KPI integrals are reset to zero"
+    annotation(Dialog(tab="Advanced"));
   parameter Integer nZones(min=1) "Number of zones /rooms";
   parameter Modelica.Units.SI.Temperature TSetZone_nominal[nZones]=fill(293.15,
       nZones) "Nominal room set temperature"

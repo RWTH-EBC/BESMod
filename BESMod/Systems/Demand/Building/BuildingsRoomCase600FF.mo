@@ -207,10 +207,12 @@ model BuildingsRoomCase600FF
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={108,-92})));
-  BESMod.Utilities.KPIs.ComfortCalculator comfortCalculatorHea[nZones](TComBou=
+  BESMod.Utilities.KPIs.ComfortCalculator comfortCalculatorHea[nZones](
+    final resetTimeKPIs=resetTimeKPIs,                                 TComBou=
         TSetZone_nominal .- dTComfort, each for_heating=true)
     annotation (Placement(transformation(extent={{66,0},{80,14}})));
-  BESMod.Utilities.KPIs.ComfortCalculator comfortCalculatorCool[nZones](TComBou=
+  BESMod.Utilities.KPIs.ComfortCalculator comfortCalculatorCool[nZones](
+    final resetTimeKPIs=resetTimeKPIs,                                  TComBou=
        TSetZone_nominal .+ dTComfort, each for_heating=false)
     annotation (Placement(transformation(extent={{66,-18},{80,-4}})));
   Modelica.Blocks.Routing.RealPassThrough reaPasThrTMea[nZones]

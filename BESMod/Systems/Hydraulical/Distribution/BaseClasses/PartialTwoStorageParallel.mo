@@ -208,9 +208,11 @@ partial model PartialTwoStorageParallel
     final allowFlowReversal_HC2=allowFlowReversal)            "DHW storage"
     annotation (Placement(transformation(extent={{-50,-70},{-18,-30}})));
 
-  BESMod.Utilities.KPIs.EnergyKPICalculator eneKPICalBuf(use_inpCon=false, y=fixTemBuf.port.Q_flow)
+  BESMod.Utilities.KPIs.EnergyKPICalculator eneKPICalBuf(use_inpCon=false,
+    final resetTimeKPIs=resetTimeKPIs,                                     y=fixTemBuf.port.Q_flow)
     annotation (Placement(transformation(extent={{-80,-160},{-60,-140}})));
-  BESMod.Utilities.KPIs.EnergyKPICalculator eneKPICalDHW(final use_inpCon=false, y=
+  BESMod.Utilities.KPIs.EnergyKPICalculator eneKPICalDHW(final use_inpCon=false,
+    final resetTimeKPIs=resetTimeKPIs,                                           y=
         fixTemDHW.port.Q_flow)
     annotation (Placement(transformation(extent={{-100,-140},{-80,-120}})));
   IBPSA.Fluid.Sensors.TemperatureTwoPort senTBuiSup(
@@ -228,13 +230,15 @@ partial model PartialTwoStorageParallel
         rotation=180,
         origin={76,80})));
 
-  BESMod.Utilities.KPIs.EnergyKPICalculator eneKPICalDHWHeaRod(use_inpCon=false, y=
+  BESMod.Utilities.KPIs.EnergyKPICalculator eneKPICalDHWHeaRod(use_inpCon=false,
+    final resetTimeKPIs=resetTimeKPIs,                                           y=
         QHRStoDHWPre_flow.Q_flow) if parStoDHW.use_hr     annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-50,-170})));
-  BESMod.Utilities.KPIs.EnergyKPICalculator eneKPICalBufHeaRod(use_inpCon=false, y=
+  BESMod.Utilities.KPIs.EnergyKPICalculator eneKPICalBufHeaRod(use_inpCon=false,
+    final resetTimeKPIs=resetTimeKPIs,                                           y=
         QHRStoBufPre_flow.Q_flow) if parStoBuf.use_hr
     annotation (Placement(transformation(extent={{-100,-180},{-80,-160}})));
 

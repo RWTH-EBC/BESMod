@@ -42,7 +42,8 @@ partial model PartialHydraulicSystem
     final show_T=show_T,
     final rho=rho,
     final cp=cp,
-    final use_openModelica=use_openModelica) annotation (choicesAllMatching=true,
+    final use_openModelica=use_openModelica,
+    final resetTimeKPIs=resetTimeKPIs) annotation (choicesAllMatching=true,
       Placement(transformation(extent={{-140,-104},{-24,28}})));
 
   replaceable BESMod.Systems.Hydraulical.Control.BaseClasses.PartialControl control
@@ -102,7 +103,8 @@ partial model PartialHydraulicSystem
       final dpSup_nominal=transfer.dpSup_nominal,
       final mSup_flow_nominal=transfer.mSup_flow_nominal,
       final nHeaTra=transfer.nHeaTra),
-    final use_openModelica=use_openModelica)
+    final use_openModelica=use_openModelica,
+    final resetTimeKPIs=resetTimeKPIs)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-132,54},
             {154,122}})));
   replaceable
@@ -148,6 +150,7 @@ partial model PartialHydraulicSystem
     final tCrit=hydraulicSystemParameters.tCrit,
     final QCrit=hydraulicSystemParameters.QCrit,
     final use_openModelica=use_openModelica,
+    final resetTimeKPIs=resetTimeKPIs,
     final dpSup_nominal=generation.dp_nominal,
     final dpSupOld_design=generation.dpOld_design,
     final dpDem_nominal=transfer.dpSup_nominal,
@@ -187,7 +190,8 @@ partial model PartialHydraulicSystem
     final show_T=show_T,
     final rho=rho,
     final cp=cp,
-    final use_openModelica=use_openModelica) annotation (choicesAllMatching=true, Placement(transformation(
+    final use_openModelica=use_openModelica,
+    final resetTimeKPIs=resetTimeKPIs) annotation (choicesAllMatching=true, Placement(transformation(
           extent={{112,-44},{180,28}})));
   IBPSA.BoundaryConditions.WeatherData.Bus
       weaBus "Weather data bus" annotation (Placement(transformation(extent={{-200,56},

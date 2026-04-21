@@ -27,7 +27,8 @@ model IdealHeaterFraRad
        true) "Heating active"
     annotation (Placement(transformation(extent={{-82,-80},{-62,-60}})));
   BESMod.Utilities.KPIs.EnergyKPICalculator heaKPI[nParallelDem](each final
-      use_inpCon=true) "Heating power KPI" annotation (Placement(transformation(
+      use_inpCon=true, each final resetTimeKPIs=resetTimeKPIs)
+                       "Heating power KPI" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={0,-40})));

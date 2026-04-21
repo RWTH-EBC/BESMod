@@ -9,7 +9,10 @@ model DetailedSolarThermalWithHeatPump
     redeclare package Medium = IBPSA.Media.Water,
                                 dTTra_nominal={if TDem_nominal[1] > 273.15 + 55
          then 10 elseif TDem_nominal[1] > 44.9 then 8 else 5,solarThermalParas.dTMax},
-         final nParallelDem=2);
+         final nParallelDem=2,
+    KPIPEleEleHea(final resetTimeKPIs=resetTimeKPIs),
+    KPIEleHea(final resetTimeKPIs=resetTimeKPIs),
+    KPIQEleHea_flow(final resetTimeKPIs=resetTimeKPIs));
   parameter Modelica.Units.SI.Length lengthPipSolThe=30 "Length of all pipes to and from solar thermal"
     annotation (Dialog(tab="Pressure losses", group="Solar Thermal"));
   parameter Real resCoeSolThe=8*facPerBend
@@ -58,7 +61,8 @@ model DetailedSolarThermalWithHeatPump
         rotation=180,
         origin={-30,-170})));
 
-  BESMod.Utilities.KPIs.EnergyKPICalculator KPIQSol(use_inpCon=false, y=sum(solCol.vol.heatPort.Q_flow))
+  BESMod.Utilities.KPIs.EnergyKPICalculator KPIQSol(use_inpCon=false,
+    final resetTimeKPIs=resetTimeKPIs,                                y=sum(solCol.vol.heatPort.Q_flow))
     "Solar thermal KPI"
     annotation (Placement(transformation(extent={{-60,-120},{-40,-100}})));
 

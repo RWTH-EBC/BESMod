@@ -2,6 +2,9 @@ within BESMod.Utilities.KPIs;
 model RoomControlCalculator "Cacluate the room control quality in K*s"
 
   extends BESMod.Utilities.KPIs.BaseClasses.KPIIcon;
+  parameter Modelica.Units.SI.Time resetTimeKPIs = 0
+    "Simulation time where KPI integrals are reset to zero"
+    annotation(Dialog(tab="Advanced"));
   parameter Boolean for_heating = true "=false to calculate comfort during cooling period (summer). = true for heating";
 
   Modelica.Blocks.Nonlinear.Limiter lim(final uMax=Modelica.Constants.inf,
@@ -31,6 +34,11 @@ model RoomControlCalculator "Cacluate the room control quality in K*s"
     annotation (Placement(transformation(extent={{-40,-60},{-20,-40}})));
   parameter Real dTComBou=0;
 equation
+
+  when time >= resetTimeKPIs then
+    reinit(intDisCom.y, 0.0);
+  end when;
+
   connect(intDisCom.y, dTComSec) annotation (Line(points={{63,0},{110,0}},
                     color={0,0,127}));
   connect(lim.y, intDisCom.u)
