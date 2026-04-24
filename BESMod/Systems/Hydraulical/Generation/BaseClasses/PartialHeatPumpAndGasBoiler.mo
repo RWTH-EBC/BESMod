@@ -1,7 +1,7 @@
 within BESMod.Systems.Hydraulical.Generation.BaseClasses;
 partial model PartialHeatPumpAndGasBoiler "Partial heat pump and boiler"
-  extends BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump(genDesTyp
-      =BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel);
+  extends BESMod.Systems.Hydraulical.Generation.BaseClasses.PartialHeatPump(genDesTyp=
+       BESMod.Systems.Hydraulical.Generation.Types.GenerationDesign.BivalentPartParallel);
   parameter Real etaTem[:,2]=[293.15,1.09; 303.15,1.08; 313.15,1.05; 323.15,1.; 373.15,
       0.99] "Temperature based efficiency";
   parameter Modelica.Units.SI.MassFlowRate mBoi_flow_nominal=
@@ -43,10 +43,12 @@ partial model PartialHeatPumpAndGasBoiler "Partial heat pump and boiler"
                               "Boiler with external control"
     annotation (Placement(transformation(extent={{20,40},{40,60}})));
 
-  Utilities.KPIs.EnergyKPICalculator KPIBoi(use_inpCon=false, y=boi.thermalPower)
+  Utilities.KPIs.EnergyKPICalculator KPIBoi(use_inpCon=false,
+    final resetTimeKPIs=resetTimeKPIs,                        y=boi.thermalPower)
     annotation (Placement(transformation(extent={{-140,-110},{-120,-90}})));
 
-  Utilities.KPIs.EnergyKPICalculator KPIBoiFue(use_inpCon=false, y=boi.fuelPower)
+  Utilities.KPIs.EnergyKPICalculator KPIBoiFue(use_inpCon=false,
+    final resetTimeKPIs=resetTimeKPIs,                           y=boi.fuelPower)
     "Fuel consumption"
     annotation (Placement(transformation(extent={{-140,-140},{-120,-120}})));
 

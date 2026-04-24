@@ -27,7 +27,8 @@ model IdealHeater "Ideal heater as in reduced order model"
       each final Q_flow=0)
     annotation (Placement(transformation(extent={{40,-40},{60,-20}})));
   Utilities.KPIs.EnergyKPICalculator heaKPI[nParallelDem](each final use_inpCon=
-        true) "Heating power KPI" annotation (Placement(transformation(
+        true, each final resetTimeKPIs=resetTimeKPIs)
+              "Heating power KPI" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={0,-40})));
