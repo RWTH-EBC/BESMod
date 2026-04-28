@@ -63,7 +63,8 @@ model UFHTransferSystem
         origin={-64,4})));
 
 
-  Utilities.KPIs.EnergyKPICalculator integralKPICalculator[nParallelDem]
+  Utilities.KPIs.EnergyKPICalculator integralKPICalculator[nParallelDem](each
+      final resetTimeKPIs=resetTimeKPIs)
     annotation (Placement(transformation(extent={{-40,-80},{-20,-60}})));
   IBPSA.Fluid.Movers.Preconfigured.FlowControlled_m_flow pumpFix_m_flow[nParallelDem](
     redeclare package Medium = Medium,

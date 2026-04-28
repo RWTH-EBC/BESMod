@@ -208,9 +208,11 @@ partial model PartialTwoStorageParallel
     final allowFlowReversal_HC2=allowFlowReversal)            "DHW storage"
     annotation (Placement(transformation(extent={{-50,-70},{-18,-30}})));
 
-  BESMod.Utilities.KPIs.EnergyKPICalculator eneKPICalBuf(use_inpCon=false, y=fixTemBuf.port.Q_flow)
+  BESMod.Utilities.KPIs.EnergyKPICalculator eneKPICalBuf(use_inpCon=false,
+    final resetTimeKPIs=resetTimeKPIs,                                     y=fixTemBuf.port.Q_flow)
     annotation (Placement(transformation(extent={{-80,-160},{-60,-140}})));
-  BESMod.Utilities.KPIs.EnergyKPICalculator eneKPICalDHW(final use_inpCon=false, y=
+  BESMod.Utilities.KPIs.EnergyKPICalculator eneKPICalDHW(final use_inpCon=false,
+    final resetTimeKPIs=resetTimeKPIs,                                           y=
         fixTemDHW.port.Q_flow)
     annotation (Placement(transformation(extent={{-100,-140},{-80,-120}})));
   IBPSA.Fluid.Sensors.TemperatureTwoPort senTBuiSup(

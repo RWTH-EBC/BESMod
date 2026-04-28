@@ -32,7 +32,8 @@ partial model PartialVentilationSystem
     final show_T=show_T,
     final rho=rho,
     final cp=cp,
-    final use_openModelica=use_openModelica)
+    final use_openModelica=use_openModelica,
+    final resetTimeKPIs=resetTimeKPIs)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{26,-56},
             {80,-2}})));
 
@@ -58,6 +59,7 @@ partial model PartialVentilationSystem
     final rho=rho,
     final cp=cp,
     final use_openModelica=use_openModelica,
+    final resetTimeKPIs=resetTimeKPIs,
     mDem_flow_nominal=ventilationSystemParameters.AZone .* ventilationSystemParameters.hZone .* 0.5 ./ 3600 .* 1.225,
     mDemOld_flow_design=ventilationSystemParameters.AZone .* ventilationSystemParameters.hZone .* 0.5 ./ 3600 .* 1.225,
     dpDem_nominal=fill(0, ventilationSystemParameters.nZones),
@@ -98,7 +100,8 @@ partial model PartialVentilationSystem
       final f_design=distribution.f_design,
       final TOda_nominal=ventilationSystemParameters.TOda_nominal,
       final QLoss_flow_nominal=distribution.QLoss_flow_nominal),
-    final use_openModelica=use_openModelica) annotation (choicesAllMatching=
+    final use_openModelica=use_openModelica,
+    final resetTimeKPIs=resetTimeKPIs) annotation (choicesAllMatching=
         true, Placement(transformation(extent={{-26,22},{28,68}})));
   BESMod.Systems.Interfaces.VentilationOutputs outBusVen if not
     use_openModelica

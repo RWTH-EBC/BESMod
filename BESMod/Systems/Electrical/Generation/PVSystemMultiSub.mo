@@ -64,7 +64,8 @@ model PVSystemMultiSub
         rotation=90,
         origin={50,58})));
 
-  BESMod.Utilities.KPIs.EnergyKPICalculator intKPICalPElePV(use_inpCon=true)
+  BESMod.Utilities.KPIs.EnergyKPICalculator intKPICalPElePV(use_inpCon=true, final
+      resetTimeKPIs=resetTimeKPIs)
     annotation (Placement(transformation(extent={{60,-60},{80,-40}})));
 equation
   for i in 1:numGenUnits loop

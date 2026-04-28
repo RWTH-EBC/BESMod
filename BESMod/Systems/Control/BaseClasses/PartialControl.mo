@@ -4,6 +4,9 @@ partial model PartialControl "Model for a partial HEMS control"
   parameter Boolean use_openModelica=false
     "=true to disable features which 
     are not available in open modelica" annotation(Dialog(tab="Advanced"));
+  parameter Modelica.Units.SI.Time resetTimeKPIs = 0
+    "Simulation time where KPI integrals are reset to zero"
+    annotation(Dialog(tab="Advanced"));
   BESMod.Systems.Hydraulical.Interfaces.SystemControlBus sigBusHyd annotation (Placement(
         transformation(extent={{-94,-114},{-64,-88}}), iconTransformation(
           extent={{-94,-114},{-64,-88}})));

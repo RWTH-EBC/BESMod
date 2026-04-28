@@ -55,6 +55,7 @@ model IdealValveRadiator
 
 
   BESMod.Utilities.KPIs.EnergyKPICalculator intKPICalHeaFlo(final use_inpCon=false,
+    final resetTimeKPIs=resetTimeKPIs,
       final y=sum(-heatPortRad.Q_flow) + sum(-heatPortCon.Q_flow))
     annotation (Placement(transformation(extent={{-40,-80},{-20,-60}})));
   IBPSA.Fluid.Movers.Preconfigured.FlowControlled_m_flow pumFixMFlo[nParallelDem](

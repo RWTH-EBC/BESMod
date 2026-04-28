@@ -4,6 +4,9 @@ partial model PartialBuildingEnergySystem "Partial BES"
   parameter Boolean use_openModelica=false
     "=true to disable features which 
     are not available in open modelica" annotation(Dialog(tab="Advanced"));
+  parameter Modelica.Units.SI.Time resetTimeKPIs = 0
+    "Simulation time where KPI integrals are reset to zero"
+    annotation(Dialog(tab="Advanced"));
 
   // Replaceable packages
   replaceable package MediumHyd = IBPSA.Media.Water constrainedby
@@ -45,7 +48,8 @@ partial model PartialBuildingEnergySystem "Partial BES"
       final TSetZone_nominal=systemParameters.TSetZone_nominal,
       final use_hydraulic=systemParameters.use_hydraulic,
       final use_ventilation=systemParameters.use_ventilation,
-      final use_openModelica=use_openModelica) annotation (
+      final use_openModelica=use_openModelica,
+      final resetTimeKPIs=resetTimeKPIs) annotation (
       choicesAllMatching=true, Placement(transformation(extent={{2,2},{76,78}})));
   replaceable BESMod.Systems.UserProfiles.BaseClasses.PartialUserProfiles
     userProfiles constrainedby UserProfiles.BaseClasses.PartialUserProfiles(
@@ -62,8 +66,8 @@ partial model PartialBuildingEnergySystem "Partial BES"
     final TDHW_nominal=systemParameters.TSetDHW,
     final dpDHW_nominal=hydraulic.distribution.dpDHW_nominal,
     final TDHWCold_nominal=systemParameters.TDHWWaterCold,
-    final subsystemDisabled=not systemParameters.use_dhw)
-                                              annotation (choicesAllMatching=true, Placement(
+    final subsystemDisabled=not systemParameters.use_dhw,
+    final resetTimeKPIs=resetTimeKPIs)        annotation (choicesAllMatching=true, Placement(
         transformation(extent={{2,-118},{78,-42}})));
   replaceable Electrical.BaseClasses.PartialElectricalSystem electrical
     constrainedby Electrical.BaseClasses.PartialElectricalSystem(
@@ -83,7 +87,8 @@ partial model PartialBuildingEnergySystem "Partial BES"
       final ABui=building.ABui,
       final ARoo=building.ARoo,
       final hBui=building.hBui),
-      final use_openModelica=use_openModelica)                                 annotation (Placement(
+      final use_openModelica=use_openModelica,
+      final resetTimeKPIs=resetTimeKPIs)                                 annotation (Placement(
         transformation(extent={{-198,40},{-42,136}})), choicesAllMatching=true);
   replaceable BESMod.Systems.Hydraulical.BaseClasses.PartialHydraulicSystem hydraulic
     if systemParameters.use_hydraulic constrainedby
@@ -115,7 +120,8 @@ partial model PartialBuildingEnergySystem "Partial BES"
       final TDHWCold_nominal=DHW.TDHWCold_nominal,
       final QDHW_flow_nominal=DHW.QDHW_flow_nominal,
       final VDHWDayAt60=DHW.VDHWDayAt60),
-      final use_openModelica=use_openModelica)
+      final use_openModelica=use_openModelica,
+      final resetTimeKPIs=resetTimeKPIs)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-198,
             -98},{-42,-2}})));
 
@@ -139,7 +145,8 @@ partial model PartialBuildingEnergySystem "Partial BES"
       final ABui=building.ABui,
       final ARoo=building.ARoo,
       final hBui=building.hBui),
-      final use_openModelica=use_openModelica)         annotation (choicesAllMatching=true,
+      final use_openModelica=use_openModelica,
+      final resetTimeKPIs=resetTimeKPIs)         annotation (choicesAllMatching=true,
       Placement(transformation(extent={{122,2},{196,78}})));
 
   // Outputs
@@ -152,7 +159,8 @@ partial model PartialBuildingEnergySystem "Partial BES"
 
   replaceable Control.BaseClasses.PartialControl control constrainedby
     Control.BaseClasses.PartialControl(
-      final use_openModelica=use_openModelica) annotation (Placement(transformation(
+      final use_openModelica=use_openModelica,
+      final resetTimeKPIs=resetTimeKPIs) annotation (Placement(transformation(
           extent={{2,124},{78,198}})),  choicesAllMatching=true);
 
   Electrical.Interfaces.ExternalElectricalPin electricalGrid annotation (
