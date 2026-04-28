@@ -5,4 +5,5 @@ SimpleTwoStorageParallel
 TwoStoDetailedDirectLoading
 TwoStoDetailedIndirectLoading
 TwoStoragesBoilerWithDHW
+TwoStoDetailedDirectLoadingSerial
 BaseClasses
