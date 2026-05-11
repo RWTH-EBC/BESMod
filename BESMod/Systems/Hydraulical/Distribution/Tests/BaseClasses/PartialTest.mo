@@ -12,7 +12,8 @@ partial model PartialTest
     Modelica.Media.Interfaces.PartialMedium annotation (choicesAllMatching=true);
 
   replaceable
-    BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution distribution
+    BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution distribution(tCrit=
+        3600, QCrit(displayUnit="kWh") = 7200000)
     constrainedby
     BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution(
     redeclare package Medium = Medium,
@@ -35,7 +36,7 @@ partial model PartialTest
     dpSup_nominal=resGen.dp_nominal,
     dpDem_nominal=resTra.dp_nominal,
     tCrit=3600,
-    QCrit=2,
+    QCrit=7200000,
     redeclare package MediumDHW = Medium,
     redeclare package MediumGen = Medium,
     T_start=systemParameters.THydSup_nominal[1]) annotation (choicesAllMatching
