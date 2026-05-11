@@ -1,7 +1,7 @@
 within BESMod.Systems.Demand.DHW.RecordsCollection;
 record ProfileM "Profile M"
   extends BESMod.Systems.Demand.DHW.RecordsCollection.PartialDHWTap(
-    QCrit=2.24*3600000,
+    QCrit=8064000,
     tCrit=3600,
     table=[0,0,0,10,10; 25200,0,0,10,10; 25200,0.105,0.05,25,25; 25321,0,0.05,
         10,10; 25321,0,0,10,10; 25500,0,0,10,10; 25500,1.4,0.1,40,40; 25902,0,
