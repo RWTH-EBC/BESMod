@@ -20,7 +20,7 @@ partial model PartialDHW "Partial model for domestic hot water (DHW)"
   parameter Modelica.Units.SI.HeatFlowRate QDHW_flow_nominal = mDHW_flow_nominal * cp * (TDHW_nominal - TDHWCold_nominal) "Nominal heat flow rate of DHW system" annotation (Dialog(group=
           "Design - Bottom Up: Parameters are defined by the subsystem"));
   parameter Modelica.Units.SI.Time tCrit(displayUnit="h") "Time for critical period. Based on EN 15450" annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
-  parameter Modelica.Units.SI.Energy QCrit(displayUnit="kWh") "Energy demand in kWh during critical period. Based on EN 15450" annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
+  parameter Modelica.Units.SI.Energy QCrit(displayUnit="kWh") "Energy demand during critical period. Based on EN 15450" annotation (Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
 
   Modelica.Fluid.Interfaces.FluidPort_a port_a(redeclare final package Medium =
         Medium) "Inlet for the demand of DHW" annotation (Placement(
