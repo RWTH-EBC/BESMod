@@ -218,12 +218,14 @@ model TwoStoragesBoilerWithDHW
         rotation=180,
         origin={112,-4})));
 
-  Utilities.KPIs.EnergyKPICalculator KPIBoi1(use_inpCon=false, y=boi.thermalPower)
+  Utilities.KPIs.EnergyKPICalculator KPIBoi1(use_inpCon=false,
+    final resetTimeKPIs=resetTimeKPIs,                         y=boi.thermalPower)
     "Boiler heat flow KPI"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={30,-170})));
-  Utilities.KPIs.EnergyKPICalculator eneKPICalAftBufBoi(use_inpCon=false, y=boi.fuelPower)
+  Utilities.KPIs.EnergyKPICalculator eneKPICalAftBufBoi(use_inpCon=false,
+    final resetTimeKPIs=resetTimeKPIs,                                    y=boi.fuelPower)
     "Boiler after buffer KPIs" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,

@@ -4,6 +4,9 @@ partial model PartialGeneration
   parameter Boolean use_openModelica=false
     "=true to disable features which 
     are not available in open modelica" annotation(Dialog(tab="Advanced"));
+  parameter Modelica.Units.SI.Time resetTimeKPIs = 0
+    "Simulation time where KPI integrals are reset to zero"
+    annotation(Dialog(tab="Advanced"));
   parameter Integer numGenUnits(min=1) "Number of generation (e.g. PV module) units"
   annotation(Dialog(group="Design - Bottom Up: Parameters are defined by the subsystem"));
   parameter Real f_design[numGenUnits]=

@@ -9,8 +9,7 @@ model StandardProfiles "DHW profiles based on EU 812/2013"
     mDHW_flow_nominal=DHWProfile.m_flow_nominal,
     combiTimeTableDHWInput(tableOnFile=false, table=DHWProfile.table));
   replaceable parameter Systems.Demand.DHW.RecordsCollection.ProfileM
-    DHWProfile constrainedby Systems.Demand.DHW.RecordsCollection.PartialDHWTap annotation (choicesAllMatching=true, Dialog(
-      enable=not use_dhwCalc and use_dhw));
+    DHWProfile constrainedby Systems.Demand.DHW.RecordsCollection.PartialDHWTap annotation (choicesAllMatching=true);
 
 
   annotation (Documentation(info="<html><p>

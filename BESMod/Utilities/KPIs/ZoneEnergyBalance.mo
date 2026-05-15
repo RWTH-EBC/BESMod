@@ -3,36 +3,48 @@ model ZoneEnergyBalance
   "Model for energy KPIs relevant for a single zone"
   parameter Boolean with_ventilation=true "=false to disable ventilation values";
   parameter Boolean with_floor=true "=false to disable floor values";
-  BaseClasses.SplitGainAndLoss tra
+
+  parameter Modelica.Units.SI.Time resetTimeKPIs = 0
+    "Simulation time where KPI integrals are reset to zero"
+    annotation(Dialog(tab="Advanced"));
+
+  BaseClasses.SplitGainAndLoss tra(final resetTimeKPIs=resetTimeKPIs)
     "KPIs for energy flow through transfer systems"
     annotation (Placement(transformation(extent={{-10,-170},{10,-150}})));
-  BaseClasses.SplitGainAndLoss floor if with_floor
+  BaseClasses.SplitGainAndLoss floor(final resetTimeKPIs=resetTimeKPIs)
+                                     if with_floor
                                      "KPIs for energy flow through floor"
     annotation (Placement(transformation(extent={{-10,110},{10,130}})));
-  BaseClasses.SplitGainAndLoss win "KPIs for energy flow through window"
+  BaseClasses.SplitGainAndLoss win(final resetTimeKPIs=resetTimeKPIs)
+                                   "KPIs for energy flow through window"
     annotation (Placement(transformation(extent={{-10,70},{10,90}})));
-  BaseClasses.SplitGainAndLoss roof "KPIs for energy flow through roof"
+  BaseClasses.SplitGainAndLoss roof(final resetTimeKPIs=resetTimeKPIs)
+                                    "KPIs for energy flow through roof"
     annotation (Placement(transformation(extent={{-10,150},{10,170}})));
-  BaseClasses.SplitGainAndLoss extWall
+  BaseClasses.SplitGainAndLoss extWall(final resetTimeKPIs=resetTimeKPIs)
     "KPIs for energy flow through external walls"
     annotation (Placement(transformation(extent={{-10,190},{10,210}})));
-  BaseClasses.SplitGainAndLoss airExc
+  BaseClasses.SplitGainAndLoss airExc(final resetTimeKPIs=resetTimeKPIs)
     "KPIs for energy flow through air exchange"
     annotation (Placement(transformation(extent={{-10,30},{10,50}})));
-  Utilities.KPIs.EnergyKPICalculator intGaiLight(final use_inpCon=true)
+  Utilities.KPIs.EnergyKPICalculator intGaiLight(final use_inpCon=true, final resetTimeKPIs=
+       resetTimeKPIs)
     "Internal gains for light" annotation (Placement(transformation(extent={{-10,-50},
             {10,-30}},     rotation=0)));
-  Utilities.KPIs.EnergyKPICalculator intGaiPer(final use_inpCon=true)
+  Utilities.KPIs.EnergyKPICalculator intGaiPer(final use_inpCon=true, final resetTimeKPIs=
+        resetTimeKPIs)
     "Internal gains for persons" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={0,-80})));
-  Utilities.KPIs.EnergyKPICalculator intGaiMac(final use_inpCon=true)
+  Utilities.KPIs.EnergyKPICalculator intGaiMac(final use_inpCon=true, final resetTimeKPIs=
+        resetTimeKPIs)
     "Internal gains for machines" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={0,-120})));
-  Utilities.KPIs.EnergyKPICalculator sol(final use_inpCon=true)
+  Utilities.KPIs.EnergyKPICalculator sol(final use_inpCon=true, final resetTimeKPIs=
+        resetTimeKPIs)
     "Internal gains through solar" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0)));
@@ -73,7 +85,8 @@ model ZoneEnergyBalance
     if with_ventilation
     "Heat flow through ventilation system"
     annotation (Placement(transformation(extent={{-140,-220},{-100,-180}})));
-  BaseClasses.SplitGainAndLoss ven if with_ventilation
+  BaseClasses.SplitGainAndLoss ven(final resetTimeKPIs=resetTimeKPIs)
+                                   if with_ventilation
     "KPIs for energy flow through ventilation system"
     annotation (Placement(transformation(extent={{-10,-210},{10,-190}})));
 equation

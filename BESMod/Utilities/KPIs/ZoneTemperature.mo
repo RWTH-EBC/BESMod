@@ -6,16 +6,20 @@ model ZoneTemperature "Model for temperature KPIs relevant for a single zone"
   parameter Boolean with_heating=true "=false to disable heating comfort calculation";
   parameter Boolean with_cooling=true "=false to disable cooling comfort calculation";
 
+  parameter Modelica.Units.SI.Time resetTimeKPIs = 0
+    "Simulation time where KPI integrals are reset to zero"
+    annotation(Dialog(tab="Advanced"));
+
   Utilities.KPIs.ComfortCalculator comHea(TComBou=TSetZone_nominal - dTComfort,
-      for_heating=true) if with_heating
+      for_heating=true, final resetTimeKPIs=resetTimeKPIs) if with_heating
                         "Comfort calculator room temperature for heating"
     annotation (Placement(transformation(extent={{-60,40},{-40,60}})));
   Utilities.KPIs.ComfortCalculator comCool(TComBou=TSetZone_nominal + dTComfort,
-      for_heating=false) if with_cooling
+      for_heating=false, final resetTimeKPIs=resetTimeKPIs) if with_cooling
                          "Comfort calculator room temperature for cooling"
     annotation (Placement(transformation(extent={{-60,-58},{-40,-38}})));
   Utilities.KPIs.RoomControlCalculator calCtrl(final for_heating=true, final
-      dTComBou=0) "Calculate room control quality"
+      dTComBou=0, final resetTimeKPIs=resetTimeKPIs) "Calculate room control quality"
     annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));
   Modelica.Blocks.Interfaces.RealOutput dTComHea "K*s discomfort"
     annotation (Placement(transformation(extent={{100,40},{120,60}})));

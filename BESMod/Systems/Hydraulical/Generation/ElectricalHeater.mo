@@ -30,12 +30,14 @@ model ElectricalHeater "Only heat using an electric heater"
     parEleHea "Electric heater parameters" annotation (choicesAllMatching=true,
       Placement(transformation(extent={{-62,-42},{-50,-30}})));
 
-  Utilities.KPIs.EnergyKPICalculator KPIQEleHea(use_inpCon=false, y=hea.vol.heatPort.Q_flow)
+  Utilities.KPIs.EnergyKPICalculator KPIQEleHea(use_inpCon=false,
+    final resetTimeKPIs=resetTimeKPIs,                            y=hea.vol.heatPort.Q_flow)
     "Electric heater heat flow rate"
     annotation (Placement(transformation(extent={{-40,-80},{-20,-60}})));
   BESMod.Utilities.Electrical.RealToElecCon realToElecCon(use_souGen=false)
     annotation (Placement(transformation(extent={{32,-108},{52,-88}})));
   Utilities.KPIs.DeviceKPICalculator KPIEleHea(
+    final resetTimeKPIs=resetTimeKPIs,
     use_reaInp=true,
     calc_singleOnTime=true,
     calc_totalOnTime=true,

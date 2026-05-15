@@ -3,6 +3,9 @@ model EnergyKPICalculator "Give integral and value as KPI"
   extends BaseClasses.KPIIcon;
   parameter Boolean use_inpCon=true
     "= false to use an internal variable as input";
+  parameter Modelica.Units.SI.Time resetTimeKPIs = 0
+    "Simulation time where KPI integrals are reset to zero"
+    annotation(Dialog(tab="Advanced"));
 
   Modelica.Blocks.Interfaces.RealInput y(final unit="W") if not use_inpCon
     "Value of Real input";
@@ -25,6 +28,11 @@ model EnergyKPICalculator "Give integral and value as KPI"
     annotation (Placement(transformation(extent={{102,-20},{142,20}}),
         iconTransformation(extent={{102,-20},{142,20}})));
 equation
+
+  when time >= resetTimeKPIs then
+    reinit(integrator2.y, 0.0);
+  end when;
+
   connect(internalU.y, KPI.value) annotation (Line(points={{-19,0},{50,0},{50,0.1},
           {122.1,0.1}}, color={0,0,127}), Text(
       string="%second",

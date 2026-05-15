@@ -115,7 +115,8 @@ model SimpleTwoStorageParallel
         rotation=180,
         origin={50,-52})));
 
-  Utilities.KPIs.EnergyKPICalculator eneKPICalBuf(use_inpCon=false, y=fixTemBuf.port.Q_flow)
+  Utilities.KPIs.EnergyKPICalculator eneKPICalBuf(use_inpCon=false,
+    final resetTimeKPIs=resetTimeKPIs,                              y=fixTemBuf.port.Q_flow)
     annotation (Placement(transformation(extent={{-40,-170},{-20,-150}})));
   Utilities.KPIs.EnergyKPICalculator eneKPICalDHW(use_inpCon=false, y=fixTemDHW.port.Q_flow)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},

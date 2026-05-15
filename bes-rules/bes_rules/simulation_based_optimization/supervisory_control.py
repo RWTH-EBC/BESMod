@@ -140,7 +140,7 @@ class BaseSupervisoryControl(SurrogateBuilder, abc.ABC):
         func_kwargs = []
         for idx, design_parameters in enumerate(parameters):
             # Add parameters to df
-            log_df.loc[self._instance_counter + idx, design_parameters.keys()] = design_parameters.values()
+            log_df.loc[self._instance_counter + idx, design_parameters.keys()] = list(design_parameters.values())
             path = self.get_log_path().parent.joinpath(self.get_result_file_name_for_idx(idx) + ".xlsx")
 
             # Size PV accordingly

@@ -1,6 +1,9 @@
 within BESMod.Utilities.KPIs;
 model CountTimeDiscomfort "Count the time of discomfort"
   extends BaseClasses.KPIIcon;
+  parameter Modelica.Units.SI.Time resetTimeKPIs = 0
+    "Simulation time where KPI integrals are reset to zero"
+    annotation(Dialog(tab="Advanced"));
   parameter Modelica.Media.Interfaces.Types.Temperature TRoomSet=293.15
     "Room set temperature";
   Modelica.Blocks.Logical.Switch switch1
@@ -23,6 +26,11 @@ model CountTimeDiscomfort "Count the time of discomfort"
   Modelica.Blocks.Logical.Not not1
     annotation (Placement(transformation(extent={{8,-70},{28,-50}})));
 equation
+
+  when time >= resetTimeKPIs then
+    reinit(integrator3.y, 0.0);
+  end when;
+
   connect(switch1.u1, const.y) annotation (Line(points={{38,8},{32,8},{32,24},{
           27,24}},   color={0,0,127}));
   connect(const1.y, switch1.u3) annotation (Line(points={{27,-18},{34,-18},{34,

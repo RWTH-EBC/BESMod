@@ -17,7 +17,8 @@ Modelica.Blocks.Math.UnitConversions.From_degC fromDegC
         extent={{10,-10},{-10,10}},
         rotation=0,
         origin={30,-10})));
-  Utilities.KPIs.EnergyKPICalculator integralKPICalculator(use_inpCon=false, y=
+  Utilities.KPIs.EnergyKPICalculator integralKPICalculator(use_inpCon=false,
+    final resetTimeKPIs=resetTimeKPIs,                                       y=
         -port_b.m_flow*cp*(TIs.y - TDHWCold_nominal))
     annotation (Placement(transformation(extent={{60,-60},{80,-40}})));
   IBPSA.Fluid.Movers.Preconfigured.FlowControlled_m_flow pump(
@@ -29,7 +30,7 @@ Modelica.Blocks.Math.UnitConversions.From_degC fromDegC
     final m_flow_small=1E-4*abs(mDHW_flow_nominal),
     final show_T=show_T,
     final m_flow_nominal=mDHW_flow_nominal,
-    final dp_nominal(displayUnit="Pa") = if dpDHW_nominal <> 0 then
+    final dp_nominal(displayUnit="Pa") = if dpDHW_nominal > Modelica.Constants.eps then
       dpDHW_nominal else 100,
     final addPowerToMedium=false,
     final use_riseTime=false)                       annotation (Placement(transformation(

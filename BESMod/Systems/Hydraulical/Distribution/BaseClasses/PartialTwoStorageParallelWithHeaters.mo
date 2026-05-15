@@ -73,7 +73,8 @@ partial model PartialTwoStorageParallelWithHeaters
     BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.No
     annotation (Placement(transformation(extent={{40,54},{60,74}})));
 
-  Utilities.KPIs.EnergyKPICalculator eneKPICalAftBufEleHea(use_inpCon=false, y=
+  Utilities.KPIs.EnergyKPICalculator eneKPICalAftBufEleHea(use_inpCon=false,
+    final resetTimeKPIs=resetTimeKPIs,                                       y=
         hea.Pel) if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.ElectricHeater
     "Electric heater after buffer KPIs"                                                                 annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -107,13 +108,15 @@ partial model PartialTwoStorageParallelWithHeaters
         "Boiler with external control"
     annotation (Placement(transformation(extent={{40,110},{60,130}})));
 
-  Utilities.KPIs.EnergyKPICalculator KPIBoi(use_inpCon=false, y=boi.thermalPower)
+  Utilities.KPIs.EnergyKPICalculator KPIBoi(use_inpCon=false,
+    final resetTimeKPIs=resetTimeKPIs,                        y=boi.thermalPower)
  if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.Boiler
     "Boiler heat flow KPI"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={50,-150})));
-  Utilities.KPIs.EnergyKPICalculator eneKPICalAftBufBoi(use_inpCon=false, y=boi.fuelPower)
+  Utilities.KPIs.EnergyKPICalculator eneKPICalAftBufBoi(use_inpCon=false,
+    final resetTimeKPIs=resetTimeKPIs,                                    y=boi.fuelPower)
     if heaAftBufTyp == BESMod.Systems.Hydraulical.Distribution.Types.HeaterType.Boiler
     "Boiler after buffer KPIs" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},

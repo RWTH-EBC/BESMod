@@ -214,14 +214,16 @@ partial model PartialHeatPump "Generation with only the heat pump"
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-170,90})));
-  Utilities.KPIs.EnergyKPICalculator KPIWel(use_inpCon=true)
+  Utilities.KPIs.EnergyKPICalculator KPIWel(use_inpCon=true, final
+      resetTimeKPIs=resetTimeKPIs)
     annotation (Placement(transformation(extent={{-140,-40},{-120,-20}})));
   Modelica.Blocks.Sources.Constant TSoil(k=TSoilConst)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-170,50})));
-  BESMod.Utilities.KPIs.EnergyKPICalculator KPIQHP(use_inpCon=true)
+  BESMod.Utilities.KPIs.EnergyKPICalculator KPIQHP(use_inpCon=true, final
+      resetTimeKPIs=resetTimeKPIs)
     annotation (Placement(transformation(extent={{-140,-80},{-120,-60}})));
   IBPSA.Fluid.Sensors.TemperatureTwoPort senTGenOut(
     redeclare final package Medium = Medium,
@@ -248,6 +250,7 @@ partial model PartialHeatPump "Generation with only the heat pump"
         rotation=180,
         origin={130,-82})));
   BESMod.Utilities.KPIs.DeviceKPICalculator KPIHeaPum(
+    final resetTimeKPIs=resetTimeKPIs,
     use_reaInp=false,
     calc_singleOnTime=true,
     calc_totalOnTime=true,
@@ -414,7 +417,7 @@ equation
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(defCtrl.sigBus, sigBus) annotation (Line(
-      points={{-98.8,12.96},{-98.8,6},{-66,6},{-66,0},{-72,0},{-72,-40}},
+      points={{-98.16,20},{-98.16,6},{-66,6},{-66,0},{-72,0},{-72,-40}},
       color={255,204,51},
       thickness=0.5), Text(
       string="%second",
@@ -449,7 +452,4 @@ equation
       color={255,204,51},
       thickness=0.5),
               Diagram(coordinateSystem(extent={{-180,-140},{100,100}})));
-
-
-
 end PartialHeatPump;

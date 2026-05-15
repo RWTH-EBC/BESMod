@@ -264,8 +264,8 @@ class SurrogateBuilder(BaseSurrogateBuilder):
             if result_kpis is None:
                 _log_df.loc[self._instance_counter + idx] = np.NAN
             else:
-                _log_df.loc[self._instance_counter + idx, result_kpis.keys()] = result_kpis.values()
-            _log_df.loc[self._instance_counter + idx, filtered_parameters[idx].keys()] = filtered_parameters[idx].values()
+                _log_df.loc[self._instance_counter + idx, result_kpis.keys()] = list(result_kpis.values())
+            _log_df.loc[self._instance_counter + idx, filtered_parameters[idx].keys()] = list(filtered_parameters[idx].values())
 
         # Add objectives
         for obj in self.config.objectives:

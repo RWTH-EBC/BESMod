@@ -9,7 +9,7 @@ model CustomRadiator "Custom radiator with radiative fractions"
     Q_flow_design={if use_oldRad_design[i] then QOld_flow_design[i] else Q_flow_nominal[i] for i in 1:nParallelDem},
     TTra_design={if use_oldRad_design[i] then TTraOld_design[i] else TTra_nominal[i] for i in 1:nParallelDem});
   parameter Boolean use_dynamicFraRad=true;
-  parameter Boolean use_oldRad_design[nParallelDem]={not QOld_flow_design[i]==Q_flow_nominal[i] for i in 1:nParallelDem}
+  parameter Boolean use_oldRad_design[nParallelDem]={abs(QOld_flow_design[i]-Q_flow_nominal[i])>1 for i in 1:nParallelDem}
     "If true, radiator design of the building with no retrofit (old state) is used"
     annotation (Dialog(group="Design - Internal: Parameters are defined by the subsystem"));
 
@@ -138,7 +138,7 @@ model CustomRadiator "Custom radiator with radiative fractions"
       each displayUnit="degC") = Medium.temperature(Medium.setState_phX(
       portTra_out.p,
       actualStream(portTra_out.h_outflow),
-      inStream(portTra_out.Xi_outflow)))) "Real expression for return temperature"
+      inStream(portTra_out.Xi_outflow)))) if not use_openModelica "Real expression for return temperature"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -148,7 +148,7 @@ model CustomRadiator "Custom radiator with radiative fractions"
       each displayUnit="degC") = Medium.temperature(Medium.setState_phX(
       portTra_in.p,
       inStream(portTra_in.h_outflow),
-      inStream(portTra_in.Xi_outflow)))) "Real expression for supply temperature"
+      inStream(portTra_in.Xi_outflow)))) if not use_openModelica "Real expression for supply temperature"
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,

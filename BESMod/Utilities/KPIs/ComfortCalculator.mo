@@ -2,6 +2,9 @@ within BESMod.Utilities.KPIs;
 model ComfortCalculator "Cacluate the discomort in K*s"
 
   extends BaseClasses.KPIIcon;
+  parameter Modelica.Units.SI.Time resetTimeKPIs = 0
+    "Simulation time where KPI integrals are reset to zero"
+    annotation(Dialog(tab="Advanced"));
   parameter Modelica.Units.SI.Temperature TComBou
     "Comfort boundary temperature";
   parameter Boolean for_heating = true "=false to calculate comfort during cooling period (summer). = true for heating";
@@ -27,6 +30,11 @@ model ComfortCalculator "Cacluate the discomort in K*s"
     annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));
 
 equation
+
+  when time >= resetTimeKPIs then
+    reinit(intDisCom.y, 0.0);
+  end when;
+
   connect(add.u2, const.y) annotation (Line(points={{-28,-12},{-38,-12},{-38,-20},
           {-45,-20}}, color={0,0,127}));
   connect(intDisCom.y, dTComSec) annotation (Line(points={{65,-4},{88,-4},{88,0},

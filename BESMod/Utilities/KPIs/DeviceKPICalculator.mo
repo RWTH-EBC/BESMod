@@ -1,6 +1,9 @@
 within BESMod.Utilities.KPIs;
 model DeviceKPICalculator "KPI useful for the analysis of a device"
   extends BaseClasses.KPIIcon;
+  parameter Modelica.Units.SI.Time resetTimeKPIs = 0
+    "Simulation time where KPI integrals are reset to zero"
+    annotation(Dialog(tab="Advanced"));
   parameter Boolean use_reaInp=false "=true to use a real input";
   parameter Real thrOn=Modelica.Constants.eps*100
     "If uRea is greater or equal to this treshhold the device is on"
@@ -52,6 +55,11 @@ model DeviceKPICalculator "KPI useful for the analysis of a device"
     annotation (Placement(transformation(extent={{-140,0},{-100,40}}),
         iconTransformation(extent={{-142,-20},{-102,20}})));
 equation
+
+  when time >= resetTimeKPIs then
+    reinit(integrator1.y, 0.0);
+  end when;
+
   connect(switch1.u1,const. y) annotation (Line(points={{-12,8},{-14,8},{-14,20},
           {-21,20}}, color={0,0,127}));
   connect(const1.y,switch1. u3) annotation (Line(points={{-21,-20},{-10,-20},{-10,

@@ -3,6 +3,9 @@ partial model PartialElectricalSystem "Partial model for electrical system"
   parameter Boolean use_openModelica=false
     "=true to disable features which 
     are not available in open modelica" annotation(Dialog(tab="Advanced"));
+  parameter Modelica.Units.SI.Time resetTimeKPIs = 0
+    "Simulation time where KPI integrals are reset to zero"
+    annotation(Dialog(tab="Advanced"));
   parameter Integer nLoadsExtSubSys(min=1) = 4 "Number of external subsystems which result in electrical load / generation";
   parameter Boolean use_elecHeating=true "=false to disable electric heating";
   replaceable parameter RecordsCollection.ElectricalSystemBaseDataDefinition
@@ -13,13 +16,15 @@ partial model PartialElectricalSystem "Partial model for electrical system"
     constrainedby
     BESMod.Systems.Electrical.Generation.BaseClasses.PartialGeneration(
       ARoo=electricalSystemParameters.ARoo,
-      final use_openModelica=use_openModelica)
+      final use_openModelica=use_openModelica,
+      final resetTimeKPIs=resetTimeKPIs)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-148,
             -102},{-62,36}})));
   replaceable Distribution.BaseClasses.PartialDistribution distribution
     constrainedby Distribution.BaseClasses.PartialDistribution(
       final nSubSys=nLoadsExtSubSys + 2,
-    final use_openModelica=use_openModelica)
+      final use_openModelica=use_openModelica,
+      final resetTimeKPIs=resetTimeKPIs)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-40,
             -102},{52,36}})));
 
@@ -27,6 +32,7 @@ partial model PartialElectricalSystem "Partial model for electrical system"
     constrainedby Transfer.BaseClasses.PartialTransfer(
     final nParallelDem=electricalSystemParameters.nZones,
     final use_openModelica=use_openModelica,
+    final resetTimeKPIs=resetTimeKPIs,
     final Q_flow_nominal=electricalSystemParameters.Q_flow_nominal)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{68,-102},
             {144,36}})));
@@ -34,6 +40,7 @@ partial model PartialElectricalSystem "Partial model for electrical system"
     BESMod.Systems.Electrical.Control.BaseClasses.PartialControl(
     final nParallelDem=electricalSystemParameters.nZones,
     final use_openModelica=use_openModelica,
+    final resetTimeKPIs=resetTimeKPIs,
     final Q_flow_nominal=electricalSystemParameters.Q_flow_nominal)
     annotation (choicesAllMatching=true, Placement(transformation(extent={{-146,
             56},{142,106}})));

@@ -58,7 +58,8 @@ model DetailedSolarThermalWithHeatPump
         rotation=180,
         origin={-30,-170})));
 
-  BESMod.Utilities.KPIs.EnergyKPICalculator KPIQSol(use_inpCon=false, y=sum(solCol.vol.heatPort.Q_flow))
+  BESMod.Utilities.KPIs.EnergyKPICalculator KPIQSol(use_inpCon=false,
+    final resetTimeKPIs=resetTimeKPIs,                                y=sum(solCol.vol.heatPort.Q_flow))
     "Solar thermal KPI"
     annotation (Placement(transformation(extent={{-60,-120},{-40,-100}})));
 

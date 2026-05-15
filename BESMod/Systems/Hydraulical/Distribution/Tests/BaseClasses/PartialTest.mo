@@ -12,9 +12,9 @@ partial model PartialTest
     Modelica.Media.Interfaces.PartialMedium annotation (choicesAllMatching=true);
 
   replaceable
-    .BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution distribution
+    BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution distribution
     constrainedby
-    .BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution(
+    BESMod.Systems.Hydraulical.Distribution.BaseClasses.PartialDistribution(
     redeclare package Medium = Medium,
     energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
     Q_flow_nominal=fill(sum(systemParameters.QBui_flow_nominal), distribution.nParallelDem),
