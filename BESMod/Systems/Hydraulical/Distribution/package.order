@@ -4,6 +4,7 @@ SimpleTwoStorageParallel
 TwoStoDetailedDirectLoading
 TwoStoDetailedIndirectLoading
 TwoStoragesBoilerWithDHW
+DirectBuildingWithDHW
 Components
 RecordsCollection
 Tests
