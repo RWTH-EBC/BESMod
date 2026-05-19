@@ -78,9 +78,6 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(boiInHybSys.priGenSetOn, buiAndDHWCtr.priGren) annotation (Line(points={{-32,
-          -12.4},{-112,-12.4},{-112,28},{-118,28},{-118,27.3333}},
-        color={255,0,255}));
   connect(boiInHybSys.TOda, weaBus.TDryBul) annotation (Line(points={{-32,-2},{
           -236.895,-2},{-236.895,2.11}},
                          color={0,0,127}), Text(
@@ -97,10 +94,6 @@ equation
       horizontalAlignment=TextAlignment.Right));
   connect(priOrSecDevValCtrl.secGen, boiInHybSys.secGenOn) annotation (Line(
         points={{-184,-18},{-184,12},{-2,12},{-2,-10},{-9,-10}}, color={255,0,255}));
-  connect(priOrSecDevValCtrl.priGen, buiAndDHWCtr.priGren) annotation (Line(
-        points={{-196,-18},{-196,14},{-112,14},{-112,28},{-118,28},{-118,
-          27.3333}},
-        color={255,0,255}));
   connect(priOrSecDevValCtrl.uThrWayVal, sigBusGen.uPriOrSecGen) annotation (Line(
         points={{-190,-41},{-190,-70},{-152,-70},{-152,-99}}, color={0,0,127}),
       Text(
@@ -111,18 +104,24 @@ equation
   connect(buiAndDHWCtr.priGren, priGenPIDCtrl.setOn) annotation (Line(points={{-118,
           27.3333},{-118,28},{-106,28},{-106,90},{80.4,90}},
         color={255,0,255}));
-  connect(boiInHybSys.secGen, secGenOn.y) annotation (Line(points={{-31.8,-6},{-62,
-          -6},{-62,30},{-69,30}}, color={255,0,255}));
   connect(boiInHybSys.secGenOnDueToOpeEnv, setAndMeaSelPri.bivOn) annotation (
-      Line(points={{-32,-19},{-48,-19},{-48,50},{64,50},{64,72},{61,72}}, color
-        ={255,0,255}));
+      Line(points={{-32,-19},{-48,-19},{-48,50},{64,50},{64,72},{61,72}}, color=
+         {255,0,255}));
   connect(noOpeEnvLimCtrl.y, boiInHybSys.secGenOnDueToOpeEnv) annotation (Line(
         points={{19,50},{-48,50},{-48,-19},{-32,-19}}, color={255,0,255}));
-  connect(secGenOn.y, sigBusDistr.pumBoiOn) annotation (Line(points={{-69,30},{
-          -62,30},{-62,-70},{0,-70},{0,-100},{1,-100}}, color={255,0,255}),
+  connect(logicalDelaySecGen.y2, sigBusDistr.pumBoiOn) annotation (Line(points=
+          {{-39,24},{-30,24},{-30,14},{1,14},{1,-100}}, color={255,0,255}),
       Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  connect(logicalDelaySecGen.y2, boiInHybSys.secGen) annotation (Line(points={{
+          -39,24},{-30,24},{-30,6},{-38,6},{-38,-6},{-31.8,-6}}, color={255,0,
+          255}));
+  connect(logicalDelayPreGen.y2, priOrSecDevValCtrl.priGen) annotation (Line(
+        points={{-61,-10},{-56,-10},{-56,2},{-58,2},{-58,14},{-202,14},{-202,0},
+          {-204,0},{-204,-18},{-196,-18}}, color={255,0,255}));
+  connect(logicalDelayPreGen.y2, boiInHybSys.priGenSetOn) annotation (Line(
+        points={{-61,-10},{-58,-10},{-58,-12.4},{-32,-12.4}}, color={255,0,255}));
 end HybridHeatPumpSystem;

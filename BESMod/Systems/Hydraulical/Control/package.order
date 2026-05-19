@@ -1,6 +1,7 @@
 GasBoiler
 HybridHeatPumpSystem
 MonoenergeticHeatPumpSystem
+MonoenergeticHeatPumpSystemNoBuffer
 NoControl
 Components
 RecordsCollection
