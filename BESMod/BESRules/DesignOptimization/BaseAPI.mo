@@ -1,7 +1,6 @@
 within BESMod.BESRules.DesignOptimization;
 model BaseAPI "Model for the python API"
-  extends BESMod.BESRules.BaseClasses.PartialBESRulesSystem
-                                                    (
+  extends BESMod.BESRules.BaseClasses.PartialBESRulesSystem(
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
@@ -36,9 +35,11 @@ model BaseAPI "Model for the python API"
             BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.IdealHeatingCurve
             (THeaThr=parameterStudy.THeaThr),
         redeclare model DHWHysteresis =
-            BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater (TBiv=parameterStudy.TBiv),
+            BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater
+            (                                                                                               TBiv=parameterStudy.TBiv),
         redeclare model BuildingHysteresis =
-            BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater (TBiv=parameterStudy.TBiv),
+            BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater
+            (                                                                                               TBiv=parameterStudy.TBiv),
         redeclare model DHWSetTemperature =
             BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.ConstTSet_DHW,
         redeclare model SummerMode =
@@ -46,7 +47,7 @@ model BaseAPI "Model for the python API"
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
           parPIDHeaPum),
-      redeclare
+      redeclare replaceable
         BESMod.Systems.Hydraulical.Distribution.TwoStoDetailedDirectLoading
         distribution(
         designType=BESMod.Systems.Hydraulical.Distribution.Types.DHWDesignType.PartStorage,
