@@ -1,4 +1,4 @@
-within BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers;
+﻿within BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers;
 model DegreeMinuteController
   "Based on degree minute approach"
   extends BaseClasses.PartialOnOffController;
@@ -42,7 +42,7 @@ equation
   when (delta_T > delta_T_reset) then
     reinit(DegreeMinute, 0);
   elsewhen (DegreeMinute > DegreeMinuteReset) then
-    reinit(DegreeMinute, 0);
+    reinit(DegreeMinute, 1);
   end when;
   annotation (Icon(graphics={Text(
           extent={{-44,58},{40,-60}},

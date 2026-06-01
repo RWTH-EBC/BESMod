@@ -2,7 +2,11 @@ within BESMod.Systems.Hydraulical.Control;
 model MonoenergeticHeatPumpSystemNoBuffer
   extends BaseClasses.PartialHeatPumpSystemController(
     redeclare model BuildingHysteresis =
-        BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.DegreeMinuteController,
+        BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.DegreeMinuteController
+        (
+        priGenOn(fixed=true),
+        secGenOn(start=false, fixed=true),
+        DegreeMinute(start=-30, fixed=true)),
     final dTHysBui=0,
       final meaValSecGen=BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue.GenerationSupplyTemperature);
 
