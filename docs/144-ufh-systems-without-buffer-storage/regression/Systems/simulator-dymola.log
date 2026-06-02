@@ -1,0 +1,850 @@
+ = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater");
+Check of BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater
+-------------------------------------------------
+Error: the model is too complex for the current license.
+Your license must be upgraded to handle this model.
+-------------------------------------------------
+Error: ERRORS have been issued.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/HeatPumpAndElectricHeater.mos\",", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater\",", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater\\\");\",", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/HeatPumpAndElectricHeater.mos");
+simulateModel("BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater");
+Translation of BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater
+-------------------------------------------------
+Error: the model is too complex for the current license.
+Your license must be upgraded to handle this model.
+-------------------------------------------------
+Error: ERRORS have been issued.
+ = false
+
+Instantiation of 
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndElectricHeater.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem");
+Check of BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem
+The model has the same number of unknowns and equations: 688
+The model could not be deduced to be symbolically well-posed.
+The model has
+  652+2*transfer.parRad.nEle+transfer.rad[1].vol[1].dynBal.nPorts+transfer.rad[1].vol[2].dynBal.nPorts  +transfer.rad[1].vol[3].dynBal.nPorts+transfer.rad[1].vol[4].dynBal.nPorts+  transfer.rad[1].vol[5].dynBal.nPorts+transfer.rad[1].sumCon.nin+  transfer.rad[1].sumRad.nin+transfer.volSup.dynBal.nPorts+transfer.volRet.dynBal.nPorts  +vol[1].dynBal.nPorts
+scalar unknowns and
+  616+(if bou1[1].use_Xi_in then 1 else (if bou1[1].use_X_in then 0 else 1))+(if    not bou1[1].use_p_in then 1 else 0)+2*bou1[1].nPorts+(if  not   bou1[1].use_T_in then 1 else 0)+(if  not transfer.rad[1].vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad[1].vol[1].dynBal.nPorts+(if  not   transfer.rad[1].vol[2].dynBal.use_mWat_flow then 1 else 0)+3*transfer.rad[1].vol[2].dynBal.nPorts  +(if  not transfer.rad[1].vol[3].dynBal.use_mWat_flow then 1 else 0)+3*  transfer.rad[1].vol[3].dynBal.nPorts+(if  not transfer.rad[1].vol[4].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad[1].vol[4].dynBal.nPorts+(if  not   transfer.rad[1].vol[5].dynBal.use_mWat_flow then 1 else 0)+3*transfer.rad[1].vol[5].dynBal.nPorts  +(if  not transfer.volSup.dynBal.use_mWat_flow then 1 else 0)+3*  transfer.volSup.dynBal.nPorts+(if  not transfer.volRet.dynBal.use_mWat_flow   then 1 else 0)+3*transfer.volRet.dynBal.nPorts+(if  not vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*vol[1].dynBal.nPorts+(if  not pumDis[1].dpControlled_dp.vol.steBal.use_mWat_flow   then 1 else 0)+2*transfer.parRad.nEle
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  688
+Check of BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem successful.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestPressureBasedSystem.mos\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem\\\");\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestPressureBasedSystem.mos");
+simulateModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem", stopTime=12000, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem");
+Translation of BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem
+The DAE has 688 scalar unknowns and 688 scalar equations.
+ 
+Statistics
+ 
+Original Model
+  Number of components: 179
+  Variables: 1959
+  Constants: 45 (45 scalars)
+  Parameters: 973 (1093 scalars)
+  Unknowns: 941 (721 scalars)
+  Differentiated variables: 16 scalars
+  Equations: 745
+  Nontrivial: 556
+Translated Model
+  Constants: 965 scalars
+  Free parameters: 87 scalars
+  Parameter depending: 296 scalars
+  Outputs: 1 scalars
+  Continuous time states: 7 scalars
+  Time-varying variables: 150 scalars
+  Alias variables: 361 scalars
+  Number of mixed real/discrete systems of equations: 0
+  Sizes of linear systems of equations: {2, 2, 2, 2, 2}
+  Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0}
+  Sizes of nonlinear systems of equations: {7, 1}
+  Sizes after manipulation of the nonlinear systems: {1, 1}
+  Number of numerical Jacobians: 0
+  Initialization problem
+    Sizes of nonlinear systems of equations: {11, 7, 1, 1}
+    Sizes after manipulation of the nonlinear systems: {5, 2, 0, 1}
+    Sizes of simplified homotopy nonlinear systems of equations: {7, 1}
+    Sizes after manipulation of the simplified homotopy nonlinear systems: {2, 0}
+    Number of numerical Jacobians: 0
+ 
+Selected continuous time states
+Statically selected continuous time states
+transfer.rad[1].vol[1].dynBal.U
+transfer.rad[1].vol[2].dynBal.U
+transfer.rad[1].vol[3].dynBal.U
+transfer.rad[1].vol[4].dynBal.U
+transfer.rad[1].vol[5].dynBal.U
+transfer.volRet.dynBal.U
+transfer.volSup.dynBal.U
+Finished
+Finished
+ = true
+
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystem.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel");
+Check of BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel
+-------------------------------------------------
+Error: the model is too complex for the current license.
+Your license must be upgraded to handle this model.
+-------------------------------------------------
+Error: ERRORS have been issued.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/HeatPumpAndGasBoilerParallel.mos\",", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel\",", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel\\\");\",", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/HeatPumpAndGasBoilerParallel.mos");
+simulateModel("BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel");
+Translation of BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel
+-------------------------------------------------
+Error: the model is too complex for the current license.
+Your license must be upgraded to handle this model.
+-------------------------------------------------
+Error: ERRORS have been issued.
+ = false
+
+Instantiation of 
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerParallel.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading");
+Check of BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading
+-------------------------------------------------
+Error: the model is too complex for the current license.
+Your license must be upgraded to handle this model.
+-------------------------------------------------
+Error: ERRORS have been issued.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Distribution/Tests/TwoStoDetailedDirectLoading.mos\",", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading\",", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading\\\");\",", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Distribution/Tests/TwoStoDetailedDirectLoading.mos");
+simulateModel("BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading");
+Translation of BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading
+-------------------------------------------------
+Error: the model is too complex for the current license.
+Your license must be upgraded to handle this model.
+-------------------------------------------------
+Error: ERRORS have been issued.
+ = false
+
+Instantiation of 
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedDirectLoading.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions");
+Check of BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions
+-------------------------------------------------
+Error: the model is too complex for the current license.
+Your license must be upgraded to handle this model.
+-------------------------------------------------
+Error: ERRORS have been issued.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Components/PreconfiguredControlledMovers/PreconfiguredOptions.mos\",", "BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions\",", "BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions\\\");\",", "BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Components/PreconfiguredControlledMovers/PreconfiguredOptions.mos");
+simulateModel("BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions", stopTime=3600, tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions");
+Translation of BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions
+-------------------------------------------------
+Error: the model is too complex for the current license.
+Your license must be upgraded to handle this model.
+-------------------------------------------------
+Error: ERRORS have been issued.
+ = false
+
+Instantiation of 
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.PreconfiguredOptions.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump");
+Check of BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump
+-------------------------------------------------
+Error: the model is too complex for the current license.
+Your license must be upgraded to handle this model.
+-------------------------------------------------
+Error: ERRORS have been issued.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/SimpleSolarThermalWithHeatPump.mos\",", "BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump\",", "BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump\\\");\",", "BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/SimpleSolarThermalWithHeatPump.mos");
+simulateModel("BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump");
+Translation of BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump
+-------------------------------------------------
+Error: the model is too complex for the current license.
+Your license must be upgraded to handle this model.
+-------------------------------------------------
+Error: ERRORS have been issued.
+ = false
+
+Instantiation of 
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Generation.Tests.SimpleSolarThermalWithHeatPump.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly");
+Check of BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly
+-------------------------------------------------
+Error: the model is too complex for the current license.
+Your license must be upgraded to handle this model.
+-------------------------------------------------
+Error: ERRORS have been issued.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Distribution/Tests/BuildingOnly.mos\",", "BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly\",", "BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly\\\");\",", "BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Distribution/Tests/BuildingOnly.mos");
+simulateModel("BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly");
+Translation of BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly
+-------------------------------------------------
+Error: the model is too complex for the current license.
+Your license must be upgraded to handle this model.
+-------------------------------------------------
+Error: ERRORS have been issued.
+ = false
+
+Instantiation of 
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Distribution.Tests.BuildingOnly.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries");
+Check of BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries
+-------------------------------------------------
+Error: the model is too complex for the current license.
+Your license must be upgraded to handle this model.
+-------------------------------------------------
+Error: ERRORS have been issued.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/HeatPumpAndGasBoilerSeries.mos\",", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries\",", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries\\\");\",", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/HeatPumpAndGasBoilerSeries.mos");
+simulateModel("BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries");
+Translation of BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries
+-------------------------------------------------
+Error: the model is too complex for the current license.
+Your license must be upgraded to handle this model.
+-------------------------------------------------
+Error: ERRORS have been issued.
+ = false
+
+Instantiation of 
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Generation.Tests.HeatPumpAndGasBoilerSeries.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem");
+Check of BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem
+The model has the same number of unknowns and equations: 701
+The model could not be deduced to be symbolically well-posed.
+The model has
+  667+2*transfer.parRad.nEle+transfer.rad[1].vol[1].dynBal.nPorts+transfer.rad[1].vol[2].dynBal.nPorts  +transfer.rad[1].vol[3].dynBal.nPorts+transfer.rad[1].vol[4].dynBal.nPorts+  transfer.rad[1].vol[5].dynBal.nPorts+transfer.rad[1].sumCon.nin+  transfer.rad[1].sumRad.nin+transfer.pumFixMFlo[1].vol.dynBal.nPorts+  vol[1].dynBal.nPorts
+scalar unknowns and
+  636+(if bou1[1].use_Xi_in then 1 else (if bou1[1].use_X_in then 0 else 1))+(if    not bou1[1].use_p_in then 1 else 0)+2*bou1[1].nPorts+(if  not   bou1[1].use_T_in then 1 else 0)+(if  not transfer.rad[1].vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad[1].vol[1].dynBal.nPorts+(if  not   transfer.rad[1].vol[2].dynBal.use_mWat_flow then 1 else 0)+3*transfer.rad[1].vol[2].dynBal.nPorts  +(if  not transfer.rad[1].vol[3].dynBal.use_mWat_flow then 1 else 0)+3*  transfer.rad[1].vol[3].dynBal.nPorts+(if  not transfer.rad[1].vol[4].dynBal.use_mWat_flow   then 1 else 0)+3*transfer.rad[1].vol[4].dynBal.nPorts+(if  not   transfer.rad[1].vol[5].dynBal.use_mWat_flow then 1 else 0)+3*transfer.rad[1].vol[5].dynBal.nPorts  +(if  not transfer.pumFixMFlo[1].vol.dynBal.use_mWat_flow then 1 else 0)+3*  transfer.pumFixMFlo[1].vol.dynBal.nPorts+(if  not vol[1].dynBal.use_mWat_flow   then 1 else 0)+3*vol[1].dynBal.nPorts+(if  not pumDis[1].dpControlled_dp.vol.steBal.use_mWat_flow   then 1 else 0)+2*transfer.parRad.nEle
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  701
+Check of BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem successful.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestIdealValveRadiatorSystem.mos\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem\\\");\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestIdealValveRadiatorSystem.mos");
+simulateModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem", stopTime=12000, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem");
+Translation of BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem
+The DAE has 701 scalar unknowns and 701 scalar equations.
+ 
+Statistics
+ 
+Original Model
+  Number of components: 203
+  Variables: 2033
+  Constants: 41 (41 scalars)
+  Parameters: 1054 (1312 scalars)
+  Unknowns: 938 (738 scalars)
+  Differentiated variables: 15 scalars
+  Equations: 766
+  Nontrivial: 582
+Translated Model
+  Constants: 1007 scalars
+  Free parameters: 96 scalars
+  Parameter depending: 445 scalars
+  Outputs: 1 scalars
+  Continuous time states: 7 scalars
+  Time-varying variables: 164 scalars
+  Alias variables: 379 scalars
+  Number of mixed real/discrete systems of equations: 0
+  Sizes of linear systems of equations: {2, 2, 2, 2, 2}
+  Sizes after manipulation of the linear systems: {0, 0, 0, 0, 0}
+  Sizes of nonlinear systems of equations: {1, 1}
+  Sizes after manipulation of the nonlinear systems: {1, 1}
+  Number of numerical Jacobians: 0
+  Initialization problem
+    Sizes of nonlinear systems of equations: {11, 1, 1}
+    Sizes after manipulation of the nonlinear systems: {5, 1, 1}
+    Number of numerical Jacobians: 0
+ 
+Selected continuous time states
+Statically selected continuous time states
+transfer.intKPICalHeaFlo.integrator2.y
+transfer.pumFixMFlo[1].vol.dynBal.U
+transfer.rad[1].vol[1].dynBal.U
+transfer.rad[1].vol[2].dynBal.U
+transfer.rad[1].vol[3].dynBal.U
+transfer.rad[1].vol[4].dynBal.U
+transfer.rad[1].vol[5].dynBal.U
+Finished
+Finished
+ = true
+
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Transfer.Tests.TestIdealValveRadiatorSystem.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW");
+Check of BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW
+-------------------------------------------------
+Error: the model is too complex for the current license.
+Your license must be upgraded to handle this model.
+-------------------------------------------------
+Error: ERRORS have been issued.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Distribution/Tests/TwoStoragesBoilerWithDHW.mos\",", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW\",", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW\\\");\",", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Distribution/Tests/TwoStoragesBoilerWithDHW.mos");
+simulateModel("BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW");
+Translation of BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW
+-------------------------------------------------
+Error: the model is too complex for the current license.
+Your license must be upgraded to handle this model.
+-------------------------------------------------
+Error: ERRORS have been issued.
+ = false
+
+Instantiation of 
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoragesBoilerWithDHW.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Distribution.Tests.DHWDesign");
+Check of BESMod.Systems.Hydraulical.Distribution.Tests.DHWDesign
+The model has the same number of unknowns and equations: 0
+Check of BESMod.Systems.Hydraulical.Distribution.Tests.DHWDesign successful.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Distribution/Tests/DHWDesign.mos\",", "BESMod.Systems.Hydraulical.Distribution.Tests.DHWDesign.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Distribution.Tests.DHWDesign\",", "BESMod.Systems.Hydraulical.Distribution.Tests.DHWDesign.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Distribution.Tests.DHWDesign.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Distribution.Tests.DHWDesign\\\");\",", "BESMod.Systems.Hydraulical.Distribution.Tests.DHWDesign.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Distribution.Tests.DHWDesign.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Distribution.Tests.DHWDesign.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Distribution/Tests/DHWDesign.mos");
+simulateModel("BESMod.Systems.Hydraulical.Distribution.Tests.DHWDesign", stopTime=1, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Distribution.Tests.DHWDesign");
+Translation of BESMod.Systems.Hydraulical.Distribution.Tests.DHWDesign
+The DAE has 0 scalar unknowns and 0 scalar equations.
+ 
+Statistics
+ 
+Original Model
+  Number of components: 3
+  Variables: 48
+  Parameters: 48 (48 scalars)
+  Equations: 0
+  Nontrivial: 0
+Translated Model
+  Free parameters: 36 scalars
+  Parameter depending: 12 scalars
+  Number of mixed real/discrete systems of equations: 0
+  Sizes of linear systems of equations: { }
+  Sizes after manipulation of the linear systems: { }
+  Sizes of nonlinear systems of equations: { }
+  Sizes after manipulation of the nonlinear systems: { }
+  Number of numerical Jacobians: 0
+ 
+Selected continuous time states
+Finished
+Finished
+ = true
+
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Distribution.Tests.DHWDesign.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve");
+Check of BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve
+-------------------------------------------------
+Error: the model is too complex for the current license.
+Your license must be upgraded to handle this model.
+-------------------------------------------------
+Error: ERRORS have been issued.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestPressureBasedSystemWithReliefValve.mos\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve\\\");\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestPressureBasedSystemWithReliefValve.mos");
+simulateModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve", stopTime=12000, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve");
+Translation of BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve
+-------------------------------------------------
+Error: the model is too complex for the current license.
+Your license must be upgraded to handle this model.
+-------------------------------------------------
+Error: ERRORS have been issued.
+ = false
+
+Instantiation of 
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Transfer.Tests.TestPressureBasedSystemWithReliefValve.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater");
+Check of BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater
+-------------------------------------------------
+Error: the model is too complex for the current license.
+Your license must be upgraded to handle this model.
+-------------------------------------------------
+Error: ERRORS have been issued.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/ElectricalHeater.mos\",", "BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater\",", "BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater\\\");\",", "BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/ElectricalHeater.mos");
+simulateModel("BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater");
+Translation of BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater
+-------------------------------------------------
+Error: the model is too complex for the current license.
+Your license must be upgraded to handle this model.
+-------------------------------------------------
+Error: ERRORS have been issued.
+ = false
+
+Instantiation of 
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Generation.Tests.ElectricalHeater.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Generation.Tests.HeatPump");
+Check of BESMod.Systems.Hydraulical.Generation.Tests.HeatPump
+-------------------------------------------------
+Error: the model is too complex for the current license.
+Your license must be upgraded to handle this model.
+-------------------------------------------------
+Error: ERRORS have been issued.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/HeatPump.mos\",", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Generation.Tests.HeatPump\",", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Generation.Tests.HeatPump\\\");\",", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/HeatPump.mos");
+simulateModel("BESMod.Systems.Hydraulical.Generation.Tests.HeatPump", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Generation.Tests.HeatPump");
+Translation of BESMod.Systems.Hydraulical.Generation.Tests.HeatPump
+-------------------------------------------------
+Error: the model is too complex for the current license.
+Your license must be upgraded to handle this model.
+-------------------------------------------------
+Error: ERRORS have been issued.
+ = false
+
+Instantiation of 
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Generation.Tests.HeatPump.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel");
+Check of BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel
+-------------------------------------------------
+Error: the model is too complex for the current license.
+Your license must be upgraded to handle this model.
+-------------------------------------------------
+Error: ERRORS have been issued.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Distribution/Tests/SimpleTwoStorageParallel.mos\",", "BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel\",", "BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel\\\");\",", "BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Distribution/Tests/SimpleTwoStorageParallel.mos");
+simulateModel("BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel");
+Translation of BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel
+-------------------------------------------------
+Error: the model is too complex for the current license.
+Your license must be upgraded to handle this model.
+-------------------------------------------------
+Error: ERRORS have been issued.
+ = false
+
+Instantiation of 
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Distribution.Tests.SimpleTwoStorageParallel.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler");
+Check of BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler
+-------------------------------------------------
+Error: the model is too complex for the current license.
+Your license must be upgraded to handle this model.
+-------------------------------------------------
+Error: ERRORS have been issued.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/GasBoiler.mos\",", "BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler\",", "BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler\\\");\",", "BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/GasBoiler.mos");
+simulateModel("BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler");
+Translation of BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler
+-------------------------------------------------
+Error: the model is too complex for the current license.
+Your license must be upgraded to handle this model.
+-------------------------------------------------
+Error: ERRORS have been issued.
+ = false
+
+Instantiation of 
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Generation.Tests.GasBoiler.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating");
+Check of BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating
+Note: 
+Your model is using an outer "system" component but
+an inner "system" component is not defined.
+For simulation drag Modelica.Fluid.System into your model
+to specify system properties.
+ 
+The model has the same number of unknowns and equations: 1153
+The model could not be deduced to be symbolically well-posed.
+The model has
+  999+15*(transfer.ufh[1].panelHeatingSegment[1].vol.nPorts+transfer.ufh[1].panelHeatingSegment[2].vol.nPorts  +transfer.ufh[1].panelHeatingSegment[3].vol.nPorts+transfer.ufh[1].panelHeatingSegment[4].vol.nPorts  +transfer.ufh[1].panelHeatingSegment[5].vol.nPorts)+transfer.pumpFix_m_flow[1].vol.dynBal.nPorts  +vol[1].dynBal.nPorts
+scalar unknowns and
+  958+(if  not transfer.ufh[1].panelHeatingSegment[1].vol.use_portsData then 4*  transfer.ufh[1].panelHeatingSegment[1].vol.nPorts else 0)+13*transfer.ufh[1].panelHeatingSegment[1].vol.nPorts  +(if  not transfer.ufh[1].panelHeatingSegment[1].twoStar_RadEx.use_A_in then 1   else 0)+(if  not transfer.ufh[1].panelHeatingSegment[2].vol.use_portsData   then 4*transfer.ufh[1].panelHeatingSegment[2].vol.nPorts else 0)+13*  transfer.ufh[1].panelHeatingSegment[2].vol.nPorts+(if  not transfer.ufh[1].panelHeatingSegment[2].twoStar_RadEx.use_A_in   then 1 else 0)+(if  not transfer.ufh[1].panelHeatingSegment[3].vol.use_portsData   then 4*transfer.ufh[1].panelHeatingSegment[3].vol.nPorts else 0)+13*  transfer.ufh[1].panelHeatingSegment[3].vol.nPorts+(if  not transfer.ufh[1].panelHeatingSegment[3].twoStar_RadEx.use_A_in   then 1 else 0)+(if  not transfer.ufh[1].panelHeatingSegment[4].vol.use_portsData   then 4*transfer.ufh[1].panelHeatingSegment[4].vol.nPorts else 0)+13*  transfer.ufh[1].panelHeatingSegment[4].vol.nPorts+(if  not transfer.ufh[1].panelHeatingSegment[4].twoStar_RadEx.use_A_in   then 1 else 0)+(if  not transfer.ufh[1].panelHeatingSegment[5].vol.use_portsData   then 4*transfer.ufh[1].panelHeatingSegment[5].vol.nPorts else 0)+13*  transfer.ufh[1].panelHeatingSegment[5].vol.nPorts+(if  not transfer.ufh[1].panelHeatingSegment[5].twoStar_RadEx.use_A_in   then 1 else 0)+(if bou1[1].use_Xi_in then 1 else (if bou1[1].use_X_in then 0   else 1))+(if  not bou1[1].use_p_in then 1 else 0)+2*bou1[1].nPorts+(if  not   bou1[1].use_T_in then 1 else 0)+(if  not transfer.pumpFix_m_flow[1].vol.dynBal.use_mWat_flow   then 1 else 0)+3*transfer.pumpFix_m_flow[1].vol.dynBal.nPorts+(if  not   vol[1].dynBal.use_mWat_flow then 1 else 0)+3*vol[1].dynBal.nPorts+(if  not   pumDis[1].dpControlled_dp.vol.steBal.use_mWat_flow then 1 else 0)
+scalar equations.
+However, exploiting the given numerical settings of parameters gives the same number of unknowns and equations:
+  1153
+Check of BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating successful.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestUnderfloorHeating.mos\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating\\\");\",", "BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Transfer/Tests/TestUnderfloorHeating.mos");
+simulateModel("BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating", stopTime=36000, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating");
+Translation of BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating
+Note: 
+Your model is using an outer "system" component but
+an inner "system" component is not defined.
+For simulation drag Modelica.Fluid.System into your model
+to specify system properties.
+ 
+The DAE has 1153 scalar unknowns and 1153 scalar equations.
+ 
+Statistics
+ 
+Original Model
+  Number of components: 234
+  Variables: 2559
+  Constants: 24 (24 scalars)
+  Parameters: 1191 (1451 scalars)
+  Unknowns: 1344 (1190 scalars)
+  Differentiated variables: 31 scalars
+  Equations: 1081
+  Nontrivial: 884
+Translated Model
+  Constants: 1101 scalars
+  Free parameters: 175 scalars
+  Parameter depending: 594 scalars
+  Outputs: 1 scalars
+  Continuous time states: 18 scalars
+  Time-varying variables: 266 scalars
+  Alias variables: 529 scalars
+  Number of mixed real/discrete systems of equations: 0
+  Sizes of linear systems of equations: { }
+  Sizes after manipulation of the linear systems: { }
+  Sizes of nonlinear systems of equations: {6, 6, 6, 6, 6, 1, 1}
+  Sizes after manipulation of the nonlinear systems: {1, 1, 1, 1, 1, 1, 1}
+  Number of numerical Jacobians: 0
+  Initialization problem
+    Sizes of nonlinear systems of equations: {1, 1}
+    Sizes after manipulation of the nonlinear systems: {1, 1}
+    Number of numerical Jacobians: 0
+ 
+Selected continuous time states
+Statically selected continuous time states
+transfer.heaCap[1].T
+transfer.integralKPICalculator[1].integrator2.y
+transfer.pumpFix_m_flow[1].vol.dynBal.U
+transfer.ufh[1].panelHeatingSegment[1].panel_Segment1.heatCapacitor.T
+transfer.ufh[1].panelHeatingSegment[1].panel_Segment2.heatCapacitor.T
+transfer.ufh[1].panelHeatingSegment[1].vol.medium.T
+transfer.ufh[1].panelHeatingSegment[2].panel_Segment1.heatCapacitor.T
+transfer.ufh[1].panelHeatingSegment[2].panel_Segment2.heatCapacitor.T
+transfer.ufh[1].panelHeatingSegment[2].vol.medium.T
+transfer.ufh[1].panelHeatingSegment[3].panel_Segment1.heatCapacitor.T
+transfer.ufh[1].panelHeatingSegment[3].panel_Segment2.heatCapacitor.T
+transfer.ufh[1].panelHeatingSegment[3].vol.medium.T
+transfer.ufh[1].panelHeatingSegment[4].panel_Segment1.heatCapacitor.T
+transfer.ufh[1].panelHeatingSegment[4].panel_Segment2.heatCapacitor.T
+transfer.ufh[1].panelHeatingSegment[4].vol.medium.T
+transfer.ufh[1].panelHeatingSegment[5].panel_Segment1.heatCapacitor.T
+transfer.ufh[1].panelHeatingSegment[5].panel_Segment2.heatCapacitor.T
+transfer.ufh[1].panelHeatingSegment[5].vol.medium.T
+Finished
+Finished
+ = true
+
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Transfer.Tests.TestUnderfloorHeating.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump");
+Check of BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump
+-------------------------------------------------
+Error: the model is too complex for the current license.
+Your license must be upgraded to handle this model.
+-------------------------------------------------
+Error: ERRORS have been issued.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/DetailedSolarThermalWithHeatPump.mos\",", "BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump\",", "BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump\\\");\",", "BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/DetailedSolarThermalWithHeatPump.mos");
+simulateModel("BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump");
+Translation of BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump
+-------------------------------------------------
+Error: the model is too complex for the current license.
+Your license must be upgraded to handle this model.
+-------------------------------------------------
+Error: ERRORS have been issued.
+ = false
+
+Instantiation of 
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Generation.Tests.DetailedSolarThermalWithHeatPump.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading");
+Check of BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading
+-------------------------------------------------
+Error: the model is too complex for the current license.
+Your license must be upgraded to handle this model.
+-------------------------------------------------
+Error: ERRORS have been issued.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Distribution/Tests/TwoStoDetailedIndirectLoading.mos\",", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading\",", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading\\\");\",", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Distribution/Tests/TwoStoDetailedIndirectLoading.mos");
+simulateModel("BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading");
+Translation of BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading
+-------------------------------------------------
+Error: the model is too complex for the current license.
+Your license must be upgraded to handle this model.
+-------------------------------------------------
+Error: ERRORS have been issued.
+ = false
+
+Instantiation of 
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Distribution.Tests.TwoStoDetailedIndirectLoading.translation.log"); = true
+
+
+rCheck = checkModel("BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage");
+Check of BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage
+In value attribute for resTra[1].m_flow_nominal.
+Modifier applied in class BESMod.Systems.Hydraulical.Distribution.Tests.BaseClasses.PartialTest.
+  File: /tmp/tmp-BESMod-3-sa6xqy7d/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 3
+Modifier applied for component resTra.m_flow_nominal.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/PartialTwoPortInterface.mo, line 8
+Variable found in class BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage.
+  Near file: /tmp/tmp-BESMod-3-sa6xqy7d/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 2
+Variable found in base-class resTra.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Error for array of components: Modifier(=fill(sum(distribution.Q_flow_design)/dTDem_nominal/4184, distribution.nParallelSup)) dimension 1 is 2, but the modifee expected 1.
+ 
+-------------------------------------------------
+Error: the model is too complex for the current license.
+Your license must be upgraded to handle this model.
+-------------------------------------------------
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+Declaring variable: Boolean rCheck ;
+
+Modelica.Utilities.Streams.print("    { \"file\" :  \"BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Distribution/Tests/CombiStorage.mos\",", "BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage.statistics.log");
+Modelica.Utilities.Streams.print("      \"model\" : \"BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage\",", "BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage.statistics.log");
+Modelica.Utilities.Streams.print("      \"check\" : {", "BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage.statistics.log");
+Modelica.Utilities.Streams.print("        \"command\" : \"checkModel(\\\"BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage\\\");\",", "BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage.statistics.log");
+Modelica.Utilities.Streams.print("        \"result\"  : " + String(rCheck), "BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage.statistics.log");
+Modelica.Utilities.Streams.print("      },", "BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage.statistics.log");
+
+
+rScript=RunScript("modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Distribution/Tests/CombiStorage.mos");
+simulateModel("BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage", stopTime=3600, method="CVode", tolerance=1e-06, resultFile="BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage");
+Translation of BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage
+In value attribute for resTra[1].m_flow_nominal.
+Modifier applied in class BESMod.Systems.Hydraulical.Distribution.Tests.BaseClasses.PartialTest.
+  File: /tmp/tmp-BESMod-3-sa6xqy7d/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 3
+Modifier applied for component resTra.m_flow_nominal.
+  File: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/Interfaces/PartialTwoPortInterface.mo, line 8
+Variable found in class BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage.
+  Near file: /tmp/tmp-BESMod-3-sa6xqy7d/BESMod/Systems/Hydraulical/Distribution/Tests/CombiStorage.mo, line 2
+Variable found in base-class resTra.PartialTwoPortInterface.
+  Near file: /builds/EBC/EBC_all/github_ci/BESMod/installed_dependencies/IBPSA/IBPSA/Fluid/BaseClasses/PartialResistance.mo, line 3
+Warning: Error for array of components: Modifier(=fill(sum(distribution.Q_flow_design)/dTDem_nominal/4184, distribution.nParallelSup)) dimension 1 is 2, but the modifee expected 1.
+ 
+-------------------------------------------------
+Error: the model is too complex for the current license.
+Your license must be upgraded to handle this model.
+-------------------------------------------------
+Warning: WARNINGS have been issued.
+Error: ERRORS have been issued.
+ = false
+
+Instantiation of 
+Declaring variable: Boolean rScript ;
+
+savelog("BESMod.Systems.Hydraulical.Distribution.Tests.CombiStorage.translation.log");
