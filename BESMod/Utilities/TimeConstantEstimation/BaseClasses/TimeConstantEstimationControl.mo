@@ -90,4 +90,10 @@ equation
           {18,2},{49.2,2},{49.2,18.4}}, color={255,0,255}));
   connect(PIDCtrl.TSet, supTSet.TSet) annotation (Line(points={{38.4,50.8},{-112,50.8},
           {-112,30},{-139,30}}, color={0,0,127}));
+  connect(const.y, sigBusDistr.uPumGen) annotation (Line(points={{-199,-50},{
+          -152,-50},{-152,-64},{1,-64},{1,-100}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
 end TimeConstantEstimationControl;

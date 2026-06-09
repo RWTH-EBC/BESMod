@@ -10,7 +10,8 @@ model ConstantSupply "Smart thermotat PI control estimation"
           valCtrl,
         redeclare
           BESMod.Systems.Hydraulical.Control.Components.BuildingSupplyTemperatureSetpoints.Constant
-          supTSet(TConSup=TConSup)), transfer(rad(use_dynamicFraRad=true))),
+          supTSet(TConSup=TConSup)), transfer(rad(use_dynamicFraRad=true)),
+      distribution(parPum(use_riseTime=true))),
                                  systemParameters(QBui_flow_nominal={11000},
         THydSup_nominal={343.15}));
   extends Modelica.Icons.Example;

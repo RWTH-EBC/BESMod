@@ -4,7 +4,9 @@ model UFHNoBufStoHeatPumpSystem
     redeclare BESMod.Systems.Demand.DHW.StandardProfiles DHW(redeclare
         BESMod.Systems.Demand.DHW.TappingProfiles.PassThrough calcmFlow,
         redeclare BESMod.Systems.Demand.DHW.RecordsCollection.NoDHW DHWProfile),
-  redeclare BESMod.Examples.UFHSystems.Haus43a_kfw40_iwu building,
+  redeclare BESMod.Examples.UFHSystems.Haus43a_kfw40_iwu building(
+        zoneParam={BESMod.Examples.UFHSystems.Haus43a_kfw40_iwu_DataBase.Haus43a_kfw40_iwu_SingleDwelling(
+          AFloor=0)}),
     redeclare BESMod.Systems.Control.NoControl control,
     redeclare BESMod.Systems.Ventilation.NoVentilation ventilation,
     redeclare BESMod.Systems.Hydraulical.HydraulicSystem hydraulic(
@@ -33,10 +35,8 @@ model UFHNoBufStoHeatPumpSystem
         delayGenOn=60,
         redeclare model DHWSetTemperature =
             BESMod.Systems.Hydraulical.Control.Components.DHWSetControl.ConstTSet_DHW,
-
         redeclare model DHWHysteresis =
             BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers.TimeBasedElectricHeater,
-
         redeclare
           BESMod.Systems.Hydraulical.Control.RecordsCollection.BasicHeatPumpPI
           parPIDHeaPum,
@@ -60,7 +60,7 @@ model UFHNoBufStoHeatPumpSystem
         BESMod.Systems.Hydraulical.Transfer.UFHTransferSystemPressureBasedNormBased
         transfer(redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.DefaultUFHData_NormBased
-          UFHParameters, dis=10)),
+          UFHParameters, dis=5)),
     redeclare BESMod.Systems.Electrical.DirectGridConnectionSystem electrical,
     redeclare BESMod.Systems.UserProfiles.TEASERProfiles userProfiles,
     redeclare BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy
@@ -75,7 +75,7 @@ model UFHNoBufStoHeatPumpSystem
    extends Modelica.Icons.Example;
 
   annotation (experiment(
-      StopTime=30000000,
+      StopTime=31536000,
       Interval=900,
       __Dymola_Algorithm="Dassl"));
 end UFHNoBufStoHeatPumpSystem;
