@@ -2,12 +2,7 @@ within BESMod.Systems.BaseClasses.TEASERExport;
 partial model PartialTEASERHeatLoadCalculationHOM
   "Partial model for TEASER export HOM heat load calculation"
   extends BESMod.Systems.BaseClasses.PartialBuildingEnergySystem(
-    redeclare BESMod.Systems.UserProfiles.AixLibHighOrderProfiles userProfiles(
-        redeclare replaceable
-        BESMod.Systems.UserProfiles.RecordsCollectionHOM.Ventilation.Const0_5
-        venPro, replaceable
-        BESMod.Systems.UserProfiles.RecordsCollectionHOM.SetTemperatures.Const20
-        TSetProfile),
+    redeclare BESMod.Systems.UserProfiles.AixLibHighOrderProfiles userProfiles,
     redeclare BESMod.Systems.RecordsCollection.ExampleSystemParameters
       systemParameters(
       use_hydraulic=false,

@@ -2,12 +2,7 @@ within BESMod.Systems.BaseClasses.TEASERExport;
 partial model PartialHeatPumpMonoenergeticHOM
   "Partial model for TEASER export with monoenergetic heat pump"
   extends Systems.BaseClasses.PartialBuildingEnergySystem(
-    redeclare BESMod.Systems.UserProfiles.AixLibHighOrderProfiles userProfiles(
-        redeclare replaceable
-        BESMod.Systems.UserProfiles.RecordsCollectionHOM.Ventilation.Const0_5
-        venPro, replaceable
-        BESMod.Systems.UserProfiles.RecordsCollectionHOM.SetTemperatures.Const20
-        TSetProfile),
+    redeclare BESMod.Systems.UserProfiles.AixLibHighOrderProfiles userProfiles,
     redeclare replaceable BESMod.Systems.Demand.Building.AixLibHighOrder building,
     redeclare BESMod.Systems.Electrical.ElectricalSystem electrical(
       redeclare BESMod.Systems.Electrical.Distribution.OwnConsumption

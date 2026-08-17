@@ -32,12 +32,7 @@ partial model PartialGasBoilerBuildingOnlyHOM
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.PassThrough calcmFlow),
-    redeclare BESMod.Systems.UserProfiles.AixLibHighOrderProfiles userProfiles(
-        redeclare replaceable
-        BESMod.Systems.UserProfiles.RecordsCollectionHOM.Ventilation.Const0_5
-        venPro, replaceable
-        BESMod.Systems.UserProfiles.RecordsCollectionHOM.SetTemperatures.Const20
-        TSetProfile),
+    redeclare BESMod.Systems.UserProfiles.AixLibHighOrderProfiles userProfiles,
     redeclare replaceable BESMod.Systems.Demand.Building.AixLibHighOrder building,
     redeclare BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy
       parameterStudy,

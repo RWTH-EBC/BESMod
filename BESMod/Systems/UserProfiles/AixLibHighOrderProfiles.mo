@@ -4,14 +4,14 @@ model AixLibHighOrderProfiles
   extends BESMod.Systems.UserProfiles.BaseClasses.PartialUserProfiles(nZones=10);
   parameter String fileNameIntGains=Modelica.Utilities.Files.loadResource("modelica://BESMod/Resources/InternalGainsHOM.txt")
     "File where matrix is stored" annotation (Dialog(tab="Inputs", group="Internal Gains"));
-  replaceable parameter AixLib.DataBase.Profiles.ProfileBaseDataDefinition
+  replaceable parameter BESMod.Systems.UserProfiles.RecordsCollectionHOM.Ventilation.Const0_5
     venPro
-    constrainedby AixLib.DataBase.Profiles.ProfileBaseDataDefinition
+    constrainedby BESMod.Systems.UserProfiles.RecordsCollectionHOM.RoomWiseProfileBaseDataDefinition
     "Ventilation profile"
     annotation(choicesAllMatching=true);
-  replaceable parameter AixLib.DataBase.Profiles.ProfileBaseDataDefinition
+  replaceable parameter BESMod.Systems.UserProfiles.RecordsCollectionHOM.SetTemperatures.ConstRoomNom
     TSetProfile constrainedby
-    AixLib.DataBase.Profiles.ProfileBaseDataDefinition
+    BESMod.Systems.UserProfiles.RecordsCollectionHOM.RoomWiseProfileBaseDataDefinition
     "Temperature profile"
     annotation(choicesAllMatching=true);
   parameter Real gain=1 "Gain value multiplied with internal gains. Used to e.g. disable single gains."          annotation (Dialog(group=
@@ -73,17 +73,17 @@ equation
   annotation (Documentation(info="<html>
 <p>Uses room-wise periodic table profiles room temperature setpoints in K, air exchange rate in 1/h and internal gains in W. </p>
 <p>Columes</p>
-<p>1	Time</p>
-<p>2	Livingroom</p>
-<p>3	Hobby</p>
-<p>4	Corridor_gf</p>
-<p>5 	WC_Storage</p>
-<p>6	Kitchen</p>
-<p>7	Bedroom</p>
-<p>8	Children1</p>
-<p>9	Corridor_upp</p>
-<p>10	Bath</p>
-<p>11	Children2</p>
-<p>12	Attic (only interal gains)</p>
+<p>1        Time</p>
+<p>2        Livingroom</p>
+<p>3        Hobby</p>
+<p>4        Corridor_gf</p>
+<p>5         WC_Storage</p>
+<p>6        Kitchen</p>
+<p>7        Bedroom</p>
+<p>8        Children1</p>
+<p>9        Corridor_upp</p>
+<p>10        Bath</p>
+<p>11        Children2</p>
+<p>12        Attic (only interal gains)</p>
 </html>"));
 end AixLibHighOrderProfiles;

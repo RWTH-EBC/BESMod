@@ -32,7 +32,7 @@ partial model PartialGasBoilerBuildingOnly
       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.PassThrough calcmFlow),
-    redeclare BESMod.Systems.UserProfiles.TEASERProfiles userProfiles,
+    redeclare replaceable BESMod.Systems.UserProfiles.TEASERProfiles userProfiles,
     redeclare replaceable BESMod.Systems.Demand.Building.TEASERThermalZone building(
       hBui=0.1,
       ABui=0.1,
