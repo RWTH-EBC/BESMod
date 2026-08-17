@@ -1,3 +1,6 @@
 PartialGasBoilerBuildingOnly
 PartialHeatPumpMonoenergetic
 PartialTEASERHeatLoadCalculation
+PartialTEASERHeatLoadCalculationHOM
+PartialGasBoilerBuildingOnlyHOM
+PartialHeatPumpMonoenergeticHOM
