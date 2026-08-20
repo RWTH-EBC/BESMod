@@ -1,4 +1,4 @@
-﻿within BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers;
+within BESMod.Systems.Hydraulical.Control.Components.BivalentOnOffControllers;
 model DegreeMinuteController
   "Based on degree minute approach"
   extends BaseClasses.PartialOnOffController;
@@ -38,7 +38,11 @@ equation
   // TODO: Check why the simple hys wont work?!
   //HP_On = (not pre(HP_On) and DegreeMinute > DegreeMinute_HP_on) or (pre(HP_On) and DegreeMinute < DegreeMinute_HP_off);
   //Auxilliar_Heater_On = (not pre(Auxilliar_Heater_On) and DegreeMinute > DegreeMinute_AuxHeater_on) or (pre(Auxilliar_Heater_On) and delta_T < delta_T_AuxHeater_off);
-  der(DegreeMinute) = delta_T /60;
+  if HeaMod then
+    der(DegreeMinute) = delta_T /60;
+  else
+    der(DegreeMinute) = 0;
+  end if;
   when (delta_T > delta_T_reset) then
     reinit(DegreeMinute, 0);
   elsewhen (DegreeMinute > DegreeMinuteReset) then

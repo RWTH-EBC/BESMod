@@ -40,6 +40,11 @@ partial model PartialOnOffController "Partial model for an on off controller"
     "Setpoint of the auxilliar heater" annotation (Placement(transformation(
           extent={{100,-90},{120,-70}}), iconTransformation(extent={{100,-100},{
             128,-72}})));
+  Modelica.Blocks.Interfaces.BooleanInput HeaMod annotation (Placement(
+        transformation(
+        extent={{-20,-20},{20,20}},
+        rotation=90,
+        origin={-60,-120})));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Rectangle(
           extent={{-100,100},{100,-100}},

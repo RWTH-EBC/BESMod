@@ -54,7 +54,7 @@ partial model PartialBuildingEnergySystem "Partial BES"
   replaceable BESMod.Systems.UserProfiles.BaseClasses.PartialUserProfiles
     userProfiles constrainedby UserProfiles.BaseClasses.PartialUserProfiles(
     final nZones=systemParameters.nZones,
-    final TSetZone_nominal=systemParameters.TSetZone_nominal)
+    TSetZone_nominal=systemParameters.TSetZone_nominal)
     "Replacable model to specify your user profiles" annotation (
       choicesAllMatching=true, Placement(transformation(extent={{-280,124},{
             -224,178}})));

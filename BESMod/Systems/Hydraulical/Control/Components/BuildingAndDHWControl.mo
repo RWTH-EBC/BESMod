@@ -240,6 +240,9 @@ model BuildingAndDHWControl
         rotation=180,
         origin={70,130})));
 
+  Modelica.Blocks.Interfaces.BooleanOutput HeaMod
+    "Connector of Boolean output signal"
+    annotation (Placement(transformation(extent={{196,-46},{216,-26}})));
 equation
   connect(hysDHW.priGenOn, priGenOn.u1) annotation (Line(points={{-18.6,51},{-8,
           51},{-8,-20},{90,-20},{90,-116},{120,-116}},           color={255,0,255}));
@@ -489,6 +492,10 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
+  connect(winMod.y, HeaMod)
+    annotation (Line(points={{1,-36},{206,-36}}, color={255,0,255}));
+  connect(winMod.y, hysBui.HeaMod) annotation (Line(points={{1,-36},{8,-36},{8,
+          -118},{-56,-118},{-56,-108}}, color={255,0,255}));
     annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-200,-180},
             {200,180}})), Diagram(coordinateSystem(extent={{-200,-180},{200,180}}),
                                   graphics={
