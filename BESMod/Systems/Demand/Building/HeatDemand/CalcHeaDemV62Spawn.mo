@@ -12,71 +12,82 @@ model CalcHeaDemV62Spawn
     KR_heater=10000,
     h_heater=fill(100000, building.nZones),
     redeclare BESMod.Examples.ViebrockhausV62.V62System systemParameters(
-      QBui_flow_nominal={1206.713,318.291,148.561,354.743,10.0,404.780,350.568,
-          334.176,364.559,197.899,100.841},
-      TOda_nominal=261.15,
-      TSetZone_nominal(each displayUnit="K") = {293.15,293.15,293.15,297.15,
+      QBui_flow_nominal={1479.0,400.2,186.8,150.0,10.0,542.0,525.0,493.0,392.0,
+          265.0,10.0},
+      TOda_nominal=265.05,
+      TSetZone_nominal(each displayUnit="K") = {293.15,293.15,293.15,293.15,
         288.15,293.15,293.15,293.15,297.15,293.15,293.15},
       THydSup_nominal=fill(273.15 + 35, building.nZones),
       filNamWea=Modelica.Utilities.Files.loadResource(
-          "modelica://BESMod/Resources/Spawn/Potsdam_HeatLoad.mos")),
+          "modelica://BESMod/Resources/Spawn/Harsefeld_HeatLoad_m8_1.mos")),
     redeclare BESMod.Systems.Demand.Building.SpawnV62 building(
       nZones=systemParameters.nZones,
       TOda_nominal=systemParameters.TOda_nominal,
       useConstVentRate=true,
-      ventRate=fill(0.5, systemParameters.nZones),
+      ventRate={1.013,0.711,0.711,0.210,0.189,0.858,1.233,1.243,0.186,0.858,
+          0.071},
+      idf_name=Modelica.Utilities.Files.loadResource(
+          "modelica://BESMod/Resources/Spawn/V62_Satteldach40_Heizlast.idf"),
       epw_name=Modelica.Utilities.Files.loadResource(
-          "modelica://BESMod/Resources/Spawn/Potsdam_HeatLoad.epw"),
+          "modelica://BESMod/Resources/Spawn/Harsefeld_HeatLoad_m8_1.epw"),
       wea_name=systemParameters.filNamWea),
     heaterCooler(each Heater_on=true));
 
   annotation (Documentation(info="<html>
 <p>
-  Berechnet die Heizlast des Viebrockhauses V62 nach EN 12831, analog zu
+  Berechnet die Heizlast des Viebrockhauses V62, analog zu
   <a href=\"modelica://BESMod.Systems.Demand.Building.HeatDemand.CalcHeaDemHOMSpawn\">
-  CalcHeaDemHOMSpawn</a>.
+  CalcHeaDemHOMSpawn</a>. Saemtliche Randbedingungen sind aus der
+  Heizlastberechnung nach DIN/TS 12831-1 uebernommen (Roth Werke /
+  LINEAR Building 23, Projekt 278384, 04.08.2023), damit die Ergebnisse direkt
+  mit dieser Berechnung verglichen werden koennen.
 </p>
+<h4>Uebernommene Randbedingungen</h4>
+<ul>
+  <li>Auslegungsaussentemperatur <b>-8,1 &deg;C</b> (Formblatt G1)</li>
+  <li>Auslegungsinnentemperaturen je Raum (Formblatt V1):
+      Wohnen/Kochen/Essen, Diele, Home-Office, Dusche/WC, Schlafen, Kind 1,
+      Kind 2, Ankleide und Empore 20 &deg;C, Bad 24 &deg;C, HTR 15 &deg;C.
+      Achtung: Dusche/WC steht in der Berechnung auf 20 &deg;C, nicht auf 24 &deg;C.</li>
+  <li>Luftwechsel je Zone aus den Aussenluft-Volumenstroemen der Berechnung
+      (Formblatt Z3, Spalte q<sub>v,env,i</sub>): 92,7 m&sup3;/h Wohnen,
+      31,0 Diele/Home-Office, 33,5 Kind 1, 33,3 Kind 2, 42,6 Schlafen/Ankleide,
+      3,1 HTR, 2,9 Dusche/WC, 4,9 Bad, 1,2 Empore. Umgerechnet auf die
+      Zonenvolumina des Modells ergeben sich die eingetragenen Werte in 1/h -
+      es ist also der <i>Volumenstrom</i> uebernommen, nicht der Luftwechsel.
+      Das Gebaeude hat eine Abluftanlage mit 210 m&sup3;/h ohne
+      Waermerueckgewinnung; die Zuluft stroemt ueber Aussenluftdurchlaesse in
+      Wohn- und Schlafraeume nach, die Ablufraeume (HTR, Dusche/WC, Bad)
+      erhalten nur Leckageluft und Ueberstroemluft.</li>
+  <li>Erdreichtemperatur 9,2 &deg;C (Jahresmittel der Aussentemperatur)</li>
+  <li>U-Werte aller Bauteile inklusive Waermebrueckenzuschlag 0,02 W/(m&sup2;K)
+      - siehe <code>V62_Satteldach40_Heizlast.idf</code></li>
+</ul>
+<h4>Benoetigte Wetterdateien</h4>
 <p>
-  Es werden dieselben Wetterdateien mit konstanter Aussentemperatur verwendet wie
-  beim HOM-Modell (<code>Potsdam_HeatLoad.epw</code> / <code>.mos</code>,
-  -12&nbsp;&deg;C). Wer eine andere Norm-Aussentemperatur braucht, muss sie auch
-  in der epw-Datei aendern - dafuer gibt es
-  <code>BESMod/Resources/Spawn/HeatLoad_Tamb_Replacement.py</code>.
+  Wie beim HOM-Modell wird eine Wetterdatei mit konstanter Aussentemperatur
+  gebraucht, hier <b>-8,1 &deg;C</b> statt -12 &deg;C. Erzeugen Sie
+  <code>Harsefeld_HeatLoad_m8_1.epw</code> und <code>.mos</code> aus den
+  vorhandenen Dateien mit
+  <code>BESMod/Resources/Spawn/HeatLoad_Tamb_Replacement.py</code> bzw. per
+  Suchen und Ersetzen.
 </p>
+<h4>Vergleichswerte der Berechnung</h4>
+<table border=\"1\">
+<tr><th>Raum</th><th>&theta;int</th><th>&Phi;HL</th></tr>
+<tr><td>00/01 Wohnen/Kochen/Essen</td><td>20 &deg;C</td><td>1479 W</td></tr>
+<tr><td>00/02 HTR</td><td>15 &deg;C</td><td>-42 W</td></tr>
+<tr><td>00/03 Diele/Home-Office</td><td>20 &deg;C</td><td>587 W</td></tr>
+<tr><td>00/04 Dusche/WC</td><td>20 &deg;C</td><td>150 W</td></tr>
+<tr><td>01/01 Kind 1</td><td>20 &deg;C</td><td>525 W</td></tr>
+<tr><td>01/02 Kind 2</td><td>20 &deg;C</td><td>493 W</td></tr>
+<tr><td>01/03 Bad</td><td>24 &deg;C</td><td>392 W</td></tr>
+<tr><td>01/04 Empore</td><td>20 &deg;C</td><td>-14 W</td></tr>
+<tr><td>01/05 Schlafen/Ankleide</td><td>20 &deg;C</td><td>807 W</td></tr>
+<tr><td><b>Gebaeudeheizlast</b></td><td></td><td><b>4306 W</b> (34,3 W/m&sup2;)</td></tr>
+</table>
 <p>
-  Zonenreihenfolge und Sollwerte:
-</p>
-<ol>
-  <li>EG_WohnenKochen - 20 &deg;C</li>
-  <li>EG_Diele - 20 &deg;C (offen zum Wohnbereich, daher kein Flurwert von 15 &deg;C)</li>
-  <li>EG_HomeOffice - 20 &deg;C</li>
-  <li>EG_DuscheWC - 24 &deg;C</li>
-  <li>EG_HTR - 15 &deg;C</li>
-  <li>DG_Schlafen - 20 &deg;C</li>
-  <li>DG_Kind1 - 20 &deg;C</li>
-  <li>DG_Kind2 - 20 &deg;C</li>
-  <li>DG_Bad - 24 &deg;C</li>
-  <li>DG_Ankleide - 20 &deg;C (tuerlos zum Schlafzimmer)</li>
-  <li>DG_Empore - 20 &deg;C (offen ueber das Treppenloch)</li>
-</ol>
-<p>
-  Zonen, die im Modell ueber <code>Construction:AirBoundary</code> offen
-  miteinander verbunden sind, haben bewusst denselben Sollwert - eine
-  Temperaturdifferenz waere dort physikalisch nicht haltbar.
-</p>
-<p>
-  <b>Zu pruefen vor dem ersten Lauf:</b>
-  <code>BESMod.Systems.UserProfiles.AixLibHighOrderProfiles</code> enthaelt fuer
-  Solltemperatur und Lueftung fest dimensionierte Felder mit 10 Elementen und
-  liest die inneren Gewinne mit <code>columns=2:nZones+1</code> aus einer
-  Datentabelle des AixLib-HOM. Mit <code>nZones = 11</code> kann das zu einem
-  Dimensionsfehler fuehren. Falls die Uebersetzung fehlschlaegt: eine Kopie des
-  Profils anlegen, die festen <code>[10]</code> durch <code>[nZones]</code>
-  ersetzen und die Gewinn-Tabelle um eine elfte Zonenspalte ergaenzen (die Werte
-  sind wegen <code>gain=0</code> ohne Wirkung, nur die Spaltenzahl zaehlt).
-</p>
-<p>
-  Weitere Hinweise zu Spawn-Fehlermeldungen stehen in
+  Hinweise zu Spawn-Fehlermeldungen und zum Profil-Redeclare stehen in
   <a href=\"modelica://BESMod.Systems.Demand.Building.SpawnV62\">SpawnV62</a>.
 </p>
 </html>"), experiment(
