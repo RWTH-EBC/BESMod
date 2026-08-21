@@ -39,7 +39,7 @@ model TEASERThermalZone
     each final T_start=T_start,
     final zoneParam=zoneParam,
     each final use_MechanicalAirExchange=true,
-    each final use_NaturalAirExchange=true,
+    each use_NaturalAirExchange=true,
     each final nPorts=if use_ventilation then 2 else 0) annotation (Placement(
         transformation(extent={{35,12},{-39,84}}, rotation=0)));
 
