@@ -7,8 +7,10 @@ model DegreeMinuteController
   parameter Real DegreeMinute_HP_off(unit="K.min")=0 "Degree minute when HP is turned off";
   parameter Real DegreeMinute_AuxHeater_on(unit="K.min")=-600 "Degree minute when auxilliar heater is turned on";
   parameter Real DegreeMinuteReset(unit="K.min")=300 "Degree minute when the value is reset. Value based on additional paper, to avoid errors in summer periods";
-  parameter Modelica.Units.SI.TemperatureDifference delta_T_AuxHeater_off=1
+  parameter Modelica.Units.SI.TemperatureDifference delta_T_AuxHeater_off=10
     "Temperature difference when to turn off the auxilliar heater";
+  parameter Modelica.Units.SI.TemperatureDifference delta_T_AuxHeater_max_on=-1
+    "Max temperature difference when to turn on the auxilliar heater";
   parameter Modelica.Units.SI.TemperatureDifference delta_T_reset=10
     "Temperature difference when to reset the sum to 0";
 
@@ -24,12 +26,12 @@ algorithm
     priGenOn := false;
   end when;
 
-  when DegreeMinute < DegreeMinute_AuxHeater_on then
+  when DegreeMinute < DegreeMinute_AuxHeater_on and delta_T < delta_T_AuxHeater_max_on then
     secGenOn := true;
     ySecGenSet := 1;
   end when;
 
-  when delta_T > delta_T_AuxHeater_off then
+  when DegreeMinute > 0 or delta_T > delta_T_AuxHeater_off then
     secGenOn := false;
     ySecGenSet := 0;
   end when;
