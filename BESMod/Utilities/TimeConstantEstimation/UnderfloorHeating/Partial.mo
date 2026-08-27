@@ -6,8 +6,8 @@ partial model Partial "Estimate UFH time constants"
     TOda_start=268.15,
     hydraulic(
       T_start=308.15,
-      redeclare BESMod.Systems.Hydraulical.Distribution.BuildingOnly distribution,
-      redeclare BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem transfer(
+      redeclare replaceable BESMod.Systems.Hydraulical.Distribution.BuildingOnly distribution,
+      redeclare replaceable BESMod.Systems.Hydraulical.Transfer.UFHTransferSystem transfer(
         redeclare
           BESMod.Systems.Hydraulical.Transfer.RecordsCollection.DefaultUFHData
           UFHParameters),

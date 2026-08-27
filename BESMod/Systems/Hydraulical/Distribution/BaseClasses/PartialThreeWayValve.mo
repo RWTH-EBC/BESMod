@@ -37,7 +37,7 @@ partial model PartialThreeWayValve "Partial model to later extent"
   replaceable parameter
     BESMod.Systems.RecordsCollection.Movers.DPVar parPumGen constrainedby
     BESMod.Systems.RecordsCollection.Movers.MoverBaseDataDefinition(iconName=
-        "Pump Gen", externalCtrlTyp=BESMod.Systems.Hydraulical.Components.PreconfiguredControlledMovers.Types.ExternalControlType.onOff)
+        "Pump Gen")
     "Parameters for pump feeding supply system (generation)" annotation (
     choicesAllMatching=true,
     Placement(transformation(extent={{84,164},{96,176}})));

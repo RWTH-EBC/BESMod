@@ -8,4 +8,5 @@ DHWSetControl
 RelativeSpeedController
 SummerMode
 ThermostaticValveController
+PumpController
 BaseClasses
