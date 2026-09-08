@@ -57,7 +57,7 @@ equation
   connect(TStoTop, hysSto.T_top) annotation (Line(points={{-120,60},{-92,60},{
           -92,42},{-72,42},{-72,50},{-60,50}},
                          color={0,0,127}));
-  connect(TSupSet, hysSto.T_set) annotation (Line(points={{0,-118},{0,-94},{-56,
+  connect(TSupSet, hysSto.T_set) annotation (Line(points={{0,-120},{0,-94},{-56,
           -94},{-56,34},{-70,34},{-70,58},{-60,58}},
                               color={0,0,127}));
   connect(hysSto.y, priGenOn) annotation (Line(points={{-37,50},{94,50},{94,60},
@@ -86,7 +86,7 @@ equation
   connect(add1.y, hysAuxHea.reference)
     annotation (Line(points={{-70,-39},{-70,-28},{-90,-28},{-90,-4},{-82,-4}},
                                                                color={0,0,127}));
-  connect(TSupSet, add1.u2) annotation (Line(points={{0,-118},{0,-94},{-56,-94},
+  connect(TSupSet, add1.u2) annotation (Line(points={{0,-120},{0,-94},{-56,-94},
           {-56,-70},{-64,-70},{-64,-62}},
                                         color={0,0,127}));
   connect(andBelBiv.y, trigTime.u) annotation (Line(points={{-19,-30},{-16,-30},
