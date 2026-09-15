@@ -40,7 +40,8 @@ model UFHTransferSystemPressureBasedNormBased
     "Volume of water in distributors"
     annotation (Dialog(group="Volume"));
 
-  BESMod.Systems.Hydraulical.Components.UFH.PanelHeating_NormBased ufh[
+  Hydraulics.Systems.Demand.Hydraulical.Components.UFH.PanelHeating_NormBasedNoKTopEff
+                                                                   ufh[
     nParallelDem](
     redeclare package Medium = Medium,
     final floorHeatingType=floorHeatingType,

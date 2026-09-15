@@ -1,4 +1,4 @@
-﻿within BESMod.Systems.Hydraulical.Transfer.RecordsCollection;
+within BESMod.Systems.Hydraulical.Transfer.RecordsCollection;
 record DefaultUFHData_NormBased
   "For a well insulated retrofit building fst"
   extends BESMod.Systems.Hydraulical.Transfer.RecordsCollection.UFHData(
