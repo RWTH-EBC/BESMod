@@ -25,7 +25,7 @@ model UFHTransferSystemSpacingFix
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-30,80})));
-  Hydraulics.Systems.Demand.Hydraulical.Components.UFH.PanelHeatingPossibleAFloorFix
+  Hydraulics.BESMod_Extensions.Systems.Hydraulical.Components.UFH.PanelHeatingPossibleAFloorFix
     ufh[nParallelDem](
     redeclare package Medium = Medium,
     final floorHeatingType=floorHeatingType,
