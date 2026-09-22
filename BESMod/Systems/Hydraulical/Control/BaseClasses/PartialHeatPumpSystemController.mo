@@ -162,8 +162,7 @@ partial model PartialHeatPumpSystemController
     final TAddSta4Bui=TAddSta4Bui,
     final filNamSGReady=filNamSGReady,
     final TAddSta3DHW=TAddSta3DHW,
-    final TAddSta4DHW=TAddSta4DHW)
-    "Control for building and DHW system"
+    final TAddSta4DHW=TAddSta4DHW) "Control for building and DHW system"
     annotation (Placement(transformation(extent={{-200,20},{-120,80}})));
 
   Components.BaseClasses.SetAndMeasuredValueSelector setAndMeaSelPri(
@@ -365,13 +364,14 @@ equation
           27.3333},{-118,26},{-98,26},{-98,-4},{-84,-4}},      color={255,0,255}));
   connect(secGenOn.y, logicalDelaySecGen.u)
     annotation (Line(points={{-69,30},{-62,30}}, color={255,0,255}));
-  connect(logicalDelaySecGen.y1, anyGenDevIsOn.u[1]) annotation (Line(points={{
-          -39,36},{-34,36},{-34,14},{-152.333,14},{-152.333,0}}, color={255,0,
+  connect(logicalDelaySecGen.y1, anyGenDevIsOn.u[1]) annotation (Line(points={{-39,36},
+          {-34,36},{-34,14},{-152.333,14},{-152.333,0}},         color={255,0,
           255}));
   connect(logicalDelayPreGen.y1, anyGenDevIsOn.u[2]) annotation (Line(points={{
           -61,2},{-56,2},{-56,14},{-150,14},{-150,0}}, color={255,0,255}));
   connect(conPumGenAlwOn.y, anyGenDevIsOn.u[3]) annotation (Line(points={{-181,
-          -12},{-166,-12},{-166,6},{-150,6},{-150,0}}, color={255,0,255}));
+          -12},{-166,-12},{-166,6},{-152,6},{-152,0},{-147.667,0}},
+                                                               color={255,0,255}));
                                                               annotation (Diagram(graphics={
         Rectangle(
           extent={{4,100},{136,36}},
