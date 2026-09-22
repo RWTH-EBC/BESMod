@@ -1,5 +1,0 @@
-within BESMod.Systems.Hydraulical.RecordsCollection;
-record HydraulicSystemBaseDataDefinition
-  extends BESMod.Systems.RecordsCollection.SupplySystemBaseDataDefinition;
-  extends BESMod.Systems.Hydraulical.RecordsCollection.DHWDesignParameters;
-end HydraulicSystemBaseDataDefinition;
