@@ -10,8 +10,9 @@ model AixLibHighOrder "High order building model from AixLib library"
     final ARoo=HOMBuiEnv.ARoof);
   extends Components.BaseClasses.HighOrderModelParameters;
 
-  final parameter AixLib.DataBase.Weather.SurfaceOrientation.SurfaceOrientationBaseDataDefinition  SOD=
+  replaceable parameter AixLib.DataBase.Weather.SurfaceOrientation.SurfaceOrientationBaseDataDefinition  SOD=
   AixLib.DataBase.Weather.SurfaceOrientation.SurfaceOrientationData_N_E_S_W_RoofN_Roof_S()
+    constrainedby AixLib.DataBase.Weather.SurfaceOrientation.SurfaceOrientationBaseDataDefinition
     "Surface orientation data"  annotation (
       Dialog(group = "Solar radiation on oriented surfaces", descriptionLabel = true),
       choicesAllMatching = true);
