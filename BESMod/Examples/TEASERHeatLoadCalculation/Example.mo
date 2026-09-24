@@ -9,14 +9,14 @@ model Example "Simple example"
         RFloor={1/(10*187)},
         RFloorRem=1/(0.37*187),
         CFloor={380000*187},
-        HeaterOn=false,
+        HeaterOn=true,
         hHeat=100000,
-        CoolerOn=true,
+        CoolerOn=false,
         lCool=-100000),
                       energyDynamics=Modelica.Fluid.Types.Dynamics.FixedInitial),
     systemParameters(
       TOda_nominal=263.15,
-      TSetZone_nominal={297.15},
+      TSetZone_nominal={295.15},
       filNamWea=Modelica.Utilities.Files.loadResource(
           "modelica://BESMod/Resources/WeatherData/TRY2015_Dudenhofen_Jahr.mos"),
       use_elecHeating=false),

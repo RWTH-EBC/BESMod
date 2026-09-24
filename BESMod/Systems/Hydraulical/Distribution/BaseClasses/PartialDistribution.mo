@@ -38,6 +38,14 @@ partial model PartialDistribution
   replaceable package MediumGen =
       Modelica.Media.Interfaces.PartialMedium
     annotation (choicesAllMatching=true);
+  replaceable parameter AixLib.DataBase.Storage.StorageDetailedBaseDataDefinition datStoBuf =
+      Hydraulics.DistributionsHeaDefCoo.Data.GenerischerPufferspeicher100L()
+    constrainedby AixLib.DataBase.Storage.StorageDetailedBaseDataDefinition
+    "Datensatz fuer Pufferspeicher"
+    annotation (choicesAllMatching=true, Dialog(group="Storage Data"));
+  parameter Modelica.Units.SI.HeatFlowRate Q_flow_HR_max = 2560
+    "Maximale Nenn-Waermeleistung des Heizstabs"
+    annotation (Dialog(group="Storage Data"));
 
   Modelica.Fluid.Interfaces.FluidPort_a portGen_in[nParallelSup](redeclare
       final package Medium = MediumGen) "Inlet from the generation" annotation (
