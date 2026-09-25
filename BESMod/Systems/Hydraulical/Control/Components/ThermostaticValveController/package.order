@@ -3,3 +3,4 @@ ThermostaticValvePControlled
 ThermostaticValvePIControlled
 BaseClasses
 DynamicOpeningTest
+ThermostaticValvePIControlledCustom
