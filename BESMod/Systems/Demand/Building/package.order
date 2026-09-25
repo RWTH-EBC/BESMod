@@ -2,6 +2,7 @@ AixLibHighOrder
 BuildingsRoomCase600FF
 SpawnHighOrder
 TEASERThermalZone
+TEASERThermalSingleZone
 Components
 HeatDemand
 RecordsCollection
