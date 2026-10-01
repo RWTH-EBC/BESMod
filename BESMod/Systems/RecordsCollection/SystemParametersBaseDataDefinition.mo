@@ -57,7 +57,8 @@ record SystemParametersBaseDataDefinition
   // Boundary conditions
   parameter String filNamWea
     "Name of weather data file"
-    annotation (Dialog(group="Weather data"));
+    annotation (Dialog(group="Weather data", loadSelector(filter="Weather files (*.mos)",
+                        caption="Select weather file")));
 
   // Subsystems
   parameter Boolean use_hydraulic=true "=false to disable hydraulic subsystem" annotation(Dialog(group="System layout"));
