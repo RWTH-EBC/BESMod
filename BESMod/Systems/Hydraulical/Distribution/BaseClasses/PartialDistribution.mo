@@ -39,7 +39,7 @@ partial model PartialDistribution
       Modelica.Media.Interfaces.PartialMedium
     annotation (choicesAllMatching=true);
   replaceable parameter AixLib.DataBase.Storage.StorageDetailedBaseDataDefinition datStoBuf =
-      Hydraulics.DistributionsHeaDefCoo.Data.GenerischerPufferspeicher100L()
+      Hydraulics.BESMod_Extensions.Systems.Hydraulical.Distribution.Data.GenerischerPufferspeicher100L()
     constrainedby AixLib.DataBase.Storage.StorageDetailedBaseDataDefinition
     "Datensatz fuer Pufferspeicher"
     annotation (choicesAllMatching=true, Dialog(group="Storage Data"));
