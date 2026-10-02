@@ -21,6 +21,8 @@ model AixLibHighOrder "High order building model from AixLib library"
   parameter Real ventRate[nZones]=fill(0, nZones) if useConstVentRate "Constant mechanical ventilation rate" annotation (Dialog(enable=useConstVentRate));
   parameter Modelica.Units.SI.Temperature TSoil=286.15     "Temperature of soil";
   parameter Real GroundReflectance = 0.2 "ground reflectance coefficient";
+  parameter Real fraRadIntGai(min=0, max=1) = 0
+    "Radiative share of the internal gains, the rest is convective";
 
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature preTSoi(T=TSoil)
     "Prescribed soil temperature"
@@ -70,10 +72,29 @@ model AixLibHighOrder "High order building model from AixLib library"
           extent={{10,-10},{-10,10}}, rotation=180,
         origin={-90,10})));
   Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow InternalGains[nZones]
+    "Convective share of the internal gains"
     annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=0,
         origin={-50,-50})));
+  Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow InternalGainsRad[nZones]
+    "Radiative share of the internal gains"
+    annotation (Placement(transformation(
+        extent={{10,-10},{-10,10}},
+        rotation=0,
+        origin={-50,-70})));
+  Modelica.Blocks.Math.Gain gaiIntGaiCon[nZones](each final k=1 - fraRadIntGai)
+    "Convective share of the internal gains"
+    annotation (Placement(transformation(
+        extent={{6,-6},{-6,6}},
+        rotation=0,
+        origin={-20,-50})));
+  Modelica.Blocks.Math.Gain gaiIntGaiRad[nZones](each final k=fraRadIntGai)
+    "Radiative share of the internal gains"
+    annotation (Placement(transformation(
+        extent={{6,-6},{-6,6}},
+        rotation=0,
+        origin={-20,-70})));
   Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{24,-108},{44,-88}})));
   Modelica.Thermal.HeatTransfer.Sources.PrescribedTemperature
@@ -125,12 +146,24 @@ connect(weaBus.winSpe, HOMBuiEnv.WindSpeedPort) annotation (Line(
 
   connect(InternalGains.port, convRadToCombPort.portConv) annotation (Line(
         points={{-60,-50},{-68,-50},{-68,-7},{-60,-7}}, color={191,0,0}));
-  connect(InternalGains.Q_flow, useProBus.intGains) annotation (Line(points={{-40,-50},
+  connect(gaiIntGaiCon.u, useProBus.intGains) annotation (Line(points={{-12.8,-50},
           {60,-50},{60,70},{51,70},{51,101}},      color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  connect(gaiIntGaiRad.u, useProBus.intGains) annotation (Line(points={{-12.8,-70},
+          {60,-70},{60,70},{51,70},{51,101}},      color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(gaiIntGaiCon.y, InternalGains.Q_flow) annotation (Line(points={{-26.6,
+          -50},{-40,-50}}, color={0,0,127}));
+  connect(gaiIntGaiRad.y, InternalGainsRad.Q_flow) annotation (Line(points={{-26.6,
+          -70},{-40,-70}}, color={0,0,127}));
+  connect(InternalGainsRad.port, convRadToCombPort.portRad) annotation (Line(
+        points={{-60,-70},{-70,-70},{-70,-17},{-60,-17}}, color={191,0,0}));
   connect(constVentRate.y, HOMBuiEnv.AirExchangePort) annotation (Line(points={{
           -79,10},{-23.8,10},{-23.8,10.9}}, color={0,0,127}));
   connect(HOMBuiEnv.TZoneMea, buiMeaBus.TZoneMea) annotation (Line(points={{-23.2,
