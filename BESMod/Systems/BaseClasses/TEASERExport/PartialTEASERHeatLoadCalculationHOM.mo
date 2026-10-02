@@ -20,7 +20,7 @@ partial model PartialTEASERHeatLoadCalculationHOM
       redeclare BESMod.Systems.Electrical.Generation.NoGeneration generation,
       redeclare BESMod.Systems.Electrical.Distribution.DirectlyToGrid
         distribution,
-      redeclare BESMod.Systems.Electrical.Transfer.IdealHeater transfer(
+      redeclare BESMod.Systems.Electrical.Transfer.IdealHeaterFraRad transfer(
           TN_heater=120),
       redeclare BESMod.Systems.Electrical.Control.IdealHeater control),
     redeclare BESMod.Systems.Demand.DHW.StandardProfiles DHW(
