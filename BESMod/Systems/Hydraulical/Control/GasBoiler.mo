@@ -4,6 +4,9 @@ model GasBoiler "PI Control of gas boiler"
   parameter Modelica.Units.SI.TemperatureDifference dTHysBui=10
     "Hysteresis for building demand control"
     annotation (Dialog(group="Building control"));
+  parameter Boolean use_TZoneSetHeaCur=false
+    "=true to evaluate the heating curve at the user profile's TZoneSetHeaCur instead of TZoneSet, e.g. the warmest room's set temperature of a zone merged from several rooms"
+    annotation (Dialog(group="Building control"));
   parameter Modelica.Units.SI.TemperatureDifference dTHysDHW=10
     "Hysteresis for DHW demand control" annotation (Dialog(group="DHW control"));
   replaceable parameter RecordsCollection.PIDBaseDataDefinition parPID
@@ -194,11 +197,21 @@ equation
       index=1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(heatingCurve.TZoneSet, useProBus.TZoneSet) annotation (Line(points={{
-          -222,22},{-236,22},{-236,24},{-238,24},{-238,103},{-119,103}}, color={0,
-          0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
+  if use_TZoneSetHeaCur then
+    connect(heatingCurve.TZoneSet, useProBus.TZoneSetHeaCur) annotation (Line(points={{
+            -222,22},{-236,22},{-236,24},{-238,24},{-238,103},{-119,103}}, color={0,
+            0,127}), Text(
+        string="%second",
+        index=1,
+        extent={{-6,3},{-6,3}},
+        horizontalAlignment=TextAlignment.Right));
+  else
+    connect(heatingCurve.TZoneSet, useProBus.TZoneSet) annotation (Line(points={{
+            -222,22},{-236,22},{-236,24},{-238,24},{-238,103},{-119,103}}, color={0,
+            0,127}), Text(
+        string="%second",
+        index=1,
+        extent={{-6,3},{-6,3}},
+        horizontalAlignment=TextAlignment.Right));
+  end if;
 end GasBoiler;

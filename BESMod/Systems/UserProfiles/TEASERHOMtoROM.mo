@@ -67,6 +67,9 @@ model TEASERHOMtoROM
         extent={{10,10},{-10,-10}},
         rotation=180,
         origin={-46,-32})));
+  Modelica.Blocks.Math.MinMax maxTSet(final nu=nRooms)
+    "Set temperature of the warmest room, for the heating curve"
+    annotation (Placement(transformation(extent={{-16,-62},{4,-42}})));
   Modelica.Blocks.Math.Sum sum2[nZones](nin=nRooms)
     annotation (Placement(transformation(extent={{-16,-42},{4,-22}})));
   Modelica.Blocks.Math.Gain natVentWeights[nRooms](k=facRoomNatVent) annotation (
@@ -111,6 +114,14 @@ equation
       horizontalAlignment=TextAlignment.Left));
   connect(TSetWeights.y, sum2[1].u)
     annotation (Line(points={{-35,-32},{-18,-32}}, color={0,0,127}));
+  connect(TSet.y, maxTSet.u) annotation (Line(points={{-79,-30},{-60,-30},{-60,
+          -52},{-16,-52}}, color={0,0,127}));
+  connect(maxTSet.yMax, useProBus.TZoneSetHeaCur[1]) annotation (Line(points={{5,
+          -46},{74,-46},{74,-1},{115,-1}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
   connect(sum2.y, useProBus.TZoneSet) annotation (Line(points={{5,-32},{74,-32},
           {74,-1},{115,-1}}, color={0,0,127}), Text(
       string="%second",
