@@ -108,8 +108,16 @@ model AixLibHighOrder "High order building model from AixLib library"
     final azi=SOD.Azimut .* Modelica.Constants.pi ./ 180)
     "Adapt weather bus to HOM "
     annotation (Placement(transformation(extent={{0,40},{20,60}})));
-  Modelica.Blocks.Math.MinMax minMax(nu=10)
+  Modelica.Blocks.Math.MinMax minMax(
+    final nu=nZones,
+    yMax(unit="K", displayUnit="degC"),
+    yMin(unit="K", displayUnit="degC")) "Lowest and highest room temperature"
     annotation (Placement(transformation(extent={{62,-70},{82,-50}})));
+  Modelica.Blocks.Sources.RealExpression TBuiVolAve(
+    y(unit="K", displayUnit="degC")=
+      sum(HOMBuiEnv.TZoneMea[i]*HOMBuiEnv.VZone[i] for i in 1:nZones)/sum(HOMBuiEnv.VZone))
+    "Room temperature weighted by the rooms' air volume"
+    annotation (Placement(transformation(extent={{62,-90},{82,-70}})));
 equation
   connect(convRadToCombPort.portConv, heatPortCon) annotation (Line(points={{-60,-7},
           {-72,-7},{-72,-6},{-104,-6},{-104,46},{-86,46},{-86,60},{-100,60}},
@@ -216,7 +224,7 @@ connect(weaBus.winSpe, HOMBuiEnv.WindSpeedPort) annotation (Line(
   connect(RadOnTiltedSurfaceAdaptor[6].radOnTiltedSurf, HOMBuiEnv.SolarRadiationPort_RoofS) annotation (
       Line(points={{21,49.9},{52,49.9},{52,21.4},{40.4,21.4}},
                                                            color={255,128,0}));
-  connect(HOMBuiEnv.TZoneMea, minMax.u[1:10]) annotation (Line(points={{-23.2,-18.5},
+  connect(HOMBuiEnv.TZoneMea, minMax.u) annotation (Line(points={{-23.2,-18.5},
           {-32,-18.5},{-32,-52},{10,-52},{10,-102},{18,-102},{18,-56.85},{62,-56.85}},
         color={0,0,127}));
   connect(minMax.yMax, outBusDem.TBuiMax) annotation (Line(points={{83,-54},{114,
@@ -227,6 +235,12 @@ connect(weaBus.winSpe, HOMBuiEnv.WindSpeedPort) annotation (Line(
       horizontalAlignment=TextAlignment.Left));
   connect(minMax.yMin, outBusDem.TBuiMin) annotation (Line(points={{83,-66},{118,
           -66},{118,-2},{98,-2}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(TBuiVolAve.y, outBusDem.TBuiVolAve) annotation (Line(points={{83,-80},
+          {120,-80},{120,-2},{98,-2}}, color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
