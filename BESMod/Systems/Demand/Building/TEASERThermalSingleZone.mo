@@ -164,8 +164,9 @@ model TEASERThermalSingleZone
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-90,-148})));
-  Modelica.Blocks.Sources.RealExpression QSol_flow[nZones](y={if ATot[i] > 0
-         then sum({thermalZone[i].ROM.solRad[n] for n in 1:thermalZone[i].ROM.nOrientations})
+  Modelica.Blocks.Sources.RealExpression QSol_flow[nZones](y={if ATot[i] > 0 then
+        sum({thermalZone[i].ROM.solRad[n]*thermalZone[i].ROM.ATransparent[n]*
+        thermalZone[i].ROM.gWin for n in 1:thermalZone[i].ROM.nOrientations})
          else 0 for i in 1:nZones}) if use_verboseEnergyBalanceInternal
     "Solar radiative  heat flow rate" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -433,8 +434,50 @@ equation
   end if;
     annotation (Diagram(coordinateSystem(extent={{-100,-220},{100,100}})),
       Documentation(info="<html>
-<p>This model uses the reduced-order approach with the common TEASER output to model the building envelope. Relevant KPIs are calculated.</p>
-<p>You can model multiple thermal zones. We refer to the documentation of TEASER and the ThermalZone model for more information on usage.</p>
-<p>Assumptions</p>
+<p>
+  Reduced order building model for a building that TEASER exports as one
+  single thermal zone merged from several rooms, e.g. TEASER's archetype
+  <code>AixLibHighOrderSingleFamilyHouse</code>. Like
+  <a href=\"modelica://BESMod.Systems.Demand.Building.TEASERThermalZone\">TEASERThermalZone</a>,
+  it uses AixLib's four element model and calculates the same KPIs, but it
+  keeps what the rooms' inner geometry tells about the heat transfer inside
+  the zone, which the zone's aggregated areas alone cannot.
+</p>
+<h4>Differences to TEASERThermalZone</h4>
+<p>
+  The record
+  <a href=\"modelica://BESMod.Systems.Demand.Building.RecordsCollection.BuildingSingleZoneBaseRecord\">BuildingSingleZoneBaseRecord</a>
+  extends AixLib's zone record by parameters TEASER derives room by room,
+  used by the reduced order elements in
+  <a href=\"modelica://BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone\">Components.TEASERBuildingSingleZone</a>:
+</p>
+<ul>
+  <li>The roof and the ground floor exchange long wave radiation only with
+  the surfaces of their own floor
+  (<code>ratio*AreaTopFloor</code>, <code>ratio*AreaBottomFloor</code>).</li>
+  <li>The solar radiation entering through a window only reaches the
+  surfaces of the room it enters (<code>splitFactorSolRad</code>).</li>
+  <li>Windows can be kept out of the long wave radiation exchange inside
+  the zone, as for AixLib's WindowSimple (<code>ratioWinAreaExtWall</code>,
+  <code>ratioWinAreaIntWall</code> set to 0).</li>
+  <li>Of the roof element group, only the share facing the zone exchanges
+  heat with it, the rest is the envelope of an unheated attic integrated
+  into the zone (<code>RoofAreaAtticFactor</code>).</li>
+</ul>
+<p>
+  The outer convective heat transfer can be calculated by AixLib's
+  high order methods (<code>calcMethodOut</code>, <code>surfaceType</code>).
+  With <code>useUserProfileNatVent=true</code>, the natural ventilation is
+  taken from the user profile alone: AixLib's VentilationController is
+  switched off instead of adding to it.
+</p>
+<h4>Usage</h4>
+<p>
+  The model is meant for one zone (<code>nZones=1</code>). TEASER exports it
+  for single zone buildings of the <code>AixLibHighOrderSingleFamilyHouse</code>
+  archetype, see
+  <a href=\"modelica://BESMod.Examples.TEASERExport.HighOrderArchetypeExample\">Examples.TEASERExport.HighOrderArchetypeExample</a>
+  for the same building as this model and as AixLib's high order model.
+</p>
 </html>"));
 end TEASERThermalSingleZone;

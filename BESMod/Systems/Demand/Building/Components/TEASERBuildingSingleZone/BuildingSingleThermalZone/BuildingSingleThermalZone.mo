@@ -501,13 +501,6 @@ protected
      > 0) and use_NaturalAirExchange and use_moisture_balance
     annotation (Placement(transformation(extent={{-70,-14},{-64,-8}})));
 
-public
-  Modelica.Blocks.Math.Gain solOrientationGain[zoneParam.nOrientations](k=
-        zoneParam.gWin .* zoneParam.ATransparent) annotation (Placement(
-        transformation(
-        extent={{-6,-6},{6,6}},
-        rotation=90,
-        origin={18,72})));
 equation
   connect(intGains[2], machinesSenHea.uRel) annotation (Line(points={{80,-100},{
           80,-94},{78,-94},{78,-88},{48,-88},{48,-46.5},{56,-46.5}}, color={0,0,
@@ -967,11 +960,8 @@ end if;
       index=-1,
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
-  connect(simpleExternalShading.corrIrr, solOrientationGain.u) annotation (Line(
-        points={{9.94,47.24},{14,47.24},{14,60},{18,60},{18,64.8}}, color={0,0,
-          127}));
-  connect(solOrientationGain.y, ROM.solRad)
-    annotation (Line(points={{18,78.6},{18,89},{37,89}}, color={0,0,127}));
+  connect(simpleExternalShading.corrIrr, ROM.solRad) annotation (Line(points={{9.94,
+          47.24},{9.94,52},{26,52},{26,89},{37,89}}, color={0,0,127}));
    annotation (Documentation(revisions="<html><ul>
   <li>April 20, 2023, by Philip Groesdonk:<br/>
   Added five element RC model (for heat exchange with neighboured zones) and
