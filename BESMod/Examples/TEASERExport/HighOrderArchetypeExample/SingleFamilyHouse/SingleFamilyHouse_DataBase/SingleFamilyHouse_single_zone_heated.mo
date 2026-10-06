@@ -3,7 +3,7 @@
 within BESMod.Examples.TEASERExport.HighOrderArchetypeExample.SingleFamilyHouse.SingleFamilyHouse_DataBase;
 record SingleFamilyHouse_single_zone_heated "SingleFamilyHouse_single_zone_heated"
   extends BESMod.Systems.Demand.Building.RecordsCollection.BuildingSingleZoneBaseRecord(
-    T_start = 293.6127571440893,
+    T_start = 293.44142594154516,
     withAirCap = true,
     VAir = 423.3652889885666,
     AZone = 173.48712385597142,
