@@ -20,6 +20,16 @@ extends Modelica.Icons.ExamplesPackage;
 </ul>
 
 <p>
+  <a href=\"modelica://BESMod.Examples.TEASERExport.HighOrderArchetypeExample\">HighOrderArchetypeExample</a>
+  is TEASER's archetype of AixLib's high order single family house, exported with
+  <code>export_with_hom=True</code>. Each of its examples comes twice, with the building as
+  <a href=\"modelica://BESMod.Systems.Demand.Building.TEASERThermalSingleZone\">TEASERThermalSingleZone</a>
+  and as the high order model
+  <a href=\"modelica://BESMod.Systems.Demand.Building.AixLibHighOrder\">AixLibHighOrder</a>
+  (suffix <code>_HOM</code>) in the same energy system.
+</p>
+
+<p>
   For additional details on using TEASER, please refer to its <a href=\"https://github.com/RWTH-EBC/TEASER\">official documentation</a>.
 </p>
 
