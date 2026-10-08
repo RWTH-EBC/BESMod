@@ -70,6 +70,9 @@ partial model PartialHeatPumpSystemController
    constrainedby
     BESMod.Systems.Hydraulical.Control.Components.SummerMode.BaseClasses.PartialSummerMode
     "Summer mode model" annotation(Dialog(group="Building control"), choicesAllMatching=true);
+  parameter Boolean use_TZoneSetHeaCur=false
+    "=true to evaluate the heating curve at the user profile's TZoneSetHeaCur instead of TZoneSet, e.g. the warmest room's set temperature of a zone merged from several rooms"
+    annotation (Dialog(group="Building control"));
   parameter Boolean useSGReady=false "=true to use SG Ready"
     annotation (Dialog(group="SG Ready"));
   parameter Boolean useExtSGSig=true "=true to use external SG ready signal"
@@ -221,13 +224,23 @@ equation
       index=1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(buiAndDHWCtr.TZoneSet, useProBus.TZoneSet) annotation (Line(points={{-204,
-          32.3333},{-238,32.3333},{-238,103},{-119,103}},
-                                                     color={0,0,127}), Text(
-      string="%second",
-      index=1,
-      extent={{-6,3},{-6,3}},
-      horizontalAlignment=TextAlignment.Right));
+  if use_TZoneSetHeaCur then
+    connect(buiAndDHWCtr.TZoneSet, useProBus.TZoneSetHeaCur) annotation (Line(points={{-204,
+            32.3333},{-238,32.3333},{-238,103},{-119,103}},
+                                                       color={0,0,127}), Text(
+        string="%second",
+        index=1,
+        extent={{-6,3},{-6,3}},
+        horizontalAlignment=TextAlignment.Right));
+  else
+    connect(buiAndDHWCtr.TZoneSet, useProBus.TZoneSet) annotation (Line(points={{-204,
+            32.3333},{-238,32.3333},{-238,103},{-119,103}},
+                                                       color={0,0,127}), Text(
+        string="%second",
+        index=1,
+        extent={{-6,3},{-6,3}},
+        horizontalAlignment=TextAlignment.Right));
+  end if;
   connect(buiAndDHWCtr.TZoneMea, buiMeaBus.TZoneMea) annotation (Line(points={{-204,39},
           {-250,39},{-250,118},{64,118},{64,103},{65,103}},          color={0,0,
           127}), Text(

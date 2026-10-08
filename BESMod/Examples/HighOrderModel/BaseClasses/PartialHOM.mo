@@ -58,8 +58,10 @@ partial model PartialHOM
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.calcmFlowEquStatic
         calcmFlow),
     redeclare BESMod.Systems.UserProfiles.AixLibHighOrderProfiles userProfiles(
-        redeclare AixLib.DataBase.Profiles.Ventilation2perDayMean05perH venPro,
-        redeclare AixLib.DataBase.Profiles.SetTemperaturesVentilation2perDay
+        redeclare
+        BESMod.Systems.UserProfiles.RecordsCollectionHOM.Ventilation.Const0_5
+        venPro, redeclare
+        BESMod.Systems.UserProfiles.RecordsCollectionHOM.SetTemperatures.Const20
         TSetProfile),
     redeclare HOMSystem systemParameters,
     redeclare DesignOptimization.ParametersToChange parameterStudy,
