@@ -26,8 +26,9 @@ partial model PartialTEASERHeatLoadCalculationHOM
     redeclare BESMod.Systems.Demand.DHW.StandardProfiles DHW(
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.PassThrough calcmFlow,
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.NoDHW DHWProfile),
-    redeclare replaceable BESMod.Systems.Demand.Building.AixLibHighOrder building(
-      useConstVentRate=false),
+    redeclare replaceable BESMod.Systems.Demand.Building.AixLibHighOrder building
+      constrainedby BESMod.Systems.Demand.Building.BaseClasses.PartialDemand
+      "The room resolved building, e.g. AixLibHighOrder or SpawnHighOrder",
     redeclare BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy
       parameterStudy,
     redeclare final package MediumZone = IBPSA.Media.Air);

@@ -33,7 +33,9 @@ partial model PartialGasBoilerBuildingOnlyHOM
       redeclare BESMod.Systems.Demand.DHW.RecordsCollection.ProfileM DHWProfile,
       redeclare BESMod.Systems.Demand.DHW.TappingProfiles.PassThrough calcmFlow),
     redeclare BESMod.Systems.UserProfiles.AixLibHighOrderProfiles userProfiles,
-    redeclare replaceable BESMod.Systems.Demand.Building.AixLibHighOrder building,
+    redeclare replaceable BESMod.Systems.Demand.Building.AixLibHighOrder building
+      constrainedby BESMod.Systems.Demand.Building.BaseClasses.PartialDemand
+      "The room resolved building, e.g. AixLibHighOrder or SpawnHighOrder",
     redeclare BESMod.Systems.RecordsCollection.ParameterStudy.NoStudy
       parameterStudy,
     redeclare BESMod.Systems.RecordsCollection.ExampleSystemParameters
