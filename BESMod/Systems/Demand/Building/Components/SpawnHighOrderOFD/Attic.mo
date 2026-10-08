@@ -4,11 +4,12 @@ model Attic "Spawn Attic of the AixLib High Order OFD"
     Modelica.Media.Interfaces.PartialMedium "Medium in the component"
       annotation (choicesAllMatching=true);
   parameter Modelica.Units.SI.Volume VZone = 199.99 "Volume of the zone";
+  parameter String zoneName = "IfKJfrdT40ehbMFAOP2OHQ" "Name of the zone in the IDF file";
   IBPSA.BoundaryConditions.WeatherData.Bus
       weaBus "Weather data bus" annotation (Placement(transformation(extent={{-70,78},
             {-28,122}}),         iconTransformation(extent={{-68,92},{-48,112}})));
   Buildings.ThermalZones.EnergyPlus_24_2_0.ThermalZone zoneAttic(
-    zoneName="IfKJfrdT40ehbMFAOP2OHQ",
+    zoneName=zoneName,
     redeclare package Medium = Medium,
     nPorts=2) annotation (Placement(transformation(extent={{-6,-6},{22,22}})));
   Modelica.Blocks.Interfaces.RealOutput TZoneMea(each final unit="K", each final

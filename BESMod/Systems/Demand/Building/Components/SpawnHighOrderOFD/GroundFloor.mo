@@ -4,28 +4,30 @@ model GroundFloor "Spawn Groundfloor of the AixLib High Order OFD"
     Modelica.Media.Interfaces.PartialMedium "Medium in the component"
       annotation (choicesAllMatching=true);
   parameter Modelica.Units.SI.Volume VZones[5] = {59.98,33.63,39.9,33.63,48.67} "Volume of the zones";
+  parameter String zoneNames[5] = {"TKJwNLssk0WyOEqTNi9V3g", "Jo5bB3uKtUesyY40h7buXA", "VxcvwqdxJ0CrsbXjgBdn2A", "8VvlyRmVH0C1HUd3CNvpWg", "ewAwLYZUK0GDV9RQVVrdsw"}
+    "Names of the zones in the IDF file, in the order of VZones";
   IBPSA.BoundaryConditions.WeatherData.Bus
       weaBus "Weather data bus" annotation (Placement(transformation(extent={{-70,78},
             {-28,122}}),         iconTransformation(extent={{-68,92},{-48,112}})));
   Buildings.ThermalZones.EnergyPlus_24_2_0.ThermalZone zoneLiving1(
-    zoneName="TKJwNLssk0WyOEqTNi9V3g",
+    zoneName=zoneNames[1],
     redeclare package Medium = Medium,
     nPorts=4) annotation (Placement(transformation(extent={{-54,50},{-26,78}})));
   Buildings.ThermalZones.EnergyPlus_24_2_0.ThermalZone zoneHobby2(
-    zoneName="Jo5bB3uKtUesyY40h7buXA",
+    zoneName=zoneNames[2],
     redeclare package Medium = Medium,
     nPorts=4) annotation (Placement(transformation(extent={{44,50},{72,78}})));
   Buildings.ThermalZones.EnergyPlus_24_2_0.ThermalZone zoneKitchen5(
-    zoneName="ewAwLYZUK0GDV9RQVVrdsw",
+    zoneName=zoneNames[5],
     redeclare package Medium = Medium,
     nPorts=4)
     annotation (Placement(transformation(extent={{-54,-54},{-26,-26}})));
   Buildings.ThermalZones.EnergyPlus_24_2_0.ThermalZone zoneCorridor3(
-    zoneName="VxcvwqdxJ0CrsbXjgBdn2A",
+    zoneName=zoneNames[3],
     redeclare package Medium = Medium,
     nPorts=4) annotation (Placement(transformation(extent={{44,-2},{72,26}})));
   Buildings.ThermalZones.EnergyPlus_24_2_0.ThermalZone zoneWCstorage4(
-    zoneName="8VvlyRmVH0C1HUd3CNvpWg",
+    zoneName=zoneNames[4],
     redeclare package Medium = Medium,
     nPorts=4) annotation (Placement(transformation(extent={{44,-54},{72,-26}})));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPortCon[5]

@@ -9,7 +9,10 @@ model SpawnHighOrder "Spawn model of the AixLib High Order Model"
     hZone={2.6,2.6,2.6,2.6,2.6,2.6,2.6,2.6,2.6,2.6},
     AZone={23.07,12.94,15.35,12.94,18.72,23.07,12.94,15.35,12.94,18.72},
     nZones=10);
-  parameter Modelica.Units.SI.Height VZone[nZones + nZonesNonHeated]={59.98,33.63,39.9,33.63,48.67,59.98,33.63,39.9,33.63,48.67,199.99} "Volume of all (heated and unheated) zones" annotation(Dialog(group="Geometry"));
+  parameter Modelica.Units.SI.Volume VZone[nZones + nZonesNonHeated]={59.98,33.63,39.9,33.63,48.67,59.98,33.63,39.9,33.63,48.67,199.99} "Volume of all (heated and unheated) zones" annotation(Dialog(group="Geometry"));
+  parameter String zoneNames[nZones + nZonesNonHeated] = {"TKJwNLssk0WyOEqTNi9V3g", "Jo5bB3uKtUesyY40h7buXA", "VxcvwqdxJ0CrsbXjgBdn2A", "8VvlyRmVH0C1HUd3CNvpWg", "ewAwLYZUK0GDV9RQVVrdsw", "JIlBdoXH9kyILsDvu4wx8A", "BGVPLnC4OUeqffvCvT6TTQ", "amiO3KhG402UMEU7Fs9xaA", "E4XJpmy03kW3qfdfjVrPLA", "uFb0fbIbnUCa0AXLT56UfA", "IfKJfrdT40ehbMFAOP2OHQ"}
+    "Names of the zones in the IDF file, in the order of VZone: the heated rooms, then the attic"
+    annotation(Dialog(group="Geometry"));
   parameter Integer nZonesNonHeated = 1 "Non heated rooms of the building";
   //parameter Integer nZones = 10 "Heated rooms of the building";
   parameter Boolean useConstVentRate=false;
@@ -24,14 +27,17 @@ model SpawnHighOrder "Spawn model of the AixLib High Order Model"
     annotation (Placement(transformation(extent={{-100,20},{-80,40}})));
   BESMod.Systems.Demand.Building.Components.SpawnHighOrderOFD.GroundFloor groundFloor(redeclare
       package Medium =
-        MediumZone, VZones=VZone[1:5])
+        MediumZone, VZones=VZone[1:5],
+        zoneNames=zoneNames[1:5])
     annotation (Placement(transformation(extent={{-30,-88},{26,-40}})));
   BESMod.Systems.Demand.Building.Components.SpawnHighOrderOFD.UpperFloor upperFloor(redeclare
       package Medium =
-        MediumZone, VZones=VZone[6:10])
+        MediumZone, VZones=VZone[6:10],
+        zoneNames=zoneNames[6:10])
     annotation (Placement(transformation(extent={{-30,-20},{24,28}})));
   BESMod.Systems.Demand.Building.Components.SpawnHighOrderOFD.Attic attic(
-      redeclare package Medium = MediumZone, VZone=VZone[11])
+      redeclare package Medium = MediumZone, VZone=VZone[11],
+      zoneName=zoneNames[11])
     annotation (Placement(transformation(extent={{-20,36},{12,66}})));
   Modelica.Blocks.Sources.Constant constVenRatAtt(final k=1)
     "Constant ventilation rate of attic"
