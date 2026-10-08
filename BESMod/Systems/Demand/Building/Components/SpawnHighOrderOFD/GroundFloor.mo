@@ -36,6 +36,9 @@ model GroundFloor "Spawn Groundfloor of the AixLib High Order OFD"
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heatPortRad[5]
     "Heat port to radiative temperature and radiative energy balance"
     annotation (Placement(transformation(extent={{-110,-60},{-90,-40}})));
+  Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a heaPorAirCorridor
+    "Air of the corridor, e.g. for its air exchange with the other floor's"
+    annotation (Placement(transformation(extent={{-10,-100},{10,-80}})));
   Modelica.Blocks.Interfaces.RealOutput TZoneMea[5](each final unit="K",
       each final displayUnit="degC") "Measured room air temperature"
     annotation (Placement(transformation(extent={{96,60},{134,98}}),
@@ -206,6 +209,7 @@ protected
   Real X[Medium.nX] = ones(Medium.nX);
   Modelica.Units.SI.Density rho "Density of fresh air. Needed to calculate mass flow from ACH";
 equation
+  connect(zoneCorridor3.heaPorAir, heaPorAirCorridor);
   connect(weaBus.pAtm, pAtm);
   connect(weaBus.TDryBul, TDryBul);
   rho = Medium.density(Medium.setState_pTX(

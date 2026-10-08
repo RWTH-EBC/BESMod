@@ -16,6 +16,9 @@ model SpawnHighOrder "Spawn model of the AixLib High Order Model"
   parameter Integer nZonesNonHeated = 1 "Non heated rooms of the building";
   //parameter Integer nZones = 10 "Heated rooms of the building";
   parameter Boolean useConstVentRate=false;
+  parameter Real AirExchangeCorridor(unit="1/h") = 0
+    "Air exchange between the ground and the upper floor's corridor, referred to their mean volume, as AixLib's high order model has it (2/h there)"
+    annotation(Dialog(group="Geometry"));
   parameter Real ventRateAttic(unit="1/h") = 1
     "Air change rate of the attic with outside air"
     annotation(Dialog(group="Geometry"));
@@ -42,6 +45,10 @@ model SpawnHighOrder "Spawn model of the AixLib High Order Model"
       redeclare package Medium = MediumZone, VZone=VZone[11],
       zoneName=zoneNames[11])
     annotation (Placement(transformation(extent={{-20,36},{12,66}})));
+  Modelica.Thermal.HeatTransfer.Components.ThermalConductor corridorAirExchange(
+    final G=AirExchangeCorridor/3600*0.5*(VZone[3] + VZone[8])*1.19*1007)
+    "Heat the corridors' air exchange carries, with AixLib's air properties"
+    annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));
   Modelica.Blocks.Sources.Constant constVenRatAtt(final k=ventRateAttic)
     "Constant ventilation rate of attic"
     annotation (Placement(transformation(extent={{-80,60},{-60,80}})));
@@ -97,6 +104,8 @@ model SpawnHighOrder "Spawn model of the AixLib High Order Model"
         rotation=0,
         origin={-90,0})));
 equation
+  connect(groundFloor.heaPorAirCorridor, corridorAirExchange.port_a);
+  connect(corridorAirExchange.port_b, upperFloor.heaPorAirCorridor);
   connect(heatPortRad[1:5], groundFloor.heatPortRad) annotation (Line(points={{-100,
           -60.5},{-34,-60.5},{-34,-76},{-30,-76}}, color={191,0,0}));
   connect(heatPortRad[6:10], upperFloor.heatPortRad) annotation (Line(points={{-100,
