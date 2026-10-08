@@ -16,6 +16,9 @@ model SpawnHighOrder "Spawn model of the AixLib High Order Model"
   parameter Integer nZonesNonHeated = 1 "Non heated rooms of the building";
   //parameter Integer nZones = 10 "Heated rooms of the building";
   parameter Boolean useConstVentRate=false;
+  parameter Real ventRateAttic(unit="1/h") = 1
+    "Air change rate of the attic with outside air"
+    annotation(Dialog(group="Geometry"));
   parameter Real ventRate[nZones]=fill(0, nZones) if useConstVentRate "Constant mechanical ventilation rate" annotation (Dialog(enable=useConstVentRate));
   parameter String idf_name=Modelica.Utilities.Files.loadResource("modelica://BESMod/Resources/Spawn/AixLib_HOM_in_EnergyPlus.idf")        "Name of the IDF file";
   parameter String epw_name=Modelica.Utilities.Files.loadResource("modelica://BESMod/Resources/Spawn/Potsdam_TRY2015_normal.epw")        "Name of the weather file (.epw format)";
@@ -39,7 +42,7 @@ model SpawnHighOrder "Spawn model of the AixLib High Order Model"
       redeclare package Medium = MediumZone, VZone=VZone[11],
       zoneName=zoneNames[11])
     annotation (Placement(transformation(extent={{-20,36},{12,66}})));
-  Modelica.Blocks.Sources.Constant constVenRatAtt(final k=1)
+  Modelica.Blocks.Sources.Constant constVenRatAtt(final k=ventRateAttic)
     "Constant ventilation rate of attic"
     annotation (Placement(transformation(extent={{-80,60},{-60,80}})));
   Modelica.Blocks.Math.Gain intGainConvRatio[nZones](each k=0.6)
