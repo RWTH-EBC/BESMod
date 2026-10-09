@@ -17,7 +17,8 @@ model TEASERHeatLoadCalculationSingleFamilyHouse
     systemParameters(nZones=1,
                      TSetZone_nominal={293.44142594154516},
                      QBui_flow_nominal={9299.611700485448},
-                     TOda_nominal=260.54999999999995));
+                     TOda_nominal=260.54999999999995,
+                     filNamWea=Modelica.Utilities.Files.loadResource("modelica://BESMod/Resources/Spawn/Potsdam_TRY2015_normal.mos")));
 
   extends Modelica.Icons.Example;
 

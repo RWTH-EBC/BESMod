@@ -15,7 +15,8 @@ model HeatPumpSimpleSingleFamilyHouse_HOM
         TOda_nominal=260.54999999999995,
         THydSup_nominal=fill(328.15,systemParameters.nZones),
         QBuiOld_flow_design=systemParameters.QBui_flow_nominal,
-        THydSupOld_design=systemParameters.THydSup_nominal));
+        THydSupOld_design=systemParameters.THydSup_nominal,
+        filNamWea=Modelica.Utilities.Files.loadResource("modelica://BESMod/Resources/Spawn/Potsdam_TRY2015_normal.mos")));
 
   extends Modelica.Icons.Example;
 
