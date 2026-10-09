@@ -16,17 +16,21 @@ extends Modelica.Icons.ExamplesPackage;
 </p>
 <ul>
   <li>The building's model with its zone records</li>
-  <li>Three optional example energy systems, where the building is automatically integrated, creating ready-to-run models</li>
+  <li>Four optional example energy systems, where the building is automatically integrated, creating ready-to-run models</li>
 </ul>
 
 <p>
   <a href=\"modelica://BESMod.Examples.TEASERExport.HighOrderArchetypeExample\">HighOrderArchetypeExample</a>
   is TEASER's archetype of AixLib's high order single family house, exported with
-  <code>export_with_hom=True</code>. Each of its examples comes twice, with the building as
-  <a href=\"modelica://BESMod.Systems.Demand.Building.TEASERThermalSingleZone\">TEASERThermalSingleZone</a>
-  and as the high order model
+  <code>export_with_hom=True</code> and <code>export_with_spawn=True</code>. Each of its examples
+  comes with the building as
+  <a href=\"modelica://BESMod.Systems.Demand.Building.TEASERThermalSingleZone\">TEASERThermalSingleZone</a>,
+  as the high order model
   <a href=\"modelica://BESMod.Systems.Demand.Building.AixLibHighOrder\">AixLibHighOrder</a>
-  (suffix <code>_HOM</code>) in the same energy system.
+  (suffix <code>_HOM</code>) and, in the examples without mechanical ventilation, as Spawn of
+  EnergyPlus model
+  <a href=\"modelica://BESMod.Systems.Demand.Building.SpawnHighOrder\">SpawnHighOrder</a>
+  (suffix <code>_Spawn</code>) in the same energy system.
 </p>
 
 <p>

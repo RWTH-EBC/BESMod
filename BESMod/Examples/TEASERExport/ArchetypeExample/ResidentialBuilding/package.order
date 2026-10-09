@@ -1,5 +1,6 @@
 GasBoilerBuildingOnlyResidentialBuilding
 HeatPumpMonoenergeticResidentialBuilding
+HeatPumpSimpleResidentialBuilding
 ResidentialBuilding
 TEASERHeatLoadCalculationResidentialBuilding
 ResidentialBuilding_DataBase

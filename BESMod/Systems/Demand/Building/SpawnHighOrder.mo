@@ -271,6 +271,16 @@ equation
   the icon view).</span>
 </p>
 <p>
+  <span style=\"font-size: 8.25pt;\">TEASER's archetype of the AixLib-HOM
+  writes an IDF of the house for any construction data and size
+  (<code>export_besmod</code> with <code>export_with_spawn=True</code>) and
+  sets <code>idf_name</code>, <code>zoneNames</code>, <code>VZone</code>,
+  the areas and heights, <code>ventRateAttic</code> and
+  <code>AirExchangeCorridor</code> to it, see
+  <a href=\"modelica://BESMod.Examples.TEASERExport.HighOrderArchetypeExample\">HighOrderArchetypeExample</a>.
+  Its examples run with Cvode.</span>
+</p>
+<p>
   <span style=\"font-size: 8.25pt;\">Dependent on the version of the
   Buildings library, some errors may occur:</span>
 </p>
