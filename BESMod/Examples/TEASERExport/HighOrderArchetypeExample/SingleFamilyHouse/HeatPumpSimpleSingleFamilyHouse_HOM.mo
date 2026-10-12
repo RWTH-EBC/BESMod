@@ -22,7 +22,8 @@ model HeatPumpSimpleSingleFamilyHouse_HOM
 
 annotation(experiment(StopTime=172800,
      Interval=600,
-     Tolerance=1e-06),
+     Tolerance=1e-06,
+     __Dymola_Algorithm="Cvode"),
    __Dymola_Commands(file=
         "modelica://BESMod/Resources/Scripts/Dymola/Examples/TEASERExport/HighOrderArchetypeExample/SingleFamilyHouse/HeatPumpSimpleSingleFamilyHouse_HOM.mos"
         "Simulate and plot"));
