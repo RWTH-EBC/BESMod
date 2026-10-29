@@ -99,6 +99,9 @@ model SetAndMeasuredValueSelector
     "Real pass through for conditional option"
     annotation (Placement(transformation(extent={{-80,-70},{-60,-50}})));
 
+  Modelica.Blocks.Routing.RealPassThrough reaPasTrhGenRet if meaVal == BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue.
+     GenerationSupplyTemperature "Real pass through for conditional option"
+    annotation (Placement(transformation(extent={{-20,-120},{0,-100}})));
 protected
   parameter Modelica.Units.SI.TemperatureDifference dTTraDHW_nominal=
     if meaVal ==BESMod.Systems.Hydraulical.Control.Components.BaseClasses.MeasuredValue.GenerationSupplyTemperature

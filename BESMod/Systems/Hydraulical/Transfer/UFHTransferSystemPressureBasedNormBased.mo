@@ -226,7 +226,7 @@ equation
       points={{52,-98},{72,-98}},
       color={0,0,0},
       thickness=1));
-  connect(integralKPICalculator.KPI, outBusTra.QUFH_flow) annotation (Line(
+  connect(integralKPICalculator.KPI, outBusTra.QTransfer_flow) annotation (Line(
         points={{-17.8,-70},{0,-70},{0,-104}},   color={135,135,135}), Text(
       string="%second",
       index=1,
