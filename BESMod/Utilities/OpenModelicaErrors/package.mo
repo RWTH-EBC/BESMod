@@ -3,5 +3,5 @@ package OpenModelicaErrors "This package contains models which lead to errors in
 
 
 
-  annotation ();
+  annotation();
 end OpenModelicaErrors;

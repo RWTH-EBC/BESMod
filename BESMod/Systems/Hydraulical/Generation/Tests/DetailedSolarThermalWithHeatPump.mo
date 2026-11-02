@@ -1,4 +1,4 @@
-﻿within BESMod.Systems.Hydraulical.Generation.Tests;
+within BESMod.Systems.Hydraulical.Generation.Tests;
 model DetailedSolarThermalWithHeatPump
   "Test for SolarThermalAndHeatPumpDetailed"
   extends PartialTest(redeclare

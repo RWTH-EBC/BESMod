@@ -1,4 +1,4 @@
-﻿within BESMod.Utilities.Icons;
+within BESMod.Utilities.Icons;
 partial model GenerationIcon
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Rectangle(

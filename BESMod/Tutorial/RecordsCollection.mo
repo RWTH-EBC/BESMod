@@ -1,4 +1,4 @@
-﻿within BESMod.Tutorial;
+within BESMod.Tutorial;
 package RecordsCollection
   extends Modelica.Icons.RecordsPackage;
   partial record MyComponentBaseDataDefinition "Parameters used for a sine-wave"

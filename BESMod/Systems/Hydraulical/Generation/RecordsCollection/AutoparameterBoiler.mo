@@ -1,4 +1,4 @@
-﻿within BESMod.Systems.Hydraulical.Generation.RecordsCollection;
+within BESMod.Systems.Hydraulical.Generation.RecordsCollection;
 record AutoparameterBoiler "Boiler with automated sizing"
   extends AixLib.DataBase.Boiler.General.BoilerTwoPointBaseDataDefinition(
     name="Autoscaling based on Viessmann Vitogas 200-F and Vitocrossal 200",

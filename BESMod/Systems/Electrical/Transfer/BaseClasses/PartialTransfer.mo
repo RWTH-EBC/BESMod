@@ -1,4 +1,4 @@
-﻿within BESMod.Systems.Electrical.Transfer.BaseClasses;
+within BESMod.Systems.Electrical.Transfer.BaseClasses;
 partial model PartialTransfer "Partial model for transfer subsystems"
   parameter Boolean use_openModelica=false
     "=true to disable features which 

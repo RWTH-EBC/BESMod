@@ -1,4 +1,4 @@
-﻿within BESMod.Systems.Demand.Building;
+within BESMod.Systems.Demand.Building;
 model SpawnHighOrder "Spawn model of the AixLib High Order Model"
   extends BESMod.Systems.Demand.Building.BaseClasses.PartialDemand(
     use_hydraulic = true,

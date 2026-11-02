@@ -1,4 +1,4 @@
-﻿within BESMod.Utilities.TimeConstantEstimation.BaseClasses;
+within BESMod.Utilities.TimeConstantEstimation.BaseClasses;
 model RadiatorEN442_2 "Dynamic radiator for space heating"
    extends IBPSA.Fluid.Interfaces.PartialTwoPortInterface(
    show_T=true,

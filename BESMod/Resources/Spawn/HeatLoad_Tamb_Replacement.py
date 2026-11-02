@@ -3,10 +3,12 @@ def replace_temperature_value(city_name, new_temp):
         # Fixed input filenames
         mos_input = "Potsdam_HeatLoad.mos"
         epw_input = "Potsdam_HeatLoad.epw"
+
+        temp_str = str(new_temp).replace("-", "m").replace(".", "_")
         
         # Generate output filenames with new city name
-        mos_output = f"{city_name}_HeatLoad.mos"
-        epw_output = f"{city_name}_HeatLoad.epw"
+        mos_output = f"{city_name}_HeatLoad_{temp_str}.mos"
+        epw_output = f"{city_name}_HeatLoad_{temp_str}.epw"
         
         # Fixed old temperature
         old_temp = "-12.0"
@@ -44,11 +46,14 @@ def main():
     
     # Perform the replacement
     result = replace_temperature_value(city_name, new_temp)
+    temp_str = str(new_temp).replace("-", "m").replace(".", "_")
+
+    print("\nTemperature Replacement")
     
     if result == True:
         print(f"\nSuccess! -12.0 has been replaced with {new_temp} in both files")
-        print(f"MOS output saved as: {city_name}_HeatLoad.mos")
-        print(f"EPW output saved as: {city_name}_HeatLoad.epw")
+        print(f"MOS output saved as: {city_name}_HeatLoad_{temp_str}.mos")
+        print(f"EPW output saved as: {city_name}_HeatLoad_{temp_str}.epw")
     else:
         print(f"\nError occurred: {result}")
     

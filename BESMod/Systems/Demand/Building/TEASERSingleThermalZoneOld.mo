@@ -1,4 +1,4 @@
-﻿within BESMod.Systems.Demand.Building;
+within BESMod.Systems.Demand.Building;
 model TEASERSingleThermalZoneOld
   "Reduced order single zone building model, coupled with TEASER"
   extends BaseClasses.PartialDemand(

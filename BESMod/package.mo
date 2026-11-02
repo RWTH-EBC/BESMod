@@ -6,9 +6,9 @@ package BESMod
     version="0.8.0",
     uses(
     Modelica(version="4.0.0"),
-    SDF(version="0.4.2"),
+    SDF(version="0.4.4"),
       IBPSA(version="4.0.0"),
-      AixLib(version="3.0.0"),
+      AixLib(version="3.0.1"),
       ModelicaServices(version="4.0.0")),
    conversion(
  from(

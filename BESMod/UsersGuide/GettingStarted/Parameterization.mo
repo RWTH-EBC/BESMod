@@ -1,4 +1,4 @@
-﻿within BESMod.UsersGuide.GettingStarted;
+within BESMod.UsersGuide.GettingStarted;
 model Parameterization "Parameterization"
 
   annotation(Documentation(info="<html><p>

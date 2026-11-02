@@ -1,4 +1,4 @@
-﻿within BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone;
+within BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone;
 model expDecaySolarUsability "Calculate the usable"
   extends BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone.PartialSolarUsability;
   // Calibration parameters

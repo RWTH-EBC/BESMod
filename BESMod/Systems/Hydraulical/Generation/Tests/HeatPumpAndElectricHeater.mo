@@ -1,4 +1,4 @@
-﻿within BESMod.Systems.Hydraulical.Generation.Tests;
+within BESMod.Systems.Hydraulical.Generation.Tests;
 model HeatPumpAndElectricHeater "Test for HeatPumpAndElectricHeater"
   extends PartialTest(redeclare
       BESMod.Systems.Hydraulical.Generation.HeatPumpAndElectricHeater

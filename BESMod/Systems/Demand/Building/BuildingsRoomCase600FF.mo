@@ -1,4 +1,4 @@
-﻿within BESMod.Systems.Demand.Building;
+within BESMod.Systems.Demand.Building;
 model BuildingsRoomCase600FF
   "Detailed room model from the buildings library according to BESTEST Case600FF"
   extends BaseClasses.PartialDemand(

@@ -1,4 +1,4 @@
-﻿within BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone;
+within BESMod.Systems.Demand.Building.Components.TEASERBuildingSingleZone;
 model ConvertRoomsInputsDelayLoss
   extends PartialConvertRoomInputs;
 
