@@ -21,6 +21,11 @@ runs:
         echo "PIP_CACHE_DIR=/opt/cache/pip" >> "$GITHUB_ENV"
         echo "PYTHONIOENCODING=utf-8" >> "$GITHUB_ENV"
         echo "CI_PYTHON_CONFIG_FILE=ci-tests/config/modelica_py_ci_config.toml" >> "$GITHUB_ENV"
+        # The workspace belongs to the runner user, the container runs as root:
+        # allow git (changed-files detection, pushes by the CI) to use it.
+        git config --global --add safe.directory "$GITHUB_WORKSPACE"
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
     - name: Install Python CI tooling
       shell: bash

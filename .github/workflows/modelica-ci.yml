@@ -15,12 +15,28 @@
 #       ${{ github.actor }} / ${{ secrets.GITHUB_TOKEN }} and grant this repository read
 #       access to the package ("Manage Actions access").
 #     GitHub does not allow empty credentials, so both settings must exist.
+#   - Settings -> Actions -> General -> Workflow permissions:
+#     "Allow GitHub Actions to create and approve pull requests" (HTML correction PRs).
+#   - GitHub Pages served from the branch gh-pages, folder /docs. Results of a branch are
+#     published to https://rwth-ebc.github.io/BESMod/<branch>/ (removed after 14 days
+#     without commits on that branch).
 #
 # Commit keywords (as before on GitLab):
-#   no "ci_" keyword      -> full pipeline (always on main)
-#   ci_changed_only       -> only models changed in this commit/branch
-#   ci_html / ci_style_check / ci_check / ci_simulate / ci_regression_test
-#                         -> only the respective stage
+#   no "ci_" keyword            -> full pipeline (always on main and for manual runs)
+#   ci_changed_only             -> full pipeline, only models changed in this branch
+#   ci_reference_check / ci_html / ci_style_check / ci_check_naming / ci_check /
+#   ci_simulate / ci_regression_test
+#                               -> only the respective stage
+#   ci_create_model_whitelist / ci_create_example_whitelist
+#                               -> create and push the check / simulate whitelist
+#
+# Automatic actions of the CI (pushed with GITHUB_TOKEN as github-actions[bot]):
+#   - missing reference results are created, pushed to the branch, plotted and
+#     announced in the pull request; the pipeline then restarts on the new commit
+#   - HTML errors are corrected on the branch correct_HTML_<branch> with a pull request
+#   - failed regression tests are plotted and linked in the pull request
+#   - results are published on GitHub Pages; an open pull request gets an initial
+#     comment with the contribution guidelines
 #
 # Intentionally push-only: the runner is self-hosted and BESMod is public, so
 # workflows from fork pull requests must never run on it.
@@ -48,6 +64,9 @@ env:
   ALL_PACKAGES: Examples Tutorial Utilities Systems
   STARTUP_MOS: startup.mos
   MIN_FREE_LICENSES: "5"
+  MAIN_BRANCH: main
+  PAGE_URL: https://rwth-ebc.github.io/BESMod
+  TEMPLATES_URL: https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica
   CHANGED_FLAG: ${{ contains(github.event.head_commit.message, 'ci_changed_only') && '--changed-flag' || '' }}
 
 defaults:
@@ -55,15 +74,105 @@ defaults:
     shell: bash
 
 jobs:
-  html_check:
-    name: HTML check
+  reference_check:
+    name: Reference results
     if: >-
       github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
       || !contains(github.event.head_commit.message, 'ci_')
       || contains(github.event.head_commit.message, 'ci_changed_only')
-      || contains(github.event.head_commit.message, 'ci_html')
+      || contains(github.event.head_commit.message, 'ci_reference_check')
+    runs-on: [self-hosted, linux, dymola]
+    timeout-minutes: 420
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      packages: read
+    outputs:
+      pushed: ${{ steps.push.outputs.pushed }}
+    container:
+      image: ${{ vars.DYMOLA_IMAGE || 'registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-micromamba' }}
+      credentials:
+        username: ${{ vars.DYMOLA_REGISTRY_USER }}
+        password: ${{ secrets.DYMOLA_REGISTRY_TOKEN }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: ./.github/actions/setup-modelica-ci
+      - name: Create missing reference results
+        id: refs
+        working-directory: ${{ env.LIBRARY }}
+        run: |
+          # TODO: Remove custom version once merged to buildingspy (as on GitLab)
+          pip uninstall buildingspy -y && pip install git+https://github.com/FWuellhorst/BuildingsPy@issue558
+          apt-get install -y --no-install-recommends xdg-utils
+          export CI_PYTHON_CONFIG_FILE="../ci-tests/config/modelica_py_ci_config.toml"
+          set +e
+          xvfb-run -n 77 python -m ModelicaPyCI.unittest.reference_check --create-ref \
+            --startup-mos "$STARTUP_MOS" --min-number-of-unused-licences "$MIN_FREE_LICENSES" \
+            --tool dymola --number-of-processors 4 --path . --library-root .. \
+            --packages $ALL_PACKAGES --library "$LIBRARY"
+          echo "exit-code=$?" >> "$GITHUB_OUTPUT"
+      - name: Push, plot and announce new reference results
+        id: push
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if ! grep -q "GENERATED_NEW_RESULTS" ci-tests/Configfiles/exit.sh 2>/dev/null; then
+            echo "No new reference results."
+            exit 0
+          fi
+          files_to_push=$(git ls-files --others --exclude-standard "$LIBRARY")
+          if [ -z "$files_to_push" ]; then
+            echo "::warning::GENERATED_NEW_RESULTS reported, but no new files found."
+            exit 0
+          fi
+          echo $files_to_push > ci-tests/Configfiles/ci_new_created_reference.txt
+          python -m ModelicaPyCI.converter.google_charts --new-ref-flag --templates-url "$TEMPLATES_URL" \
+            --library "$LIBRARY" --packages $ALL_PACKAGES \
+            || echo "::warning::Could not plot the new reference results."
+          python -m ModelicaPyCI.api_script.api_github --post-pr-comment-flag --show-plot-flag \
+            --page "$PAGE_URL" --github-token "$GH_TOKEN" --main-branch "$MAIN_BRANCH" \
+            --working-branch "$GITHUB_REF_NAME" --library "$LIBRARY" --github-repository "$GITHUB_REPOSITORY" \
+            || echo "::warning::Could not comment on the pull request."
+          git add $files_to_push
+          git commit -m "CI message from github-actions. Automatic push of CI with new regression reference files. Please pull the new files before push again. Plotted results: $PAGE_URL/$GITHUB_REF_NAME/charts/"
+          git push origin "HEAD:$GITHUB_REF_NAME"
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
+      - name: Stop this run
+        if: steps.push.outputs.pushed == 'true' || steps.refs.outputs.exit-code != '0'
+        run: |
+          if [ "${{ steps.push.outputs.pushed }}" == "true" ]; then
+            echo "::error::New reference results were pushed to $GITHUB_REF_NAME. The CI restarts on that commit after the results are published; pull the branch before you push again."
+          else
+            echo "::error::Creating the reference results failed (exit code ${{ steps.refs.outputs.exit-code }})."
+          fi
+          exit 1
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: reference-result
+          path: ci-tests/result/
+          retention-days: 7
+          if-no-files-found: ignore
+
+  html_check:
+    name: HTML check
+    needs: reference_check
+    if: >-
+      !cancelled() && !contains(needs.*.result, 'failure') && (
+        github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
+        || !contains(github.event.head_commit.message, 'ci_')
+        || contains(github.event.head_commit.message, 'ci_changed_only')
+        || contains(github.event.head_commit.message, 'ci_html'))
     runs-on: [self-hosted, linux, dymola]
     timeout-minutes: 60
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      packages: read
     container:
       image: ${{ vars.DYMOLA_IMAGE || 'registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-micromamba' }}
       credentials:
@@ -77,13 +186,39 @@ jobs:
         with:
           install-modelica-libraries: "false"
       - name: Check HTML documentation
+        id: html
         run: |
           python -m ModelicaPyCI.syntax.html_tidy --filter-whitelist-flag --correct-view-flag --log-flag \
             --whitelist-library IBPSA --library "$LIBRARY" --packages $ALL_PACKAGES
           if grep -q "Syntax Error" ci-tests/Configfiles/exit.sh 2>/dev/null; then
-            echo "::error::HTML syntax errors found. See the ci-tests-result artifact."
+            echo "::error::HTML syntax errors found. See the html-check-result artifact."
             exit 1
           fi
+      - name: Open pull request with corrected HTML
+        if: failure() && steps.html.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PREFIX="correct_HTML_"
+          if [[ "$GITHUB_REF_NAME" == ${PREFIX}* ]]; then
+            echo "::error::Branch is already used to fix HTML, no further correction."
+            exit 1
+          fi
+          python -m ModelicaPyCI.syntax.html_tidy --filter-whitelist-flag --log-flag --correct-overwrite-flag \
+            --whitelist-library IBPSA --library "$LIBRARY" --packages $ALL_PACKAGES
+          NEW_BRANCH="${PREFIX}${GITHUB_REF_NAME}"
+          git checkout -B "$NEW_BRANCH"
+          git add "$LIBRARY"
+          if git diff --cached --quiet; then
+            echo "::warning::The HTML correction did not change any file."
+            exit 0
+          fi
+          git commit -m "CI message from github-actions. Push new files with corrected html Syntax ."
+          git push --force origin "HEAD:refs/heads/$NEW_BRANCH"
+          python -m ModelicaPyCI.api_script.api_github --correct-html-flag --create-pr-flag \
+            --github-token "$GH_TOKEN" --main-branch "$GITHUB_REF_NAME" --working-branch "$NEW_BRANCH" \
+            --library "$LIBRARY" --github-repository "$GITHUB_REPOSITORY"
+          echo "::notice::Corrected HTML pushed to $NEW_BRANCH, see the pull request into $GITHUB_REF_NAME."
       - uses: actions/upload-artifact@v7
         if: always()
         with:
@@ -94,11 +229,13 @@ jobs:
 
   style_check:
     name: Style check
+    needs: reference_check
     if: >-
-      github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
-      || !contains(github.event.head_commit.message, 'ci_')
-      || contains(github.event.head_commit.message, 'ci_changed_only')
-      || contains(github.event.head_commit.message, 'ci_style_check')
+      !cancelled() && !contains(needs.*.result, 'failure') && (
+        github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
+        || !contains(github.event.head_commit.message, 'ci_')
+        || contains(github.event.head_commit.message, 'ci_changed_only')
+        || contains(github.event.head_commit.message, 'ci_style_check'))
     runs-on: [self-hosted, linux, dymola]
     timeout-minutes: 120
     continue-on-error: true   # was allow_failure: true on GitLab
@@ -125,11 +262,49 @@ jobs:
           retention-days: 7
           if-no-files-found: ignore
 
+  naming_guideline:
+    name: Naming guideline
+    # Only reports violations in changed files (artifact), never fails - as on GitLab.
+    if: >-
+      github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
+      || !contains(github.event.head_commit.message, 'ci_')
+      || contains(github.event.head_commit.message, 'ci_changed_only')
+      || contains(github.event.head_commit.message, 'ci_check_naming')
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.9"
+      - name: Install Python CI tooling
+        run: |
+          python -m pip install --upgrade pip
+          pip install natsort toml pandas mako requests openpyxl
+          pip install git+https://github.com/FWuellhorst/BuildingsPy.git@issue253_coverage
+          pip install git+https://github.com/RWTH-EBC/ModelicaPyCI.git
+      - name: Check naming guideline of changed files
+        env:
+          CI_PYTHON_CONFIG_FILE: ci-tests/config/modelica_py_ci_config.toml
+        run: |
+          python -m ModelicaPyCI.syntax.naming_guideline --changed-flag --main-branch "$MAIN_BRANCH" \
+            --config ci-tests/naming_guideline.toml --library "$LIBRARY"
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: naming-guideline-result
+          path: ci-tests/result/
+          retention-days: 7
+          if-no-files-found: ignore
+
   model_check:
     name: Check ${{ matrix.name }}
-    needs: html_check
+    needs: [reference_check, html_check]
     if: >-
-      !cancelled() && needs.html_check.result != 'failure' && (
+      !cancelled() && !contains(needs.*.result, 'failure') && (
         github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
         || !contains(github.event.head_commit.message, 'ci_')
         || contains(github.event.head_commit.message, 'ci_changed_only')
@@ -169,9 +344,9 @@ jobs:
 
   simulate:
     name: Simulate ${{ matrix.name }}
-    needs: model_check
+    needs: [reference_check, html_check, model_check]
     if: >-
-      !cancelled() && needs.model_check.result != 'failure' && (
+      !cancelled() && !contains(needs.*.result, 'failure') && (
         github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
         || !contains(github.event.head_commit.message, 'ci_')
         || contains(github.event.head_commit.message, 'ci_changed_only')
@@ -211,15 +386,20 @@ jobs:
 
   regression:
     name: Regression ${{ matrix.name }}
-    needs: simulate
+    needs: [reference_check, html_check, model_check, simulate]
     if: >-
-      !cancelled() && needs.simulate.result != 'failure' && (
+      !cancelled() && !contains(needs.*.result, 'failure') && (
         github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
         || !contains(github.event.head_commit.message, 'ci_')
         || contains(github.event.head_commit.message, 'ci_changed_only')
         || contains(github.event.head_commit.message, 'ci_regression_test'))
     runs-on: [self-hosted, linux, dymola]
     timeout-minutes: 420
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+      packages: read
     container:
       image: ${{ vars.DYMOLA_IMAGE || 'registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-micromamba' }}
       credentials:
@@ -239,6 +419,7 @@ jobs:
           fetch-depth: 0
       - uses: ./.github/actions/setup-modelica-ci
       - name: Regression test
+        id: regression
         working-directory: ${{ env.LIBRARY }}
         env:
           MODE_FLAGS: ${{ matrix.coverage && '--coverage-only' || '--batch' }}
@@ -248,6 +429,19 @@ jobs:
             --startup-mos "$STARTUP_MOS" --min-number-of-unused-licences "$MIN_FREE_LICENSES" \
             --tool dymola --number-of-processors 4 --path . --library-root .. \
             --packages ${{ matrix.packages }} --library "$LIBRARY"
+      - name: Plot failed results and comment on the pull request
+        if: failure() && steps.regression.outcome == 'failure' && !matrix.coverage
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if ! grep -q "FAIL" ci-tests/Configfiles/exit.sh 2>/dev/null; then
+            exit 0
+          fi
+          python -m ModelicaPyCI.converter.google_charts --funnel-comp-flag --error-flag \
+            --templates-url "$TEMPLATES_URL" --library "$LIBRARY" --packages ${{ matrix.packages }}
+          python -m ModelicaPyCI.api_script.api_github --post-pr-comment-flag --prepare-plot-flag \
+            --page "$PAGE_URL" --github-token "$GH_TOKEN" --main-branch "$MAIN_BRANCH" \
+            --working-branch "$GITHUB_REF_NAME" --library "$LIBRARY" --github-repository "$GITHUB_REPOSITORY"
       - uses: actions/upload-artifact@v7
         if: failure()
         with:
@@ -255,3 +449,157 @@ jobs:
           path: ci-tests/result/
           retention-days: 7
           if-no-files-found: ignore
+
+  whitelists:
+    name: Create whitelists
+    if: >-
+      contains(github.event.head_commit.message, 'ci_create_model_whitelist')
+      || contains(github.event.head_commit.message, 'ci_create_example_whitelist')
+    runs-on: [self-hosted, linux, dymola]
+    timeout-minutes: 420
+    permissions:
+      contents: write
+      packages: read
+    container:
+      image: ${{ vars.DYMOLA_IMAGE || 'registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-micromamba' }}
+      credentials:
+        username: ${{ vars.DYMOLA_REGISTRY_USER }}
+        password: ${{ secrets.DYMOLA_REGISTRY_TOKEN }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: ./.github/actions/setup-modelica-ci
+      - name: Create check whitelist
+        if: contains(github.event.head_commit.message, 'ci_create_model_whitelist')
+        continue-on-error: true
+        run: |
+          xvfb-run -n 77 python -m ModelicaPyCI.unittest.validatetest --dym-options DYM_CHECK --create-whitelist-flag \
+            --startup-mos "$STARTUP_MOS" --min-number-of-unused-licences "$MIN_FREE_LICENSES" \
+            --additional-libraries-to-load --packages $ALL_PACKAGES --library "$LIBRARY"
+      - name: Create simulate whitelist
+        if: contains(github.event.head_commit.message, 'ci_create_example_whitelist')
+        continue-on-error: true
+        run: |
+          xvfb-run -n 77 python -m ModelicaPyCI.unittest.validatetest --dym-options DYM_SIM --create-whitelist-flag \
+            --startup-mos "$STARTUP_MOS" --min-number-of-unused-licences "$MIN_FREE_LICENSES" \
+            --additional-libraries-to-load --packages $ALL_PACKAGES --library "$LIBRARY"
+      - name: Push whitelists
+        run: |
+          git add ci-tests/whitelist
+          if git diff --cached --quiet; then
+            echo "Whitelists unchanged."
+            exit 0
+          fi
+          git commit -m "CI message from github-actions. Update or created new whitelist. Please pull the new whitelist before push again."
+          git push origin "HEAD:$GITHUB_REF_NAME"
+          echo "::notice::Whitelists pushed to $GITHUB_REF_NAME, pull the branch before you push again."
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: whitelist-result
+          path: ci-tests/result/
+          retention-days: 7
+          if-no-files-found: ignore
+
+  publish:
+    name: Publish results
+    needs: [reference_check, html_check, style_check, naming_guideline, model_check, simulate, regression, whitelists]
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      actions: write
+    concurrency:
+      # one deployment to the gh-pages branch at a time, across all branches
+      group: modelica-ci-gh-pages
+      cancel-in-progress: false
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      CI_PYTHON_CONFIG_FILE: ci-tests/config/modelica_py_ci_config.toml
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.9"
+      - name: Install Python CI tooling
+        run: |
+          python -m pip install --upgrade pip
+          pip install natsort toml pandas mako requests
+          pip install git+https://github.com/FWuellhorst/BuildingsPy.git@issue253_coverage
+          pip install git+https://github.com/RWTH-EBC/ModelicaPyCI.git
+      - name: Post contribution guidelines to the pull request
+        run: |
+          python -m ModelicaPyCI.api_script.api_github --post-initial-pr-comment \
+            --page "$PAGE_URL" --github-token "$GH_TOKEN" --main-branch "$MAIN_BRANCH" \
+            --working-branch "$GITHUB_REF_NAME" --library "$LIBRARY" --github-repository "$GITHUB_REPOSITORY" \
+            || echo "::warning::Could not post the initial pull request comment."
+      - name: Collect results of all jobs
+        uses: actions/download-artifact@v8
+        continue-on-error: true
+        with:
+          pattern: "*-result"
+          merge-multiple: true
+          path: ci-tests/result
+      - name: Create index of the results
+        run: |
+          if [ -d ci-tests/result ] && [ -n "$(ls -A ci-tests/result)" ]; then
+            python -m ModelicaPyCI.deploy.create_central_index_html
+          else
+            echo "No results in this run."
+          fi
+      - name: Deploy results to GitHub Pages
+        run: |
+          PAGES_DIR="$RUNNER_TEMP/gh-pages"
+          REPO_URL="https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git ls-remote --exit-code --heads "$REPO_URL" gh-pages >/dev/null; then
+            git clone --depth 1 --branch gh-pages "$REPO_URL" "$PAGES_DIR"
+          else
+            mkdir -p "$PAGES_DIR/docs"
+            git -C "$PAGES_DIR" init -b gh-pages
+            git -C "$PAGES_DIR" remote add origin "$REPO_URL"
+            touch "$PAGES_DIR/docs/.nojekyll"
+            echo "<meta http-equiv=\"refresh\" content=\"0; url=$PAGE_URL/$MAIN_BRANCH/index.html\">" > "$PAGES_DIR/docs/index.html"
+          fi
+          cd "$PAGES_DIR"
+          mkdir -p docs
+          # Replace the results of this branch (no results -> folder removed)
+          rm -rf "docs/$GITHUB_REF_NAME"
+          if [ -d "$GITHUB_WORKSPACE/ci-tests/result" ] && [ -n "$(ls -A "$GITHUB_WORKSPACE/ci-tests/result")" ]; then
+            mkdir -p "docs/$GITHUB_REF_NAME"
+            cp -r "$GITHUB_WORKSPACE/ci-tests/result/." "docs/$GITHUB_REF_NAME/"
+          fi
+          # Remove results of branches without commits for 14 days (as the GitLab template did)
+          for folder in docs/*/; do
+            name="$(basename "$folder")"
+            case "$name" in main|master|development) continue ;; esac
+            last_commit="$(gh api "repos/$GITHUB_REPOSITORY/branches/$name" --jq '.commit.commit.committer.date' 2>/dev/null)" || continue
+            age_days=$(( ( $(date +%s) - $(date -d "$last_commit" +%s) ) / 86400 ))
+            if [ "$age_days" -ge 14 ]; then
+              echo "Removing results of $name (no commits for $age_days days)"
+              rm -rf "$folder"
+            fi
+          done
+          git add -A
+          if git diff --cached --quiet; then
+            echo "GitHub Pages unchanged."
+            exit 0
+          fi
+          git commit -q -m "Update CI results of $GITHUB_REF_NAME and remove old branches"
+          for attempt in 1 2 3; do
+            if git push origin HEAD:gh-pages; then
+              echo "::notice::Results published: $PAGE_URL/$GITHUB_REF_NAME/index.html"
+              exit 0
+            fi
+            git pull --rebase origin gh-pages
+          done
+          exit 1
+      - name: Restart the CI on the commit with the new reference results
+        if: needs.reference_check.outputs.pushed == 'true'
+        # Pushes with GITHUB_TOKEN do not start workflows, workflow_dispatch does.
+        run: gh workflow run modelica-ci.yml --repo "$GITHUB_REPOSITORY" --ref "$GITHUB_REF_NAME"
