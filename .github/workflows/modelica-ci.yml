@@ -31,7 +31,9 @@
 #                               -> create and push the check / simulate whitelist
 #
 # Manual runs: Actions -> "Modelica CI (Dymola)" -> "Run workflow"; the keywords above
-# can be entered in the field ci_keywords (empty: full pipeline).
+# can be entered in the field ci_keywords (empty: full pipeline). GitHub only offers
+# "Run workflow" (and the automatic restart after new reference results) once this
+# file exists on the default branch.
 # Note: the whole commit message is searched, so do not mention keywords in the
 # description of a commit. Commits without changed files (e.g. --allow-empty) do not
 # start the workflow because of the paths-ignore filter.
