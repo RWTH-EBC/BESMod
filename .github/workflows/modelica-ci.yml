@@ -293,7 +293,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-python@v7
         with:
-          python-version: "3.9"
+          python-version: "3.11"   # 3.9 (as in the Dymola image) is not available on ubuntu-latest anymore
       - name: Install Python CI tooling
         run: |
           python -m pip install --upgrade pip
@@ -538,7 +538,7 @@ jobs:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
         with:
-          python-version: "3.9"
+          python-version: "3.11"   # 3.9 (as in the Dymola image) is not available on ubuntu-latest anymore
       - name: Install Python CI tooling
         run: |
           python -m pip install --upgrade pip
