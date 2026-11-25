@@ -5,17 +5,16 @@
 # Requirements:
 #   - A self-hosted Linux runner with Docker and the labels [self-hosted, linux, dymola]
 #     that can reach the RWTH Dymola license server (license2.rz.rwth-aachen.de:50064).
-#   - Access to the Dymola image, configured via organization or repository settings:
-#       vars.DYMOLA_IMAGE             image incl. tag (default: old GitLab image below)
-#       vars.DYMOLA_REGISTRY_USER     registry user      (optional)
-#       secrets.DYMOLA_REGISTRY_TOKEN registry token     (optional)
-#     Registry login:
-#       - user + token set            -> the runner logs in with them
-#       - DYMOLA_IMAGE on ghcr.io/    -> github.actor + GITHUB_TOKEN; the package must grant
-#                                        this repository read access ("Manage Actions access")
-#       - otherwise                   -> no login in the workflow; the image is pulled with
-#                                        the docker login stored on the runner VM
-#                                        (current state for registry.git.rwth-aachen.de)
+#   - Access to the Dymola image. The image (incl. tag) can be overridden with the
+#     organization or repository variable DYMOLA_IMAGE (default: old GitLab image below).
+#     The jobs contain no registry login: the image is pulled with the docker login
+#     stored for the runner user on the runner VM (same as RWTH-EBC/ci_templates).
+#     When the image moves to GHCR, add to every `container:` block
+#       credentials:
+#         username: ${{ github.actor }}
+#         password: ${{ secrets.GITHUB_TOKEN }}
+#     and grant this repository read access to the package ("Manage Actions access").
+#     (GitHub rejects empty credentials, so the login cannot be switched on by settings.)
 #
 # Commit keywords (as before on GitLab):
 #   no "ci_" keyword      -> full pipeline (always on main)
@@ -67,9 +66,6 @@ jobs:
     timeout-minutes: 60
     container:
       image: ${{ vars.DYMOLA_IMAGE || 'registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-micromamba' }}
-      credentials:
-        username: ${{ vars.DYMOLA_REGISTRY_USER || (startsWith(vars.DYMOLA_IMAGE, 'ghcr.io/') && github.actor) || '' }}
-        password: ${{ secrets.DYMOLA_REGISTRY_TOKEN || (startsWith(vars.DYMOLA_IMAGE, 'ghcr.io/') && secrets.GITHUB_TOKEN) || '' }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -105,9 +101,6 @@ jobs:
     continue-on-error: true   # was allow_failure: true on GitLab
     container:
       image: ${{ vars.DYMOLA_IMAGE || 'registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-micromamba' }}
-      credentials:
-        username: ${{ vars.DYMOLA_REGISTRY_USER || (startsWith(vars.DYMOLA_IMAGE, 'ghcr.io/') && github.actor) || '' }}
-        password: ${{ secrets.DYMOLA_REGISTRY_TOKEN || (startsWith(vars.DYMOLA_IMAGE, 'ghcr.io/') && secrets.GITHUB_TOKEN) || '' }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -140,9 +133,6 @@ jobs:
     timeout-minutes: 420
     container:
       image: ${{ vars.DYMOLA_IMAGE || 'registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-micromamba' }}
-      credentials:
-        username: ${{ vars.DYMOLA_REGISTRY_USER || (startsWith(vars.DYMOLA_IMAGE, 'ghcr.io/') && github.actor) || '' }}
-        password: ${{ secrets.DYMOLA_REGISTRY_TOKEN || (startsWith(vars.DYMOLA_IMAGE, 'ghcr.io/') && secrets.GITHUB_TOKEN) || '' }}
     strategy:
       fail-fast: false
       matrix:
@@ -182,9 +172,6 @@ jobs:
     timeout-minutes: 420
     container:
       image: ${{ vars.DYMOLA_IMAGE || 'registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-micromamba' }}
-      credentials:
-        username: ${{ vars.DYMOLA_REGISTRY_USER || (startsWith(vars.DYMOLA_IMAGE, 'ghcr.io/') && github.actor) || '' }}
-        password: ${{ secrets.DYMOLA_REGISTRY_TOKEN || (startsWith(vars.DYMOLA_IMAGE, 'ghcr.io/') && secrets.GITHUB_TOKEN) || '' }}
     strategy:
       fail-fast: false
       matrix:
@@ -224,9 +211,6 @@ jobs:
     timeout-minutes: 420
     container:
       image: ${{ vars.DYMOLA_IMAGE || 'registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-micromamba' }}
-      credentials:
-        username: ${{ vars.DYMOLA_REGISTRY_USER || (startsWith(vars.DYMOLA_IMAGE, 'ghcr.io/') && github.actor) || '' }}
-        password: ${{ secrets.DYMOLA_REGISTRY_TOKEN || (startsWith(vars.DYMOLA_IMAGE, 'ghcr.io/') && secrets.GITHUB_TOKEN) || '' }}
     strategy:
       fail-fast: false
       matrix:
