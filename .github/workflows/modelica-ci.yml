@@ -267,8 +267,20 @@ jobs:
       # Needs startup.mos (written by install_dependencies.py) to load BESMod with its libraries
       - uses: ./.github/actions/setup-modelica-ci
       - name: Dymola style check
+        # main: whole library. Other branches: only models changed compared to main
+        # (whole library if more than 100 models changed).
         run: |
-          xvfb-run -n 77 python -m ModelicaPyCI.syntax.style_checking $CHANGED_FLAG \
+          SCOPE_FLAGS=""
+          if [ "$GITHUB_REF" != "refs/heads/$MAIN_BRANCH" ]; then
+            if python -m ModelicaPyCI.syntax.style_checking --help | grep -q -- "--main-branch"; then
+              SCOPE_FLAGS="--changed-flag --main-branch $MAIN_BRANCH"
+            else
+              # older ModelicaPyCI: compares with the last two commits only
+              SCOPE_FLAGS="--changed-flag"
+            fi
+          fi
+          echo "Style check scope: ${SCOPE_FLAGS:-whole library}"
+          xvfb-run -n 77 python -m ModelicaPyCI.syntax.style_checking $SCOPE_FLAGS \
             --startup-mos "$STARTUP_MOS" --min-number-of-unused-licences "$MIN_FREE_LICENSES" --library "$LIBRARY"
       - uses: actions/upload-artifact@v7
         if: failure()
