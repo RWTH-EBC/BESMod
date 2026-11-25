@@ -22,13 +22,19 @@
 #     without commits on that branch).
 #
 # Commit keywords (as before on GitLab):
-#   no "ci_" keyword            -> full pipeline (always on main and for manual runs)
+#   no "ci_" keyword            -> full pipeline (always on main)
 #   ci_changed_only             -> full pipeline, only models changed in this branch
 #   ci_reference_check / ci_html / ci_style_check / ci_check_naming / ci_check /
 #   ci_simulate / ci_regression_test
 #                               -> only the respective stage
 #   ci_create_model_whitelist / ci_create_example_whitelist
 #                               -> create and push the check / simulate whitelist
+#
+# Manual runs: Actions -> "Modelica CI (Dymola)" -> "Run workflow"; the keywords above
+# can be entered in the field ci_keywords (empty: full pipeline).
+# Note: the whole commit message is searched, so do not mention keywords in the
+# description of a commit. Commits without changed files (e.g. --allow-empty) do not
+# start the workflow because of the paths-ignore filter.
 #
 # Automatic actions of the CI (pushed with GITHUB_TOKEN as github-actions[bot]):
 #   - missing reference results are created, pushed to the branch, plotted and
@@ -50,6 +56,14 @@ on:
       - "**.md"
       - ".github/ISSUE_TEMPLATE/**"
   workflow_dispatch:
+    inputs:
+      ci_keywords:
+        description: >-
+          Commit keywords to run only some stages, e.g. "ci_check ci_simulate".
+          Empty: full pipeline.
+        required: false
+        default: ""
+        type: string
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -67,7 +81,7 @@ env:
   MAIN_BRANCH: main
   PAGE_URL: https://rwth-ebc.github.io/BESMod
   TEMPLATES_URL: https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica
-  CHANGED_FLAG: ${{ contains(github.event.head_commit.message, 'ci_changed_only') && '--changed-flag' || '' }}
+  CHANGED_FLAG: ${{ contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_changed_only') && '--changed-flag' || '' }}
 
 defaults:
   run:
@@ -77,10 +91,10 @@ jobs:
   reference_check:
     name: Reference results
     if: >-
-      github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
-      || !contains(github.event.head_commit.message, 'ci_')
-      || contains(github.event.head_commit.message, 'ci_changed_only')
-      || contains(github.event.head_commit.message, 'ci_reference_check')
+      github.ref == 'refs/heads/main'
+      || !contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_')
+      || contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_changed_only')
+      || contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_reference_check')
     runs-on: [self-hosted, linux, dymola]
     timeout-minutes: 420
     permissions:
@@ -162,10 +176,10 @@ jobs:
     needs: reference_check
     if: >-
       !cancelled() && !contains(needs.*.result, 'failure') && (
-        github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
-        || !contains(github.event.head_commit.message, 'ci_')
-        || contains(github.event.head_commit.message, 'ci_changed_only')
-        || contains(github.event.head_commit.message, 'ci_html'))
+        github.ref == 'refs/heads/main'
+        || !contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_')
+        || contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_changed_only')
+        || contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_html'))
     runs-on: [self-hosted, linux, dymola]
     timeout-minutes: 60
     permissions:
@@ -232,10 +246,10 @@ jobs:
     needs: reference_check
     if: >-
       !cancelled() && !contains(needs.*.result, 'failure') && (
-        github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
-        || !contains(github.event.head_commit.message, 'ci_')
-        || contains(github.event.head_commit.message, 'ci_changed_only')
-        || contains(github.event.head_commit.message, 'ci_style_check'))
+        github.ref == 'refs/heads/main'
+        || !contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_')
+        || contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_changed_only')
+        || contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_style_check'))
     runs-on: [self-hosted, linux, dymola]
     timeout-minutes: 120
     continue-on-error: true   # was allow_failure: true on GitLab
@@ -266,10 +280,10 @@ jobs:
     name: Naming guideline
     # Only reports violations in changed files (artifact), never fails - as on GitLab.
     if: >-
-      github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
-      || !contains(github.event.head_commit.message, 'ci_')
-      || contains(github.event.head_commit.message, 'ci_changed_only')
-      || contains(github.event.head_commit.message, 'ci_check_naming')
+      github.ref == 'refs/heads/main'
+      || !contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_')
+      || contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_changed_only')
+      || contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_check_naming')
     runs-on: ubuntu-latest
     timeout-minutes: 30
     continue-on-error: true
@@ -305,10 +319,10 @@ jobs:
     needs: [reference_check, html_check]
     if: >-
       !cancelled() && !contains(needs.*.result, 'failure') && (
-        github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
-        || !contains(github.event.head_commit.message, 'ci_')
-        || contains(github.event.head_commit.message, 'ci_changed_only')
-        || contains(github.event.head_commit.message, 'ci_check'))
+        github.ref == 'refs/heads/main'
+        || !contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_')
+        || contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_changed_only')
+        || contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_check'))
     runs-on: [self-hosted, linux, dymola]
     timeout-minutes: 420
     container:
@@ -347,10 +361,10 @@ jobs:
     needs: [reference_check, html_check, model_check]
     if: >-
       !cancelled() && !contains(needs.*.result, 'failure') && (
-        github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
-        || !contains(github.event.head_commit.message, 'ci_')
-        || contains(github.event.head_commit.message, 'ci_changed_only')
-        || contains(github.event.head_commit.message, 'ci_simulate'))
+        github.ref == 'refs/heads/main'
+        || !contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_')
+        || contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_changed_only')
+        || contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_simulate'))
     runs-on: [self-hosted, linux, dymola]
     timeout-minutes: 420
     container:
@@ -389,10 +403,10 @@ jobs:
     needs: [reference_check, html_check, model_check, simulate]
     if: >-
       !cancelled() && !contains(needs.*.result, 'failure') && (
-        github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
-        || !contains(github.event.head_commit.message, 'ci_')
-        || contains(github.event.head_commit.message, 'ci_changed_only')
-        || contains(github.event.head_commit.message, 'ci_regression_test'))
+        github.ref == 'refs/heads/main'
+        || !contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_')
+        || contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_changed_only')
+        || contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_regression_test'))
     runs-on: [self-hosted, linux, dymola]
     timeout-minutes: 420
     permissions:
@@ -453,8 +467,8 @@ jobs:
   whitelists:
     name: Create whitelists
     if: >-
-      contains(github.event.head_commit.message, 'ci_create_model_whitelist')
-      || contains(github.event.head_commit.message, 'ci_create_example_whitelist')
+      contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_create_model_whitelist')
+      || contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_create_example_whitelist')
     runs-on: [self-hosted, linux, dymola]
     timeout-minutes: 420
     permissions:
@@ -471,14 +485,14 @@ jobs:
           fetch-depth: 0
       - uses: ./.github/actions/setup-modelica-ci
       - name: Create check whitelist
-        if: contains(github.event.head_commit.message, 'ci_create_model_whitelist')
+        if: contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_create_model_whitelist')
         continue-on-error: true
         run: |
           xvfb-run -n 77 python -m ModelicaPyCI.unittest.validatetest --dym-options DYM_CHECK --create-whitelist-flag \
             --startup-mos "$STARTUP_MOS" --min-number-of-unused-licences "$MIN_FREE_LICENSES" \
             --additional-libraries-to-load --packages $ALL_PACKAGES --library "$LIBRARY"
       - name: Create simulate whitelist
-        if: contains(github.event.head_commit.message, 'ci_create_example_whitelist')
+        if: contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_create_example_whitelist')
         continue-on-error: true
         run: |
           xvfb-run -n 77 python -m ModelicaPyCI.unittest.validatetest --dym-options DYM_SIM --create-whitelist-flag \
