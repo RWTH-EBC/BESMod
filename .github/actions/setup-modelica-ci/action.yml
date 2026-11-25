@@ -30,12 +30,28 @@ runs:
         pip install git+https://github.com/FWuellhorst/BuildingsPy.git@issue253_coverage
         pip install git+https://github.com/RWTH-EBC/ModelicaPyCI.git
 
+    - name: Restore Modelica dependencies from cache
+      if: inputs.install-modelica-libraries == 'true'
+      uses: actions/cache@v6
+      with:
+        path: installed_dependencies
+        key: modelica-deps-${{ hashFiles('dependencies.json', 'ci-tests/scripts/install_spawn.sh') }}
+
     - name: Install Modelica dependencies and Spawn
       if: inputs.install-modelica-libraries == 'true'
       shell: bash
       run: |
-        apt-get update && apt-get install -y git-lfs wget
+        apt-get update && apt-get install -y --no-install-recommends git-lfs wget
+        # Clones missing libraries and always (re)writes startup.mos.
+        # Libraries restored from the cache are already at the pinned commits
+        # (the cache key contains dependencies.json); their clone just reports
+        # "already exists".
         python install_dependencies.py full
-        chmod +x ./ci-tests/scripts/install_spawn.sh
-        ./ci-tests/scripts/install_spawn.sh
-        echo "$(pwd)/installed_dependencies/Buildings/Buildings/Resources/bin/Spawn-light-0.6.0-9f1b36b00b-Linux/bin" >> "$GITHUB_PATH"
+        SPAWN_DIR="$(pwd)/installed_dependencies/Buildings/Buildings/Resources/bin/Spawn-light-0.6.0-9f1b36b00b-Linux/bin"
+        if [ ! -x "$SPAWN_DIR/spawn-0.6.0-9f1b36b00b" ]; then
+          chmod +x ./ci-tests/scripts/install_spawn.sh
+          ./ci-tests/scripts/install_spawn.sh
+        else
+          echo "Spawn restored from cache"
+        fi
+        echo "$SPAWN_DIR" >> "$GITHUB_PATH"

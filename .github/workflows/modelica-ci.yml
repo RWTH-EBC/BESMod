@@ -70,7 +70,7 @@ jobs:
         username: ${{ vars.DYMOLA_REGISTRY_USER }}
         password: ${{ secrets.DYMOLA_REGISTRY_TOKEN }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - uses: ./.github/actions/setup-modelica-ci
@@ -84,7 +84,7 @@ jobs:
             echo "::error::HTML syntax errors found. See the ci-tests-result artifact."
             exit 1
           fi
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: html-check-result
@@ -108,7 +108,7 @@ jobs:
         username: ${{ vars.DYMOLA_REGISTRY_USER }}
         password: ${{ secrets.DYMOLA_REGISTRY_TOKEN }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - uses: ./.github/actions/setup-modelica-ci
@@ -118,7 +118,7 @@ jobs:
         run: |
           xvfb-run -n 77 python -m ModelicaPyCI.syntax.style_checking $CHANGED_FLAG \
             --startup-mos "$STARTUP_MOS" --min-number-of-unused-licences "$MIN_FREE_LICENSES" --library "$LIBRARY"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: failure()
         with:
           name: style-check-result
@@ -150,7 +150,7 @@ jobs:
           - { name: Systems,  packages: "Systems" }
           - { name: Other,    packages: "Tutorial Utilities" }
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - uses: ./.github/actions/setup-modelica-ci
@@ -160,7 +160,7 @@ jobs:
             --filter-whitelist-flag $CHANGED_FLAG --startup-mos "$STARTUP_MOS" \
             --min-number-of-unused-licences "$MIN_FREE_LICENSES" --additional-libraries-to-load \
             --packages ${{ matrix.packages }} --library "$LIBRARY"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: failure()
         with:
           name: check-${{ matrix.name }}-result
@@ -192,7 +192,7 @@ jobs:
           - { name: Systems,  packages: "Systems" }
           - { name: Other,    packages: "Tutorial Utilities" }
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - uses: ./.github/actions/setup-modelica-ci
@@ -202,7 +202,7 @@ jobs:
             --filter-whitelist-flag $CHANGED_FLAG --startup-mos "$STARTUP_MOS" \
             --min-number-of-unused-licences "$MIN_FREE_LICENSES" --additional-libraries-to-load \
             --packages ${{ matrix.packages }} --library "$LIBRARY"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: failure()
         with:
           name: simulate-${{ matrix.name }}-result
@@ -235,7 +235,7 @@ jobs:
           - { name: Other,    packages: "Tutorial Utilities" }
           - { name: Coverage, packages: "Examples Tutorial Utilities Systems", coverage: true }
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - uses: ./.github/actions/setup-modelica-ci
@@ -249,7 +249,7 @@ jobs:
             --startup-mos "$STARTUP_MOS" --min-number-of-unused-licences "$MIN_FREE_LICENSES" \
             --tool dymola --number-of-processors 4 --path . --library-root .. \
             --packages ${{ matrix.packages }} --library "$LIBRARY"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: failure()
         with:
           name: regression-${{ matrix.name }}-result
