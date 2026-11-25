@@ -111,9 +111,8 @@ jobs:
       - uses: actions/checkout@v7
         with:
           fetch-depth: 0
+      # Needs startup.mos (written by install_dependencies.py) to load BESMod with its libraries
       - uses: ./.github/actions/setup-modelica-ci
-        with:
-          install-modelica-libraries: "false"
       - name: Dymola style check
         run: |
           xvfb-run -n 77 python -m ModelicaPyCI.syntax.style_checking $CHANGED_FLAG \
