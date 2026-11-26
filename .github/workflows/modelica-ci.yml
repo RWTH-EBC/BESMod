@@ -22,7 +22,7 @@
 #     without commits on that branch).
 #
 # Commit keywords (as before on GitLab):
-#   no "ci_" keyword            -> full pipeline (always on main)
+#   no "ci_" keyword            -> full pipeline (always on the default branch)
 #   ci_changed_only             -> full pipeline, only models changed in this branch
 #   ci_reference_check / ci_html / ci_style_check / ci_check_naming / ci_check /
 #   ci_simulate / ci_regression_test
@@ -80,7 +80,7 @@ env:
   ALL_PACKAGES: Examples Tutorial Utilities Systems
   STARTUP_MOS: startup.mos
   MIN_FREE_LICENSES: "5"
-  MAIN_BRANCH: main
+  MAIN_BRANCH: ${{ github.event.repository.default_branch }}   # main or master, taken from the repository settings
   PAGE_URL: https://rwth-ebc.github.io/BESMod
   TEMPLATES_URL: https://github.com/RWTH-EBC/MoCITempGen.git@03_openModelica
   CHANGED_FLAG: ${{ contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_changed_only') && '--changed-flag' || '' }}
@@ -93,7 +93,7 @@ jobs:
   reference_check:
     name: Reference results
     if: >-
-      github.ref == 'refs/heads/main'
+      github.ref_name == github.event.repository.default_branch
       || !contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_')
       || contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_changed_only')
       || contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_reference_check')
@@ -178,7 +178,7 @@ jobs:
     needs: reference_check
     if: >-
       !cancelled() && !contains(needs.*.result, 'failure') && (
-        github.ref == 'refs/heads/main'
+        github.ref_name == github.event.repository.default_branch
         || !contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_')
         || contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_changed_only')
         || contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_html'))
@@ -248,7 +248,7 @@ jobs:
     needs: reference_check
     if: >-
       !cancelled() && !contains(needs.*.result, 'failure') && (
-        github.ref == 'refs/heads/main'
+        github.ref_name == github.event.repository.default_branch
         || !contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_')
         || contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_changed_only')
         || contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_style_check'))
@@ -267,7 +267,7 @@ jobs:
       # Needs startup.mos (written by install_dependencies.py) to load BESMod with its libraries
       - uses: ./.github/actions/setup-modelica-ci
       - name: Dymola style check
-        # main: whole library. Other branches: only models changed compared to main
+        # Default branch: whole library. Other branches: only models changed compared to it
         # (whole library if more than 100 models changed).
         run: |
           SCOPE_FLAGS=""
@@ -294,7 +294,7 @@ jobs:
     name: Naming guideline
     # Only reports violations in changed files (artifact), never fails - as on GitLab.
     if: >-
-      github.ref == 'refs/heads/main'
+      github.ref_name == github.event.repository.default_branch
       || !contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_')
       || contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_changed_only')
       || contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_check_naming')
@@ -333,7 +333,7 @@ jobs:
     needs: [reference_check, html_check]
     if: >-
       !cancelled() && !contains(needs.*.result, 'failure') && (
-        github.ref == 'refs/heads/main'
+        github.ref_name == github.event.repository.default_branch
         || !contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_')
         || contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_changed_only')
         || contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_check'))
@@ -375,7 +375,7 @@ jobs:
     needs: [reference_check, html_check, model_check]
     if: >-
       !cancelled() && !contains(needs.*.result, 'failure') && (
-        github.ref == 'refs/heads/main'
+        github.ref_name == github.event.repository.default_branch
         || !contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_')
         || contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_changed_only')
         || contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_simulate'))
@@ -417,7 +417,7 @@ jobs:
     needs: [reference_check, html_check, model_check, simulate]
     if: >-
       !cancelled() && !contains(needs.*.result, 'failure') && (
-        github.ref == 'refs/heads/main'
+        github.ref_name == github.event.repository.default_branch
         || !contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_')
         || contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_changed_only')
         || contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_regression_test'))
@@ -605,7 +605,7 @@ jobs:
           # Remove results of branches without commits for 14 days (as the GitLab template did)
           for folder in docs/*/; do
             name="$(basename "$folder")"
-            case "$name" in main|master|development) continue ;; esac
+            case "$name" in main|master|development|"$MAIN_BRANCH") continue ;; esac
             last_commit="$(gh api "repos/$GITHUB_REPOSITORY/branches/$name" --jq '.commit.commit.committer.date' 2>/dev/null)" || continue
             age_days=$(( ( $(date +%s) - $(date -d "$last_commit" +%s) ) / 86400 ))
             if [ "$age_days" -ge 14 ]; then
