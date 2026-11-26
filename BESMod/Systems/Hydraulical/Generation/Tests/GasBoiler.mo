@@ -2,7 +2,7 @@ within BESMod.Systems.Hydraulical.Generation.Tests;
 model GasBoiler
   extends Generation.Tests.PartialTest(redeclare
       BESMod.Systems.Hydraulical.Generation.GasBoiler generation(dTTra_nominal=
-          {10},
+          {12},
       redeclare
         BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
         parTemSen));
