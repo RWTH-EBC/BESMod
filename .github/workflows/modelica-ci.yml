@@ -39,10 +39,11 @@
 # start the workflow because of the paths-ignore filter.
 #
 # Automatic actions of the CI (pushed with GITHUB_TOKEN as github-actions[bot]):
-#   - missing reference results are created, pushed to the branch, plotted and
-#     announced in the pull request; the pipeline then restarts on the new commit
+#   - missing reference results are created, pushed to the branch and plotted; the
+#     pipeline then restarts on the new commit
 #   - HTML errors are corrected on the branch correct_HTML_<branch> with a pull request
-#   - failed regression tests are plotted and linked in the pull request
+#   - failed regression tests are plotted
+#   - plots are linked in the pull request once they are published on GitHub Pages
 #   - results are published on GitHub Pages; an open pull request gets an initial
 #     comment with the contribution guidelines
 #
@@ -101,8 +102,6 @@ jobs:
     timeout-minutes: 420
     permissions:
       contents: write
-      pull-requests: write
-      issues: write
       packages: read
     outputs:
       pushed: ${{ steps.push.outputs.pushed }}
@@ -130,10 +129,10 @@ jobs:
             --tool dymola --number-of-processors 4 --path . --library-root .. \
             --packages $ALL_PACKAGES --library "$LIBRARY"
           echo "exit-code=$?" >> "$GITHUB_OUTPUT"
-      - name: Push, plot and announce new reference results
+      - name: Push and plot new reference results
         id: push
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # The pull request comment with the link is posted by the publish job,
+        # once the plots are on GitHub Pages.
         run: |
           if ! grep -q "GENERATED_NEW_RESULTS" ci-tests/Configfiles/exit.sh 2>/dev/null; then
             echo "No new reference results."
@@ -148,10 +147,6 @@ jobs:
           python -m ModelicaPyCI.converter.google_charts --new-ref-flag --templates-url "$TEMPLATES_URL" \
             --library "$LIBRARY" --packages $ALL_PACKAGES \
             || echo "::warning::Could not plot the new reference results."
-          python -m ModelicaPyCI.api_script.api_github --post-pr-comment-flag --show-plot-flag \
-            --page "$PAGE_URL" --github-token "$GH_TOKEN" --main-branch "$MAIN_BRANCH" \
-            --working-branch "$GITHUB_REF_NAME" --library "$LIBRARY" --github-repository "$GITHUB_REPOSITORY" \
-            || echo "::warning::Could not comment on the pull request."
           git add $files_to_push
           git commit -m "CI message from github-actions. Automatic push of CI with new regression reference files. Please pull the new files before push again. Plotted results: $PAGE_URL/$GITHUB_REF_NAME/charts/"
           git push origin "HEAD:$GITHUB_REF_NAME"
@@ -423,11 +418,6 @@ jobs:
         || contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_regression_test'))
     runs-on: [self-hosted, linux, dymola]
     timeout-minutes: 420
-    permissions:
-      contents: read
-      pull-requests: write
-      issues: write
-      packages: read
     container:
       image: ${{ vars.DYMOLA_IMAGE || 'registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-micromamba' }}
       credentials:
@@ -457,19 +447,16 @@ jobs:
             --startup-mos "$STARTUP_MOS" --min-number-of-unused-licences "$MIN_FREE_LICENSES" \
             --tool dymola --number-of-processors 4 --path . --library-root .. \
             --packages ${{ matrix.packages }} --library "$LIBRARY"
-      - name: Plot failed results and comment on the pull request
+      - name: Plot failed regression results
+        # The pull request comment with the link is posted by the publish job,
+        # once the plots are on GitHub Pages.
         if: failure() && steps.regression.outcome == 'failure' && !matrix.coverage
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if ! grep -q "FAIL" ci-tests/Configfiles/exit.sh 2>/dev/null; then
             exit 0
           fi
           python -m ModelicaPyCI.converter.google_charts --funnel-comp-flag --error-flag \
             --templates-url "$TEMPLATES_URL" --library "$LIBRARY" --packages ${{ matrix.packages }}
-          python -m ModelicaPyCI.api_script.api_github --post-pr-comment-flag --prepare-plot-flag \
-            --page "$PAGE_URL" --github-token "$GH_TOKEN" --main-branch "$MAIN_BRANCH" \
-            --working-branch "$GITHUB_REF_NAME" --library "$LIBRARY" --github-repository "$GITHUB_REPOSITORY"
       - uses: actions/upload-artifact@v7
         if: failure()
         with:
@@ -627,6 +614,29 @@ jobs:
             git pull --rebase origin gh-pages
           done
           exit 1
+      - name: Link the plots in the pull request
+        if: needs.reference_check.outputs.pushed == 'true' || needs.regression.result == 'failure'
+        run: |
+          if [ ! -f ci-tests/result/charts/index.html ]; then
+            echo "No plots to link."
+            exit 0
+          fi
+          if [ "${{ needs.reference_check.outputs.pushed }}" == "true" ]; then
+            PLOT_FLAG="--show-plot-flag"      # new reference results
+          else
+            PLOT_FLAG="--prepare-plot-flag"   # failed regression tests
+          fi
+          # GitHub Pages needs a moment after the push to gh-pages: wait up to 5 min
+          for attempt in $(seq 1 30); do
+            if curl -sfo /dev/null "$PAGE_URL/$GITHUB_REF_NAME/charts/index.html"; then
+              break
+            fi
+            sleep 10
+          done
+          python -m ModelicaPyCI.api_script.api_github --post-pr-comment-flag $PLOT_FLAG \
+            --page "$PAGE_URL" --github-token "$GH_TOKEN" --main-branch "$MAIN_BRANCH" \
+            --working-branch "$GITHUB_REF_NAME" --library "$LIBRARY" --github-repository "$GITHUB_REPOSITORY" \
+            || echo "::warning::Could not comment on the pull request."
       - name: Restart the CI on the commit with the new reference results
         if: needs.reference_check.outputs.pushed == 'true'
         # Pushes with GITHUB_TOKEN do not start workflows, workflow_dispatch does.
