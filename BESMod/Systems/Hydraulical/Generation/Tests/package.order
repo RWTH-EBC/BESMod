@@ -1,6 +1,7 @@
 DetailedSolarThermalWithHeatPump
 ElectricalHeater
 GasBoiler
+GasBoilerCITest
 HeatPump
 HeatPumpAndElectricHeater
 HeatPumpAndGasBoilerParallel
