@@ -46,7 +46,21 @@ runs:
       if: inputs.install-modelica-libraries == 'true'
       shell: bash
       run: |
-        apt-get update && apt-get install -y --no-install-recommends git-lfs wget
+        # git-lfs is required by install_dependencies.py for Buildings, wget by install_spawn.sh.
+        # Retry: apt-get update fails while an Ubuntu mirror is syncing.
+        if ! command -v git-lfs >/dev/null || ! command -v wget >/dev/null; then
+          for attempt in 1 2 3; do
+            if apt-get update && apt-get install -y --no-install-recommends git-lfs wget; then
+              break
+            fi
+            if [ "$attempt" -eq 3 ]; then
+              echo "::error::Could not install git-lfs and wget with apt-get (see above)."
+              exit 1
+            fi
+            echo "::warning::apt-get failed (attempt $attempt), retrying in 60 s"
+            sleep 60
+          done
+        fi
         # Clones missing libraries and always (re)writes startup.mos.
         # Libraries restored from the cache are already at the pinned commits
         # (the cache key contains dependencies.json); their clone just reports
