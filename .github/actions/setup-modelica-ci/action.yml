@@ -1,0 +1,62 @@
+name: Setup Modelica CI environment
+description: >
+  Prepares the Dymola container for ModelicaPyCI jobs: activates the micromamba
+  base environment, installs the Python CI tooling and, optionally, the Modelica
+  dependencies (IBPSA, AixLib, Buildings, ...) and the Spawn binaries.
+  Replaces .activate_python_and_install_requirements and
+  .custom_install_additional_modelica_libraries from ci-tests/scripts/utilities.yml.
+
+inputs:
+  install-modelica-libraries:
+    description: Install Modelica dependencies via install_dependencies.py and Spawn
+    default: "true"
+
+runs:
+  using: composite
+  steps:
+    - name: Activate micromamba base environment
+      shell: bash
+      run: |
+        echo "/opt/conda/bin" >> "$GITHUB_PATH"
+        echo "PIP_CACHE_DIR=/opt/cache/pip" >> "$GITHUB_ENV"
+        echo "PYTHONIOENCODING=utf-8" >> "$GITHUB_ENV"
+        echo "CI_PYTHON_CONFIG_FILE=ci-tests/config/modelica_py_ci_config.toml" >> "$GITHUB_ENV"
+        # The workspace belongs to the runner user, the container runs as root:
+        # allow git (changed-files detection, pushes by the CI) to use it.
+        git config --global --add safe.directory "$GITHUB_WORKSPACE"
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+    - name: Install Python CI tooling
+      shell: bash
+      run: |
+        python -m pip install --upgrade pip
+        pip install natsort toml pandas mako requests
+        pip install git+https://github.com/FWuellhorst/BuildingsPy.git@issue253_coverage
+        pip install git+https://github.com/RWTH-EBC/ModelicaPyCI.git
+
+    - name: Restore Modelica dependencies from cache
+      if: inputs.install-modelica-libraries == 'true'
+      uses: actions/cache@v6
+      with:
+        path: installed_dependencies
+        key: modelica-deps-${{ hashFiles('dependencies.json', 'ci-tests/scripts/install_spawn.sh') }}
+
+    - name: Install Modelica dependencies and Spawn
+      if: inputs.install-modelica-libraries == 'true'
+      shell: bash
+      run: |
+        apt-get update && apt-get install -y --no-install-recommends git-lfs wget
+        # Clones missing libraries and always (re)writes startup.mos.
+        # Libraries restored from the cache are already at the pinned commits
+        # (the cache key contains dependencies.json); their clone just reports
+        # "already exists".
+        python install_dependencies.py full
+        SPAWN_DIR="$(pwd)/installed_dependencies/Buildings/Buildings/Resources/bin/Spawn-light-0.6.0-9f1b36b00b-Linux/bin"
+        if [ ! -x "$SPAWN_DIR/spawn-0.6.0-9f1b36b00b" ]; then
+          chmod +x ./ci-tests/scripts/install_spawn.sh
+          ./ci-tests/scripts/install_spawn.sh
+        else
+          echo "Spawn restored from cache"
+        fi
+        echo "$SPAWN_DIR" >> "$GITHUB_PATH"
