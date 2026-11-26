@@ -23,5 +23,8 @@ equation
   Test for 
   <a href=\"modelica://BESMod.Systems.Hydraulical.Generation.GasBoiler\">BESMod.Systems.Hydraulical.Generation.GasBoiler</a>.
 </p>
+<p>
+  CI test: this paragraph has an <b>unclosed bold tag.
+</p>
 </html>"));
 end GasBoiler;
