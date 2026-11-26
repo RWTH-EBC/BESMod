@@ -18,8 +18,8 @@
 #   - Settings -> Actions -> General -> Workflow permissions:
 #     "Allow GitHub Actions to create and approve pull requests" (HTML correction PRs).
 #   - GitHub Pages served from the branch gh-pages, folder /docs. Results of a branch are
-#     published to https://rwth-ebc.github.io/BESMod/<branch>/ (removed after 14 days
-#     without commits on that branch).
+#     published to https://rwth-ebc.github.io/BESMod/<branch>/ (kept while the branch has
+#     an open pull request, otherwise removed after 14 days without commits).
 #
 # Commit keywords (as before on GitLab):
 #   no "ci_" keyword            -> full pipeline (always on the default branch)
@@ -39,12 +39,16 @@
 # start the workflow because of the paths-ignore filter.
 #
 # Automatic actions of the CI (pushed with GITHUB_TOKEN as github-actions[bot]):
-#   - missing reference results are created, pushed to the branch, plotted and
-#     announced in the pull request; the pipeline then restarts on the new commit
+#   - missing reference results are created, pushed to the branch and plotted; the
+#     pipeline then restarts on the new commit
 #   - HTML errors are corrected on the branch correct_HTML_<branch> with a pull request
-#   - failed regression tests are plotted and linked in the pull request
-#   - results are published on GitHub Pages; an open pull request gets an initial
-#     comment with the contribution guidelines
+#   - failed regression tests are plotted
+#   - results are published on GitHub Pages (kept as long as the branch has an open pull
+#     request, otherwise removed 14 days after the last commit)
+#   - one CI summary comment per pull request, updated on every run: stage results, failed
+#     regression tests and changed reference results (deviations compared to the default
+#     branch, plots main vs. branch), with links to the plots
+#   - an open pull request gets an initial comment with the contribution guidelines
 #
 # Intentionally push-only: the runner is self-hosted and BESMod is public, so
 # workflows from fork pull requests must never run on it.
@@ -101,8 +105,6 @@ jobs:
     timeout-minutes: 420
     permissions:
       contents: write
-      pull-requests: write
-      issues: write
       packages: read
     outputs:
       pushed: ${{ steps.push.outputs.pushed }}
@@ -130,10 +132,10 @@ jobs:
             --tool dymola --number-of-processors 4 --path . --library-root .. \
             --packages $ALL_PACKAGES --library "$LIBRARY"
           echo "exit-code=$?" >> "$GITHUB_OUTPUT"
-      - name: Push, plot and announce new reference results
+      - name: Push and plot new reference results
         id: push
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # The pull request comment with the link is posted by the publish job,
+        # once the plots are on GitHub Pages.
         run: |
           if ! grep -q "GENERATED_NEW_RESULTS" ci-tests/Configfiles/exit.sh 2>/dev/null; then
             echo "No new reference results."
@@ -148,10 +150,6 @@ jobs:
           python -m ModelicaPyCI.converter.google_charts --new-ref-flag --templates-url "$TEMPLATES_URL" \
             --library "$LIBRARY" --packages $ALL_PACKAGES \
             || echo "::warning::Could not plot the new reference results."
-          python -m ModelicaPyCI.api_script.api_github --post-pr-comment-flag --show-plot-flag \
-            --page "$PAGE_URL" --github-token "$GH_TOKEN" --main-branch "$MAIN_BRANCH" \
-            --working-branch "$GITHUB_REF_NAME" --library "$LIBRARY" --github-repository "$GITHUB_REPOSITORY" \
-            || echo "::warning::Could not comment on the pull request."
           git add $files_to_push
           git commit -m "CI message from github-actions. Automatic push of CI with new regression reference files. Please pull the new files before push again. Plotted results: $PAGE_URL/$GITHUB_REF_NAME/charts/"
           git push origin "HEAD:$GITHUB_REF_NAME"
@@ -423,11 +421,6 @@ jobs:
         || contains((github.event.head_commit.message || inputs.ci_keywords), 'ci_regression_test'))
     runs-on: [self-hosted, linux, dymola]
     timeout-minutes: 420
-    permissions:
-      contents: read
-      pull-requests: write
-      issues: write
-      packages: read
     container:
       image: ${{ vars.DYMOLA_IMAGE || 'registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-micromamba' }}
       credentials:
@@ -457,19 +450,16 @@ jobs:
             --startup-mos "$STARTUP_MOS" --min-number-of-unused-licences "$MIN_FREE_LICENSES" \
             --tool dymola --number-of-processors 4 --path . --library-root .. \
             --packages ${{ matrix.packages }} --library "$LIBRARY"
-      - name: Plot failed results and comment on the pull request
+      - name: Plot failed regression results
+        # The pull request comment with the link is posted by the publish job,
+        # once the plots are on GitHub Pages.
         if: failure() && steps.regression.outcome == 'failure' && !matrix.coverage
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if ! grep -q "FAIL" ci-tests/Configfiles/exit.sh 2>/dev/null; then
             exit 0
           fi
           python -m ModelicaPyCI.converter.google_charts --funnel-comp-flag --error-flag \
             --templates-url "$TEMPLATES_URL" --library "$LIBRARY" --packages ${{ matrix.packages }}
-          python -m ModelicaPyCI.api_script.api_github --post-pr-comment-flag --prepare-plot-flag \
-            --page "$PAGE_URL" --github-token "$GH_TOKEN" --main-branch "$MAIN_BRANCH" \
-            --working-branch "$GITHUB_REF_NAME" --library "$LIBRARY" --github-repository "$GITHUB_REPOSITORY"
       - uses: actions/upload-artifact@v7
         if: failure()
         with:
@@ -550,6 +540,8 @@ jobs:
       CI_PYTHON_CONFIG_FILE: ci-tests/config/modelica_py_ci_config.toml
     steps:
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0   # compare reference results with the default branch
       - uses: actions/setup-python@v7
         with:
           python-version: "3.11"   # 3.9 (as in the Dymola image) is not available on ubuntu-latest anymore
@@ -572,6 +564,17 @@ jobs:
           pattern: "*-result"
           merge-multiple: true
           path: ci-tests/result
+      - name: Summarise reference changes and regression errors
+        if: github.ref_name != github.event.repository.default_branch
+        run: |
+          if ! python -c "import ModelicaPyCI.converter.compare_reference_results" 2>/dev/null; then
+            echo "::warning::This ModelicaPyCI version has no compare_reference_results, no summary."
+            exit 0
+          fi
+          python -m ModelicaPyCI.converter.compare_reference_results --library "$LIBRARY" \
+            --main-branch "$MAIN_BRANCH" --page-url "$PAGE_URL/$GITHUB_REF_NAME" \
+            --summary-file "$RUNNER_TEMP/ci_summary.md" --reference-changes-flag --regression-errors-flag \
+            || echo "::warning::Could not summarise the reference results."
       - name: Create index of the results
         run: |
           if [ -d ci-tests/result ] && [ -n "$(ls -A ci-tests/result)" ]; then
@@ -602,10 +605,15 @@ jobs:
             mkdir -p "docs/$GITHUB_REF_NAME"
             cp -r "$GITHUB_WORKSPACE/ci-tests/result/." "docs/$GITHUB_REF_NAME/"
           fi
-          # Remove results of branches without commits for 14 days (as the GitLab template did)
+          # Remove results of branches without an open pull request and without commits for 14 days
           for folder in docs/*/; do
             name="$(basename "$folder")"
             case "$name" in main|master|development|"$MAIN_BRANCH") continue ;; esac
+            open_prs="$(gh pr list --repo "$GITHUB_REPOSITORY" --head "$name" --state open --json number --jq length 2>/dev/null || echo 0)"
+            if [ "$open_prs" != "0" ]; then
+              echo "Keeping results of $name (open pull request)"
+              continue
+            fi
             last_commit="$(gh api "repos/$GITHUB_REPOSITORY/branches/$name" --jq '.commit.commit.committer.date' 2>/dev/null)" || continue
             age_days=$(( ( $(date +%s) - $(date -d "$last_commit" +%s) ) / 86400 ))
             if [ "$age_days" -ge 14 ]; then
@@ -627,6 +635,62 @@ jobs:
             git pull --rebase origin gh-pages
           done
           exit 1
+      - name: Update the CI summary in the pull request
+        # One comment per pull request, updated on every run. It keeps the numbers of
+        # changed reference results and failed regression tests, even when the plots
+        # are no longer published.
+        if: github.ref_name != github.event.repository.default_branch
+        env:
+          REFERENCES_PUSHED: ${{ needs.reference_check.outputs.pushed }}
+          RESULTS: >-
+            Reference results: ${{ needs.reference_check.result }}, HTML: ${{ needs.html_check.result }},
+            check: ${{ needs.model_check.result }}, simulate: ${{ needs.simulate.result }},
+            regression: ${{ needs.regression.result }}, style: ${{ needs.style_check.result }}
+        run: |
+          PR="$(gh pr list --repo "$GITHUB_REPOSITORY" --head "$GITHUB_REF_NAME" --state open --json number --jq '.[0].number // empty')"
+          if [ -z "$PR" ]; then
+            echo "No open pull request for $GITHUB_REF_NAME."
+            exit 0
+          fi
+          MARKER="<!-- modelica-ci-summary -->"
+          SUMMARY="$RUNNER_TEMP/ci_summary.md"
+          BODY="$RUNNER_TEMP/ci_comment.md"
+          {
+            echo "$MARKER"
+            echo "## Modelica CI results for ${GITHUB_SHA::8}"
+            echo ""
+            echo "$RESULTS"
+            echo ""
+            if [ "$REFERENCES_PUSHED" == "true" ]; then
+              echo "New reference results were created and pushed to the branch, the CI restarts on that commit."
+              echo "Plots of the new reference results: $PAGE_URL/$GITHUB_REF_NAME/charts/index.html"
+              echo ""
+            fi
+            if [ -s "$SUMMARY" ]; then
+              cat "$SUMMARY"
+            else
+              echo "No failed regression tests and no changed reference results in this run."
+            fi
+            echo ""
+            echo "All results: $PAGE_URL/$GITHUB_REF_NAME/index.html · [Workflow run]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID)"
+          } > "$BODY"
+          # GitHub Pages needs a moment after the push to gh-pages: wait up to 5 min for the results
+          if [ -d ci-tests/result ] && [ -n "$(ls -A ci-tests/result)" ]; then
+            for attempt in $(seq 1 30); do
+              curl -sfo /dev/null "$PAGE_URL/$GITHUB_REF_NAME/index.html" && break
+              sleep 10
+            done
+          fi
+          COMMENT_ID="$(gh api "repos/$GITHUB_REPOSITORY/issues/$PR/comments" --paginate \
+            --jq ".[] | select(.body | startswith(\"$MARKER\")) | .id" | tail -n 1)"
+          if [ -n "$COMMENT_ID" ]; then
+            gh api -X PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$COMMENT_ID" -F body=@"$BODY" >/dev/null
+            echo "Updated CI summary comment in pull request #$PR"
+          elif [ -s "$SUMMARY" ] || [ "$REFERENCES_PUSHED" == "true" ]; then
+            gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --body-file "$BODY"
+          else
+            echo "Nothing to report, no comment created."
+          fi
       - name: Restart the CI on the commit with the new reference results
         if: needs.reference_check.outputs.pushed == 'true'
         # Pushes with GITHUB_TOKEN do not start workflows, workflow_dispatch does.
