@@ -4,6 +4,7 @@ model TwoStoragesBoilerWithDHW "Test two storages boiler with DHW"
                       redeclare
       BESMod.Systems.Hydraulical.Distribution.TwoStoragesBoilerWithDHW
       distribution(
+      QCrit(displayUnit="kWh"),
       redeclare
         BESMod.Systems.RecordsCollection.TemperatureSensors.DefaultSensor
         parTemSen,
