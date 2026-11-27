@@ -45,9 +45,13 @@
 #   - failed regression tests are plotted
 #   - results are published on GitHub Pages (kept as long as the branch has an open pull
 #     request, otherwise removed 14 days after the last commit)
-#   - one CI summary comment per pull request, updated on every run: stage results, failed
-#     regression tests and changed reference results (deviations compared to the default
-#     branch, plots main vs. branch), with links to the plots
+#   - one CI summary comment per pull request, posted again at the end of the pull request
+#     on every run (the previous one is deleted): stage results, failed regression tests
+#     and changed reference results (deviations compared to the default branch, plots
+#     main vs. branch), with links to the plots
+#   - runs started with "Run workflow" or by the restart above are not shown in the checks
+#     of a pull request by GitHub; they set the commit status "Modelica CI (Dymola) / restarted
+#     run" (pending -> success / failure / error) on their commit instead
 #   - an open pull request gets an initial comment with the contribution guidelines
 #
 # Intentionally push-only: the runner is self-hosted and BESMod is public, so
@@ -94,6 +98,25 @@ defaults:
     shell: bash
 
 jobs:
+  dispatch_status_start:
+    # GitHub does not link workflow_dispatch runs to the pull request; a commit status does.
+    name: Report restarted run (start)
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      statuses: write
+    steps:
+      - name: Set commit status to pending
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api -X POST "repos/$GITHUB_REPOSITORY/statuses/$GITHUB_SHA" \
+            -f state=pending -f context="Modelica CI (Dymola) / restarted run" \
+            -f description="Running (started by ${GITHUB_ACTOR})" \
+            -f target_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" >/dev/null \
+            || echo "::warning::Could not set the commit status."
+
   reference_check:
     name: Reference results
     if: >-
@@ -640,9 +663,10 @@ jobs:
           done
           exit 1
       - name: Update the CI summary in the pull request
-        # One comment per pull request, updated on every run. It keeps the numbers of
-        # changed reference results and failed regression tests, even when the plots
-        # are no longer published.
+        # One comment per pull request: the previous summary is deleted and the new one is
+        # posted at the end of the pull request, so it is visible and notifies. It keeps the
+        # numbers of changed reference results and failed regression tests, even when the
+        # plots are no longer published.
         if: github.ref_name != github.event.repository.default_branch
         env:
           REFERENCES_PUSHED: ${{ needs.reference_check.outputs.pushed }}
@@ -695,17 +719,50 @@ jobs:
               sleep 10
             done
           fi
-          COMMENT_ID="$(gh api "repos/$GITHUB_REPOSITORY/issues/$PR/comments" --paginate \
-            --jq ".[] | select(.body | startswith(\"$MARKER\")) | .id" | tail -n 1)"
-          if [ -n "$COMMENT_ID" ]; then
-            gh api -X PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$COMMENT_ID" -F body=@"$BODY" >/dev/null
-            echo "Updated CI summary comment in pull request #$PR"
-          elif [ -s "$SUMMARY" ] || [ "$REFERENCES_PUSHED" == "true" ]; then
-            gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --body-file "$BODY"
-          else
+          OLD_IDS="$(gh api "repos/$GITHUB_REPOSITORY/issues/$PR/comments" --paginate \
+            --jq ".[] | select(.body | startswith(\"$MARKER\")) | .id")"
+          # Post a summary when there is something to report or an earlier summary would
+          # otherwise show outdated results
+          if [ -z "$OLD_IDS" ] && [ ! -s "$SUMMARY" ] && [ "$REFERENCES_PUSHED" != "true" ]; then
             echo "Nothing to report, no comment created."
+            exit 0
           fi
+          gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --body-file "$BODY"
+          for id in $OLD_IDS; do
+            gh api -X DELETE "repos/$GITHUB_REPOSITORY/issues/comments/$id" \
+              || echo "::warning::Could not delete the previous summary comment $id."
+          done
       - name: Restart the CI on the commit with the new reference results
         if: needs.reference_check.outputs.pushed == 'true'
         # Pushes with GITHUB_TOKEN do not start workflows, workflow_dispatch does.
         run: gh workflow run modelica-ci.yml --repo "$GITHUB_REPOSITORY" --ref "$GITHUB_REF_NAME"
+
+  dispatch_status:
+    name: Report restarted run (result)
+    needs: [dispatch_status_start, reference_check, html_check, style_check, naming_guideline, model_check, simulate, regression, whitelists, publish]
+    # always(): also report cancelled runs, otherwise the status would stay pending
+    if: ${{ always() && github.event_name == 'workflow_dispatch' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      statuses: write
+    steps:
+      - name: Set final commit status
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RESULTS: ${{ toJSON(needs) }}
+        run: |
+          FAILED="$(jq -r 'to_entries | map(select(.value.result == "failure") | .key) | join(", ")' <<< "$RESULTS")"
+          CANCELLED="$(jq -r 'to_entries | map(select(.value.result == "cancelled") | .key) | join(", ")' <<< "$RESULTS")"
+          if [ -n "$FAILED" ]; then
+            STATE=failure; DESCRIPTION="Failed: $FAILED"
+          elif [ -n "$CANCELLED" ]; then
+            STATE=error; DESCRIPTION="Cancelled: $CANCELLED"
+          else
+            STATE=success; DESCRIPTION="All stages passed"
+          fi
+          # GitHub allows at most 140 characters
+          gh api -X POST "repos/$GITHUB_REPOSITORY/statuses/$GITHUB_SHA" \
+            -f state="$STATE" -f context="Modelica CI (Dymola) / restarted run" \
+            -f description="${DESCRIPTION:0:140}" \
+            -f target_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" >/dev/null
