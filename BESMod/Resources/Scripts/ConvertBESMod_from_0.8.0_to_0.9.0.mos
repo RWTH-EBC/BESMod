@@ -1,0 +1,31 @@
+// Conversion script for BESMod library
+// Converts user models from BESMod 0.8.0 to 0.9.0
+//
+// Changes in 0.9.0:
+//   - New building model TEASERThermalSingleZone and its record
+//     BuildingSingleZoneBaseRecord for buildings TEASER exports as one zone
+//     merged from rooms, and the user profile TEASERHOMtoROM for it.
+//   - AixLibHighOrder: SOD is replaceable instead of final, useConstVentRate
+//     defaults to false, new parameter fraRadIntGai (default 0) and new
+//     outputs TBuiVolAve, TBuiMin and TBuiMax. Existing models are unchanged.
+//   - New parameters with defaults that reproduce the previous behaviour:
+//     use_TZoneSetHeaCur (heat pump and gas boiler control).
+//   - The TEASER export partials use IdealHeaterFraRad (fraHeaRad, default
+//     0.35), and the fans of SimpleDistribution use a smooth pressure curve,
+//     which changes results slightly.
+//
+// Manual change needed:
+//   - AixLibHighOrderProfiles takes room-wise profiles: venPro and
+//     TSetProfile are now constrained by
+//     BESMod.Systems.UserProfiles.RecordsCollectionHOM.RoomWiseProfileBaseDataDefinition,
+//     with one column per room, instead of
+//     AixLib.DataBase.Profiles.ProfileBaseDataDefinition. Models redeclaring
+//     them with AixLib profiles have to use a room-wise record instead,
+//     e.g. from RecordsCollectionHOM. This can not be converted
+//     automatically, as the columns mean different rooms.
+//
+// This script is intentionally a no-op with respect to model content;
+// it exists so that the Modelica tool recognizes the version transition
+// and does not warn the user about an unknown source version.
+
+clear

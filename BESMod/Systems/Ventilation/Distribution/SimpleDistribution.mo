@@ -41,6 +41,7 @@ model SimpleDistribution "Most basic distribution model"
     final addPowerToMedium=fanData.addPowerToMedium,
     final use_riseTime=fanData.use_riseTime,
     final riseTime=fanData.riseTime,
+    final smoothness=Modelica.Blocks.Types.Smoothness.MonotoneContinuousDerivative1,
     final y_start=1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -59,6 +60,7 @@ model SimpleDistribution "Most basic distribution model"
     final addPowerToMedium=fanData.addPowerToMedium,
     final use_riseTime=fanData.use_riseTime,
     final riseTime=fanData.riseTime,
+    final smoothness=Modelica.Blocks.Types.Smoothness.MonotoneContinuousDerivative1,
     final y_start=1) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=180,

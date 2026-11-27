@@ -10,16 +10,19 @@ model AixLibHighOrder "High order building model from AixLib library"
     final ARoo=HOMBuiEnv.ARoof);
   extends Components.BaseClasses.HighOrderModelParameters;
 
-  final parameter AixLib.DataBase.Weather.SurfaceOrientation.SurfaceOrientationBaseDataDefinition  SOD=
+  replaceable parameter AixLib.DataBase.Weather.SurfaceOrientation.SurfaceOrientationBaseDataDefinition  SOD=
   AixLib.DataBase.Weather.SurfaceOrientation.SurfaceOrientationData_N_E_S_W_RoofN_Roof_S()
+    constrainedby AixLib.DataBase.Weather.SurfaceOrientation.SurfaceOrientationBaseDataDefinition
     "Surface orientation data"  annotation (
       Dialog(group = "Solar radiation on oriented surfaces", descriptionLabel = true),
       choicesAllMatching = true);
 
-  parameter Boolean useConstVentRate;
+  parameter Boolean useConstVentRate=false;
   parameter Real ventRate[nZones]=fill(0, nZones) if useConstVentRate "Constant mechanical ventilation rate" annotation (Dialog(enable=useConstVentRate));
   parameter Modelica.Units.SI.Temperature TSoil=286.15     "Temperature of soil";
   parameter Real GroundReflectance = 0.2 "ground reflectance coefficient";
+  parameter Real fraRadIntGai(min=0, max=1) = 0
+    "Radiative share of the internal gains, the rest is convective";
 
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature preTSoi(T=TSoil)
     "Prescribed soil temperature"
@@ -69,10 +72,29 @@ model AixLibHighOrder "High order building model from AixLib library"
           extent={{10,-10},{-10,10}}, rotation=180,
         origin={-90,10})));
   Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow InternalGains[nZones]
+    "Convective share of the internal gains"
     annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=0,
         origin={-50,-50})));
+  Modelica.Thermal.HeatTransfer.Sources.PrescribedHeatFlow InternalGainsRad[nZones]
+    "Radiative share of the internal gains"
+    annotation (Placement(transformation(
+        extent={{10,-10},{-10,10}},
+        rotation=0,
+        origin={-50,-70})));
+  Modelica.Blocks.Math.Gain gaiIntGaiCon[nZones](each final k=1 - fraRadIntGai)
+    "Convective share of the internal gains"
+    annotation (Placement(transformation(
+        extent={{6,-6},{-6,6}},
+        rotation=0,
+        origin={-20,-50})));
+  Modelica.Blocks.Math.Gain gaiIntGaiRad[nZones](each final k=fraRadIntGai)
+    "Radiative share of the internal gains"
+    annotation (Placement(transformation(
+        extent={{6,-6},{-6,6}},
+        rotation=0,
+        origin={-20,-70})));
   Utilities.Electrical.ZeroLoad zeroLoad
     annotation (Placement(transformation(extent={{24,-108},{44,-88}})));
   Modelica.Thermal.HeatTransfer.Sources.PrescribedTemperature
@@ -86,6 +108,16 @@ model AixLibHighOrder "High order building model from AixLib library"
     final azi=SOD.Azimut .* Modelica.Constants.pi ./ 180)
     "Adapt weather bus to HOM "
     annotation (Placement(transformation(extent={{0,40},{20,60}})));
+  Modelica.Blocks.Math.MinMax minMax(
+    final nu=nZones,
+    yMax(unit="K", displayUnit="degC"),
+    yMin(unit="K", displayUnit="degC")) "Lowest and highest room temperature"
+    annotation (Placement(transformation(extent={{62,-70},{82,-50}})));
+  Modelica.Blocks.Sources.RealExpression TBuiVolAve(
+    y(unit="K", displayUnit="degC")=
+      sum(HOMBuiEnv.TZoneMea[i]*HOMBuiEnv.VZone[i] for i in 1:nZones)/sum(HOMBuiEnv.VZone))
+    "Room temperature weighted by the rooms' air volume"
+    annotation (Placement(transformation(extent={{62,-90},{82,-70}})));
 equation
   connect(convRadToCombPort.portConv, heatPortCon) annotation (Line(points={{-60,-7},
           {-72,-7},{-72,-6},{-104,-6},{-104,46},{-86,46},{-86,60},{-100,60}},
@@ -122,12 +154,24 @@ connect(weaBus.winSpe, HOMBuiEnv.WindSpeedPort) annotation (Line(
 
   connect(InternalGains.port, convRadToCombPort.portConv) annotation (Line(
         points={{-60,-50},{-68,-50},{-68,-7},{-60,-7}}, color={191,0,0}));
-  connect(InternalGains.Q_flow, useProBus.intGains) annotation (Line(points={{-40,-50},
+  connect(gaiIntGaiCon.u, useProBus.intGains) annotation (Line(points={{-12.8,-50},
           {60,-50},{60,70},{51,70},{51,101}},      color={0,0,127}), Text(
       string="%second",
       index=1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
+  connect(gaiIntGaiRad.u, useProBus.intGains) annotation (Line(points={{-12.8,-70},
+          {60,-70},{60,70},{51,70},{51,101}},      color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(gaiIntGaiCon.y, InternalGains.Q_flow) annotation (Line(points={{-26.6,
+          -50},{-40,-50}}, color={0,0,127}));
+  connect(gaiIntGaiRad.y, InternalGainsRad.Q_flow) annotation (Line(points={{-26.6,
+          -70},{-40,-70}}, color={0,0,127}));
+  connect(InternalGainsRad.port, convRadToCombPort.portRad) annotation (Line(
+        points={{-60,-70},{-70,-70},{-70,-17},{-60,-17}}, color={191,0,0}));
   connect(constVentRate.y, HOMBuiEnv.AirExchangePort) annotation (Line(points={{
           -79,10},{-23.8,10},{-23.8,10.9}}, color={0,0,127}));
   connect(HOMBuiEnv.TZoneMea, buiMeaBus.TZoneMea) annotation (Line(points={{-23.2,
@@ -180,6 +224,27 @@ connect(weaBus.winSpe, HOMBuiEnv.WindSpeedPort) annotation (Line(
   connect(RadOnTiltedSurfaceAdaptor[6].radOnTiltedSurf, HOMBuiEnv.SolarRadiationPort_RoofS) annotation (
       Line(points={{21,49.9},{52,49.9},{52,21.4},{40.4,21.4}},
                                                            color={255,128,0}));
+  connect(HOMBuiEnv.TZoneMea, minMax.u) annotation (Line(points={{-23.2,-18.5},
+          {-32,-18.5},{-32,-52},{10,-52},{10,-102},{18,-102},{18,-56.85},{62,-56.85}},
+        color={0,0,127}));
+  connect(minMax.yMax, outBusDem.TBuiMax) annotation (Line(points={{83,-54},{114,
+          -54},{114,-16},{84,-16},{84,-2},{98,-2}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(minMax.yMin, outBusDem.TBuiMin) annotation (Line(points={{83,-66},{118,
+          -66},{118,-2},{98,-2}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
+  connect(TBuiVolAve.y, outBusDem.TBuiVolAve) annotation (Line(points={{83,-80},
+          {120,-80},{120,-2},{98,-2}}, color={0,0,127}), Text(
+      string="%second",
+      index=1,
+      extent={{6,3},{6,3}},
+      horizontalAlignment=TextAlignment.Left));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end AixLibHighOrder;

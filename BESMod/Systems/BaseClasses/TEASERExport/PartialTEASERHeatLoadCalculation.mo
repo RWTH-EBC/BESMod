@@ -2,7 +2,7 @@ within BESMod.Systems.BaseClasses.TEASERExport;
 partial model PartialTEASERHeatLoadCalculation
   "Partial model for TEASER export heat load calculation"
   extends BESMod.Systems.BaseClasses.PartialBuildingEnergySystem(
-    redeclare BESMod.Systems.UserProfiles.TEASERProfiles userProfiles,
+    redeclare replaceable BESMod.Systems.UserProfiles.TEASERProfiles userProfiles,
     redeclare BESMod.Systems.RecordsCollection.ExampleSystemParameters
       systemParameters(
       QBui_flow_nominal=building.QRec_flow_nominal,
@@ -21,7 +21,7 @@ partial model PartialTEASERHeatLoadCalculation
       redeclare BESMod.Systems.Electrical.Generation.NoGeneration generation,
       redeclare BESMod.Systems.Electrical.Distribution.DirectlyToGrid
         distribution,
-      redeclare BESMod.Systems.Electrical.Transfer.IdealHeater transfer(
+      redeclare BESMod.Systems.Electrical.Transfer.IdealHeaterFraRad transfer(
           TN_heater=120),
       redeclare BESMod.Systems.Electrical.Control.IdealHeater control),
     redeclare BESMod.Systems.Demand.DHW.StandardProfiles DHW(

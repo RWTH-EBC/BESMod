@@ -2,8 +2,10 @@ within BESMod.Systems.UserProfiles.Tests;
 model HOMUserTest "Test case for the HOM user profiles"
   extends PartialTest(redeclare
       BESMod.Systems.UserProfiles.AixLibHighOrderProfiles userProfiles(
-        redeclare AixLib.DataBase.Profiles.Ventilation2perDayMean05perH venPro,
-        redeclare AixLib.DataBase.Profiles.SetTemperaturesVentilation2perDay
+        redeclare
+        BESMod.Systems.UserProfiles.RecordsCollectionHOM.Ventilation.Const0_5
+        venPro, redeclare
+        BESMod.Systems.UserProfiles.RecordsCollectionHOM.SetTemperatures.Const20
         TSetProfile));
   extends Modelica.Icons.Example;
 

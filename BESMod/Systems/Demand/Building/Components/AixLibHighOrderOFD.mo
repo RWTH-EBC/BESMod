@@ -46,6 +46,18 @@ model AixLibHighOrderOFD "High order OFD"
    wholeHouseBuildingEnvelope.upperFloor_Building.Bath.room_height_long,
    wholeHouseBuildingEnvelope.upperFloor_Building.Children2.room_height_long,
    wholeHouseBuildingEnvelope.attic_2Ro_5Rooms.room_V/AZone[11]};
+  final parameter Modelica.Units.SI.Volume VZone[nZones]=
+  {wholeHouseBuildingEnvelope.groundFloor_Building.Livingroom.room_V,
+   wholeHouseBuildingEnvelope.groundFloor_Building.Hobby.room_V,
+   wholeHouseBuildingEnvelope.groundFloor_Building.Corridor.room_V,
+   wholeHouseBuildingEnvelope.groundFloor_Building.WC_Storage.room_V,
+   wholeHouseBuildingEnvelope.groundFloor_Building.Kitchen.room_V,
+   wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.room_V,
+   wholeHouseBuildingEnvelope.upperFloor_Building.Children1.room_V,
+   wholeHouseBuildingEnvelope.upperFloor_Building.Corridor.room_V,
+   wholeHouseBuildingEnvelope.upperFloor_Building.Bath.room_V,
+   wholeHouseBuildingEnvelope.upperFloor_Building.Children2.room_V}
+    "Air volume of the heated rooms, below their sloped ceilings in the upper floor";
   final parameter Modelica.Units.SI.Area ARoofZone[nZones+nZonesNonHeated]=
   {0,0,0,0,0,
   wholeHouseBuildingEnvelope.upperFloor_Building.Bedroom.roof_width*
@@ -118,7 +130,7 @@ model AixLibHighOrderOFD "High order OFD"
         extent={{10,-10},{-10,10}},
         rotation=0,
         origin={20,-78})));
-  Modelica.Blocks.Sources.Constant constVenRatAtt(k=1)
+  Modelica.Blocks.Sources.Constant constVenRatAtt(k=2.5)
     "Constant ventilation rate of attic"
     annotation (Placement(transformation(extent={{-80,8},{-60,28}})));
   Modelica.Thermal.HeatTransfer.Interfaces.HeatPort_a thermOutside annotation (
