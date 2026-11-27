@@ -18,13 +18,12 @@ equation
   annotation (experiment(StopTime=3600, Tolerance=1e-06, Interval=100),
      __Dymola_Commands(file="modelica://BESMod/Resources/Scripts/Dymola/Systems/Hydraulical/Generation/Tests/GasBoiler.mos"
           "Simulate and plot"),
-    Documentation(info="<html>
-<p>
-  Test for 
-  <a href=\"modelica://BESMod.Systems.Hydraulical.Generation.GasBoiler\">BESMod.Systems.Hydraulical.Generation.GasBoiler</a>.
+    Documentation(info="<html><p>
+  Test for <a href=
+  \"modelica://BESMod.Systems.Hydraulical.Generation.GasBoiler\">BESMod.Systems.Hydraulical.Generation.GasBoiler</a>.
 </p>
 <p>
-  CI test: this paragraph has an <b>unclosed bold tag.
+  CI test: this paragraph has an <b>unclosed bold tag.</b>
 </p>
 </html>"));
 end GasBoiler;
