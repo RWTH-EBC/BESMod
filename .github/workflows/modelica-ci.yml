@@ -253,6 +253,9 @@ jobs:
     runs-on: [self-hosted, linux, dymola]
     timeout-minutes: 120
     continue-on-error: true   # was allow_failure: true on GitLab
+    outputs:
+      # needs.style_check.result is "success" because of continue-on-error
+      outcome: ${{ steps.style.outcome }}
     container:
       image: ${{ vars.DYMOLA_IMAGE || 'registry.git.rwth-aachen.de/ebc/ebc_intern/dymola-docker:Dymola2024xRefresh1-micromamba' }}
       credentials:
@@ -265,6 +268,7 @@ jobs:
       # Needs startup.mos (written by install_dependencies.py) to load BESMod with its libraries
       - uses: ./.github/actions/setup-modelica-ci
       - name: Dymola style check
+        id: style
         # Default branch: whole library. Other branches: only models changed compared to it
         # (whole library if more than 100 models changed).
         run: |
@@ -642,10 +646,12 @@ jobs:
         if: github.ref_name != github.event.repository.default_branch
         env:
           REFERENCES_PUSHED: ${{ needs.reference_check.outputs.pushed }}
-          RESULTS: >-
-            Reference results: ${{ needs.reference_check.result }}, HTML: ${{ needs.html_check.result }},
-            check: ${{ needs.model_check.result }}, simulate: ${{ needs.simulate.result }},
-            regression: ${{ needs.regression.result }}, style: ${{ needs.style_check.result }}
+          R_REFERENCES: ${{ needs.reference_check.result }}
+          R_HTML: ${{ needs.html_check.result }}
+          R_CHECK: ${{ needs.model_check.result }}
+          R_SIMULATE: ${{ needs.simulate.result }}
+          R_REGRESSION: ${{ needs.regression.result }}
+          R_STYLE: ${{ needs.style_check.outputs.outcome || needs.style_check.result }}
         run: |
           PR="$(gh pr list --repo "$GITHUB_REPOSITORY" --head "$GITHUB_REF_NAME" --state open --json number --jq '.[0].number // empty')"
           if [ -z "$PR" ]; then
@@ -653,13 +659,21 @@ jobs:
             exit 0
           fi
           MARKER="<!-- modelica-ci-summary -->"
+          symbol() {
+            case "$1" in
+              success) echo "✅" ;; failure) echo "❌" ;; cancelled) echo "⚪" ;; *) echo "⏭️" ;;
+            esac
+          }
+          RESULTS="Reference results $(symbol "$R_REFERENCES") · HTML $(symbol "$R_HTML") · Check $(symbol "$R_CHECK")"
+          RESULTS="$RESULTS · Simulate $(symbol "$R_SIMULATE") · Regression $(symbol "$R_REGRESSION") · Style $(symbol "$R_STYLE")"
           SUMMARY="$RUNNER_TEMP/ci_summary.md"
           BODY="$RUNNER_TEMP/ci_comment.md"
           {
             echo "$MARKER"
-            echo "## Modelica CI results for ${GITHUB_SHA::8}"
-            echo ""
+            echo "## Modelica CI results for \`${GITHUB_SHA::8}\`"
             echo "$RESULTS"
+            echo ""
+            echo "<sub>✅ passed · ❌ failed · ⏭️ not run in this run · ⚪ cancelled</sub>"
             echo ""
             if [ "$REFERENCES_PUSHED" == "true" ]; then
               echo "New reference results were created and pushed to the branch, the CI restarts on that commit."
